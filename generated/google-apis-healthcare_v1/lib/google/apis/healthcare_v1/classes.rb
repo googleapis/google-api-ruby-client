@@ -709,6 +709,29 @@ module Google
         end
       end
       
+      # The configuration for exporting to Cloud Storage using the bulk export API.
+      class BulkExportGcsDestination
+        include Google::Apis::Core::Hashable
+      
+        # Optional. URI for a Cloud Storage directory where the server writes result
+        # files, in the format `gs://`bucket-id`/`path/to/destination/dir``. If there is
+        # no trailing slash, the service appends one when composing the object path. The
+        # user is responsible for creating the Cloud Storage bucket referenced in `
+        # uri_prefix`.
+        # Corresponds to the JSON property `uriPrefix`
+        # @return [String]
+        attr_accessor :uri_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri_prefix = args[:uri_prefix] if args.key?(:uri_prefix)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -910,12 +933,13 @@ module Google
         attr_accessor :actor
       
         # An abstract identifier that describes the environment or conditions under
-        # which the accessor is acting. Can be "*" if it applies to all environments.
+        # which the accessor is acting. If it's not specified, it applies to all
+        # environments.
         # Corresponds to the JSON property `environment`
         # @return [String]
         attr_accessor :environment
       
-        # The intent of data use. Can be "*" if it applies to all purposes.
+        # The intent of data use. If it's not specified, it applies to all purposes.
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
@@ -2539,6 +2563,11 @@ module Google
       class FhirStore
         include Google::Apis::Core::Hashable
       
+        # The configuration for exporting to Cloud Storage using the bulk export API.
+        # Corresponds to the JSON property `bulkExportGcsDestination`
+        # @return [Google::Apis::HealthcareV1::BulkExportGcsDestination]
+        attr_accessor :bulk_export_gcs_destination
+      
         # Optional. Enable parsing of references within complex FHIR data types such as
         # Extensions. If this value is set to ENABLED, then features like referential
         # integrity and Bundle reference rewriting apply to all references. If this flag
@@ -2669,6 +2698,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bulk_export_gcs_destination = args[:bulk_export_gcs_destination] if args.key?(:bulk_export_gcs_destination)
           @complex_data_type_reference_parsing = args[:complex_data_type_reference_parsing] if args.key?(:complex_data_type_reference_parsing)
           @consent_config = args[:consent_config] if args.key?(:consent_config)
           @default_search_handling_strict = args[:default_search_handling_strict] if args.key?(:default_search_handling_strict)
