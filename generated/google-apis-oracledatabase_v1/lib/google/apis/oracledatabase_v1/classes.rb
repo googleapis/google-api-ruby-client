@@ -67,7 +67,7 @@ module Google
         # @return [String]
         attr_accessor :admin_password
       
-        # Required. The subnet CIDR range for the Autonmous Database.
+        # Optional. The subnet CIDR range for the Autonmous Database.
         # Corresponds to the JSON property `cidr`
         # @return [String]
         attr_accessor :cidr
@@ -108,7 +108,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. The name of the VPC network used by the Autonomous Database in the
+        # Optional. The name of the VPC network used by the Autonomous Database in the
         # following format: projects/`project`/global/networks/`network`
         # Corresponds to the JSON property `network`
         # @return [String]
