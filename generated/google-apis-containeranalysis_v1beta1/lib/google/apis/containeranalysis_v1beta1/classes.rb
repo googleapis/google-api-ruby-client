@@ -1248,6 +1248,13 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1Artifacts
         include Google::Apis::Core::Hashable
       
+        # Optional. A list of Go modules to be uploaded to Artifact Registry upon
+        # successful completion of all build steps. If any objects fail to be pushed,
+        # the build is marked FAILURE.
+        # Corresponds to the JSON property `goModules`
+        # @return [Array<Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsGoModule>]
+        attr_accessor :go_modules
+      
         # A list of images to be pushed upon the successful completion of all build
         # steps. The images will be pushed using the builder service account's
         # credentials. The digests of the pushed images will be stored in the Build
@@ -1295,6 +1302,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @go_modules = args[:go_modules] if args.key?(:go_modules)
           @images = args[:images] if args.key?(:images)
           @maven_artifacts = args[:maven_artifacts] if args.key?(:maven_artifacts)
           @npm_packages = args[:npm_packages] if args.key?(:npm_packages)
@@ -1335,6 +1343,64 @@ module Google
           @location = args[:location] if args.key?(:location)
           @paths = args[:paths] if args.key?(:paths)
           @timing = args[:timing] if args.key?(:timing)
+        end
+      end
+      
+      # Go module to upload to Artifact Registry upon successful completion of all
+      # build steps. A module refers to all dependencies in a go.mod file.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsGoModule
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Go module's "module path". e.g. example.com/foo/v2
+        # Corresponds to the JSON property `modulePath`
+        # @return [String]
+        attr_accessor :module_path
+      
+        # Optional. The Go module's semantic version in the form vX.Y.Z. e.g. v0.1.1 Pre-
+        # release identifiers can also be added by appending a dash and dot separated
+        # ASCII alphanumeric characters and hyphens. e.g. v0.2.3-alpha.x.12m.5
+        # Corresponds to the JSON property `moduleVersion`
+        # @return [String]
+        attr_accessor :module_version
+      
+        # Optional. Location of the Artifact Registry repository. i.e. us-east1 Defaults
+        # to the build’s location.
+        # Corresponds to the JSON property `repositoryLocation`
+        # @return [String]
+        attr_accessor :repository_location
+      
+        # Optional. Artifact Registry repository name. Specified Go modules will be
+        # zipped and uploaded to Artifact Registry with this location as a prefix. e.g.
+        # my-go-repo
+        # Corresponds to the JSON property `repositoryName`
+        # @return [String]
+        attr_accessor :repository_name
+      
+        # Optional. Project ID of the Artifact Registry repository. Defaults to the
+        # build project.
+        # Corresponds to the JSON property `repositoryProjectId`
+        # @return [String]
+        attr_accessor :repository_project_id
+      
+        # Optional. Source path of the go.mod file in the build's workspace. If not
+        # specified, this will default to the current directory. e.g. ~/code/go/
+        # mypackage
+        # Corresponds to the JSON property `sourcePath`
+        # @return [String]
+        attr_accessor :source_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @module_path = args[:module_path] if args.key?(:module_path)
+          @module_version = args[:module_version] if args.key?(:module_version)
+          @repository_location = args[:repository_location] if args.key?(:repository_location)
+          @repository_name = args[:repository_name] if args.key?(:repository_name)
+          @repository_project_id = args[:repository_project_id] if args.key?(:repository_project_id)
+          @source_path = args[:source_path] if args.key?(:source_path)
         end
       end
       
@@ -1486,6 +1552,12 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Optional. Dependencies that the Cloud Build worker will fetch before executing
+        # user steps.
+        # Corresponds to the JSON property `dependencies`
+        # @return [Array<Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1Dependency>]
+        attr_accessor :dependencies
       
         # A fatal problem encountered during the execution of the build.
         # Corresponds to the JSON property `failureInfo`
@@ -1648,6 +1720,7 @@ module Google
           @available_secrets = args[:available_secrets] if args.key?(:available_secrets)
           @build_trigger_id = args[:build_trigger_id] if args.key?(:build_trigger_id)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @dependencies = args[:dependencies] if args.key?(:dependencies)
           @failure_info = args[:failure_info] if args.key?(:failure_info)
           @finish_time = args[:finish_time] if args.key?(:finish_time)
           @git_config = args[:git_config] if args.key?(:git_config)
@@ -1767,6 +1840,13 @@ module Google
         attr_accessor :dynamic_substitutions
         alias_method :dynamic_substitutions?, :dynamic_substitutions
       
+        # Optional. Option to specify whether structured logging is enabled. If true,
+        # JSON-formatted logs are parsed as structured logs.
+        # Corresponds to the JSON property `enableStructuredLogging`
+        # @return [Boolean]
+        attr_accessor :enable_structured_logging
+        alias_method :enable_structured_logging?, :enable_structured_logging
+      
         # A list of global environment variable definitions that will exist for all
         # build steps in this build. If a variable is defined in both globally and in a
         # build step, the variable will use the build step value. The elements are of
@@ -1798,6 +1878,11 @@ module Google
         # Corresponds to the JSON property `pool`
         # @return [Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptionsPoolOption]
         attr_accessor :pool
+      
+        # Optional. Option to specify the Pub/Sub topic to receive build status updates.
+        # Corresponds to the JSON property `pubsubTopic`
+        # @return [String]
+        attr_accessor :pubsub_topic
       
         # Requested verifiability options.
         # Corresponds to the JSON property `requestedVerifyOption`
@@ -1848,11 +1933,13 @@ module Google
           @default_logs_bucket_behavior = args[:default_logs_bucket_behavior] if args.key?(:default_logs_bucket_behavior)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @dynamic_substitutions = args[:dynamic_substitutions] if args.key?(:dynamic_substitutions)
+          @enable_structured_logging = args[:enable_structured_logging] if args.key?(:enable_structured_logging)
           @env = args[:env] if args.key?(:env)
           @log_streaming_option = args[:log_streaming_option] if args.key?(:log_streaming_option)
           @logging = args[:logging] if args.key?(:logging)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @pool = args[:pool] if args.key?(:pool)
+          @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
           @requested_verify_option = args[:requested_verify_option] if args.key?(:requested_verify_option)
           @secret_env = args[:secret_env] if args.key?(:secret_env)
           @source_provenance_hash = args[:source_provenance_hash] if args.key?(:source_provenance_hash)
@@ -2139,6 +2226,106 @@ module Google
           @dir = args[:dir] if args.key?(:dir)
           @repository = args[:repository] if args.key?(:repository)
           @revision = args[:revision] if args.key?(:revision)
+        end
+      end
+      
+      # A dependency that the Cloud Build worker will fetch before executing user
+      # steps.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1Dependency
+        include Google::Apis::Core::Hashable
+      
+        # If set to true disable all dependency fetching (ignoring the default source as
+        # well).
+        # Corresponds to the JSON property `empty`
+        # @return [Boolean]
+        attr_accessor :empty
+        alias_method :empty?, :empty
+      
+        # Represents a git repository as a build dependency.
+        # Corresponds to the JSON property `gitSource`
+        # @return [Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGitSourceDependency]
+        attr_accessor :git_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @empty = args[:empty] if args.key?(:empty)
+          @git_source = args[:git_source] if args.key?(:git_source)
+        end
+      end
+      
+      # Represents a git repository as a build dependency.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGitSourceDependency
+        include Google::Apis::Core::Hashable
+      
+        # Optional. How much history should be fetched for the build (default 1, -1 for
+        # all history).
+        # Corresponds to the JSON property `depth`
+        # @return [Fixnum]
+        attr_accessor :depth
+      
+        # Required. Where should the files be placed on the worker.
+        # Corresponds to the JSON property `destPath`
+        # @return [String]
+        attr_accessor :dest_path
+      
+        # Optional. True if submodules should be fetched too (default false).
+        # Corresponds to the JSON property `recurseSubmodules`
+        # @return [Boolean]
+        attr_accessor :recurse_submodules
+        alias_method :recurse_submodules?, :recurse_submodules
+      
+        # A repository for a git source.
+        # Corresponds to the JSON property `repository`
+        # @return [Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGitSourceRepository]
+        attr_accessor :repository
+      
+        # Required. The revision that we will fetch the repo at.
+        # Corresponds to the JSON property `revision`
+        # @return [String]
+        attr_accessor :revision
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @depth = args[:depth] if args.key?(:depth)
+          @dest_path = args[:dest_path] if args.key?(:dest_path)
+          @recurse_submodules = args[:recurse_submodules] if args.key?(:recurse_submodules)
+          @repository = args[:repository] if args.key?(:repository)
+          @revision = args[:revision] if args.key?(:revision)
+        end
+      end
+      
+      # A repository for a git source.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGitSourceRepository
+        include Google::Apis::Core::Hashable
+      
+        # The Developer Connect Git repository link or the url that matches a repository
+        # link in the current project, formatted as `projects/*/locations/*/connections/*
+        # /gitRepositoryLink/*`
+        # Corresponds to the JSON property `developerConnect`
+        # @return [String]
+        attr_accessor :developer_connect
+      
+        # Location of the Git repository.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @developer_connect = args[:developer_connect] if args.key?(:developer_connect)
+          @url = args[:url] if args.key?(:url)
         end
       end
       
@@ -2432,6 +2619,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :build_step_outputs
       
+        # Optional. Go module artifacts uploaded to Artifact Registry at the end of the
+        # build.
+        # Corresponds to the JSON property `goModules`
+        # @return [Array<Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedGoModule>]
+        attr_accessor :go_modules
+      
         # Container images that were built as a part of the build.
         # Corresponds to the JSON property `images`
         # @return [Array<Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuiltImage>]
@@ -2468,6 +2661,7 @@ module Google
           @artifact_timing = args[:artifact_timing] if args.key?(:artifact_timing)
           @build_step_images = args[:build_step_images] if args.key?(:build_step_images)
           @build_step_outputs = args[:build_step_outputs] if args.key?(:build_step_outputs)
+          @go_modules = args[:go_modules] if args.key?(:go_modules)
           @images = args[:images] if args.key?(:images)
           @maven_artifacts = args[:maven_artifacts] if args.key?(:maven_artifacts)
           @npm_packages = args[:npm_packages] if args.key?(:npm_packages)
@@ -2768,6 +2962,39 @@ module Google
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # A Go module artifact uploaded to Artifact Registry using the GoModule
+      # directive.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedGoModule
+        include Google::Apis::Core::Hashable
+      
+        # Container message for hashes of byte content of files, used in
+        # SourceProvenance messages to verify integrity of source input to the build.
+        # Corresponds to the JSON property `fileHashes`
+        # @return [Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes]
+        attr_accessor :file_hashes
+      
+        # Start and end times for a build execution phase.
+        # Corresponds to the JSON property `pushTiming`
+        # @return [Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan]
+        attr_accessor :push_timing
+      
+        # URI of the uploaded artifact.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
+          @push_timing = args[:push_timing] if args.key?(:push_timing)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
