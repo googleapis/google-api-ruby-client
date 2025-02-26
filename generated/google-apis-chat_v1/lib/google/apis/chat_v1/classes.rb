@@ -195,6 +195,11 @@ module Google
       class Annotation
         include Google::Apis::Core::Hashable
       
+        # Annotation metadata for custom emoji.
+        # Corresponds to the JSON property `customEmojiMetadata`
+        # @return [Google::Apis::ChatV1::CustomEmojiMetadata]
+        attr_accessor :custom_emoji_metadata
+      
         # Length of the substring in the plain-text message body this annotation
         # corresponds to.
         # Corresponds to the JSON property `length`
@@ -233,12 +238,39 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_emoji_metadata = args[:custom_emoji_metadata] if args.key?(:custom_emoji_metadata)
           @length = args[:length] if args.key?(:length)
           @rich_link_metadata = args[:rich_link_metadata] if args.key?(:rich_link_metadata)
           @slash_command = args[:slash_command] if args.key?(:slash_command)
           @start_index = args[:start_index] if args.key?(:start_index)
           @type = args[:type] if args.key?(:type)
           @user_mention = args[:user_mention] if args.key?(:user_mention)
+        end
+      end
+      
+      # Metadata about a [Chat app command](https://developers.google.com/workspace/
+      # chat/commands).
+      class AppCommandMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The ID for the command specified in the Chat API configuration.
+        # Corresponds to the JSON property `appCommandId`
+        # @return [Fixnum]
+        attr_accessor :app_command_id
+      
+        # The type of Chat app command.
+        # Corresponds to the JSON property `appCommandType`
+        # @return [String]
+        attr_accessor :app_command_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_command_id = args[:app_command_id] if args.key?(:app_command_id)
+          @app_command_type = args[:app_command_type] if args.key?(:app_command_type)
         end
       end
       
@@ -846,6 +878,25 @@ module Google
         end
       end
       
+      # Annotation metadata for custom emoji.
+      class CustomEmojiMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Represents a custom emoji.
+        # Corresponds to the JSON property `customEmoji`
+        # @return [Google::Apis::ChatV1::CustomEmoji]
+        attr_accessor :custom_emoji
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_emoji = args[:custom_emoji] if args.key?(:custom_emoji)
+        end
+      end
+      
       # Date input values.
       class DateInput
         include Google::Apis::Core::Hashable
@@ -935,6 +986,12 @@ module Google
         # @return [Google::Apis::ChatV1::FormAction]
         attr_accessor :action
       
+        # Metadata about a [Chat app command](https://developers.google.com/workspace/
+        # chat/commands).
+        # Corresponds to the JSON property `appCommandMetadata`
+        # @return [Google::Apis::ChatV1::AppCommandMetadata]
+        attr_accessor :app_command_metadata
+      
         # Represents information about the user's client, such as locale, host app, and
         # platform. For Chat apps, `CommonEventObject` includes data submitted by users
         # interacting with cards, like data entered in [dialogs](https://developers.
@@ -943,11 +1000,12 @@ module Google
         # @return [Google::Apis::ChatV1::CommonEventObject]
         attr_accessor :common
       
-        # For `MESSAGE` interaction events, the URL that users must be redirected to
-        # after they complete an authorization or configuration flow outside of Google
-        # Chat. For more information, see [Connect a Chat app with other services and
-        # tools](https://developers.google.com/workspace/chat/connect-web-services-tools)
-        # .
+        # This URL is populated for `MESSAGE`, `ADDED_TO_SPACE`, and `APP_COMMAND`
+        # interaction events. After completing an authorization or configuration flow
+        # outside of Google Chat, users must be redirected to this URL to signal to
+        # Google Chat that the authorization or configuration flow was successful. For
+        # more information, see [Connect a Chat app with other services and tools](https:
+        # //developers.google.com/workspace/chat/connect-web-services-tools).
         # Corresponds to the JSON property `configCompleteRedirectUrl`
         # @return [String]
         attr_accessor :config_complete_redirect_url
@@ -981,6 +1039,16 @@ module Google
         # Corresponds to the JSON property `space`
         # @return [Google::Apis::ChatV1::Space]
         attr_accessor :space
+      
+        # A thread in a Google Chat space. For example usage, see [Start or reply to a
+        # message thread](https://developers.google.com/workspace/chat/create-messages#
+        # create-message-thread). If you specify a thread when creating a message, you
+        # can set the [`messageReplyOption`](https://developers.google.com/workspace/
+        # chat/api/reference/rest/v1/spaces.messages/create#messagereplyoption) field to
+        # determine what happens if no matching thread is found.
+        # Corresponds to the JSON property `thread`
+        # @return [Google::Apis::ChatV1::Thread]
+        attr_accessor :thread
       
         # The Chat app-defined key for the thread related to the interaction event. See [
         # `spaces.messages.thread.threadKey`](/chat/api/reference/rest/v1/spaces.
@@ -1021,6 +1089,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @action = args[:action] if args.key?(:action)
+          @app_command_metadata = args[:app_command_metadata] if args.key?(:app_command_metadata)
           @common = args[:common] if args.key?(:common)
           @config_complete_redirect_url = args[:config_complete_redirect_url] if args.key?(:config_complete_redirect_url)
           @dialog_event_type = args[:dialog_event_type] if args.key?(:dialog_event_type)
@@ -1028,6 +1097,7 @@ module Google
           @is_dialog_event = args[:is_dialog_event] if args.key?(:is_dialog_event)
           @message = args[:message] if args.key?(:message)
           @space = args[:space] if args.key?(:space)
+          @thread = args[:thread] if args.key?(:thread)
           @thread_key = args[:thread_key] if args.key?(:thread_key)
           @token = args[:token] if args.key?(:token)
           @type = args[:type] if args.key?(:type)
@@ -4510,8 +4580,8 @@ module Google
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :sender
       
-        # A [slash command](https://developers.google.com/workspace/chat/slash-commands)
-        # in Google Chat.
+        # Metadata about a [slash command](https://developers.google.com/workspace/chat/
+        # commands) in Google Chat.
         # Corresponds to the JSON property `slashCommand`
         # @return [Google::Apis::ChatV1::SlashCommand]
         attr_accessor :slash_command
@@ -5158,12 +5228,12 @@ module Google
         end
       end
       
-      # A [slash command](https://developers.google.com/workspace/chat/slash-commands)
-      # in Google Chat.
+      # Metadata about a [slash command](https://developers.google.com/workspace/chat/
+      # commands) in Google Chat.
       class SlashCommand
         include Google::Apis::Core::Hashable
       
-        # The ID of the slash command invoked.
+        # The ID of the slash command.
         # Corresponds to the JSON property `commandId`
         # @return [Fixnum]
         attr_accessor :command_id
