@@ -18,6 +18,7 @@ require 'google/apis/errors'
 require 'stringio'
 require 'tempfile'
 require 'mini_mime'
+require 'pry'
 module Google
   module Apis
     module Core
@@ -178,7 +179,6 @@ module Google
           success(result)
           rescue => e
             upload_io.pos = @offset
-            e.message = e.message + ", Please save this upload_url: #{@upload_url}"
             error(e, rethrow: true)
         end
 
