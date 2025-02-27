@@ -132,6 +132,7 @@ module Google
                          body: body,
                          header: request_header,
                          follow_redirect: true)
+
           result = process_response(response.status_code, response.header, response.body)
           success(result)
         rescue => e
@@ -171,14 +172,14 @@ module Google
               StringIO.new(upload_io.read(current_chunk_size))
             end
           response = client.put(@upload_url, body: chunk_body, header: request_header, follow_redirect: true)
-
           result = process_response(response.status_code, response.header, response.body)
           @upload_incomplete = false if response.status_code.eql? OK_STATUS
           @offset += current_chunk_size if @upload_incomplete
           success(result)
-        rescue => e
-          upload_io.pos = @offset
-          error(e, rethrow: true)
+          rescue => e
+            upload_io.pos = @offset
+            e.message = e.message + "Please save this upload_url==>#{@upload_url}"
+            error(e, rethrow: true)
         end
 
         # Check the to see if the upload is complete or needs to be resumed.
