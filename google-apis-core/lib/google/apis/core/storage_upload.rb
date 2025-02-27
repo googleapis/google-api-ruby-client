@@ -178,7 +178,7 @@ module Google
           success(result)
           rescue => e
             upload_io.pos = @offset
-            e.message = e.message + "Please save this upload_url==>#{@upload_url}"
+            e.message = e.message + ", Please save this upload_url: #{@upload_url}"
             error(e, rethrow: true)
         end
 
