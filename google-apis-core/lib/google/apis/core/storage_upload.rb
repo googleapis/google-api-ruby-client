@@ -139,8 +139,7 @@ module Google
           error(e, rethrow: true)
         end
 
-        #  Initiating resumable upload
-
+        # Restarting resumable upload
         def reinitiate_resumable_upload(client)
           logger.debug { sprintf('Restarting resumable upload command to %s', url) }
           @upload_url = options.upload_url unless options.upload_url.nil?
