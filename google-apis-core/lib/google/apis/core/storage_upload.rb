@@ -18,7 +18,6 @@ require 'google/apis/errors'
 require 'stringio'
 require 'tempfile'
 require 'mini_mime'
-require 'pry'
 module Google
   module Apis
     module Core
