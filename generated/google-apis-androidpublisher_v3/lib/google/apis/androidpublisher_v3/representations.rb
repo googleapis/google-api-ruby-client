@@ -1899,6 +1899,8 @@ module Google
       
           hash :converted_region_prices, as: 'convertedRegionPrices', class: Google::Apis::AndroidpublisherV3::ConvertedRegionPrice, decorator: Google::Apis::AndroidpublisherV3::ConvertedRegionPrice::Representation
       
+          property :region_version, as: 'regionVersion', class: Google::Apis::AndroidpublisherV3::RegionsVersion, decorator: Google::Apis::AndroidpublisherV3::RegionsVersion::Representation
+      
         end
       end
       

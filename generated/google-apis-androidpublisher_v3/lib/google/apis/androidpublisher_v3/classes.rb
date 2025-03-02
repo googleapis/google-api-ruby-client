@@ -1374,6 +1374,11 @@ module Google
         # @return [Hash<String,Google::Apis::AndroidpublisherV3::ConvertedRegionPrice>]
         attr_accessor :converted_region_prices
       
+        # The version of the available regions being used for the specified resource.
+        # Corresponds to the JSON property `regionVersion`
+        # @return [Google::Apis::AndroidpublisherV3::RegionsVersion]
+        attr_accessor :region_version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1382,6 +1387,7 @@ module Google
         def update!(**args)
           @converted_other_regions_price = args[:converted_other_regions_price] if args.key?(:converted_other_regions_price)
           @converted_region_prices = args[:converted_region_prices] if args.key?(:converted_region_prices)
+          @region_version = args[:region_version] if args.key?(:region_version)
         end
       end
       
