@@ -149,7 +149,8 @@ module Google
         attr_accessor :operating_status
       
         # Optional. Restricts results to places whose price level is included on this
-        # list. If price_level is not set, all price levels are included in the results.
+        # list. If `price_levels` is not set, all price levels are included in the
+        # results.
         # Corresponds to the JSON property `priceLevels`
         # @return [Array<String>]
         attr_accessor :price_levels
