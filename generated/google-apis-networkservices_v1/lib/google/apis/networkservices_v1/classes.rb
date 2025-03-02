@@ -191,7 +191,7 @@ module Google
         attr_accessor :update_time
       
         # Optional. The format of communication supported by the callout extension. If
-        # not specified, the default is `EXT_PROC_GRPC`.
+        # not specified, the default value `EXT_PROC_GRPC` is used.
         # Corresponds to the JSON property `wireFormat`
         # @return [String]
         attr_accessor :wire_format
@@ -2457,9 +2457,9 @@ module Google
       
         # Required. All backend services and forwarding rules referenced by this
         # extension must share the same load balancing scheme. Supported values: `
-        # INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [Backend
-        # services overview](https://cloud.google.com/load-balancing/docs/backend-
-        # service).
+        # INTERNAL_MANAGED` and `EXTERNAL_MANAGED`. For more information, refer to [
+        # Backend services overview](https://cloud.google.com/load-balancing/docs/
+        # backend-service).
         # Corresponds to the JSON property `loadBalancingScheme`
         # @return [String]
         attr_accessor :load_balancing_scheme
@@ -2804,6 +2804,13 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Unreachable resources. Populated when the request opts into `
+        # return_partial_success` and reading across collections e.g. when attempting to
+        # list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2812,6 +2819,7 @@ module Google
         def update!(**args)
           @meshes = args[:meshes] if args.key?(:meshes)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -3421,8 +3429,10 @@ module Google
         end
       end
       
-      # ServiceBinding is the resource that defines a Service Directory Service to be
-      # used in a BackendService resource.
+      # ServiceBinding can be used to: - Bind a Service Directory Service to be used
+      # in a BackendService resource. - Bind a Private Service Connect producer
+      # service to be used in consumer Cloud Service Mesh or Application Load
+      # Balancers.
       class ServiceBinding
         include Google::Apis::Core::Hashable
       
@@ -3442,19 +3452,19 @@ module Google
         attr_accessor :labels
       
         # Identifier. Name of the ServiceBinding resource. It matches pattern `projects/*
-        # /locations/global/serviceBindings/service_binding_name`.
+        # /locations/*/serviceBindings/`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Required. The full Service Directory Service name of the format projects/*/
-        # locations/*/namespaces/*/services/*
+        # Optional. The full Service Directory Service name of the format `projects/*/
+        # locations/*/namespaces/*/services/*`. This field must be set.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
       
         # Output only. The unique identifier of the Service Directory Service against
-        # which the Service Binding resource is validated. This is populated when the
+        # which the ServiceBinding resource is validated. This is populated when the
         # Service Binding resource is used in another resource (like Backend Service).
         # This is of the UUID4 format.
         # Corresponds to the JSON property `serviceId`

@@ -1268,6 +1268,7 @@ module Google
           collection :meshes, as: 'meshes', class: Google::Apis::NetworkservicesV1::Mesh, decorator: Google::Apis::NetworkservicesV1::Mesh::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
