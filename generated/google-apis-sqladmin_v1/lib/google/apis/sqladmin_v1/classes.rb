@@ -251,7 +251,7 @@ module Google
         attr_accessor :max_chargeable_bytes
       
         # Output only. The resource name of the backup. Format: projects/`project`/
-        # backups/`backup`
+        # backups/`backup`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -282,7 +282,7 @@ module Google
       
         # Output only. This output contains a backup time zone. If a Cloud SQL for SQL
         # Server instance has a different time zone from the backup's time zone, then
-        # restores to the instance won't happen.
+        # the restore to the instance doesn't happen.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
         attr_accessor :time_zone
@@ -3575,7 +3575,7 @@ module Google
         # @return [Google::Apis::SqladminV1::SqlSubOperationType]
         attr_accessor :sub_operation_type
       
-        # 
+        # Name of the resource on which this operation runs.
         # Corresponds to the JSON property `targetId`
         # @return [String]
         attr_accessor :target_id
