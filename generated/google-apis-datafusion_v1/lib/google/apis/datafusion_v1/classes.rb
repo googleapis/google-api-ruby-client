@@ -462,7 +462,7 @@ module Google
         attr_accessor :enable_rbac
         alias_method :enable_rbac?, :enable_rbac
       
-        # Optional. Option to enable Stackdriver Logging.
+        # Optional. Option to enable Dataproc Stackdriver Logging.
         # Corresponds to the JSON property `enableStackdriverLogging`
         # @return [Boolean]
         attr_accessor :enable_stackdriver_logging
@@ -497,6 +497,11 @@ module Google
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
+      
+        # Logging configuration for a Data Fusion instance.
+        # Corresponds to the JSON property `loggingConfig`
+        # @return [Google::Apis::DatafusionV1::LoggingConfig]
+        attr_accessor :logging_config
       
         # Output only. The maintenance events for this instance.
         # Corresponds to the JSON property `maintenanceEvents`
@@ -547,6 +552,12 @@ module Google
         # @return [Boolean]
         attr_accessor :private_instance
         alias_method :private_instance?, :private_instance
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
       
         # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
@@ -631,6 +642,7 @@ module Google
           @event_publish_config = args[:event_publish_config] if args.key?(:event_publish_config)
           @gcs_bucket = args[:gcs_bucket] if args.key?(:gcs_bucket)
           @labels = args[:labels] if args.key?(:labels)
+          @logging_config = args[:logging_config] if args.key?(:logging_config)
           @maintenance_events = args[:maintenance_events] if args.key?(:maintenance_events)
           @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
           @name = args[:name] if args.key?(:name)
@@ -639,6 +651,7 @@ module Google
           @p4_service_account = args[:p4_service_account] if args.key?(:p4_service_account)
           @patch_revision = args[:patch_revision] if args.key?(:patch_revision)
           @private_instance = args[:private_instance] if args.key?(:private_instance)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @service_account = args[:service_account] if args.key?(:service_account)
           @service_endpoint = args[:service_endpoint] if args.key?(:service_endpoint)
@@ -838,6 +851,27 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Logging configuration for a Data Fusion instance.
+      class LoggingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Option to determine whether instance logs should be written to Cloud
+        # Logging. By default, instance logs are written to Cloud Logging.
+        # Corresponds to the JSON property `instanceCloudLoggingDisabled`
+        # @return [Boolean]
+        attr_accessor :instance_cloud_logging_disabled
+        alias_method :instance_cloud_logging_disabled?, :instance_cloud_logging_disabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_cloud_logging_disabled = args[:instance_cloud_logging_disabled] if args.key?(:instance_cloud_logging_disabled)
         end
       end
       
