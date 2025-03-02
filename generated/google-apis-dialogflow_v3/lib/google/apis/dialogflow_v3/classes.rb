@@ -174,8 +174,8 @@ module Google
         # @return [String]
         attr_accessor :no_speech_timeout
       
-        # Use timeout based endpointing, interpreting endpointer sensitivy as seconds of
-        # timeout value.
+        # Use timeout based endpointing, interpreting endpointer sensitivity as seconds
+        # of timeout value.
         # Corresponds to the JSON property `useTimeoutBasedEndpointing`
         # @return [Boolean]
         attr_accessor :use_timeout_based_endpointing
@@ -794,7 +794,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Condition boost specifications. If a document matches multiple
-        # conditions in the specifictions, boost scores from these specifications are
+        # conditions in the specifications, boost scores from these specifications are
         # all applied and combined in a non-linear way. Maximum number of specifications
         # is 20.
         # Corresponds to the JSON property `conditionBoostSpecs`
@@ -3142,7 +3142,7 @@ module Google
         # every page's transition routes and can support use cases such as the user
         # saying "help" or "can I talk to a human?", which can be handled in a common
         # way regardless of the current page. Transition routes defined in the page have
-        # higher priority than those defined in the flow. TransitionRoutes are evalauted
+        # higher priority than those defined in the flow. TransitionRoutes are evaluated
         # in the following order: * TransitionRoutes with intent specified. *
         # TransitionRoutes with only condition specified. TransitionRoutes with intent
         # specified are inherited by pages in the flow.
@@ -5716,7 +5716,7 @@ module Google
       
         # A list of transitions for the transition rules of this page. They route the
         # conversation to another page in the same flow, or another flow. When we are in
-        # a certain page, the TransitionRoutes are evalauted in the following order: *
+        # a certain page, the TransitionRoutes are evaluated in the following order: *
         # TransitionRoutes defined in the page with intent specified. * TransitionRoutes
         # defined in the transition route groups with intent specified. *
         # TransitionRoutes defined in flow with intent specified. * TransitionRoutes
@@ -6994,12 +6994,18 @@ module Google
       class GoogleCloudDialogflowCxV3SearchConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Boosting configuration for the datastores.
+        # Optional. Boosting configuration for the datastores. Maps from datastore name
+        # to their boost configuration. Do not specify more than one BoostSpecs for each
+        # datastore name. If multiple BoostSpecs are provided for the same datastore
+        # name, the behavior is undefined.
         # Corresponds to the JSON property `boostSpecs`
         # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3BoostSpecs>]
         attr_accessor :boost_specs
       
-        # Optional. Filter configuration for the datastores.
+        # Optional. Filter configuration for the datastores. Maps from datastore name to
+        # the filter expression for that datastore. Do not specify more than one
+        # FilterSpecs for each datastore name. If multiple FilterSpecs are provided for
+        # the same datastore name, the behavior is undefined.
         # Corresponds to the JSON property `filterSpecs`
         # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FilterSpecs>]
         attr_accessor :filter_specs
@@ -9077,8 +9083,8 @@ module Google
         # @return [String]
         attr_accessor :no_speech_timeout
       
-        # Use timeout based endpointing, interpreting endpointer sensitivy as seconds of
-        # timeout value.
+        # Use timeout based endpointing, interpreting endpointer sensitivity as seconds
+        # of timeout value.
         # Corresponds to the JSON property `useTimeoutBasedEndpointing`
         # @return [Boolean]
         attr_accessor :use_timeout_based_endpointing
@@ -11045,7 +11051,7 @@ module Google
       
         # A list of transitions for the transition rules of this page. They route the
         # conversation to another page in the same flow, or another flow. When we are in
-        # a certain page, the TransitionRoutes are evalauted in the following order: *
+        # a certain page, the TransitionRoutes are evaluated in the following order: *
         # TransitionRoutes defined in the page with intent specified. * TransitionRoutes
         # defined in the transition route groups with intent specified. *
         # TransitionRoutes defined in flow with intent specified. * TransitionRoutes
@@ -15266,7 +15272,8 @@ module Google
         # @return [String]
         attr_accessor :participant_role
       
-        # Optional. The time when the message was sent.
+        # Optional. The time when the message was sent. For voice messages, this is the
+        # time when an utterance started.
         # Corresponds to the JSON property `sendTime`
         # @return [String]
         attr_accessor :send_time
@@ -18980,7 +18987,8 @@ module Google
         # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1ResponseMessage>]
         attr_accessor :response_messages
       
-        # Optional. The time when the message was sent.
+        # Optional. The time when the message was sent. For voice messages, this is the
+        # time when an utterance started.
         # Corresponds to the JSON property `sendTime`
         # @return [String]
         attr_accessor :send_time
