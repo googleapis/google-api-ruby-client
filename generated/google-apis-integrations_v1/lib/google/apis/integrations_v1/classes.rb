@@ -7721,6 +7721,11 @@ module Google
         # @return [Array<Google::Apis::IntegrationsV1::EnterpriseCrmFrontendsEventbusProtoParameterEntry>]
         attr_accessor :parameter_entries
       
+        # Optional. OUTPUT parameters from integration execution.
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaValueType>]
+        attr_accessor :parameters
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7732,6 +7737,7 @@ module Google
           @execution_id = args[:execution_id] if args.key?(:execution_id)
           @output_parameters = args[:output_parameters] if args.key?(:output_parameters)
           @parameter_entries = args[:parameter_entries] if args.key?(:parameter_entries)
+          @parameters = args[:parameters] if args.key?(:parameters)
         end
       end
       
@@ -8303,15 +8309,11 @@ module Google
       class GoogleCloudIntegrationsV1alphaImportTemplateRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Name of the integration where template needs to be imported.
+        # Required. Resource Name of the integration where template needs to be imported/
+        # inserted.
         # Corresponds to the JSON property `integration`
         # @return [String]
         attr_accessor :integration
-      
-        # Required. The region of the Integration to be created.
-        # Corresponds to the JSON property `integrationRegion`
-        # @return [String]
-        attr_accessor :integration_region
       
         # Optional. Sub Integration which would be created via templates.
         # Corresponds to the JSON property `subIntegrations`
@@ -8325,7 +8327,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @integration = args[:integration] if args.key?(:integration)
-          @integration_region = args[:integration_region] if args.key?(:integration_region)
           @sub_integrations = args[:sub_integrations] if args.key?(:sub_integrations)
         end
       end
