@@ -1482,6 +1482,8 @@ module Google
           property :log_uri, as: 'logUri'
           property :max_retries, as: 'maxRetries'
           property :name, as: 'name'
+          property :node_selector, as: 'nodeSelector', class: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector, decorator: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector::Representation
+      
           property :observed_generation, :numeric_string => true, as: 'observedGeneration'
           property :reconciling, as: 'reconciling'
           property :retried, as: 'retried'
@@ -1516,6 +1518,8 @@ module Google
           property :encryption_key, as: 'encryptionKey'
           property :execution_environment, as: 'executionEnvironment'
           property :max_retries, as: 'maxRetries'
+          property :node_selector, as: 'nodeSelector', class: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector, decorator: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector::Representation
+      
           property :service_account, as: 'serviceAccount'
           property :timeout, as: 'timeout'
           collection :volumes, as: 'volumes', class: Google::Apis::RunV2::GoogleCloudRunV2Volume, decorator: Google::Apis::RunV2::GoogleCloudRunV2Volume::Representation
