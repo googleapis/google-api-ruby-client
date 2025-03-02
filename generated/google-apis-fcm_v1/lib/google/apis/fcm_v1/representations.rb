@@ -103,6 +103,7 @@ module Google
       class AndroidConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bandwidth_constrained_ok, as: 'bandwidthConstrainedOk'
           property :collapse_key, as: 'collapseKey'
           hash :data, as: 'data'
           property :direct_boot_ok, as: 'directBootOk'

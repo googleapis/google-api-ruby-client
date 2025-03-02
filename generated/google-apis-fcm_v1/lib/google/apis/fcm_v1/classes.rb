@@ -27,6 +27,13 @@ module Google
       class AndroidConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. If set to true, messages will be allowed to be delivered to the app
+        # while the device is in bandwidth constrained mode.
+        # Corresponds to the JSON property `bandwidthConstrainedOk`
+        # @return [Boolean]
+        attr_accessor :bandwidth_constrained_ok
+        alias_method :bandwidth_constrained_ok?, :bandwidth_constrained_ok
+      
         # An identifier of a group of messages that can be collapsed, so that only the
         # last message gets sent when delivery can be resumed. A maximum of 4 different
         # collapse keys is allowed at any given time.
@@ -90,6 +97,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bandwidth_constrained_ok = args[:bandwidth_constrained_ok] if args.key?(:bandwidth_constrained_ok)
           @collapse_key = args[:collapse_key] if args.key?(:collapse_key)
           @data = args[:data] if args.key?(:data)
           @direct_boot_ok = args[:direct_boot_ok] if args.key?(:direct_boot_ok)
