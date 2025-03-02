@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DirectVpcEgressConnectionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DropInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -305,6 +311,12 @@ module Google
       end
       
       class RouteInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServerlessExternalConnectionInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -522,6 +534,17 @@ module Google
           property :resource_uri, as: 'resourceUri'
           property :storage_bucket, as: 'storageBucket'
           property :target, as: 'target'
+        end
+      end
+      
+      class DirectVpcEgressConnectionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_uri, as: 'networkUri'
+          property :region, as: 'region'
+          property :selected_ip_address, as: 'selectedIpAddress'
+          property :selected_ip_range, as: 'selectedIpRange'
+          property :subnetwork_uri, as: 'subnetworkUri'
         end
       end
       
@@ -957,6 +980,13 @@ module Google
         end
       end
       
+      class ServerlessExternalConnectionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :selected_ip_address, as: 'selectedIpAddress'
+        end
+      end
+      
       class ServerlessNegInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -999,6 +1029,8 @@ module Google
           property :deliver, as: 'deliver', class: Google::Apis::NetworkmanagementV1beta1::DeliverInfo, decorator: Google::Apis::NetworkmanagementV1beta1::DeliverInfo::Representation
       
           property :description, as: 'description'
+          property :direct_vpc_egress_connection, as: 'directVpcEgressConnection', class: Google::Apis::NetworkmanagementV1beta1::DirectVpcEgressConnectionInfo, decorator: Google::Apis::NetworkmanagementV1beta1::DirectVpcEgressConnectionInfo::Representation
+      
           property :drop, as: 'drop', class: Google::Apis::NetworkmanagementV1beta1::DropInfo, decorator: Google::Apis::NetworkmanagementV1beta1::DropInfo::Representation
       
           property :endpoint, as: 'endpoint', class: Google::Apis::NetworkmanagementV1beta1::EndpointInfo, decorator: Google::Apis::NetworkmanagementV1beta1::EndpointInfo::Representation
@@ -1031,6 +1063,8 @@ module Google
           property :redis_instance, as: 'redisInstance', class: Google::Apis::NetworkmanagementV1beta1::RedisInstanceInfo, decorator: Google::Apis::NetworkmanagementV1beta1::RedisInstanceInfo::Representation
       
           property :route, as: 'route', class: Google::Apis::NetworkmanagementV1beta1::RouteInfo, decorator: Google::Apis::NetworkmanagementV1beta1::RouteInfo::Representation
+      
+          property :serverless_external_connection, as: 'serverlessExternalConnection', class: Google::Apis::NetworkmanagementV1beta1::ServerlessExternalConnectionInfo, decorator: Google::Apis::NetworkmanagementV1beta1::ServerlessExternalConnectionInfo::Representation
       
           property :serverless_neg, as: 'serverlessNeg', class: Google::Apis::NetworkmanagementV1beta1::ServerlessNegInfo, decorator: Google::Apis::NetworkmanagementV1beta1::ServerlessNegInfo::Representation
       
