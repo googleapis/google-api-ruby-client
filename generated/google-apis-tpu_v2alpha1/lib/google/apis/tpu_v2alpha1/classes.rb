@@ -123,7 +123,7 @@ module Google
         end
       end
       
-      # A node-attached disk resource. Next ID: 8;
+      # A node-attached disk resource.
       class AttachedDisk
         include Google::Apis::Core::Hashable
       
@@ -139,6 +139,11 @@ module Google
         # @return [String]
         attr_accessor :source_disk
       
+        # Optional. The list of worker IDs this disk is attached to.
+        # Corresponds to the JSON property `workerIds`
+        # @return [Array<String>]
+        attr_accessor :worker_ids
+      
         def initialize(**args)
            update!(**args)
         end
@@ -147,6 +152,7 @@ module Google
         def update!(**args)
           @mode = args[:mode] if args.key?(:mode)
           @source_disk = args[:source_disk] if args.key?(:source_disk)
+          @worker_ids = args[:worker_ids] if args.key?(:worker_ids)
         end
       end
       

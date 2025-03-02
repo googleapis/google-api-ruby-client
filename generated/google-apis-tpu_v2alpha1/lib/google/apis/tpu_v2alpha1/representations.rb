@@ -436,6 +436,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :mode, as: 'mode'
           property :source_disk, as: 'sourceDisk'
+          collection :worker_ids, as: 'workerIds'
         end
       end
       
