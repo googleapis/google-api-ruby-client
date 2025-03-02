@@ -389,10 +389,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Looks up a single Entry by name using the permission on the source system.
-        # Caution: The BigQuery metadata that is stored in Dataplex Catalog is changing.
-        # For more information, see Changes to BigQuery metadata stored in Dataplex
-        # Catalog (https://cloud.google.com/dataplex/docs/biqquery-metadata-changes).
+        # Looks up an entry by name using the permission on the source system.
         # @param [String] name
         #   Required. The project to which the request should be attributed in the
         #   following form: projects/`project`/locations/`location`.
@@ -1673,9 +1670,6 @@ module Google
         
         # Create a DataTaxonomy resource.
         # @param [String] parent
-        #   Required. The resource name of the data taxonomy location, of the form:
-        #   projects/`project_number`/locations/`location_id` where location_id refers to
-        #   a GCP region.
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataTaxonomy] google_cloud_dataplex_v1_data_taxonomy_object
         # @param [String] data_taxonomy_id
         #   Required. DataTaxonomy identifier. * Must contain only lowercase letters,
@@ -1754,8 +1748,6 @@ module Google
         
         # Retrieves a DataTaxonomy resource.
         # @param [String] name
-        #   Required. The resource name of the DataTaxonomy: projects/`project_number`/
-        #   locations/`location_id`/dataTaxonomies/`data_taxonomy_id`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2718,10 +2710,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an Entry.Caution: The BigQuery metadata that is stored in Dataplex
-        # Catalog is changing. For more information, see Changes to BigQuery metadata
-        # stored in Dataplex Catalog (https://cloud.google.com/dataplex/docs/biqquery-
-        # metadata-changes).
+        # Gets an Entry.
         # @param [String] name
         #   Required. The resource name of the Entry: projects/`project`/locations/`
         #   location`/entryGroups/`entry_group`/entries/`entry`.
