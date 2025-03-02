@@ -134,14 +134,13 @@ module Google
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server can ignore the
-        #   request if it has already been completed. The server guarantees that for at
-        #   least 60 minutes since the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, ignores the second
-        #   request. This prevents clients from accidentally creating duplicate
-        #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   request if it has already been completed. The server guarantees that for 60
+        #   minutes since the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server ignores the second request This
+        #   prevents clients from accidentally creating duplicate commitments. The request
+        #   ID must be a valid UUID with the exception that zero UUID is not supported (
+        #   00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -181,14 +180,13 @@ module Google
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server can ignore the
-        #   request if it has already been completed. The server guarantees that for at
-        #   least 60 minutes after the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, ignores the second
-        #   request. This prevents clients from accidentally creating duplicate
-        #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   request if it has already been completed. The server guarantees that for 60
+        #   minutes after the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server ignores the second request This
+        #   prevents clients from accidentally creating duplicate commitments. The request
+        #   ID must be a valid UUID with the exception that zero UUID is not supported (
+        #   00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -252,12 +250,12 @@ module Google
         # Lists `AuthzExtension` resources in a given project and location.
         # @param [String] parent
         #   Required. The project and location from which the `AuthzExtension` resources
-        #   are listed, specified in the following format: `projects/`project`/locations/`
-        #   location``.
+        #   are listed. These values are specified in the following format: `projects/`
+        #   project`/locations/`location``.
         # @param [String] filter
         #   Optional. Filtering results.
         # @param [String] order_by
-        #   Optional. Hint for how to order the results.
+        #   Optional. Hint about how to order the results.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. The server might return fewer items than
         #   requested. If unspecified, the server picks an appropriate default.
@@ -303,14 +301,13 @@ module Google
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server can ignore the
-        #   request if it has already been completed. The server guarantees that for at
-        #   least 60 minutes since the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, ignores the second
-        #   request. This prevents clients from accidentally creating duplicate
-        #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   request if it has already been completed. The server guarantees that for 60
+        #   minutes since the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server ignores the second request This
+        #   prevents clients from accidentally creating duplicate commitments. The request
+        #   ID must be a valid UUID with the exception that zero UUID is not supported (
+        #   00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
         #   Required. Used to specify the fields to be overwritten in the `AuthzExtension`
         #   resource by the update. The fields specified in the `update_mask` are relative
@@ -1145,14 +1142,13 @@ module Google
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server can ignore the
-        #   request if it has already been completed. The server guarantees that for at
-        #   least 60 minutes since the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, ignores the second
-        #   request. This prevents clients from accidentally creating duplicate
-        #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   request if it has already been completed. The server guarantees that for 60
+        #   minutes since the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server ignores the second request This
+        #   prevents clients from accidentally creating duplicate commitments. The request
+        #   ID must be a valid UUID with the exception that zero UUID is not supported (
+        #   00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1192,14 +1188,13 @@ module Google
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server can ignore the
-        #   request if it has already been completed. The server guarantees that for at
-        #   least 60 minutes after the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, ignores the second
-        #   request. This prevents clients from accidentally creating duplicate
-        #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   request if it has already been completed. The server guarantees that for 60
+        #   minutes after the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server ignores the second request This
+        #   prevents clients from accidentally creating duplicate commitments. The request
+        #   ID must be a valid UUID with the exception that zero UUID is not supported (
+        #   00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1263,12 +1258,12 @@ module Google
         # Lists `LbRouteExtension` resources in a given project and location.
         # @param [String] parent
         #   Required. The project and location from which the `LbRouteExtension` resources
-        #   are listed, specified in the following format: `projects/`project`/locations/`
-        #   location``.
+        #   are listed. These values are specified in the following format: `projects/`
+        #   project`/locations/`location``.
         # @param [String] filter
         #   Optional. Filtering results.
         # @param [String] order_by
-        #   Optional. Hint for how to order the results.
+        #   Optional. Hint about how to order the results.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. The server might return fewer items than
         #   requested. If unspecified, the server picks an appropriate default.
@@ -1314,14 +1309,13 @@ module Google
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server can ignore the
-        #   request if it has already been completed. The server guarantees that for at
-        #   least 60 minutes since the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, ignores the second
-        #   request. This prevents clients from accidentally creating duplicate
-        #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   request if it has already been completed. The server guarantees that for 60
+        #   minutes since the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server ignores the second request This
+        #   prevents clients from accidentally creating duplicate commitments. The request
+        #   ID must be a valid UUID with the exception that zero UUID is not supported (
+        #   00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
         #   Optional. Used to specify the fields to be overwritten in the `
         #   LbRouteExtension` resource by the update. The fields specified in the `
@@ -1369,14 +1363,13 @@ module Google
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server can ignore the
-        #   request if it has already been completed. The server guarantees that for at
-        #   least 60 minutes since the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, ignores the second
-        #   request. This prevents clients from accidentally creating duplicate
-        #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   request if it has already been completed. The server guarantees that for 60
+        #   minutes since the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server ignores the second request This
+        #   prevents clients from accidentally creating duplicate commitments. The request
+        #   ID must be a valid UUID with the exception that zero UUID is not supported (
+        #   00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1416,14 +1409,13 @@ module Google
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server can ignore the
-        #   request if it has already been completed. The server guarantees that for at
-        #   least 60 minutes after the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, ignores the second
-        #   request. This prevents clients from accidentally creating duplicate
-        #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   request if it has already been completed. The server guarantees that for 60
+        #   minutes after the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server ignores the second request This
+        #   prevents clients from accidentally creating duplicate commitments. The request
+        #   ID must be a valid UUID with the exception that zero UUID is not supported (
+        #   00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1487,12 +1479,12 @@ module Google
         # Lists `LbTrafficExtension` resources in a given project and location.
         # @param [String] parent
         #   Required. The project and location from which the `LbTrafficExtension`
-        #   resources are listed, specified in the following format: `projects/`project`/
-        #   locations/`location``.
+        #   resources are listed. These values are specified in the following format: `
+        #   projects/`project`/locations/`location``.
         # @param [String] filter
         #   Optional. Filtering results.
         # @param [String] order_by
-        #   Optional. Hint for how to order the results.
+        #   Optional. Hint about how to order the results.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. The server might return fewer items than
         #   requested. If unspecified, the server picks an appropriate default.
@@ -1538,14 +1530,13 @@ module Google
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server can ignore the
-        #   request if it has already been completed. The server guarantees that for at
-        #   least 60 minutes since the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, ignores the second
-        #   request. This prevents clients from accidentally creating duplicate
-        #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   request if it has already been completed. The server guarantees that for 60
+        #   minutes since the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server ignores the second request This
+        #   prevents clients from accidentally creating duplicate commitments. The request
+        #   ID must be a valid UUID with the exception that zero UUID is not supported (
+        #   00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
         #   Optional. Used to specify the fields to be overwritten in the `
         #   LbTrafficExtension` resource by the update. The fields specified in the `
@@ -1692,6 +1683,10 @@ module Google
         #   The value returned by the last `ListMeshesResponse` Indicates that this is a
         #   continuation of a prior `ListMeshes` call, and that the system should return
         #   the next page of data.
+        # @param [Boolean] return_partial_success
+        #   Optional. If true, allow partial responses for multi-regional Aggregated List
+        #   requests. Otherwise if one of the locations is down or unreachable, the
+        #   Aggregated List request will fail.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1709,13 +1704,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_meshes(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_meshes(parent, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/meshes', options)
           command.response_representation = Google::Apis::NetworkservicesV1beta1::ListMeshesResponse::Representation
           command.response_class = Google::Apis::NetworkservicesV1beta1::ListMeshesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1979,7 +1975,7 @@ module Google
         # Creates a new ServiceBinding in a given project and location.
         # @param [String] parent
         #   Required. The parent resource of the ServiceBinding. Must be in the format `
-        #   projects/*/locations/global`.
+        #   projects/*/locations/*`.
         # @param [Google::Apis::NetworkservicesV1beta1::ServiceBinding] service_binding_object
         # @param [String] service_binding_id
         #   Required. Short name of the ServiceBinding resource to be created.
@@ -2016,7 +2012,7 @@ module Google
         # Deletes a single ServiceBinding.
         # @param [String] name
         #   Required. A name of the ServiceBinding to delete. Must be in the format `
-        #   projects/*/locations/global/serviceBindings/*`.
+        #   projects/*/locations/*/serviceBindings/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2047,7 +2043,7 @@ module Google
         # Gets details of a single ServiceBinding.
         # @param [String] name
         #   Required. A name of the ServiceBinding to get. Must be in the format `projects/
-        #   */locations/global/serviceBindings/*`.
+        #   */locations/*/serviceBindings/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2078,7 +2074,7 @@ module Google
         # Lists ServiceBinding in a given project and location.
         # @param [String] parent
         #   Required. The project and location from which the ServiceBindings should be
-        #   listed, specified in the format `projects/*/locations/global`.
+        #   listed, specified in the format `projects/*/locations/*`.
         # @param [Fixnum] page_size
         #   Maximum number of ServiceBindings to return per call.
         # @param [String] page_token
