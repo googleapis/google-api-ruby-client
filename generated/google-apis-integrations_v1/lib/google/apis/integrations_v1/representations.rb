@@ -3966,6 +3966,8 @@ module Google
           hash :output_parameters, as: 'outputParameters'
           collection :parameter_entries, as: 'parameterEntries', class: Google::Apis::IntegrationsV1::EnterpriseCrmFrontendsEventbusProtoParameterEntry, decorator: Google::Apis::IntegrationsV1::EnterpriseCrmFrontendsEventbusProtoParameterEntry::Representation
       
+          hash :parameters, as: 'parameters', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaValueType, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaValueType::Representation
+      
         end
       end
       
@@ -4145,7 +4147,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :integration, as: 'integration'
-          property :integration_region, as: 'integrationRegion'
           hash :sub_integrations, as: 'subIntegrations', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails::Representation
       
         end
