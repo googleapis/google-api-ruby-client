@@ -1581,7 +1581,7 @@ module Google
         attr_accessor :update_time
       
         # Details of a single node in the instance. Nodes in an AlloyDB instance are
-        # ephemereal, they can change during update, failover, autohealing and resize
+        # ephemeral, they can change during update, failover, autohealing and resize
         # operations.
         # Corresponds to the JSON property `writableNode`
         # @return [Google::Apis::AlloydbV1beta::Node]
@@ -2046,7 +2046,7 @@ module Google
       end
       
       # Details of a single node in the instance. Nodes in an AlloyDB instance are
-      # ephemereal, they can change during update, failover, autohealing and resize
+      # ephemeral, they can change during update, failover, autohealing and resize
       # operations.
       class Node
         include Google::Apis::Core::Hashable
@@ -2271,6 +2271,11 @@ module Google
         # @return [String]
         attr_accessor :target
       
+        # Message for current status of the Major Version Upgrade operation.
+        # Corresponds to the JSON property `upgradeClusterStatus`
+        # @return [Google::Apis::AlloydbV1beta::UpgradeClusterStatus]
+        attr_accessor :upgrade_cluster_status
+      
         # Output only. Name of the verb executed by the operation.
         # Corresponds to the JSON property `verb`
         # @return [String]
@@ -2288,6 +2293,7 @@ module Google
           @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
           @status_message = args[:status_message] if args.key?(:status_message)
           @target = args[:target] if args.key?(:target)
+          @upgrade_cluster_status = args[:upgrade_cluster_status] if args.key?(:upgrade_cluster_status)
           @verb = args[:verb] if args.key?(:verb)
         end
       end
@@ -2358,6 +2364,53 @@ module Google
         end
       end
       
+      # Configuration for setting up PSC service automation. Consumer projects in the
+      # configs will be allowlisted automatically for the instance.
+      class PscAutoConnectionConfig
+        include Google::Apis::Core::Hashable
+      
+        # The consumer network for the PSC service automation, example: "projects/vpc-
+        # host-project/global/networks/default". The consumer network might be hosted a
+        # different project than the consumer project.
+        # Corresponds to the JSON property `consumerNetwork`
+        # @return [String]
+        attr_accessor :consumer_network
+      
+        # Output only. The status of the service connection policy.
+        # Corresponds to the JSON property `consumerNetworkStatus`
+        # @return [String]
+        attr_accessor :consumer_network_status
+      
+        # The consumer project to which the PSC service automation endpoint will be
+        # created.
+        # Corresponds to the JSON property `consumerProject`
+        # @return [String]
+        attr_accessor :consumer_project
+      
+        # Output only. The IP address of the PSC service automation endpoint.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # Output only. The status of the PSC service automation connection.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
+          @consumer_network_status = args[:consumer_network_status] if args.key?(:consumer_network_status)
+          @consumer_project = args[:consumer_project] if args.key?(:consumer_project)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
       # PscConfig contains PSC related configuration at a cluster level.
       class PscConfig
         include Google::Apis::Core::Hashable
@@ -2396,6 +2449,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_consumer_projects
       
+        # Optional. Configurations for setting up PSC service automation.
+        # Corresponds to the JSON property `pscAutoConnections`
+        # @return [Array<Google::Apis::AlloydbV1beta::PscAutoConnectionConfig>]
+        attr_accessor :psc_auto_connections
+      
         # Output only. The DNS name of the instance for PSC connectivity. Name
         # convention: ...alloydb-psc.goog
         # Corresponds to the JSON property `pscDnsName`
@@ -2423,6 +2481,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allowed_consumer_projects = args[:allowed_consumer_projects] if args.key?(:allowed_consumer_projects)
+          @psc_auto_connections = args[:psc_auto_connections] if args.key?(:psc_auto_connections)
           @psc_dns_name = args[:psc_dns_name] if args.key?(:psc_dns_name)
           @psc_interface_configs = args[:psc_interface_configs] if args.key?(:psc_interface_configs)
           @service_attachment_link = args[:service_attachment_link] if args.key?(:service_attachment_link)
@@ -2565,6 +2624,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @node_count = args[:node_count] if args.key?(:node_count)
+        end
+      end
+      
+      # Read pool instances upgrade specific status.
+      class ReadPoolInstancesUpgradeStageStatus
+        include Google::Apis::Core::Hashable
+      
+        # Upgrade stats for read pool instances.
+        # Corresponds to the JSON property `upgradeStats`
+        # @return [Google::Apis::AlloydbV1beta::Stats]
+        attr_accessor :upgrade_stats
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @upgrade_stats = args[:upgrade_stats] if args.key?(:upgrade_stats)
         end
       end
       
@@ -2844,6 +2922,74 @@ module Google
         end
       end
       
+      # Status of an upgrade stage.
+      class StageStatus
+        include Google::Apis::Core::Hashable
+      
+        # Read pool instances upgrade specific status.
+        # Corresponds to the JSON property `readPoolInstancesUpgrade`
+        # @return [Google::Apis::AlloydbV1beta::ReadPoolInstancesUpgradeStageStatus]
+        attr_accessor :read_pool_instances_upgrade
+      
+        # Upgrade stage.
+        # Corresponds to the JSON property `stage`
+        # @return [String]
+        attr_accessor :stage
+      
+        # State of this stage.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @read_pool_instances_upgrade = args[:read_pool_instances_upgrade] if args.key?(:read_pool_instances_upgrade)
+          @stage = args[:stage] if args.key?(:stage)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Upgrade stats for read pool instances.
+      class Stats
+        include Google::Apis::Core::Hashable
+      
+        # Number of read pool instances which failed to upgrade.
+        # Corresponds to the JSON property `failed`
+        # @return [Fixnum]
+        attr_accessor :failed
+      
+        # Number of read pool instances for which upgrade has not started.
+        # Corresponds to the JSON property `notStarted`
+        # @return [Fixnum]
+        attr_accessor :not_started
+      
+        # Number of read pool instances undergoing upgrade.
+        # Corresponds to the JSON property `ongoing`
+        # @return [Fixnum]
+        attr_accessor :ongoing
+      
+        # Number of read pool instances successfully upgraded.
+        # Corresponds to the JSON property `success`
+        # @return [Fixnum]
+        attr_accessor :success
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failed = args[:failed] if args.key?(:failed)
+          @not_started = args[:not_started] if args.key?(:not_started)
+          @ongoing = args[:ongoing] if args.key?(:ongoing)
+          @success = args[:success] if args.key?(:success)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -3091,7 +3237,7 @@ module Google
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
         attr_accessor :resource_id
       
-        # Common model for database resource instance metadata. Next ID: 24
+        # Common model for database resource instance metadata. Next ID: 25
         # Corresponds to the JSON property `resourceMetadata`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata]
         attr_accessor :resource_metadata
@@ -3266,7 +3412,7 @@ module Google
         end
       end
       
-      # Common model for database resource instance metadata. Next ID: 24
+      # Common model for database resource instance metadata. Next ID: 25
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata
         include Google::Apis::Core::Hashable
       
@@ -3322,6 +3468,11 @@ module Google
         # @return [String]
         attr_accessor :expected_state
       
+        # GCBDR Configuration for the resource.
+        # Corresponds to the JSON property `gcbdrConfiguration`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainGcbdrConfiguration]
+        attr_accessor :gcbdr_configuration
+      
         # DatabaseResourceId will serve as primary key for any resource ingestion event.
         # Corresponds to the JSON property `id`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
@@ -3375,7 +3526,7 @@ module Google
         # @return [String]
         attr_accessor :resource_name
       
-        # Suspension reason for the resource.
+        # Optional. Suspension reason for the resource.
         # Corresponds to the JSON property `suspensionReason`
         # @return [String]
         attr_accessor :suspension_reason
@@ -3414,6 +3565,7 @@ module Google
           @edition = args[:edition] if args.key?(:edition)
           @entitlements = args[:entitlements] if args.key?(:entitlements)
           @expected_state = args[:expected_state] if args.key?(:expected_state)
+          @gcbdr_configuration = args[:gcbdr_configuration] if args.key?(:gcbdr_configuration)
           @id = args[:id] if args.key?(:id)
           @instance_type = args[:instance_type] if args.key?(:instance_type)
           @location = args[:location] if args.key?(:location)
@@ -3526,6 +3678,26 @@ module Google
         def update!(**args)
           @entitlement_state = args[:entitlement_state] if args.key?(:entitlement_state)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # GCBDR Configuration for the resource.
+      class StorageDatabasecenterPartnerapiV1mainGcbdrConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # Whether the resource is managed by GCBDR.
+        # Corresponds to the JSON property `gcbdrManaged`
+        # @return [Boolean]
+        attr_accessor :gcbdr_managed
+        alias_method :gcbdr_managed?, :gcbdr_managed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcbdr_managed = args[:gcbdr_managed] if args.key?(:gcbdr_managed)
         end
       end
       
@@ -3907,6 +4079,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The recommended value for an INTEGER flag.
+        # Corresponds to the JSON property `recommendedIntegerValue`
+        # @return [Fixnum]
+        attr_accessor :recommended_integer_value
+      
+        # The recommended value for a STRING flag.
+        # Corresponds to the JSON property `recommendedStringValue`
+        # @return [String]
+        attr_accessor :recommended_string_value
+      
         # Whether setting or updating this flag on an Instance requires a database
         # restart. If a flag that requires database restart is set, the backend will
         # automatically restart the database (making sure to satisfy any availability
@@ -3915,6 +4097,11 @@ module Google
         # @return [Boolean]
         attr_accessor :requires_db_restart
         alias_method :requires_db_restart?, :requires_db_restart
+      
+        # The scope of the flag.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
       
         # Restrictions on STRING type values
         # Corresponds to the JSON property `stringRestrictions`
@@ -3941,7 +4128,10 @@ module Google
           @flag_name = args[:flag_name] if args.key?(:flag_name)
           @integer_restrictions = args[:integer_restrictions] if args.key?(:integer_restrictions)
           @name = args[:name] if args.key?(:name)
+          @recommended_integer_value = args[:recommended_integer_value] if args.key?(:recommended_integer_value)
+          @recommended_string_value = args[:recommended_string_value] if args.key?(:recommended_string_value)
           @requires_db_restart = args[:requires_db_restart] if args.key?(:requires_db_restart)
+          @scope = args[:scope] if args.key?(:scope)
           @string_restrictions = args[:string_restrictions] if args.key?(:string_restrictions)
           @supported_db_versions = args[:supported_db_versions] if args.key?(:supported_db_versions)
           @value_type = args[:value_type] if args.key?(:value_type)
@@ -4142,6 +4332,50 @@ module Google
           @cluster_upgrade_details = args[:cluster_upgrade_details] if args.key?(:cluster_upgrade_details)
           @message = args[:message] if args.key?(:message)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Message for current status of the Major Version Upgrade operation.
+      class UpgradeClusterStatus
+        include Google::Apis::Core::Hashable
+      
+        # Whether the operation is cancellable.
+        # Corresponds to the JSON property `cancellable`
+        # @return [Boolean]
+        attr_accessor :cancellable
+        alias_method :cancellable?, :cancellable
+      
+        # Source database major version.
+        # Corresponds to the JSON property `sourceVersion`
+        # @return [String]
+        attr_accessor :source_version
+      
+        # Status of all upgrade stages.
+        # Corresponds to the JSON property `stages`
+        # @return [Array<Google::Apis::AlloydbV1beta::StageStatus>]
+        attr_accessor :stages
+      
+        # Cluster Major Version Upgrade state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Target database major version.
+        # Corresponds to the JSON property `targetVersion`
+        # @return [String]
+        attr_accessor :target_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cancellable = args[:cancellable] if args.key?(:cancellable)
+          @source_version = args[:source_version] if args.key?(:source_version)
+          @stages = args[:stages] if args.key?(:stages)
+          @state = args[:state] if args.key?(:state)
+          @target_version = args[:target_version] if args.key?(:target_version)
         end
       end
       
