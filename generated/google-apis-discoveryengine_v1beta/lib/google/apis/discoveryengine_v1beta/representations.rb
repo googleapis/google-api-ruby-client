@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineLoggingConnectorRunErrorContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineLoggingErrorContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4127,6 +4133,19 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineLoggingConnectorRunErrorContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connector_run, as: 'connectorRun'
+          property :data_connector, as: 'dataConnector'
+          property :end_time, as: 'endTime'
+          property :entity, as: 'entity'
+          property :operation, as: 'operation'
+          property :start_time, as: 'startTime'
+          property :sync_type, as: 'syncType'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineLoggingErrorContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4140,6 +4159,8 @@ module Google
       class GoogleCloudDiscoveryengineLoggingErrorLog
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :connector_run_payload, as: 'connectorRunPayload', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineLoggingConnectorRunErrorContext, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineLoggingConnectorRunErrorContext::Representation
+      
           property :context, as: 'context', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineLoggingErrorContext, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineLoggingErrorContext::Representation
       
           property :import_payload, as: 'importPayload', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineLoggingImportErrorContext, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineLoggingImportErrorContext::Representation
