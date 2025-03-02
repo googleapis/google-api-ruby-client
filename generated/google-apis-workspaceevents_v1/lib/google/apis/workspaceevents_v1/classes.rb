@@ -52,12 +52,12 @@ module Google
       class NotificationEndpoint
         include Google::Apis::Core::Hashable
       
-        # Immutable. The Cloud Pub/Sub topic that receives events for the subscription.
-        # Format: `projects/`project`/topics/`topic`` You must create the topic in the
-        # same Google Cloud project where you create this subscription. When the topic
-        # receives events, the events are encoded as Cloud Pub/Sub messages. For details,
-        # see the [Google Cloud Pub/Sub Protocol Binding for CloudEvents](https://
-        # github.com/googleapis/google-cloudevents/blob/main/docs/spec/pubsub.md).
+        # Immutable. The Pub/Sub topic that receives events for the subscription. Format:
+        # `projects/`project`/topics/`topic`` You must create the topic in the same
+        # Google Cloud project where you create this subscription. When the topic
+        # receives events, the events are encoded as Pub/Sub messages. For details, see
+        # the [Google Cloud Pub/Sub Protocol Binding for CloudEvents](https://github.com/
+        # googleapis/google-cloudevents/blob/main/docs/spec/pubsub.md).
         # Corresponds to the JSON property `pubsubTopic`
         # @return [String]
         attr_accessor :pubsub_topic
