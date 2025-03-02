@@ -259,12 +259,14 @@ module Google
           property :edition, as: 'edition'
           property :ignore_idle_slots, as: 'ignoreIdleSlots'
           hash :labels, as: 'labels'
+          property :max_slots, :numeric_string => true, as: 'maxSlots'
           property :multi_region_auxiliary, as: 'multiRegionAuxiliary'
           property :name, as: 'name'
           property :original_primary_location, as: 'originalPrimaryLocation'
           property :primary_location, as: 'primaryLocation'
           property :replication_status, as: 'replicationStatus', class: Google::Apis::BigqueryreservationV1::ReplicationStatus, decorator: Google::Apis::BigqueryreservationV1::ReplicationStatus::Representation
       
+          property :scaling_mode, as: 'scalingMode'
           property :secondary_location, as: 'secondaryLocation'
           property :slot_capacity, :numeric_string => true, as: 'slotCapacity'
           property :update_time, as: 'updateTime'
