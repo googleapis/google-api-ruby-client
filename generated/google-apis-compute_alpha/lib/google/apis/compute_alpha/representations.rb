@@ -910,7 +910,73 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CompositeHealthCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CompositeHealthCheckAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CompositeHealthCheckList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CompositeHealthChecksScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConfidentialInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfidentialParavisorConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1788,6 +1854,30 @@ module Google
       
       class HttpsHealthCheck
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HealthAggregationPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HealthAggregationPolicyList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -6112,6 +6202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceStatusEffectiveInstanceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourceStatusLastInstanceTerminationDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -10342,11 +10438,134 @@ module Google
         end
       end
       
+      class CompositeHealthCheck
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :health_destination, as: 'healthDestination'
+          collection :health_sources, as: 'healthSources'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+        end
+      end
+      
+      class CompositeHealthCheckAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeAlpha::CompositeHealthChecksScopedList, decorator: Google::Apis::ComputeAlpha::CompositeHealthChecksScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::CompositeHealthCheckAggregatedList::Warning, decorator: Google::Apis::ComputeAlpha::CompositeHealthCheckAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::CompositeHealthCheckAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::CompositeHealthCheckAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class CompositeHealthCheckList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::CompositeHealthCheck, decorator: Google::Apis::ComputeAlpha::CompositeHealthCheck::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::CompositeHealthCheckList::Warning, decorator: Google::Apis::ComputeAlpha::CompositeHealthCheckList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::CompositeHealthCheckList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::CompositeHealthCheckList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class CompositeHealthChecksScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resources, as: 'resources', class: Google::Apis::ComputeAlpha::CompositeHealthCheck, decorator: Google::Apis::ComputeAlpha::CompositeHealthCheck::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::CompositeHealthChecksScopedList::Warning, decorator: Google::Apis::ComputeAlpha::CompositeHealthChecksScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::CompositeHealthChecksScopedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::CompositeHealthChecksScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class ConfidentialInstanceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidential_instance_type, as: 'confidentialInstanceType'
+          property :confidential_paravisor_config, as: 'confidentialParavisorConfig', class: Google::Apis::ComputeAlpha::ConfidentialParavisorConfig, decorator: Google::Apis::ComputeAlpha::ConfidentialParavisorConfig::Representation
+      
           property :enable_confidential_compute, as: 'enableConfidentialCompute'
+        end
+      end
+      
+      class ConfidentialParavisorConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidential_tpm_type, as: 'confidentialTpmType'
+          property :sev_snp_irq_mode, as: 'sevSnpIrqMode'
         end
       end
       
@@ -11988,6 +12207,58 @@ module Google
           property :request_path, as: 'requestPath'
           property :response, as: 'response'
           property :weight_report_mode, as: 'weightReportMode'
+        end
+      end
+      
+      class HealthAggregationPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :healthy_percent_threshold, as: 'healthyPercentThreshold'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :min_healthy_threshold, as: 'minHealthyThreshold'
+          property :name, as: 'name'
+          property :policy_type, as: 'policyType'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+        end
+      end
+      
+      class HealthAggregationPolicyList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::HealthAggregationPolicy, decorator: Google::Apis::ComputeAlpha::HealthAggregationPolicy::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::HealthAggregationPolicyList::Warning, decorator: Google::Apis::ComputeAlpha::HealthAggregationPolicyList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::HealthAggregationPolicyList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::HealthAggregationPolicyList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -19503,6 +19774,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :reservation_mode, as: 'reservationMode'
           property :reservation_sharing_policy, as: 'reservationSharingPolicy', class: Google::Apis::ComputeAlpha::AllocationReservationSharingPolicy, decorator: Google::Apis::ComputeAlpha::AllocationReservationSharingPolicy::Representation
       
           hash :resource_policies, as: 'resourcePolicies'
@@ -20027,6 +20299,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :accelerator_status, as: 'acceleratorStatus', class: Google::Apis::ComputeAlpha::ResourceStatusAcceleratorStatus, decorator: Google::Apis::ComputeAlpha::ResourceStatusAcceleratorStatus::Representation
       
+          property :effective_instance_metadata, as: 'effectiveInstanceMetadata', class: Google::Apis::ComputeAlpha::ResourceStatusEffectiveInstanceMetadata, decorator: Google::Apis::ComputeAlpha::ResourceStatusEffectiveInstanceMetadata::Representation
+      
           property :last_instance_termination_details, as: 'lastInstanceTerminationDetails', class: Google::Apis::ComputeAlpha::ResourceStatusLastInstanceTerminationDetails, decorator: Google::Apis::ComputeAlpha::ResourceStatusLastInstanceTerminationDetails::Representation
       
           property :physical_host, as: 'physicalHost'
@@ -20072,6 +20346,14 @@ module Google
       
           property :name, as: 'name'
           property :version, as: 'version'
+        end
+      end
+      
+      class ResourceStatusEffectiveInstanceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_oslogin_metadata_value, as: 'enableOsloginMetadataValue'
+          property :vm_dns_setting_metadata_value, as: 'vmDnsSettingMetadataValue'
         end
       end
       
