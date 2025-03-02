@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineLoggingConnectorRunErrorContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineLoggingErrorContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3304,6 +3310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaWidgetConfigCustomerProvidedConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaWidgetConfigDataStoreComponent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4504,6 +4516,19 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineLoggingConnectorRunErrorContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connector_run, as: 'connectorRun'
+          property :data_connector, as: 'dataConnector'
+          property :end_time, as: 'endTime'
+          property :entity, as: 'entity'
+          property :operation, as: 'operation'
+          property :start_time, as: 'startTime'
+          property :sync_type, as: 'syncType'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineLoggingErrorContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4517,6 +4542,8 @@ module Google
       class GoogleCloudDiscoveryengineLoggingErrorLog
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :connector_run_payload, as: 'connectorRunPayload', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineLoggingConnectorRunErrorContext, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineLoggingConnectorRunErrorContext::Representation
+      
           property :context, as: 'context', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineLoggingErrorContext, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineLoggingErrorContext::Representation
       
           property :import_payload, as: 'importPayload', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineLoggingImportErrorContext, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineLoggingImportErrorContext::Representation
@@ -9737,6 +9764,8 @@ module Google
           property :content_search_spec, as: 'contentSearchSpec', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec::Representation
       
           property :create_time, as: 'createTime'
+          property :customer_provided_config, as: 'customerProvidedConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfigCustomerProvidedConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfigCustomerProvidedConfig::Representation
+      
           property :data_store_type, as: 'dataStoreType'
           collection :data_store_ui_configs, as: 'dataStoreUiConfigs', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfigDataStoreUiConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfigDataStoreUiConfig::Representation
       
@@ -9798,6 +9827,13 @@ module Google
           property :display_name, as: 'displayName'
           property :id, as: 'id'
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaWidgetConfigCustomerProvidedConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_type, as: 'customerType'
         end
       end
       

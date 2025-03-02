@@ -1340,6 +1340,66 @@ module Google
         end
       end
       
+      # The error payload that is populated on LRO sync APIs, including the following:
+      # * `google.cloud.discoveryengine.v1main.DataConnectorService.SetUpDataConnector`
+      # * `google.cloud.discoveryengine.v1main.DataConnectorService.StartConnectorRun`
+      class GoogleCloudDiscoveryengineLoggingConnectorRunErrorContext
+        include Google::Apis::Core::Hashable
+      
+        # The full resource name of the Connector Run. Format: `projects/*/locations/*/
+        # collections/*/dataConnector/connectorRuns/*`. The `connector_run_id` is system-
+        # generated.
+        # Corresponds to the JSON property `connectorRun`
+        # @return [String]
+        attr_accessor :connector_run
+      
+        # The full resource name of the DataConnector. Format: `projects/*/locations/*/
+        # collections/*/dataConnector`.
+        # Corresponds to the JSON property `dataConnector`
+        # @return [String]
+        attr_accessor :data_connector
+      
+        # The time when the connector run ended.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The entity to sync for the connector run.
+        # Corresponds to the JSON property `entity`
+        # @return [String]
+        attr_accessor :entity
+      
+        # The operation resource name of the LRO to sync the connector.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # The time when the connector run started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The type of sync run. Can be one of the following: * `FULL` * `INCREMENTAL`
+        # Corresponds to the JSON property `syncType`
+        # @return [String]
+        attr_accessor :sync_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connector_run = args[:connector_run] if args.key?(:connector_run)
+          @data_connector = args[:data_connector] if args.key?(:data_connector)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @entity = args[:entity] if args.key?(:entity)
+          @operation = args[:operation] if args.key?(:operation)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @sync_type = args[:sync_type] if args.key?(:sync_type)
+        end
+      end
+      
       # A description of the context in which an error occurred.
       class GoogleCloudDiscoveryengineLoggingErrorContext
         include Google::Apis::Core::Hashable
@@ -1369,6 +1429,13 @@ module Google
       # An error log which is reported to the Error Reporting system.
       class GoogleCloudDiscoveryengineLoggingErrorLog
         include Google::Apis::Core::Hashable
+      
+        # The error payload that is populated on LRO sync APIs, including the following:
+        # * `google.cloud.discoveryengine.v1main.DataConnectorService.SetUpDataConnector`
+        # * `google.cloud.discoveryengine.v1main.DataConnectorService.StartConnectorRun`
+        # Corresponds to the JSON property `connectorRunPayload`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineLoggingConnectorRunErrorContext]
+        attr_accessor :connector_run_payload
       
         # A description of the context in which an error occurred.
         # Corresponds to the JSON property `context`
@@ -1429,6 +1496,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @connector_run_payload = args[:connector_run_payload] if args.key?(:connector_run_payload)
           @context = args[:context] if args.key?(:context)
           @import_payload = args[:import_payload] if args.key?(:import_payload)
           @message = args[:message] if args.key?(:message)
@@ -20504,6 +20572,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Customer provided configurations.
+        # Corresponds to the JSON property `customerProvidedConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfigCustomerProvidedConfig]
+        attr_accessor :customer_provided_config
+      
         # Output only. The type of the parent data store.
         # Corresponds to the JSON property `dataStoreType`
         # @return [String]
@@ -20678,6 +20751,7 @@ module Google
           @config_id = args[:config_id] if args.key?(:config_id)
           @content_search_spec = args[:content_search_spec] if args.key?(:content_search_spec)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @customer_provided_config = args[:customer_provided_config] if args.key?(:customer_provided_config)
           @data_store_type = args[:data_store_type] if args.key?(:data_store_type)
           @data_store_ui_configs = args[:data_store_ui_configs] if args.key?(:data_store_ui_configs)
           @default_search_request_order_by = args[:default_search_request_order_by] if args.key?(:default_search_request_order_by)
@@ -20813,6 +20887,25 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Customer provided configurations.
+      class GoogleCloudDiscoveryengineV1alphaWidgetConfigCustomerProvidedConfig
+        include Google::Apis::Core::Hashable
+      
+        # Customer type.
+        # Corresponds to the JSON property `customerType`
+        # @return [String]
+        attr_accessor :customer_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer_type = args[:customer_type] if args.key?(:customer_type)
         end
       end
       
