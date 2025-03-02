@@ -1066,6 +1066,8 @@ module Google
           property :collation, as: 'collation'
           property :data_cache_config, as: 'dataCacheConfig', class: Google::Apis::DatamigrationV1::DataCacheConfig, decorator: Google::Apis::DatamigrationV1::DataCacheConfig::Representation
       
+          property :data_disk_provisioned_iops, :numeric_string => true, as: 'dataDiskProvisionedIops'
+          property :data_disk_provisioned_throughput, :numeric_string => true, as: 'dataDiskProvisionedThroughput'
           property :data_disk_size_gb, :numeric_string => true, as: 'dataDiskSizeGb'
           property :data_disk_type, as: 'dataDiskType'
           hash :database_flags, as: 'databaseFlags'

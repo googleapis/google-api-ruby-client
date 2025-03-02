@@ -623,13 +623,25 @@ module Google
         # @return [Google::Apis::DatamigrationV1::DataCacheConfig]
         attr_accessor :data_cache_config
       
+        # Optional. Provisioned number of I/O operations per second for the data disk.
+        # This field is only used for hyperdisk-balanced disk types.
+        # Corresponds to the JSON property `dataDiskProvisionedIops`
+        # @return [Fixnum]
+        attr_accessor :data_disk_provisioned_iops
+      
+        # Optional. Provisioned throughput measured in MiB per second for the data disk.
+        # This field is only used for hyperdisk-balanced disk types.
+        # Corresponds to the JSON property `dataDiskProvisionedThroughput`
+        # @return [Fixnum]
+        attr_accessor :data_disk_provisioned_throughput
+      
         # The storage capacity available to the database, in GB. The minimum (and
         # default) size is 10GB.
         # Corresponds to the JSON property `dataDiskSizeGb`
         # @return [Fixnum]
         attr_accessor :data_disk_size_gb
       
-        # The type of storage: `PD_SSD` (default) or `PD_HDD`.
+        # The type of storage: `PD_SSD` (default) or `PD_HDD` or `HYPERDISK_BALANCED`.
         # Corresponds to the JSON property `dataDiskType`
         # @return [String]
         attr_accessor :data_disk_type
@@ -727,6 +739,8 @@ module Google
           @cmek_key_name = args[:cmek_key_name] if args.key?(:cmek_key_name)
           @collation = args[:collation] if args.key?(:collation)
           @data_cache_config = args[:data_cache_config] if args.key?(:data_cache_config)
+          @data_disk_provisioned_iops = args[:data_disk_provisioned_iops] if args.key?(:data_disk_provisioned_iops)
+          @data_disk_provisioned_throughput = args[:data_disk_provisioned_throughput] if args.key?(:data_disk_provisioned_throughput)
           @data_disk_size_gb = args[:data_disk_size_gb] if args.key?(:data_disk_size_gb)
           @data_disk_type = args[:data_disk_type] if args.key?(:data_disk_type)
           @database_flags = args[:database_flags] if args.key?(:database_flags)
@@ -1015,13 +1029,13 @@ module Google
         # @return [String]
         attr_accessor :role
       
-        # Output only. Zone Isolation compliance state of the resource.
+        # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
         attr_accessor :satisfies_pzi
         alias_method :satisfies_pzi?, :satisfies_pzi
       
-        # Output only. Zone Separation compliance state of the resource.
+        # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
         attr_accessor :satisfies_pzs
@@ -3162,13 +3176,13 @@ module Google
         # @return [Google::Apis::DatamigrationV1::ReverseSshConnectivity]
         attr_accessor :reverse_ssh_connectivity
       
-        # Output only. Zone Isolation compliance state of the resource.
+        # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
         attr_accessor :satisfies_pzi
         alias_method :satisfies_pzi?, :satisfies_pzi
       
-        # Output only. Zone Separation compliance state of the resource.
+        # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
         attr_accessor :satisfies_pzs
@@ -4241,13 +4255,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. Zone Isolation compliance state of the resource.
+        # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
         attr_accessor :satisfies_pzi
         alias_method :satisfies_pzi?, :satisfies_pzi
       
-        # Output only. Zone Separation compliance state of the resource.
+        # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
         attr_accessor :satisfies_pzs
