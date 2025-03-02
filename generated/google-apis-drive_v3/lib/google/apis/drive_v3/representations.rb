@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DownloadRestriction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Drive
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -618,6 +624,14 @@ module Google
         end
       end
       
+      class DownloadRestriction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :restricted_for_readers, as: 'restrictedForReaders'
+          property :restricted_for_writers, as: 'restrictedForWriters'
+        end
+      end
+      
       class Drive
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -681,6 +695,8 @@ module Google
             property :admin_managed_restrictions, as: 'adminManagedRestrictions'
             property :copy_requires_writer_permission, as: 'copyRequiresWriterPermission'
             property :domain_users_only, as: 'domainUsersOnly'
+            property :download_restriction, as: 'downloadRestriction', class: Google::Apis::DriveV3::DownloadRestriction, decorator: Google::Apis::DriveV3::DownloadRestriction::Representation
+        
             property :drive_members_only, as: 'driveMembersOnly'
             property :sharing_folders_requires_organizer_permission, as: 'sharingFoldersRequiresOrganizerPermission'
           end
@@ -1258,6 +1274,8 @@ module Google
             property :admin_managed_restrictions, as: 'adminManagedRestrictions'
             property :copy_requires_writer_permission, as: 'copyRequiresWriterPermission'
             property :domain_users_only, as: 'domainUsersOnly'
+            property :download_restriction, as: 'downloadRestriction', class: Google::Apis::DriveV3::DownloadRestriction, decorator: Google::Apis::DriveV3::DownloadRestriction::Representation
+        
             property :sharing_folders_requires_organizer_permission, as: 'sharingFoldersRequiresOrganizerPermission'
             property :team_members_only, as: 'teamMembersOnly'
           end
