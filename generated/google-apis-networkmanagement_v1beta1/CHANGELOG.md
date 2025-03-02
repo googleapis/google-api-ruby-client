@@ -1,8 +1,8 @@
 # Release history for google-apis-networkmanagement_v1beta1
 
-### v0.53.0 (2025-02-26)
+### v0.53.0 (2025-03-02)
 
-* Regenerated from discovery document revision 20250212
+* Regenerated from discovery document revision 20250219
 * Regenerated using generator version 0.16.0
 
 ### v0.52.0 (2024-12-22)
