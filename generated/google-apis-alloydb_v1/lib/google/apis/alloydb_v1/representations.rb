@@ -322,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PscAutoConnectionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PscConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -364,6 +370,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReadPoolInstancesUpgradeStageStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RestartInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -371,6 +383,12 @@ module Google
       end
       
       class RestoreClusterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RestoreFromCloudSqlRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -401,6 +419,18 @@ module Google
       end
       
       class StageInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StageStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Stats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -473,6 +503,12 @@ module Google
       end
       
       class StorageDatabasecenterPartnerapiV1mainEntitlement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainGcbdrConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -569,6 +605,12 @@ module Google
       end
       
       class UpgradeClusterResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpgradeClusterStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1141,6 +1183,8 @@ module Google
           property :requested_cancellation, as: 'requestedCancellation'
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
+          property :upgrade_cluster_status, as: 'upgradeClusterStatus', class: Google::Apis::AlloydbV1::UpgradeClusterStatus, decorator: Google::Apis::AlloydbV1::UpgradeClusterStatus::Representation
+      
           property :verb, as: 'verb'
         end
       end
@@ -1161,6 +1205,17 @@ module Google
         end
       end
       
+      class PscAutoConnectionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumer_network, as: 'consumerNetwork'
+          property :consumer_network_status, as: 'consumerNetworkStatus'
+          property :consumer_project, as: 'consumerProject'
+          property :ip_address, as: 'ipAddress'
+          property :status, as: 'status'
+        end
+      end
+      
       class PscConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1173,6 +1228,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_consumer_projects, as: 'allowedConsumerProjects'
+          collection :psc_auto_connections, as: 'pscAutoConnections', class: Google::Apis::AlloydbV1::PscAutoConnectionConfig, decorator: Google::Apis::AlloydbV1::PscAutoConnectionConfig::Representation
+      
           property :psc_dns_name, as: 'pscDnsName'
           collection :psc_interface_configs, as: 'pscInterfaceConfigs', class: Google::Apis::AlloydbV1::PscInterfaceConfig, decorator: Google::Apis::AlloydbV1::PscInterfaceConfig::Representation
       
@@ -1219,6 +1276,14 @@ module Google
         end
       end
       
+      class ReadPoolInstancesUpgradeStageStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :upgrade_stats, as: 'upgradeStats', class: Google::Apis::AlloydbV1::Stats, decorator: Google::Apis::AlloydbV1::Stats::Representation
+      
+        end
+      end
+      
       class RestartInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1240,6 +1305,17 @@ module Google
       
           property :request_id, as: 'requestId'
           property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class RestoreFromCloudSqlRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloudsql_backup_run_source, as: 'cloudsqlBackupRunSource', class: Google::Apis::AlloydbV1::CloudSqlBackupRunSource, decorator: Google::Apis::AlloydbV1::CloudSqlBackupRunSource::Representation
+      
+          property :cluster, as: 'cluster', class: Google::Apis::AlloydbV1::Cluster, decorator: Google::Apis::AlloydbV1::Cluster::Representation
+      
+          property :cluster_id, as: 'clusterId'
         end
       end
       
@@ -1280,6 +1356,26 @@ module Google
           property :logs_url, as: 'logsUrl'
           property :stage, as: 'stage'
           property :status, as: 'status'
+        end
+      end
+      
+      class StageStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :read_pool_instances_upgrade, as: 'readPoolInstancesUpgrade', class: Google::Apis::AlloydbV1::ReadPoolInstancesUpgradeStageStatus, decorator: Google::Apis::AlloydbV1::ReadPoolInstancesUpgradeStageStatus::Representation
+      
+          property :stage, as: 'stage'
+          property :state, as: 'state'
+        end
+      end
+      
+      class Stats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failed, as: 'failed'
+          property :not_started, as: 'notStarted'
+          property :ongoing, as: 'ongoing'
+          property :success, as: 'success'
         end
       end
       
@@ -1406,6 +1502,8 @@ module Google
           collection :entitlements, as: 'entitlements', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainEntitlement, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainEntitlement::Representation
       
           property :expected_state, as: 'expectedState'
+          property :gcbdr_configuration, as: 'gcbdrConfiguration', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainGcbdrConfiguration, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainGcbdrConfiguration::Representation
+      
           property :id, as: 'id', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
       
           property :instance_type, as: 'instanceType'
@@ -1447,6 +1545,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :entitlement_state, as: 'entitlementState'
           property :type, as: 'type'
+        end
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainGcbdrConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcbdr_managed, as: 'gcbdrManaged'
         end
       end
       
@@ -1556,7 +1661,10 @@ module Google
           property :integer_restrictions, as: 'integerRestrictions', class: Google::Apis::AlloydbV1::IntegerRestrictions, decorator: Google::Apis::AlloydbV1::IntegerRestrictions::Representation
       
           property :name, as: 'name'
+          property :recommended_integer_value, :numeric_string => true, as: 'recommendedIntegerValue'
+          property :recommended_string_value, as: 'recommendedStringValue'
           property :requires_db_restart, as: 'requiresDbRestart'
+          property :scope, as: 'scope'
           property :string_restrictions, as: 'stringRestrictions', class: Google::Apis::AlloydbV1::StringRestrictions, decorator: Google::Apis::AlloydbV1::StringRestrictions::Representation
       
           collection :supported_db_versions, as: 'supportedDbVersions'
@@ -1606,6 +1714,18 @@ module Google
       
           property :message, as: 'message'
           property :status, as: 'status'
+        end
+      end
+      
+      class UpgradeClusterStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cancellable, as: 'cancellable'
+          property :source_version, as: 'sourceVersion'
+          collection :stages, as: 'stages', class: Google::Apis::AlloydbV1::StageStatus, decorator: Google::Apis::AlloydbV1::StageStatus::Representation
+      
+          property :state, as: 'state'
+          property :target_version, as: 'targetVersion'
         end
       end
       
