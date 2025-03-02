@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LoggingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MaintenanceEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -373,6 +379,8 @@ module Google
       
           property :gcs_bucket, as: 'gcsBucket'
           hash :labels, as: 'labels'
+          property :logging_config, as: 'loggingConfig', class: Google::Apis::DatafusionV1beta1::LoggingConfig, decorator: Google::Apis::DatafusionV1beta1::LoggingConfig::Representation
+      
           collection :maintenance_events, as: 'maintenanceEvents', class: Google::Apis::DatafusionV1beta1::MaintenanceEvent, decorator: Google::Apis::DatafusionV1beta1::MaintenanceEvent::Representation
       
           property :maintenance_policy, as: 'maintenancePolicy', class: Google::Apis::DatafusionV1beta1::MaintenancePolicy, decorator: Google::Apis::DatafusionV1beta1::MaintenancePolicy::Representation
@@ -384,6 +392,7 @@ module Google
           property :p4_service_account, as: 'p4ServiceAccount'
           property :patch_revision, as: 'patchRevision'
           property :private_instance, as: 'privateInstance'
+          property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :service_account, as: 'serviceAccount'
           property :service_endpoint, as: 'serviceEndpoint'
@@ -463,6 +472,13 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class LoggingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_cloud_logging_disabled, as: 'instanceCloudLoggingDisabled'
         end
       end
       
