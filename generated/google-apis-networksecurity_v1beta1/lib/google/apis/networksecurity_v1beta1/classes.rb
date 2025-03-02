@@ -377,11 +377,13 @@ module Google
       
         # Optional. A list of identities derived from the client's certificate. This
         # field will not match on a request unless mutual TLS is enabled for the
-        # Forwarding rule or Gateway. Each identity is a string whose value is matched
-        # against the URI SAN, or DNS SAN or the subject field in the client's
-        # certificate. The match can be exact, prefix, suffix or a substring match. One
-        # of exact, prefix, suffix or contains must be specified. Limited to 5
-        # principals.
+        # forwarding rule or Gateway. For Application Load Balancers, each identity is a
+        # string whose value is matched against the URI SAN, or DNS SAN, or SPIFFE ID,
+        # or the subject field in the client's certificate. For Cloud Service Mesh, each
+        # identity is a string whose value is matched against the URI SAN, or DNS SAN,
+        # or the subject field in the client's certificate. The match can be exact,
+        # prefix, suffix, or a substring match. One of exact, prefix, suffix, or
+        # contains must be specified. Limited to 5 principals.
         # Corresponds to the JSON property `principals`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleStringMatch>]
         attr_accessor :principals
@@ -1878,11 +1880,15 @@ module Google
         end
       end
       
-      # Message describing InterceptDeployment object NEXT ID: 10
+      # A deployment represents a zonal intercept backend ready to accept GENEVE-
+      # encapsulated traffic, e.g. a zonal instance group fronted by an internal
+      # passthrough load balancer. Deployments are always part of a global deployment
+      # group which represents a global intercept service.
       class InterceptDeployment
         include Google::Apis::Core::Hashable
       
-        # Output only. [Output only] Create time stamp
+        # Output only. The timestamp when the resource was created. See https://google.
+        # aip.dev/148#timestamps.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -1893,43 +1899,50 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Required. Immutable. The regional load balancer which the intercepted traffic
-        # should be forwarded to. Format is: projects/`project`/regions/`region`/
-        # forwardingRules/`forwardingRule`
+        # Required. Immutable. The regional forwarding rule that fronts the intercept
+        # collectors, for example: `projects/123456789/regions/us-central1/
+        # forwardingRules/my-rule`. See https://google.aip.dev/124.
         # Corresponds to the JSON property `forwardingRule`
         # @return [String]
         attr_accessor :forwarding_rule
       
-        # Required. Immutable. The Intercept Deployment Group that this resource is part
-        # of. Format is: `projects/`project`/locations/global/interceptDeploymentGroups/`
-        # interceptDeploymentGroup``
+        # Required. Immutable. The deployment group that this deployment is a part of,
+        # for example: `projects/123456789/locations/global/interceptDeploymentGroups/my-
+        # dg`. See https://google.aip.dev/124.
         # Corresponds to the JSON property `interceptDeploymentGroup`
         # @return [String]
         attr_accessor :intercept_deployment_group
       
-        # Optional. Labels as key value pairs
+        # Optional. Labels are key/value pairs that help to organize and filter
+        # resources.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Immutable. Identifier. The name of the InterceptDeployment.
+        # Immutable. Identifier. The resource name of this deployment, for example: `
+        # projects/123456789/locations/us-central1-a/interceptDeployments/my-dep`. See
+        # https://google.aip.dev/122 for more details.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. Whether reconciling is in progress, recommended per https://
-        # google.aip.dev/128.
+        # Output only. The current state of the resource does not match the user's
+        # intended state, and the system is working to reconcile them. This part of the
+        # normal operation (e.g. linking a new association to the parent group). See
+        # https://google.aip.dev/128.
         # Corresponds to the JSON property `reconciling`
         # @return [Boolean]
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
-        # Output only. Current state of the deployment.
+        # Output only. The current state of the deployment. See https://google.aip.dev/
+        # 216.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Output only. [Output only] Update time stamp
+        # Output only. The timestamp when the resource was most recently updated. See
+        # https://google.aip.dev/148#timestamps.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -1952,17 +1965,19 @@ module Google
         end
       end
       
-      # Message describing InterceptDeploymentGroup object
+      # A deployment group aggregates many zonal intercept backends (deployments) into
+      # a single global intercept service. Consumers can connect this service using an
+      # endpoint group.
       class InterceptDeploymentGroup
         include Google::Apis::Core::Hashable
       
-        # Output only. The list of Intercept Endpoint Groups that are connected to this
-        # resource.
+        # Output only. The list of endpoint groups that are connected to this resource.
         # Corresponds to the JSON property `connectedEndpointGroups`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::InterceptDeploymentGroupConnectedEndpointGroup>]
         attr_accessor :connected_endpoint_groups
       
-        # Output only. [Output only] Create time stamp
+        # Output only. The timestamp when the resource was created. See https://google.
+        # aip.dev/148#timestamps.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -1973,35 +1988,48 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Optional. Labels as key value pairs
+        # Optional. Labels are key/value pairs that help to organize and filter
+        # resources.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Immutable. Identifier. Then name of the InterceptDeploymentGroup.
+        # Immutable. Identifier. The resource name of this deployment group, for example:
+        # `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`. See
+        # https://google.aip.dev/122 for more details.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Required. Immutable. The network that is being used for the deployment. Format
-        # is: projects/`project`/global/networks/`network`.
+        # Output only. The list of Intercept Deployments that belong to this group.
+        # Corresponds to the JSON property `nestedDeployments`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::InterceptDeploymentGroupDeployment>]
+        attr_accessor :nested_deployments
+      
+        # Required. Immutable. The network that will be used for all child deployments,
+        # for example: `projects/`project`/global/networks/`network``. See https://
+        # google.aip.dev/124.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
-        # Output only. Whether reconciling is in progress, recommended per https://
+        # Output only. The current state of the resource does not match the user's
+        # intended state, and the system is working to reconcile them. This is part of
+        # the normal operation (e.g. adding a new deployment to the group) See https://
         # google.aip.dev/128.
         # Corresponds to the JSON property `reconciling`
         # @return [Boolean]
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
-        # Output only. Current state of the deployment group.
+        # Output only. The current state of the deployment group. See https://google.aip.
+        # dev/216.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Output only. [Output only] Update time stamp
+        # Output only. The timestamp when the resource was most recently updated. See
+        # https://google.aip.dev/148#timestamps.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -2017,6 +2045,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @nested_deployments = args[:nested_deployments] if args.key?(:nested_deployments)
           @network = args[:network] if args.key?(:network)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @state = args[:state] if args.key?(:state)
@@ -2028,7 +2057,9 @@ module Google
       class InterceptDeploymentGroupConnectedEndpointGroup
         include Google::Apis::Core::Hashable
       
-        # Output only. A connected intercept endpoint group.
+        # Output only. The connected endpoint group's resource name, for example: `
+        # projects/123456789/locations/global/interceptEndpointGroups/my-eg`. See https:/
+        # /google.aip.dev/124.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2043,17 +2074,47 @@ module Google
         end
       end
       
-      # Message describing InterceptEndpointGroup object.
+      # A deployment belonging to this deployment group.
+      class InterceptDeploymentGroupDeployment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The name of the Intercept Deployment, in the format: `projects/`
+        # project`/locations/`location`/interceptDeployments/`intercept_deployment``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Most recent known state of the deployment.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # An endpoint group is a consumer frontend for a deployment group (backend). In
+      # order to configure intercept for a network, consumers must create: - An
+      # association between their network and the endpoint group. - A security profile
+      # that points to the endpoint group. - A firewall rule that references the
+      # security profile (group).
       class InterceptEndpointGroup
         include Google::Apis::Core::Hashable
       
-        # Output only. List of Intercept Endpoint Group Associations that are associated
-        # to this endpoint group.
+        # Output only. List of associations to this endpoint group.
         # Corresponds to the JSON property `associations`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::InterceptEndpointGroupAssociationDetails>]
         attr_accessor :associations
       
-        # Output only. [Output only] Create time stamp
+        # Output only. The timestamp when the resource was created. See https://google.
+        # aip.dev/148#timestamps.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -2064,36 +2125,43 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Required. Immutable. The Intercept Deployment Group that this resource is
-        # connected to. Format is: `projects/`project`/locations/global/
-        # interceptDeploymentGroups/`interceptDeploymentGroup``
+        # Immutable. The deployment group that this endpoint group is connected to, for
+        # example: `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
+        # See https://google.aip.dev/124.
         # Corresponds to the JSON property `interceptDeploymentGroup`
         # @return [String]
         attr_accessor :intercept_deployment_group
       
-        # Optional. Labels as key value pairs
+        # Optional. Labels are key/value pairs that help to organize and filter
+        # resources.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Immutable. Identifier. The name of the InterceptEndpointGroup.
+        # Immutable. Identifier. The resource name of this endpoint group, for example: `
+        # projects/123456789/locations/global/interceptEndpointGroups/my-eg`. See https:/
+        # /google.aip.dev/122 for more details.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. Whether reconciling is in progress, recommended per https://
+        # Output only. The current state of the resource does not match the user's
+        # intended state, and the system is working to reconcile them. This is part of
+        # the normal operation (e.g. adding a new association to the group). See https://
         # google.aip.dev/128.
         # Corresponds to the JSON property `reconciling`
         # @return [Boolean]
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
-        # Output only. Current state of the endpoint group.
+        # Output only. The current state of the endpoint group. See https://google.aip.
+        # dev/216.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Output only. [Output only] Update time stamp
+        # Output only. The timestamp when the resource was most recently updated. See
+        # https://google.aip.dev/148#timestamps.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -2116,45 +2184,59 @@ module Google
         end
       end
       
-      # Message describing InterceptEndpointGroupAssociation object
+      # An endpoint group association represents a link between a network and an
+      # endpoint group in the organization. Creating an association creates the
+      # networking infrastructure linking the network to the endpoint group, but does
+      # not enable intercept by itself. To enable intercept, the user must also create
+      # a network firewall policy containing intercept rules and associate it with the
+      # network.
       class InterceptEndpointGroupAssociation
         include Google::Apis::Core::Hashable
       
-        # Output only. [Output only] Create time stamp
+        # Output only. The timestamp when the resource was created. See https://google.
+        # aip.dev/148#timestamps.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Required. Immutable. The Intercept Endpoint Group that this resource is
-        # connected to. Format is: `projects/`project`/locations/global/
-        # interceptEndpointGroups/`interceptEndpointGroup``
+        # Immutable. The endpoint group that this association is connected to, for
+        # example: `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+        # See https://google.aip.dev/124.
         # Corresponds to the JSON property `interceptEndpointGroup`
         # @return [String]
         attr_accessor :intercept_endpoint_group
       
-        # Optional. Labels as key value pairs
+        # Optional. Labels are key/value pairs that help to organize and filter
+        # resources.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. The list of locations that this association is in and its details.
+        # Output only. The list of locations where the association is present. This
+        # information is retrieved from the linked endpoint group, and not configured as
+        # part of the association itself.
         # Corresponds to the JSON property `locationsDetails`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::InterceptEndpointGroupAssociationLocationDetails>]
         attr_accessor :locations_details
       
-        # Immutable. Identifier. The name of the InterceptEndpointGroupAssociation.
+        # Immutable. Identifier. The resource name of this endpoint group association,
+        # for example: `projects/123456789/locations/global/
+        # interceptEndpointGroupAssociations/my-eg-association`. See https://google.aip.
+        # dev/122 for more details.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Required. Immutable. The VPC network associated. Format: projects/`project`/
-        # global/networks/`network`.
+        # Immutable. The VPC network that is associated. for example: `projects/
+        # 123456789/global/networks/my-network`. See https://google.aip.dev/124.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
-        # Output only. Whether reconciling is in progress, recommended per https://
-        # google.aip.dev/128.
+        # Output only. The current state of the resource does not match the user's
+        # intended state, and the system is working to reconcile them. This part of the
+        # normal operation (e.g. adding a new location to the target deployment group).
+        # See https://google.aip.dev/128.
         # Corresponds to the JSON property `reconciling`
         # @return [Boolean]
         attr_accessor :reconciling
@@ -2165,7 +2247,8 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Output only. [Output only] Update time stamp
+        # Output only. The timestamp when the resource was most recently updated. See
+        # https://google.aip.dev/148#timestamps.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -2188,25 +2271,24 @@ module Google
         end
       end
       
-      # This is a subset of the InterceptEndpointGroupAssociation message, containing
-      # fields to be used by the consumer.
+      # The endpoint group's view of a connected association.
       class InterceptEndpointGroupAssociationDetails
         include Google::Apis::Core::Hashable
       
-        # Output only. The resource name of the InterceptEndpointGroupAssociation.
-        # Format: projects/`project`/locations/`location`/
-        # interceptEndpointGroupAssociations/`interceptEndpointGroupAssociation`
+        # Output only. The connected association's resource name, for example: `projects/
+        # 123456789/locations/global/interceptEndpointGroupAssociations/my-ega`. See
+        # https://google.aip.dev/124.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. The VPC network associated. Format: projects/`project`/global/
-        # networks/`name`.
+        # Output only. The associated network, for example: projects/123456789/global/
+        # networks/my-network. See https://google.aip.dev/124.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
-        # Output only. Current state of the association.
+        # Output only. Most recent known state of the association.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -2223,16 +2305,17 @@ module Google
         end
       end
       
-      # Details about the association status in a specific cloud location.
+      # Contains details about the state of an association in a specific cloud
+      # location.
       class InterceptEndpointGroupAssociationLocationDetails
         include Google::Apis::Core::Hashable
       
-        # Output only. The cloud location.
+        # Output only. The cloud location, e.g. "us-central1-a" or "asia-south1".
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # Output only. The association state in this location.
+        # Output only. The current state of the association in this location.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -2322,6 +2405,11 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2330,6 +2418,7 @@ module Google
         def update!(**args)
           @address_groups = args[:address_groups] if args.key?(:address_groups)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -2579,16 +2668,18 @@ module Google
         end
       end
       
-      # Message for response to listing InterceptDeploymentGroups
+      # Response message for ListInterceptDeploymentGroups.
       class ListInterceptDeploymentGroupsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of InterceptDeploymentGroup
+        # The deployment groups from the specified parent.
         # Corresponds to the JSON property `interceptDeploymentGroups`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::InterceptDeploymentGroup>]
         attr_accessor :intercept_deployment_groups
       
-        # A token identifying a page of results the server should return.
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages. See https://google.aip.dev/
+        # 158 for more details.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2604,16 +2695,18 @@ module Google
         end
       end
       
-      # Message for response to listing InterceptDeployments
+      # Response message for ListInterceptDeployments.
       class ListInterceptDeploymentsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of InterceptDeployment
+        # The deployments from the specified parent.
         # Corresponds to the JSON property `interceptDeployments`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::InterceptDeployment>]
         attr_accessor :intercept_deployments
       
-        # A token identifying a page of results the server should return.
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages. See https://google.aip.dev/
+        # 158 for more details.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2635,16 +2728,18 @@ module Google
         end
       end
       
-      # Message for response to listing InterceptEndpointGroupAssociations
+      # Response message for ListInterceptEndpointGroupAssociations.
       class ListInterceptEndpointGroupAssociationsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of InterceptEndpointGroupAssociation
+        # The associations from the specified parent.
         # Corresponds to the JSON property `interceptEndpointGroupAssociations`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::InterceptEndpointGroupAssociation>]
         attr_accessor :intercept_endpoint_group_associations
       
-        # A token identifying a page of results the server should return.
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages. See https://google.aip.dev/
+        # 158 for more details.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2660,16 +2755,18 @@ module Google
         end
       end
       
-      # Message for response to listing InterceptEndpointGroups
+      # Response message for ListInterceptEndpointGroups.
       class ListInterceptEndpointGroupsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of InterceptEndpointGroup
+        # The endpoint groups from the specified parent.
         # Corresponds to the JSON property `interceptEndpointGroups`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::InterceptEndpointGroup>]
         attr_accessor :intercept_endpoint_groups
       
-        # A token identifying a page of results the server should return.
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages. See https://google.aip.dev/
+        # 158 for more details.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2710,16 +2807,18 @@ module Google
         end
       end
       
-      # Message for response to listing MirroringDeploymentGroups
+      # Response message for ListMirroringDeploymentGroups.
       class ListMirroringDeploymentGroupsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of MirroringDeploymentGroup
+        # The deployment groups from the specified parent.
         # Corresponds to the JSON property `mirroringDeploymentGroups`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::MirroringDeploymentGroup>]
         attr_accessor :mirroring_deployment_groups
       
-        # A token identifying a page of results the server should return.
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages. See https://google.aip.dev/
+        # 158 for more details.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2735,16 +2834,18 @@ module Google
         end
       end
       
-      # Message for response to listing MirroringDeployments
+      # Response message for ListMirroringDeployments.
       class ListMirroringDeploymentsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of MirroringDeployment
+        # The deployments from the specified parent.
         # Corresponds to the JSON property `mirroringDeployments`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::MirroringDeployment>]
         attr_accessor :mirroring_deployments
       
-        # A token identifying a page of results the server should return.
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages. See https://google.aip.dev/
+        # 158 for more details.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2766,17 +2867,18 @@ module Google
         end
       end
       
-      # Response message for listing associations.
+      # Response message for ListMirroringEndpointGroupAssociations.
       class ListMirroringEndpointGroupAssociationsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of associations returned.
+        # The associations from the specified parent.
         # Corresponds to the JSON property `mirroringEndpointGroupAssociations`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroupAssociation>]
         attr_accessor :mirroring_endpoint_group_associations
       
-        # A token identifying a page of results the server should return. See https://
-        # google.aip.dev/158.
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages. See https://google.aip.dev/
+        # 158 for more details.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2792,16 +2894,18 @@ module Google
         end
       end
       
-      # Message for response to listing MirroringEndpointGroups
+      # Response message for ListMirroringEndpointGroups.
       class ListMirroringEndpointGroupsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of MirroringEndpointGroup
+        # The endpoint groups from the specified parent.
         # Corresponds to the JSON property `mirroringEndpointGroups`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroup>]
         attr_accessor :mirroring_endpoint_groups
       
-        # A token identifying a page of results the server should return.
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages. See https://google.aip.dev/
+        # 158 for more details.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -3196,6 +3300,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The list of Mirroring Deployments that belong to this group.
+        # Corresponds to the JSON property `nestedDeployments`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::MirroringDeploymentGroupDeployment>]
+        attr_accessor :nested_deployments
+      
         # Required. Immutable. The network that will be used for all child deployments,
         # for example: `projects/`project`/global/networks/`network``. See https://
         # google.aip.dev/124.
@@ -3235,6 +3344,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @nested_deployments = args[:nested_deployments] if args.key?(:nested_deployments)
           @network = args[:network] if args.key?(:network)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @state = args[:state] if args.key?(:state)
@@ -3260,6 +3370,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A deployment belonging to this deployment group.
+      class MirroringDeploymentGroupDeployment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The name of the Mirroring Deployment, in the format: `projects/`
+        # project`/locations/`location`/mirroringDeployments/`mirroring_deployment``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Most recent known state of the deployment.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
