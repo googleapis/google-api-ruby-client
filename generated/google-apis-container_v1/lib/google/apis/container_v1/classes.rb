@@ -1047,7 +1047,9 @@ module Google
         attr_accessor :enable_kubernetes_alpha
         alias_method :enable_kubernetes_alpha?, :enable_kubernetes_alpha
       
-        # Enable the ability to use Cloud TPUs in this cluster.
+        # Enable the ability to use Cloud TPUs in this cluster. This field is deprecated
+        # due to the deprecation of 2VM TPU. The end of life date for 2VM TPU is 2025-04-
+        # 25.
         # Corresponds to the JSON property `enableTpu`
         # @return [Boolean]
         attr_accessor :enable_tpu
@@ -1140,10 +1142,7 @@ module Google
         # @return [Google::Apis::ContainerV1::LegacyAbac]
         attr_accessor :legacy_abac
       
-        # Output only. The name of the Google Compute Engine [zone](https://cloud.google.
-        # com/compute/docs/regions-zones/regions-zones#available) or [region](https://
-        # cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which
-        # the cluster resides.
+        # 
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -1376,7 +1375,8 @@ module Google
       
         # Output only. The IP address range of the Cloud TPUs in this cluster, in [CIDR](
         # http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.
-        # 2.3.4/29`).
+        # 2.3.4/29`). This field is deprecated due to the deprecation of 2VM TPU. The
+        # end of life date for 2VM TPU is 2025-04-25.
         # Corresponds to the JSON property `tpuIpv4CidrBlock`
         # @return [String]
         attr_accessor :tpu_ipv4_cidr_block
@@ -3244,7 +3244,8 @@ module Google
         # specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-
         # Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private
         # networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a
-        # specific range to use.
+        # specific range to use. This field is deprecated due to the deprecation of 2VM
+        # TPU. The end of life date for 2VM TPU is 2025-04-25.
         # Corresponds to the JSON property `tpuIpv4CidrBlock`
         # @return [String]
         attr_accessor :tpu_ipv4_cidr_block
