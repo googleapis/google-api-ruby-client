@@ -2792,7 +2792,17 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Output only. End time of the subscription.
+        # Optional. Whether the subscription is being created as part of the Citrix flow.
+        # If this field is set to true, the subscription should have both the
+        # start_time and end_time set in the request and the billing account used will
+        # be the Citrix master billing account regardless of what its set to in the
+        # request. This field can only be set to true in create requests.
+        # Corresponds to the JSON property `csgCustomer`
+        # @return [Boolean]
+        attr_accessor :csg_customer
+        alias_method :csg_customer?, :csg_customer
+      
+        # Optional. End time of the subscription.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
@@ -2813,7 +2823,7 @@ module Google
         # @return [String]
         attr_accessor :sku
       
-        # Output only. Start time of the subscription.
+        # Optional. Start time of the subscription.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -2842,6 +2852,7 @@ module Google
           @auto_renew_enabled = args[:auto_renew_enabled] if args.key?(:auto_renew_enabled)
           @billing_account = args[:billing_account] if args.key?(:billing_account)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @csg_customer = args[:csg_customer] if args.key?(:csg_customer)
           @end_time = args[:end_time] if args.key?(:end_time)
           @name = args[:name] if args.key?(:name)
           @seat_count = args[:seat_count] if args.key?(:seat_count)

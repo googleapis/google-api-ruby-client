@@ -1433,6 +1433,7 @@ module Google
           property :auto_renew_enabled, as: 'autoRenewEnabled'
           property :billing_account, as: 'billingAccount'
           property :create_time, as: 'createTime'
+          property :csg_customer, as: 'csgCustomer'
           property :end_time, as: 'endTime'
           property :name, as: 'name'
           property :seat_count, :numeric_string => true, as: 'seatCount'
