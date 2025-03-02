@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1BusinessGlossaryEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1CancelJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1597,6 +1603,15 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1BusinessGlossaryEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_type, as: 'eventType'
+          property :message, as: 'message'
+          property :resource, as: 'resource'
+        end
+      end
+      
       class GoogleCloudDataplexV1CancelJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1723,6 +1738,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connection, as: 'connection'
+          property :location, as: 'location'
           property :table_type, as: 'tableType'
         end
       end
