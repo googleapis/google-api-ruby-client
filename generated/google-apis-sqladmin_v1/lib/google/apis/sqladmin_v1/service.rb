@@ -198,7 +198,7 @@ module Google
         # API to update final backups only.
         # @param [String] name
         #   Output only. The resource name of the backup. Format: projects/`project`/
-        #   backups/`backup`
+        #   backups/`backup`.
         # @param [Google::Apis::SqladminV1::Backup] backup_object
         # @param [String] update_mask
         #   The list of fields that you can update. You can update only the description
