@@ -506,6 +506,42 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Optional. The overall max slots for the reservation, covering slot_capacity (
+        # baseline), idle slots (if ignore_idle_slots is false) and scaled slots. If
+        # present, the reservation won't use more than the specified number of slots,
+        # even if there is demand and supply (from idle slots). NOTE: capping a
+        # reservation's idle slot usage is best effort and its usage may exceed the
+        # max_slots value. However, in terms of autoscale.current_slots (which accounts
+        # for the additional added slots), it will never exceed the max_slots - baseline.
+        # This field must be set together with the scaling_mode enum value, otherwise
+        # the request will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`
+        # . If the max_slots and scaling_mode are set, the autoscale or autoscale.
+        # max_slots field must be unset. Otherwise the request will be rejected with
+        # error code `google.rpc.Code.INVALID_ARGUMENT`. However, the autoscale field
+        # may still be in the output. The autopscale.max_slots will always show as 0 and
+        # the autoscaler.current_slots will represent the current slots from autoscaler
+        # excluding idle slots. For example, if the max_slots is 1000 and scaling_mode
+        # is AUTOSCALE_ONLY, then in the output, the autoscaler.max_slots will be 0 and
+        # the autoscaler.current_slots may be any value between 0 and 1000. If the
+        # max_slots is 1000, scaling_mode is ALL_SLOTS, the baseline is 100 and idle
+        # slots usage is 200, then in the output, the autoscaler.max_slots will be 0 and
+        # the autoscaler.current_slots will not be higher than 700. If the max_slots is
+        # 1000, scaling_mode is IDLE_SLOTS_ONLY, then in the output, the autoscaler
+        # field will be null. If the max_slots and scaling_mode are set, then the
+        # ignore_idle_slots field must be aligned with the scaling_mode enum value.(See
+        # details in ScalingMode comments). Otherwise the request will be rejected with
+        # error code `google.rpc.Code.INVALID_ARGUMENT`. Please note, the max_slots is
+        # for user to manage the part of slots greater than the baseline. Therefore, we
+        # don't allow users to set max_slots smaller or equal to the baseline as it will
+        # not be meaningful. If the field is present and slot_capacity>=max_slots,
+        # requests will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`.
+        # Please note that if max_slots is set to 0, we will treat it as unset.
+        # Customers can set max_slots to 0 and set scaling_mode to
+        # SCALING_MODE_UNSPECIFIED to disable the max_slots feature.
+        # Corresponds to the JSON property `maxSlots`
+        # @return [Fixnum]
+        attr_accessor :max_slots
+      
         # Applicable only for reservations located within one of the BigQuery multi-
         # regions (US or EU). If set to true, this reservation is placed in the
         # organization's secondary region which is designated for disaster recovery
@@ -542,6 +578,13 @@ module Google
         # Corresponds to the JSON property `replicationStatus`
         # @return [Google::Apis::BigqueryreservationV1::ReplicationStatus]
         attr_accessor :replication_status
+      
+        # The scaling mode for the reservation. If the field is present but max_slots is
+        # not present, requests will be rejected with error code `google.rpc.Code.
+        # INVALID_ARGUMENT`.
+        # Corresponds to the JSON property `scalingMode`
+        # @return [String]
+        attr_accessor :scaling_mode
       
         # Optional. The current location of the reservation's secondary replica. This
         # field is only set for reservations using the managed disaster recovery feature.
@@ -584,11 +627,13 @@ module Google
           @edition = args[:edition] if args.key?(:edition)
           @ignore_idle_slots = args[:ignore_idle_slots] if args.key?(:ignore_idle_slots)
           @labels = args[:labels] if args.key?(:labels)
+          @max_slots = args[:max_slots] if args.key?(:max_slots)
           @multi_region_auxiliary = args[:multi_region_auxiliary] if args.key?(:multi_region_auxiliary)
           @name = args[:name] if args.key?(:name)
           @original_primary_location = args[:original_primary_location] if args.key?(:original_primary_location)
           @primary_location = args[:primary_location] if args.key?(:primary_location)
           @replication_status = args[:replication_status] if args.key?(:replication_status)
+          @scaling_mode = args[:scaling_mode] if args.key?(:scaling_mode)
           @secondary_location = args[:secondary_location] if args.key?(:secondary_location)
           @slot_capacity = args[:slot_capacity] if args.key?(:slot_capacity)
           @update_time = args[:update_time] if args.key?(:update_time)
