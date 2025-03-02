@@ -1178,7 +1178,8 @@ module Google
         alias_method :enable_kubernetes_alpha?, :enable_kubernetes_alpha
       
         # Enable the ability to use Cloud TPUs in this cluster. This field is deprecated,
-        # use tpu_config.enabled instead.
+        # use tpu_config.enabled instead. This field is deprecated due to the
+        # deprecation of 2VM TPU. The end of life date for 2VM TPU is 2025-04-25.
         # Corresponds to the JSON property `enableTpu`
         # @return [Boolean]
         attr_accessor :enable_tpu
@@ -1546,14 +1547,16 @@ module Google
         # @return [String]
         attr_accessor :subnetwork
       
-        # Configuration for Cloud TPU.
+        # Configuration for Cloud TPU. This message is deprecated due to the deprecation
+        # of 2VM TPU. The end of life date for 2VM TPU is 2025-04-25.
         # Corresponds to the JSON property `tpuConfig`
         # @return [Google::Apis::ContainerV1beta1::TpuConfig]
         attr_accessor :tpu_config
       
         # Output only. The IP address range of the Cloud TPUs in this cluster, in [CIDR](
         # http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.
-        # 2.3.4/29`).
+        # 2.3.4/29`). This field is deprecated due to the deprecation of 2VM TPU. The
+        # end of life date for 2VM TPU is 2025-04-25.
         # Corresponds to the JSON property `tpuIpv4CidrBlock`
         # @return [String]
         attr_accessor :tpu_ipv4_cidr_block
@@ -2184,7 +2187,8 @@ module Google
         # @return [String]
         attr_accessor :desired_stack_type
       
-        # Configuration for Cloud TPU.
+        # Configuration for Cloud TPU. This message is deprecated due to the deprecation
+        # of 2VM TPU. The end of life date for 2VM TPU is 2025-04-25.
         # Corresponds to the JSON property `desiredTpuConfig`
         # @return [Google::Apis::ContainerV1beta1::TpuConfig]
         attr_accessor :desired_tpu_config
@@ -8364,7 +8368,8 @@ module Google
         end
       end
       
-      # Configuration for Cloud TPU.
+      # Configuration for Cloud TPU. This message is deprecated due to the deprecation
+      # of 2VM TPU. The end of life date for 2VM TPU is 2025-04-25.
       class TpuConfig
         include Google::Apis::Core::Hashable
       
