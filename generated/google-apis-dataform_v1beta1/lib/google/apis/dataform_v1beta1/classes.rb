@@ -214,6 +214,19 @@ module Google
         end
       end
       
+      # `CancelWorkflowInvocation` response message.
+      class CancelWorkflowInvocationResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Configures various aspects of Dataform code compilation.
       class CodeCompilationConfig
         include Google::Apis::Core::Hashable
@@ -487,6 +500,19 @@ module Google
           @author = args[:author] if args.key?(:author)
           @commit_message = args[:commit_message] if args.key?(:commit_message)
           @paths = args[:paths] if args.key?(:paths)
+        end
+      end
+      
+      # `CommitWorkspaceChanges` response message.
+      class CommitWorkspaceChangesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1952,6 +1978,19 @@ module Google
         end
       end
       
+      # `PullGitCommits` response message.
+      class PullGitCommitsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # `PushGitCommits` request message.
       class PushGitCommitsRequest
         include Google::Apis::Core::Hashable
@@ -1969,6 +2008,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @remote_branch = args[:remote_branch] if args.key?(:remote_branch)
+        end
+      end
+      
+      # `PushGitCommits` response message.
+      class PushGitCommitsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2353,6 +2405,19 @@ module Google
         end
       end
       
+      # `RemoveDirectory` response message.
+      class RemoveDirectoryResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # `RemoveFile` request message.
       class RemoveFileRequest
         include Google::Apis::Core::Hashable
@@ -2370,6 +2435,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @path = args[:path] if args.key?(:path)
+        end
+      end
+      
+      # `RemoveFile` response message.
+      class RemoveFileResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2502,6 +2580,19 @@ module Google
         def update!(**args)
           @clean = args[:clean] if args.key?(:clean)
           @paths = args[:paths] if args.key?(:paths)
+        end
+      end
+      
+      # `ResetWorkspaceChanges` response message.
+      class ResetWorkspaceChangesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

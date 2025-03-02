@@ -1268,10 +1268,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataformV1beta1::Empty] parsed result object
+        # @yieldparam result [Google::Apis::DataformV1beta1::CancelWorkflowInvocationResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DataformV1beta1::Empty]
+        # @return [Google::Apis::DataformV1beta1::CancelWorkflowInvocationResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1280,8 +1280,8 @@ module Google
           command = make_simple_command(:post, 'v1beta1/{+name}:cancel', options)
           command.request_representation = Google::Apis::DataformV1beta1::CancelWorkflowInvocationRequest::Representation
           command.request_object = cancel_workflow_invocation_request_object
-          command.response_representation = Google::Apis::DataformV1beta1::Empty::Representation
-          command.response_class = Google::Apis::DataformV1beta1::Empty
+          command.response_representation = Google::Apis::DataformV1beta1::CancelWorkflowInvocationResponse::Representation
+          command.response_class = Google::Apis::DataformV1beta1::CancelWorkflowInvocationResponse
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1486,10 +1486,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataformV1beta1::Empty] parsed result object
+        # @yieldparam result [Google::Apis::DataformV1beta1::CommitWorkspaceChangesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DataformV1beta1::Empty]
+        # @return [Google::Apis::DataformV1beta1::CommitWorkspaceChangesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1498,8 +1498,8 @@ module Google
           command = make_simple_command(:post, 'v1beta1/{+name}:commit', options)
           command.request_representation = Google::Apis::DataformV1beta1::CommitWorkspaceChangesRequest::Representation
           command.request_object = commit_workspace_changes_request_object
-          command.response_representation = Google::Apis::DataformV1beta1::Empty::Representation
-          command.response_class = Google::Apis::DataformV1beta1::Empty
+          command.response_representation = Google::Apis::DataformV1beta1::CommitWorkspaceChangesResponse::Representation
+          command.response_class = Google::Apis::DataformV1beta1::CommitWorkspaceChangesResponse
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1944,10 +1944,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataformV1beta1::Empty] parsed result object
+        # @yieldparam result [Google::Apis::DataformV1beta1::PullGitCommitsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DataformV1beta1::Empty]
+        # @return [Google::Apis::DataformV1beta1::PullGitCommitsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1956,8 +1956,8 @@ module Google
           command = make_simple_command(:post, 'v1beta1/{+name}:pull', options)
           command.request_representation = Google::Apis::DataformV1beta1::PullGitCommitsRequest::Representation
           command.request_object = pull_git_commits_request_object
-          command.response_representation = Google::Apis::DataformV1beta1::Empty::Representation
-          command.response_class = Google::Apis::DataformV1beta1::Empty
+          command.response_representation = Google::Apis::DataformV1beta1::PullGitCommitsResponse::Representation
+          command.response_class = Google::Apis::DataformV1beta1::PullGitCommitsResponse
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1977,10 +1977,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataformV1beta1::Empty] parsed result object
+        # @yieldparam result [Google::Apis::DataformV1beta1::PushGitCommitsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DataformV1beta1::Empty]
+        # @return [Google::Apis::DataformV1beta1::PushGitCommitsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1989,8 +1989,8 @@ module Google
           command = make_simple_command(:post, 'v1beta1/{+name}:push', options)
           command.request_representation = Google::Apis::DataformV1beta1::PushGitCommitsRequest::Representation
           command.request_object = push_git_commits_request_object
-          command.response_representation = Google::Apis::DataformV1beta1::Empty::Representation
-          command.response_class = Google::Apis::DataformV1beta1::Empty
+          command.response_representation = Google::Apis::DataformV1beta1::PushGitCommitsResponse::Representation
+          command.response_class = Google::Apis::DataformV1beta1::PushGitCommitsResponse
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2092,10 +2092,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataformV1beta1::Empty] parsed result object
+        # @yieldparam result [Google::Apis::DataformV1beta1::RemoveDirectoryResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DataformV1beta1::Empty]
+        # @return [Google::Apis::DataformV1beta1::RemoveDirectoryResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -2104,8 +2104,8 @@ module Google
           command = make_simple_command(:post, 'v1beta1/{+workspace}:removeDirectory', options)
           command.request_representation = Google::Apis::DataformV1beta1::RemoveDirectoryRequest::Representation
           command.request_object = remove_directory_request_object
-          command.response_representation = Google::Apis::DataformV1beta1::Empty::Representation
-          command.response_class = Google::Apis::DataformV1beta1::Empty
+          command.response_representation = Google::Apis::DataformV1beta1::RemoveDirectoryResponse::Representation
+          command.response_class = Google::Apis::DataformV1beta1::RemoveDirectoryResponse
           command.params['workspace'] = workspace unless workspace.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2125,10 +2125,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataformV1beta1::Empty] parsed result object
+        # @yieldparam result [Google::Apis::DataformV1beta1::RemoveFileResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DataformV1beta1::Empty]
+        # @return [Google::Apis::DataformV1beta1::RemoveFileResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -2137,8 +2137,8 @@ module Google
           command = make_simple_command(:post, 'v1beta1/{+workspace}:removeFile', options)
           command.request_representation = Google::Apis::DataformV1beta1::RemoveFileRequest::Representation
           command.request_object = remove_file_request_object
-          command.response_representation = Google::Apis::DataformV1beta1::Empty::Representation
-          command.response_class = Google::Apis::DataformV1beta1::Empty
+          command.response_representation = Google::Apis::DataformV1beta1::RemoveFileResponse::Representation
+          command.response_class = Google::Apis::DataformV1beta1::RemoveFileResponse
           command.params['workspace'] = workspace unless workspace.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2158,10 +2158,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataformV1beta1::Empty] parsed result object
+        # @yieldparam result [Google::Apis::DataformV1beta1::ResetWorkspaceChangesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DataformV1beta1::Empty]
+        # @return [Google::Apis::DataformV1beta1::ResetWorkspaceChangesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -2170,8 +2170,8 @@ module Google
           command = make_simple_command(:post, 'v1beta1/{+name}:reset', options)
           command.request_representation = Google::Apis::DataformV1beta1::ResetWorkspaceChangesRequest::Representation
           command.request_object = reset_workspace_changes_request_object
-          command.response_representation = Google::Apis::DataformV1beta1::Empty::Representation
-          command.response_class = Google::Apis::DataformV1beta1::Empty
+          command.response_representation = Google::Apis::DataformV1beta1::ResetWorkspaceChangesResponse::Representation
+          command.response_class = Google::Apis::DataformV1beta1::ResetWorkspaceChangesResponse
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

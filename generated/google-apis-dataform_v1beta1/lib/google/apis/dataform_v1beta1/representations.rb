@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CancelWorkflowInvocationResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CodeCompilationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -89,6 +95,12 @@ module Google
       end
       
       class CommitWorkspaceChangesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CommitWorkspaceChangesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -370,7 +382,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PullGitCommitsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PushGitCommitsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PushGitCommitsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -436,7 +460,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RemoveDirectoryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RemoveFileRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveFileResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -449,6 +485,12 @@ module Google
       end
       
       class ResetWorkspaceChangesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResetWorkspaceChangesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -607,6 +649,12 @@ module Google
         end
       end
       
+      class CancelWorkflowInvocationResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class CodeCompilationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -685,6 +733,12 @@ module Google
       
           property :commit_message, as: 'commitMessage'
           collection :paths, as: 'paths'
+        end
+      end
+      
+      class CommitWorkspaceChangesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1114,10 +1168,22 @@ module Google
         end
       end
       
+      class PullGitCommitsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class PushGitCommitsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :remote_branch, as: 'remoteBranch'
+        end
+      end
+      
+      class PushGitCommitsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1228,10 +1294,22 @@ module Google
         end
       end
       
+      class RemoveDirectoryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class RemoveFileRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :path, as: 'path'
+        end
+      end
+      
+      class RemoveFileResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1261,6 +1339,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :clean, as: 'clean'
           collection :paths, as: 'paths'
+        end
+      end
+      
+      class ResetWorkspaceChangesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
