@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module GkeonpremV1
-      # GDC Virtual API
+      # GKE On-Prem API
       #
       # 
       #
