@@ -1301,6 +1301,25 @@ module Google
         end
       end
       
+      # 
+      class AllocationReservationSharingPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Sharing config for all Google Cloud services.
+        # Corresponds to the JSON property `serviceShareType`
+        # @return [String]
+        attr_accessor :service_share_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_share_type = args[:service_share_type] if args.key?(:service_share_type)
+        end
+      end
+      
       # [Output Only] Contains output only fields.
       class AllocationResourceStatus
         include Google::Apis::Core::Hashable
@@ -1329,6 +1348,12 @@ module Google
         # @return [String]
         attr_accessor :source_instance_template_id
       
+        # Per service utilization breakdown. The Key is the Google Cloud managed service
+        # name.
+        # Corresponds to the JSON property `utilizations`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :utilizations
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1336,6 +1361,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @source_instance_template_id = args[:source_instance_template_id] if args.key?(:source_instance_template_id)
+          @utilizations = args[:utilizations] if args.key?(:utilizations)
         end
       end
       
@@ -2758,6 +2784,11 @@ module Google
         # @return [Float]
         attr_accessor :capacity_scaler
       
+        # List of custom metrics that are used for CUSTOM_METRICS BalancingMode.
+        # Corresponds to the JSON property `customMetrics`
+        # @return [Array<Google::Apis::ComputeV1::BackendCustomMetric>]
+        attr_accessor :custom_metrics
+      
         # An optional description of this resource. Provide this property when you
         # create the resource.
         # Corresponds to the JSON property `description`
@@ -2848,6 +2879,7 @@ module Google
         def update!(**args)
           @balancing_mode = args[:balancing_mode] if args.key?(:balancing_mode)
           @capacity_scaler = args[:capacity_scaler] if args.key?(:capacity_scaler)
+          @custom_metrics = args[:custom_metrics] if args.key?(:custom_metrics)
           @description = args[:description] if args.key?(:description)
           @failover = args[:failover] if args.key?(:failover)
           @group = args[:group] if args.key?(:group)
@@ -3335,6 +3367,47 @@ module Google
         end
       end
       
+      # Custom Metrics are used for CUSTOM_METRICS balancing_mode.
+      class BackendCustomMetric
+        include Google::Apis::Core::Hashable
+      
+        # If true, the metric data is collected and reported to Cloud Monitoring, but is
+        # not used for load balancing.
+        # Corresponds to the JSON property `dryRun`
+        # @return [Boolean]
+        attr_accessor :dry_run
+        alias_method :dry_run?, :dry_run
+      
+        # Optional parameter to define a target utilization for the Custom Metrics
+        # balancing mode. The valid range is [0.0, 1.0].
+        # Corresponds to the JSON property `maxUtilization`
+        # @return [Float]
+        attr_accessor :max_utilization
+      
+        # Name of a custom utilization signal. The name must be 1-64 characters long and
+        # match the regular expression [a-z]([-_.a-z0-9]*[a-z0-9])? which means the
+        # first character must be a lowercase letter, and all following characters must
+        # be a dash, period, underscore, lowercase letter, or digit, except the last
+        # character, which cannot be a dash, period, or underscore. For usage guidelines,
+        # see Custom Metrics balancing mode. This field can only be used for a global
+        # or regional backend service with the loadBalancingScheme set to
+        # EXTERNAL_MANAGED, INTERNAL_MANAGED INTERNAL_SELF_MANAGED.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dry_run = args[:dry_run] if args.key?(:dry_run)
+          @max_utilization = args[:max_utilization] if args.key?(:max_utilization)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Represents a Backend Service resource. A backend service defines how Google
       # Cloud load balancers distribute traffic. The backend service configuration
       # contains a set of values, such as the protocol used to connect to backends,
@@ -3401,6 +3474,12 @@ module Google
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
         attr_accessor :creation_timestamp
+      
+        # List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN
+        # locality_lb_policy.
+        # Corresponds to the JSON property `customMetrics`
+        # @return [Array<Google::Apis::ComputeV1::BackendServiceCustomMetric>]
+        attr_accessor :custom_metrics
       
         # Headers that the load balancer adds to proxied requests. See [Creating custom
         # headers](https://cloud.google.com/load-balancing/docs/custom-headers).
@@ -3716,6 +3795,7 @@ module Google
           @connection_tracking_policy = args[:connection_tracking_policy] if args.key?(:connection_tracking_policy)
           @consistent_hash = args[:consistent_hash] if args.key?(:consistent_hash)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @custom_metrics = args[:custom_metrics] if args.key?(:custom_metrics)
           @custom_request_headers = args[:custom_request_headers] if args.key?(:custom_request_headers)
           @custom_response_headers = args[:custom_response_headers] if args.key?(:custom_response_headers)
           @description = args[:description] if args.key?(:description)
@@ -4149,6 +4229,39 @@ module Google
           @enable_strong_affinity = args[:enable_strong_affinity] if args.key?(:enable_strong_affinity)
           @idle_timeout_sec = args[:idle_timeout_sec] if args.key?(:idle_timeout_sec)
           @tracking_mode = args[:tracking_mode] if args.key?(:tracking_mode)
+        end
+      end
+      
+      # Custom Metrics are used for WEIGHTED_ROUND_ROBIN locality_lb_policy.
+      class BackendServiceCustomMetric
+        include Google::Apis::Core::Hashable
+      
+        # If true, the metric data is not used for load balancing.
+        # Corresponds to the JSON property `dryRun`
+        # @return [Boolean]
+        attr_accessor :dry_run
+        alias_method :dry_run?, :dry_run
+      
+        # Name of a custom utilization signal. The name must be 1-64 characters long and
+        # match the regular expression [a-z]([-_.a-z0-9]*[a-z0-9])? which means the
+        # first character must be a lowercase letter, and all following characters must
+        # be a dash, period, underscore, lowercase letter, or digit, except the last
+        # character, which cannot be a dash, period, or underscore. For usage guidelines,
+        # see Custom Metrics balancing mode. This field can only be used for a global
+        # or regional backend service with the loadBalancingScheme set to
+        # EXTERNAL_MANAGED, INTERNAL_MANAGED INTERNAL_SELF_MANAGED.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dry_run = args[:dry_run] if args.key?(:dry_run)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -15071,6 +15184,11 @@ module Google
         # @return [String]
         attr_accessor :region
       
+        # Resource policies for this managed instance group.
+        # Corresponds to the JSON property `resourcePolicies`
+        # @return [Google::Apis::ComputeV1::InstanceGroupManagerResourcePolicies]
+        attr_accessor :resource_policies
+      
         # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
@@ -15180,6 +15298,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @named_ports = args[:named_ports] if args.key?(:named_ports)
           @region = args[:region] if args.key?(:region)
+          @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -16170,6 +16289,30 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerResourcePolicies
+        include Google::Apis::Core::Hashable
+      
+        # The URL of the workload policy that is specified for this managed instance
+        # group. It can be a full or partial URL. For example, the following are all
+        # valid URLs to a workload policy: - https://www.googleapis.com/compute/v1/
+        # projects/project/regions/region /resourcePolicies/resourcePolicy - projects/
+        # project/regions/region/resourcePolicies/resourcePolicy - regions/region/
+        # resourcePolicies/resourcePolicy
+        # Corresponds to the JSON property `workloadPolicy`
+        # @return [String]
+        attr_accessor :workload_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @workload_policy = args[:workload_policy] if args.key?(:workload_policy)
         end
       end
       
@@ -18648,6 +18791,56 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
+        end
+      end
+      
+      # 
+      class InstancesReportHostAsFaultyRequest
+        include Google::Apis::Core::Hashable
+      
+        # The disruption schedule for the VM. Default to IMMEDIATE.
+        # Corresponds to the JSON property `disruptionSchedule`
+        # @return [String]
+        attr_accessor :disruption_schedule
+      
+        # 
+        # Corresponds to the JSON property `faultReasons`
+        # @return [Array<Google::Apis::ComputeV1::InstancesReportHostAsFaultyRequestFaultReason>]
+        attr_accessor :fault_reasons
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disruption_schedule = args[:disruption_schedule] if args.key?(:disruption_schedule)
+          @fault_reasons = args[:fault_reasons] if args.key?(:fault_reasons)
+        end
+      end
+      
+      # 
+      class InstancesReportHostAsFaultyRequestFaultReason
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `behavior`
+        # @return [String]
+        attr_accessor :behavior
+      
+        # 
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @behavior = args[:behavior] if args.key?(:behavior)
+          @description = args[:description] if args.key?(:description)
         end
       end
       
@@ -33765,6 +33958,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Specify the reservation sharing policy. If unspecified, the reservation will
+        # not be shared with Google Cloud managed services.
+        # Corresponds to the JSON property `reservationSharingPolicy`
+        # @return [Google::Apis::ComputeV1::AllocationReservationSharingPolicy]
+        attr_accessor :reservation_sharing_policy
+      
         # Resource policies to be added to this reservation. The key is defined by user,
         # and the value is resource policy url. This is to define placement policy with
         # reservation.
@@ -33833,6 +34032,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @reservation_sharing_policy = args[:reservation_sharing_policy] if args.key?(:reservation_sharing_policy)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @resource_status = args[:resource_status] if args.key?(:resource_status)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
@@ -45495,10 +45695,13 @@ module Google
         # describes how the proxy should authenticate inbound traffic. serverTlsPolicy
         # only applies to a global TargetHttpsProxy attached to globalForwardingRules
         # with the loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL or
-        # EXTERNAL_MANAGED. For details which ServerTlsPolicy resources are accepted
-        # with INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
-        # loadBalancingScheme consult ServerTlsPolicy documentation. If left blank,
-        # communications are not encrypted.
+        # EXTERNAL_MANAGED or INTERNAL_MANAGED. It also applies to a regional
+        # TargetHttpsProxy attached to regional forwardingRules with the
+        # loadBalancingScheme set to EXTERNAL_MANAGED or INTERNAL_MANAGED. For details
+        # which ServerTlsPolicy resources are accepted with INTERNAL_SELF_MANAGED and
+        # which with EXTERNAL, INTERNAL_MANAGED, EXTERNAL_MANAGED loadBalancingScheme
+        # consult ServerTlsPolicy documentation. If left blank, communications are not
+        # encrypted.
         # Corresponds to the JSON property `serverTlsPolicy`
         # @return [String]
         attr_accessor :server_tls_policy

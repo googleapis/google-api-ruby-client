@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AllocationReservationSharingPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AllocationResourceStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -406,6 +412,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendCustomMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendService
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -449,6 +461,12 @@ module Google
       end
       
       class BackendServiceConnectionTrackingPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceCustomMetric
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1870,6 +1888,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerResourcePolicies
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerStandbyPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2297,6 +2321,18 @@ module Google
       end
       
       class InstancesRemoveResourcePoliciesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancesReportHostAsFaultyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancesReportHostAsFaultyRequestFaultReason
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7034,6 +7070,13 @@ module Google
         end
       end
       
+      class AllocationReservationSharingPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_share_type, as: 'serviceShareType'
+        end
+      end
+      
       class AllocationResourceStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7046,6 +7089,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :source_instance_template_id, as: 'sourceInstanceTemplateId'
+          hash :utilizations, as: 'utilizations'
         end
       end
       
@@ -7350,6 +7394,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :balancing_mode, as: 'balancingMode'
           property :capacity_scaler, as: 'capacityScaler'
+          collection :custom_metrics, as: 'customMetrics', class: Google::Apis::ComputeV1::BackendCustomMetric, decorator: Google::Apis::ComputeV1::BackendCustomMetric::Representation
+      
           property :description, as: 'description'
           property :failover, as: 'failover'
           property :group, as: 'group'
@@ -7468,6 +7514,15 @@ module Google
         end
       end
       
+      class BackendCustomMetric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dry_run, as: 'dryRun'
+          property :max_utilization, as: 'maxUtilization'
+          property :name, as: 'name'
+        end
+      end
+      
       class BackendService
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7486,6 +7541,8 @@ module Google
           property :consistent_hash, as: 'consistentHash', class: Google::Apis::ComputeV1::ConsistentHashLoadBalancerSettings, decorator: Google::Apis::ComputeV1::ConsistentHashLoadBalancerSettings::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
+          collection :custom_metrics, as: 'customMetrics', class: Google::Apis::ComputeV1::BackendServiceCustomMetric, decorator: Google::Apis::ComputeV1::BackendServiceCustomMetric::Representation
+      
           collection :custom_request_headers, as: 'customRequestHeaders'
           collection :custom_response_headers, as: 'customResponseHeaders'
           property :description, as: 'description'
@@ -7610,6 +7667,14 @@ module Google
           property :enable_strong_affinity, as: 'enableStrongAffinity'
           property :idle_timeout_sec, as: 'idleTimeoutSec'
           property :tracking_mode, as: 'trackingMode'
+        end
+      end
+      
+      class BackendServiceCustomMetric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dry_run, as: 'dryRun'
+          property :name, as: 'name'
         end
       end
       
@@ -10116,6 +10181,8 @@ module Google
           collection :named_ports, as: 'namedPorts', class: Google::Apis::ComputeV1::NamedPort, decorator: Google::Apis::ComputeV1::NamedPort::Representation
       
           property :region, as: 'region'
+          property :resource_policies, as: 'resourcePolicies', class: Google::Apis::ComputeV1::InstanceGroupManagerResourcePolicies, decorator: Google::Apis::ComputeV1::InstanceGroupManagerResourcePolicies::Representation
+      
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
@@ -10394,6 +10461,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class InstanceGroupManagerResourcePolicies
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :workload_policy, as: 'workloadPolicy'
         end
       end
       
@@ -11095,6 +11169,23 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :resource_policies, as: 'resourcePolicies'
+        end
+      end
+      
+      class InstancesReportHostAsFaultyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disruption_schedule, as: 'disruptionSchedule'
+          collection :fault_reasons, as: 'faultReasons', class: Google::Apis::ComputeV1::InstancesReportHostAsFaultyRequestFaultReason, decorator: Google::Apis::ComputeV1::InstancesReportHostAsFaultyRequestFaultReason::Representation
+      
+        end
+      end
+      
+      class InstancesReportHostAsFaultyRequestFaultReason
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :behavior, as: 'behavior'
+          property :description, as: 'description'
         end
       end
       
@@ -14919,6 +15010,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :reservation_sharing_policy, as: 'reservationSharingPolicy', class: Google::Apis::ComputeV1::AllocationReservationSharingPolicy, decorator: Google::Apis::ComputeV1::AllocationReservationSharingPolicy::Representation
+      
           hash :resource_policies, as: 'resourcePolicies'
           property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeV1::AllocationResourceStatus, decorator: Google::Apis::ComputeV1::AllocationResourceStatus::Representation
       
