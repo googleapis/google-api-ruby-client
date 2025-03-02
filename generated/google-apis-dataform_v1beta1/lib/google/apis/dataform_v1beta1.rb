@@ -30,6 +30,9 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1beta1'
 
+      # View and manage your data in Google BigQuery and see the email address for your Google Account
+      AUTH_BIGQUERY = 'https://www.googleapis.com/auth/bigquery'
+
       # See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
     end
