@@ -436,6 +436,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MirroringDeploymentGroupDeployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MirroringEndpointGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1003,6 +1009,7 @@ module Google
           collection :address_groups, as: 'addressGroups', class: Google::Apis::NetworksecurityV1::AddressGroup, decorator: Google::Apis::NetworksecurityV1::AddressGroup::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1221,6 +1228,8 @@ module Google
           property :description, as: 'description'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          collection :nested_deployments, as: 'nestedDeployments', class: Google::Apis::NetworksecurityV1::MirroringDeploymentGroupDeployment, decorator: Google::Apis::NetworksecurityV1::MirroringDeploymentGroupDeployment::Representation
+      
           property :network, as: 'network'
           property :reconciling, as: 'reconciling'
           property :state, as: 'state'
@@ -1232,6 +1241,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+        end
+      end
+      
+      class MirroringDeploymentGroupDeployment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :state, as: 'state'
         end
       end
       

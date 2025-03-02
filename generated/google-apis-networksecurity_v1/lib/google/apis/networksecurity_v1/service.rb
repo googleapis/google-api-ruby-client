@@ -254,6 +254,9 @@ module Google
         #   The value returned by the last `ListAddressGroupsResponse` Indicates that this
         #   is a continuation of a prior `ListAddressGroups` call, and that the system
         #   should return the next page of data.
+        # @param [Boolean] return_partial_success
+        #   Optional. If true, allow partial responses for multi-regional Aggregated List
+        #   requests.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -271,13 +274,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_location_address_groups(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_location_address_groups(parent, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/addressGroups', options)
           command.response_representation = Google::Apis::NetworksecurityV1::ListAddressGroupsResponse::Representation
           command.response_class = Google::Apis::NetworksecurityV1::ListAddressGroupsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1469,6 +1473,9 @@ module Google
         #   The value returned by the last `ListAddressGroupsResponse` Indicates that this
         #   is a continuation of a prior `ListAddressGroups` call, and that the system
         #   should return the next page of data.
+        # @param [Boolean] return_partial_success
+        #   Optional. If true, allow partial responses for multi-regional Aggregated List
+        #   requests.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1486,13 +1493,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_address_groups(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_address_groups(parent, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/addressGroups', options)
           command.response_representation = Google::Apis::NetworksecurityV1::ListAddressGroupsResponse::Representation
           command.response_class = Google::Apis::NetworksecurityV1::ListAddressGroupsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3236,25 +3244,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new MirroringDeploymentGroup in a given project and location.
+        # Creates a deployment group in a given project and location. See https://google.
+        # aip.dev/133.
         # @param [String] parent
-        #   Required. Value for parent.
+        #   Required. The parent resource where this deployment group will be created.
+        #   Format: projects/`project`/locations/`location`
         # @param [Google::Apis::NetworksecurityV1::MirroringDeploymentGroup] mirroring_deployment_group_object
         # @param [String] mirroring_deployment_group_id
-        #   Required. Id of the requesting object If auto-generating Id server-side,
-        #   remove this field and mirroring_deployment_group_id from the method_signature
-        #   of Create RPC
+        #   Required. The ID to use for the new deployment group, which will become the
+        #   final component of the deployment group's resource name.
         # @param [String] request_id
-        #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   Optional. A unique identifier for this request. Must be a UUID4. This request
+        #   is only idempotent if a `request_id` is provided. See https://google.aip.dev/
+        #   155 for more details.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3286,20 +3288,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a single MirroringDeploymentGroup.
+        # Deletes a deployment group. See https://google.aip.dev/135.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. The deployment group to delete.
         # @param [String] request_id
-        #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes after the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   Optional. A unique identifier for this request. Must be a UUID4. This request
+        #   is only idempotent if a `request_id` is provided. See https://google.aip.dev/
+        #   155 for more details.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3328,9 +3323,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets details of a single MirroringDeploymentGroup.
+        # Gets a specific deployment group. See https://google.aip.dev/131.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. The name of the deployment group to retrieve. Format: projects/`
+        #   project`/locations/`location`/mirroringDeploymentGroups/`
+        #   mirroring_deployment_group`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3358,18 +3355,28 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists MirroringDeploymentGroups in a given project and location.
+        # Lists deployment groups in a given project and location. See https://google.
+        # aip.dev/132.
         # @param [String] parent
-        #   Required. Parent value for ListMirroringDeploymentGroupsRequest
+        #   Required. The parent, which owns this collection of deployment groups. Example:
+        #   `projects/123456789/locations/global`. See https://google.aip.dev/132 for
+        #   more details.
         # @param [String] filter
-        #   Optional. Filtering results
+        #   Optional. Filter expression. See https://google.aip.dev/160#filtering for more
+        #   details.
         # @param [String] order_by
-        #   Optional. Hint for how to order the results
+        #   Optional. Sort expression. See https://google.aip.dev/132#ordering for more
+        #   details.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server may return fewer items than requested.
-        #   If unspecified, server will pick an appropriate default.
+        #   If unspecified, server will pick an appropriate default. See https://google.
+        #   aip.dev/158 for more details.
         # @param [String] page_token
-        #   Optional. A token identifying a page of results the server should return.
+        #   Optional. A page token, received from a previous `
+        #   ListMirroringDeploymentGroups` call. Provide this to retrieve the subsequent
+        #   page. When paginating, all other parameters provided to `
+        #   ListMirroringDeploymentGroups` must match the call that provided the page
+        #   token. See https://google.aip.dev/158 for more details.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3401,29 +3408,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a single MirroringDeploymentGroup.
+        # Updates a deployment group. See https://google.aip.dev/134.
         # @param [String] name
         #   Immutable. Identifier. The resource name of this deployment group, for example:
         #   `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`. See
         #   https://google.aip.dev/122 for more details.
         # @param [Google::Apis::NetworksecurityV1::MirroringDeploymentGroup] mirroring_deployment_group_object
         # @param [String] request_id
-        #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   Optional. A unique identifier for this request. Must be a UUID4. This request
+        #   is only idempotent if a `request_id` is provided. See https://google.aip.dev/
+        #   155 for more details.
         # @param [String] update_mask
-        #   Required. Field mask is used to specify the fields to be overwritten in the
-        #   MirroringDeploymentGroup resource by the update. The fields specified in the
-        #   update_mask are relative to the resource, not the full request. A field will
-        #   be overwritten if it is in the mask. If the user does not provide a mask then
-        #   all fields will be overwritten.
+        #   Optional. The list of fields to update. Fields are specified relative to the
+        #   deployment group (e.g. `description`; *not* `mirroring_deployment_group.
+        #   description`). See https://google.aip.dev/161 for more details.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3458,23 +3456,16 @@ module Google
         # Creates a deployment in a given project and location. See https://google.aip.
         # dev/133.
         # @param [String] parent
-        #   Required. Value for parent.
+        #   Required. The parent resource where this deployment will be created. Format:
+        #   projects/`project`/locations/`location`
         # @param [Google::Apis::NetworksecurityV1::MirroringDeployment] mirroring_deployment_object
         # @param [String] mirroring_deployment_id
-        #   Required. Id of the requesting object If auto-generating Id server-side,
-        #   remove this field and mirroring_deployment_id from the method_signature of
-        #   Create RPC
+        #   Required. The ID to use for the new deployment, which will become the final
+        #   component of the deployment's resource name.
         # @param [String] request_id
-        #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   Optional. A unique identifier for this request. Must be a UUID4. This request
+        #   is only idempotent if a `request_id` is provided. See https://google.aip.dev/
+        #   155 for more details.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3510,16 +3501,9 @@ module Google
         # @param [String] name
         #   Required. Name of the resource
         # @param [String] request_id
-        #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes after the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   Optional. A unique identifier for this request. Must be a UUID4. This request
+        #   is only idempotent if a `request_id` is provided. See https://google.aip.dev/
+        #   155 for more details.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3550,7 +3534,8 @@ module Google
         
         # Gets a specific deployment. See https://google.aip.dev/131.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. The name of the deployment to retrieve. Format: projects/`project`/
+        #   locations/`location`/mirroringDeployments/`mirroring_deployment`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3581,16 +3566,24 @@ module Google
         # Lists deployments in a given project and location. See https://google.aip.dev/
         # 132.
         # @param [String] parent
-        #   Required. Parent value for ListMirroringDeploymentsRequest
+        #   Required. The parent, which owns this collection of deployments. Example: `
+        #   projects/123456789/locations/us-central1-a`. See https://google.aip.dev/132
+        #   for more details.
         # @param [String] filter
-        #   Optional. Filtering results
+        #   Optional. Filter expression. See https://google.aip.dev/160#filtering for more
+        #   details.
         # @param [String] order_by
-        #   Optional. Hint for how to order the results
+        #   Optional. Sort expression. See https://google.aip.dev/132#ordering for more
+        #   details.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server may return fewer items than requested.
-        #   If unspecified, server will pick an appropriate default.
+        #   If unspecified, server will pick an appropriate default. See https://google.
+        #   aip.dev/158 for more details.
         # @param [String] page_token
-        #   Optional. A token identifying a page of results the server should return.
+        #   Optional. A page token, received from a previous `ListMirroringDeployments`
+        #   call. Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListMirroringDeployments` must match the call that
+        #   provided the page token. See https://google.aip.dev/158 for more details.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3629,22 +3622,13 @@ module Google
         #   https://google.aip.dev/122 for more details.
         # @param [Google::Apis::NetworksecurityV1::MirroringDeployment] mirroring_deployment_object
         # @param [String] request_id
-        #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   Optional. A unique identifier for this request. Must be a UUID4. This request
+        #   is only idempotent if a `request_id` is provided. See https://google.aip.dev/
+        #   155 for more details.
         # @param [String] update_mask
-        #   Required. Field mask is used to specify the fields to be overwritten in the
-        #   MirroringDeployment resource by the update. The fields specified in the
-        #   update_mask are relative to the resource, not the full request. A field will
-        #   be overwritten if it is in the mask. If the user does not provide a mask then
-        #   all fields will be overwritten.
+        #   Optional. The list of fields to update. Fields are specified relative to the
+        #   deployment (e.g. `description`; *not* `mirroring_deployment.description`). See
+        #   https://google.aip.dev/161 for more details.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3679,27 +3663,17 @@ module Google
         # Creates an association in a given project and location. See https://google.aip.
         # dev/133.
         # @param [String] parent
-        #   Required. Container (project and location) where the association will be
-        #   created, e.g. `projects/123456789/locations/global`.
+        #   Required. The parent resource where this association will be created. Format:
+        #   projects/`project`/locations/`location`
         # @param [Google::Apis::NetworksecurityV1::MirroringEndpointGroupAssociation] mirroring_endpoint_group_association_object
         # @param [String] mirroring_endpoint_group_association_id
-        #   Optional. ID for the new association. If not provided, the server will
-        #   generate a unique ID. The ID must be a valid RFC 1035 resource name. The ID
-        #   must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*
-        #   [a-z0-9])?`. The first character must be a lowercase letter, and all following
-        #   characters (except for the last character) must be a dash, lowercase letter,
-        #   or digit. The last character must be a
+        #   Optional. The ID to use for the new association, which will become the final
+        #   component of the endpoint group's resource name. If not provided, the server
+        #   will generate a unique ID.
         # @param [String] request_id
-        #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   Optional. A unique identifier for this request. Must be a UUID4. This request
+        #   is only idempotent if a `request_id` is provided. See https://google.aip.dev/
+        #   155 for more details.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3731,22 +3705,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a single association. See https://google.aip.dev/135.
+        # Deletes an association. See https://google.aip.dev/135.
         # @param [String] name
-        #   Required. Full resource name of the association to delete, e.g. projects/
-        #   123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-
-        #   association.
+        #   Required. The association to delete.
         # @param [String] request_id
-        #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes after the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   Optional. A unique identifier for this request. Must be a UUID4. This request
+        #   is only idempotent if a `request_id` is provided. See https://google.aip.dev/
+        #   155 for more details.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3777,9 +3742,9 @@ module Google
         
         # Gets a specific association. See https://google.aip.dev/131.
         # @param [String] name
-        #   Required. Full resource name of the association to get, e.g. projects/
-        #   123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-
-        #   association.
+        #   Required. The name of the association to retrieve. Format: projects/`project`/
+        #   locations/`location`/mirroringEndpointGroupAssociations/`
+        #   mirroring_endpoint_group_association`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3810,20 +3775,24 @@ module Google
         # Lists associations in a given project and location. See https://google.aip.dev/
         # 132.
         # @param [String] parent
-        #   Required. Parent container (project and location) of the associations to list,
-        #   e.g. `projects/123456789/locations/global`.
+        #   Required. The parent, which owns this collection of associations. Example: `
+        #   projects/123456789/locations/global`. See https://google.aip.dev/132 for more
+        #   details.
         # @param [String] filter
-        #   Optional. A filter expression that filters the results listed in the response.
-        #   See https://google.aip.dev/160.
+        #   Optional. Filter expression. See https://google.aip.dev/160#filtering for more
+        #   details.
         # @param [String] order_by
-        #   Optional. Hint for how to order the results
+        #   Optional. Sort expression. See https://google.aip.dev/132#ordering for more
+        #   details.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server may return fewer items than requested.
         #   If unspecified, server will pick an appropriate default. See https://google.
-        #   aip.dev/158.
+        #   aip.dev/158 for more details.
         # @param [String] page_token
-        #   Optional. A token identifying a page of results the server should return. See
-        #   https://google.aip.dev/158.
+        #   Optional. A page token, received from a previous `ListMirroringEndpointGroups`
+        #   call. Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListMirroringEndpointGroups` must match the call that
+        #   provided the page token. See https://google.aip.dev/158 for more details.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3863,19 +3832,13 @@ module Google
         #   dev/122 for more details.
         # @param [Google::Apis::NetworksecurityV1::MirroringEndpointGroupAssociation] mirroring_endpoint_group_association_object
         # @param [String] request_id
-        #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   Optional. A unique identifier for this request. Must be a UUID4. This request
+        #   is only idempotent if a `request_id` is provided. See https://google.aip.dev/
+        #   155 for more details.
         # @param [String] update_mask
-        #   Optional. Field mask is used to specify the fields to be overwritten in the
-        #   association by the update. See https://google.aip.dev/161.
+        #   Optional. The list of fields to update. Fields are specified relative to the
+        #   association (e.g. `description`; *not* `mirroring_endpoint_group_association.
+        #   description`). See https://google.aip.dev/161 for more details.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3910,23 +3873,16 @@ module Google
         # Creates an endpoint group in a given project and location. See https://google.
         # aip.dev/133.
         # @param [String] parent
-        #   Required. Value for parent.
+        #   Required. The parent resource where this endpoint group will be created.
+        #   Format: projects/`project`/locations/`location`
         # @param [Google::Apis::NetworksecurityV1::MirroringEndpointGroup] mirroring_endpoint_group_object
         # @param [String] mirroring_endpoint_group_id
-        #   Required. Id of the requesting object If auto-generating Id server-side,
-        #   remove this field and mirroring_endpoint_group_id from the method_signature of
-        #   Create RPC
+        #   Required. The ID to use for the endpoint group, which will become the final
+        #   component of the endpoint group's resource name.
         # @param [String] request_id
-        #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   Optional. A unique identifier for this request. Must be a UUID4. This request
+        #   is only idempotent if a `request_id` is provided. See https://google.aip.dev/
+        #   155 for more details.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3960,18 +3916,11 @@ module Google
         
         # Deletes an endpoint group. See https://google.aip.dev/135.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. The endpoint group to delete.
         # @param [String] request_id
-        #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes after the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   Optional. A unique identifier for this request. Must be a UUID4. This request
+        #   is only idempotent if a `request_id` is provided. See https://google.aip.dev/
+        #   155 for more details.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4002,7 +3951,9 @@ module Google
         
         # Gets a specific endpoint group. See https://google.aip.dev/131.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. The name of the endpoint group to retrieve. Format: projects/`
+        #   project`/locations/`location`/mirroringEndpointGroups/`
+        #   mirroring_endpoint_group`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4033,16 +3984,24 @@ module Google
         # Lists endpoint groups in a given project and location. See https://google.aip.
         # dev/132.
         # @param [String] parent
-        #   Required. Parent value for ListMirroringEndpointGroupsRequest
+        #   Required. The parent, which owns this collection of endpoint groups. Example: `
+        #   projects/123456789/locations/global`. See https://google.aip.dev/132 for more
+        #   details.
         # @param [String] filter
-        #   Optional. Filtering results
+        #   Optional. Filter expression. See https://google.aip.dev/160#filtering for more
+        #   details.
         # @param [String] order_by
-        #   Optional. Hint for how to order the results
+        #   Optional. Sort expression. See https://google.aip.dev/132#ordering for more
+        #   details.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server may return fewer items than requested.
-        #   If unspecified, server will pick an appropriate default.
+        #   If unspecified, server will pick an appropriate default. See https://google.
+        #   aip.dev/158 for more details.
         # @param [String] page_token
-        #   Optional. A token identifying a page of results the server should return.
+        #   Optional. A page token, received from a previous `ListMirroringEndpointGroups`
+        #   call. Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListMirroringEndpointGroups` must match the call that
+        #   provided the page token. See https://google.aip.dev/158 for more details.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4081,22 +4040,13 @@ module Google
         #   /google.aip.dev/122 for more details.
         # @param [Google::Apis::NetworksecurityV1::MirroringEndpointGroup] mirroring_endpoint_group_object
         # @param [String] request_id
-        #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   Optional. A unique identifier for this request. Must be a UUID4. This request
+        #   is only idempotent if a `request_id` is provided. See https://google.aip.dev/
+        #   155 for more details.
         # @param [String] update_mask
-        #   Required. Field mask is used to specify the fields to be overwritten in the
-        #   MirroringEndpointGroup resource by the update. The fields specified in the
-        #   update_mask are relative to the resource, not the full request. A field will
-        #   be overwritten if it is in the mask. If the user does not provide a mask then
-        #   all fields will be overwritten.
+        #   Optional. The list of fields to update. Fields are specified relative to the
+        #   endpoint group (e.g. `description`; *not* `mirroring_endpoint_group.
+        #   description`). See https://google.aip.dev/161 for more details.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

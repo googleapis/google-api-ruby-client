@@ -377,11 +377,13 @@ module Google
       
         # Optional. A list of identities derived from the client's certificate. This
         # field will not match on a request unless mutual TLS is enabled for the
-        # Forwarding rule or Gateway. Each identity is a string whose value is matched
-        # against the URI SAN, or DNS SAN or the subject field in the client's
-        # certificate. The match can be exact, prefix, suffix or a substring match. One
-        # of exact, prefix, suffix or contains must be specified. Limited to 5
-        # principals.
+        # forwarding rule or Gateway. For Application Load Balancers, each identity is a
+        # string whose value is matched against the URI SAN, or DNS SAN, or SPIFFE ID,
+        # or the subject field in the client's certificate. For Cloud Service Mesh, each
+        # identity is a string whose value is matched against the URI SAN, or DNS SAN,
+        # or the subject field in the client's certificate. The match can be exact,
+        # prefix, suffix, or a substring match. One of exact, prefix, suffix, or
+        # contains must be specified. Limited to 5 principals.
         # Corresponds to the JSON property `principals`
         # @return [Array<Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch>]
         attr_accessor :principals
@@ -1865,6 +1867,11 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1873,6 +1880,7 @@ module Google
         def update!(**args)
           @address_groups = args[:address_groups] if args.key?(:address_groups)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -2114,16 +2122,18 @@ module Google
         end
       end
       
-      # Message for response to listing MirroringDeploymentGroups
+      # Response message for ListMirroringDeploymentGroups.
       class ListMirroringDeploymentGroupsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of MirroringDeploymentGroup
+        # The deployment groups from the specified parent.
         # Corresponds to the JSON property `mirroringDeploymentGroups`
         # @return [Array<Google::Apis::NetworksecurityV1::MirroringDeploymentGroup>]
         attr_accessor :mirroring_deployment_groups
       
-        # A token identifying a page of results the server should return.
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages. See https://google.aip.dev/
+        # 158 for more details.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2139,16 +2149,18 @@ module Google
         end
       end
       
-      # Message for response to listing MirroringDeployments
+      # Response message for ListMirroringDeployments.
       class ListMirroringDeploymentsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of MirroringDeployment
+        # The deployments from the specified parent.
         # Corresponds to the JSON property `mirroringDeployments`
         # @return [Array<Google::Apis::NetworksecurityV1::MirroringDeployment>]
         attr_accessor :mirroring_deployments
       
-        # A token identifying a page of results the server should return.
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages. See https://google.aip.dev/
+        # 158 for more details.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2170,17 +2182,18 @@ module Google
         end
       end
       
-      # Response message for listing associations.
+      # Response message for ListMirroringEndpointGroupAssociations.
       class ListMirroringEndpointGroupAssociationsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of associations returned.
+        # The associations from the specified parent.
         # Corresponds to the JSON property `mirroringEndpointGroupAssociations`
         # @return [Array<Google::Apis::NetworksecurityV1::MirroringEndpointGroupAssociation>]
         attr_accessor :mirroring_endpoint_group_associations
       
-        # A token identifying a page of results the server should return. See https://
-        # google.aip.dev/158.
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages. See https://google.aip.dev/
+        # 158 for more details.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2196,16 +2209,18 @@ module Google
         end
       end
       
-      # Message for response to listing MirroringEndpointGroups
+      # Response message for ListMirroringEndpointGroups.
       class ListMirroringEndpointGroupsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of MirroringEndpointGroup
+        # The endpoint groups from the specified parent.
         # Corresponds to the JSON property `mirroringEndpointGroups`
         # @return [Array<Google::Apis::NetworksecurityV1::MirroringEndpointGroup>]
         attr_accessor :mirroring_endpoint_groups
       
-        # A token identifying a page of results the server should return.
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages. See https://google.aip.dev/
+        # 158 for more details.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2600,6 +2615,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The list of Mirroring Deployments that belong to this group.
+        # Corresponds to the JSON property `nestedDeployments`
+        # @return [Array<Google::Apis::NetworksecurityV1::MirroringDeploymentGroupDeployment>]
+        attr_accessor :nested_deployments
+      
         # Required. Immutable. The network that will be used for all child deployments,
         # for example: `projects/`project`/global/networks/`network``. See https://
         # google.aip.dev/124.
@@ -2639,6 +2659,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @nested_deployments = args[:nested_deployments] if args.key?(:nested_deployments)
           @network = args[:network] if args.key?(:network)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @state = args[:state] if args.key?(:state)
@@ -2664,6 +2685,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A deployment belonging to this deployment group.
+      class MirroringDeploymentGroupDeployment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The name of the Mirroring Deployment, in the format: `projects/`
+        # project`/locations/`location`/mirroringDeployments/`mirroring_deployment``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Most recent known state of the deployment.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
