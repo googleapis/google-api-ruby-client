@@ -1522,7 +1522,7 @@ module Google
         #   Name of the bucket in which the folder resides.
         # @param [Google::Apis::StorageV1::Folder] folder_object
         # @param [Boolean] recursive
-        #   If true, any parent folder which doesn’t exist will be created automatically.
+        #   If true, any parent folder which doesn't exist will be created automatically.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
