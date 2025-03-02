@@ -485,6 +485,66 @@ module Google
         end
       end
       
+      # The error payload that is populated on LRO sync APIs, including the following:
+      # * `google.cloud.discoveryengine.v1main.DataConnectorService.SetUpDataConnector`
+      # * `google.cloud.discoveryengine.v1main.DataConnectorService.StartConnectorRun`
+      class GoogleCloudDiscoveryengineLoggingConnectorRunErrorContext
+        include Google::Apis::Core::Hashable
+      
+        # The full resource name of the Connector Run. Format: `projects/*/locations/*/
+        # collections/*/dataConnector/connectorRuns/*`. The `connector_run_id` is system-
+        # generated.
+        # Corresponds to the JSON property `connectorRun`
+        # @return [String]
+        attr_accessor :connector_run
+      
+        # The full resource name of the DataConnector. Format: `projects/*/locations/*/
+        # collections/*/dataConnector`.
+        # Corresponds to the JSON property `dataConnector`
+        # @return [String]
+        attr_accessor :data_connector
+      
+        # The time when the connector run ended.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The entity to sync for the connector run.
+        # Corresponds to the JSON property `entity`
+        # @return [String]
+        attr_accessor :entity
+      
+        # The operation resource name of the LRO to sync the connector.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # The time when the connector run started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The type of sync run. Can be one of the following: * `FULL` * `INCREMENTAL`
+        # Corresponds to the JSON property `syncType`
+        # @return [String]
+        attr_accessor :sync_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connector_run = args[:connector_run] if args.key?(:connector_run)
+          @data_connector = args[:data_connector] if args.key?(:data_connector)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @entity = args[:entity] if args.key?(:entity)
+          @operation = args[:operation] if args.key?(:operation)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @sync_type = args[:sync_type] if args.key?(:sync_type)
+        end
+      end
+      
       # A description of the context in which an error occurred.
       class GoogleCloudDiscoveryengineLoggingErrorContext
         include Google::Apis::Core::Hashable
@@ -514,6 +574,13 @@ module Google
       # An error log which is reported to the Error Reporting system.
       class GoogleCloudDiscoveryengineLoggingErrorLog
         include Google::Apis::Core::Hashable
+      
+        # The error payload that is populated on LRO sync APIs, including the following:
+        # * `google.cloud.discoveryengine.v1main.DataConnectorService.SetUpDataConnector`
+        # * `google.cloud.discoveryengine.v1main.DataConnectorService.StartConnectorRun`
+        # Corresponds to the JSON property `connectorRunPayload`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineLoggingConnectorRunErrorContext]
+        attr_accessor :connector_run_payload
       
         # A description of the context in which an error occurred.
         # Corresponds to the JSON property `context`
@@ -574,6 +641,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @connector_run_payload = args[:connector_run_payload] if args.key?(:connector_run_payload)
           @context = args[:context] if args.key?(:context)
           @import_payload = args[:import_payload] if args.key?(:import_payload)
           @message = args[:message] if args.key?(:message)
@@ -8779,6 +8847,14 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchRequestRelevanceScoreSpec]
         attr_accessor :relevance_score_spec
       
+        # The relevance threshold of the search results. Default to Google defined
+        # threshold, leveraging a balance of precision and recall to deliver both highly
+        # accurate results and comprehensive coverage of relevant information. This
+        # feature is not supported for healthcare search.
+        # Corresponds to the JSON property `relevanceThreshold`
+        # @return [String]
+        attr_accessor :relevance_threshold
+      
         # Whether to turn on safe search. This is only supported for website search.
         # Corresponds to the JSON property `safeSearch`
         # @return [Boolean]
@@ -8879,6 +8955,7 @@ module Google
           @query = args[:query] if args.key?(:query)
           @query_expansion_spec = args[:query_expansion_spec] if args.key?(:query_expansion_spec)
           @relevance_score_spec = args[:relevance_score_spec] if args.key?(:relevance_score_spec)
+          @relevance_threshold = args[:relevance_threshold] if args.key?(:relevance_threshold)
           @safe_search = args[:safe_search] if args.key?(:safe_search)
           @search_as_you_type_spec = args[:search_as_you_type_spec] if args.key?(:search_as_you_type_spec)
           @session = args[:session] if args.key?(:session)
