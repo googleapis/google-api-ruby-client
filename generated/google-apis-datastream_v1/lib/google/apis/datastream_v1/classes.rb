@@ -2896,7 +2896,7 @@ module Google
         # @return [Google::Apis::DatastreamV1::SalesforceSourceConfig]
         attr_accessor :salesforce_source_config
       
-        # Required. Source connection profile resoource. Format: `projects/`project`/
+        # Required. Source connection profile resource. Format: `projects/`project`/
         # locations/`location`/connectionProfiles/`name``
         # Corresponds to the JSON property `sourceConnectionProfile`
         # @return [String]
