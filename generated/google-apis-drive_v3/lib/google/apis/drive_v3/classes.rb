@@ -993,6 +993,34 @@ module Google
         end
       end
       
+      # A restriction for copy and download of the file.
+      class DownloadRestriction
+        include Google::Apis::Core::Hashable
+      
+        # Whether download and copy is restricted for readers.
+        # Corresponds to the JSON property `restrictedForReaders`
+        # @return [Boolean]
+        attr_accessor :restricted_for_readers
+        alias_method :restricted_for_readers?, :restricted_for_readers
+      
+        # Whether download and copy is restricted for writers. If true, download is also
+        # restricted for readers.
+        # Corresponds to the JSON property `restrictedForWriters`
+        # @return [Boolean]
+        attr_accessor :restricted_for_writers
+        alias_method :restricted_for_writers?, :restricted_for_writers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @restricted_for_readers = args[:restricted_for_readers] if args.key?(:restricted_for_readers)
+          @restricted_for_writers = args[:restricted_for_writers] if args.key?(:restricted_for_writers)
+        end
+      end
+      
       # Representation of a shared drive. Some resource methods (such as `drives.
       # update`) require a `driveId`. Use the `drives.list` method to retrieve the ID
       # for a shared drive.
@@ -1348,6 +1376,11 @@ module Google
           attr_accessor :domain_users_only
           alias_method :domain_users_only?, :domain_users_only
         
+          # A restriction for copy and download of the file.
+          # Corresponds to the JSON property `downloadRestriction`
+          # @return [Google::Apis::DriveV3::DownloadRestriction]
+          attr_accessor :download_restriction
+        
           # Whether access to items inside this shared drive is restricted to its members.
           # Corresponds to the JSON property `driveMembersOnly`
           # @return [Boolean]
@@ -1370,6 +1403,7 @@ module Google
             @admin_managed_restrictions = args[:admin_managed_restrictions] if args.key?(:admin_managed_restrictions)
             @copy_requires_writer_permission = args[:copy_requires_writer_permission] if args.key?(:copy_requires_writer_permission)
             @domain_users_only = args[:domain_users_only] if args.key?(:domain_users_only)
+            @download_restriction = args[:download_restriction] if args.key?(:download_restriction)
             @drive_members_only = args[:drive_members_only] if args.key?(:drive_members_only)
             @sharing_folders_requires_organizer_permission = args[:sharing_folders_requires_organizer_permission] if args.key?(:sharing_folders_requires_organizer_permission)
           end
@@ -3244,7 +3278,7 @@ module Google
           attr_accessor :permission_type
         
           # Output only. The primary role for this user. While new values may be added in
-          # the future, the following are currently possible: * `organizer` * `
+          # the future, the following are currently possible: * `owner` * `organizer` * `
           # fileOrganizer` * `writer` * `commenter` * `reader`
           # Corresponds to the JSON property `role`
           # @return [String]
@@ -4049,6 +4083,11 @@ module Google
           attr_accessor :domain_users_only
           alias_method :domain_users_only?, :domain_users_only
         
+          # A restriction for copy and download of the file.
+          # Corresponds to the JSON property `downloadRestriction`
+          # @return [Google::Apis::DriveV3::DownloadRestriction]
+          attr_accessor :download_restriction
+        
           # If true, only users with the organizer role can share folders. If false, users
           # with either the organizer role or the file organizer role can share folders.
           # Corresponds to the JSON property `sharingFoldersRequiresOrganizerPermission`
@@ -4072,6 +4111,7 @@ module Google
             @admin_managed_restrictions = args[:admin_managed_restrictions] if args.key?(:admin_managed_restrictions)
             @copy_requires_writer_permission = args[:copy_requires_writer_permission] if args.key?(:copy_requires_writer_permission)
             @domain_users_only = args[:domain_users_only] if args.key?(:domain_users_only)
+            @download_restriction = args[:download_restriction] if args.key?(:download_restriction)
             @sharing_folders_requires_organizer_permission = args[:sharing_folders_requires_organizer_permission] if args.key?(:sharing_folders_requires_organizer_permission)
             @team_members_only = args[:team_members_only] if args.key?(:team_members_only)
           end
