@@ -3060,6 +3060,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Hardware constraints configuration.
+        # Corresponds to the JSON property `nodeSelector`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2NodeSelector]
+        attr_accessor :node_selector
+      
         # Output only. The generation of this Task. See comments in `Job.reconciling`
         # for additional information on reconciliation process in Cloud Run.
         # Corresponds to the JSON property `observedGeneration`
@@ -3161,6 +3166,7 @@ module Google
           @log_uri = args[:log_uri] if args.key?(:log_uri)
           @max_retries = args[:max_retries] if args.key?(:max_retries)
           @name = args[:name] if args.key?(:name)
+          @node_selector = args[:node_selector] if args.key?(:node_selector)
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @retried = args[:retried] if args.key?(:retried)
@@ -3236,6 +3242,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_retries
       
+        # Hardware constraints configuration.
+        # Corresponds to the JSON property `nodeSelector`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2NodeSelector]
+        attr_accessor :node_selector
+      
         # Optional. Email address of the IAM service account associated with the Task of
         # a Job. The service account represents the identity of the running task, and
         # determines what permissions the task has. If not provided, the task will use
@@ -3273,6 +3284,7 @@ module Google
           @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
           @execution_environment = args[:execution_environment] if args.key?(:execution_environment)
           @max_retries = args[:max_retries] if args.key?(:max_retries)
+          @node_selector = args[:node_selector] if args.key?(:node_selector)
           @service_account = args[:service_account] if args.key?(:service_account)
           @timeout = args[:timeout] if args.key?(:timeout)
           @volumes = args[:volumes] if args.key?(:volumes)
