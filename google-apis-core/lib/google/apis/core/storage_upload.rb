@@ -18,7 +18,6 @@ require 'google/apis/errors'
 require 'stringio'
 require 'tempfile'
 require 'mini_mime'
-
 module Google
   module Apis
     module Core
@@ -96,9 +95,17 @@ module Google
           prepare!
           opencensus_begin_span
           @upload_chunk_size = options.upload_chunk_size
+          if options.upload_url.nil?
+            do_retry :initiate_resumable_upload, client
+          elsif options.delete_upload && !options.upload_url.nil?
+            @upload_url = options.upload_url
+            cancel_resumable_upload(client)
+          else
+            do_retry :reinitiate_resumable_upload, client
+          end
 
-          do_retry :initiate_resumable_upload, client
           while @upload_incomplete
+
             res = do_retry :send_upload_command, client
           end
           res
@@ -125,10 +132,21 @@ module Google
                          body: body,
                          header: request_header,
                          follow_redirect: true)
+
           result = process_response(response.status_code, response.header, response.body)
           success(result)
         rescue => e
           error(e, rethrow: true)
+        end
+
+        # Restarting resumable upload
+        def reinitiate_resumable_upload(client)
+          logger.debug { sprintf('Restarting resumable upload command to %s', url) }
+          @upload_url = options.upload_url unless options.upload_url.nil?
+          check_resumable_upload_status client
+          upload_io.pos = @offset
+          rescue => e
+            error(e, rethrow: true)
         end
 
         # Send the actual content
@@ -152,16 +170,14 @@ module Google
             else
               StringIO.new(upload_io.read(current_chunk_size))
             end
-
           response = client.put(@upload_url, body: chunk_body, header: request_header, follow_redirect: true)
-
           result = process_response(response.status_code, response.header, response.body)
           @upload_incomplete = false if response.status_code.eql? OK_STATUS
           @offset += current_chunk_size if @upload_incomplete
           success(result)
-        rescue => e
-          upload_io.pos = @offset
-          error(e, rethrow: true)
+          rescue => e
+            upload_io.pos = @offset
+            error(e, rethrow: true)
         end
 
         # Check the to see if the upload is complete or needs to be resumed.
@@ -180,6 +196,51 @@ module Google
         def process_response(status, header, body)
           @upload_url = header[LOCATION_HEADER].first unless header[LOCATION_HEADER].empty?
           super(status, header, body)
+        end
+
+        def check_resumable_upload_status(client)
+          # Setting up request header
+          request_header = header.dup
+          request_header[CONTENT_RANGE_HEADER] = "bytes */#{upload_io.size}"
+          request_header[CONTENT_LENGTH_HEADER] = '0'
+          # Initiating call
+          response = client.put(@upload_url, header: request_header, follow_redirect: true)
+          case response.code.to_i
+          when 308
+            if response.headers['Range']
+              range = response.headers['Range']
+              @offset = range ? range.split('-').last.to_i + 1 : 0
+              puts "Upload is incomplete. Bytes uploaded: #{response.headers['Range']}"
+            else
+              puts 'No bytes uploaded yet.'
+            end
+            @upload_incomplete = true
+          when 499
+            # Upload in canceled
+            @upload_incomplete = false
+          when 200, 201
+            # Upload is complete.
+            @upload_incomplete = false
+          else
+            puts "Unexpected response: #{response.code} - #{response.body}"
+            @upload_incomplete = true
+          end
+        end
+
+        # Cancel resumable upload
+        def cancel_resumable_upload(client)
+          # Setting up request header
+          request_header = header.dup
+          request_header[CONTENT_LENGTH_HEADER] = '0'
+          # Initiating call
+          response = client.delete(@upload_url, header: request_header, follow_redirect: true)
+          case response.code.to_i
+          when 499
+            @close_io_on_finish = true
+            @upload_incomplete = false
+          else
+            puts "Failed to cancel upload session. Response: #{response.code} - #{response.body}"
+          end
         end
 
         def streamable?(upload_source)

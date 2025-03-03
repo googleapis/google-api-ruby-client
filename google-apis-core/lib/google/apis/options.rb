@@ -41,7 +41,9 @@ module Google
       :quota_project,
       :query,
       :add_invocation_id_header,
-      :upload_chunk_size)
+      :upload_chunk_size,
+      :upload_url,
+      :delete_upload)
 
     # General client options
     class ClientOptions
