@@ -15597,7 +15597,9 @@ module Google
         # @return [String]
         attr_accessor :model
       
-        # List of names of Cloud Speech phrase sets that are used for transcription.
+        # List of names of Cloud Speech phrase sets that are used for transcription. For
+        # phrase set limitations, please refer to [Cloud Speech API quotas and limits](
+        # https://cloud.google.com/speech-to-text/quotas#content).
         # Corresponds to the JSON property `phraseSets`
         # @return [Array<String>]
         attr_accessor :phrase_sets
