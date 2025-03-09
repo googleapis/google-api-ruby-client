@@ -1734,7 +1734,8 @@ module Google
         # @return [String]
         attr_accessor :ddl
       
-        # The DDL Kind selected for apply, or SOURCE if getting the source tree.
+        # The DDL Kind selected for apply, or UNSPECIFIED if the entity wasn't converted
+        # yet.
         # Corresponds to the JSON property `ddlKind`
         # @return [String]
         attr_accessor :ddl_kind
