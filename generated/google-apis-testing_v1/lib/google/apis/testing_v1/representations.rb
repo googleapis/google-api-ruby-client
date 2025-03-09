@@ -1049,6 +1049,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+          property :region_code, as: 'regionCode'
         end
       end
       

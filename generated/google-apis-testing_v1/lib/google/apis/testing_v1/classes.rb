@@ -1782,6 +1782,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The Unicode country/region code (CLDR) of the lab where the device is hosted.
+        # E.g. "US" for United States, "CH" for Switzerland.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1789,6 +1795,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+          @region_code = args[:region_code] if args.key?(:region_code)
         end
       end
       
