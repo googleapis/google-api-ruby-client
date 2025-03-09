@@ -7836,6 +7836,11 @@ module Google
       class GoogleCloudIntegrationsV1alphaExecution
         include Google::Apis::Core::Hashable
       
+        # Optional. Cloud KMS resource name for the CMEK encryption key.
+        # Corresponds to the JSON property `cloudKmsKey`
+        # @return [String]
+        attr_accessor :cloud_kms_key
+      
         # Cloud Logging details for execution info
         # Corresponds to the JSON property `cloudLoggingDetails`
         # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCloudLoggingDetails]
@@ -7931,6 +7936,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_kms_key = args[:cloud_kms_key] if args.key?(:cloud_kms_key)
           @cloud_logging_details = args[:cloud_logging_details] if args.key?(:cloud_logging_details)
           @create_time = args[:create_time] if args.key?(:create_time)
           @direct_sub_executions = args[:direct_sub_executions] if args.key?(:direct_sub_executions)
@@ -8687,6 +8693,11 @@ module Google
       class GoogleCloudIntegrationsV1alphaIntegrationVersion
         include Google::Apis::Core::Hashable
       
+        # Optional. Cloud KMS resource name for the CMEK encryption key.
+        # Corresponds to the JSON property `cloudKmsKey`
+        # @return [String]
+        attr_accessor :cloud_kms_key
+      
         # Cloud Logging details for execution info
         # Corresponds to the JSON property `cloudLoggingDetails`
         # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCloudLoggingDetails]
@@ -8855,6 +8866,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_kms_key = args[:cloud_kms_key] if args.key?(:cloud_kms_key)
           @cloud_logging_details = args[:cloud_logging_details] if args.key?(:cloud_logging_details)
           @create_time = args[:create_time] if args.key?(:create_time)
           @created_from_template = args[:created_from_template] if args.key?(:created_from_template)
@@ -9343,31 +9355,6 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @templates = args[:templates] if args.key?(:templates)
-        end
-      end
-      
-      # The response for listing the functional test execution data.
-      class GoogleCloudIntegrationsV1alphaListTestCaseExecutionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The detailed information of requested executions
-        # Corresponds to the JSON property `executions`
-        # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaExecution>]
-        attr_accessor :executions
-      
-        # The token used to retrieve the next page results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @executions = args[:executions] if args.key?(:executions)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
