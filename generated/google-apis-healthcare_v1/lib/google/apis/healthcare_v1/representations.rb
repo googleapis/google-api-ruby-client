@@ -1394,6 +1394,8 @@ module Google
           property :encryption_spec, as: 'encryptionSpec', class: Google::Apis::HealthcareV1::EncryptionSpec, decorator: Google::Apis::HealthcareV1::EncryptionSpec::Representation
       
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :time_zone, as: 'timeZone'
         end
       end
