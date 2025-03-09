@@ -8507,6 +8507,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :indexed_record_count
       
+        # Represents the progress of a sync run.
+        # Corresponds to the JSON property `progress`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRunProgress]
+        attr_accessor :progress
+      
         # The number of requests sent to 3p API.
         # Corresponds to the JSON property `sourceApiRequestCount`
         # @return [Fixnum]
@@ -8545,11 +8550,44 @@ module Google
           @errors = args[:errors] if args.key?(:errors)
           @extracted_record_count = args[:extracted_record_count] if args.key?(:extracted_record_count)
           @indexed_record_count = args[:indexed_record_count] if args.key?(:indexed_record_count)
+          @progress = args[:progress] if args.key?(:progress)
           @source_api_request_count = args[:source_api_request_count] if args.key?(:source_api_request_count)
           @state = args[:state] if args.key?(:state)
           @state_update_time = args[:state_update_time] if args.key?(:state_update_time)
           @stats_update_time = args[:stats_update_time] if args.key?(:stats_update_time)
           @sync_type = args[:sync_type] if args.key?(:sync_type)
+        end
+      end
+      
+      # Represents the progress of a sync run.
+      class GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRunProgress
+        include Google::Apis::Core::Hashable
+      
+        # The current progress.
+        # Corresponds to the JSON property `currentCount`
+        # @return [Fixnum]
+        attr_accessor :current_count
+      
+        # Derived. The percentile of the progress.current_count / total_count. The value
+        # is between [0, 1.0] inclusive.
+        # Corresponds to the JSON property `percentile`
+        # @return [Float]
+        attr_accessor :percentile
+      
+        # The total.
+        # Corresponds to the JSON property `totalCount`
+        # @return [Fixnum]
+        attr_accessor :total_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_count = args[:current_count] if args.key?(:current_count)
+          @percentile = args[:percentile] if args.key?(:percentile)
+          @total_count = args[:total_count] if args.key?(:total_count)
         end
       end
       
@@ -9458,6 +9496,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :blocking_reasons
       
+        # Output only. The type of connector. Each source can only map to one type. For
+        # example, salesforce, confluence and jira have THIRD_PARTY connector type. It
+        # is notmutable once set by system.
+        # Corresponds to the JSON property `connectorType`
+        # @return [String]
+        attr_accessor :connector_type
+      
         # Output only. Timestamp the DataConnector was created at.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -9577,6 +9622,11 @@ module Google
         # @return [String]
         attr_accessor :private_connectivity_project_id
       
+        # Output only. real-time sync state
+        # Corresponds to the JSON property `realtimeState`
+        # @return [String]
+        attr_accessor :realtime_state
+      
         # Required. The refresh interval for data sync. If duration is set to 0, the
         # data will be synced in real time. The streaming feature is not supported yet.
         # The minimum is 30 minutes and maximum is 7 days.
@@ -9620,6 +9670,7 @@ module Google
           @auto_run_disabled = args[:auto_run_disabled] if args.key?(:auto_run_disabled)
           @bap_config = args[:bap_config] if args.key?(:bap_config)
           @blocking_reasons = args[:blocking_reasons] if args.key?(:blocking_reasons)
+          @connector_type = args[:connector_type] if args.key?(:connector_type)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_source = args[:data_source] if args.key?(:data_source)
           @destination_configs = args[:destination_configs] if args.key?(:destination_configs)
@@ -9634,6 +9685,7 @@ module Google
           @next_sync_time = args[:next_sync_time] if args.key?(:next_sync_time)
           @params = args[:params] if args.key?(:params)
           @private_connectivity_project_id = args[:private_connectivity_project_id] if args.key?(:private_connectivity_project_id)
+          @realtime_state = args[:realtime_state] if args.key?(:realtime_state)
           @refresh_interval = args[:refresh_interval] if args.key?(:refresh_interval)
           @state = args[:state] if args.key?(:state)
           @static_ip_addresses = args[:static_ip_addresses] if args.key?(:static_ip_addresses)
@@ -9950,9 +10002,19 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The historical crawl rate timeseries data, used for monitoring.
+        # Corresponds to the JSON property `autoRefreshCrawlErrorRate`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries]
+        attr_accessor :auto_refresh_crawl_error_rate
+      
+        # The historical crawl rate timeseries data, used for monitoring.
         # Corresponds to the JSON property `autoRefreshCrawlRate`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries]
         attr_accessor :auto_refresh_crawl_rate
+      
+        # The historical crawl rate timeseries data, used for monitoring.
+        # Corresponds to the JSON property `userTriggeredCrawlErrorRate`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries]
+        attr_accessor :user_triggered_crawl_error_rate
       
         # The historical crawl rate timeseries data, used for monitoring.
         # Corresponds to the JSON property `userTriggeredCrawlRate`
@@ -9965,7 +10027,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_refresh_crawl_error_rate = args[:auto_refresh_crawl_error_rate] if args.key?(:auto_refresh_crawl_error_rate)
           @auto_refresh_crawl_rate = args[:auto_refresh_crawl_rate] if args.key?(:auto_refresh_crawl_rate)
+          @user_triggered_crawl_error_rate = args[:user_triggered_crawl_error_rate] if args.key?(:user_triggered_crawl_error_rate)
           @user_triggered_crawl_rate = args[:user_triggered_crawl_rate] if args.key?(:user_triggered_crawl_rate)
         end
       end
@@ -11958,549 +12022,6 @@ module Google
         end
       end
       
-      # Top-level message sent by the client for the `GenerateGroundedContent` method.
-      class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequest
-        include Google::Apis::Core::Hashable
-      
-        # Content of the current conversation with the model. For single-turn queries,
-        # this is a single instance. For multi-turn queries, this is a repeated field
-        # that contains conversation history + latest request.
-        # Corresponds to the JSON property `contents`
-        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGroundedGenerationContent>]
-        attr_accessor :contents
-      
-        # Content generation specification.
-        # Corresponds to the JSON property `generationSpec`
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGenerationSpec]
-        attr_accessor :generation_spec
-      
-        # Grounding specification.
-        # Corresponds to the JSON property `groundingSpec`
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGroundingSpec]
-        attr_accessor :grounding_spec
-      
-        # Base structured datatype containing multi-part content of a message.
-        # Corresponds to the JSON property `systemInstruction`
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGroundedGenerationContent]
-        attr_accessor :system_instruction
-      
-        # The user labels applied to a resource must meet the following requirements: *
-        # Each resource can have multiple labels, up to a maximum of 64. * Each label
-        # must be a key-value pair. * Keys have a minimum length of 1 character and a
-        # maximum length of 63 characters and cannot be empty. Values can be empty and
-        # have a maximum length of 63 characters. * Keys and values can contain only
-        # lowercase letters, numeric characters, underscores, and dashes. All characters
-        # must use UTF-8 encoding, and international characters are allowed. * The key
-        # portion of a label must be unique. However, you can use the same key with
-        # multiple resources. * Keys must start with a lowercase letter or international
-        # character. See [Google Cloud Document](https://cloud.google.com/resource-
-        # manager/docs/creating-managing-labels#requirements) for more details.
-        # Corresponds to the JSON property `userLabels`
-        # @return [Hash<String,String>]
-        attr_accessor :user_labels
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @contents = args[:contents] if args.key?(:contents)
-          @generation_spec = args[:generation_spec] if args.key?(:generation_spec)
-          @grounding_spec = args[:grounding_spec] if args.key?(:grounding_spec)
-          @system_instruction = args[:system_instruction] if args.key?(:system_instruction)
-          @user_labels = args[:user_labels] if args.key?(:user_labels)
-        end
-      end
-      
-      # Describes the options to customize dynamic retrieval.
-      class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestDynamicRetrievalConfiguration
-        include Google::Apis::Core::Hashable
-      
-        # Describes the predictor settings for dynamic retrieval.
-        # Corresponds to the JSON property `predictor`
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestDynamicRetrievalConfigurationDynamicRetrievalPredictor]
-        attr_accessor :predictor
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @predictor = args[:predictor] if args.key?(:predictor)
-        end
-      end
-      
-      # Describes the predictor settings for dynamic retrieval.
-      class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestDynamicRetrievalConfigurationDynamicRetrievalPredictor
-        include Google::Apis::Core::Hashable
-      
-        # The value of the threshold. If the predictor will predict a value smaller than
-        # this, it would suppress grounding in the source.
-        # Corresponds to the JSON property `threshold`
-        # @return [Float]
-        attr_accessor :threshold
-      
-        # The version of the predictor to be used in dynamic retrieval.
-        # Corresponds to the JSON property `version`
-        # @return [String]
-        attr_accessor :version
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @threshold = args[:threshold] if args.key?(:threshold)
-          @version = args[:version] if args.key?(:version)
-        end
-      end
-      
-      # Content generation specification.
-      class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGenerationSpec
-        include Google::Apis::Core::Hashable
-      
-        # If specified, custom value for frequency penalty will be used.
-        # Corresponds to the JSON property `frequencyPenalty`
-        # @return [Float]
-        attr_accessor :frequency_penalty
-      
-        # Language code for content. Use language tags defined by [BCP47](https://www.
-        # rfc-editor.org/rfc/bcp/bcp47.txt).
-        # Corresponds to the JSON property `languageCode`
-        # @return [String]
-        attr_accessor :language_code
-      
-        # If specified, custom value for max output tokens will be used.
-        # Corresponds to the JSON property `maxOutputTokens`
-        # @return [Fixnum]
-        attr_accessor :max_output_tokens
-      
-        # Specifies which Vertex model id to use for generation.
-        # Corresponds to the JSON property `modelId`
-        # @return [String]
-        attr_accessor :model_id
-      
-        # If specified, custom value for presence penalty will be used.
-        # Corresponds to the JSON property `presencePenalty`
-        # @return [Float]
-        attr_accessor :presence_penalty
-      
-        # If specified, custom value for the seed will be used.
-        # Corresponds to the JSON property `seed`
-        # @return [Fixnum]
-        attr_accessor :seed
-      
-        # If specified, custom value for the temperature will be used.
-        # Corresponds to the JSON property `temperature`
-        # @return [Float]
-        attr_accessor :temperature
-      
-        # If specified, custom value for top-k sampling will be used.
-        # Corresponds to the JSON property `topK`
-        # @return [Fixnum]
-        attr_accessor :top_k
-      
-        # If specified, custom value for nucleus sampling will be used.
-        # Corresponds to the JSON property `topP`
-        # @return [Float]
-        attr_accessor :top_p
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @frequency_penalty = args[:frequency_penalty] if args.key?(:frequency_penalty)
-          @language_code = args[:language_code] if args.key?(:language_code)
-          @max_output_tokens = args[:max_output_tokens] if args.key?(:max_output_tokens)
-          @model_id = args[:model_id] if args.key?(:model_id)
-          @presence_penalty = args[:presence_penalty] if args.key?(:presence_penalty)
-          @seed = args[:seed] if args.key?(:seed)
-          @temperature = args[:temperature] if args.key?(:temperature)
-          @top_k = args[:top_k] if args.key?(:top_k)
-          @top_p = args[:top_p] if args.key?(:top_p)
-        end
-      end
-      
-      # Grounding source.
-      class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGroundingSource
-        include Google::Apis::Core::Hashable
-      
-        # Google Search config parameters.
-        # Corresponds to the JSON property `googleSearchSource`
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGroundingSourceGoogleSearchSource]
-        attr_accessor :google_search_source
-      
-        # Message to be used for grounding based on inline content.
-        # Corresponds to the JSON property `inlineSource`
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGroundingSourceInlineSource]
-        attr_accessor :inline_source
-      
-        # Message to be used for grounding with Vertex AI Search.
-        # Corresponds to the JSON property `searchSource`
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGroundingSourceSearchSource]
-        attr_accessor :search_source
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @google_search_source = args[:google_search_source] if args.key?(:google_search_source)
-          @inline_source = args[:inline_source] if args.key?(:inline_source)
-          @search_source = args[:search_source] if args.key?(:search_source)
-        end
-      end
-      
-      # Google Search config parameters.
-      class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGroundingSourceGoogleSearchSource
-        include Google::Apis::Core::Hashable
-      
-        # Describes the options to customize dynamic retrieval.
-        # Corresponds to the JSON property `dynamicRetrievalConfig`
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestDynamicRetrievalConfiguration]
-        attr_accessor :dynamic_retrieval_config
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @dynamic_retrieval_config = args[:dynamic_retrieval_config] if args.key?(:dynamic_retrieval_config)
-        end
-      end
-      
-      # Message to be used for grounding based on inline content.
-      class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGroundingSourceInlineSource
-        include Google::Apis::Core::Hashable
-      
-        # Attributes associated with the content. Common attributes include `source` (
-        # indicating where the content was sourced from) and `author` (indicating the
-        # author of the content).
-        # Corresponds to the JSON property `attributes`
-        # @return [Hash<String,String>]
-        attr_accessor :attributes
-      
-        # List of facts to be used for grounding.
-        # Corresponds to the JSON property `groundingFacts`
-        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGroundingFact>]
-        attr_accessor :grounding_facts
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @attributes = args[:attributes] if args.key?(:attributes)
-          @grounding_facts = args[:grounding_facts] if args.key?(:grounding_facts)
-        end
-      end
-      
-      # Message to be used for grounding with Vertex AI Search.
-      class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGroundingSourceSearchSource
-        include Google::Apis::Core::Hashable
-      
-        # Filter expression to be applied to the search. The syntax is the same as
-        # SearchRequest.filter.
-        # Corresponds to the JSON property `filter`
-        # @return [String]
-        attr_accessor :filter
-      
-        # Number of search results to return. The default value is 10. The maximumm
-        # allowed value is 10.
-        # Corresponds to the JSON property `maxResultCount`
-        # @return [Fixnum]
-        attr_accessor :max_result_count
-      
-        # If set, safe search is enabled in Vertex AI Search requests.
-        # Corresponds to the JSON property `safeSearch`
-        # @return [Boolean]
-        attr_accessor :safe_search
-        alias_method :safe_search?, :safe_search
-      
-        # The resource name of the Engine to use. Format: `projects/`project`/locations/`
-        # location`/collections/`collection_id`/engines/`engine_id`/servingConfigs/`
-        # serving_config_id``
-        # Corresponds to the JSON property `servingConfig`
-        # @return [String]
-        attr_accessor :serving_config
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @filter = args[:filter] if args.key?(:filter)
-          @max_result_count = args[:max_result_count] if args.key?(:max_result_count)
-          @safe_search = args[:safe_search] if args.key?(:safe_search)
-          @serving_config = args[:serving_config] if args.key?(:serving_config)
-        end
-      end
-      
-      # Grounding specification.
-      class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGroundingSpec
-        include Google::Apis::Core::Hashable
-      
-        # Grounding sources.
-        # Corresponds to the JSON property `groundingSources`
-        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGroundingSource>]
-        attr_accessor :grounding_sources
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @grounding_sources = args[:grounding_sources] if args.key?(:grounding_sources)
-        end
-      end
-      
-      # Response for the `GenerateGroundedContent` method.
-      class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponse
-        include Google::Apis::Core::Hashable
-      
-        # Generated candidates.
-        # Corresponds to the JSON property `candidates`
-        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidate>]
-        attr_accessor :candidates
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @candidates = args[:candidates] if args.key?(:candidates)
-        end
-      end
-      
-      # A response candidate generated from the model.
-      class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidate
-        include Google::Apis::Core::Hashable
-      
-        # Base structured datatype containing multi-part content of a message.
-        # Corresponds to the JSON property `content`
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGroundedGenerationContent]
-        attr_accessor :content
-      
-        # Citation for the generated content.
-        # Corresponds to the JSON property `groundingMetadata`
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidateGroundingMetadata]
-        attr_accessor :grounding_metadata
-      
-        # The overall grounding score for the candidate, in the range of [0, 1].
-        # Corresponds to the JSON property `groundingScore`
-        # @return [Float]
-        attr_accessor :grounding_score
-      
-        # Index of the candidate.
-        # Corresponds to the JSON property `index`
-        # @return [Fixnum]
-        attr_accessor :index
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @content = args[:content] if args.key?(:content)
-          @grounding_metadata = args[:grounding_metadata] if args.key?(:grounding_metadata)
-          @grounding_score = args[:grounding_score] if args.key?(:grounding_score)
-          @index = args[:index] if args.key?(:index)
-        end
-      end
-      
-      # Citation for the generated content.
-      class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidateGroundingMetadata
-        include Google::Apis::Core::Hashable
-      
-        # GroundingSupport across all claims in the answer candidate. An support to a
-        # fact indicates that the claim is supported by the fact.
-        # Corresponds to the JSON property `groundingSupport`
-        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidateGroundingMetadataGroundingSupport>]
-        attr_accessor :grounding_support
-      
-        # Retrieval metadata to provide an understanding in the retrieval steps
-        # performed by the model. There can be multiple such messages which can
-        # correspond to different parts of the retrieval. This is a mechanism used to
-        # ensure transparency to our users.
-        # Corresponds to the JSON property `retrievalMetadata`
-        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidateGroundingMetadataRetrievalMetadata>]
-        attr_accessor :retrieval_metadata
-      
-        # Google search entry point.
-        # Corresponds to the JSON property `searchEntryPoint`
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidateGroundingMetadataSearchEntryPoint]
-        attr_accessor :search_entry_point
-      
-        # List of chunks to be attributed across all claims in the candidate. These are
-        # derived from the grounding sources supplied in the request.
-        # Corresponds to the JSON property `supportChunks`
-        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaFactChunk>]
-        attr_accessor :support_chunks
-      
-        # Web search queries for the following-up web search.
-        # Corresponds to the JSON property `webSearchQueries`
-        # @return [Array<String>]
-        attr_accessor :web_search_queries
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @grounding_support = args[:grounding_support] if args.key?(:grounding_support)
-          @retrieval_metadata = args[:retrieval_metadata] if args.key?(:retrieval_metadata)
-          @search_entry_point = args[:search_entry_point] if args.key?(:search_entry_point)
-          @support_chunks = args[:support_chunks] if args.key?(:support_chunks)
-          @web_search_queries = args[:web_search_queries] if args.key?(:web_search_queries)
-        end
-      end
-      
-      # Describes the metadata about dynamic retrieval.
-      class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidateGroundingMetadataDynamicRetrievalMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Describes the metadata about the dynamic retrieval predictor.
-        # Corresponds to the JSON property `predictorMetadata`
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidateGroundingMetadataDynamicRetrievalPredictorMetadata]
-        attr_accessor :predictor_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @predictor_metadata = args[:predictor_metadata] if args.key?(:predictor_metadata)
-        end
-      end
-      
-      # Describes the metadata about the dynamic retrieval predictor.
-      class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidateGroundingMetadataDynamicRetrievalPredictorMetadata
-        include Google::Apis::Core::Hashable
-      
-        # The value of the predictor. This should be between [0, 1] where a value of 0
-        # means that the query would not benefit from grounding, while a value of 1.0
-        # means that the query would benefit the most. In between values allow to
-        # differentiate between different usefulness scores for grounding.
-        # Corresponds to the JSON property `prediction`
-        # @return [Float]
-        attr_accessor :prediction
-      
-        # The version of the predictor which was used in dynamic retrieval.
-        # Corresponds to the JSON property `version`
-        # @return [String]
-        attr_accessor :version
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @prediction = args[:prediction] if args.key?(:prediction)
-          @version = args[:version] if args.key?(:version)
-        end
-      end
-      
-      # Grounding info for a claim in the candidate and its support.
-      class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidateGroundingMetadataGroundingSupport
-        include Google::Apis::Core::Hashable
-      
-        # Text for the claim in the candidate. Always provided when a support is found.
-        # Corresponds to the JSON property `claimText`
-        # @return [String]
-        attr_accessor :claim_text
-      
-        # A list of indices (into 'support_chunks') specifying the citations associated
-        # with the claim. For instance [1,3,4] means that support_chunks[1],
-        # support_chunks[3], support_chunks[4] are the chunks attributed to the claim.
-        # Corresponds to the JSON property `supportChunkIndices`
-        # @return [Array<Fixnum>]
-        attr_accessor :support_chunk_indices
-      
-        # A score in the range of [0, 1] describing how grounded is a specific claim in
-        # the support chunks indicated. Higher value means that the claim is better
-        # supported by the chunks.
-        # Corresponds to the JSON property `supportScore`
-        # @return [Float]
-        attr_accessor :support_score
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @claim_text = args[:claim_text] if args.key?(:claim_text)
-          @support_chunk_indices = args[:support_chunk_indices] if args.key?(:support_chunk_indices)
-          @support_score = args[:support_score] if args.key?(:support_score)
-        end
-      end
-      
-      # Describes the metadata associated with a retrieval step.
-      class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidateGroundingMetadataRetrievalMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Describes the metadata about dynamic retrieval.
-        # Corresponds to the JSON property `dynamicRetrievalMetadata`
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidateGroundingMetadataDynamicRetrievalMetadata]
-        attr_accessor :dynamic_retrieval_metadata
-      
-        # Describes the source to which the metadata is referring to.
-        # Corresponds to the JSON property `source`
-        # @return [String]
-        attr_accessor :source
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @dynamic_retrieval_metadata = args[:dynamic_retrieval_metadata] if args.key?(:dynamic_retrieval_metadata)
-          @source = args[:source] if args.key?(:source)
-        end
-      end
-      
-      # Google search entry point.
-      class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidateGroundingMetadataSearchEntryPoint
-        include Google::Apis::Core::Hashable
-      
-        # Web content snippet that can be embedded in a web page or an app webview.
-        # Corresponds to the JSON property `renderedContent`
-        # @return [String]
-        attr_accessor :rendered_content
-      
-        # Base64 encoded JSON representing array of tuple.
-        # Corresponds to the JSON property `sdkBlob`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :sdk_blob
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @rendered_content = args[:rendered_content] if args.key?(:rendered_content)
-          @sdk_blob = args[:sdk_blob] if args.key?(:sdk_blob)
-        end
-      end
-      
       # Request for GetSession method.
       class GoogleCloudDiscoveryengineV1alphaGetSessionRequest
         include Google::Apis::Core::Hashable
@@ -12548,51 +12069,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @document_data_map = args[:document_data_map] if args.key?(:document_data_map)
-        end
-      end
-      
-      # Base structured datatype containing multi-part content of a message.
-      class GoogleCloudDiscoveryengineV1alphaGroundedGenerationContent
-        include Google::Apis::Core::Hashable
-      
-        # Ordered `Parts` that constitute a single message.
-        # Corresponds to the JSON property `parts`
-        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGroundedGenerationContentPart>]
-        attr_accessor :parts
-      
-        # Producer of the content. Must be either `user` or `model`. Intended to be used
-        # for multi-turn conversations. Otherwise, it can be left unset.
-        # Corresponds to the JSON property `role`
-        # @return [String]
-        attr_accessor :role
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @parts = args[:parts] if args.key?(:parts)
-          @role = args[:role] if args.key?(:role)
-        end
-      end
-      
-      # Single part of content.
-      class GoogleCloudDiscoveryengineV1alphaGroundedGenerationContentPart
-        include Google::Apis::Core::Hashable
-      
-        # Inline text.
-        # Corresponds to the JSON property `text`
-        # @return [String]
-        attr_accessor :text
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @text = args[:text] if args.key?(:text)
         end
       end
       
@@ -15367,7 +14843,7 @@ module Google
         alias_method :ignore_record_details_in_response?, :ignore_record_details_in_response
       
         # The identifier of the model to use. It is one of: * `semantic-ranker-512@
-        # latest`: Semantic ranking model with maxiumn input token size 512. It is set
+        # latest`: Semantic ranking model with maximum input token size 512. It is set
         # to `semantic-ranker-512@latest` by default if unspecified.
         # Corresponds to the JSON property `model`
         # @return [String]
@@ -16684,10 +16160,10 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCustomFineTuningSpec]
         attr_accessor :custom_fine_tuning_spec
       
-        # Specs defining DataStores to filter on in a search call and configurations for
-        # those data stores. This is only considered for Engines with multiple data
-        # stores. For engines with a single data store, the specs directly under
-        # SearchRequest should be used.
+        # Specifications that define the specific [DataStore]s to be searched, along
+        # with configurations for those data stores. This is only considered for Engines
+        # with multiple data stores. For engines with a single data store, the specs
+        # directly under SearchRequest should be used.
         # Corresponds to the JSON property `dataStoreSpecs`
         # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec>]
         attr_accessor :data_store_specs
@@ -18218,6 +17694,11 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfo
         include Google::Apis::Core::Hashable
       
+        # The classified intents from the input query.
+        # Corresponds to the JSON property `classifiedIntents`
+        # @return [Array<String>]
+        attr_accessor :classified_intents
+      
         # The filters that were extracted from the input query.
         # Corresponds to the JSON property `extractedFilters`
         # @return [String]
@@ -18246,6 +17727,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @classified_intents = args[:classified_intents] if args.key?(:classified_intents)
           @extracted_filters = args[:extracted_filters] if args.key?(:extracted_filters)
           @rewritten_query = args[:rewritten_query] if args.key?(:rewritten_query)
           @sql_request = args[:sql_request] if args.key?(:sql_request)
@@ -20802,6 +20284,11 @@ module Google
         attr_accessor :enable_web_app
         alias_method :enable_web_app?, :enable_web_app
       
+        # Optional. The workforce identity pool provider used to access the widget.
+        # Corresponds to the JSON property `workforceIdentityPoolProvider`
+        # @return [String]
+        attr_accessor :workforce_identity_pool_provider
+      
         def initialize(**args)
            update!(**args)
         end
@@ -20811,6 +20298,7 @@ module Google
           @allow_public_access = args[:allow_public_access] if args.key?(:allow_public_access)
           @allowlisted_domains = args[:allowlisted_domains] if args.key?(:allowlisted_domains)
           @enable_web_app = args[:enable_web_app] if args.key?(:enable_web_app)
+          @workforce_identity_pool_provider = args[:workforce_identity_pool_provider] if args.key?(:workforce_identity_pool_provider)
         end
       end
       
@@ -21290,6 +20778,11 @@ module Google
         attr_accessor :ignore_non_answer_seeking_query
         alias_method :ignore_non_answer_seeking_query?, :ignore_non_answer_seeking_query
       
+        # Optional. Source of image returned in the answer.
+        # Corresponds to the JSON property `imageSource`
+        # @return [String]
+        attr_accessor :image_source
+      
         # Language code for Summary. Use language tags defined by [BCP47](https://www.
         # rfc-editor.org/rfc/bcp/bcp47.txt). Note: This is an experimental feature.
         # Corresponds to the JSON property `languageCode`
@@ -21328,6 +20821,7 @@ module Google
           @ignore_adversarial_query = args[:ignore_adversarial_query] if args.key?(:ignore_adversarial_query)
           @ignore_low_relevant_content = args[:ignore_low_relevant_content] if args.key?(:ignore_low_relevant_content)
           @ignore_non_answer_seeking_query = args[:ignore_non_answer_seeking_query] if args.key?(:ignore_non_answer_seeking_query)
+          @image_source = args[:image_source] if args.key?(:image_source)
           @language_code = args[:language_code] if args.key?(:language_code)
           @max_rephrase_steps = args[:max_rephrase_steps] if args.key?(:max_rephrase_steps)
           @model_prompt_preamble = args[:model_prompt_preamble] if args.key?(:model_prompt_preamble)
@@ -22322,9 +21816,19 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The historical crawl rate timeseries data, used for monitoring.
+        # Corresponds to the JSON property `autoRefreshCrawlErrorRate`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries]
+        attr_accessor :auto_refresh_crawl_error_rate
+      
+        # The historical crawl rate timeseries data, used for monitoring.
         # Corresponds to the JSON property `autoRefreshCrawlRate`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries]
         attr_accessor :auto_refresh_crawl_rate
+      
+        # The historical crawl rate timeseries data, used for monitoring.
+        # Corresponds to the JSON property `userTriggeredCrawlErrorRate`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries]
+        attr_accessor :user_triggered_crawl_error_rate
       
         # The historical crawl rate timeseries data, used for monitoring.
         # Corresponds to the JSON property `userTriggeredCrawlRate`
@@ -22337,7 +21841,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_refresh_crawl_error_rate = args[:auto_refresh_crawl_error_rate] if args.key?(:auto_refresh_crawl_error_rate)
           @auto_refresh_crawl_rate = args[:auto_refresh_crawl_rate] if args.key?(:auto_refresh_crawl_rate)
+          @user_triggered_crawl_error_rate = args[:user_triggered_crawl_error_rate] if args.key?(:user_triggered_crawl_error_rate)
           @user_triggered_crawl_rate = args[:user_triggered_crawl_rate] if args.key?(:user_triggered_crawl_rate)
         end
       end
@@ -24254,10 +23760,10 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec]
         attr_accessor :content_search_spec
       
-        # Specs defining DataStores to filter on in a search call and configurations for
-        # those data stores. This is only considered for Engines with multiple data
-        # stores. For engines with a single data store, the specs directly under
-        # SearchRequest should be used.
+        # Specifications that define the specific [DataStore]s to be searched, along
+        # with configurations for those data stores. This is only considered for Engines
+        # with multiple data stores. For engines with a single data store, the specs
+        # directly under SearchRequest should be used.
         # Corresponds to the JSON property `dataStoreSpecs`
         # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec>]
         attr_accessor :data_store_specs
