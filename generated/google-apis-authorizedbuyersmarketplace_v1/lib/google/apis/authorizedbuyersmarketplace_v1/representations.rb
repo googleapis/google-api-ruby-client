@@ -581,6 +581,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :billed_buyer, as: 'billedBuyer'
           property :buyer, as: 'buyer'
+          property :buyer_permission_type, as: 'buyerPermissionType'
           property :client, as: 'client'
           property :create_time, as: 'createTime'
           property :creative_requirements, as: 'creativeRequirements', class: Google::Apis::AuthorizedbuyersmarketplaceV1::CreativeRequirements, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1::CreativeRequirements::Representation
