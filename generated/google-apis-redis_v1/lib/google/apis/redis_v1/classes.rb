@@ -562,6 +562,13 @@ module Google
         # @return [String]
         attr_accessor :node_type
       
+        # Optional. Input only. Ondemand maintenance for the cluster. This field can be
+        # used to trigger ondemand critical update on the cluster.
+        # Corresponds to the JSON property `ondemandMaintenance`
+        # @return [Boolean]
+        attr_accessor :ondemand_maintenance
+        alias_method :ondemand_maintenance?, :ondemand_maintenance
+      
         # Configuration of the persistence functionality.
         # Corresponds to the JSON property `persistenceConfig`
         # @return [Google::Apis::RedisV1::ClusterPersistenceConfig]
@@ -661,6 +668,7 @@ module Google
           @managed_backup_source = args[:managed_backup_source] if args.key?(:managed_backup_source)
           @name = args[:name] if args.key?(:name)
           @node_type = args[:node_type] if args.key?(:node_type)
+          @ondemand_maintenance = args[:ondemand_maintenance] if args.key?(:ondemand_maintenance)
           @persistence_config = args[:persistence_config] if args.key?(:persistence_config)
           @precise_size_gb = args[:precise_size_gb] if args.key?(:precise_size_gb)
           @psc_configs = args[:psc_configs] if args.key?(:psc_configs)
@@ -2418,14 +2426,14 @@ module Google
       class MachineConfiguration
         include Google::Apis::Core::Hashable
       
-        # The number of CPUs. Deprecated. Use vcpu_count instead. TODO(b/342344482, b/
-        # 342346271) add proto validations again after bug fix.
+        # The number of CPUs. Deprecated. Use vcpu_count instead. TODO(b/342344482) add
+        # proto validations again after bug fix.
         # Corresponds to the JSON property `cpuCount`
         # @return [Fixnum]
         attr_accessor :cpu_count
       
-        # Memory size in bytes. TODO(b/342344482, b/342346271) add proto validations
-        # again after bug fix.
+        # Memory size in bytes. TODO(b/342344482) add proto validations again after bug
+        # fix.
         # Corresponds to the JSON property `memorySizeInBytes`
         # @return [Fixnum]
         attr_accessor :memory_size_in_bytes
@@ -2435,8 +2443,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :shard_count
       
-        # Optional. The number of vCPUs. TODO(b/342344482, b/342346271) add proto
-        # validations again after bug fix.
+        # Optional. The number of vCPUs. TODO(b/342344482) add proto validations again
+        # after bug fix.
         # Corresponds to the JSON property `vcpuCount`
         # @return [Float]
         attr_accessor :vcpu_count
