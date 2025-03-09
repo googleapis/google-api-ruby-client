@@ -2548,6 +2548,117 @@ module Google
         end
       end
       
+      # Details about a piece of potentially sensitive information that was detected
+      # when the data resource was profiled.
+      class GooglePrivacyDlpV2DataProfileFinding
+        include Google::Apis::Core::Hashable
+      
+        # Resource name of the data profile associated with the finding.
+        # Corresponds to the JSON property `dataProfileResourceName`
+        # @return [String]
+        attr_accessor :data_profile_resource_name
+      
+        # A unique identifier for the finding.
+        # Corresponds to the JSON property `findingId`
+        # @return [String]
+        attr_accessor :finding_id
+      
+        # Type of information detected by the API.
+        # Corresponds to the JSON property `infotype`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType]
+        attr_accessor :infotype
+      
+        # Location of a data profile finding within a resource.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DataProfileFindingLocation]
+        attr_accessor :location
+      
+        # The content that was found. Even if the content is not textual, it may be
+        # converted to a textual representation here. If the finding exceeds 4096 bytes
+        # in length, the quote may be omitted.
+        # Corresponds to the JSON property `quote`
+        # @return [String]
+        attr_accessor :quote
+      
+        # Message for infoType-dependent details parsed from quote.
+        # Corresponds to the JSON property `quoteInfo`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2QuoteInfo]
+        attr_accessor :quote_info
+      
+        # How broadly a resource has been shared.
+        # Corresponds to the JSON property `resourceVisibility`
+        # @return [String]
+        attr_accessor :resource_visibility
+      
+        # Timestamp when the finding was detected.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_profile_resource_name = args[:data_profile_resource_name] if args.key?(:data_profile_resource_name)
+          @finding_id = args[:finding_id] if args.key?(:finding_id)
+          @infotype = args[:infotype] if args.key?(:infotype)
+          @location = args[:location] if args.key?(:location)
+          @quote = args[:quote] if args.key?(:quote)
+          @quote_info = args[:quote_info] if args.key?(:quote_info)
+          @resource_visibility = args[:resource_visibility] if args.key?(:resource_visibility)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+        end
+      end
+      
+      # Location of a data profile finding within a resource.
+      class GooglePrivacyDlpV2DataProfileFindingLocation
+        include Google::Apis::Core::Hashable
+      
+        # Name of the container where the finding is located. The top-level name is the
+        # source file name or table name. Names of some common storage containers are
+        # formatted as follows: * BigQuery tables: ``project_id`:`dataset_id`.`table_id``
+        # * Cloud Storage files: `gs://`bucket`/`path``
+        # Corresponds to the JSON property `containerName`
+        # @return [String]
+        attr_accessor :container_name
+      
+        # Location of a finding within a resource that produces a table data profile.
+        # Corresponds to the JSON property `dataProfileFindingRecordLocation`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DataProfileFindingRecordLocation]
+        attr_accessor :data_profile_finding_record_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @container_name = args[:container_name] if args.key?(:container_name)
+          @data_profile_finding_record_location = args[:data_profile_finding_record_location] if args.key?(:data_profile_finding_record_location)
+        end
+      end
+      
+      # Location of a finding within a resource that produces a table data profile.
+      class GooglePrivacyDlpV2DataProfileFindingRecordLocation
+        include Google::Apis::Core::Hashable
+      
+        # General identifier of a data field in a storage service.
+        # Corresponds to the JSON property `field`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId]
+        attr_accessor :field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field = args[:field] if args.key?(:field)
+        end
+      end
+      
       # Configuration for setting up a job to scan resources for profile generation.
       # Only one data profile configuration may exist per organization, folder, or
       # project. The generated data profiles are retained according to the [data
@@ -4590,6 +4701,13 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable]
         attr_accessor :profile_table
       
+        # Message defining the location of a BigQuery table. A table is uniquely
+        # identified by its project_id, dataset_id, and table_name. Within a query a
+        # table is often referenced with a string in the format of: `:.` or `..`.
+        # Corresponds to the JSON property `sampleFindingsTable`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable]
+        attr_accessor :sample_findings_table
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4597,6 +4715,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @profile_table = args[:profile_table] if args.key?(:profile_table)
+          @sample_findings_table = args[:sample_findings_table] if args.key?(:sample_findings_table)
         end
       end
       
@@ -4997,6 +5116,13 @@ module Google
         # @return [String]
         attr_accessor :resource_visibility
       
+        # Message defining the location of a BigQuery table. A table is uniquely
+        # identified by its project_id, dataset_id, and table_name. Within a query a
+        # table is often referenced with a string in the format of: `:.` or `..`.
+        # Corresponds to the JSON property `sampleFindingsTable`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable]
+        attr_accessor :sample_findings_table
+      
         # Score is calculated from of all elements in the data profile. A higher level
         # means the data is more sensitive.
         # Corresponds to the JSON property `sensitivityScore`
@@ -5036,6 +5162,7 @@ module Google
           @resource_attributes = args[:resource_attributes] if args.key?(:resource_attributes)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @resource_visibility = args[:resource_visibility] if args.key?(:resource_visibility)
+          @sample_findings_table = args[:sample_findings_table] if args.key?(:sample_findings_table)
           @sensitivity_score = args[:sensitivity_score] if args.key?(:sensitivity_score)
           @state = args[:state] if args.key?(:state)
         end
@@ -9817,6 +9944,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :row_count
       
+        # Message defining the location of a BigQuery table. A table is uniquely
+        # identified by its project_id, dataset_id, and table_name. Within a query a
+        # table is often referenced with a string in the format of: `:.` or `..`.
+        # Corresponds to the JSON property `sampleFindingsTable`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable]
+        attr_accessor :sample_findings_table
+      
         # The number of columns profiled in the table.
         # Corresponds to the JSON property `scannedColumnCount`
         # @return [Fixnum]
@@ -9871,6 +10005,7 @@ module Google
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @resource_visibility = args[:resource_visibility] if args.key?(:resource_visibility)
           @row_count = args[:row_count] if args.key?(:row_count)
+          @sample_findings_table = args[:sample_findings_table] if args.key?(:sample_findings_table)
           @scanned_column_count = args[:scanned_column_count] if args.key?(:scanned_column_count)
           @sensitivity_score = args[:sensitivity_score] if args.key?(:sensitivity_score)
           @state = args[:state] if args.key?(:state)
