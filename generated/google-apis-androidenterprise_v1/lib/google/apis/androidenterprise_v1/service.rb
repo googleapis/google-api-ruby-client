@@ -461,6 +461,54 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Generates an enterprise upgrade URL to upgrade an existing managed Google Play
+        # Accounts enterprise to a managed Google domain. **Note:** This feature is not
+        # generally available.
+        # @param [String] enterprise_id
+        #   Required. The ID of the enterprise.
+        # @param [String] admin_email
+        #   Optional. Email address used to prefill the admin field of the enterprise
+        #   signup form as part of the upgrade process. This value is a hint only and can
+        #   be altered by the user. Personal email addresses are not allowed. If `
+        #   allowedDomains` is non-empty then this must belong to one of the `
+        #   allowedDomains`.
+        # @param [Array<String>, String] allowed_domains
+        #   Optional. A list of domains that are permitted for the admin email. The IT
+        #   admin cannot enter an email address with a domain name that is not in this
+        #   list. Subdomains of domains in this list are not allowed but can be allowed by
+        #   adding a second entry which has `*.` prefixed to the domain name (e.g. *.
+        #   example.com). If the field is not present or is an empty list then the IT
+        #   admin is free to use any valid domain name. Personal email domains are not
+        #   allowed.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::GenerateEnterpriseUpgradeUrlResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidenterpriseV1::GenerateEnterpriseUpgradeUrlResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_enterprise_enterprise_upgrade_url(enterprise_id, admin_email: nil, allowed_domains: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidenterprise/v1/enterprises/{enterpriseId}/generateEnterpriseUpgradeUrl', options)
+          command.response_representation = Google::Apis::AndroidenterpriseV1::GenerateEnterpriseUpgradeUrlResponse::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::GenerateEnterpriseUpgradeUrlResponse
+          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
+          command.query['adminEmail'] = admin_email unless admin_email.nil?
+          command.query['allowedDomains'] = allowed_domains unless allowed_domains.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Generates a sign-up URL.
         # @param [String] admin_email
         #   Optional. Email address used to prefill the admin field of the enterprise

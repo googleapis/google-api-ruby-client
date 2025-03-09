@@ -202,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EnterpriseUpgradeEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListEnterprisesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,6 +227,12 @@ module Google
       end
       
       class ListEntitlementsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateEnterpriseUpgradeUrlResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -826,6 +838,13 @@ module Google
         end
       end
       
+      class EnterpriseUpgradeEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :upgrade_state, as: 'upgradeState'
+        end
+      end
+      
       class ListEnterprisesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -855,6 +874,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :entitlement, as: 'entitlement', class: Google::Apis::AndroidenterpriseV1::Entitlement, decorator: Google::Apis::AndroidenterpriseV1::Entitlement::Representation
       
+        end
+      end
+      
+      class GenerateEnterpriseUpgradeUrlResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :url, as: 'url'
         end
       end
       
@@ -1046,6 +1072,8 @@ module Google
           property :device_report_update_event, as: 'deviceReportUpdateEvent', class: Google::Apis::AndroidenterpriseV1::DeviceReportUpdateEvent, decorator: Google::Apis::AndroidenterpriseV1::DeviceReportUpdateEvent::Representation
       
           property :enterprise_id, as: 'enterpriseId'
+          property :enterprise_upgrade_event, as: 'enterpriseUpgradeEvent', class: Google::Apis::AndroidenterpriseV1::EnterpriseUpgradeEvent, decorator: Google::Apis::AndroidenterpriseV1::EnterpriseUpgradeEvent::Representation
+      
           property :install_failure_event, as: 'installFailureEvent', class: Google::Apis::AndroidenterpriseV1::InstallFailureEvent, decorator: Google::Apis::AndroidenterpriseV1::InstallFailureEvent::Representation
       
           property :new_device_event, as: 'newDeviceEvent', class: Google::Apis::AndroidenterpriseV1::NewDeviceEvent, decorator: Google::Apis::AndroidenterpriseV1::NewDeviceEvent::Representation
