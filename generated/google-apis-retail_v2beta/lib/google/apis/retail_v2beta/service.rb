@@ -150,7 +150,10 @@ module Google
         #   The entity for customers who run multiple entities, domains, sites, or regions,
         #   for example, `Google US`, `Google Ads`, `Waymo`, `google.com`, `youtube.com`,
         #   etc. If this is set, it must be an exact match with UserEvent.entity to get
-        #   per-entity autocomplete results.
+        #   per-entity autocomplete results. Also, this entity should be limited to 256
+        #   characters, if too long, it will be truncated to 256 characters in both
+        #   generation and serving time, and may lead to mis-match. To ensure it works,
+        #   please set the entity with string within 256 characters.
         # @param [Array<String>, String] language_codes
         #   Note that this field applies for `user-data` dataset only. For requests with `
         #   cloud-retail` dataset, setting this field has no effect. The language filters
