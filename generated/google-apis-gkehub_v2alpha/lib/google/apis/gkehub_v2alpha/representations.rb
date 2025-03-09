@@ -124,6 +124,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConfigManagementContainerOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementDeploymentOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConfigManagementErrorResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -663,6 +675,8 @@ module Google
       class ConfigManagementConfigSync
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deployment_overrides, as: 'deploymentOverrides', class: Google::Apis::GkehubV2alpha::ConfigManagementDeploymentOverride, decorator: Google::Apis::GkehubV2alpha::ConfigManagementDeploymentOverride::Representation
+      
           property :enabled, as: 'enabled'
           property :git, as: 'git', class: Google::Apis::GkehubV2alpha::ConfigManagementGitConfig, decorator: Google::Apis::GkehubV2alpha::ConfigManagementGitConfig::Representation
       
@@ -728,6 +742,27 @@ module Google
           property :resource_group_controller_manager, as: 'resourceGroupControllerManager'
           property :root_reconciler, as: 'rootReconciler'
           property :syncer, as: 'syncer'
+        end
+      end
+      
+      class ConfigManagementContainerOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :container_name, as: 'containerName'
+          property :cpu_limit, as: 'cpuLimit'
+          property :cpu_request, as: 'cpuRequest'
+          property :memory_limit, as: 'memoryLimit'
+          property :memory_request, as: 'memoryRequest'
+        end
+      end
+      
+      class ConfigManagementDeploymentOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :containers, as: 'containers', class: Google::Apis::GkehubV2alpha::ConfigManagementContainerOverride, decorator: Google::Apis::GkehubV2alpha::ConfigManagementContainerOverride::Representation
+      
+          property :deployment_name, as: 'deploymentName'
+          property :deployment_namespace, as: 'deploymentNamespace'
         end
       end
       
