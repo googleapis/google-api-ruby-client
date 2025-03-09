@@ -34,6 +34,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CheckAccessTypeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CheckAccessTypeResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -85,6 +97,20 @@ module Google
       class CancelPortabilityArchiveResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CheckAccessTypeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CheckAccessTypeResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :one_time_resources, as: 'oneTimeResources'
+          collection :time_based_resources, as: 'timeBasedResources'
         end
       end
       

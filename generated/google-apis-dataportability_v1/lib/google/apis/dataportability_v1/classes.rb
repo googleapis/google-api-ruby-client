@@ -48,6 +48,47 @@ module Google
         end
       end
       
+      # Request to check the token's access type. All required information is derived
+      # from the attached OAuth token.
+      class CheckAccessTypeRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response to checking the token's access type.
+      class CheckAccessTypeResponse
+        include Google::Apis::Core::Hashable
+      
+        # Jobs initiated with this token will be one-time if any requested resources
+        # have one-time access.
+        # Corresponds to the JSON property `oneTimeResources`
+        # @return [Array<String>]
+        attr_accessor :one_time_resources
+      
+        # Jobs initiated with this token will be time-based if all requested resources
+        # have time-based access.
+        # Corresponds to the JSON property `timeBasedResources`
+        # @return [Array<String>]
+        attr_accessor :time_based_resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @one_time_resources = args[:one_time_resources] if args.key?(:one_time_resources)
+          @time_based_resources = args[:time_based_resources] if args.key?(:time_based_resources)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
