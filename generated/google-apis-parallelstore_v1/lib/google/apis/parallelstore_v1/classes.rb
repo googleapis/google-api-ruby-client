@@ -84,6 +84,11 @@ module Google
         # @return [Google::Apis::ParallelstoreV1::DestinationGcsBucket]
         attr_accessor :destination_gcs_bucket
       
+        # Transfer metadata options for the instance.
+        # Corresponds to the JSON property `metadataOptions`
+        # @return [Google::Apis::ParallelstoreV1::TransferMetadataOptions]
+        attr_accessor :metadata_options
+      
         # Optional. An optional request ID to identify requests. Specify a unique
         # request ID so that if you must retry your request, the server will know to
         # ignore the request if it has already been completed. The server will guarantee
@@ -120,6 +125,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @destination_gcs_bucket = args[:destination_gcs_bucket] if args.key?(:destination_gcs_bucket)
+          @metadata_options = args[:metadata_options] if args.key?(:metadata_options)
           @request_id = args[:request_id] if args.key?(:request_id)
           @service_account = args[:service_account] if args.key?(:service_account)
           @source_parallelstore = args[:source_parallelstore] if args.key?(:source_parallelstore)
@@ -150,6 +156,11 @@ module Google
         # Corresponds to the JSON property `destinationParallelstore`
         # @return [Google::Apis::ParallelstoreV1::DestinationParallelstore]
         attr_accessor :destination_parallelstore
+      
+        # Transfer metadata options for the instance.
+        # Corresponds to the JSON property `metadataOptions`
+        # @return [Google::Apis::ParallelstoreV1::TransferMetadataOptions]
+        attr_accessor :metadata_options
       
         # Optional. An optional request ID to identify requests. Specify a unique
         # request ID so that if you must retry your request, the server will know to
@@ -187,6 +198,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @destination_parallelstore = args[:destination_parallelstore] if args.key?(:destination_parallelstore)
+          @metadata_options = args[:metadata_options] if args.key?(:metadata_options)
           @request_id = args[:request_id] if args.key?(:request_id)
           @service_account = args[:service_account] if args.key?(:service_account)
           @source_gcs_bucket = args[:source_gcs_bucket] if args.key?(:source_gcs_bucket)
@@ -569,6 +581,32 @@ module Google
         end
       end
       
+      # Operation metadata returned by the CLH during resource state reconciliation.
+      class ReconciliationOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # DEPRECATED. Use exclusive_action instead.
+        # Corresponds to the JSON property `deleteResource`
+        # @return [Boolean]
+        attr_accessor :delete_resource
+        alias_method :delete_resource?, :delete_resource
+      
+        # Excluisive action returned by the CLH.
+        # Corresponds to the JSON property `exclusiveAction`
+        # @return [String]
+        attr_accessor :exclusive_action
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delete_resource = args[:delete_resource] if args.key?(:delete_resource)
+          @exclusive_action = args[:exclusive_action] if args.key?(:exclusive_action)
+        end
+      end
+      
       # Cloud Storage as the source of a data transfer.
       class SourceGcsBucket
         include Google::Apis::Core::Hashable
@@ -645,6 +683,37 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Transfer metadata options for the instance.
+      class TransferMetadataOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The GID preservation behavior.
+        # Corresponds to the JSON property `gid`
+        # @return [String]
+        attr_accessor :gid
+      
+        # Optional. The mode preservation behavior.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        # Optional. The UID preservation behavior.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gid = args[:gid] if args.key?(:gid)
+          @mode = args[:mode] if args.key?(:mode)
+          @uid = args[:uid] if args.key?(:uid)
         end
       end
     end

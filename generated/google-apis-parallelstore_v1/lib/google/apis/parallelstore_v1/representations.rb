@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReconciliationOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SourceGcsBucket
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,6 +119,12 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TransferMetadataOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -143,6 +155,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :destination_gcs_bucket, as: 'destinationGcsBucket', class: Google::Apis::ParallelstoreV1::DestinationGcsBucket, decorator: Google::Apis::ParallelstoreV1::DestinationGcsBucket::Representation
       
+          property :metadata_options, as: 'metadataOptions', class: Google::Apis::ParallelstoreV1::TransferMetadataOptions, decorator: Google::Apis::ParallelstoreV1::TransferMetadataOptions::Representation
+      
           property :request_id, as: 'requestId'
           property :service_account, as: 'serviceAccount'
           property :source_parallelstore, as: 'sourceParallelstore', class: Google::Apis::ParallelstoreV1::SourceParallelstore, decorator: Google::Apis::ParallelstoreV1::SourceParallelstore::Representation
@@ -160,6 +174,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :destination_parallelstore, as: 'destinationParallelstore', class: Google::Apis::ParallelstoreV1::DestinationParallelstore, decorator: Google::Apis::ParallelstoreV1::DestinationParallelstore::Representation
+      
+          property :metadata_options, as: 'metadataOptions', class: Google::Apis::ParallelstoreV1::TransferMetadataOptions, decorator: Google::Apis::ParallelstoreV1::TransferMetadataOptions::Representation
       
           property :request_id, as: 'requestId'
           property :service_account, as: 'serviceAccount'
@@ -253,6 +269,14 @@ module Google
         end
       end
       
+      class ReconciliationOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delete_resource, as: 'deleteResource'
+          property :exclusive_action, as: 'exclusiveAction'
+        end
+      end
+      
       class SourceGcsBucket
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -273,6 +297,15 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class TransferMetadataOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gid, as: 'gid'
+          property :mode, as: 'mode'
+          property :uid, as: 'uid'
         end
       end
     end
