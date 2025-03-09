@@ -442,6 +442,7 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :attached_to_google_structure, as: 'attachedToGoogleStructure'
           property :partner_structure_id, as: 'partnerStructureId'
         end
       end
