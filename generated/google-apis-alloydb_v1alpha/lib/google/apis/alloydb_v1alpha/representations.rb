@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GcaInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GcsDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -922,6 +928,13 @@ module Google
         end
       end
       
+      class GcaInstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gca_entitlement, as: 'gcaEntitlement'
+        end
+      end
+      
       class GcsDestination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1007,6 +1020,8 @@ module Google
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
           property :etag, as: 'etag'
+          property :gca_config, as: 'gcaConfig', class: Google::Apis::AlloydbV1alpha::GcaInstanceConfig, decorator: Google::Apis::AlloydbV1alpha::GcaInstanceConfig::Representation
+      
           property :gce_zone, as: 'gceZone'
           property :gemini_config, as: 'geminiConfig', class: Google::Apis::AlloydbV1alpha::GeminiInstanceConfig, decorator: Google::Apis::AlloydbV1alpha::GeminiInstanceConfig::Representation
       
@@ -1195,7 +1210,6 @@ module Google
           property :query_plans_per_minute, as: 'queryPlansPerMinute'
           property :record_application_tags, as: 'recordApplicationTags'
           property :track_active_queries, as: 'trackActiveQueries'
-          property :track_client_address, as: 'trackClientAddress'
           property :track_wait_event_types, as: 'trackWaitEventTypes'
           property :track_wait_events, as: 'trackWaitEvents'
         end
