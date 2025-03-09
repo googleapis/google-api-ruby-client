@@ -596,6 +596,11 @@ module Google
         # @return [String]
         attr_accessor :buyer
       
+        # Output only. The buyer permission type of the deal.
+        # Corresponds to the JSON property `buyerPermissionType`
+        # @return [String]
+        attr_accessor :buyer_permission_type
+      
         # Output only. Refers to a Client. Format: `buyers/`buyerAccountId`/clients/`
         # clientAccountid``
         # Corresponds to the JSON property `client`
@@ -730,6 +735,7 @@ module Google
         def update!(**args)
           @billed_buyer = args[:billed_buyer] if args.key?(:billed_buyer)
           @buyer = args[:buyer] if args.key?(:buyer)
+          @buyer_permission_type = args[:buyer_permission_type] if args.key?(:buyer_permission_type)
           @client = args[:client] if args.key?(:client)
           @create_time = args[:create_time] if args.key?(:create_time)
           @creative_requirements = args[:creative_requirements] if args.key?(:creative_requirements)
