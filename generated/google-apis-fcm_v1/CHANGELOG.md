@@ -1,5 +1,9 @@
 # Release history for google-apis-fcm_v1
 
+### v0.30.0 (2025-03-09)
+
+* Regenerated from discovery document revision 20250228
+
 ### v0.29.0 (2025-03-02)
 
 * Regenerated from discovery document revision 20250219

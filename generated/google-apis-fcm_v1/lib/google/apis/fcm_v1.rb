@@ -22,7 +22,7 @@ module Google
     # Firebase Cloud Messaging API
     #
     # FCM send API that provides a cross-platform messaging solution to reliably
-    # deliver messages at no cost.
+    # deliver messages.
     #
     # @see https://firebase.google.com/docs/cloud-messaging
     module FcmV1
