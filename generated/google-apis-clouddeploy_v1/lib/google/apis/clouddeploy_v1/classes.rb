@@ -5915,7 +5915,8 @@ module Google
         # @return [String]
         attr_accessor :artifact_uri
       
-        # Output only. File path of the rendered manifest relative to the URI.
+        # Output only. File path of the rendered manifest relative to the URI for the
+        # stable phase.
         # Corresponds to the JSON property `manifestPath`
         # @return [String]
         attr_accessor :manifest_path
@@ -5925,8 +5926,8 @@ module Google
         # @return [Hash<String,Google::Apis::ClouddeployV1::PhaseArtifact>]
         attr_accessor :phase_artifacts
       
-        # Output only. File path of the resolved Skaffold configuration relative to the
-        # URI.
+        # Output only. File path of the resolved Skaffold configuration for the stable
+        # phase, relative to the URI.
         # Corresponds to the JSON property `skaffoldConfigPath`
         # @return [String]
         attr_accessor :skaffold_config_path
