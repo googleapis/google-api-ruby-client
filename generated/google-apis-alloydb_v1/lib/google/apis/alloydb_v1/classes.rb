@@ -1488,6 +1488,11 @@ module Google
         # @return [Array<Google::Apis::AlloydbV1::Node>]
         attr_accessor :nodes
       
+        # Observability Instance specific configuration.
+        # Corresponds to the JSON property `observabilityConfig`
+        # @return [Google::Apis::AlloydbV1::ObservabilityInstanceConfig]
+        attr_accessor :observability_config
+      
         # Output only. All outbound public IP addresses configured for the instance.
         # Corresponds to the JSON property `outboundPublicIpAddresses`
         # @return [Array<String>]
@@ -1576,6 +1581,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
           @nodes = args[:nodes] if args.key?(:nodes)
+          @observability_config = args[:observability_config] if args.key?(:observability_config)
           @outbound_public_ip_addresses = args[:outbound_public_ip_addresses] if args.key?(:outbound_public_ip_addresses)
           @psc_instance_config = args[:psc_instance_config] if args.key?(:psc_instance_config)
           @public_ip_address = args[:public_ip_address] if args.key?(:public_ip_address)
@@ -2048,6 +2054,83 @@ module Google
           @ip = args[:ip] if args.key?(:ip)
           @state = args[:state] if args.key?(:state)
           @zone_id = args[:zone_id] if args.key?(:zone_id)
+        end
+      end
+      
+      # Observability Instance specific configuration.
+      class ObservabilityInstanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Observability feature status for an instance. This flag is turned "off" by
+        # default.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Query string length. The default value is 10k.
+        # Corresponds to the JSON property `maxQueryStringLength`
+        # @return [Fixnum]
+        attr_accessor :max_query_string_length
+      
+        # Preserve comments in query string for an instance. This flag is turned "off"
+        # by default.
+        # Corresponds to the JSON property `preserveComments`
+        # @return [Boolean]
+        attr_accessor :preserve_comments
+        alias_method :preserve_comments?, :preserve_comments
+      
+        # Number of query execution plans captured by Insights per minute for all
+        # queries combined. The default value is 200. Any integer between 0 to 200 is
+        # considered valid.
+        # Corresponds to the JSON property `queryPlansPerMinute`
+        # @return [Fixnum]
+        attr_accessor :query_plans_per_minute
+      
+        # Record application tags for an instance. This flag is turned "off" by default.
+        # Corresponds to the JSON property `recordApplicationTags`
+        # @return [Boolean]
+        attr_accessor :record_application_tags
+        alias_method :record_application_tags?, :record_application_tags
+      
+        # Track actively running queries on the instance. If not set, this flag is "off"
+        # by default.
+        # Corresponds to the JSON property `trackActiveQueries`
+        # @return [Boolean]
+        attr_accessor :track_active_queries
+        alias_method :track_active_queries?, :track_active_queries
+      
+        # Output only. Track wait event types during query execution for an instance.
+        # This flag is turned "on" by default but tracking is enabled only after
+        # observability enabled flag is also turned on. This is read-only flag and only
+        # modifiable by internal API.
+        # Corresponds to the JSON property `trackWaitEventTypes`
+        # @return [Boolean]
+        attr_accessor :track_wait_event_types
+        alias_method :track_wait_event_types?, :track_wait_event_types
+      
+        # Track wait events during query execution for an instance. This flag is turned "
+        # on" by default but tracking is enabled only after observability enabled flag
+        # is also turned on.
+        # Corresponds to the JSON property `trackWaitEvents`
+        # @return [Boolean]
+        attr_accessor :track_wait_events
+        alias_method :track_wait_events?, :track_wait_events
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @max_query_string_length = args[:max_query_string_length] if args.key?(:max_query_string_length)
+          @preserve_comments = args[:preserve_comments] if args.key?(:preserve_comments)
+          @query_plans_per_minute = args[:query_plans_per_minute] if args.key?(:query_plans_per_minute)
+          @record_application_tags = args[:record_application_tags] if args.key?(:record_application_tags)
+          @track_active_queries = args[:track_active_queries] if args.key?(:track_active_queries)
+          @track_wait_event_types = args[:track_wait_event_types] if args.key?(:track_wait_event_types)
+          @track_wait_events = args[:track_wait_events] if args.key?(:track_wait_events)
         end
       end
       
@@ -3639,14 +3722,14 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainMachineConfiguration
         include Google::Apis::Core::Hashable
       
-        # The number of CPUs. Deprecated. Use vcpu_count instead. TODO(b/342344482, b/
-        # 342346271) add proto validations again after bug fix.
+        # The number of CPUs. Deprecated. Use vcpu_count instead. TODO(b/342344482) add
+        # proto validations again after bug fix.
         # Corresponds to the JSON property `cpuCount`
         # @return [Fixnum]
         attr_accessor :cpu_count
       
-        # Memory size in bytes. TODO(b/342344482, b/342346271) add proto validations
-        # again after bug fix.
+        # Memory size in bytes. TODO(b/342344482) add proto validations again after bug
+        # fix.
         # Corresponds to the JSON property `memorySizeInBytes`
         # @return [Fixnum]
         attr_accessor :memory_size_in_bytes
@@ -3656,8 +3739,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :shard_count
       
-        # Optional. The number of vCPUs. TODO(b/342344482, b/342346271) add proto
-        # validations again after bug fix.
+        # Optional. The number of vCPUs. TODO(b/342344482) add proto validations again
+        # after bug fix.
         # Corresponds to the JSON property `vcpuCount`
         # @return [Float]
         attr_accessor :vcpu_count
