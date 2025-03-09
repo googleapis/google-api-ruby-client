@@ -298,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ObservabilityInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1001,6 +1007,8 @@ module Google
       
           collection :nodes, as: 'nodes', class: Google::Apis::AlloydbV1::Node, decorator: Google::Apis::AlloydbV1::Node::Representation
       
+          property :observability_config, as: 'observabilityConfig', class: Google::Apis::AlloydbV1::ObservabilityInstanceConfig, decorator: Google::Apis::AlloydbV1::ObservabilityInstanceConfig::Representation
+      
           collection :outbound_public_ip_addresses, as: 'outboundPublicIpAddresses'
           property :psc_instance_config, as: 'pscInstanceConfig', class: Google::Apis::AlloydbV1::PscInstanceConfig, decorator: Google::Apis::AlloydbV1::PscInstanceConfig::Representation
       
@@ -1159,6 +1167,20 @@ module Google
           property :ip, as: 'ip'
           property :state, as: 'state'
           property :zone_id, as: 'zoneId'
+        end
+      end
+      
+      class ObservabilityInstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :max_query_string_length, as: 'maxQueryStringLength'
+          property :preserve_comments, as: 'preserveComments'
+          property :query_plans_per_minute, as: 'queryPlansPerMinute'
+          property :record_application_tags, as: 'recordApplicationTags'
+          property :track_active_queries, as: 'trackActiveQueries'
+          property :track_wait_event_types, as: 'trackWaitEventTypes'
+          property :track_wait_events, as: 'trackWaitEvents'
         end
       end
       
