@@ -997,6 +997,26 @@ module Google
         end
       end
       
+      # An event generated when an enterprise is upgraded. **Note:** This feature is
+      # not generally available.
+      class EnterpriseUpgradeEvent
+        include Google::Apis::Core::Hashable
+      
+        # The upgrade state.
+        # Corresponds to the JSON property `upgradeState`
+        # @return [String]
+        attr_accessor :upgrade_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @upgrade_state = args[:upgrade_state] if args.key?(:upgrade_state)
+        end
+      end
+      
       # 
       class ListEnterprisesResponse
         include Google::Apis::Core::Hashable
@@ -1089,6 +1109,28 @@ module Google
         # Update properties of this object
         def update!(**args)
           @entitlement = args[:entitlement] if args.key?(:entitlement)
+        end
+      end
+      
+      # Response message for generating a URL to upgrade an existing managed Google
+      # Play Accounts enterprise to a managed Google domain. **Note:** This feature is
+      # not generally available.
+      class GenerateEnterpriseUpgradeUrlResponse
+        include Google::Apis::Core::Hashable
+      
+        # A URL for an enterprise admin to upgrade their enterprise. The page can't be
+        # rendered in an iframe.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @url = args[:url] if args.key?(:url)
         end
       end
       
@@ -1765,6 +1807,12 @@ module Google
         # @return [String]
         attr_accessor :enterprise_id
       
+        # An event generated when an enterprise is upgraded. **Note:** This feature is
+        # not generally available.
+        # Corresponds to the JSON property `enterpriseUpgradeEvent`
+        # @return [Google::Apis::AndroidenterpriseV1::EnterpriseUpgradeEvent]
+        attr_accessor :enterprise_upgrade_event
+      
         # An event generated when an app installation failed on a device
         # Corresponds to the JSON property `installFailureEvent`
         # @return [Google::Apis::AndroidenterpriseV1::InstallFailureEvent]
@@ -1811,6 +1859,7 @@ module Google
           @app_update_event = args[:app_update_event] if args.key?(:app_update_event)
           @device_report_update_event = args[:device_report_update_event] if args.key?(:device_report_update_event)
           @enterprise_id = args[:enterprise_id] if args.key?(:enterprise_id)
+          @enterprise_upgrade_event = args[:enterprise_upgrade_event] if args.key?(:enterprise_upgrade_event)
           @install_failure_event = args[:install_failure_event] if args.key?(:install_failure_event)
           @new_device_event = args[:new_device_event] if args.key?(:new_device_event)
           @new_permissions_event = args[:new_permissions_event] if args.key?(:new_permissions_event)
