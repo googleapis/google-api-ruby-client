@@ -796,6 +796,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SpaceNotificationSetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SpaceReadState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2315,6 +2321,15 @@ module Google
       
           property :space_updated_event_data, as: 'spaceUpdatedEventData', class: Google::Apis::ChatV1::SpaceUpdatedEventData, decorator: Google::Apis::ChatV1::SpaceUpdatedEventData::Representation
       
+        end
+      end
+      
+      class SpaceNotificationSetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mute_setting, as: 'muteSetting'
+          property :name, as: 'name'
+          property :notification_setting, as: 'notificationSetting'
         end
       end
       

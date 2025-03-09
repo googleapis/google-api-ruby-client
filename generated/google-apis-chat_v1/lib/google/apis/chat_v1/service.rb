@@ -1791,6 +1791,79 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the space notification state setting. Requires [user authentication](
+        # https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        # @param [String] name
+        #   Required. Format: users/`user`/spaces/`space`/spaceNotificationSetting - `
+        #   users/me/spaces/`space`/spaceNotificationSetting`, OR - `users/user@example.
+        #   com/spaces/`space`/spaceNotificationSetting`, OR - `users/123456789/spaces/`
+        #   space`/spaceNotificationSetting`. Note: Only the caller's user id or email is
+        #   allowed in the path.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::SpaceNotificationSetting] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::SpaceNotificationSetting]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_user_space_space_notification_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ChatV1::SpaceNotificationSetting::Representation
+          command.response_class = Google::Apis::ChatV1::SpaceNotificationSetting
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the space notification state setting. Requires [user authentication](
+        # https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        # @param [String] name
+        #   Identifier. The resource name of the space notification setting. Format: `
+        #   users/`user`/spaces/`space`/spaceNotificationSetting`.
+        # @param [Google::Apis::ChatV1::SpaceNotificationSetting] space_notification_setting_object
+        # @param [String] update_mask
+        #   Required. Supported field paths: - `notification_setting` - `mute_setting`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::SpaceNotificationSetting] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::SpaceNotificationSetting]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_user_space_space_notification_setting(name, space_notification_setting_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ChatV1::SpaceNotificationSetting::Representation
+          command.request_object = space_notification_setting_object
+          command.response_representation = Google::Apis::ChatV1::SpaceNotificationSetting::Representation
+          command.response_class = Google::Apis::ChatV1::SpaceNotificationSetting
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns details about a user's read state within a thread, used to identify
         # read and unread messages. For an example, see [Get details about a user's
         # thread read state](https://developers.google.com/workspace/chat/get-thread-

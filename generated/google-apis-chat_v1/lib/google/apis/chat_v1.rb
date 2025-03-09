@@ -107,6 +107,9 @@ module Google
 
       # View last read time for Google Chat conversations
       AUTH_CHAT_USERS_READSTATE_READONLY = 'https://www.googleapis.com/auth/chat.users.readstate.readonly'
+
+      # Read and update your space settings
+      AUTH_CHAT_USERS_SPACESETTINGS = 'https://www.googleapis.com/auth/chat.users.spacesettings'
     end
   end
 end

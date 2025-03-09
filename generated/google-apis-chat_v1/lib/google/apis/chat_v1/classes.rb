@@ -5738,6 +5738,38 @@ module Google
         end
       end
       
+      # The notification setting of a user in a space.
+      class SpaceNotificationSetting
+        include Google::Apis::Core::Hashable
+      
+        # The space notification mute setting.
+        # Corresponds to the JSON property `muteSetting`
+        # @return [String]
+        attr_accessor :mute_setting
+      
+        # Identifier. The resource name of the space notification setting. Format: `
+        # users/`user`/spaces/`space`/spaceNotificationSetting`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The notification setting.
+        # Corresponds to the JSON property `notificationSetting`
+        # @return [String]
+        attr_accessor :notification_setting
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mute_setting = args[:mute_setting] if args.key?(:mute_setting)
+          @name = args[:name] if args.key?(:name)
+          @notification_setting = args[:notification_setting] if args.key?(:notification_setting)
+        end
+      end
+      
       # A user's read state within a space, used to identify read and unread messages.
       class SpaceReadState
         include Google::Apis::Core::Hashable
