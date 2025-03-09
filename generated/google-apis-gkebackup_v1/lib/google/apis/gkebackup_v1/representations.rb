@@ -436,6 +436,7 @@ module Google
           property :description, as: 'description'
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
+          property :last_successful_backup_time, as: 'lastSuccessfulBackupTime'
           property :name, as: 'name'
           property :protected_pod_count, as: 'protectedPodCount'
           property :retention_policy, as: 'retentionPolicy', class: Google::Apis::GkebackupV1::RetentionPolicy, decorator: Google::Apis::GkebackupV1::RetentionPolicy::Representation

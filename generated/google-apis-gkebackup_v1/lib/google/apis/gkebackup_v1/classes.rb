@@ -434,6 +434,14 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Output only. Completion time of the last successful Backup. This is sourced
+        # from a successful Backup's complete_time field. This field is added to
+        # maintain consistency with BackupPlanBinding to display last successful backup
+        # time.
+        # Corresponds to the JSON property `lastSuccessfulBackupTime`
+        # @return [String]
+        attr_accessor :last_successful_backup_time
+      
         # Output only. The full name of the BackupPlan resource. Format: `projects/*/
         # locations/*/backupPlans/*`
         # Corresponds to the JSON property `name`
@@ -502,6 +510,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
+          @last_successful_backup_time = args[:last_successful_backup_time] if args.key?(:last_successful_backup_time)
           @name = args[:name] if args.key?(:name)
           @protected_pod_count = args[:protected_pod_count] if args.key?(:protected_pod_count)
           @retention_policy = args[:retention_policy] if args.key?(:retention_policy)
