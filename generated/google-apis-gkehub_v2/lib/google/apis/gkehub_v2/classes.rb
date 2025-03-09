@@ -307,6 +307,11 @@ module Google
       class ConfigManagementConfigSync
         include Google::Apis::Core::Hashable
       
+        # Optional. Configuration for deployment overrides.
+        # Corresponds to the JSON property `deploymentOverrides`
+        # @return [Array<Google::Apis::GkehubV2::ConfigManagementDeploymentOverride>]
+        attr_accessor :deployment_overrides
+      
         # Optional. Enables the installation of ConfigSync. If set to true, ConfigSync
         # resources will be created and the other ConfigSync fields will be applied if
         # exist. If set to false, all other ConfigSync fields will be ignored,
@@ -367,6 +372,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @deployment_overrides = args[:deployment_overrides] if args.key?(:deployment_overrides)
           @enabled = args[:enabled] if args.key?(:enabled)
           @git = args[:git] if args.key?(:git)
           @metrics_gcp_service_account_email = args[:metrics_gcp_service_account_email] if args.key?(:metrics_gcp_service_account_email)
@@ -596,6 +602,80 @@ module Google
           @resource_group_controller_manager = args[:resource_group_controller_manager] if args.key?(:resource_group_controller_manager)
           @root_reconciler = args[:root_reconciler] if args.key?(:root_reconciler)
           @syncer = args[:syncer] if args.key?(:syncer)
+        end
+      end
+      
+      # Configuration for a container override.
+      class ConfigManagementContainerOverride
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the container.
+        # Corresponds to the JSON property `containerName`
+        # @return [String]
+        attr_accessor :container_name
+      
+        # Optional. The cpu limit of the container.
+        # Corresponds to the JSON property `cpuLimit`
+        # @return [String]
+        attr_accessor :cpu_limit
+      
+        # Optional. The cpu request of the container.
+        # Corresponds to the JSON property `cpuRequest`
+        # @return [String]
+        attr_accessor :cpu_request
+      
+        # Optional. The memory limit of the container.
+        # Corresponds to the JSON property `memoryLimit`
+        # @return [String]
+        attr_accessor :memory_limit
+      
+        # Optional. The memory request of the container.
+        # Corresponds to the JSON property `memoryRequest`
+        # @return [String]
+        attr_accessor :memory_request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @container_name = args[:container_name] if args.key?(:container_name)
+          @cpu_limit = args[:cpu_limit] if args.key?(:cpu_limit)
+          @cpu_request = args[:cpu_request] if args.key?(:cpu_request)
+          @memory_limit = args[:memory_limit] if args.key?(:memory_limit)
+          @memory_request = args[:memory_request] if args.key?(:memory_request)
+        end
+      end
+      
+      # Configuration for a deployment override.
+      class ConfigManagementDeploymentOverride
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The containers of the deployment resource to be overridden.
+        # Corresponds to the JSON property `containers`
+        # @return [Array<Google::Apis::GkehubV2::ConfigManagementContainerOverride>]
+        attr_accessor :containers
+      
+        # Required. The name of the deployment resource to be overridden.
+        # Corresponds to the JSON property `deploymentName`
+        # @return [String]
+        attr_accessor :deployment_name
+      
+        # Required. The namespace of the deployment resource to be overridden..
+        # Corresponds to the JSON property `deploymentNamespace`
+        # @return [String]
+        attr_accessor :deployment_namespace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @containers = args[:containers] if args.key?(:containers)
+          @deployment_name = args[:deployment_name] if args.key?(:deployment_name)
+          @deployment_namespace = args[:deployment_namespace] if args.key?(:deployment_namespace)
         end
       end
       
