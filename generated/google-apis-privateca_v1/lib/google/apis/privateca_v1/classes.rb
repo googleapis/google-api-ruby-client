@@ -2821,14 +2821,14 @@ module Google
       
         # Optional. A list of URLs where the issuer CA certificate may be downloaded,
         # which appears in the "Authority Information Access" extension in the
-        # certificate. If specified, the default GCS URLs will be omitted.
+        # certificate. If specified, the default Cloud Storage URLs will be omitted.
         # Corresponds to the JSON property `aiaIssuingCertificateUrls`
         # @return [Array<String>]
         attr_accessor :aia_issuing_certificate_urls
       
         # Optional. A list of URLs where to obtain CRL information, i.e. the
         # DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#
-        # section-4.2.1.13. If specified, the default GCS URLs will be omitted.
+        # section-4.2.1.13. If specified, the default Cloud Storage URLs will be omitted.
         # Corresponds to the JSON property `crlAccessUrls`
         # @return [Array<String>]
         attr_accessor :crl_access_urls
