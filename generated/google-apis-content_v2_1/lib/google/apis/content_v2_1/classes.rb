@@ -12733,7 +12733,9 @@ module Google
       class ReturnPolicyOnlineReturnReasonCategoryInfo
         include Google::Apis::Core::Hashable
       
-        # The corresponding return label source.
+        # The corresponding return label source. If the `ReturnMethod` field includes `
+        # BY_MAIL`, it is required to specify `ReturnLabelSource` for both `
+        # BUYER_REMORSE` and `ITEM_DEFECT` return reason categories.
         # Corresponds to the JSON property `returnLabelSource`
         # @return [String]
         attr_accessor :return_label_source
