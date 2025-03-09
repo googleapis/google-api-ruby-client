@@ -2497,6 +2497,63 @@ module Google
         end
       end
       
+      # Request message for generating a URL to upgrade an existing managed Google
+      # Play Accounts enterprise to a managed Google domain.Note: This feature is not
+      # generally available.
+      class GenerateEnterpriseUpgradeUrlRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Email address used to prefill the admin field of the enterprise
+        # signup form as part of the upgrade process. This value is a hint only and can
+        # be altered by the user. Personal email addresses are not allowed. If
+        # allowedDomains is non-empty then this must belong to one of the allowedDomains.
+        # Corresponds to the JSON property `adminEmail`
+        # @return [String]
+        attr_accessor :admin_email
+      
+        # Optional. A list of domains that are permitted for the admin email. The IT
+        # admin cannot enter an email address with a domain name that is not in this
+        # list. Subdomains of domains in this list are not allowed but can be allowed by
+        # adding a second entry which has *. prefixed to the domain name (e.g. *.example.
+        # com). If the field is not present or is an empty list then the IT admin is
+        # free to use any valid domain name. Personal email domains are not allowed.
+        # Corresponds to the JSON property `allowedDomains`
+        # @return [Array<String>]
+        attr_accessor :allowed_domains
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @admin_email = args[:admin_email] if args.key?(:admin_email)
+          @allowed_domains = args[:allowed_domains] if args.key?(:allowed_domains)
+        end
+      end
+      
+      # Response message for generating a URL to upgrade an existing managed Google
+      # Play Accounts enterprise to a managed Google domain.Note: This feature is not
+      # generally available.
+      class GenerateEnterpriseUpgradeUrlResponse
+        include Google::Apis::Core::Hashable
+      
+        # A URL for an enterprise admin to upgrade their enterprise. The page can't be
+        # rendered in an iframe.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
       # Contains settings for Google-provided user authentication.
       class GoogleAuthenticationSettings
         include Google::Apis::Core::Hashable
