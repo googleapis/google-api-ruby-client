@@ -1142,6 +1142,26 @@ module Google
         end
       end
       
+      # Instance level configuration parameters related to the Gemini Cloud Assist
+      # product.
+      class GcaInstanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Represents the GCA entitlement state of the instance.
+        # Corresponds to the JSON property `gcaEntitlement`
+        # @return [String]
+        attr_accessor :gca_entitlement
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gca_entitlement = args[:gca_entitlement] if args.key?(:gca_entitlement)
+        end
+      end
+      
       # Destination for Export. Export will be done to cloud storage.
       class GcsDestination
         include Google::Apis::Core::Hashable
@@ -1479,6 +1499,12 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Instance level configuration parameters related to the Gemini Cloud Assist
+        # product.
+        # Corresponds to the JSON property `gcaConfig`
+        # @return [Google::Apis::AlloydbV1alpha::GcaInstanceConfig]
+        attr_accessor :gca_config
+      
         # The Compute Engine zone that the instance should serve from, per https://cloud.
         # google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL
         # instances. If present for a REGIONAL instance, an error will be thrown. If
@@ -1634,6 +1660,7 @@ module Google
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
+          @gca_config = args[:gca_config] if args.key?(:gca_config)
           @gce_zone = args[:gce_zone] if args.key?(:gce_zone)
           @gemini_config = args[:gemini_config] if args.key?(:gemini_config)
           @instance_type = args[:instance_type] if args.key?(:instance_type)
@@ -2164,16 +2191,10 @@ module Google
         attr_accessor :track_active_queries
         alias_method :track_active_queries?, :track_active_queries
       
-        # Track client address for an instance. If not set, default value is "off".
-        # Corresponds to the JSON property `trackClientAddress`
-        # @return [Boolean]
-        attr_accessor :track_client_address
-        alias_method :track_client_address?, :track_client_address
-      
         # Output only. Track wait event types during query execution for an instance.
         # This flag is turned "on" by default but tracking is enabled only after
         # observability enabled flag is also turned on. This is read-only flag and only
-        # modifiable by producer API.
+        # modifiable by internal API.
         # Corresponds to the JSON property `trackWaitEventTypes`
         # @return [Boolean]
         attr_accessor :track_wait_event_types
@@ -2199,7 +2220,6 @@ module Google
           @query_plans_per_minute = args[:query_plans_per_minute] if args.key?(:query_plans_per_minute)
           @record_application_tags = args[:record_application_tags] if args.key?(:record_application_tags)
           @track_active_queries = args[:track_active_queries] if args.key?(:track_active_queries)
-          @track_client_address = args[:track_client_address] if args.key?(:track_client_address)
           @track_wait_event_types = args[:track_wait_event_types] if args.key?(:track_wait_event_types)
           @track_wait_events = args[:track_wait_events] if args.key?(:track_wait_events)
         end
@@ -3793,14 +3813,14 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainMachineConfiguration
         include Google::Apis::Core::Hashable
       
-        # The number of CPUs. Deprecated. Use vcpu_count instead. TODO(b/342344482, b/
-        # 342346271) add proto validations again after bug fix.
+        # The number of CPUs. Deprecated. Use vcpu_count instead. TODO(b/342344482) add
+        # proto validations again after bug fix.
         # Corresponds to the JSON property `cpuCount`
         # @return [Fixnum]
         attr_accessor :cpu_count
       
-        # Memory size in bytes. TODO(b/342344482, b/342346271) add proto validations
-        # again after bug fix.
+        # Memory size in bytes. TODO(b/342344482) add proto validations again after bug
+        # fix.
         # Corresponds to the JSON property `memorySizeInBytes`
         # @return [Fixnum]
         attr_accessor :memory_size_in_bytes
@@ -3810,8 +3830,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :shard_count
       
-        # Optional. The number of vCPUs. TODO(b/342344482, b/342346271) add proto
-        # validations again after bug fix.
+        # Optional. The number of vCPUs. TODO(b/342344482) add proto validations again
+        # after bug fix.
         # Corresponds to the JSON property `vcpuCount`
         # @return [Float]
         attr_accessor :vcpu_count
