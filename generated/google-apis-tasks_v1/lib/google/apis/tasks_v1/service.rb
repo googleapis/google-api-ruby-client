@@ -145,8 +145,8 @@ module Google
         # Returns all the authenticated user's task lists. A user can have up to 2000
         # lists at a time.
         # @param [Fixnum] max_results
-        #   Maximum number of task lists returned on one page. Optional. The default is 20
-        #   (max allowed: 100).
+        #   Maximum number of task lists returned on one page. Optional. The default is
+        #   1000 (max allowed: 1000).
         # @param [String] page_token
         #   Token specifying the result page to return. Optional.
         # @param [String] fields
@@ -476,16 +476,19 @@ module Google
         #   Optional. Destination task list identifier. If set, the task is moved from
         #   tasklist to the destinationTasklist list. Otherwise the task is moved within
         #   its current list. Recurrent tasks cannot currently be moved between lists.
-        #   Optional.
         # @param [String] parent
-        #   New parent task identifier. If the task is moved to the top level, this
-        #   parameter is omitted. The task set as parent must exist in the task list and
-        #   can not be hidden. Assigned tasks can not be set as parent task (have subtasks)
-        #   or be moved under a parent task (become subtasks). Optional.
+        #   Optional. New parent task identifier. If the task is moved to the top level,
+        #   this parameter is omitted. The task set as parent must exist in the task list
+        #   and can not be hidden. Exceptions: 1. Assigned tasks can not be set as parent
+        #   task (have subtasks) or be moved under a parent task (become subtasks). 2.
+        #   Tasks that are both completed and hidden cannot be nested, so the parent field
+        #   must be empty.
         # @param [String] previous
-        #   New previous sibling task identifier. If the task is moved to the first
-        #   position among its siblings, this parameter is omitted. The task set as
-        #   previous must exist in the task list and can not be hidden. Optional.
+        #   Optional. New previous sibling task identifier. If the task is moved to the
+        #   first position among its siblings, this parameter is omitted. The task set as
+        #   previous must exist in the task list and can not be hidden. Exceptions: 1.
+        #   Tasks that are both completed and hidden can only be moved to position 0, so
+        #   the previous field must be empty.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
