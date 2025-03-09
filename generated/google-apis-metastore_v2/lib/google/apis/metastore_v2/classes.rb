@@ -173,6 +173,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :constituent_regions
       
+        # The continent for this multi-region.
+        # Corresponds to the JSON property `continent`
+        # @return [String]
+        attr_accessor :continent
+      
+        # The Spanner witness region for this multi-region.
+        # Corresponds to the JSON property `witnessRegion`
+        # @return [String]
+        attr_accessor :witness_region
+      
         def initialize(**args)
            update!(**args)
         end
@@ -180,6 +190,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @constituent_regions = args[:constituent_regions] if args.key?(:constituent_regions)
+          @continent = args[:continent] if args.key?(:continent)
+          @witness_region = args[:witness_region] if args.key?(:witness_region)
         end
       end
       
@@ -457,6 +469,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :constituent_regions
       
+        # The continent for this multi-region.
+        # Corresponds to the JSON property `continent`
+        # @return [String]
+        attr_accessor :continent
+      
+        # The Spanner witness region for this multi-region.
+        # Corresponds to the JSON property `witnessRegion`
+        # @return [String]
+        attr_accessor :witness_region
+      
         def initialize(**args)
            update!(**args)
         end
@@ -464,6 +486,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @constituent_regions = args[:constituent_regions] if args.key?(:constituent_regions)
+          @continent = args[:continent] if args.key?(:continent)
+          @witness_region = args[:witness_region] if args.key?(:witness_region)
         end
       end
       
@@ -741,6 +765,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :constituent_regions
       
+        # The continent for this multi-region.
+        # Corresponds to the JSON property `continent`
+        # @return [String]
+        attr_accessor :continent
+      
+        # The Spanner witness region for this multi-region.
+        # Corresponds to the JSON property `witnessRegion`
+        # @return [String]
+        attr_accessor :witness_region
+      
         def initialize(**args)
            update!(**args)
         end
@@ -748,6 +782,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @constituent_regions = args[:constituent_regions] if args.key?(:constituent_regions)
+          @continent = args[:continent] if args.key?(:continent)
+          @witness_region = args[:witness_region] if args.key?(:witness_region)
         end
       end
       
@@ -1016,7 +1052,7 @@ module Google
         end
       end
       
-      # A specification of the location of and metadata about a database dump from a
+      # A specification of the location and metadata type for a database dump from a
       # relational database management system.
       class GoogleCloudMetastoreV2DatabaseDump
         include Google::Apis::Core::Hashable
@@ -1174,7 +1210,7 @@ module Google
       class GoogleCloudMetastoreV2ImportMetadataRequest
         include Google::Apis::Core::Hashable
       
-        # A specification of the location of and metadata about a database dump from a
+        # A specification of the location and metadata type for a database dump from a
         # relational database management system.
         # Corresponds to the JSON property `databaseDump`
         # @return [Google::Apis::MetastoreV2::GoogleCloudMetastoreV2DatabaseDump]

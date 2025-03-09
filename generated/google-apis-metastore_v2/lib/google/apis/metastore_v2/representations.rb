@@ -398,6 +398,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :constituent_regions, as: 'constituentRegions'
+          property :continent, as: 'continent'
+          property :witness_region, as: 'witnessRegion'
         end
       end
       
@@ -487,6 +489,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :constituent_regions, as: 'constituentRegions'
+          property :continent, as: 'continent'
+          property :witness_region, as: 'witnessRegion'
         end
       end
       
@@ -576,6 +580,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :constituent_regions, as: 'constituentRegions'
+          property :continent, as: 'continent'
+          property :witness_region, as: 'witnessRegion'
         end
       end
       
