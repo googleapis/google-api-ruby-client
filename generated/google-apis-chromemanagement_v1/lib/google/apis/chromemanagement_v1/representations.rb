@@ -682,48 +682,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleChromeManagementVersionsV1alpha1CertificateProvisioningProcess
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromeManagementVersionsV1alpha1ChromeOsDevice
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromeManagementVersionsV1alpha1ChromeOsUserSession
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromeManagementVersionsV1alpha1GenericCaConnection
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromeManagementVersionsV1alpha1GenericProfile
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromeManagementVersionsV1alpha1SignDataMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromeManagementVersionsV1alpha1SignDataResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleProtobufEmpty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1996,78 +1954,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :certificate_provisioning_process, as: 'certificateProvisioningProcess', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1CertificateProvisioningProcess, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1CertificateProvisioningProcess::Representation
-      
-        end
-      end
-      
-      class GoogleChromeManagementVersionsV1alpha1CertificateProvisioningProcess
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :ca_connection_adapter_config_reference, as: 'caConnectionAdapterConfigReference'
-          property :chrome_os_device, as: 'chromeOsDevice', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1alpha1ChromeOsDevice, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1alpha1ChromeOsDevice::Representation
-      
-          property :chrome_os_user_session, as: 'chromeOsUserSession', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1alpha1ChromeOsUserSession, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1alpha1ChromeOsUserSession::Representation
-      
-          property :failure_message, as: 'failureMessage'
-          property :generic_ca_connection, as: 'genericCaConnection', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1alpha1GenericCaConnection, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1alpha1GenericCaConnection::Representation
-      
-          property :generic_profile, as: 'genericProfile', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1alpha1GenericProfile, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1alpha1GenericProfile::Representation
-      
-          property :issued_certificate, as: 'issuedCertificate'
-          property :name, as: 'name'
-          property :profile_adapter_config_reference, as: 'profileAdapterConfigReference'
-          property :provisioning_profile_id, as: 'provisioningProfileId'
-          property :sign_data, :base64 => true, as: 'signData'
-          property :signature, :base64 => true, as: 'signature'
-          property :signature_algorithm, as: 'signatureAlgorithm'
-          property :start_time, as: 'startTime'
-          property :subject_public_key_info, :base64 => true, as: 'subjectPublicKeyInfo'
-        end
-      end
-      
-      class GoogleChromeManagementVersionsV1alpha1ChromeOsDevice
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :device_directory_api_id, as: 'deviceDirectoryApiId'
-          property :serial_number, as: 'serialNumber'
-        end
-      end
-      
-      class GoogleChromeManagementVersionsV1alpha1ChromeOsUserSession
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :chrome_os_device, as: 'chromeOsDevice', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1alpha1ChromeOsDevice, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1alpha1ChromeOsDevice::Representation
-      
-          property :user_directory_api_id, as: 'userDirectoryApiId'
-          property :user_primary_email, as: 'userPrimaryEmail'
-        end
-      end
-      
-      class GoogleChromeManagementVersionsV1alpha1GenericCaConnection
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :ca_connection_adapter_config_reference, as: 'caConnectionAdapterConfigReference'
-        end
-      end
-      
-      class GoogleChromeManagementVersionsV1alpha1GenericProfile
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :profile_adapter_config_reference, as: 'profileAdapterConfigReference'
-        end
-      end
-      
-      class GoogleChromeManagementVersionsV1alpha1SignDataMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :start_time, as: 'startTime'
-        end
-      end
-      
-      class GoogleChromeManagementVersionsV1alpha1SignDataResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :certificate_provisioning_process, as: 'certificateProvisioningProcess', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1alpha1CertificateProvisioningProcess, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1alpha1CertificateProvisioningProcess::Representation
       
         end
       end
