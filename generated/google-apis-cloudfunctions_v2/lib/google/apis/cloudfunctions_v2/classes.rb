@@ -848,6 +848,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. Whether a custom IAM role binding was detected during the upgrade.
+        # Corresponds to the JSON property `customIamRoleDetected`
+        # @return [Boolean]
+        attr_accessor :custom_iam_role_detected
+        alias_method :custom_iam_role_detected?, :custom_iam_role_detected
+      
         # The time the operation finished running.
         # Corresponds to the JSON property `endTime`
         # @return [String]
@@ -899,6 +905,7 @@ module Google
           @build_name = args[:build_name] if args.key?(:build_name)
           @cancel_requested = args[:cancel_requested] if args.key?(:cancel_requested)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_iam_role_detected = args[:custom_iam_role_detected] if args.key?(:custom_iam_role_detected)
           @end_time = args[:end_time] if args.key?(:end_time)
           @operation_type = args[:operation_type] if args.key?(:operation_type)
           @request_resource = args[:request_resource] if args.key?(:request_resource)

@@ -493,6 +493,7 @@ module Google
           property :build_name, as: 'buildName'
           property :cancel_requested, as: 'cancelRequested'
           property :create_time, as: 'createTime'
+          property :custom_iam_role_detected, as: 'customIamRoleDetected'
           property :end_time, as: 'endTime'
           property :operation_type, as: 'operationType'
           hash :request_resource, as: 'requestResource'
