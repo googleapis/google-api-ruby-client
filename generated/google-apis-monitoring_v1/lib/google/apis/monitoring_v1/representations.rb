@@ -992,6 +992,7 @@ module Google
       class SingleViewGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_type, as: 'displayType'
         end
       end
       

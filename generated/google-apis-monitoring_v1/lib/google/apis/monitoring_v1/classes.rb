@@ -2071,12 +2071,18 @@ module Google
       class SingleViewGroup
         include Google::Apis::Core::Hashable
       
+        # Optional. Determines how the widget selector will be displayed.
+        # Corresponds to the JSON property `displayType`
+        # @return [String]
+        attr_accessor :display_type
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @display_type = args[:display_type] if args.key?(:display_type)
         end
       end
       
