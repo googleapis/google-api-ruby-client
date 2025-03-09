@@ -316,6 +316,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GenerateEnterpriseUpgradeUrlRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateEnterpriseUpgradeUrlResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAuthenticationSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1449,6 +1461,21 @@ module Google
       
           property :start_date, as: 'startDate', class: Google::Apis::AndroidmanagementV1::Date, decorator: Google::Apis::AndroidmanagementV1::Date::Representation
       
+        end
+      end
+      
+      class GenerateEnterpriseUpgradeUrlRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :admin_email, as: 'adminEmail'
+          collection :allowed_domains, as: 'allowedDomains'
+        end
+      end
+      
+      class GenerateEnterpriseUpgradeUrlResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :url, as: 'url'
         end
       end
       
