@@ -2284,8 +2284,8 @@ module Google
         # @return [String]
         attr_accessor :location
       
-        # URI of a Redis Cluster network in format "projects/`project_id`/global/
-        # networks/`network_id`".
+        # URI of the network containing the Redis Cluster endpoints in format "projects/`
+        # project_id`/global/networks/`network_id`".
         # Corresponds to the JSON property `networkUri`
         # @return [String]
         attr_accessor :network_uri
