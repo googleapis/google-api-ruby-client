@@ -1888,6 +1888,11 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGoogleSignalsSettings]
         attr_accessor :google_signals_settings
       
+        # A key event in a Google Analytics property.
+        # Corresponds to the JSON property `keyEvent`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaKeyEvent]
+        attr_accessor :key_event
+      
         # A secret value used for sending hits to Measurement Protocol.
         # Corresponds to the JSON property `measurementProtocolSecret`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret]
@@ -1935,6 +1940,7 @@ module Google
           @firebase_link = args[:firebase_link] if args.key?(:firebase_link)
           @google_ads_link = args[:google_ads_link] if args.key?(:google_ads_link)
           @google_signals_settings = args[:google_signals_settings] if args.key?(:google_signals_settings)
+          @key_event = args[:key_event] if args.key?(:key_event)
           @measurement_protocol_secret = args[:measurement_protocol_secret] if args.key?(:measurement_protocol_secret)
           @property = args[:property] if args.key?(:property)
           @search_ads360_link = args[:search_ads360_link] if args.key?(:search_ads360_link)
