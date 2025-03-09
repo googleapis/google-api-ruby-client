@@ -404,22 +404,31 @@ module Google
       class ProductChange
         include Google::Apis::Core::Hashable
       
-        # The new value of the changed resource or attribute.
+        # The new value of the changed resource or attribute. If empty, it means that
+        # the product was deleted. Will have one of these values : (`approved`, `pending`
+        # , `disapproved`, ``)
         # Corresponds to the JSON property `newValue`
         # @return [String]
         attr_accessor :new_value
       
-        # The old value of the changed resource or attribute.
+        # The old value of the changed resource or attribute. If empty, it means that
+        # the product was created. Will have one of these values : (`approved`, `pending`
+        # , `disapproved`, ``)
         # Corresponds to the JSON property `oldValue`
         # @return [String]
         attr_accessor :old_value
       
-        # Countries that have the change (if applicable)
+        # Countries that have the change (if applicable). Represented in the ISO 3166
+        # format.
         # Corresponds to the JSON property `regionCode`
         # @return [String]
         attr_accessor :region_code
       
-        # Reporting contexts that have the change (if applicable)
+        # Reporting contexts that have the change (if applicable). Currently this field
+        # supports only (`SHOPPING_ADS`, `LOCAL_INVENTORY_ADS`, `YOUTUBE_SHOPPING`, `
+        # YOUTUBE_CHECKOUT`, `YOUTUBE_AFFILIATE`) from the enum value [
+        # ReportingContextEnum](/merchant/api/reference/rest/Shared.Types/
+        # ReportingContextEnum)
         # Corresponds to the JSON property `reportingContext`
         # @return [String]
         attr_accessor :reporting_context
@@ -464,8 +473,8 @@ module Google
         # @return [String]
         attr_accessor :event_time
       
-        # The product expiration time. This field will not bet set if the notification
-        # is sent for a product deletion event.
+        # Optional. The product expiration time. This field will not bet set if the
+        # notification is sent for a product deletion event.
         # Corresponds to the JSON property `expirationTime`
         # @return [String]
         attr_accessor :expiration_time
@@ -476,8 +485,7 @@ module Google
         # @return [String]
         attr_accessor :managing_account
       
-        # The product name. Format: ``product.name=accounts/`account`/products/`product``
-        # `
+        # The product name. Format: `accounts/`account`/products/`product``
         # Corresponds to the JSON property `resource`
         # @return [String]
         attr_accessor :resource
