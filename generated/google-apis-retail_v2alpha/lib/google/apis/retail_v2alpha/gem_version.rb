@@ -16,13 +16,13 @@ module Google
   module Apis
     module RetailV2alpha
       # Version of the google-apis-retail_v2alpha gem
-      GEM_VERSION = "0.109.0"
+      GEM_VERSION = "0.110.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.16.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20250221"
+      REVISION = "20250227"
     end
   end
 end
