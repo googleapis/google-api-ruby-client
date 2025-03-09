@@ -41,6 +41,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :rai_media_filtered_reasons
       
+        # List of videos, used to align naming with the external response.
+        # Corresponds to the JSON property `videos`
+        # @return [Array<Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoResponseVideo>]
+        attr_accessor :videos
+      
         def initialize(**args)
            update!(**args)
         end
@@ -50,6 +55,38 @@ module Google
           @generated_samples = args[:generated_samples] if args.key?(:generated_samples)
           @rai_media_filtered_count = args[:rai_media_filtered_count] if args.key?(:rai_media_filtered_count)
           @rai_media_filtered_reasons = args[:rai_media_filtered_reasons] if args.key?(:rai_media_filtered_reasons)
+          @videos = args[:videos] if args.key?(:videos)
+        end
+      end
+      
+      # 
+      class CloudAiLargeModelsVisionGenerateVideoResponseVideo
+        include Google::Apis::Core::Hashable
+      
+        # Base64 encoded bytes string representing the video.
+        # Corresponds to the JSON property `bytesBase64Encoded`
+        # @return [String]
+        attr_accessor :bytes_base64_encoded
+      
+        # Cloud Storage URI where the generated video is written.
+        # Corresponds to the JSON property `gcsUri`
+        # @return [String]
+        attr_accessor :gcs_uri
+      
+        # The MIME type of the content of the video. - video/mp4
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bytes_base64_encoded = args[:bytes_base64_encoded] if args.key?(:bytes_base64_encoded)
+          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
         end
       end
       
@@ -450,6 +487,11 @@ module Google
         # @return [String]
         attr_accessor :encoding
       
+        # Text/Expanded text input for Help Me Write.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
         # Path to another storage (typically Google Cloud Storage).
         # Corresponds to the JSON property `uri`
         # @return [String]
@@ -469,6 +511,7 @@ module Google
         def update!(**args)
           @encoded_video = args[:encoded_video] if args.key?(:encoded_video)
           @encoding = args[:encoding] if args.key?(:encoding)
+          @text = args[:text] if args.key?(:text)
           @uri = args[:uri] if args.key?(:uri)
           @video = args[:video] if args.key?(:video)
         end
@@ -6661,6 +6704,20 @@ module Google
         end
       end
       
+      # Tool to search public web data, powered by Vertex AI Search and Sec4
+      # compliance.
+      class GoogleCloudAiplatformV1EnterpriseWebSearch
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Selector for entityId. Getting ids from the given source.
       class GoogleCloudAiplatformV1EntityIdSelector
         include Google::Apis::Core::Hashable
@@ -11813,7 +11870,19 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModalityTokenCount>]
         attr_accessor :prompt_tokens_details
       
-        # Total token count for prompt and response candidates.
+        # Output only. Number of tokens present in tool-use prompt(s).
+        # Corresponds to the JSON property `toolUsePromptTokenCount`
+        # @return [Fixnum]
+        attr_accessor :tool_use_prompt_token_count
+      
+        # Output only. List of modalities that were processed for tool-use request
+        # inputs.
+        # Corresponds to the JSON property `toolUsePromptTokensDetails`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModalityTokenCount>]
+        attr_accessor :tool_use_prompt_tokens_details
+      
+        # Total token count for prompt, response candidates, and tool-use prompts (if
+        # present).
         # Corresponds to the JSON property `totalTokenCount`
         # @return [Fixnum]
         attr_accessor :total_token_count
@@ -11830,7 +11899,77 @@ module Google
           @candidates_tokens_details = args[:candidates_tokens_details] if args.key?(:candidates_tokens_details)
           @prompt_token_count = args[:prompt_token_count] if args.key?(:prompt_token_count)
           @prompt_tokens_details = args[:prompt_tokens_details] if args.key?(:prompt_tokens_details)
+          @tool_use_prompt_token_count = args[:tool_use_prompt_token_count] if args.key?(:tool_use_prompt_token_count)
+          @tool_use_prompt_tokens_details = args[:tool_use_prompt_tokens_details] if args.key?(:tool_use_prompt_tokens_details)
           @total_token_count = args[:total_token_count] if args.key?(:total_token_count)
+        end
+      end
+      
+      # Generate video response.
+      class GoogleCloudAiplatformV1GenerateVideoResponse
+        include Google::Apis::Core::Hashable
+      
+        # The cloud storage uris of the generated videos.
+        # Corresponds to the JSON property `generatedSamples`
+        # @return [Array<String>]
+        attr_accessor :generated_samples
+      
+        # Returns if any videos were filtered due to RAI policies.
+        # Corresponds to the JSON property `raiMediaFilteredCount`
+        # @return [Fixnum]
+        attr_accessor :rai_media_filtered_count
+      
+        # Returns rai failure reasons if any.
+        # Corresponds to the JSON property `raiMediaFilteredReasons`
+        # @return [Array<String>]
+        attr_accessor :rai_media_filtered_reasons
+      
+        # List of video bytes or Cloud Storage URIs of the generated videos.
+        # Corresponds to the JSON property `videos`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateVideoResponseVideo>]
+        attr_accessor :videos
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generated_samples = args[:generated_samples] if args.key?(:generated_samples)
+          @rai_media_filtered_count = args[:rai_media_filtered_count] if args.key?(:rai_media_filtered_count)
+          @rai_media_filtered_reasons = args[:rai_media_filtered_reasons] if args.key?(:rai_media_filtered_reasons)
+          @videos = args[:videos] if args.key?(:videos)
+        end
+      end
+      
+      # A generated video.
+      class GoogleCloudAiplatformV1GenerateVideoResponseVideo
+        include Google::Apis::Core::Hashable
+      
+        # Base64 encoded bytes string representing the video.
+        # Corresponds to the JSON property `bytesBase64Encoded`
+        # @return [String]
+        attr_accessor :bytes_base64_encoded
+      
+        # Cloud Storage URI where the generated video is written.
+        # Corresponds to the JSON property `gcsUri`
+        # @return [String]
+        attr_accessor :gcs_uri
+      
+        # The MIME type of the content of the video. - video/mp4
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bytes_base64_encoded = args[:bytes_base64_encoded] if args.key?(:bytes_base64_encoded)
+          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
         end
       end
       
@@ -15340,12 +15479,6 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
-        # Optional. Immutable. The number of nodes per replica for multihost GPU
-        # deployments.
-        # Corresponds to the JSON property `multihostGpuNodeCount`
-        # @return [Fixnum]
-        attr_accessor :multihost_gpu_node_count
-      
         # A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a
         # DeployedModel) to draw its Compute Engine resources from a Shared Reservation,
         # or exclusively from on-demand capacity.
@@ -15368,7 +15501,6 @@ module Google
           @accelerator_count = args[:accelerator_count] if args.key?(:accelerator_count)
           @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
-          @multihost_gpu_node_count = args[:multihost_gpu_node_count] if args.key?(:multihost_gpu_node_count)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @tpu_topology = args[:tpu_topology] if args.key?(:tpu_topology)
         end
@@ -24134,6 +24266,11 @@ module Google
         # @return [Array<Hash<String,Object>>]
         attr_accessor :class_methods
       
+        # The specification of a Reasoning Engine deployment.
+        # Corresponds to the JSON property `deploymentSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec]
+        attr_accessor :deployment_spec
+      
         # User provided package spec like pickled object and package requirements.
         # Corresponds to the JSON property `packageSpec`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReasoningEngineSpecPackageSpec]
@@ -24146,7 +24283,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @class_methods = args[:class_methods] if args.key?(:class_methods)
+          @deployment_spec = args[:deployment_spec] if args.key?(:deployment_spec)
           @package_spec = args[:package_spec] if args.key?(:package_spec)
+        end
+      end
+      
+      # The specification of a Reasoning Engine deployment.
+      class GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Environment variables to be set with the Reasoning Engine deployment.
+        # The environment variables can be updated through the UpdateReasoningEngine
+        # API.
+        # Corresponds to the JSON property `env`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EnvVar>]
+        attr_accessor :env
+      
+        # Optional. Environment variables where the value is a secret in Cloud Secret
+        # Manager. To use this feature, add 'Secret Manager Secret Accessor' role (roles/
+        # secretmanager.secretAccessor) to AI Platform Reasoning Engine Service Agent.
+        # Corresponds to the JSON property `secretEnv`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SecretEnvVar>]
+        attr_accessor :secret_env
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @env = args[:env] if args.key?(:env)
+          @secret_env = args[:secret_env] if args.key?(:secret_env)
         end
       end
       
@@ -24349,7 +24516,7 @@ module Google
         attr_accessor :reservation_affinity_type
       
         # Optional. Corresponds to the label values of a reservation resource. This must
-        # be the full resource name of the reservation.
+        # be the full resource name of the reservation or reservation block.
         # Corresponds to the JSON property `values`
         # @return [Array<String>]
         attr_accessor :values
@@ -24587,8 +24754,9 @@ module Google
         attr_accessor :disable_attribution
         alias_method :disable_attribution?, :disable_attribution
       
-        # Retrieve from Vertex AI Search datastore for grounding. See https://cloud.
-        # google.com/products/agent-builder
+        # Retrieve from Vertex AI Search datastore or engine for grounding. datastore
+        # and engine are mutually exclusive. See https://cloud.google.com/products/agent-
+        # builder
         # Corresponds to the JSON property `vertexAiSearch`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VertexAiSearch]
         attr_accessor :vertex_ai_search
@@ -32587,6 +32755,62 @@ module Google
         end
       end
       
+      # Represents an environment variable where the value is a secret in Cloud Secret
+      # Manager.
+      class GoogleCloudAiplatformV1SecretEnvVar
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the secret environment variable.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Reference to a secret stored in the Cloud Secret Manager that will provide the
+        # value for this environment variable.
+        # Corresponds to the JSON property `secretRef`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SecretRef]
+        attr_accessor :secret_ref
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @secret_ref = args[:secret_ref] if args.key?(:secret_ref)
+        end
+      end
+      
+      # Reference to a secret stored in the Cloud Secret Manager that will provide the
+      # value for this environment variable.
+      class GoogleCloudAiplatformV1SecretRef
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the secret in Cloud Secret Manager. Format: `secret_name`
+        # if the secret is in the same project. projects/`project`/secrets/`secret_name`
+        # if the secret is in a different project.
+        # Corresponds to the JSON property `secret`
+        # @return [String]
+        attr_accessor :secret
+      
+        # The Cloud Secret Manager secret version. Can be 'latest' for the latest
+        # version, an integer for a specific version, or a version alias.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @secret = args[:secret] if args.key?(:secret)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # Segment of the content.
       class GoogleCloudAiplatformV1Segment
         include Google::Apis::Core::Hashable
@@ -35589,6 +35813,12 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolCodeExecution]
         attr_accessor :code_execution
       
+        # Tool to search public web data, powered by Vertex AI Search and Sec4
+        # compliance.
+        # Corresponds to the JSON property `enterpriseWebSearch`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EnterpriseWebSearch]
+        attr_accessor :enterprise_web_search
+      
         # Optional. Function tool type. One or more function declarations to be passed
         # to the model along with the current user query. Model may decide to call a
         # subset of these functions by populating FunctionCall in the response. User
@@ -35622,6 +35852,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @code_execution = args[:code_execution] if args.key?(:code_execution)
+          @enterprise_web_search = args[:enterprise_web_search] if args.key?(:enterprise_web_search)
           @function_declarations = args[:function_declarations] if args.key?(:function_declarations)
           @google_search = args[:google_search] if args.key?(:google_search)
           @google_search_retrieval = args[:google_search_retrieval] if args.key?(:google_search_retrieval)
@@ -38075,12 +38306,13 @@ module Google
         end
       end
       
-      # Retrieve from Vertex AI Search datastore for grounding. See https://cloud.
-      # google.com/products/agent-builder
+      # Retrieve from Vertex AI Search datastore or engine for grounding. datastore
+      # and engine are mutually exclusive. See https://cloud.google.com/products/agent-
+      # builder
       class GoogleCloudAiplatformV1VertexAiSearch
         include Google::Apis::Core::Hashable
       
-        # Required. Fully-qualified Vertex AI Search data store resource ID. Format: `
+        # Optional. Fully-qualified Vertex AI Search data store resource ID. Format: `
         # projects/`project`/locations/`location`/collections/`collection`/dataStores/`
         # dataStore``
         # Corresponds to the JSON property `datastore`
