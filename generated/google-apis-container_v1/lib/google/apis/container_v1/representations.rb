@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoMonitoringConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AutoUpgradeOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1256,6 +1262,13 @@ module Google
         end
       end
       
+      class AutoMonitoringConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scope, as: 'scope'
+        end
+      end
+      
       class AutoUpgradeOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2197,6 +2210,8 @@ module Google
       class ManagedPrometheusConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_monitoring_config, as: 'autoMonitoringConfig', class: Google::Apis::ContainerV1::AutoMonitoringConfig, decorator: Google::Apis::ContainerV1::AutoMonitoringConfig::Representation
+      
           property :enabled, as: 'enabled'
         end
       end

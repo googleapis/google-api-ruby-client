@@ -355,6 +355,26 @@ module Google
         end
       end
       
+      # AutoMonitoringConfig defines the configuration for GKE Workload Auto-
+      # Monitoring.
+      class AutoMonitoringConfig
+        include Google::Apis::Core::Hashable
+      
+        # Scope for GKE Workload Auto-Monitoring.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scope = args[:scope] if args.key?(:scope)
+        end
+      end
+      
       # AutoUpgradeOptions defines the set of options for the user to control how the
       # Auto Upgrades will proceed.
       class AutoUpgradeOptions
@@ -3850,6 +3870,12 @@ module Google
       class ManagedPrometheusConfig
         include Google::Apis::Core::Hashable
       
+        # AutoMonitoringConfig defines the configuration for GKE Workload Auto-
+        # Monitoring.
+        # Corresponds to the JSON property `autoMonitoringConfig`
+        # @return [Google::Apis::ContainerV1::AutoMonitoringConfig]
+        attr_accessor :auto_monitoring_config
+      
         # Enable Managed Collection.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
@@ -3862,6 +3888,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_monitoring_config = args[:auto_monitoring_config] if args.key?(:auto_monitoring_config)
           @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
