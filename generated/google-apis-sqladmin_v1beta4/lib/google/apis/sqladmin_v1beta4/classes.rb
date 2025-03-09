@@ -223,6 +223,17 @@ module Google
         # @return [String]
         attr_accessor :instance
       
+        # Optional. Output only. Timestamp in UTC of when the instance associated with
+        # this backup is deleted.
+        # Corresponds to the JSON property `instanceDeletionTime`
+        # @return [String]
+        attr_accessor :instance_deletion_time
+      
+        # A Cloud SQL instance resource.
+        # Corresponds to the JSON property `instanceSettings`
+        # @return [Google::Apis::SqladminV1beta4::DatabaseInstance]
+        attr_accessor :instance_settings
+      
         # Output only. This is always `sql#backup`.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -288,7 +299,8 @@ module Google
         attr_accessor :time_zone
       
         # Input only. The time-to-live (TTL) interval for this resource (in days). For
-        # example: ttlDays:7 means 7 days.
+        # example: ttlDays:7, means 7 days from the current time. The expiration time
+        # can't exceed 365 days from the time that the backup is created.
         # Corresponds to the JSON property `ttlDays`
         # @return [Fixnum]
         attr_accessor :ttl_days
@@ -312,6 +324,8 @@ module Google
           @error = args[:error] if args.key?(:error)
           @expiry_time = args[:expiry_time] if args.key?(:expiry_time)
           @instance = args[:instance] if args.key?(:instance)
+          @instance_deletion_time = args[:instance_deletion_time] if args.key?(:instance_deletion_time)
+          @instance_settings = args[:instance_settings] if args.key?(:instance_settings)
           @kind = args[:kind] if args.key?(:kind)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
           @kms_key_version = args[:kms_key_version] if args.key?(:kms_key_version)
@@ -799,6 +813,11 @@ module Google
         # @return [String]
         attr_accessor :dns_name
       
+        # Output only. The list of DNS names used by this instance.
+        # Corresponds to the JSON property `dnsNames`
+        # @return [Array<Google::Apis::SqladminV1beta4::DnsNameMapping>]
+        attr_accessor :dns_names
+      
         # The assigned IP addresses for the instance.
         # Corresponds to the JSON property `ipAddresses`
         # @return [Array<Google::Apis::SqladminV1beta4::IpMapping>]
@@ -841,6 +860,7 @@ module Google
           @custom_subject_alternative_names = args[:custom_subject_alternative_names] if args.key?(:custom_subject_alternative_names)
           @database_version = args[:database_version] if args.key?(:database_version)
           @dns_name = args[:dns_name] if args.key?(:dns_name)
+          @dns_names = args[:dns_names] if args.key?(:dns_names)
           @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
           @kind = args[:kind] if args.key?(:kind)
           @psc_enabled = args[:psc_enabled] if args.key?(:psc_enabled)
@@ -1030,6 +1050,11 @@ module Google
         # Corresponds to the JSON property `dnsName`
         # @return [String]
         attr_accessor :dns_name
+      
+        # Output only. The list of DNS names used by this instance.
+        # Corresponds to the JSON property `dnsNames`
+        # @return [Array<Google::Apis::SqladminV1beta4::DnsNameMapping>]
+        attr_accessor :dns_names
       
         # This field is deprecated and will be removed from a future version of the API.
         # Use the `settings.settingsVersion` field instead.
@@ -1267,6 +1292,7 @@ module Google
           @disk_encryption_configuration = args[:disk_encryption_configuration] if args.key?(:disk_encryption_configuration)
           @disk_encryption_status = args[:disk_encryption_status] if args.key?(:disk_encryption_status)
           @dns_name = args[:dns_name] if args.key?(:dns_name)
+          @dns_names = args[:dns_names] if args.key?(:dns_names)
           @etag = args[:etag] if args.key?(:etag)
           @failover_replica = args[:failover_replica] if args.key?(:failover_replica)
           @gce_zone = args[:gce_zone] if args.key?(:gce_zone)
@@ -1606,6 +1632,37 @@ module Google
         end
       end
       
+      # DNS metadata.
+      class DnsNameMapping
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The connection type of the DNS name.
+        # Corresponds to the JSON property `connectionType`
+        # @return [String]
+        attr_accessor :connection_type
+      
+        # Output only. The scope that the DNS name applies to.
+        # Corresponds to the JSON property `dnsScope`
+        # @return [String]
+        attr_accessor :dns_scope
+      
+        # The DNS name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_type = args[:connection_type] if args.key?(:connection_type)
+          @dns_scope = args[:dns_scope] if args.key?(:dns_scope)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -1640,11 +1697,14 @@ module Google
         # database is specified, all databases are exported, except for the `mysql`
         # system database. If `fileType` is `CSV`, you can specify one database, either
         # by using this property or by using the `csvExportOptions.selectQuery` property,
-        # which takes precedence over this property. `PostgreSQL instances:` You must
-        # specify one database to be exported. If `fileType` is `CSV`, this database
-        # must match the one specified in the `csvExportOptions.selectQuery` property. `
-        # SQL Server instances:` You must specify one database to be exported, and the `
-        # fileType` must be `BAK`.
+        # which takes precedence over this property. `PostgreSQL instances:` If you don'
+        # t specify a database by name, all user databases in the instance are exported.
+        # This excludes system databases and Cloud SQL databases used to manage internal
+        # operations. Exporting all user databases is only available for directory-
+        # formatted parallel export. If `fileType` is `CSV`, this database must match
+        # the one specified in the `csvExportOptions.selectQuery` property. `SQL Server
+        # instances:` You must specify one database to be exported, and the `fileType`
+        # must be `BAK`.
         # Corresponds to the JSON property `databases`
         # @return [Array<String>]
         attr_accessor :databases
@@ -2244,8 +2304,10 @@ module Google
       
         # The target database for the import. If `fileType` is `SQL`, this field is
         # required only if the import file does not specify a database, and is
-        # overridden by any database specification in the import file. If `fileType` is `
-        # CSV`, one database must be specified.
+        # overridden by any database specification in the import file. For entire
+        # instance parallel import operations, the database is overridden by the
+        # database name stored in subdirectory name. If `fileType` is `CSV`, one
+        # database must be specified.
         # Corresponds to the JSON property `database`
         # @return [String]
         attr_accessor :database
@@ -3105,8 +3167,8 @@ module Google
         attr_accessor :server_ca_mode
       
         # Optional. The resource name of the server CA pool for an instance with `
-        # CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`. Format: projects//locations//
-        # caPools/
+        # CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`. Format: projects/`PROJECT`/
+        # locations/`REGION`/caPools/`CA_POOL_ID`
         # Corresponds to the JSON property `serverCaPool`
         # @return [String]
         attr_accessor :server_ca_pool
@@ -4369,6 +4431,15 @@ module Google
         # @return [String]
         attr_accessor :replication_type
       
+        # Optional. When this parameter is set to true, Cloud SQL retains backups of the
+        # instance even after the instance is deleted. The ON_DEMAND backup will be
+        # retained until customer deletes the backup or the project. The AUTOMATED
+        # backup will be retained based on the backups retention setting.
+        # Corresponds to the JSON property `retainBackupsOnDelete`
+        # @return [Boolean]
+        attr_accessor :retain_backups_on_delete
+        alias_method :retain_backups_on_delete?, :retain_backups_on_delete
+      
         # The version of instance settings. This is a required field for update method
         # to make sure concurrent updates are handled properly. During update, use the
         # most recent settingsVersion value for this instance and do not try to update
@@ -4446,6 +4517,7 @@ module Google
           @pricing_plan = args[:pricing_plan] if args.key?(:pricing_plan)
           @replication_lag_max_seconds = args[:replication_lag_max_seconds] if args.key?(:replication_lag_max_seconds)
           @replication_type = args[:replication_type] if args.key?(:replication_type)
+          @retain_backups_on_delete = args[:retain_backups_on_delete] if args.key?(:retain_backups_on_delete)
           @settings_version = args[:settings_version] if args.key?(:settings_version)
           @sql_server_audit_config = args[:sql_server_audit_config] if args.key?(:sql_server_audit_config)
           @storage_auto_resize = args[:storage_auto_resize] if args.key?(:storage_auto_resize)
