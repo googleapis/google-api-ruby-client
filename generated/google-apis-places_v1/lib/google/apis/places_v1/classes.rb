@@ -1521,6 +1521,12 @@ module Google
         attr_accessor :takeout
         alias_method :takeout?, :takeout
       
+        # Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/
+        # time-zones).
+        # Corresponds to the JSON property `timeZone`
+        # @return [Google::Apis::PlacesV1::GoogleTypeTimeZone]
+        attr_accessor :time_zone
+      
         # A set of type tags for this result. For example, "political" and "locality".
         # For the complete list of possible values, see Table A and Table B at https://
         # developers.google.com/maps/documentation/places/web-service/place-types
@@ -1636,6 +1642,7 @@ module Google
           @short_formatted_address = args[:short_formatted_address] if args.key?(:short_formatted_address)
           @sub_destinations = args[:sub_destinations] if args.key?(:sub_destinations)
           @takeout = args[:takeout] if args.key?(:takeout)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
           @types = args[:types] if args.key?(:types)
           @user_rating_count = args[:user_rating_count] if args.key?(:user_rating_count)
           @utc_offset_minutes = args[:utc_offset_minutes] if args.key?(:utc_offset_minutes)
@@ -3227,6 +3234,32 @@ module Google
           @currency_code = args[:currency_code] if args.key?(:currency_code)
           @nanos = args[:nanos] if args.key?(:nanos)
           @units = args[:units] if args.key?(:units)
+        end
+      end
+      
+      # Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/
+      # time-zones).
+      class GoogleTypeTimeZone
+        include Google::Apis::Core::Hashable
+      
+        # IANA Time Zone Database time zone. For example "America/New_York".
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Optional. IANA Time Zone Database version number. For example "2019a".
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @version = args[:version] if args.key?(:version)
         end
       end
     end

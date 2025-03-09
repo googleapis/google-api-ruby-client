@@ -418,6 +418,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleTypeTimeZone
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleGeoTypeViewport
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -811,6 +817,8 @@ module Google
           collection :sub_destinations, as: 'subDestinations', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceSubDestination, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceSubDestination::Representation
       
           property :takeout, as: 'takeout'
+          property :time_zone, as: 'timeZone', class: Google::Apis::PlacesV1::GoogleTypeTimeZone, decorator: Google::Apis::PlacesV1::GoogleTypeTimeZone::Representation
+      
           collection :types, as: 'types'
           property :user_rating_count, as: 'userRatingCount'
           property :utc_offset_minutes, as: 'utcOffsetMinutes'
@@ -1201,6 +1209,14 @@ module Google
           property :currency_code, as: 'currencyCode'
           property :nanos, as: 'nanos'
           property :units, :numeric_string => true, as: 'units'
+        end
+      end
+      
+      class GoogleTypeTimeZone
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :version, as: 'version'
         end
       end
     end
