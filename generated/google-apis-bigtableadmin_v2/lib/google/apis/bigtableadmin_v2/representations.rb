@@ -376,6 +376,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleBigtableAdminV2TypeMap
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -412,6 +418,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleBigtableAdminV2TypeStructEncoding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleBigtableAdminV2TypeStructEncodingSingleton
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleBigtableAdminV2TypeStructField
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -419,6 +449,12 @@ module Google
       end
       
       class GoogleBigtableAdminV2TypeTimestamp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleBigtableAdminV2TypeTimestampEncoding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1201,6 +1237,7 @@ module Google
       class GoogleBigtableAdminV2TypeBytesEncodingRaw
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :escape_nulls, as: 'escapeNulls'
         end
       end
       
@@ -1235,6 +1272,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :big_endian_bytes, as: 'bigEndianBytes', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes::Representation
       
+          property :ordered_code_bytes, as: 'orderedCodeBytes', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes::Representation
+      
         end
       end
       
@@ -1243,6 +1282,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bytes_type, as: 'bytesType', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeBytes, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeBytes::Representation
       
+        end
+      end
+      
+      class GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1277,6 +1322,7 @@ module Google
       class GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :null_escape_char, as: 'nullEscapeChar'
         end
       end
       
@@ -1289,8 +1335,41 @@ module Google
       class GoogleBigtableAdminV2TypeStruct
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :encoding, as: 'encoding', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStructEncoding, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStructEncoding::Representation
+      
           collection :fields, as: 'fields', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStructField, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStructField::Representation
       
+        end
+      end
+      
+      class GoogleBigtableAdminV2TypeStructEncoding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delimited_bytes, as: 'delimitedBytes', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes::Representation
+      
+          property :ordered_code_bytes, as: 'orderedCodeBytes', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes::Representation
+      
+          property :singleton, as: 'singleton', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStructEncodingSingleton, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStructEncodingSingleton::Representation
+      
+        end
+      end
+      
+      class GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delimiter, :base64 => true, as: 'delimiter'
+        end
+      end
+      
+      class GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleBigtableAdminV2TypeStructEncodingSingleton
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1306,6 +1385,16 @@ module Google
       class GoogleBigtableAdminV2TypeTimestamp
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :encoding, as: 'encoding', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeTimestampEncoding, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeTimestampEncoding::Representation
+      
+        end
+      end
+      
+      class GoogleBigtableAdminV2TypeTimestampEncoding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :unix_micros_int64, as: 'unixMicrosInt64', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt64Encoding, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt64Encoding::Representation
+      
         end
       end
       

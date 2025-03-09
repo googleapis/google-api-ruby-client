@@ -1843,12 +1843,21 @@ module Google
       class GoogleBigtableAdminV2TypeBytesEncodingRaw
         include Google::Apis::Core::Hashable
       
+        # If set, allows NULL values to be encoded as the empty string "". The actual
+        # empty string, or any value which only contains the null byte 0x00, has one
+        # more null byte appended.
+        # Corresponds to the JSON property `escapeNulls`
+        # @return [Boolean]
+        attr_accessor :escape_nulls
+        alias_method :escape_nulls?, :escape_nulls
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @escape_nulls = args[:escape_nulls] if args.key?(:escape_nulls)
         end
       end
       
@@ -1922,6 +1931,13 @@ module Google
         # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes]
         attr_accessor :big_endian_bytes
       
+        # Encodes the value in a variable length binary format of up to 10 bytes. Values
+        # that are closer to zero use fewer bytes. Sorted mode: all values are supported.
+        # Distinct mode: all values are supported.
+        # Corresponds to the JSON property `orderedCodeBytes`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes]
+        attr_accessor :ordered_code_bytes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1929,6 +1945,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @big_endian_bytes = args[:big_endian_bytes] if args.key?(:big_endian_bytes)
+          @ordered_code_bytes = args[:ordered_code_bytes] if args.key?(:ordered_code_bytes)
         end
       end
       
@@ -1951,6 +1968,21 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bytes_type = args[:bytes_type] if args.key?(:bytes_type)
+        end
+      end
+      
+      # Encodes the value in a variable length binary format of up to 10 bytes. Values
+      # that are closer to zero use fewer bytes. Sorted mode: all values are supported.
+      # Distinct mode: all values are supported.
+      class GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2068,12 +2100,23 @@ module Google
       class GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes
         include Google::Apis::Core::Hashable
       
+        # Single-character escape sequence used to support NULL values. If set, allows
+        # NULL values to be encoded as the empty string "". The actual empty string, or
+        # any value where every character equals `null_escape_char`, has one more `
+        # null_escape_char` appended. If `null_escape_char` is set and does not equal
+        # the ASCII null character 0x00, then the encoding will not support sorted mode.
+        # .
+        # Corresponds to the JSON property `nullEscapeChar`
+        # @return [String]
+        attr_accessor :null_escape_char
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @null_escape_char = args[:null_escape_char] if args.key?(:null_escape_char)
         end
       end
       
@@ -2096,6 +2139,11 @@ module Google
       class GoogleBigtableAdminV2TypeStruct
         include Google::Apis::Core::Hashable
       
+        # Rules used to convert to or from lower level types.
+        # Corresponds to the JSON property `encoding`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStructEncoding]
+        attr_accessor :encoding
+      
         # The names and types of the fields in this struct.
         # Corresponds to the JSON property `fields`
         # @return [Array<Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStructField>]
@@ -2107,7 +2155,132 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @encoding = args[:encoding] if args.key?(:encoding)
           @fields = args[:fields] if args.key?(:fields)
+        end
+      end
+      
+      # Rules used to convert to or from lower level types.
+      class GoogleBigtableAdminV2TypeStructEncoding
+        include Google::Apis::Core::Hashable
+      
+        # Fields are encoded independently and concatenated with a configurable `
+        # delimiter` in between. A struct with no fields defined is encoded as a single `
+        # delimiter`. Sorted mode: - Fields are encoded in sorted mode. - Encoded field
+        # values must not contain any bytes <= `delimiter[0]` - Element-wise order is
+        # preserved: `A < B` if `A[0] < B[0]`, or if `A[0] == B[0] && A[1] < B[1]`, etc.
+        # Strict prefixes sort first. Distinct mode: - Fields are encoded in distinct
+        # mode. - Encoded field values must not contain `delimiter[0]`.
+        # Corresponds to the JSON property `delimitedBytes`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes]
+        attr_accessor :delimited_bytes
+      
+        # Fields are encoded independently and concatenated with the fixed byte pair `
+        # 0x00, 0x01` in between. Any null (0x00) byte in an encoded field is replaced
+        # by the fixed byte pair `0x00, 0xFF`. Fields that encode to the empty string ""
+        # have special handling: - If *every* field encodes to "", or if the STRUCT has
+        # no fields defined, then the STRUCT is encoded as the fixed byte pair `0x00,
+        # 0x00`. - Otherwise, the STRUCT only encodes until the last non-empty field,
+        # omitting any trailing empty fields. Any empty fields that aren't omitted are
+        # replaced with the fixed byte pair `0x00, 0x00`. Examples: - STRUCT() -> "\00\
+        # 00" - STRUCT("") -> "\00\00" - STRUCT("", "") -> "\00\00" - STRUCT("", "B") ->
+        # "\00\00" + "\00\01" + "B" - STRUCT("A", "") -> "A" - STRUCT("", "B", "") -> "\
+        # 00\00" + "\00\01" + "B" - STRUCT("A", "", "C") -> "A" + "\00\01" + "\00\00" + "
+        # \00\01" + "C" Since null bytes are always escaped, this encoding can cause
+        # size blowup for encodings like `Int64.BigEndianBytes` that are likely to
+        # produce many such bytes. Sorted mode: - Fields are encoded in sorted mode. -
+        # All values supported by the field encodings are allowed - Element-wise order
+        # is preserved: `A < B` if `A[0] < B[0]`, or if `A[0] == B[0] && A[1] < B[1]`,
+        # etc. Strict prefixes sort first. Distinct mode: - Fields are encoded in
+        # distinct mode. - All values supported by the field encodings are allowed.
+        # Corresponds to the JSON property `orderedCodeBytes`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes]
+        attr_accessor :ordered_code_bytes
+      
+        # Uses the encoding of `fields[0].type` as-is. Only valid if `fields.size == 1`.
+        # Corresponds to the JSON property `singleton`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStructEncodingSingleton]
+        attr_accessor :singleton
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delimited_bytes = args[:delimited_bytes] if args.key?(:delimited_bytes)
+          @ordered_code_bytes = args[:ordered_code_bytes] if args.key?(:ordered_code_bytes)
+          @singleton = args[:singleton] if args.key?(:singleton)
+        end
+      end
+      
+      # Fields are encoded independently and concatenated with a configurable `
+      # delimiter` in between. A struct with no fields defined is encoded as a single `
+      # delimiter`. Sorted mode: - Fields are encoded in sorted mode. - Encoded field
+      # values must not contain any bytes <= `delimiter[0]` - Element-wise order is
+      # preserved: `A < B` if `A[0] < B[0]`, or if `A[0] == B[0] && A[1] < B[1]`, etc.
+      # Strict prefixes sort first. Distinct mode: - Fields are encoded in distinct
+      # mode. - Encoded field values must not contain `delimiter[0]`.
+      class GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes
+        include Google::Apis::Core::Hashable
+      
+        # Byte sequence used to delimit concatenated fields. The delimiter must contain
+        # at least 1 character and at most 50 characters.
+        # Corresponds to the JSON property `delimiter`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :delimiter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delimiter = args[:delimiter] if args.key?(:delimiter)
+        end
+      end
+      
+      # Fields are encoded independently and concatenated with the fixed byte pair `
+      # 0x00, 0x01` in between. Any null (0x00) byte in an encoded field is replaced
+      # by the fixed byte pair `0x00, 0xFF`. Fields that encode to the empty string ""
+      # have special handling: - If *every* field encodes to "", or if the STRUCT has
+      # no fields defined, then the STRUCT is encoded as the fixed byte pair `0x00,
+      # 0x00`. - Otherwise, the STRUCT only encodes until the last non-empty field,
+      # omitting any trailing empty fields. Any empty fields that aren't omitted are
+      # replaced with the fixed byte pair `0x00, 0x00`. Examples: - STRUCT() -> "\00\
+      # 00" - STRUCT("") -> "\00\00" - STRUCT("", "") -> "\00\00" - STRUCT("", "B") ->
+      # "\00\00" + "\00\01" + "B" - STRUCT("A", "") -> "A" - STRUCT("", "B", "") -> "\
+      # 00\00" + "\00\01" + "B" - STRUCT("A", "", "C") -> "A" + "\00\01" + "\00\00" + "
+      # \00\01" + "C" Since null bytes are always escaped, this encoding can cause
+      # size blowup for encodings like `Int64.BigEndianBytes` that are likely to
+      # produce many such bytes. Sorted mode: - Fields are encoded in sorted mode. -
+      # All values supported by the field encodings are allowed - Element-wise order
+      # is preserved: `A < B` if `A[0] < B[0]`, or if `A[0] == B[0] && A[1] < B[1]`,
+      # etc. Strict prefixes sort first. Distinct mode: - Fields are encoded in
+      # distinct mode. - All values supported by the field encodings are allowed.
+      class GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Uses the encoding of `fields[0].type` as-is. Only valid if `fields.size == 1`.
+      class GoogleBigtableAdminV2TypeStructEncodingSingleton
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2156,12 +2329,37 @@ module Google
       class GoogleBigtableAdminV2TypeTimestamp
         include Google::Apis::Core::Hashable
       
+        # Rules used to convert to or from lower level types.
+        # Corresponds to the JSON property `encoding`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeTimestampEncoding]
+        attr_accessor :encoding
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @encoding = args[:encoding] if args.key?(:encoding)
+        end
+      end
+      
+      # Rules used to convert to or from lower level types.
+      class GoogleBigtableAdminV2TypeTimestampEncoding
+        include Google::Apis::Core::Hashable
+      
+        # Rules used to convert to or from lower level types.
+        # Corresponds to the JSON property `unixMicrosInt64`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt64Encoding]
+        attr_accessor :unix_micros_int64
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @unix_micros_int64 = args[:unix_micros_int64] if args.key?(:unix_micros_int64)
         end
       end
       
