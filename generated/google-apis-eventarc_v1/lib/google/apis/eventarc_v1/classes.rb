@@ -876,7 +876,9 @@ module Google
         attr_accessor :crypto_key_name
       
         # Required. The resource name of the config. Must be in the format of, `projects/
-        # `project`/locations/`location`/googleChannelConfig`.
+        # `project`/locations/`location`/googleChannelConfig`. In API responses, the
+        # config name always includes the projectID, regardless of whether the projectID
+        # or projectNumber was provided.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

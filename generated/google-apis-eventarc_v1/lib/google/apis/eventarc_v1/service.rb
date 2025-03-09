@@ -81,7 +81,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get a GoogleChannelConfig
+        # Get a GoogleChannelConfig. The name of the GoogleChannelConfig in the response
+        # is ALWAYS coded with projectID.
         # @param [String] name
         #   Required. The name of the config to get.
         # @param [String] fields
@@ -157,7 +158,9 @@ module Google
         # Update a single GoogleChannelConfig
         # @param [String] name
         #   Required. The resource name of the config. Must be in the format of, `projects/
-        #   `project`/locations/`location`/googleChannelConfig`.
+        #   `project`/locations/`location`/googleChannelConfig`. In API responses, the
+        #   config name always includes the projectID, regardless of whether the projectID
+        #   or projectNumber was provided.
         # @param [Google::Apis::EventarcV1::GoogleChannelConfig] google_channel_config_object
         # @param [String] update_mask
         #   The fields to be updated; only fields explicitly provided are updated. If no
