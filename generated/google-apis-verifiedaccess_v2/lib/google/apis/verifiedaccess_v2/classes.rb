@@ -22,6 +22,26 @@ module Google
   module Apis
     module VerifiedaccessV2
       
+      # Antivirus information on a device.
+      class Antivirus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The state of the antivirus on the device. Introduced in Chrome
+        # M136.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Result message for VerifiedAccess.GenerateChallenge.
       class Challenge
         include Google::Apis::Core::Hashable
@@ -46,12 +66,12 @@ module Google
       class CrowdStrikeAgent
         include Google::Apis::Core::Hashable
       
-        # The Agent ID of the Crowdstrike agent.
+        # Output only. The Agent ID of the Crowdstrike agent.
         # Corresponds to the JSON property `agentId`
         # @return [String]
         attr_accessor :agent_id
       
-        # The Customer ID to which the agent belongs to.
+        # Output only. The Customer ID to which the agent belongs to.
         # Corresponds to the JSON property `customerId`
         # @return [String]
         attr_accessor :customer_id
@@ -72,7 +92,7 @@ module Google
       class DeviceSignals
         include Google::Apis::Core::Hashable
       
-        # Value of the AllowScreenLock policy on the device. See https://
+        # Output only. Value of the AllowScreenLock policy on the device. See https://
         # chromeenterprise.google/policies/?policy=AllowScreenLock for more details.
         # Available on ChromeOS only.
         # Corresponds to the JSON property `allowScreenLock`
@@ -80,22 +100,27 @@ module Google
         attr_accessor :allow_screen_lock
         alias_method :allow_screen_lock?, :allow_screen_lock
       
-        # Current version of the Chrome browser which generated this set of signals.
-        # Example value: "107.0.5286.0".
+        # Antivirus information on a device.
+        # Corresponds to the JSON property `antivirus`
+        # @return [Google::Apis::VerifiedaccessV2::Antivirus]
+        attr_accessor :antivirus
+      
+        # Output only. Current version of the Chrome browser which generated this set of
+        # signals. Example value: "107.0.5286.0".
         # Corresponds to the JSON property `browserVersion`
         # @return [String]
         attr_accessor :browser_version
       
-        # Whether Chrome's built-in DNS client is used. The OS DNS client is otherwise
-        # used. This value may be controlled by an enterprise policy: https://
-        # chromeenterprise.google/policies/#BuiltInDnsClientEnabled.
+        # Output only. Whether Chrome's built-in DNS client is used. The OS DNS client
+        # is otherwise used. This value may be controlled by an enterprise policy: https:
+        # //chromeenterprise.google/policies/#BuiltInDnsClientEnabled.
         # Corresponds to the JSON property `builtInDnsClientEnabled`
         # @return [Boolean]
         attr_accessor :built_in_dns_client_enabled
         alias_method :built_in_dns_client_enabled?, :built_in_dns_client_enabled
       
-        # Whether access to the Chrome Remote Desktop application is blocked via a
-        # policy.
+        # Output only. Whether access to the Chrome Remote Desktop application is
+        # blocked via a policy.
         # Corresponds to the JSON property `chromeRemoteDesktopAppBlocked`
         # @return [Boolean]
         attr_accessor :chrome_remote_desktop_app_blocked
@@ -106,37 +131,38 @@ module Google
         # @return [Google::Apis::VerifiedaccessV2::CrowdStrikeAgent]
         attr_accessor :crowd_strike_agent
       
-        # Affiliation IDs of the organizations that are affiliated with the organization
-        # that is currently managing the device. When the sets of device and profile
-        # affiliation IDs overlap, it means that the organizations managing the device
-        # and user are affiliated. To learn more about user affiliation, visit https://
-        # support.google.com/chrome/a/answer/12801245?ref_topic=9027936.
+        # Output only. Affiliation IDs of the organizations that are affiliated with the
+        # organization that is currently managing the device. When the sets of device
+        # and profile affiliation IDs overlap, it means that the organizations managing
+        # the device and user are affiliated. To learn more about user affiliation,
+        # visit https://support.google.com/chrome/a/answer/12801245?ref_topic=9027936.
         # Corresponds to the JSON property `deviceAffiliationIds`
         # @return [Array<String>]
         attr_accessor :device_affiliation_ids
       
-        # Enrollment domain of the customer which is currently managing the device.
+        # Output only. Enrollment domain of the customer which is currently managing the
+        # device.
         # Corresponds to the JSON property `deviceEnrollmentDomain`
         # @return [String]
         attr_accessor :device_enrollment_domain
       
-        # The name of the device's manufacturer.
+        # Output only. The name of the device's manufacturer.
         # Corresponds to the JSON property `deviceManufacturer`
         # @return [String]
         attr_accessor :device_manufacturer
       
-        # The name of the device's model.
+        # Output only. The name of the device's model.
         # Corresponds to the JSON property `deviceModel`
         # @return [String]
         attr_accessor :device_model
       
-        # The encryption state of the disk. On ChromeOS, the main disk is always
-        # ENCRYPTED.
+        # Output only. The encryption state of the disk. On ChromeOS, the main disk is
+        # always ENCRYPTED.
         # Corresponds to the JSON property `diskEncryption`
         # @return [String]
         attr_accessor :disk_encryption
       
-        # The display name of the device, as defined by the user.
+        # Output only. The display name of the device, as defined by the user.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -146,42 +172,43 @@ module Google
         # @return [String]
         attr_accessor :hostname
       
-        # International Mobile Equipment Identity (IMEI) of the device. Available on
-        # ChromeOS only.
+        # Output only. International Mobile Equipment Identity (IMEI) of the device.
+        # Available on ChromeOS only.
         # Corresponds to the JSON property `imei`
         # @return [Array<String>]
         attr_accessor :imei
       
-        # MAC addresses of the device.
+        # Output only. MAC addresses of the device.
         # Corresponds to the JSON property `macAddresses`
         # @return [Array<String>]
         attr_accessor :mac_addresses
       
-        # Mobile Equipment Identifier (MEID) of the device. Available on ChromeOS only.
+        # Output only. Mobile Equipment Identifier (MEID) of the device. Available on
+        # ChromeOS only.
         # Corresponds to the JSON property `meid`
         # @return [Array<String>]
         attr_accessor :meid
       
-        # The type of the Operating System currently running on the device.
+        # Output only. The type of the Operating System currently running on the device.
         # Corresponds to the JSON property `operatingSystem`
         # @return [String]
         attr_accessor :operating_system
       
-        # The state of the OS level firewall. On ChromeOS, the value will always be
-        # ENABLED on regular devices and UNKNOWN on devices in developer mode. Support
-        # for MacOS 15 (Sequoia) and later has been introduced in Chrome M131.
+        # Output only. The state of the OS level firewall. On ChromeOS, the value will
+        # always be ENABLED on regular devices and UNKNOWN on devices in developer mode.
+        # Support for MacOS 15 (Sequoia) and later has been introduced in Chrome M131.
         # Corresponds to the JSON property `osFirewall`
         # @return [String]
         attr_accessor :os_firewall
       
-        # The current version of the Operating System. On Windows and linux, the value
-        # will also include the security patch information.
+        # Output only. The current version of the Operating System. On Windows and linux,
+        # the value will also include the security patch information.
         # Corresponds to the JSON property `osVersion`
         # @return [String]
         attr_accessor :os_version
       
-        # Whether the Password Protection Warning feature is enabled or not. Password
-        # protection alerts users when they reuse their protected password on
+        # Output only. Whether the Password Protection Warning feature is enabled or not.
+        # Password protection alerts users when they reuse their protected password on
         # potentially suspicious sites. This setting is controlled by an enterprise
         # policy: https://chromeenterprise.google/policies/#
         # PasswordProtectionWarningTrigger. Note that the policy unset does not have the
@@ -190,53 +217,55 @@ module Google
         # @return [String]
         attr_accessor :password_protection_warning_trigger
       
-        # Affiliation IDs of the organizations that are affiliated with the organization
-        # that is currently managing the Chrome Profile’s user or ChromeOS user.
+        # Output only. Affiliation IDs of the organizations that are affiliated with the
+        # organization that is currently managing the Chrome Profile’s user or ChromeOS
+        # user.
         # Corresponds to the JSON property `profileAffiliationIds`
         # @return [Array<String>]
         attr_accessor :profile_affiliation_ids
       
-        # Enrollment domain of the customer which is currently managing the profile.
+        # Output only. Enrollment domain of the customer which is currently managing the
+        # profile.
         # Corresponds to the JSON property `profileEnrollmentDomain`
         # @return [String]
         attr_accessor :profile_enrollment_domain
       
-        # Whether Enterprise-grade (i.e. custom) unsafe URL scanning is enabled or not.
-        # This setting may be controlled by an enterprise policy: https://
-        # chromeenterprise.google/policies/#EnterpriseRealTimeUrlCheckMode
+        # Output only. Whether Enterprise-grade (i.e. custom) unsafe URL scanning is
+        # enabled or not. This setting may be controlled by an enterprise policy: https:/
+        # /chromeenterprise.google/policies/#EnterpriseRealTimeUrlCheckMode
         # Corresponds to the JSON property `realtimeUrlCheckMode`
         # @return [String]
         attr_accessor :realtime_url_check_mode
       
-        # Safe Browsing Protection Level. That setting may be controlled by an
-        # enterprise policy: https://chromeenterprise.google/policies/#
+        # Output only. Safe Browsing Protection Level. That setting may be controlled by
+        # an enterprise policy: https://chromeenterprise.google/policies/#
         # SafeBrowsingProtectionLevel.
         # Corresponds to the JSON property `safeBrowsingProtectionLevel`
         # @return [String]
         attr_accessor :safe_browsing_protection_level
       
-        # The state of the Screen Lock password protection. On ChromeOS, this value will
-        # always be ENABLED as there is not way to disable requiring a password or pin
-        # when unlocking the device.
+        # Output only. The state of the Screen Lock password protection. On ChromeOS,
+        # this value will always be ENABLED as there is not way to disable requiring a
+        # password or pin when unlocking the device.
         # Corresponds to the JSON property `screenLockSecured`
         # @return [String]
         attr_accessor :screen_lock_secured
       
-        # Whether the device's startup software has its Secure Boot feature enabled.
-        # Available on Windows only.
+        # Output only. Whether the device's startup software has its Secure Boot feature
+        # enabled. Available on Windows only.
         # Corresponds to the JSON property `secureBootMode`
         # @return [String]
         attr_accessor :secure_boot_mode
       
-        # The serial number of the device. On Windows, this represents the BIOS's serial
-        # number. Not available on most Linux distributions.
+        # Output only. The serial number of the device. On Windows, this represents the
+        # BIOS's serial number. Not available on most Linux distributions.
         # Corresponds to the JSON property `serialNumber`
         # @return [String]
         attr_accessor :serial_number
       
-        # Whether the Site Isolation (a.k.a Site Per Process) setting is enabled. That
-        # setting may be controlled by an enterprise policy: https://chromeenterprise.
-        # google/policies/#SitePerProcess
+        # Output only. Whether the Site Isolation (a.k.a Site Per Process) setting is
+        # enabled. That setting may be controlled by an enterprise policy: https://
+        # chromeenterprise.google/policies/#SitePerProcess
         # Corresponds to the JSON property `siteIsolationEnabled`
         # @return [Boolean]
         attr_accessor :site_isolation_enabled
@@ -248,25 +277,27 @@ module Google
         # @return [Array<String>]
         attr_accessor :system_dns_servers
       
-        # Whether Chrome is blocking third-party software injection or not. This setting
-        # may be controlled by an enterprise policy: https://chromeenterprise.google/
-        # policies/?policy=ThirdPartyBlockingEnabled. Available on Windows only.
+        # Output only. Whether Chrome is blocking third-party software injection or not.
+        # This setting may be controlled by an enterprise policy: https://
+        # chromeenterprise.google/policies/?policy=ThirdPartyBlockingEnabled. Available
+        # on Windows only.
         # Corresponds to the JSON property `thirdPartyBlockingEnabled`
         # @return [Boolean]
         attr_accessor :third_party_blocking_enabled
         alias_method :third_party_blocking_enabled?, :third_party_blocking_enabled
       
-        # The trigger which generated this set of signals.
+        # Output only. The trigger which generated this set of signals.
         # Corresponds to the JSON property `trigger`
         # @return [String]
         attr_accessor :trigger
       
-        # Windows domain that the current machine has joined. Available on Windows only.
+        # Output only. Windows domain that the current machine has joined. Available on
+        # Windows only.
         # Corresponds to the JSON property `windowsMachineDomain`
         # @return [String]
         attr_accessor :windows_machine_domain
       
-        # Windows domain for the current OS user. Available on Windows only.
+        # Output only. Windows domain for the current OS user. Available on Windows only.
         # Corresponds to the JSON property `windowsUserDomain`
         # @return [String]
         attr_accessor :windows_user_domain
@@ -278,6 +309,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allow_screen_lock = args[:allow_screen_lock] if args.key?(:allow_screen_lock)
+          @antivirus = args[:antivirus] if args.key?(:antivirus)
           @browser_version = args[:browser_version] if args.key?(:browser_version)
           @built_in_dns_client_enabled = args[:built_in_dns_client_enabled] if args.key?(:built_in_dns_client_enabled)
           @chrome_remote_desktop_app_blocked = args[:chrome_remote_desktop_app_blocked] if args.key?(:chrome_remote_desktop_app_blocked)
@@ -363,30 +395,31 @@ module Google
       class VerifyChallengeResponseResult
         include Google::Apis::Core::Hashable
       
-        # Attested device ID (ADID).
+        # Output only. Attested device ID (ADID).
         # Corresponds to the JSON property `attestedDeviceId`
         # @return [String]
         attr_accessor :attested_device_id
       
-        # Unique customer id that this device belongs to, as defined by the Google Admin
-        # SDK at https://developers.google.com/admin-sdk/directory/v1/guides/manage-
-        # customers
+        # Output only. Unique customer id that this device belongs to, as defined by the
+        # Google Admin SDK at https://developers.google.com/admin-sdk/directory/v1/
+        # guides/manage-customers
         # Corresponds to the JSON property `customerId`
         # @return [String]
         attr_accessor :customer_id
       
-        # Device enrollment id for ChromeOS devices.
+        # Output only. Device enrollment id for ChromeOS devices.
         # Corresponds to the JSON property `deviceEnrollmentId`
         # @return [String]
         attr_accessor :device_enrollment_id
       
-        # Device permanent id is returned in this field (for the machine response only).
+        # Output only. Device permanent id is returned in this field (for the machine
+        # response only).
         # Corresponds to the JSON property `devicePermanentId`
         # @return [String]
         attr_accessor :device_permanent_id
       
-        # Deprecated. Device signal in json string representation. Prefer using `
-        # device_signals` instead.
+        # Output only. Deprecated. Device signal in json string representation. Prefer
+        # using `device_signals` instead.
         # Corresponds to the JSON property `deviceSignal`
         # @return [String]
         attr_accessor :device_signal
@@ -397,38 +430,43 @@ module Google
         # @return [Google::Apis::VerifiedaccessV2::DeviceSignals]
         attr_accessor :device_signals
       
-        # Device attested key trust level.
+        # Output only. Device attested key trust level.
         # Corresponds to the JSON property `keyTrustLevel`
         # @return [String]
         attr_accessor :key_trust_level
       
-        # Unique customer id that this profile belongs to, as defined by the Google
-        # Admin SDK at https://developers.google.com/admin-sdk/directory/v1/guides/
-        # manage-customers
+        # Output only. Unique customer id that this profile belongs to, as defined by
+        # the Google Admin SDK at https://developers.google.com/admin-sdk/directory/v1/
+        # guides/manage-customers
         # Corresponds to the JSON property `profileCustomerId`
         # @return [String]
         attr_accessor :profile_customer_id
       
-        # Profile attested key trust level.
+        # Output only. Profile attested key trust level.
         # Corresponds to the JSON property `profileKeyTrustLevel`
         # @return [String]
         attr_accessor :profile_key_trust_level
       
-        # Certificate Signing Request (in the SPKAC format, base64 encoded) is returned
-        # in this field. This field will be set only if device has included CSR in its
-        # challenge response. (the option to include CSR is now available for both user
-        # and machine responses)
+        # Output only. The unique server-side ID of a profile on the device.
+        # Corresponds to the JSON property `profilePermanentId`
+        # @return [String]
+        attr_accessor :profile_permanent_id
+      
+        # Output only. Certificate Signing Request (in the SPKAC format, base64 encoded)
+        # is returned in this field. This field will be set only if device has included
+        # CSR in its challenge response. (the option to include CSR is now available for
+        # both user and machine responses)
         # Corresponds to the JSON property `signedPublicKeyAndChallenge`
         # @return [String]
         attr_accessor :signed_public_key_and_challenge
       
-        # Virtual device id of the device. The definition of virtual device id is
-        # platform-specific.
+        # Output only. Virtual device id of the device. The definition of virtual device
+        # id is platform-specific.
         # Corresponds to the JSON property `virtualDeviceId`
         # @return [String]
         attr_accessor :virtual_device_id
       
-        # The ID of a profile on the device.
+        # Output only. The client-provided ID of a profile on the device.
         # Corresponds to the JSON property `virtualProfileId`
         # @return [String]
         attr_accessor :virtual_profile_id
@@ -448,6 +486,7 @@ module Google
           @key_trust_level = args[:key_trust_level] if args.key?(:key_trust_level)
           @profile_customer_id = args[:profile_customer_id] if args.key?(:profile_customer_id)
           @profile_key_trust_level = args[:profile_key_trust_level] if args.key?(:profile_key_trust_level)
+          @profile_permanent_id = args[:profile_permanent_id] if args.key?(:profile_permanent_id)
           @signed_public_key_and_challenge = args[:signed_public_key_and_challenge] if args.key?(:signed_public_key_and_challenge)
           @virtual_device_id = args[:virtual_device_id] if args.key?(:virtual_device_id)
           @virtual_profile_id = args[:virtual_profile_id] if args.key?(:virtual_profile_id)

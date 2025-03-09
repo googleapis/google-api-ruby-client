@@ -22,6 +22,12 @@ module Google
   module Apis
     module VerifiedaccessV2
       
+      class Antivirus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Challenge
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -58,6 +64,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Antivirus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
+        end
+      end
+      
       class Challenge
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -77,6 +90,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_screen_lock, as: 'allowScreenLock'
+          property :antivirus, as: 'antivirus', class: Google::Apis::VerifiedaccessV2::Antivirus, decorator: Google::Apis::VerifiedaccessV2::Antivirus::Representation
+      
           property :browser_version, as: 'browserVersion'
           property :built_in_dns_client_enabled, as: 'builtInDnsClientEnabled'
           property :chrome_remote_desktop_app_blocked, as: 'chromeRemoteDesktopAppBlocked'
@@ -139,6 +154,7 @@ module Google
           property :key_trust_level, as: 'keyTrustLevel'
           property :profile_customer_id, as: 'profileCustomerId'
           property :profile_key_trust_level, as: 'profileKeyTrustLevel'
+          property :profile_permanent_id, as: 'profilePermanentId'
           property :signed_public_key_and_challenge, as: 'signedPublicKeyAndChallenge'
           property :virtual_device_id, as: 'virtualDeviceId'
           property :virtual_profile_id, as: 'virtualProfileId'
