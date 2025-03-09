@@ -506,6 +506,13 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload
         include Google::Apis::Core::Hashable
       
+        # Output only. Output only. This identifies whether the subscription is attached
+        # to a Google Home structure.
+        # Corresponds to the JSON property `attachedToGoogleStructure`
+        # @return [Boolean]
+        attr_accessor :attached_to_google_structure
+        alias_method :attached_to_google_structure?, :attached_to_google_structure
+      
         # Optional. This identifies the structure ID on partner side that the
         # subscription should be applied to. Only required when the partner requires
         # structure mapping.
@@ -519,6 +526,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @attached_to_google_structure = args[:attached_to_google_structure] if args.key?(:attached_to_google_structure)
           @partner_structure_id = args[:partner_structure_id] if args.key?(:partner_structure_id)
         end
       end
