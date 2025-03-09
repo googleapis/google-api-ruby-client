@@ -5327,6 +5327,12 @@ module Google
         attr_accessor :is_internal
         alias_method :is_internal?, :is_internal
       
+        # To specify whether to log the results of failed probes to Cloud Logging.
+        # Corresponds to the JSON property `logCheckFailures`
+        # @return [Boolean]
+        attr_accessor :log_check_failures
+        alias_method :log_check_failures?, :log_check_failures
+      
         # An object representing a resource that can be used for monitoring, logging,
         # billing, or other purposes. Examples include virtual machine instances,
         # databases, and storage devices such as disks. The type field identifies a
@@ -5409,6 +5415,7 @@ module Google
           @http_check = args[:http_check] if args.key?(:http_check)
           @internal_checkers = args[:internal_checkers] if args.key?(:internal_checkers)
           @is_internal = args[:is_internal] if args.key?(:is_internal)
+          @log_check_failures = args[:log_check_failures] if args.key?(:log_check_failures)
           @monitored_resource = args[:monitored_resource] if args.key?(:monitored_resource)
           @name = args[:name] if args.key?(:name)
           @period = args[:period] if args.key?(:period)
