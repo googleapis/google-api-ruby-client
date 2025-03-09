@@ -1420,12 +1420,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudIntegrationsV1alphaListTestCaseExecutionsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudIntegrationsV1alphaListTestCasesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4007,6 +4001,7 @@ module Google
       class GoogleCloudIntegrationsV1alphaExecution
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_kms_key, as: 'cloudKmsKey'
           property :cloud_logging_details, as: 'cloudLoggingDetails', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCloudLoggingDetails, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCloudLoggingDetails::Representation
       
           property :create_time, as: 'createTime'
@@ -4238,6 +4233,7 @@ module Google
       class GoogleCloudIntegrationsV1alphaIntegrationVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_kms_key, as: 'cloudKmsKey'
           property :cloud_logging_details, as: 'cloudLoggingDetails', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCloudLoggingDetails, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCloudLoggingDetails::Representation
       
           property :create_time, as: 'createTime'
@@ -4432,15 +4428,6 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :templates, as: 'templates', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplate, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplate::Representation
       
-        end
-      end
-      
-      class GoogleCloudIntegrationsV1alphaListTestCaseExecutionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :executions, as: 'executions', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaExecution, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaExecution::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
         end
       end
       
