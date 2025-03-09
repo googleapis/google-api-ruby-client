@@ -696,6 +696,7 @@ module Google
       
           property :name, as: 'name'
           property :node_type, as: 'nodeType'
+          property :ondemand_maintenance, as: 'ondemandMaintenance'
           property :persistence_config, as: 'persistenceConfig', class: Google::Apis::RedisV1beta1::ClusterPersistenceConfig, decorator: Google::Apis::RedisV1beta1::ClusterPersistenceConfig::Representation
       
           property :precise_size_gb, as: 'preciseSizeGb'
