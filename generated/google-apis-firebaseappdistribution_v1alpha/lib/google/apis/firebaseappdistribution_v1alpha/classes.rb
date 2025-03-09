@@ -413,6 +413,27 @@ module Google
         end
       end
       
+      # The request message for `DeleteTestCase`.
+      class GoogleFirebaseAppdistroV1alphaBatchDeleteTestCasesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the test cases to delete. A maximum number of 1000 test
+        # cases can be deleted in one batch Format: `projects/`project_number`/apps/`
+        # app_id`/testCases/`test_case_id``
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @names = args[:names] if args.key?(:names)
+        end
+      end
+      
       # The (empty) response message for `CancelReleaseTest`.
       class GoogleFirebaseAppdistroV1alphaCancelReleaseTestResponse
         include Google::Apis::Core::Hashable
