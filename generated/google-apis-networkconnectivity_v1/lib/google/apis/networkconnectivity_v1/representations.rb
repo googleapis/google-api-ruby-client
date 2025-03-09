@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AcceptSpokeUpdateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -370,6 +376,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RejectSpokeUpdateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Route
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -497,6 +509,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :spoke, as: 'spoke', class: Google::Apis::NetworkconnectivityV1::Spoke, decorator: Google::Apis::NetworkconnectivityV1::Spoke::Representation
       
+        end
+      end
+      
+      class AcceptSpokeUpdateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
+          property :spoke_etag, as: 'spokeEtag'
+          property :spoke_uri, as: 'spokeUri'
         end
       end
       
@@ -736,6 +757,7 @@ module Google
           property :network, as: 'network'
           property :peering, as: 'peering'
           property :producer_network, as: 'producerNetwork'
+          collection :proposed_include_export_ranges, as: 'proposedIncludeExportRanges'
           property :service_consumer_vpc_spoke, as: 'serviceConsumerVpcSpoke'
         end
       end
@@ -757,6 +779,7 @@ module Google
           collection :exclude_export_ranges, as: 'excludeExportRanges'
           collection :include_export_ranges, as: 'includeExportRanges'
           collection :producer_vpc_spokes, as: 'producerVpcSpokes'
+          collection :proposed_include_export_ranges, as: 'proposedIncludeExportRanges'
           property :uri, as: 'uri'
         end
       end
@@ -1116,6 +1139,16 @@ module Google
         end
       end
       
+      class RejectSpokeUpdateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :details, as: 'details'
+          property :request_id, as: 'requestId'
+          property :spoke_etag, as: 'spokeEtag'
+          property :spoke_uri, as: 'spokeUri'
+        end
+      end
+      
       class Route
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1254,6 +1287,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :etag, as: 'etag'
+          collection :field_paths_pending_update, as: 'fieldPathsPendingUpdate'
           property :group, as: 'group'
           property :hub, as: 'hub'
           hash :labels, as: 'labels'

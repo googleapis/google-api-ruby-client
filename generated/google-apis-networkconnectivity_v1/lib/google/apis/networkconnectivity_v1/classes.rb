@@ -80,6 +80,47 @@ module Google
         end
       end
       
+      # The request for HubService.AcceptSpokeUpdate.
+      class AcceptSpokeUpdateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A request ID to identify requests. Specify a unique request ID so
+        # that if you must retry your request, the server knows to ignore the request if
+        # it has already been completed. The server guarantees that a request doesn't
+        # result in creation of duplicate commitments for at least 60 minutes. For
+        # example, consider a situation where you make an initial request and the
+        # request times out. If you make the request again with the same request ID, the
+        # server can check to see whether the original operation was received. If it was,
+        # the server ignores the second request. This behavior prevents clients from
+        # mistakenly creating duplicate commitments. The request ID must be a valid UUID,
+        # with the exception that zero UUID is not supported (00000000-0000-0000-0000-
+        # 000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Required. The etag of the spoke to accept update.
+        # Corresponds to the JSON property `spokeEtag`
+        # @return [String]
+        attr_accessor :spoke_etag
+      
+        # Required. The URI of the spoke to accept update.
+        # Corresponds to the JSON property `spokeUri`
+        # @return [String]
+        attr_accessor :spoke_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @spoke_etag = args[:spoke_etag] if args.key?(:spoke_etag)
+          @spoke_uri = args[:spoke_uri] if args.key?(:spoke_uri)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -1240,6 +1281,12 @@ module Google
         # @return [String]
         attr_accessor :producer_network
       
+        # Optional. The proposed include export IP ranges waiting for hub administration'
+        # s approval.
+        # Corresponds to the JSON property `proposedIncludeExportRanges`
+        # @return [Array<String>]
+        attr_accessor :proposed_include_export_ranges
+      
         # Output only. The Service Consumer Network spoke.
         # Corresponds to the JSON property `serviceConsumerVpcSpoke`
         # @return [String]
@@ -1256,6 +1303,7 @@ module Google
           @network = args[:network] if args.key?(:network)
           @peering = args[:peering] if args.key?(:peering)
           @producer_network = args[:producer_network] if args.key?(:producer_network)
+          @proposed_include_export_ranges = args[:proposed_include_export_ranges] if args.key?(:proposed_include_export_ranges)
           @service_consumer_vpc_spoke = args[:service_consumer_vpc_spoke] if args.key?(:service_consumer_vpc_spoke)
         end
       end
@@ -1332,6 +1380,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :producer_vpc_spokes
       
+        # Optional. The proposed include export IP ranges waiting for hub administration'
+        # s approval.
+        # Corresponds to the JSON property `proposedIncludeExportRanges`
+        # @return [Array<String>]
+        attr_accessor :proposed_include_export_ranges
+      
         # Required. The URI of the VPC network resource.
         # Corresponds to the JSON property `uri`
         # @return [String]
@@ -1346,6 +1400,7 @@ module Google
           @exclude_export_ranges = args[:exclude_export_ranges] if args.key?(:exclude_export_ranges)
           @include_export_ranges = args[:include_export_ranges] if args.key?(:include_export_ranges)
           @producer_vpc_spokes = args[:producer_vpc_spokes] if args.key?(:producer_vpc_spokes)
+          @proposed_include_export_ranges = args[:proposed_include_export_ranges] if args.key?(:proposed_include_export_ranges)
           @uri = args[:uri] if args.key?(:uri)
         end
       end
@@ -2767,6 +2822,53 @@ module Google
         end
       end
       
+      # The request for HubService.RejectSpokeUpdate.
+      class RejectSpokeUpdateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Additional information provided by the hub administrator.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
+        # Optional. A request ID to identify requests. Specify a unique request ID so
+        # that if you must retry your request, the server knows to ignore the request if
+        # it has already been completed. The server guarantees that a request doesn't
+        # result in creation of duplicate commitments for at least 60 minutes. For
+        # example, consider a situation where you make an initial request and the
+        # request times out. If you make the request again with the same request ID, the
+        # server can check to see whether the original operation was received. If it was,
+        # the server ignores the second request. This behavior prevents clients from
+        # mistakenly creating duplicate commitments. The request ID must be a valid UUID,
+        # with the exception that zero UUID is not supported (00000000-0000-0000-0000-
+        # 000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Required. The etag of the spoke to reject update.
+        # Corresponds to the JSON property `spokeEtag`
+        # @return [String]
+        attr_accessor :spoke_etag
+      
+        # Required. The URI of the spoke to reject update.
+        # Corresponds to the JSON property `spokeUri`
+        # @return [String]
+        attr_accessor :spoke_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @spoke_etag = args[:spoke_etag] if args.key?(:spoke_etag)
+          @spoke_uri = args[:spoke_uri] if args.key?(:spoke_uri)
+        end
+      end
+      
       # A route defines a path from VM instances within a spoke to a specific
       # destination resource. Only VPC spokes have routes.
       class Route
@@ -3399,6 +3501,18 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. This checksum is computed by the server based on the value of other
+        # fields, and may be sent on update and delete requests to ensure the client has
+        # an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. The list of fields waiting for hub administration's approval.
+        # Corresponds to the JSON property `fieldPathsPendingUpdate`
+        # @return [Array<String>]
+        attr_accessor :field_paths_pending_update
+      
         # Optional. The name of the group that this spoke is associated with.
         # Corresponds to the JSON property `group`
         # @return [String]
@@ -3492,6 +3606,8 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @field_paths_pending_update = args[:field_paths_pending_update] if args.key?(:field_paths_pending_update)
           @group = args[:group] if args.key?(:group)
           @hub = args[:hub] if args.key?(:hub)
           @labels = args[:labels] if args.key?(:labels)

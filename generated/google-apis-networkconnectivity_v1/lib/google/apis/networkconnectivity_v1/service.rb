@@ -157,6 +157,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Accepts a proposal to update a Network Connectivity Center spoke in a hub.
+        # @param [String] name
+        #   Required. The name of the hub to accept spoke update.
+        # @param [Google::Apis::NetworkconnectivityV1::AcceptSpokeUpdateRequest] accept_spoke_update_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def accept_hub_spoke_update(name, accept_spoke_update_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:acceptSpokeUpdate', options)
+          command.request_representation = Google::Apis::NetworkconnectivityV1::AcceptSpokeUpdateRequest::Representation
+          command.request_object = accept_spoke_update_request_object
+          command.response_representation = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new Network Connectivity Center hub in the specified project.
         # @param [String] parent
         #   Required. The parent resource.
@@ -565,6 +598,39 @@ module Google
           command = make_simple_command(:post, 'v1/{+name}:rejectSpoke', options)
           command.request_representation = Google::Apis::NetworkconnectivityV1::RejectHubSpokeRequest::Representation
           command.request_object = reject_hub_spoke_request_object
+          command.response_representation = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Rejects a proposal to update a Network Connectivity Center spoke in a hub.
+        # @param [String] name
+        #   Required. The name of the hub to reject spoke update.
+        # @param [Google::Apis::NetworkconnectivityV1::RejectSpokeUpdateRequest] reject_spoke_update_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def reject_hub_spoke_update(name, reject_spoke_update_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:rejectSpokeUpdate', options)
+          command.request_representation = Google::Apis::NetworkconnectivityV1::RejectSpokeUpdateRequest::Representation
+          command.request_object = reject_spoke_update_request_object
           command.response_representation = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
