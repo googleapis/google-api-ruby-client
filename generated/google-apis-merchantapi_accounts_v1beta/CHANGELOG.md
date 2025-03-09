@@ -1,5 +1,9 @@
 # Release history for google-apis-merchantapi_accounts_v1beta
 
+### v0.6.0 (2025-03-09)
+
+* Regenerated from discovery document revision 20250301
+
 ### v0.5.0 (2025-02-26)
 
 * Regenerated from discovery document revision 20250220
