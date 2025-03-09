@@ -752,7 +752,8 @@ module Google
       
         # HealthCheckTargets describes endpoints to health-check when responding to
         # Routing Policy queries. Only the healthy endpoints will be included in the
-        # response.
+        # response. Set either `internal_load_balancer` or `external_endpoints`. Do not
+        # set both.
         # Corresponds to the JSON property `healthCheckedTargets`
         # @return [Google::Apis::DomainsV1beta1::HealthCheckTargets]
         attr_accessor :health_checked_targets
@@ -769,9 +770,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :rrdata
       
-        # DNSSEC generated signatures for all the `rrdata` within this item. If health
-        # checked targets are provided for DNSSEC enabled zones, there's a restriction
-        # of 1 IP address per item.
+        # DNSSEC generated signatures for all the `rrdata` within this item. When using
+        # health-checked targets for DNSSEC-enabled zones, you can only use at most one
+        # health-checked IP address per item.
         # Corresponds to the JSON property `signatureRrdata`
         # @return [Array<String>]
         attr_accessor :signature_rrdata
@@ -872,7 +873,8 @@ module Google
       
       # HealthCheckTargets describes endpoints to health-check when responding to
       # Routing Policy queries. Only the healthy endpoints will be included in the
-      # response.
+      # response. Set either `internal_load_balancer` or `external_endpoints`. Do not
+      # set both.
       class HealthCheckTargets
         include Google::Apis::Core::Hashable
       
@@ -1583,7 +1585,8 @@ module Google
       
         # HealthCheckTargets describes endpoints to health-check when responding to
         # Routing Policy queries. Only the healthy endpoints will be included in the
-        # response.
+        # response. Set either `internal_load_balancer` or `external_endpoints`. Do not
+        # set both.
         # Corresponds to the JSON property `primaryTargets`
         # @return [Google::Apis::DomainsV1beta1::HealthCheckTargets]
         attr_accessor :primary_targets
@@ -1624,9 +1627,10 @@ module Google
         # @return [Google::Apis::DomainsV1beta1::GeoPolicy]
         attr_accessor :geo_policy
       
-        # The selfLink attribute of the HealthCheck resource to use for this
-        # RRSetRoutingPolicy. https://cloud.google.com/compute/docs/reference/rest/v1/
-        # healthChecks
+        # The fully qualified URL of the HealthCheck to use for this RRSetRoutingPolicy.
+        # Format this URL like `https://www.googleapis.com/compute/v1/projects/`project`/
+        # global/healthChecks/`healthCheck``. https://cloud.google.com/compute/docs/
+        # reference/rest/v1/healthChecks
         # Corresponds to the JSON property `healthCheck`
         # @return [String]
         attr_accessor :health_check
@@ -2431,7 +2435,8 @@ module Google
       
         # HealthCheckTargets describes endpoints to health-check when responding to
         # Routing Policy queries. Only the healthy endpoints will be included in the
-        # response.
+        # response. Set either `internal_load_balancer` or `external_endpoints`. Do not
+        # set both.
         # Corresponds to the JSON property `healthCheckedTargets`
         # @return [Google::Apis::DomainsV1beta1::HealthCheckTargets]
         attr_accessor :health_checked_targets
@@ -2441,9 +2446,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :rrdata
       
-        # DNSSEC generated signatures for all the `rrdata` within this item. Note that
-        # if health checked targets are provided for DNSSEC enabled zones, there's a
-        # restriction of 1 IP address per item.
+        # DNSSEC generated signatures for all the `rrdata` within this item. When using
+        # health-checked targets for DNSSEC-enabled zones, you can only use at most one
+        # health-checked IP address per item.
         # Corresponds to the JSON property `signatureRrdata`
         # @return [Array<String>]
         attr_accessor :signature_rrdata
