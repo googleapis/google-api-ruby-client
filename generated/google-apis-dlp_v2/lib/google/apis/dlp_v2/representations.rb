@@ -430,6 +430,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2DataProfileFinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2DataProfileFindingLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2DataProfileFindingRecordLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2DataProfileJobConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2717,6 +2735,40 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2DataProfileFinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_profile_resource_name, as: 'dataProfileResourceName'
+          property :finding_id, as: 'findingId'
+          property :infotype, as: 'infotype', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType::Representation
+      
+          property :location, as: 'location', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DataProfileFindingLocation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DataProfileFindingLocation::Representation
+      
+          property :quote, as: 'quote'
+          property :quote_info, as: 'quoteInfo', class: Google::Apis::DlpV2::GooglePrivacyDlpV2QuoteInfo, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2QuoteInfo::Representation
+      
+          property :resource_visibility, as: 'resourceVisibility'
+          property :timestamp, as: 'timestamp'
+        end
+      end
+      
+      class GooglePrivacyDlpV2DataProfileFindingLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :container_name, as: 'containerName'
+          property :data_profile_finding_record_location, as: 'dataProfileFindingRecordLocation', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DataProfileFindingRecordLocation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DataProfileFindingRecordLocation::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2DataProfileFindingRecordLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field, as: 'field', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId::Representation
+      
+        end
+      end
+      
       class GooglePrivacyDlpV2DataProfileJobConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3323,6 +3375,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :profile_table, as: 'profileTable', class: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable::Representation
       
+          property :sample_findings_table, as: 'sampleFindingsTable', class: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable::Representation
+      
         end
       end
       
@@ -3441,6 +3495,8 @@ module Google
       
           hash :resource_labels, as: 'resourceLabels'
           property :resource_visibility, as: 'resourceVisibility'
+          property :sample_findings_table, as: 'sampleFindingsTable', class: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable::Representation
+      
           property :sensitivity_score, as: 'sensitivityScore', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore::Representation
       
           property :state, as: 'state'
@@ -4948,6 +5004,8 @@ module Google
           hash :resource_labels, as: 'resourceLabels'
           property :resource_visibility, as: 'resourceVisibility'
           property :row_count, :numeric_string => true, as: 'rowCount'
+          property :sample_findings_table, as: 'sampleFindingsTable', class: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable::Representation
+      
           property :scanned_column_count, :numeric_string => true, as: 'scannedColumnCount'
           property :sensitivity_score, as: 'sensitivityScore', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore::Representation
       
