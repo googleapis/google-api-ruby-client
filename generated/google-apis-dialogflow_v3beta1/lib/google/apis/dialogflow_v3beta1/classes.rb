@@ -4262,6 +4262,11 @@ module Google
       class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings
         include Google::Apis::Core::Hashable
       
+        # Integration settings for a Git service hosted on Cloud Run.
+        # Corresponds to the JSON property `gitConnectionSettings`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGitConnectionSettings]
+        attr_accessor :git_connection_settings
+      
         # Settings of integration with GitHub.
         # Corresponds to the JSON property `githubSettings`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings]
@@ -4273,7 +4278,52 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @git_connection_settings = args[:git_connection_settings] if args.key?(:git_connection_settings)
           @github_settings = args[:github_settings] if args.key?(:github_settings)
+        end
+      end
+      
+      # Integration settings for a Git service hosted on Cloud Run.
+      class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGitConnectionSettings
+        include Google::Apis::Core::Hashable
+      
+        # The name of the SecretManager secret version resource storing the git access
+        # token. Format: `projects/`project`/secrets/`secret`/versions/`version``
+        # Corresponds to the JSON property `accessTokenSecret`
+        # @return [String]
+        attr_accessor :access_token_secret
+      
+        # Optional. List of branches configured for the repository.
+        # Corresponds to the JSON property `branches`
+        # @return [Array<String>]
+        attr_accessor :branches
+      
+        # Required. Display name for the repository
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. Git server reporitory URI.
+        # Corresponds to the JSON property `repositoryUri`
+        # @return [String]
+        attr_accessor :repository_uri
+      
+        # Required. Default branch of the repository.
+        # Corresponds to the JSON property `trackingBranch`
+        # @return [String]
+        attr_accessor :tracking_branch
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_token_secret = args[:access_token_secret] if args.key?(:access_token_secret)
+          @branches = args[:branches] if args.key?(:branches)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @repository_uri = args[:repository_uri] if args.key?(:repository_uri)
+          @tracking_branch = args[:tracking_branch] if args.key?(:tracking_branch)
         end
       end
       
@@ -8461,6 +8511,110 @@ module Google
         end
       end
       
+      # Handler can be used to define custom logic to be executed based on the user-
+      # specified triggers.
+      class GoogleCloudDialogflowCxV3beta1Handler
+        include Google::Apis::Core::Hashable
+      
+        # A handler that is triggered by the specified event.
+        # Corresponds to the JSON property `eventHandler`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1HandlerEventHandler]
+        attr_accessor :event_handler
+      
+        # A handler that is triggered on the specific lifecycle_stage of the playbook
+        # execution.
+        # Corresponds to the JSON property `lifecycleHandler`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1HandlerLifecycleHandler]
+        attr_accessor :lifecycle_handler
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_handler = args[:event_handler] if args.key?(:event_handler)
+          @lifecycle_handler = args[:lifecycle_handler] if args.key?(:lifecycle_handler)
+        end
+      end
+      
+      # A handler that is triggered by the specified event.
+      class GoogleCloudDialogflowCxV3beta1HandlerEventHandler
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The condition that must be satisfied to trigger this handler.
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        # Required. The name of the event that triggers this handler.
+        # Corresponds to the JSON property `event`
+        # @return [String]
+        attr_accessor :event
+      
+        # A fulfillment can do one or more of the following actions at the same time: *
+        # Generate rich message responses. * Set parameter values. * Call the webhook.
+        # Fulfillments can be called at various stages in the Page or Form lifecycle.
+        # For example, when a DetectIntentRequest drives a session to enter a new page,
+        # the page's entry fulfillment can add a static response to the QueryResult in
+        # the returning DetectIntentResponse, call the webhook (for example, to load
+        # user data from a database), or both.
+        # Corresponds to the JSON property `fulfillment`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Fulfillment]
+        attr_accessor :fulfillment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
+          @event = args[:event] if args.key?(:event)
+          @fulfillment = args[:fulfillment] if args.key?(:fulfillment)
+        end
+      end
+      
+      # A handler that is triggered on the specific lifecycle_stage of the playbook
+      # execution.
+      class GoogleCloudDialogflowCxV3beta1HandlerLifecycleHandler
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The condition that must be satisfied to trigger this handler.
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        # A fulfillment can do one or more of the following actions at the same time: *
+        # Generate rich message responses. * Set parameter values. * Call the webhook.
+        # Fulfillments can be called at various stages in the Page or Form lifecycle.
+        # For example, when a DetectIntentRequest drives a session to enter a new page,
+        # the page's entry fulfillment can add a static response to the QueryResult in
+        # the returning DetectIntentResponse, call the webhook (for example, to load
+        # user data from a database), or both.
+        # Corresponds to the JSON property `fulfillment`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Fulfillment]
+        attr_accessor :fulfillment
+      
+        # Required. The name of the lifecycle stage that triggers this handler.
+        # Supported values: * `playbook-start` * `pre-action-selection` * `pre-action-
+        # execution`
+        # Corresponds to the JSON property `lifecycleStage`
+        # @return [String]
+        attr_accessor :lifecycle_stage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
+          @fulfillment = args[:fulfillment] if args.key?(:fulfillment)
+          @lifecycle_stage = args[:lifecycle_stage] if args.key?(:lifecycle_stage)
+        end
+      end
+      
       # Metadata returned for the EntityTypes.ImportEntityTypes long running operation.
       class GoogleCloudDialogflowCxV3beta1ImportEntityTypesMetadata
         include Google::Apis::Core::Hashable
@@ -9856,6 +10010,33 @@ module Google
         end
       end
       
+      # The response message for Tools.ListToolVersions.
+      class GoogleCloudDialogflowCxV3beta1ListToolVersionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of tool versions. There will be a maximum number of items returned
+        # based on the page_size field in the request.
+        # Corresponds to the JSON property `toolVersions`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ToolVersion>]
+        attr_accessor :tool_versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @tool_versions = args[:tool_versions] if args.key?(:tool_versions)
+        end
+      end
+      
       # The response message for Tools.ListTools.
       class GoogleCloudDialogflowCxV3beta1ListToolsResponse
         include Google::Apis::Core::Hashable
@@ -10599,6 +10780,12 @@ module Google
         # @return [String]
         attr_accessor :goal
       
+        # Optional. A list of registered handlers to execute based on the specified
+        # triggers.
+        # Corresponds to the JSON property `handlers`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Handler>]
+        attr_accessor :handlers
+      
         # Optional. Defined structured input parameters for this playbook.
         # Corresponds to the JSON property `inputParameterDefinitions`
         # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ParameterDefinition>]
@@ -10669,6 +10856,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @goal = args[:goal] if args.key?(:goal)
+          @handlers = args[:handlers] if args.key?(:handlers)
           @input_parameter_definitions = args[:input_parameter_definitions] if args.key?(:input_parameter_definitions)
           @instruction = args[:instruction] if args.key?(:instruction)
           @llm_model_settings = args[:llm_model_settings] if args.key?(:llm_model_settings)
@@ -11808,6 +11996,41 @@ module Google
         # Update properties of this object
         def update!(**args)
           @tracking_branch = args[:tracking_branch] if args.key?(:tracking_branch)
+        end
+      end
+      
+      # The request message for Tools.RestoreToolVersion.
+      class GoogleCloudDialogflowCxV3beta1RestoreToolVersionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response message for Tools.RestoreToolVersion.
+      class GoogleCloudDialogflowCxV3beta1RestoreToolVersionResponse
+        include Google::Apis::Core::Hashable
+      
+        # A tool provides a list of actions which are available to the Playbook to
+        # attain its goal. A Tool consists of a description of the tool's usage and a
+        # specification of the tool which contains the schema and authentication
+        # information.
+        # Corresponds to the JSON property `tool`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Tool]
+        attr_accessor :tool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tool = args[:tool] if args.key?(:tool)
         end
       end
       
@@ -13370,6 +13593,53 @@ module Google
           @input_action_parameters = args[:input_action_parameters] if args.key?(:input_action_parameters)
           @output_action_parameters = args[:output_action_parameters] if args.key?(:output_action_parameters)
           @tool = args[:tool] if args.key?(:tool)
+        end
+      end
+      
+      # Tool version is a snapshot of the tool at certain timestamp.
+      class GoogleCloudDialogflowCxV3beta1ToolVersion
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Last time the tool version was created or modified.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. The display name of the tool version.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. The unique identifier of the tool version. Format: `projects//
+        # locations//agents//tools//versions/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A tool provides a list of actions which are available to the Playbook to
+        # attain its goal. A Tool consists of a description of the tool's usage and a
+        # specification of the tool which contains the schema and authentication
+        # information.
+        # Corresponds to the JSON property `tool`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Tool]
+        attr_accessor :tool
+      
+        # Output only. Last time the tool version was created or modified.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @tool = args[:tool] if args.key?(:tool)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
