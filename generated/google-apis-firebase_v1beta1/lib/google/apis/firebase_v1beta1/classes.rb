@@ -1441,10 +1441,8 @@ module Google
       class StatusProto
         include Google::Apis::Core::Hashable
       
-        # The canonical error code (see codes.proto) that most closely corresponds to
-        # this status. This may be missing, and in the common case of the generic space,
-        # it definitely will be. copybara:strip_begin(b/383363683) copybara:
-        # strip_end_and_replace optional int32 canonical_code = 6;
+        # copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional
+        # int32 canonical_code = 6;
         # Corresponds to the JSON property `canonicalCode`
         # @return [Fixnum]
         attr_accessor :canonical_code
@@ -1468,9 +1466,9 @@ module Google
         # @return [Google::Apis::FirebaseV1beta1::MessageSet]
         attr_accessor :message_set
       
-        # The following are usually only present when code != 0 Space to which this
-        # status belongs copybara:strip_begin(b/383363683) copybara:
-        # strip_end_and_replace optional string space = 2;
+        # copybara:strip_begin(b/383363683) Space to which this status belongs copybara:
+        # strip_end_and_replace optional string space = 2; // Space to which this status
+        # belongs
         # Corresponds to the JSON property `space`
         # @return [String]
         attr_accessor :space
