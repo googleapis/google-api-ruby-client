@@ -154,7 +154,9 @@ module Google
         #   project`
         # @param [String] filter
         #   Multiple filter queries are separated by spaces. For example, 'instance:abc
-        #   type:FINAL. You can filter by type, instance name, creation time or location.
+        #   AND type:FINAL, 'location:us', 'backupInterval.startTime>=1950-01-01T01:01:25.
+        #   771Z'. You can filter by type, instance, backupInterval.startTime (creation
+        #   time), or location.
         # @param [Fixnum] page_size
         #   The maximum number of backups to return per response. The service might return
         #   fewer backups than this value. If a value for this parameter isn't specified,

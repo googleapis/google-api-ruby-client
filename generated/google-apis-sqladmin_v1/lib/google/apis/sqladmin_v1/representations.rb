@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DnsNameMapping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -823,6 +829,9 @@ module Google
       
           property :expiry_time, as: 'expiryTime'
           property :instance, as: 'instance'
+          property :instance_deletion_time, as: 'instanceDeletionTime'
+          property :instance_settings, as: 'instanceSettings', class: Google::Apis::SqladminV1::DatabaseInstance, decorator: Google::Apis::SqladminV1::DatabaseInstance::Representation
+      
           property :kind, as: 'kind'
           property :kms_key, as: 'kmsKey'
           property :kms_key_version, as: 'kmsKeyVersion'
@@ -950,6 +959,8 @@ module Google
           collection :custom_subject_alternative_names, as: 'customSubjectAlternativeNames'
           property :database_version, as: 'databaseVersion'
           property :dns_name, as: 'dnsName'
+          collection :dns_names, as: 'dnsNames', class: Google::Apis::SqladminV1::DnsNameMapping, decorator: Google::Apis::SqladminV1::DnsNameMapping::Representation
+      
           collection :ip_addresses, as: 'ipAddresses', class: Google::Apis::SqladminV1::IpMapping, decorator: Google::Apis::SqladminV1::IpMapping::Representation
       
           property :kind, as: 'kind'
@@ -1007,6 +1018,8 @@ module Google
           property :disk_encryption_status, as: 'diskEncryptionStatus', class: Google::Apis::SqladminV1::DiskEncryptionStatus, decorator: Google::Apis::SqladminV1::DiskEncryptionStatus::Representation
       
           property :dns_name, as: 'dnsName'
+          collection :dns_names, as: 'dnsNames', class: Google::Apis::SqladminV1::DnsNameMapping, decorator: Google::Apis::SqladminV1::DnsNameMapping::Representation
+      
           property :etag, as: 'etag'
           property :failover_replica, as: 'failoverReplica', class: Google::Apis::SqladminV1::DatabaseInstance::FailoverReplica, decorator: Google::Apis::SqladminV1::DatabaseInstance::FailoverReplica::Representation
       
@@ -1139,6 +1152,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :kms_key_version_name, as: 'kmsKeyVersionName'
+        end
+      end
+      
+      class DnsNameMapping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_type, as: 'connectionType'
+          property :dns_scope, as: 'dnsScope'
+          property :name, as: 'name'
         end
       end
       
@@ -1872,6 +1894,7 @@ module Google
           property :pricing_plan, as: 'pricingPlan'
           property :replication_lag_max_seconds, as: 'replicationLagMaxSeconds'
           property :replication_type, as: 'replicationType'
+          property :retain_backups_on_delete, as: 'retainBackupsOnDelete'
           property :settings_version, :numeric_string => true, as: 'settingsVersion'
           property :sql_server_audit_config, as: 'sqlServerAuditConfig', class: Google::Apis::SqladminV1::SqlServerAuditConfig, decorator: Google::Apis::SqladminV1::SqlServerAuditConfig::Representation
       
