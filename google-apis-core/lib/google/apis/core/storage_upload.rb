@@ -36,6 +36,14 @@ module Google
         # @return [String, File, #read]
         attr_accessor :upload_source
 
+        # Unique upload_id of a resumable upload
+        # @return [String]
+        attr_accessor :upload_id
+
+        # Boolean Value to specify is a resumable upload is to be deleted or not
+        # @return [Boolean]
+        attr_accessor :delete_upload
+
         # Content type of the upload material
         # @return [String]
         attr_accessor :upload_content_type
@@ -95,13 +103,14 @@ module Google
           prepare!
           opencensus_begin_span
           @upload_chunk_size = options.upload_chunk_size
-          if options.upload_url.nil?
+          if upload_id.nil?
             do_retry :initiate_resumable_upload, client
-          elsif options.delete_upload && !options.upload_url.nil?
-            @upload_url = options.upload_url
+          elsif delete_upload && !upload_id.nil?
+            make_resumabple_upload_url
             cancel_resumable_upload(client)
           else
-            do_retry :reinitiate_resumable_upload, client
+            make_resumabple_upload_url
+            reinitiate_resumable_upload(client)
           end
 
           while @upload_incomplete
@@ -139,16 +148,23 @@ module Google
           error(e, rethrow: true)
         end
 
-        # Restarting resumable upload
+        # Reinitiating resumable upload
+
         def reinitiate_resumable_upload(client)
           logger.debug { sprintf('Restarting resumable upload command to %s', url) }
-          @upload_url = options.upload_url unless options.upload_url.nil?
           check_resumable_upload_status client
           upload_io.pos = @offset
           rescue => e
             error(e, rethrow: true)
         end
 
+        def make_resumabple_upload_url
+          query_params = query.dup
+          query_params['uploadType'] = RESUMABLE
+          query_params['upload_id'] = upload_id
+          resumable_upload_params = query_params.map { |key, value| "#{key}=#{value}" }.join('&')
+          @upload_url = "#{url}&#{resumable_upload_params}"
+        end
         # Send the actual content
         #
         # @param [HTTPClient] client
@@ -175,9 +191,9 @@ module Google
           @upload_incomplete = false if response.status_code.eql? OK_STATUS
           @offset += current_chunk_size if @upload_incomplete
           success(result)
-          rescue => e
-            upload_io.pos = @offset
-            error(e, rethrow: true)
+        rescue => e
+          upload_io.pos = @offset
+          error(e, rethrow: true)
         end
 
         # Check the to see if the upload is complete or needs to be resumed.

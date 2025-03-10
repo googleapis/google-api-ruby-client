@@ -3848,7 +3848,17 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
+        # Deletes Resumable upload
+        def delete_ongoing_resumable_upload(bucket, upload_source, upload_id, options: nil)
+          command = make_storage_upload_command(:post, 'b/{bucket}/o', options)
+          command.upload_source = upload_source
+          command.upload_id = upload_id
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.delete_upload = true
+          execute_or_queue_command(command)
+        end
+
         # Retrieves an HMAC key's metadata
         # @param [String] project_id
         #   Project ID owning the service account of the requested key.
