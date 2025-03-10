@@ -2858,6 +2858,8 @@ module Google
         #   IO stream or filename containing content to upload
         # @param [String] content_type
         #   Content type of the uploaded content.
+        # @param @param [IO, String] upload_id
+        #   Unique upload Id for ongoing resumable upload       
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
