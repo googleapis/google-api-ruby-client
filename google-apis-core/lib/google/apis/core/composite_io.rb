@@ -42,7 +42,7 @@ module Google
         end
 
         def read(length = nil, buf = nil)
-          buf = buf ? buf.replace('') : ''
+          buf = buf ? buf.replace('') : ''.dup
 
           begin
             io = @ios[@index]
