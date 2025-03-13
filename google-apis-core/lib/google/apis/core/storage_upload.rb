@@ -225,7 +225,7 @@ module Google
             if response.headers['Range']
               range = response.headers['Range']
               @offset = range ? range.split('-').last.to_i + 1 : 0
-              puts "Upload is incomplete. Bytes uploaded: #{response.headers['Range']}"
+              puts "Upload is incomplete. Bytes uploaded so far: #{response.headers['Range']}"
             else
               puts 'No bytes uploaded yet.'
             end
