@@ -156,7 +156,7 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
 
     it 'should restart a resumable upload' do
       command.options.upload_chunk_size = 11
-      command.upload_id = upload_id
+      command.options.upload_id = upload_id
       command.execute(client)
       expect(a_request(:put, upload_url)
         .with(body: 'Hello world')).to have_been_made
@@ -187,7 +187,7 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
 
     it 'should not restart a upload' do
       command.options.upload_chunk_size = 11
-      command.upload_id = upload_id
+      command.options.upload_id = upload_id
       command.execute(client)
       expect(a_request(:put, upload_url)
         .with(body: 'Hello world')).to have_not_been_made
@@ -219,15 +219,15 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
 
     it 'should cancel a resumable upload' do
       command.options.upload_chunk_size = 11
-      command.upload_id = upload_id
-      command.delete_upload = true
+      command.options.upload_id = upload_id
+      command.options.delete_upload = true
       command.execute(client)
       expect(a_request(:delete, upload_url)).to have_been_made
     end
 
     it 'should not call resumable upload when upload is cancelled' do
       command.options.upload_chunk_size = 11
-      command.upload_id = upload_id
+      command.options.upload_id = upload_id
       command.execute(client)
       expect(a_request(:put, upload_url)
         .with(body: 'Hello world')).to have_not_been_made

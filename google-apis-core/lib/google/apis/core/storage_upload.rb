@@ -36,14 +36,6 @@ module Google
         # @return [String, File, #read]
         attr_accessor :upload_source
 
-        # Unique upload_id of a resumable upload
-        # @return [String]
-        attr_accessor :upload_id
-
-        # Boolean Value to specify is a resumable upload is to be deleted or not
-        # @return [Boolean]
-        attr_accessor :delete_upload
-
         # Content type of the upload material
         # @return [String]
         attr_accessor :upload_content_type
@@ -102,15 +94,17 @@ module Google
         def execute(client)
           prepare!
           opencensus_begin_span
+          upload_id = options.upload_id
+          delete_upload = options.delete_upload
           @upload_chunk_size = options.upload_chunk_size
           if upload_id.nil?
             do_retry :initiate_resumable_upload, client
           elsif delete_upload && !upload_id.nil?
-            make_resumabple_upload_url
-            cancel_resumable_upload(client)
+            make_resumable_upload_url upload_id
+            do_retry :cancel_resumable_upload, client
           else
-            make_resumabple_upload_url
-            reinitiate_resumable_upload(client)
+            make_resumable_upload_url upload_id
+            do_retry :reinitiate_resumable_upload,client
           end
 
           while @upload_incomplete
@@ -149,7 +143,6 @@ module Google
         end
 
         # Reinitiating resumable upload
-
         def reinitiate_resumable_upload(client)
           logger.debug { sprintf('Restarting resumable upload command to %s', url) }
           check_resumable_upload_status client
@@ -158,13 +151,15 @@ module Google
             error(e, rethrow: true)
         end
 
-        def make_resumabple_upload_url
+        # Making resumable upload url from upload_id
+        def make_resumable_upload_url(upload_id)
           query_params = query.dup
           query_params['uploadType'] = RESUMABLE
           query_params['upload_id'] = upload_id
           resumable_upload_params = query_params.map { |key, value| "#{key}=#{value}" }.join('&')
           @upload_url = "#{url}&#{resumable_upload_params}"
         end
+
         # Send the actual content
         #
         # @param [HTTPClient] client
@@ -192,6 +187,9 @@ module Google
           @offset += current_chunk_size if @upload_incomplete
           success(result)
         rescue => e
+          logger.warn {
+            "error occured please use uploadId-#{response.headers['X-GUploader-UploadID']} to resume your upload"
+          } unless response.nil?
           upload_io.pos = @offset
           error(e, rethrow: true)
         end
@@ -221,6 +219,7 @@ module Google
           request_header[CONTENT_LENGTH_HEADER] = '0'
           # Initiating call
           response = client.put(@upload_url, header: request_header, follow_redirect: true)
+
           case response.code.to_i
           when 308
             if response.headers['Range']
@@ -231,8 +230,8 @@ module Google
               puts 'No bytes uploaded yet.'
             end
             @upload_incomplete = true
-          when 499
-            # Upload in canceled
+          when 400..499
+            # Upload is canceled
             @upload_incomplete = false
           when 200, 201
             # Upload is complete.
@@ -250,6 +249,7 @@ module Google
           request_header[CONTENT_LENGTH_HEADER] = '0'
           # Initiating call
           response = client.delete(@upload_url, header: request_header, follow_redirect: true)
+
           case response.code.to_i
           when 499
             @close_io_on_finish = true
