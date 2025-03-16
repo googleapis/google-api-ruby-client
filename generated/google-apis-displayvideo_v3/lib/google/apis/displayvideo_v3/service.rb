@@ -4986,9 +4986,8 @@ module Google
         #   should be added to the field name. Example: `displayName desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `5000`. If unspecified, this
-        #   value defaults to `100`. Returns error code `INVALID_ARGUMENT` if an invalid
-        #   value is specified. *Warning*: Starting **March 6, 2025**, this value will
-        #   default to `5000` if not set.
+        #   value defaults to `5000`. Returns error code `INVALID_ARGUMENT` if an invalid
+        #   value is specified.
         # @param [String] page_token
         #   A token identifying a page of results the server should return. Typically,
         #   this is the value of next_page_token returned from the previous call to `
