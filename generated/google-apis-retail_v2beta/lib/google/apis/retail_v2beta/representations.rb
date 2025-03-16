@@ -3654,6 +3654,7 @@ module Google
           property :page_token, as: 'pageToken'
           property :personalization_spec, as: 'personalizationSpec', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestPersonalizationSpec, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestPersonalizationSpec::Representation
       
+          property :place_id, as: 'placeId'
           property :query, as: 'query'
           property :query_expansion_spec, as: 'queryExpansionSpec', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestQueryExpansionSpec, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestQueryExpansionSpec::Representation
       
