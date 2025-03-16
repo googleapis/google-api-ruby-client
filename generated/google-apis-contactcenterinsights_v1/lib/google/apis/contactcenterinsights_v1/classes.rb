@@ -731,6 +731,74 @@ module Google
         end
       end
       
+      # Metadata for the BulkDeleteFeedbackLabels endpoint.
+      class GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Partial errors during deletion operation that might cause the operation output
+        # to be incomplete.
+        # Corresponds to the JSON property `partialErrors`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
+        attr_accessor :partial_errors
+      
+        # Request for the BulkDeleteFeedbackLabels endpoint.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # Request for the BulkDeleteFeedbackLabels endpoint.
+      class GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A filter to reduce results to a specific subset. Supports
+        # disjunctions (OR) and conjunctions (AND). Supported fields: * `issue_model_id`
+        # * `qa_question_id` * `qa_scorecard_id` * `min_create_time` * `max_create_time`
+        # * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI,
+        # TOPIC_MODELING
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Required. The parent resource for new feedback labels.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
+      # Response for the BulkDeleteFeedbackLabels endpoint.
+      class GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Metadata for the BulkDownloadFeedbackLabel endpoint.
       class GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadata
         include Google::Apis::Core::Hashable
@@ -6365,6 +6433,74 @@ module Google
       
       # The response for a bulk delete conversations operation.
       class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata for the BulkDeleteFeedbackLabels endpoint.
+      class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Partial errors during deletion operation that might cause the operation output
+        # to be incomplete.
+        # Corresponds to the JSON property `partialErrors`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
+        attr_accessor :partial_errors
+      
+        # Request for the BulkDeleteFeedbackLabels endpoint.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # Request for the BulkDeleteFeedbackLabels endpoint.
+      class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A filter to reduce results to a specific subset. Supports
+        # disjunctions (OR) and conjunctions (AND). Supported fields: * `issue_model_id`
+        # * `qa_question_id` * `qa_scorecard_id` * `min_create_time` * `max_create_time`
+        # * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI,
+        # TOPIC_MODELING
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Required. The parent resource for new feedback labels.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
+      # Response for the BulkDeleteFeedbackLabels endpoint.
+      class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
