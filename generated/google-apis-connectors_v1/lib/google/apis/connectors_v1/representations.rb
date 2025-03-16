@@ -874,6 +874,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TrafficShapingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdatePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1140,6 +1146,8 @@ module Google
           property :subscription_type, as: 'subscriptionType'
           property :suspended, as: 'suspended'
           property :tls_service_directory, as: 'tlsServiceDirectory'
+          collection :traffic_shaping_configs, as: 'trafficShapingConfigs', class: Google::Apis::ConnectorsV1::TrafficShapingConfig, decorator: Google::Apis::ConnectorsV1::TrafficShapingConfig::Representation
+      
           property :update_time, as: 'updateTime'
         end
       end
@@ -2575,6 +2583,14 @@ module Google
           property :minutes, as: 'minutes'
           property :nanos, as: 'nanos'
           property :seconds, as: 'seconds'
+        end
+      end
+      
+      class TrafficShapingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration, as: 'duration'
+          property :quota_limit, :numeric_string => true, as: 'quotaLimit'
         end
       end
       

@@ -781,7 +781,7 @@ module Google
         # @return [String]
         attr_accessor :connector_version
       
-        # This cofiguration provides infra configs like rate limit threshold which need
+        # This configuration provides infra configs like rate limit threshold which need
         # to be configurable for every connector version
         # Corresponds to the JSON property `connectorVersionInfraConfig`
         # @return [Google::Apis::ConnectorsV1::ConnectorVersionInfraConfig]
@@ -918,6 +918,11 @@ module Google
         # @return [String]
         attr_accessor :tls_service_directory
       
+        # Optional. Traffic shaping configuration for the connection.
+        # Corresponds to the JSON property `trafficShapingConfigs`
+        # @return [Array<Google::Apis::ConnectorsV1::TrafficShapingConfig>]
+        attr_accessor :traffic_shaping_configs
+      
         # Output only. Updated time.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -960,6 +965,7 @@ module Google
           @subscription_type = args[:subscription_type] if args.key?(:subscription_type)
           @suspended = args[:suspended] if args.key?(:suspended)
           @tls_service_directory = args[:tls_service_directory] if args.key?(:tls_service_directory)
+          @traffic_shaping_configs = args[:traffic_shaping_configs] if args.key?(:traffic_shaping_configs)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -1443,7 +1449,7 @@ module Google
         end
       end
       
-      # This cofiguration provides infra configs like rate limit threshold which need
+      # This configuration provides infra configs like rate limit threshold which need
       # to be configurable for every connector version
       class ConnectorVersionInfraConfig
         include Google::Apis::Core::Hashable
@@ -6317,6 +6323,49 @@ module Google
           @minutes = args[:minutes] if args.key?(:minutes)
           @nanos = args[:nanos] if args.key?(:nanos)
           @seconds = args[:seconds] if args.key?(:seconds)
+        end
+      end
+      
+      # * TrafficShapingConfig defines the configuration for shaping API traffic by
+      # specifying a quota limit and the duration over which this limit is enforced.
+      # This configuration helps to control and manage the rate at which API calls are
+      # made on the client side, preventing service overload on the backend. For
+      # example: - if the quota limit is 100 calls per 10 seconds, then the message
+      # would be: ` quota_limit: 100 duration: ` seconds: 10 ` ` - if the quota limit
+      # is 100 calls per 5 minutes, then the message would be: ` quota_limit: 100
+      # duration: ` seconds: 300 ` ` - if the quota limit is 10000 calls per day, then
+      # the message would be: ` quota_limit: 10000 duration: ` seconds: 86400 ` and so
+      # on.
+      class TrafficShapingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. * The duration over which the API call quota limits are calculated.
+        # This duration is used to define the time window for evaluating if the number
+        # of API calls made by a user is within the allowed quota limits. For example: -
+        # To define a quota sampled over 16 seconds, set `seconds` to 16 - To define a
+        # quota sampled over 5 minutes, set `seconds` to 300 (5 * 60) - To define a
+        # quota sampled over 1 day, set `seconds` to 86400 (24 * 60 * 60) and so on. It
+        # is important to note that this duration is not the time the quota is valid for,
+        # but rather the time window over which the quota is evaluated. For example, if
+        # the quota is 100 calls per 10 seconds, then this duration field would be set
+        # to 10 seconds.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Required. Maximum number of api calls allowed.
+        # Corresponds to the JSON property `quotaLimit`
+        # @return [Fixnum]
+        attr_accessor :quota_limit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duration = args[:duration] if args.key?(:duration)
+          @quota_limit = args[:quota_limit] if args.key?(:quota_limit)
         end
       end
       
