@@ -1768,6 +1768,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :additional_experiments
       
+        # Optional. Additional pipeline option flags for the job.
+        # Corresponds to the JSON property `additionalPipelineOptions`
+        # @return [Array<String>]
+        attr_accessor :additional_pipeline_options
+      
         # Additional user labels to be specified for the job. Keys and values must
         # follow the restrictions specified in the [labeling restrictions](https://cloud.
         # google.com/compute/docs/labeling-resources#restrictions) page. An object
@@ -1937,6 +1942,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @additional_experiments = args[:additional_experiments] if args.key?(:additional_experiments)
+          @additional_pipeline_options = args[:additional_pipeline_options] if args.key?(:additional_pipeline_options)
           @additional_user_labels = args[:additional_user_labels] if args.key?(:additional_user_labels)
           @autoscaling_algorithm = args[:autoscaling_algorithm] if args.key?(:autoscaling_algorithm)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
@@ -3470,7 +3476,7 @@ module Google
         end
       end
       
-      # Describes the state of a metric. Next ID: 14
+      # Describes the state of a metric.
       class MetricUpdate
         include Google::Apis::Core::Hashable
       
@@ -4592,6 +4598,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :additional_experiments
       
+        # Optional. Additional pipeline option flags for the job.
+        # Corresponds to the JSON property `additionalPipelineOptions`
+        # @return [Array<String>]
+        attr_accessor :additional_pipeline_options
+      
         # Optional. Additional user labels to be specified for the job. Keys and values
         # should follow the restrictions specified in the [labeling restrictions](https:/
         # /cloud.google.com/compute/docs/labeling-resources#restrictions) page. An
@@ -4719,6 +4730,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @additional_experiments = args[:additional_experiments] if args.key?(:additional_experiments)
+          @additional_pipeline_options = args[:additional_pipeline_options] if args.key?(:additional_pipeline_options)
           @additional_user_labels = args[:additional_user_labels] if args.key?(:additional_user_labels)
           @bypass_temp_dir_validation = args[:bypass_temp_dir_validation] if args.key?(:bypass_temp_dir_validation)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)

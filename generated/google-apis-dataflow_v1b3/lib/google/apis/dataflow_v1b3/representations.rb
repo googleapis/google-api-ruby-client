@@ -1642,6 +1642,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_experiments, as: 'additionalExperiments'
+          collection :additional_pipeline_options, as: 'additionalPipelineOptions'
           hash :additional_user_labels, as: 'additionalUserLabels'
           property :autoscaling_algorithm, as: 'autoscalingAlgorithm'
           property :disk_size_gb, as: 'diskSizeGb'
@@ -2403,6 +2404,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_experiments, as: 'additionalExperiments'
+          collection :additional_pipeline_options, as: 'additionalPipelineOptions'
           hash :additional_user_labels, as: 'additionalUserLabels'
           property :bypass_temp_dir_validation, as: 'bypassTempDirValidation'
           property :disk_size_gb, as: 'diskSizeGb'
