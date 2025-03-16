@@ -2886,6 +2886,13 @@ module Google
       class EnterpriseCrmEventbusProtoTaskExecutionDetails
         include Google::Apis::Core::Hashable
       
+        # Indicates whether the task was skipped on failure. Only relevant if the task
+        # is in SKIPPED state.
+        # Corresponds to the JSON property `skippedOnFailure`
+        # @return [Boolean]
+        attr_accessor :skipped_on_failure
+        alias_method :skipped_on_failure?, :skipped_on_failure
+      
         # 
         # Corresponds to the JSON property `taskAttemptStats`
         # @return [Array<Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats>]
@@ -2907,6 +2914,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @skipped_on_failure = args[:skipped_on_failure] if args.key?(:skipped_on_failure)
           @task_attempt_stats = args[:task_attempt_stats] if args.key?(:task_attempt_stats)
           @task_execution_state = args[:task_execution_state] if args.key?(:task_execution_state)
           @task_number = args[:task_number] if args.key?(:task_number)
@@ -5484,7 +5492,7 @@ module Google
         # @return [String]
         attr_accessor :connector_version
       
-        # This cofiguration provides infra configs like rate limit threshold which need
+        # This configuration provides infra configs like rate limit threshold which need
         # to be configurable for every connector version
         # Corresponds to the JSON property `connectorVersionInfraConfig`
         # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1ConnectorVersionInfraConfig]
@@ -5621,6 +5629,11 @@ module Google
         # @return [String]
         attr_accessor :tls_service_directory
       
+        # Optional. Traffic shaping configuration for the connection.
+        # Corresponds to the JSON property `trafficShapingConfigs`
+        # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1TrafficShapingConfig>]
+        attr_accessor :traffic_shaping_configs
+      
         # Output only. Updated time.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -5663,6 +5676,7 @@ module Google
           @subscription_type = args[:subscription_type] if args.key?(:subscription_type)
           @suspended = args[:suspended] if args.key?(:suspended)
           @tls_service_directory = args[:tls_service_directory] if args.key?(:tls_service_directory)
+          @traffic_shaping_configs = args[:traffic_shaping_configs] if args.key?(:traffic_shaping_configs)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -5698,7 +5712,7 @@ module Google
         end
       end
       
-      # This cofiguration provides infra configs like rate limit threshold which need
+      # This configuration provides infra configs like rate limit threshold which need
       # to be configurable for every connector version
       class GoogleCloudConnectorsV1ConnectorVersionInfraConfig
         include Google::Apis::Core::Hashable
@@ -6371,6 +6385,49 @@ module Google
         end
       end
       
+      # * TrafficShapingConfig defines the configuration for shaping API traffic by
+      # specifying a quota limit and the duration over which this limit is enforced.
+      # This configuration helps to control and manage the rate at which API calls are
+      # made on the client side, preventing service overload on the backend. For
+      # example: - if the quota limit is 100 calls per 10 seconds, then the message
+      # would be: ` quota_limit: 100 duration: ` seconds: 10 ` ` - if the quota limit
+      # is 100 calls per 5 minutes, then the message would be: ` quota_limit: 100
+      # duration: ` seconds: 300 ` ` - if the quota limit is 10000 calls per day, then
+      # the message would be: ` quota_limit: 10000 duration: ` seconds: 86400 ` and so
+      # on.
+      class GoogleCloudConnectorsV1TrafficShapingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. * The duration over which the API call quota limits are calculated.
+        # This duration is used to define the time window for evaluating if the number
+        # of API calls made by a user is within the allowed quota limits. For example: -
+        # To define a quota sampled over 16 seconds, set `seconds` to 16 - To define a
+        # quota sampled over 5 minutes, set `seconds` to 300 (5 * 60) - To define a
+        # quota sampled over 1 day, set `seconds` to 86400 (24 * 60 * 60) and so on. It
+        # is important to note that this duration is not the time the quota is valid for,
+        # but rather the time window over which the quota is evaluated. For example, if
+        # the quota is 100 calls per 10 seconds, then this duration field would be set
+        # to 10 seconds.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Required. Maximum number of api calls allowed.
+        # Corresponds to the JSON property `quotaLimit`
+        # @return [Fixnum]
+        attr_accessor :quota_limit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duration = args[:duration] if args.key?(:duration)
+          @quota_limit = args[:quota_limit] if args.key?(:quota_limit)
+        end
+      end
+      
       # The access token represents the authorization of a specific application to
       # access specific parts of a user’s data.
       class GoogleCloudIntegrationsV1alphaAccessToken
@@ -6572,7 +6629,7 @@ module Google
         # @return [String]
         attr_accessor :creator_email
       
-        # Credential type of the encrypted credential.
+        # Required. Credential type of the encrypted credential.
         # Corresponds to the JSON property `credentialType`
         # @return [String]
         attr_accessor :credential_type
@@ -6582,7 +6639,7 @@ module Google
         # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCredential]
         attr_accessor :decrypted_credential
       
-        # A description of the auth config.
+        # Optional. A description of the auth config.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -6599,8 +6656,9 @@ module Google
         # @return [String]
         attr_accessor :encrypted_credential
       
-        # User can define the time to receive notification after which the auth config
-        # becomes invalid. Support up to 30 days. Support granularity in hours.
+        # Optional. User can define the time to receive notification after which the
+        # auth config becomes invalid. Support up to 30 days. Support granularity in
+        # hours.
         # Corresponds to the JSON property `expiryNotificationDuration`
         # @return [Array<String>]
         attr_accessor :expiry_notification_duration
@@ -6618,9 +6676,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # User provided expiry time to override. For the example of Salesforce, username/
-        # password credentials can be valid for 6 months depending on the instance
-        # settings.
+        # Optional. User provided expiry time to override. For the example of Salesforce,
+        # username/password credentials can be valid for 6 months depending on the
+        # instance settings.
         # Corresponds to the JSON property `overrideValidTime`
         # @return [String]
         attr_accessor :override_valid_time
@@ -6640,13 +6698,13 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # The time until the auth config is valid. Empty or max value is considered the
-        # auth config won't expire.
+        # Optional. The time until the auth config is valid. Empty or max value is
+        # considered the auth config won't expire.
         # Corresponds to the JSON property `validTime`
         # @return [String]
         attr_accessor :valid_time
       
-        # The visibility of the auth config.
+        # Optional. The visibility of the auth config.
         # Corresponds to the JSON property `visibility`
         # @return [String]
         attr_accessor :visibility
@@ -8802,7 +8860,7 @@ module Google
         # @return [String]
         attr_accessor :run_as_service_account
       
-        # Optional. An increasing sequence that is set when a new snapshot is created.
+        # Output only. An increasing sequence that is set when a new snapshot is created.
         # The last created snapshot can be identified by [workflow_name, org_id latest(
         # snapshot_number)]. However, last created snapshot need not be same as the HEAD.
         # So users should always use "HEAD" tag to identify the head.
@@ -10196,6 +10254,93 @@ module Google
         end
       end
       
+      # Response for SearchIntegrations.
+      class GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of integrations that match the search criteria.
+        # Corresponds to the JSON property `integrations`
+        # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult>]
+        attr_accessor :integrations
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @integrations = args[:integrations] if args.key?(:integrations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The integration search result with integration level information.
+      class GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The create time of the integration version.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The creator of the integration version.
+        # Corresponds to the JSON property `creator`
+        # @return [String]
+        attr_accessor :creator
+      
+        # The description of the integration version.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The integration id.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The integration document metadata.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The region of the integration version.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # Output only. The status of the integration version.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # The version of the integration version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @creator = args[:creator] if args.key?(:creator)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @region = args[:region] if args.key?(:region)
+          @status = args[:status] if args.key?(:status)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # Response for a request to search templates
       class GoogleCloudIntegrationsV1alphaSearchTemplatesResponse
         include Google::Apis::Core::Hashable
@@ -10276,7 +10421,7 @@ module Google
       class GoogleCloudIntegrationsV1alphaSfdcChannel
         include Google::Apis::Core::Hashable
       
-        # The Channel topic defined by salesforce once an channel is opened
+        # Required. The Channel topic defined by salesforce once an channel is opened
         # Corresponds to the JSON property `channelTopic`
         # @return [String]
         attr_accessor :channel_topic
@@ -10291,12 +10436,12 @@ module Google
         # @return [String]
         attr_accessor :delete_time
       
-        # The description for this channel
+        # Optional. The description for this channel
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Client level unique name/alias to easily reference a channel.
+        # Optional. Client level unique name/alias to easily reference a channel.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -10362,12 +10507,12 @@ module Google
         # @return [String]
         attr_accessor :delete_time
       
-        # A description of the sfdc instance.
+        # Optional. A description of the sfdc instance.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # User selected unique name/alias to easily reference an instance.
+        # Optional. User selected unique name/alias to easily reference an instance.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name

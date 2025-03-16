@@ -940,6 +940,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudConnectorsV1TrafficShapingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIntegrationsV1alphaAccessToken
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1553,6 +1559,18 @@ module Google
       end
       
       class GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2653,6 +2671,7 @@ module Google
       class EnterpriseCrmEventbusProtoTaskExecutionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :skipped_on_failure, as: 'skippedOnFailure'
           collection :task_attempt_stats, as: 'taskAttemptStats', class: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats, decorator: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats::Representation
       
           property :task_execution_state, as: 'taskExecutionState'
@@ -3372,6 +3391,8 @@ module Google
           property :subscription_type, as: 'subscriptionType'
           property :suspended, as: 'suspended'
           property :tls_service_directory, as: 'tlsServiceDirectory'
+          collection :traffic_shaping_configs, as: 'trafficShapingConfigs', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1TrafficShapingConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1TrafficShapingConfig::Representation
+      
           property :update_time, as: 'updateTime'
         end
       end
@@ -3585,6 +3606,14 @@ module Google
           property :trust_model, as: 'trustModel'
           property :type, as: 'type'
           property :use_ssl, as: 'useSsl'
+        end
+      end
+      
+      class GoogleCloudConnectorsV1TrafficShapingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration, as: 'duration'
+          property :quota_limit, :numeric_string => true, as: 'quotaLimit'
         end
       end
       
@@ -4665,6 +4694,29 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :execution_info_ids, as: 'executionInfoIds'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :integrations, as: 'integrations', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :creator, as: 'creator'
+          property :description, as: 'description'
+          property :id, as: 'id'
+          property :name, as: 'name'
+          property :region, as: 'region'
+          property :status, as: 'status'
+          property :version, as: 'version'
         end
       end
       
