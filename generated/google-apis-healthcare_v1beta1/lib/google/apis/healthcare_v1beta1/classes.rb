@@ -4083,6 +4083,11 @@ module Google
       class GoogleCloudHealthcareV1beta1DicomBigQueryDestination
         include Google::Apis::Core::Hashable
       
+        # BigQuery Change Data Capture configuration.
+        # Corresponds to the JSON property `changeDataCaptureConfig`
+        # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DicomChangeDataCaptureConfig]
+        attr_accessor :change_data_capture_config
+      
         # Use `write_disposition` instead. If `write_disposition` is specified, this
         # parameter is ignored. force=false is equivalent to write_disposition=
         # WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
@@ -4110,9 +4115,23 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @change_data_capture_config = args[:change_data_capture_config] if args.key?(:change_data_capture_config)
           @force = args[:force] if args.key?(:force)
           @table_uri = args[:table_uri] if args.key?(:table_uri)
           @write_disposition = args[:write_disposition] if args.key?(:write_disposition)
+        end
+      end
+      
+      # BigQuery Change Data Capture configuration.
+      class GoogleCloudHealthcareV1beta1DicomChangeDataCaptureConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

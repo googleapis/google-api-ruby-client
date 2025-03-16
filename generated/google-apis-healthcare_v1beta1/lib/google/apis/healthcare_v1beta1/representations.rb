@@ -700,6 +700,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudHealthcareV1beta1DicomChangeDataCaptureConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudHealthcareV1beta1DicomGcsDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2489,9 +2495,17 @@ module Google
       class GoogleCloudHealthcareV1beta1DicomBigQueryDestination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :change_data_capture_config, as: 'changeDataCaptureConfig', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DicomChangeDataCaptureConfig, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DicomChangeDataCaptureConfig::Representation
+      
           property :force, as: 'force'
           property :table_uri, as: 'tableUri'
           property :write_disposition, as: 'writeDisposition'
+        end
+      end
+      
+      class GoogleCloudHealthcareV1beta1DicomChangeDataCaptureConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
