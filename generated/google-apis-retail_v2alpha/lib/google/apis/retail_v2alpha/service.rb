@@ -341,11 +341,11 @@ module Google
         #   Required. The query used to generate suggestions. The maximum number of
         #   allowed characters is 255.
         # @param [String] visitor_id
-        #   Required field. A unique identifier for tracking visitors. For example, this
-        #   could be implemented with an HTTP cookie, which should be able to uniquely
-        #   identify a visitor on a single device. This unique identifier should not
-        #   change if the visitor logs in or out of the website. The field must be a UTF-8
-        #   encoded string with a length limit of 128 characters. Otherwise, an
+        #   Recommended field. A unique identifier for tracking visitors. For example,
+        #   this could be implemented with an HTTP cookie, which should be able to
+        #   uniquely identify a visitor on a single device. This unique identifier should
+        #   not change if the visitor logs in or out of the website. The field must be a
+        #   UTF-8 encoded string with a length limit of 128 characters. Otherwise, an
         #   INVALID_ARGUMENT error is returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2465,6 +2465,44 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Performs a conversational search. This feature is only available for users who
+        # have Conversational Search enabled.
+        # @param [String] placement
+        #   Required. The resource name of the search engine placement, such as `projects/*
+        #   /locations/global/catalogs/default_catalog/placements/default_search` or `
+        #   projects/*/locations/global/catalogs/default_catalog/servingConfigs/
+        #   default_serving_config` This field is used to identify the serving config name
+        #   and the set of models that will be used to make the search.
+        # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchRequest] google_cloud_retail_v2alpha_conversational_search_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def conversational_project_location_catalog_placement_search(placement, google_cloud_retail_v2alpha_conversational_search_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2alpha/{+placement}:conversationalSearch', options)
+          command.request_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchRequest::Representation
+          command.request_object = google_cloud_retail_v2alpha_conversational_search_request_object
+          command.response_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponse::Representation
+          command.response_class = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponse
+          command.params['placement'] = placement unless placement.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Makes a recommendation prediction.
         # @param [String] placement
         #   Required. Full resource name of the format: ``placement=projects/*/locations/
@@ -2582,6 +2620,44 @@ module Google
           command.response_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig::Representation
           command.response_class = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig
           command.params['servingConfig'] = serving_config unless serving_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Performs a conversational search. This feature is only available for users who
+        # have Conversational Search enabled.
+        # @param [String] placement
+        #   Required. The resource name of the search engine placement, such as `projects/*
+        #   /locations/global/catalogs/default_catalog/placements/default_search` or `
+        #   projects/*/locations/global/catalogs/default_catalog/servingConfigs/
+        #   default_serving_config` This field is used to identify the serving config name
+        #   and the set of models that will be used to make the search.
+        # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchRequest] google_cloud_retail_v2alpha_conversational_search_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def conversational_project_location_catalog_serving_config_search(placement, google_cloud_retail_v2alpha_conversational_search_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2alpha/{+placement}:conversationalSearch', options)
+          command.request_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchRequest::Representation
+          command.request_object = google_cloud_retail_v2alpha_conversational_search_request_object
+          command.response_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponse::Representation
+          command.response_class = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponse
+          command.params['placement'] = placement unless placement.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

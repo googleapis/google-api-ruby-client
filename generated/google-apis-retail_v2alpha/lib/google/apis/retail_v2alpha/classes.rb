@@ -2774,6 +2774,371 @@ module Google
         end
       end
       
+      # Request message for ConversationalSearchService.ConversationalSearch method.
+      class GoogleCloudRetailV2alphaConversationalSearchRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The branch resource name, such as `projects/*/locations/global/
+        # catalogs/default_catalog/branches/0`. Use "default_branch" as the branch ID or
+        # leave this field empty, to search products under the default branch.
+        # Corresponds to the JSON property `branch`
+        # @return [String]
+        attr_accessor :branch
+      
+        # Optional. This field specifies the conversation id, which maintains the state
+        # of the conversation between client side and server side. Use the value from
+        # the previous ConversationalSearchResponse.conversation_id. For the initial
+        # request, this should be empty.
+        # Corresponds to the JSON property `conversationId`
+        # @return [String]
+        attr_accessor :conversation_id
+      
+        # This field specifies all conversational filtering related parameters addition
+        # to conversational retail search.
+        # Corresponds to the JSON property `conversationalFilteringSpec`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchRequestConversationalFilteringSpec]
+        attr_accessor :conversational_filtering_spec
+      
+        # Optional. The categories associated with a category page. Must be set for
+        # category navigation queries to achieve good search quality. The format should
+        # be the same as UserEvent.page_categories; To represent full path of category,
+        # use '>' sign to separate different hierarchies. If '>' is part of the category
+        # name, replace it with other character(s). Category pages include special pages
+        # such as sales or promotions. For instance, a special sale page may have the
+        # category hierarchy: "pageCategories" : ["Sales > 2017 Black Friday Deals"].
+        # Corresponds to the JSON property `pageCategories`
+        # @return [Array<String>]
+        attr_accessor :page_categories
+      
+        # Optional. Raw search query to be searched for. If this field is empty, the
+        # request is considered a category browsing request.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        # Search parameters.
+        # Corresponds to the JSON property `searchParams`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchRequestSearchParams]
+        attr_accessor :search_params
+      
+        # Information of an end user.
+        # Corresponds to the JSON property `userInfo`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaUserInfo]
+        attr_accessor :user_info
+      
+        # Required. A unique identifier for tracking visitors. For example, this could
+        # be implemented with an HTTP cookie, which should be able to uniquely identify
+        # a visitor on a single device. This unique identifier should not change if the
+        # visitor logs in or out of the website. This should be the same identifier as
+        # UserEvent.visitor_id. The field must be a UTF-8 encoded string with a length
+        # limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `visitorId`
+        # @return [String]
+        attr_accessor :visitor_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @branch = args[:branch] if args.key?(:branch)
+          @conversation_id = args[:conversation_id] if args.key?(:conversation_id)
+          @conversational_filtering_spec = args[:conversational_filtering_spec] if args.key?(:conversational_filtering_spec)
+          @page_categories = args[:page_categories] if args.key?(:page_categories)
+          @query = args[:query] if args.key?(:query)
+          @search_params = args[:search_params] if args.key?(:search_params)
+          @user_info = args[:user_info] if args.key?(:user_info)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
+        end
+      end
+      
+      # This field specifies all conversational filtering related parameters addition
+      # to conversational retail search.
+      class GoogleCloudRetailV2alphaConversationalSearchRequestConversationalFilteringSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Mode to control Conversational Filtering. Defaults to Mode.DISABLED
+        # if it's unset.
+        # Corresponds to the JSON property `conversationalFilteringMode`
+        # @return [String]
+        attr_accessor :conversational_filtering_mode
+      
+        # Optional. This field is deprecated. Please use ConversationalFilteringSpec.
+        # conversational_filtering_mode instead.
+        # Corresponds to the JSON property `enableConversationalFiltering`
+        # @return [Boolean]
+        attr_accessor :enable_conversational_filtering
+        alias_method :enable_conversational_filtering?, :enable_conversational_filtering
+      
+        # This field specifies the current user answer during the conversational
+        # filtering search. This can be either user selected from suggested answers or
+        # user input plain text.
+        # Corresponds to the JSON property `userAnswer`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchRequestUserAnswer]
+        attr_accessor :user_answer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversational_filtering_mode = args[:conversational_filtering_mode] if args.key?(:conversational_filtering_mode)
+          @enable_conversational_filtering = args[:enable_conversational_filtering] if args.key?(:enable_conversational_filtering)
+          @user_answer = args[:user_answer] if args.key?(:user_answer)
+        end
+      end
+      
+      # Search parameters.
+      class GoogleCloudRetailV2alphaConversationalSearchRequestSearchParams
+        include Google::Apis::Core::Hashable
+      
+        # Boost specification to boost certain items.
+        # Corresponds to the JSON property `boostSpec`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestBoostSpec]
+        attr_accessor :boost_spec
+      
+        # Optional. The canonical filter string to restrict search results. The syntax
+        # of the canonical filter string is the same as SearchRequest.canonical_filter.
+        # Corresponds to the JSON property `canonicalFilter`
+        # @return [String]
+        attr_accessor :canonical_filter
+      
+        # Optional. The filter string to restrict search results. The syntax of the
+        # filter string is the same as SearchRequest.filter.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Optional. The sort string to specify the sorting of search results. The syntax
+        # of the sort string is the same as SearchRequest.sort.
+        # Corresponds to the JSON property `sortBy`
+        # @return [String]
+        attr_accessor :sort_by
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boost_spec = args[:boost_spec] if args.key?(:boost_spec)
+          @canonical_filter = args[:canonical_filter] if args.key?(:canonical_filter)
+          @filter = args[:filter] if args.key?(:filter)
+          @sort_by = args[:sort_by] if args.key?(:sort_by)
+        end
+      end
+      
+      # This field specifies the current user answer during the conversational
+      # filtering search. This can be either user selected from suggested answers or
+      # user input plain text.
+      class GoogleCloudRetailV2alphaConversationalSearchRequestUserAnswer
+        include Google::Apis::Core::Hashable
+      
+        # This field specifies the selected answers during the conversational search.
+        # Corresponds to the JSON property `selectedAnswer`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchRequestUserAnswerSelectedAnswer]
+        attr_accessor :selected_answer
+      
+        # This field specifies the incremental input text from the user during the
+        # conversational search.
+        # Corresponds to the JSON property `textAnswer`
+        # @return [String]
+        attr_accessor :text_answer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @selected_answer = args[:selected_answer] if args.key?(:selected_answer)
+          @text_answer = args[:text_answer] if args.key?(:text_answer)
+        end
+      end
+      
+      # This field specifies the selected answers during the conversational search.
+      class GoogleCloudRetailV2alphaConversationalSearchRequestUserAnswerSelectedAnswer
+        include Google::Apis::Core::Hashable
+      
+        # Product attribute which structured by an attribute name and value. This
+        # structure is used in conversational search filters and answers. For example,
+        # if we have `name=color` and `value=red`, this means that the color is `red`.
+        # Corresponds to the JSON property `productAttributeValue`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProductAttributeValue]
+        attr_accessor :product_attribute_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product_attribute_value = args[:product_attribute_value] if args.key?(:product_attribute_value)
+        end
+      end
+      
+      # Response message for ConversationalSearchService.ConversationalSearch method.
+      class GoogleCloudRetailV2alphaConversationalSearchResponse
+        include Google::Apis::Core::Hashable
+      
+        # Conversation UUID. This field will be stored in client side storage to
+        # maintain the conversation session with server and will be used for next search
+        # request's ConversationalSearchRequest.conversation_id to restore conversation
+        # state in server.
+        # Corresponds to the JSON property `conversationId`
+        # @return [String]
+        attr_accessor :conversation_id
+      
+        # This field specifies all related information that is needed on client side for
+        # UI rendering of conversational filtering search.
+        # Corresponds to the JSON property `conversationalFilteringResult`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponseConversationalFilteringResult]
+        attr_accessor :conversational_filtering_result
+      
+        # The proposed refined search queries. They can be used to fetch the relevant
+        # search results. When using CONVERSATIONAL_FILTER_ONLY mode, the refined_query
+        # from search response will be populated here.
+        # Corresponds to the JSON property `refinedSearch`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponseRefinedSearch>]
+        attr_accessor :refined_search
+      
+        # This field is deprecated. Please find the refinded_query from search response
+        # when using CONVERSATIONAL_FILTER_ONLY mode in ConversationalSearchResponse.
+        # refined_search instead. The rephrased query based on the user's query and the
+        # conversation history. It can be used to fetch the relevant search results.
+        # Corresponds to the JSON property `rephrasedQuery`
+        # @return [String]
+        attr_accessor :rephrased_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_id = args[:conversation_id] if args.key?(:conversation_id)
+          @conversational_filtering_result = args[:conversational_filtering_result] if args.key?(:conversational_filtering_result)
+          @refined_search = args[:refined_search] if args.key?(:refined_search)
+          @rephrased_query = args[:rephrased_query] if args.key?(:rephrased_query)
+        end
+      end
+      
+      # This field specifies all related information that is needed on client side for
+      # UI rendering of conversational filtering search.
+      class GoogleCloudRetailV2alphaConversationalSearchResponseConversationalFilteringResult
+        include Google::Apis::Core::Hashable
+      
+        # Additional filter that client side need to apply.
+        # Corresponds to the JSON property `additionalFilter`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponseConversationalFilteringResultAdditionalFilter]
+        attr_accessor :additional_filter
+      
+        # The conversational followup question generated for Intent refinement.
+        # Corresponds to the JSON property `followupQuestion`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponseFollowupQuestion]
+        attr_accessor :followup_question
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_filter = args[:additional_filter] if args.key?(:additional_filter)
+          @followup_question = args[:followup_question] if args.key?(:followup_question)
+        end
+      end
+      
+      # Additional filter that client side need to apply.
+      class GoogleCloudRetailV2alphaConversationalSearchResponseConversationalFilteringResultAdditionalFilter
+        include Google::Apis::Core::Hashable
+      
+        # Product attribute which structured by an attribute name and value. This
+        # structure is used in conversational search filters and answers. For example,
+        # if we have `name=color` and `value=red`, this means that the color is `red`.
+        # Corresponds to the JSON property `productAttributeValue`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProductAttributeValue]
+        attr_accessor :product_attribute_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product_attribute_value = args[:product_attribute_value] if args.key?(:product_attribute_value)
+        end
+      end
+      
+      # The conversational followup question generated for Intent refinement.
+      class GoogleCloudRetailV2alphaConversationalSearchResponseFollowupQuestion
+        include Google::Apis::Core::Hashable
+      
+        # The conversational followup question generated for Intent refinement.
+        # Corresponds to the JSON property `followupQuestion`
+        # @return [String]
+        attr_accessor :followup_question
+      
+        # The answer options provided to client for the follow-up question.
+        # Corresponds to the JSON property `suggestedAnswers`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponseFollowupQuestionSuggestedAnswer>]
+        attr_accessor :suggested_answers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @followup_question = args[:followup_question] if args.key?(:followup_question)
+          @suggested_answers = args[:suggested_answers] if args.key?(:suggested_answers)
+        end
+      end
+      
+      # Suggested answers to the follow-up question.
+      class GoogleCloudRetailV2alphaConversationalSearchResponseFollowupQuestionSuggestedAnswer
+        include Google::Apis::Core::Hashable
+      
+        # Product attribute which structured by an attribute name and value. This
+        # structure is used in conversational search filters and answers. For example,
+        # if we have `name=color` and `value=red`, this means that the color is `red`.
+        # Corresponds to the JSON property `productAttributeValue`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProductAttributeValue]
+        attr_accessor :product_attribute_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product_attribute_value = args[:product_attribute_value] if args.key?(:product_attribute_value)
+        end
+      end
+      
+      # The proposed refined search for intent-refinement/bundled shopping
+      # conversation. When using CONVERSATIONAL_FILTER_ONLY mode, the refined_query
+      # from search response will be populated here.
+      class GoogleCloudRetailV2alphaConversationalSearchResponseRefinedSearch
+        include Google::Apis::Core::Hashable
+      
+        # The query to be used for search.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @query = args[:query] if args.key?(:query)
+        end
+      end
+      
       # Common metadata related to the progress of the operations.
       class GoogleCloudRetailV2alphaCreateMerchantCenterAccountLinkMetadata
         include Google::Apis::Core::Hashable
@@ -7025,6 +7390,13 @@ module Google
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestPersonalizationSpec]
         attr_accessor :personalization_spec
       
+        # Optional. An id corresponding to a place, such as a store id or region id.
+        # When specified, we use the price from the local inventory with the matching
+        # product's LocalInventory.place_id for revenue optimization.
+        # Corresponds to the JSON property `placeId`
+        # @return [String]
+        attr_accessor :place_id
+      
         # Raw search query. If this field is empty, the request is considered a category
         # browsing request and returned results are based on filter and page_categories.
         # Corresponds to the JSON property `query`
@@ -7136,6 +7508,7 @@ module Google
           @page_size = args[:page_size] if args.key?(:page_size)
           @page_token = args[:page_token] if args.key?(:page_token)
           @personalization_spec = args[:personalization_spec] if args.key?(:personalization_spec)
+          @place_id = args[:place_id] if args.key?(:place_id)
           @query = args[:query] if args.key?(:query)
           @query_expansion_spec = args[:query_expansion_spec] if args.key?(:query_expansion_spec)
           @region_code = args[:region_code] if args.key?(:region_code)
