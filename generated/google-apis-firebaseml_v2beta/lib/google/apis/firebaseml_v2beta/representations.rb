@@ -537,6 +537,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :args, as: 'args'
+          property :id, as: 'id'
           property :name, as: 'name'
         end
       end
@@ -564,6 +565,7 @@ module Google
       class GoogleCloudAiplatformV1beta1FunctionResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
           property :name, as: 'name'
           hash :response, as: 'response'
         end
@@ -626,6 +628,7 @@ module Google
           property :prompt_token_count, as: 'promptTokenCount'
           collection :prompt_tokens_details, as: 'promptTokensDetails', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModalityTokenCount, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModalityTokenCount::Representation
       
+          property :thoughts_token_count, as: 'thoughtsTokenCount'
           property :tool_use_prompt_token_count, as: 'toolUsePromptTokenCount'
           collection :tool_use_prompt_tokens_details, as: 'toolUsePromptTokensDetails', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModalityTokenCount, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModalityTokenCount::Representation
       
@@ -714,6 +717,7 @@ module Google
       class GoogleCloudAiplatformV1beta1GroundingChunkWeb
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
           property :title, as: 'title'
           property :uri, as: 'uri'
         end
@@ -1011,6 +1015,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :datastore, as: 'datastore'
+          property :engine, as: 'engine'
         end
       end
       
