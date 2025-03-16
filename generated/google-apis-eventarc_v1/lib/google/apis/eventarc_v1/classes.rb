@@ -875,6 +875,11 @@ module Google
         # @return [String]
         attr_accessor :crypto_key_name
       
+        # Optional. Resource labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Required. The resource name of the config. Must be in the format of, `projects/
         # `project`/locations/`location`/googleChannelConfig`. In API responses, the
         # config name always includes the projectID, regardless of whether the projectID
@@ -895,6 +900,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @crypto_key_name = args[:crypto_key_name] if args.key?(:crypto_key_name)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
