@@ -1370,12 +1370,12 @@ module Google
         # @return [String]
         attr_accessor :api_key_string
       
-        # Required. The location of the API key.
+        # Optional. The location of the API key.
         # Corresponds to the JSON property `httpElementLocation`
         # @return [String]
         attr_accessor :http_element_location
       
-        # Required. The parameter name of the API key. E.g. If the API request is "https:
+        # Optional. The parameter name of the API key. E.g. If the API request is "https:
         # //example.com/act?api_key=", "api_key" would be the parameter name.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -6390,7 +6390,7 @@ module Google
         # publisher_model`@`version_id``, or `publishers/hf-`hugging-face-author`/models/
         # `hugging-face-model-name`@001`. 2. Hugging Face model ID like `google/gemma-2-
         # 2b-it`. 3. Custom model Google Cloud Storage URI like `gs://bucket`. 4. Custom
-        # model zip file like `https://abc.com/a.zip`.
+        # model zip file like `https://example.com/a.zip`.
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
@@ -7246,9 +7246,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :boot_disk_size_gb
       
-        # Type of the boot disk (default is "pd-ssd"). Valid values: "pd-ssd" (
-        # Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk
-        # Drive).
+        # Type of the boot disk. For non-A3U machines, the default value is "pd-ssd",
+        # for A3U machines, the default value is "hyperdisk-balanced". Valid values: "pd-
+        # ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard
+        # Disk Drive) or "hyperdisk-balanced".
         # Corresponds to the JSON property `bootDiskType`
         # @return [String]
         attr_accessor :boot_disk_type
@@ -13604,6 +13605,11 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModalityTokenCount>]
         attr_accessor :prompt_tokens_details
       
+        # Output only. Number of tokens present in thoughts output.
+        # Corresponds to the JSON property `thoughtsTokenCount`
+        # @return [Fixnum]
+        attr_accessor :thoughts_token_count
+      
         # Output only. Number of tokens present in tool-use prompt(s).
         # Corresponds to the JSON property `toolUsePromptTokenCount`
         # @return [Fixnum]
@@ -13633,6 +13639,7 @@ module Google
           @candidates_tokens_details = args[:candidates_tokens_details] if args.key?(:candidates_tokens_details)
           @prompt_token_count = args[:prompt_token_count] if args.key?(:prompt_token_count)
           @prompt_tokens_details = args[:prompt_tokens_details] if args.key?(:prompt_tokens_details)
+          @thoughts_token_count = args[:thoughts_token_count] if args.key?(:thoughts_token_count)
           @tool_use_prompt_token_count = args[:tool_use_prompt_token_count] if args.key?(:tool_use_prompt_token_count)
           @tool_use_prompt_tokens_details = args[:tool_use_prompt_tokens_details] if args.key?(:tool_use_prompt_tokens_details)
           @total_token_count = args[:total_token_count] if args.key?(:total_token_count)
