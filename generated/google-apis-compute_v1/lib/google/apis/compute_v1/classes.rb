@@ -35378,6 +35378,11 @@ module Google
         # @return [String]
         attr_accessor :physical_host
       
+        # Represents the physical host topology of the host on which the VM is running.
+        # Corresponds to the JSON property `physicalHostTopology`
+        # @return [Google::Apis::ComputeV1::ResourceStatusPhysicalHostTopology]
+        attr_accessor :physical_host_topology
+      
         # 
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeV1::ResourceStatusScheduling]
@@ -35395,8 +35400,51 @@ module Google
         # Update properties of this object
         def update!(**args)
           @physical_host = args[:physical_host] if args.key?(:physical_host)
+          @physical_host_topology = args[:physical_host_topology] if args.key?(:physical_host_topology)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @upcoming_maintenance = args[:upcoming_maintenance] if args.key?(:upcoming_maintenance)
+        end
+      end
+      
+      # Represents the physical host topology of the host on which the VM is running.
+      class ResourceStatusPhysicalHostTopology
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The ID of the block in which the running instance is located.
+        # Instances within the same block experience low network latency.
+        # Corresponds to the JSON property `block`
+        # @return [String]
+        attr_accessor :block
+      
+        # [Output Only] The global name of the Compute Engine cluster where the running
+        # instance is located.
+        # Corresponds to the JSON property `cluster`
+        # @return [String]
+        attr_accessor :cluster
+      
+        # [Output Only] The ID of the host on which the running instance is located.
+        # Instances on the same host experience the lowest possible network latency.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # [Output Only] The ID of the sub-block in which the running instance is located.
+        # Instances in the same sub-block experience lower network latency than
+        # instances in the same block.
+        # Corresponds to the JSON property `subblock`
+        # @return [String]
+        attr_accessor :subblock
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @block = args[:block] if args.key?(:block)
+          @cluster = args[:cluster] if args.key?(:cluster)
+          @host = args[:host] if args.key?(:host)
+          @subblock = args[:subblock] if args.key?(:subblock)
         end
       end
       
@@ -44056,6 +44104,18 @@ module Google
         # @return [String]
         attr_accessor :ip_cidr_range
       
+        # Reference to the source of IP, like a PublicDelegatedPrefix (PDP) for BYOIP.
+        # The PDP must be a sub-PDP in EXTERNAL_IPV6_SUBNETWORK_CREATION mode. Use one
+        # of the following formats to specify a sub-PDP when creating a dual stack
+        # subnetwork with external access using BYOIP: - Full resource URL, as in https:/
+        # /www.googleapis.com/compute/v1/projects/projectId/regions/region /
+        # publicDelegatedPrefixes/sub-pdp-name - Partial URL, as in - projects/projectId/
+        # regions/region/publicDelegatedPrefixes/ sub-pdp-name - regions/region/
+        # publicDelegatedPrefixes/sub-pdp-name
+        # Corresponds to the JSON property `ipCollection`
+        # @return [String]
+        attr_accessor :ip_collection
+      
         # The access type of IPv6 address this subnet holds. It's immutable and can only
         # be specified during creation or the first time the subnet is updated into
         # IPV4_IPV6 dual stack.
@@ -44067,6 +44127,18 @@ module Google
         # Corresponds to the JSON property `ipv6CidrRange`
         # @return [String]
         attr_accessor :ipv6_cidr_range
+      
+        # [Output Only] Possible endpoints of this subnetwork. It can be one of the
+        # following: - VM_ONLY: The subnetwork can be used for creating instances and
+        # IPv6 addresses with VM endpoint type. Such a subnetwork gets external IPv6
+        # ranges from a public delegated prefix and cannot be used to create NetLb. -
+        # VM_AND_FR: The subnetwork can be used for creating both VM instances and
+        # Forwarding Rules. It can also be used to reserve IPv6 addresses with both VM
+        # and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP
+        # Pool directly.
+        # Corresponds to the JSON property `ipv6GceEndpoint`
+        # @return [String]
+        attr_accessor :ipv6_gce_endpoint
       
         # [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork
         # resources.
@@ -44195,8 +44267,10 @@ module Google
           @id = args[:id] if args.key?(:id)
           @internal_ipv6_prefix = args[:internal_ipv6_prefix] if args.key?(:internal_ipv6_prefix)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @ip_collection = args[:ip_collection] if args.key?(:ip_collection)
           @ipv6_access_type = args[:ipv6_access_type] if args.key?(:ipv6_access_type)
           @ipv6_cidr_range = args[:ipv6_cidr_range] if args.key?(:ipv6_cidr_range)
+          @ipv6_gce_endpoint = args[:ipv6_gce_endpoint] if args.key?(:ipv6_gce_endpoint)
           @kind = args[:kind] if args.key?(:kind)
           @log_config = args[:log_config] if args.key?(:log_config)
           @name = args[:name] if args.key?(:name)
