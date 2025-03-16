@@ -506,8 +506,8 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload
         include Google::Apis::Core::Hashable
       
-        # Output only. Output only. This identifies whether the subscription is attached
-        # to a Google Home structure.
+        # Output only. This identifies whether the subscription is attached to a Google
+        # Home structure.
         # Corresponds to the JSON property `attachedToGoogleStructure`
         # @return [Boolean]
         attr_accessor :attached_to_google_structure
@@ -696,7 +696,7 @@ module Google
         # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig>]
         attr_accessor :price_configs
       
-        # Output only. Output Only. Specifies the type of the product.
+        # Output only. Specifies the type of the product.
         # Corresponds to the JSON property `productType`
         # @return [String]
         attr_accessor :product_type
@@ -843,7 +843,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. Output Only. Specifies the type of the promotion.
+        # Output only. Specifies the type of the promotion.
         # Corresponds to the JSON property `promotionType`
         # @return [String]
         attr_accessor :promotion_type
@@ -917,8 +917,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :discount_ratio_micros
       
-        # Output only. Output Only. The duration of an introductory offer in billing
-        # cycles.
+        # Output only. The duration of an introductory offer in billing cycles.
         # Corresponds to the JSON property `recurrenceCount`
         # @return [Fixnum]
         attr_accessor :recurrence_count
