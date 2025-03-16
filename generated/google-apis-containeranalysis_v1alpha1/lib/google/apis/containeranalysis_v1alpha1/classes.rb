@@ -251,6 +251,37 @@ module Google
         end
       end
       
+      # BaseImage describes a base image of a container image.
+      class BaseImage
+        include Google::Apis::Core::Hashable
+      
+        # The number of layers that the base image is composed of.
+        # Corresponds to the JSON property `layerCount`
+        # @return [Fixnum]
+        attr_accessor :layer_count
+      
+        # The name of the base image.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The repository name in which the base image is from.
+        # Corresponds to the JSON property `repository`
+        # @return [String]
+        attr_accessor :repository
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @layer_count = args[:layer_count] if args.key?(:layer_count)
+          @name = args[:name] if args.key?(:name)
+          @repository = args[:repository] if args.key?(:repository)
+        end
+      end
+      
       # Basis describes the base image portion (Note) of the DockerImage relationship.
       # Linked occurrences are derived from this or an equivalent image via: FROM Or
       # an equivalent reference, e.g. a tag of the resource_url.
@@ -648,7 +679,7 @@ module Google
         end
       end
       
-      # A step in the build pipeline. Next ID: 21
+      # A step in the build pipeline. Next ID: 22
       class BuildStep
         include Google::Apis::Core::Hashable
       
@@ -739,6 +770,11 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1alpha1::TimeSpan]
         attr_accessor :pull_timing
       
+        # 
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::ContaineranalysisV1alpha1::StepResult>]
+        attr_accessor :results
+      
         # A shell script to be executed in the step. When script is provided, the user
         # cannot specify the entrypoint or args.
         # Corresponds to the JSON property `script`
@@ -805,6 +841,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @pull_timing = args[:pull_timing] if args.key?(:pull_timing)
+          @results = args[:results] if args.key?(:results)
           @script = args[:script] if args.key?(:script)
           @secret_env = args[:secret_env] if args.key?(:secret_env)
           @status = args[:status] if args.key?(:status)
@@ -3955,6 +3992,11 @@ module Google
         # @return [String]
         attr_accessor :file_path
       
+        # Details about the layer a package was found in.
+        # Corresponds to the JSON property `layerDetails`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::LayerDetails]
+        attr_accessor :layer_details
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3962,6 +4004,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @file_path = args[:file_path] if args.key?(:file_path)
+          @layer_details = args[:layer_details] if args.key?(:layer_details)
         end
       end
       
@@ -4900,6 +4943,44 @@ module Google
         def update!(**args)
           @arguments = args[:arguments] if args.key?(:arguments)
           @directive = args[:directive] if args.key?(:directive)
+        end
+      end
+      
+      # Details about the layer a package was found in.
+      class LayerDetails
+        include Google::Apis::Core::Hashable
+      
+        # The base images the layer is found within.
+        # Corresponds to the JSON property `baseImages`
+        # @return [Array<Google::Apis::ContaineranalysisV1alpha1::BaseImage>]
+        attr_accessor :base_images
+      
+        # The layer build command that was used to build the layer. This may not be
+        # found in all layers depending on how the container image is built.
+        # Corresponds to the JSON property `command`
+        # @return [String]
+        attr_accessor :command
+      
+        # The diff ID (sha256 hash) of the layer in the container image.
+        # Corresponds to the JSON property `diffId`
+        # @return [String]
+        attr_accessor :diff_id
+      
+        # The index of the layer in the container image.
+        # Corresponds to the JSON property `index`
+        # @return [Fixnum]
+        attr_accessor :index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_images = args[:base_images] if args.key?(:base_images)
+          @command = args[:command] if args.key?(:command)
+          @diff_id = args[:diff_id] if args.key?(:diff_id)
+          @index = args[:index] if args.key?(:index)
         end
       end
       
@@ -7197,6 +7278,37 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # StepResult is the declaration of a result for a build step.
+      class StepResult
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `attestationContentName`
+        # @return [String]
+        attr_accessor :attestation_content_name
+      
+        # 
+        # Corresponds to the JSON property `attestationType`
+        # @return [String]
+        attr_accessor :attestation_type
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attestation_content_name = args[:attestation_content_name] if args.key?(:attestation_content_name)
+          @attestation_type = args[:attestation_type] if args.key?(:attestation_type)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
