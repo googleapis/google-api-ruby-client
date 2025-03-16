@@ -906,7 +906,7 @@ module Google
         end
       end
       
-      # Infra Usage of billing metrics.
+      # LINT: LEGACY_NAMES Infra Usage of billing metrics.
       class InfraUsage
         include Google::Apis::Core::Hashable
       
@@ -5345,7 +5345,7 @@ module Google
       class XpsVisionTrainingOperationMetadata
         include Google::Apis::Core::Hashable
       
-        # Infra Usage of billing metrics.
+        # LINT: LEGACY_NAMES Infra Usage of billing metrics.
         # Corresponds to the JSON property `explanationUsage`
         # @return [Google::Apis::LanguageV1beta2::InfraUsage]
         attr_accessor :explanation_usage
