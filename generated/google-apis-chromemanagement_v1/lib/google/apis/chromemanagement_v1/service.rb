@@ -361,27 +361,28 @@ module Google
         #   in the filter: - profile_id - display_name - user_email - last_activity_time -
         #   last_policy_sync_time - last_status_report_time - first_enrollment_time -
         #   os_platform_type - os_version - browser_version - browser_channel -
-        #   policy_count - extension_count - identity_provider - affiliation_state - ouId
-        #   Any of the above fields can be used to specify a filter, and filtering by
-        #   multiple fields is supported with AND operator. String type fields and enum
-        #   type fields support '=' and '!=' operators. The integer type and the timestamp
-        #   type fields support '=', '!=', '<', '>', '<=' and '>=' operators. Timestamps
-        #   expect an RFC-3339 formatted string (e.g. 2012-04-21T11:30:00-04:00). Wildcard
-        #   '*' can be used with a string type field filter. In addition, string literal
-        #   filtering is also supported, for example, 'ABC' as a filter maps to a filter
-        #   that checks if any of the filterable string type fields contains 'ABC'.
-        #   Organization unit number can be used as a filtering criteria here by
-        #   specifying 'ouId = $`your_org_unit_id`', please note that only single OU ID
-        #   matching is supported.
+        #   policy_count - extension_count - identity_provider - affiliation_state -
+        #   os_platform_version - ouId Any of the above fields can be used to specify a
+        #   filter, and filtering by multiple fields is supported with AND operator.
+        #   String type fields and enum type fields support '=' and '!=' operators. The
+        #   integer type and the timestamp type fields support '=', '!=', '<', '>', '<='
+        #   and '>=' operators. Timestamps expect an RFC-3339 formatted string (e.g. 2012-
+        #   04-21T11:30:00-04:00). Wildcard '*' can be used with a string type field
+        #   filter. In addition, string literal filtering is also supported, for example, '
+        #   ABC' as a filter maps to a filter that checks if any of the filterable string
+        #   type fields contains 'ABC'. Organization unit number can be used as a
+        #   filtering criteria here by specifying 'ouId = $`your_org_unit_id`', please
+        #   note that only single OU ID matching is supported.
         # @param [String] order_by
         #   Optional. The fields used to specify the ordering of the results. The
         #   supported fields are: - profile_id - display_name - user_email -
         #   last_activity_time - last_policy_sync_time - last_status_report_time -
         #   first_enrollment_time - os_platform_type - os_version - browser_version -
         #   browser_channel - policy_count - extension_count - identity_provider -
-        #   affiliation_state By default, sorting is in ascending order, to specify
-        #   descending order for a field, a suffix " desc" should be added to the field
-        #   name. The default ordering is the descending order of last_status_report_time.
+        #   affiliation_state - os_platform_version By default, sorting is in ascending
+        #   order, to specify descending order for a field, a suffix " desc" should be
+        #   added to the field name. The default ordering is the descending order of
+        #   last_status_report_time.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of profiles to return. The default page size is
         #   100 if page_size is unspecified, and the maximum page size allowed is 200.

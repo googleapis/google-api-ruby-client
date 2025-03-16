@@ -1773,7 +1773,6 @@ module Google
       class GoogleChromeManagementVersionsV1CertificateProvisioningProcess
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :ca_connection_adapter_config_reference, as: 'caConnectionAdapterConfigReference'
           property :chrome_os_device, as: 'chromeOsDevice', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeOsDevice, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeOsDevice::Representation
       
           property :chrome_os_user_session, as: 'chromeOsUserSession', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeOsUserSession, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeOsUserSession::Representation
@@ -1785,7 +1784,6 @@ module Google
       
           property :issued_certificate, as: 'issuedCertificate'
           property :name, as: 'name'
-          property :profile_adapter_config_reference, as: 'profileAdapterConfigReference'
           property :provisioning_profile_id, as: 'provisioningProfileId'
           property :sign_data, :base64 => true, as: 'signData'
           property :signature, :base64 => true, as: 'signature'

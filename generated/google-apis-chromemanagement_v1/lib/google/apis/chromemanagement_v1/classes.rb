@@ -4130,13 +4130,6 @@ module Google
       class GoogleChromeManagementVersionsV1CertificateProvisioningProcess
         include Google::Apis::Core::Hashable
       
-        # Output only. A JSON string that contains the administrator-provided
-        # configuration for the certification authority service. This field can be
-        # missing if no configuration was given.
-        # Corresponds to the JSON property `caConnectionAdapterConfigReference`
-        # @return [String]
-        attr_accessor :ca_connection_adapter_config_reference
-      
         # Describes the ChromeOS device that a `CertificateProvisioningProcess` belongs
         # to.
         # Corresponds to the JSON property `chromeOsDevice`
@@ -4150,7 +4143,7 @@ module Google
         attr_accessor :chrome_os_user_session
       
         # Output only. A message describing why this `CertificateProvisioningProcess`
-        # failed. Presence of this field indicates that the `
+        # has failed. Presence of this field indicates that the `
         # CertificateProvisioningProcess` has failed.
         # Corresponds to the JSON property `failureMessage`
         # @return [String]
@@ -4181,13 +4174,6 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. A JSON string that contains the administrator-provided
-        # configuration for the certificate provisioning profile. This field can be
-        # missing if no configuration was given.
-        # Corresponds to the JSON property `profileAdapterConfigReference`
-        # @return [String]
-        attr_accessor :profile_adapter_config_reference
-      
         # Output only. The ID of the certificate provisioning profile.
         # Corresponds to the JSON property `provisioningProfileId`
         # @return [String]
@@ -4202,7 +4188,7 @@ module Google
       
         # Output only. The signature of `signature_algorithm`, generated using the
         # client's private key using `signature_algorithm`. This field is only present
-        # after the`SignData` operation has finished.
+        # after the `SignData` operation has finished.
         # Corresponds to the JSON property `signature`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -4234,7 +4220,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @ca_connection_adapter_config_reference = args[:ca_connection_adapter_config_reference] if args.key?(:ca_connection_adapter_config_reference)
           @chrome_os_device = args[:chrome_os_device] if args.key?(:chrome_os_device)
           @chrome_os_user_session = args[:chrome_os_user_session] if args.key?(:chrome_os_user_session)
           @failure_message = args[:failure_message] if args.key?(:failure_message)
@@ -4242,7 +4227,6 @@ module Google
           @generic_profile = args[:generic_profile] if args.key?(:generic_profile)
           @issued_certificate = args[:issued_certificate] if args.key?(:issued_certificate)
           @name = args[:name] if args.key?(:name)
-          @profile_adapter_config_reference = args[:profile_adapter_config_reference] if args.key?(:profile_adapter_config_reference)
           @provisioning_profile_id = args[:provisioning_profile_id] if args.key?(:provisioning_profile_id)
           @sign_data = args[:sign_data] if args.key?(:sign_data)
           @signature = args[:signature] if args.key?(:signature)
@@ -4347,8 +4331,8 @@ module Google
         # @return [String]
         attr_accessor :os_platform_type
       
-        # Output only. Major OS version of the device on which the profile exists. (i.e.
-        # Windows 10)
+        # Output only. Major OS platform version of the device on which the profile
+        # exists, from profile reporting.
         # Corresponds to the JSON property `osPlatformVersion`
         # @return [String]
         attr_accessor :os_platform_version
