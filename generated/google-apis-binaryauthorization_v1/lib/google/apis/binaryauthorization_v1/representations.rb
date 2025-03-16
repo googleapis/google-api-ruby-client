@@ -774,6 +774,7 @@ module Google
           property :attestation_source, as: 'attestationSource', class: Google::Apis::BinaryauthorizationV1::AttestationSource, decorator: Google::Apis::BinaryauthorizationV1::AttestationSource::Representation
       
           property :config_based_build_required, as: 'configBasedBuildRequired'
+          property :custom_constraints, as: 'customConstraints'
           property :trusted_builder, as: 'trustedBuilder'
           collection :trusted_source_repo_patterns, as: 'trustedSourceRepoPatterns'
         end
