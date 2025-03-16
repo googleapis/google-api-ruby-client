@@ -190,6 +190,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateLogicalViewMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateLogicalViewRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateMaterializedViewMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateMaterializedViewRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateTableRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -538,6 +562,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LogicalView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MaterializedView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Modification
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -737,6 +773,18 @@ module Google
       end
       
       class UpdateInstanceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateLogicalViewMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateLogicalViewRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1036,6 +1084,46 @@ module Google
           property :instance, as: 'instance', class: Google::Apis::BigtableadminV2::Instance, decorator: Google::Apis::BigtableadminV2::Instance::Representation
       
           property :instance_id, as: 'instanceId'
+          property :parent, as: 'parent'
+        end
+      end
+      
+      class CreateLogicalViewMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :original_request, as: 'originalRequest', class: Google::Apis::BigtableadminV2::CreateLogicalViewRequest, decorator: Google::Apis::BigtableadminV2::CreateLogicalViewRequest::Representation
+      
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class CreateLogicalViewRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :logical_view, as: 'logicalView', class: Google::Apis::BigtableadminV2::LogicalView, decorator: Google::Apis::BigtableadminV2::LogicalView::Representation
+      
+          property :logical_view_id, as: 'logicalViewId'
+          property :parent, as: 'parent'
+        end
+      end
+      
+      class CreateMaterializedViewMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :original_request, as: 'originalRequest', class: Google::Apis::BigtableadminV2::CreateMaterializedViewRequest, decorator: Google::Apis::BigtableadminV2::CreateMaterializedViewRequest::Representation
+      
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class CreateMaterializedViewRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :materialized_view, as: 'materializedView', class: Google::Apis::BigtableadminV2::MaterializedView, decorator: Google::Apis::BigtableadminV2::MaterializedView::Representation
+      
+          property :materialized_view_id, as: 'materializedViewId'
           property :parent, as: 'parent'
         end
       end
@@ -1528,6 +1616,25 @@ module Google
         end
       end
       
+      class LogicalView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :query, as: 'query'
+        end
+      end
+      
+      class MaterializedView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deletion_protection, as: 'deletionProtection'
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :query, as: 'query'
+        end
+      end
+      
       class Modification
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1861,6 +1968,25 @@ module Google
           property :original_request, as: 'originalRequest', class: Google::Apis::BigtableadminV2::PartialUpdateInstanceRequest, decorator: Google::Apis::BigtableadminV2::PartialUpdateInstanceRequest::Representation
       
           property :request_time, as: 'requestTime'
+        end
+      end
+      
+      class UpdateLogicalViewMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :original_request, as: 'originalRequest', class: Google::Apis::BigtableadminV2::UpdateLogicalViewRequest, decorator: Google::Apis::BigtableadminV2::UpdateLogicalViewRequest::Representation
+      
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class UpdateLogicalViewRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :logical_view, as: 'logicalView', class: Google::Apis::BigtableadminV2::LogicalView, decorator: Google::Apis::BigtableadminV2::LogicalView::Representation
+      
+          property :update_mask, as: 'updateMask'
         end
       end
       

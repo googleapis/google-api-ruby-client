@@ -1191,6 +1191,134 @@ module Google
         end
       end
       
+      # The metadata for the Operation returned by CreateLogicalView.
+      class CreateLogicalViewMetadata
+        include Google::Apis::Core::Hashable
+      
+        # If set, the time at which this operation finished or was canceled.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Request message for BigtableInstanceAdmin.CreateLogicalView.
+        # Corresponds to the JSON property `originalRequest`
+        # @return [Google::Apis::BigtableadminV2::CreateLogicalViewRequest]
+        attr_accessor :original_request
+      
+        # The time at which this operation started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @original_request = args[:original_request] if args.key?(:original_request)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Request message for BigtableInstanceAdmin.CreateLogicalView.
+      class CreateLogicalViewRequest
+        include Google::Apis::Core::Hashable
+      
+        # A SQL logical view object that can be referenced in SQL queries.
+        # Corresponds to the JSON property `logicalView`
+        # @return [Google::Apis::BigtableadminV2::LogicalView]
+        attr_accessor :logical_view
+      
+        # Required. The ID to use for the logical view, which will become the final
+        # component of the logical view's resource name.
+        # Corresponds to the JSON property `logicalViewId`
+        # @return [String]
+        attr_accessor :logical_view_id
+      
+        # Required. The parent instance where this logical view will be created. Format:
+        # `projects/`project`/instances/`instance``.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @logical_view = args[:logical_view] if args.key?(:logical_view)
+          @logical_view_id = args[:logical_view_id] if args.key?(:logical_view_id)
+          @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
+      # The metadata for the Operation returned by CreateMaterializedView.
+      class CreateMaterializedViewMetadata
+        include Google::Apis::Core::Hashable
+      
+        # If set, the time at which this operation finished or was canceled.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Request message for BigtableInstanceAdmin.CreateMaterializedView.
+        # Corresponds to the JSON property `originalRequest`
+        # @return [Google::Apis::BigtableadminV2::CreateMaterializedViewRequest]
+        attr_accessor :original_request
+      
+        # The time at which this operation started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @original_request = args[:original_request] if args.key?(:original_request)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Request message for BigtableInstanceAdmin.CreateMaterializedView.
+      class CreateMaterializedViewRequest
+        include Google::Apis::Core::Hashable
+      
+        # A materialized view object that can be referenced in SQL queries.
+        # Corresponds to the JSON property `materializedView`
+        # @return [Google::Apis::BigtableadminV2::MaterializedView]
+        attr_accessor :materialized_view
+      
+        # Required. The ID to use for the materialized view, which will become the final
+        # component of the materialized view's resource name.
+        # Corresponds to the JSON property `materializedViewId`
+        # @return [String]
+        attr_accessor :materialized_view_id
+      
+        # Required. The parent instance where this materialized view will be created.
+        # Format: `projects/`project`/instances/`instance``.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @materialized_view = args[:materialized_view] if args.key?(:materialized_view)
+          @materialized_view_id = args[:materialized_view_id] if args.key?(:materialized_view_id)
+          @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
       # Request message for google.bigtable.admin.v2.BigtableTableAdmin.CreateTable
       class CreateTableRequest
         include Google::Apis::Core::Hashable
@@ -2829,6 +2957,81 @@ module Google
         end
       end
       
+      # A SQL logical view object that can be referenced in SQL queries.
+      class LogicalView
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The etag for this logical view. This may be sent on update requests
+        # to ensure that the client has an up-to-date value before proceeding. The
+        # server returns an ABORTED error on a mismatched etag.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Identifier. The unique name of the logical view. Format: `projects/`project`/
+        # instances/`instance`/logicalViews/`logical_view``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The logical view's select query.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @query = args[:query] if args.key?(:query)
+        end
+      end
+      
+      # A materialized view object that can be referenced in SQL queries.
+      class MaterializedView
+        include Google::Apis::Core::Hashable
+      
+        # Set to true to make the MaterializedView protected against deletion.
+        # Corresponds to the JSON property `deletionProtection`
+        # @return [Boolean]
+        attr_accessor :deletion_protection
+        alias_method :deletion_protection?, :deletion_protection
+      
+        # Optional. The etag for this materialized view. This may be sent on update
+        # requests to ensure that the client has an up-to-date value before proceeding.
+        # The server returns an ABORTED error on a mismatched etag.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Identifier. The unique name of the materialized view. Format: `projects/`
+        # project`/instances/`instance`/materializedViews/`materialized_view``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Immutable. The materialized view's select query.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deletion_protection = args[:deletion_protection] if args.key?(:deletion_protection)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @query = args[:query] if args.key?(:query)
+        end
+      end
+      
       # A create, update, or delete of a particular column family.
       class Modification
         include Google::Apis::Core::Hashable
@@ -4072,6 +4275,62 @@ module Google
           @finish_time = args[:finish_time] if args.key?(:finish_time)
           @original_request = args[:original_request] if args.key?(:original_request)
           @request_time = args[:request_time] if args.key?(:request_time)
+        end
+      end
+      
+      # The metadata for the Operation returned by UpdateLogicalView.
+      class UpdateLogicalViewMetadata
+        include Google::Apis::Core::Hashable
+      
+        # If set, the time at which this operation finished or was canceled.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Request message for BigtableInstanceAdmin.UpdateLogicalView.
+        # Corresponds to the JSON property `originalRequest`
+        # @return [Google::Apis::BigtableadminV2::UpdateLogicalViewRequest]
+        attr_accessor :original_request
+      
+        # The time at which this operation was started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @original_request = args[:original_request] if args.key?(:original_request)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Request message for BigtableInstanceAdmin.UpdateLogicalView.
+      class UpdateLogicalViewRequest
+        include Google::Apis::Core::Hashable
+      
+        # A SQL logical view object that can be referenced in SQL queries.
+        # Corresponds to the JSON property `logicalView`
+        # @return [Google::Apis::BigtableadminV2::LogicalView]
+        attr_accessor :logical_view
+      
+        # Optional. The list of fields to update.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @logical_view = args[:logical_view] if args.key?(:logical_view)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       
