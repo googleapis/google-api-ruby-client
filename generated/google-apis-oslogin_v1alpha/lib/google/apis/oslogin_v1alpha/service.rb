@@ -51,6 +51,41 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Signs an SSH public key for a user to authenticate to a virtual machine on
+        # Google Compute Engine.
+        # @param [String] parent
+        #   Required. The parent for the signing request. Format: projects/`project`/
+        #   locations/`location`
+        # @param [Google::Apis::OsloginV1alpha::GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyRequest] google_cloud_oslogin_controlplane_regional_v1alpha_sign_ssh_public_key_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OsloginV1alpha::GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OsloginV1alpha::GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def sign_project_location_ssh_public_key(parent, google_cloud_oslogin_controlplane_regional_v1alpha_sign_ssh_public_key_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}:signSshPublicKey', options)
+          command.request_representation = Google::Apis::OsloginV1alpha::GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyRequest::Representation
+          command.request_object = google_cloud_oslogin_controlplane_regional_v1alpha_sign_ssh_public_key_request_object
+          command.response_representation = Google::Apis::OsloginV1alpha::GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyResponse::Representation
+          command.response_class = Google::Apis::OsloginV1alpha::GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves the profile information used for logging in to a virtual machine on
         # Google Compute Engine.
         # @param [String] name
