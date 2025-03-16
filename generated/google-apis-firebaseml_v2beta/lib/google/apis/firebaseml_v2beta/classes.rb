@@ -505,6 +505,12 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :args
       
+        # Optional. The unique id of the function call. If populated, the client to
+        # execute the `function_call` and return the response with the matching `id`.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
         # Required. The name of the function to call. Matches [FunctionDeclaration.name].
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -517,6 +523,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @args = args[:args] if args.key?(:args)
+          @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -603,6 +610,12 @@ module Google
       class GoogleCloudAiplatformV1beta1FunctionResponse
         include Google::Apis::Core::Hashable
       
+        # Optional. The id of the function call this response is for. Populated by the
+        # client to match the corresponding function call `id`.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
         # Required. The name of the function to call. Matches [FunctionDeclaration.name]
         # and [FunctionCall.name].
         # Corresponds to the JSON property `name`
@@ -623,6 +636,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
         end
@@ -824,6 +838,11 @@ module Google
         # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModalityTokenCount>]
         attr_accessor :prompt_tokens_details
       
+        # Output only. Number of tokens present in thoughts output.
+        # Corresponds to the JSON property `thoughtsTokenCount`
+        # @return [Fixnum]
+        attr_accessor :thoughts_token_count
+      
         # Output only. Number of tokens present in tool-use prompt(s).
         # Corresponds to the JSON property `toolUsePromptTokenCount`
         # @return [Fixnum]
@@ -853,6 +872,7 @@ module Google
           @candidates_tokens_details = args[:candidates_tokens_details] if args.key?(:candidates_tokens_details)
           @prompt_token_count = args[:prompt_token_count] if args.key?(:prompt_token_count)
           @prompt_tokens_details = args[:prompt_tokens_details] if args.key?(:prompt_tokens_details)
+          @thoughts_token_count = args[:thoughts_token_count] if args.key?(:thoughts_token_count)
           @tool_use_prompt_token_count = args[:tool_use_prompt_token_count] if args.key?(:tool_use_prompt_token_count)
           @tool_use_prompt_tokens_details = args[:tool_use_prompt_tokens_details] if args.key?(:tool_use_prompt_tokens_details)
           @total_token_count = args[:total_token_count] if args.key?(:total_token_count)
@@ -1134,6 +1154,11 @@ module Google
       class GoogleCloudAiplatformV1beta1GroundingChunkWeb
         include Google::Apis::Core::Hashable
       
+        # Domain of the (original) URI.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
         # Title of the chunk.
         # Corresponds to the JSON property `title`
         # @return [String]
@@ -1150,6 +1175,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
           @title = args[:title] if args.key?(:title)
           @uri = args[:uri] if args.key?(:uri)
         end
@@ -2137,6 +2163,13 @@ module Google
         # @return [String]
         attr_accessor :datastore
       
+        # Optional. Fully-qualified Vertex AI Search engine resource ID. Format: `
+        # projects/`project`/locations/`location`/collections/`collection`/engines/`
+        # engine``
+        # Corresponds to the JSON property `engine`
+        # @return [String]
+        attr_accessor :engine
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2144,6 +2177,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @datastore = args[:datastore] if args.key?(:datastore)
+          @engine = args[:engine] if args.key?(:engine)
         end
       end
       
