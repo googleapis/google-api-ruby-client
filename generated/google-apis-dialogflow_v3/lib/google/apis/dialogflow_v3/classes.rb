@@ -13596,6 +13596,25 @@ module Google
         end
       end
       
+      # Suggestion generated using free form generator.
+      class GoogleCloudDialogflowV2FreeFormSuggestion
+        include Google::Apis::Core::Hashable
+      
+        # Required. Free form suggestion.
+        # Corresponds to the JSON property `response`
+        # @return [String]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @response = args[:response] if args.key?(:response)
+        end
+      end
+      
       # Google Cloud Storage location for the output.
       class GoogleCloudDialogflowV2GcsDestination
         include Google::Apis::Core::Hashable
@@ -13614,6 +13633,90 @@ module Google
         # Update properties of this object
         def update!(**args)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # The response message for Conversations.GenerateSuggestions.
+      class GoogleCloudDialogflowV2GenerateSuggestionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The answers generated for the conversation based on context.
+        # Corresponds to the JSON property `generatorSuggestionAnswers`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer>]
+        attr_accessor :generator_suggestion_answers
+      
+        # The name of the latest conversation message used as context for compiling
+        # suggestion. Format: `projects//locations//conversations//messages/`.
+        # Corresponds to the JSON property `latestMessage`
+        # @return [String]
+        attr_accessor :latest_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generator_suggestion_answers = args[:generator_suggestion_answers] if args.key?(:generator_suggestion_answers)
+          @latest_message = args[:latest_message] if args.key?(:latest_message)
+        end
+      end
+      
+      # A GeneratorSuggestion answer.
+      class GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer
+        include Google::Apis::Core::Hashable
+      
+        # Answer record that uniquely identifies the suggestion. This can be used to
+        # provide suggestion feedback.
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
+      
+        # Suggestion generated using a Generator.
+        # Corresponds to the JSON property `generatorSuggestion`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2GeneratorSuggestion]
+        attr_accessor :generator_suggestion
+      
+        # The name of the generator used to generate this suggestion. Format: `projects//
+        # locations//generators/`.
+        # Corresponds to the JSON property `sourceGenerator`
+        # @return [String]
+        attr_accessor :source_generator
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
+          @generator_suggestion = args[:generator_suggestion] if args.key?(:generator_suggestion)
+          @source_generator = args[:source_generator] if args.key?(:source_generator)
+        end
+      end
+      
+      # Suggestion generated using a Generator.
+      class GoogleCloudDialogflowV2GeneratorSuggestion
+        include Google::Apis::Core::Hashable
+      
+        # Suggestion generated using free form generator.
+        # Corresponds to the JSON property `freeFormSuggestion`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2FreeFormSuggestion]
+        attr_accessor :free_form_suggestion
+      
+        # Suggested summary of the conversation.
+        # Corresponds to the JSON property `summarySuggestion`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2SummarySuggestion]
+        attr_accessor :summary_suggestion
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @free_form_suggestion = args[:free_form_suggestion] if args.key?(:free_form_suggestion)
+          @summary_suggestion = args[:summary_suggestion] if args.key?(:summary_suggestion)
         end
       end
       
@@ -16019,6 +16122,11 @@ module Google
         # @return [Google::Apis::DialogflowV3::GoogleRpcStatus]
         attr_accessor :error
       
+        # The response message for Conversations.GenerateSuggestions.
+        # Corresponds to the JSON property `generateSuggestionsResponse`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2GenerateSuggestionsResponse]
+        attr_accessor :generate_suggestions_response
+      
         # The response message for Participants.SuggestArticles.
         # Corresponds to the JSON property `suggestArticlesResponse`
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2SuggestArticlesResponse]
@@ -16046,10 +16154,55 @@ module Google
         # Update properties of this object
         def update!(**args)
           @error = args[:error] if args.key?(:error)
+          @generate_suggestions_response = args[:generate_suggestions_response] if args.key?(:generate_suggestions_response)
           @suggest_articles_response = args[:suggest_articles_response] if args.key?(:suggest_articles_response)
           @suggest_faq_answers_response = args[:suggest_faq_answers_response] if args.key?(:suggest_faq_answers_response)
           @suggest_knowledge_assist_response = args[:suggest_knowledge_assist_response] if args.key?(:suggest_knowledge_assist_response)
           @suggest_smart_replies_response = args[:suggest_smart_replies_response] if args.key?(:suggest_smart_replies_response)
+        end
+      end
+      
+      # Suggested summary of the conversation.
+      class GoogleCloudDialogflowV2SummarySuggestion
+        include Google::Apis::Core::Hashable
+      
+        # Required. All the parts of generated summary.
+        # Corresponds to the JSON property `summarySections`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2SummarySuggestionSummarySection>]
+        attr_accessor :summary_sections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @summary_sections = args[:summary_sections] if args.key?(:summary_sections)
+        end
+      end
+      
+      # A component of the generated summary.
+      class GoogleCloudDialogflowV2SummarySuggestionSummarySection
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the section.
+        # Corresponds to the JSON property `section`
+        # @return [String]
+        attr_accessor :section
+      
+        # Required. Summary text for the section.
+        # Corresponds to the JSON property `summary`
+        # @return [String]
+        attr_accessor :summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @section = args[:section] if args.key?(:section)
+          @summary = args[:summary] if args.key?(:summary)
         end
       end
       
@@ -16803,6 +16956,25 @@ module Google
         end
       end
       
+      # Suggestion generated using free form generator.
+      class GoogleCloudDialogflowV2beta1FreeFormSuggestion
+        include Google::Apis::Core::Hashable
+      
+        # Required. Free form suggestion.
+        # Corresponds to the JSON property `response`
+        # @return [String]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @response = args[:response] if args.key?(:response)
+        end
+      end
+      
       # Google Cloud Storage location for the output.
       class GoogleCloudDialogflowV2beta1GcsDestination
         include Google::Apis::Core::Hashable
@@ -16821,6 +16993,90 @@ module Google
         # Update properties of this object
         def update!(**args)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # The response message for Conversations.GenerateSuggestions.
+      class GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The answers generated for the conversation based on context.
+        # Corresponds to the JSON property `generatorSuggestionAnswers`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1GenerateSuggestionsResponseGeneratorSuggestionAnswer>]
+        attr_accessor :generator_suggestion_answers
+      
+        # The name of the latest conversation message used as context for compiling
+        # suggestion. Format: `projects//locations//conversations//messages/`.
+        # Corresponds to the JSON property `latestMessage`
+        # @return [String]
+        attr_accessor :latest_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generator_suggestion_answers = args[:generator_suggestion_answers] if args.key?(:generator_suggestion_answers)
+          @latest_message = args[:latest_message] if args.key?(:latest_message)
+        end
+      end
+      
+      # A GeneratorSuggestion answer.
+      class GoogleCloudDialogflowV2beta1GenerateSuggestionsResponseGeneratorSuggestionAnswer
+        include Google::Apis::Core::Hashable
+      
+        # Answer record that uniquely identifies the suggestion. This can be used to
+        # provide suggestion feedback.
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
+      
+        # Suggestion generated using a Generator.
+        # Corresponds to the JSON property `generatorSuggestion`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1GeneratorSuggestion]
+        attr_accessor :generator_suggestion
+      
+        # The name of the generator used to generate this suggestion. Format: `projects//
+        # locations//generators/`.
+        # Corresponds to the JSON property `sourceGenerator`
+        # @return [String]
+        attr_accessor :source_generator
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
+          @generator_suggestion = args[:generator_suggestion] if args.key?(:generator_suggestion)
+          @source_generator = args[:source_generator] if args.key?(:source_generator)
+        end
+      end
+      
+      # Suggestion generated using a Generator.
+      class GoogleCloudDialogflowV2beta1GeneratorSuggestion
+        include Google::Apis::Core::Hashable
+      
+        # Suggestion generated using free form generator.
+        # Corresponds to the JSON property `freeFormSuggestion`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1FreeFormSuggestion]
+        attr_accessor :free_form_suggestion
+      
+        # Suggested summary of the conversation.
+        # Corresponds to the JSON property `summarySuggestion`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1SummarySuggestion]
+        attr_accessor :summary_suggestion
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @free_form_suggestion = args[:free_form_suggestion] if args.key?(:free_form_suggestion)
+          @summary_suggestion = args[:summary_suggestion] if args.key?(:summary_suggestion)
         end
       end
       
@@ -19979,6 +20235,11 @@ module Google
         # @return [Google::Apis::DialogflowV3::GoogleRpcStatus]
         attr_accessor :error
       
+        # The response message for Conversations.GenerateSuggestions.
+        # Corresponds to the JSON property `generateSuggestionsResponse`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse]
+        attr_accessor :generate_suggestions_response
+      
         # The response message for Participants.SuggestArticles.
         # Corresponds to the JSON property `suggestArticlesResponse`
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1SuggestArticlesResponse]
@@ -20016,12 +20277,57 @@ module Google
         # Update properties of this object
         def update!(**args)
           @error = args[:error] if args.key?(:error)
+          @generate_suggestions_response = args[:generate_suggestions_response] if args.key?(:generate_suggestions_response)
           @suggest_articles_response = args[:suggest_articles_response] if args.key?(:suggest_articles_response)
           @suggest_dialogflow_assists_response = args[:suggest_dialogflow_assists_response] if args.key?(:suggest_dialogflow_assists_response)
           @suggest_entity_extraction_response = args[:suggest_entity_extraction_response] if args.key?(:suggest_entity_extraction_response)
           @suggest_faq_answers_response = args[:suggest_faq_answers_response] if args.key?(:suggest_faq_answers_response)
           @suggest_knowledge_assist_response = args[:suggest_knowledge_assist_response] if args.key?(:suggest_knowledge_assist_response)
           @suggest_smart_replies_response = args[:suggest_smart_replies_response] if args.key?(:suggest_smart_replies_response)
+        end
+      end
+      
+      # Suggested summary of the conversation.
+      class GoogleCloudDialogflowV2beta1SummarySuggestion
+        include Google::Apis::Core::Hashable
+      
+        # Required. All the parts of generated summary.
+        # Corresponds to the JSON property `summarySections`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection>]
+        attr_accessor :summary_sections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @summary_sections = args[:summary_sections] if args.key?(:summary_sections)
+        end
+      end
+      
+      # A component of the generated summary.
+      class GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the section.
+        # Corresponds to the JSON property `section`
+        # @return [String]
+        attr_accessor :section
+      
+        # Required. Summary text for the section.
+        # Corresponds to the JSON property `summary`
+        # @return [String]
+        attr_accessor :summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @section = args[:section] if args.key?(:section)
+          @summary = args[:summary] if args.key?(:summary)
         end
       end
       
