@@ -665,10 +665,10 @@ module Google
       class BatchCreateSessionsRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The number of sessions to be created in this batch call. The API may
+        # Required. The number of sessions to be created in this batch call. The API can
         # return fewer than the requested number of sessions. If a specific number of
-        # sessions are desired, the client can make additional calls to
-        # BatchCreateSessions (adjusting session_count as necessary).
+        # sessions are desired, the client can make additional calls to `
+        # BatchCreateSessions` (adjusting session_count as necessary).
         # Corresponds to the JSON property `sessionCount`
         # @return [Fixnum]
         attr_accessor :session_count
@@ -713,15 +713,15 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. When `exclude_txn_from_change_streams` is set to `true`: *
-        # Modifications from all transactions in this batch write operation will not be
+        # Modifications from all transactions in this batch write operation are not be
         # recorded in change streams with DDL option `allow_txn_exclusion=true` that are
         # tracking columns modified by these transactions. * Modifications from all
-        # transactions in this batch write operation will be recorded in change streams
-        # with DDL option `allow_txn_exclusion=false or not set` that are tracking
-        # columns modified by these transactions. When `exclude_txn_from_change_streams`
-        # is set to `false` or not set, Modifications from all transactions in this
-        # batch write operation will be recorded in all change streams that are tracking
-        # columns modified by these transactions.
+        # transactions in this batch write operation are recorded in change streams with
+        # DDL option `allow_txn_exclusion=false or not set` that are tracking columns
+        # modified by these transactions. When `exclude_txn_from_change_streams` is set
+        # to `false` or not set, Modifications from all transactions in this batch write
+        # operation are recorded in all change streams that are tracking columns
+        # modified by these transactions.
         # Corresponds to the JSON property `excludeTxnFromChangeStreams`
         # @return [Boolean]
         attr_accessor :exclude_txn_from_change_streams
@@ -1223,7 +1223,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The amount of latency this request is configured to incur in order
-        # to improve throughput. If this field is not set, Spanner assumes requests are
+        # to improve throughput. If this field isn't set, Spanner assumes requests are
         # relatively latency sensitive and automatically determines an appropriate delay
         # time. You can specify a commit delay value between 0 and 500 ms.
         # Corresponds to the JSON property `maxCommitDelay`
@@ -1237,9 +1237,9 @@ module Google
         attr_accessor :mutations
       
         # When a read-write transaction is executed on a multiplexed session, this
-        # precommit token is sent back to the client as a part of the [Transaction]
-        # message in the BeginTransaction response and also as a part of the [ResultSet]
-        # and [PartialResultSet] responses.
+        # precommit token is sent back to the client as a part of the Transaction
+        # message in the BeginTransaction response and also as a part of the ResultSet
+        # and PartialResultSet responses.
         # Corresponds to the JSON property `precommitToken`
         # @return [Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken]
         attr_accessor :precommit_token
@@ -1249,7 +1249,7 @@ module Google
         # @return [Google::Apis::SpannerV1::RequestOptions]
         attr_accessor :request_options
       
-        # If `true`, then statistics related to the transaction will be included in the
+        # If `true`, then statistics related to the transaction is included in the
         # CommitResponse. Default value is `false`.
         # Corresponds to the JSON property `returnCommitStats`
         # @return [Boolean]
@@ -1489,9 +1489,9 @@ module Google
         attr_accessor :commit_timestamp
       
         # When a read-write transaction is executed on a multiplexed session, this
-        # precommit token is sent back to the client as a part of the [Transaction]
-        # message in the BeginTransaction response and also as a part of the [ResultSet]
-        # and [PartialResultSet] responses.
+        # precommit token is sent back to the client as a part of the Transaction
+        # message in the BeginTransaction response and also as a part of the ResultSet
+        # and PartialResultSet responses.
         # Corresponds to the JSON property `precommitToken`
         # @return [Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken]
         attr_accessor :precommit_token
@@ -2435,9 +2435,9 @@ module Google
         end
       end
       
-      # The DirectedReadOptions can be used to indicate which replicas or regions
-      # should be used for non-transactional reads or queries. DirectedReadOptions may
-      # only be specified for a read-only transaction, otherwise the API will return
+      # The `DirectedReadOptions` can be used to indicate which replicas or regions
+      # should be used for non-transactional reads or queries. `DirectedReadOptions`
+      # can only be specified for a read-only transaction, otherwise the API returns
       # an `INVALID_ARGUMENT` error.
       class DirectedReadOptions
         include Google::Apis::Core::Hashable
@@ -2448,8 +2448,8 @@ module Google
         # @return [Google::Apis::SpannerV1::ExcludeReplicas]
         attr_accessor :exclude_replicas
       
-        # An IncludeReplicas contains a repeated set of ReplicaSelection which indicates
-        # the order in which replicas should be considered.
+        # An `IncludeReplicas` contains a repeated set of `ReplicaSelection` which
+        # indicates the order in which replicas should be considered.
         # Corresponds to the JSON property `includeReplicas`
         # @return [Google::Apis::SpannerV1::IncludeReplicas]
         attr_accessor :include_replicas
@@ -2591,13 +2591,13 @@ module Google
       class ExecuteBatchDmlRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. If set to true, this request marks the end of the transaction. The
-        # transaction should be committed or aborted after these statements execute, and
-        # attempts to execute any other requests against this transaction (including
-        # reads and queries) will be rejected. Setting this option may cause some error
-        # reporting to be deferred until commit time (e.g. validation of unique
-        # constraints). Given this, successful execution of statements should not be
-        # assumed until a subsequent Commit call completes successfully.
+        # Optional. If set to `true`, this request marks the end of the transaction.
+        # After these statements execute, you must commit or abort the transaction.
+        # Attempts to execute any other requests against this transaction (including
+        # reads and queries) are rejected. Setting this option might cause some error
+        # reporting to be deferred until commit time (for example, validation of unique
+        # constraints). Given this, successful execution of statements shouldn't be
+        # assumed until a subsequent `Commit` call completes successfully.
         # Corresponds to the JSON property `lastStatements`
         # @return [Boolean]
         attr_accessor :last_statements
@@ -2610,11 +2610,11 @@ module Google
       
         # Required. A per-transaction sequence number used to identify this request.
         # This field makes each request idempotent such that if the request is received
-        # multiple times, at most one will succeed. The sequence number must be
+        # multiple times, at most one succeeds. The sequence number must be
         # monotonically increasing within the transaction. If a request arrives for the
-        # first time with an out-of-order sequence number, the transaction may be
-        # aborted. Replays of previously handled requests will yield the same response
-        # as the first execution.
+        # first time with an out-of-order sequence number, the transaction might be
+        # aborted. Replays of previously handled requests yield the same response as the
+        # first execution.
         # Corresponds to the JSON property `seqno`
         # @return [Fixnum]
         attr_accessor :seqno
@@ -2666,9 +2666,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # When a read-write transaction is executed on a multiplexed session, this
-        # precommit token is sent back to the client as a part of the [Transaction]
-        # message in the BeginTransaction response and also as a part of the [ResultSet]
-        # and [PartialResultSet] responses.
+        # precommit token is sent back to the client as a part of the Transaction
+        # message in the BeginTransaction response and also as a part of the ResultSet
+        # and PartialResultSet responses.
         # Corresponds to the JSON property `precommitToken`
         # @return [Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken]
         attr_accessor :precommit_token
@@ -2710,39 +2710,40 @@ module Google
       
         # If this is for a partitioned query and this field is set to `true`, the
         # request is executed with Spanner Data Boost independent compute resources. If
-        # the field is set to `true` but the request does not set `partition_token`, the
+        # the field is set to `true` but the request doesn't set `partition_token`, the
         # API returns an `INVALID_ARGUMENT` error.
         # Corresponds to the JSON property `dataBoostEnabled`
         # @return [Boolean]
         attr_accessor :data_boost_enabled
         alias_method :data_boost_enabled?, :data_boost_enabled
       
-        # The DirectedReadOptions can be used to indicate which replicas or regions
-        # should be used for non-transactional reads or queries. DirectedReadOptions may
-        # only be specified for a read-only transaction, otherwise the API will return
+        # The `DirectedReadOptions` can be used to indicate which replicas or regions
+        # should be used for non-transactional reads or queries. `DirectedReadOptions`
+        # can only be specified for a read-only transaction, otherwise the API returns
         # an `INVALID_ARGUMENT` error.
         # Corresponds to the JSON property `directedReadOptions`
         # @return [Google::Apis::SpannerV1::DirectedReadOptions]
         attr_accessor :directed_read_options
       
-        # Optional. If set to true, this statement marks the end of the transaction. The
-        # transaction should be committed or aborted after this statement executes, and
-        # attempts to execute any other requests against this transaction (including
-        # reads and queries) will be rejected. For DML statements, setting this option
-        # may cause some error reporting to be deferred until commit time (e.g.
+        # Optional. If set to `true`, this statement marks the end of the transaction.
+        # After this statement executes, you must commit or abort the transaction.
+        # Attempts to execute any other requests against this transaction (including
+        # reads and queries) are rejected. For DML statements, setting this option might
+        # cause some error reporting to be deferred until commit time (for example,
         # validation of unique constraints). Given this, successful execution of a DML
-        # statement should not be assumed until a subsequent Commit call completes
+        # statement shouldn't be assumed until a subsequent `Commit` call completes
         # successfully.
         # Corresponds to the JSON property `lastStatement`
         # @return [Boolean]
         attr_accessor :last_statement
         alias_method :last_statement?, :last_statement
       
-        # It is not always possible for Cloud Spanner to infer the right SQL type from a
+        # It isn't always possible for Cloud Spanner to infer the right SQL type from a
         # JSON value. For example, values of type `BYTES` and values of type `STRING`
-        # both appear in params as JSON strings. In these cases, `param_types` can be
-        # used to specify the exact SQL type for some or all of the SQL statement
-        # parameters. See the definition of Type for more information about SQL types.
+        # both appear in params as JSON strings. In these cases, you can use `
+        # param_types` to specify the exact SQL type for some or all of the SQL
+        # statement parameters. See the definition of Type for more information about
+        # SQL types.
         # Corresponds to the JSON property `paramTypes`
         # @return [Hash<String,Google::Apis::SpannerV1::Type>]
         attr_accessor :param_types
@@ -2753,16 +2754,16 @@ module Google
         # requirements of identifiers as specified at https://cloud.google.com/spanner/
         # docs/lexical#identifiers. Parameters can appear anywhere that a literal value
         # is expected. The same parameter name can be used more than once, for example: `
-        # "WHERE id > @msg_id AND id < @msg_id + 100"` It is an error to execute a SQL
+        # "WHERE id > @msg_id AND id < @msg_id + 100"` It's an error to execute a SQL
         # statement with unbound parameters.
         # Corresponds to the JSON property `params`
         # @return [Hash<String,Object>]
         attr_accessor :params
       
-        # If present, results will be restricted to the specified partition previously
-        # created using PartitionQuery(). There must be an exact match for the values of
-        # fields common to this message and the PartitionQueryRequest message used to
-        # create this partition_token.
+        # If present, results are restricted to the specified partition previously
+        # created using `PartitionQuery`. There must be an exact match for the values of
+        # fields common to this message and the `PartitionQueryRequest` message used to
+        # create this `partition_token`.
         # Corresponds to the JSON property `partitionToken`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2796,11 +2797,11 @@ module Google
       
         # A per-transaction sequence number used to identify this request. This field
         # makes each request idempotent such that if the request is received multiple
-        # times, at most one will succeed. The sequence number must be monotonically
+        # times, at most one succeeds. The sequence number must be monotonically
         # increasing within the transaction. If a request arrives for the first time
-        # with an out-of-order sequence number, the transaction may be aborted. Replays
-        # of previously handled requests will yield the same response as the first
-        # execution. Required for DML statements. Ignored for queries.
+        # with an out-of-order sequence number, the transaction can be aborted. Replays
+        # of previously handled requests yield the same response as the first execution.
+        # Required for DML statements. Ignored for queries.
         # Corresponds to the JSON property `seqno`
         # @return [Fixnum]
         attr_accessor :seqno
@@ -3052,13 +3053,13 @@ module Google
         end
       end
       
-      # An IncludeReplicas contains a repeated set of ReplicaSelection which indicates
-      # the order in which replicas should be considered.
+      # An `IncludeReplicas` contains a repeated set of `ReplicaSelection` which
+      # indicates the order in which replicas should be considered.
       class IncludeReplicas
         include Google::Apis::Core::Hashable
       
-        # If true, Spanner will not route requests to a replica outside the
-        # include_replicas list when all of the specified replicas are unavailable or
+        # If `true`, Spanner doesn't route requests to a replica outside the <`
+        # include_replicas` list when all of the specified replicas are unavailable or
         # unhealthy. Default value is `false`.
         # Corresponds to the JSON property `autoFailoverDisabled`
         # @return [Boolean]
@@ -4450,9 +4451,9 @@ module Google
       end
       
       # When a read-write transaction is executed on a multiplexed session, this
-      # precommit token is sent back to the client as a part of the [Transaction]
-      # message in the BeginTransaction response and also as a part of the [ResultSet]
-      # and [PartialResultSet] responses.
+      # precommit token is sent back to the client as a part of the Transaction
+      # message in the BeginTransaction response and also as a part of the ResultSet
+      # and PartialResultSet responses.
       class MultiplexedSessionPrecommitToken
         include Google::Apis::Core::Hashable
       
@@ -4682,15 +4683,23 @@ module Google
         attr_accessor :chunked_value
         alias_method :chunked_value?, :chunked_value
       
+        # Optional. Indicates whether this is the last `PartialResultSet` in the stream.
+        # The server might optionally set this field. Clients shouldn't rely on this
+        # field being set in all cases.
+        # Corresponds to the JSON property `last`
+        # @return [Boolean]
+        attr_accessor :last
+        alias_method :last?, :last
+      
         # Metadata about a ResultSet or PartialResultSet.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::SpannerV1::ResultSetMetadata]
         attr_accessor :metadata
       
         # When a read-write transaction is executed on a multiplexed session, this
-        # precommit token is sent back to the client as a part of the [Transaction]
-        # message in the BeginTransaction response and also as a part of the [ResultSet]
-        # and [PartialResultSet] responses.
+        # precommit token is sent back to the client as a part of the Transaction
+        # message in the BeginTransaction response and also as a part of the ResultSet
+        # and PartialResultSet responses.
         # Corresponds to the JSON property `precommitToken`
         # @return [Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken]
         attr_accessor :precommit_token
@@ -4713,37 +4722,37 @@ module Google
         # into many `PartialResultSet` messages to accommodate large rows and/or large
         # values. Every N complete values defines a row, where N is equal to the number
         # of entries in metadata.row_type.fields. Most values are encoded based on type
-        # as described here. It is possible that the last value in values is "chunked",
+        # as described here. It's possible that the last value in values is "chunked",
         # meaning that the rest of the value is sent in subsequent `PartialResultSet`(s).
         # This is denoted by the chunked_value field. Two or more chunked values can be
-        # merged to form a complete value as follows: * `bool/number/null`: cannot be
+        # merged to form a complete value as follows: * `bool/number/null`: can't be
         # chunked * `string`: concatenate the strings * `list`: concatenate the lists.
         # If the last element in a list is a `string`, `list`, or `object`, merge it
         # with the first element in the next list by applying these rules recursively. *
         # `object`: concatenate the (field name, field value) pairs. If a field name is
         # duplicated, then apply these rules recursively to merge the field values. Some
-        # examples of merging: # Strings are concatenated. "foo", "bar" => "foobar" #
-        # Lists of non-strings are concatenated. [2, 3], [4] => [2, 3, 4] # Lists are
-        # concatenated, but the last and first elements are merged # because they are
-        # strings. ["a", "b"], ["c", "d"] => ["a", "bc", "d"] # Lists are concatenated,
-        # but the last and first elements are merged # because they are lists.
-        # Recursively, the last and first elements # of the inner lists are merged
-        # because they are strings. ["a", ["b", "c"]], [["d"], "e"] => ["a", ["b", "cd"],
-        # "e"] # Non-overlapping object fields are combined. `"a": "1"`, `"b": "2"` => `
-        # "a": "1", "b": 2"` # Overlapping object fields are merged. `"a": "1"`, `"a": "
-        # 2"` => `"a": "12"` # Examples of merging objects containing lists of strings. `
-        # "a": ["1"]`, `"a": ["2"]` => `"a": ["12"]` For a more complete example,
-        # suppose a streaming SQL query is yielding a result set whose rows contain a
-        # single string field. The following `PartialResultSet`s might be yielded: ` "
-        # metadata": ` ... ` "values": ["Hello", "W"] "chunked_value": true "
-        # resume_token": "Af65..." ` ` "values": ["orl"] "chunked_value": true ` ` "
-        # values": ["d"] "resume_token": "Zx1B..." ` This sequence of `PartialResultSet`
-        # s encodes two rows, one containing the field value `"Hello"`, and a second
-        # containing the field value `"World" = "W" + "orl" + "d"`. Not all `
-        # PartialResultSet`s contain a `resume_token`. Execution can only be resumed
-        # from a previously yielded `resume_token`. For the above sequence of `
-        # PartialResultSet`s, resuming the query with `"resume_token": "Af65..."` will
-        # yield results from the `PartialResultSet` with value `["orl"]`.
+        # examples of merging: Strings are concatenated. "foo", "bar" => "foobar" Lists
+        # of non-strings are concatenated. [2, 3], [4] => [2, 3, 4] Lists are
+        # concatenated, but the last and first elements are merged because they are
+        # strings. ["a", "b"], ["c", "d"] => ["a", "bc", "d"] Lists are concatenated,
+        # but the last and first elements are merged because they are lists. Recursively,
+        # the last and first elements of the inner lists are merged because they are
+        # strings. ["a", ["b", "c"]], [["d"], "e"] => ["a", ["b", "cd"], "e"] Non-
+        # overlapping object fields are combined. `"a": "1"`, `"b": "2"` => `"a": "1", "
+        # b": 2"` Overlapping object fields are merged. `"a": "1"`, `"a": "2"` => `"a": "
+        # 12"` Examples of merging objects containing lists of strings. `"a": ["1"]`, `"
+        # a": ["2"]` => `"a": ["12"]` For a more complete example, suppose a streaming
+        # SQL query is yielding a result set whose rows contain a single string field.
+        # The following `PartialResultSet`s might be yielded: ` "metadata": ` ... ` "
+        # values": ["Hello", "W"] "chunked_value": true "resume_token": "Af65..." ` ` "
+        # values": ["orl"] "chunked_value": true ` ` "values": ["d"] "resume_token": "
+        # Zx1B..." ` This sequence of `PartialResultSet`s encodes two rows, one
+        # containing the field value `"Hello"`, and a second containing the field value `
+        # "World" = "W" + "orl" + "d"`. Not all `PartialResultSet`s contain a `
+        # resume_token`. Execution can only be resumed from a previously yielded `
+        # resume_token`. For the above sequence of `PartialResultSet`s, resuming the
+        # query with `"resume_token": "Af65..."` yields results from the `
+        # PartialResultSet` with value "orl".
         # Corresponds to the JSON property `values`
         # @return [Array<Object>]
         attr_accessor :values
@@ -4755,6 +4764,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @chunked_value = args[:chunked_value] if args.key?(:chunked_value)
+          @last = args[:last] if args.key?(:last)
           @metadata = args[:metadata] if args.key?(:metadata)
           @precommit_token = args[:precommit_token] if args.key?(:precommit_token)
           @resume_token = args[:resume_token] if args.key?(:resume_token)
@@ -4767,8 +4777,8 @@ module Google
       class Partition
         include Google::Apis::Core::Hashable
       
-        # This token can be passed to Read, StreamingRead, ExecuteSql, or
-        # ExecuteStreamingSql requests to restrict the results to those identified by
+        # This token can be passed to `Read`, `StreamingRead`, `ExecuteSql`, or `
+        # ExecuteStreamingSql` requests to restrict the results to those identified by
         # this partition token.
         # Corresponds to the JSON property `partitionToken`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -4785,24 +4795,24 @@ module Google
         end
       end
       
-      # Options for a PartitionQueryRequest and PartitionReadRequest.
+      # Options for a `PartitionQueryRequest` and `PartitionReadRequest`.
       class PartitionOptions
         include Google::Apis::Core::Hashable
       
-        # **Note:** This hint is currently ignored by PartitionQuery and PartitionRead
-        # requests. The desired maximum number of partitions to return. For example,
-        # this may be set to the number of workers available. The default for this
-        # option is currently 10,000. The maximum value is currently 200,000. This is
-        # only a hint. The actual number of partitions returned may be smaller or larger
-        # than this maximum count request.
+        # **Note:** This hint is currently ignored by `PartitionQuery` and `
+        # PartitionRead` requests. The desired maximum number of partitions to return.
+        # For example, this might be set to the number of workers available. The default
+        # for this option is currently 10,000. The maximum value is currently 200,000.
+        # This is only a hint. The actual number of partitions returned can be smaller
+        # or larger than this maximum count request.
         # Corresponds to the JSON property `maxPartitions`
         # @return [Fixnum]
         attr_accessor :max_partitions
       
-        # **Note:** This hint is currently ignored by PartitionQuery and PartitionRead
-        # requests. The desired data size for each partition generated. The default for
-        # this option is currently 1 GiB. This is only a hint. The actual size of each
-        # partition may be smaller or larger than this size request.
+        # **Note:** This hint is currently ignored by `PartitionQuery` and `
+        # PartitionRead` requests. The desired data size for each partition generated.
+        # The default for this option is currently 1 GiB. This is only a hint. The
+        # actual size of each partition can be smaller or larger than this size request.
         # Corresponds to the JSON property `partitionSizeBytes`
         # @return [Fixnum]
         attr_accessor :partition_size_bytes
@@ -4822,7 +4832,7 @@ module Google
       class PartitionQueryRequest
         include Google::Apis::Core::Hashable
       
-        # It is not always possible for Cloud Spanner to infer the right SQL type from a
+        # It isn't always possible for Cloud Spanner to infer the right SQL type from a
         # JSON value. For example, values of type `BYTES` and values of type `STRING`
         # both appear in params as JSON strings. In these cases, `param_types` can be
         # used to specify the exact SQL type for some or all of the SQL query parameters.
@@ -4836,25 +4846,25 @@ module Google
         # name (for example, `@firstName`). Parameter names can contain letters, numbers,
         # and underscores. Parameters can appear anywhere that a literal value is
         # expected. The same parameter name can be used more than once, for example: `"
-        # WHERE id > @msg_id AND id < @msg_id + 100"` It is an error to execute a SQL
+        # WHERE id > @msg_id AND id < @msg_id + 100"` It's an error to execute a SQL
         # statement with unbound parameters.
         # Corresponds to the JSON property `params`
         # @return [Hash<String,Object>]
         attr_accessor :params
       
-        # Options for a PartitionQueryRequest and PartitionReadRequest.
+        # Options for a `PartitionQueryRequest` and `PartitionReadRequest`.
         # Corresponds to the JSON property `partitionOptions`
         # @return [Google::Apis::SpannerV1::PartitionOptions]
         attr_accessor :partition_options
       
         # Required. The query request to generate partitions for. The request fails if
-        # the query is not root partitionable. For a query to be root partitionable, it
+        # the query isn't root partitionable. For a query to be root partitionable, it
         # needs to satisfy a few conditions. For example, if the query execution plan
         # contains a distributed union operator, then it must be the first operator in
         # the plan. For more information about other conditions, see [Read data in
         # parallel](https://cloud.google.com/spanner/docs/reads#read_data_in_parallel).
         # The query request must not contain DML commands, such as `INSERT`, `UPDATE`,
-        # or `DELETE`. Use `ExecuteStreamingSql` with a PartitionedDml transaction for
+        # or `DELETE`. Use `ExecuteStreamingSql` with a `PartitionedDml` transaction for
         # large, partition-friendly DML operations.
         # Corresponds to the JSON property `sql`
         # @return [String]
@@ -4905,7 +4915,7 @@ module Google
         # @return [Google::Apis::SpannerV1::KeySet]
         attr_accessor :key_set
       
-        # Options for a PartitionQueryRequest and PartitionReadRequest.
+        # Options for a `PartitionQueryRequest` and `PartitionReadRequest`.
         # Corresponds to the JSON property `partitionOptions`
         # @return [Google::Apis::SpannerV1::PartitionOptions]
         attr_accessor :partition_options
@@ -5206,10 +5216,10 @@ module Google
         # statistics package. Specifying `latest` as a value instructs Cloud Spanner to
         # use the latest generated statistics package. If not specified, Cloud Spanner
         # uses the statistics package set at the database level options, or the latest
-        # package if the database option is not set. The statistics package requested by
+        # package if the database option isn't set. The statistics package requested by
         # the query has to be exempt from garbage collection. This can be achieved with
-        # the following DDL statement: ``` ALTER STATISTICS SET OPTIONS (allow_gc=false)
-        # ``` The list of available statistics packages can be queried from `
+        # the following DDL statement: ```sql ALTER STATISTICS SET OPTIONS (allow_gc=
+        # false) ``` The list of available statistics packages can be queried from `
         # INFORMATION_SCHEMA.SPANNER_STATISTICS`. Executing a SQL statement with an
         # invalid optimizer statistics package or with a statistics package that allows
         # garbage collection fails with an `INVALID_ARGUMENT` error.
@@ -5223,8 +5233,8 @@ module Google
         # optimizer version. If not specified, Cloud Spanner uses the optimizer version
         # set at the database level options. Any other positive integer (from the list
         # of supported optimizer versions) overrides the default optimizer version for
-        # query execution. The list of supported optimizer versions can be queried from
-        # SPANNER_SYS.SUPPORTED_OPTIMIZER_VERSIONS. Executing a SQL statement with an
+        # query execution. The list of supported optimizer versions can be queried from `
+        # SPANNER_SYS.SUPPORTED_OPTIMIZER_VERSIONS`. Executing a SQL statement with an
         # invalid optimizer version fails with an `INVALID_ARGUMENT` error. See https://
         # cloud.google.com/spanner/docs/query-optimizer/manage-query-optimizer for more
         # information on managing the query optimizer. The `optimizer_version` statement
@@ -5424,16 +5434,16 @@ module Google
       
         # If this is for a partitioned read and this field is set to `true`, the request
         # is executed with Spanner Data Boost independent compute resources. If the
-        # field is set to `true` but the request does not set `partition_token`, the API
+        # field is set to `true` but the request doesn't set `partition_token`, the API
         # returns an `INVALID_ARGUMENT` error.
         # Corresponds to the JSON property `dataBoostEnabled`
         # @return [Boolean]
         attr_accessor :data_boost_enabled
         alias_method :data_boost_enabled?, :data_boost_enabled
       
-        # The DirectedReadOptions can be used to indicate which replicas or regions
-        # should be used for non-transactional reads or queries. DirectedReadOptions may
-        # only be specified for a read-only transaction, otherwise the API will return
+        # The `DirectedReadOptions` can be used to indicate which replicas or regions
+        # should be used for non-transactional reads or queries. `DirectedReadOptions`
+        # can only be specified for a read-only transaction, otherwise the API returns
         # an `INVALID_ARGUMENT` error.
         # Corresponds to the JSON property `directedReadOptions`
         # @return [Google::Apis::SpannerV1::DirectedReadOptions]
@@ -5456,7 +5466,7 @@ module Google
         attr_accessor :key_set
       
         # If greater than zero, only the first `limit` rows are yielded. If `limit` is
-        # zero, the default is no limit. A limit cannot be specified if `partition_token`
+        # zero, the default is no limit. A limit can't be specified if `partition_token`
         # is set.
         # Corresponds to the JSON property `limit`
         # @return [Fixnum]
@@ -5468,18 +5478,18 @@ module Google
         # @return [String]
         attr_accessor :lock_hint
       
-        # Optional. Order for the returned rows. By default, Spanner will return result
-        # rows in primary key order except for PartitionRead requests. For applications
-        # that do not require rows to be returned in primary key (`ORDER_BY_PRIMARY_KEY`)
+        # Optional. Order for the returned rows. By default, Spanner returns result rows
+        # in primary key order except for PartitionRead requests. For applications that
+        # don't require rows to be returned in primary key (`ORDER_BY_PRIMARY_KEY`)
         # order, setting `ORDER_BY_NO_ORDER` option allows Spanner to optimize row
-        # retrieval, resulting in lower latencies in certain cases (e.g. bulk point
-        # lookups).
+        # retrieval, resulting in lower latencies in certain cases (for example, bulk
+        # point lookups).
         # Corresponds to the JSON property `orderBy`
         # @return [String]
         attr_accessor :order_by
       
-        # If present, results will be restricted to the specified partition previously
-        # created using PartitionRead(). There must be an exact match for the values of
+        # If present, results are restricted to the specified partition previously
+        # created using `PartitionRead`. There must be an exact match for the values of
         # fields common to this message and the PartitionReadRequest message used to
         # create this partition_token.
         # Corresponds to the JSON property `partitionToken`
@@ -5636,15 +5646,15 @@ module Google
       # following fields for replica selection: * `location` - The location must be
       # one of the regions within the multi-region configuration of your database. * `
       # type` - The type of the replica. Some examples of using replica_selectors are:
-      # * `location:us-east1` --> The "us-east1" replica(s) of any available type will
-      # be used to process the request. * `type:READ_ONLY` --> The "READ_ONLY" type
-      # replica(s) in nearest available location will be used to process the request. *
+      # * `location:us-east1` --> The "us-east1" replica(s) of any available type is
+      # used to process the request. * `type:READ_ONLY` --> The "READ_ONLY" type
+      # replica(s) in the nearest available location are used to process the request. *
       # `location:us-east1 type:READ_ONLY` --> The "READ_ONLY" type replica(s) in
-      # location "us-east1" will be used to process the request.
+      # location "us-east1" is used to process the request.
       class ReplicaSelection
         include Google::Apis::Core::Hashable
       
-        # The location or region of the serving requests, e.g. "us-east1".
+        # The location or region of the serving requests, for example, "us-east1".
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -5675,26 +5685,26 @@ module Google
         attr_accessor :priority
       
         # A per-request tag which can be applied to queries or reads, used for
-        # statistics collection. Both request_tag and transaction_tag can be specified
-        # for a read or query that belongs to a transaction. This field is ignored for
-        # requests where it's not applicable (e.g. CommitRequest). Legal characters for `
-        # request_tag` values are all printable characters (ASCII 32 - 126) and the
-        # length of a request_tag is limited to 50 characters. Values that exceed this
-        # limit are truncated. Any leading underscore (_) characters will be removed
-        # from the string.
+        # statistics collection. Both `request_tag` and `transaction_tag` can be
+        # specified for a read or query that belongs to a transaction. This field is
+        # ignored for requests where it's not applicable (for example, `CommitRequest`).
+        # Legal characters for `request_tag` values are all printable characters (ASCII
+        # 32 - 126) and the length of a request_tag is limited to 50 characters. Values
+        # that exceed this limit are truncated. Any leading underscore (_) characters
+        # are removed from the string.
         # Corresponds to the JSON property `requestTag`
         # @return [String]
         attr_accessor :request_tag
       
-        # A tag used for statistics collection about this transaction. Both request_tag
-        # and transaction_tag can be specified for a read or query that belongs to a
+        # A tag used for statistics collection about this transaction. Both `request_tag`
+        # and `transaction_tag` can be specified for a read or query that belongs to a
         # transaction. The value of transaction_tag should be the same for all requests
         # belonging to the same transaction. If this request doesn't belong to any
-        # transaction, transaction_tag will be ignored. Legal characters for `
+        # transaction, `transaction_tag` is ignored. Legal characters for `
         # transaction_tag` values are all printable characters (ASCII 32 - 126) and the
-        # length of a transaction_tag is limited to 50 characters. Values that exceed
-        # this limit are truncated. Any leading underscore (_) characters will be
-        # removed from the string.
+        # length of a `transaction_tag` is limited to 50 characters. Values that exceed
+        # this limit are truncated. Any leading underscore (_) characters are removed
+        # from the string.
         # Corresponds to the JSON property `transactionTag`
         # @return [String]
         attr_accessor :transaction_tag
@@ -5889,9 +5899,9 @@ module Google
         attr_accessor :metadata
       
         # When a read-write transaction is executed on a multiplexed session, this
-        # precommit token is sent back to the client as a part of the [Transaction]
-        # message in the BeginTransaction response and also as a part of the [ResultSet]
-        # and [PartialResultSet] responses.
+        # precommit token is sent back to the client as a part of the Transaction
+        # message in the BeginTransaction response and also as a part of the ResultSet
+        # and PartialResultSet responses.
         # Corresponds to the JSON property `precommitToken`
         # @return [Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken]
         attr_accessor :precommit_token
@@ -5973,7 +5983,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :row_count_exact
       
-        # Partitioned DML does not offer exactly-once semantics, so it returns a lower
+        # Partitioned DML doesn't offer exactly-once semantics, so it returns a lower
         # bound of the rows modified.
         # Corresponds to the JSON property `rowCountLowerBound`
         # @return [Fixnum]
@@ -6097,7 +6107,7 @@ module Google
       class Session
         include Google::Apis::Core::Hashable
       
-        # Output only. The approximate timestamp when the session is last used. It is
+        # Output only. The approximate timestamp when the session is last used. It's
         # typically earlier than the actual last use time.
         # Corresponds to the JSON property `approximateLastUseTime`
         # @return [String]
@@ -6123,11 +6133,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Optional. If true, specifies a multiplexed session. Use a multiplexed session
-        # for multiple, concurrent read-only operations. Don't use them for read-write
-        # transactions, partitioned reads, or partitioned queries. Use `sessions.create`
-        # to create multiplexed sessions. Don't use BatchCreateSessions to create a
-        # multiplexed session. You can't delete or list multiplexed sessions.
+        # Optional. If `true`, specifies a multiplexed session. Use a multiplexed
+        # session for multiple, concurrent read-only operations. Don't use them for read-
+        # write transactions, partitioned reads, or partitioned queries. Use `sessions.
+        # create` to create multiplexed sessions. Don't use BatchCreateSessions to
+        # create a multiplexed session. You can't delete or list multiplexed sessions.
         # Corresponds to the JSON property `multiplexed`
         # @return [Boolean]
         attr_accessor :multiplexed
@@ -6294,7 +6304,7 @@ module Google
       class Statement
         include Google::Apis::Core::Hashable
       
-        # It is not always possible for Cloud Spanner to infer the right SQL type from a
+        # It isn't always possible for Cloud Spanner to infer the right SQL type from a
         # JSON value. For example, values of type `BYTES` and values of type `STRING`
         # both appear in params as JSON strings. In these cases, `param_types` can be
         # used to specify the exact SQL type for some or all of the SQL statement
@@ -6308,7 +6318,7 @@ module Google
         # name (for example, `@firstName`). Parameter names can contain letters, numbers,
         # and underscores. Parameters can appear anywhere that a literal value is
         # expected. The same parameter name can be used more than once, for example: `"
-        # WHERE id > @msg_id AND id < @msg_id + 100"` It is an error to execute a SQL
+        # WHERE id > @msg_id AND id < @msg_id + 100"` It's an error to execute a SQL
         # statement with unbound parameters.
         # Corresponds to the JSON property `params`
         # @return [Hash<String,Object>]
@@ -6445,9 +6455,9 @@ module Google
         attr_accessor :id
       
         # When a read-write transaction is executed on a multiplexed session, this
-        # precommit token is sent back to the client as a part of the [Transaction]
-        # message in the BeginTransaction response and also as a part of the [ResultSet]
-        # and [PartialResultSet] responses.
+        # precommit token is sent back to the client as a part of the Transaction
+        # message in the BeginTransaction response and also as a part of the ResultSet
+        # and PartialResultSet responses.
         # Corresponds to the JSON property `precommitToken`
         # @return [Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken]
         attr_accessor :precommit_token
@@ -6683,6 +6693,11 @@ module Google
         attr_accessor :exclude_txn_from_change_streams
         alias_method :exclude_txn_from_change_streams?, :exclude_txn_from_change_streams
       
+        # Isolation level for the transaction.
+        # Corresponds to the JSON property `isolationLevel`
+        # @return [String]
+        attr_accessor :isolation_level
+      
         # Message type to initiate a Partitioned DML transaction.
         # Corresponds to the JSON property `partitionedDml`
         # @return [Google::Apis::SpannerV1::PartitionedDml]
@@ -6706,6 +6721,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @exclude_txn_from_change_streams = args[:exclude_txn_from_change_streams] if args.key?(:exclude_txn_from_change_streams)
+          @isolation_level = args[:isolation_level] if args.key?(:isolation_level)
           @partitioned_dml = args[:partitioned_dml] if args.key?(:partitioned_dml)
           @read_only = args[:read_only] if args.key?(:read_only)
           @read_write = args[:read_write] if args.key?(:read_write)
