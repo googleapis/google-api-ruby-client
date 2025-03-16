@@ -1372,6 +1372,20 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlacePlusCode]
         attr_accessor :plus_code
       
+        # Represents a postal address. For example for postal delivery or payments
+        # addresses. Given a postal address, a postal service can deliver items to a
+        # premise, P.O. Box or similar. It is not intended to model geographical
+        # locations (roads, towns, mountains). In typical usage an address would be
+        # created by user input or from importing existing data, depending on the type
+        # of process. Advice on address input / editing: - Use an internationalization-
+        # ready address widget such as https://github.com/google/libaddressinput) -
+        # Users should not be presented with UI elements for input or editing of fields
+        # outside countries where that field is used. For more guidance on how to use
+        # this schema, see: https://support.google.com/business/answer/6397478
+        # Corresponds to the JSON property `postalAddress`
+        # @return [Google::Apis::PlacesV1::GoogleTypePostalAddress]
+        attr_accessor :postal_address
+      
         # Price level of the place.
         # Corresponds to the JSON property `priceLevel`
         # @return [String]
@@ -1618,6 +1632,7 @@ module Google
           @payment_options = args[:payment_options] if args.key?(:payment_options)
           @photos = args[:photos] if args.key?(:photos)
           @plus_code = args[:plus_code] if args.key?(:plus_code)
+          @postal_address = args[:postal_address] if args.key?(:postal_address)
           @price_level = args[:price_level] if args.key?(:price_level)
           @price_range = args[:price_range] if args.key?(:price_range)
           @primary_type = args[:primary_type] if args.key?(:primary_type)
@@ -2220,8 +2235,13 @@ module Google
         end
       end
       
-      # Place resource name and id of sub destinations that relate to the place. For
-      # example, different terminals are different destinations of an airport.
+      # Sub-destinations are specific places associated with a main place. These
+      # provide more specific destinations for users who are searching inside a large
+      # or complex place, like an airport, national park, university, or stadium. For
+      # example, sub-destinations at an airport might include associated terminals and
+      # parking lots. Sub-destinations return the place ID and place resource name,
+      # which can be used in subsequent Place Details (new) requests to fetch richer
+      # details, including the sub-destination's display name and location.
       class GoogleMapsPlacesV1PlaceSubDestination
         include Google::Apis::Core::Hashable
       
@@ -3234,6 +3254,140 @@ module Google
           @currency_code = args[:currency_code] if args.key?(:currency_code)
           @nanos = args[:nanos] if args.key?(:nanos)
           @units = args[:units] if args.key?(:units)
+        end
+      end
+      
+      # Represents a postal address. For example for postal delivery or payments
+      # addresses. Given a postal address, a postal service can deliver items to a
+      # premise, P.O. Box or similar. It is not intended to model geographical
+      # locations (roads, towns, mountains). In typical usage an address would be
+      # created by user input or from importing existing data, depending on the type
+      # of process. Advice on address input / editing: - Use an internationalization-
+      # ready address widget such as https://github.com/google/libaddressinput) -
+      # Users should not be presented with UI elements for input or editing of fields
+      # outside countries where that field is used. For more guidance on how to use
+      # this schema, see: https://support.google.com/business/answer/6397478
+      class GoogleTypePostalAddress
+        include Google::Apis::Core::Hashable
+      
+        # Unstructured address lines describing the lower levels of an address. Because
+        # values in address_lines do not have type information and may sometimes contain
+        # multiple values in a single field (For example "Austin, TX"), it is important
+        # that the line order is clear. The order of address lines should be "envelope
+        # order" for the country/region of the address. In places where this can vary (
+        # For example Japan), address_language is used to make it explicit (For example "
+        # ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large).
+        # This way, the most specific line of an address can be selected based on the
+        # language. The minimum permitted structural representation of an address
+        # consists of a region_code with all remaining information placed in the
+        # address_lines. It would be possible to format such an address very
+        # approximately without geocoding, but no semantic reasoning could be made about
+        # any of the address components until it was at least partially resolved.
+        # Creating an address only containing a region_code and address_lines, and then
+        # geocoding is the recommended way to handle completely unstructured addresses (
+        # as opposed to guessing which parts of the address should be localities or
+        # administrative areas).
+        # Corresponds to the JSON property `addressLines`
+        # @return [Array<String>]
+        attr_accessor :address_lines
+      
+        # Optional. Highest administrative subdivision which is used for postal
+        # addresses of a country or region. For example, this can be a state, a province,
+        # an oblast, or a prefecture. Specifically, for Spain this is the province and
+        # not the autonomous community (For example "Barcelona" and not "Catalonia").
+        # Many countries don't use an administrative area in postal addresses. For
+        # example in Switzerland this should be left unpopulated.
+        # Corresponds to the JSON property `administrativeArea`
+        # @return [String]
+        attr_accessor :administrative_area
+      
+        # Optional. BCP-47 language code of the contents of this address (if known).
+        # This is often the UI language of the input form or is expected to match one of
+        # the languages used in the address' country/region, or their transliterated
+        # equivalents. This can affect formatting in certain countries, but is not
+        # critical to the correctness of the data and will never affect any validation
+        # or other non-formatting related operations. If this value is not known, it
+        # should be omitted (rather than specifying a possibly incorrect default).
+        # Examples: "zh-Hant", "ja", "ja-Latn", "en".
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Optional. Generally refers to the city/town portion of the address. Examples:
+        # US city, IT comune, UK post town. In regions of the world where localities are
+        # not well defined or do not fit into this structure well, leave locality empty
+        # and use address_lines.
+        # Corresponds to the JSON property `locality`
+        # @return [String]
+        attr_accessor :locality
+      
+        # Optional. The name of the organization at the address.
+        # Corresponds to the JSON property `organization`
+        # @return [String]
+        attr_accessor :organization
+      
+        # Optional. Postal code of the address. Not all countries use or require postal
+        # codes to be present, but where they are used, they may trigger additional
+        # validation with other parts of the address (For example state/zip validation
+        # in the U.S.A.).
+        # Corresponds to the JSON property `postalCode`
+        # @return [String]
+        attr_accessor :postal_code
+      
+        # Optional. The recipient at the address. This field may, under certain
+        # circumstances, contain multiline information. For example, it might contain "
+        # care of" information.
+        # Corresponds to the JSON property `recipients`
+        # @return [Array<String>]
+        attr_accessor :recipients
+      
+        # Required. CLDR region code of the country/region of the address. This is never
+        # inferred and it is up to the user to ensure the value is correct. See https://
+        # cldr.unicode.org/ and https://www.unicode.org/cldr/charts/30/supplemental/
+        # territory_information.html for details. Example: "CH" for Switzerland.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        # The schema revision of the `PostalAddress`. This must be set to 0, which is
+        # the latest revision. All new revisions **must** be backward compatible with
+        # old revisions.
+        # Corresponds to the JSON property `revision`
+        # @return [Fixnum]
+        attr_accessor :revision
+      
+        # Optional. Additional, country-specific, sorting code. This is not used in most
+        # regions. Where it is used, the value is either a string like "CEDEX",
+        # optionally followed by a number (For example "CEDEX 7"), or just a number
+        # alone, representing the "sector code" (Jamaica), "delivery area indicator" (
+        # Malawi) or "post office indicator" (For example Côte d'Ivoire).
+        # Corresponds to the JSON property `sortingCode`
+        # @return [String]
+        attr_accessor :sorting_code
+      
+        # Optional. Sublocality of the address. For example, this can be neighborhoods,
+        # boroughs, districts.
+        # Corresponds to the JSON property `sublocality`
+        # @return [String]
+        attr_accessor :sublocality
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address_lines = args[:address_lines] if args.key?(:address_lines)
+          @administrative_area = args[:administrative_area] if args.key?(:administrative_area)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @locality = args[:locality] if args.key?(:locality)
+          @organization = args[:organization] if args.key?(:organization)
+          @postal_code = args[:postal_code] if args.key?(:postal_code)
+          @recipients = args[:recipients] if args.key?(:recipients)
+          @region_code = args[:region_code] if args.key?(:region_code)
+          @revision = args[:revision] if args.key?(:revision)
+          @sorting_code = args[:sorting_code] if args.key?(:sorting_code)
+          @sublocality = args[:sublocality] if args.key?(:sublocality)
         end
       end
       
