@@ -2098,6 +2098,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :chunked_value, as: 'chunkedValue'
+          property :last, as: 'last'
           property :metadata, as: 'metadata', class: Google::Apis::SpannerV1::ResultSetMetadata, decorator: Google::Apis::SpannerV1::ResultSetMetadata::Representation
       
           property :precommit_token, as: 'precommitToken', class: Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken, decorator: Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken::Representation
@@ -2543,6 +2544,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :exclude_txn_from_change_streams, as: 'excludeTxnFromChangeStreams'
+          property :isolation_level, as: 'isolationLevel'
           property :partitioned_dml, as: 'partitionedDml', class: Google::Apis::SpannerV1::PartitionedDml, decorator: Google::Apis::SpannerV1::PartitionedDml::Representation
       
           property :read_only, as: 'readOnly', class: Google::Apis::SpannerV1::ReadOnly, decorator: Google::Apis::SpannerV1::ReadOnly::Representation
