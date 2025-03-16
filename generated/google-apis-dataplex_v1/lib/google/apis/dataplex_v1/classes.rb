@@ -1615,9 +1615,7 @@ module Google
       class GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing
         include Google::Apis::Core::Hashable
       
-        # Output only. The BigQuery dataset to publish to. It takes the form projects/`
-        # project_id`/datasets/`dataset_id`. If not set, the service creates a default
-        # publishing dataset.
+        # Output only. The BigQuery dataset the discovered tables are published to.
         # Corresponds to the JSON property `dataset`
         # @return [String]
         attr_accessor :dataset
