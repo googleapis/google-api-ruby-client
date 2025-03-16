@@ -404,8 +404,8 @@ module Google
       
         # Optional. A set of events during request or response processing for which this
         # extension is called. This field is required for the `LbTrafficExtension`
-        # resource. It must not be set for the `LbRouteExtension` resource, otherwise a
-        # validation error is returned.
+        # resource. It is optional for the `LbRouteExtension` resource. If unspecified `
+        # REQUEST_HEADERS` event is assumed as supported.
         # Corresponds to the JSON property `supportedEvents`
         # @return [Array<String>]
         attr_accessor :supported_events
@@ -2286,6 +2286,13 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Unreachable resources. Populated when the request attempts to list all
+        # resources across all supported locations, while some locations are temporarily
+        # unavailable.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2294,6 +2301,7 @@ module Google
         def update!(**args)
           @gateway_route_views = args[:gateway_route_views] if args.key?(:gateway_route_views)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -2486,6 +2494,13 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Unreachable resources. Populated when the request attempts to list all
+        # resources across all supported locations, while some locations are temporarily
+        # unavailable.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2494,6 +2509,7 @@ module Google
         def update!(**args)
           @mesh_route_views = args[:mesh_route_views] if args.key?(:mesh_route_views)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -2573,6 +2589,13 @@ module Google
         # @return [Array<Google::Apis::NetworkservicesV1beta1::ServiceBinding>]
         attr_accessor :service_bindings
       
+        # Unreachable resources. Populated when the request attempts to list all
+        # resources across all supported locations, while some locations are temporarily
+        # unavailable.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2581,6 +2604,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @service_bindings = args[:service_bindings] if args.key?(:service_bindings)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -2600,6 +2624,13 @@ module Google
         # @return [Array<Google::Apis::NetworkservicesV1beta1::ServiceLbPolicy>]
         attr_accessor :service_lb_policies
       
+        # Unreachable resources. Populated when the request attempts to list all
+        # resources across all supported locations, while some locations are temporarily
+        # unavailable.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2608,6 +2639,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @service_lb_policies = args[:service_lb_policies] if args.key?(:service_lb_policies)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
