@@ -1606,6 +1606,17 @@ module Google
         # @return [String]
         attr_accessor :null_marker
       
+        # Optional. A list of strings represented as SQL NULL value in a CSV file.
+        # null_marker and null_markers can't be set at the same time. If null_marker is
+        # set, null_markers has to be not set. If null_markers is set, null_marker has
+        # to be not set. If both null_marker and null_markers are set at the same time,
+        # a user error would be thrown. Any strings listed in null_markers, including
+        # empty string would be interpreted as SQL NULL. This applies to all column
+        # types.
+        # Corresponds to the JSON property `nullMarkers`
+        # @return [Array<String>]
+        attr_accessor :null_markers
+      
         # Optional. Indicates if the embedded ASCII control characters (the first 32
         # characters in the ASCII-table, from '\x00' to '\x1F') are preserved.
         # Corresponds to the JSON property `preserveAsciiControlCharacters`
@@ -1641,6 +1652,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :skip_leading_rows
       
+        # Optional. Controls the strategy used to match loaded columns to the schema. If
+        # not set, a sensible default is chosen based on how the schema is provided. If
+        # autodetect is used, then columns are matched by name. Otherwise, columns are
+        # matched by position. This is done to keep the behavior backward-compatible.
+        # Acceptable values are: POSITION - matches by position. This assumes that the
+        # columns are ordered the same way as the schema. NAME - matches by name. This
+        # reads the header row as column names and reorders columns to match the field
+        # names in the schema.
+        # Corresponds to the JSON property `sourceColumnMatch`
+        # @return [String]
+        attr_accessor :source_column_match
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1652,9 +1675,11 @@ module Google
           @encoding = args[:encoding] if args.key?(:encoding)
           @field_delimiter = args[:field_delimiter] if args.key?(:field_delimiter)
           @null_marker = args[:null_marker] if args.key?(:null_marker)
+          @null_markers = args[:null_markers] if args.key?(:null_markers)
           @preserve_ascii_control_characters = args[:preserve_ascii_control_characters] if args.key?(:preserve_ascii_control_characters)
           @quote = args[:quote] if args.key?(:quote)
           @skip_leading_rows = args[:skip_leading_rows] if args.key?(:skip_leading_rows)
+          @source_column_match = args[:source_column_match] if args.key?(:source_column_match)
         end
       end
       
@@ -4791,6 +4816,17 @@ module Google
         # @return [String]
         attr_accessor :null_marker
       
+        # Optional. A list of strings represented as SQL NULL value in a CSV file.
+        # null_marker and null_markers can't be set at the same time. If null_marker is
+        # set, null_markers has to be not set. If null_markers is set, null_marker has
+        # to be not set. If both null_marker and null_markers are set at the same time,
+        # a user error would be thrown. Any strings listed in null_markers, including
+        # empty string would be interpreted as SQL NULL. This applies to all column
+        # types.
+        # Corresponds to the JSON property `nullMarkers`
+        # @return [Array<String>]
+        attr_accessor :null_markers
+      
         # Parquet Options for load and make external tables.
         # Corresponds to the JSON property `parquetOptions`
         # @return [Google::Apis::BigqueryV2::ParquetOptions]
@@ -4883,6 +4919,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :skip_leading_rows
       
+        # Optional. Controls the strategy used to match loaded columns to the schema. If
+        # not set, a sensible default is chosen based on how the schema is provided. If
+        # autodetect is used, then columns are matched by name. Otherwise, columns are
+        # matched by position. This is done to keep the behavior backward-compatible.
+        # Corresponds to the JSON property `sourceColumnMatch`
+        # @return [String]
+        attr_accessor :source_column_match
+      
         # Optional. The format of the data files. For CSV files, specify "CSV". For
         # datastore backups, specify "DATASTORE_BACKUP". For newline-delimited JSON,
         # specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet,
@@ -4974,6 +5018,7 @@ module Google
           @json_extension = args[:json_extension] if args.key?(:json_extension)
           @max_bad_records = args[:max_bad_records] if args.key?(:max_bad_records)
           @null_marker = args[:null_marker] if args.key?(:null_marker)
+          @null_markers = args[:null_markers] if args.key?(:null_markers)
           @parquet_options = args[:parquet_options] if args.key?(:parquet_options)
           @preserve_ascii_control_characters = args[:preserve_ascii_control_characters] if args.key?(:preserve_ascii_control_characters)
           @projection_fields = args[:projection_fields] if args.key?(:projection_fields)
@@ -4985,6 +5030,7 @@ module Google
           @schema_inline_format = args[:schema_inline_format] if args.key?(:schema_inline_format)
           @schema_update_options = args[:schema_update_options] if args.key?(:schema_update_options)
           @skip_leading_rows = args[:skip_leading_rows] if args.key?(:skip_leading_rows)
+          @source_column_match = args[:source_column_match] if args.key?(:source_column_match)
           @source_format = args[:source_format] if args.key?(:source_format)
           @source_uris = args[:source_uris] if args.key?(:source_uris)
           @time_format = args[:time_format] if args.key?(:time_format)
