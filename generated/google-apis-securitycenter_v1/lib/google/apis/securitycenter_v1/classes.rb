@@ -1861,6 +1861,33 @@ module Google
         end
       end
       
+      # CWE stands for Common Weakness Enumeration. Information about this weakness,
+      # as described by [CWE](https://cwe.mitre.org/).
+      class Cwe
+        include Google::Apis::Core::Hashable
+      
+        # The CWE identifier, e.g. CWE-94
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Any reference to the details on the CWE, for example, https://cwe.mitre.org/
+        # data/definitions/94.html
+        # Corresponds to the JSON property `references`
+        # @return [Array<Google::Apis::SecuritycenterV1::Reference>]
+        attr_accessor :references
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @references = args[:references] if args.key?(:references)
+        end
+      end
+      
       # Details about a data access attempt made by a principal not authorized under
       # applicable data security policy.
       class DataAccessEvent
@@ -5675,6 +5702,33 @@ module Google
         end
       end
       
+      # CWE stands for Common Weakness Enumeration. Information about this weakness,
+      # as described by [CWE](https://cwe.mitre.org/).
+      class GoogleCloudSecuritycenterV2Cwe
+        include Google::Apis::Core::Hashable
+      
+        # The CWE identifier, e.g. CWE-94
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Any reference to the details on the CWE, for example, https://cwe.mitre.org/
+        # data/definitions/94.html
+        # Corresponds to the JSON property `references`
+        # @return [Array<Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Reference>]
+        attr_accessor :references
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @references = args[:references] if args.key?(:references)
+        end
+      end
+      
       # Details about a data access attempt made by a principal not authorized under
       # applicable data security policy.
       class GoogleCloudSecuritycenterV2DataAccessEvent
@@ -9012,6 +9066,12 @@ module Google
         # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Cve]
         attr_accessor :cve
       
+        # Represents one or more Common Weakness Enumeration (CWE) information on this
+        # vulnerability.
+        # Corresponds to the JSON property `cwes`
+        # @return [Array<Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Cwe>]
+        attr_accessor :cwes
+      
         # Package is a generic definition of a package.
         # Corresponds to the JSON property `fixedPackage`
         # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Package]
@@ -9021,6 +9081,19 @@ module Google
         # Corresponds to the JSON property `offendingPackage`
         # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Package]
         attr_accessor :offending_package
+      
+        # Provider provided risk_score based on multiple factors. The higher the risk
+        # score, the more risky the vulnerability is.
+        # Corresponds to the JSON property `providerRiskScore`
+        # @return [Fixnum]
+        attr_accessor :provider_risk_score
+      
+        # Represents whether the vulnerability is reachable (detected via static
+        # analysis)
+        # Corresponds to the JSON property `reachable`
+        # @return [Boolean]
+        attr_accessor :reachable
+        alias_method :reachable?, :reachable
       
         # SecurityBulletin are notifications of vulnerabilities of Google products.
         # Corresponds to the JSON property `securityBulletin`
@@ -9034,8 +9107,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cve = args[:cve] if args.key?(:cve)
+          @cwes = args[:cwes] if args.key?(:cwes)
           @fixed_package = args[:fixed_package] if args.key?(:fixed_package)
           @offending_package = args[:offending_package] if args.key?(:offending_package)
+          @provider_risk_score = args[:provider_risk_score] if args.key?(:provider_risk_score)
+          @reachable = args[:reachable] if args.key?(:reachable)
           @security_bulletin = args[:security_bulletin] if args.key?(:security_bulletin)
         end
       end
@@ -12466,6 +12542,12 @@ module Google
         # @return [Google::Apis::SecuritycenterV1::Cve]
         attr_accessor :cve
       
+        # Represents one or more Common Weakness Enumeration (CWE) information on this
+        # vulnerability.
+        # Corresponds to the JSON property `cwes`
+        # @return [Array<Google::Apis::SecuritycenterV1::Cwe>]
+        attr_accessor :cwes
+      
         # Package is a generic definition of a package.
         # Corresponds to the JSON property `fixedPackage`
         # @return [Google::Apis::SecuritycenterV1::Package]
@@ -12475,6 +12557,19 @@ module Google
         # Corresponds to the JSON property `offendingPackage`
         # @return [Google::Apis::SecuritycenterV1::Package]
         attr_accessor :offending_package
+      
+        # Provider provided risk_score based on multiple factors. The higher the risk
+        # score, the more risky the vulnerability is.
+        # Corresponds to the JSON property `providerRiskScore`
+        # @return [Fixnum]
+        attr_accessor :provider_risk_score
+      
+        # Represents whether the vulnerability is reachable (detected via static
+        # analysis)
+        # Corresponds to the JSON property `reachable`
+        # @return [Boolean]
+        attr_accessor :reachable
+        alias_method :reachable?, :reachable
       
         # SecurityBulletin are notifications of vulnerabilities of Google products.
         # Corresponds to the JSON property `securityBulletin`
@@ -12488,8 +12583,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cve = args[:cve] if args.key?(:cve)
+          @cwes = args[:cwes] if args.key?(:cwes)
           @fixed_package = args[:fixed_package] if args.key?(:fixed_package)
           @offending_package = args[:offending_package] if args.key?(:offending_package)
+          @provider_risk_score = args[:provider_risk_score] if args.key?(:provider_risk_score)
+          @reachable = args[:reachable] if args.key?(:reachable)
           @security_bulletin = args[:security_bulletin] if args.key?(:security_bulletin)
         end
       end
