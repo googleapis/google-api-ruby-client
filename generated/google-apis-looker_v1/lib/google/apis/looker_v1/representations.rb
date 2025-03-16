@@ -100,18 +100,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class InstanceBackup
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListInstanceBackupsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListInstancesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,12 +161,6 @@ module Google
       end
       
       class RestartInstanceRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RestoreInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -356,28 +338,6 @@ module Google
         end
       end
       
-      class InstanceBackup
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::LookerV1::EncryptionConfig, decorator: Google::Apis::LookerV1::EncryptionConfig::Representation
-      
-          property :expire_time, as: 'expireTime'
-          property :name, as: 'name'
-          property :state, as: 'state'
-        end
-      end
-      
-      class ListInstanceBackupsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :instance_backups, as: 'instanceBackups', class: Google::Apis::LookerV1::InstanceBackup, decorator: Google::Apis::LookerV1::InstanceBackup::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-          collection :unreachable, as: 'unreachable'
-        end
-      end
-      
       class ListInstancesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -480,13 +440,6 @@ module Google
       class RestartInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class RestoreInstanceRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :backup, as: 'backup'
         end
       end
       

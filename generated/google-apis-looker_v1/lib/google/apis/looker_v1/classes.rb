@@ -576,84 +576,6 @@ module Google
         end
       end
       
-      # The details of a backup resource.
-      class InstanceBackup
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The time when the backup was started.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Encryption configuration (i.e. CMEK).
-        # Corresponds to the JSON property `encryptionConfig`
-        # @return [Google::Apis::LookerV1::EncryptionConfig]
-        attr_accessor :encryption_config
-      
-        # Output only. The time when the backup will be deleted.
-        # Corresponds to the JSON property `expireTime`
-        # @return [String]
-        attr_accessor :expire_time
-      
-        # Immutable. The relative resource name of the backup, in the following form: `
-        # projects/`project_number`/locations/`location_id`/instances/`instance_id`/
-        # backups/`backup``
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Output only. The current state of the backup.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
-          @expire_time = args[:expire_time] if args.key?(:expire_time)
-          @name = args[:name] if args.key?(:name)
-          @state = args[:state] if args.key?(:state)
-        end
-      end
-      
-      # Response from listing Looker instance backups.
-      class ListInstanceBackupsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The list of instances matching the request filters, up to the requested `
-        # page_size`.
-        # Corresponds to the JSON property `instanceBackups`
-        # @return [Array<Google::Apis::LookerV1::InstanceBackup>]
-        attr_accessor :instance_backups
-      
-        # If provided, a page token that can look up the next `page_size` results. If
-        # empty, the results list is exhausted.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # Locations that could not be reached.
-        # Corresponds to the JSON property `unreachable`
-        # @return [Array<String>]
-        attr_accessor :unreachable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @instance_backups = args[:instance_backups] if args.key?(:instance_backups)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @unreachable = args[:unreachable] if args.key?(:unreachable)
-        end
-      end
-      
       # Response from ListInstances.
       class ListInstancesResponse
         include Google::Apis::Core::Hashable
@@ -1025,26 +947,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # Request options for restoring an instance
-      class RestoreInstanceRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. Backup being used to restore the instance Format: projects/`project`/
-        # locations/`location`/instances/`instance`/backups/`backup`
-        # Corresponds to the JSON property `backup`
-        # @return [String]
-        attr_accessor :backup
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @backup = args[:backup] if args.key?(:backup)
         end
       end
       
