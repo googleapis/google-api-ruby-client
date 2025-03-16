@@ -152,6 +152,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves the automatic improvements of an account.
+        # @param [String] name
+        #   Required. The resource name of the automatic improvements. Format: `accounts/`
+        #   account`/automaticImprovements`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::AutomaticImprovements] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::AutomaticImprovements]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_automatic_improvements(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'accounts/v1beta/{+name}', options)
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::AutomaticImprovements::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::AutomaticImprovements
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists accounts accessible to the calling user and matching the constraints of
         # the request such as page size or filters. This is not just listing the sub-
         # accounts of an MCA, but all accounts the calling user has access to including
@@ -280,6 +311,47 @@ module Google
           command.request_object = account_object
           command.response_representation = Google::Apis::MerchantapiAccountsV1beta::Account::Representation
           command.response_class = Google::Apis::MerchantapiAccountsV1beta::Account
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the automatic improvements of an account.
+        # @param [String] name
+        #   Identifier. The resource name of the automatic improvements. Format: `accounts/
+        #   `account`/automaticImprovements`.
+        # @param [Google::Apis::MerchantapiAccountsV1beta::AutomaticImprovements] automatic_improvements_object
+        # @param [String] update_mask
+        #   Required. List of fields being updated. The following fields are supported (in
+        #   both `snake_case` and `lowerCamelCase`): - `item_updates` - `item_updates.
+        #   account_level_settings` - `image_improvements` - `image_improvements.
+        #   account_level_settings` - `shipping_improvements` - `shipping_improvements.
+        #   allow_shipping_improvements`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::AutomaticImprovements] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::AutomaticImprovements]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_account_automatic_improvements(name, automatic_improvements_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'accounts/v1beta/{+name}', options)
+          command.request_representation = Google::Apis::MerchantapiAccountsV1beta::AutomaticImprovements::Representation
+          command.request_object = automatic_improvements_object
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::AutomaticImprovements::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::AutomaticImprovements
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?

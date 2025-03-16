@@ -70,6 +70,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutomaticImageImprovements
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutomaticImprovements
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutomaticItemUpdates
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutomaticShippingImprovements
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BusinessDayConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -196,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImageImprovementsAccountLevelSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Impact
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,6 +233,12 @@ module Google
       end
       
       class ImpactedDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ItemUpdatesAccountLevelSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -583,6 +619,47 @@ module Google
         end
       end
       
+      class AutomaticImageImprovements
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_image_improvements_settings, as: 'accountImageImprovementsSettings', class: Google::Apis::MerchantapiAccountsV1beta::ImageImprovementsAccountLevelSettings, decorator: Google::Apis::MerchantapiAccountsV1beta::ImageImprovementsAccountLevelSettings::Representation
+      
+          property :effective_allow_automatic_image_improvements, as: 'effectiveAllowAutomaticImageImprovements'
+        end
+      end
+      
+      class AutomaticImprovements
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_improvements, as: 'imageImprovements', class: Google::Apis::MerchantapiAccountsV1beta::AutomaticImageImprovements, decorator: Google::Apis::MerchantapiAccountsV1beta::AutomaticImageImprovements::Representation
+      
+          property :item_updates, as: 'itemUpdates', class: Google::Apis::MerchantapiAccountsV1beta::AutomaticItemUpdates, decorator: Google::Apis::MerchantapiAccountsV1beta::AutomaticItemUpdates::Representation
+      
+          property :name, as: 'name'
+          property :shipping_improvements, as: 'shippingImprovements', class: Google::Apis::MerchantapiAccountsV1beta::AutomaticShippingImprovements, decorator: Google::Apis::MerchantapiAccountsV1beta::AutomaticShippingImprovements::Representation
+      
+        end
+      end
+      
+      class AutomaticItemUpdates
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_item_updates_settings, as: 'accountItemUpdatesSettings', class: Google::Apis::MerchantapiAccountsV1beta::ItemUpdatesAccountLevelSettings, decorator: Google::Apis::MerchantapiAccountsV1beta::ItemUpdatesAccountLevelSettings::Representation
+      
+          property :effective_allow_availability_updates, as: 'effectiveAllowAvailabilityUpdates'
+          property :effective_allow_condition_updates, as: 'effectiveAllowConditionUpdates'
+          property :effective_allow_price_updates, as: 'effectiveAllowPriceUpdates'
+          property :effective_allow_strict_availability_updates, as: 'effectiveAllowStrictAvailabilityUpdates'
+        end
+      end
+      
+      class AutomaticShippingImprovements
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_shipping_improvements, as: 'allowShippingImprovements'
+        end
+      end
+      
       class BusinessDayConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -796,6 +873,13 @@ module Google
         end
       end
       
+      class ImageImprovementsAccountLevelSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_automatic_image_improvements, as: 'allowAutomaticImageImprovements'
+        end
+      end
+      
       class Impact
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -810,6 +894,16 @@ module Google
           collection :impacts, as: 'impacts', class: Google::Apis::MerchantapiAccountsV1beta::Impact, decorator: Google::Apis::MerchantapiAccountsV1beta::Impact::Representation
       
           property :reporting_context, as: 'reportingContext'
+        end
+      end
+      
+      class ItemUpdatesAccountLevelSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_availability_updates, as: 'allowAvailabilityUpdates'
+          property :allow_condition_updates, as: 'allowConditionUpdates'
+          property :allow_price_updates, as: 'allowPriceUpdates'
+          property :allow_strict_availability_updates, as: 'allowStrictAvailabilityUpdates'
         end
       end
       
@@ -1113,15 +1207,13 @@ module Google
       class SeasonalOverride
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :begin, as: 'begin', class: Google::Apis::MerchantapiAccountsV1beta::Date, decorator: Google::Apis::MerchantapiAccountsV1beta::Date::Representation
-      
-          property :end, as: 'end', class: Google::Apis::MerchantapiAccountsV1beta::Date, decorator: Google::Apis::MerchantapiAccountsV1beta::Date::Representation
+          property :end_date, as: 'endDate', class: Google::Apis::MerchantapiAccountsV1beta::Date, decorator: Google::Apis::MerchantapiAccountsV1beta::Date::Representation
       
           property :label, as: 'label'
-          property :policy, as: 'policy', class: Google::Apis::MerchantapiAccountsV1beta::Policy, decorator: Google::Apis::MerchantapiAccountsV1beta::Policy::Representation
-      
           property :return_days, as: 'returnDays'
           property :return_until_date, as: 'returnUntilDate', class: Google::Apis::MerchantapiAccountsV1beta::Date, decorator: Google::Apis::MerchantapiAccountsV1beta::Date::Representation
+      
+          property :start_date, as: 'startDate', class: Google::Apis::MerchantapiAccountsV1beta::Date, decorator: Google::Apis::MerchantapiAccountsV1beta::Date::Representation
       
         end
       end
