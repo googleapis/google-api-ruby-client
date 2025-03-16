@@ -440,14 +440,6 @@ module Google
         # @return [String]
         attr_accessor :last_replication_time
       
-        # Output only. The time at which a soft failover for the reservation and its
-        # associated datasets was initiated. After this field is set, all subsequent
-        # changes to the reservation will be rejected unless a hard failover overrides
-        # this operation. This field will be cleared once the failover is complete.
-        # Corresponds to the JSON property `softFailoverStartTime`
-        # @return [String]
-        attr_accessor :soft_failover_start_time
-      
         def initialize(**args)
            update!(**args)
         end
@@ -457,7 +449,6 @@ module Google
           @error = args[:error] if args.key?(:error)
           @last_error_time = args[:last_error_time] if args.key?(:last_error_time)
           @last_replication_time = args[:last_replication_time] if args.key?(:last_replication_time)
-          @soft_failover_start_time = args[:soft_failover_start_time] if args.key?(:soft_failover_start_time)
         end
       end
       

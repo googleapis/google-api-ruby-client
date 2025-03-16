@@ -245,7 +245,6 @@ module Google
       
           property :last_error_time, as: 'lastErrorTime'
           property :last_replication_time, as: 'lastReplicationTime'
-          property :soft_failover_start_time, as: 'softFailoverStartTime'
         end
       end
       
