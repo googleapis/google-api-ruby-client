@@ -2700,8 +2700,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. The name of a RegionalEndpoint. Format: `projects/`project`/
-        # locations/`location`/regionalEndpoints/`regional_endpoint``.
+        # Output only. The name of a RegionalEndpoint. Pattern: `projects/`project`/
+        # locations/`location`/regionalEndpoints/^[-a-z0-9](?:[-a-z0-9]`0,44`)[a-z0-9]$`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
