@@ -1193,6 +1193,7 @@ module Google
           collection :gateway_route_views, as: 'gatewayRouteViews', class: Google::Apis::NetworkservicesV1::GatewayRouteView, decorator: Google::Apis::NetworkservicesV1::GatewayRouteView::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1259,6 +1260,7 @@ module Google
           collection :mesh_route_views, as: 'meshRouteViews', class: Google::Apis::NetworkservicesV1::MeshRouteView, decorator: Google::Apis::NetworkservicesV1::MeshRouteView::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1287,6 +1289,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :service_bindings, as: 'serviceBindings', class: Google::Apis::NetworkservicesV1::ServiceBinding, decorator: Google::Apis::NetworkservicesV1::ServiceBinding::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1296,6 +1299,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :service_lb_policies, as: 'serviceLbPolicies', class: Google::Apis::NetworkservicesV1::ServiceLbPolicy, decorator: Google::Apis::NetworkservicesV1::ServiceLbPolicy::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
