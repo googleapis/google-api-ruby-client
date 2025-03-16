@@ -1740,9 +1740,11 @@ module Google
           property :encoding, as: 'encoding'
           property :field_delimiter, as: 'fieldDelimiter'
           property :null_marker, as: 'nullMarker'
+          collection :null_markers, as: 'nullMarkers'
           property :preserve_ascii_control_characters, as: 'preserveAsciiControlCharacters'
           property :quote, as: 'quote'
           property :skip_leading_rows, :numeric_string => true, as: 'skipLeadingRows'
+          property :source_column_match, as: 'sourceColumnMatch'
         end
       end
       
@@ -2505,6 +2507,7 @@ module Google
           property :json_extension, as: 'jsonExtension'
           property :max_bad_records, as: 'maxBadRecords'
           property :null_marker, as: 'nullMarker'
+          collection :null_markers, as: 'nullMarkers'
           property :parquet_options, as: 'parquetOptions', class: Google::Apis::BigqueryV2::ParquetOptions, decorator: Google::Apis::BigqueryV2::ParquetOptions::Representation
       
           property :preserve_ascii_control_characters, as: 'preserveAsciiControlCharacters'
@@ -2519,6 +2522,7 @@ module Google
           property :schema_inline_format, as: 'schemaInlineFormat'
           collection :schema_update_options, as: 'schemaUpdateOptions'
           property :skip_leading_rows, as: 'skipLeadingRows'
+          property :source_column_match, as: 'sourceColumnMatch'
           property :source_format, as: 'sourceFormat'
           collection :source_uris, as: 'sourceUris'
           property :time_format, as: 'timeFormat'
