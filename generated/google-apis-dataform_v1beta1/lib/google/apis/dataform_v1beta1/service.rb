@@ -155,11 +155,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update default config for a given project and location. **Note:** This method
-        # does not fully implement [AIP-134](https://google.aip.dev/134); in particular:
-        # - The wildcard entry (**\***) is treated as a bad request - When the **
-        # field_mask** is omitted, instead of only updating the set fields, the request
-        # is treated as a full update on all modifiable fields
+        # Update default config for a given project and location. **Note:** *This method
+        # does not fully implement*, (see [AIP/134](https://google.aip.dev/134), in
+        # particular: - The wildcard entry (**\***) is treated as a bad request - When
+        # the **field_mask** is omitted, instead of only updating the set fields, the
+        # request is treated as a full update on all modifiable fields
         # @param [String] name
         #   Identifier. The config name.
         # @param [Google::Apis::DataformV1beta1::Config] config_object
@@ -529,11 +529,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a single Repository. **Note:** This method does not fully implement [
-        # AIP-134](https://google.aip.dev/134); in particular: - The wildcard entry (**\*
-        # **) is treated as a bad request - When the **field_mask** is omitted, instead
-        # of only updating the set fields, the request is treated as a full update on
-        # all modifiable fields
+        # Updates a single Repository. **Note:** *This method does not fully implement*,
+        # (see [AIP/134](https://google.aip.dev/134), in particular: - The wildcard
+        # entry (**\***) is treated as a bad request - When the **field_mask** is
+        # omitted, instead of only updating the set fields, the request is treated as a
+        # full update on all modifiable fields
         # @param [String] name
         #   Identifier. The repository's name.
         # @param [Google::Apis::DataformV1beta1::Repository] repository_object
@@ -1033,11 +1033,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a single ReleaseConfig. **Note:** This method does not fully implement
-        # [AIP-134](https://google.aip.dev/134); in particular: - The wildcard entry (**\
-        # ***) is treated as a bad request - When the **field_mask** is omitted, instead
-        # of only updating the set fields, the request is treated as a full update on
-        # all modifiable fields
+        # Updates a single ReleaseConfig. **Note:** *This method does not fully
+        # implement*, (see [AIP/134](https://google.aip.dev/134), in particular: - The
+        # wildcard entry (**\***) is treated as a bad request - When the **field_mask**
+        # is omitted, instead of only updating the set fields, the request is treated as
+        # a full update on all modifiable fields
         # @param [String] name
         #   Identifier. The release config's name.
         # @param [Google::Apis::DataformV1beta1::ReleaseConfig] release_config_object
@@ -1214,11 +1214,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a single WorkflowConfig. **Note:** This method does not fully
-        # implement [AIP-134](https://google.aip.dev/134); in particular: - The wildcard
-        # entry (**\***) is treated as a bad request - When the **field_mask** is
-        # omitted, instead of only updating the set fields, the request is treated as a
-        # full update on all modifiable fields
+        # Updates a single WorkflowConfig. **Note:** *This method does not fully
+        # implement*, (see [AIP/134](https://google.aip.dev/134), in particular: - The
+        # wildcard entry (**\***) is treated as a bad request - When the **field_mask**
+        # is omitted, instead of only updating the set fields, the request is treated as
+        # a full update on all modifiable fields
         # @param [String] name
         #   Identifier. The workflow config's name.
         # @param [Google::Apis::DataformV1beta1::WorkflowConfig] workflow_config_object
