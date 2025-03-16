@@ -565,6 +565,7 @@ module Google
           collection :operations, as: 'operations', class: Google::Apis::CloudassetV1p1beta1::GoogleIdentityAccesscontextmanagerV1ApiOperation, decorator: Google::Apis::CloudassetV1p1beta1::GoogleIdentityAccesscontextmanagerV1ApiOperation::Representation
       
           collection :resources, as: 'resources'
+          collection :roles, as: 'roles'
         end
       end
       
@@ -603,6 +604,7 @@ module Google
           collection :operations, as: 'operations', class: Google::Apis::CloudassetV1p1beta1::GoogleIdentityAccesscontextmanagerV1ApiOperation, decorator: Google::Apis::CloudassetV1p1beta1::GoogleIdentityAccesscontextmanagerV1ApiOperation::Representation
       
           collection :resources, as: 'resources'
+          collection :roles, as: 'roles'
         end
       end
       
