@@ -1791,8 +1791,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the space notification state setting. Requires [user authentication](
-        # https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        # Gets the space notification setting. For an example, see [Get the caller's
+        # space notification setting](https://developers.google.com/workspace/chat/get-
+        # space-notification-setting). Requires [user authentication](https://developers.
+        # google.com/workspace/chat/authenticate-authorize-chat-user).
         # @param [String] name
         #   Required. Format: users/`user`/spaces/`space`/spaceNotificationSetting - `
         #   users/me/spaces/`space`/spaceNotificationSetting`, OR - `users/user@example.
@@ -1826,8 +1828,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the space notification state setting. Requires [user authentication](
-        # https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        # Updates the space notification setting. For an example, see [Update the caller'
+        # s space notification setting](https://developers.google.com/workspace/chat/
+        # update-space-notification-setting). Requires [user authentication](https://
+        # developers.google.com/workspace/chat/authenticate-authorize-chat-user).
         # @param [String] name
         #   Identifier. The resource name of the space notification setting. Format: `
         #   users/`user`/spaces/`space`/spaceNotificationSetting`.
