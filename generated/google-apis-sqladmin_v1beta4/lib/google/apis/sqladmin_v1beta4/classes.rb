@@ -203,6 +203,11 @@ module Google
         # @return [String]
         attr_accessor :backup_run
       
+        # Output only. The database version of the instance of when this backup was made.
+        # Corresponds to the JSON property `databaseVersion`
+        # @return [String]
+        attr_accessor :database_version
+      
         # The description of this backup.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -320,6 +325,7 @@ module Google
           @backup_interval = args[:backup_interval] if args.key?(:backup_interval)
           @backup_kind = args[:backup_kind] if args.key?(:backup_kind)
           @backup_run = args[:backup_run] if args.key?(:backup_run)
+          @database_version = args[:database_version] if args.key?(:database_version)
           @description = args[:description] if args.key?(:description)
           @error = args[:error] if args.key?(:error)
           @expiry_time = args[:expiry_time] if args.key?(:expiry_time)
@@ -517,6 +523,11 @@ module Google
         # @return [String]
         attr_accessor :backup_kind
       
+        # Output only. The instance database version when this backup was made.
+        # Corresponds to the JSON property `databaseVersion`
+        # @return [String]
+        attr_accessor :database_version
+      
         # The description of this run, only applicable to on-demand backups.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -619,6 +630,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backup_kind = args[:backup_kind] if args.key?(:backup_kind)
+          @database_version = args[:database_version] if args.key?(:database_version)
           @description = args[:description] if args.key?(:description)
           @disk_encryption_configuration = args[:disk_encryption_configuration] if args.key?(:disk_encryption_configuration)
           @disk_encryption_status = args[:disk_encryption_status] if args.key?(:disk_encryption_status)
@@ -780,6 +792,44 @@ module Google
         end
       end
       
+      # Details of a single node of a read pool.
+      class ConnectPoolNodeConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The DNS name of the node.
+        # Corresponds to the JSON property `dnsName`
+        # @return [String]
+        attr_accessor :dns_name
+      
+        # Output only. The list of DNS names used by this instance.
+        # Corresponds to the JSON property `dnsNames`
+        # @return [Array<Google::Apis::SqladminV1beta4::DnsNameMapping>]
+        attr_accessor :dns_names
+      
+        # Output only. Mappings containing IP addresses that can be used to connect to
+        # the node.
+        # Corresponds to the JSON property `ipAddresses`
+        # @return [Array<Google::Apis::SqladminV1beta4::IpMapping>]
+        attr_accessor :ip_addresses
+      
+        # Output only. The name of the node. Doesn't include the project ID.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_name = args[:dns_name] if args.key?(:dns_name)
+          @dns_names = args[:dns_names] if args.key?(:dns_names)
+          @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Connect settings retrieval response.
       class ConnectSettings
         include Google::Apis::Core::Hashable
@@ -828,6 +878,16 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The number of nodes in a read pool.
+        # Corresponds to the JSON property `nodeCount`
+        # @return [Fixnum]
+        attr_accessor :node_count
+      
+        # Output only. Entries containing information about each node of the read pool.
+        # Corresponds to the JSON property `nodes`
+        # @return [Array<Google::Apis::SqladminV1beta4::ConnectPoolNodeConfig>]
+        attr_accessor :nodes
+      
         # Whether PSC connectivity is enabled for this instance.
         # Corresponds to the JSON property `pscEnabled`
         # @return [Boolean]
@@ -863,10 +923,101 @@ module Google
           @dns_names = args[:dns_names] if args.key?(:dns_names)
           @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
           @kind = args[:kind] if args.key?(:kind)
+          @node_count = args[:node_count] if args.key?(:node_count)
+          @nodes = args[:nodes] if args.key?(:nodes)
           @psc_enabled = args[:psc_enabled] if args.key?(:psc_enabled)
           @region = args[:region] if args.key?(:region)
           @server_ca_cert = args[:server_ca_cert] if args.key?(:server_ca_cert)
           @server_ca_mode = args[:server_ca_mode] if args.key?(:server_ca_mode)
+        end
+      end
+      
+      # The managed connection pooling configuration.
+      class ConnectionPoolConfig
+        include Google::Apis::Core::Hashable
+      
+        # Client idle timeout.
+        # Corresponds to the JSON property `clientConnectionIdleTimeout`
+        # @return [String]
+        attr_accessor :client_connection_idle_timeout
+      
+        # Managed connection pool size.
+        # Corresponds to the JSON property `connPoolSize`
+        # @return [Fixnum]
+        attr_accessor :conn_pool_size
+      
+        # Whether managed connection pooling is enabled.
+        # Corresponds to the JSON property `connectionPoolingEnabled`
+        # @return [Boolean]
+        attr_accessor :connection_pooling_enabled
+        alias_method :connection_pooling_enabled?, :connection_pooling_enabled
+      
+        # Optional. List of connection pool configuration flags
+        # Corresponds to the JSON property `flags`
+        # @return [Array<Google::Apis::SqladminV1beta4::ConnectionPoolFlags>]
+        attr_accessor :flags
+      
+        # Maximum number of client connections in connection pool.
+        # Corresponds to the JSON property `maxClientConnections`
+        # @return [Fixnum]
+        attr_accessor :max_client_connections
+      
+        # The managed connection pool mode for the instance.
+        # Corresponds to the JSON property `poolMode`
+        # @return [String]
+        attr_accessor :pool_mode
+      
+        # Query wait timeout.
+        # Corresponds to the JSON property `queryWaitTimeout`
+        # @return [String]
+        attr_accessor :query_wait_timeout
+      
+        # Server idle timeout.
+        # Corresponds to the JSON property `serverConnectionIdleTimeout`
+        # @return [String]
+        attr_accessor :server_connection_idle_timeout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_connection_idle_timeout = args[:client_connection_idle_timeout] if args.key?(:client_connection_idle_timeout)
+          @conn_pool_size = args[:conn_pool_size] if args.key?(:conn_pool_size)
+          @connection_pooling_enabled = args[:connection_pooling_enabled] if args.key?(:connection_pooling_enabled)
+          @flags = args[:flags] if args.key?(:flags)
+          @max_client_connections = args[:max_client_connections] if args.key?(:max_client_connections)
+          @pool_mode = args[:pool_mode] if args.key?(:pool_mode)
+          @query_wait_timeout = args[:query_wait_timeout] if args.key?(:query_wait_timeout)
+          @server_connection_idle_timeout = args[:server_connection_idle_timeout] if args.key?(:server_connection_idle_timeout)
+        end
+      end
+      
+      # Connection pool flags for Cloud SQL instances managed connection pool
+      # configuration.
+      class ConnectionPoolFlags
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the flag.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The value of the flag. Boolean flags are set to `on` for true and `
+        # off` for false. This field must be omitted if the flag doesn't take a value.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -1129,6 +1280,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The number of nodes in a read pool.
+        # Corresponds to the JSON property `nodeCount`
+        # @return [Fixnum]
+        attr_accessor :node_count
+      
+        # Output only. Entries containing information about each node of the read pool.
+        # Corresponds to the JSON property `nodes`
+        # @return [Array<Google::Apis::SqladminV1beta4::PoolNodeConfig>]
+        attr_accessor :nodes
+      
         # On-premises instance configuration.
         # Corresponds to the JSON property `onPremisesConfiguration`
         # @return [Google::Apis::SqladminV1beta4::OnPremisesConfiguration]
@@ -1306,6 +1467,8 @@ module Google
           @master_instance_name = args[:master_instance_name] if args.key?(:master_instance_name)
           @max_disk_size = args[:max_disk_size] if args.key?(:max_disk_size)
           @name = args[:name] if args.key?(:name)
+          @node_count = args[:node_count] if args.key?(:node_count)
+          @nodes = args[:nodes] if args.key?(:nodes)
           @on_premises_configuration = args[:on_premises_configuration] if args.key?(:on_premises_configuration)
           @out_of_disk_report = args[:out_of_disk_report] if args.key?(:out_of_disk_report)
           @primary_dns_name = args[:primary_dns_name] if args.key?(:primary_dns_name)
@@ -2092,6 +2255,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :applies_to
       
+        # Scope of flag.
+        # Corresponds to the JSON property `flagScope`
+        # @return [String]
+        attr_accessor :flag_scope
+      
         # Whether or not the flag is considered in beta.
         # Corresponds to the JSON property `inBeta`
         # @return [Boolean]
@@ -2119,6 +2287,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Recommended flag value in integer format for UI display.
+        # Corresponds to the JSON property `recommendedIntValue`
+        # @return [Fixnum]
+        attr_accessor :recommended_int_value
+      
+        # Recommended flag value in string format for UI display.
+        # Corresponds to the JSON property `recommendedStringValue`
+        # @return [String]
+        attr_accessor :recommended_string_value
+      
         # Indicates whether changing this flag will trigger a database restart. Only
         # applicable to Second Generation instances.
         # Corresponds to the JSON property `requiresRestart`
@@ -2142,11 +2320,14 @@ module Google
           @allowed_int_values = args[:allowed_int_values] if args.key?(:allowed_int_values)
           @allowed_string_values = args[:allowed_string_values] if args.key?(:allowed_string_values)
           @applies_to = args[:applies_to] if args.key?(:applies_to)
+          @flag_scope = args[:flag_scope] if args.key?(:flag_scope)
           @in_beta = args[:in_beta] if args.key?(:in_beta)
           @kind = args[:kind] if args.key?(:kind)
           @max_value = args[:max_value] if args.key?(:max_value)
           @min_value = args[:min_value] if args.key?(:min_value)
           @name = args[:name] if args.key?(:name)
+          @recommended_int_value = args[:recommended_int_value] if args.key?(:recommended_int_value)
+          @recommended_string_value = args[:recommended_string_value] if args.key?(:recommended_string_value)
           @requires_restart = args[:requires_restart] if args.key?(:requires_restart)
           @type = args[:type] if args.key?(:type)
         end
@@ -3937,6 +4118,57 @@ module Google
         end
       end
       
+      # Details of a single node of a read pool.
+      class PoolNodeConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The DNS name of the node.
+        # Corresponds to the JSON property `dnsName`
+        # @return [String]
+        attr_accessor :dns_name
+      
+        # Output only. The list of DNS names used by this node.
+        # Corresponds to the JSON property `dnsNames`
+        # @return [Array<Google::Apis::SqladminV1beta4::DnsNameMapping>]
+        attr_accessor :dns_names
+      
+        # Output only. The serving zone of the node.
+        # Corresponds to the JSON property `gceZone`
+        # @return [String]
+        attr_accessor :gce_zone
+      
+        # Output only. Mappings containing IP addresses that can be used to connect to
+        # the node.
+        # Corresponds to the JSON property `ipAddresses`
+        # @return [Array<Google::Apis::SqladminV1beta4::IpMapping>]
+        attr_accessor :ip_addresses
+      
+        # Output only. The name of the node, to be used for retrieving metrics and logs
+        # for the node.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The current state of the node.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_name = args[:dns_name] if args.key?(:dns_name)
+          @dns_names = args[:dns_names] if args.key?(:dns_names)
+          @gce_zone = args[:gce_zone] if args.key?(:gce_zone)
+          @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Settings for an automatically-setup Private Service Connect consumer endpoint
       # that is used to connect to a Cloud SQL instance.
       class PscAutoConnectionConfig
@@ -4298,6 +4530,11 @@ module Google
         # @return [String]
         attr_accessor :collation
       
+        # The managed connection pooling configuration.
+        # Corresponds to the JSON property `connectionPoolConfig`
+        # @return [Google::Apis::SqladminV1beta4::ConnectionPoolConfig]
+        attr_accessor :connection_pool_config
+      
         # Specifies if connections must use Cloud SQL connectors. Option values include
         # the following: `NOT_REQUIRED` (Cloud SQL instances can be connected without
         # Cloud SQL Connectors) and `REQUIRED` (Only allow connections that use Cloud
@@ -4321,6 +4558,18 @@ module Google
         # Corresponds to the JSON property `dataCacheConfig`
         # @return [Google::Apis::SqladminV1beta4::DataCacheConfig]
         attr_accessor :data_cache_config
+      
+        # Optional. Provisioned number of I/O operations per second for the data disk.
+        # This field is only used for hyperdisk-balanced disk types.
+        # Corresponds to the JSON property `dataDiskProvisionedIops`
+        # @return [Fixnum]
+        attr_accessor :data_disk_provisioned_iops
+      
+        # Optional. Provisioned throughput measured in MiB per second for the data disk.
+        # This field is only used for hyperdisk-balanced disk types.
+        # Corresponds to the JSON property `dataDiskProvisionedThroughput`
+        # @return [Fixnum]
+        attr_accessor :data_disk_provisioned_throughput
       
         # The size of data disk, in GB. The data disk size minimum is 10GB.
         # Corresponds to the JSON property `dataDiskSizeGb`
@@ -4496,9 +4745,12 @@ module Google
           @availability_type = args[:availability_type] if args.key?(:availability_type)
           @backup_configuration = args[:backup_configuration] if args.key?(:backup_configuration)
           @collation = args[:collation] if args.key?(:collation)
+          @connection_pool_config = args[:connection_pool_config] if args.key?(:connection_pool_config)
           @connector_enforcement = args[:connector_enforcement] if args.key?(:connector_enforcement)
           @crash_safe_replication_enabled = args[:crash_safe_replication_enabled] if args.key?(:crash_safe_replication_enabled)
           @data_cache_config = args[:data_cache_config] if args.key?(:data_cache_config)
+          @data_disk_provisioned_iops = args[:data_disk_provisioned_iops] if args.key?(:data_disk_provisioned_iops)
+          @data_disk_provisioned_throughput = args[:data_disk_provisioned_throughput] if args.key?(:data_disk_provisioned_throughput)
           @data_disk_size_gb = args[:data_disk_size_gb] if args.key?(:data_disk_size_gb)
           @data_disk_type = args[:data_disk_type] if args.key?(:data_disk_type)
           @database_flags = args[:database_flags] if args.key?(:database_flags)
