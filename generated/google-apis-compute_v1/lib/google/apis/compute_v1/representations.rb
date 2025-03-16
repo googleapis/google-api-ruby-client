@@ -4642,6 +4642,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceStatusPhysicalHostTopology
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourceStatusScheduling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -15403,10 +15409,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :physical_host, as: 'physicalHost'
+          property :physical_host_topology, as: 'physicalHostTopology', class: Google::Apis::ComputeV1::ResourceStatusPhysicalHostTopology, decorator: Google::Apis::ComputeV1::ResourceStatusPhysicalHostTopology::Representation
+      
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeV1::ResourceStatusScheduling, decorator: Google::Apis::ComputeV1::ResourceStatusScheduling::Representation
       
           property :upcoming_maintenance, as: 'upcomingMaintenance', class: Google::Apis::ComputeV1::UpcomingMaintenance, decorator: Google::Apis::ComputeV1::UpcomingMaintenance::Representation
       
+        end
+      end
+      
+      class ResourceStatusPhysicalHostTopology
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :block, as: 'block'
+          property :cluster, as: 'cluster'
+          property :host, as: 'host'
+          property :subblock, as: 'subblock'
         end
       end
       
@@ -17521,8 +17539,10 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :internal_ipv6_prefix, as: 'internalIpv6Prefix'
           property :ip_cidr_range, as: 'ipCidrRange'
+          property :ip_collection, as: 'ipCollection'
           property :ipv6_access_type, as: 'ipv6AccessType'
           property :ipv6_cidr_range, as: 'ipv6CidrRange'
+          property :ipv6_gce_endpoint, as: 'ipv6GceEndpoint'
           property :kind, as: 'kind'
           property :log_config, as: 'logConfig', class: Google::Apis::ComputeV1::SubnetworkLogConfig, decorator: Google::Apis::ComputeV1::SubnetworkLogConfig::Representation
       
