@@ -3943,7 +3943,8 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # Required. The URL for the page the user wants to promote.
+        # Optional. The URL for the page the user wants to promote. Must be set for site
+        # search. For other verticals, this is optional.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -5452,6 +5453,56 @@ module Google
         end
       end
       
+      # The connector level alert config.
+      class GoogleCloudDiscoveryengineV1alphaAlertPolicyConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The enrollment states of each alert.
+        # Corresponds to the JSON property `alertEnrollments`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAlertPolicyConfigAlertEnrollment>]
+        attr_accessor :alert_enrollments
+      
+        # Immutable. The fully qualified resource name of the AlertPolicy.
+        # Corresponds to the JSON property `alertPolicyName`
+        # @return [String]
+        attr_accessor :alert_policy_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_enrollments = args[:alert_enrollments] if args.key?(:alert_enrollments)
+          @alert_policy_name = args[:alert_policy_name] if args.key?(:alert_policy_name)
+        end
+      end
+      
+      # The alert enrollment status.
+      class GoogleCloudDiscoveryengineV1alphaAlertPolicyConfigAlertEnrollment
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The id of an alert.
+        # Corresponds to the JSON property `alertId`
+        # @return [String]
+        attr_accessor :alert_id
+      
+        # Required. The enrollment status of a customer.
+        # Corresponds to the JSON property `enrollState`
+        # @return [String]
+        attr_accessor :enroll_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_id = args[:alert_id] if args.key?(:alert_id)
+          @enroll_state = args[:enroll_state] if args.key?(:enroll_state)
+        end
+      end
+      
       # AlloyDB source import data from.
       class GoogleCloudDiscoveryengineV1alphaAlloyDbSource
         include Google::Apis::Core::Hashable
@@ -6072,6 +6123,12 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderstandingSpec
         include Google::Apis::Core::Hashable
       
+        # Optional. Whether to disable spell correction. The default value is `false`.
+        # Corresponds to the JSON property `disableSpellCorrection`
+        # @return [Boolean]
+        attr_accessor :disable_spell_correction
+        alias_method :disable_spell_correction?, :disable_spell_correction
+      
         # Query classification specification.
         # Corresponds to the JSON property `queryClassificationSpec`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpec]
@@ -6088,6 +6145,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disable_spell_correction = args[:disable_spell_correction] if args.key?(:disable_spell_correction)
           @query_classification_spec = args[:query_classification_spec] if args.key?(:query_classification_spec)
           @query_rephraser_spec = args[:query_rephraser_spec] if args.key?(:query_rephraser_spec)
         end
@@ -9478,6 +9536,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaActionConfig]
         attr_accessor :action_config
       
+        # Optional. The connector level alert config.
+        # Corresponds to the JSON property `alertPolicyConfigs`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAlertPolicyConfig>]
+        attr_accessor :alert_policy_configs
+      
         # Indicates whether the connector is disabled for auto run. It can be used to
         # pause periodical and real time sync.
         # Corresponds to the JSON property `autoRunDisabled`
@@ -9667,6 +9730,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @action_config = args[:action_config] if args.key?(:action_config)
+          @alert_policy_configs = args[:alert_policy_configs] if args.key?(:alert_policy_configs)
           @auto_run_disabled = args[:auto_run_disabled] if args.key?(:auto_run_disabled)
           @bap_config = args[:bap_config] if args.key?(:bap_config)
           @blocking_reasons = args[:blocking_reasons] if args.key?(:blocking_reasons)
@@ -16102,7 +16166,8 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # Required. The URL for the page the user wants to promote.
+        # Optional. The URL for the page the user wants to promote. Must be set for site
+        # search. For other verticals, this is optional.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -20284,6 +20349,13 @@ module Google
         attr_accessor :enable_web_app
         alias_method :enable_web_app?, :enable_web_app
       
+        # Optional. Language code for user interface. Use language tags defined by [
+        # BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). If unset, the default
+        # language code is "en-US".
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
         # Optional. The workforce identity pool provider used to access the widget.
         # Corresponds to the JSON property `workforceIdentityPoolProvider`
         # @return [String]
@@ -20298,6 +20370,7 @@ module Google
           @allow_public_access = args[:allow_public_access] if args.key?(:allow_public_access)
           @allowlisted_domains = args[:allowlisted_domains] if args.key?(:allowlisted_domains)
           @enable_web_app = args[:enable_web_app] if args.key?(:enable_web_app)
+          @language_code = args[:language_code] if args.key?(:language_code)
           @workforce_identity_pool_provider = args[:workforce_identity_pool_provider] if args.key?(:workforce_identity_pool_provider)
         end
       end
@@ -23707,7 +23780,8 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # Required. The URL for the page the user wants to promote.
+        # Optional. The URL for the page the user wants to promote. Must be set for site
+        # search. For other verticals, this is optional.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -23767,6 +23841,11 @@ module Google
         # Corresponds to the JSON property `dataStoreSpecs`
         # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec>]
         attr_accessor :data_store_specs
+      
+        # Specifies features for display, like match highlighting.
+        # Corresponds to the JSON property `displaySpec`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaSearchRequestDisplaySpec]
+        attr_accessor :display_spec
       
         # The specification that uses customized query embedding vector to do semantic
         # document retrieval.
@@ -24039,6 +24118,7 @@ module Google
           @canonical_filter = args[:canonical_filter] if args.key?(:canonical_filter)
           @content_search_spec = args[:content_search_spec] if args.key?(:content_search_spec)
           @data_store_specs = args[:data_store_specs] if args.key?(:data_store_specs)
+          @display_spec = args[:display_spec] if args.key?(:display_spec)
           @embedding_spec = args[:embedding_spec] if args.key?(:embedding_spec)
           @facet_specs = args[:facet_specs] if args.key?(:facet_specs)
           @filter = args[:filter] if args.key?(:filter)
@@ -24592,6 +24672,25 @@ module Google
           @boost_spec = args[:boost_spec] if args.key?(:boost_spec)
           @data_store = args[:data_store] if args.key?(:data_store)
           @filter = args[:filter] if args.key?(:filter)
+        end
+      end
+      
+      # Specifies features for display, like match highlighting.
+      class GoogleCloudDiscoveryengineV1betaSearchRequestDisplaySpec
+        include Google::Apis::Core::Hashable
+      
+        # The condition under which match highlighting should occur.
+        # Corresponds to the JSON property `matchHighlightingCondition`
+        # @return [String]
+        attr_accessor :match_highlighting_condition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @match_highlighting_condition = args[:match_highlighting_condition] if args.key?(:match_highlighting_condition)
         end
       end
       
