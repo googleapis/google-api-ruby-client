@@ -232,6 +232,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PublishSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PublishState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Question
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -287,6 +299,18 @@ module Google
       end
       
       class ScaleQuestion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetPublishSettingsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetPublishSettingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -554,6 +578,8 @@ module Google
           collection :items, as: 'items', class: Google::Apis::FormsV1::Item, decorator: Google::Apis::FormsV1::Item::Representation
       
           property :linked_sheet_id, as: 'linkedSheetId'
+          property :publish_settings, as: 'publishSettings', class: Google::Apis::FormsV1::PublishSettings, decorator: Google::Apis::FormsV1::PublishSettings::Representation
+      
           property :responder_uri, as: 'responderUri'
           property :revision_id, as: 'revisionId'
           property :settings, as: 'settings', class: Google::Apis::FormsV1::FormSettings, decorator: Google::Apis::FormsV1::FormSettings::Representation
@@ -727,6 +753,22 @@ module Google
         end
       end
       
+      class PublishSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :publish_state, as: 'publishState', class: Google::Apis::FormsV1::PublishState, decorator: Google::Apis::FormsV1::PublishState::Representation
+      
+        end
+      end
+      
+      class PublishState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_accepting_responses, as: 'isAcceptingResponses'
+          property :is_published, as: 'isPublished'
+        end
+      end
+      
       class Question
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -836,6 +878,24 @@ module Google
           property :high_label, as: 'highLabel'
           property :low, as: 'low'
           property :low_label, as: 'lowLabel'
+        end
+      end
+      
+      class SetPublishSettingsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :publish_settings, as: 'publishSettings', class: Google::Apis::FormsV1::PublishSettings, decorator: Google::Apis::FormsV1::PublishSettings::Representation
+      
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class SetPublishSettingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :form_id, as: 'formId'
+          property :publish_settings, as: 'publishSettings', class: Google::Apis::FormsV1::PublishSettings, decorator: Google::Apis::FormsV1::PublishSettings::Representation
+      
         end
       end
       
