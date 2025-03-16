@@ -856,6 +856,7 @@ module Google
           property :preemptible, as: 'preemptible'
           property :reserved, as: 'reserved'
           property :spot, as: 'spot'
+          property :termination_timestamp, as: 'terminationTimestamp'
         end
       end
       

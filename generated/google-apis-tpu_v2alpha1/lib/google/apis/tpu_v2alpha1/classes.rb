@@ -1551,6 +1551,11 @@ module Google
         attr_accessor :spot
         alias_method :spot?, :spot
       
+        # Output only. The time at which the node will be terminated.
+        # Corresponds to the JSON property `terminationTimestamp`
+        # @return [String]
+        attr_accessor :termination_timestamp
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1560,6 +1565,7 @@ module Google
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @reserved = args[:reserved] if args.key?(:reserved)
           @spot = args[:spot] if args.key?(:spot)
+          @termination_timestamp = args[:termination_timestamp] if args.key?(:termination_timestamp)
         end
       end
       
