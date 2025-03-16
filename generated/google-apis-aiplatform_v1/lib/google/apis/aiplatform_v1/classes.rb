@@ -6443,9 +6443,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :boot_disk_size_gb
       
-        # Type of the boot disk (default is "pd-ssd"). Valid values: "pd-ssd" (
-        # Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk
-        # Drive).
+        # Type of the boot disk. For non-A3U machines, the default value is "pd-ssd",
+        # for A3U machines, the default value is "hyperdisk-balanced". Valid values: "pd-
+        # ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard
+        # Disk Drive) or "hyperdisk-balanced".
         # Corresponds to the JSON property `bootDiskType`
         # @return [String]
         attr_accessor :boot_disk_type
@@ -11870,6 +11871,11 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModalityTokenCount>]
         attr_accessor :prompt_tokens_details
       
+        # Output only. Number of tokens present in thoughts output.
+        # Corresponds to the JSON property `thoughtsTokenCount`
+        # @return [Fixnum]
+        attr_accessor :thoughts_token_count
+      
         # Output only. Number of tokens present in tool-use prompt(s).
         # Corresponds to the JSON property `toolUsePromptTokenCount`
         # @return [Fixnum]
@@ -11899,6 +11905,7 @@ module Google
           @candidates_tokens_details = args[:candidates_tokens_details] if args.key?(:candidates_tokens_details)
           @prompt_token_count = args[:prompt_token_count] if args.key?(:prompt_token_count)
           @prompt_tokens_details = args[:prompt_tokens_details] if args.key?(:prompt_tokens_details)
+          @thoughts_token_count = args[:thoughts_token_count] if args.key?(:thoughts_token_count)
           @tool_use_prompt_token_count = args[:tool_use_prompt_token_count] if args.key?(:tool_use_prompt_token_count)
           @tool_use_prompt_tokens_details = args[:tool_use_prompt_tokens_details] if args.key?(:tool_use_prompt_tokens_details)
           @total_token_count = args[:total_token_count] if args.key?(:total_token_count)
@@ -13085,6 +13092,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GcsDestination]
         attr_accessor :partial_failure_gcs_sink
       
+        # Specifies the parsing config for RagFiles.
+        # Corresponds to the JSON property `ragFileParsingConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagFileParsingConfig]
+        attr_accessor :rag_file_parsing_config
+      
         # Specifies the transformation config for RagFiles.
         # Corresponds to the JSON property `ragFileTransformationConfig`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagFileTransformationConfig]
@@ -13112,6 +13124,7 @@ module Google
           @max_embedding_requests_per_min = args[:max_embedding_requests_per_min] if args.key?(:max_embedding_requests_per_min)
           @partial_failure_bigquery_sink = args[:partial_failure_bigquery_sink] if args.key?(:partial_failure_bigquery_sink)
           @partial_failure_gcs_sink = args[:partial_failure_gcs_sink] if args.key?(:partial_failure_gcs_sink)
+          @rag_file_parsing_config = args[:rag_file_parsing_config] if args.key?(:rag_file_parsing_config)
           @rag_file_transformation_config = args[:rag_file_transformation_config] if args.key?(:rag_file_transformation_config)
           @share_point_sources = args[:share_point_sources] if args.key?(:share_point_sources)
           @slack_source = args[:slack_source] if args.key?(:slack_source)
@@ -23543,6 +23556,58 @@ module Google
         def update!(**args)
           @chunk_overlap = args[:chunk_overlap] if args.key?(:chunk_overlap)
           @chunk_size = args[:chunk_size] if args.key?(:chunk_size)
+        end
+      end
+      
+      # Specifies the parsing config for RagFiles.
+      class GoogleCloudAiplatformV1RagFileParsingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Document AI Layout Parser config.
+        # Corresponds to the JSON property `layoutParser`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagFileParsingConfigLayoutParser]
+        attr_accessor :layout_parser
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @layout_parser = args[:layout_parser] if args.key?(:layout_parser)
+        end
+      end
+      
+      # Document AI Layout Parser config.
+      class GoogleCloudAiplatformV1RagFileParsingConfigLayoutParser
+        include Google::Apis::Core::Hashable
+      
+        # The maximum number of requests the job is allowed to make to the Document AI
+        # processor per minute. Consult https://cloud.google.com/document-ai/quotas and
+        # the Quota page for your project to set an appropriate value here. If
+        # unspecified, a default value of 120 QPM would be used.
+        # Corresponds to the JSON property `maxParsingRequestsPerMin`
+        # @return [Fixnum]
+        attr_accessor :max_parsing_requests_per_min
+      
+        # The full resource name of a Document AI processor or processor version. The
+        # processor must have type `LAYOUT_PARSER_PROCESSOR`. If specified, the `
+        # additional_config.parse_as_scanned_pdf` field must be false. Format: * `
+        # projects/`project_id`/locations/`location`/processors/`processor_id`` * `
+        # projects/`project_id`/locations/`location`/processors/`processor_id`/
+        # processorVersions/`processor_version_id``
+        # Corresponds to the JSON property `processorName`
+        # @return [String]
+        attr_accessor :processor_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_parsing_requests_per_min = args[:max_parsing_requests_per_min] if args.key?(:max_parsing_requests_per_min)
+          @processor_name = args[:processor_name] if args.key?(:processor_name)
         end
       end
       
