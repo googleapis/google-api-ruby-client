@@ -55,9 +55,9 @@ module Google
         # Send a message to specified target (a registration token, topic or condition).
         # @param [String] parent
         #   Required. It contains the Firebase project id (i.e. the unique identifier for
-        #   your Firebase project), in the format of `projects/`project_id``. For legacy
-        #   support, the numeric project number with no padding is also supported in the
-        #   format of `projects/`project_number``.
+        #   your Firebase project), in the format of `projects/`project_id``. The numeric
+        #   project number with no padding is also supported in the format of `projects/`
+        #   project_number``.
         # @param [Google::Apis::FcmV1::SendMessageRequest] send_message_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
