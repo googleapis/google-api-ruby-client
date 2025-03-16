@@ -11359,6 +11359,7 @@ module Google
           property :prompt_token_count, as: 'promptTokenCount'
           collection :prompt_tokens_details, as: 'promptTokensDetails', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModalityTokenCount, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModalityTokenCount::Representation
       
+          property :thoughts_token_count, as: 'thoughtsTokenCount'
           property :tool_use_prompt_token_count, as: 'toolUsePromptTokenCount'
           collection :tool_use_prompt_tokens_details, as: 'toolUsePromptTokensDetails', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModalityTokenCount, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModalityTokenCount::Representation
       
