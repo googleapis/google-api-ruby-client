@@ -53,7 +53,7 @@ module Google
         
         # Gets a GTM Account.
         # @param [String] path
-        #   GTM Account's API relative path. Example: accounts/`account_id`
+        #   GTM Account's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -116,7 +116,7 @@ module Google
         
         # Updates a GTM Account.
         # @param [String] path
-        #   GTM Account's API relative path. Example: accounts/`account_id`
+        #   GTM Account's API relative path.
         # @param [Google::Apis::TagmanagerV2::Account] account_object
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the account in
@@ -153,8 +153,7 @@ module Google
         
         # Combines Containers.
         # @param [String] path
-        #   GTM Container's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`
+        #   GTM Container's API relative path.
         # @param [Boolean] allow_user_permission_feature_update
         #   Must be set to true to allow features.user_permissions to change from false to
         #   true. If this operation causes an update but this bit is false, the operation
@@ -195,7 +194,7 @@ module Google
         
         # Creates a Container.
         # @param [String] parent
-        #   GTM Account's API relative path. Example: accounts/`account_id`.
+        #   GTM Account's API relative path.
         # @param [Google::Apis::TagmanagerV2::Container] container_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -228,8 +227,7 @@ module Google
         
         # Deletes a Container.
         # @param [String] path
-        #   GTM Container's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`
+        #   GTM Container's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -257,8 +255,7 @@ module Google
         
         # Gets a Container.
         # @param [String] path
-        #   GTM Container's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`
+        #   GTM Container's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -288,7 +285,7 @@ module Google
         
         # Lists all Containers that belongs to a GTM Account.
         # @param [String] parent
-        #   GTM Account's API relative path. Example: accounts/`account_id`.
+        #   GTM Account's API relative path.
         # @param [String] page_token
         #   Continuation token for fetching the next page of results.
         # @param [String] fields
@@ -321,12 +318,11 @@ module Google
         
         # Looks up a Container by destination ID or tag ID.
         # @param [String] destination_id
-        #   Destination ID linked to a GTM Container, e.g. AW-123456789. Example: accounts/
-        #   containers:lookup?destination_id=`destination_id`. Only one of destination_id
-        #   or tag_id should be set.
+        #   Destination ID linked to a GTM Container, e.g. AW-123456789. Only one of
+        #   destination_id or tag_id should be set.
         # @param [String] tag_id
-        #   Tag ID for a GTM Container, e.g. GTM-123456789. Example: accounts/containers:
-        #   lookup?tag_id=`tag_id`. Only one of destination_id or tag_id should be set.
+        #   Tag ID for a GTM Container, e.g. GTM-123456789. Only one of destination_id or
+        #   tag_id should be set.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -357,8 +353,7 @@ module Google
         
         # Move Tag ID out of a Container.
         # @param [String] path
-        #   GTM Container's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`
+        #   GTM Container's API relative path.
         # @param [Boolean] allow_user_permission_feature_update
         #   Must be set to true to allow features.user_permissions to change from false to
         #   true. If this operation causes an update but this bit is false, the operation
@@ -410,8 +405,7 @@ module Google
         
         # Gets the tagging snippet for a Container.
         # @param [String] path
-        #   Container snippet's API relative path. Example: accounts/`account_id`/
-        #   containers/`container_id`:snippet
+        #   Container snippet's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -441,8 +435,7 @@ module Google
         
         # Updates a Container.
         # @param [String] path
-        #   GTM Container's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`
+        #   GTM Container's API relative path.
         # @param [Google::Apis::TagmanagerV2::Container] container_object
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the container in
@@ -479,8 +472,7 @@ module Google
         
         # Gets a Destination.
         # @param [String] path
-        #   Google Tag Destination's API relative path. Example: accounts/`account_id`/
-        #   containers/`container_id`/destinations/`destination_link_id`
+        #   Google Tag Destination's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -511,8 +503,7 @@ module Google
         # Adds a Destination to this Container and removes it from the Container to
         # which it is currently linked.
         # @param [String] parent
-        #   GTM parent Container's API relative path. Example: accounts/`account_id`/
-        #   containers/`container_id`
+        #   GTM parent Container's API relative path.
         # @param [Boolean] allow_user_permission_feature_update
         #   Must be set to true to allow features.user_permissions to change from false to
         #   true. If this operation causes an update but this bit is false, the operation
@@ -550,8 +541,7 @@ module Google
         
         # Lists all Destinations linked to a GTM Container.
         # @param [String] parent
-        #   GTM parent Container's API relative path. Example: accounts/`account_id`/
-        #   containers/`container_id`
+        #   GTM parent Container's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -581,8 +571,7 @@ module Google
         
         # Creates a GTM Environment.
         # @param [String] parent
-        #   GTM Container's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`
+        #   GTM Container's API relative path.
         # @param [Google::Apis::TagmanagerV2::Environment] environment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -615,8 +604,7 @@ module Google
         
         # Deletes a GTM Environment.
         # @param [String] path
-        #   GTM Environment's API relative path. Example: accounts/`account_id`/containers/
-        #   `container_id`/environments/`environment_id`
+        #   GTM Environment's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -644,8 +632,7 @@ module Google
         
         # Gets a GTM Environment.
         # @param [String] path
-        #   GTM Environment's API relative path. Example: accounts/`account_id`/containers/
-        #   `container_id`/environments/`environment_id`
+        #   GTM Environment's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -675,8 +662,7 @@ module Google
         
         # Lists all GTM Environments of a GTM Container.
         # @param [String] parent
-        #   GTM Container's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`
+        #   GTM Container's API relative path.
         # @param [String] page_token
         #   Continuation token for fetching the next page of results.
         # @param [String] fields
@@ -709,8 +695,7 @@ module Google
         
         # Re-generates the authorization code for a GTM Environment.
         # @param [String] path
-        #   GTM Environment's API relative path. Example: accounts/`account_id`/containers/
-        #   `container_id`/environments/`environment_id`
+        #   GTM Environment's API relative path.
         # @param [Google::Apis::TagmanagerV2::Environment] environment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -743,8 +728,7 @@ module Google
         
         # Updates a GTM Environment.
         # @param [String] path
-        #   GTM Environment's API relative path. Example: accounts/`account_id`/containers/
-        #   `container_id`/environments/`environment_id`
+        #   GTM Environment's API relative path.
         # @param [Google::Apis::TagmanagerV2::Environment] environment_object
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the environment
@@ -781,8 +765,7 @@ module Google
         
         # Gets the latest container version header
         # @param [String] parent
-        #   GTM Container's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`
+        #   GTM Container's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -812,8 +795,7 @@ module Google
         
         # Lists all Container Versions of a GTM Container.
         # @param [String] parent
-        #   GTM Container's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`
+        #   GTM Container's API relative path.
         # @param [Boolean] include_deleted
         #   Also retrieve deleted (archived) versions when true.
         # @param [String] page_token
@@ -849,8 +831,7 @@ module Google
         
         # Deletes a Container Version.
         # @param [String] path
-        #   GTM ContainerVersion's API relative path. Example: accounts/`account_id`/
-        #   containers/`container_id`/versions/`version_id`
+        #   GTM ContainerVersion's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -878,8 +859,7 @@ module Google
         
         # Gets a Container Version.
         # @param [String] path
-        #   GTM ContainerVersion's API relative path. Example: accounts/`account_id`/
-        #   containers/`container_id`/versions/`version_id`
+        #   GTM ContainerVersion's API relative path.
         # @param [String] container_version_id
         #   The GTM ContainerVersion ID. Specify published to retrieve the currently
         #   published version.
@@ -913,8 +893,7 @@ module Google
         
         # Gets the live (i.e. published) container version
         # @param [String] parent
-        #   GTM Container's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`
+        #   GTM Container's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -944,8 +923,7 @@ module Google
         
         # Publishes a Container Version.
         # @param [String] path
-        #   GTM ContainerVersion's API relative path. Example: accounts/`account_id`/
-        #   containers/`container_id`/versions/`version_id`
+        #   GTM ContainerVersion's API relative path.
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the container
         #   version in storage.
@@ -980,8 +958,7 @@ module Google
         # Sets the latest version used for synchronization of workspaces when detecting
         # conflicts and errors.
         # @param [String] path
-        #   GTM ContainerVersion's API relative path. Example: accounts/`account_id`/
-        #   containers/`container_id`/versions/`version_id`
+        #   GTM ContainerVersion's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1011,8 +988,7 @@ module Google
         
         # Undeletes a Container Version.
         # @param [String] path
-        #   GTM ContainerVersion's API relative path. Example: accounts/`account_id`/
-        #   containers/`container_id`/versions/`version_id`
+        #   GTM ContainerVersion's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1042,8 +1018,7 @@ module Google
         
         # Updates a Container Version.
         # @param [String] path
-        #   GTM ContainerVersion's API relative path. Example: accounts/`account_id`/
-        #   containers/`container_id`/versions/`version_id`
+        #   GTM ContainerVersion's API relative path.
         # @param [Google::Apis::TagmanagerV2::ContainerVersion] container_version_object
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the container
@@ -1080,8 +1055,7 @@ module Google
         
         # Creates a Workspace.
         # @param [String] parent
-        #   GTM parent Container's API relative path. Example: accounts/`account_id`/
-        #   containers/`container_id`
+        #   GTM parent Container's API relative path.
         # @param [Google::Apis::TagmanagerV2::Workspace] workspace_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1116,8 +1090,7 @@ module Google
         # deletes the workspace, and sets the base container version to the newly
         # created version.
         # @param [String] path
-        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   GTM Workspace's API relative path.
         # @param [Google::Apis::TagmanagerV2::CreateContainerVersionRequestVersionOptions] create_container_version_request_version_options_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1150,8 +1123,7 @@ module Google
         
         # Deletes a Workspace.
         # @param [String] path
-        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   GTM Workspace's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1179,8 +1151,7 @@ module Google
         
         # Gets a Workspace.
         # @param [String] path
-        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   GTM Workspace's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1210,8 +1181,7 @@ module Google
         
         # Finds conflicting and modified entities in the workspace.
         # @param [String] path
-        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   GTM Workspace's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1241,8 +1211,7 @@ module Google
         
         # Lists all Workspaces that belong to a GTM Container.
         # @param [String] parent
-        #   GTM parent Container's API relative path. Example: accounts/`account_id`/
-        #   containers/`container_id`
+        #   GTM parent Container's API relative path.
         # @param [String] page_token
         #   Continuation token for fetching the next page of results.
         # @param [String] fields
@@ -1276,8 +1245,7 @@ module Google
         # Quick previews a workspace by creating a fake container version from all
         # entities in the provided workspace.
         # @param [String] path
-        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   GTM Workspace's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1308,8 +1276,7 @@ module Google
         # Resolves a merge conflict for a workspace entity by updating it to the
         # resolved entity passed in the request.
         # @param [String] path
-        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   GTM Workspace's API relative path.
         # @param [Google::Apis::TagmanagerV2::Entity] entity_object
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the
@@ -1345,8 +1312,7 @@ module Google
         # Syncs a workspace to the latest container version by updating all unmodified
         # workspace entities and displaying conflicts for modified entities.
         # @param [String] path
-        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   GTM Workspace's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1376,8 +1342,7 @@ module Google
         
         # Updates a Workspace.
         # @param [String] path
-        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   GTM Workspace's API relative path.
         # @param [Google::Apis::TagmanagerV2::Workspace] workspace_object
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the workspace in
@@ -1414,8 +1379,7 @@ module Google
         
         # Creates one or more GTM Built-In Variables.
         # @param [String] parent
-        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   GTM Workspace's API relative path.
         # @param [Array<String>, String] type
         #   The types of built-in variables to enable.
         # @param [String] fields
@@ -1448,8 +1412,7 @@ module Google
         
         # Deletes one or more GTM Built-In Variables.
         # @param [String] path
-        #   GTM BuiltInVariable's API relative path. Example: accounts/`account_id`/
-        #   containers/`container_id`/workspaces/`workspace_id`/built_in_variables
+        #   GTM BuiltInVariable's API relative path.
         # @param [Array<String>, String] type
         #   The types of built-in variables to delete.
         # @param [String] fields
@@ -1480,8 +1443,7 @@ module Google
         
         # Lists all the enabled Built-In Variables of a GTM Container.
         # @param [String] parent
-        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   GTM Workspace's API relative path.
         # @param [String] page_token
         #   Continuation token for fetching the next page of results.
         # @param [String] fields
@@ -1514,8 +1476,7 @@ module Google
         
         # Reverts changes to a GTM Built-In Variables in a GTM Workspace.
         # @param [String] path
-        #   GTM BuiltInVariable's API relative path. Example: accounts/`account_id`/
-        #   containers/`container_id`/workspaces/`workspace_id`/built_in_variables
+        #   GTM BuiltInVariable's API relative path.
         # @param [String] type
         #   The type of built-in variable to revert.
         # @param [String] fields
@@ -1548,8 +1509,7 @@ module Google
         
         # Creates a GTM Client.
         # @param [String] parent
-        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   GTM Workspace's API relative path.
         # @param [Google::Apis::TagmanagerV2::Client] client_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1582,8 +1542,7 @@ module Google
         
         # Deletes a GTM Client.
         # @param [String] path
-        #   GTM Client's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`/clients/`client_id`
+        #   GTM Client's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1611,8 +1570,7 @@ module Google
         
         # Gets a GTM Client.
         # @param [String] path
-        #   GTM Client's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`/clients/`client_id`
+        #   GTM Client's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1642,8 +1600,7 @@ module Google
         
         # Lists all GTM Clients of a GTM container workspace.
         # @param [String] parent
-        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   GTM Workspace's API relative path.
         # @param [String] page_token
         #   Continuation token for fetching the next page of results.
         # @param [String] fields
@@ -1676,8 +1633,7 @@ module Google
         
         # Reverts changes to a GTM Client in a GTM Workspace.
         # @param [String] path
-        #   GTM Client's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`/clients/`client_id`
+        #   GTM Client's API relative path.
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the client in
         #   storage.
@@ -1711,8 +1667,7 @@ module Google
         
         # Updates a GTM Client.
         # @param [String] path
-        #   GTM Client's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`/clients/`client_id`
+        #   GTM Client's API relative path.
         # @param [Google::Apis::TagmanagerV2::Client] client_object
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the client in
@@ -1749,8 +1704,7 @@ module Google
         
         # Creates a GTM Folder.
         # @param [String] parent
-        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   GTM Workspace's API relative path.
         # @param [Google::Apis::TagmanagerV2::Folder] folder_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1783,8 +1737,7 @@ module Google
         
         # Deletes a GTM Folder.
         # @param [String] path
-        #   GTM Folder's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`/folders/`folder_id`
+        #   GTM Folder's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1812,8 +1765,7 @@ module Google
         
         # List all entities in a GTM Folder.
         # @param [String] path
-        #   GTM Folder's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`/folders/`folder_id`
+        #   GTM Folder's API relative path.
         # @param [String] page_token
         #   Continuation token for fetching the next page of results.
         # @param [String] fields
@@ -1846,8 +1798,7 @@ module Google
         
         # Gets a GTM Folder.
         # @param [String] path
-        #   GTM Folder's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`/folders/`folder_id`
+        #   GTM Folder's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1877,8 +1828,7 @@ module Google
         
         # Lists all GTM Folders of a Container.
         # @param [String] parent
-        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   GTM Workspace's API relative path.
         # @param [String] page_token
         #   Continuation token for fetching the next page of results.
         # @param [String] fields
@@ -1912,8 +1862,7 @@ module Google
         # Moves entities to a GTM Folder. If `folder_id` in the request path equals 0,
         # this will instead move entities out of the folder they currently belong to.
         # @param [String] path
-        #   GTM Folder's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`/folders/`folder_id`
+        #   GTM Folder's API relative path.
         # @param [Google::Apis::TagmanagerV2::Folder] folder_object
         # @param [Array<String>, String] tag_id
         #   The tags to be moved to the folder.
@@ -1953,8 +1902,7 @@ module Google
         
         # Reverts changes to a GTM Folder in a GTM Workspace.
         # @param [String] path
-        #   GTM Folder's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`/folders/`folder_id`
+        #   GTM Folder's API relative path.
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the tag in
         #   storage.
@@ -1988,8 +1936,7 @@ module Google
         
         # Updates a GTM Folder.
         # @param [String] path
-        #   GTM Folder's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`/folders/`folder_id`
+        #   GTM Folder's API relative path.
         # @param [Google::Apis::TagmanagerV2::Folder] folder_object
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the folder in
@@ -2026,8 +1973,7 @@ module Google
         
         # Creates a Google tag config.
         # @param [String] parent
-        #   Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   Workspace's API relative path.
         # @param [Google::Apis::TagmanagerV2::GtagConfig] gtag_config_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2060,9 +2006,7 @@ module Google
         
         # Deletes a Google tag config.
         # @param [String] path
-        #   Google tag config's API relative path. Example: accounts/`account_id`/
-        #   containers/`container_id`/workspaces/`workspace_id`/gtag_config/`
-        #   gtag_config_id`
+        #   Google tag config's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2090,9 +2034,7 @@ module Google
         
         # Gets a Google tag config.
         # @param [String] path
-        #   Google tag config's API relative path. Example: accounts/`account_id`/
-        #   containers/`container_id`/workspaces/`workspace_id`/gtag_config/`
-        #   gtag_config_id`
+        #   Google tag config's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2122,8 +2064,7 @@ module Google
         
         # Lists all Google tag configs in a Container.
         # @param [String] parent
-        #   Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   Workspace's API relative path.
         # @param [String] page_token
         #   Continuation token for fetching the next page of results.
         # @param [String] fields
@@ -2156,9 +2097,7 @@ module Google
         
         # Updates a Google tag config.
         # @param [String] path
-        #   Google tag config's API relative path. Example: accounts/`account_id`/
-        #   containers/`container_id`/workspaces/`workspace_id`/gtag_config/`
-        #   gtag_config_id`
+        #   Google tag config's API relative path.
         # @param [Google::Apis::TagmanagerV2::GtagConfig] gtag_config_object
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the config in
@@ -2195,8 +2134,7 @@ module Google
         
         # Creates a GTM Tag.
         # @param [String] parent
-        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   GTM Workspace's API relative path.
         # @param [Google::Apis::TagmanagerV2::Tag] tag_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2229,8 +2167,7 @@ module Google
         
         # Deletes a GTM Tag.
         # @param [String] path
-        #   GTM Tag's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`/tags/`tag_id`
+        #   GTM Tag's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2258,8 +2195,7 @@ module Google
         
         # Gets a GTM Tag.
         # @param [String] path
-        #   GTM Tag's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`/tags/`tag_id`
+        #   GTM Tag's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2289,8 +2225,7 @@ module Google
         
         # Lists all GTM Tags of a Container.
         # @param [String] parent
-        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   GTM Workspace's API relative path.
         # @param [String] page_token
         #   Continuation token for fetching the next page of results.
         # @param [String] fields
@@ -2323,8 +2258,7 @@ module Google
         
         # Reverts changes to a GTM Tag in a GTM Workspace.
         # @param [String] path
-        #   GTM Tag's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`/tags/`tag_id`
+        #   GTM Tag's API relative path.
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of thetag in
         #   storage.
@@ -2358,8 +2292,7 @@ module Google
         
         # Updates a GTM Tag.
         # @param [String] path
-        #   GTM Tag's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`/tags/`tag_id`
+        #   GTM Tag's API relative path.
         # @param [Google::Apis::TagmanagerV2::Tag] tag_object
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the tag in
@@ -2396,8 +2329,7 @@ module Google
         
         # Creates a GTM Custom Template.
         # @param [String] parent
-        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   GTM Workspace's API relative path.
         # @param [Google::Apis::TagmanagerV2::CustomTemplate] custom_template_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2430,8 +2362,7 @@ module Google
         
         # Deletes a GTM Template.
         # @param [String] path
-        #   GTM Custom Template's API relative path. Example: accounts/`account_id`/
-        #   containers/`container_id`/workspaces/`workspace_id`/templates/`template_id`
+        #   GTM Custom Template's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2459,8 +2390,7 @@ module Google
         
         # Gets a GTM Template.
         # @param [String] path
-        #   GTM Custom Template's API relative path. Example: accounts/`account_id`/
-        #   containers/`container_id`/workspaces/`workspace_id`/templates/`template_id`
+        #   GTM Custom Template's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2488,10 +2418,53 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Imports a GTM Custom Template from Gallery.
+        # @param [String] parent
+        #   GTM Workspace's API relative path.
+        # @param [Boolean] acknowledge_permissions
+        #   Must be set to true to allow Gallery template to be imported into the
+        #   workspace. If this bit is false, the import operation will fail.
+        # @param [String] gallery_owner
+        #   Owner of the Gallery template to import
+        # @param [String] gallery_repository
+        #   Repository of the Gallery template to import
+        # @param [String] gallery_sha
+        #   SHA version of the Gallery template to import. Defaulted to the latest SHA
+        #   version if not provided.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV2::CustomTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV2::CustomTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_account_container_workspace_template_from_gallery(parent, acknowledge_permissions: nil, gallery_owner: nil, gallery_repository: nil, gallery_sha: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'tagmanager/v2/{+parent}/templates:import_from_gallery', options)
+          command.response_representation = Google::Apis::TagmanagerV2::CustomTemplate::Representation
+          command.response_class = Google::Apis::TagmanagerV2::CustomTemplate
+          command.params['parent'] = parent unless parent.nil?
+          command.query['acknowledgePermissions'] = acknowledge_permissions unless acknowledge_permissions.nil?
+          command.query['galleryOwner'] = gallery_owner unless gallery_owner.nil?
+          command.query['galleryRepository'] = gallery_repository unless gallery_repository.nil?
+          command.query['gallerySha'] = gallery_sha unless gallery_sha.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists all GTM Templates of a GTM container workspace.
         # @param [String] parent
-        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   GTM Workspace's API relative path.
         # @param [String] page_token
         #   Continuation token for fetching the next page of results.
         # @param [String] fields
@@ -2524,8 +2497,7 @@ module Google
         
         # Reverts changes to a GTM Template in a GTM Workspace.
         # @param [String] path
-        #   GTM Custom Template's API relative path. Example: accounts/`account_id`/
-        #   containers/`container_id`/workspaces/`workspace_id`/templates/`template_id`
+        #   GTM Custom Template's API relative path.
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the template in
         #   storage.
@@ -2559,8 +2531,7 @@ module Google
         
         # Updates a GTM Template.
         # @param [String] path
-        #   GTM Custom Template's API relative path. Example: accounts/`account_id`/
-        #   containers/`container_id`/workspaces/`workspace_id`/templates/`template_id`
+        #   GTM Custom Template's API relative path.
         # @param [Google::Apis::TagmanagerV2::CustomTemplate] custom_template_object
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the templates in
@@ -2597,8 +2568,7 @@ module Google
         
         # Creates a GTM Transformation.
         # @param [String] parent
-        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   GTM Workspace's API relative path.
         # @param [Google::Apis::TagmanagerV2::Transformation] transformation_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2631,9 +2601,7 @@ module Google
         
         # Deletes a GTM Transformation.
         # @param [String] path
-        #   GTM Transformation's API relative path. Example: accounts/`account_id`/
-        #   containers/`container_id`/workspaces/`workspace_id`/transformations/`
-        #   transformation_id`
+        #   GTM Transformation's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2661,9 +2629,7 @@ module Google
         
         # Gets a GTM Transformation.
         # @param [String] path
-        #   GTM Transformation's API relative path. Example: accounts/`account_id`/
-        #   containers/`container_id`/workspaces/`workspace_id`/transformations/`
-        #   transformation_id`
+        #   GTM Transformation's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2693,8 +2659,7 @@ module Google
         
         # Lists all GTM Transformations of a GTM container workspace.
         # @param [String] parent
-        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   GTM Workspace's API relative path.
         # @param [String] page_token
         #   Continuation token for fetching the next page of results.
         # @param [String] fields
@@ -2727,9 +2692,7 @@ module Google
         
         # Reverts changes to a GTM Transformation in a GTM Workspace.
         # @param [String] path
-        #   GTM Transformation's API relative path. Example: accounts/`account_id`/
-        #   containers/`container_id`/workspaces/`workspace_id`/transformations/`
-        #   transformation_id`
+        #   GTM Transformation's API relative path.
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the
         #   transformation in storage.
@@ -2763,9 +2726,7 @@ module Google
         
         # Updates a GTM Transformation.
         # @param [String] path
-        #   GTM Transformation's API relative path. Example: accounts/`account_id`/
-        #   containers/`container_id`/workspaces/`workspace_id`/transformations/`
-        #   transformation_id`
+        #   GTM Transformation's API relative path.
         # @param [Google::Apis::TagmanagerV2::Transformation] transformation_object
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the
@@ -2802,8 +2763,7 @@ module Google
         
         # Creates a GTM Trigger.
         # @param [String] parent
-        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   GTM Workspace's API relative path.
         # @param [Google::Apis::TagmanagerV2::Trigger] trigger_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2836,8 +2796,7 @@ module Google
         
         # Deletes a GTM Trigger.
         # @param [String] path
-        #   GTM Trigger's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`/triggers/`trigger_id`
+        #   GTM Trigger's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2865,8 +2824,7 @@ module Google
         
         # Gets a GTM Trigger.
         # @param [String] path
-        #   GTM Trigger's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`/triggers/`trigger_id`
+        #   GTM Trigger's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2896,8 +2854,7 @@ module Google
         
         # Lists all GTM Triggers of a Container.
         # @param [String] parent
-        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   GTM Workspace's API relative path.
         # @param [String] page_token
         #   Continuation token for fetching the next page of results.
         # @param [String] fields
@@ -2930,8 +2887,7 @@ module Google
         
         # Reverts changes to a GTM Trigger in a GTM Workspace.
         # @param [String] path
-        #   GTM Trigger's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`/triggers/`trigger_id`
+        #   GTM Trigger's API relative path.
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the trigger in
         #   storage.
@@ -2965,8 +2921,7 @@ module Google
         
         # Updates a GTM Trigger.
         # @param [String] path
-        #   GTM Trigger's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`/triggers/`trigger_id`
+        #   GTM Trigger's API relative path.
         # @param [Google::Apis::TagmanagerV2::Trigger] trigger_object
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the trigger in
@@ -3003,8 +2958,7 @@ module Google
         
         # Creates a GTM Variable.
         # @param [String] parent
-        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   GTM Workspace's API relative path.
         # @param [Google::Apis::TagmanagerV2::Variable] variable_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3037,8 +2991,7 @@ module Google
         
         # Deletes a GTM Variable.
         # @param [String] path
-        #   GTM Variable's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`/variables/`variable_id`
+        #   GTM Variable's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3066,8 +3019,7 @@ module Google
         
         # Gets a GTM Variable.
         # @param [String] path
-        #   GTM Variable's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`/variables/`variable_id`
+        #   GTM Variable's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3097,8 +3049,7 @@ module Google
         
         # Lists all GTM Variables of a Container.
         # @param [String] parent
-        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   GTM Workspace's API relative path.
         # @param [String] page_token
         #   Continuation token for fetching the next page of results.
         # @param [String] fields
@@ -3131,8 +3082,7 @@ module Google
         
         # Reverts changes to a GTM Variable in a GTM Workspace.
         # @param [String] path
-        #   GTM Variable's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`/variables/`variable_id`
+        #   GTM Variable's API relative path.
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the variable in
         #   storage.
@@ -3166,8 +3116,7 @@ module Google
         
         # Updates a GTM Variable.
         # @param [String] path
-        #   GTM Variable's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`/variables/`variable_id`
+        #   GTM Variable's API relative path.
         # @param [Google::Apis::TagmanagerV2::Variable] variable_object
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the variable in
@@ -3204,8 +3153,7 @@ module Google
         
         # Creates a GTM Zone.
         # @param [String] parent
-        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   GTM Workspace's API relative path.
         # @param [Google::Apis::TagmanagerV2::Zone] zone_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3238,8 +3186,7 @@ module Google
         
         # Deletes a GTM Zone.
         # @param [String] path
-        #   GTM Zone's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`/zones/`zone_id`
+        #   GTM Zone's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3267,8 +3214,7 @@ module Google
         
         # Gets a GTM Zone.
         # @param [String] path
-        #   GTM Zone's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`/zones/`zone_id`
+        #   GTM Zone's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3298,8 +3244,7 @@ module Google
         
         # Lists all GTM Zones of a GTM container workspace.
         # @param [String] parent
-        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`
+        #   GTM Workspace's API relative path.
         # @param [String] page_token
         #   Continuation token for fetching the next page of results.
         # @param [String] fields
@@ -3332,8 +3277,7 @@ module Google
         
         # Reverts changes to a GTM Zone in a GTM Workspace.
         # @param [String] path
-        #   GTM Zone's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`/zones/`zone_id`
+        #   GTM Zone's API relative path.
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the zone in
         #   storage.
@@ -3367,8 +3311,7 @@ module Google
         
         # Updates a GTM Zone.
         # @param [String] path
-        #   GTM Zone's API relative path. Example: accounts/`account_id`/containers/`
-        #   container_id`/workspaces/`workspace_id`/zones/`zone_id`
+        #   GTM Zone's API relative path.
         # @param [Google::Apis::TagmanagerV2::Zone] zone_object
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the zone in
@@ -3405,7 +3348,7 @@ module Google
         
         # Creates a user's Account & Container access.
         # @param [String] parent
-        #   GTM Account's API relative path. Example: accounts/`account_id`
+        #   GTM Account's API relative path.
         # @param [Google::Apis::TagmanagerV2::UserPermission] user_permission_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3439,8 +3382,7 @@ module Google
         # Removes a user from the account, revoking access to it and all of its
         # containers.
         # @param [String] path
-        #   GTM UserPermission's API relative path. Example: accounts/`account_id`/
-        #   user_permissions/`user_permission_id`
+        #   GTM UserPermission's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3468,8 +3410,7 @@ module Google
         
         # Gets a user's Account & Container access.
         # @param [String] path
-        #   GTM UserPermission's API relative path. Example: accounts/`account_id`/
-        #   user_permissions/`user_permission_id`
+        #   GTM UserPermission's API relative path.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3500,7 +3441,7 @@ module Google
         # List all users that have access to the account along with Account and
         # Container user access granted to each of them.
         # @param [String] parent
-        #   GTM Account's API relative path. Example: accounts/`account_id`
+        #   GTM Account's API relative path.
         # @param [String] page_token
         #   Continuation token for fetching the next page of results.
         # @param [String] fields
@@ -3533,8 +3474,7 @@ module Google
         
         # Updates a user's Account & Container access.
         # @param [String] path
-        #   GTM UserPermission's API relative path. Example: accounts/`account_id`/
-        #   user_permissions/`user_permission_id`
+        #   GTM UserPermission's API relative path.
         # @param [Google::Apis::TagmanagerV2::UserPermission] user_permission_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
