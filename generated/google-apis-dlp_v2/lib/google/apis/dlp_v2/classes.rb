@@ -5134,6 +5134,12 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # The tags attached to the resource, including any tags attached during
+        # profiling.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Tag>]
+        attr_accessor :tags
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5165,6 +5171,7 @@ module Google
           @sample_findings_table = args[:sample_findings_table] if args.key?(:sample_findings_table)
           @sensitivity_score = args[:sensitivity_score] if args.key?(:sensitivity_score)
           @state = args[:state] if args.key?(:state)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
@@ -5944,6 +5951,15 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore]
         attr_accessor :sensitivity_score
       
+        # If this field is set, this infoType is a general infoType and these specific
+        # infoTypes are contained within it. General infoTypes are infoTypes that
+        # encompass multiple specific infoTypes. For example, the "GEOGRAPHIC_DATA"
+        # general infoType would have set for this field "LOCATION", "
+        # LOCATION_COORDINATES", and "STREET_ADDRESS".
+        # Corresponds to the JSON property `specificInfoTypes`
+        # @return [Array<String>]
+        attr_accessor :specific_info_types
+      
         # Which parts of the API supports this InfoType.
         # Corresponds to the JSON property `supportedBy`
         # @return [Array<String>]
@@ -5966,6 +5982,7 @@ module Google
           @example = args[:example] if args.key?(:example)
           @name = args[:name] if args.key?(:name)
           @sensitivity_score = args[:sensitivity_score] if args.key?(:sensitivity_score)
+          @specific_info_types = args[:specific_info_types] if args.key?(:specific_info_types)
           @supported_by = args[:supported_by] if args.key?(:supported_by)
           @versions = args[:versions] if args.key?(:versions)
         end
@@ -9977,6 +9994,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :table_size_bytes
       
+        # The tags attached to the table, including any tags attached during profiling.
+        # Because tags are attached to Cloud SQL instances rather than Cloud SQL tables,
+        # this field is empty for Cloud SQL table profiles.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Tag>]
+        attr_accessor :tags
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10011,6 +10035,7 @@ module Google
           @state = args[:state] if args.key?(:state)
           @table_id = args[:table_id] if args.key?(:table_id)
           @table_size_bytes = args[:table_size_bytes] if args.key?(:table_size_bytes)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
@@ -10082,6 +10107,42 @@ module Google
         def update!(**args)
           @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
           @table_id = args[:table_id] if args.key?(:table_id)
+        end
+      end
+      
+      # A tag associated with a resource.
+      class GooglePrivacyDlpV2Tag
+        include Google::Apis::Core::Hashable
+      
+        # The key of a tag key-value pair. For Google Cloud resources, this is the
+        # resource name of the key, for example, "tagKeys/123456".
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # The namespaced name for the tag value to attach to Google Cloud resources.
+        # Must be in the format ``parent_id`/`tag_key_short_name`/`short_name``, for
+        # example, "123456/environment/prod". This is only set for Google Cloud
+        # resources.
+        # Corresponds to the JSON property `namespacedTagValue`
+        # @return [String]
+        attr_accessor :namespaced_tag_value
+      
+        # The value of a tag key-value pair. For Google Cloud resources, this is the
+        # resource name of the value, for example, "tagValues/123456".
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @namespaced_tag_value = args[:namespaced_tag_value] if args.key?(:namespaced_tag_value)
+          @value = args[:value] if args.key?(:value)
         end
       end
       

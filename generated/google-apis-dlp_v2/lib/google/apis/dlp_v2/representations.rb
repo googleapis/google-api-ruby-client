@@ -1780,6 +1780,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2Tag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2TagCondition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3500,6 +3506,8 @@ module Google
           property :sensitivity_score, as: 'sensitivityScore', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore::Representation
       
           property :state, as: 'state'
+          collection :tags, as: 'tags', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Tag, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Tag::Representation
+      
         end
       end
       
@@ -3740,6 +3748,7 @@ module Google
           property :name, as: 'name'
           property :sensitivity_score, as: 'sensitivityScore', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore::Representation
       
+          collection :specific_info_types, as: 'specificInfoTypes'
           collection :supported_by, as: 'supportedBy'
           collection :versions, as: 'versions', class: Google::Apis::DlpV2::GooglePrivacyDlpV2VersionDescription, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2VersionDescription::Representation
       
@@ -5012,6 +5021,8 @@ module Google
           property :state, as: 'state'
           property :table_id, as: 'tableId'
           property :table_size_bytes, :numeric_string => true, as: 'tableSizeBytes'
+          collection :tags, as: 'tags', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Tag, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Tag::Representation
+      
         end
       end
       
@@ -5035,6 +5046,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dataset_id, as: 'datasetId'
           property :table_id, as: 'tableId'
+        end
+      end
+      
+      class GooglePrivacyDlpV2Tag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :namespaced_tag_value, as: 'namespacedTagValue'
+          property :value, as: 'value'
         end
       end
       
