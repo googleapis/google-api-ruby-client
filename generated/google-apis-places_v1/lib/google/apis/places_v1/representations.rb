@@ -418,6 +418,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleTypePostalAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleTypeTimeZone
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -786,6 +792,8 @@ module Google
           collection :photos, as: 'photos', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1Photo, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1Photo::Representation
       
           property :plus_code, as: 'plusCode', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlacePlusCode, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlacePlusCode::Representation
+      
+          property :postal_address, as: 'postalAddress', class: Google::Apis::PlacesV1::GoogleTypePostalAddress, decorator: Google::Apis::PlacesV1::GoogleTypePostalAddress::Representation
       
           property :price_level, as: 'priceLevel'
           property :price_range, as: 'priceRange', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PriceRange, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PriceRange::Representation
@@ -1209,6 +1217,23 @@ module Google
           property :currency_code, as: 'currencyCode'
           property :nanos, as: 'nanos'
           property :units, :numeric_string => true, as: 'units'
+        end
+      end
+      
+      class GoogleTypePostalAddress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :address_lines, as: 'addressLines'
+          property :administrative_area, as: 'administrativeArea'
+          property :language_code, as: 'languageCode'
+          property :locality, as: 'locality'
+          property :organization, as: 'organization'
+          property :postal_code, as: 'postalCode'
+          collection :recipients, as: 'recipients'
+          property :region_code, as: 'regionCode'
+          property :revision, as: 'revision'
+          property :sorting_code, as: 'sortingCode'
+          property :sublocality, as: 'sublocality'
         end
       end
       
