@@ -412,6 +412,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendBucketListUsable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendBucketUsedBy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -971,6 +989,24 @@ module Google
       end
       
       class DiskResourceStatusAsyncReplicationStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskSettingsAccessLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskSettingsAccessLocationAccessLocationPreference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5926,6 +5962,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SnapshotAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SnapshotList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -5950,6 +6004,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SnapshotSettingsAccessLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotSettingsAccessLocationAccessLocationPreference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SnapshotSettingsStorageLocationSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5958,6 +6024,24 @@ module Google
       
       class SnapshotSettingsStorageLocationSettingsStorageLocationPreference
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotsScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -8202,6 +8286,38 @@ module Google
         end
       end
       
+      class BackendBucketListUsable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::BackendBucket, decorator: Google::Apis::ComputeBeta::BackendBucket::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::BackendBucketListUsable::Warning, decorator: Google::Apis::ComputeBeta::BackendBucketListUsable::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::BackendBucketListUsable::Warning::Datum, decorator: Google::Apis::ComputeBeta::BackendBucketListUsable::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class BackendBucketUsedBy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9290,6 +9406,30 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :state, as: 'state'
+        end
+      end
+      
+      class DiskSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_location, as: 'accessLocation', class: Google::Apis::ComputeBeta::DiskSettingsAccessLocation, decorator: Google::Apis::ComputeBeta::DiskSettingsAccessLocation::Representation
+      
+        end
+      end
+      
+      class DiskSettingsAccessLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :locations, as: 'locations', class: Google::Apis::ComputeBeta::DiskSettingsAccessLocationAccessLocationPreference, decorator: Google::Apis::ComputeBeta::DiskSettingsAccessLocationAccessLocationPreference::Representation
+      
+          property :policy, as: 'policy'
+        end
+      end
+      
+      class DiskSettingsAccessLocationAccessLocationPreference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :region, as: 'region'
         end
       end
       
@@ -16869,6 +17009,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :availability_domain_count, as: 'availabilityDomainCount'
           property :collocation, as: 'collocation'
+          property :gpu_topology, as: 'gpuTopology'
           property :max_distance, as: 'maxDistance'
           property :slice_count, as: 'sliceCount'
           property :tpu_topology, as: 'tpuTopology'
@@ -17016,6 +17157,8 @@ module Google
       class ResourcePolicyWorkloadPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_topology, as: 'acceleratorTopology'
+          property :max_topology_distance, as: 'maxTopologyDistance'
           property :type, as: 'type'
         end
       end
@@ -18535,6 +18678,7 @@ module Google
           collection :licenses, as: 'licenses'
           property :location_hint, as: 'locationHint'
           property :name, as: 'name'
+          property :region, as: 'region'
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
@@ -18557,6 +18701,40 @@ module Google
           property :storage_bytes_status, as: 'storageBytesStatus'
           collection :storage_locations, as: 'storageLocations'
           collection :user_licenses, as: 'userLicenses'
+        end
+      end
+      
+      class SnapshotAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeBeta::SnapshotsScopedList, decorator: Google::Apis::ComputeBeta::SnapshotsScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::SnapshotAggregatedList::Warning, decorator: Google::Apis::ComputeBeta::SnapshotAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::SnapshotAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::SnapshotAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -18595,8 +18773,26 @@ module Google
       class SnapshotSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_location, as: 'accessLocation', class: Google::Apis::ComputeBeta::SnapshotSettingsAccessLocation, decorator: Google::Apis::ComputeBeta::SnapshotSettingsAccessLocation::Representation
+      
           property :storage_location, as: 'storageLocation', class: Google::Apis::ComputeBeta::SnapshotSettingsStorageLocationSettings, decorator: Google::Apis::ComputeBeta::SnapshotSettingsStorageLocationSettings::Representation
       
+        end
+      end
+      
+      class SnapshotSettingsAccessLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :locations, as: 'locations', class: Google::Apis::ComputeBeta::SnapshotSettingsAccessLocationAccessLocationPreference, decorator: Google::Apis::ComputeBeta::SnapshotSettingsAccessLocationAccessLocationPreference::Representation
+      
+          property :policy, as: 'policy'
+        end
+      end
+      
+      class SnapshotSettingsAccessLocationAccessLocationPreference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :region, as: 'region'
         end
       end
       
@@ -18613,6 +18809,34 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+        end
+      end
+      
+      class SnapshotsScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :snapshots, as: 'snapshots', class: Google::Apis::ComputeBeta::Snapshot, decorator: Google::Apis::ComputeBeta::Snapshot::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::SnapshotsScopedList::Warning, decorator: Google::Apis::ComputeBeta::SnapshotsScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::SnapshotsScopedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::SnapshotsScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
