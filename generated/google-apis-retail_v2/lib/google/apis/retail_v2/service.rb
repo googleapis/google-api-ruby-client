@@ -101,11 +101,11 @@ module Google
         #   Required. The query used to generate suggestions. The maximum number of
         #   allowed characters is 255.
         # @param [String] visitor_id
-        #   Required field. A unique identifier for tracking visitors. For example, this
-        #   could be implemented with an HTTP cookie, which should be able to uniquely
-        #   identify a visitor on a single device. This unique identifier should not
-        #   change if the visitor logs in or out of the website. The field must be a UTF-8
-        #   encoded string with a length limit of 128 characters. Otherwise, an
+        #   Recommended field. A unique identifier for tracking visitors. For example,
+        #   this could be implemented with an HTTP cookie, which should be able to
+        #   uniquely identify a visitor on a single device. This unique identifier should
+        #   not change if the visitor logs in or out of the website. The field must be a
+        #   UTF-8 encoded string with a length limit of 128 characters. Otherwise, an
         #   INVALID_ARGUMENT error is returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
