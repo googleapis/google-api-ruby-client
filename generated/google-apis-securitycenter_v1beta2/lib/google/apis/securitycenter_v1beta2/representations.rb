@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Cwe
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DataAccessEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -647,6 +653,12 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV2Cvssv3
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2Cwe
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1760,6 +1772,15 @@ module Google
         end
       end
       
+      class Cwe
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :references, as: 'references', class: Google::Apis::SecuritycenterV1beta2::Reference, decorator: Google::Apis::SecuritycenterV1beta2::Reference::Representation
+      
+        end
+      end
+      
       class DataAccessEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2652,6 +2673,15 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV2Cwe
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :references, as: 'references', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Reference, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Reference::Representation
+      
+        end
+      end
+      
       class GoogleCloudSecuritycenterV2DataAccessEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3540,10 +3570,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cve, as: 'cve', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Cve, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Cve::Representation
       
+          collection :cwes, as: 'cwes', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Cwe, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Cwe::Representation
+      
           property :fixed_package, as: 'fixedPackage', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Package, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Package::Representation
       
           property :offending_package, as: 'offendingPackage', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Package, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Package::Representation
       
+          property :provider_risk_score, :numeric_string => true, as: 'providerRiskScore'
+          property :reachable, as: 'reachable'
           property :security_bulletin, as: 'securityBulletin', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2SecurityBulletin, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2SecurityBulletin::Representation
       
         end
@@ -4018,10 +4052,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cve, as: 'cve', class: Google::Apis::SecuritycenterV1beta2::Cve, decorator: Google::Apis::SecuritycenterV1beta2::Cve::Representation
       
+          collection :cwes, as: 'cwes', class: Google::Apis::SecuritycenterV1beta2::Cwe, decorator: Google::Apis::SecuritycenterV1beta2::Cwe::Representation
+      
           property :fixed_package, as: 'fixedPackage', class: Google::Apis::SecuritycenterV1beta2::Package, decorator: Google::Apis::SecuritycenterV1beta2::Package::Representation
       
           property :offending_package, as: 'offendingPackage', class: Google::Apis::SecuritycenterV1beta2::Package, decorator: Google::Apis::SecuritycenterV1beta2::Package::Representation
       
+          property :provider_risk_score, :numeric_string => true, as: 'providerRiskScore'
+          property :reachable, as: 'reachable'
           property :security_bulletin, as: 'securityBulletin', class: Google::Apis::SecuritycenterV1beta2::SecurityBulletin, decorator: Google::Apis::SecuritycenterV1beta2::SecurityBulletin::Representation
       
         end
