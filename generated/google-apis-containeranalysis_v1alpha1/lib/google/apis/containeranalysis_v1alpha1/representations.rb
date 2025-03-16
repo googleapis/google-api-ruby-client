@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BaseImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Basis
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -706,6 +712,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LayerDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class License
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -988,6 +1000,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StepResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1154,6 +1172,15 @@ module Google
         end
       end
       
+      class BaseImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :layer_count, as: 'layerCount'
+          property :name, as: 'name'
+          property :repository, as: 'repository'
+        end
+      end
+      
       class Basis
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1254,6 +1281,8 @@ module Google
           property :id, as: 'id'
           property :name, as: 'name'
           property :pull_timing, as: 'pullTiming', class: Google::Apis::ContaineranalysisV1alpha1::TimeSpan, decorator: Google::Apis::ContaineranalysisV1alpha1::TimeSpan::Representation
+      
+          collection :results, as: 'results', class: Google::Apis::ContaineranalysisV1alpha1::StepResult, decorator: Google::Apis::ContaineranalysisV1alpha1::StepResult::Representation
       
           property :script, as: 'script'
           collection :secret_env, as: 'secretEnv'
@@ -2085,6 +2114,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :file_path, as: 'filePath'
+          property :layer_details, as: 'layerDetails', class: Google::Apis::ContaineranalysisV1alpha1::LayerDetails, decorator: Google::Apis::ContaineranalysisV1alpha1::LayerDetails::Representation
+      
         end
       end
       
@@ -2361,6 +2392,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :arguments, as: 'arguments'
           property :directive, as: 'directive'
+        end
+      end
+      
+      class LayerDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :base_images, as: 'baseImages', class: Google::Apis::ContaineranalysisV1alpha1::BaseImage, decorator: Google::Apis::ContaineranalysisV1alpha1::BaseImage::Representation
+      
+          property :command, as: 'command'
+          property :diff_id, as: 'diffId'
+          property :index, as: 'index'
         end
       end
       
@@ -2948,6 +2990,15 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class StepResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attestation_content_name, as: 'attestationContentName'
+          property :attestation_type, as: 'attestationType'
+          property :name, as: 'name'
         end
       end
       
