@@ -8425,6 +8425,25 @@ module Google
         end
       end
       
+      # Suggestion generated using free form generator.
+      class GoogleCloudDialogflowV2FreeFormSuggestion
+        include Google::Apis::Core::Hashable
+      
+        # Required. Free form suggestion.
+        # Corresponds to the JSON property `response`
+        # @return [String]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @response = args[:response] if args.key?(:response)
+        end
+      end
+      
       # Google Cloud Storage location for the output.
       class GoogleCloudDialogflowV2GcsDestination
         include Google::Apis::Core::Hashable
@@ -8443,6 +8462,90 @@ module Google
         # Update properties of this object
         def update!(**args)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # The response message for Conversations.GenerateSuggestions.
+      class GoogleCloudDialogflowV2GenerateSuggestionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The answers generated for the conversation based on context.
+        # Corresponds to the JSON property `generatorSuggestionAnswers`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer>]
+        attr_accessor :generator_suggestion_answers
+      
+        # The name of the latest conversation message used as context for compiling
+        # suggestion. Format: `projects//locations//conversations//messages/`.
+        # Corresponds to the JSON property `latestMessage`
+        # @return [String]
+        attr_accessor :latest_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generator_suggestion_answers = args[:generator_suggestion_answers] if args.key?(:generator_suggestion_answers)
+          @latest_message = args[:latest_message] if args.key?(:latest_message)
+        end
+      end
+      
+      # A GeneratorSuggestion answer.
+      class GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer
+        include Google::Apis::Core::Hashable
+      
+        # Answer record that uniquely identifies the suggestion. This can be used to
+        # provide suggestion feedback.
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
+      
+        # Suggestion generated using a Generator.
+        # Corresponds to the JSON property `generatorSuggestion`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2GeneratorSuggestion]
+        attr_accessor :generator_suggestion
+      
+        # The name of the generator used to generate this suggestion. Format: `projects//
+        # locations//generators/`.
+        # Corresponds to the JSON property `sourceGenerator`
+        # @return [String]
+        attr_accessor :source_generator
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
+          @generator_suggestion = args[:generator_suggestion] if args.key?(:generator_suggestion)
+          @source_generator = args[:source_generator] if args.key?(:source_generator)
+        end
+      end
+      
+      # Suggestion generated using a Generator.
+      class GoogleCloudDialogflowV2GeneratorSuggestion
+        include Google::Apis::Core::Hashable
+      
+        # Suggestion generated using free form generator.
+        # Corresponds to the JSON property `freeFormSuggestion`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2FreeFormSuggestion]
+        attr_accessor :free_form_suggestion
+      
+        # Suggested summary of the conversation.
+        # Corresponds to the JSON property `summarySuggestion`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2SummarySuggestion]
+        attr_accessor :summary_suggestion
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @free_form_suggestion = args[:free_form_suggestion] if args.key?(:free_form_suggestion)
+          @summary_suggestion = args[:summary_suggestion] if args.key?(:summary_suggestion)
         end
       end
       
@@ -10848,6 +10951,11 @@ module Google
         # @return [Google::Apis::DialogflowV2beta1::GoogleRpcStatus]
         attr_accessor :error
       
+        # The response message for Conversations.GenerateSuggestions.
+        # Corresponds to the JSON property `generateSuggestionsResponse`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2GenerateSuggestionsResponse]
+        attr_accessor :generate_suggestions_response
+      
         # The response message for Participants.SuggestArticles.
         # Corresponds to the JSON property `suggestArticlesResponse`
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2SuggestArticlesResponse]
@@ -10875,10 +10983,55 @@ module Google
         # Update properties of this object
         def update!(**args)
           @error = args[:error] if args.key?(:error)
+          @generate_suggestions_response = args[:generate_suggestions_response] if args.key?(:generate_suggestions_response)
           @suggest_articles_response = args[:suggest_articles_response] if args.key?(:suggest_articles_response)
           @suggest_faq_answers_response = args[:suggest_faq_answers_response] if args.key?(:suggest_faq_answers_response)
           @suggest_knowledge_assist_response = args[:suggest_knowledge_assist_response] if args.key?(:suggest_knowledge_assist_response)
           @suggest_smart_replies_response = args[:suggest_smart_replies_response] if args.key?(:suggest_smart_replies_response)
+        end
+      end
+      
+      # Suggested summary of the conversation.
+      class GoogleCloudDialogflowV2SummarySuggestion
+        include Google::Apis::Core::Hashable
+      
+        # Required. All the parts of generated summary.
+        # Corresponds to the JSON property `summarySections`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2SummarySuggestionSummarySection>]
+        attr_accessor :summary_sections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @summary_sections = args[:summary_sections] if args.key?(:summary_sections)
+        end
+      end
+      
+      # A component of the generated summary.
+      class GoogleCloudDialogflowV2SummarySuggestionSummarySection
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the section.
+        # Corresponds to the JSON property `section`
+        # @return [String]
+        attr_accessor :section
+      
+        # Required. Summary text for the section.
+        # Corresponds to the JSON property `summary`
+        # @return [String]
+        attr_accessor :summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @section = args[:section] if args.key?(:section)
+          @summary = args[:summary] if args.key?(:summary)
         end
       end
       
@@ -12508,6 +12661,11 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Output only. The context reference updates provided by external systems.
+        # Corresponds to the JSON property `ingestedContextReferences`
+        # @return [Hash<String,Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ConversationContextReference>]
+        attr_accessor :ingested_context_references
+      
         # Output only. The current state of the Conversation.
         # Corresponds to the JSON property `lifecycleState`
         # @return [String]
@@ -12545,6 +12703,7 @@ module Google
           @conversation_profile = args[:conversation_profile] if args.key?(:conversation_profile)
           @conversation_stage = args[:conversation_stage] if args.key?(:conversation_stage)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @ingested_context_references = args[:ingested_context_references] if args.key?(:ingested_context_references)
           @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
           @name = args[:name] if args.key?(:name)
           @phone_number = args[:phone_number] if args.key?(:phone_number)
@@ -12569,6 +12728,76 @@ module Google
         # Update properties of this object
         def update!(**args)
           @message_entries = args[:message_entries] if args.key?(:message_entries)
+        end
+      end
+      
+      # Represents a piece of ingested context information.
+      class GoogleCloudDialogflowV2beta1ConversationContextReference
+        include Google::Apis::Core::Hashable
+      
+        # Required. The list of content updates for a context reference.
+        # Corresponds to the JSON property `contextContents`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ConversationContextReferenceContextContent>]
+        attr_accessor :context_contents
+      
+        # Output only. The time the context reference was first created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The language of the information ingested, defaults to "en-US" if not
+        # set.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Required. The mode in which context reference contents are updated.
+        # Corresponds to the JSON property `updateMode`
+        # @return [String]
+        attr_accessor :update_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_contents = args[:context_contents] if args.key?(:context_contents)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @update_mode = args[:update_mode] if args.key?(:update_mode)
+        end
+      end
+      
+      # Contents ingested.
+      class GoogleCloudDialogflowV2beta1ConversationContextReferenceContextContent
+        include Google::Apis::Core::Hashable
+      
+        # Required. The information ingested in a single request.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # Required. The format of the ingested string.
+        # Corresponds to the JSON property `contentFormat`
+        # @return [String]
+        attr_accessor :content_format
+      
+        # Output only. The time when this information was incorporated into the relevant
+        # context reference.
+        # Corresponds to the JSON property `ingestionTime`
+        # @return [String]
+        attr_accessor :ingestion_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @content_format = args[:content_format] if args.key?(:content_format)
+          @ingestion_time = args[:ingestion_time] if args.key?(:ingestion_time)
         end
       end
       
@@ -13717,6 +13946,44 @@ module Google
         end
       end
       
+      # Free form generator context that customer can configure.
+      class GoogleCloudDialogflowV2beta1FreeFormContext
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Free form text input to LLM.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Suggestion generated using free form generator.
+      class GoogleCloudDialogflowV2beta1FreeFormSuggestion
+        include Google::Apis::Core::Hashable
+      
+        # Required. Free form suggestion.
+        # Corresponds to the JSON property `response`
+        # @return [String]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @response = args[:response] if args.key?(:response)
+        end
+      end
+      
       # By default, your agent responds to a matched intent with a static response. As
       # an alternative, you can provide a more dynamic response by using fulfillment.
       # When you enable fulfillment for an intent, Dialogflow responds to that intent
@@ -13912,6 +14179,14 @@ module Google
       class GoogleCloudDialogflowV2beta1GenerateStatelessSuggestionRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. A section of ingested context information. The key is the name of
+        # the context reference and the value contains the contents of the context
+        # reference. The key is used to incorporate ingested context references to
+        # enhance the generator.
+        # Corresponds to the JSON property `contextReferences`
+        # @return [Hash<String,Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ConversationContextReference>]
+        attr_accessor :context_references
+      
         # Context of the conversation, including transcripts.
         # Corresponds to the JSON property `conversationContext`
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ConversationContext]
@@ -13940,6 +14215,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @context_references = args[:context_references] if args.key?(:context_references)
           @conversation_context = args[:conversation_context] if args.key?(:conversation_context)
           @generator = args[:generator] if args.key?(:generator)
           @generator_name = args[:generator_name] if args.key?(:generator_name)
@@ -14102,6 +14378,92 @@ module Google
         end
       end
       
+      # The request message for Conversations.GenerateSuggestions.
+      class GoogleCloudDialogflowV2beta1GenerateSuggestionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the latest conversation message for which the request is
+        # triggered. Format: `projects//locations//conversations//messages/`.
+        # Corresponds to the JSON property `latestMessage`
+        # @return [String]
+        attr_accessor :latest_message
+      
+        # Optional. A list of trigger events. Only generators configured in the
+        # conversation_profile whose trigger_event is listed here will be triggered.
+        # Corresponds to the JSON property `triggerEvents`
+        # @return [Array<String>]
+        attr_accessor :trigger_events
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latest_message = args[:latest_message] if args.key?(:latest_message)
+          @trigger_events = args[:trigger_events] if args.key?(:trigger_events)
+        end
+      end
+      
+      # The response message for Conversations.GenerateSuggestions.
+      class GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The answers generated for the conversation based on context.
+        # Corresponds to the JSON property `generatorSuggestionAnswers`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GenerateSuggestionsResponseGeneratorSuggestionAnswer>]
+        attr_accessor :generator_suggestion_answers
+      
+        # The name of the latest conversation message used as context for compiling
+        # suggestion. Format: `projects//locations//conversations//messages/`.
+        # Corresponds to the JSON property `latestMessage`
+        # @return [String]
+        attr_accessor :latest_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generator_suggestion_answers = args[:generator_suggestion_answers] if args.key?(:generator_suggestion_answers)
+          @latest_message = args[:latest_message] if args.key?(:latest_message)
+        end
+      end
+      
+      # A GeneratorSuggestion answer.
+      class GoogleCloudDialogflowV2beta1GenerateSuggestionsResponseGeneratorSuggestionAnswer
+        include Google::Apis::Core::Hashable
+      
+        # Answer record that uniquely identifies the suggestion. This can be used to
+        # provide suggestion feedback.
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
+      
+        # Suggestion generated using a Generator.
+        # Corresponds to the JSON property `generatorSuggestion`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GeneratorSuggestion]
+        attr_accessor :generator_suggestion
+      
+        # The name of the generator used to generate this suggestion. Format: `projects//
+        # locations//generators/`.
+        # Corresponds to the JSON property `sourceGenerator`
+        # @return [String]
+        attr_accessor :source_generator
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
+          @generator_suggestion = args[:generator_suggestion] if args.key?(:generator_suggestion)
+          @source_generator = args[:source_generator] if args.key?(:source_generator)
+        end
+      end
+      
       # LLM generator.
       class GoogleCloudDialogflowV2beta1Generator
         include Google::Apis::Core::Hashable
@@ -14116,6 +14478,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Free form generator context that customer can configure.
+        # Corresponds to the JSON property `freeFormContext`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1FreeFormContext]
+        attr_accessor :free_form_context
+      
         # The parameters of inference.
         # Corresponds to the JSON property `inferenceParameter`
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1InferenceParameter]
@@ -14126,6 +14493,14 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Optional. The published Large Language Model name. * To use the latest model
+        # version, specify the model name without version number. Example: `text-bison` *
+        # To use a stable model version, specify the version number as well. Example: `
+        # text-bison@002`.
+        # Corresponds to the JSON property `publishedModel`
+        # @return [String]
+        attr_accessor :published_model
       
         # Summarization context that customer can configure.
         # Corresponds to the JSON property `summarizationContext`
@@ -14151,8 +14526,10 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @free_form_context = args[:free_form_context] if args.key?(:free_form_context)
           @inference_parameter = args[:inference_parameter] if args.key?(:inference_parameter)
           @name = args[:name] if args.key?(:name)
+          @published_model = args[:published_model] if args.key?(:published_model)
           @summarization_context = args[:summarization_context] if args.key?(:summarization_context)
           @trigger_event = args[:trigger_event] if args.key?(:trigger_event)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -14162,6 +14539,11 @@ module Google
       # Suggestion generated using a Generator.
       class GoogleCloudDialogflowV2beta1GeneratorSuggestion
         include Google::Apis::Core::Hashable
+      
+        # Suggestion generated using free form generator.
+        # Corresponds to the JSON property `freeFormSuggestion`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1FreeFormSuggestion]
+        attr_accessor :free_form_suggestion
       
         # Suggested summary of the conversation.
         # Corresponds to the JSON property `summarySuggestion`
@@ -14174,6 +14556,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @free_form_suggestion = args[:free_form_suggestion] if args.key?(:free_form_suggestion)
           @summary_suggestion = args[:summary_suggestion] if args.key?(:summary_suggestion)
         end
       end
@@ -14991,6 +15374,47 @@ module Google
           @temperature = args[:temperature] if args.key?(:temperature)
           @top_k = args[:top_k] if args.key?(:top_k)
           @top_p = args[:top_p] if args.key?(:top_p)
+        end
+      end
+      
+      # The request message for ConversationsService.IngestContextReferences.
+      class GoogleCloudDialogflowV2beta1IngestContextReferencesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The context references to ingest. The key is the name of the context
+        # reference and the value contains the contents of the context reference. The
+        # key is used to incorporate ingested context references to enhance the
+        # generator.
+        # Corresponds to the JSON property `contextReferences`
+        # @return [Hash<String,Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ConversationContextReference>]
+        attr_accessor :context_references
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_references = args[:context_references] if args.key?(:context_references)
+        end
+      end
+      
+      # The response message for ConversationsService.IngestContextReferences.
+      class GoogleCloudDialogflowV2beta1IngestContextReferencesResponse
+        include Google::Apis::Core::Hashable
+      
+        # All context references ingested.
+        # Corresponds to the JSON property `ingestedContextReferences`
+        # @return [Hash<String,Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ConversationContextReference>]
+        attr_accessor :ingested_context_references
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ingested_context_references = args[:ingested_context_references] if args.key?(:ingested_context_references)
         end
       end
       
@@ -20423,6 +20847,11 @@ module Google
         # @return [Google::Apis::DialogflowV2beta1::GoogleRpcStatus]
         attr_accessor :error
       
+        # The response message for Conversations.GenerateSuggestions.
+        # Corresponds to the JSON property `generateSuggestionsResponse`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse]
+        attr_accessor :generate_suggestions_response
+      
         # The response message for Participants.SuggestArticles.
         # Corresponds to the JSON property `suggestArticlesResponse`
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestArticlesResponse]
@@ -20460,6 +20889,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @error = args[:error] if args.key?(:error)
+          @generate_suggestions_response = args[:generate_suggestions_response] if args.key?(:generate_suggestions_response)
           @suggest_articles_response = args[:suggest_articles_response] if args.key?(:suggest_articles_response)
           @suggest_dialogflow_assists_response = args[:suggest_dialogflow_assists_response] if args.key?(:suggest_dialogflow_assists_response)
           @suggest_entity_extraction_response = args[:suggest_entity_extraction_response] if args.key?(:suggest_entity_extraction_response)

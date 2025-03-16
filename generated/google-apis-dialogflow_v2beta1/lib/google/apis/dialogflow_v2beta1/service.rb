@@ -4121,6 +4121,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Generates all the suggestions using generators configured in the conversation
+        # profile. A generator is used only if its trigger event is matched.
+        # @param [String] conversation
+        #   Required. The conversation for which the suggestions are generated. Format: `
+        #   projects//locations//conversations/`. The conversation must be created with a
+        #   conversation profile which has generators configured in it to be able to get
+        #   suggestions.
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GenerateSuggestionsRequest] google_cloud_dialogflow_v2beta1_generate_suggestions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_project_conversation_suggestion(conversation, google_cloud_dialogflow_v2beta1_generate_suggestions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta1/{+conversation}/suggestions:generate', options)
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GenerateSuggestionsRequest::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_generate_suggestions_request_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse
+          command.params['conversation'] = conversation unless conversation.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Get answers for the given query based on knowledge documents.
         # @param [String] conversation
         #   Optional. The conversation (between human agent and end user) where the search
@@ -7943,6 +7980,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Data ingestion API. Ingests context references for an existing conversation.
+        # @param [String] conversation
+        #   Required. Resource identifier of the conversation to ingest context
+        #   information for. Format: `projects//locations//conversations/`.
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IngestContextReferencesRequest] google_cloud_dialogflow_v2beta1_ingest_context_references_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IngestContextReferencesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IngestContextReferencesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def ingest_project_location_conversation_context_references(conversation, google_cloud_dialogflow_v2beta1_ingest_context_references_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta1/{+conversation}:ingestContextReferences', options)
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IngestContextReferencesRequest::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_ingest_context_references_request_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IngestContextReferencesResponse::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IngestContextReferencesResponse
+          command.params['conversation'] = conversation unless conversation.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns the list of all conversations in the specified project.
         # @param [String] parent
         #   Required. The project from which to list all conversation. Format: `projects//
@@ -8383,6 +8454,43 @@ module Google
           command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse::Representation
           command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generates all the suggestions using generators configured in the conversation
+        # profile. A generator is used only if its trigger event is matched.
+        # @param [String] conversation
+        #   Required. The conversation for which the suggestions are generated. Format: `
+        #   projects//locations//conversations/`. The conversation must be created with a
+        #   conversation profile which has generators configured in it to be able to get
+        #   suggestions.
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GenerateSuggestionsRequest] google_cloud_dialogflow_v2beta1_generate_suggestions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_project_location_conversation_suggestion(conversation, google_cloud_dialogflow_v2beta1_generate_suggestions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta1/{+conversation}/suggestions:generate', options)
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GenerateSuggestionsRequest::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_generate_suggestions_request_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse
+          command.params['conversation'] = conversation unless conversation.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
