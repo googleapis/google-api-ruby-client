@@ -1262,7 +1262,7 @@ module Google
         # @return [Array<Google::Apis::ComposerV1::CidrBlock>]
         attr_accessor :cidr_blocks
       
-        # Whether or not master authorized networks feature is enabled.
+        # Optional. Whether or not master authorized networks feature is enabled.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
