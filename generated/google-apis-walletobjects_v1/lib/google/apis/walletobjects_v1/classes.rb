@@ -183,7 +183,7 @@ module Google
       class AppLinkDataAppLinkInfo
         include Google::Apis::Core::Hashable
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `appLogoImage`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :app_logo_image
@@ -419,7 +419,7 @@ module Google
         # @return [String]
         attr_accessor :boarding_position
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `boardingPrivilegeImage`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :boarding_privilege_image
@@ -1598,7 +1598,7 @@ module Google
         # @return [String]
         attr_accessor :gate_label
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `heroImage`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :hero_image
@@ -1669,7 +1669,7 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::LatLongPoint>]
         attr_accessor :locations
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `logo`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :logo
@@ -1795,12 +1795,12 @@ module Google
         # @return [String]
         attr_accessor :view_unlock_requirement
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `wideLogo`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :wide_logo
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `wordMark`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :word_mark
@@ -1970,7 +1970,7 @@ module Google
         attr_accessor :has_users
         alias_method :has_users?, :has_users
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `heroImage`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :hero_image
@@ -2373,12 +2373,12 @@ module Google
       class FlightCarrier
         include Google::Apis::Core::Hashable
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `airlineAllianceLogo`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :airline_alliance_logo
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `airlineLogo`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :airline_logo
@@ -2410,7 +2410,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `wideAirlineLogo`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :wide_airline_logo
@@ -2499,7 +2499,7 @@ module Google
         # @return [String]
         attr_accessor :flight_status
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `heroImage`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :hero_image
@@ -2742,7 +2742,7 @@ module Google
         # @return [String]
         attr_accessor :view_unlock_requirement
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `wordMark`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :word_mark
@@ -2962,7 +2962,7 @@ module Google
         attr_accessor :has_users
         alias_method :has_users?, :has_users
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `heroImage`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :hero_image
@@ -3081,7 +3081,7 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::SaveRestrictions]
         attr_accessor :save_restrictions
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `securityProgramLogo`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :security_program_logo
@@ -3474,7 +3474,7 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::LocalizedString]
         attr_accessor :header
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `heroImage`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :hero_image
@@ -3524,7 +3524,7 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::LinksModuleData]
         attr_accessor :links_module_data
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `logo`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :logo
@@ -3608,7 +3608,7 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `wideLogo`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :wide_logo
@@ -3759,7 +3759,7 @@ module Google
         # @return [String]
         attr_accessor :event_number_label
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `heroImage`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :hero_image
@@ -3893,7 +3893,7 @@ module Google
         # @return [String]
         attr_accessor :pin_label
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `programLogo`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :program_logo
@@ -3955,12 +3955,12 @@ module Google
         # @return [String]
         attr_accessor :view_unlock_requirement
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `wideProgramLogo`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :wide_program_logo
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `wordMark`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :word_mark
@@ -4140,7 +4140,7 @@ module Google
         attr_accessor :has_users
         alias_method :has_users?, :has_users
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `heroImage`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :hero_image
@@ -4397,7 +4397,7 @@ module Google
         end
       end
       
-      # Wrapping type for Google hosted images. Next ID: 8
+      # Wrapping type for Google hosted images.
       class Image
         include Google::Apis::Core::Hashable
       
@@ -4439,7 +4439,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `mainImage`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :main_image
@@ -4952,7 +4952,7 @@ module Google
         attr_accessor :enable_smart_tap
         alias_method :enable_smart_tap?, :enable_smart_tap
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `heroImage`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :hero_image
@@ -5093,7 +5093,7 @@ module Google
         # @return [String]
         attr_accessor :notify_preference
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `programLogo`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :program_logo
@@ -5184,12 +5184,12 @@ module Google
         # @return [String]
         attr_accessor :view_unlock_requirement
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `wideProgramLogo`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :wide_program_logo
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `wordMark`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :word_mark
@@ -5364,7 +5364,7 @@ module Google
         attr_accessor :has_users
         alias_method :has_users?, :has_users
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `heroImage`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :hero_image
@@ -6331,7 +6331,7 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::Uri]
         attr_accessor :help_uri
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `heroImage`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :hero_image
@@ -6528,7 +6528,7 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `titleImage`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :title_image
@@ -6549,12 +6549,12 @@ module Google
         # @return [String]
         attr_accessor :view_unlock_requirement
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `wideTitleImage`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :wide_title_image
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `wordMark`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :word_mark
@@ -6715,7 +6715,7 @@ module Google
         attr_accessor :has_users
         alias_method :has_users?, :has_users
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `heroImage`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :hero_image
@@ -8158,7 +8158,7 @@ module Google
         attr_accessor :enable_smart_tap
         alias_method :enable_smart_tap?, :enable_smart_tap
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `heroImage`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :hero_image
@@ -8230,7 +8230,7 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::LatLongPoint>]
         attr_accessor :locations
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `logo`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :logo
@@ -8333,17 +8333,17 @@ module Google
         # @return [String]
         attr_accessor :view_unlock_requirement
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `watermark`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :watermark
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `wideLogo`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :wide_logo
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `wordMark`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :word_mark
@@ -8546,7 +8546,7 @@ module Google
         attr_accessor :has_users
         alias_method :has_users?, :has_users
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `heroImage`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :hero_image
@@ -9005,7 +9005,7 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::LocalizedString]
         attr_accessor :header
       
-        # Wrapping type for Google hosted images. Next ID: 8
+        # Wrapping type for Google hosted images.
         # Corresponds to the JSON property `image`
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :image
