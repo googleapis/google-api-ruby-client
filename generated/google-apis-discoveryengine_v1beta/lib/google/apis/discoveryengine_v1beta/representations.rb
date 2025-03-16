@@ -700,6 +700,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaAlertPolicyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAlertPolicyConfigAlertEnrollment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaAnswer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3430,6 +3442,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaSearchRequestDisplaySpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5021,6 +5039,23 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaAlertPolicyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alert_enrollments, as: 'alertEnrollments', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAlertPolicyConfigAlertEnrollment, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAlertPolicyConfigAlertEnrollment::Representation
+      
+          property :alert_policy_name, as: 'alertPolicyName'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAlertPolicyConfigAlertEnrollment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alert_id, as: 'alertId'
+          property :enroll_state, as: 'enrollState'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaAnswer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5495,6 +5530,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action_config, as: 'actionConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaActionConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaActionConfig::Representation
+      
+          collection :alert_policy_configs, as: 'alertPolicyConfigs', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAlertPolicyConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAlertPolicyConfig::Representation
       
           property :auto_run_disabled, as: 'autoRunDisabled'
           property :bap_config, as: 'bapConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaBapConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaBapConfig::Representation
@@ -7215,6 +7252,7 @@ module Google
       class GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_spell_correction, as: 'disableSpellCorrection'
           property :query_classification_spec, as: 'queryClassificationSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpec::Representation
       
           property :query_rephraser_spec, as: 'queryRephraserSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpec::Representation
@@ -9455,6 +9493,8 @@ module Google
       
           collection :data_store_specs, as: 'dataStoreSpecs', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec::Representation
       
+          property :display_spec, as: 'displaySpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestDisplaySpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestDisplaySpec::Representation
+      
           property :embedding_spec, as: 'embeddingSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpec::Representation
       
           collection :facet_specs, as: 'facetSpecs', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpec::Representation
@@ -9617,6 +9657,13 @@ module Google
       
           property :data_store, as: 'dataStore'
           property :filter, as: 'filter'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSearchRequestDisplaySpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :match_highlighting_condition, as: 'matchHighlightingCondition'
         end
       end
       
