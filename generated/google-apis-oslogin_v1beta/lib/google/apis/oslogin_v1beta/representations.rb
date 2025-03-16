@@ -28,6 +28,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudOsloginControlplaneRegionalV1betaSignSshPublicKeyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudOsloginControlplaneRegionalV1betaSignSshPublicKeyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImportSshPublicKeyResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -91,6 +103,23 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudOsloginControlplaneRegionalV1betaSignSshPublicKeyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_engine_instance, as: 'appEngineInstance'
+          property :compute_instance, as: 'computeInstance'
+          property :service_account, as: 'serviceAccount'
+          property :ssh_public_key, as: 'sshPublicKey'
+        end
+      end
+      
+      class GoogleCloudOsloginControlplaneRegionalV1betaSignSshPublicKeyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :signed_ssh_public_key, as: 'signedSshPublicKey'
         end
       end
       
