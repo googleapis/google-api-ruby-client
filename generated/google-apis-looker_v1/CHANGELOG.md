@@ -1,5 +1,9 @@
 # Release history for google-apis-looker_v1
 
+### v0.14.0 (2025-03-16)
+
+* Regenerated from discovery document revision 20250305
+
 ### v0.13.0 (2025-02-26)
 
 * Regenerated from discovery document revision 20250205
