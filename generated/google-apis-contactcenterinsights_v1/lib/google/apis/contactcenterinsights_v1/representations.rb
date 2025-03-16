@@ -124,6 +124,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1060,6 +1078,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1alpha1CallAnnotation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1886,6 +1922,30 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1BulkDeleteConversationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :parent, as: 'parent'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -3511,6 +3571,30 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :parent, as: 'parent'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
