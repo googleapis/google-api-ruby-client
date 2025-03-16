@@ -1002,6 +1002,55 @@ module Google
         end
       end
       
+      # DenyMaintenancePeriod definition. Excepting emergencies, maintenance will not
+      # be scheduled to start within this deny period. The start_date must be less
+      # than the end_date.
+      class DenyMaintenancePeriod
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `endDate`
+        # @return [Google::Apis::AlloydbV1alpha::GoogleTypeDate]
+        attr_accessor :end_date
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `startDate`
+        # @return [Google::Apis::AlloydbV1alpha::GoogleTypeDate]
+        attr_accessor :start_date
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `time`
+        # @return [Google::Apis::AlloydbV1alpha::GoogleTypeTimeOfDay]
+        attr_accessor :time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @start_date = args[:start_date] if args.key?(:start_date)
+          @time = args[:time] if args.key?(:time)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -1299,6 +1348,47 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Represents a whole or partial calendar date, such as a birthday. The time of
+      # day and time zone are either specified elsewhere or are insignificant. The
+      # date is relative to the Gregorian Calendar. This can represent one of the
+      # following: * A full date, with non-zero year, month, and day values. * A month
+      # and day, with a zero year (for example, an anniversary). * A year on its own,
+      # with a zero month and a zero day. * A year and month, with a zero day (for
+      # example, a credit card expiration date). Related types: * google.type.
+      # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+      class GoogleTypeDate
+        include Google::Apis::Core::Hashable
+      
+        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        # specify a year by itself or a year and month where the day isn't significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        # and day.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        # year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
         end
       end
       
@@ -1709,6 +1799,14 @@ module Google
         attr_accessor :enable_public_ip
         alias_method :enable_public_ip?, :enable_public_ip
       
+        # Output only. The resource link for the VPC network in which instance resources
+        # are created and from which they are accessible via Private IP. This will be
+        # the same value as the parent cluster's network. It is specified in the form: //
+        # `projects/`project_number`/global/networks/`network_id``.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1718,6 +1816,7 @@ module Google
           @authorized_external_networks = args[:authorized_external_networks] if args.key?(:authorized_external_networks)
           @enable_outbound_public_ip = args[:enable_outbound_public_ip] if args.key?(:enable_outbound_public_ip)
           @enable_public_ip = args[:enable_public_ip] if args.key?(:enable_public_ip)
+          @network = args[:network] if args.key?(:network)
         end
       end
       
@@ -1960,6 +2059,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :cpu_count
       
+        # Machine type of the VM instance. E.g. "n2-highmem-4", "n2-highmem-8", "c4a-
+        # highmem-4-lssd". cpu_count must match the number of vCPUs in the machine type.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1967,6 +2072,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cpu_count = args[:cpu_count] if args.key?(:cpu_count)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
         end
       end
       
@@ -1997,6 +2103,11 @@ module Google
       class MaintenanceUpdatePolicy
         include Google::Apis::Core::Hashable
       
+        # Periods to deny maintenance. Currently limited to 1.
+        # Corresponds to the JSON property `denyMaintenancePeriods`
+        # @return [Array<Google::Apis::AlloydbV1alpha::DenyMaintenancePeriod>]
+        attr_accessor :deny_maintenance_periods
+      
         # Preferred windows to perform maintenance. Currently limited to 1.
         # Corresponds to the JSON property `maintenanceWindows`
         # @return [Array<Google::Apis::AlloydbV1alpha::MaintenanceWindow>]
@@ -2008,6 +2119,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @deny_maintenance_periods = args[:deny_maintenance_periods] if args.key?(:deny_maintenance_periods)
           @maintenance_windows = args[:maintenance_windows] if args.key?(:maintenance_windows)
         end
       end
@@ -2152,6 +2264,12 @@ module Google
       class ObservabilityInstanceConfig
         include Google::Apis::Core::Hashable
       
+        # Whether assistive experiences are enabled for this AlloyDB instance.
+        # Corresponds to the JSON property `assistiveExperiencesEnabled`
+        # @return [Boolean]
+        attr_accessor :assistive_experiences_enabled
+        alias_method :assistive_experiences_enabled?, :assistive_experiences_enabled
+      
         # Observability feature status for an instance. This flag is turned "off" by
         # default.
         # Corresponds to the JSON property `enabled`
@@ -2214,6 +2332,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @assistive_experiences_enabled = args[:assistive_experiences_enabled] if args.key?(:assistive_experiences_enabled)
           @enabled = args[:enabled] if args.key?(:enabled)
           @max_query_string_length = args[:max_query_string_length] if args.key?(:max_query_string_length)
           @preserve_comments = args[:preserve_comments] if args.key?(:preserve_comments)
