@@ -595,6 +595,7 @@ module Google
           collection :operations, as: 'operations', class: Google::Apis::AccesscontextmanagerV1::ApiOperation, decorator: Google::Apis::AccesscontextmanagerV1::ApiOperation::Representation
       
           collection :resources, as: 'resources'
+          collection :roles, as: 'roles'
         end
       end
       
@@ -686,6 +687,7 @@ module Google
           collection :operations, as: 'operations', class: Google::Apis::AccesscontextmanagerV1::ApiOperation, decorator: Google::Apis::AccesscontextmanagerV1::ApiOperation::Representation
       
           collection :resources, as: 'resources'
+          collection :roles, as: 'roles'
         end
       end
       
