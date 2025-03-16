@@ -1763,7 +1763,8 @@ module Google
         #   Required. The parent resource's name of the RegionalEndpoint.
         # @param [Google::Apis::NetworkconnectivityV1::RegionalEndpoint] regional_endpoint_object
         # @param [String] regional_endpoint_id
-        #   Required. Unique id of the Regional Endpoint to be created.
+        #   Required. Unique id of the Regional Endpoint to be created. @pattern: ^[-a-z0-
+        #   9](?:[-a-z0-9]`0,44`)[a-z0-9]$
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server knows to ignore
