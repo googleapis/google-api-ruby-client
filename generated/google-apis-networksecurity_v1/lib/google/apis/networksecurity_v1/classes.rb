@@ -2331,6 +2331,13 @@ module Google
         # @return [Array<Google::Apis::NetworksecurityV1::ServerTlsPolicy>]
         attr_accessor :server_tls_policies
       
+        # Unreachable resources. Populated when the request opts into `
+        # return_partial_success` and reading across collections e.g. when attempting to
+        # list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2339,6 +2346,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @server_tls_policies = args[:server_tls_policies] if args.key?(:server_tls_policies)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -2608,6 +2616,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Output only. The list of locations where the deployment group is present.
+        # Corresponds to the JSON property `locations`
+        # @return [Array<Google::Apis::NetworksecurityV1::MirroringLocation>]
+        attr_accessor :locations
+      
         # Immutable. Identifier. The resource name of this deployment group, for example:
         # `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`. See
         # https://google.aip.dev/122 for more details.
@@ -2658,6 +2671,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @labels = args[:labels] if args.key?(:labels)
+          @locations = args[:locations] if args.key?(:locations)
           @name = args[:name] if args.key?(:name)
           @nested_deployments = args[:nested_deployments] if args.key?(:nested_deployments)
           @network = args[:network] if args.key?(:network)
@@ -2727,6 +2741,12 @@ module Google
         # @return [Array<Google::Apis::NetworksecurityV1::MirroringEndpointGroupAssociationDetails>]
         attr_accessor :associations
       
+        # Output only. List of details about the connected deployment groups to this
+        # endpoint group.
+        # Corresponds to the JSON property `connectedDeploymentGroups`
+        # @return [Array<Google::Apis::NetworksecurityV1::MirroringEndpointGroupConnectedDeploymentGroup>]
+        attr_accessor :connected_deployment_groups
+      
         # Output only. The timestamp when the resource was created. See https://google.
         # aip.dev/148#timestamps.
         # Corresponds to the JSON property `createTime`
@@ -2787,6 +2807,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @associations = args[:associations] if args.key?(:associations)
+          @connected_deployment_groups = args[:connected_deployment_groups] if args.key?(:connected_deployment_groups)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @labels = args[:labels] if args.key?(:labels)
@@ -2818,6 +2839,12 @@ module Google
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
+      
+        # Output only. The list of locations where the association is configured. This
+        # information is retrieved from the linked endpoint group.
+        # Corresponds to the JSON property `locations`
+        # @return [Array<Google::Apis::NetworksecurityV1::MirroringLocation>]
+        attr_accessor :locations
       
         # Output only. The list of locations where the association is present. This
         # information is retrieved from the linked endpoint group, and not configured as
@@ -2875,6 +2902,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @labels = args[:labels] if args.key?(:labels)
+          @locations = args[:locations] if args.key?(:locations)
           @locations_details = args[:locations_details] if args.key?(:locations_details)
           @mirroring_endpoint_group = args[:mirroring_endpoint_group] if args.key?(:mirroring_endpoint_group)
           @name = args[:name] if args.key?(:name)
@@ -2922,6 +2950,58 @@ module Google
       # Contains details about the state of an association in a specific cloud
       # location.
       class MirroringEndpointGroupAssociationLocationDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The cloud location, e.g. "us-central1-a" or "asia-south1".
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Output only. The current state of the association in this location.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location = args[:location] if args.key?(:location)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # The endpoint group's view of a connected deployment group.
+      class MirroringEndpointGroupConnectedDeploymentGroup
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The list of locations where the deployment group is present.
+        # Corresponds to the JSON property `locations`
+        # @return [Array<Google::Apis::NetworksecurityV1::MirroringLocation>]
+        attr_accessor :locations
+      
+        # Output only. The connected deployment group's resource name, for example: `
+        # projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`. See
+        # https://google.aip.dev/124.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locations = args[:locations] if args.key?(:locations)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Details about mirroring in a specific cloud location.
+      class MirroringLocation
         include Google::Apis::Core::Hashable
       
         # Output only. The cloud location, e.g. "us-central1-a" or "asia-south1".
