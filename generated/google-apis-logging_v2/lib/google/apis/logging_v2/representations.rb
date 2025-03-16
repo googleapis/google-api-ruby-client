@@ -22,6 +22,30 @@ module Google
   module Apis
     module LoggingV2
       
+      class AppHub
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppHubApplication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppHubService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppHubWorkload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BigQueryDataset
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -514,6 +538,45 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppHub
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application, as: 'application', class: Google::Apis::LoggingV2::AppHubApplication, decorator: Google::Apis::LoggingV2::AppHubApplication::Representation
+      
+          property :service, as: 'service', class: Google::Apis::LoggingV2::AppHubService, decorator: Google::Apis::LoggingV2::AppHubService::Representation
+      
+          property :workload, as: 'workload', class: Google::Apis::LoggingV2::AppHubWorkload, decorator: Google::Apis::LoggingV2::AppHubWorkload::Representation
+      
+        end
+      end
+      
+      class AppHubApplication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :container, as: 'container'
+          property :id, as: 'id'
+          property :location, as: 'location'
+        end
+      end
+      
+      class AppHubService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :criticality_type, as: 'criticalityType'
+          property :environment_type, as: 'environmentType'
+          property :id, as: 'id'
+        end
+      end
+      
+      class AppHubWorkload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :criticality_type, as: 'criticalityType'
+          property :environment_type, as: 'environmentType'
+          property :id, as: 'id'
+        end
+      end
+      
       class BigQueryDataset
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -949,6 +1012,8 @@ module Google
       class LogEntry
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :apphub, as: 'apphub', class: Google::Apis::LoggingV2::AppHub, decorator: Google::Apis::LoggingV2::AppHub::Representation
+      
           collection :error_groups, as: 'errorGroups', class: Google::Apis::LoggingV2::LogErrorGroup, decorator: Google::Apis::LoggingV2::LogErrorGroup::Representation
       
           property :http_request, as: 'httpRequest', class: Google::Apis::LoggingV2::HttpRequest, decorator: Google::Apis::LoggingV2::HttpRequest::Representation

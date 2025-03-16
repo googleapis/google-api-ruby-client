@@ -22,6 +22,137 @@ module Google
   module Apis
     module LoggingV2
       
+      # Metadata associated with App Hub.
+      class AppHub
+        include Google::Apis::Core::Hashable
+      
+        # Resource identifiers associated with an AppHub application AppHub resources
+        # are of the form projects//locations//applications/ projects//locations//
+        # applications//services/ projects//locations//applications//workloads/ These
+        # resources can be reconstructed from the components below.
+        # Corresponds to the JSON property `application`
+        # @return [Google::Apis::LoggingV2::AppHubApplication]
+        attr_accessor :application
+      
+        # Metadata associated with an App Hub service.
+        # Corresponds to the JSON property `service`
+        # @return [Google::Apis::LoggingV2::AppHubService]
+        attr_accessor :service
+      
+        # Metadata associated with an App Hub workload.
+        # Corresponds to the JSON property `workload`
+        # @return [Google::Apis::LoggingV2::AppHubWorkload]
+        attr_accessor :workload
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application = args[:application] if args.key?(:application)
+          @service = args[:service] if args.key?(:service)
+          @workload = args[:workload] if args.key?(:workload)
+        end
+      end
+      
+      # Resource identifiers associated with an AppHub application AppHub resources
+      # are of the form projects//locations//applications/ projects//locations//
+      # applications//services/ projects//locations//applications//workloads/ These
+      # resources can be reconstructed from the components below.
+      class AppHubApplication
+        include Google::Apis::Core::Hashable
+      
+        # Resource container that owns the application. Example: "projects/
+        # management_project"
+        # Corresponds to the JSON property `container`
+        # @return [String]
+        attr_accessor :container
+      
+        # Application Id. Example: "my-app"
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Location associated with the Application. Example: "us-east1"
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @container = args[:container] if args.key?(:container)
+          @id = args[:id] if args.key?(:id)
+          @location = args[:location] if args.key?(:location)
+        end
+      end
+      
+      # Metadata associated with an App Hub service.
+      class AppHubService
+        include Google::Apis::Core::Hashable
+      
+        # Service criticality type Example: "CRITICAL"
+        # Corresponds to the JSON property `criticalityType`
+        # @return [String]
+        attr_accessor :criticality_type
+      
+        # Service environment type Example: "DEV"
+        # Corresponds to the JSON property `environmentType`
+        # @return [String]
+        attr_accessor :environment_type
+      
+        # Service Id. Example: "my-service"
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @criticality_type = args[:criticality_type] if args.key?(:criticality_type)
+          @environment_type = args[:environment_type] if args.key?(:environment_type)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # Metadata associated with an App Hub workload.
+      class AppHubWorkload
+        include Google::Apis::Core::Hashable
+      
+        # Workload criticality type Example: "CRITICAL"
+        # Corresponds to the JSON property `criticalityType`
+        # @return [String]
+        attr_accessor :criticality_type
+      
+        # Workload environment type Example: "DEV"
+        # Corresponds to the JSON property `environmentType`
+        # @return [String]
+        attr_accessor :environment_type
+      
+        # Workload Id. Example: "my-workload"
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @criticality_type = args[:criticality_type] if args.key?(:criticality_type)
+          @environment_type = args[:environment_type] if args.key?(:environment_type)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
       # Describes a BigQuery dataset that was created by a link.
       class BigQueryDataset
         include Google::Apis::Core::Hashable
@@ -1795,6 +1926,11 @@ module Google
       class LogEntry
         include Google::Apis::Core::Hashable
       
+        # Metadata associated with App Hub.
+        # Corresponds to the JSON property `apphub`
+        # @return [Google::Apis::LoggingV2::AppHub]
+        attr_accessor :apphub
+      
         # Output only. The Error Reporting (https://cloud.google.com/error-reporting)
         # error groups associated with this LogEntry. Error Reporting sets the values
         # for this field during error group creation.For more information, see View
@@ -1990,6 +2126,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @apphub = args[:apphub] if args.key?(:apphub)
           @error_groups = args[:error_groups] if args.key?(:error_groups)
           @http_request = args[:http_request] if args.key?(:http_request)
           @insert_id = args[:insert_id] if args.key?(:insert_id)
