@@ -1482,6 +1482,50 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns a list of the sensitive information types that the DLP API supports.
+        # See https://cloud.google.com/sensitive-data-protection/docs/infotypes-
+        # reference to learn more.
+        # @param [String] parent
+        #   The parent resource name. The format of this value is as follows: `locations/`
+        #   location_id``
+        # @param [String] filter
+        #   filter to only return infoTypes supported by certain parts of the API.
+        #   Defaults to supported_by=INSPECT.
+        # @param [String] language_code
+        #   BCP-47 language code for localized infoType friendly names. If omitted, or if
+        #   localized strings are not available, en-US strings will be returned.
+        # @param [String] location_id
+        #   Deprecated. This field has no effect.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2ListInfoTypesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ListInfoTypesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_info_types(parent, filter: nil, language_code: nil, location_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/infoTypes', options)
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInfoTypesResponse::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInfoTypesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['languageCode'] = language_code unless language_code.nil?
+          command.query['locationId'] = location_id unless location_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates an InspectTemplate for reusing frequently used configuration for
         # inspecting content, images, and storage. See https://cloud.google.com/
         # sensitive-data-protection/docs/creating-templates to learn more.
@@ -4944,6 +4988,50 @@ module Google
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2RedactImageResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2RedactImageResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a list of the sensitive information types that the DLP API supports.
+        # See https://cloud.google.com/sensitive-data-protection/docs/infotypes-
+        # reference to learn more.
+        # @param [String] parent
+        #   The parent resource name. The format of this value is as follows: `locations/`
+        #   location_id``
+        # @param [String] filter
+        #   filter to only return infoTypes supported by certain parts of the API.
+        #   Defaults to supported_by=INSPECT.
+        # @param [String] language_code
+        #   BCP-47 language code for localized infoType friendly names. If omitted, or if
+        #   localized strings are not available, en-US strings will be returned.
+        # @param [String] location_id
+        #   Deprecated. This field has no effect.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2ListInfoTypesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ListInfoTypesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_info_types(parent, filter: nil, language_code: nil, location_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/infoTypes', options)
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInfoTypesResponse::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInfoTypesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['languageCode'] = language_code unless language_code.nil?
+          command.query['locationId'] = location_id unless location_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
