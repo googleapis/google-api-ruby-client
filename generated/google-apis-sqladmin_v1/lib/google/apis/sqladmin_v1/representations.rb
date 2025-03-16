@@ -106,7 +106,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConnectPoolNodeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConnectSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConnectionPoolConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConnectionPoolFlags
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -532,6 +550,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PoolNodeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PscAutoConnectionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -824,6 +848,7 @@ module Google
       
           property :backup_kind, as: 'backupKind'
           property :backup_run, as: 'backupRun'
+          property :database_version, as: 'databaseVersion'
           property :description, as: 'description'
           property :error, as: 'error', class: Google::Apis::SqladminV1::OperationError, decorator: Google::Apis::SqladminV1::OperationError::Representation
       
@@ -894,6 +919,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup_kind, as: 'backupKind'
+          property :database_version, as: 'databaseVersion'
           property :description, as: 'description'
           property :disk_encryption_configuration, as: 'diskEncryptionConfiguration', class: Google::Apis::SqladminV1::DiskEncryptionConfiguration, decorator: Google::Apis::SqladminV1::DiskEncryptionConfiguration::Representation
       
@@ -952,6 +978,18 @@ module Google
         end
       end
       
+      class ConnectPoolNodeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dns_name, as: 'dnsName'
+          collection :dns_names, as: 'dnsNames', class: Google::Apis::SqladminV1::DnsNameMapping, decorator: Google::Apis::SqladminV1::DnsNameMapping::Representation
+      
+          collection :ip_addresses, as: 'ipAddresses', class: Google::Apis::SqladminV1::IpMapping, decorator: Google::Apis::SqladminV1::IpMapping::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
       class ConnectSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -964,11 +1002,37 @@ module Google
           collection :ip_addresses, as: 'ipAddresses', class: Google::Apis::SqladminV1::IpMapping, decorator: Google::Apis::SqladminV1::IpMapping::Representation
       
           property :kind, as: 'kind'
+          property :node_count, as: 'nodeCount'
+          collection :nodes, as: 'nodes', class: Google::Apis::SqladminV1::ConnectPoolNodeConfig, decorator: Google::Apis::SqladminV1::ConnectPoolNodeConfig::Representation
+      
           property :psc_enabled, as: 'pscEnabled'
           property :region, as: 'region'
           property :server_ca_cert, as: 'serverCaCert', class: Google::Apis::SqladminV1::SslCert, decorator: Google::Apis::SqladminV1::SslCert::Representation
       
           property :server_ca_mode, as: 'serverCaMode'
+        end
+      end
+      
+      class ConnectionPoolConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_connection_idle_timeout, as: 'clientConnectionIdleTimeout'
+          property :conn_pool_size, as: 'connPoolSize'
+          property :connection_pooling_enabled, as: 'connectionPoolingEnabled'
+          collection :flags, as: 'flags', class: Google::Apis::SqladminV1::ConnectionPoolFlags, decorator: Google::Apis::SqladminV1::ConnectionPoolFlags::Representation
+      
+          property :max_client_connections, as: 'maxClientConnections'
+          property :pool_mode, as: 'poolMode'
+          property :query_wait_timeout, as: 'queryWaitTimeout'
+          property :server_connection_idle_timeout, as: 'serverConnectionIdleTimeout'
+        end
+      end
+      
+      class ConnectionPoolFlags
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value'
         end
       end
       
@@ -1036,6 +1100,9 @@ module Google
           property :master_instance_name, as: 'masterInstanceName'
           property :max_disk_size, :numeric_string => true, as: 'maxDiskSize'
           property :name, as: 'name'
+          property :node_count, as: 'nodeCount'
+          collection :nodes, as: 'nodes', class: Google::Apis::SqladminV1::PoolNodeConfig, decorator: Google::Apis::SqladminV1::PoolNodeConfig::Representation
+      
           property :on_premises_configuration, as: 'onPremisesConfiguration', class: Google::Apis::SqladminV1::OnPremisesConfiguration, decorator: Google::Apis::SqladminV1::OnPremisesConfiguration::Representation
       
           property :out_of_disk_report, as: 'outOfDiskReport', class: Google::Apis::SqladminV1::SqlOutOfDiskReport, decorator: Google::Apis::SqladminV1::SqlOutOfDiskReport::Representation
@@ -1273,11 +1340,14 @@ module Google
           collection :allowed_int_values, as: 'allowedIntValues'
           collection :allowed_string_values, as: 'allowedStringValues'
           collection :applies_to, as: 'appliesTo'
+          property :flag_scope, as: 'flagScope'
           property :in_beta, as: 'inBeta'
           property :kind, as: 'kind'
           property :max_value, :numeric_string => true, as: 'maxValue'
           property :min_value, :numeric_string => true, as: 'minValue'
           property :name, as: 'name'
+          property :recommended_int_value, :numeric_string => true, as: 'recommendedIntValue'
+          property :recommended_string_value, as: 'recommendedStringValue'
           property :requires_restart, as: 'requiresRestart'
           property :type, as: 'type'
         end
@@ -1770,6 +1840,20 @@ module Google
         end
       end
       
+      class PoolNodeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dns_name, as: 'dnsName'
+          collection :dns_names, as: 'dnsNames', class: Google::Apis::SqladminV1::DnsNameMapping, decorator: Google::Apis::SqladminV1::DnsNameMapping::Representation
+      
+          property :gce_zone, as: 'gceZone'
+          collection :ip_addresses, as: 'ipAddresses', class: Google::Apis::SqladminV1::IpMapping, decorator: Google::Apis::SqladminV1::IpMapping::Representation
+      
+          property :name, as: 'name'
+          property :state, as: 'state'
+        end
+      end
+      
       class PscAutoConnectionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1865,10 +1949,14 @@ module Google
           property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::SqladminV1::BackupConfiguration, decorator: Google::Apis::SqladminV1::BackupConfiguration::Representation
       
           property :collation, as: 'collation'
+          property :connection_pool_config, as: 'connectionPoolConfig', class: Google::Apis::SqladminV1::ConnectionPoolConfig, decorator: Google::Apis::SqladminV1::ConnectionPoolConfig::Representation
+      
           property :connector_enforcement, as: 'connectorEnforcement'
           property :crash_safe_replication_enabled, as: 'crashSafeReplicationEnabled'
           property :data_cache_config, as: 'dataCacheConfig', class: Google::Apis::SqladminV1::DataCacheConfig, decorator: Google::Apis::SqladminV1::DataCacheConfig::Representation
       
+          property :data_disk_provisioned_iops, :numeric_string => true, as: 'dataDiskProvisionedIops'
+          property :data_disk_provisioned_throughput, :numeric_string => true, as: 'dataDiskProvisionedThroughput'
           property :data_disk_size_gb, :numeric_string => true, as: 'dataDiskSizeGb'
           property :data_disk_type, as: 'dataDiskType'
           collection :database_flags, as: 'databaseFlags', class: Google::Apis::SqladminV1::DatabaseFlags, decorator: Google::Apis::SqladminV1::DatabaseFlags::Representation
