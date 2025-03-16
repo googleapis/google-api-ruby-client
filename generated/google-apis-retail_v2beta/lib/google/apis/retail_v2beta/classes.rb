@@ -7594,6 +7594,13 @@ module Google
         # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestPersonalizationSpec]
         attr_accessor :personalization_spec
       
+        # Optional. An id corresponding to a place, such as a store id or region id.
+        # When specified, we use the price from the local inventory with the matching
+        # product's LocalInventory.place_id for revenue optimization.
+        # Corresponds to the JSON property `placeId`
+        # @return [String]
+        attr_accessor :place_id
+      
         # Raw search query. If this field is empty, the request is considered a category
         # browsing request and returned results are based on filter and page_categories.
         # Corresponds to the JSON property `query`
@@ -7697,6 +7704,7 @@ module Google
           @page_size = args[:page_size] if args.key?(:page_size)
           @page_token = args[:page_token] if args.key?(:page_token)
           @personalization_spec = args[:personalization_spec] if args.key?(:personalization_spec)
+          @place_id = args[:place_id] if args.key?(:place_id)
           @query = args[:query] if args.key?(:query)
           @query_expansion_spec = args[:query_expansion_spec] if args.key?(:query_expansion_spec)
           @region_code = args[:region_code] if args.key?(:region_code)
