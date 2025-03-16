@@ -731,7 +731,7 @@ module Google
         end
       end
       
-      # A step in the build pipeline. Next ID: 21
+      # A step in the build pipeline. Next ID: 22
       class BuildStep
         include Google::Apis::Core::Hashable
       
@@ -822,6 +822,11 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1beta1::TimeSpan]
         attr_accessor :pull_timing
       
+        # 
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::ContaineranalysisV1beta1::StepResult>]
+        attr_accessor :results
+      
         # A shell script to be executed in the step. When script is provided, the user
         # cannot specify the entrypoint or args.
         # Corresponds to the JSON property `script`
@@ -888,6 +893,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @pull_timing = args[:pull_timing] if args.key?(:pull_timing)
+          @results = args[:results] if args.key?(:results)
           @script = args[:script] if args.key?(:script)
           @secret_env = args[:secret_env] if args.key?(:secret_env)
           @status = args[:status] if args.key?(:status)
@@ -6737,6 +6743,37 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # StepResult is the declaration of a result for a build step.
+      class StepResult
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `attestationContentName`
+        # @return [String]
+        attr_accessor :attestation_content_name
+      
+        # 
+        # Corresponds to the JSON property `attestationType`
+        # @return [String]
+        attr_accessor :attestation_type
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attestation_content_name = args[:attestation_content_name] if args.key?(:attestation_content_name)
+          @attestation_type = args[:attestation_type] if args.key?(:attestation_type)
+          @name = args[:name] if args.key?(:name)
         end
       end
       

@@ -952,6 +952,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StepResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Subject
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1224,6 +1230,8 @@ module Google
           property :id, as: 'id'
           property :name, as: 'name'
           property :pull_timing, as: 'pullTiming', class: Google::Apis::ContaineranalysisV1beta1::TimeSpan, decorator: Google::Apis::ContaineranalysisV1beta1::TimeSpan::Representation
+      
+          collection :results, as: 'results', class: Google::Apis::ContaineranalysisV1beta1::StepResult, decorator: Google::Apis::ContaineranalysisV1beta1::StepResult::Representation
       
           property :script, as: 'script'
           collection :secret_env, as: 'secretEnv'
@@ -2775,6 +2783,15 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class StepResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attestation_content_name, as: 'attestationContentName'
+          property :attestation_type, as: 'attestationType'
+          property :name, as: 'name'
         end
       end
       
