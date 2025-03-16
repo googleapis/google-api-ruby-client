@@ -2104,12 +2104,21 @@ module Google
       class RevokeSubscriptionRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. If the subscription is commercial then this field must be set to
+        # true, otherwise a failure is thrown. This acts as a safety guard to avoid
+        # revoking commercial subscriptions accidentally.
+        # Corresponds to the JSON property `revokeCommercial`
+        # @return [Boolean]
+        attr_accessor :revoke_commercial
+        alias_method :revoke_commercial?, :revoke_commercial
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @revoke_commercial = args[:revoke_commercial] if args.key?(:revoke_commercial)
         end
       end
       
