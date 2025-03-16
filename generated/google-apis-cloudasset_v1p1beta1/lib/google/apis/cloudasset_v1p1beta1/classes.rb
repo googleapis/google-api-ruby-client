@@ -1429,6 +1429,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :resources
       
+        # IAM roles that represent the set of operations that the sources specified in
+        # the corresponding EgressFrom. are allowed to perform in this ServicePerimeter.
+        # Corresponds to the JSON property `roles`
+        # @return [Array<String>]
+        attr_accessor :roles
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1438,6 +1444,7 @@ module Google
           @external_resources = args[:external_resources] if args.key?(:external_resources)
           @operations = args[:operations] if args.key?(:operations)
           @resources = args[:resources] if args.key?(:resources)
+          @roles = args[:roles] if args.key?(:roles)
         end
       end
       
@@ -1590,6 +1597,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :resources
       
+        # IAM roles that represent the set of operations that the sources specified in
+        # the corresponding IngressFrom are allowed to perform in this ServicePerimeter.
+        # Corresponds to the JSON property `roles`
+        # @return [Array<String>]
+        attr_accessor :roles
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1598,6 +1611,7 @@ module Google
         def update!(**args)
           @operations = args[:operations] if args.key?(:operations)
           @resources = args[:resources] if args.key?(:resources)
+          @roles = args[:roles] if args.key?(:roles)
         end
       end
       
