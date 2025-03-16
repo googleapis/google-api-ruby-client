@@ -554,6 +554,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :crypto_key_name, as: 'cryptoKeyName'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
         end
