@@ -3468,6 +3468,124 @@ module Google
       end
       
       # 
+      class BackendBucketListUsable
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of BackendBucket resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeBeta::BackendBucket>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#usableBackendBucketList for
+        # lists of usable backend buckets.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeBeta::BackendBucketListUsable::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeBeta::BackendBucketListUsable::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
       class BackendBucketUsedBy
         include Google::Apis::Core::Hashable
       
@@ -8308,6 +8426,69 @@ module Google
         # Update properties of this object
         def update!(**args)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # 
+      class DiskSettings
+        include Google::Apis::Core::Hashable
+      
+        # Policy of which locations are allowed to create regional snapshots.
+        # Corresponds to the JSON property `accessLocation`
+        # @return [Google::Apis::ComputeBeta::DiskSettingsAccessLocation]
+        attr_accessor :access_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_location = args[:access_location] if args.key?(:access_location)
+        end
+      end
+      
+      # 
+      class DiskSettingsAccessLocation
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `locations`
+        # @return [Hash<String,Google::Apis::ComputeBeta::DiskSettingsAccessLocationAccessLocationPreference>]
+        attr_accessor :locations
+      
+        # 
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locations = args[:locations] if args.key?(:locations)
+          @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
+      # 
+      class DiskSettingsAccessLocationAccessLocationPreference
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @region = args[:region] if args.key?(:region)
         end
       end
       
@@ -38520,6 +38701,11 @@ module Google
         # @return [String]
         attr_accessor :collocation
       
+        # Specifies the shape of the GPU slice, in slice based GPU families eg. A4X.
+        # Corresponds to the JSON property `gpuTopology`
+        # @return [String]
+        attr_accessor :gpu_topology
+      
         # Specifies the number of max logical switches.
         # Corresponds to the JSON property `maxDistance`
         # @return [Fixnum]
@@ -38550,6 +38736,7 @@ module Google
         def update!(**args)
           @availability_domain_count = args[:availability_domain_count] if args.key?(:availability_domain_count)
           @collocation = args[:collocation] if args.key?(:collocation)
+          @gpu_topology = args[:gpu_topology] if args.key?(:gpu_topology)
           @max_distance = args[:max_distance] if args.key?(:max_distance)
           @slice_count = args[:slice_count] if args.key?(:slice_count)
           @tpu_topology = args[:tpu_topology] if args.key?(:tpu_topology)
@@ -39020,6 +39207,16 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
+        # Corresponds to the JSON property `acceleratorTopology`
+        # @return [String]
+        attr_accessor :accelerator_topology
+      
+        # 
+        # Corresponds to the JSON property `maxTopologyDistance`
+        # @return [String]
+        attr_accessor :max_topology_distance
+      
+        # 
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -39030,6 +39227,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accelerator_topology = args[:accelerator_topology] if args.key?(:accelerator_topology)
+          @max_topology_distance = args[:max_topology_distance] if args.key?(:max_topology_distance)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -45332,6 +45531,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] URL of the region where the snapshot resides. Only applicable
+        # for regional snapshots.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
@@ -45479,6 +45684,7 @@ module Google
           @licenses = args[:licenses] if args.key?(:licenses)
           @location_hint = args[:location_hint] if args.key?(:location_hint)
           @name = args[:name] if args.key?(:name)
+          @region = args[:region] if args.key?(:region)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -45498,6 +45704,136 @@ module Google
           @storage_bytes_status = args[:storage_bytes_status] if args.key?(:storage_bytes_status)
           @storage_locations = args[:storage_locations] if args.key?(:storage_locations)
           @user_licenses = args[:user_licenses] if args.key?(:user_licenses)
+        end
+      end
+      
+      # 
+      class SnapshotAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of SnapshotsScopedList resources.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,Google::Apis::ComputeBeta::SnapshotsScopedList>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#snapshotAggregatedList for
+        # aggregated lists of snapshots.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeBeta::SnapshotAggregatedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeBeta::SnapshotAggregatedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
@@ -45622,6 +45958,12 @@ module Google
       class SnapshotSettings
         include Google::Apis::Core::Hashable
       
+        # (Regional snapshots use only)Policy of which location is allowed to access
+        # snapshot.
+        # Corresponds to the JSON property `accessLocation`
+        # @return [Google::Apis::ComputeBeta::SnapshotSettingsAccessLocation]
+        attr_accessor :access_location
+      
         # Policy of which storage location is going to be resolved, and additional data
         # that particularizes how the policy is going to be carried out.
         # Corresponds to the JSON property `storageLocation`
@@ -45634,7 +45976,52 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @access_location = args[:access_location] if args.key?(:access_location)
           @storage_location = args[:storage_location] if args.key?(:storage_location)
+        end
+      end
+      
+      # 
+      class SnapshotSettingsAccessLocation
+        include Google::Apis::Core::Hashable
+      
+        # List of regions that can restore a regional snapshot from the current region
+        # Corresponds to the JSON property `locations`
+        # @return [Hash<String,Google::Apis::ComputeBeta::SnapshotSettingsAccessLocationAccessLocationPreference>]
+        attr_accessor :locations
+      
+        # Policy of which location is allowed to access snapshot.
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locations = args[:locations] if args.key?(:locations)
+          @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
+      # A structure for specifying an allowed target region.
+      class SnapshotSettingsAccessLocationAccessLocationPreference
+        include Google::Apis::Core::Hashable
+      
+        # Accessible region name
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @region = args[:region] if args.key?(:region)
         end
       end
       
@@ -45682,6 +46069,97 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # 
+      class SnapshotsScopedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] A list of snapshots contained in this scope.
+        # Corresponds to the JSON property `snapshots`
+        # @return [Array<Google::Apis::ComputeBeta::Snapshot>]
+        attr_accessor :snapshots
+      
+        # [Output Only] Informational warning which replaces the list of snapshots when
+        # the list is empty.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeBeta::SnapshotsScopedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @snapshots = args[:snapshots] if args.key?(:snapshots)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning which replaces the list of snapshots when
+        # the list is empty.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeBeta::SnapshotsScopedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
