@@ -1030,6 +1030,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ListSpacesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ListTraceConfigOverridesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1055,6 +1061,24 @@ module Google
       end
       
       class GoogleCloudApigeeV1MonetizationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1MoveApiProductRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1MoveApiProxyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1MoveSharedFlowRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1648,6 +1672,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1Space
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1Stats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2106,6 +2136,7 @@ module Google
           property :quota_interval, as: 'quotaInterval'
           property :quota_time_unit, as: 'quotaTimeUnit'
           collection :scopes, as: 'scopes'
+          property :space, as: 'space'
         end
       end
       
@@ -2128,6 +2159,7 @@ module Google
           property :name, as: 'name'
           property :read_only, as: 'readOnly'
           collection :revision, as: 'revision'
+          property :space, as: 'space'
         end
       end
       
@@ -3662,6 +3694,15 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ListSpacesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :spaces, as: 'spaces', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Space, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Space::Representation
+      
+        end
+      end
+      
       class GoogleCloudApigeeV1ListTraceConfigOverridesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3700,6 +3741,27 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+        end
+      end
+      
+      class GoogleCloudApigeeV1MoveApiProductRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :space, as: 'space'
+        end
+      end
+      
+      class GoogleCloudApigeeV1MoveApiProxyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :space, as: 'space'
+        end
+      end
+      
+      class GoogleCloudApigeeV1MoveSharedFlowRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :space, as: 'space'
         end
       end
       
@@ -4758,6 +4820,7 @@ module Google
       
           property :name, as: 'name'
           collection :revision, as: 'revision'
+          property :space, as: 'space'
         end
       end
       
@@ -4780,6 +4843,16 @@ module Google
           property :revision, as: 'revision'
           collection :shared_flows, as: 'sharedFlows'
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudApigeeV1Space
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
         end
       end
       

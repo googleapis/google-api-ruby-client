@@ -1055,6 +1055,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :scopes
       
+        # Optional. The resource ID of the parent Space. If not set, the parent resource
+        # will be the Organization. To learn how Spaces can be used to manage resources,
+        # read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-
+        # platform/system-administration/spaces/apigee-spaces-overview).
+        # Corresponds to the JSON property `space`
+        # @return [String]
+        attr_accessor :space
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1079,6 +1087,7 @@ module Google
           @quota_interval = args[:quota_interval] if args.key?(:quota_interval)
           @quota_time_unit = args[:quota_time_unit] if args.key?(:quota_time_unit)
           @scopes = args[:scopes] if args.key?(:scopes)
+          @space = args[:space] if args.key?(:space)
         end
       end
       
@@ -1149,6 +1158,15 @@ module Google
         # @return [Array<String>]
         attr_accessor :revision
       
+        # Optional. The id of the space this proxy is associated with. Any IAM policies
+        # applied to the space will control access to this proxy. To learn how Spaces
+        # can be used to manage resources, read the [Apigee Spaces Overview](https://
+        # cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-
+        # spaces-overview).
+        # Corresponds to the JSON property `space`
+        # @return [String]
+        attr_accessor :space
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1162,6 +1180,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @read_only = args[:read_only] if args.key?(:read_only)
           @revision = args[:revision] if args.key?(:revision)
+          @space = args[:space] if args.key?(:space)
         end
       end
       
@@ -3336,7 +3355,7 @@ module Google
         end
       end
       
-      # 
+      # Deployment represents a deployment of an API proxy or shared flow.
       class GoogleCloudApigeeV1Deployment
         include Google::Apis::Core::Hashable
       
@@ -4334,12 +4353,11 @@ module Google
       
         # Optional. URI of the forward proxy to be applied to the runtime instances in
         # this environment. Must be in the format of `scheme`://`hostname`:`port`. Note
-        # that the scheme must be one of "http" or "https", and the port must be
-        # supplied. To remove a forward proxy setting, update the field to an empty
-        # value. Note: At this time, PUT operations to add forwardProxyUri to an
-        # existing environment fail if the environment has nodeConfig set up. To
-        # successfully add the forwardProxyUri setting in this case, include the
-        # NodeConfig details with the request.
+        # that the only supported scheme is "http". The port must be supplied. To remove
+        # a forward proxy setting, update the field to an empty value. Note: At this
+        # time, PUT operations to add forwardProxyUri to an existing environment fail if
+        # the environment has nodeConfig set up. To successfully add the forwardProxyUri
+        # setting in this case, include the NodeConfig details with the request.
         # Corresponds to the JSON property `forwardProxyUri`
         # @return [String]
         attr_accessor :forward_proxy_uri
@@ -6778,6 +6796,33 @@ module Google
         end
       end
       
+      # A response to a ListSpaces request containing the list of organization spaces
+      # and a page token for the next page.
+      class GoogleCloudApigeeV1ListSpacesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of Apigee organization spaces.
+        # Corresponds to the JSON property `spaces`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Space>]
+        attr_accessor :spaces
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @spaces = args[:spaces] if args.key?(:spaces)
+        end
+      end
+      
       # Response for ListTraceConfigOverrides.
       class GoogleCloudApigeeV1ListTraceConfigOverridesResponse
         include Google::Apis::Core::Hashable
@@ -6910,6 +6955,66 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # Moves API product to a different space.
+      class GoogleCloudApigeeV1MoveApiProductRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Resource ID of the space to move the API product to. If unspecified,
+        # the API product will be moved to the organization level.
+        # Corresponds to the JSON property `space`
+        # @return [String]
+        attr_accessor :space
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @space = args[:space] if args.key?(:space)
+        end
+      end
+      
+      # Moves an API Proxy to a different Space.
+      class GoogleCloudApigeeV1MoveApiProxyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Resource ID of the space to move the proxy to. If unspecified, the
+        # proxy will be moved to the organization level.
+        # Corresponds to the JSON property `space`
+        # @return [String]
+        attr_accessor :space
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @space = args[:space] if args.key?(:space)
+        end
+      end
+      
+      # Moves a Shared Flow to a different space.
+      class GoogleCloudApigeeV1MoveSharedFlowRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Resource ID of the space to move the shared flow to. If unspecified,
+        # the shared flow will be moved to the organization level.
+        # Corresponds to the JSON property `space`
+        # @return [String]
+        attr_accessor :space
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @space = args[:space] if args.key?(:space)
         end
       end
       
@@ -10945,6 +11050,15 @@ module Google
         # @return [Array<String>]
         attr_accessor :revision
       
+        # Optional. The ID of the space associated with this shared flow. Any IAM
+        # policies applied to the space will control access to this shared flow. To
+        # learn how Spaces can be used to manage resources, read the [Apigee Spaces
+        # Overview](https://cloud.google.com/apigee/docs/api-platform/system-
+        # administration/spaces/apigee-spaces-overview).
+        # Corresponds to the JSON property `space`
+        # @return [String]
+        attr_accessor :space
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10955,6 +11069,7 @@ module Google
           @meta_data = args[:meta_data] if args.key?(:meta_data)
           @name = args[:name] if args.key?(:name)
           @revision = args[:revision] if args.key?(:revision)
+          @space = args[:space] if args.key?(:space)
         end
       end
       
@@ -11056,6 +11171,44 @@ module Google
           @revision = args[:revision] if args.key?(:revision)
           @shared_flows = args[:shared_flows] if args.key?(:shared_flows)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Organization space resource.
+      class GoogleCloudApigeeV1Space
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Create timestamp of the space.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Display name of the space.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Identifier. Id of the space. This field is used as the resource
+        # name, and must follow [AIP-122](https://google.aip.dev/122) guidelines.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Last modified timestamp of the space.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       

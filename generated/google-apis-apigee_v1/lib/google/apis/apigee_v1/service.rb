@@ -840,7 +840,11 @@ module Google
         # seconds.
         # @param [String] name
         #   Required. Name of the API product. Use the following structure in your request:
-        #   `organizations/`org`/apiproducts/`apiproduct``
+        #   `organizations/`org`/apiproducts/`apiproduct`` If the API Product resource
+        #   has the `space` attribute set, IAM permissions are checked against the Space
+        #   resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.
+        #   google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-
+        #   overview).
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attributes] google_cloud_apigee_v1_attributes_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -889,7 +893,11 @@ module Google
         # For more information, see What is an API product?
         # @param [String] parent
         #   Required. Name of the organization in which the API product will be created.
-        #   Use the following structure in your request: `organizations/`org``
+        #   Use the following structure in your request: `organizations/`org`` If the
+        #   resource has the `space` attribute set, IAM permissions are checked against
+        #   the Space resource path. To learn more, read the [Apigee Spaces Overview](
+        #   https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/
+        #   apigee-spaces-overview).
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiProduct] google_cloud_apigee_v1_api_product_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -930,7 +938,10 @@ module Google
         # API products to verify the internal name.
         # @param [String] name
         #   Required. Name of the API product. Use the following structure in your request:
-        #   `organizations/`org`/apiproducts/`apiproduct``
+        #   `organizations/`org`/apiproducts/`apiproduct`` If the resource has the `space`
+        #   attribute set, IAM permissions are checked against the Space resource path.
+        #   To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/
+        #   apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -965,7 +976,10 @@ module Google
         # name.
         # @param [String] name
         #   Required. Name of the API product. Use the following structure in your request:
-        #   `organizations/`org`/apiproducts/`apiproduct``
+        #   `organizations/`org`/apiproducts/`apiproduct`` If the resource has the `space`
+        #   attribute set, IAM permissions are checked against the Space resource path.
+        #   To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/
+        #   apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -996,10 +1010,16 @@ module Google
         # Lists all API product names for an organization. Filter the list by passing an
         # `attributename` and `attibutevalue`. The maximum number of API products
         # returned is 1000. You can paginate the list of API products returned using the
-        # `startKey` and `count` query parameters.
+        # `startKey` and `count` query parameters. If the resource has the `space`
+        # attribute set, the response may not return all resources. To learn more, read
+        # the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/
+        # system-administration/spaces/apigee-spaces-overview).
         # @param [String] parent
         #   Required. Name of the organization. Use the following structure in your
-        #   request: `organizations/`org``
+        #   request: `organizations/`org`` If the resource has the `space` attribute set,
+        #   IAM permissions are checked against the Space resource path. To learn more,
+        #   read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-
+        #   platform/system-administration/spaces/apigee-spaces-overview).
         # @param [String] attributename
         #   Name of the attribute used to filter the search.
         # @param [String] attributevalue
@@ -1010,6 +1030,12 @@ module Google
         # @param [Boolean] expand
         #   Flag that specifies whether to expand the results. Set to `true` to get
         #   expanded details about each API.
+        # @param [String] space
+        #   Optional. The Space to list API products for. When none provided, all the
+        #   spaces the user has list access, will be used implicitly, and the same
+        #   following rules will apply. Can be used in conjunction with start_key, expand
+        #   and count for paginated response. Composite queries with attributename and
+        #   attributevalue are not supported yet.
         # @param [String] start_key
         #   Gets a list of API products starting with a specific API product in the list.
         #   For example, if you're returning 50 API products at a time (using the `count`
@@ -1033,7 +1059,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_apiproducts(parent, attributename: nil, attributevalue: nil, count: nil, expand: nil, start_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_apiproducts(parent, attributename: nil, attributevalue: nil, count: nil, expand: nil, space: nil, start_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/apiproducts', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListApiProductsResponse::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListApiProductsResponse
@@ -1042,7 +1068,42 @@ module Google
           command.query['attributevalue'] = attributevalue unless attributevalue.nil?
           command.query['count'] = count unless count.nil?
           command.query['expand'] = expand unless expand.nil?
+          command.query['space'] = space unless space.nil?
           command.query['startKey'] = start_key unless start_key.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Moves an API product to a different space.
+        # @param [String] name
+        #   Required. API product to move in the following format: `organizations/`org`/
+        #   apiproducts/`apiproduct`
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1MoveApiProductRequest] google_cloud_apigee_v1_move_api_product_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiProduct] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiProduct]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def move_organization_apiproduct(name, google_cloud_apigee_v1_move_api_product_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:move', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1MoveApiProductRequest::Representation
+          command.request_object = google_cloud_apigee_v1_move_api_product_request_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiProduct::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiProduct
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1056,7 +1117,10 @@ module Google
         # API products to identify their internal names.
         # @param [String] name
         #   Required. Name of the API product. Use the following structure in your request:
-        #   `organizations/`org`/apiproducts/`apiproduct``
+        #   `organizations/`org`/apiproducts/`apiproduct`` If the resource has the `space`
+        #   attribute set, IAM permissions are checked against the Space resource path.To
+        #   learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/
+        #   docs/api-platform/system-administration/spaces/apigee-spaces-overview).
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiProduct] google_cloud_apigee_v1_api_product_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1091,7 +1155,10 @@ module Google
         # @param [String] name
         #   Required. Name of the API product attribute. Use the following structure in
         #   your request: `organizations/`org`/apiproducts/`apiproduct`/attributes/`
-        #   attribute``
+        #   attribute`` If the API Product resource has the `space` attribute set, IAM
+        #   permissions are checked against the Space resource path. To learn more, read
+        #   the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/
+        #   system-administration/spaces/apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1123,7 +1190,10 @@ module Google
         # @param [String] name
         #   Required. Name of the API product attribute. Use the following structure in
         #   your request: `organizations/`org`/apiproducts/`apiproduct`/attributes/`
-        #   attribute``
+        #   attribute`` If the API Product resource has the `space` attribute set, IAM
+        #   permissions are checked against the Space resource path. To learn more, read
+        #   the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/
+        #   system-administration/spaces/apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1154,7 +1224,11 @@ module Google
         # Lists all API product attributes.
         # @param [String] parent
         #   Required. Name of the API product. Use the following structure in your request:
-        #   `organizations/`org`/apiproducts/`apiproduct``
+        #   `organizations/`org`/apiproducts/`apiproduct`` If the API Product resource
+        #   has the `space` attribute set, IAM permissions are checked against the Space
+        #   resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.
+        #   google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-
+        #   overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1190,7 +1264,11 @@ module Google
         # policy won't be able to expire an access token in less than 180 seconds.
         # @param [String] name
         #   Required. Name of the API product. Use the following structure in your request:
-        #   `organizations/`org`/apiproducts/`apiproduct``
+        #   `organizations/`org`/apiproducts/`apiproduct`` If the API Product resource
+        #   has the `space` attribute set, IAM permissions are checked against the Space
+        #   resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.
+        #   google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-
+        #   overview).
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute] google_cloud_apigee_v1_attribute_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1233,7 +1311,10 @@ module Google
         # @param [String] parent
         #   Required. Name of the API product that is associated with the rate plan. Use
         #   the following structure in your request: `organizations/`org`/apiproducts/`
-        #   apiproduct``
+        #   apiproduct`` If the API Product resource has the `space` attribute set, IAM
+        #   permissions are checked against the Space resource path. To learn more, read
+        #   the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/
+        #   system-administration/spaces/apigee-spaces-overview).
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1RatePlan] google_cloud_apigee_v1_rate_plan_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1267,7 +1348,11 @@ module Google
         # Deletes a rate plan.
         # @param [String] name
         #   Required. ID of the rate plan. Use the following structure in your request: `
-        #   organizations/`org`/apiproducts/`apiproduct`/rateplans/`rateplan``
+        #   organizations/`org`/apiproducts/`apiproduct`/rateplans/`rateplan`` If the API
+        #   Product resource has the `space` attribute set, IAM permissions are checked
+        #   against the Space resource path. To learn more, read the [Apigee Spaces
+        #   Overview](https://cloud.google.com/apigee/docs/api-platform/system-
+        #   administration/spaces/apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1298,7 +1383,11 @@ module Google
         # Gets the details of a rate plan.
         # @param [String] name
         #   Required. Name of the rate plan. Use the following structure in your request: `
-        #   organizations/`org`/apiproducts/`apiproduct`/rateplans/`rateplan``
+        #   organizations/`org`/apiproducts/`apiproduct`/rateplans/`rateplan`` If the API
+        #   Product resource has the `space` attribute set, IAM permissions are checked
+        #   against the Space resource path. To learn more, read the [Apigee Spaces
+        #   Overview](https://cloud.google.com/apigee/docs/api-platform/system-
+        #   administration/spaces/apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1331,7 +1420,10 @@ module Google
         #   Required. Name of the API product. Use the following structure in your request:
         #   `organizations/`org`/apiproducts/`apiproduct`` Use `organizations/`org`/
         #   apiproducts/-` to return rate plans for all API products within the
-        #   organization.
+        #   organization. If the API Product resource has the `space` attribute set, IAM
+        #   permissions are checked against the Space resource path. To learn more, read
+        #   the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/
+        #   system-administration/spaces/apigee-spaces-overview).
         # @param [Fixnum] count
         #   Number of rate plans to return in the API call. Use with the `startKey`
         #   parameter to provide more targeted filtering. The maximum limit is 1000.
@@ -1386,7 +1478,11 @@ module Google
         # Updates an existing rate plan.
         # @param [String] name
         #   Required. Name of the rate plan. Use the following structure in your request: `
-        #   organizations/`org`/apiproducts/`apiproduct`/rateplans/`rateplan``
+        #   organizations/`org`/apiproducts/`apiproduct`/rateplans/`rateplan`` If the API
+        #   Product resource has the `space` attribute set, IAM permissions are checked
+        #   against the Space resource path. To learn more, read the [Apigee Spaces
+        #   Overview](https://cloud.google.com/apigee/docs/api-platform/system-
+        #   administration/spaces/apigee-spaces-overview).
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1RatePlan] google_cloud_apigee_v1_rate_plan_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1433,7 +1529,10 @@ module Google
         # of validation errors is returned to the client.
         # @param [String] parent
         #   Required. Name of the organization in the following format: `organizations/`
-        #   org``
+        #   org`` If the API Proxy resource has the `space` attribute set, IAM permissions
+        #   are checked against the Space resource path. To learn more, read the [Apigee
+        #   Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-
+        #   administration/spaces/apigee-spaces-overview).
         # @param [Google::Apis::ApigeeV1::GoogleApiHttpBody] google_api_http_body_object
         # @param [String] action
         #   Action to perform when importing an API proxy configuration bundle. Set this
@@ -1442,6 +1541,11 @@ module Google
         #   bundle without importing it.
         # @param [String] name
         #   Name of the API proxy. Restrict the characters used to: A-Za-z0-9._-
+        # @param [String] space
+        #   Optional. The ID of the space associated with this proxy. Any IAM policies
+        #   applied to the space will affect access to this proxy. Note that this field is
+        #   only respected when creating a new proxy. It has no effect when creating a new
+        #   revision for an existing proxy.
         # @param [Boolean] validate
         #   Ignored. All uploads are validated regardless of the value of this field.
         #   Maintained for compatibility with Apigee Edge API.
@@ -1462,7 +1566,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_organization_api(parent, google_api_http_body_object = nil, action: nil, name: nil, validate: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_organization_api(parent, google_api_http_body_object = nil, action: nil, name: nil, space: nil, validate: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/apis', options)
           command.request_representation = Google::Apis::ApigeeV1::GoogleApiHttpBody::Representation
           command.request_object = google_api_http_body_object
@@ -1471,6 +1575,7 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['action'] = action unless action.nil?
           command.query['name'] = name unless name.nil?
+          command.query['space'] = space unless space.nil?
           command.query['validate'] = validate unless validate.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1481,7 +1586,10 @@ module Google
         # revisions. The API proxy must be undeployed before you can delete it.
         # @param [String] name
         #   Required. Name of the API proxy in the following format: `organizations/`org`/
-        #   apis/`api``
+        #   apis/`api`` If the API Proxy resource has the `space` attribute set, IAM
+        #   permissions are checked against the Space resource path. To learn more, read
+        #   the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/
+        #   system-administration/spaces/apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1512,7 +1620,10 @@ module Google
         # Gets an API proxy including a list of existing revisions.
         # @param [String] name
         #   Required. Name of the API proxy in the following format: `organizations/`org`/
-        #   apis/`api``
+        #   apis/`api`` If the API Proxy resource has the `space` attribute set, IAM
+        #   permissions are checked against the Space resource path. To learn more, read
+        #   the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/
+        #   system-administration/spaces/apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1542,13 +1653,23 @@ module Google
         
         # Lists the names of all API proxies in an organization. The names returned
         # correspond to the names defined in the configuration files for each API proxy.
+        # If the resource has the `space` attribute set, the response may not return all
+        # resources. To learn more, read the [Apigee Spaces Overview](https://cloud.
+        # google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-
+        # overview).
         # @param [String] parent
         #   Required. Name of the organization in the following format: `organizations/`
-        #   org``
+        #   org`` If the resource has the `space` attribute set, IAM permissions are
+        #   checked against the Space resource path. To learn more, read the [Apigee
+        #   Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-
+        #   administration/spaces/apigee-spaces-overview).
         # @param [Boolean] include_meta_data
         #   Flag that specifies whether to include API proxy metadata in the response.
         # @param [Boolean] include_revisions
         #   Flag that specifies whether to include a list of revisions in the response.
+        # @param [String] space
+        #   Optional. The space ID to filter the list of proxies (optional). If
+        #   unspecified, all proxies in the organization will be listed.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1566,13 +1687,48 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_apis(parent, include_meta_data: nil, include_revisions: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_apis(parent, include_meta_data: nil, include_revisions: nil, space: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/apis', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListApiProxiesResponse::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListApiProxiesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['includeMetaData'] = include_meta_data unless include_meta_data.nil?
           command.query['includeRevisions'] = include_revisions unless include_revisions.nil?
+          command.query['space'] = space unless space.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Moves an API proxy to a different space.
+        # @param [String] name
+        #   Required. API proxy to move in the following format: `organizations/`org`/apis/
+        #   `api``
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1MoveApiProxyRequest] google_cloud_apigee_v1_move_api_proxy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiProxy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiProxy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def move_organization_api(name, google_cloud_apigee_v1_move_api_proxy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:move', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1MoveApiProxyRequest::Representation
+          command.request_object = google_cloud_apigee_v1_move_api_proxy_request_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiProxy::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiProxy
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1581,7 +1737,10 @@ module Google
         # Updates an existing API proxy.
         # @param [String] name
         #   Required. API proxy to update in the following format: `organizations/`org`/
-        #   apis/`api``
+        #   apis/`api`` If the resource has the `space` attribute set, IAM permissions are
+        #   checked against the Space resource path. To learn more, read the [Apigee
+        #   Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-
+        #   administration/spaces/apigee-spaces-overview).
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiProxy] google_cloud_apigee_v1_api_proxy_object
         # @param [String] update_mask
         #   Required. The list of fields to update.
@@ -1657,7 +1816,11 @@ module Google
         # Lists all deployments of an API proxy.
         # @param [String] parent
         #   Required. Name of the API proxy for which to return deployment information in
-        #   the following format: `organizations/`org`/apis/`api``
+        #   the following format: `organizations/`org`/apis/`api`` If the API proxy
+        #   resource has the `space` attribute set, IAM permissions are checked
+        #   differently . To learn more, read the [Apigee Spaces Overview](https://cloud.
+        #   google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-
+        #   overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1688,7 +1851,11 @@ module Google
         # Creates a key value map in an API proxy.
         # @param [String] parent
         #   Required. Name of the environment in which to create the key value map. Use
-        #   the following structure in your request: `organizations/`org`/apis/`api``
+        #   the following structure in your request: `organizations/`org`/apis/`api`` If
+        #   the API Proxy resource has the `space` attribute set, IAM permissions are
+        #   checked against the Space resource path. To learn more, read the [Apigee
+        #   Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-
+        #   administration/spaces/apigee-spaces-overview).
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap] google_cloud_apigee_v1_key_value_map_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1722,7 +1889,11 @@ module Google
         # Deletes a key value map from an API proxy.
         # @param [String] name
         #   Required. Name of the key value map. Use the following structure in your
-        #   request: `organizations/`org`/apis/`api`/keyvaluemaps/`keyvaluemap``
+        #   request: `organizations/`org`/apis/`api`/keyvaluemaps/`keyvaluemap`` If the
+        #   API Proxy resource has the `space` attribute set, IAM permissions are checked
+        #   against the Space resource path. To learn more, read the [Apigee Spaces
+        #   Overview](https://cloud.google.com/apigee/docs/api-platform/system-
+        #   administration/spaces/apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1758,7 +1929,11 @@ module Google
         #   entry. Use **one** of the following structures in your request: * `
         #   organizations/`organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. * `
         #   organizations/`organization`/environments/`environment`/keyvaluemaps/`
-        #   keyvaluemap`` * `organizations/`organization`/keyvaluemaps/`keyvaluemap``.
+        #   keyvaluemap`` * `organizations/`organization`/keyvaluemaps/`keyvaluemap``. If
+        #   the KeyValueMap is under an API Proxy resource that has the `space` attribute
+        #   set, IAM permissions are checked against the Space resource path. To learn
+        #   more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/
+        #   api-platform/system-administration/spaces/apigee-spaces-overview).
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry] google_cloud_apigee_v1_key_value_entry_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1800,7 +1975,11 @@ module Google
         #   organizations/`organization`/apis/`api`/keyvaluemaps/`keyvaluemap`/entries/`
         #   entry``. * `organizations/`organization`/environments/`environment`/
         #   keyvaluemaps/`keyvaluemap`/entries/`entry`` * `organizations/`organization`/
-        #   keyvaluemaps/`keyvaluemap`/entries/`entry``.
+        #   keyvaluemaps/`keyvaluemap`/entries/`entry``. If the KeyValueMap is under an
+        #   API Proxy resource that has the `space` attribute set, IAM permissions are
+        #   checked against the Space resource path. To learn more, read the [Apigee
+        #   Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-
+        #   administration/spaces/apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1837,7 +2016,11 @@ module Google
         #   organizations/`organization`/apis/`api`/keyvaluemaps/`keyvaluemap`/entries/`
         #   entry``. * `organizations/`organization`/environments/`environment`/
         #   keyvaluemaps/`keyvaluemap`/entries/`entry`` * `organizations/`organization`/
-        #   keyvaluemaps/`keyvaluemap`/entries/`entry``.
+        #   keyvaluemaps/`keyvaluemap`/entries/`entry``. If the KeyValueMap is under an
+        #   API Proxy resource that has the `space` attribute set, IAM permissions are
+        #   checked against the Space resource path. To learn more, read the [Apigee
+        #   Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-
+        #   administration/spaces/apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1873,7 +2056,11 @@ module Google
         #   one** of the following structures in your request: * `organizations/`
         #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. * `organizations/`
         #   organization`/environments/`environment`/keyvaluemaps/`keyvaluemap`` * `
-        #   organizations/`organization`/keyvaluemaps/`keyvaluemap``.
+        #   organizations/`organization`/keyvaluemaps/`keyvaluemap``. If the KeyValueMap
+        #   is under an API Proxy resource that has the `space` attribute set, IAM
+        #   permissions are checked against the Space resource path. To learn more, read
+        #   the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/
+        #   system-administration/spaces/apigee-spaces-overview).
         # @param [Fixnum] page_size
         #   Optional. Maximum number of key value entries to return. If unspecified, at
         #   most 100 entries will be returned.
@@ -1916,7 +2103,11 @@ module Google
         #   entry. Use **one** of the following structures in your request: * `
         #   organizations/`organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. * `
         #   organizations/`organization`/environments/`environment`/keyvaluemaps/`
-        #   keyvaluemap`` * `organizations/`organization`/keyvaluemaps/`keyvaluemap``.
+        #   keyvaluemap`` * `organizations/`organization`/keyvaluemaps/`keyvaluemap``. If
+        #   the KeyValueMap is under an API Proxy resource that has the `space` attribute
+        #   set, IAM permissions are checked against the Space resource path. To learn
+        #   more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/
+        #   api-platform/system-administration/spaces/apigee-spaces-overview).
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry] google_cloud_apigee_v1_key_value_entry_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1952,7 +2143,10 @@ module Google
         # you can delete it.
         # @param [String] name
         #   Required. API proxy revision in the following format: `organizations/`org`/
-        #   apis/`api`/revisions/`rev``
+        #   apis/`api`/revisions/`rev`` If the API Proxy resource has the `space`
+        #   attribute set, IAM permissions are checked against the Space resource path. To
+        #   learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/
+        #   docs/api-platform/system-administration/spaces/apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1988,7 +2182,10 @@ module Google
         # as described in [updateApiProxyRevision](updateApiProxyRevision).
         # @param [String] name
         #   Required. API proxy revision in the following format: `organizations/`org`/
-        #   apis/`api`/revisions/`rev``
+        #   apis/`api`/revisions/`rev`` If the API Proxy resource has the `space`
+        #   attribute set, IAM permissions are checked against the Space resource path. To
+        #   learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/
+        #   docs/api-platform/system-administration/spaces/apigee-spaces-overview).
         # @param [String] format
         #   Format used when downloading the API proxy configuration revision. Set to `
         #   bundle` to download the API proxy configuration revision as a zip file.
@@ -2028,7 +2225,10 @@ module Google
         # stream`.
         # @param [String] name
         #   Required. API proxy revision to update in the following format: `organizations/
-        #   `org`/apis/`api`/revisions/`rev``
+        #   `org`/apis/`api`/revisions/`rev`` If the API Proxy resource has the `space`
+        #   attribute set, IAM permissions are checked against the Space resource path. To
+        #   learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/
+        #   docs/api-platform/system-administration/spaces/apigee-spaces-overview).
         # @param [Google::Apis::ApigeeV1::GoogleApiHttpBody] google_api_http_body_object
         # @param [Boolean] validate
         #   Ignored. All uploads are validated regardless of the value of this field.
@@ -2067,7 +2267,10 @@ module Google
         # @param [String] parent
         #   Required. Name of the API proxy revision for which to return deployment
         #   information in the following format: `organizations/`org`/apis/`api`/revisions/
-        #   `rev``.
+        #   `rev``. If the API proxy resource has the `space` attribute set, IAM
+        #   permissions are checked differently . To learn more, read the [Apigee Spaces
+        #   Overview](https://cloud.google.com/apigee/docs/api-platform/system-
+        #   administration/spaces/apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2134,8 +2337,8 @@ module Google
         # Deletes an AppGroup. All app and API keys associations with the AppGroup are
         # also removed. **Warning**: This API will permanently delete the AppGroup and
         # related artifacts. **Note**: The delete operation is asynchronous. The
-        # AppGroup app is deleted immediately, but its associated resources, such as
-        # apps and API keys, may take anywhere from a few seconds to a few minutes to be
+        # AppGroup is deleted immediately, but its associated resources, such as apps
+        # and API keys, may take anywhere from a few seconds to a few minutes to be
         # deleted.
         # @param [String] name
         #   Required. Name of the AppGroup. Use the following structure in your request: `
@@ -3103,9 +3306,9 @@ module Google
         # also removed. **Warning**: This API will permanently delete the developer and
         # related artifacts. To avoid permanently deleting developers and their
         # artifacts, set the developer status to `inactive` using the SetDeveloperStatus
-        # API. **Note**: The delete operation is asynchronous. The developer app is
-        # deleted immediately, but its associated resources, such as apps and API keys,
-        # may take anywhere from a few seconds to a few minutes to be deleted.
+        # API. **Note**: The delete operation is asynchronous. The developer is deleted
+        # immediately, but its associated resources, such as apps and API keys, may take
+        # anywhere from a few seconds to a few minutes to be deleted.
         # @param [String] name
         #   Required. Email address of the developer. Use the following structure in your
         #   request: `organizations/`org`/developers/`developer_email``
@@ -5904,7 +6107,11 @@ module Google
         # Lists all deployments of an API proxy in an environment.
         # @param [String] parent
         #   Required. Name representing an API proxy in an environment in the following
-        #   format: `organizations/`org`/environments/`env`/apis/`api``
+        #   format: `organizations/`org`/environments/`env`/apis/`api`` If the API proxy
+        #   resource has the `space` attribute set, IAM permissions are checked
+        #   differently . To learn more, read the [Apigee Spaces Overview](https://cloud.
+        #   google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-
+        #   overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5941,13 +6148,20 @@ module Google
         # environments/`env`/apis/`api`/revisions/`rev`/deployments`, two permissions
         # are required: * `apigee.deployments.create` on the resource `organizations/`
         # org`/environments/`env`` * `apigee.proxyrevisions.deploy` on the resource `
-        # organizations/`org`/apis/`api`/revisions/`rev`` Apigee hybrid validates the
-        # dependencies between shared flows and API proxies at deployment time. For
-        # example, if the Flow Callout policy in an API proxy references a shared flow
-        # that either doesn't exist or isn't deployed, the API proxy deployment fails.
+        # organizations/`org`/apis/`api`/revisions/`rev`` All successful API proxy
+        # deployments to Apigee are [zero-downtime deployments](https://cloud.google.com/
+        # apigee/docs/api-platform/deploy/ui-deploy-overview#zero-downtime-deployment).
+        # Apigee hybrid validates the dependencies between shared flows and API proxies
+        # at deployment time. For example, if the Flow Callout policy in an API proxy
+        # references a shared flow that either doesn't exist or isn't deployed, the API
+        # proxy deployment fails.
         # @param [String] name
         #   Required. Name of the API proxy revision deployment in the following format: `
-        #   organizations/`org`/environments/`env`/apis/`api`/revisions/`rev``
+        #   organizations/`org`/environments/`env`/apis/`api`/revisions/`rev`` If the API
+        #   proxy resource being deployed has the `space` attribute set, IAM permissions
+        #   are checked differently . To learn more, read the [Apigee Spaces Overview](
+        #   https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/
+        #   apigee-spaces-overview).
         # @param [Boolean] override
         #   Flag that specifies whether the new deployment replaces other deployed
         #   revisions of the API proxy in the environment. Set `override` to `true` to
@@ -6005,7 +6219,10 @@ module Google
         # @param [String] name
         #   Required. Name representing an API proxy revision in an environment in the
         #   following format: `organizations/`org`/environments/`env`/apis/`api`/revisions/
-        #   `rev``
+        #   `rev`` If the API proxy resource has the `space` attribute set, IAM
+        #   permissions are checked differently . To learn more, read the [Apigee Spaces
+        #   Overview](https://cloud.google.com/apigee/docs/api-platform/system-
+        #   administration/spaces/apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6040,7 +6257,11 @@ module Google
         # the resource `organizations/`org`/apis/`api`/revisions/`rev``
         # @param [String] name
         #   Required. Name of the API proxy revision deployment in the following format: `
-        #   organizations/`org`/environments/`env`/apis/`api`/revisions/`rev``
+        #   organizations/`org`/environments/`env`/apis/`api`/revisions/`rev`` If the API
+        #   proxy resource has the `space` attribute set, IAM permissions are checked
+        #   differently . To learn more, read the [Apigee Spaces Overview](https://cloud.
+        #   google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-
+        #   overview).
         # @param [Boolean] sequenced_rollout
         #   Flag that specifies whether to enable sequenced rollout. If set to `true`, the
         #   environment group routing rules corresponding to this deployment will be
@@ -6083,7 +6304,11 @@ module Google
         # @param [String] parent
         #   Required. The resource name of the API Proxy revision deployment for which to
         #   create the DebugSession. Must be of the form `organizations/`organization`/
-        #   environments/`environment`/apis/`api`/revisions/`revision``.
+        #   environments/`environment`/apis/`api`/revisions/`revision``. If the API proxy
+        #   resource has the `space` attribute set, IAM permissions are checked
+        #   differently . To learn more, read the [Apigee Spaces Overview](https://cloud.
+        #   google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-
+        #   overview).
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DebugSession] google_cloud_apigee_v1_debug_session_object
         # @param [Fixnum] timeout
         #   Optional. The time in seconds after which this DebugSession should end. A
@@ -6124,7 +6349,10 @@ module Google
         # @param [String] name
         #   Required. The name of the debug session to delete. Must be of the form: `
         #   organizations/`organization`/environments/`environment`/apis/`api`/revisions/`
-        #   revision`/debugsessions/`debugsession``.
+        #   revision`/debugsessions/`debugsession``. If the API proxy resource has the `
+        #   space` attribute set, IAM permissions are checked differently . To learn more,
+        #   read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-
+        #   platform/system-administration/spaces/apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6156,7 +6384,10 @@ module Google
         # @param [String] name
         #   Required. The name of the debug session to retrieve. Must be of the form: `
         #   organizations/`organization`/environments/`environment`/apis/`api`/revisions/`
-        #   revision`/debugsessions/`session``.
+        #   revision`/debugsessions/`session``. If the API proxy resource has the `space`
+        #   attribute set, IAM permissions are checked differently . To learn more, read
+        #   the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/
+        #   system-administration/spaces/apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6188,7 +6419,11 @@ module Google
         # @param [String] parent
         #   Required. The name of the API Proxy revision deployment for which to list
         #   debug sessions. Must be of the form: `organizations/`organization`/
-        #   environments/`environment`/apis/`api`/revisions/`revision``.
+        #   environments/`environment`/apis/`api`/revisions/`revision``. If the API proxy
+        #   resource has the `space` attribute set, IAM permissions are checked
+        #   differently . To learn more, read the [Apigee Spaces Overview](https://cloud.
+        #   google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-
+        #   overview).
         # @param [Fixnum] page_size
         #   Maximum number of debug sessions to return. The page size defaults to 25.
         # @param [String] page_token
@@ -6227,7 +6462,11 @@ module Google
         # @param [String] name
         #   Required. The name of the debug session transaction. Must be of the form: `
         #   organizations/`organization`/environments/`environment`/apis/`api`/revisions/`
-        #   revision`/debugsessions/`session`/data/`transaction``.
+        #   revision`/debugsessions/`session`/data/`transaction``. If the API proxy
+        #   resource has the `space` attribute set, IAM permissions are checked
+        #   differently . To learn more, read the [Apigee Spaces Overview](https://cloud.
+        #   google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-
+        #   overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6268,7 +6507,11 @@ module Google
         # the resource `organizations/`org`/apis/`api`/revisions/`rev``
         # @param [String] name
         #   Name of the API proxy revision deployment in the following format: `
-        #   organizations/`org`/environments/`env`/apis/`api`/revisions/`rev``
+        #   organizations/`org`/environments/`env`/apis/`api`/revisions/`rev`` If the API
+        #   proxy resource has the `space` attribute set, IAM permissions are checked
+        #   differently . To learn more, read the [Apigee Spaces Overview](https://cloud.
+        #   google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-
+        #   overview).
         # @param [Boolean] override
         #   Flag that specifies whether to force the deployment of the new revision over
         #   the currently deployed revision by overriding conflict checks.
@@ -7330,7 +7573,11 @@ module Google
         #   entry. Use **one** of the following structures in your request: * `
         #   organizations/`organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. * `
         #   organizations/`organization`/environments/`environment`/keyvaluemaps/`
-        #   keyvaluemap`` * `organizations/`organization`/keyvaluemaps/`keyvaluemap``.
+        #   keyvaluemap`` * `organizations/`organization`/keyvaluemaps/`keyvaluemap``. If
+        #   the KeyValueMap is under an API Proxy resource that has the `space` attribute
+        #   set, IAM permissions are checked against the Space resource path. To learn
+        #   more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/
+        #   api-platform/system-administration/spaces/apigee-spaces-overview).
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry] google_cloud_apigee_v1_key_value_entry_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -7372,7 +7619,11 @@ module Google
         #   organizations/`organization`/apis/`api`/keyvaluemaps/`keyvaluemap`/entries/`
         #   entry``. * `organizations/`organization`/environments/`environment`/
         #   keyvaluemaps/`keyvaluemap`/entries/`entry`` * `organizations/`organization`/
-        #   keyvaluemaps/`keyvaluemap`/entries/`entry``.
+        #   keyvaluemaps/`keyvaluemap`/entries/`entry``. If the KeyValueMap is under an
+        #   API Proxy resource that has the `space` attribute set, IAM permissions are
+        #   checked against the Space resource path. To learn more, read the [Apigee
+        #   Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-
+        #   administration/spaces/apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7409,7 +7660,11 @@ module Google
         #   organizations/`organization`/apis/`api`/keyvaluemaps/`keyvaluemap`/entries/`
         #   entry``. * `organizations/`organization`/environments/`environment`/
         #   keyvaluemaps/`keyvaluemap`/entries/`entry`` * `organizations/`organization`/
-        #   keyvaluemaps/`keyvaluemap`/entries/`entry``.
+        #   keyvaluemaps/`keyvaluemap`/entries/`entry``. If the KeyValueMap is under an
+        #   API Proxy resource that has the `space` attribute set, IAM permissions are
+        #   checked against the Space resource path. To learn more, read the [Apigee
+        #   Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-
+        #   administration/spaces/apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7445,7 +7700,11 @@ module Google
         #   one** of the following structures in your request: * `organizations/`
         #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. * `organizations/`
         #   organization`/environments/`environment`/keyvaluemaps/`keyvaluemap`` * `
-        #   organizations/`organization`/keyvaluemaps/`keyvaluemap``.
+        #   organizations/`organization`/keyvaluemaps/`keyvaluemap``. If the KeyValueMap
+        #   is under an API Proxy resource that has the `space` attribute set, IAM
+        #   permissions are checked against the Space resource path. To learn more, read
+        #   the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/
+        #   system-administration/spaces/apigee-spaces-overview).
         # @param [Fixnum] page_size
         #   Optional. Maximum number of key value entries to return. If unspecified, at
         #   most 100 entries will be returned.
@@ -7488,7 +7747,11 @@ module Google
         #   entry. Use **one** of the following structures in your request: * `
         #   organizations/`organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. * `
         #   organizations/`organization`/environments/`environment`/keyvaluemaps/`
-        #   keyvaluemap`` * `organizations/`organization`/keyvaluemaps/`keyvaluemap``.
+        #   keyvaluemap`` * `organizations/`organization`/keyvaluemaps/`keyvaluemap``. If
+        #   the KeyValueMap is under an API Proxy resource that has the `space` attribute
+        #   set, IAM permissions are checked against the Space resource path. To learn
+        #   more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/
+        #   api-platform/system-administration/spaces/apigee-spaces-overview).
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry] google_cloud_apigee_v1_key_value_entry_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8779,7 +9042,11 @@ module Google
         # Lists all deployments of a shared flow in an environment.
         # @param [String] parent
         #   Required. Name representing a shared flow in an environment in the following
-        #   format: `organizations/`org`/environments/`env`/sharedflows/`sharedflow``
+        #   format: `organizations/`org`/environments/`env`/sharedflows/`sharedflow`` If
+        #   the shared flow resource has the `space` attribute set, IAM permissions are
+        #   checked differently . To learn more, read the [Apigee Spaces Overview](https://
+        #   cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-
+        #   spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8819,7 +9086,10 @@ module Google
         # @param [String] name
         #   Required. Name of the shared flow revision to deploy in the following format: `
         #   organizations/`org`/environments/`env`/sharedflows/`sharedflow`/revisions/`rev`
-        #   `
+        #   ` If the shared flow resource being deployed has the `space` attribute set,
+        #   IAM permissions are checked differently . To learn more, read the [Apigee
+        #   Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-
+        #   administration/spaces/apigee-spaces-overview).
         # @param [Boolean] override
         #   Flag that specifies whether the new deployment replaces other deployed
         #   revisions of the shared flow in the environment. Set `override` to `true` to
@@ -8864,7 +9134,10 @@ module Google
         # @param [String] name
         #   Required. Name representing a shared flow in an environment in the following
         #   format: `organizations/`org`/environments/`env`/sharedflows/`sharedflow`/
-        #   revisions/`rev``
+        #   revisions/`rev`` If the shared flow resource has the `space` attribute set,
+        #   IAM permissions are checked differently . To learn more, read the [Apigee
+        #   Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-
+        #   administration/spaces/apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8901,7 +9174,10 @@ module Google
         # @param [String] name
         #   Required. Name of the shared flow revision to undeploy in the following format:
         #   `organizations/`org`/environments/`env`/sharedflows/`sharedflow`/revisions/`
-        #   rev``
+        #   rev`` If the shared flow resource has the `space` attribute set, IAM
+        #   permissions are checked differently . To learn more, read the [Apigee Spaces
+        #   Overview](https://cloud.google.com/apigee/docs/api-platform/system-
+        #   administration/spaces/apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10478,7 +10754,11 @@ module Google
         #   entry. Use **one** of the following structures in your request: * `
         #   organizations/`organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. * `
         #   organizations/`organization`/environments/`environment`/keyvaluemaps/`
-        #   keyvaluemap`` * `organizations/`organization`/keyvaluemaps/`keyvaluemap``.
+        #   keyvaluemap`` * `organizations/`organization`/keyvaluemaps/`keyvaluemap``. If
+        #   the KeyValueMap is under an API Proxy resource that has the `space` attribute
+        #   set, IAM permissions are checked against the Space resource path. To learn
+        #   more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/
+        #   api-platform/system-administration/spaces/apigee-spaces-overview).
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry] google_cloud_apigee_v1_key_value_entry_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -10520,7 +10800,11 @@ module Google
         #   organizations/`organization`/apis/`api`/keyvaluemaps/`keyvaluemap`/entries/`
         #   entry``. * `organizations/`organization`/environments/`environment`/
         #   keyvaluemaps/`keyvaluemap`/entries/`entry`` * `organizations/`organization`/
-        #   keyvaluemaps/`keyvaluemap`/entries/`entry``.
+        #   keyvaluemaps/`keyvaluemap`/entries/`entry``. If the KeyValueMap is under an
+        #   API Proxy resource that has the `space` attribute set, IAM permissions are
+        #   checked against the Space resource path. To learn more, read the [Apigee
+        #   Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-
+        #   administration/spaces/apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10557,7 +10841,11 @@ module Google
         #   organizations/`organization`/apis/`api`/keyvaluemaps/`keyvaluemap`/entries/`
         #   entry``. * `organizations/`organization`/environments/`environment`/
         #   keyvaluemaps/`keyvaluemap`/entries/`entry`` * `organizations/`organization`/
-        #   keyvaluemaps/`keyvaluemap`/entries/`entry``.
+        #   keyvaluemaps/`keyvaluemap`/entries/`entry``. If the KeyValueMap is under an
+        #   API Proxy resource that has the `space` attribute set, IAM permissions are
+        #   checked against the Space resource path. To learn more, read the [Apigee
+        #   Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-
+        #   administration/spaces/apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10593,7 +10881,11 @@ module Google
         #   one** of the following structures in your request: * `organizations/`
         #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. * `organizations/`
         #   organization`/environments/`environment`/keyvaluemaps/`keyvaluemap`` * `
-        #   organizations/`organization`/keyvaluemaps/`keyvaluemap``.
+        #   organizations/`organization`/keyvaluemaps/`keyvaluemap``. If the KeyValueMap
+        #   is under an API Proxy resource that has the `space` attribute set, IAM
+        #   permissions are checked against the Space resource path. To learn more, read
+        #   the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/
+        #   system-administration/spaces/apigee-spaces-overview).
         # @param [Fixnum] page_size
         #   Optional. Maximum number of key value entries to return. If unspecified, at
         #   most 100 entries will be returned.
@@ -10636,7 +10928,11 @@ module Google
         #   entry. Use **one** of the following structures in your request: * `
         #   organizations/`organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. * `
         #   organizations/`organization`/environments/`environment`/keyvaluemaps/`
-        #   keyvaluemap`` * `organizations/`organization`/keyvaluemaps/`keyvaluemap``.
+        #   keyvaluemap`` * `organizations/`organization`/keyvaluemaps/`keyvaluemap``. If
+        #   the KeyValueMap is under an API Proxy resource that has the `space` attribute
+        #   set, IAM permissions are checked against the Space resource path. To learn
+        #   more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/
+        #   api-platform/system-administration/spaces/apigee-spaces-overview).
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry] google_cloud_apigee_v1_key_value_entry_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -11531,12 +11827,21 @@ module Google
         # of a shared flow bundle is 15 MB.
         # @param [String] parent
         #   Required. The name of the parent organization under which to create the shared
-        #   flow. Must be of the form: `organizations/`organization_id``
+        #   flow. Must be of the form: `organizations/`organization_id`` If the resource
+        #   has the `space` attribute set, IAM permissions are checked against the Space
+        #   resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.
+        #   google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-
+        #   overview).
         # @param [Google::Apis::ApigeeV1::GoogleApiHttpBody] google_api_http_body_object
         # @param [String] action
         #   Required. Must be set to either `import` or `validate`.
         # @param [String] name
         #   Required. The name to give the shared flow
+        # @param [String] space
+        #   Optional. The ID of the space to associated with this shared flow. Any IAM
+        #   policies applied to the space will affect access to this shared flow. Note
+        #   that this field is only respected when creating a new shared flow. It has no
+        #   effect when creating a new revision for an existing shared flow.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11554,7 +11859,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_organization_sharedflow(parent, google_api_http_body_object = nil, action: nil, name: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_organization_sharedflow(parent, google_api_http_body_object = nil, action: nil, name: nil, space: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/sharedflows', options)
           command.request_representation = Google::Apis::ApigeeV1::GoogleApiHttpBody::Representation
           command.request_object = google_api_http_body_object
@@ -11563,6 +11868,7 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['action'] = action unless action.nil?
           command.query['name'] = name unless name.nil?
+          command.query['space'] = space unless space.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -11572,7 +11878,10 @@ module Google
         # undeployed before you can delete it.
         # @param [String] name
         #   Required. shared flow name of the form: `organizations/`organization_id`/
-        #   sharedflows/`shared_flow_id``
+        #   sharedflows/`shared_flow_id`` If the resource has the `space` attribute set,
+        #   IAM permissions are checked against the Space resource path. To learn more,
+        #   read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-
+        #   platform/system-administration/spaces/apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11603,7 +11912,11 @@ module Google
         # Gets a shared flow by name, including a list of its revisions.
         # @param [String] name
         #   Required. The name of the shared flow to get. Must be of the form: `
-        #   organizations/`organization_id`/sharedflows/`shared_flow_id``
+        #   organizations/`organization_id`/sharedflows/`shared_flow_id`` If the resource
+        #   has the `space` attribute set, IAM permissions are checked against the Space
+        #   resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.
+        #   google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-
+        #   overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11631,14 +11944,27 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all shared flows in the organization.
+        # Lists all shared flows in the organization. If the resource has the `space`
+        # attribute set, the response may not return all resources. To learn more, read
+        # the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/
+        # system-administration/spaces/apigee-spaces-overview).
         # @param [String] parent
         #   Required. The name of the parent organization under which to get shared flows.
-        #   Must be of the form: `organizations/`organization_id``
+        #   Must be of the form: `organizations/`organization_id`` If the resource has the
+        #   `space` attribute set, IAM permissions are checked against the Space resource
+        #   path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.
+        #   com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-
+        #   overview).
         # @param [Boolean] include_meta_data
         #   Indicates whether to include shared flow metadata in the response.
         # @param [Boolean] include_revisions
         #   Indicates whether to include a list of revisions in the response.
+        # @param [String] space
+        #   Optional. The space ID used to filter the list of shared flows (optional). If
+        #   unspecified, all shared flows in the organization will be listed. To learn how
+        #   Spaces can be used to manage resources, read the [Apigee Spaces Overview](
+        #   https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/
+        #   apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11656,13 +11982,48 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_sharedflows(parent, include_meta_data: nil, include_revisions: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_sharedflows(parent, include_meta_data: nil, include_revisions: nil, space: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/sharedflows', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSharedFlowsResponse::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSharedFlowsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['includeMetaData'] = include_meta_data unless include_meta_data.nil?
           command.query['includeRevisions'] = include_revisions unless include_revisions.nil?
+          command.query['space'] = space unless space.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Moves an shared flow to a different space.
+        # @param [String] name
+        #   Required. Shared Flow to move in the following format: `organizations/`org`/
+        #   sharedflows/`shared_flow``
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1MoveSharedFlowRequest] google_cloud_apigee_v1_move_shared_flow_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SharedFlow] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SharedFlow]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def move_organization_sharedflow(name, google_cloud_apigee_v1_move_shared_flow_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:move', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1MoveSharedFlowRequest::Representation
+          command.request_object = google_cloud_apigee_v1_move_shared_flow_request_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SharedFlow::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SharedFlow
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -11671,7 +12032,11 @@ module Google
         # Lists all deployments of a shared flow.
         # @param [String] parent
         #   Required. Name of the shared flow for which to return deployment information
-        #   in the following format: `organizations/`org`/sharedflows/`sharedflow``
+        #   in the following format: `organizations/`org`/sharedflows/`sharedflow`` If the
+        #   shared flow resource has the `space` attribute set, IAM permissions are
+        #   checked differently . To learn more, read the [Apigee Spaces Overview](https://
+        #   cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-
+        #   spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11704,7 +12069,10 @@ module Google
         # @param [String] name
         #   Required. The name of the shared flow revision to delete. Must be of the form:
         #   `organizations/`organization_id`/sharedflows/`shared_flow_id`/revisions/`
-        #   revision_id``
+        #   revision_id`` If the Shared Flow resource has the `space` attribute set, IAM
+        #   permissions are checked against the Space resource path. To learn more, read
+        #   the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/
+        #   system-administration/spaces/apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11742,7 +12110,10 @@ module Google
         # @param [String] name
         #   Required. The name of the shared flow revision to get. Must be of the form: `
         #   organizations/`organization_id`/sharedflows/`shared_flow_id`/revisions/`
-        #   revision_id``
+        #   revision_id`` If the Shared Flow resource has the `space` attribute set, IAM
+        #   permissions are checked against the Space resource path. To learn more, read
+        #   the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/
+        #   system-administration/spaces/apigee-spaces-overview).
         # @param [String] format
         #   Specify `bundle` to export the contents of the shared flow bundle. Otherwise,
         #   the bundle metadata is returned.
@@ -11781,7 +12152,10 @@ module Google
         # @param [String] name
         #   Required. The name of the shared flow revision to update. Must be of the form:
         #   `organizations/`organization_id`/sharedflows/`shared_flow_id`/revisions/`
-        #   revision_id``
+        #   revision_id`` If the resource has the `space` attribute set, IAM permissions
+        #   are checked against the Space resource path. To learn more, read the [Apigee
+        #   Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-
+        #   administration/spaces/apigee-spaces-overview).
         # @param [Google::Apis::ApigeeV1::GoogleApiHttpBody] google_api_http_body_object
         # @param [Boolean] validate
         #   Ignored. All uploads are validated regardless of the value of this field. It
@@ -11821,7 +12195,10 @@ module Google
         # @param [String] parent
         #   Required. Name of the API proxy revision for which to return deployment
         #   information in the following format: `organizations/`org`/sharedflows/`
-        #   sharedflow`/revisions/`rev``.
+        #   sharedflow`/revisions/`rev``. If the shared flow resource has the `space`
+        #   attribute set, IAM permissions are checked differently . To learn more, read
+        #   the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/
+        #   system-administration/spaces/apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12243,6 +12620,298 @@ module Google
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiDocDocumentationResponse::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiDocDocumentationResponse
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Create a space under an organization.
+        # @param [String] parent
+        #   Required. Name of the Google Cloud project in which to associate the Apigee
+        #   space. Pass the information as a query parameter using the following structure
+        #   in your request: `organizations/`
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Space] google_cloud_apigee_v1_space_object
+        # @param [String] space_id
+        #   Required. Resource ID of the space.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Space] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Space]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_space(parent, google_cloud_apigee_v1_space_object = nil, space_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/spaces', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Space::Representation
+          command.request_object = google_cloud_apigee_v1_space_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Space::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Space
+          command.params['parent'] = parent unless parent.nil?
+          command.query['spaceId'] = space_id unless space_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an organization space.
+        # @param [String] name
+        #   Required. Apigee organization space name in the following format: `
+        #   organizations/`org`/spaces/`space``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_space(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a space under an Organization.
+        # @param [String] name
+        #   Required. Apigee organization space name in the following format: `
+        #   organizations/`org`/spaces/`space``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Space] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Space]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_space(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Space::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Space
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Callers must have apigee.spaces.getIamPolicy.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Fixnum] options_requested_policy_version
+        #   Optional. The maximum policy version that will be used to format the policy.
+        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        #   rejected. Requests for policies with any conditional role bindings must
+        #   specify version 3. Policies with no conditional role bindings may specify any
+        #   valid value or leave the field unset. The policy in the response might use the
+        #   policy version that you specified, or it might use a lower policy version. For
+        #   example, if you specify version 3, but the policy has no conditional role
+        #   bindings, the response uses version 1. To learn which resources support
+        #   conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        #   google.com/iam/help/conditions/resource-policies).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleIamV1Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleIamV1Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_space_iam_policy(resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+resource}:getIamPolicy', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleIamV1Policy::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleIamV1Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists spaces under an organization.
+        # @param [String] parent
+        #   Required. Use the following structure in your request: `organizations`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of spaces to return. The service may return fewer
+        #   than this value. If unspecified, at most 50 spaces will be returned. The
+        #   maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListSpaces` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all parameters must
+        #   match the original call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSpacesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSpacesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_spaces(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/spaces', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSpacesResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSpacesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a space.
+        # @param [String] name
+        #   Required. Name of the space in the following format: `organizations/`org`/
+        #   spaces/`space_id``.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Space] google_cloud_apigee_v1_space_object
+        # @param [String] update_mask
+        #   Required. List of fields to be updated. Fields that can be updated:
+        #   display_name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Space] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Space]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_space(name, google_cloud_apigee_v1_space_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Space::Representation
+          command.request_object = google_cloud_apigee_v1_space_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Space::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Space
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # IAM META APIs Callers must have apigee.spaces.setIamPolicy.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Google::Apis::ApigeeV1::GoogleIamV1SetIamPolicyRequest] google_iam_v1_set_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleIamV1Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleIamV1Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_organization_space_iam_policy(resource, google_iam_v1_set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleIamV1SetIamPolicyRequest::Representation
+          command.request_object = google_iam_v1_set_iam_policy_request_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleIamV1Policy::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleIamV1Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Callers don't need any permissions.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Google::Apis::ApigeeV1::GoogleIamV1TestIamPermissionsRequest] google_iam_v1_test_iam_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleIamV1TestIamPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleIamV1TestIamPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_organization_space_iam_permissions(resource, google_iam_v1_test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleIamV1TestIamPermissionsRequest::Representation
+          command.request_object = google_iam_v1_test_iam_permissions_request_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleIamV1TestIamPermissionsResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleIamV1TestIamPermissionsResponse
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
