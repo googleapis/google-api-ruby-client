@@ -895,6 +895,7 @@ module Google
       class RevokeSubscriptionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :revoke_commercial, as: 'revokeCommercial'
         end
       end
       
