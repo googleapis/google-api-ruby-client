@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Destination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -185,6 +191,14 @@ module Google
         end
       end
       
+      class Destination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination, as: 'destination'
+          property :state, as: 'state'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -280,6 +294,8 @@ module Google
           property :content_language, as: 'contentLanguage'
           collection :countries, as: 'countries'
           property :default_rule, as: 'defaultRule', class: Google::Apis::MerchantapiDatasourcesV1beta::DefaultRule, decorator: Google::Apis::MerchantapiDatasourcesV1beta::DefaultRule::Representation
+      
+          collection :destinations, as: 'destinations', class: Google::Apis::MerchantapiDatasourcesV1beta::Destination, decorator: Google::Apis::MerchantapiDatasourcesV1beta::Destination::Representation
       
           property :feed_label, as: 'feedLabel'
         end
