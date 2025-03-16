@@ -16,13 +16,13 @@ module Google
   module Apis
     module MerchantapiLfpV1beta
       # Version of the google-apis-merchantapi_lfp_v1beta gem
-      GEM_VERSION = "0.4.0"
+      GEM_VERSION = "0.5.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.16.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20250301"
+      REVISION = "20250311"
     end
   end
 end
