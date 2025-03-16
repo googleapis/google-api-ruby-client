@@ -333,7 +333,9 @@ module Google
         # @return [Array<Google::Apis::MerchantapiConversionsV1beta::ProductChange>]
         attr_accessor :changes
       
-        # The time at which the event was generated.
+        # The time at which the event was generated. If you want to order the
+        # notification messages you receive you should rely on this field not on the
+        # order of receiving the notifications.
         # Corresponds to the JSON property `eventTime`
         # @return [String]
         attr_accessor :event_time
