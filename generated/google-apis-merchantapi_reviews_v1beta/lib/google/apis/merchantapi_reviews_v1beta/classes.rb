@@ -133,7 +133,7 @@ module Google
         # @return [Google::Apis::MerchantapiReviewsV1beta::MerchantReviewAttributes]
         attr_accessor :attributes
       
-        # Required. A list of custom (merchant-provided) attributes. It can also be used
+        # Optional. A list of custom (merchant-provided) attributes. It can also be used
         # for submitting any attribute of the data specification in its generic form (
         # for example, `` "name": "size type", "value": "regular" ``). This is useful
         # for submitting attributes not explicitly exposed by the API, such as
@@ -254,7 +254,7 @@ module Google
         # @return [String]
         attr_accessor :review_country
       
-        # Required. The language of the review defined by BCP-47 language code.
+        # Optional. The language of the review defined by BCP-47 language code.
         # Corresponds to the JSON property `reviewLanguage`
         # @return [String]
         attr_accessor :review_language
@@ -879,7 +879,9 @@ module Google
         # @return [Array<Google::Apis::MerchantapiReviewsV1beta::ProductChange>]
         attr_accessor :changes
       
-        # The time at which the event was generated.
+        # The time at which the event was generated. If you want to order the
+        # notification messages you receive you should rely on this field not on the
+        # order of receiving the notifications.
         # Corresponds to the JSON property `eventTime`
         # @return [String]
         attr_accessor :event_time
