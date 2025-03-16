@@ -3814,6 +3814,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1RagFileParsingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1RagFileParsingConfigLayoutParser
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1RagFileTransformationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -10011,6 +10023,7 @@ module Google
           property :prompt_token_count, as: 'promptTokenCount'
           collection :prompt_tokens_details, as: 'promptTokensDetails', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModalityTokenCount, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModalityTokenCount::Representation
       
+          property :thoughts_token_count, as: 'thoughtsTokenCount'
           property :tool_use_prompt_token_count, as: 'toolUsePromptTokenCount'
           collection :tool_use_prompt_tokens_details, as: 'toolUsePromptTokensDetails', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModalityTokenCount, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModalityTokenCount::Representation
       
@@ -10358,6 +10371,8 @@ module Google
           property :partial_failure_bigquery_sink, as: 'partialFailureBigquerySink', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BigQueryDestination, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BigQueryDestination::Representation
       
           property :partial_failure_gcs_sink, as: 'partialFailureGcsSink', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GcsDestination, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GcsDestination::Representation
+      
+          property :rag_file_parsing_config, as: 'ragFileParsingConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagFileParsingConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagFileParsingConfig::Representation
       
           property :rag_file_transformation_config, as: 'ragFileTransformationConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagFileTransformationConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagFileTransformationConfig::Representation
       
@@ -13302,6 +13317,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :chunk_overlap, as: 'chunkOverlap'
           property :chunk_size, as: 'chunkSize'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1RagFileParsingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :layout_parser, as: 'layoutParser', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagFileParsingConfigLayoutParser, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagFileParsingConfigLayoutParser::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1RagFileParsingConfigLayoutParser
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_parsing_requests_per_min, as: 'maxParsingRequestsPerMin'
+          property :processor_name, as: 'processorName'
         end
       end
       
