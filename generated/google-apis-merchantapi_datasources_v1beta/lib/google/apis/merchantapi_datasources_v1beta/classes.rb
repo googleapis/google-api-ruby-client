@@ -178,6 +178,33 @@ module Google
         end
       end
       
+      # Destinations also known as [Marketing methods](https://support.google.com/
+      # merchants/answer/15130232) selections.
+      class Destination
+        include Google::Apis::Core::Hashable
+      
+        # [Marketing methods](https://support.google.com/merchants/answer/15130232) (
+        # also known as destination) selections.
+        # Corresponds to the JSON property `destination`
+        # @return [String]
+        attr_accessor :destination
+      
+        # The state of the destination.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination = args[:destination] if args.key?(:destination)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -534,6 +561,19 @@ module Google
         # @return [Google::Apis::MerchantapiDatasourcesV1beta::DefaultRule]
         attr_accessor :default_rule
       
+        # Optional. A list of destinations describing where products of the data source
+        # can be shown. When retrieving the data source, the list contains all the
+        # destinations that can be used for the data source, including the ones that are
+        # disabled for the data source but enabled for the account. Only destinations
+        # that are enabled on the account, for example through program participation,
+        # can be enabled on the data source. If unset, during creation, the destinations
+        # will be inherited based on the account level program participation. If set,
+        # during creation or update, the data source will be set only for the specified
+        # destinations. Updating this field requires at least one destination.
+        # Corresponds to the JSON property `destinations`
+        # @return [Array<Google::Apis::MerchantapiDatasourcesV1beta::Destination>]
+        attr_accessor :destinations
+      
         # Optional. Immutable. The feed label that is specified on the data source level.
         # Must be less than or equal to 20 uppercase letters (A-Z), numbers (0-9), and
         # dashes (-). See also [migration to feed labels](https://developers.google.com/
@@ -556,6 +596,7 @@ module Google
           @content_language = args[:content_language] if args.key?(:content_language)
           @countries = args[:countries] if args.key?(:countries)
           @default_rule = args[:default_rule] if args.key?(:default_rule)
+          @destinations = args[:destinations] if args.key?(:destinations)
           @feed_label = args[:feed_label] if args.key?(:feed_label)
         end
       end
@@ -642,7 +683,9 @@ module Google
         # @return [Array<Google::Apis::MerchantapiDatasourcesV1beta::ProductChange>]
         attr_accessor :changes
       
-        # The time at which the event was generated.
+        # The time at which the event was generated. If you want to order the
+        # notification messages you receive you should rely on this field not on the
+        # order of receiving the notifications.
         # Corresponds to the JSON property `eventTime`
         # @return [String]
         attr_accessor :event_time
