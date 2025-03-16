@@ -5402,6 +5402,12 @@ module Google
         #   The value returned by the last `ListServerTlsPoliciesResponse` Indicates that
         #   this is a continuation of a prior `ListServerTlsPolicies` call, and that the
         #   system should return the next page of data.
+        # @param [Boolean] return_partial_success
+        #   Optional. Setting this field to `true` will opt the request into returning the
+        #   resources that are reachable, and into including the names of those that were
+        #   unreachable in the [ListServerTlsPoliciesResponse.unreachable] field. This can
+        #   only be `true` when reading across collections e.g. when `parent` is set to `"
+        #   projects/example/locations/-"`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5419,13 +5425,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_server_tls_policies(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_server_tls_policies(parent, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/serverTlsPolicies', options)
           command.response_representation = Google::Apis::NetworksecurityV1beta1::ListServerTlsPoliciesResponse::Representation
           command.response_class = Google::Apis::NetworksecurityV1beta1::ListServerTlsPoliciesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

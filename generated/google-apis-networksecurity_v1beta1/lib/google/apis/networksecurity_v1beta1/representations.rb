@@ -334,6 +334,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InterceptEndpointGroupConnectedDeploymentGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterceptLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListAddressGroupReferencesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -545,6 +557,18 @@ module Google
       end
       
       class MirroringEndpointGroupAssociationLocationDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MirroringEndpointGroupConnectedDeploymentGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MirroringLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1107,6 +1131,8 @@ module Google
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           hash :labels, as: 'labels'
+          collection :locations, as: 'locations', class: Google::Apis::NetworksecurityV1beta1::InterceptLocation, decorator: Google::Apis::NetworksecurityV1beta1::InterceptLocation::Representation
+      
           property :name, as: 'name'
           collection :nested_deployments, as: 'nestedDeployments', class: Google::Apis::NetworksecurityV1beta1::InterceptDeploymentGroupDeployment, decorator: Google::Apis::NetworksecurityV1beta1::InterceptDeploymentGroupDeployment::Representation
       
@@ -1137,6 +1163,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :associations, as: 'associations', class: Google::Apis::NetworksecurityV1beta1::InterceptEndpointGroupAssociationDetails, decorator: Google::Apis::NetworksecurityV1beta1::InterceptEndpointGroupAssociationDetails::Representation
       
+          property :connected_deployment_group, as: 'connectedDeploymentGroup', class: Google::Apis::NetworksecurityV1beta1::InterceptEndpointGroupConnectedDeploymentGroup, decorator: Google::Apis::NetworksecurityV1beta1::InterceptEndpointGroupConnectedDeploymentGroup::Representation
+      
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :intercept_deployment_group, as: 'interceptDeploymentGroup'
@@ -1154,6 +1182,8 @@ module Google
           property :create_time, as: 'createTime'
           property :intercept_endpoint_group, as: 'interceptEndpointGroup'
           hash :labels, as: 'labels'
+          collection :locations, as: 'locations', class: Google::Apis::NetworksecurityV1beta1::InterceptLocation, decorator: Google::Apis::NetworksecurityV1beta1::InterceptLocation::Representation
+      
           collection :locations_details, as: 'locationsDetails', class: Google::Apis::NetworksecurityV1beta1::InterceptEndpointGroupAssociationLocationDetails, decorator: Google::Apis::NetworksecurityV1beta1::InterceptEndpointGroupAssociationLocationDetails::Representation
       
           property :name, as: 'name'
@@ -1174,6 +1204,23 @@ module Google
       end
       
       class InterceptEndpointGroupAssociationLocationDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
+          property :state, as: 'state'
+        end
+      end
+      
+      class InterceptEndpointGroupConnectedDeploymentGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :locations, as: 'locations', class: Google::Apis::NetworksecurityV1beta1::InterceptLocation, decorator: Google::Apis::NetworksecurityV1beta1::InterceptLocation::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class InterceptLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :location, as: 'location'
@@ -1403,6 +1450,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :server_tls_policies, as: 'serverTlsPolicies', class: Google::Apis::NetworksecurityV1beta1::ServerTlsPolicy, decorator: Google::Apis::NetworksecurityV1beta1::ServerTlsPolicy::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1470,6 +1518,8 @@ module Google
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           hash :labels, as: 'labels'
+          collection :locations, as: 'locations', class: Google::Apis::NetworksecurityV1beta1::MirroringLocation, decorator: Google::Apis::NetworksecurityV1beta1::MirroringLocation::Representation
+      
           property :name, as: 'name'
           collection :nested_deployments, as: 'nestedDeployments', class: Google::Apis::NetworksecurityV1beta1::MirroringDeploymentGroupDeployment, decorator: Google::Apis::NetworksecurityV1beta1::MirroringDeploymentGroupDeployment::Representation
       
@@ -1500,6 +1550,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :associations, as: 'associations', class: Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroupAssociationDetails, decorator: Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroupAssociationDetails::Representation
       
+          collection :connected_deployment_groups, as: 'connectedDeploymentGroups', class: Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroupConnectedDeploymentGroup, decorator: Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroupConnectedDeploymentGroup::Representation
+      
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           hash :labels, as: 'labels'
@@ -1516,6 +1568,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           hash :labels, as: 'labels'
+          collection :locations, as: 'locations', class: Google::Apis::NetworksecurityV1beta1::MirroringLocation, decorator: Google::Apis::NetworksecurityV1beta1::MirroringLocation::Representation
+      
           collection :locations_details, as: 'locationsDetails', class: Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroupAssociationLocationDetails, decorator: Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroupAssociationLocationDetails::Representation
       
           property :mirroring_endpoint_group, as: 'mirroringEndpointGroup'
@@ -1537,6 +1591,23 @@ module Google
       end
       
       class MirroringEndpointGroupAssociationLocationDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
+          property :state, as: 'state'
+        end
+      end
+      
+      class MirroringEndpointGroupConnectedDeploymentGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :locations, as: 'locations', class: Google::Apis::NetworksecurityV1beta1::MirroringLocation, decorator: Google::Apis::NetworksecurityV1beta1::MirroringLocation::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class MirroringLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :location, as: 'location'
