@@ -542,6 +542,11 @@ module Google
         # @return [String]
         attr_accessor :linked_sheet_id
       
+        # The publishing settings of a form.
+        # Corresponds to the JSON property `publishSettings`
+        # @return [Google::Apis::FormsV1::PublishSettings]
+        attr_accessor :publish_settings
+      
         # Output only. The form URI to share with responders. This opens a page that
         # allows the user to submit responses but not edit the questions.
         # Corresponds to the JSON property `responderUri`
@@ -576,6 +581,7 @@ module Google
           @info = args[:info] if args.key?(:info)
           @items = args[:items] if args.key?(:items)
           @linked_sheet_id = args[:linked_sheet_id] if args.key?(:linked_sheet_id)
+          @publish_settings = args[:publish_settings] if args.key?(:publish_settings)
           @responder_uri = args[:responder_uri] if args.key?(:responder_uri)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
           @settings = args[:settings] if args.key?(:settings)
@@ -1117,6 +1123,53 @@ module Google
         end
       end
       
+      # The publishing settings of a form.
+      class PublishSettings
+        include Google::Apis::Core::Hashable
+      
+        # The publishing state of a form.
+        # Corresponds to the JSON property `publishState`
+        # @return [Google::Apis::FormsV1::PublishState]
+        attr_accessor :publish_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @publish_state = args[:publish_state] if args.key?(:publish_state)
+        end
+      end
+      
+      # The publishing state of a form.
+      class PublishState
+        include Google::Apis::Core::Hashable
+      
+        # Required. Whether the form accepts responses. If `is_published` is set to `
+        # false`, this field is forced to `false`.
+        # Corresponds to the JSON property `isAcceptingResponses`
+        # @return [Boolean]
+        attr_accessor :is_accepting_responses
+        alias_method :is_accepting_responses?, :is_accepting_responses
+      
+        # Required. Whether the form is published and visible to others.
+        # Corresponds to the JSON property `isPublished`
+        # @return [Boolean]
+        attr_accessor :is_published
+        alias_method :is_published?, :is_published
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_accepting_responses = args[:is_accepting_responses] if args.key?(:is_accepting_responses)
+          @is_published = args[:is_published] if args.key?(:is_published)
+        end
+      end
+      
       # Any question. The specific type of question is known by its `kind`.
       class Question
         include Google::Apis::Core::Hashable
@@ -1440,6 +1493,58 @@ module Google
           @high_label = args[:high_label] if args.key?(:high_label)
           @low = args[:low] if args.key?(:low)
           @low_label = args[:low_label] if args.key?(:low_label)
+        end
+      end
+      
+      # Updates the publish settings of a Form.
+      class SetPublishSettingsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The publishing settings of a form.
+        # Corresponds to the JSON property `publishSettings`
+        # @return [Google::Apis::FormsV1::PublishSettings]
+        attr_accessor :publish_settings
+      
+        # Optional. The `publish_settings` fields to update. This field mask accepts the
+        # following values: * `publish_state`: Updates or replaces all `publish_state`
+        # settings. * `"*"`: Updates or replaces all `publish_settings` fields.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @publish_settings = args[:publish_settings] if args.key?(:publish_settings)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # The response of a `SetPublishSettings` request.
+      class SetPublishSettingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Required. The ID of the Form. This is same as the `Form.form_id` field.
+        # Corresponds to the JSON property `formId`
+        # @return [String]
+        attr_accessor :form_id
+      
+        # The publishing settings of a form.
+        # Corresponds to the JSON property `publishSettings`
+        # @return [Google::Apis::FormsV1::PublishSettings]
+        attr_accessor :publish_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @form_id = args[:form_id] if args.key?(:form_id)
+          @publish_settings = args[:publish_settings] if args.key?(:publish_settings)
         end
       end
       
