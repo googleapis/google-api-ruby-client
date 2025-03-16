@@ -230,6 +230,18 @@ module Google
         # @return [String]
         attr_accessor :retain_expire_time
       
+        # Output only. [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # A list of namespaced Kubernetes resources.
         # Corresponds to the JSON property `selectedApplications`
         # @return [Google::Apis::GkebackupV1::NamespacedNames]
@@ -300,6 +312,8 @@ module Google
           @resource_count = args[:resource_count] if args.key?(:resource_count)
           @retain_days = args[:retain_days] if args.key?(:retain_days)
           @retain_expire_time = args[:retain_expire_time] if args.key?(:retain_expire_time)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @selected_applications = args[:selected_applications] if args.key?(:selected_applications)
           @selected_namespaces = args[:selected_namespaces] if args.key?(:selected_namespaces)
           @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
@@ -1236,6 +1250,11 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1244,6 +1263,7 @@ module Google
         def update!(**args)
           @backups = args[:backups] if args.key?(:backups)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -2606,6 +2626,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # A reference to a namespaced resource in Kubernetes.
         # Corresponds to the JSON property `sourcePvc`
         # @return [Google::Apis::GkebackupV1::NamespacedName]
@@ -2661,6 +2693,8 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @format = args[:format] if args.key?(:format)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @source_pvc = args[:source_pvc] if args.key?(:source_pvc)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)

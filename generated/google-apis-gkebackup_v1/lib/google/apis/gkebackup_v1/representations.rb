@@ -394,6 +394,8 @@ module Google
           property :resource_count, as: 'resourceCount'
           property :retain_days, as: 'retainDays'
           property :retain_expire_time, as: 'retainExpireTime'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :selected_applications, as: 'selectedApplications', class: Google::Apis::GkebackupV1::NamespacedNames, decorator: Google::Apis::GkebackupV1::NamespacedNames::Representation
       
           property :selected_namespaces, as: 'selectedNamespaces', class: Google::Apis::GkebackupV1::Namespaces, decorator: Google::Apis::GkebackupV1::Namespaces::Representation
@@ -623,6 +625,7 @@ module Google
           collection :backups, as: 'backups', class: Google::Apis::GkebackupV1::Backup, decorator: Google::Apis::GkebackupV1::Backup::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -939,6 +942,8 @@ module Google
           property :etag, as: 'etag'
           property :format, as: 'format'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :source_pvc, as: 'sourcePvc', class: Google::Apis::GkebackupV1::NamespacedName, decorator: Google::Apis::GkebackupV1::NamespacedName::Representation
       
           property :state, as: 'state'
