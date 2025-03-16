@@ -1,0 +1,7 @@
+{
+    "api_id": "managedkafka:v1",
+    "name_pretty": "Managed Service for Apache Kafka API",
+    "distribution_name": "google-apis-managedkafka_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
