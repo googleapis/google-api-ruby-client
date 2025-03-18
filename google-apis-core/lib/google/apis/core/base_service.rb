@@ -151,7 +151,7 @@ module Google
 
         # HTTP client
         # @return [HTTPClient]
-        attr_accessor :client
+        attr_writer :client
 
         # General settings
         # @return [Google::Apis::ClientOptions]
