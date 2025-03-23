@@ -236,7 +236,7 @@ module Google
         # @return [String]
         attr_accessor :data_policy_id
       
-        # Type of data policy.
+        # Required. Data policy type. Type of data policy.
         # Corresponds to the JSON property `dataPolicyType`
         # @return [String]
         attr_accessor :data_policy_type
