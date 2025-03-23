@@ -364,6 +364,14 @@ module Google
       class MergeCapacityCommitmentsRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The optional resulting capacity commitment ID. Capacity commitment
+        # name will be generated automatically if this field is empty. This field must
+        # only contain lower case alphanumeric characters or dashes. The first and last
+        # character cannot be a dash. Max length is 64 characters.
+        # Corresponds to the JSON property `capacityCommitmentId`
+        # @return [String]
+        attr_accessor :capacity_commitment_id
+      
         # Ids of capacity commitments to merge. These capacity commitments must exist
         # under admin project and location specified in the parent. ID is the last
         # portion of capacity commitment name e.g., 'abc' for projects/myproject/
@@ -378,6 +386,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @capacity_commitment_id = args[:capacity_commitment_id] if args.key?(:capacity_commitment_id)
           @capacity_commitment_ids = args[:capacity_commitment_ids] if args.key?(:capacity_commitment_ids)
         end
       end
