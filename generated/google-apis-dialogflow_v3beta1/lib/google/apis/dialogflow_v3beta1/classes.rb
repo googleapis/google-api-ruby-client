@@ -3769,15 +3769,32 @@ module Google
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AgentUtterance]
         attr_accessor :agent_utterance
       
+        # Event represents the event sent by the customer.
+        # Corresponds to the JSON property `event`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Event]
+        attr_accessor :event
+      
         # Stores metadata of the invocation of a CX flow.
         # Corresponds to the JSON property `flowInvocation`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FlowInvocation]
         attr_accessor :flow_invocation
       
+        # Stores metadata of the transition to a target CX flow. Flow transition actions
+        # exit the caller playbook and enter the child flow.
+        # Corresponds to the JSON property `flowTransition`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FlowTransition]
+        attr_accessor :flow_transition
+      
         # Stores metadata of the invocation of a child playbook.
         # Corresponds to the JSON property `playbookInvocation`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PlaybookInvocation]
         attr_accessor :playbook_invocation
+      
+        # Stores metadata of the transition to another target playbook. Playbook
+        # transition actions exit the caller playbook and enter the target playbook.
+        # Corresponds to the JSON property `playbookTransition`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PlaybookTransition]
+        attr_accessor :playbook_transition
       
         # Stores metadata of the invocation of an action supported by a tool.
         # Corresponds to the JSON property `toolUse`
@@ -3796,8 +3813,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @agent_utterance = args[:agent_utterance] if args.key?(:agent_utterance)
+          @event = args[:event] if args.key?(:event)
           @flow_invocation = args[:flow_invocation] if args.key?(:flow_invocation)
+          @flow_transition = args[:flow_transition] if args.key?(:flow_transition)
           @playbook_invocation = args[:playbook_invocation] if args.key?(:playbook_invocation)
+          @playbook_transition = args[:playbook_transition] if args.key?(:playbook_transition)
           @tool_use = args[:tool_use] if args.key?(:tool_use)
           @user_utterance = args[:user_utterance] if args.key?(:user_utterance)
         end
@@ -6524,6 +6544,25 @@ module Google
         end
       end
       
+      # Event represents the event sent by the customer.
+      class GoogleCloudDialogflowCxV3beta1Event
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the event.
+        # Corresponds to the JSON property `event`
+        # @return [String]
+        attr_accessor :event
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event = args[:event] if args.key?(:event)
+        end
+      end
+      
       # An event handler specifies an event that can be handled during a session. When
       # the specified event happens, the following actions are taken in order: * If
       # there is a `trigger_fulfillment` associated with the event, it will be called.
@@ -7703,6 +7742,33 @@ module Google
         def update!(**args)
           @enable_multi_language_detection = args[:enable_multi_language_detection] if args.key?(:enable_multi_language_detection)
           @supported_response_language_codes = args[:supported_response_language_codes] if args.key?(:supported_response_language_codes)
+        end
+      end
+      
+      # Stores metadata of the transition to a target CX flow. Flow transition actions
+      # exit the caller playbook and enter the child flow.
+      class GoogleCloudDialogflowCxV3beta1FlowTransition
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The display name of the flow.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. The unique identifier of the flow. Format: `projects//locations//
+        # agents/`.
+        # Corresponds to the JSON property `flow`
+        # @return [String]
+        attr_accessor :flow
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @flow = args[:flow] if args.key?(:flow)
         end
       end
       
@@ -10812,6 +10878,11 @@ module Google
         # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ParameterDefinition>]
         attr_accessor :output_parameter_definitions
       
+        # Optional. Type of the playbook.
+        # Corresponds to the JSON property `playbookType`
+        # @return [String]
+        attr_accessor :playbook_type
+      
         # Output only. The resource name of flows referenced by the current playbook in
         # the instructions.
         # Corresponds to the JSON property `referencedFlows`
@@ -10862,6 +10933,7 @@ module Google
           @llm_model_settings = args[:llm_model_settings] if args.key?(:llm_model_settings)
           @name = args[:name] if args.key?(:name)
           @output_parameter_definitions = args[:output_parameter_definitions] if args.key?(:output_parameter_definitions)
+          @playbook_type = args[:playbook_type] if args.key?(:playbook_type)
           @referenced_flows = args[:referenced_flows] if args.key?(:referenced_flows)
           @referenced_playbooks = args[:referenced_playbooks] if args.key?(:referenced_playbooks)
           @referenced_tools = args[:referenced_tools] if args.key?(:referenced_tools)
@@ -11015,6 +11087,33 @@ module Google
         def update!(**args)
           @steps = args[:steps] if args.key?(:steps)
           @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Stores metadata of the transition to another target playbook. Playbook
+      # transition actions exit the caller playbook and enter the target playbook.
+      class GoogleCloudDialogflowCxV3beta1PlaybookTransition
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The display name of the playbook.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. The unique identifier of the playbook. Format: `projects//locations//
+        # agents//playbooks/`.
+        # Corresponds to the JSON property `playbook`
+        # @return [String]
+        attr_accessor :playbook
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @playbook = args[:playbook] if args.key?(:playbook)
         end
       end
       
