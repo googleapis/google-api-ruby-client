@@ -122,8 +122,8 @@ module Google
         #   SEPARATED.WITH.DOTS``\` * `bigquery.table.`PROJECT_ID`.`DATASET_ID`.`TABLE_ID``
         #   * `bigquery.dataset.`PROJECT_ID`.`DATASET_ID`` * `datacatalog.entry.`
         #   PROJECT_ID`.`LOCATION_ID`.`ENTRY_GROUP_ID`.`ENTRY_ID`` Identifiers (`*_ID`)
-        #   should comply with the [Lexical structure in Standard SQL] (https://cloud.
-        #   google.com/bigquery/docs/reference/standard-sql/lexical).
+        #   should comply with the [Lexical structure in GoogleSQL] (https://cloud.google.
+        #   com/bigquery/docs/reference/standard-sql/lexical).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
