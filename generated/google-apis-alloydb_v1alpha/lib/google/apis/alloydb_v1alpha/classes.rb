@@ -806,6 +806,107 @@ module Google
         end
       end
       
+      # Configuration for Managed Connection Pool (MCP).
+      class ConnectionPoolConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Deprecated. Use 'flags' instead. The default pool size. Defaults to
+        # 20.
+        # Corresponds to the JSON property `defaultPoolSize`
+        # @return [String]
+        attr_accessor :default_pool_size
+      
+        # Optional. Deprecated; Prefer 'enabled' as this will be removed soon. TODO(b/
+        # 394996708) move to reserved once the field is removed from the gcloud client.
+        # Corresponds to the JSON property `enable`
+        # @return [Boolean]
+        attr_accessor :enable
+        alias_method :enable?, :enable
+      
+        # Optional. Whether to enable Managed Connection Pool (MCP).
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Optional. Connection Pool flags, as a list of "key": "value" pairs.
+        # Corresponds to the JSON property `flags`
+        # @return [Hash<String,String>]
+        attr_accessor :flags
+      
+        # Optional. Deprecated. Use 'flags' instead. The list of startup parameters to
+        # ignore. Defaults to ["extra_float_digits"]
+        # Corresponds to the JSON property `ignoreStartupParameters`
+        # @return [Array<String>]
+        attr_accessor :ignore_startup_parameters
+      
+        # Optional. Deprecated. Use 'flags' instead. The maximum number of client
+        # connections allowed.
+        # Corresponds to the JSON property `maxClientConn`
+        # @return [String]
+        attr_accessor :max_client_conn
+      
+        # Optional. Deprecated. Use 'flags' instead. The maximum number of prepared
+        # statements allowed. MCP makes sure that any statement prepared by a client, up
+        # to this limit, is available on the backing server connection in transaction
+        # and statement pooling mode. Even if the statement was originally prepared on
+        # another server connection. Defaults to 0.
+        # Corresponds to the JSON property `maxPreparedStatements`
+        # @return [String]
+        attr_accessor :max_prepared_statements
+      
+        # Optional. Deprecated. Use 'flags' instead. The minimum pool size. Defaults to
+        # 0.
+        # Corresponds to the JSON property `minPoolSize`
+        # @return [String]
+        attr_accessor :min_pool_size
+      
+        # Optional. Deprecated. Use 'flags' instead. The pool mode. Defaults to `
+        # POOL_MODE_TRANSACTION`.
+        # Corresponds to the JSON property `poolMode`
+        # @return [String]
+        attr_accessor :pool_mode
+      
+        # Optional. Deprecated. Use 'flags' instead. The maximum number of seconds
+        # queries are allowed to spend waiting for execution. If the query is not
+        # assigned to a server during that time, the client is disconnected. 0 disables.
+        # Corresponds to the JSON property `queryWaitTimeout`
+        # @return [String]
+        attr_accessor :query_wait_timeout
+      
+        # Optional. Deprecated. Use 'flags' instead. The maximum number of seconds a
+        # server is allowed to be idle before it is disconnected. 0 disables.
+        # Corresponds to the JSON property `serverIdleTimeout`
+        # @return [String]
+        attr_accessor :server_idle_timeout
+      
+        # Optional. Deprecated. Use 'flags' instead. The list of users that are allowed
+        # to connect to the MCP stats console. The users must exist in the database.
+        # Corresponds to the JSON property `statsUsers`
+        # @return [Array<String>]
+        attr_accessor :stats_users
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_pool_size = args[:default_pool_size] if args.key?(:default_pool_size)
+          @enable = args[:enable] if args.key?(:enable)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @flags = args[:flags] if args.key?(:flags)
+          @ignore_startup_parameters = args[:ignore_startup_parameters] if args.key?(:ignore_startup_parameters)
+          @max_client_conn = args[:max_client_conn] if args.key?(:max_client_conn)
+          @max_prepared_statements = args[:max_prepared_statements] if args.key?(:max_prepared_statements)
+          @min_pool_size = args[:min_pool_size] if args.key?(:min_pool_size)
+          @pool_mode = args[:pool_mode] if args.key?(:pool_mode)
+          @query_wait_timeout = args[:query_wait_timeout] if args.key?(:query_wait_timeout)
+          @server_idle_timeout = args[:server_idle_timeout] if args.key?(:server_idle_timeout)
+          @stats_users = args[:stats_users] if args.key?(:stats_users)
+        end
+      end
+      
       # ContinuousBackupConfig describes the continuous backups recovery
       # configurations of a cluster.
       class ContinuousBackupConfig
@@ -1554,6 +1655,11 @@ module Google
         # @return [Google::Apis::AlloydbV1alpha::ClientConnectionConfig]
         attr_accessor :client_connection_config
       
+        # Configuration for Managed Connection Pool (MCP).
+        # Corresponds to the JSON property `connectionPoolConfig`
+        # @return [Google::Apis::AlloydbV1alpha::ConnectionPoolConfig]
+        attr_accessor :connection_pool_config
+      
         # Output only. Create time stamp
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -1745,6 +1851,7 @@ module Google
           @annotations = args[:annotations] if args.key?(:annotations)
           @availability_type = args[:availability_type] if args.key?(:availability_type)
           @client_connection_config = args[:client_connection_config] if args.key?(:client_connection_config)
+          @connection_pool_config = args[:connection_pool_config] if args.key?(:connection_pool_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @database_flags = args[:database_flags] if args.key?(:database_flags)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
