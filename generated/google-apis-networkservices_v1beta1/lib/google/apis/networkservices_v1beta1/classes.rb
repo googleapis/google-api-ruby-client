@@ -336,6 +336,15 @@ module Google
       class ExtensionChainExtension
         include Google::Apis::Core::Hashable
       
+        # Optional. When set to `TRUE`, the response from an extension service is
+        # allowed to set the `com.google.envoy.dynamic_forwarding` namespace in the
+        # dynamic metadata. This field is not supported for plugin extensions. Setting
+        # it results in a validation error.
+        # Corresponds to the JSON property `allowDynamicForwarding`
+        # @return [Boolean]
+        attr_accessor :allow_dynamic_forwarding
+        alias_method :allow_dynamic_forwarding?, :allow_dynamic_forwarding
+      
         # Optional. The `:authority` header in the gRPC request sent from Envoy to the
         # extension service. Required for Callout extensions. This field is not
         # supported for plugin extensions. Setting it results in a validation error.
@@ -370,8 +379,12 @@ module Google
         # namespace `com.google....`. For example: `com.google.lb_traffic_extension.
         # lbtrafficextension1.chain1.ext1`. The following variables are supported in the
         # metadata: ``forwarding_rule_id`` - substituted with the forwarding rule's
-        # fully qualified resource name. This field is not supported for plugin
-        # extensions. Setting it results in a validation error.
+        # fully qualified resource name. This field is subject to following limitations:
+        # * The total size of the metadata must be less than 1KiB. * The total number of
+        # keys in the metadata must be less than 20. * The length of each key must be
+        # less than 64 characters. * The length of each value must be less than 1024
+        # characters. * All values must be strings. This field is not supported for
+        # plugin extensions. Setting it results in a validation error.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
@@ -424,6 +437,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allow_dynamic_forwarding = args[:allow_dynamic_forwarding] if args.key?(:allow_dynamic_forwarding)
           @authority = args[:authority] if args.key?(:authority)
           @fail_open = args[:fail_open] if args.key?(:fail_open)
           @forward_headers = args[:forward_headers] if args.key?(:forward_headers)
@@ -2260,6 +2274,13 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Unreachable resources. Populated when the request opts into
+        # return_partial_success and reading across collections e.g. when attempting to
+        # list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2268,6 +2289,7 @@ module Google
         def update!(**args)
           @endpoint_policies = args[:endpoint_policies] if args.key?(:endpoint_policies)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -2354,6 +2376,13 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Unreachable resources. Populated when the request opts into
+        # return_partial_success and reading across collections e.g. when attempting to
+        # list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2362,6 +2391,7 @@ module Google
         def update!(**args)
           @grpc_routes = args[:grpc_routes] if args.key?(:grpc_routes)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -2381,6 +2411,13 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Unreachable resources. Populated when the request opts into
+        # return_partial_success and reading across collections e.g. when attempting to
+        # list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2389,6 +2426,7 @@ module Google
         def update!(**args)
           @http_routes = args[:http_routes] if args.key?(:http_routes)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -2659,6 +2697,13 @@ module Google
         # @return [Array<Google::Apis::NetworkservicesV1beta1::TcpRoute>]
         attr_accessor :tcp_routes
       
+        # Unreachable resources. Populated when the request opts into
+        # return_partial_success and reading across collections e.g. when attempting to
+        # list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2667,6 +2712,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @tcp_routes = args[:tcp_routes] if args.key?(:tcp_routes)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -2686,6 +2732,13 @@ module Google
         # @return [Array<Google::Apis::NetworkservicesV1beta1::TlsRoute>]
         attr_accessor :tls_routes
       
+        # Unreachable resources. Populated when the request opts into
+        # return_partial_success and reading across collections e.g. when attempting to
+        # list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2694,6 +2747,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @tls_routes = args[:tls_routes] if args.key?(:tls_routes)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -2708,6 +2762,13 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Unreachable resources. Populated when the request attempts to list all
+        # resources across all supported locations, while some locations are temporarily
+        # unavailable.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         # List of `WasmPluginVersion` resources.
         # Corresponds to the JSON property `wasmPluginVersions`
         # @return [Array<Google::Apis::NetworkservicesV1beta1::WasmPluginVersion>]
@@ -2720,6 +2781,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
           @wasm_plugin_versions = args[:wasm_plugin_versions] if args.key?(:wasm_plugin_versions)
         end
       end
@@ -2735,6 +2797,13 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Unreachable resources. Populated when the request attempts to list all
+        # resources across all supported locations, while some locations are temporarily
+        # unavailable.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         # List of `WasmPlugin` resources.
         # Corresponds to the JSON property `wasmPlugins`
         # @return [Array<Google::Apis::NetworkservicesV1beta1::WasmPlugin>]
@@ -2747,6 +2816,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
           @wasm_plugins = args[:wasm_plugins] if args.key?(:wasm_plugins)
         end
       end
@@ -3141,9 +3211,9 @@ module Google
       end
       
       # ServiceBinding can be used to: - Bind a Service Directory Service to be used
-      # in a BackendService resource. - Bind a Private Service Connect producer
-      # service to be used in consumer Cloud Service Mesh or Application Load
-      # Balancers.
+      # in a BackendService resource. This feature will be deprecated soon. - Bind a
+      # Private Service Connect producer service to be used in consumer Cloud Service
+      # Mesh or Application Load Balancers.
       class ServiceBinding
         include Google::Apis::Core::Hashable
       
@@ -3169,7 +3239,8 @@ module Google
         attr_accessor :name
       
         # Optional. The full Service Directory Service name of the format `projects/*/
-        # locations/*/namespaces/*/services/*`. This field must be set.
+        # locations/*/namespaces/*/services/*`. This field is for Service Directory
+        # integration which will be deprecated soon.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -3177,7 +3248,8 @@ module Google
         # Output only. The unique identifier of the Service Directory Service against
         # which the ServiceBinding resource is validated. This is populated when the
         # Service Binding resource is used in another resource (like Backend Service).
-        # This is of the UUID4 format.
+        # This is of the UUID4 format. This field is for Service Directory integration
+        # which will be deprecated soon.
         # Corresponds to the JSON property `serviceId`
         # @return [String]
         attr_accessor :service_id
@@ -3681,7 +3753,7 @@ module Google
         # @return [String]
         attr_accessor :service_name
       
-        # Optional. Specifies the proportion of requests forwareded to the backend
+        # Optional. Specifies the proportion of requests forwarded to the backend
         # referenced by the service_name field. This is computed as: - weight/Sum(
         # weights in destinations) Weights in all destinations does not need to sum up
         # to 100.
