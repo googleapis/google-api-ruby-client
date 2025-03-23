@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Chokepoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudArmor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -629,6 +635,12 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV2BulkMuteFindingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2Chokepoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1801,6 +1813,13 @@ module Google
         end
       end
       
+      class Chokepoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :related_findings, as: 'relatedFindings'
+        end
+      end
+      
       class CloudArmor
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2100,6 +2119,8 @@ module Google
       
           property :canonical_name, as: 'canonicalName'
           property :category, as: 'category'
+          property :chokepoint, as: 'chokepoint', class: Google::Apis::SecuritycenterV1beta1::Chokepoint, decorator: Google::Apis::SecuritycenterV1beta1::Chokepoint::Representation
+      
           property :cloud_armor, as: 'cloudArmor', class: Google::Apis::SecuritycenterV1beta1::CloudArmor, decorator: Google::Apis::SecuritycenterV1beta1::CloudArmor::Representation
       
           property :cloud_dlp_data_profile, as: 'cloudDlpDataProfile', class: Google::Apis::SecuritycenterV1beta1::CloudDlpDataProfile, decorator: Google::Apis::SecuritycenterV1beta1::CloudDlpDataProfile::Representation
@@ -2742,6 +2763,13 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV2Chokepoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :related_findings, as: 'relatedFindings'
+        end
+      end
+      
       class GoogleCloudSecuritycenterV2CloudArmor
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3029,6 +3057,8 @@ module Google
       
           property :canonical_name, as: 'canonicalName'
           property :category, as: 'category'
+          property :chokepoint, as: 'chokepoint', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Chokepoint, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Chokepoint::Representation
+      
           property :cloud_armor, as: 'cloudArmor', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2CloudArmor, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2CloudArmor::Representation
       
           property :cloud_dlp_data_profile, as: 'cloudDlpDataProfile', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2CloudDlpDataProfile, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2CloudDlpDataProfile::Representation
