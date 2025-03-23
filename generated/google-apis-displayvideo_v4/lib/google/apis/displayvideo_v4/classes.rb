@@ -1435,6 +1435,13 @@ module Google
         # @return [Google::Apis::DisplayvideoV4::ContentStreamTypeAssignedTargetingOptionDetails]
         attr_accessor :content_stream_type_details
       
+        # Targeting details for content theme. This will be populated in the details
+        # field of an AssignedTargetingOption when targeting_type is `
+        # TARGETING_TYPE_CONTENT_THEME_EXCLUSION`.
+        # Corresponds to the JSON property `contentThemeExclusionDetails`
+        # @return [Google::Apis::DisplayvideoV4::ContentThemeAssignedTargetingOptionDetails]
+        attr_accessor :content_theme_exclusion_details
+      
         # Representation of a segment of time defined on a specific day of the week and
         # with a start and end time. The time represented by `start_hour` must be before
         # the time represented by `end_hour`.
@@ -1702,6 +1709,7 @@ module Google
           @content_instream_position_details = args[:content_instream_position_details] if args.key?(:content_instream_position_details)
           @content_outstream_position_details = args[:content_outstream_position_details] if args.key?(:content_outstream_position_details)
           @content_stream_type_details = args[:content_stream_type_details] if args.key?(:content_stream_type_details)
+          @content_theme_exclusion_details = args[:content_theme_exclusion_details] if args.key?(:content_theme_exclusion_details)
           @day_and_time_details = args[:day_and_time_details] if args.key?(:day_and_time_details)
           @device_make_model_details = args[:device_make_model_details] if args.key?(:device_make_model_details)
           @device_type_details = args[:device_type_details] if args.key?(:device_type_details)
@@ -4011,6 +4019,60 @@ module Google
         # Update properties of this object
         def update!(**args)
           @content_stream_type = args[:content_stream_type] if args.key?(:content_stream_type)
+        end
+      end
+      
+      # Targeting details for content theme. This will be populated in the details
+      # field of an AssignedTargetingOption when targeting_type is `
+      # TARGETING_TYPE_CONTENT_THEME_EXCLUSION`.
+      class ContentThemeAssignedTargetingOptionDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. An enum for the DV360 content theme classifier.
+        # Corresponds to the JSON property `contentTheme`
+        # @return [String]
+        attr_accessor :content_theme
+      
+        # Required. An enum for the DV360 content theme classified to be EXCLUDED.
+        # Corresponds to the JSON property `excludedContentTheme`
+        # @return [String]
+        attr_accessor :excluded_content_theme
+      
+        # Required. ID of the content theme to be EXCLUDED.
+        # Corresponds to the JSON property `excludedTargetingOptionId`
+        # @return [String]
+        attr_accessor :excluded_targeting_option_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_theme = args[:content_theme] if args.key?(:content_theme)
+          @excluded_content_theme = args[:excluded_content_theme] if args.key?(:excluded_content_theme)
+          @excluded_targeting_option_id = args[:excluded_targeting_option_id] if args.key?(:excluded_targeting_option_id)
+        end
+      end
+      
+      # Represents a targetable content theme. This will be populated in the
+      # content_theme_details field of the TargetingOption when targeting_type is `
+      # TARGETING_TYPE_CONTENT_THEME_EXCLUSION`.
+      class ContentThemeTargetingOptionDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. An enum for the DV360 content theme content classifier.
+        # Corresponds to the JSON property `contentTheme`
+        # @return [String]
+        attr_accessor :content_theme
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_theme = args[:content_theme] if args.key?(:content_theme)
         end
       end
       
@@ -11680,6 +11742,13 @@ module Google
         # @return [Google::Apis::DisplayvideoV4::ContentStreamTypeTargetingOptionDetails]
         attr_accessor :content_stream_type_details
       
+        # Represents a targetable content theme. This will be populated in the
+        # content_theme_details field of the TargetingOption when targeting_type is `
+        # TARGETING_TYPE_CONTENT_THEME_EXCLUSION`.
+        # Corresponds to the JSON property `contentThemeDetails`
+        # @return [Google::Apis::DisplayvideoV4::ContentThemeTargetingOptionDetails]
+        attr_accessor :content_theme_details
+      
         # Represents a targetable device make and model. This will be populated in the
         # device_make_model_details field of a TargetingOption when targeting_type is `
         # TARGETING_TYPE_DEVICE_MAKE_MODEL`.
@@ -11851,6 +11920,7 @@ module Google
           @content_instream_position_details = args[:content_instream_position_details] if args.key?(:content_instream_position_details)
           @content_outstream_position_details = args[:content_outstream_position_details] if args.key?(:content_outstream_position_details)
           @content_stream_type_details = args[:content_stream_type_details] if args.key?(:content_stream_type_details)
+          @content_theme_details = args[:content_theme_details] if args.key?(:content_theme_details)
           @device_make_model_details = args[:device_make_model_details] if args.key?(:device_make_model_details)
           @device_type_details = args[:device_type_details] if args.key?(:device_type_details)
           @digital_content_label_details = args[:digital_content_label_details] if args.key?(:digital_content_label_details)
