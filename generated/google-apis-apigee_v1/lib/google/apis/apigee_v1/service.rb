@@ -4725,6 +4725,146 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new DNS zone.
+        # @param [String] parent
+        #   Required. Organization where the DNS zone will be created.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DnsZone] google_cloud_apigee_v1_dns_zone_object
+        # @param [String] dns_zone_id
+        #   Required. User assigned ID for this resource. Must be unique within the
+        #   organization. The name must be 1-63 characters long, must begin with a letter,
+        #   end with a letter or digit, and only contain lowercase letters, digits or
+        #   dashes.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_dns_zone(parent, google_cloud_apigee_v1_dns_zone_object = nil, dns_zone_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/dnsZones', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DnsZone::Representation
+          command.request_object = google_cloud_apigee_v1_dns_zone_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['dnsZoneId'] = dns_zone_id unless dns_zone_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a previously created DNS zone.
+        # @param [String] name
+        #   Required. Name of the DNS zone to delete. Use the following structure in your
+        #   request: `organizations/`org`/dnsZones/`dns_zone``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_dns_zone(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetches the representation of an existing DNS zone.
+        # @param [String] name
+        #   Required. Name of the DNS zone to fetch. Use the following structure in your
+        #   request: `organizations/`org`/dnsZones/`dns_zone``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DnsZone] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DnsZone]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_dns_zone(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DnsZone::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DnsZone
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Enumerates DNS zones that have been created but not yet deleted.
+        # @param [String] parent
+        #   Required. Name of the organization for which to list the DNS zones. Use the
+        #   following structure in your request: `organizations/`org``
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of DNS zones to return. If unspecified, at most 25
+        #   DNS zones will be returned.
+        # @param [String] page_token
+        #   Optional. Page token, returned from a previous `ListDnsZones` call, that you
+        #   can use to retrieve the next page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListDnsZonesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListDnsZonesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_dns_zones(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/dnsZones', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListDnsZonesResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListDnsZonesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates an endpoint attachment. **Note:** Not supported for Apigee hybrid.
         # @param [String] parent
         #   Required. Organization the endpoint attachment will be created in.
@@ -11319,6 +11459,190 @@ module Google
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Create a security monitoring condition.
+        # @param [String] parent
+        #   Required. The parent resource name. Format: `organizations/`org``
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityMonitoringCondition] google_cloud_apigee_v1_security_monitoring_condition_object
+        # @param [String] security_monitoring_condition_id
+        #   Optional. Optional: The security monitoring condition id. If not specified, a
+        #   monitoring condition uuid will be generated by the backend. This value should
+        #   be 4-63 characters, and valid characters are /a-z-/.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityMonitoringCondition] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityMonitoringCondition]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_security_monitoring_condition(parent, google_cloud_apigee_v1_security_monitoring_condition_object = nil, security_monitoring_condition_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/securityMonitoringConditions', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityMonitoringCondition::Representation
+          command.request_object = google_cloud_apigee_v1_security_monitoring_condition_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityMonitoringCondition::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityMonitoringCondition
+          command.params['parent'] = parent unless parent.nil?
+          command.query['securityMonitoringConditionId'] = security_monitoring_condition_id unless security_monitoring_condition_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a security monitoring condition.
+        # @param [String] name
+        #   Required. The name of the security monitoring condition to delete. Format: `
+        #   organizations/`org`/securityMonitoringConditions/`
+        #   security_monitoring_condition``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_security_monitoring_condition(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a security monitoring condition.
+        # @param [String] name
+        #   Required. The name of the security monitoring condition to get. Format: `
+        #   organizations/`org`/securityMonitoringConditions/`
+        #   security_monitoring_condition``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityMonitoringCondition] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityMonitoringCondition]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_security_monitoring_condition(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityMonitoringCondition::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityMonitoringCondition
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List security monitoring conditions.
+        # @param [String] parent
+        #   Required. For a specific organization, list all the security monitoring
+        #   conditions. Format: `organizations/`org``
+        # @param [String] filter
+        #   Optional. Filter for the monitoring conditions. For example: `profile=profile1
+        #   AND scope=env1`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of monitoring conditions to return.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `
+        #   ListSecurityMonitoringConditions` call. Provide this to retrieve the
+        #   subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_security_monitoring_conditions(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/securityMonitoringConditions', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a security monitoring condition.
+        # @param [String] name
+        #   Identifier. Name of the security monitoring condition resource. Format:
+        #   organizations/`org`/securityMonitoringConditions/`
+        #   security_monitoring_condition`
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityMonitoringCondition] google_cloud_apigee_v1_security_monitoring_condition_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update. Valid fields to update are `profile`, `
+        #   scope`, `include_all_resources`, `include`, and `exclude`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityMonitoringCondition] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityMonitoringCondition]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_security_monitoring_condition(name, google_cloud_apigee_v1_security_monitoring_condition_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityMonitoringCondition::Representation
+          command.request_object = google_cloud_apigee_v1_security_monitoring_condition_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityMonitoringCondition::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityMonitoringCondition
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

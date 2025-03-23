@@ -4156,6 +4156,94 @@ module Google
         end
       end
       
+      # A DNS zone is a resource under an Apigee organization that is used to create a
+      # DNS peering with Apigee's network. DNS peering will let Apigee instances
+      # resolve the hostnames created in a peered network.
+      class GoogleCloudApigeeV1DnsZone
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time that this resource was created on the server.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. Description of the resource. String of at most 1024 characters
+        # associated with this resource for the user's convenience.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The domain name for hosts in this private zone, for instance "
+        # example.com.".
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # Identifier. Unique name for the resource. Defined by the server Format: "
+        # organizations/`organization`/dnsZones/`dns_zone`".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Fields for DNS PEERING zone.
+        # Corresponds to the JSON property `peeringConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DnsZonePeeringConfig]
+        attr_accessor :peering_config
+      
+        # Output only. State of the DNS Peering. Values other than `ACTIVE` mean the
+        # resource is not ready to use.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The time that this resource was updated on the server.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @domain = args[:domain] if args.key?(:domain)
+          @name = args[:name] if args.key?(:name)
+          @peering_config = args[:peering_config] if args.key?(:peering_config)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Fields for DNS PEERING zone.
+      class GoogleCloudApigeeV1DnsZonePeeringConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The VPC network where the records for that private DNS zone's
+        # namespace are available. Apigee will be performing DNS peering with this VPC
+        # network.
+        # Corresponds to the JSON property `targetNetworkId`
+        # @return [String]
+        attr_accessor :target_network_id
+      
+        # Required. The ID of the project that contains the producer VPC network.
+        # Corresponds to the JSON property `targetProjectId`
+        # @return [String]
+        attr_accessor :target_project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_network_id = args[:target_network_id] if args.key?(:target_network_id)
+          @target_project_id = args[:target_project_id] if args.key?(:target_project_id)
+        end
+      end
+      
       # Documentation file contents for a catalog item.
       class GoogleCloudApigeeV1DocumentationFile
         include Google::Apis::Core::Hashable
@@ -6313,6 +6401,32 @@ module Google
         end
       end
       
+      # Response for list DNS zones.
+      class GoogleCloudApigeeV1ListDnsZonesResponse
+        include Google::Apis::Core::Hashable
+      
+        # DNS zones in a given organization.
+        # Corresponds to the JSON property `dnsZones`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1DnsZone>]
+        attr_accessor :dns_zones
+      
+        # Page token that you can include in an `ListDnsZones` request to retrieve the
+        # next page. If omitted, no subsequent pages exist.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_zones = args[:dns_zones] if args.key?(:dns_zones)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response for ListEndpointAttachments method.
       class GoogleCloudApigeeV1ListEndpointAttachmentsResponse
         include Google::Apis::Core::Hashable
@@ -6666,6 +6780,32 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @security_incidents = args[:security_incidents] if args.key?(:security_incidents)
+        end
+      end
+      
+      # Response for ListSecurityMonitoringConditions.
+      class GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of security monitoring conditions in the organization.
+        # Corresponds to the JSON property `securityMonitoringConditions`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityMonitoringCondition>]
+        attr_accessor :security_monitoring_conditions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @security_monitoring_conditions = args[:security_monitoring_conditions] if args.key?(:security_monitoring_conditions)
         end
       end
       
@@ -10289,6 +10429,76 @@ module Google
           @observability = args[:observability] if args.key?(:observability)
           @risk_level = args[:risk_level] if args.key?(:risk_level)
           @traffic_count = args[:traffic_count] if args.key?(:traffic_count)
+        end
+      end
+      
+      # Security monitoring condition for risk assessment version 2.
+      class GoogleCloudApigeeV1SecurityMonitoringCondition
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time of the security monitoring condition creation.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Message for the array of resources. For Apigee, the proxies are resources.
+        # Corresponds to the JSON property `include`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray]
+        attr_accessor :include
+      
+        # Message for include_all_resources option.
+        # Corresponds to the JSON property `includeAllResources`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll]
+        attr_accessor :include_all_resources
+      
+        # Identifier. Name of the security monitoring condition resource. Format:
+        # organizations/`org`/securityMonitoringConditions/`
+        # security_monitoring_condition`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. ID of security profile of the security monitoring condition.
+        # Corresponds to the JSON property `profile`
+        # @return [String]
+        attr_accessor :profile
+      
+        # Required. Scope of the security monitoring condition. For Apigee, the
+        # environment is the scope of the resources.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # Output only. Total number of deployed resources within scope.
+        # Corresponds to the JSON property `totalDeployedResources`
+        # @return [Fixnum]
+        attr_accessor :total_deployed_resources
+      
+        # Output only. Total number of monitored resources within this condition.
+        # Corresponds to the JSON property `totalMonitoredResources`
+        # @return [Fixnum]
+        attr_accessor :total_monitored_resources
+      
+        # Output only. The time of the security monitoring condition update.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @include = args[:include] if args.key?(:include)
+          @include_all_resources = args[:include_all_resources] if args.key?(:include_all_resources)
+          @name = args[:name] if args.key?(:name)
+          @profile = args[:profile] if args.key?(:profile)
+          @scope = args[:scope] if args.key?(:scope)
+          @total_deployed_resources = args[:total_deployed_resources] if args.key?(:total_deployed_resources)
+          @total_monitored_resources = args[:total_monitored_resources] if args.key?(:total_monitored_resources)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
