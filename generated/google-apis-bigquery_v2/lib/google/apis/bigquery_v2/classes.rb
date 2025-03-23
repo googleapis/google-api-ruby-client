@@ -4497,6 +4497,14 @@ module Google
         # @return [Google::Apis::BigqueryV2::JobConfigurationQuery]
         attr_accessor :query
       
+        # Optional. The reservation that job would use. User can specify a reservation
+        # to execute the job. If reservation is not set, reservation is determined based
+        # on the rules defined by the reservation assignments. The expected format is `
+        # projects/`project`/locations/`location`/reservations/`reservation``.
+        # Corresponds to the JSON property `reservation`
+        # @return [String]
+        attr_accessor :reservation
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4511,6 +4519,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @load = args[:load] if args.key?(:load)
           @query = args[:query] if args.key?(:query)
+          @reservation = args[:reservation] if args.key?(:reservation)
         end
       end
       
@@ -7790,6 +7799,13 @@ module Google
         # @return [String]
         attr_accessor :request_id
       
+        # Optional. The reservation that jobs.query request would use. User can specify
+        # a reservation to execute the job.query. The expected format is `projects/`
+        # project`/locations/`location`/reservations/`reservation``.
+        # Corresponds to the JSON property `reservation`
+        # @return [String]
+        attr_accessor :reservation
+      
         # Optional. Optional: Specifies the maximum amount of time, in milliseconds,
         # that the client is willing to wait for the query to complete. By default, this
         # limit is 10 seconds (10,000 milliseconds). If the query is complete, the
@@ -7856,6 +7872,7 @@ module Google
           @query = args[:query] if args.key?(:query)
           @query_parameters = args[:query_parameters] if args.key?(:query_parameters)
           @request_id = args[:request_id] if args.key?(:request_id)
+          @reservation = args[:reservation] if args.key?(:reservation)
           @timeout_ms = args[:timeout_ms] if args.key?(:timeout_ms)
           @use_legacy_sql = args[:use_legacy_sql] if args.key?(:use_legacy_sql)
           @use_query_cache = args[:use_query_cache] if args.key?(:use_query_cache)
