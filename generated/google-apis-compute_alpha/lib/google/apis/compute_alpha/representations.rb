@@ -3874,6 +3874,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListSnapshotGroups
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LocalDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5860,6 +5878,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReliabilityRisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReliabilityRisksListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReplicationDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6239,6 +6281,24 @@ module Google
       end
       
       class ResourceStatusShutdownDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RiskDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RiskDetailsGlobalDnsInsight
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RiskRecommendation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7092,6 +7152,24 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotGroupSourceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotGroupSourceInstantSnapshotGroupInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -16107,6 +16185,40 @@ module Google
         end
       end
       
+      class ListSnapshotGroups
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::SnapshotGroup, decorator: Google::Apis::ComputeAlpha::SnapshotGroup::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::ListSnapshotGroups::Warning, decorator: Google::Apis::ComputeAlpha::ListSnapshotGroups::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::ListSnapshotGroups::Warning::Datum, decorator: Google::Apis::ComputeAlpha::ListSnapshotGroups::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class LocalDisk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -16160,6 +16272,8 @@ module Google
           property :instance_properties, as: 'instanceProperties', class: Google::Apis::ComputeAlpha::InstanceProperties, decorator: Google::Apis::ComputeAlpha::InstanceProperties::Representation
       
           property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
           property :machine_image_encryption_key, as: 'machineImageEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
           property :name, as: 'name'
@@ -19735,6 +19849,56 @@ module Google
         end
       end
       
+      class ReliabilityRisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :details, as: 'details', class: Google::Apis::ComputeAlpha::RiskDetails, decorator: Google::Apis::ComputeAlpha::RiskDetails::Representation
+      
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :recommendation, as: 'recommendation', class: Google::Apis::ComputeAlpha::RiskRecommendation, decorator: Google::Apis::ComputeAlpha::RiskRecommendation::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+        end
+      end
+      
+      class ReliabilityRisksListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::ReliabilityRisk, decorator: Google::Apis::ComputeAlpha::ReliabilityRisk::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::ReliabilityRisksListResponse::Warning, decorator: Google::Apis::ComputeAlpha::ReliabilityRisksListResponse::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::ReliabilityRisksListResponse::Warning::Datum, decorator: Google::Apis::ComputeAlpha::ReliabilityRisksListResponse::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class ReplicationDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -20406,6 +20570,36 @@ module Google
           property :request_timestamp, as: 'requestTimestamp'
           property :stop_state, as: 'stopState'
           property :target_state, as: 'targetState'
+        end
+      end
+      
+      class RiskDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration, as: 'duration'
+          property :global_dns_insight, as: 'globalDnsInsight', class: Google::Apis::ComputeAlpha::RiskDetailsGlobalDnsInsight, decorator: Google::Apis::ComputeAlpha::RiskDetailsGlobalDnsInsight::Representation
+      
+          property :last_update_timestamp, as: 'lastUpdateTimestamp'
+          property :severity, as: 'severity'
+          property :type, as: 'type'
+        end
+      end
+      
+      class RiskDetailsGlobalDnsInsight
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_default_is_global_dns, as: 'projectDefaultIsGlobalDns'
+          property :query_observation_window, as: 'queryObservationWindow'
+          property :risky_query_count, :numeric_string => true, as: 'riskyQueryCount'
+          property :total_query_count, :numeric_string => true, as: 'totalQueryCount'
+        end
+      end
+      
+      class RiskRecommendation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+          property :reference_url, as: 'referenceUrl'
         end
       end
       
@@ -22034,6 +22228,8 @@ module Google
           property :self_link_with_id, as: 'selfLinkWithId'
           property :snapshot_encryption_key, as: 'snapshotEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
+          property :snapshot_group_id, as: 'snapshotGroupId'
+          property :snapshot_group_name, as: 'snapshotGroupName'
           property :snapshot_type, as: 'snapshotType'
           property :source_disk, as: 'sourceDisk'
           property :source_disk_encryption_key, as: 'sourceDiskEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
@@ -22085,6 +22281,41 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class SnapshotGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :source_info, as: 'sourceInfo', class: Google::Apis::ComputeAlpha::SnapshotGroupSourceInfo, decorator: Google::Apis::ComputeAlpha::SnapshotGroupSourceInfo::Representation
+      
+          property :source_instant_snapshot_group, as: 'sourceInstantSnapshotGroup'
+          property :source_instant_snapshot_group_info, as: 'sourceInstantSnapshotGroupInfo', class: Google::Apis::ComputeAlpha::SnapshotGroupSourceInstantSnapshotGroupInfo, decorator: Google::Apis::ComputeAlpha::SnapshotGroupSourceInstantSnapshotGroupInfo::Representation
+      
+          property :status, as: 'status'
+        end
+      end
+      
+      class SnapshotGroupSourceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consistency_group, as: 'consistencyGroup'
+          property :consistency_group_id, as: 'consistencyGroupId'
+        end
+      end
+      
+      class SnapshotGroupSourceInstantSnapshotGroupInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instant_snapshot_group, as: 'instantSnapshotGroup'
+          property :instant_snapshot_group_id, as: 'instantSnapshotGroupId'
         end
       end
       
