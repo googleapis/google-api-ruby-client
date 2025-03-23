@@ -520,6 +520,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendServiceHaPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendServiceHttpCookie
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8366,6 +8372,8 @@ module Google
           property :failover_policy, as: 'failoverPolicy', class: Google::Apis::ComputeBeta::BackendServiceFailoverPolicy, decorator: Google::Apis::ComputeBeta::BackendServiceFailoverPolicy::Representation
       
           property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :ha_policy, as: 'haPolicy', class: Google::Apis::ComputeBeta::BackendServiceHaPolicy, decorator: Google::Apis::ComputeBeta::BackendServiceHaPolicy::Representation
+      
           collection :health_checks, as: 'healthChecks'
           property :iap, as: 'iap', class: Google::Apis::ComputeBeta::BackendServiceIap, decorator: Google::Apis::ComputeBeta::BackendServiceIap::Representation
       
@@ -8528,6 +8536,13 @@ module Google
           collection :health_status, as: 'healthStatus', class: Google::Apis::ComputeBeta::HealthStatus, decorator: Google::Apis::ComputeBeta::HealthStatus::Representation
       
           property :kind, as: 'kind'
+        end
+      end
+      
+      class BackendServiceHaPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fast_ip_move, as: 'fastIPMove'
         end
       end
       

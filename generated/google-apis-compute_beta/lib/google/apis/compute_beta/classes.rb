@@ -2917,7 +2917,8 @@ module Google
         # the [Backend services overview](https://cloud.google.com/load-balancing/docs/
         # backend-service#backends). You must use the *fully-qualified* URL (starting
         # with https://www.googleapis.com/) to specify the instance group or NEG.
-        # Partial URLs are not supported.
+        # Partial URLs are not supported. If haPolicy is specified, backends must refer
+        # to NEG resources of type GCE_VM_IP.
         # Corresponds to the JSON property `group`
         # @return [String]
         attr_accessor :group
@@ -3805,13 +3806,35 @@ module Google
         # @return [String]
         attr_accessor :fingerprint
       
+        # Configures self-managed High Availability (HA) for External and Internal
+        # Protocol Forwarding. The backends of this regional backend service must only
+        # specify zonal network endpoint groups (NEGs) of type GCE_VM_IP. When haPolicy
+        # is set for an Internal Passthrough Network Load Balancer, the regional backend
+        # service must set the network field. All zonal NEGs must belong to the same
+        # network. However, individual NEGs can belong to different subnetworks of that
+        # network. When haPolicy is specified, the set of attached network endpoints
+        # across all backends comprise an High Availability domain from which one
+        # endpoint is selected as the active endpoint (the leader) that receives all
+        # traffic. haPolicy can be added only at backend service creation time. Once set
+        # up, it cannot be deleted. Note that haPolicy is not for load balancing, and
+        # therefore cannot be specified with sessionAffinity, connectionTrackingPolicy,
+        # and failoverPolicy. haPolicy requires customers to be responsible for tracking
+        # backend endpoint health and electing a leader among the healthy endpoints.
+        # Therefore, haPolicy cannot be specified with healthChecks. haPolicy can only
+        # be specified for External Passthrough Network Load Balancers and Internal
+        # Passthrough Network Load Balancers.
+        # Corresponds to the JSON property `haPolicy`
+        # @return [Google::Apis::ComputeBeta::BackendServiceHaPolicy]
+        attr_accessor :ha_policy
+      
         # The list of URLs to the healthChecks, httpHealthChecks (legacy), or
         # httpsHealthChecks (legacy) resource for health checking this backend service.
         # Not all backend services support legacy health checks. See Load balancer guide.
         # Currently, at most one health check can be specified for each backend service.
         # Backend services with instance group or zonal NEG backends must have a health
-        # check. Backend services with internet or serverless NEG backends must not have
-        # a health check.
+        # check unless haPolicy is specified. Backend services with internet or
+        # serverless NEG backends must not have a health check. healthChecks[] cannot be
+        # specified with haPolicy.
         # Corresponds to the JSON property `healthChecks`
         # @return [Array<String>]
         attr_accessor :health_checks
@@ -3899,6 +3922,7 @@ module Google
         # default value for localityLbPolicy is MAGLEV. Only ROUND_ROBIN and RING_HASH
         # are supported when the backend service is referenced by a URL map that is
         # bound to target gRPC proxy that has validateForProxyless field set to true.
+        # localityLbPolicy cannot be specified with haPolicy.
         # Corresponds to the JSON property `localityLbPolicy`
         # @return [String]
         attr_accessor :locality_lb_policy
@@ -3933,14 +3957,17 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The URL of the network to which this backend service belongs. This field can
-        # only be specified when the load balancing scheme is set to INTERNAL.
+        # The URL of the network to which this backend service belongs. This field must
+        # be set for Internal Passthrough Network Load Balancers when the haPolicy is
+        # enabled, and for External Passthrough Network Load Balancers when the haPolicy
+        # fastIpMove is enabled. This field can only be specified when the load
+        # balancing scheme is set to INTERNAL.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
         # Configures traffic steering properties of internal passthrough Network Load
-        # Balancers.
+        # Balancers. networkPassThroughLbTrafficPolicy cannot be specified with haPolicy.
         # Corresponds to the JSON property `networkPassThroughLbTrafficPolicy`
         # @return [Google::Apis::ComputeBeta::BackendServiceNetworkPassThroughLbTrafficPolicy]
         attr_accessor :network_pass_through_lb_traffic_policy
@@ -4020,7 +4047,8 @@ module Google
         # HEADER_FIELD are supported when the backend service is referenced by a URL map
         # that is bound to target gRPC proxy that has validateForProxyless field set to
         # true. For more details, see: [Session Affinity](https://cloud.google.com/load-
-        # balancing/docs/backend-service#session_affinity).
+        # balancing/docs/backend-service#session_affinity). sessionAffinity cannot be
+        # specified with haPolicy.
         # Corresponds to the JSON property `sessionAffinity`
         # @return [String]
         attr_accessor :session_affinity
@@ -4086,6 +4114,7 @@ module Google
           @external_managed_migration_testing_percentage = args[:external_managed_migration_testing_percentage] if args.key?(:external_managed_migration_testing_percentage)
           @failover_policy = args[:failover_policy] if args.key?(:failover_policy)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @ha_policy = args[:ha_policy] if args.key?(:ha_policy)
           @health_checks = args[:health_checks] if args.key?(:health_checks)
           @iap = args[:iap] if args.key?(:iap)
           @id = args[:id] if args.key?(:id)
@@ -4677,6 +4706,70 @@ module Google
           @annotations = args[:annotations] if args.key?(:annotations)
           @health_status = args[:health_status] if args.key?(:health_status)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class BackendServiceHaPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Specifies whether fast IP move is enabled, and if so, the mechanism to achieve
+        # it. Supported values are: - DISABLED: Fast IP Move is disabled. You can only
+        # use the haPolicy.leader API to update the leader. - >GARP_RA: Provides a
+        # method to very quickly define a new network endpoint as the leader. This
+        # method is faster than updating the leader using the haPolicy.leader API. Fast
+        # IP move works as follows: The VM hosting the network endpoint that should
+        # become the new leader sends either a Gratuitous ARP (GARP) packet (IPv4) or an
+        # ICMPv6 Router Advertisement(RA) packet (IPv6). Google Cloud immediately but
+        # temporarily associates the forwarding rule IP address with that VM, and both
+        # new and in-flight packets are quickly delivered to that VM. Note the important
+        # properties of the Fast IP Move functionality: - The GARP/RA-initiated re-
+        # routing stays active for approximately 20 minutes. After triggering fast
+        # failover, you must also appropriately set the haPolicy.leader. - The new
+        # leader instance should continue to send GARP/RA packets periodically every 10
+        # seconds until at least 10 minutes after updating the haPolicy.leader (but stop
+        # immediately if it is no longer the leader). - After triggering a fast failover,
+        # we recommend that you wait at least 3 seconds before sending another GARP/RA
+        # packet from a different VM instance to avoid race conditions. - Don't send
+        # GARP/RA packets from different VM instances at the same time. If multiple
+        # instances continue to send GARP/RA packets, traffic might be routed to
+        # different destinations in an alternating order. This condition ceases when a
+        # single instance issues a GARP/RA packet. - The GARP/RA request always takes
+        # priority over the leader API. Using the haPolicy.leader API to change the
+        # leader to a different instance will have no effect until the GARP/RA request
+        # becomes inactive. - The GARP/RA packets should follow the GARP/RA Packet
+        # Specifications.. - When multiple forwarding rules refer to a regional backend
+        # service, you need only send a GARP or RA packet for a single forwarding rule
+        # virtual IP. The virtual IPs for all forwarding rules targeting the same
+        # backend service will also be moved to the sender of the GARP or RA packet. The
+        # following are the Fast IP Move limitations (that is, when fastIPMove is not
+        # DISABLED): - Multiple forwarding rules cannot use the same IP address if one
+        # of them refers to a regional backend service with fastIPMove. - The regional
+        # backend service must set the network field, and all NEGs must belong to that
+        # network. However, individual NEGs can belong to different subnetworks of that
+        # network. - The maximum number of network endpoints across all backends of a
+        # backend service with fastIPMove is 64. - The maximum number of backend
+        # services with fastIPMove that can have the same network endpoint attached to
+        # one of its backends is 64. - The maximum number of backend services with
+        # fastIPMove in a VPC in a region is 64. - The network endpoints that are
+        # attached to a backend of a backend service with fastIPMove cannot resolve to
+        # C3 machines. - Traffic directed to the leader by a static route next hop will
+        # not be redirected to a new leader by fast failover. Such traffic will only be
+        # redirected once an haPolicy.leader update has taken effect. Only traffic to
+        # the forwarding rule's virtual IP will be redirected to a new leader by fast
+        # failover. haPolicy.fastIPMove can be set only at backend service creation time.
+        # Once set, it cannot be updated. By default, fastIpMove is set to DISABLED.
+        # Corresponds to the JSON property `fastIPMove`
+        # @return [String]
+        attr_accessor :fast_ip_move
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fast_ip_move = args[:fast_ip_move] if args.key?(:fast_ip_move)
         end
       end
       
@@ -22400,7 +22493,8 @@ module Google
       
         # Type of link requested, which can take one of the following values: -
         # LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics -
-        # LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this
+        # LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. -
+        # LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics. Note that this
         # field indicates the speed of each of the links in the bundle, not the speed of
         # the entire bundle.
         # Corresponds to the JSON property `linkType`
