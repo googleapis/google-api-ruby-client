@@ -758,6 +758,7 @@ module Google
       class MessageTransform
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :disabled, as: 'disabled'
           property :enabled, as: 'enabled'
           property :javascript_udf, as: 'javascriptUdf', class: Google::Apis::AnalyticshubV1::JavaScriptUdf, decorator: Google::Apis::AnalyticshubV1::JavaScriptUdf::Representation
       
