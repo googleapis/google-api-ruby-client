@@ -46,6 +46,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConnectAccessConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConnectCluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConnectGcpConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConnectNetworkConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Connector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConsumerGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -77,6 +107,18 @@ module Google
       end
       
       class ListClustersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListConnectClustersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListConnectorsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -130,13 +172,67 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PauseConnectorRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PauseConnectorResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RebalanceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RestartConnectorRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RestartConnectorResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResumeConnectorRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResumeConnectorResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StopConnectorRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StopConnectorResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TaskRetryPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -189,6 +285,60 @@ module Google
         end
       end
       
+      class ConnectAccessConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :network_configs, as: 'networkConfigs', class: Google::Apis::ManagedkafkaV1::ConnectNetworkConfig, decorator: Google::Apis::ManagedkafkaV1::ConnectNetworkConfig::Representation
+      
+        end
+      end
+      
+      class ConnectCluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :capacity_config, as: 'capacityConfig', class: Google::Apis::ManagedkafkaV1::CapacityConfig, decorator: Google::Apis::ManagedkafkaV1::CapacityConfig::Representation
+      
+          hash :config, as: 'config'
+          property :create_time, as: 'createTime'
+          property :gcp_config, as: 'gcpConfig', class: Google::Apis::ManagedkafkaV1::ConnectGcpConfig, decorator: Google::Apis::ManagedkafkaV1::ConnectGcpConfig::Representation
+      
+          property :kafka_cluster, as: 'kafkaCluster'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ConnectGcpConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_config, as: 'accessConfig', class: Google::Apis::ManagedkafkaV1::ConnectAccessConfig, decorator: Google::Apis::ManagedkafkaV1::ConnectAccessConfig::Representation
+      
+          collection :secret_paths, as: 'secretPaths'
+        end
+      end
+      
+      class ConnectNetworkConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_subnets, as: 'additionalSubnets'
+          collection :dns_domain_names, as: 'dnsDomainNames'
+          property :primary_subnet, as: 'primarySubnet'
+        end
+      end
+      
+      class Connector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :configs, as: 'configs'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :task_restart_policy, as: 'taskRestartPolicy', class: Google::Apis::ManagedkafkaV1::TaskRetryPolicy, decorator: Google::Apis::ManagedkafkaV1::TaskRetryPolicy::Representation
+      
+        end
+      end
+      
       class ConsumerGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -236,6 +386,25 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListConnectClustersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :connect_clusters, as: 'connectClusters', class: Google::Apis::ManagedkafkaV1::ConnectCluster, decorator: Google::Apis::ManagedkafkaV1::ConnectCluster::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListConnectorsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :connectors, as: 'connectors', class: Google::Apis::ManagedkafkaV1::Connector, decorator: Google::Apis::ManagedkafkaV1::Connector::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -318,10 +487,46 @@ module Google
         end
       end
       
+      class PauseConnectorRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class PauseConnectorResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class RebalanceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :mode, as: 'mode'
+        end
+      end
+      
+      class RestartConnectorRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RestartConnectorResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ResumeConnectorRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ResumeConnectorResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -331,6 +536,26 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class StopConnectorRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class StopConnectorResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class TaskRetryPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :maximum_backoff, as: 'maximumBackoff'
+          property :minimum_backoff, as: 'minimumBackoff'
         end
       end
       
