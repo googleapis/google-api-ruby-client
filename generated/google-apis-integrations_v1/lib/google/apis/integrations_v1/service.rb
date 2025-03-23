@@ -1281,6 +1281,8 @@ module Google
         # @param [String] parent
         #   Required. Project and location from which the integrations should be listed.
         #   Format: projects/*/locations/*/resources/integrations
+        # @param [Boolean] enable_natural_language_query_understanding
+        #   Optional. Whether to enable natural language query understanding.
         # @param [String] filter
         #   Optional. The pre-filter to be applied to the search. This should follow the
         #   expressions defined in https://cloud.google.com/generative-ai-app-builder/docs/
@@ -1314,11 +1316,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_project_location_integrations(parent, filter: nil, page_size: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def search_project_location_integrations(parent, enable_natural_language_query_understanding: nil, filter: nil, page_size: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/integrations:search', options)
           command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse::Representation
           command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['enableNaturalLanguageQueryUnderstanding'] = enable_natural_language_query_understanding unless enable_natural_language_query_understanding.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?

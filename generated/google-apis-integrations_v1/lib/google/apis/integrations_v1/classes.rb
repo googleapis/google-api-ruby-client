@@ -6977,6 +6977,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. Indicates the client enables making HTTP call.
+        # Corresponds to the JSON property `enableHttpCall`
+        # @return [Boolean]
+        attr_accessor :enable_http_call
+        alias_method :enable_http_call?, :enable_http_call
+      
         # Optional. Indicates the client enables internal IP feature, this is applicable
         # for internal clients only.
         # Corresponds to the JSON property `enableInternalIp`
@@ -7034,6 +7040,7 @@ module Google
           @cloud_kms_config = args[:cloud_kms_config] if args.key?(:cloud_kms_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @enable_http_call = args[:enable_http_call] if args.key?(:enable_http_call)
           @enable_internal_ip = args[:enable_internal_ip] if args.key?(:enable_internal_ip)
           @enable_variable_masking = args[:enable_variable_masking] if args.key?(:enable_variable_masking)
           @id = args[:id] if args.key?(:id)
@@ -9911,6 +9918,12 @@ module Google
         attr_accessor :create_sample_workflows
         alias_method :create_sample_workflows?, :create_sample_workflows
       
+        # Optional. Indicates if the client should be allowed to make HTTP calls.
+        # Corresponds to the JSON property `enableHttpCall`
+        # @return [Boolean]
+        attr_accessor :enable_http_call
+        alias_method :enable_http_call?, :enable_http_call
+      
         # Optional. Deprecated. Indicates provision with GMEK or CMEK. This field is
         # deprecated and the provision would always be GMEK if cloud_kms_config is not
         # present in the request.
@@ -9939,6 +9952,7 @@ module Google
         def update!(**args)
           @cloud_kms_config = args[:cloud_kms_config] if args.key?(:cloud_kms_config)
           @create_sample_workflows = args[:create_sample_workflows] if args.key?(:create_sample_workflows)
+          @enable_http_call = args[:enable_http_call] if args.key?(:enable_http_call)
           @provision_gmek = args[:provision_gmek] if args.key?(:provision_gmek)
           @run_as_service_account = args[:run_as_service_account] if args.key?(:run_as_service_account)
           @skip_cp_provision = args[:skip_cp_provision] if args.key?(:skip_cp_provision)
