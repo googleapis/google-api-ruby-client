@@ -356,6 +356,7 @@ module Google
       
           property :default_values, as: 'defaultValues', class: Google::Apis::NotebooksV2::DefaultValues, decorator: Google::Apis::NotebooksV2::DefaultValues::Representation
       
+          property :disable_workbench_legacy_creation, as: 'disableWorkbenchLegacyCreation'
           property :supported_values, as: 'supportedValues', class: Google::Apis::NotebooksV2::SupportedValues, decorator: Google::Apis::NotebooksV2::SupportedValues::Representation
       
         end
