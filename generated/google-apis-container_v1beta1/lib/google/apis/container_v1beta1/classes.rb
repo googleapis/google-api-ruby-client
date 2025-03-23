@@ -575,7 +575,7 @@ module Google
         # @return [String]
         attr_accessor :image_type
       
-        # Enable or disable Kubelet read only port.
+        # DEPRECATED. Use NodePoolAutoConfig.NodeKubeletConfig instead.
         # Corresponds to the JSON property `insecureKubeletReadonlyPortEnabled`
         # @return [Boolean]
         attr_accessor :insecure_kubelet_readonly_port_enabled
@@ -1352,7 +1352,7 @@ module Google
         attr_accessor :monitoring_config
       
         # The monitoring service the cluster should use to write metrics. Currently
-        # available options: * "monitoring.googleapis.com/kubernetes" - The Cloud
+        # available options: * `monitoring.googleapis.com/kubernetes` - The Cloud
         # Monitoring service with a Kubernetes-native resource model * `monitoring.
         # googleapis.com` - The legacy Cloud Monitoring service (no longer available as
         # of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left
@@ -2025,7 +2025,7 @@ module Google
         attr_accessor :desired_monitoring_config
       
         # The monitoring service the cluster should use to write metrics. Currently
-        # available options: * "monitoring.googleapis.com/kubernetes" - The Cloud
+        # available options: * `monitoring.googleapis.com/kubernetes` - The Cloud
         # Monitoring service with a Kubernetes-native resource model * `monitoring.
         # googleapis.com` - The legacy Cloud Monitoring service (no longer available as
         # of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left
@@ -4987,7 +4987,8 @@ module Google
         attr_accessor :containerd_config
       
         # Size of the disk attached to each node, specified in GB. The smallest allowed
-        # disk size is 10GB. If unspecified, the default disk size is 100GB.
+        # disk size is 10GB. TODO(b/395671893) - Deprecate disk_size_gb and disk_type
+        # fields. If unspecified, the default disk size is 100GB.
         # Corresponds to the JSON property `diskSizeGb`
         # @return [Fixnum]
         attr_accessor :disk_size_gb
@@ -5252,7 +5253,7 @@ module Google
       
         # Parameters that can be configured on Windows nodes. Windows Node Config that
         # define the parameters that will be used to configure the Windows node pool
-        # settings
+        # settings.
         # Corresponds to the JSON property `windowsNodeConfig`
         # @return [Google::Apis::ContainerV1beta1::WindowsNodeConfig]
         attr_accessor :windows_node_config
@@ -7290,6 +7291,11 @@ module Google
         attr_accessor :manual_steps_required
         alias_method :manual_steps_required?, :manual_steps_required
       
+        # The GKE versions where this vulnerability is mitigated.
+        # Corresponds to the JSON property `mitigatedVersions`
+        # @return [Array<String>]
+        attr_accessor :mitigated_versions
+      
         # The GKE versions where this vulnerability is patched.
         # Corresponds to the JSON property `patchedVersions`
         # @return [Array<String>]
@@ -7328,6 +7334,7 @@ module Google
           @bulletin_uri = args[:bulletin_uri] if args.key?(:bulletin_uri)
           @cve_ids = args[:cve_ids] if args.key?(:cve_ids)
           @manual_steps_required = args[:manual_steps_required] if args.key?(:manual_steps_required)
+          @mitigated_versions = args[:mitigated_versions] if args.key?(:mitigated_versions)
           @patched_versions = args[:patched_versions] if args.key?(:patched_versions)
           @resource_type_affected = args[:resource_type_affected] if args.key?(:resource_type_affected)
           @severity = args[:severity] if args.key?(:severity)
@@ -7820,7 +7827,7 @@ module Google
         attr_accessor :cluster_id
       
         # Required. The monitoring service the cluster should use to write metrics.
-        # Currently available options: * "monitoring.googleapis.com/kubernetes" - The
+        # Currently available options: * `monitoring.googleapis.com/kubernetes` - The
         # Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.
         # googleapis.com` - The legacy Cloud Monitoring service (no longer available as
         # of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left
@@ -8751,7 +8758,7 @@ module Google
       
         # Parameters that can be configured on Windows nodes. Windows Node Config that
         # define the parameters that will be used to configure the Windows node pool
-        # settings
+        # settings.
         # Corresponds to the JSON property `windowsNodeConfig`
         # @return [Google::Apis::ContainerV1beta1::WindowsNodeConfig]
         attr_accessor :windows_node_config
@@ -8879,6 +8886,11 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
+        # The start type of the upgrade.
+        # Corresponds to the JSON property `startType`
+        # @return [String]
+        attr_accessor :start_type
+      
         # Output only. The state of the upgrade.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -8898,6 +8910,7 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @initial_version = args[:initial_version] if args.key?(:initial_version)
           @start_time = args[:start_time] if args.key?(:start_time)
+          @start_type = args[:start_type] if args.key?(:start_type)
           @state = args[:state] if args.key?(:state)
           @target_version = args[:target_version] if args.key?(:target_version)
         end
@@ -9306,11 +9319,11 @@ module Google
       
       # Parameters that can be configured on Windows nodes. Windows Node Config that
       # define the parameters that will be used to configure the Windows node pool
-      # settings
+      # settings.
       class WindowsNodeConfig
         include Google::Apis::Core::Hashable
       
-        # OSVersion specifies the Windows node config to be used on the node
+        # OSVersion specifies the Windows node config to be used on the node.
         # Corresponds to the JSON property `osVersion`
         # @return [String]
         attr_accessor :os_version
