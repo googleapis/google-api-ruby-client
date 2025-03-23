@@ -1301,6 +1301,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. For future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. For future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Optional. The default timezone used by this dataset. Must be a either a valid
         # IANA time zone name such as "America/New_York" or empty, which defaults to UTC.
         # This is used for parsing times in resources, such as HL7 messages, where no
@@ -1317,6 +1329,8 @@ module Google
         def update!(**args)
           @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
       end
