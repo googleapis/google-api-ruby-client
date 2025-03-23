@@ -285,6 +285,13 @@ module Google
         # @return [Google::Apis::NotebooksV2::DefaultValues]
         attr_accessor :default_values
       
+        # Output only. Flag to disable the creation of legacy Workbench notebooks (User-
+        # managed notebooks and Google-managed notebooks).
+        # Corresponds to the JSON property `disableWorkbenchLegacyCreation`
+        # @return [Boolean]
+        attr_accessor :disable_workbench_legacy_creation
+        alias_method :disable_workbench_legacy_creation?, :disable_workbench_legacy_creation
+      
         # SupportedValues represents the values supported by the configuration.
         # Corresponds to the JSON property `supportedValues`
         # @return [Google::Apis::NotebooksV2::SupportedValues]
@@ -298,6 +305,7 @@ module Google
         def update!(**args)
           @available_images = args[:available_images] if args.key?(:available_images)
           @default_values = args[:default_values] if args.key?(:default_values)
+          @disable_workbench_legacy_creation = args[:disable_workbench_legacy_creation] if args.key?(:disable_workbench_legacy_creation)
           @supported_values = args[:supported_values] if args.key?(:supported_values)
         end
       end
