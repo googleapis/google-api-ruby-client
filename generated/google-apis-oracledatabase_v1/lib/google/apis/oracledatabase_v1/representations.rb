@@ -310,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RestartAutonomousDatabaseRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RestoreAutonomousDatabaseRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -322,7 +328,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StartAutonomousDatabaseRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StopAutonomousDatabaseRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -976,6 +994,12 @@ module Google
         end
       end
       
+      class RestartAutonomousDatabaseRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class RestoreAutonomousDatabaseRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -994,12 +1018,24 @@ module Google
         end
       end
       
+      class StartAutonomousDatabaseRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class StopAutonomousDatabaseRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
