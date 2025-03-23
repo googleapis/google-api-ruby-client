@@ -2734,6 +2734,19 @@ module Google
         end
       end
       
+      # The request for `AutonomousDatabase.Restart`.
+      class RestartAutonomousDatabaseRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The request for `AutonomousDatabase.Restore`.
       class RestoreAutonomousDatabaseRequest
         include Google::Apis::Core::Hashable
@@ -2789,6 +2802,19 @@ module Google
         end
       end
       
+      # The request for `AutonomousDatabase.Start`.
+      class StartAutonomousDatabaseRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -2825,6 +2851,19 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # The request for `AutonomousDatabase.Stop`.
+      class StopAutonomousDatabaseRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
