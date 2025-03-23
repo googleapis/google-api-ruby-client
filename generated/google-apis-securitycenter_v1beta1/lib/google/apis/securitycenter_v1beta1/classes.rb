@@ -989,6 +989,30 @@ module Google
         end
       end
       
+      # Contains details about a chokepoint, which is a resource or resource group
+      # where high-risk attack paths converge, based on [attack path simulations] (
+      # https://cloud.google.com/security-command-center/docs/attack-exposure-learn#
+      # attack_path_simulations).
+      class Chokepoint
+        include Google::Apis::Core::Hashable
+      
+        # List of resource names of findings associated with this chokepoint. For
+        # example, organizations/123/sources/456/findings/789. This list will have at
+        # most 100 findings.
+        # Corresponds to the JSON property `relatedFindings`
+        # @return [Array<String>]
+        attr_accessor :related_findings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @related_findings = args[:related_findings] if args.key?(:related_findings)
+        end
+      end
+      
       # Fields related to Google Cloud Armor findings.
       class CloudArmor
         include Google::Apis::Core::Hashable
@@ -2141,6 +2165,14 @@ module Google
         # @return [String]
         attr_accessor :category
       
+        # Contains details about a chokepoint, which is a resource or resource group
+        # where high-risk attack paths converge, based on [attack path simulations] (
+        # https://cloud.google.com/security-command-center/docs/attack-exposure-learn#
+        # attack_path_simulations).
+        # Corresponds to the JSON property `chokepoint`
+        # @return [Google::Apis::SecuritycenterV1beta1::Chokepoint]
+        attr_accessor :chokepoint
+      
         # Fields related to Google Cloud Armor findings.
         # Corresponds to the JSON property `cloudArmor`
         # @return [Google::Apis::SecuritycenterV1beta1::CloudArmor]
@@ -2474,6 +2506,7 @@ module Google
           @backup_disaster_recovery = args[:backup_disaster_recovery] if args.key?(:backup_disaster_recovery)
           @canonical_name = args[:canonical_name] if args.key?(:canonical_name)
           @category = args[:category] if args.key?(:category)
+          @chokepoint = args[:chokepoint] if args.key?(:chokepoint)
           @cloud_armor = args[:cloud_armor] if args.key?(:cloud_armor)
           @cloud_dlp_data_profile = args[:cloud_dlp_data_profile] if args.key?(:cloud_dlp_data_profile)
           @cloud_dlp_inspection = args[:cloud_dlp_inspection] if args.key?(:cloud_dlp_inspection)
@@ -4871,6 +4904,30 @@ module Google
         end
       end
       
+      # Contains details about a chokepoint, which is a resource or resource group
+      # where high-risk attack paths converge, based on [attack path simulations] (
+      # https://cloud.google.com/security-command-center/docs/attack-exposure-learn#
+      # attack_path_simulations).
+      class GoogleCloudSecuritycenterV2Chokepoint
+        include Google::Apis::Core::Hashable
+      
+        # List of resource names of findings associated with this chokepoint. For
+        # example, organizations/123/sources/456/findings/789. This list will have at
+        # most 100 findings.
+        # Corresponds to the JSON property `relatedFindings`
+        # @return [Array<String>]
+        attr_accessor :related_findings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @related_findings = args[:related_findings] if args.key?(:related_findings)
+        end
+      end
+      
       # Fields related to Google Cloud Armor findings.
       class GoogleCloudSecuritycenterV2CloudArmor
         include Google::Apis::Core::Hashable
@@ -5985,6 +6042,14 @@ module Google
         # @return [String]
         attr_accessor :category
       
+        # Contains details about a chokepoint, which is a resource or resource group
+        # where high-risk attack paths converge, based on [attack path simulations] (
+        # https://cloud.google.com/security-command-center/docs/attack-exposure-learn#
+        # attack_path_simulations).
+        # Corresponds to the JSON property `chokepoint`
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Chokepoint]
+        attr_accessor :chokepoint
+      
         # Fields related to Google Cloud Armor findings.
         # Corresponds to the JSON property `cloudArmor`
         # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2CloudArmor]
@@ -6328,6 +6393,7 @@ module Google
           @backup_disaster_recovery = args[:backup_disaster_recovery] if args.key?(:backup_disaster_recovery)
           @canonical_name = args[:canonical_name] if args.key?(:canonical_name)
           @category = args[:category] if args.key?(:category)
+          @chokepoint = args[:chokepoint] if args.key?(:chokepoint)
           @cloud_armor = args[:cloud_armor] if args.key?(:cloud_armor)
           @cloud_dlp_data_profile = args[:cloud_dlp_data_profile] if args.key?(:cloud_dlp_data_profile)
           @cloud_dlp_inspection = args[:cloud_dlp_inspection] if args.key?(:cloud_dlp_inspection)
