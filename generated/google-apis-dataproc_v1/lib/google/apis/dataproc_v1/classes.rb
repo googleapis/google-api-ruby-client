@@ -96,6 +96,44 @@ module Google
         end
       end
       
+      # Details of a native build info for a Spark Application
+      class AccessSessionSparkApplicationNativeBuildInfoResponse
+        include Google::Apis::Core::Hashable
+      
+        # Native SQL Execution Data
+        # Corresponds to the JSON property `executionData`
+        # @return [Google::Apis::DataprocV1::NativeBuildInfoUiData]
+        attr_accessor :execution_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_data = args[:execution_data] if args.key?(:execution_data)
+        end
+      end
+      
+      # Details of a native query for a Spark Application
+      class AccessSessionSparkApplicationNativeSqlQueryResponse
+        include Google::Apis::Core::Hashable
+      
+        # Native SQL Execution Data
+        # Corresponds to the JSON property `executionData`
+        # @return [Google::Apis::DataprocV1::NativeSqlExecutionUiData]
+        attr_accessor :execution_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_data = args[:execution_data] if args.key?(:execution_data)
+        end
+      end
+      
       # A summary of Spark Application
       class AccessSessionSparkApplicationResponse
         include Google::Apis::Core::Hashable
@@ -228,6 +266,44 @@ module Google
         # Update properties of this object
         def update!(**args)
           @job_data = args[:job_data] if args.key?(:job_data)
+        end
+      end
+      
+      # Details of Native Build Info for a Spark Application
+      class AccessSparkApplicationNativeBuildInfoResponse
+        include Google::Apis::Core::Hashable
+      
+        # Native Build Info Data
+        # Corresponds to the JSON property `buildInfo`
+        # @return [Google::Apis::DataprocV1::NativeBuildInfoUiData]
+        attr_accessor :build_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @build_info = args[:build_info] if args.key?(:build_info)
+        end
+      end
+      
+      # Details of a query for a Spark Application
+      class AccessSparkApplicationNativeSqlQueryResponse
+        include Google::Apis::Core::Hashable
+      
+        # Native SQL Execution Data
+        # Corresponds to the JSON property `executionData`
+        # @return [Google::Apis::DataprocV1::NativeSqlExecutionUiData]
+        attr_accessor :execution_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_data = args[:execution_data] if args.key?(:execution_data)
         end
       end
       
@@ -660,6 +736,28 @@ module Google
           @memory_per_executor_mb = args[:memory_per_executor_mb] if args.key?(:memory_per_executor_mb)
           @name = args[:name] if args.key?(:name)
           @quantile_data_status = args[:quantile_data_status] if args.key?(:quantile_data_status)
+        end
+      end
+      
+      # Authentication configuration for a workload is used to set the default
+      # identity for the workload execution. The config specifies the type of identity
+      # (service account or user) that will be used by workloads to access resources
+      # on the project(s).
+      class AuthenticationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Authentication type for the user workload running in containers.
+        # Corresponds to the JSON property `userWorkloadAuthenticationType`
+        # @return [String]
+        attr_accessor :user_workload_authentication_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @user_workload_authentication_type = args[:user_workload_authentication_type] if args.key?(:user_workload_authentication_type)
         end
       end
       
@@ -2166,6 +2264,14 @@ module Google
       class ExecutionConfig
         include Google::Apis::Core::Hashable
       
+        # Authentication configuration for a workload is used to set the default
+        # identity for the workload execution. The config specifies the type of identity
+        # (service account or user) that will be used by workloads to access resources
+        # on the project(s).
+        # Corresponds to the JSON property `authenticationConfig`
+        # @return [Google::Apis::DataprocV1::AuthenticationConfig]
+        attr_accessor :authentication_config
+      
         # Optional. Applies to sessions only. The duration to keep the session alive
         # while it's idling. Exceeding this threshold causes the session to terminate.
         # This field cannot be set on a batch workload. Minimum value is 10 minutes;
@@ -2237,6 +2343,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @authentication_config = args[:authentication_config] if args.key?(:authentication_config)
           @idle_ttl = args[:idle_ttl] if args.key?(:idle_ttl)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
           @network_tags = args[:network_tags] if args.key?(:network_tags)
@@ -2956,9 +3063,10 @@ module Google
         # @return [Google::Apis::DataprocV1::ReservationAffinity]
         attr_accessor :reservation_affinity
       
-        # Optional. Resource manager tags to add to all instances (see Resource manager
-        # tags resources (https://cloud.google.com/resource-manager/docs/tags/tags-
-        # creating-and-managing)).
+        # Optional. Resource manager tags (https://cloud.google.com/resource-manager/
+        # docs/tags/tags-creating-and-managing) to add to all instances (see Use secure
+        # tags in Dataproc (https://cloud.google.com/dataproc/docs/guides/attach-secure-
+        # tags)).
         # Corresponds to the JSON property `resourceManagerTags`
         # @return [Hash<String,String>]
         attr_accessor :resource_manager_tags
@@ -5185,8 +5293,8 @@ module Google
         # source. For example, if one or more spark:executive metrics are listed as
         # metric overrides, other SPARK metrics are not collected. The collection of the
         # metrics for other enabled custom metric sources is unaffected. For example, if
-        # both SPARK andd YARN metric sources are enabled, and overrides are provided
-        # for Spark metrics only, all YARN metrics are collected.
+        # both SPARK and YARN metric sources are enabled, and overrides are provided for
+        # Spark metrics only, all YARN metrics are collected.
         # Corresponds to the JSON property `metricOverrides`
         # @return [Array<String>]
         attr_accessor :metric_overrides
@@ -7142,6 +7250,33 @@ module Google
         end
       end
       
+      # List of all Native queries for a Spark Application.
+      class SearchSessionSparkApplicationNativeSqlQueriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # This token is included in the response if there are more results to fetch. To
+        # fetch additional results, provide this value as the page_token in a subsequent
+        # SearchSessionSparkApplicationSqlQueriesRequest.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. Native SQL Execution Data
+        # Corresponds to the JSON property `sparkApplicationNativeSqlQueries`
+        # @return [Array<Google::Apis::DataprocV1::NativeSqlExecutionUiData>]
+        attr_accessor :spark_application_native_sql_queries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @spark_application_native_sql_queries = args[:spark_application_native_sql_queries] if args.key?(:spark_application_native_sql_queries)
+        end
+      end
+      
       # List of all queries for a Spark Application.
       class SearchSessionSparkApplicationSqlQueriesResponse
         include Google::Apis::Core::Hashable
@@ -7355,6 +7490,33 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @spark_application_jobs = args[:spark_application_jobs] if args.key?(:spark_application_jobs)
+        end
+      end
+      
+      # List of all Native SQL queries details for a Spark Application.
+      class SearchSparkApplicationNativeSqlQueriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # This token is included in the response if there are more results to fetch. To
+        # fetch additional results, provide this value as the page_token in a subsequent
+        # SearchSparkApplicationNativeSqlQueriesRequest.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. Native SQL Execution Data
+        # Corresponds to the JSON property `sparkApplicationNativeSqlQueries`
+        # @return [Array<Google::Apis::DataprocV1::NativeSqlExecutionUiData>]
+        attr_accessor :spark_application_native_sql_queries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @spark_application_native_sql_queries = args[:spark_application_native_sql_queries] if args.key?(:spark_application_native_sql_queries)
         end
       end
       
@@ -11291,11 +11453,21 @@ module Google
         # @return [Fixnum]
         attr_accessor :milli_dcu_seconds
       
+        # Optional. Slot usage in (milliSlot x seconds).
+        # Corresponds to the JSON property `milliSlotSeconds`
+        # @return [Fixnum]
+        attr_accessor :milli_slot_seconds
+      
         # Optional. Shuffle storage usage in (GB x seconds) (see Dataproc Serverless
         # pricing (https://cloud.google.com/dataproc-serverless/pricing)).
         # Corresponds to the JSON property `shuffleStorageGbSeconds`
         # @return [Fixnum]
         attr_accessor :shuffle_storage_gb_seconds
+      
+        # Optional. The timestamp of the usage metrics.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
       
         def initialize(**args)
            update!(**args)
@@ -11306,7 +11478,9 @@ module Google
           @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
           @milli_accelerator_seconds = args[:milli_accelerator_seconds] if args.key?(:milli_accelerator_seconds)
           @milli_dcu_seconds = args[:milli_dcu_seconds] if args.key?(:milli_dcu_seconds)
+          @milli_slot_seconds = args[:milli_slot_seconds] if args.key?(:milli_slot_seconds)
           @shuffle_storage_gb_seconds = args[:shuffle_storage_gb_seconds] if args.key?(:shuffle_storage_gb_seconds)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -11339,6 +11513,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :milli_dcu_premium
       
+        # Optional. Milli (one-thousandth) Slot usage of the workload.
+        # Corresponds to the JSON property `milliSlot`
+        # @return [Fixnum]
+        attr_accessor :milli_slot
+      
         # Optional. Shuffle Storage in gigabytes (GB). (see Dataproc Serverless pricing (
         # https://cloud.google.com/dataproc-serverless/pricing))
         # Corresponds to the JSON property `shuffleStorageGb`
@@ -11367,6 +11546,7 @@ module Google
           @milli_accelerator = args[:milli_accelerator] if args.key?(:milli_accelerator)
           @milli_dcu = args[:milli_dcu] if args.key?(:milli_dcu)
           @milli_dcu_premium = args[:milli_dcu_premium] if args.key?(:milli_dcu_premium)
+          @milli_slot = args[:milli_slot] if args.key?(:milli_slot)
           @shuffle_storage_gb = args[:shuffle_storage_gb] if args.key?(:shuffle_storage_gb)
           @shuffle_storage_gb_premium = args[:shuffle_storage_gb_premium] if args.key?(:shuffle_storage_gb_premium)
           @snapshot_time = args[:snapshot_time] if args.key?(:snapshot_time)

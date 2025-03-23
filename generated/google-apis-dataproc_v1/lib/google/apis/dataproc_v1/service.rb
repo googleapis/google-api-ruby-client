@@ -670,6 +670,80 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Obtain build data for Native Job
+        # @param [String] name
+        #   Required. The fully qualified name of the batch to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [String] parent
+        #   Required. Parent (Batch) resource reference.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::AccessSparkApplicationNativeBuildInfoResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::AccessSparkApplicationNativeBuildInfoResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def access_project_location_batch_spark_application_native_build_info(name, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:accessNativeBuildInfo', options)
+          command.response_representation = Google::Apis::DataprocV1::AccessSparkApplicationNativeBuildInfoResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::AccessSparkApplicationNativeBuildInfoResponse
+          command.params['name'] = name unless name.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain data corresponding to a particular Native SQL Query for a Spark
+        # Application.
+        # @param [String] name
+        #   Required. The fully qualified name of the batch to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [Fixnum] execution_id
+        #   Required. Execution ID
+        # @param [String] parent
+        #   Required. Parent (Batch) resource reference.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::AccessSparkApplicationNativeSqlQueryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::AccessSparkApplicationNativeSqlQueryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def access_project_location_batch_spark_application_native_sql_query(name, execution_id: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:accessNativeSqlQuery', options)
+          command.response_representation = Google::Apis::DataprocV1::AccessSparkApplicationNativeSqlQueryResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::AccessSparkApplicationNativeSqlQueryResponse
+          command.params['name'] = name unless name.nil?
+          command.query['executionId'] = execution_id unless execution_id.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Obtain Spark Plan Graph for a Spark Application SQL execution. Limits the
         # number of clusters returned as part of the graph to 10000.
         # @param [String] name
@@ -1035,6 +1109,51 @@ module Google
           command.response_class = Google::Apis::DataprocV1::SearchSparkApplicationJobsResponse
           command.params['name'] = name unless name.nil?
           command.query['jobStatus'] = job_status unless job_status.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain data corresponding to Native SQL Queries for a Spark Application.
+        # @param [String] name
+        #   Required. The fully qualified name of the batch to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of queries to return in each response. The service
+        #   may return fewer than this. The default page size is 10; the maximum page size
+        #   is 100.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous
+        #   SearchSparkApplicationNativeSqlQueries call. Provide this token to retrieve
+        #   the subsequent page.
+        # @param [String] parent
+        #   Required. Parent (Batch) resource reference.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SearchSparkApplicationNativeSqlQueriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SearchSparkApplicationNativeSqlQueriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_batch_spark_application_native_sql_queries(name, page_size: nil, page_token: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:searchNativeSqlQueries', options)
+          command.response_representation = Google::Apis::DataprocV1::SearchSparkApplicationNativeSqlQueriesResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::SearchSparkApplicationNativeSqlQueriesResponse
+          command.params['name'] = name unless name.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['parent'] = parent unless parent.nil?
@@ -2062,6 +2181,80 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Obtain data corresponding to Native Build Information for a Spark Application.
+        # @param [String] name
+        #   Required. The fully qualified name of the session to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [String] parent
+        #   Required. Parent (Session) resource reference.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::AccessSessionSparkApplicationNativeBuildInfoResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::AccessSessionSparkApplicationNativeBuildInfoResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def access_project_location_session_spark_application_native_build_info(name, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:accessNativeBuildInfo', options)
+          command.response_representation = Google::Apis::DataprocV1::AccessSessionSparkApplicationNativeBuildInfoResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::AccessSessionSparkApplicationNativeBuildInfoResponse
+          command.params['name'] = name unless name.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain data corresponding to a particular Native SQL Query for a Spark
+        # Application.
+        # @param [String] name
+        #   Required. The fully qualified name of the session to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [Fixnum] execution_id
+        #   Required. Execution ID
+        # @param [String] parent
+        #   Required. Parent (Session) resource reference.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::AccessSessionSparkApplicationNativeSqlQueryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::AccessSessionSparkApplicationNativeSqlQueryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def access_project_location_session_spark_application_native_sql_query(name, execution_id: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:accessNativeSqlQuery', options)
+          command.response_representation = Google::Apis::DataprocV1::AccessSessionSparkApplicationNativeSqlQueryResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::AccessSessionSparkApplicationNativeSqlQueryResponse
+          command.params['name'] = name unless name.nil?
+          command.query['executionId'] = execution_id unless execution_id.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Obtain Spark Plan Graph for a Spark Application SQL execution. Limits the
         # number of clusters returned as part of the graph to 10000.
         # @param [String] name
@@ -2428,6 +2621,51 @@ module Google
           command.response_class = Google::Apis::DataprocV1::SearchSessionSparkApplicationJobsResponse
           command.params['name'] = name unless name.nil?
           command.query['jobStatus'] = job_status unless job_status.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain data corresponding to Native SQL Queries for a Spark Application.
+        # @param [String] name
+        #   Required. The fully qualified name of the session to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of queries to return in each response. The service
+        #   may return fewer than this. The default page size is 10; the maximum page size
+        #   is 100.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous
+        #   SearchSessionSparkApplicationSqlQueries call. Provide this token to retrieve
+        #   the subsequent page.
+        # @param [String] parent
+        #   Required. Parent (Session) resource reference.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SearchSessionSparkApplicationNativeSqlQueriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SearchSessionSparkApplicationNativeSqlQueriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_session_spark_application_native_sql_queries(name, page_size: nil, page_token: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:searchNativeSqlQueries', options)
+          command.response_representation = Google::Apis::DataprocV1::SearchSessionSparkApplicationNativeSqlQueriesResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::SearchSessionSparkApplicationNativeSqlQueriesResponse
+          command.params['name'] = name unless name.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['parent'] = parent unless parent.nil?
