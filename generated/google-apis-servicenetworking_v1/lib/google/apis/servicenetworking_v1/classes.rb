@@ -231,15 +231,14 @@ module Google
         attr_accessor :check_service_networking_use_permission
         alias_method :check_service_networking_use_permission?, :check_service_networking_use_permission
       
-        # Optional. Specifies a custom time bucket for Arcus subnetwork request
-        # idempotency. If two equivalent concurrent requests are made, Arcus will know
-        # to ignore the request if it has already been completed or is in progress. Only
+        # Optional. Specifies a custom time bucket for GCE subnetwork request
+        # idempotency. If two equivalent concurrent requests are made, GCE will know to
+        # ignore the request if it has already been completed or is in progress. Only
         # requests with matching compute_idempotency_window have guaranteed idempotency.
         # Changing this time window between requests results in undefined behavior. Zero
         # (or empty) value with custom_compute_idempotency_window=true specifies no
-        # idempotency (i.e. no request ID is provided to Arcus). Maximum value of 14
-        # days (enforced by Arcus limit). For more information on how to use, see: go/
-        # revisit-sn-idempotency-window
+        # idempotency (i.e. no request ID is provided to GCE). Maximum value of 14 days (
+        # enforced by GCE limit).
         # Corresponds to the JSON property `computeIdempotencyWindow`
         # @return [String]
         attr_accessor :compute_idempotency_window
@@ -370,10 +369,9 @@ module Google
         attr_accessor :subnetwork_users
       
         # Optional. Specifies if Service Networking should use a custom time bucket for
-        # Arcus idempotency. If false, Service Networking uses a 300 second (5 minute)
-        # Arcus idempotency window. If true, Service Networking uses a custom
-        # idempotency window provided by the user in field compute_idempotency_window.
-        # For more information on how to use, see: go/revisit-sn-idempotency-window
+        # GCE idempotency. If false, Service Networking uses a 300 second (5 minute) GCE
+        # idempotency window. If true, Service Networking uses a custom idempotency
+        # window provided by the user in field compute_idempotency_window.
         # Corresponds to the JSON property `useCustomComputeIdempotencyWindow`
         # @return [Boolean]
         attr_accessor :use_custom_compute_idempotency_window
