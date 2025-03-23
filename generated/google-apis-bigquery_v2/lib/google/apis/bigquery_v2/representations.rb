@@ -2453,6 +2453,7 @@ module Google
       
           property :query, as: 'query', class: Google::Apis::BigqueryV2::JobConfigurationQuery, decorator: Google::Apis::BigqueryV2::JobConfigurationQuery::Representation
       
+          property :reservation, as: 'reservation'
         end
       end
       
@@ -3230,6 +3231,7 @@ module Google
           collection :query_parameters, as: 'queryParameters', class: Google::Apis::BigqueryV2::QueryParameter, decorator: Google::Apis::BigqueryV2::QueryParameter::Representation
       
           property :request_id, as: 'requestId'
+          property :reservation, as: 'reservation'
           property :timeout_ms, as: 'timeoutMs'
           property :use_legacy_sql, as: 'useLegacySql'
           property :use_query_cache, as: 'useQueryCache'
