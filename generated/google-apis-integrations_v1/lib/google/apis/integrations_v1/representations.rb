@@ -3754,6 +3754,7 @@ module Google
       
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :enable_http_call, as: 'enableHttpCall'
           property :enable_internal_ip, as: 'enableInternalIp'
           property :enable_variable_masking, as: 'enableVariableMasking'
           property :id, as: 'id'
@@ -4596,6 +4597,7 @@ module Google
           property :cloud_kms_config, as: 'cloudKmsConfig', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCloudKmsConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCloudKmsConfig::Representation
       
           property :create_sample_workflows, as: 'createSampleWorkflows'
+          property :enable_http_call, as: 'enableHttpCall'
           property :provision_gmek, as: 'provisionGmek'
           property :run_as_service_account, as: 'runAsServiceAccount'
           property :skip_cp_provision, as: 'skipCpProvision'
