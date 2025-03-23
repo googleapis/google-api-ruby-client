@@ -794,6 +794,7 @@ module Google
       
           property :last_backup_state, as: 'lastBackupState'
           property :last_successful_backup_consistency_time, as: 'lastSuccessfulBackupConsistencyTime'
+          property :last_successful_log_backup_consistency_time, as: 'lastSuccessfulLogBackupConsistencyTime'
         end
       end
       
