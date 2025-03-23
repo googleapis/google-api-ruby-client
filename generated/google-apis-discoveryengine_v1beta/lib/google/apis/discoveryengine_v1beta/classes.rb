@@ -867,6 +867,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Whether the NotebookLM Corpus is ready to be used.
+        # Corresponds to the JSON property `notebooklmState`
+        # @return [String]
+        attr_accessor :notebooklm_state
+      
         # Optional. Single-regional CMEKs that are required for some VAIS features.
         # Corresponds to the JSON property `singleRegionKeys`
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1SingleRegionKey>]
@@ -888,6 +893,7 @@ module Google
           @kms_key_version = args[:kms_key_version] if args.key?(:kms_key_version)
           @last_rotation_timestamp_micros = args[:last_rotation_timestamp_micros] if args.key?(:last_rotation_timestamp_micros)
           @name = args[:name] if args.key?(:name)
+          @notebooklm_state = args[:notebooklm_state] if args.key?(:notebooklm_state)
           @single_region_keys = args[:single_region_keys] if args.key?(:single_region_keys)
           @state = args[:state] if args.key?(:state)
         end
@@ -1446,6 +1452,17 @@ module Google
       class GoogleCloudDiscoveryengineV1DataStore
         include Google::Apis::Core::Hashable
       
+        # Immutable. Whether data in the DataStore has ACL information. If set to `true`,
+        # the source data must have ACL. ACL will be ingested when data is ingested by
+        # DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+        # Document can't be accessed by calling DocumentService.GetDocument or
+        # DocumentService.ListDocuments. Currently ACL is only supported in `GENERIC`
+        # industry vertical with non-`PUBLIC_WEBSITE` content config.
+        # Corresponds to the JSON property `aclEnabled`
+        # @return [Boolean]
+        attr_accessor :acl_enabled
+        alias_method :acl_enabled?, :acl_enabled
+      
         # Configuration data for advance site search.
         # Corresponds to the JSON property `advancedSiteSearchConfig`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AdvancedSiteSearchConfig]
@@ -1560,6 +1577,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @acl_enabled = args[:acl_enabled] if args.key?(:acl_enabled)
           @advanced_site_search_config = args[:advanced_site_search_config] if args.key?(:advanced_site_search_config)
           @billing_estimation = args[:billing_estimation] if args.key?(:billing_estimation)
           @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
@@ -4161,6 +4179,14 @@ module Google
         attr_accessor :is_action_configured
         alias_method :is_action_configured?, :is_action_configured
       
+        # Optional. The Service Directory resource name (projects/*/locations/*/
+        # namespaces/*/services/*) representing a VPC network endpoint used to connect
+        # to the data source's `instance_uri`, defined in DataConnector.params. Required
+        # when VPC Service Controls are enabled.
+        # Corresponds to the JSON property `serviceName`
+        # @return [String]
+        attr_accessor :service_name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4169,6 +4195,7 @@ module Google
         def update!(**args)
           @action_params = args[:action_params] if args.key?(:action_params)
           @is_action_configured = args[:is_action_configured] if args.key?(:is_action_configured)
+          @service_name = args[:service_name] if args.key?(:service_name)
         end
       end
       
@@ -4264,6 +4291,11 @@ module Google
         # @return [String]
         attr_accessor :answer_text
       
+        # List of blob attachments in the answer.
+        # Corresponds to the JSON property `blobAttachments`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachment>]
+        attr_accessor :blob_attachments
+      
         # Citations.
         # Corresponds to the JSON property `citations`
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAnswerCitation>]
@@ -4334,6 +4366,7 @@ module Google
         def update!(**args)
           @answer_skipped_reasons = args[:answer_skipped_reasons] if args.key?(:answer_skipped_reasons)
           @answer_text = args[:answer_text] if args.key?(:answer_text)
+          @blob_attachments = args[:blob_attachments] if args.key?(:blob_attachments)
           @citations = args[:citations] if args.key?(:citations)
           @complete_time = args[:complete_time] if args.key?(:complete_time)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -4346,6 +4379,57 @@ module Google
           @safety_ratings = args[:safety_ratings] if args.key?(:safety_ratings)
           @state = args[:state] if args.key?(:state)
           @steps = args[:steps] if args.key?(:steps)
+        end
+      end
+      
+      # Stores binarydata attached to text answer, e.g. image, video, audio, etc.
+      class GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The attribution type of the blob.
+        # Corresponds to the JSON property `attributionType`
+        # @return [String]
+        attr_accessor :attribution_type
+      
+        # The media type and data of the blob.
+        # Corresponds to the JSON property `data`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachmentBlob]
+        attr_accessor :data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribution_type = args[:attribution_type] if args.key?(:attribution_type)
+          @data = args[:data] if args.key?(:data)
+        end
+      end
+      
+      # The media type and data of the blob.
+      class GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachmentBlob
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Raw bytes.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        # Output only. The media type (MIME type) of the generated or retrieved data.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
         end
       end
       
@@ -4533,6 +4617,11 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfo
         include Google::Apis::Core::Hashable
       
+        # Output only. Stores indexes of blobattachments linked to this chunk.
+        # Corresponds to the JSON property `blobAttachmentIndexes`
+        # @return [Array<Fixnum>]
+        attr_accessor :blob_attachment_indexes
+      
         # Chunk resource name.
         # Corresponds to the JSON property `chunk`
         # @return [String]
@@ -4562,6 +4651,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @blob_attachment_indexes = args[:blob_attachment_indexes] if args.key?(:blob_attachment_indexes)
           @chunk = args[:chunk] if args.key?(:chunk)
           @content = args[:content] if args.key?(:content)
           @document_metadata = args[:document_metadata] if args.key?(:document_metadata)
@@ -4698,6 +4788,11 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfoChunkContent
         include Google::Apis::Core::Hashable
       
+        # Output only. Stores indexes of blobattachments linked to this chunk.
+        # Corresponds to the JSON property `blobAttachmentIndexes`
+        # @return [Array<Fixnum>]
+        attr_accessor :blob_attachment_indexes
+      
         # Chunk textual content.
         # Corresponds to the JSON property `content`
         # @return [String]
@@ -4722,6 +4817,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @blob_attachment_indexes = args[:blob_attachment_indexes] if args.key?(:blob_attachment_indexes)
           @content = args[:content] if args.key?(:content)
           @page_identifier = args[:page_identifier] if args.key?(:page_identifier)
           @relevance_score = args[:relevance_score] if args.key?(:relevance_score)
@@ -5039,6 +5135,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Whether the NotebookLM Corpus is ready to be used.
+        # Corresponds to the JSON property `notebooklmState`
+        # @return [String]
+        attr_accessor :notebooklm_state
+      
         # Optional. Single-regional CMEKs that are required for some VAIS features.
         # Corresponds to the JSON property `singleRegionKeys`
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSingleRegionKey>]
@@ -5060,6 +5161,7 @@ module Google
           @kms_key_version = args[:kms_key_version] if args.key?(:kms_key_version)
           @last_rotation_timestamp_micros = args[:last_rotation_timestamp_micros] if args.key?(:last_rotation_timestamp_micros)
           @name = args[:name] if args.key?(:name)
+          @notebooklm_state = args[:notebooklm_state] if args.key?(:notebooklm_state)
           @single_region_keys = args[:single_region_keys] if args.key?(:single_region_keys)
           @state = args[:state] if args.key?(:state)
         end
@@ -9458,10 +9560,10 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCustomFineTuningSpec]
         attr_accessor :custom_fine_tuning_spec
       
-        # Specifications that define the specific [DataStore]s to be searched, along
-        # with configurations for those data stores. This is only considered for Engines
-        # with multiple data stores. For engines with a single data store, the specs
-        # directly under SearchRequest should be used.
+        # Specifications that define the specific DataStores to be searched, along with
+        # configurations for those data stores. This is only considered for Engines with
+        # multiple data stores. For engines with a single data store, the specs directly
+        # under SearchRequest should be used.
         # Corresponds to the JSON property `dataStoreSpecs`
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec>]
         attr_accessor :data_store_specs
@@ -9592,29 +9694,30 @@ module Google
         # This overrides ServingConfig.ranking_expression. The syntax and supported
         # features depend on the ranking_expression_backend value. If
         # ranking_expression_backend is not provided, it defaults to BYOE. === BYOE ===
-        # If ranking expression is not provided or set to BYOE, it should be a single
-        # function or multiple functions that are joined by "+". * ranking_expression =
-        # function, ` " + ", function `; Supported functions: * double * relevance_score
-        # * double * dotProduct(embedding_field_path) Function variables: * `
-        # relevance_score`: pre-defined keywords, used for measure relevance between
-        # query and document. * `embedding_field_path`: the document embedding field
-        # used with query embedding vector. * `dotProduct`: embedding function between
-        # embedding_field_path and query embedding vector. Example ranking expression:
-        # If document has an embedding field doc_embedding, the ranking expression could
-        # be `0.5 * relevance_score + 0.3 * dotProduct(doc_embedding)`. === CLEARBOX ===
-        # If ranking expression is set to CLEARBOX, the following expression types (and
-        # combinations of those chained using + or * operators) are supported: * double *
-        # signal * log(signal) * exp(signal) * rr(signal, double > 0) -- reciprocal
-        # rank transformation with second argument being a denominator constant. *
-        # is_nan(signal) -- returns 0 if signal is NaN, 1 otherwise. * fill_nan(signal1,
-        # signal2 | double) -- if signal1 is NaN, returns signal2 | double, else returns
-        # signal1. Examples: * 0.2 * gecko_score + 0.8 * log(bm25_score) * 0.2 * exp(
-        # fill_nan(gecko_score, 0)) + 0.3 * is_nan(bm25_score) * 0.2 * rr(gecko_score,
-        # 16) + 0.8 * rr(bm25_score, 32) The following signals are supported: *
-        # gecko_score -- semantic similarity adjustment * bm25_score -- keyword match
-        # adjustment * jetstream_score -- semantic relevance adjustment * pctr_rank --
-        # predicted conversion rate adjustment as a rank * freshness_rank -- freshness
-        # adjustment as a rank * base_rank -- the default rank of the result
+        # If ranking_expression_backend is not provided or set to `BYOE`, it should be a
+        # single function or multiple functions that are joined by "+". *
+        # ranking_expression = function, ` " + ", function `; Supported functions: *
+        # double * relevance_score * double * dotProduct(embedding_field_path) Function
+        # variables: * `relevance_score`: pre-defined keywords, used for measure
+        # relevance between query and document. * `embedding_field_path`: the document
+        # embedding field used with query embedding vector. * `dotProduct`: embedding
+        # function between embedding_field_path and query embedding vector. Example
+        # ranking expression: If document has an embedding field doc_embedding, the
+        # ranking expression could be `0.5 * relevance_score + 0.3 * dotProduct(
+        # doc_embedding)`. === CLEARBOX === If ranking_expression_backend is set to `
+        # CLEARBOX`, the following expression types (and combinations of those chained
+        # using + or * operators) are supported: * double * signal * log(signal) * exp(
+        # signal) * rr(signal, double > 0) -- reciprocal rank transformation with second
+        # argument being a denominator constant. * is_nan(signal) -- returns 0 if signal
+        # is NaN, 1 otherwise. * fill_nan(signal1, signal2 | double) -- if signal1 is
+        # NaN, returns signal2 | double, else returns signal1. Examples: * 0.2 *
+        # gecko_score + 0.8 * log(bm25_score) * 0.2 * exp(fill_nan(gecko_score, 0)) + 0.
+        # 3 * is_nan(bm25_score) * 0.2 * rr(gecko_score, 16) + 0.8 * rr(bm25_score, 32)
+        # The following signals are supported: * gecko_score -- semantic similarity
+        # adjustment * bm25_score -- keyword match adjustment * jetstream_score --
+        # semantic relevance adjustment * pctr_rank -- predicted conversion rate
+        # adjustment as a rank * freshness_rank -- freshness adjustment as a rank *
+        # base_rank -- the default rank of the result
         # Corresponds to the JSON property `rankingExpression`
         # @return [String]
         attr_accessor :ranking_expression
@@ -9781,7 +9884,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Condition boost specifications. If a document matches multiple conditions in
-        # the specifictions, boost scores from these specifications are all applied and
+        # the specifications, boost scores from these specifications are all applied and
         # combined in a non-linear way. Maximum number of specifications is 20.
         # Corresponds to the JSON property `conditionBoostSpecs`
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpec>]
@@ -10180,6 +10283,12 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecModelSpec]
         attr_accessor :model_spec
       
+        # Multimodal specification: Will return an image from specified source. If
+        # multiple sources are specified, the pick is a quality based decision.
+        # Corresponds to the JSON property `multimodalSpec`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecMultiModalSpec]
+        attr_accessor :multimodal_spec
+      
         # The number of top results to generate the summary from. If the number of
         # results returned is less than `summaryResultCount`, the summary is generated
         # from all of the results. At most 10 results for documents mode, or 50 for
@@ -10213,6 +10322,7 @@ module Google
           @language_code = args[:language_code] if args.key?(:language_code)
           @model_prompt_spec = args[:model_prompt_spec] if args.key?(:model_prompt_spec)
           @model_spec = args[:model_spec] if args.key?(:model_spec)
+          @multimodal_spec = args[:multimodal_spec] if args.key?(:multimodal_spec)
           @summary_result_count = args[:summary_result_count] if args.key?(:summary_result_count)
           @use_semantic_chunks = args[:use_semantic_chunks] if args.key?(:use_semantic_chunks)
         end
@@ -10261,6 +10371,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Multimodal specification: Will return an image from specified source. If
+      # multiple sources are specified, the pick is a quality based decision.
+      class GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecMultiModalSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Source of image returned in the answer.
+        # Corresponds to the JSON property `imageSource`
+        # @return [String]
+        attr_accessor :image_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_source = args[:image_source] if args.key?(:image_source)
         end
       end
       
@@ -11540,7 +11670,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Condition boost specifications. If a suggestion matches multiple conditions in
-        # the specifictions, boost values from these specifications are all applied and
+        # the specifications, boost values from these specifications are all applied and
         # combined in a non-linear way. Maximum number of specifications is 20. Note:
         # Currently only support language condition boost.
         # Corresponds to the JSON property `conditionBoostSpecs`
@@ -11948,6 +12078,11 @@ module Google
         # @return [String]
         attr_accessor :answer_text
       
+        # List of blob attachments in the answer.
+        # Corresponds to the JSON property `blobAttachments`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerBlobAttachment>]
+        attr_accessor :blob_attachments
+      
         # Citations.
         # Corresponds to the JSON property `citations`
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerCitation>]
@@ -12018,6 +12153,7 @@ module Google
         def update!(**args)
           @answer_skipped_reasons = args[:answer_skipped_reasons] if args.key?(:answer_skipped_reasons)
           @answer_text = args[:answer_text] if args.key?(:answer_text)
+          @blob_attachments = args[:blob_attachments] if args.key?(:blob_attachments)
           @citations = args[:citations] if args.key?(:citations)
           @complete_time = args[:complete_time] if args.key?(:complete_time)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -12030,6 +12166,57 @@ module Google
           @safety_ratings = args[:safety_ratings] if args.key?(:safety_ratings)
           @state = args[:state] if args.key?(:state)
           @steps = args[:steps] if args.key?(:steps)
+        end
+      end
+      
+      # Stores binarydata attached to text answer, e.g. image, video, audio, etc.
+      class GoogleCloudDiscoveryengineV1betaAnswerBlobAttachment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The attribution type of the blob.
+        # Corresponds to the JSON property `attributionType`
+        # @return [String]
+        attr_accessor :attribution_type
+      
+        # The media type and data of the blob.
+        # Corresponds to the JSON property `data`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerBlobAttachmentBlob]
+        attr_accessor :data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribution_type = args[:attribution_type] if args.key?(:attribution_type)
+          @data = args[:data] if args.key?(:data)
+        end
+      end
+      
+      # The media type and data of the blob.
+      class GoogleCloudDiscoveryengineV1betaAnswerBlobAttachmentBlob
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Raw bytes.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        # Output only. The media type (MIME type) of the generated or retrieved data.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
         end
       end
       
@@ -12317,6 +12504,12 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerationSpecModelSpec]
         attr_accessor :model_spec
       
+        # Multimodal specification: Will return an image from specified source. If
+        # multiple sources are specified, the pick is a quality based decision.
+        # Corresponds to the JSON property `multimodalSpec`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerationSpecMultimodalSpec]
+        attr_accessor :multimodal_spec
+      
         # Answer generation prompt specification.
         # Corresponds to the JSON property `promptSpec`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerationSpecPromptSpec]
@@ -12335,6 +12528,7 @@ module Google
           @ignore_non_answer_seeking_query = args[:ignore_non_answer_seeking_query] if args.key?(:ignore_non_answer_seeking_query)
           @include_citations = args[:include_citations] if args.key?(:include_citations)
           @model_spec = args[:model_spec] if args.key?(:model_spec)
+          @multimodal_spec = args[:multimodal_spec] if args.key?(:multimodal_spec)
           @prompt_spec = args[:prompt_spec] if args.key?(:prompt_spec)
         end
       end
@@ -12356,6 +12550,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @model_version = args[:model_version] if args.key?(:model_version)
+        end
+      end
+      
+      # Multimodal specification: Will return an image from specified source. If
+      # multiple sources are specified, the pick is a quality based decision.
+      class GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerationSpecMultimodalSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Source of image returned in the answer.
+        # Corresponds to the JSON property `imageSource`
+        # @return [String]
+        attr_accessor :image_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_source = args[:image_source] if args.key?(:image_source)
         end
       end
       
@@ -13115,6 +13329,11 @@ module Google
       class GoogleCloudDiscoveryengineV1betaAnswerReferenceChunkInfo
         include Google::Apis::Core::Hashable
       
+        # Output only. Stores indexes of blobattachments linked to this chunk.
+        # Corresponds to the JSON property `blobAttachmentIndexes`
+        # @return [Array<Fixnum>]
+        attr_accessor :blob_attachment_indexes
+      
         # Chunk resource name.
         # Corresponds to the JSON property `chunk`
         # @return [String]
@@ -13144,6 +13363,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @blob_attachment_indexes = args[:blob_attachment_indexes] if args.key?(:blob_attachment_indexes)
           @chunk = args[:chunk] if args.key?(:chunk)
           @content = args[:content] if args.key?(:content)
           @document_metadata = args[:document_metadata] if args.key?(:document_metadata)
@@ -13280,6 +13500,11 @@ module Google
       class GoogleCloudDiscoveryengineV1betaAnswerReferenceUnstructuredDocumentInfoChunkContent
         include Google::Apis::Core::Hashable
       
+        # Output only. Stores indexes of blobattachments linked to this chunk.
+        # Corresponds to the JSON property `blobAttachmentIndexes`
+        # @return [Array<Fixnum>]
+        attr_accessor :blob_attachment_indexes
+      
         # Chunk textual content.
         # Corresponds to the JSON property `content`
         # @return [String]
@@ -13304,6 +13529,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @blob_attachment_indexes = args[:blob_attachment_indexes] if args.key?(:blob_attachment_indexes)
           @content = args[:content] if args.key?(:content)
           @page_identifier = args[:page_identifier] if args.key?(:page_identifier)
           @relevance_score = args[:relevance_score] if args.key?(:relevance_score)
@@ -14357,6 +14583,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Whether the NotebookLM Corpus is ready to be used.
+        # Corresponds to the JSON property `notebooklmState`
+        # @return [String]
+        attr_accessor :notebooklm_state
+      
         # Optional. Single-regional CMEKs that are required for some VAIS features.
         # Corresponds to the JSON property `singleRegionKeys`
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSingleRegionKey>]
@@ -14378,6 +14609,7 @@ module Google
           @kms_key_version = args[:kms_key_version] if args.key?(:kms_key_version)
           @last_rotation_timestamp_micros = args[:last_rotation_timestamp_micros] if args.key?(:last_rotation_timestamp_micros)
           @name = args[:name] if args.key?(:name)
+          @notebooklm_state = args[:notebooklm_state] if args.key?(:notebooklm_state)
           @single_region_keys = args[:single_region_keys] if args.key?(:single_region_keys)
           @state = args[:state] if args.key?(:state)
         end
@@ -15470,6 +15702,17 @@ module Google
       class GoogleCloudDiscoveryengineV1betaDataStore
         include Google::Apis::Core::Hashable
       
+        # Immutable. Whether data in the DataStore has ACL information. If set to `true`,
+        # the source data must have ACL. ACL will be ingested when data is ingested by
+        # DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+        # Document can't be accessed by calling DocumentService.GetDocument or
+        # DocumentService.ListDocuments. Currently ACL is only supported in `GENERIC`
+        # industry vertical with non-`PUBLIC_WEBSITE` content config.
+        # Corresponds to the JSON property `aclEnabled`
+        # @return [Boolean]
+        attr_accessor :acl_enabled
+        alias_method :acl_enabled?, :acl_enabled
+      
         # Configuration data for advance site search.
         # Corresponds to the JSON property `advancedSiteSearchConfig`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig]
@@ -15594,6 +15837,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @acl_enabled = args[:acl_enabled] if args.key?(:acl_enabled)
           @advanced_site_search_config = args[:advanced_site_search_config] if args.key?(:advanced_site_search_config)
           @billing_estimation = args[:billing_estimation] if args.key?(:billing_estimation)
           @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
@@ -18098,6 +18342,25 @@ module Google
         end
       end
       
+      # Response message for CmekConfigService.ListCmekConfigs method.
+      class GoogleCloudDiscoveryengineV1betaListCmekConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # All the customer's CmekConfigs.
+        # Corresponds to the JSON property `cmekConfigs`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaCmekConfig>]
+        attr_accessor :cmek_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cmek_configs = args[:cmek_configs] if args.key?(:cmek_configs)
+        end
+      end
+      
       # Response for ListControls method.
       class GoogleCloudDiscoveryengineV1betaListControlsResponse
         include Google::Apis::Core::Hashable
@@ -20275,10 +20538,10 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec]
         attr_accessor :content_search_spec
       
-        # Specifications that define the specific [DataStore]s to be searched, along
-        # with configurations for those data stores. This is only considered for Engines
-        # with multiple data stores. For engines with a single data store, the specs
-        # directly under SearchRequest should be used.
+        # Specifications that define the specific DataStores to be searched, along with
+        # configurations for those data stores. This is only considered for Engines with
+        # multiple data stores. For engines with a single data store, the specs directly
+        # under SearchRequest should be used.
         # Corresponds to the JSON property `dataStoreSpecs`
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec>]
         attr_accessor :data_store_specs
@@ -20409,29 +20672,30 @@ module Google
         # This overrides ServingConfig.ranking_expression. The syntax and supported
         # features depend on the ranking_expression_backend value. If
         # ranking_expression_backend is not provided, it defaults to BYOE. === BYOE ===
-        # If ranking expression is not provided or set to BYOE, it should be a single
-        # function or multiple functions that are joined by "+". * ranking_expression =
-        # function, ` " + ", function `; Supported functions: * double * relevance_score
-        # * double * dotProduct(embedding_field_path) Function variables: * `
-        # relevance_score`: pre-defined keywords, used for measure relevance between
-        # query and document. * `embedding_field_path`: the document embedding field
-        # used with query embedding vector. * `dotProduct`: embedding function between
-        # embedding_field_path and query embedding vector. Example ranking expression:
-        # If document has an embedding field doc_embedding, the ranking expression could
-        # be `0.5 * relevance_score + 0.3 * dotProduct(doc_embedding)`. === CLEARBOX ===
-        # If ranking expression is set to CLEARBOX, the following expression types (and
-        # combinations of those chained using + or * operators) are supported: * double *
-        # signal * log(signal) * exp(signal) * rr(signal, double > 0) -- reciprocal
-        # rank transformation with second argument being a denominator constant. *
-        # is_nan(signal) -- returns 0 if signal is NaN, 1 otherwise. * fill_nan(signal1,
-        # signal2 | double) -- if signal1 is NaN, returns signal2 | double, else returns
-        # signal1. Examples: * 0.2 * gecko_score + 0.8 * log(bm25_score) * 0.2 * exp(
-        # fill_nan(gecko_score, 0)) + 0.3 * is_nan(bm25_score) * 0.2 * rr(gecko_score,
-        # 16) + 0.8 * rr(bm25_score, 32) The following signals are supported: *
-        # gecko_score -- semantic similarity adjustment * bm25_score -- keyword match
-        # adjustment * jetstream_score -- semantic relevance adjustment * pctr_rank --
-        # predicted conversion rate adjustment as a rank * freshness_rank -- freshness
-        # adjustment as a rank * base_rank -- the default rank of the result
+        # If ranking_expression_backend is not provided or set to `BYOE`, it should be a
+        # single function or multiple functions that are joined by "+". *
+        # ranking_expression = function, ` " + ", function `; Supported functions: *
+        # double * relevance_score * double * dotProduct(embedding_field_path) Function
+        # variables: * `relevance_score`: pre-defined keywords, used for measure
+        # relevance between query and document. * `embedding_field_path`: the document
+        # embedding field used with query embedding vector. * `dotProduct`: embedding
+        # function between embedding_field_path and query embedding vector. Example
+        # ranking expression: If document has an embedding field doc_embedding, the
+        # ranking expression could be `0.5 * relevance_score + 0.3 * dotProduct(
+        # doc_embedding)`. === CLEARBOX === If ranking_expression_backend is set to `
+        # CLEARBOX`, the following expression types (and combinations of those chained
+        # using + or * operators) are supported: * double * signal * log(signal) * exp(
+        # signal) * rr(signal, double > 0) -- reciprocal rank transformation with second
+        # argument being a denominator constant. * is_nan(signal) -- returns 0 if signal
+        # is NaN, 1 otherwise. * fill_nan(signal1, signal2 | double) -- if signal1 is
+        # NaN, returns signal2 | double, else returns signal1. Examples: * 0.2 *
+        # gecko_score + 0.8 * log(bm25_score) * 0.2 * exp(fill_nan(gecko_score, 0)) + 0.
+        # 3 * is_nan(bm25_score) * 0.2 * rr(gecko_score, 16) + 0.8 * rr(bm25_score, 32)
+        # The following signals are supported: * gecko_score -- semantic similarity
+        # adjustment * bm25_score -- keyword match adjustment * jetstream_score --
+        # semantic relevance adjustment * pctr_rank -- predicted conversion rate
+        # adjustment as a rank * freshness_rank -- freshness adjustment as a rank *
+        # base_rank -- the default rank of the result
         # Corresponds to the JSON property `rankingExpression`
         # @return [String]
         attr_accessor :ranking_expression
@@ -20597,7 +20861,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Condition boost specifications. If a document matches multiple conditions in
-        # the specifictions, boost scores from these specifications are all applied and
+        # the specifications, boost scores from these specifications are all applied and
         # combined in a non-linear way. Maximum number of specifications is 20.
         # Corresponds to the JSON property `conditionBoostSpecs`
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpec>]
@@ -20996,6 +21260,12 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec]
         attr_accessor :model_spec
       
+        # Multimodal specification: Will return an image from specified source. If
+        # multiple sources are specified, the pick is a quality based decision.
+        # Corresponds to the JSON property `multimodalSpec`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecMultiModalSpec]
+        attr_accessor :multimodal_spec
+      
         # The number of top results to generate the summary from. If the number of
         # results returned is less than `summaryResultCount`, the summary is generated
         # from all of the results. At most 10 results for documents mode, or 50 for
@@ -21029,6 +21299,7 @@ module Google
           @language_code = args[:language_code] if args.key?(:language_code)
           @model_prompt_spec = args[:model_prompt_spec] if args.key?(:model_prompt_spec)
           @model_spec = args[:model_spec] if args.key?(:model_spec)
+          @multimodal_spec = args[:multimodal_spec] if args.key?(:multimodal_spec)
           @summary_result_count = args[:summary_result_count] if args.key?(:summary_result_count)
           @use_semantic_chunks = args[:use_semantic_chunks] if args.key?(:use_semantic_chunks)
         end
@@ -21077,6 +21348,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Multimodal specification: Will return an image from specified source. If
+      # multiple sources are specified, the pick is a quality based decision.
+      class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecMultiModalSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Source of image returned in the answer.
+        # Corresponds to the JSON property `imageSource`
+        # @return [String]
+        attr_accessor :image_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_source = args[:image_source] if args.key?(:image_source)
         end
       end
       
@@ -22248,6 +22539,57 @@ module Google
         end
       end
       
+      # Stores binarydata attached to text answer, e.g. image, video, audio, etc.
+      class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryBlobAttachment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The attribution type of the blob.
+        # Corresponds to the JSON property `attributionType`
+        # @return [String]
+        attr_accessor :attribution_type
+      
+        # Stores type and data of the blob.
+        # Corresponds to the JSON property `data`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSummaryBlobAttachmentBlob]
+        attr_accessor :data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribution_type = args[:attribution_type] if args.key?(:attribution_type)
+          @data = args[:data] if args.key?(:data)
+        end
+      end
+      
+      # Stores type and data of the blob.
+      class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryBlobAttachmentBlob
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Raw bytes.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        # Output only. The media type (MIME type) of the generated data.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
       # Citation info for a segment.
       class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation
         include Google::Apis::Core::Hashable
@@ -22361,6 +22703,11 @@ module Google
       class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContent
         include Google::Apis::Core::Hashable
       
+        # Output only. Stores indexes of blobattachments linked to this chunk.
+        # Corresponds to the JSON property `blobAttachmentIndexes`
+        # @return [Array<Fixnum>]
+        attr_accessor :blob_attachment_indexes
+      
         # Chunk textual content.
         # Corresponds to the JSON property `content`
         # @return [String]
@@ -22377,6 +22724,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @blob_attachment_indexes = args[:blob_attachment_indexes] if args.key?(:blob_attachment_indexes)
           @content = args[:content] if args.key?(:content)
           @page_identifier = args[:page_identifier] if args.key?(:page_identifier)
         end
@@ -22413,6 +22761,11 @@ module Google
       class GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata
         include Google::Apis::Core::Hashable
       
+        # Output only. Store multimodal data for answer enhancement.
+        # Corresponds to the JSON property `blobAttachments`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSummaryBlobAttachment>]
+        attr_accessor :blob_attachments
+      
         # Citation metadata.
         # Corresponds to the JSON property `citationMetadata`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadata]
@@ -22434,6 +22787,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @blob_attachments = args[:blob_attachments] if args.key?(:blob_attachments)
           @citation_metadata = args[:citation_metadata] if args.key?(:citation_metadata)
           @references = args[:references] if args.key?(:references)
           @summary = args[:summary] if args.key?(:summary)
