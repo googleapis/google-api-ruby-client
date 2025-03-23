@@ -1016,7 +1016,8 @@ module Google
         end
       end
       
-      # This is proto2's version of MessageSet.
+      # LINT.ThenChange( //depot/google3/third_party/protobuf/github/src/google/
+      # protobuf/bridge/message_set.proto ) This is proto2's version of MessageSet.
       class MessageSet
         include Google::Apis::Core::Hashable
       
@@ -1461,7 +1462,8 @@ module Google
         # @return [String]
         attr_accessor :message
       
-        # This is proto2's version of MessageSet.
+        # LINT.ThenChange( //depot/google3/third_party/protobuf/github/src/google/
+        # protobuf/bridge/message_set.proto ) This is proto2's version of MessageSet.
         # Corresponds to the JSON property `messageSet`
         # @return [Google::Apis::FirebaseV1beta1::MessageSet]
         attr_accessor :message_set
