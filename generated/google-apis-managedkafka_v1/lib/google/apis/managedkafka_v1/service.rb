@@ -677,6 +677,562 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new Kafka Connect cluster in a given project and location.
+        # @param [String] parent
+        #   Required. The parent project/location in which to create the Kafka Connect
+        #   cluster. Structured like `projects/`project`/locations/`location`/`.
+        # @param [Google::Apis::ManagedkafkaV1::ConnectCluster] connect_cluster_object
+        # @param [String] connect_cluster_id
+        #   Required. The ID to use for the Connect cluster, which will become the final
+        #   component of the cluster's name. The ID must be 1-63 characters long, and
+        #   match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` to comply with RFC
+        #   1035. This value is structured like: `my-cluster-id`.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID to avoid duplication of requests. If a request times out or fails,
+        #   retrying with the same ID allows the server to recognize the previous attempt.
+        #   For at least 60 minutes, the server ignores duplicate requests bearing the
+        #   same ID. For example, consider a situation where you make an initial request
+        #   and the request times out. If you make the request again with the same request
+        #   ID within 60 minutes of the last request, the server checks if an original
+        #   operation with the same request ID was received. If so, the server ignores the
+        #   second request. The request ID must be a valid UUID. A zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_connect_cluster(parent, connect_cluster_object = nil, connect_cluster_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/connectClusters', options)
+          command.request_representation = Google::Apis::ManagedkafkaV1::ConnectCluster::Representation
+          command.request_object = connect_cluster_object
+          command.response_representation = Google::Apis::ManagedkafkaV1::Operation::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['connectClusterId'] = connect_cluster_id unless connect_cluster_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single Connect cluster.
+        # @param [String] name
+        #   Required. The name of the Kafka Connect cluster to delete. Structured like `
+        #   projects/`project`/locations/`location`/connectClusters/`connect_cluster_id``.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID to avoid duplication of requests. If a request times out or fails,
+        #   retrying with the same ID allows the server to recognize the previous attempt.
+        #   For at least 60 minutes, the server ignores duplicate requests bearing the
+        #   same ID. For example, consider a situation where you make an initial request
+        #   and the request times out. If you make the request again with the same request
+        #   ID within 60 minutes of the last request, the server checks if an original
+        #   operation with the same request ID was received. If so, the server ignores the
+        #   second request. The request ID must be a valid UUID. A zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_connect_cluster(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::Operation::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the properties of a single Kafka Connect cluster.
+        # @param [String] name
+        #   Required. The name of the Kafka Connect cluster whose configuration to return.
+        #   Structured like `projects/`project`/locations/`location`/connectClusters/`
+        #   connect_cluster_id``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::ConnectCluster] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::ConnectCluster]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_connect_cluster(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::ConnectCluster::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::ConnectCluster
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the Kafka Connect clusters in a given project and location.
+        # @param [String] parent
+        #   Required. The parent project/location whose Connect clusters are to be listed.
+        #   Structured like `projects/`project`/locations/`location``.
+        # @param [String] filter
+        #   Optional. Filter expression for the result.
+        # @param [String] order_by
+        #   Optional. Order by fields for the result.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of Connect clusters to return. The service may
+        #   return fewer than this value. If unspecified, server will pick an appropriate
+        #   default.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListConnectClusters` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListConnectClusters` must match the call that provided
+        #   the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::ListConnectClustersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::ListConnectClustersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_connect_clusters(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/connectClusters', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::ListConnectClustersResponse::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::ListConnectClustersResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the properties of a single Kafka Connect cluster.
+        # @param [String] name
+        #   Identifier. The name of the Kafka Connect cluster. Structured like: projects/`
+        #   project_number`/locations/`location`/connectClusters/`connect_cluster_id`
+        # @param [Google::Apis::ManagedkafkaV1::ConnectCluster] connect_cluster_object
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID to avoid duplication of requests. If a request times out or fails,
+        #   retrying with the same ID allows the server to recognize the previous attempt.
+        #   For at least 60 minutes, the server ignores duplicate requests bearing the
+        #   same ID. For example, consider a situation where you make an initial request
+        #   and the request times out. If you make the request again with the same request
+        #   ID within 60 minutes of the last request, the server checks if an original
+        #   operation with the same request ID was received. If so, the server ignores the
+        #   second request. The request ID must be a valid UUID. A zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Required. Field mask is used to specify the fields to be overwritten in the
+        #   cluster resource by the update. The fields specified in the update_mask are
+        #   relative to the resource, not the full request. A field will be overwritten if
+        #   it is in the mask. The mask is required and a value of * will update all
+        #   fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_connect_cluster(name, connect_cluster_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ManagedkafkaV1::ConnectCluster::Representation
+          command.request_object = connect_cluster_object
+          command.response_representation = Google::Apis::ManagedkafkaV1::Operation::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new connector in a given Connect cluster.
+        # @param [String] parent
+        #   Required. The parent Connect cluster in which to create the connector.
+        #   Structured like `projects/`project`/locations/`location`/connectClusters/`
+        #   connect_cluster_id``.
+        # @param [Google::Apis::ManagedkafkaV1::Connector] connector_object
+        # @param [String] connector_id
+        #   Required. The ID to use for the connector, which will become the final
+        #   component of the connector's name. The ID must be 1-63 characters long, and
+        #   match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` to comply with RFC
+        #   1035. This value is structured like: `my-connector-id`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::Connector] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::Connector]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_connect_cluster_connector(parent, connector_object = nil, connector_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/connectors', options)
+          command.request_representation = Google::Apis::ManagedkafkaV1::Connector::Representation
+          command.request_object = connector_object
+          command.response_representation = Google::Apis::ManagedkafkaV1::Connector::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::Connector
+          command.params['parent'] = parent unless parent.nil?
+          command.query['connectorId'] = connector_id unless connector_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a connector.
+        # @param [String] name
+        #   Required. The name of the connector to delete. Structured like: projects/`
+        #   project`/locations/`location`/connectClusters/`connectCluster`/connectors/`
+        #   connector`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_connect_cluster_connector(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::Empty::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the properties of a single connector.
+        # @param [String] name
+        #   Required. The name of the connector whose configuration to return. Structured
+        #   like: projects/`project`/locations/`location`/connectClusters/`connectCluster`/
+        #   connectors/`connector`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::Connector] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::Connector]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_connect_cluster_connector(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::Connector::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::Connector
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the connectors in a given Connect cluster.
+        # @param [String] parent
+        #   Required. The parent Connect cluster whose connectors are to be listed.
+        #   Structured like `projects/`project`/locations/`location`/connectClusters/`
+        #   connect_cluster_id``.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of connectors to return. The service may return
+        #   fewer than this value. If unspecified, server will pick an appropriate default.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListConnectors` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListConnectors` must match the call that provided the
+        #   page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::ListConnectorsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::ListConnectorsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_connect_cluster_connectors(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/connectors', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::ListConnectorsResponse::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::ListConnectorsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the properties of a connector.
+        # @param [String] name
+        #   Identifier. The name of the connector. Structured like: projects/`project`/
+        #   locations/`location`/connectClusters/`connect_cluster`/connectors/`connector`
+        # @param [Google::Apis::ManagedkafkaV1::Connector] connector_object
+        # @param [String] update_mask
+        #   Required. Field mask is used to specify the fields to be overwritten in the
+        #   cluster resource by the update. The fields specified in the update_mask are
+        #   relative to the resource, not the full request. A field will be overwritten if
+        #   it is in the mask. The mask is required and a value of * will update all
+        #   fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::Connector] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::Connector]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_connect_cluster_connector(name, connector_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ManagedkafkaV1::Connector::Representation
+          command.request_object = connector_object
+          command.response_representation = Google::Apis::ManagedkafkaV1::Connector::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::Connector
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Pauses the connector and its tasks.
+        # @param [String] name
+        #   Required. The name of the connector to pause. Structured like: projects/`
+        #   project`/locations/`location`/connectClusters/`connectCluster`/connectors/`
+        #   connector`
+        # @param [Google::Apis::ManagedkafkaV1::PauseConnectorRequest] pause_connector_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::PauseConnectorResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::PauseConnectorResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def pause_connector(name, pause_connector_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:pause', options)
+          command.request_representation = Google::Apis::ManagedkafkaV1::PauseConnectorRequest::Representation
+          command.request_object = pause_connector_request_object
+          command.response_representation = Google::Apis::ManagedkafkaV1::PauseConnectorResponse::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::PauseConnectorResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Restarts the connector.
+        # @param [String] name
+        #   Required. The name of the connector to restart. Structured like: projects/`
+        #   project`/locations/`location`/connectClusters/`connectCluster`/connectors/`
+        #   connector`
+        # @param [Google::Apis::ManagedkafkaV1::RestartConnectorRequest] restart_connector_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::RestartConnectorResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::RestartConnectorResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def restart_connector(name, restart_connector_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:restart', options)
+          command.request_representation = Google::Apis::ManagedkafkaV1::RestartConnectorRequest::Representation
+          command.request_object = restart_connector_request_object
+          command.response_representation = Google::Apis::ManagedkafkaV1::RestartConnectorResponse::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::RestartConnectorResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Resumes the connector and its tasks.
+        # @param [String] name
+        #   Required. The name of the connector to pause. Structured like: projects/`
+        #   project`/locations/`location`/connectClusters/`connectCluster`/connectors/`
+        #   connector`
+        # @param [Google::Apis::ManagedkafkaV1::ResumeConnectorRequest] resume_connector_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::ResumeConnectorResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::ResumeConnectorResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def resume_connector(name, resume_connector_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:resume', options)
+          command.request_representation = Google::Apis::ManagedkafkaV1::ResumeConnectorRequest::Representation
+          command.request_object = resume_connector_request_object
+          command.response_representation = Google::Apis::ManagedkafkaV1::ResumeConnectorResponse::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::ResumeConnectorResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Stops the connector.
+        # @param [String] name
+        #   Required. The name of the connector to stop. Structured like: projects/`
+        #   project`/locations/`location`/connectClusters/`connectCluster`/connectors/`
+        #   connector`
+        # @param [Google::Apis::ManagedkafkaV1::StopConnectorRequest] stop_connector_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::StopConnectorResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::StopConnectorResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stop_connector(name, stop_connector_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:stop', options)
+          command.request_representation = Google::Apis::ManagedkafkaV1::StopConnectorRequest::Representation
+          command.request_object = stop_connector_request_object
+          command.response_representation = Google::Apis::ManagedkafkaV1::StopConnectorResponse::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::StopConnectorResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.

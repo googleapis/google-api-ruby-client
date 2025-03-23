@@ -158,6 +158,216 @@ module Google
         end
       end
       
+      # The configuration of access to the Kafka Connect cluster.
+      class ConnectAccessConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Virtual Private Cloud (VPC) networks that must be granted direct
+        # access to the Kafka Connect cluster. Minimum of 1 network is required. Maximum
+        # 10 networks can be specified.
+        # Corresponds to the JSON property `networkConfigs`
+        # @return [Array<Google::Apis::ManagedkafkaV1::ConnectNetworkConfig>]
+        attr_accessor :network_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_configs = args[:network_configs] if args.key?(:network_configs)
+        end
+      end
+      
+      # An Apache Kafka Connect cluster deployed in a location.
+      class ConnectCluster
+        include Google::Apis::Core::Hashable
+      
+        # A capacity configuration of a Kafka cluster.
+        # Corresponds to the JSON property `capacityConfig`
+        # @return [Google::Apis::ManagedkafkaV1::CapacityConfig]
+        attr_accessor :capacity_config
+      
+        # Optional. Configurations for the worker that are overridden from the defaults.
+        # The key of the map is a Kafka Connect worker property name, for example: `
+        # exactly.once.source.support`.
+        # Corresponds to the JSON property `config`
+        # @return [Hash<String,String>]
+        attr_accessor :config
+      
+        # Output only. The time when the cluster was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Configuration properties for a Kafka Connect cluster deployed to Google Cloud
+        # Platform.
+        # Corresponds to the JSON property `gcpConfig`
+        # @return [Google::Apis::ManagedkafkaV1::ConnectGcpConfig]
+        attr_accessor :gcp_config
+      
+        # Required. Immutable. The name of the Kafka cluster this Kafka Connect cluster
+        # is attached to. Structured like: projects/`project`/locations/`location`/
+        # clusters/`cluster`
+        # Corresponds to the JSON property `kafkaCluster`
+        # @return [String]
+        attr_accessor :kafka_cluster
+      
+        # Optional. Labels as key value pairs.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The name of the Kafka Connect cluster. Structured like: projects/`
+        # project_number`/locations/`location`/connectClusters/`connect_cluster_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The current state of the cluster.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The time when the cluster was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @capacity_config = args[:capacity_config] if args.key?(:capacity_config)
+          @config = args[:config] if args.key?(:config)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @gcp_config = args[:gcp_config] if args.key?(:gcp_config)
+          @kafka_cluster = args[:kafka_cluster] if args.key?(:kafka_cluster)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Configuration properties for a Kafka Connect cluster deployed to Google Cloud
+      # Platform.
+      class ConnectGcpConfig
+        include Google::Apis::Core::Hashable
+      
+        # The configuration of access to the Kafka Connect cluster.
+        # Corresponds to the JSON property `accessConfig`
+        # @return [Google::Apis::ManagedkafkaV1::ConnectAccessConfig]
+        attr_accessor :access_config
+      
+        # Optional. Secrets to load into workers. Exact SecretVersions from Secret
+        # Manager must be provided -- aliases are not supported. Up to 32 secrets may be
+        # loaded into one cluster. Format: projects//secrets//versions/
+        # Corresponds to the JSON property `secretPaths`
+        # @return [Array<String>]
+        attr_accessor :secret_paths
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_config = args[:access_config] if args.key?(:access_config)
+          @secret_paths = args[:secret_paths] if args.key?(:secret_paths)
+        end
+      end
+      
+      # The configuration of a Virtual Private Cloud (VPC) network that can access the
+      # Kafka Connect cluster.
+      class ConnectNetworkConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Additional subnets may be specified. They may be in another region,
+        # but must be in the same VPC network. The Connect workers can communicate with
+        # network endpoints in either the primary or additional subnets.
+        # Corresponds to the JSON property `additionalSubnets`
+        # @return [Array<String>]
+        attr_accessor :additional_subnets
+      
+        # Optional. Additional DNS domain names from the subnet's network to be made
+        # visible to the Connect Cluster. When using MirrorMaker2, it's necessary to add
+        # the bootstrap address's dns domain name of the target cluster to make it
+        # visible to the connector. For example: my-kafka-cluster.us-central1.
+        # managedkafka.my-project.cloud.goog
+        # Corresponds to the JSON property `dnsDomainNames`
+        # @return [Array<String>]
+        attr_accessor :dns_domain_names
+      
+        # Required. VPC subnet to make available to the Kafka Connect cluster.
+        # Structured like: projects/`project`/regions/`region`/subnetworks/`subnet_id`
+        # It is used to create a Private Service Connect (PSC) interface for the Kafka
+        # Connect workers. It must be located in the same region as the Kafka Connect
+        # cluster. The CIDR range of the subnet must be within the IPv4 address ranges
+        # for private networks, as specified in RFC 1918. The primary subnet CIDR range
+        # must have a minimum size of /22 (1024 addresses).
+        # Corresponds to the JSON property `primarySubnet`
+        # @return [String]
+        attr_accessor :primary_subnet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_subnets = args[:additional_subnets] if args.key?(:additional_subnets)
+          @dns_domain_names = args[:dns_domain_names] if args.key?(:dns_domain_names)
+          @primary_subnet = args[:primary_subnet] if args.key?(:primary_subnet)
+        end
+      end
+      
+      # A Kafka Connect connector in a given ConnectCluster.
+      class Connector
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Connector config as keys/values. The keys of the map are connector
+        # property names, for example: `connector.class`, `tasks.max`, `key.converter`.
+        # Corresponds to the JSON property `configs`
+        # @return [Hash<String,String>]
+        attr_accessor :configs
+      
+        # Identifier. The name of the connector. Structured like: projects/`project`/
+        # locations/`location`/connectClusters/`connect_cluster`/connectors/`connector`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The current state of the connector.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Task Retry Policy is implemented on a best-effort basis. Retry delay will be
+        # exponential based on provided minimum and maximum backoffs. https://en.
+        # wikipedia.org/wiki/Exponential_backoff. Note that the delay between
+        # consecutive task restarts may not always precisely match the configured
+        # settings. This can happen when the ConnectCluster is in rebalancing state or
+        # if the ConnectCluster is unresponsive etc.
+        # Corresponds to the JSON property `taskRestartPolicy`
+        # @return [Google::Apis::ManagedkafkaV1::TaskRetryPolicy]
+        attr_accessor :task_restart_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @configs = args[:configs] if args.key?(:configs)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @task_restart_policy = args[:task_restart_policy] if args.key?(:task_restart_policy)
+        end
+      end
+      
       # A Kafka consumer group in a given cluster.
       class ConsumerGroup
         include Google::Apis::Core::Hashable
@@ -308,6 +518,64 @@ module Google
           @clusters = args[:clusters] if args.key?(:clusters)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response for ListConnectClusters.
+      class ListConnectClustersResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of Connect clusters in the requested parent.
+        # Corresponds to the JSON property `connectClusters`
+        # @return [Array<Google::Apis::ManagedkafkaV1::ConnectCluster>]
+        attr_accessor :connect_clusters
+      
+        # A token that can be sent as `page_token` to retrieve the next page of results.
+        # If this field is omitted, there are no more results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connect_clusters = args[:connect_clusters] if args.key?(:connect_clusters)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response for ListConnectors.
+      class ListConnectorsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of connectors in the requested parent.
+        # Corresponds to the JSON property `connectors`
+        # @return [Array<Google::Apis::ManagedkafkaV1::Connector>]
+        attr_accessor :connectors
+      
+        # A token that can be sent as `page_token` to retrieve the next page of results.
+        # If this field is omitted, there are no more results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connectors = args[:connectors] if args.key?(:connectors)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -607,6 +875,32 @@ module Google
         end
       end
       
+      # Request for PauseConnector.
+      class PauseConnectorRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response for PauseConnector.
+      class PauseConnectorResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Defines rebalancing behavior of a Kafka cluster.
       class RebalanceConfig
         include Google::Apis::Core::Hashable
@@ -624,6 +918,58 @@ module Google
         # Update properties of this object
         def update!(**args)
           @mode = args[:mode] if args.key?(:mode)
+        end
+      end
+      
+      # Request for RestartConnector.
+      class RestartConnectorRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response for RestartConnector.
+      class RestartConnectorResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request for ResumeConnector.
+      class ResumeConnectorRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response for ResumeConnector.
+      class ResumeConnectorResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -663,6 +1009,64 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Request for StopConnector.
+      class StopConnectorRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response for StopConnector.
+      class StopConnectorResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Task Retry Policy is implemented on a best-effort basis. Retry delay will be
+      # exponential based on provided minimum and maximum backoffs. https://en.
+      # wikipedia.org/wiki/Exponential_backoff. Note that the delay between
+      # consecutive task restarts may not always precisely match the configured
+      # settings. This can happen when the ConnectCluster is in rebalancing state or
+      # if the ConnectCluster is unresponsive etc.
+      class TaskRetryPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The maximum amount of time to wait before retrying a failed task.
+        # This sets an upper bound for the backoff delay.
+        # Corresponds to the JSON property `maximumBackoff`
+        # @return [String]
+        attr_accessor :maximum_backoff
+      
+        # Optional. The minimum amount of time to wait before retrying a failed task.
+        # This sets a lower bound for the backoff delay.
+        # Corresponds to the JSON property `minimumBackoff`
+        # @return [String]
+        attr_accessor :minimum_backoff
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maximum_backoff = args[:maximum_backoff] if args.key?(:maximum_backoff)
+          @minimum_backoff = args[:minimum_backoff] if args.key?(:minimum_backoff)
         end
       end
       
