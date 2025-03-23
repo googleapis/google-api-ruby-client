@@ -5759,7 +5759,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. Name of the preference set.
+        # Output only. Name of the PreferenceSet.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
