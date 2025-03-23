@@ -856,6 +856,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachmentBlob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaAnswerCitation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -887,6 +899,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpecModelSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpecMultimodalSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2710,6 +2728,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecMultiModalSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2909,6 +2933,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaSearchResponseSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryBlobAttachment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryBlobAttachmentBlob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3862,6 +3898,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecMultiModalSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4532,6 +4574,7 @@ module Google
           property :kms_key_version, as: 'kmsKeyVersion'
           property :last_rotation_timestamp_micros, :numeric_string => true, as: 'lastRotationTimestampMicros'
           property :name, as: 'name'
+          property :notebooklm_state, as: 'notebooklmState'
           collection :single_region_keys, as: 'singleRegionKeys', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1SingleRegionKey, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1SingleRegionKey::Representation
       
           property :state, as: 'state'
@@ -4693,6 +4736,7 @@ module Google
       class GoogleCloudDiscoveryengineV1DataStore
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :acl_enabled, as: 'aclEnabled'
           property :advanced_site_search_config, as: 'advancedSiteSearchConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1AdvancedSiteSearchConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1AdvancedSiteSearchConfig::Representation
       
           property :billing_estimation, as: 'billingEstimation', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1DataStoreBillingEstimation, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1DataStoreBillingEstimation::Representation
@@ -5411,6 +5455,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :action_params, as: 'actionParams'
           property :is_action_configured, as: 'isActionConfigured'
+          property :service_name, as: 'serviceName'
         end
       end
       
@@ -5559,6 +5604,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :answer_skipped_reasons, as: 'answerSkippedReasons'
           property :answer_text, as: 'answerText'
+          collection :blob_attachments, as: 'blobAttachments', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachment, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachment::Representation
+      
           collection :citations, as: 'citations', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerCitation, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerCitation::Representation
       
           property :complete_time, as: 'completeTime'
@@ -5577,6 +5624,23 @@ module Google
           property :state, as: 'state'
           collection :steps, as: 'steps', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerStep, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerStep::Representation
       
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribution_type, as: 'attributionType'
+          property :data, as: 'data', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachmentBlob, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachmentBlob::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachmentBlob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, :base64 => true, as: 'data'
+          property :mime_type, as: 'mimeType'
         end
       end
       
@@ -5646,6 +5710,8 @@ module Google
           property :include_citations, as: 'includeCitations'
           property :model_spec, as: 'modelSpec', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpecModelSpec, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpecModelSpec::Representation
       
+          property :multimodal_spec, as: 'multimodalSpec', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpecMultimodalSpec, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpecMultimodalSpec::Representation
+      
           property :prompt_spec, as: 'promptSpec', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpecPromptSpec, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpecPromptSpec::Representation
       
         end
@@ -5655,6 +5721,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :model_version, as: 'modelVersion'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpecMultimodalSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_source, as: 'imageSource'
         end
       end
       
@@ -5909,6 +5982,7 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :blob_attachment_indexes, as: 'blobAttachmentIndexes'
           property :chunk, as: 'chunk'
           property :content, as: 'content'
           property :document_metadata, as: 'documentMetadata', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfoDocumentMetadata, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfoDocumentMetadata::Representation
@@ -5953,6 +6027,7 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfoChunkContent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :blob_attachment_indexes, as: 'blobAttachmentIndexes'
           property :content, as: 'content'
           property :page_identifier, as: 'pageIdentifier'
           property :relevance_score, as: 'relevanceScore'
@@ -6293,6 +6368,7 @@ module Google
           property :kms_key_version, as: 'kmsKeyVersion'
           property :last_rotation_timestamp_micros, :numeric_string => true, as: 'lastRotationTimestampMicros'
           property :name, as: 'name'
+          property :notebooklm_state, as: 'notebooklmState'
           collection :single_region_keys, as: 'singleRegionKeys', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSingleRegionKey, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSingleRegionKey::Representation
       
           property :state, as: 'state'
@@ -8684,6 +8760,8 @@ module Google
       
           property :model_spec, as: 'modelSpec', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecModelSpec, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecModelSpec::Representation
       
+          property :multimodal_spec, as: 'multimodalSpec', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecMultiModalSpec, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecMultiModalSpec::Representation
+      
           property :summary_result_count, as: 'summaryResultCount'
           property :use_semantic_chunks, as: 'useSemanticChunks'
         end
@@ -8700,6 +8778,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :version, as: 'version'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecMultiModalSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_source, as: 'imageSource'
         end
       end
       
@@ -9038,6 +9123,23 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryBlobAttachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribution_type, as: 'attributionType'
+          property :data, as: 'data', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryBlobAttachmentBlob, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryBlobAttachmentBlob::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryBlobAttachmentBlob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, :base64 => true, as: 'data'
+          property :mime_type, as: 'mimeType'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9077,6 +9179,7 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReferenceChunkContent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :blob_attachment_indexes, as: 'blobAttachmentIndexes'
           property :content, as: 'content'
           property :page_identifier, as: 'pageIdentifier'
         end
@@ -9093,6 +9196,8 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummaryWithMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :blob_attachments, as: 'blobAttachments', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryBlobAttachment, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryBlobAttachment::Representation
+      
           property :citation_metadata, as: 'citationMetadata', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationMetadata, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationMetadata::Representation
       
           collection :references, as: 'references', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReference, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReference::Representation
@@ -9752,6 +9857,7 @@ module Google
           property :kms_key_version, as: 'kmsKeyVersion'
           property :last_rotation_timestamp_micros, :numeric_string => true, as: 'lastRotationTimestampMicros'
           property :name, as: 'name'
+          property :notebooklm_state, as: 'notebooklmState'
           collection :single_region_keys, as: 'singleRegionKeys', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaSingleRegionKey, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaSingleRegionKey::Representation
       
           property :state, as: 'state'
@@ -9927,6 +10033,7 @@ module Google
       class GoogleCloudDiscoveryengineV1betaDataStore
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :acl_enabled, as: 'aclEnabled'
           property :advanced_site_search_config, as: 'advancedSiteSearchConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig::Representation
       
           property :billing_estimation, as: 'billingEstimation', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation::Representation
@@ -10689,6 +10796,8 @@ module Google
       
           property :model_spec, as: 'modelSpec', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec::Representation
       
+          property :multimodal_spec, as: 'multimodalSpec', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecMultiModalSpec, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecMultiModalSpec::Representation
+      
           property :summary_result_count, as: 'summaryResultCount'
           property :use_semantic_chunks, as: 'useSemanticChunks'
         end
@@ -10705,6 +10814,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :version, as: 'version'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecMultiModalSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_source, as: 'imageSource'
         end
       end
       
