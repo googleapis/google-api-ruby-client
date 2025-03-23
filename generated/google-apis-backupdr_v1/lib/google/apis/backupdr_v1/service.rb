@@ -1866,7 +1866,8 @@ module Google
         #   Optional. Hint for how to order the results.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server may return fewer items than requested.
-        #   If unspecified, server will pick an appropriate default.
+        #   If unspecified, server will use 100 as default. Maximum value is 500 and
+        #   values above 500 will be coerced to 500.
         # @param [String] page_token
         #   Optional. A token identifying a page of results the server should return.
         # @param [String] fields

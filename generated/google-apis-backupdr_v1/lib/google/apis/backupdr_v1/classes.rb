@@ -858,6 +858,12 @@ module Google
         # @return [String]
         attr_accessor :last_successful_backup_consistency_time
       
+        # Output only. If the last log backup were successful, this field has the
+        # consistency date.
+        # Corresponds to the JSON property `lastSuccessfulLogBackupConsistencyTime`
+        # @return [String]
+        attr_accessor :last_successful_log_backup_consistency_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -869,6 +875,7 @@ module Google
           @last_backup_error = args[:last_backup_error] if args.key?(:last_backup_error)
           @last_backup_state = args[:last_backup_state] if args.key?(:last_backup_state)
           @last_successful_backup_consistency_time = args[:last_successful_backup_consistency_time] if args.key?(:last_successful_backup_consistency_time)
+          @last_successful_log_backup_consistency_time = args[:last_successful_log_backup_consistency_time] if args.key?(:last_successful_log_backup_consistency_time)
         end
       end
       
