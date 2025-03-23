@@ -1042,6 +1042,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1Event
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1EventHandler
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1211,6 +1217,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1FlowMultiLanguageSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1FlowTransition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1769,6 +1781,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1PlaybookStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1PlaybookTransition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4719,9 +4737,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_utterance, as: 'agentUtterance', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AgentUtterance, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AgentUtterance::Representation
       
+          property :event, as: 'event', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Event, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Event::Representation
+      
           property :flow_invocation, as: 'flowInvocation', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FlowInvocation, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FlowInvocation::Representation
       
+          property :flow_transition, as: 'flowTransition', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FlowTransition, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FlowTransition::Representation
+      
           property :playbook_invocation, as: 'playbookInvocation', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PlaybookInvocation, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PlaybookInvocation::Representation
+      
+          property :playbook_transition, as: 'playbookTransition', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PlaybookTransition, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PlaybookTransition::Representation
       
           property :tool_use, as: 'toolUse', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ToolUse, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ToolUse::Representation
       
@@ -5465,6 +5489,13 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1Event
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event, as: 'event'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1EventHandler
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5764,6 +5795,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_multi_language_detection, as: 'enableMultiLanguageDetection'
           collection :supported_response_language_codes, as: 'supportedResponseLanguageCodes'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1FlowTransition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :flow, as: 'flow'
         end
       end
       
@@ -6634,6 +6673,7 @@ module Google
           property :name, as: 'name'
           collection :output_parameter_definitions, as: 'outputParameterDefinitions', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ParameterDefinition, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ParameterDefinition::Representation
       
+          property :playbook_type, as: 'playbookType'
           collection :referenced_flows, as: 'referencedFlows'
           collection :referenced_playbooks, as: 'referencedPlaybooks'
           collection :referenced_tools, as: 'referencedTools'
@@ -6688,6 +6728,14 @@ module Google
           collection :steps, as: 'steps', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PlaybookStep, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PlaybookStep::Representation
       
           property :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1PlaybookTransition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :playbook, as: 'playbook'
         end
       end
       
