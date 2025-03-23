@@ -3255,6 +3255,7 @@ module Google
           property :bulletin_uri, as: 'bulletinUri'
           collection :cve_ids, as: 'cveIds'
           property :manual_steps_required, as: 'manualStepsRequired'
+          collection :mitigated_versions, as: 'mitigatedVersions'
           collection :patched_versions, as: 'patchedVersions'
           property :resource_type_affected, as: 'resourceTypeAffected'
           property :severity, as: 'severity'
@@ -3630,6 +3631,7 @@ module Google
           property :end_time, as: 'endTime'
           property :initial_version, as: 'initialVersion'
           property :start_time, as: 'startTime'
+          property :start_type, as: 'startType'
           property :state, as: 'state'
           property :target_version, as: 'targetVersion'
         end
