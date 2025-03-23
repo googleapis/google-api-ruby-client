@@ -628,6 +628,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContentThemeAssignedTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContentThemeTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConversionCountingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2423,6 +2435,8 @@ module Google
       
           property :content_stream_type_details, as: 'contentStreamTypeDetails', class: Google::Apis::DisplayvideoV3::ContentStreamTypeAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV3::ContentStreamTypeAssignedTargetingOptionDetails::Representation
       
+          property :content_theme_exclusion_details, as: 'contentThemeExclusionDetails', class: Google::Apis::DisplayvideoV3::ContentThemeAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV3::ContentThemeAssignedTargetingOptionDetails::Representation
+      
           property :day_and_time_details, as: 'dayAndTimeDetails', class: Google::Apis::DisplayvideoV3::DayAndTimeAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV3::DayAndTimeAssignedTargetingOptionDetails::Representation
       
           property :device_make_model_details, as: 'deviceMakeModelDetails', class: Google::Apis::DisplayvideoV3::DeviceMakeModelAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV3::DeviceMakeModelAssignedTargetingOptionDetails::Representation
@@ -3145,6 +3159,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content_stream_type, as: 'contentStreamType'
+        end
+      end
+      
+      class ContentThemeAssignedTargetingOptionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_theme, as: 'contentTheme'
+          property :excluded_content_theme, as: 'excludedContentTheme'
+          property :excluded_targeting_option_id, as: 'excludedTargetingOptionId'
+        end
+      end
+      
+      class ContentThemeTargetingOptionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_theme, as: 'contentTheme'
         end
       end
       
@@ -5240,6 +5270,8 @@ module Google
           property :content_outstream_position_details, as: 'contentOutstreamPositionDetails', class: Google::Apis::DisplayvideoV3::ContentOutstreamPositionTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV3::ContentOutstreamPositionTargetingOptionDetails::Representation
       
           property :content_stream_type_details, as: 'contentStreamTypeDetails', class: Google::Apis::DisplayvideoV3::ContentStreamTypeTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV3::ContentStreamTypeTargetingOptionDetails::Representation
+      
+          property :content_theme_details, as: 'contentThemeDetails', class: Google::Apis::DisplayvideoV3::ContentThemeTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV3::ContentThemeTargetingOptionDetails::Representation
       
           property :device_make_model_details, as: 'deviceMakeModelDetails', class: Google::Apis::DisplayvideoV3::DeviceMakeModelTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV3::DeviceMakeModelTargetingOptionDetails::Representation
       
