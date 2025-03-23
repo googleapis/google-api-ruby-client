@@ -595,6 +595,10 @@ module Google
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [Boolean] validate_only
+        #   Optional. When supplied with PSC Interface config, will get/create the tenant
+        #   project required for the customer to allow list and won't actually create the
+        #   private connection.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -612,7 +616,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_private_connection(parent, private_connection_object = nil, force: nil, private_connection_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_private_connection(parent, private_connection_object = nil, force: nil, private_connection_id: nil, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/privateConnections', options)
           command.request_representation = Google::Apis::DatastreamV1::PrivateConnection::Representation
           command.request_object = private_connection_object
@@ -622,6 +626,7 @@ module Google
           command.query['force'] = force unless force.nil?
           command.query['privateConnectionId'] = private_connection_id unless private_connection_id.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

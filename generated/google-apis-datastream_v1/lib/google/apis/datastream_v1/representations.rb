@@ -466,6 +466,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PscInterfaceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Route
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1142,6 +1148,7 @@ module Google
           property :hostname, as: 'hostname'
           property :password, as: 'password'
           property :port, as: 'port'
+          property :secret_manager_stored_password, as: 'secretManagerStoredPassword'
           property :ssl_config, as: 'sslConfig', class: Google::Apis::DatastreamV1::MysqlSslConfig, decorator: Google::Apis::DatastreamV1::MysqlSslConfig::Representation
       
           property :username, as: 'username'
@@ -1245,6 +1252,7 @@ module Google
       
           property :password, as: 'password'
           property :port, as: 'port'
+          property :secret_manager_stored_password, as: 'secretManagerStoredPassword'
           property :username, as: 'username'
         end
       end
@@ -1385,6 +1393,7 @@ module Google
           property :hostname, as: 'hostname'
           property :password, as: 'password'
           property :port, as: 'port'
+          property :secret_manager_stored_password, as: 'secretManagerStoredPassword'
           property :ssl_config, as: 'sslConfig', class: Google::Apis::DatastreamV1::PostgresqlSslConfig, decorator: Google::Apis::DatastreamV1::PostgresqlSslConfig::Representation
       
           property :username, as: 'username'
@@ -1449,6 +1458,8 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :psc_interface_config, as: 'pscInterfaceConfig', class: Google::Apis::DatastreamV1::PscInterfaceConfig, decorator: Google::Apis::DatastreamV1::PscInterfaceConfig::Representation
+      
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
@@ -1462,6 +1473,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :private_connection, as: 'privateConnection'
+        end
+      end
+      
+      class PscInterfaceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_attachment, as: 'networkAttachment'
         end
       end
       
@@ -1662,6 +1680,7 @@ module Google
           property :hostname, as: 'hostname'
           property :password, as: 'password'
           property :port, as: 'port'
+          property :secret_manager_stored_password, as: 'secretManagerStoredPassword'
           property :username, as: 'username'
         end
       end

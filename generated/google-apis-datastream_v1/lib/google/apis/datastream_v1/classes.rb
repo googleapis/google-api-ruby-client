@@ -1403,6 +1403,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :port
       
+        # Optional. A reference to a Secret Manager resource name storing the MySQL
+        # connection password. Mutually exclusive with the `password` field.
+        # Corresponds to the JSON property `secretManagerStoredPassword`
+        # @return [String]
+        attr_accessor :secret_manager_stored_password
+      
         # MySQL SSL configuration information.
         # Corresponds to the JSON property `sslConfig`
         # @return [Google::Apis::DatastreamV1::MysqlSslConfig]
@@ -1422,6 +1428,7 @@ module Google
           @hostname = args[:hostname] if args.key?(:hostname)
           @password = args[:password] if args.key?(:password)
           @port = args[:port] if args.key?(:port)
+          @secret_manager_stored_password = args[:secret_manager_stored_password] if args.key?(:secret_manager_stored_password)
           @ssl_config = args[:ssl_config] if args.key?(:ssl_config)
           @username = args[:username] if args.key?(:username)
         end
@@ -1528,8 +1535,7 @@ module Google
       
         # Optional. Input only. PEM-encoded private key associated with the Client
         # Certificate. If this field is used then the 'client_certificate' and the '
-        # ca_certificate' fields are mandatory. Mutually exclusive with the `
-        # secret_manager_stored_client_key` field.
+        # ca_certificate' fields are mandatory.
         # Corresponds to the JSON property `clientKey`
         # @return [String]
         attr_accessor :client_key
@@ -1779,7 +1785,8 @@ module Google
         # @return [Google::Apis::DatastreamV1::OracleSslConfig]
         attr_accessor :oracle_ssl_config
       
-        # Optional. Password for the Oracle ASM connection.
+        # Optional. Password for the Oracle ASM connection. Mutually exclusive with the `
+        # secret_manager_stored_password` field.
         # Corresponds to the JSON property `password`
         # @return [String]
         attr_accessor :password
@@ -1788,6 +1795,12 @@ module Google
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
+      
+        # Optional. A reference to a Secret Manager resource name storing the Oracle ASM
+        # connection password. Mutually exclusive with the `password` field.
+        # Corresponds to the JSON property `secretManagerStoredPassword`
+        # @return [String]
+        attr_accessor :secret_manager_stored_password
       
         # Required. Username for the Oracle ASM connection.
         # Corresponds to the JSON property `username`
@@ -1806,6 +1819,7 @@ module Google
           @oracle_ssl_config = args[:oracle_ssl_config] if args.key?(:oracle_ssl_config)
           @password = args[:password] if args.key?(:password)
           @port = args[:port] if args.key?(:port)
+          @secret_manager_stored_password = args[:secret_manager_stored_password] if args.key?(:secret_manager_stored_password)
           @username = args[:username] if args.key?(:username)
         end
       end
@@ -2279,6 +2293,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :port
       
+        # Optional. A reference to a Secret Manager resource name storing the PostgreSQL
+        # connection password. Mutually exclusive with the `password` field.
+        # Corresponds to the JSON property `secretManagerStoredPassword`
+        # @return [String]
+        attr_accessor :secret_manager_stored_password
+      
         # PostgreSQL SSL configuration information.
         # Corresponds to the JSON property `sslConfig`
         # @return [Google::Apis::DatastreamV1::PostgresqlSslConfig]
@@ -2299,6 +2319,7 @@ module Google
           @hostname = args[:hostname] if args.key?(:hostname)
           @password = args[:password] if args.key?(:password)
           @port = args[:port] if args.key?(:port)
+          @secret_manager_stored_password = args[:secret_manager_stored_password] if args.key?(:secret_manager_stored_password)
           @ssl_config = args[:ssl_config] if args.key?(:ssl_config)
           @username = args[:username] if args.key?(:username)
         end
@@ -2480,6 +2501,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The PSC Interface configuration is used to create PSC Interface between
+        # Datastream and the consumer's PSC.
+        # Corresponds to the JSON property `pscInterfaceConfig`
+        # @return [Google::Apis::DatastreamV1::PscInterfaceConfig]
+        attr_accessor :psc_interface_config
+      
         # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
@@ -2519,6 +2546,7 @@ module Google
           @error = args[:error] if args.key?(:error)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @psc_interface_config = args[:psc_interface_config] if args.key?(:psc_interface_config)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
@@ -2544,6 +2572,28 @@ module Google
         # Update properties of this object
         def update!(**args)
           @private_connection = args[:private_connection] if args.key?(:private_connection)
+        end
+      end
+      
+      # The PSC Interface configuration is used to create PSC Interface between
+      # Datastream and the consumer's PSC.
+      class PscInterfaceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Fully qualified name of the Network Attachment that Datastream will
+        # connect to. Format: `projects/``project``/regions/``region``/
+        # networkAttachments/``name```
+        # Corresponds to the JSON property `networkAttachment`
+        # @return [String]
+        attr_accessor :network_attachment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
         end
       end
       
@@ -2813,8 +2863,7 @@ module Google
         # Optional. Input only. PEM-encoded private key associated with the client
         # certificate. This value will be used during the SSL/TLS handshake, allowing
         # the PostgreSQL server to authenticate the client's identity, i.e. identity of
-        # the Datastream. Mutually exclusive with the `secret_manager_stored_client_key`
-        # field.
+        # the Datastream.
         # Corresponds to the JSON property `clientKey`
         # @return [String]
         attr_accessor :client_key
@@ -3167,6 +3216,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :port
       
+        # Optional. A reference to a Secret Manager resource name storing the SQLServer
+        # connection password. Mutually exclusive with the `password` field.
+        # Corresponds to the JSON property `secretManagerStoredPassword`
+        # @return [String]
+        attr_accessor :secret_manager_stored_password
+      
         # Required. Username for the SQLServer connection.
         # Corresponds to the JSON property `username`
         # @return [String]
@@ -3182,6 +3237,7 @@ module Google
           @hostname = args[:hostname] if args.key?(:hostname)
           @password = args[:password] if args.key?(:password)
           @port = args[:port] if args.key?(:port)
+          @secret_manager_stored_password = args[:secret_manager_stored_password] if args.key?(:secret_manager_stored_password)
           @username = args[:username] if args.key?(:username)
         end
       end
