@@ -3099,7 +3099,8 @@ module Google
         # the [Backend services overview](https://cloud.google.com/load-balancing/docs/
         # backend-service#backends). You must use the *fully-qualified* URL (starting
         # with https://www.googleapis.com/) to specify the instance group or NEG.
-        # Partial URLs are not supported.
+        # Partial URLs are not supported. If haPolicy is specified, backends must refer
+        # to NEG resources of type GCE_VM_IP.
         # Corresponds to the JSON property `group`
         # @return [String]
         attr_accessor :group
@@ -3993,7 +3994,23 @@ module Google
         # @return [String]
         attr_accessor :fingerprint
       
-        # Configuring haPolicy is not supported.
+        # Configures self-managed High Availability (HA) for External and Internal
+        # Protocol Forwarding. The backends of this regional backend service must only
+        # specify zonal network endpoint groups (NEGs) of type GCE_VM_IP. When haPolicy
+        # is set for an Internal Passthrough Network Load Balancer, the regional backend
+        # service must set the network field. All zonal NEGs must belong to the same
+        # network. However, individual NEGs can belong to different subnetworks of that
+        # network. When haPolicy is specified, the set of attached network endpoints
+        # across all backends comprise an High Availability domain from which one
+        # endpoint is selected as the active endpoint (the leader) that receives all
+        # traffic. haPolicy can be added only at backend service creation time. Once set
+        # up, it cannot be deleted. Note that haPolicy is not for load balancing, and
+        # therefore cannot be specified with sessionAffinity, connectionTrackingPolicy,
+        # and failoverPolicy. haPolicy requires customers to be responsible for tracking
+        # backend endpoint health and electing a leader among the healthy endpoints.
+        # Therefore, haPolicy cannot be specified with healthChecks. haPolicy can only
+        # be specified for External Passthrough Network Load Balancers and Internal
+        # Passthrough Network Load Balancers.
         # Corresponds to the JSON property `haPolicy`
         # @return [Google::Apis::ComputeAlpha::BackendServiceHaPolicy]
         attr_accessor :ha_policy
@@ -4003,8 +4020,9 @@ module Google
         # Not all backend services support legacy health checks. See Load balancer guide.
         # Currently, at most one health check can be specified for each backend service.
         # Backend services with instance group or zonal NEG backends must have a health
-        # check. Backend services with internet or serverless NEG backends must not have
-        # a health check.
+        # check unless haPolicy is specified. Backend services with internet or
+        # serverless NEG backends must not have a health check. healthChecks[] cannot be
+        # specified with haPolicy.
         # Corresponds to the JSON property `healthChecks`
         # @return [Array<String>]
         attr_accessor :health_checks
@@ -4092,6 +4110,7 @@ module Google
         # default value for localityLbPolicy is MAGLEV. Only ROUND_ROBIN and RING_HASH
         # are supported when the backend service is referenced by a URL map that is
         # bound to target gRPC proxy that has validateForProxyless field set to true.
+        # localityLbPolicy cannot be specified with haPolicy.
         # Corresponds to the JSON property `localityLbPolicy`
         # @return [String]
         attr_accessor :locality_lb_policy
@@ -4126,14 +4145,17 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The URL of the network to which this backend service belongs. This field can
-        # only be specified when the load balancing scheme is set to INTERNAL.
+        # The URL of the network to which this backend service belongs. This field must
+        # be set for Internal Passthrough Network Load Balancers when the haPolicy is
+        # enabled, and for External Passthrough Network Load Balancers when the haPolicy
+        # fastIpMove is enabled. This field can only be specified when the load
+        # balancing scheme is set to INTERNAL.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
         # Configures traffic steering properties of internal passthrough Network Load
-        # Balancers.
+        # Balancers. networkPassThroughLbTrafficPolicy cannot be specified with haPolicy.
         # Corresponds to the JSON property `networkPassThroughLbTrafficPolicy`
         # @return [Google::Apis::ComputeAlpha::BackendServiceNetworkPassThroughLbTrafficPolicy]
         attr_accessor :network_pass_through_lb_traffic_policy
@@ -4218,7 +4240,8 @@ module Google
         # HEADER_FIELD are supported when the backend service is referenced by a URL map
         # that is bound to target gRPC proxy that has validateForProxyless field set to
         # true. For more details, see: [Session Affinity](https://cloud.google.com/load-
-        # balancing/docs/backend-service#session_affinity).
+        # balancing/docs/backend-service#session_affinity). sessionAffinity cannot be
+        # specified with haPolicy.
         # Corresponds to the JSON property `sessionAffinity`
         # @return [String]
         attr_accessor :session_affinity
@@ -4896,12 +4919,63 @@ module Google
       class BackendServiceHaPolicy
         include Google::Apis::Core::Hashable
       
-        # Enabling fastIPMove is not supported.
+        # Specifies whether fast IP move is enabled, and if so, the mechanism to achieve
+        # it. Supported values are: - DISABLED: Fast IP Move is disabled. You can only
+        # use the haPolicy.leader API to update the leader. - >GARP_RA: Provides a
+        # method to very quickly define a new network endpoint as the leader. This
+        # method is faster than updating the leader using the haPolicy.leader API. Fast
+        # IP move works as follows: The VM hosting the network endpoint that should
+        # become the new leader sends either a Gratuitous ARP (GARP) packet (IPv4) or an
+        # ICMPv6 Router Advertisement(RA) packet (IPv6). Google Cloud immediately but
+        # temporarily associates the forwarding rule IP address with that VM, and both
+        # new and in-flight packets are quickly delivered to that VM. Note the important
+        # properties of the Fast IP Move functionality: - The GARP/RA-initiated re-
+        # routing stays active for approximately 20 minutes. After triggering fast
+        # failover, you must also appropriately set the haPolicy.leader. - The new
+        # leader instance should continue to send GARP/RA packets periodically every 10
+        # seconds until at least 10 minutes after updating the haPolicy.leader (but stop
+        # immediately if it is no longer the leader). - After triggering a fast failover,
+        # we recommend that you wait at least 3 seconds before sending another GARP/RA
+        # packet from a different VM instance to avoid race conditions. - Don't send
+        # GARP/RA packets from different VM instances at the same time. If multiple
+        # instances continue to send GARP/RA packets, traffic might be routed to
+        # different destinations in an alternating order. This condition ceases when a
+        # single instance issues a GARP/RA packet. - The GARP/RA request always takes
+        # priority over the leader API. Using the haPolicy.leader API to change the
+        # leader to a different instance will have no effect until the GARP/RA request
+        # becomes inactive. - The GARP/RA packets should follow the GARP/RA Packet
+        # Specifications.. - When multiple forwarding rules refer to a regional backend
+        # service, you need only send a GARP or RA packet for a single forwarding rule
+        # virtual IP. The virtual IPs for all forwarding rules targeting the same
+        # backend service will also be moved to the sender of the GARP or RA packet. The
+        # following are the Fast IP Move limitations (that is, when fastIPMove is not
+        # DISABLED): - Multiple forwarding rules cannot use the same IP address if one
+        # of them refers to a regional backend service with fastIPMove. - The regional
+        # backend service must set the network field, and all NEGs must belong to that
+        # network. However, individual NEGs can belong to different subnetworks of that
+        # network. - The maximum number of network endpoints across all backends of a
+        # backend service with fastIPMove is 64. - The maximum number of backend
+        # services with fastIPMove that can have the same network endpoint attached to
+        # one of its backends is 64. - The maximum number of backend services with
+        # fastIPMove in a VPC in a region is 64. - The network endpoints that are
+        # attached to a backend of a backend service with fastIPMove cannot resolve to
+        # C3 machines. - Traffic directed to the leader by a static route next hop will
+        # not be redirected to a new leader by fast failover. Such traffic will only be
+        # redirected once an haPolicy.leader update has taken effect. Only traffic to
+        # the forwarding rule's virtual IP will be redirected to a new leader by fast
+        # failover. haPolicy.fastIPMove can be set only at backend service creation time.
+        # Once set, it cannot be updated. By default, fastIpMove is set to DISABLED.
         # Corresponds to the JSON property `fastIPMove`
         # @return [String]
         attr_accessor :fast_ip_move
       
-        # Setting a leader is not supported.
+        # Selects one of the network endpoints attached to the backend NEGs of this
+        # service as the active endpoint (the leader) that receives all traffic. When
+        # the leader changes, there is no connection draining to persist existing
+        # connections on the old leader. You are responsible for selecting a suitable
+        # endpoint as the leader. For example, preferring a healthy endpoint over
+        # unhealthy ones. Note that this service does not track backend endpoint health,
+        # and selects the configured leader unconditionally.
         # Corresponds to the JSON property `leader`
         # @return [Google::Apis::ComputeAlpha::BackendServiceHaPolicyLeader]
         attr_accessor :leader
@@ -4921,12 +4995,19 @@ module Google
       class BackendServiceHaPolicyLeader
         include Google::Apis::Core::Hashable
       
-        # Setting backendGroup is not supported.
+        # A fully-qualified URL (starting with https://www.googleapis.com/) of the zonal
+        # Network Endpoint Group (NEG) with `GCE_VM_IP` endpoints that the leader is
+        # attached to. The leader's backendGroup must already be specified as a backend
+        # of this backend service. Removing a backend that is designated as the leader's
+        # backendGroup is not permitted.
         # Corresponds to the JSON property `backendGroup`
         # @return [String]
         attr_accessor :backend_group
       
-        # Setting a network endpoint as leader is not supported.
+        # The network endpoint within the leader.backendGroup that is designated as the
+        # leader. This network endpoint cannot be detached from the NEG specified in the
+        # haPolicy.leader.backendGroup until the leader is updated with another network
+        # endpoint, or the leader is removed from the haPolicy.
         # Corresponds to the JSON property `networkEndpoint`
         # @return [Google::Apis::ComputeAlpha::BackendServiceHaPolicyLeaderNetworkEndpoint]
         attr_accessor :network_endpoint
@@ -4946,7 +5027,11 @@ module Google
       class BackendServiceHaPolicyLeaderNetworkEndpoint
         include Google::Apis::Core::Hashable
       
-        # Specifying the instance name of a leader is not supported.
+        # The name of the VM instance of the leader network endpoint. The instance must
+        # already be attached to the NEG specified in the haPolicy.leader.backendGroup.
+        # The name must be 1-63 characters long, and comply with RFC1035. Authorization
+        # requires the following IAM permission on the specified resource instance:
+        # compute.instances.use
         # Corresponds to the JSON property `instance`
         # @return [String]
         attr_accessor :instance
@@ -25321,7 +25406,8 @@ module Google
       
         # Type of link requested, which can take one of the following values: -
         # LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics -
-        # LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this
+        # LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. -
+        # LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics. Note that this
         # field indicates the speed of each of the links in the bundle, not the speed of
         # the entire bundle.
         # Corresponds to the JSON property `linkType`
@@ -28262,7 +28348,8 @@ module Google
       
         # Type of link requested, which can take one of the following values: -
         # LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics -
-        # LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this
+        # LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. -
+        # LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics. Note that this
         # field indicates the speed of each of the links in the bundle, not the speed of
         # the entire bundle.
         # Corresponds to the JSON property `linkType`
@@ -30707,6 +30794,136 @@ module Google
         end
       end
       
+      # Contains a list of SnapshotGroup resources.
+      class ListSnapshotGroups
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of SnapshotGroup resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeAlpha::SnapshotGroup>]
+        attr_accessor :items
+      
+        # Type of resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources. end_interface:
+        # MixerListResponseWithEtagBuilder
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::ListSnapshotGroups::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::ListSnapshotGroups::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # 
       class LocalDisk
         include Google::Apis::Core::Hashable
@@ -30890,6 +31107,23 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # A fingerprint for the labels being applied to this machine image, which is
+        # essentially a hash of the labels set used for optimistic locking. The
+        # fingerprint is initially generated by Compute Engine and changes after every
+        # request to modify or update labels. You must always provide an up-to-date
+        # fingerprint hash in order to update or change labels. To see the latest
+        # fingerprint, make get() request to the machine image.
+        # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :label_fingerprint
+      
+        # Labels to apply to this machine image. These can be later modified by the
+        # setLabels method.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Encrypts the machine image using a customer-supplied encryption key. After you
         # encrypt a machine image using a customer-supplied key, you must provide the
         # same key if you use the machine image later. For example, you must provide the
@@ -30996,6 +31230,8 @@ module Google
           @id = args[:id] if args.key?(:id)
           @instance_properties = args[:instance_properties] if args.key?(:instance_properties)
           @kind = args[:kind] if args.key?(:kind)
+          @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
+          @labels = args[:labels] if args.key?(:labels)
           @machine_image_encryption_key = args[:machine_image_encryption_key] if args.key?(:machine_image_encryption_key)
           @name = args[:name] if args.key?(:name)
           @params = args[:params] if args.key?(:params)
@@ -44727,6 +44963,201 @@ module Google
         end
       end
       
+      # Represents a ReliabilityRisk resource.
+      class ReliabilityRisk
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional textual description of the resource; provided when the resource is
+        # created.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Details about a risk.
+        # Corresponds to the JSON property `details`
+        # @return [Google::Apis::ComputeAlpha::RiskDetails]
+        attr_accessor :details
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] Type of resource. Always compute#reliabilityRisk for reliability
+        # risks.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Name of the resource. The name must be 1-63 characters long and comply with
+        # RFC1035.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Recommendation with reference url.
+        # Corresponds to the JSON property `recommendation`
+        # @return [Google::Apis::ComputeAlpha::RiskRecommendation]
+        attr_accessor :recommendation
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Server-defined URL for this resource with the resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @details = args[:details] if args.key?(:details)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @recommendation = args[:recommendation] if args.key?(:recommendation)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+        end
+      end
+      
+      # 
+      class ReliabilityRisksListResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of ReliabilityRisk resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeAlpha::ReliabilityRisk>]
+        attr_accessor :items
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources. end_interface:
+        # MixerListResponseWithEtagBuilder
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::ReliabilityRisksListResponse::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::ReliabilityRisksListResponse::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # 
       class ReplicationDetails
         include Google::Apis::Core::Hashable
@@ -47159,6 +47590,113 @@ module Google
           @request_timestamp = args[:request_timestamp] if args.key?(:request_timestamp)
           @stop_state = args[:stop_state] if args.key?(:stop_state)
           @target_state = args[:target_state] if args.key?(:target_state)
+        end
+      end
+      
+      # Details about a risk.
+      class RiskDetails
+        include Google::Apis::Core::Hashable
+      
+        # The duration of the risk since it was detected.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # 
+        # Corresponds to the JSON property `globalDnsInsight`
+        # @return [Google::Apis::ComputeAlpha::RiskDetailsGlobalDnsInsight]
+        attr_accessor :global_dns_insight
+      
+        # The last time the risk was updated.
+        # Corresponds to the JSON property `lastUpdateTimestamp`
+        # @return [String]
+        attr_accessor :last_update_timestamp
+      
+        # The severity of the risk.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # The type of risk.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duration = args[:duration] if args.key?(:duration)
+          @global_dns_insight = args[:global_dns_insight] if args.key?(:global_dns_insight)
+          @last_update_timestamp = args[:last_update_timestamp] if args.key?(:last_update_timestamp)
+          @severity = args[:severity] if args.key?(:severity)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class RiskDetailsGlobalDnsInsight
+        include Google::Apis::Core::Hashable
+      
+        # Whether the project default DNS setting is global or not.
+        # Corresponds to the JSON property `projectDefaultIsGlobalDns`
+        # @return [Boolean]
+        attr_accessor :project_default_is_global_dns
+        alias_method :project_default_is_global_dns?, :project_default_is_global_dns
+      
+        # The observation window for the query counts.
+        # Corresponds to the JSON property `queryObservationWindow`
+        # @return [String]
+        attr_accessor :query_observation_window
+      
+        # The number of queries that are risky. This will always be less than
+        # total_query_count.
+        # Corresponds to the JSON property `riskyQueryCount`
+        # @return [Fixnum]
+        attr_accessor :risky_query_count
+      
+        # The total number of queries in the observation window.
+        # Corresponds to the JSON property `totalQueryCount`
+        # @return [Fixnum]
+        attr_accessor :total_query_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_default_is_global_dns = args[:project_default_is_global_dns] if args.key?(:project_default_is_global_dns)
+          @query_observation_window = args[:query_observation_window] if args.key?(:query_observation_window)
+          @risky_query_count = args[:risky_query_count] if args.key?(:risky_query_count)
+          @total_query_count = args[:total_query_count] if args.key?(:total_query_count)
+        end
+      end
+      
+      # Recommendation with reference url.
+      class RiskRecommendation
+        include Google::Apis::Core::Hashable
+      
+        # Mitigation guide for the risk.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # URL referencing a more detailed mitigation guide.
+        # Corresponds to the JSON property `referenceUrl`
+        # @return [String]
+        attr_accessor :reference_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @reference_url = args[:reference_url] if args.key?(:reference_url)
         end
       end
       
@@ -53914,6 +54452,17 @@ module Google
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :snapshot_encryption_key
       
+        # [Output Only] The unique ID of the snapshot group that this snapshot belongs
+        # to.
+        # Corresponds to the JSON property `snapshotGroupId`
+        # @return [String]
+        attr_accessor :snapshot_group_id
+      
+        # [Output only] The snapshot group that this snapshot belongs to.
+        # Corresponds to the JSON property `snapshotGroupName`
+        # @return [String]
+        attr_accessor :snapshot_group_name
+      
         # Indicates the type of the snapshot.
         # Corresponds to the JSON property `snapshotType`
         # @return [String]
@@ -54040,6 +54589,8 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @snapshot_encryption_key = args[:snapshot_encryption_key] if args.key?(:snapshot_encryption_key)
+          @snapshot_group_id = args[:snapshot_group_id] if args.key?(:snapshot_group_id)
+          @snapshot_group_name = args[:snapshot_group_name] if args.key?(:snapshot_group_name)
           @snapshot_type = args[:snapshot_type] if args.key?(:snapshot_type)
           @source_disk = args[:source_disk] if args.key?(:source_disk)
           @source_disk_encryption_key = args[:source_disk_encryption_key] if args.key?(:source_disk_encryption_key)
@@ -54185,6 +54736,144 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Represents a SnapshotGroup resource. A snapshot group is a set of snapshots
+      # that represents a point in time state of a consistency group.
+      class SnapshotGroup
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # Optional. An optional description of this resource. Provide this property when
+        # you create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] Type of the resource. Always compute#snapshotGroup for
+        # SnapshotGroup resources.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Identifier. Name of the resource; provided by the client when the resource is
+        # created. The name must be 1-63 characters long, and comply with RFC1035.
+        # Specifically, the name must be 1-63 characters long and match the regular
+        # expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must
+        # be a lowercase letter, and all following characters must be a dash, lowercase
+        # letter, or digit, except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Server-defined URL for this resource's resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        # [Output Only]
+        # Corresponds to the JSON property `sourceInfo`
+        # @return [Google::Apis::ComputeAlpha::SnapshotGroupSourceInfo]
+        attr_accessor :source_info
+      
+        # Input field for the source instant snapshot group.
+        # Corresponds to the JSON property `sourceInstantSnapshotGroup`
+        # @return [String]
+        attr_accessor :source_instant_snapshot_group
+      
+        # [Output Only]
+        # Corresponds to the JSON property `sourceInstantSnapshotGroupInfo`
+        # @return [Google::Apis::ComputeAlpha::SnapshotGroupSourceInstantSnapshotGroupInfo]
+        attr_accessor :source_instant_snapshot_group_info
+      
+        # [Output Only]
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @source_info = args[:source_info] if args.key?(:source_info)
+          @source_instant_snapshot_group = args[:source_instant_snapshot_group] if args.key?(:source_instant_snapshot_group)
+          @source_instant_snapshot_group_info = args[:source_instant_snapshot_group_info] if args.key?(:source_instant_snapshot_group_info)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class SnapshotGroupSourceInfo
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `consistencyGroup`
+        # @return [String]
+        attr_accessor :consistency_group
+      
+        # 
+        # Corresponds to the JSON property `consistencyGroupId`
+        # @return [String]
+        attr_accessor :consistency_group_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consistency_group = args[:consistency_group] if args.key?(:consistency_group)
+          @consistency_group_id = args[:consistency_group_id] if args.key?(:consistency_group_id)
+        end
+      end
+      
+      # 
+      class SnapshotGroupSourceInstantSnapshotGroupInfo
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `instantSnapshotGroup`
+        # @return [String]
+        attr_accessor :instant_snapshot_group
+      
+        # 
+        # Corresponds to the JSON property `instantSnapshotGroupId`
+        # @return [String]
+        attr_accessor :instant_snapshot_group_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instant_snapshot_group = args[:instant_snapshot_group] if args.key?(:instant_snapshot_group)
+          @instant_snapshot_group_id = args[:instant_snapshot_group_id] if args.key?(:instant_snapshot_group_id)
         end
       end
       
