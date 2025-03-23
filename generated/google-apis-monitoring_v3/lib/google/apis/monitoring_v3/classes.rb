@@ -5299,6 +5299,12 @@ module Google
         # @return [Array<Google::Apis::MonitoringV3::ContentMatcher>]
         attr_accessor :content_matchers
       
+        # Whether the check is disabled or not.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
         # A human-friendly name for the Uptime check configuration. The display name
         # should be unique within a Cloud Monitoring Workspace in order to make it
         # easier to identify; however, uniqueness is not enforced. Required.
@@ -5411,6 +5417,7 @@ module Google
         def update!(**args)
           @checker_type = args[:checker_type] if args.key?(:checker_type)
           @content_matchers = args[:content_matchers] if args.key?(:content_matchers)
+          @disabled = args[:disabled] if args.key?(:disabled)
           @display_name = args[:display_name] if args.key?(:display_name)
           @http_check = args[:http_check] if args.key?(:http_check)
           @internal_checkers = args[:internal_checkers] if args.key?(:internal_checkers)
