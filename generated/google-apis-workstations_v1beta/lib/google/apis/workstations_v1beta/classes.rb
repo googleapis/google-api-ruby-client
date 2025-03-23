@@ -804,7 +804,8 @@ module Google
         attr_accessor :size_gb
       
         # Optional. Name of the snapshot to use as the source for the disk. If set,
-        # size_gb and fs_type must be empty.
+        # size_gb and fs_type must be empty. Must be formatted as ext4 file system with
+        # no partitions.
         # Corresponds to the JSON property `sourceSnapshot`
         # @return [String]
         attr_accessor :source_snapshot
@@ -1767,8 +1768,8 @@ module Google
         attr_accessor :create_time
       
         # Output only. Whether this workstation is in degraded mode, in which case it
-        # may require user action to restore full functionality. Details can be found in
-        # conditions.
+        # may require user action to restore full functionality. The conditions field
+        # contains detailed information about the status of the workstation.
         # Corresponds to the JSON property `degraded`
         # @return [Boolean]
         attr_accessor :degraded
@@ -1956,8 +1957,8 @@ module Google
         attr_accessor :create_time
       
         # Output only. Whether this workstation cluster is in degraded mode, in which
-        # case it may require user action to restore full functionality. Details can be
-        # found in conditions.
+        # case it may require user action to restore full functionality. The conditions
+        # field contains detailed information about the status of the cluster.
         # Corresponds to the JSON property `degraded`
         # @return [Boolean]
         attr_accessor :degraded
@@ -2034,8 +2035,9 @@ module Google
         # @return [String]
         attr_accessor :subnetwork
       
-        # Optional. Tag keys/values directly bound to this resource. For example: "123/
-        # environment": "production", "123/costCenter": "marketing"
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: "123/environment": "production", "123/costCenter": "
+        # marketing"
         # Corresponds to the JSON property `tags`
         # @return [Hash<String,String>]
         attr_accessor :tags
@@ -2102,7 +2104,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
-        # Output only. Status conditions describing the current resource state.
+        # Output only. Status conditions describing the workstation configuration's
+        # current state.
         # Corresponds to the JSON property `conditions`
         # @return [Array<Google::Apis::WorkstationsV1beta::Status>]
         attr_accessor :conditions
@@ -2117,8 +2120,10 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Output only. Whether this resource is degraded, in which case it may require
-        # user action to restore full functionality. See also the conditions field.
+        # Output only. Whether this workstation configuration is in degraded mode, in
+        # which case it may require user action to restore full functionality. The
+        # conditions field contains detailed information about the status of the
+        # configuration.
         # Corresponds to the JSON property `degraded`
         # @return [Boolean]
         attr_accessor :degraded
