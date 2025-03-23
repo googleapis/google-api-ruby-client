@@ -676,6 +676,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1EntryLinkEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1EntrySource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2494,6 +2500,15 @@ module Google
           property :transfer_status, as: 'transferStatus'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDataplexV1EntryLinkEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_type, as: 'eventType'
+          property :message, as: 'message'
+          property :resource, as: 'resource'
         end
       end
       
