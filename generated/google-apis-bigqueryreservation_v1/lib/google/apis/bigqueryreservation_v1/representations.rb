@@ -226,6 +226,7 @@ module Google
       class MergeCapacityCommitmentsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :capacity_commitment_id, as: 'capacityCommitmentId'
           collection :capacity_commitment_ids, as: 'capacityCommitmentIds'
         end
       end
