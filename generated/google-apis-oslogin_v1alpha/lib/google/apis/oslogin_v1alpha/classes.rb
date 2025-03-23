@@ -363,7 +363,8 @@ module Google
         # @return [String]
         attr_accessor :fingerprint
       
-        # Public key text in SSH format, defined by RFC4253 section 6.6.
+        # Required. Public key text in SSH format, defined by [RFC4253](https://www.ietf.
+        # org/rfc/rfc4253.txt) section 6.6.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
