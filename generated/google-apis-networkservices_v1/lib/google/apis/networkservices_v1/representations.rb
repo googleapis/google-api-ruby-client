@@ -1184,6 +1184,7 @@ module Google
           collection :endpoint_policies, as: 'endpointPolicies', class: Google::Apis::NetworkservicesV1::EndpointPolicy, decorator: Google::Apis::NetworkservicesV1::EndpointPolicy::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1213,6 +1214,7 @@ module Google
           collection :grpc_routes, as: 'grpcRoutes', class: Google::Apis::NetworkservicesV1::GrpcRoute, decorator: Google::Apis::NetworkservicesV1::GrpcRoute::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1222,6 +1224,7 @@ module Google
           collection :http_routes, as: 'httpRoutes', class: Google::Apis::NetworkservicesV1::HttpRoute, decorator: Google::Apis::NetworkservicesV1::HttpRoute::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1309,6 +1312,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :tcp_routes, as: 'tcpRoutes', class: Google::Apis::NetworkservicesV1::TcpRoute, decorator: Google::Apis::NetworkservicesV1::TcpRoute::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1318,6 +1322,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :tls_routes, as: 'tlsRoutes', class: Google::Apis::NetworkservicesV1::TlsRoute, decorator: Google::Apis::NetworkservicesV1::TlsRoute::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1325,6 +1330,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
           collection :wasm_plugin_versions, as: 'wasmPluginVersions', class: Google::Apis::NetworkservicesV1::WasmPluginVersion, decorator: Google::Apis::NetworkservicesV1::WasmPluginVersion::Representation
       
         end
@@ -1334,6 +1340,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
           collection :wasm_plugins, as: 'wasmPlugins', class: Google::Apis::NetworkservicesV1::WasmPlugin, decorator: Google::Apis::NetworkservicesV1::WasmPlugin::Representation
       
         end
