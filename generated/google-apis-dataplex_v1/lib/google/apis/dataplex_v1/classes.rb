@@ -2338,8 +2338,8 @@ module Google
       class GoogleCloudDataplexV1DataQualityDimension
         include Google::Apis::Core::Hashable
       
-        # The dimension name a rule belongs to. Supported dimensions are "COMPLETENESS",
-        # "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "FRESHNESS", "VOLUME"
+        # Optional. The dimension name a rule belongs to. Custom dimension name is
+        # supported with all uppercase letters and maximum length of 30 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2365,7 +2365,7 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityDimension]
         attr_accessor :dimension
       
-        # Whether the dimension passed or failed.
+        # Output only. Whether the dimension passed or failed.
         # Corresponds to the JSON property `passed`
         # @return [Boolean]
         attr_accessor :passed
@@ -2401,14 +2401,14 @@ module Google
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityColumnResult>]
         attr_accessor :columns
       
-        # A list of results at the dimension level.A dimension will have a corresponding
-        # DataQualityDimensionResult if and only if there is at least one rule with the '
-        # dimension' field set to it.
+        # Output only. A list of results at the dimension level.A dimension will have a
+        # corresponding DataQualityDimensionResult if and only if there is at least one
+        # rule with the 'dimension' field set to it.
         # Corresponds to the JSON property `dimensions`
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityDimensionResult>]
         attr_accessor :dimensions
       
-        # Overall data quality result -- true if all rules passed.
+        # Output only. Overall data quality result -- true if all rules passed.
         # Corresponds to the JSON property `passed`
         # @return [Boolean]
         attr_accessor :passed
@@ -2419,12 +2419,12 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityResultPostScanActionsResult]
         attr_accessor :post_scan_actions_result
       
-        # The count of rows processed.
+        # Output only. The count of rows processed.
         # Corresponds to the JSON property `rowCount`
         # @return [Fixnum]
         attr_accessor :row_count
       
-        # A list of all the rules in a job, and their results.
+        # Output only. A list of all the rules in a job, and their results.
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleResult>]
         attr_accessor :rules
@@ -2724,39 +2724,41 @@ module Google
         # @return [Fixnum]
         attr_accessor :assertion_row_count
       
-        # The number of rows a rule was evaluated against.This field is only valid for
-        # row-level type rules.Evaluated count can be configured to either include all
-        # rows (default) - with null rows automatically failing rule evaluation, or
-        # exclude null rows from the evaluated_count, by setting ignore_nulls = true.
-        # This field is not set for rule SqlAssertion.
+        # Output only. The number of rows a rule was evaluated against.This field is
+        # only valid for row-level type rules.Evaluated count can be configured to
+        # either include all rows (default) - with null rows automatically failing rule
+        # evaluation, or exclude null rows from the evaluated_count, by setting
+        # ignore_nulls = true.This field is not set for rule SqlAssertion.
         # Corresponds to the JSON property `evaluatedCount`
         # @return [Fixnum]
         attr_accessor :evaluated_count
       
-        # The query to find rows that did not pass this rule.This field is only valid
-        # for row-level type rules.
+        # Output only. The query to find rows that did not pass this rule.This field is
+        # only valid for row-level type rules.
         # Corresponds to the JSON property `failingRowsQuery`
         # @return [String]
         attr_accessor :failing_rows_query
       
-        # The number of rows with null values in the specified column.
+        # Output only. The number of rows with null values in the specified column.
         # Corresponds to the JSON property `nullCount`
         # @return [Fixnum]
         attr_accessor :null_count
       
-        # The ratio of passed_count / evaluated_count.This field is only valid for row-
-        # level type rules.
+        # Output only. The ratio of passed_count / evaluated_count.This field is only
+        # valid for row-level type rules.
         # Corresponds to the JSON property `passRatio`
         # @return [Float]
         attr_accessor :pass_ratio
       
-        # Whether the rule passed or failed.
+        # Output only. Whether the rule passed or failed.
         # Corresponds to the JSON property `passed`
         # @return [Boolean]
         attr_accessor :passed
         alias_method :passed?, :passed
       
-        # This field is not set for rule SqlAssertion.
+        # Output only. The number of rows which passed a rule evaluation.This field is
+        # only valid for row-level type rules.This field is not set for rule
+        # SqlAssertion.
         # Corresponds to the JSON property `passedCount`
         # @return [Fixnum]
         attr_accessor :passed_count
@@ -4489,6 +4491,37 @@ module Google
           @transfer_status = args[:transfer_status] if args.key?(:transfer_status)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Payload associated with Entry related log events.
+      class GoogleCloudDataplexV1EntryLinkEvent
+        include Google::Apis::Core::Hashable
+      
+        # The type of the event.
+        # Corresponds to the JSON property `eventType`
+        # @return [String]
+        attr_accessor :event_type
+      
+        # The log message.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Name of the resource.
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_type = args[:event_type] if args.key?(:event_type)
+          @message = args[:message] if args.key?(:message)
+          @resource = args[:resource] if args.key?(:resource)
         end
       end
       
