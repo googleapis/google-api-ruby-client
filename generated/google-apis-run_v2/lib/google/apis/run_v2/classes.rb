@@ -1953,6 +1953,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :generation
       
+        # Optional. Output only. True if GPU zonal redundancy is disabled on this
+        # revision.
+        # Corresponds to the JSON property `gpuZonalRedundancyDisabled`
+        # @return [Boolean]
+        attr_accessor :gpu_zonal_redundancy_disabled
+        alias_method :gpu_zonal_redundancy_disabled?, :gpu_zonal_redundancy_disabled
+      
         # Output only. Unstructured key value map that can be used to organize and
         # categorize objects. User-provided labels are shared with Google's billing
         # system, so they can be used to filter, or break down billing charges by team,
@@ -2095,6 +2102,7 @@ module Google
           @execution_environment = args[:execution_environment] if args.key?(:execution_environment)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @generation = args[:generation] if args.key?(:generation)
+          @gpu_zonal_redundancy_disabled = args[:gpu_zonal_redundancy_disabled] if args.key?(:gpu_zonal_redundancy_disabled)
           @labels = args[:labels] if args.key?(:labels)
           @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @log_uri = args[:log_uri] if args.key?(:log_uri)
@@ -2210,6 +2218,12 @@ module Google
         # @return [String]
         attr_accessor :execution_environment
       
+        # Optional. True if GPU zonal redundancy is disabled on this revision.
+        # Corresponds to the JSON property `gpuZonalRedundancyDisabled`
+        # @return [Boolean]
+        attr_accessor :gpu_zonal_redundancy_disabled
+        alias_method :gpu_zonal_redundancy_disabled?, :gpu_zonal_redundancy_disabled
+      
         # Optional. Disables health checking containers during deployment.
         # Corresponds to the JSON property `healthCheckDisabled`
         # @return [Boolean]
@@ -2300,6 +2314,7 @@ module Google
           @encryption_key_revocation_action = args[:encryption_key_revocation_action] if args.key?(:encryption_key_revocation_action)
           @encryption_key_shutdown_duration = args[:encryption_key_shutdown_duration] if args.key?(:encryption_key_shutdown_duration)
           @execution_environment = args[:execution_environment] if args.key?(:execution_environment)
+          @gpu_zonal_redundancy_disabled = args[:gpu_zonal_redundancy_disabled] if args.key?(:gpu_zonal_redundancy_disabled)
           @health_check_disabled = args[:health_check_disabled] if args.key?(:health_check_disabled)
           @labels = args[:labels] if args.key?(:labels)
           @max_instance_request_concurrency = args[:max_instance_request_concurrency] if args.key?(:max_instance_request_concurrency)
@@ -6536,7 +6551,7 @@ module Google
         end
       end
       
-      # This is proto2's version of MessageSet.
+      # 
       class Proto2BridgeMessageSet
         include Google::Apis::Core::Hashable
       
@@ -6573,7 +6588,9 @@ module Google
         # @return [String]
         attr_accessor :message
       
-        # This is proto2's version of MessageSet.
+        # message_set associates an arbitrary proto message with the status. copybara:
+        # strip_begin(b/383363683) copybara:strip_end_and_replace optional proto2.bridge.
+        # MessageSet message_set = 5;
         # Corresponds to the JSON property `messageSet`
         # @return [Google::Apis::RunV2::Proto2BridgeMessageSet]
         attr_accessor :message_set
