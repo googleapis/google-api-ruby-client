@@ -22,19 +22,314 @@ module Google
   module Apis
     module CivicinfoV2
       
+      # 
+      class CivicinfoApiprotosV2DivisionByAddressResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `divisions`
+        # @return [Hash<String,Google::Apis::CivicinfoV2::CivicinfoSchemaV2GeographicDivision>]
+        attr_accessor :divisions
+      
+        # A simple representation of an address.
+        # Corresponds to the JSON property `normalizedInput`
+        # @return [Google::Apis::CivicinfoV2::CivicinfoSchemaV2SimpleAddressType]
+        attr_accessor :normalized_input
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @divisions = args[:divisions] if args.key?(:divisions)
+          @normalized_input = args[:normalized_input] if args.key?(:normalized_input)
+        end
+      end
+      
+      # The result of a division search query.
+      class CivicinfoApiprotosV2DivisionSearchResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "civicinfo#
+        # divisionSearchResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # 
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::CivicinfoV2::CivicinfoApiprotosV2DivisionSearchResult>]
+        attr_accessor :results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @results = args[:results] if args.key?(:results)
+        end
+      end
+      
+      # Represents a political geographic division that matches the requested query.
+      class CivicinfoApiprotosV2DivisionSearchResult
+        include Google::Apis::Core::Hashable
+      
+        # Other Open Civic Data identifiers that refer to the same division -- for
+        # example, those that refer to other political divisions whose boundaries are
+        # defined to be coterminous with this one. For example, ocd-division/country:us/
+        # state:wy will include an alias of ocd-division/country:us/state:wy/cd:1, since
+        # Wyoming has only one Congressional district.
+        # Corresponds to the JSON property `aliases`
+        # @return [Array<String>]
+        attr_accessor :aliases
+      
+        # The name of the division.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The unique Open Civic Data identifier for this division
+        # Corresponds to the JSON property `ocdId`
+        # @return [String]
+        attr_accessor :ocd_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aliases = args[:aliases] if args.key?(:aliases)
+          @name = args[:name] if args.key?(:name)
+          @ocd_id = args[:ocd_id] if args.key?(:ocd_id)
+        end
+      end
+      
+      # The list of elections available for this version of the API.
+      class CivicinfoApiprotosV2ElectionsQueryResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of available elections
+        # Corresponds to the JSON property `elections`
+        # @return [Array<Google::Apis::CivicinfoV2::CivicinfoSchemaV2Election>]
+        attr_accessor :elections
+      
+        # Identifies what kind of resource this is. Value: the fixed string "civicinfo#
+        # electionsQueryResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @elections = args[:elections] if args.key?(:elections)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class CivicinfoApiprotosV2RepresentativeInfoData
+        include Google::Apis::Core::Hashable
+      
+        # A map of political geographic divisions that contain the requested address,
+        # keyed by the unique Open Civic Data identifier for this division.
+        # Corresponds to the JSON property `divisions`
+        # @return [Hash<String,Google::Apis::CivicinfoV2::CivicinfoSchemaV2GeographicDivision>]
+        attr_accessor :divisions
+      
+        # Elected offices referenced by the divisions listed above. Will only be present
+        # if includeOffices was true in the request.
+        # Corresponds to the JSON property `offices`
+        # @return [Array<Google::Apis::CivicinfoV2::CivicinfoSchemaV2Office>]
+        attr_accessor :offices
+      
+        # Officials holding the offices listed above. Will only be present if
+        # includeOffices was true in the request.
+        # Corresponds to the JSON property `officials`
+        # @return [Array<Google::Apis::CivicinfoV2::CivicinfoSchemaV2Official>]
+        attr_accessor :officials
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @divisions = args[:divisions] if args.key?(:divisions)
+          @offices = args[:offices] if args.key?(:offices)
+          @officials = args[:officials] if args.key?(:officials)
+        end
+      end
+      
+      # The result of a representative info lookup query.
+      class CivicinfoApiprotosV2RepresentativeInfoResponse
+        include Google::Apis::Core::Hashable
+      
+        # A map of political geographic divisions that contain the requested address,
+        # keyed by the unique Open Civic Data identifier for this division.
+        # Corresponds to the JSON property `divisions`
+        # @return [Hash<String,Google::Apis::CivicinfoV2::CivicinfoSchemaV2GeographicDivision>]
+        attr_accessor :divisions
+      
+        # Identifies what kind of resource this is. Value: the fixed string "civicinfo#
+        # representativeInfoResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # A simple representation of an address.
+        # Corresponds to the JSON property `normalizedInput`
+        # @return [Google::Apis::CivicinfoV2::CivicinfoSchemaV2SimpleAddressType]
+        attr_accessor :normalized_input
+      
+        # Elected offices referenced by the divisions listed above. Will only be present
+        # if includeOffices was true in the request.
+        # Corresponds to the JSON property `offices`
+        # @return [Array<Google::Apis::CivicinfoV2::CivicinfoSchemaV2Office>]
+        attr_accessor :offices
+      
+        # Officials holding the offices listed above. Will only be present if
+        # includeOffices was true in the request.
+        # Corresponds to the JSON property `officials`
+        # @return [Array<Google::Apis::CivicinfoV2::CivicinfoSchemaV2Official>]
+        attr_accessor :officials
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @divisions = args[:divisions] if args.key?(:divisions)
+          @kind = args[:kind] if args.key?(:kind)
+          @normalized_input = args[:normalized_input] if args.key?(:normalized_input)
+          @offices = args[:offices] if args.key?(:offices)
+          @officials = args[:officials] if args.key?(:officials)
+        end
+      end
+      
+      # The result of a voter info lookup query.
+      class CivicinfoApiprotosV2VoterInfoResponse
+        include Google::Apis::Core::Hashable
+      
+        # Contests that will appear on the voter's ballot.
+        # Corresponds to the JSON property `contests`
+        # @return [Array<Google::Apis::CivicinfoV2::CivicinfoSchemaV2Contest>]
+        attr_accessor :contests
+      
+        # Locations where a voter is eligible to drop off a completed ballot. The voter
+        # must have received and completed a ballot prior to arriving at the location.
+        # The location may not have ballots available on the premises. These locations
+        # could be open on or before election day as indicated in the pollingHours field.
+        # Corresponds to the JSON property `dropOffLocations`
+        # @return [Array<Google::Apis::CivicinfoV2::CivicinfoSchemaV2PollingLocation>]
+        attr_accessor :drop_off_locations
+      
+        # Locations where the voter is eligible to vote early, prior to election day.
+        # Corresponds to the JSON property `earlyVoteSites`
+        # @return [Array<Google::Apis::CivicinfoV2::CivicinfoSchemaV2PollingLocation>]
+        attr_accessor :early_vote_sites
+      
+        # Information about the election that was queried.
+        # Corresponds to the JSON property `election`
+        # @return [Google::Apis::CivicinfoV2::CivicinfoSchemaV2Election]
+        attr_accessor :election
+      
+        # Identifies what kind of resource this is. Value: the fixed string "civicinfo#
+        # voterInfoResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Specifies whether voters in the precinct vote only by mailing their ballots (
+        # with the possible option of dropping off their ballots as well).
+        # Corresponds to the JSON property `mailOnly`
+        # @return [Boolean]
+        attr_accessor :mail_only
+        alias_method :mail_only?, :mail_only
+      
+        # A simple representation of an address.
+        # Corresponds to the JSON property `normalizedInput`
+        # @return [Google::Apis::CivicinfoV2::CivicinfoSchemaV2SimpleAddressType]
+        attr_accessor :normalized_input
+      
+        # When there are multiple elections for a voter address, the otherElections
+        # field is populated in the API response and there are two possibilities: 1. If
+        # the earliest election is not the intended election, specify the election ID of
+        # the desired election in a second API request using the electionId field. 2. If
+        # these elections occur on the same day, the API doesn?t return any polling
+        # location, contest, or election official information to ensure that an
+        # additional query is made. For user-facing applications, we recommend
+        # displaying these elections to the user to disambiguate. A second API request
+        # using the electionId field should be made for the election that is relevant to
+        # the user.
+        # Corresponds to the JSON property `otherElections`
+        # @return [Array<Google::Apis::CivicinfoV2::CivicinfoSchemaV2Election>]
+        attr_accessor :other_elections
+      
+        # Locations where the voter is eligible to vote on election day.
+        # Corresponds to the JSON property `pollingLocations`
+        # @return [Array<Google::Apis::CivicinfoV2::CivicinfoSchemaV2PollingLocation>]
+        attr_accessor :polling_locations
+      
+        # 
+        # Corresponds to the JSON property `precinctId`
+        # @return [String]
+        attr_accessor :precinct_id
+      
+        # The precincts that match this voter's address. Will only be returned for
+        # project IDs which have been allowlisted as "partner projects".
+        # Corresponds to the JSON property `precincts`
+        # @return [Array<Google::Apis::CivicinfoV2::CivicinfoSchemaV2Precinct>]
+        attr_accessor :precincts
+      
+        # Local Election Information for the state that the voter votes in. For the US,
+        # there will only be one element in this array.
+        # Corresponds to the JSON property `state`
+        # @return [Array<Google::Apis::CivicinfoV2::CivicinfoSchemaV2AdministrationRegion>]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contests = args[:contests] if args.key?(:contests)
+          @drop_off_locations = args[:drop_off_locations] if args.key?(:drop_off_locations)
+          @early_vote_sites = args[:early_vote_sites] if args.key?(:early_vote_sites)
+          @election = args[:election] if args.key?(:election)
+          @kind = args[:kind] if args.key?(:kind)
+          @mail_only = args[:mail_only] if args.key?(:mail_only)
+          @normalized_input = args[:normalized_input] if args.key?(:normalized_input)
+          @other_elections = args[:other_elections] if args.key?(:other_elections)
+          @polling_locations = args[:polling_locations] if args.key?(:polling_locations)
+          @precinct_id = args[:precinct_id] if args.key?(:precinct_id)
+          @precincts = args[:precincts] if args.key?(:precincts)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Describes information about a regional election administrative area.
-      class AdministrationRegion
+      class CivicinfoSchemaV2AdministrationRegion
         include Google::Apis::Core::Hashable
       
         # Information about an election administrative body (e.g. County Board of
         # Elections).
         # Corresponds to the JSON property `electionAdministrationBody`
-        # @return [Google::Apis::CivicinfoV2::AdministrativeBody]
+        # @return [Google::Apis::CivicinfoV2::CivicinfoSchemaV2AdministrativeBody]
         attr_accessor :election_administration_body
       
         # Describes information about a regional election administrative area.
         # Corresponds to the JSON property `local_jurisdiction`
-        # @return [Google::Apis::CivicinfoV2::AdministrationRegion]
+        # @return [Google::Apis::CivicinfoV2::CivicinfoSchemaV2AdministrationRegion]
         attr_accessor :local_jurisdiction
       
         # The name of the jurisdiction.
@@ -45,7 +340,7 @@ module Google
         # A list of sources for this area. If multiple sources are listed the data has
         # been aggregated from those sources.
         # Corresponds to the JSON property `sources`
-        # @return [Array<Google::Apis::CivicinfoV2::Source>]
+        # @return [Array<Google::Apis::CivicinfoV2::CivicinfoSchemaV2Source>]
         attr_accessor :sources
       
         def initialize(**args)
@@ -63,7 +358,7 @@ module Google
       
       # Information about an election administrative body (e.g. County Board of
       # Elections).
-      class AdministrativeBody
+      class CivicinfoSchemaV2AdministrativeBody
         include Google::Apis::Core::Hashable
       
         # A URL provided by this administrative body for information on absentee voting.
@@ -79,7 +374,7 @@ module Google
       
         # A simple representation of an address.
         # Corresponds to the JSON property `correspondenceAddress`
-        # @return [Google::Apis::CivicinfoV2::SimpleAddressType]
+        # @return [Google::Apis::CivicinfoV2::CivicinfoSchemaV2SimpleAddressType]
         attr_accessor :correspondence_address
       
         # A URL provided by this administrative body for looking up general election
@@ -102,7 +397,7 @@ module Google
       
         # The election officials for this election administrative body.
         # Corresponds to the JSON property `electionOfficials`
-        # @return [Array<Google::Apis::CivicinfoV2::ElectionOfficial>]
+        # @return [Array<Google::Apis::CivicinfoV2::CivicinfoSchemaV2ElectionOfficial>]
         attr_accessor :election_officials
       
         # A URL provided by this administrative body for confirming that the voter is
@@ -135,7 +430,7 @@ module Google
       
         # A simple representation of an address.
         # Corresponds to the JSON property `physicalAddress`
-        # @return [Google::Apis::CivicinfoV2::SimpleAddressType]
+        # @return [Google::Apis::CivicinfoV2::CivicinfoSchemaV2SimpleAddressType]
         attr_accessor :physical_address
       
         # A description of the services this administrative body may provide.
@@ -173,7 +468,7 @@ module Google
       end
       
       # Information about a candidate running for elected office.
-      class Candidate
+      class CivicinfoSchemaV2Candidate
         include Google::Apis::Core::Hashable
       
         # The URL for the candidate's campaign web site.
@@ -183,7 +478,7 @@ module Google
       
         # A list of known (social) media channels for this candidate.
         # Corresponds to the JSON property `channels`
-        # @return [Array<Google::Apis::CivicinfoV2::Channel>]
+        # @return [Array<Google::Apis::CivicinfoV2::CivicinfoSchemaV2Channel>]
         attr_accessor :channels
       
         # The email address for the candidate's campaign.
@@ -236,7 +531,7 @@ module Google
       end
       
       # A social media or web channel for a candidate.
-      class Channel
+      class CivicinfoSchemaV2Channel
         include Google::Apis::Core::Hashable
       
         # The unique public identifier for the candidate's channel.
@@ -263,7 +558,7 @@ module Google
       end
       
       # Information about a contest that appears on a voter's ballot.
-      class Contest
+      class CivicinfoSchemaV2Contest
         include Google::Apis::Core::Hashable
       
         # A number specifying the position of this contest on the voter's ballot.
@@ -278,12 +573,12 @@ module Google
       
         # The candidate choices for this contest.
         # Corresponds to the JSON property `candidates`
-        # @return [Array<Google::Apis::CivicinfoV2::Candidate>]
+        # @return [Array<Google::Apis::CivicinfoV2::CivicinfoSchemaV2Candidate>]
         attr_accessor :candidates
       
         # Describes the geographic scope of a contest.
         # Corresponds to the JSON property `district`
-        # @return [Google::Apis::CivicinfoV2::ElectoralDistrict]
+        # @return [Google::Apis::CivicinfoV2::CivicinfoSchemaV2ElectoralDistrict]
         attr_accessor :district
       
         # A description of any additional eligibility requirements for voting in this
@@ -392,7 +687,7 @@ module Google
         # A list of sources for this contest. If multiple sources are listed, the data
         # has been aggregated from those sources.
         # Corresponds to the JSON property `sources`
-        # @return [Array<Google::Apis::CivicinfoV2::Source>]
+        # @return [Array<Google::Apis::CivicinfoV2::CivicinfoSchemaV2Source>]
         attr_accessor :sources
       
         # "Yes" or "No" depending on whether this a contest being held outside the
@@ -441,94 +736,8 @@ module Google
         end
       end
       
-      # 
-      class DivisionByAddressResponse
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `divisions`
-        # @return [Hash<String,Google::Apis::CivicinfoV2::GeographicDivision>]
-        attr_accessor :divisions
-      
-        # A simple representation of an address.
-        # Corresponds to the JSON property `normalizedInput`
-        # @return [Google::Apis::CivicinfoV2::SimpleAddressType]
-        attr_accessor :normalized_input
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @divisions = args[:divisions] if args.key?(:divisions)
-          @normalized_input = args[:normalized_input] if args.key?(:normalized_input)
-        end
-      end
-      
-      # The result of a division search query.
-      class SearchDivisionResponse
-        include Google::Apis::Core::Hashable
-      
-        # Identifies what kind of resource this is. Value: the fixed string "civicinfo#
-        # divisionSearchResponse".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # 
-        # Corresponds to the JSON property `results`
-        # @return [Array<Google::Apis::CivicinfoV2::DivisionSearchResult>]
-        attr_accessor :results
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @kind = args[:kind] if args.key?(:kind)
-          @results = args[:results] if args.key?(:results)
-        end
-      end
-      
-      # Represents a political geographic division that matches the requested query.
-      class DivisionSearchResult
-        include Google::Apis::Core::Hashable
-      
-        # Other Open Civic Data identifiers that refer to the same division -- for
-        # example, those that refer to other political divisions whose boundaries are
-        # defined to be coterminous with this one. For example, ocd-division/country:us/
-        # state:wy will include an alias of ocd-division/country:us/state:wy/cd:1, since
-        # Wyoming has only one Congressional district.
-        # Corresponds to the JSON property `aliases`
-        # @return [Array<String>]
-        attr_accessor :aliases
-      
-        # The name of the division.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The unique Open Civic Data identifier for this division
-        # Corresponds to the JSON property `ocdId`
-        # @return [String]
-        attr_accessor :ocd_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @aliases = args[:aliases] if args.key?(:aliases)
-          @name = args[:name] if args.key?(:name)
-          @ocd_id = args[:ocd_id] if args.key?(:ocd_id)
-        end
-      end
-      
       # Information about the election that was queried.
-      class Election
+      class CivicinfoSchemaV2Election
         include Google::Apis::Core::Hashable
       
         # Day of the election in YYYY-MM-DD format.
@@ -574,7 +783,7 @@ module Google
       end
       
       # Information about individual election officials.
-      class ElectionOfficial
+      class CivicinfoSchemaV2ElectionOfficial
         include Google::Apis::Core::Hashable
       
         # The email address of the election official.
@@ -616,34 +825,8 @@ module Google
         end
       end
       
-      # The list of elections available for this version of the API.
-      class QueryElectionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A list of available elections
-        # Corresponds to the JSON property `elections`
-        # @return [Array<Google::Apis::CivicinfoV2::Election>]
-        attr_accessor :elections
-      
-        # Identifies what kind of resource this is. Value: the fixed string "civicinfo#
-        # electionsQueryResponse".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @elections = args[:elections] if args.key?(:elections)
-          @kind = args[:kind] if args.key?(:kind)
-        end
-      end
-      
       # Describes the geographic scope of a contest.
-      class ElectoralDistrict
+      class CivicinfoSchemaV2ElectoralDistrict
         include Google::Apis::Core::Hashable
       
         # An identifier for this district, relative to its scope. For example, the 34th
@@ -678,7 +861,7 @@ module Google
       end
       
       # Describes a political geography.
-      class GeographicDivision
+      class CivicinfoSchemaV2GeographicDivision
         include Google::Apis::Core::Hashable
       
         # Any other valid OCD IDs that refer to the same division.\n\nBecause OCD IDs
@@ -718,7 +901,7 @@ module Google
       end
       
       # Information about an Office held by one or more Officials.
-      class Office
+      class CivicinfoSchemaV2Office
         include Google::Apis::Core::Hashable
       
         # The OCD ID of the division with which this office is associated.
@@ -757,7 +940,7 @@ module Google
         # A list of sources for this office. If multiple sources are listed, the data
         # has been aggregated from those sources.
         # Corresponds to the JSON property `sources`
-        # @return [Array<Google::Apis::CivicinfoV2::Source>]
+        # @return [Array<Google::Apis::CivicinfoV2::CivicinfoSchemaV2Source>]
         attr_accessor :sources
       
         def initialize(**args)
@@ -776,17 +959,17 @@ module Google
       end
       
       # Information about a person holding an elected office.
-      class Official
+      class CivicinfoSchemaV2Official
         include Google::Apis::Core::Hashable
       
         # Addresses at which to contact the official.
         # Corresponds to the JSON property `address`
-        # @return [Array<Google::Apis::CivicinfoV2::SimpleAddressType>]
+        # @return [Array<Google::Apis::CivicinfoV2::CivicinfoSchemaV2SimpleAddressType>]
         attr_accessor :address
       
         # A list of known (social) media channels for this official.
         # Corresponds to the JSON property `channels`
-        # @return [Array<Google::Apis::CivicinfoV2::Channel>]
+        # @return [Array<Google::Apis::CivicinfoV2::CivicinfoSchemaV2Channel>]
         attr_accessor :channels
       
         # The direct email addresses for the official.
@@ -838,12 +1021,12 @@ module Google
       
       # A location where a voter can vote. This may be an early vote site, an election
       # day voting location, or a drop off location for a completed ballot.
-      class PollingLocation
+      class CivicinfoSchemaV2PollingLocation
         include Google::Apis::Core::Hashable
       
         # A simple representation of an address.
         # Corresponds to the JSON property `address`
-        # @return [Google::Apis::CivicinfoV2::SimpleAddressType]
+        # @return [Google::Apis::CivicinfoV2::CivicinfoSchemaV2SimpleAddressType]
         attr_accessor :address
       
         # The last date that this early vote site or drop off location may be used. This
@@ -883,7 +1066,7 @@ module Google
         # A list of sources for this location. If multiple sources are listed the data
         # has been aggregated from those sources.
         # Corresponds to the JSON property `sources`
-        # @return [Array<Google::Apis::CivicinfoV2::Source>]
+        # @return [Array<Google::Apis::CivicinfoV2::CivicinfoSchemaV2Source>]
         attr_accessor :sources
       
         # The first date that this early vote site or drop off location may be used.
@@ -918,7 +1101,7 @@ module Google
       end
       
       # 
-      class Precinct
+      class CivicinfoSchemaV2Precinct
         include Google::Apis::Core::Hashable
       
         # ID of the AdministrationRegion message for this precinct. Corresponds to
@@ -1019,89 +1202,8 @@ module Google
         end
       end
       
-      # 
-      class RepresentativeInfoData
-        include Google::Apis::Core::Hashable
-      
-        # A map of political geographic divisions that contain the requested address,
-        # keyed by the unique Open Civic Data identifier for this division.
-        # Corresponds to the JSON property `divisions`
-        # @return [Hash<String,Google::Apis::CivicinfoV2::GeographicDivision>]
-        attr_accessor :divisions
-      
-        # Elected offices referenced by the divisions listed above. Will only be present
-        # if includeOffices was true in the request.
-        # Corresponds to the JSON property `offices`
-        # @return [Array<Google::Apis::CivicinfoV2::Office>]
-        attr_accessor :offices
-      
-        # Officials holding the offices listed above. Will only be present if
-        # includeOffices was true in the request.
-        # Corresponds to the JSON property `officials`
-        # @return [Array<Google::Apis::CivicinfoV2::Official>]
-        attr_accessor :officials
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @divisions = args[:divisions] if args.key?(:divisions)
-          @offices = args[:offices] if args.key?(:offices)
-          @officials = args[:officials] if args.key?(:officials)
-        end
-      end
-      
-      # The result of a representative info lookup query.
-      class RepresentativeInfoResponse
-        include Google::Apis::Core::Hashable
-      
-        # A map of political geographic divisions that contain the requested address,
-        # keyed by the unique Open Civic Data identifier for this division.
-        # Corresponds to the JSON property `divisions`
-        # @return [Hash<String,Google::Apis::CivicinfoV2::GeographicDivision>]
-        attr_accessor :divisions
-      
-        # Identifies what kind of resource this is. Value: the fixed string "civicinfo#
-        # representativeInfoResponse".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # A simple representation of an address.
-        # Corresponds to the JSON property `normalizedInput`
-        # @return [Google::Apis::CivicinfoV2::SimpleAddressType]
-        attr_accessor :normalized_input
-      
-        # Elected offices referenced by the divisions listed above. Will only be present
-        # if includeOffices was true in the request.
-        # Corresponds to the JSON property `offices`
-        # @return [Array<Google::Apis::CivicinfoV2::Office>]
-        attr_accessor :offices
-      
-        # Officials holding the offices listed above. Will only be present if
-        # includeOffices was true in the request.
-        # Corresponds to the JSON property `officials`
-        # @return [Array<Google::Apis::CivicinfoV2::Official>]
-        attr_accessor :officials
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @divisions = args[:divisions] if args.key?(:divisions)
-          @kind = args[:kind] if args.key?(:kind)
-          @normalized_input = args[:normalized_input] if args.key?(:normalized_input)
-          @offices = args[:offices] if args.key?(:offices)
-          @officials = args[:officials] if args.key?(:officials)
-        end
-      end
-      
       # A simple representation of an address.
-      class SimpleAddressType
+      class CivicinfoSchemaV2SimpleAddressType
         include Google::Apis::Core::Hashable
       
         # The city or town for the address.
@@ -1156,7 +1258,7 @@ module Google
       end
       
       # Contains information about the data source for the element containing it.
-      class Source
+      class CivicinfoSchemaV2Source
         include Google::Apis::Core::Hashable
       
         # The name of the data source.
@@ -1178,108 +1280,6 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @official = args[:official] if args.key?(:official)
-        end
-      end
-      
-      # The result of a voter info lookup query.
-      class VoterInfoResponse
-        include Google::Apis::Core::Hashable
-      
-        # Contests that will appear on the voter's ballot.
-        # Corresponds to the JSON property `contests`
-        # @return [Array<Google::Apis::CivicinfoV2::Contest>]
-        attr_accessor :contests
-      
-        # Locations where a voter is eligible to drop off a completed ballot. The voter
-        # must have received and completed a ballot prior to arriving at the location.
-        # The location may not have ballots available on the premises. These locations
-        # could be open on or before election day as indicated in the pollingHours field.
-        # Corresponds to the JSON property `dropOffLocations`
-        # @return [Array<Google::Apis::CivicinfoV2::PollingLocation>]
-        attr_accessor :drop_off_locations
-      
-        # Locations where the voter is eligible to vote early, prior to election day.
-        # Corresponds to the JSON property `earlyVoteSites`
-        # @return [Array<Google::Apis::CivicinfoV2::PollingLocation>]
-        attr_accessor :early_vote_sites
-      
-        # Information about the election that was queried.
-        # Corresponds to the JSON property `election`
-        # @return [Google::Apis::CivicinfoV2::Election]
-        attr_accessor :election
-      
-        # Identifies what kind of resource this is. Value: the fixed string "civicinfo#
-        # voterInfoResponse".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # Specifies whether voters in the precinct vote only by mailing their ballots (
-        # with the possible option of dropping off their ballots as well).
-        # Corresponds to the JSON property `mailOnly`
-        # @return [Boolean]
-        attr_accessor :mail_only
-        alias_method :mail_only?, :mail_only
-      
-        # A simple representation of an address.
-        # Corresponds to the JSON property `normalizedInput`
-        # @return [Google::Apis::CivicinfoV2::SimpleAddressType]
-        attr_accessor :normalized_input
-      
-        # When there are multiple elections for a voter address, the otherElections
-        # field is populated in the API response and there are two possibilities: 1. If
-        # the earliest election is not the intended election, specify the election ID of
-        # the desired election in a second API request using the electionId field. 2. If
-        # these elections occur on the same day, the API doesn?t return any polling
-        # location, contest, or election official information to ensure that an
-        # additional query is made. For user-facing applications, we recommend
-        # displaying these elections to the user to disambiguate. A second API request
-        # using the electionId field should be made for the election that is relevant to
-        # the user.
-        # Corresponds to the JSON property `otherElections`
-        # @return [Array<Google::Apis::CivicinfoV2::Election>]
-        attr_accessor :other_elections
-      
-        # Locations where the voter is eligible to vote on election day.
-        # Corresponds to the JSON property `pollingLocations`
-        # @return [Array<Google::Apis::CivicinfoV2::PollingLocation>]
-        attr_accessor :polling_locations
-      
-        # 
-        # Corresponds to the JSON property `precinctId`
-        # @return [String]
-        attr_accessor :precinct_id
-      
-        # The precincts that match this voter's address. Will only be returned for
-        # project IDs which have been allowlisted as "partner projects".
-        # Corresponds to the JSON property `precincts`
-        # @return [Array<Google::Apis::CivicinfoV2::Precinct>]
-        attr_accessor :precincts
-      
-        # Local Election Information for the state that the voter votes in. For the US,
-        # there will only be one element in this array.
-        # Corresponds to the JSON property `state`
-        # @return [Array<Google::Apis::CivicinfoV2::AdministrationRegion>]
-        attr_accessor :state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @contests = args[:contests] if args.key?(:contests)
-          @drop_off_locations = args[:drop_off_locations] if args.key?(:drop_off_locations)
-          @early_vote_sites = args[:early_vote_sites] if args.key?(:early_vote_sites)
-          @election = args[:election] if args.key?(:election)
-          @kind = args[:kind] if args.key?(:kind)
-          @mail_only = args[:mail_only] if args.key?(:mail_only)
-          @normalized_input = args[:normalized_input] if args.key?(:normalized_input)
-          @other_elections = args[:other_elections] if args.key?(:other_elections)
-          @polling_locations = args[:polling_locations] if args.key?(:polling_locations)
-          @precinct_id = args[:precinct_id] if args.key?(:precinct_id)
-          @precincts = args[:precincts] if args.key?(:precincts)
-          @state = args[:state] if args.key?(:state)
         end
       end
     end
