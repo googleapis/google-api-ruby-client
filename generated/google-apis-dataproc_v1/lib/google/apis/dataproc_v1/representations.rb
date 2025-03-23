@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccessSessionSparkApplicationNativeBuildInfoResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessSessionSparkApplicationNativeSqlQueryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccessSessionSparkApplicationResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -77,6 +89,18 @@ module Google
       end
       
       class AccessSparkApplicationJobResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessSparkApplicationNativeBuildInfoResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessSparkApplicationNativeSqlQueryResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -149,6 +173,12 @@ module Google
       end
       
       class ApplicationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthenticationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -982,6 +1012,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SearchSessionSparkApplicationNativeSqlQueriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SearchSessionSparkApplicationSqlQueriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1025,6 +1061,12 @@ module Google
       end
       
       class SearchSparkApplicationJobsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchSparkApplicationNativeSqlQueriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1600,6 +1642,22 @@ module Google
         end
       end
       
+      class AccessSessionSparkApplicationNativeBuildInfoResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_data, as: 'executionData', class: Google::Apis::DataprocV1::NativeBuildInfoUiData, decorator: Google::Apis::DataprocV1::NativeBuildInfoUiData::Representation
+      
+        end
+      end
+      
+      class AccessSessionSparkApplicationNativeSqlQueryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_data, as: 'executionData', class: Google::Apis::DataprocV1::NativeSqlExecutionUiData, decorator: Google::Apis::DataprocV1::NativeSqlExecutionUiData::Representation
+      
+        end
+      end
+      
       class AccessSessionSparkApplicationResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1652,6 +1710,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :job_data, as: 'jobData', class: Google::Apis::DataprocV1::JobData, decorator: Google::Apis::DataprocV1::JobData::Representation
+      
+        end
+      end
+      
+      class AccessSparkApplicationNativeBuildInfoResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :build_info, as: 'buildInfo', class: Google::Apis::DataprocV1::NativeBuildInfoUiData, decorator: Google::Apis::DataprocV1::NativeBuildInfoUiData::Representation
+      
+        end
+      end
+      
+      class AccessSparkApplicationNativeSqlQueryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_data, as: 'executionData', class: Google::Apis::DataprocV1::NativeSqlExecutionUiData, decorator: Google::Apis::DataprocV1::NativeSqlExecutionUiData::Representation
       
         end
       end
@@ -1777,6 +1851,13 @@ module Google
           property :memory_per_executor_mb, as: 'memoryPerExecutorMb'
           property :name, as: 'name'
           property :quantile_data_status, as: 'quantileDataStatus'
+        end
+      end
+      
+      class AuthenticationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :user_workload_authentication_type, as: 'userWorkloadAuthenticationType'
         end
       end
       
@@ -2161,6 +2242,8 @@ module Google
       class ExecutionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication_config, as: 'authenticationConfig', class: Google::Apis::DataprocV1::AuthenticationConfig, decorator: Google::Apis::DataprocV1::AuthenticationConfig::Representation
+      
           property :idle_ttl, as: 'idleTtl'
           property :kms_key, as: 'kmsKey'
           collection :network_tags, as: 'networkTags'
@@ -3396,6 +3479,15 @@ module Google
         end
       end
       
+      class SearchSessionSparkApplicationNativeSqlQueriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :spark_application_native_sql_queries, as: 'sparkApplicationNativeSqlQueries', class: Google::Apis::DataprocV1::NativeSqlExecutionUiData, decorator: Google::Apis::DataprocV1::NativeSqlExecutionUiData::Representation
+      
+        end
+      end
+      
       class SearchSessionSparkApplicationSqlQueriesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3464,6 +3556,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :spark_application_jobs, as: 'sparkApplicationJobs', class: Google::Apis::DataprocV1::JobData, decorator: Google::Apis::DataprocV1::JobData::Representation
+      
+        end
+      end
+      
+      class SearchSparkApplicationNativeSqlQueriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :spark_application_native_sql_queries, as: 'sparkApplicationNativeSqlQueries', class: Google::Apis::DataprocV1::NativeSqlExecutionUiData, decorator: Google::Apis::DataprocV1::NativeSqlExecutionUiData::Representation
       
         end
       end
@@ -4508,7 +4609,9 @@ module Google
           property :accelerator_type, as: 'acceleratorType'
           property :milli_accelerator_seconds, :numeric_string => true, as: 'milliAcceleratorSeconds'
           property :milli_dcu_seconds, :numeric_string => true, as: 'milliDcuSeconds'
+          property :milli_slot_seconds, :numeric_string => true, as: 'milliSlotSeconds'
           property :shuffle_storage_gb_seconds, :numeric_string => true, as: 'shuffleStorageGbSeconds'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -4519,6 +4622,7 @@ module Google
           property :milli_accelerator, :numeric_string => true, as: 'milliAccelerator'
           property :milli_dcu, :numeric_string => true, as: 'milliDcu'
           property :milli_dcu_premium, :numeric_string => true, as: 'milliDcuPremium'
+          property :milli_slot, :numeric_string => true, as: 'milliSlot'
           property :shuffle_storage_gb, :numeric_string => true, as: 'shuffleStorageGb'
           property :shuffle_storage_gb_premium, :numeric_string => true, as: 'shuffleStorageGbPremium'
           property :snapshot_time, as: 'snapshotTime'
