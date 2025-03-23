@@ -277,10 +277,10 @@ module Google
         # @return [Array<String>]
         attr_accessor :system_dns_servers
       
-        # Output only. Whether Chrome is blocking third-party software injection or not.
-        # This setting may be controlled by an enterprise policy: https://
-        # chromeenterprise.google/policies/?policy=ThirdPartyBlockingEnabled. Available
-        # on Windows only.
+        # Output only. Deprecated. The corresponding policy is now deprecated. Whether
+        # Chrome is blocking third-party software injection or not. This setting may be
+        # controlled by an enterprise policy: https://chromeenterprise.google/policies/?
+        # policy=ThirdPartyBlockingEnabled. Available on Windows only.
         # Corresponds to the JSON property `thirdPartyBlockingEnabled`
         # @return [Boolean]
         attr_accessor :third_party_blocking_enabled
