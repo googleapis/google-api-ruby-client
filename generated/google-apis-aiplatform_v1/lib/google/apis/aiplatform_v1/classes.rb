@@ -13068,6 +13068,16 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GoogleDriveSource]
         attr_accessor :google_drive_source
       
+        # The BigQuery location for the output content.
+        # Corresponds to the JSON property `importResultBigquerySink`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BigQueryDestination]
+        attr_accessor :import_result_bigquery_sink
+      
+        # The Google Cloud Storage location where the output is to be written to.
+        # Corresponds to the JSON property `importResultGcsSink`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GcsDestination]
+        attr_accessor :import_result_gcs_sink
+      
         # The Jira source for the ImportRagFilesRequest.
         # Corresponds to the JSON property `jiraSource`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1JiraSource]
@@ -13120,6 +13130,8 @@ module Google
         def update!(**args)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
           @google_drive_source = args[:google_drive_source] if args.key?(:google_drive_source)
+          @import_result_bigquery_sink = args[:import_result_bigquery_sink] if args.key?(:import_result_bigquery_sink)
+          @import_result_gcs_sink = args[:import_result_gcs_sink] if args.key?(:import_result_gcs_sink)
           @jira_source = args[:jira_source] if args.key?(:jira_source)
           @max_embedding_requests_per_min = args[:max_embedding_requests_per_min] if args.key?(:max_embedding_requests_per_min)
           @partial_failure_bigquery_sink = args[:partial_failure_bigquery_sink] if args.key?(:partial_failure_bigquery_sink)
@@ -21275,8 +21287,7 @@ module Google
         # @return [String]
         attr_accessor :post_startup_script_behavior
       
-        # Optional. Post startup script url to download. Example: https://bucket/script.
-        # sh
+        # Optional. Post startup script url to download. Example: `gs://bucket/script.sh`
         # Corresponds to the JSON property `postStartupScriptUrl`
         # @return [String]
         attr_accessor :post_startup_script_url
@@ -24325,6 +24336,12 @@ module Google
       class GoogleCloudAiplatformV1ReasoningEngineSpec
         include Google::Apis::Core::Hashable
       
+        # Optional. The OSS agent framework used to develop the agent. Currently
+        # supported values: "langchain", "langgraph", "ag2", "custom".
+        # Corresponds to the JSON property `agentFramework`
+        # @return [String]
+        attr_accessor :agent_framework
+      
         # Optional. Declarations for object class methods in OpenAPI specification
         # format.
         # Corresponds to the JSON property `classMethods`
@@ -24347,6 +24364,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_framework = args[:agent_framework] if args.key?(:agent_framework)
           @class_methods = args[:class_methods] if args.key?(:class_methods)
           @deployment_spec = args[:deployment_spec] if args.key?(:deployment_spec)
           @package_spec = args[:package_spec] if args.key?(:package_spec)
@@ -38384,6 +38402,13 @@ module Google
         # @return [String]
         attr_accessor :datastore
       
+        # Optional. Fully-qualified Vertex AI Search engine resource ID. Format: `
+        # projects/`project`/locations/`location`/collections/`collection`/engines/`
+        # engine``
+        # Corresponds to the JSON property `engine`
+        # @return [String]
+        attr_accessor :engine
+      
         def initialize(**args)
            update!(**args)
         end
@@ -38391,6 +38416,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @datastore = args[:datastore] if args.key?(:datastore)
+          @engine = args[:engine] if args.key?(:engine)
         end
       end
       

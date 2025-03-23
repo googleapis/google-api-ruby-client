@@ -10365,6 +10365,10 @@ module Google
       
           property :google_drive_source, as: 'googleDriveSource', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GoogleDriveSource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GoogleDriveSource::Representation
       
+          property :import_result_bigquery_sink, as: 'importResultBigquerySink', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BigQueryDestination, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BigQueryDestination::Representation
+      
+          property :import_result_gcs_sink, as: 'importResultGcsSink', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GcsDestination, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GcsDestination::Representation
+      
           property :jira_source, as: 'jiraSource', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1JiraSource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1JiraSource::Representation
       
           property :max_embedding_requests_per_min, as: 'maxEmbeddingRequestsPerMin'
@@ -13577,6 +13581,7 @@ module Google
       class GoogleCloudAiplatformV1ReasoningEngineSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_framework, as: 'agentFramework'
           collection :class_methods, as: 'classMethods'
           property :deployment_spec, as: 'deploymentSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec::Representation
       
@@ -17604,6 +17609,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :datastore, as: 'datastore'
+          property :engine, as: 'engine'
         end
       end
       
