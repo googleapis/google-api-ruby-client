@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConnectionPoolConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ContinuousBackupConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -848,6 +854,24 @@ module Google
         end
       end
       
+      class ConnectionPoolConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_pool_size, as: 'defaultPoolSize'
+          property :enable, as: 'enable'
+          property :enabled, as: 'enabled'
+          hash :flags, as: 'flags'
+          collection :ignore_startup_parameters, as: 'ignoreStartupParameters'
+          property :max_client_conn, as: 'maxClientConn'
+          property :max_prepared_statements, as: 'maxPreparedStatements'
+          property :min_pool_size, as: 'minPoolSize'
+          property :pool_mode, as: 'poolMode'
+          property :query_wait_timeout, as: 'queryWaitTimeout'
+          property :server_idle_timeout, as: 'serverIdleTimeout'
+          collection :stats_users, as: 'statsUsers'
+        end
+      end
+      
       class ContinuousBackupConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1047,6 +1071,8 @@ module Google
           hash :annotations, as: 'annotations'
           property :availability_type, as: 'availabilityType'
           property :client_connection_config, as: 'clientConnectionConfig', class: Google::Apis::AlloydbV1alpha::ClientConnectionConfig, decorator: Google::Apis::AlloydbV1alpha::ClientConnectionConfig::Representation
+      
+          property :connection_pool_config, as: 'connectionPoolConfig', class: Google::Apis::AlloydbV1alpha::ConnectionPoolConfig, decorator: Google::Apis::AlloydbV1alpha::ConnectionPoolConfig::Representation
       
           property :create_time, as: 'createTime'
           hash :database_flags, as: 'databaseFlags'
