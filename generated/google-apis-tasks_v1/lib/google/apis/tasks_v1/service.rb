@@ -30,7 +30,7 @@ module Google
       #    Tasks = Google::Apis::TasksV1 # Alias the module
       #    service = Tasks::TasksService.new
       #
-      # @see https://developers.google.com/tasks/
+      # @see https://developers.google.com/workspace/tasks/
       class TasksService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://tasks.$UNIVERSE_DOMAIN$/"
 

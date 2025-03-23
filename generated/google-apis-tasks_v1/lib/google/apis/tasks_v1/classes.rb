@@ -250,7 +250,7 @@ module Google
         class Link
           include Google::Apis::Core::Hashable
         
-          # The description. In HTML speak: Everything between <a> and </a>.
+          # The description (might be empty).
           # Corresponds to the JSON property `description`
           # @return [String]
           attr_accessor :description
@@ -260,7 +260,7 @@ module Google
           # @return [String]
           attr_accessor :link
         
-          # Type of the link, e.g. "email".
+          # Type of the link, e.g. "email", "generic", "chat_message", "keep_note".
           # Corresponds to the JSON property `type`
           # @return [String]
           attr_accessor :type
