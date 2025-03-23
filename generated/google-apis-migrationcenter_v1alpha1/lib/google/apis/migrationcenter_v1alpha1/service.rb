@@ -2003,7 +2003,7 @@ module Google
         
         # Updates the parameters of a preference set.
         # @param [String] name
-        #   Output only. Name of the preference set.
+        #   Output only. Name of the PreferenceSet.
         # @param [Google::Apis::MigrationcenterV1alpha1::PreferenceSet] preference_set_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
