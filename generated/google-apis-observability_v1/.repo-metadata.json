@@ -1,0 +1,7 @@
+{
+    "api_id": "observability:v1",
+    "name_pretty": "Observability API",
+    "distribution_name": "google-apis-observability_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
