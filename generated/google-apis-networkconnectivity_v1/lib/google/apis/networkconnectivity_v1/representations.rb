@@ -757,6 +757,7 @@ module Google
           property :network, as: 'network'
           property :peering, as: 'peering'
           property :producer_network, as: 'producerNetwork'
+          collection :proposed_exclude_export_ranges, as: 'proposedExcludeExportRanges'
           collection :proposed_include_export_ranges, as: 'proposedIncludeExportRanges'
           property :service_consumer_vpc_spoke, as: 'serviceConsumerVpcSpoke'
         end
@@ -779,6 +780,7 @@ module Google
           collection :exclude_export_ranges, as: 'excludeExportRanges'
           collection :include_export_ranges, as: 'includeExportRanges'
           collection :producer_vpc_spokes, as: 'producerVpcSpokes'
+          collection :proposed_exclude_export_ranges, as: 'proposedExcludeExportRanges'
           collection :proposed_include_export_ranges, as: 'proposedIncludeExportRanges'
           property :uri, as: 'uri'
         end
