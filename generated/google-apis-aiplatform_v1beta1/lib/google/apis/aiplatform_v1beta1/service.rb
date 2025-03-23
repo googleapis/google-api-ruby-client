@@ -2535,6 +2535,75 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Assembles each row of a multimodal dataset and writes the result into a
+        # BigQuery table.
+        # @param [String] name
+        #   Required. The name of the Dataset resource (used only for MULTIMODAL datasets).
+        #   Format: `projects/`project`/locations/`location`/datasets/`dataset``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AssembleDataRequest] google_cloud_aiplatform_v1beta1_assemble_data_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def assemble_project_location_dataset(name, google_cloud_aiplatform_v1beta1_assemble_data_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:assemble', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AssembleDataRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_assemble_data_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Assesses the state or validity of the dataset with respect to a given use case.
+        # @param [String] name
+        #   Required. The name of the Dataset resource. Used only for MULTIMODAL datasets.
+        #   Format: `projects/`project`/locations/`location`/datasets/`dataset``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AssessDataRequest] google_cloud_aiplatform_v1beta1_assess_data_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def assess_project_location_dataset(name, google_cloud_aiplatform_v1beta1_assess_data_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:assess', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AssessDataRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_assess_data_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Dataset.
         # @param [String] parent
         #   Required. The resource name of the Location to create the Dataset in. Format: `

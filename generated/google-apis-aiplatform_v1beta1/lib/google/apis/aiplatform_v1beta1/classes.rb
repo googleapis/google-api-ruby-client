@@ -1068,6 +1068,102 @@ module Google
         end
       end
       
+      # Request message for DatasetService.AssembleData. Used only for MULTIMODAL
+      # datasets.
+      class GoogleCloudAiplatformV1beta1AssembleDataRequest
+        include Google::Apis::Core::Hashable
+      
+        # Template configuration to create Gemini examples from a multimodal dataset.
+        # Corresponds to the JSON property `geminiTemplateConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GeminiTemplateConfig]
+        attr_accessor :gemini_template_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gemini_template_config = args[:gemini_template_config] if args.key?(:gemini_template_config)
+        end
+      end
+      
+      # Request message for DatasetService.AssessData. Used only for MULTIMODAL
+      # datasets.
+      class GoogleCloudAiplatformV1beta1AssessDataRequest
+        include Google::Apis::Core::Hashable
+      
+        # Template configuration to create Gemini examples from a multimodal dataset.
+        # Corresponds to the JSON property `geminiTemplateConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GeminiTemplateConfig]
+        attr_accessor :gemini_template_config
+      
+        # Configuration for the tuning resource usage assessment.
+        # Corresponds to the JSON property `tuningResourceUsageAssessmentConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AssessDataRequestTuningResourceUsageAssessmentConfig]
+        attr_accessor :tuning_resource_usage_assessment_config
+      
+        # Configuration for the tuning validation assessment.
+        # Corresponds to the JSON property `tuningValidationAssessmentConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AssessDataRequestTuningValidationAssessmentConfig]
+        attr_accessor :tuning_validation_assessment_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gemini_template_config = args[:gemini_template_config] if args.key?(:gemini_template_config)
+          @tuning_resource_usage_assessment_config = args[:tuning_resource_usage_assessment_config] if args.key?(:tuning_resource_usage_assessment_config)
+          @tuning_validation_assessment_config = args[:tuning_validation_assessment_config] if args.key?(:tuning_validation_assessment_config)
+        end
+      end
+      
+      # Configuration for the tuning resource usage assessment.
+      class GoogleCloudAiplatformV1beta1AssessDataRequestTuningResourceUsageAssessmentConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the model used for tuning.
+        # Corresponds to the JSON property `modelName`
+        # @return [String]
+        attr_accessor :model_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @model_name = args[:model_name] if args.key?(:model_name)
+        end
+      end
+      
+      # Configuration for the tuning validation assessment.
+      class GoogleCloudAiplatformV1beta1AssessDataRequestTuningValidationAssessmentConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The dataset usage (e.g. training/validation).
+        # Corresponds to the JSON property `datasetUsage`
+        # @return [String]
+        attr_accessor :dataset_usage
+      
+        # Required. The name of the model used for tuning.
+        # Corresponds to the JSON property `modelName`
+        # @return [String]
+        attr_accessor :model_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_usage = args[:dataset_usage] if args.key?(:dataset_usage)
+          @model_name = args[:model_name] if args.key?(:model_name)
+        end
+      end
+      
       # Metadata information for NotebookService.AssignNotebookRuntime.
       class GoogleCloudAiplatformV1beta1AssignNotebookRuntimeOperationMetadata
         include Google::Apis::Core::Hashable
@@ -13308,6 +13404,118 @@ module Google
         end
       end
       
+      # Format for Gemini examples used for Vertex Multimodal datasets.
+      class GoogleCloudAiplatformV1beta1GeminiExample
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the cached content used as context to serve the
+        # prediction. Note: only used in explicit caching, where users can have control
+        # over caching (e.g. what content to cache) and enjoy guaranteed cost savings.
+        # Format: `projects/`project`/locations/`location`/cachedContents/`cachedContent`
+        # `
+        # Corresponds to the JSON property `cachedContent`
+        # @return [String]
+        attr_accessor :cached_content
+      
+        # Required. The content of the current conversation with the model. For single-
+        # turn queries, this is a single instance. For multi-turn queries, this is a
+        # repeated field that contains conversation history + latest request.
+        # Corresponds to the JSON property `contents`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content>]
+        attr_accessor :contents
+      
+        # Generation config.
+        # Corresponds to the JSON property `generationConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerationConfig]
+        attr_accessor :generation_config
+      
+        # Optional. The labels with user-defined metadata for the request. It is used
+        # for billing and reporting only. Label keys and values can be no longer than 63
+        # characters (Unicode codepoints) and can only contain lowercase letters,
+        # numeric characters, underscores, and dashes. International characters are
+        # allowed. Label values are optional. Label keys must start with a letter.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Optional. The fully qualified name of the publisher model or tuned model
+        # endpoint to use. Publisher model format: `projects/`project`/locations/`
+        # location`/publishers/*/models/*` Tuned model endpoint format: `projects/`
+        # project`/locations/`location`/endpoints/`endpoint``
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        # Optional. Per request settings for blocking unsafe content. Enforced on
+        # GenerateContentResponse.candidates.
+        # Corresponds to the JSON property `safetySettings`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SafetySetting>]
+        attr_accessor :safety_settings
+      
+        # The base structured datatype containing multi-part content of a message. A `
+        # Content` includes a `role` field designating the producer of the `Content` and
+        # a `parts` field containing multi-part data that contains the content of the
+        # message turn.
+        # Corresponds to the JSON property `systemInstruction`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content]
+        attr_accessor :system_instruction
+      
+        # Tool config. This config is shared for all tools provided in the request.
+        # Corresponds to the JSON property `toolConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolConfig]
+        attr_accessor :tool_config
+      
+        # Optional. A list of `Tools` the model may use to generate the next response. A
+        # `Tool` is a piece of code that enables the system to interact with external
+        # systems to perform an action, or set of actions, outside of knowledge and
+        # scope of the model.
+        # Corresponds to the JSON property `tools`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Tool>]
+        attr_accessor :tools
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cached_content = args[:cached_content] if args.key?(:cached_content)
+          @contents = args[:contents] if args.key?(:contents)
+          @generation_config = args[:generation_config] if args.key?(:generation_config)
+          @labels = args[:labels] if args.key?(:labels)
+          @model = args[:model] if args.key?(:model)
+          @safety_settings = args[:safety_settings] if args.key?(:safety_settings)
+          @system_instruction = args[:system_instruction] if args.key?(:system_instruction)
+          @tool_config = args[:tool_config] if args.key?(:tool_config)
+          @tools = args[:tools] if args.key?(:tools)
+        end
+      end
+      
+      # Template configuration to create Gemini examples from a multimodal dataset.
+      class GoogleCloudAiplatformV1beta1GeminiTemplateConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Map of template params to the columns in the dataset table.
+        # Corresponds to the JSON property `fieldMapping`
+        # @return [Hash<String,String>]
+        attr_accessor :field_mapping
+      
+        # Format for Gemini examples used for Vertex Multimodal datasets.
+        # Corresponds to the JSON property `geminiExample`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GeminiExample]
+        attr_accessor :gemini_example
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_mapping = args[:field_mapping] if args.key?(:field_mapping)
+          @gemini_example = args[:gemini_example] if args.key?(:gemini_example)
+        end
+      end
+      
       # Configuration for GenAiAdvancedFeatures.
       class GoogleCloudAiplatformV1beta1GenAiAdvancedFeaturesConfig
         include Google::Apis::Core::Hashable
@@ -14827,6 +15035,16 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GoogleDriveSource]
         attr_accessor :google_drive_source
       
+        # The BigQuery location for the output content.
+        # Corresponds to the JSON property `importResultBigquerySink`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1BigQueryDestination]
+        attr_accessor :import_result_bigquery_sink
+      
+        # The Google Cloud Storage location where the output is to be written to.
+        # Corresponds to the JSON property `importResultGcsSink`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GcsDestination]
+        attr_accessor :import_result_gcs_sink
+      
         # The Jira source for the ImportRagFilesRequest.
         # Corresponds to the JSON property `jiraSource`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1JiraSource]
@@ -14884,6 +15102,8 @@ module Google
         def update!(**args)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
           @google_drive_source = args[:google_drive_source] if args.key?(:google_drive_source)
+          @import_result_bigquery_sink = args[:import_result_bigquery_sink] if args.key?(:import_result_bigquery_sink)
+          @import_result_gcs_sink = args[:import_result_gcs_sink] if args.key?(:import_result_gcs_sink)
           @jira_source = args[:jira_source] if args.key?(:jira_source)
           @max_embedding_requests_per_min = args[:max_embedding_requests_per_min] if args.key?(:max_embedding_requests_per_min)
           @partial_failure_bigquery_sink = args[:partial_failure_bigquery_sink] if args.key?(:partial_failure_bigquery_sink)
@@ -24649,8 +24869,7 @@ module Google
         # @return [String]
         attr_accessor :post_startup_script_behavior
       
-        # Optional. Post startup script url to download. Example: https://bucket/script.
-        # sh
+        # Optional. Post startup script url to download. Example: `gs://bucket/script.sh`
         # Corresponds to the JSON property `postStartupScriptUrl`
         # @return [String]
         attr_accessor :post_startup_script_url
@@ -28266,6 +28485,12 @@ module Google
       class GoogleCloudAiplatformV1beta1ReasoningEngineSpec
         include Google::Apis::Core::Hashable
       
+        # Optional. The OSS agent framework used to develop the agent. Currently
+        # supported values: "langchain", "langgraph", "ag2", "custom".
+        # Corresponds to the JSON property `agentFramework`
+        # @return [String]
+        attr_accessor :agent_framework
+      
         # Optional. Declarations for object class methods in OpenAPI specification
         # format.
         # Corresponds to the JSON property `classMethods`
@@ -28288,6 +28513,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_framework = args[:agent_framework] if args.key?(:agent_framework)
           @class_methods = args[:class_methods] if args.key?(:class_methods)
           @deployment_spec = args[:deployment_spec] if args.key?(:deployment_spec)
           @package_spec = args[:package_spec] if args.key?(:package_spec)
@@ -43219,6 +43445,13 @@ module Google
         # @return [String]
         attr_accessor :datastore
       
+        # Optional. Fully-qualified Vertex AI Search engine resource ID. Format: `
+        # projects/`project`/locations/`location`/collections/`collection`/engines/`
+        # engine``
+        # Corresponds to the JSON property `engine`
+        # @return [String]
+        attr_accessor :engine
+      
         def initialize(**args)
            update!(**args)
         end
@@ -43226,6 +43459,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @datastore = args[:datastore] if args.key?(:datastore)
+          @engine = args[:engine] if args.key?(:engine)
         end
       end
       
