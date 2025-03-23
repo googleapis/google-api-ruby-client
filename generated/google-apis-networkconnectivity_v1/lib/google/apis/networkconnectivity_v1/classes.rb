@@ -1281,6 +1281,12 @@ module Google
         # @return [String]
         attr_accessor :producer_network
       
+        # Output only. The proposed exclude export IP ranges waiting for hub
+        # administration's approval.
+        # Corresponds to the JSON property `proposedExcludeExportRanges`
+        # @return [Array<String>]
+        attr_accessor :proposed_exclude_export_ranges
+      
         # Optional. The proposed include export IP ranges waiting for hub administration'
         # s approval.
         # Corresponds to the JSON property `proposedIncludeExportRanges`
@@ -1303,6 +1309,7 @@ module Google
           @network = args[:network] if args.key?(:network)
           @peering = args[:peering] if args.key?(:peering)
           @producer_network = args[:producer_network] if args.key?(:producer_network)
+          @proposed_exclude_export_ranges = args[:proposed_exclude_export_ranges] if args.key?(:proposed_exclude_export_ranges)
           @proposed_include_export_ranges = args[:proposed_include_export_ranges] if args.key?(:proposed_include_export_ranges)
           @service_consumer_vpc_spoke = args[:service_consumer_vpc_spoke] if args.key?(:service_consumer_vpc_spoke)
         end
@@ -1380,6 +1387,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :producer_vpc_spokes
       
+        # Output only. The proposed exclude export IP ranges waiting for hub
+        # administration's approval.
+        # Corresponds to the JSON property `proposedExcludeExportRanges`
+        # @return [Array<String>]
+        attr_accessor :proposed_exclude_export_ranges
+      
         # Optional. The proposed include export IP ranges waiting for hub administration'
         # s approval.
         # Corresponds to the JSON property `proposedIncludeExportRanges`
@@ -1400,6 +1413,7 @@ module Google
           @exclude_export_ranges = args[:exclude_export_ranges] if args.key?(:exclude_export_ranges)
           @include_export_ranges = args[:include_export_ranges] if args.key?(:include_export_ranges)
           @producer_vpc_spokes = args[:producer_vpc_spokes] if args.key?(:producer_vpc_spokes)
+          @proposed_exclude_export_ranges = args[:proposed_exclude_export_ranges] if args.key?(:proposed_exclude_export_ranges)
           @proposed_include_export_ranges = args[:proposed_include_export_ranges] if args.key?(:proposed_include_export_ranges)
           @uri = args[:uri] if args.key?(:uri)
         end
