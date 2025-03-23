@@ -544,6 +544,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1DnsZone
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1DnsZonePeeringConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1DocumentationFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -910,6 +922,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ListDnsZonesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ListEndpointAttachmentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -995,6 +1013,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1ListSecurityIncidentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1553,6 +1577,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1SecurityIncident
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityMonitoringCondition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2906,6 +2936,28 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1DnsZone
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :domain, as: 'domain'
+          property :name, as: 'name'
+          property :peering_config, as: 'peeringConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DnsZonePeeringConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DnsZonePeeringConfig::Representation
+      
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudApigeeV1DnsZonePeeringConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_network_id, as: 'targetNetworkId'
+          property :target_project_id, as: 'targetProjectId'
+        end
+      end
+      
       class GoogleCloudApigeeV1DocumentationFile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3520,6 +3572,15 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ListDnsZonesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dns_zones, as: 'dnsZones', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DnsZone, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DnsZone::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleCloudApigeeV1ListEndpointAttachmentsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3646,6 +3707,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :security_incidents, as: 'securityIncidents', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityIncident, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityIncident::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :security_monitoring_conditions, as: 'securityMonitoringConditions', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityMonitoringCondition, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityMonitoringCondition::Representation
       
         end
       end
@@ -4620,6 +4690,23 @@ module Google
           property :observability, as: 'observability'
           property :risk_level, as: 'riskLevel'
           property :traffic_count, :numeric_string => true, as: 'trafficCount'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityMonitoringCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :include, as: 'include', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray::Representation
+      
+          property :include_all_resources, as: 'includeAllResources', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll::Representation
+      
+          property :name, as: 'name'
+          property :profile, as: 'profile'
+          property :scope, as: 'scope'
+          property :total_deployed_resources, as: 'totalDeployedResources'
+          property :total_monitored_resources, as: 'totalMonitoredResources'
+          property :update_time, as: 'updateTime'
         end
       end
       
