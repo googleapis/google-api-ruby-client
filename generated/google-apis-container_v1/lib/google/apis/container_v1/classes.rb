@@ -532,7 +532,7 @@ module Google
         # @return [String]
         attr_accessor :image_type
       
-        # Enable or disable Kubelet read only port.
+        # DEPRECATED. Use NodePoolAutoConfig.NodeKubeletConfig instead.
         # Corresponds to the JSON property `insecureKubeletReadonlyPortEnabled`
         # @return [Boolean]
         attr_accessor :insecure_kubelet_readonly_port_enabled
@@ -1162,7 +1162,10 @@ module Google
         # @return [Google::Apis::ContainerV1::LegacyAbac]
         attr_accessor :legacy_abac
       
-        # 
+        # Output only. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/regions-zones/regions-zones#available) or [region](https://
+        # cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which
+        # the cluster resides.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -1226,7 +1229,7 @@ module Google
         attr_accessor :monitoring_config
       
         # The monitoring service the cluster should use to write metrics. Currently
-        # available options: * "monitoring.googleapis.com/kubernetes" - The Cloud
+        # available options: * `monitoring.googleapis.com/kubernetes` - The Cloud
         # Monitoring service with a Kubernetes-native resource model * `monitoring.
         # googleapis.com` - The legacy Cloud Monitoring service (no longer available as
         # of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left
@@ -1304,6 +1307,12 @@ module Google
         # Corresponds to the JSON property `parentProductConfig`
         # @return [Google::Apis::ContainerV1::ParentProductConfig]
         attr_accessor :parent_product_config
+      
+        # PodAutoscaling is used for configuration of parameters for workload
+        # autoscaling.
+        # Corresponds to the JSON property `podAutoscaling`
+        # @return [Google::Apis::ContainerV1::PodAutoscaling]
+        attr_accessor :pod_autoscaling
       
         # Configuration options for private clusters.
         # Corresponds to the JSON property `privateClusterConfig`
@@ -1487,6 +1496,7 @@ module Google
           @node_pools = args[:node_pools] if args.key?(:node_pools)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
           @parent_product_config = args[:parent_product_config] if args.key?(:parent_product_config)
+          @pod_autoscaling = args[:pod_autoscaling] if args.key?(:pod_autoscaling)
           @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
           @rbac_binding_config = args[:rbac_binding_config] if args.key?(:rbac_binding_config)
           @release_channel = args[:release_channel] if args.key?(:release_channel)
@@ -1810,7 +1820,7 @@ module Google
         attr_accessor :desired_monitoring_config
       
         # The monitoring service the cluster should use to write metrics. Currently
-        # available options: * "monitoring.googleapis.com/kubernetes" - The Cloud
+        # available options: * `monitoring.googleapis.com/kubernetes` - The Cloud
         # Monitoring service with a Kubernetes-native resource model * `monitoring.
         # googleapis.com` - The legacy Cloud Monitoring service (no longer available as
         # of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left
@@ -1895,6 +1905,12 @@ module Google
         # Corresponds to the JSON property `desiredParentProductConfig`
         # @return [Google::Apis::ContainerV1::ParentProductConfig]
         attr_accessor :desired_parent_product_config
+      
+        # PodAutoscaling is used for configuration of parameters for workload
+        # autoscaling.
+        # Corresponds to the JSON property `desiredPodAutoscaling`
+        # @return [Google::Apis::ContainerV1::PodAutoscaling]
+        attr_accessor :desired_pod_autoscaling
       
         # Configuration options for private clusters.
         # Corresponds to the JSON property `desiredPrivateClusterConfig`
@@ -2045,6 +2061,7 @@ module Google
           @desired_node_version = args[:desired_node_version] if args.key?(:desired_node_version)
           @desired_notification_config = args[:desired_notification_config] if args.key?(:desired_notification_config)
           @desired_parent_product_config = args[:desired_parent_product_config] if args.key?(:desired_parent_product_config)
+          @desired_pod_autoscaling = args[:desired_pod_autoscaling] if args.key?(:desired_pod_autoscaling)
           @desired_private_cluster_config = args[:desired_private_cluster_config] if args.key?(:desired_private_cluster_config)
           @desired_private_ipv6_google_access = args[:desired_private_ipv6_google_access] if args.key?(:desired_private_ipv6_google_access)
           @desired_rbac_binding_config = args[:desired_rbac_binding_config] if args.key?(:desired_rbac_binding_config)
@@ -2061,6 +2078,61 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @removed_additional_pod_ranges_config = args[:removed_additional_pod_ranges_config] if args.key?(:removed_additional_pod_ranges_config)
           @user_managed_keys_config = args[:user_managed_keys_config] if args.key?(:user_managed_keys_config)
+        end
+      end
+      
+      # ClusterUpgradeInfo contains the upgrade information of a cluster.
+      class ClusterUpgradeInfo
+        include Google::Apis::Core::Hashable
+      
+        # The auto upgrade status.
+        # Corresponds to the JSON property `autoUpgradeStatus`
+        # @return [Array<String>]
+        attr_accessor :auto_upgrade_status
+      
+        # The cluster's current minor version's end of extended support timestamp.
+        # Corresponds to the JSON property `endOfExtendedSupportTimestamp`
+        # @return [String]
+        attr_accessor :end_of_extended_support_timestamp
+      
+        # The cluster's current minor version's end of standard support timestamp.
+        # Corresponds to the JSON property `endOfStandardSupportTimestamp`
+        # @return [String]
+        attr_accessor :end_of_standard_support_timestamp
+      
+        # minor_target_version indicates the target version for minor upgrade.
+        # Corresponds to the JSON property `minorTargetVersion`
+        # @return [String]
+        attr_accessor :minor_target_version
+      
+        # patch_target_version indicates the target version for patch upgrade.
+        # Corresponds to the JSON property `patchTargetVersion`
+        # @return [String]
+        attr_accessor :patch_target_version
+      
+        # The auto upgrade paused reason.
+        # Corresponds to the JSON property `pausedReason`
+        # @return [Array<String>]
+        attr_accessor :paused_reason
+      
+        # The list of past auto upgrades.
+        # Corresponds to the JSON property `upgradeDetails`
+        # @return [Array<Google::Apis::ContainerV1::UpgradeDetails>]
+        attr_accessor :upgrade_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_upgrade_status = args[:auto_upgrade_status] if args.key?(:auto_upgrade_status)
+          @end_of_extended_support_timestamp = args[:end_of_extended_support_timestamp] if args.key?(:end_of_extended_support_timestamp)
+          @end_of_standard_support_timestamp = args[:end_of_standard_support_timestamp] if args.key?(:end_of_standard_support_timestamp)
+          @minor_target_version = args[:minor_target_version] if args.key?(:minor_target_version)
+          @patch_target_version = args[:patch_target_version] if args.key?(:patch_target_version)
+          @paused_reason = args[:paused_reason] if args.key?(:paused_reason)
+          @upgrade_details = args[:upgrade_details] if args.key?(:upgrade_details)
         end
       end
       
@@ -4682,7 +4754,7 @@ module Google
       
         # Parameters that can be configured on Windows nodes. Windows Node Config that
         # define the parameters that will be used to configure the Windows node pool
-        # settings
+        # settings.
         # Corresponds to the JSON property `windowsNodeConfig`
         # @return [Google::Apis::ContainerV1::WindowsNodeConfig]
         attr_accessor :windows_node_config
@@ -5418,6 +5490,61 @@ module Google
         end
       end
       
+      # NodePoolUpgradeInfo contains the upgrade information of a nodepool.
+      class NodePoolUpgradeInfo
+        include Google::Apis::Core::Hashable
+      
+        # The auto upgrade status.
+        # Corresponds to the JSON property `autoUpgradeStatus`
+        # @return [Array<String>]
+        attr_accessor :auto_upgrade_status
+      
+        # The nodepool's current minor version's end of extended support timestamp.
+        # Corresponds to the JSON property `endOfExtendedSupportTimestamp`
+        # @return [String]
+        attr_accessor :end_of_extended_support_timestamp
+      
+        # The nodepool's current minor version's end of standard support timestamp.
+        # Corresponds to the JSON property `endOfStandardSupportTimestamp`
+        # @return [String]
+        attr_accessor :end_of_standard_support_timestamp
+      
+        # minor_target_version indicates the target version for minor upgrade.
+        # Corresponds to the JSON property `minorTargetVersion`
+        # @return [String]
+        attr_accessor :minor_target_version
+      
+        # patch_target_version indicates the target version for patch upgrade.
+        # Corresponds to the JSON property `patchTargetVersion`
+        # @return [String]
+        attr_accessor :patch_target_version
+      
+        # The auto upgrade paused reason.
+        # Corresponds to the JSON property `pausedReason`
+        # @return [Array<String>]
+        attr_accessor :paused_reason
+      
+        # The list of past auto upgrades.
+        # Corresponds to the JSON property `upgradeDetails`
+        # @return [Array<Google::Apis::ContainerV1::UpgradeDetails>]
+        attr_accessor :upgrade_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_upgrade_status = args[:auto_upgrade_status] if args.key?(:auto_upgrade_status)
+          @end_of_extended_support_timestamp = args[:end_of_extended_support_timestamp] if args.key?(:end_of_extended_support_timestamp)
+          @end_of_standard_support_timestamp = args[:end_of_standard_support_timestamp] if args.key?(:end_of_standard_support_timestamp)
+          @minor_target_version = args[:minor_target_version] if args.key?(:minor_target_version)
+          @patch_target_version = args[:patch_target_version] if args.key?(:patch_target_version)
+          @paused_reason = args[:paused_reason] if args.key?(:paused_reason)
+          @upgrade_details = args[:upgrade_details] if args.key?(:upgrade_details)
+        end
+      end
+      
       # Kubernetes taint is composed of three fields: key, value, and effect. Effect
       # can only be one of three types: NoSchedule, PreferNoSchedule or NoExecute. See
       # [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration)
@@ -5769,6 +5896,26 @@ module Google
           @policy_name = args[:policy_name] if args.key?(:policy_name)
           @tpu_topology = args[:tpu_topology] if args.key?(:tpu_topology)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # PodAutoscaling is used for configuration of parameters for workload
+      # autoscaling.
+      class PodAutoscaling
+        include Google::Apis::Core::Hashable
+      
+        # Selected Horizontal Pod Autoscaling profile.
+        # Corresponds to the JSON property `hpaProfile`
+        # @return [String]
+        attr_accessor :hpa_profile
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hpa_profile = args[:hpa_profile] if args.key?(:hpa_profile)
         end
       end
       
@@ -6523,6 +6670,11 @@ module Google
         attr_accessor :manual_steps_required
         alias_method :manual_steps_required?, :manual_steps_required
       
+        # The GKE versions where this vulnerability is mitigated.
+        # Corresponds to the JSON property `mitigatedVersions`
+        # @return [Array<String>]
+        attr_accessor :mitigated_versions
+      
         # The GKE versions where this vulnerability is patched.
         # Corresponds to the JSON property `patchedVersions`
         # @return [Array<String>]
@@ -6561,6 +6713,7 @@ module Google
           @bulletin_uri = args[:bulletin_uri] if args.key?(:bulletin_uri)
           @cve_ids = args[:cve_ids] if args.key?(:cve_ids)
           @manual_steps_required = args[:manual_steps_required] if args.key?(:manual_steps_required)
+          @mitigated_versions = args[:mitigated_versions] if args.key?(:mitigated_versions)
           @patched_versions = args[:patched_versions] if args.key?(:patched_versions)
           @resource_type_affected = args[:resource_type_affected] if args.key?(:resource_type_affected)
           @severity = args[:severity] if args.key?(:severity)
@@ -7047,7 +7200,7 @@ module Google
         attr_accessor :cluster_id
       
         # Required. The monitoring service the cluster should use to write metrics.
-        # Currently available options: * "monitoring.googleapis.com/kubernetes" - The
+        # Currently available options: * `monitoring.googleapis.com/kubernetes` - The
         # Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.
         # googleapis.com` - The legacy Cloud Monitoring service (no longer available as
         # of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left
@@ -7945,7 +8098,7 @@ module Google
       
         # Parameters that can be configured on Windows nodes. Windows Node Config that
         # define the parameters that will be used to configure the Windows node pool
-        # settings
+        # settings.
         # Corresponds to the JSON property `windowsNodeConfig`
         # @return [Google::Apis::ContainerV1::WindowsNodeConfig]
         attr_accessor :windows_node_config
@@ -8044,6 +8197,56 @@ module Google
           @resource = args[:resource] if args.key?(:resource)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # UpgradeDetails contains detailed information of each individual upgrade
+      # operation.
+      class UpgradeDetails
+        include Google::Apis::Core::Hashable
+      
+        # The end timestamp of the upgrade.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The version before the upgrade.
+        # Corresponds to the JSON property `initialVersion`
+        # @return [String]
+        attr_accessor :initial_version
+      
+        # The start timestamp of the upgrade.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The start type of the upgrade.
+        # Corresponds to the JSON property `startType`
+        # @return [String]
+        attr_accessor :start_type
+      
+        # Output only. The state of the upgrade.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The version after the upgrade.
+        # Corresponds to the JSON property `targetVersion`
+        # @return [String]
+        attr_accessor :target_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @initial_version = args[:initial_version] if args.key?(:initial_version)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @start_type = args[:start_type] if args.key?(:start_type)
+          @state = args[:state] if args.key?(:state)
+          @target_version = args[:target_version] if args.key?(:target_version)
         end
       end
       
@@ -8450,11 +8653,11 @@ module Google
       
       # Parameters that can be configured on Windows nodes. Windows Node Config that
       # define the parameters that will be used to configure the Windows node pool
-      # settings
+      # settings.
       class WindowsNodeConfig
         include Google::Apis::Core::Hashable
       
-        # OSVersion specifies the Windows node config to be used on the node
+        # OSVersion specifies the Windows node config to be used on the node.
         # Corresponds to the JSON property `osVersion`
         # @return [String]
         attr_accessor :os_version

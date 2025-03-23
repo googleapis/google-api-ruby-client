@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClusterUpgradeInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CompleteIpRotationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -712,6 +718,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodePoolUpgradeInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodeTaint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -761,6 +773,12 @@ module Google
       end
       
       class PlacementPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PodAutoscaling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1085,6 +1103,12 @@ module Google
       end
       
       class UpgradeAvailableEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpgradeDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1509,6 +1533,8 @@ module Google
       
           property :parent_product_config, as: 'parentProductConfig', class: Google::Apis::ContainerV1::ParentProductConfig, decorator: Google::Apis::ContainerV1::ParentProductConfig::Representation
       
+          property :pod_autoscaling, as: 'podAutoscaling', class: Google::Apis::ContainerV1::PodAutoscaling, decorator: Google::Apis::ContainerV1::PodAutoscaling::Representation
+      
           property :private_cluster_config, as: 'privateClusterConfig', class: Google::Apis::ContainerV1::PrivateClusterConfig, decorator: Google::Apis::ContainerV1::PrivateClusterConfig::Representation
       
           property :rbac_binding_config, as: 'rbacBindingConfig', class: Google::Apis::ContainerV1::RbacBindingConfig, decorator: Google::Apis::ContainerV1::RbacBindingConfig::Representation
@@ -1650,6 +1676,8 @@ module Google
       
           property :desired_parent_product_config, as: 'desiredParentProductConfig', class: Google::Apis::ContainerV1::ParentProductConfig, decorator: Google::Apis::ContainerV1::ParentProductConfig::Representation
       
+          property :desired_pod_autoscaling, as: 'desiredPodAutoscaling', class: Google::Apis::ContainerV1::PodAutoscaling, decorator: Google::Apis::ContainerV1::PodAutoscaling::Representation
+      
           property :desired_private_cluster_config, as: 'desiredPrivateClusterConfig', class: Google::Apis::ContainerV1::PrivateClusterConfig, decorator: Google::Apis::ContainerV1::PrivateClusterConfig::Representation
       
           property :desired_private_ipv6_google_access, as: 'desiredPrivateIpv6GoogleAccess'
@@ -1678,6 +1706,20 @@ module Google
           property :removed_additional_pod_ranges_config, as: 'removedAdditionalPodRangesConfig', class: Google::Apis::ContainerV1::AdditionalPodRangesConfig, decorator: Google::Apis::ContainerV1::AdditionalPodRangesConfig::Representation
       
           property :user_managed_keys_config, as: 'userManagedKeysConfig', class: Google::Apis::ContainerV1::UserManagedKeysConfig, decorator: Google::Apis::ContainerV1::UserManagedKeysConfig::Representation
+      
+        end
+      end
+      
+      class ClusterUpgradeInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :auto_upgrade_status, as: 'autoUpgradeStatus'
+          property :end_of_extended_support_timestamp, as: 'endOfExtendedSupportTimestamp'
+          property :end_of_standard_support_timestamp, as: 'endOfStandardSupportTimestamp'
+          property :minor_target_version, as: 'minorTargetVersion'
+          property :patch_target_version, as: 'patchTargetVersion'
+          collection :paused_reason, as: 'pausedReason'
+          collection :upgrade_details, as: 'upgradeDetails', class: Google::Apis::ContainerV1::UpgradeDetails, decorator: Google::Apis::ContainerV1::UpgradeDetails::Representation
       
         end
       end
@@ -2571,6 +2613,20 @@ module Google
         end
       end
       
+      class NodePoolUpgradeInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :auto_upgrade_status, as: 'autoUpgradeStatus'
+          property :end_of_extended_support_timestamp, as: 'endOfExtendedSupportTimestamp'
+          property :end_of_standard_support_timestamp, as: 'endOfStandardSupportTimestamp'
+          property :minor_target_version, as: 'minorTargetVersion'
+          property :patch_target_version, as: 'patchTargetVersion'
+          collection :paused_reason, as: 'pausedReason'
+          collection :upgrade_details, as: 'upgradeDetails', class: Google::Apis::ContainerV1::UpgradeDetails, decorator: Google::Apis::ContainerV1::UpgradeDetails::Representation
+      
+        end
+      end
+      
       class NodeTaint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2663,6 +2719,13 @@ module Google
           property :policy_name, as: 'policyName'
           property :tpu_topology, as: 'tpuTopology'
           property :type, as: 'type'
+        end
+      end
+      
+      class PodAutoscaling
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hpa_profile, as: 'hpaProfile'
         end
       end
       
@@ -2880,6 +2943,7 @@ module Google
           property :bulletin_uri, as: 'bulletinUri'
           collection :cve_ids, as: 'cveIds'
           property :manual_steps_required, as: 'manualStepsRequired'
+          collection :mitigated_versions, as: 'mitigatedVersions'
           collection :patched_versions, as: 'patchedVersions'
           property :resource_type_affected, as: 'resourceTypeAffected'
           property :severity, as: 'severity'
@@ -3233,6 +3297,18 @@ module Google
           property :resource, as: 'resource'
           property :resource_type, as: 'resourceType'
           property :version, as: 'version'
+        end
+      end
+      
+      class UpgradeDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :initial_version, as: 'initialVersion'
+          property :start_time, as: 'startTime'
+          property :start_type, as: 'startType'
+          property :state, as: 'state'
+          property :target_version, as: 'targetVersion'
         end
       end
       
