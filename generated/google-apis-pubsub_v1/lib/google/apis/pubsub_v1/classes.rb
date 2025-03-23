@@ -1191,8 +1191,15 @@ module Google
       class MessageTransform
         include Google::Apis::Core::Hashable
       
-        # Optional. If set to true, the transform is enabled. If false, the transform is
-        # disabled and will not be applied to messages. Defaults to `true`.
+        # Optional. If true, the transform is disabled and will not be applied to
+        # messages. Defaults to `false`.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # Optional. This field is deprecated, use the `disabled` field to disable
+        # transforms.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
@@ -1210,6 +1217,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disabled = args[:disabled] if args.key?(:disabled)
           @enabled = args[:enabled] if args.key?(:enabled)
           @javascript_udf = args[:javascript_udf] if args.key?(:javascript_udf)
         end
