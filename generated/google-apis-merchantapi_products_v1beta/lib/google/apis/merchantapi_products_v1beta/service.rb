@@ -133,6 +133,60 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates the existing product input in your Merchant Center account. After
+        # inserting, updating, or deleting a product input, it may take several minutes
+        # before the processed product can be retrieved.
+        # @param [String] name
+        #   Identifier. The name of the product input. Format: `"`productinput.name=
+        #   accounts/`account`/productInputs/`productinput``"` where the last section `
+        #   productinput` consists of 4 parts: channel~content_language~feed_label~
+        #   offer_id example for product input name is "accounts/123/productInputs/online~
+        #   en~US~sku123"
+        # @param [Google::Apis::MerchantapiProductsV1beta::ProductInput] product_input_object
+        # @param [String] data_source
+        #   Required. The primary or supplemental product data source where `data_source`
+        #   name identifies the product input to be updated. Only API data sources are
+        #   supported. Format: `accounts/`account`/dataSources/`datasource``.
+        # @param [String] update_mask
+        #   Optional. The list of product attributes to be updated. If the update mask is
+        #   omitted, then it is treated as implied field mask equivalent to all fields
+        #   that are populated (have a non-empty value). Attributes specified in the
+        #   update mask without a value specified in the body will be deleted from the
+        #   product. Update mask can only be specified for top level fields in attributes
+        #   and custom attributes. To specify the update mask for custom attributes you
+        #   need to add the `custom_attribute.` prefix. Providing special "*" value for
+        #   full product replacement is not supported.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiProductsV1beta::ProductInput] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiProductsV1beta::ProductInput]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_account_product_input(name, product_input_object = nil, data_source: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'products/v1beta/{+name}', options)
+          command.request_representation = Google::Apis::MerchantapiProductsV1beta::ProductInput::Representation
+          command.request_object = product_input_object
+          command.response_representation = Google::Apis::MerchantapiProductsV1beta::ProductInput::Representation
+          command.response_class = Google::Apis::MerchantapiProductsV1beta::ProductInput
+          command.params['name'] = name unless name.nil?
+          command.query['dataSource'] = data_source unless data_source.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves the processed product from your Merchant Center account. After
         # inserting, updating, or deleting a product input, it may take several minutes
         # before the updated final product can be retrieved.
