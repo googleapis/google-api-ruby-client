@@ -2049,6 +2049,7 @@ module Google
           property :checker_type, as: 'checkerType'
           collection :content_matchers, as: 'contentMatchers', class: Google::Apis::MonitoringV3::ContentMatcher, decorator: Google::Apis::MonitoringV3::ContentMatcher::Representation
       
+          property :disabled, as: 'disabled'
           property :display_name, as: 'displayName'
           property :http_check, as: 'httpCheck', class: Google::Apis::MonitoringV3::HttpCheck, decorator: Google::Apis::MonitoringV3::HttpCheck::Representation
       
