@@ -46,7 +46,7 @@ module Google
             @download_io = File.open(download_dest, 'wb')
             @close_io_on_finish = true
           else
-            @download_io = StringIO.new('', 'wb')
+            @download_io = StringIO.new(''.dup, 'wb')
             @close_io_on_finish = false
           end
           super
