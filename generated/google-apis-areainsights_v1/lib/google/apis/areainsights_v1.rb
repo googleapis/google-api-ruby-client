@@ -19,13 +19,13 @@ require 'google/apis/areainsights_v1/gem_version.rb'
 
 module Google
   module Apis
-    # Places Insights API
+    # Places Aggregate API
     #
-    # Places Insights API.
+    # Places Aggregate API.
     #
     # @see https://g3doc.corp.google.com/geo/platform/area_insights/README.md?cl=head
     module AreainsightsV1
-      # Version of the Places Insights API this client connects to.
+      # Version of the Places Aggregate API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1'
 

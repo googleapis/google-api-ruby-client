@@ -1,6 +1,6 @@
 {
     "api_id": "areainsights:v1",
-    "name_pretty": "Places Insights API",
+    "name_pretty": "Places Aggregate API",
     "distribution_name": "google-apis-areainsights_v1",
     "language": "ruby",
     "library_type": "REST"
