@@ -211,6 +211,25 @@ module Google
         end
       end
       
+      # Details about resources affected by this finding.
+      class AffectedResources
+        include Google::Apis::Core::Hashable
+      
+        # The count of resources affected by the finding.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+        end
+      end
+      
       # Allowed IP rule.
       class Allowed
         include Google::Apis::Core::Hashable
@@ -1999,6 +2018,11 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta2::Access]
         attr_accessor :access
       
+        # Details about resources affected by this finding.
+        # Corresponds to the JSON property `affectedResources`
+        # @return [Google::Apis::SecuritycenterV1beta2::AffectedResources]
+        attr_accessor :affected_resources
+      
         # Represents an application associated with a finding.
         # Corresponds to the JSON property `application`
         # @return [Google::Apis::SecuritycenterV1beta2::Application]
@@ -2365,6 +2389,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access = args[:access] if args.key?(:access)
+          @affected_resources = args[:affected_resources] if args.key?(:affected_resources)
           @application = args[:application] if args.key?(:application)
           @attack_exposure = args[:attack_exposure] if args.key?(:attack_exposure)
           @backup_disaster_recovery = args[:backup_disaster_recovery] if args.key?(:backup_disaster_recovery)
@@ -3943,6 +3968,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @confidence = args[:confidence] if args.key?(:confidence)
+        end
+      end
+      
+      # Details about resources affected by this finding.
+      class GoogleCloudSecuritycenterV2AffectedResources
+        include Google::Apis::Core::Hashable
+      
+        # The count of resources affected by the finding.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
         end
       end
       
@@ -5692,6 +5736,11 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Access]
         attr_accessor :access
       
+        # Details about resources affected by this finding.
+        # Corresponds to the JSON property `affectedResources`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AffectedResources]
+        attr_accessor :affected_resources
+      
         # Represents an application associated with a finding.
         # Corresponds to the JSON property `application`
         # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Application]
@@ -6072,6 +6121,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access = args[:access] if args.key?(:access)
+          @affected_resources = args[:affected_resources] if args.key?(:affected_resources)
           @application = args[:application] if args.key?(:application)
           @attack_exposure = args[:attack_exposure] if args.key?(:attack_exposure)
           @backup_disaster_recovery = args[:backup_disaster_recovery] if args.key?(:backup_disaster_recovery)
@@ -9715,7 +9765,7 @@ module Google
         end
       end
       
-      # Resource capturing the settings for Security Center. Next ID: 12
+      # Resource capturing the settings for Security Center.
       class SecurityCenterSettings
         include Google::Apis::Core::Hashable
       
