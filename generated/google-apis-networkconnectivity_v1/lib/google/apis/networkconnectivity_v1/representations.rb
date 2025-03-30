@@ -723,6 +723,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          collection :exclude_cidr_ranges, as: 'excludeCidrRanges'
+          property :immutable, as: 'immutable'
           property :ip_cidr_range, as: 'ipCidrRange'
           hash :labels, as: 'labels'
           property :migration, as: 'migration', class: Google::Apis::NetworkconnectivityV1::Migration, decorator: Google::Apis::NetworkconnectivityV1::Migration::Representation
