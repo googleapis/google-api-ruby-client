@@ -745,6 +745,7 @@ module Google
       class InstancesBulkInsertOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :machine_type, as: 'machineType'
           hash :per_location_status, as: 'perLocationStatus', class: Google::Apis::DeploymentmanagerV2beta::BulkInsertOperationStatus, decorator: Google::Apis::DeploymentmanagerV2beta::BulkInsertOperationStatus::Representation
       
         end
