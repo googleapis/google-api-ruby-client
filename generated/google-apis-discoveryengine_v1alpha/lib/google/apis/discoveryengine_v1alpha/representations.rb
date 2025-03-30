@@ -4905,6 +4905,8 @@ module Google
       class GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigLayoutParsingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_image_annotation, as: 'enableImageAnnotation'
+          property :enable_table_annotation, as: 'enableTableAnnotation'
         end
       end
       
@@ -7092,6 +7094,8 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigLayoutParsingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_image_annotation, as: 'enableImageAnnotation'
+          property :enable_table_annotation, as: 'enableTableAnnotation'
         end
       end
       
@@ -9611,6 +9615,7 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaUserInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :time_zone, as: 'timeZone'
           property :user_agent, as: 'userAgent'
           property :user_id, as: 'userId'
         end
@@ -10212,6 +10217,8 @@ module Google
       class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigLayoutParsingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_image_annotation, as: 'enableImageAnnotation'
+          property :enable_table_annotation, as: 'enableTableAnnotation'
         end
       end
       
@@ -11068,6 +11075,7 @@ module Google
       class GoogleCloudDiscoveryengineV1betaUserInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :time_zone, as: 'timeZone'
           property :user_agent, as: 'userAgent'
           property :user_id, as: 'userId'
         end
