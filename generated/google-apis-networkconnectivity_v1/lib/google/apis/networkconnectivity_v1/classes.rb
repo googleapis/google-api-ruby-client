@@ -1097,6 +1097,20 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. ExcludeCidrRanges flag. Specifies a set of CIDR blocks that allows
+        # exclusion of particular CIDR ranges from the auto-allocation process, without
+        # having to reserve these blocks
+        # Corresponds to the JSON property `excludeCidrRanges`
+        # @return [Array<String>]
+        attr_accessor :exclude_cidr_ranges
+      
+        # Optional. Immutable ranges cannot have their fields modified, except for
+        # labels and description.
+        # Corresponds to the JSON property `immutable`
+        # @return [Boolean]
+        attr_accessor :immutable
+        alias_method :immutable?, :immutable
+      
         # The IP range that this internal range defines. NOTE: IPv6 ranges are limited
         # to usage=EXTERNAL_TO_VPC and peering=FOR_SELF. NOTE: For IPv6 Ranges this
         # field is compulsory, i.e. the address range must be specified explicitly.
@@ -1188,6 +1202,8 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @exclude_cidr_ranges = args[:exclude_cidr_ranges] if args.key?(:exclude_cidr_ranges)
+          @immutable = args[:immutable] if args.key?(:immutable)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @labels = args[:labels] if args.key?(:labels)
           @migration = args[:migration] if args.key?(:migration)
