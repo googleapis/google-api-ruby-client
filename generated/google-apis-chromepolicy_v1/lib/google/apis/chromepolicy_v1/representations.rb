@@ -831,6 +831,7 @@ module Google
           collection :message_type, as: 'messageType', class: Google::Apis::ChromepolicyV1::Proto2DescriptorProto, decorator: Google::Apis::ChromepolicyV1::Proto2DescriptorProto::Representation
       
           property :name, as: 'name'
+          collection :option_dependency, as: 'optionDependency'
           property :package, as: 'package'
           property :syntax, as: 'syntax'
         end
