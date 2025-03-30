@@ -11295,6 +11295,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :args, as: 'args'
+          property :id, as: 'id'
           property :name, as: 'name'
         end
       end
@@ -11322,6 +11323,7 @@ module Google
       class GoogleCloudAiplatformV1beta1FunctionResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
           property :name, as: 'name'
           hash :response, as: 'response'
         end
@@ -11636,6 +11638,7 @@ module Google
       class GoogleCloudAiplatformV1beta1GroundingChunkWeb
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
           property :title, as: 'title'
           property :uri, as: 'uri'
         end
