@@ -24,7 +24,7 @@ module Google
     # The Google Keep API is used in an enterprise environment to manage Google Keep
     # content and resolve issues identified by cloud security software.
     #
-    # @see https://developers.google.com/keep/api
+    # @see https://developers.google.com/workspace/keep/api
     module KeepV1
       # Version of the Google Keep API this client connects to.
       # This is NOT the gem version.
