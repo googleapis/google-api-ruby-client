@@ -23,7 +23,7 @@ module Google
     #
     # 
     #
-    # @see 
+    # @see https://cloud.google.com/stackdriver/docs/
     module ObservabilityV1
       # Version of the Observability API this client connects to.
       # This is NOT the gem version.
