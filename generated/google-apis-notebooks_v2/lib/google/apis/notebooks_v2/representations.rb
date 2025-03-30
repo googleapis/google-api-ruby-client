@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConfidentialInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Config
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -349,6 +355,14 @@ module Google
         end
       end
       
+      class ConfidentialInstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidential_instance_type, as: 'confidentialInstanceType'
+          property :enable_confidential_compute, as: 'enableConfidentialCompute'
+        end
+      end
+      
       class Config
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -446,6 +460,8 @@ module Google
           collection :accelerator_configs, as: 'acceleratorConfigs', class: Google::Apis::NotebooksV2::AcceleratorConfig, decorator: Google::Apis::NotebooksV2::AcceleratorConfig::Representation
       
           property :boot_disk, as: 'bootDisk', class: Google::Apis::NotebooksV2::BootDisk, decorator: Google::Apis::NotebooksV2::BootDisk::Representation
+      
+          property :confidential_instance_config, as: 'confidentialInstanceConfig', class: Google::Apis::NotebooksV2::ConfidentialInstanceConfig, decorator: Google::Apis::NotebooksV2::ConfidentialInstanceConfig::Representation
       
           property :container_image, as: 'containerImage', class: Google::Apis::NotebooksV2::ContainerImage, decorator: Google::Apis::NotebooksV2::ContainerImage::Representation
       

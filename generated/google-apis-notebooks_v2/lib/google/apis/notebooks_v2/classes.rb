@@ -271,6 +271,33 @@ module Google
         end
       end
       
+      # A set of Confidential Instance options.
+      class ConfidentialInstanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Defines the type of technology used by the confidential instance.
+        # Corresponds to the JSON property `confidentialInstanceType`
+        # @return [String]
+        attr_accessor :confidential_instance_type
+      
+        # Optional. Defines whether the instance should have confidential compute
+        # enabled.
+        # Corresponds to the JSON property `enableConfidentialCompute`
+        # @return [Boolean]
+        attr_accessor :enable_confidential_compute
+        alias_method :enable_confidential_compute?, :enable_confidential_compute
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidential_instance_type = args[:confidential_instance_type] if args.key?(:confidential_instance_type)
+          @enable_confidential_compute = args[:enable_confidential_compute] if args.key?(:enable_confidential_compute)
+        end
+      end
+      
       # Response for getting WbI configurations in a location
       class Config
         include Google::Apis::Core::Hashable
@@ -629,6 +656,11 @@ module Google
         # @return [Google::Apis::NotebooksV2::BootDisk]
         attr_accessor :boot_disk
       
+        # A set of Confidential Instance options.
+        # Corresponds to the JSON property `confidentialInstanceConfig`
+        # @return [Google::Apis::NotebooksV2::ConfidentialInstanceConfig]
+        attr_accessor :confidential_instance_config
+      
         # Definition of a container image for starting a notebook instance with the
         # environment installed in a container.
         # Corresponds to the JSON property `containerImage`
@@ -715,6 +747,7 @@ module Google
         def update!(**args)
           @accelerator_configs = args[:accelerator_configs] if args.key?(:accelerator_configs)
           @boot_disk = args[:boot_disk] if args.key?(:boot_disk)
+          @confidential_instance_config = args[:confidential_instance_config] if args.key?(:confidential_instance_config)
           @container_image = args[:container_image] if args.key?(:container_image)
           @data_disks = args[:data_disks] if args.key?(:data_disks)
           @disable_public_ip = args[:disable_public_ip] if args.key?(:disable_public_ip)
