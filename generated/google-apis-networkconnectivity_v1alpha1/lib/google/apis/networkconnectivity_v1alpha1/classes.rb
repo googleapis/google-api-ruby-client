@@ -488,6 +488,13 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. ExcludeCidrRanges flag. Specifies a set of CIDR blocks that allows
+        # exclusion of particular CIDR ranges from the auto-allocation process, without
+        # having to reserve these blocks
+        # Corresponds to the JSON property `excludeCidrRanges`
+        # @return [Array<String>]
+        attr_accessor :exclude_cidr_ranges
+      
         # Optional. Immutable ranges cannot have their fields modified, except for
         # labels and description.
         # Corresponds to the JSON property `immutable`
@@ -586,6 +593,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @exclude_cidr_ranges = args[:exclude_cidr_ranges] if args.key?(:exclude_cidr_ranges)
           @immutable = args[:immutable] if args.key?(:immutable)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @labels = args[:labels] if args.key?(:labels)
