@@ -1443,6 +1443,7 @@ module Google
           collection :time_series, as: 'timeSeries', class: Google::Apis::MonitoringV3::TimeSeries, decorator: Google::Apis::MonitoringV3::TimeSeries::Representation
       
           property :unit, as: 'unit'
+          collection :unreachable, as: 'unreachable'
         end
       end
       

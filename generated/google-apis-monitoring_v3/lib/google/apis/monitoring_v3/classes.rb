@@ -2687,6 +2687,12 @@ module Google
         # @return [String]
         attr_accessor :unit
       
+        # Cloud regions that were unreachable which may have caused incomplete data to
+        # be returned.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2697,6 +2703,7 @@ module Google
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @time_series = args[:time_series] if args.key?(:time_series)
           @unit = args[:unit] if args.key?(:unit)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
