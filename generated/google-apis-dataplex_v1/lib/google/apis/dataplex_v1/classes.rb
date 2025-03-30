@@ -856,7 +856,7 @@ module Google
       
         # Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running
         # discovery periodically. Successive discovery runs must be scheduled at least
-        # 60 minutes apart. The default value is to run discovery every 60 minutes. To
+        # 60 minutes apart. The default value is to run discovery every 60 minutes.To
         # explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "
         # CRON_TZ=$`IANA_TIME_ZONE`" or TZ=$`IANA_TIME_ZONE`". The $`IANA_TIME_ZONE` may
         # only be a valid string from IANA time zone database. For example, CRON_TZ=
@@ -1601,6 +1601,11 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing]
         attr_accessor :bigquery_publishing
       
+        # Statistics of the DataDiscoveryScan.
+        # Corresponds to the JSON property `scanStatistics`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoveryResultScanStatistics]
+        attr_accessor :scan_statistics
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1608,6 +1613,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bigquery_publishing = args[:bigquery_publishing] if args.key?(:bigquery_publishing)
+          @scan_statistics = args[:scan_statistics] if args.key?(:scan_statistics)
         end
       end
       
@@ -1620,6 +1626,11 @@ module Google
         # @return [String]
         attr_accessor :dataset
       
+        # Output only. The location of the BigQuery publishing dataset.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1627,6 +1638,74 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dataset = args[:dataset] if args.key?(:dataset)
+          @location = args[:location] if args.key?(:location)
+        end
+      end
+      
+      # Statistics of the DataDiscoveryScan.
+      class GoogleCloudDataplexV1DataDiscoveryResultScanStatistics
+        include Google::Apis::Core::Hashable
+      
+        # The data processed in bytes.
+        # Corresponds to the JSON property `dataProcessedBytes`
+        # @return [Fixnum]
+        attr_accessor :data_processed_bytes
+      
+        # The number of files excluded.
+        # Corresponds to the JSON property `filesExcluded`
+        # @return [Fixnum]
+        attr_accessor :files_excluded
+      
+        # The number of filesets created.
+        # Corresponds to the JSON property `filesetsCreated`
+        # @return [Fixnum]
+        attr_accessor :filesets_created
+      
+        # The number of filesets deleted.
+        # Corresponds to the JSON property `filesetsDeleted`
+        # @return [Fixnum]
+        attr_accessor :filesets_deleted
+      
+        # The number of filesets updated.
+        # Corresponds to the JSON property `filesetsUpdated`
+        # @return [Fixnum]
+        attr_accessor :filesets_updated
+      
+        # The number of files scanned.
+        # Corresponds to the JSON property `scannedFileCount`
+        # @return [Fixnum]
+        attr_accessor :scanned_file_count
+      
+        # The number of tables created.
+        # Corresponds to the JSON property `tablesCreated`
+        # @return [Fixnum]
+        attr_accessor :tables_created
+      
+        # The number of tables deleted.
+        # Corresponds to the JSON property `tablesDeleted`
+        # @return [Fixnum]
+        attr_accessor :tables_deleted
+      
+        # The number of tables updated.
+        # Corresponds to the JSON property `tablesUpdated`
+        # @return [Fixnum]
+        attr_accessor :tables_updated
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_processed_bytes = args[:data_processed_bytes] if args.key?(:data_processed_bytes)
+          @files_excluded = args[:files_excluded] if args.key?(:files_excluded)
+          @filesets_created = args[:filesets_created] if args.key?(:filesets_created)
+          @filesets_deleted = args[:filesets_deleted] if args.key?(:filesets_deleted)
+          @filesets_updated = args[:filesets_updated] if args.key?(:filesets_updated)
+          @scanned_file_count = args[:scanned_file_count] if args.key?(:scanned_file_count)
+          @tables_created = args[:tables_created] if args.key?(:tables_created)
+          @tables_deleted = args[:tables_deleted] if args.key?(:tables_deleted)
+          @tables_updated = args[:tables_updated] if args.key?(:tables_updated)
         end
       end
       
@@ -6119,6 +6198,17 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Export Job Results. The result is based on the snapshot at the time when the
+        # job is created.
+        # Corresponds to the JSON property `exportResult`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobExportJobResult]
+        attr_accessor :export_result
+      
+        # Export job specification.
+        # Corresponds to the JSON property `exportSpec`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobExportJobSpec]
+        attr_accessor :export_spec
+      
         # Results from a metadata import job.
         # Corresponds to the JSON property `importResult`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobImportJobResult]
@@ -6175,6 +6265,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @export_result = args[:export_result] if args.key?(:export_result)
+          @export_spec = args[:export_spec] if args.key?(:export_spec)
           @import_result = args[:import_result] if args.key?(:import_result)
           @import_spec = args[:import_spec] if args.key?(:import_spec)
           @labels = args[:labels] if args.key?(:labels)
@@ -6183,6 +6275,121 @@ module Google
           @type = args[:type] if args.key?(:type)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Export Job Results. The result is based on the snapshot at the time when the
+      # job is created.
+      class GoogleCloudDataplexV1MetadataJobExportJobResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The error message if the export job failed.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # Output only. The number of entries that have been exported.
+        # Corresponds to the JSON property `exportedEntries`
+        # @return [Fixnum]
+        attr_accessor :exported_entries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @exported_entries = args[:exported_entries] if args.key?(:exported_entries)
+        end
+      end
+      
+      # Export job specification.
+      class GoogleCloudDataplexV1MetadataJobExportJobSpec
+        include Google::Apis::Core::Hashable
+      
+        # Required. The root path of the exported metadata. Must be in the format: "gs://
+        # " Or specify a customized prefix after the bucket: "gs://///.../". The length
+        # limit of the customized prefix is 128 characters. The bucket must be in the
+        # same VPC-SC perimeter with the job.
+        # Corresponds to the JSON property `outputPath`
+        # @return [String]
+        attr_accessor :output_path
+      
+        # Scope of the export job.
+        # Corresponds to the JSON property `scope`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope]
+        attr_accessor :scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output_path = args[:output_path] if args.key?(:output_path)
+          @scope = args[:scope] if args.key?(:scope)
+        end
+      end
+      
+      # Scope of the export job.
+      class GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope
+        include Google::Apis::Core::Hashable
+      
+        # The aspect types that are in scope for the export job. Optional. If specified,
+        # only aspects of the specified types will be affected by the job. Must follow
+        # the format: "projects//locations//aspectTypes/"
+        # Corresponds to the JSON property `aspectTypes`
+        # @return [Array<String>]
+        attr_accessor :aspect_types
+      
+        # The entry groups that are in scope for the export job. Optional. If specified,
+        # only entries in the specified entry groups will be exported by the job. Must
+        # be in the VPC-SC perimeter of the job. The location of the entry groups must
+        # be the same as the job. Either projects or entry_groups can be specified when
+        # organization_level_export is set to false. Must follow the format: "projects//
+        # locations//entryGroups/"
+        # Corresponds to the JSON property `entryGroups`
+        # @return [Array<String>]
+        attr_accessor :entry_groups
+      
+        # If specified, only entries of the specified types will be affected by the job.
+        # Must follow the format: "projects//locations//entryTypes/"
+        # Corresponds to the JSON property `entryTypes`
+        # @return [Array<String>]
+        attr_accessor :entry_types
+      
+        # Indicating if it is an organization level export job. - When set to true,
+        # exports all entries from entry groups and projects sharing the same
+        # organization id of the Metadata Job. Only projects and entry groups in the VPC-
+        # SC perimeter will be exported. The projects and entry groups are ignored. -
+        # When set to false, one of the projects or entry groups must be specified. -
+        # Default to false.
+        # Corresponds to the JSON property `organizationLevel`
+        # @return [Boolean]
+        attr_accessor :organization_level
+        alias_method :organization_level?, :organization_level
+      
+        # The projects that are in the scope of the export job. Can either be project
+        # numbers or project IDs. If specified, only the entries from the specified
+        # projects will be exported. The projects must be in the same organization and
+        # in the VPC-SC perimeter. Either projects or entry_groups can be specified when
+        # organization_level_export is set to false. Must follow the format: "projects/"
+        # Corresponds to the JSON property `projects`
+        # @return [Array<String>]
+        attr_accessor :projects
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aspect_types = args[:aspect_types] if args.key?(:aspect_types)
+          @entry_groups = args[:entry_groups] if args.key?(:entry_groups)
+          @entry_types = args[:entry_types] if args.key?(:entry_types)
+          @organization_level = args[:organization_level] if args.key?(:organization_level)
+          @projects = args[:projects] if args.key?(:projects)
         end
       end
       
@@ -7863,7 +8070,7 @@ module Google
       
         # Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running
         # discovery periodically. Successive discovery runs must be scheduled at least
-        # 60 minutes apart. The default value is to run discovery every 60 minutes. To
+        # 60 minutes apart. The default value is to run discovery every 60 minutes.To
         # explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "
         # CRON_TZ=$`IANA_TIME_ZONE`" or TZ=$`IANA_TIME_ZONE`". The $`IANA_TIME_ZONE` may
         # only be a valid string from IANA time zone database. For example, CRON_TZ=

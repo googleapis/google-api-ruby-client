@@ -262,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1DataDiscoveryResultScanStatistics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1DataDiscoverySpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -941,6 +947,24 @@ module Google
       end
       
       class GoogleCloudDataplexV1MetadataJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1MetadataJobExportJobResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1MetadataJobExportJobSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1720,6 +1744,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bigquery_publishing, as: 'bigqueryPublishing', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing::Representation
       
+          property :scan_statistics, as: 'scanStatistics', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoveryResultScanStatistics, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoveryResultScanStatistics::Representation
+      
         end
       end
       
@@ -1727,6 +1753,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dataset, as: 'dataset'
+          property :location, as: 'location'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataDiscoveryResultScanStatistics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_processed_bytes, :numeric_string => true, as: 'dataProcessedBytes'
+          property :files_excluded, as: 'filesExcluded'
+          property :filesets_created, as: 'filesetsCreated'
+          property :filesets_deleted, as: 'filesetsDeleted'
+          property :filesets_updated, as: 'filesetsUpdated'
+          property :scanned_file_count, as: 'scannedFileCount'
+          property :tables_created, as: 'tablesCreated'
+          property :tables_deleted, as: 'tablesDeleted'
+          property :tables_updated, as: 'tablesUpdated'
         end
       end
       
@@ -2964,6 +3006,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :export_result, as: 'exportResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobExportJobResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobExportJobResult::Representation
+      
+          property :export_spec, as: 'exportSpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobExportJobSpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobExportJobSpec::Representation
+      
           property :import_result, as: 'importResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobImportJobResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobImportJobResult::Representation
       
           property :import_spec, as: 'importSpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobImportJobSpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobImportJobSpec::Representation
@@ -2975,6 +3021,34 @@ module Google
           property :type, as: 'type'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDataplexV1MetadataJobExportJobResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_message, as: 'errorMessage'
+          property :exported_entries, :numeric_string => true, as: 'exportedEntries'
+        end
+      end
+      
+      class GoogleCloudDataplexV1MetadataJobExportJobSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_path, as: 'outputPath'
+          property :scope, as: 'scope', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :aspect_types, as: 'aspectTypes'
+          collection :entry_groups, as: 'entryGroups'
+          collection :entry_types, as: 'entryTypes'
+          property :organization_level, as: 'organizationLevel'
+          collection :projects, as: 'projects'
         end
       end
       
