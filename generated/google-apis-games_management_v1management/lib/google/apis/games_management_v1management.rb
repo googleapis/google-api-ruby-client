@@ -19,14 +19,14 @@ require 'google/apis/games_management_v1management/gem_version.rb'
 
 module Google
   module Apis
-    # Google Play Game Management
+    # Google Play Games Services Management API
     #
     # The Google Play Games Management API allows developers to manage resources
     # from the Google Play Game service.
     #
     # @see https://developers.google.com/games/
     module GamesManagementV1management
-      # Version of the Google Play Game Management this client connects to.
+      # Version of the Google Play Games Services Management API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1management'
 

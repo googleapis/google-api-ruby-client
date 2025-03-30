@@ -1,6 +1,6 @@
 {
     "api_id": "gamesManagement:v1management",
-    "name_pretty": "Google Play Game Management",
+    "name_pretty": "Google Play Games Services Management API",
     "distribution_name": "google-apis-games_management_v1management",
     "language": "ruby",
     "library_type": "REST"
