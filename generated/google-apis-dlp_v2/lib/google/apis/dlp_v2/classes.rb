@@ -5028,7 +5028,8 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreInfoTypeSummary>]
         attr_accessor :file_store_info_type_summaries
       
-        # The file store does not have any files.
+        # The file store does not have any files. If the profiling failed, this will be
+        # false.
         # Corresponds to the JSON property `fileStoreIsEmpty`
         # @return [Boolean]
         attr_accessor :file_store_is_empty
