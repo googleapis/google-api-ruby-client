@@ -860,6 +860,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_token_count
       
+        # Output only. Traffic type. This shows whether a request consumes Pay-As-You-Go
+        # or Provisioned Throughput quota.
+        # Corresponds to the JSON property `trafficType`
+        # @return [String]
+        attr_accessor :traffic_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -876,6 +882,7 @@ module Google
           @tool_use_prompt_token_count = args[:tool_use_prompt_token_count] if args.key?(:tool_use_prompt_token_count)
           @tool_use_prompt_tokens_details = args[:tool_use_prompt_tokens_details] if args.key?(:tool_use_prompt_tokens_details)
           @total_token_count = args[:total_token_count] if args.key?(:total_token_count)
+          @traffic_type = args[:traffic_type] if args.key?(:traffic_type)
         end
       end
       
@@ -914,6 +921,11 @@ module Google
         # Corresponds to the JSON property `mediaResolution`
         # @return [String]
         attr_accessor :media_resolution
+      
+        # Config for model selection.
+        # Corresponds to the JSON property `modelConfig`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfigModelConfig]
+        attr_accessor :model_config
       
         # Optional. Positive penalties.
         # Corresponds to the JSON property `presencePenalty`
@@ -972,6 +984,11 @@ module Google
         # @return [Float]
         attr_accessor :temperature
       
+        # Config for thinking features.
+        # Corresponds to the JSON property `thinkingConfig`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig]
+        attr_accessor :thinking_config
+      
         # Optional. If specified, top-k sampling will be used.
         # Corresponds to the JSON property `topK`
         # @return [Float]
@@ -994,6 +1011,7 @@ module Google
           @logprobs = args[:logprobs] if args.key?(:logprobs)
           @max_output_tokens = args[:max_output_tokens] if args.key?(:max_output_tokens)
           @media_resolution = args[:media_resolution] if args.key?(:media_resolution)
+          @model_config = args[:model_config] if args.key?(:model_config)
           @presence_penalty = args[:presence_penalty] if args.key?(:presence_penalty)
           @response_logprobs = args[:response_logprobs] if args.key?(:response_logprobs)
           @response_mime_type = args[:response_mime_type] if args.key?(:response_mime_type)
@@ -1004,8 +1022,28 @@ module Google
           @speech_config = args[:speech_config] if args.key?(:speech_config)
           @stop_sequences = args[:stop_sequences] if args.key?(:stop_sequences)
           @temperature = args[:temperature] if args.key?(:temperature)
+          @thinking_config = args[:thinking_config] if args.key?(:thinking_config)
           @top_k = args[:top_k] if args.key?(:top_k)
           @top_p = args[:top_p] if args.key?(:top_p)
+        end
+      end
+      
+      # Config for model selection.
+      class GoogleCloudAiplatformV1beta1GenerationConfigModelConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Feature selection preference.
+        # Corresponds to the JSON property `featureSelectionPreference`
+        # @return [String]
+        attr_accessor :feature_selection_preference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @feature_selection_preference = args[:feature_selection_preference] if args.key?(:feature_selection_preference)
         end
       end
       
@@ -1075,6 +1113,34 @@ module Google
         end
       end
       
+      # Config for thinking features.
+      class GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Indicates whether to enable thinking mode. If true, the model will
+        # enable thinking mode.
+        # Corresponds to the JSON property `enableThinking`
+        # @return [Boolean]
+        attr_accessor :enable_thinking
+        alias_method :enable_thinking?, :enable_thinking
+      
+        # Optional. Indicates the thinking budget in tokens. This is only applied when
+        # enable_thinking is true.
+        # Corresponds to the JSON property `thinkingBudget`
+        # @return [Fixnum]
+        attr_accessor :thinking_budget
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_thinking = args[:enable_thinking] if args.key?(:enable_thinking)
+          @thinking_budget = args[:thinking_budget] if args.key?(:thinking_budget)
+        end
+      end
+      
       # Tool to retrieve public web data for grounding, powered by Google.
       class GoogleCloudAiplatformV1beta1GoogleSearchRetrieval
         include Google::Apis::Core::Hashable
@@ -1123,6 +1189,12 @@ module Google
       class GoogleCloudAiplatformV1beta1GroundingChunkRetrievedContext
         include Google::Apis::Core::Hashable
       
+        # A RagChunk includes the content of a chunk of a RagFile, and associated
+        # metadata.
+        # Corresponds to the JSON property `ragChunk`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1RagChunk]
+        attr_accessor :rag_chunk
+      
         # Text of the attribution.
         # Corresponds to the JSON property `text`
         # @return [String]
@@ -1144,6 +1216,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @rag_chunk = args[:rag_chunk] if args.key?(:rag_chunk)
           @text = args[:text] if args.key?(:text)
           @title = args[:title] if args.key?(:title)
           @uri = args[:uri] if args.key?(:uri)
@@ -1462,6 +1535,57 @@ module Google
         # Update properties of this object
         def update!(**args)
           @voice_name = args[:voice_name] if args.key?(:voice_name)
+        end
+      end
+      
+      # A RagChunk includes the content of a chunk of a RagFile, and associated
+      # metadata.
+      class GoogleCloudAiplatformV1beta1RagChunk
+        include Google::Apis::Core::Hashable
+      
+        # Represents where the chunk starts and ends in the document.
+        # Corresponds to the JSON property `pageSpan`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1RagChunkPageSpan]
+        attr_accessor :page_span
+      
+        # The content of the chunk.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @page_span = args[:page_span] if args.key?(:page_span)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Represents where the chunk starts and ends in the document.
+      class GoogleCloudAiplatformV1beta1RagChunkPageSpan
+        include Google::Apis::Core::Hashable
+      
+        # Page where chunk starts in the document. Inclusive. 1-indexed.
+        # Corresponds to the JSON property `firstPage`
+        # @return [Fixnum]
+        attr_accessor :first_page
+      
+        # Page where chunk ends in the document. Inclusive. 1-indexed.
+        # Corresponds to the JSON property `lastPage`
+        # @return [Fixnum]
+        attr_accessor :last_page
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @first_page = args[:first_page] if args.key?(:first_page)
+          @last_page = args[:last_page] if args.key?(:last_page)
         end
       end
       

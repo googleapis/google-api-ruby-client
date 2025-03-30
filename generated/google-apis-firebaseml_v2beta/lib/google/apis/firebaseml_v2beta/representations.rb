@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1GenerationConfigModelConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,6 +173,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigManualRoutingMode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -239,6 +251,18 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1PrebuiltVoiceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagChunk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagChunkPageSpan
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -633,6 +657,7 @@ module Google
           collection :tool_use_prompt_tokens_details, as: 'toolUsePromptTokensDetails', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModalityTokenCount, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModalityTokenCount::Representation
       
           property :total_token_count, as: 'totalTokenCount'
+          property :traffic_type, as: 'trafficType'
         end
       end
       
@@ -645,6 +670,8 @@ module Google
           property :logprobs, as: 'logprobs'
           property :max_output_tokens, as: 'maxOutputTokens'
           property :media_resolution, as: 'mediaResolution'
+          property :model_config, as: 'modelConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfigModelConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfigModelConfig::Representation
+      
           property :presence_penalty, as: 'presencePenalty'
           property :response_logprobs, as: 'responseLogprobs'
           property :response_mime_type, as: 'responseMimeType'
@@ -658,8 +685,17 @@ module Google
       
           collection :stop_sequences, as: 'stopSequences'
           property :temperature, as: 'temperature'
+          property :thinking_config, as: 'thinkingConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig::Representation
+      
           property :top_k, as: 'topK'
           property :top_p, as: 'topP'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1GenerationConfigModelConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :feature_selection_preference, as: 'featureSelectionPreference'
         end
       end
       
@@ -687,6 +723,14 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_thinking, as: 'enableThinking'
+          property :thinking_budget, as: 'thinkingBudget'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1GoogleSearchRetrieval
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -708,6 +752,8 @@ module Google
       class GoogleCloudAiplatformV1beta1GroundingChunkRetrievedContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :rag_chunk, as: 'ragChunk', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1RagChunk, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1RagChunk::Representation
+      
           property :text, as: 'text'
           property :title, as: 'title'
           property :uri, as: 'uri'
@@ -810,6 +856,23 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :voice_name, as: 'voiceName'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagChunk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :page_span, as: 'pageSpan', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1RagChunkPageSpan, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1RagChunkPageSpan::Representation
+      
+          property :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagChunkPageSpan
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :first_page, as: 'firstPage'
+          property :last_page, as: 'lastPage'
         end
       end
       
