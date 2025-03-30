@@ -2708,6 +2708,11 @@ module Google
       class EphemeralStorageLocalSsdConfig
         include Google::Apis::Core::Hashable
       
+        # Number of local SSDs to use for GKE Data Cache.
+        # Corresponds to the JSON property `dataCacheCount`
+        # @return [Fixnum]
+        attr_accessor :data_cache_count
+      
         # Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. A
         # zero (or unset) value has different meanings depending on machine type being
         # used: 1. For pre-Gen3 machines, which support flexible numbers of local ssds,
@@ -2730,6 +2735,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_cache_count = args[:data_cache_count] if args.key?(:data_cache_count)
           @local_ssd_count = args[:local_ssd_count] if args.key?(:local_ssd_count)
         end
       end
@@ -4536,6 +4542,12 @@ module Google
         # @return [Google::Apis::ContainerV1::FastSocket]
         attr_accessor :fast_socket
       
+        # Flex Start flag for enabling Flex Start VM.
+        # Corresponds to the JSON property `flexStart`
+        # @return [Boolean]
+        attr_accessor :flex_start
+        alias_method :flex_start?, :flex_start
+      
         # GcfsConfig contains configurations of Google Container File System (image
         # streaming).
         # Corresponds to the JSON property `gcfsConfig`
@@ -4782,6 +4794,7 @@ module Google
           @enable_confidential_storage = args[:enable_confidential_storage] if args.key?(:enable_confidential_storage)
           @ephemeral_storage_local_ssd_config = args[:ephemeral_storage_local_ssd_config] if args.key?(:ephemeral_storage_local_ssd_config)
           @fast_socket = args[:fast_socket] if args.key?(:fast_socket)
+          @flex_start = args[:flex_start] if args.key?(:flex_start)
           @gcfs_config = args[:gcfs_config] if args.key?(:gcfs_config)
           @gvnic = args[:gvnic] if args.key?(:gvnic)
           @image_type = args[:image_type] if args.key?(:image_type)
@@ -7926,6 +7939,12 @@ module Google
         # @return [Google::Apis::ContainerV1::FastSocket]
         attr_accessor :fast_socket
       
+        # Flex Start flag for enabling Flex Start VM.
+        # Corresponds to the JSON property `flexStart`
+        # @return [Boolean]
+        attr_accessor :flex_start
+        alias_method :flex_start?, :flex_start
+      
         # GcfsConfig contains configurations of Google Container File System (image
         # streaming).
         # Corresponds to the JSON property `gcfsConfig`
@@ -8130,6 +8149,7 @@ module Google
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @etag = args[:etag] if args.key?(:etag)
           @fast_socket = args[:fast_socket] if args.key?(:fast_socket)
+          @flex_start = args[:flex_start] if args.key?(:flex_start)
           @gcfs_config = args[:gcfs_config] if args.key?(:gcfs_config)
           @gvnic = args[:gvnic] if args.key?(:gvnic)
           @image_type = args[:image_type] if args.key?(:image_type)
