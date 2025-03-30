@@ -2046,12 +2046,28 @@ module Google
       class GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigLayoutParsingConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. If true, the LLM based annotation is added to the image during
+        # parsing.
+        # Corresponds to the JSON property `enableImageAnnotation`
+        # @return [Boolean]
+        attr_accessor :enable_image_annotation
+        alias_method :enable_image_annotation?, :enable_image_annotation
+      
+        # Optional. If true, the LLM based annotation is added to the table during
+        # parsing.
+        # Corresponds to the JSON property `enableTableAnnotation`
+        # @return [Boolean]
+        attr_accessor :enable_table_annotation
+        alias_method :enable_table_annotation?, :enable_table_annotation
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @enable_image_annotation = args[:enable_image_annotation] if args.key?(:enable_image_annotation)
+          @enable_table_annotation = args[:enable_table_annotation] if args.key?(:enable_table_annotation)
         end
       end
       
@@ -7071,12 +7087,28 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigLayoutParsingConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. If true, the LLM based annotation is added to the image during
+        # parsing.
+        # Corresponds to the JSON property `enableImageAnnotation`
+        # @return [Boolean]
+        attr_accessor :enable_image_annotation
+        alias_method :enable_image_annotation?, :enable_image_annotation
+      
+        # Optional. If true, the LLM based annotation is added to the table during
+        # parsing.
+        # Corresponds to the JSON property `enableTableAnnotation`
+        # @return [Boolean]
+        attr_accessor :enable_table_annotation
+        alias_method :enable_table_annotation?, :enable_table_annotation
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @enable_image_annotation = args[:enable_image_annotation] if args.key?(:enable_image_annotation)
+          @enable_table_annotation = args[:enable_table_annotation] if args.key?(:enable_table_annotation)
         end
       end
       
@@ -11508,6 +11540,11 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaUserInfo
         include Google::Apis::Core::Hashable
       
+        # Optional. IANA time zone, e.g. Europe/Budapest.
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
         # User agent as included in the HTTP header. The field must be a UTF-8 encoded
         # string with a length limit of 1,000 characters. Otherwise, an `
         # INVALID_ARGUMENT` error is returned. This should not be set when using the
@@ -11533,6 +11570,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
           @user_id = args[:user_id] if args.key?(:user_id)
         end
@@ -16561,12 +16599,28 @@ module Google
       class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigLayoutParsingConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. If true, the LLM based annotation is added to the image during
+        # parsing.
+        # Corresponds to the JSON property `enableImageAnnotation`
+        # @return [Boolean]
+        attr_accessor :enable_image_annotation
+        alias_method :enable_image_annotation?, :enable_image_annotation
+      
+        # Optional. If true, the LLM based annotation is added to the table during
+        # parsing.
+        # Corresponds to the JSON property `enableTableAnnotation`
+        # @return [Boolean]
+        attr_accessor :enable_table_annotation
+        alias_method :enable_table_annotation?, :enable_table_annotation
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @enable_image_annotation = args[:enable_image_annotation] if args.key?(:enable_image_annotation)
+          @enable_table_annotation = args[:enable_table_annotation] if args.key?(:enable_table_annotation)
         end
       end
       
@@ -24160,6 +24214,11 @@ module Google
       class GoogleCloudDiscoveryengineV1betaUserInfo
         include Google::Apis::Core::Hashable
       
+        # Optional. IANA time zone, e.g. Europe/Budapest.
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
         # User agent as included in the HTTP header. The field must be a UTF-8 encoded
         # string with a length limit of 1,000 characters. Otherwise, an `
         # INVALID_ARGUMENT` error is returned. This should not be set when using the
@@ -24185,6 +24244,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
           @user_id = args[:user_id] if args.key?(:user_id)
         end
