@@ -3850,6 +3850,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1RagRetrievalConfigRanking
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1RagRetrievalConfigRankingLlmRanker
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1RagRetrievalConfigRankingRankService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1RagVectorDbConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6497,6 +6515,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1VertexAiSearch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1VertexAiSearchConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -9302,6 +9326,8 @@ module Google
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :service_account_email, as: 'serviceAccountEmail'
+          property :service_agent_type, as: 'serviceAgentType'
           property :update_time, as: 'updateTime'
         end
       end
@@ -10199,6 +10225,7 @@ module Google
       class GoogleCloudAiplatformV1GroundingChunkWeb
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
           property :title, as: 'title'
           property :uri, as: 'uri'
         end
@@ -13263,6 +13290,8 @@ module Google
           property :update_time, as: 'updateTime'
           property :vector_db_config, as: 'vectorDbConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagVectorDbConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagVectorDbConfig::Representation
       
+          property :vertex_ai_search_config, as: 'vertexAiSearchConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VertexAiSearchConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VertexAiSearchConfig::Representation
+      
         end
       end
       
@@ -13362,6 +13391,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :filter, as: 'filter', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagRetrievalConfigFilter, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagRetrievalConfigFilter::Representation
       
+          property :ranking, as: 'ranking', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagRetrievalConfigRanking, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagRetrievalConfigRanking::Representation
+      
           property :top_k, as: 'topK'
         end
       end
@@ -13372,6 +13403,30 @@ module Google
           property :metadata_filter, as: 'metadataFilter'
           property :vector_distance_threshold, as: 'vectorDistanceThreshold'
           property :vector_similarity_threshold, as: 'vectorSimilarityThreshold'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1RagRetrievalConfigRanking
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :llm_ranker, as: 'llmRanker', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagRetrievalConfigRankingLlmRanker, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagRetrievalConfigRankingLlmRanker::Representation
+      
+          property :rank_service, as: 'rankService', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagRetrievalConfigRankingRankService, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagRetrievalConfigRankingRankService::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1RagRetrievalConfigRankingLlmRanker
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :model_name, as: 'modelName'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1RagRetrievalConfigRankingRankService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :model_name, as: 'modelName'
         end
       end
       
@@ -17610,6 +17665,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :datastore, as: 'datastore'
           property :engine, as: 'engine'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1VertexAiSearchConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :serving_config, as: 'servingConfig'
         end
       end
       
