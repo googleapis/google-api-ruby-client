@@ -1374,6 +1374,7 @@ module Google
       class ImageImportOsAdaptationParameters
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :boot_conversion, as: 'bootConversion'
           property :generalize, as: 'generalize'
           property :license_type, as: 'licenseType'
         end
