@@ -400,6 +400,9 @@ module Google
         # an internal error occurred
         # @param [String] environment_type
         #   Required. The type of environment that should be listed.
+        # @param [Boolean] include_viewable_models
+        #   Optional. Whether to include viewable only models in the response. This is
+        #   only applicable for Android models.
         # @param [String] project_id
         #   For authorization, the cloud project requesting the TestEnvironmentCatalog.
         # @param [String] fields
@@ -419,11 +422,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_test_environment_catalog(environment_type, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_test_environment_catalog(environment_type, include_viewable_models: nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/testEnvironmentCatalog/{environmentType}', options)
           command.response_representation = Google::Apis::TestingV1::TestEnvironmentCatalog::Representation
           command.response_class = Google::Apis::TestingV1::TestEnvironmentCatalog
           command.params['environmentType'] = environment_type unless environment_type.nil?
+          command.query['includeViewableModels'] = include_viewable_models unless include_viewable_models.nil?
           command.query['projectId'] = project_id unless project_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
