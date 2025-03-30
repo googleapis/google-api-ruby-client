@@ -292,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RunDuration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RuntimeVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -778,9 +784,12 @@ module Google
           property :guaranteed, as: 'guaranteed', class: Google::Apis::TpuV2alpha1::Guaranteed, decorator: Google::Apis::TpuV2alpha1::Guaranteed::Representation
       
           property :name, as: 'name'
+          property :provisioning_model, as: 'provisioningModel'
           property :queueing_policy, as: 'queueingPolicy', class: Google::Apis::TpuV2alpha1::QueueingPolicy, decorator: Google::Apis::TpuV2alpha1::QueueingPolicy::Representation
       
           property :reservation_name, as: 'reservationName'
+          property :run_duration, as: 'runDuration', class: Google::Apis::TpuV2alpha1::RunDuration, decorator: Google::Apis::TpuV2alpha1::RunDuration::Representation
+      
           property :spot, as: 'spot', class: Google::Apis::TpuV2alpha1::Spot, decorator: Google::Apis::TpuV2alpha1::Spot::Representation
       
           property :state, as: 'state', class: Google::Apis::TpuV2alpha1::QueuedResourceState, decorator: Google::Apis::TpuV2alpha1::QueuedResourceState::Representation
@@ -839,6 +848,14 @@ module Google
       class ResetQueuedResourceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RunDuration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_run_duration, as: 'maxRunDuration'
+          property :termination_time, as: 'terminationTime'
         end
       end
       
