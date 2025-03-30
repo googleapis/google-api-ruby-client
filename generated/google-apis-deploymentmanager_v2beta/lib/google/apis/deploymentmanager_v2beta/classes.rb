@@ -1161,6 +1161,12 @@ module Google
       class InstancesBulkInsertOperationMetadata
         include Google::Apis::Core::Hashable
       
+        # [Output Only] The machine type of the VMs that were created used internally
+        # only by KCP flex bulk insert.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
         # Status information per location (location name is key). Example key: zones/us-
         # central1-a
         # Corresponds to the JSON property `perLocationStatus`
@@ -1173,6 +1179,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
           @per_location_status = args[:per_location_status] if args.key?(:per_location_status)
         end
       end
