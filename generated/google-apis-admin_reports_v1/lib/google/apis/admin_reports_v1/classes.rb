@@ -106,6 +106,11 @@ module Google
         # @return [String]
         attr_accessor :owner_domain
       
+        # Details of the resource on which the action was performed.
+        # Corresponds to the JSON property `resourceDetails`
+        # @return [Array<Google::Apis::AdminReportsV1::ResourceDetails>]
+        attr_accessor :resource_details
+      
         def initialize(**args)
            update!(**args)
         end
@@ -119,11 +124,17 @@ module Google
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @kind = args[:kind] if args.key?(:kind)
           @owner_domain = args[:owner_domain] if args.key?(:owner_domain)
+          @resource_details = args[:resource_details] if args.key?(:resource_details)
         end
         
         # User doing the action.
         class Actor
           include Google::Apis::Core::Hashable
+        
+          # Details of the application that was the actor for the activity.
+          # Corresponds to the JSON property `applicationInfo`
+          # @return [Google::Apis::AdminReportsV1::Activity::Actor::ApplicationInfo]
+          attr_accessor :application_info
         
           # The type of actor.
           # Corresponds to the JSON property `callerType`
@@ -155,10 +166,43 @@ module Google
         
           # Update properties of this object
           def update!(**args)
+            @application_info = args[:application_info] if args.key?(:application_info)
             @caller_type = args[:caller_type] if args.key?(:caller_type)
             @email = args[:email] if args.key?(:email)
             @key = args[:key] if args.key?(:key)
             @profile_id = args[:profile_id] if args.key?(:profile_id)
+          end
+          
+          # Details of the application that was the actor for the activity.
+          class ApplicationInfo
+            include Google::Apis::Core::Hashable
+          
+            # Name of the application used to perform the action.
+            # Corresponds to the JSON property `applicationName`
+            # @return [String]
+            attr_accessor :application_name
+          
+            # Whether the application was impersonating a user.
+            # Corresponds to the JSON property `impersonation`
+            # @return [Boolean]
+            attr_accessor :impersonation
+            alias_method :impersonation?, :impersonation
+          
+            # OAuth client id of the third party application used to perform the action.
+            # Corresponds to the JSON property `oauthClientId`
+            # @return [String]
+            attr_accessor :oauth_client_id
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @application_name = args[:application_name] if args.key?(:application_name)
+              @impersonation = args[:impersonation] if args.key?(:impersonation)
+              @oauth_client_id = args[:oauth_client_id] if args.key?(:oauth_client_id)
+            end
           end
         end
         
@@ -185,6 +229,11 @@ module Google
           # @return [Array<Google::Apis::AdminReportsV1::Activity::Event::Parameter>]
           attr_accessor :parameters
         
+          # Resource ids associated with the event.
+          # Corresponds to the JSON property `resourceIds`
+          # @return [Array<String>]
+          attr_accessor :resource_ids
+        
           # Type of event. The Google Workspace service or feature that an administrator
           # changes is identified in the `type` property which identifies an event using
           # the `eventName` property. For a full list of the API's `type` categories, see
@@ -201,6 +250,7 @@ module Google
           def update!(**args)
             @name = args[:name] if args.key?(:name)
             @parameters = args[:parameters] if args.key?(:parameters)
+            @resource_ids = args[:resource_ids] if args.key?(:resource_ids)
             @type = args[:type] if args.key?(:type)
           end
           
@@ -350,6 +400,46 @@ module Google
         end
       end
       
+      # Details of the label applied on the resource.
+      class AppliedLabel
+        include Google::Apis::Core::Hashable
+      
+        # List of fields which are part of the label and have been set by the user. If
+        # label has a field which was not set by the user, it would not be present in
+        # this list.
+        # Corresponds to the JSON property `fieldValues`
+        # @return [Array<Google::Apis::AdminReportsV1::FieldValue>]
+        attr_accessor :field_values
+      
+        # Identifier of the label - Only the label id, not the full OnePlatform resource
+        # name.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The reason why the label/field was applied.
+        # Corresponds to the JSON property `reason`
+        # @return [Google::Apis::AdminReportsV1::Reason]
+        attr_accessor :reason
+      
+        # Title of the label
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_values = args[:field_values] if args.key?(:field_values)
+          @id = args[:id] if args.key?(:id)
+          @reason = args[:reason] if args.key?(:reason)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
       # A notification channel used to watch for resource changes.
       class Channel
         include Google::Apis::Core::Hashable
@@ -431,6 +521,260 @@ module Google
         end
       end
       
+      # Represents a whole or partial calendar date, such as a birthday. The time of
+      # day and time zone are either specified elsewhere or are insignificant. The
+      # date is relative to the Gregorian Calendar. This can represent one of the
+      # following: * A full date, with non-zero year, month, and day values. * A month
+      # and day, with a zero year (for example, an anniversary). * A year on its own,
+      # with a zero month and a zero day. * A year and month, with a zero day (for
+      # example, a credit card expiration date). Related types: * google.type.
+      # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+      class Date
+        include Google::Apis::Core::Hashable
+      
+        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        # specify a year by itself or a year and month where the day isn't significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        # and day.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        # year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
+        end
+      end
+      
+      # Details of the field value set by the user for the particular label.
+      class FieldValue
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `dateValue`
+        # @return [Google::Apis::AdminReportsV1::Date]
+        attr_accessor :date_value
+      
+        # Display name of the field
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier of the field
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Setting an integer value.
+        # Corresponds to the JSON property `integerValue`
+        # @return [Fixnum]
+        attr_accessor :integer_value
+      
+        # Setting a long text value.
+        # Corresponds to the JSON property `longTextValue`
+        # @return [String]
+        attr_accessor :long_text_value
+      
+        # The reason why the label/field was applied.
+        # Corresponds to the JSON property `reason`
+        # @return [Google::Apis::AdminReportsV1::Reason]
+        attr_accessor :reason
+      
+        # Setting a selection list value by selecting multiple values from a dropdown.
+        # Corresponds to the JSON property `selectionListValue`
+        # @return [Google::Apis::AdminReportsV1::FieldValueSelectionListValue]
+        attr_accessor :selection_list_value
+      
+        # Setting a selection value by selecting a single value from a dropdown.
+        # Corresponds to the JSON property `selectionValue`
+        # @return [Google::Apis::AdminReportsV1::FieldValueSelectionValue]
+        attr_accessor :selection_value
+      
+        # Setting a text list value.
+        # Corresponds to the JSON property `textListValue`
+        # @return [Google::Apis::AdminReportsV1::FieldValueTextListValue]
+        attr_accessor :text_list_value
+      
+        # Setting a text value.
+        # Corresponds to the JSON property `textValue`
+        # @return [String]
+        attr_accessor :text_value
+      
+        # Type of the field
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # If the field is unset, this will be true.
+        # Corresponds to the JSON property `unsetValue`
+        # @return [Boolean]
+        attr_accessor :unset_value
+        alias_method :unset_value?, :unset_value
+      
+        # Setting a user list value by selecting multiple users.
+        # Corresponds to the JSON property `userListValue`
+        # @return [Google::Apis::AdminReportsV1::FieldValueUserListValue]
+        attr_accessor :user_list_value
+      
+        # Setting a user value by selecting a single user.
+        # Corresponds to the JSON property `userValue`
+        # @return [Google::Apis::AdminReportsV1::FieldValueUserValue]
+        attr_accessor :user_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date_value = args[:date_value] if args.key?(:date_value)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+          @integer_value = args[:integer_value] if args.key?(:integer_value)
+          @long_text_value = args[:long_text_value] if args.key?(:long_text_value)
+          @reason = args[:reason] if args.key?(:reason)
+          @selection_list_value = args[:selection_list_value] if args.key?(:selection_list_value)
+          @selection_value = args[:selection_value] if args.key?(:selection_value)
+          @text_list_value = args[:text_list_value] if args.key?(:text_list_value)
+          @text_value = args[:text_value] if args.key?(:text_value)
+          @type = args[:type] if args.key?(:type)
+          @unset_value = args[:unset_value] if args.key?(:unset_value)
+          @user_list_value = args[:user_list_value] if args.key?(:user_list_value)
+          @user_value = args[:user_value] if args.key?(:user_value)
+        end
+      end
+      
+      # Setting a selection list value by selecting multiple values from a dropdown.
+      class FieldValueSelectionListValue
+        include Google::Apis::Core::Hashable
+      
+        # List of selections.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Google::Apis::AdminReportsV1::FieldValueSelectionValue>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Setting a selection value by selecting a single value from a dropdown.
+      class FieldValueSelectionValue
+        include Google::Apis::Core::Hashable
+      
+        # Whether the selection is badged.
+        # Corresponds to the JSON property `badged`
+        # @return [Boolean]
+        attr_accessor :badged
+        alias_method :badged?, :badged
+      
+        # Display name of the selection.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier of the selection.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @badged = args[:badged] if args.key?(:badged)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # Setting a text list value.
+      class FieldValueTextListValue
+        include Google::Apis::Core::Hashable
+      
+        # List of text values.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Setting a user list value by selecting multiple users.
+      class FieldValueUserListValue
+        include Google::Apis::Core::Hashable
+      
+        # List of users.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Google::Apis::AdminReportsV1::FieldValueUserValue>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Setting a user value by selecting a single user.
+      class FieldValueUserValue
+        include Google::Apis::Core::Hashable
+      
+        # Email of the user.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+        end
+      end
+      
       # JSON template for a parameter used in various reports.
       class NestedParameter
         include Google::Apis::Core::Hashable
@@ -484,6 +828,81 @@ module Google
           @multi_value = args[:multi_value] if args.key?(:multi_value)
           @name = args[:name] if args.key?(:name)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # The reason why the label/field was applied.
+      class Reason
+        include Google::Apis::Core::Hashable
+      
+        # The type of the reason.
+        # Corresponds to the JSON property `reasonType`
+        # @return [String]
+        attr_accessor :reason_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reason_type = args[:reason_type] if args.key?(:reason_type)
+        end
+      end
+      
+      # Details of the resource on which the action was performed.
+      class ResourceDetails
+        include Google::Apis::Core::Hashable
+      
+        # Id of the application to which this resource belongs
+        # Corresponds to the JSON property `applicationId`
+        # @return [Fixnum]
+        attr_accessor :application_id
+      
+        # List of labels applied on the resource
+        # Corresponds to the JSON property `appliedLabels`
+        # @return [Array<Google::Apis::AdminReportsV1::AppliedLabel>]
+        attr_accessor :applied_labels
+      
+        # Identifier of the resource.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Owner of the resource.
+        # Corresponds to the JSON property `ownerEmail`
+        # @return [String]
+        attr_accessor :owner_email
+      
+        # Defines relationship of the resource to the events
+        # Corresponds to the JSON property `relation`
+        # @return [String]
+        attr_accessor :relation
+      
+        # Title of the resource. For instance, in case of a drive document, this would
+        # be the title of the document. In case of an email, this would be the subject.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # Type of the resource - document, email, chat message
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application_id = args[:application_id] if args.key?(:application_id)
+          @applied_labels = args[:applied_labels] if args.key?(:applied_labels)
+          @id = args[:id] if args.key?(:id)
+          @owner_email = args[:owner_email] if args.key?(:owner_email)
+          @relation = args[:relation] if args.key?(:relation)
+          @title = args[:title] if args.key?(:title)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
