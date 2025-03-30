@@ -574,6 +574,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3WebhookRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1192,6 +1198,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVersionHeaderValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1WebhookRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1793,6 +1805,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2GeneratorSuggestion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2728,6 +2746,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2ToolCall
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2ToolCallResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2ToolCallResultError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2TrainAgentRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2897,6 +2933,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1GeneratorSuggestion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1GeneratorSuggestionToolCallInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3425,6 +3467,24 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1TelephonyDtmfEvents
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolCall
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolCallResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolCallResultError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4386,6 +4446,9 @@ module Google
           property :password, as: 'password'
           property :request_body, as: 'requestBody'
           hash :request_headers, as: 'requestHeaders'
+          property :secret_version_for_username_password, as: 'secretVersionForUsernamePassword'
+          hash :secret_versions_for_request_headers, as: 'secretVersionsForRequestHeaders', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue::Representation
+      
           property :service_agent_auth, as: 'serviceAgentAuth'
           property :uri, as: 'uri'
           property :username, as: 'username'
@@ -4399,7 +4462,15 @@ module Google
           property :client_id, as: 'clientId'
           property :client_secret, as: 'clientSecret'
           collection :scopes, as: 'scopes'
+          property :secret_version_for_client_secret, as: 'secretVersionForClientSecret'
           property :token_endpoint, as: 'tokenEndpoint'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :secret_version, as: 'secretVersion'
         end
       end
       
@@ -5418,6 +5489,9 @@ module Google
           property :password, as: 'password'
           property :request_body, as: 'requestBody'
           hash :request_headers, as: 'requestHeaders'
+          property :secret_version_for_username_password, as: 'secretVersionForUsernamePassword'
+          hash :secret_versions_for_request_headers, as: 'secretVersionsForRequestHeaders', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVersionHeaderValue, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVersionHeaderValue::Representation
+      
           property :service_agent_auth, as: 'serviceAgentAuth'
           property :uri, as: 'uri'
           property :username, as: 'username'
@@ -5431,7 +5505,15 @@ module Google
           property :client_id, as: 'clientId'
           property :client_secret, as: 'clientSecret'
           collection :scopes, as: 'scopes'
+          property :secret_version_for_client_secret, as: 'secretVersionForClientSecret'
           property :token_endpoint, as: 'tokenEndpoint'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVersionHeaderValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :secret_version, as: 'secretVersion'
         end
       end
       
@@ -6487,6 +6569,7 @@ module Google
           property :published_model, as: 'publishedModel'
           property :summarization_context, as: 'summarizationContext', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SummarizationContext, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SummarizationContext::Representation
       
+          collection :tools, as: 'tools'
           property :trigger_event, as: 'triggerEvent'
           property :update_time, as: 'updateTime'
         end
@@ -6498,6 +6581,18 @@ module Google
           property :free_form_suggestion, as: 'freeFormSuggestion', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2FreeFormSuggestion, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2FreeFormSuggestion::Representation
       
           property :summary_suggestion, as: 'summarySuggestion', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SummarySuggestion, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SummarySuggestion::Representation
+      
+          collection :tool_call_info, as: 'toolCallInfo', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tool_call, as: 'toolCall', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ToolCall, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ToolCall::Representation
+      
+          property :tool_call_result, as: 'toolCallResult', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ToolCallResult, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ToolCallResult::Representation
       
         end
       end
@@ -8058,6 +8153,36 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2ToolCall
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :create_time, as: 'createTime'
+          hash :input_parameters, as: 'inputParameters'
+          property :tool, as: 'tool'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2ToolCallResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :content, as: 'content'
+          property :create_time, as: 'createTime'
+          property :error, as: 'error', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ToolCallResultError, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ToolCallResultError::Representation
+      
+          property :raw_content, :base64 => true, as: 'rawContent'
+          property :tool, as: 'tool'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2ToolCallResultError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+        end
+      end
+      
       class GoogleCloudDialogflowV2TrainAgentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8328,6 +8453,18 @@ module Google
           property :free_form_suggestion, as: 'freeFormSuggestion', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1FreeFormSuggestion, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1FreeFormSuggestion::Representation
       
           property :summary_suggestion, as: 'summarySuggestion', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1SummarySuggestion, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1SummarySuggestion::Representation
+      
+          collection :tool_call_info, as: 'toolCallInfo', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1GeneratorSuggestionToolCallInfo, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1GeneratorSuggestionToolCallInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1GeneratorSuggestionToolCallInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tool_call, as: 'toolCall', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1ToolCall, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1ToolCall::Representation
+      
+          property :tool_call_result, as: 'toolCallResult', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1ToolCallResult, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1ToolCallResult::Representation
       
         end
       end
@@ -9246,6 +9383,36 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :dtmf_events, as: 'dtmfEvents'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolCall
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :create_time, as: 'createTime'
+          hash :input_parameters, as: 'inputParameters'
+          property :tool, as: 'tool'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolCallResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :content, as: 'content'
+          property :create_time, as: 'createTime'
+          property :error, as: 'error', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1ToolCallResultError, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1ToolCallResultError::Representation
+      
+          property :raw_content, :base64 => true, as: 'rawContent'
+          property :tool, as: 'tool'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolCallResultError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
         end
       end
       
