@@ -202,6 +202,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -251,6 +263,18 @@ module Google
       end
       
       class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -577,6 +601,20 @@ module Google
         end
       end
       
+      class GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :subscription, as: 'subscription', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription::Representation
+      
+        end
+      end
+      
       class GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -688,6 +726,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :billing_cycle_spec, as: 'billingCycleSpec'
           property :previous_subscription_id, as: 'previousSubscriptionId'
+        end
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :subscription, as: 'subscription', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription::Representation
+      
         end
       end
       

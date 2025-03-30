@@ -941,6 +941,46 @@ module Google
         end
       end
       
+      # Request to resume a suspended subscription.
+      class GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response that contains the resumed subscription.
+      class GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse
+        include Google::Apis::Core::Hashable
+      
+        # A subscription serves as a central billing entity between an external partner
+        # and Google. The underlying Google services rely on the subscription state to
+        # grant or revoke the user's service entitlement. It's important to note that
+        # the subscription state may not always perfectly align with the user's service
+        # entitlement. For example, some Google services may continue providing access
+        # to the user until the current billing cycle ends, even if the subscription has
+        # been immediately canceled. However, other services may not do the same. To
+        # fully understand the specific details, please consult the relevant contract or
+        # product policy.
+        # Corresponds to the JSON property `subscription`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription]
+        attr_accessor :subscription
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @subscription = args[:subscription] if args.key?(:subscription)
+        end
+      end
+      
       # A description of what time period or moment in time the product or service is
       # being delivered over.
       class GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod
@@ -1378,6 +1418,46 @@ module Google
         def update!(**args)
           @billing_cycle_spec = args[:billing_cycle_spec] if args.key?(:billing_cycle_spec)
           @previous_subscription_id = args[:previous_subscription_id] if args.key?(:previous_subscription_id)
+        end
+      end
+      
+      # Request to suspend a subscription.
+      class GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response that contains the suspended subscription.
+      class GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse
+        include Google::Apis::Core::Hashable
+      
+        # A subscription serves as a central billing entity between an external partner
+        # and Google. The underlying Google services rely on the subscription state to
+        # grant or revoke the user's service entitlement. It's important to note that
+        # the subscription state may not always perfectly align with the user's service
+        # entitlement. For example, some Google services may continue providing access
+        # to the user until the current billing cycle ends, even if the subscription has
+        # been immediately canceled. However, other services may not do the same. To
+        # fully understand the specific details, please consult the relevant contract or
+        # product policy.
+        # Corresponds to the JSON property `subscription`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription]
+        attr_accessor :subscription
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @subscription = args[:subscription] if args.key?(:subscription)
         end
       end
       
