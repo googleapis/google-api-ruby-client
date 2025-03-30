@@ -893,7 +893,7 @@ module Google
         
         # Updates a print server's configuration.
         # @param [String] name
-        #   Immutable. Resource name of the print server. Leave empty when creating.
+        #   Identifier. Resource name of the print server. Leave empty when creating.
         #   Format: `customers/`customer.id`/printServers/`print_server.id``
         # @param [Google::Apis::AdminDirectoryV1::PrintServer] print_server_object
         # @param [String] update_mask
@@ -1191,8 +1191,8 @@ module Google
         
         # Updates a `Printer` resource.
         # @param [String] name
-        #   The resource name of the Printer object, in the format customers/`customer-id`/
-        #   printers/`printer-id` (During printer creation leave empty)
+        #   Identifier. The resource name of the Printer object, in the format customers/`
+        #   customer-id`/printers/`printer-id` (During printer creation leave empty)
         # @param [Google::Apis::AdminDirectoryV1::Printer] printer_object
         # @param [String] clear_mask
         #   The list of fields to be cleared. Note, some of the fields are read only and

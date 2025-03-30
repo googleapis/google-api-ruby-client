@@ -3574,7 +3574,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Immutable. Resource name of the print server. Leave empty when creating.
+        # Identifier. Resource name of the print server. Leave empty when creating.
         # Format: `customers/`customer.id`/printServers/`print_server.id``
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -3683,8 +3683,8 @@ module Google
         # @return [String]
         attr_accessor :make_and_model
       
-        # The resource name of the Printer object, in the format customers/`customer-id`/
-        # printers/`printer-id` (During printer creation leave empty)
+        # Identifier. The resource name of the Printer object, in the format customers/`
+        # customer-id`/printers/`printer-id` (During printer creation leave empty)
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
