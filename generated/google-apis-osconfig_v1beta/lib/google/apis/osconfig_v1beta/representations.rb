@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudOsconfigV2OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudOsconfigV2betaOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -576,6 +582,19 @@ module Google
           property :rollout_start_time, as: 'rolloutStartTime'
           property :rollout_state, as: 'rolloutState'
           property :rollout_update_time, as: 'rolloutUpdateTime'
+        end
+      end
+      
+      class GoogleCloudOsconfigV2OperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
         end
       end
       
