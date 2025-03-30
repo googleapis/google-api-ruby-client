@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AffectedResources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Allowed
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -587,6 +593,12 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV2AdaptiveProtection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2AffectedResources
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1849,6 +1861,13 @@ module Google
         end
       end
       
+      class AffectedResources
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+        end
+      end
+      
       class Allowed
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2464,6 +2483,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access, as: 'access', class: Google::Apis::SecuritycenterV1::Access, decorator: Google::Apis::SecuritycenterV1::Access::Representation
       
+          property :affected_resources, as: 'affectedResources', class: Google::Apis::SecuritycenterV1::AffectedResources, decorator: Google::Apis::SecuritycenterV1::AffectedResources::Representation
+      
           property :application, as: 'application', class: Google::Apis::SecuritycenterV1::Application, decorator: Google::Apis::SecuritycenterV1::Application::Representation
       
           property :attack_exposure, as: 'attackExposure', class: Google::Apis::SecuritycenterV1::AttackExposure, decorator: Google::Apis::SecuritycenterV1::AttackExposure::Representation
@@ -2922,6 +2943,13 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV2AffectedResources
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+        end
+      end
+      
       class GoogleCloudSecuritycenterV2Allowed
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3376,6 +3404,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access, as: 'access', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Access, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Access::Representation
+      
+          property :affected_resources, as: 'affectedResources', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2AffectedResources, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2AffectedResources::Representation
       
           property :application, as: 'application', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Application, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Application::Representation
       
