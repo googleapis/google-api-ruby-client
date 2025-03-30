@@ -1111,6 +1111,7 @@ module Google
       class SapDiscoveryResourceInstancePropertiesDiskMount
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disk_names, as: 'diskNames'
           property :mount_point, as: 'mountPoint'
           property :name, as: 'name'
         end

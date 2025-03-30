@@ -2190,6 +2190,11 @@ module Google
       class SapDiscoveryResourceInstancePropertiesDiskMount
         include Google::Apis::Core::Hashable
       
+        # Optional. Names of the disks providing this mount point.
+        # Corresponds to the JSON property `diskNames`
+        # @return [Array<String>]
+        attr_accessor :disk_names
+      
         # Optional. Filesystem mount point.
         # Corresponds to the JSON property `mountPoint`
         # @return [String]
@@ -2206,6 +2211,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disk_names = args[:disk_names] if args.key?(:disk_names)
           @mount_point = args[:mount_point] if args.key?(:mount_point)
           @name = args[:name] if args.key?(:name)
         end
