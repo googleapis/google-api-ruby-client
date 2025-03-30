@@ -2403,6 +2403,14 @@ module Google
       class ImageImportOsAdaptationParameters
         include Google::Apis::Core::Hashable
       
+        # Optional. By default the image will keep its existing boot option. Setting
+        # this property will trigger an internal process which will convert the image
+        # from using the existing boot option to another. The size of the boot disk
+        # might be increased to allow the conversion
+        # Corresponds to the JSON property `bootConversion`
+        # @return [String]
+        attr_accessor :boot_conversion
+      
         # Optional. Set to true in order to generalize the imported image. The
         # generalization process enables co-existence of multiple VMs created from the
         # same image. For Windows, generalizing the image removes computer-specific
@@ -2424,6 +2432,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @boot_conversion = args[:boot_conversion] if args.key?(:boot_conversion)
           @generalize = args[:generalize] if args.key?(:generalize)
           @license_type = args[:license_type] if args.key?(:license_type)
         end
