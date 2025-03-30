@@ -251,8 +251,7 @@ module Google
       
         # Optional. Price reference ID for the offer. Optional field only for offers
         # that require additional price information. Used to guarantee that the pricing
-        # is consistent between quoting the offer and placing the order. Not yet
-        # implemented: if populated in a request, this field isn't evaluated in the API.
+        # is consistent between quoting the offer and placing the order.
         # Corresponds to the JSON property `priceReferenceId`
         # @return [String]
         attr_accessor :price_reference_id
@@ -1192,9 +1191,7 @@ module Google
       
         # Optional. Price reference ID for the offer. Optional field only for offers
         # that require additional price information. Used to guarantee that the pricing
-        # is consistent between quoting the offer and placing the order. Not yet
-        # implemented: if this field is populated in a request, it isn't evaluated in
-        # the API.
+        # is consistent between quoting the offer and placing the order.
         # Corresponds to the JSON property `priceReferenceId`
         # @return [String]
         attr_accessor :price_reference_id
@@ -4085,9 +4082,7 @@ module Google
       
         # Optional. Price reference ID for the offer. Optional field only for offers
         # that require additional price information. Used to guarantee that the pricing
-        # is consistent between quoting the offer and placing the order. Not yet
-        # implemented: if this field is populated in a request, it isn't evaluated in
-        # the API.
+        # is consistent between quoting the offer and placing the order.
         # Corresponds to the JSON property `priceReferenceId`
         # @return [String]
         attr_accessor :price_reference_id
