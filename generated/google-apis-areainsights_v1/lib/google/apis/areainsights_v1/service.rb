@@ -20,9 +20,9 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AreainsightsV1
-      # Places Insights API
+      # Places Aggregate API
       #
-      # Places Insights API.
+      # Places Aggregate API.
       #
       # @example
       #    require 'google/apis/areainsights_v1'
@@ -51,15 +51,15 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Compute Insights RPC This method lets you retrieve insights about areas using
-        # a variaty of filter such as: area, place type, operating status, price level
-        # and ratings. Currently "count" and "places" insights are supported. With "
-        # count" insights you can answer questions such as "How many restaurant are
-        # located in California that are operational, are inexpensive and have an
-        # average rating of at least 4 stars" (see `insight` enum for more details).
-        # With "places" insights, you can determine which places match the requested
-        # filter. Clients can then use those place resource names to fetch more details
-        # about each individual place using the Places API.
+        # This method lets you retrieve insights about areas using a variety of filter
+        # such as: area, place type, operating status, price level and ratings.
+        # Currently "count" and "places" insights are supported. With "count" insights
+        # you can answer questions such as "How many restaurant are located in
+        # California that are operational, are inexpensive and have an average rating of
+        # at least 4 stars" (see `insight` enum for more details). With "places"
+        # insights, you can determine which places match the requested filter. Clients
+        # can then use those place resource names to fetch more details about each
+        # individual place using the Places API.
         # @param [Google::Apis::AreainsightsV1::ComputeInsightsRequest] compute_insights_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
