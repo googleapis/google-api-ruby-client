@@ -36,7 +36,7 @@ module Google
       #    Vault = Google::Apis::VaultV1 # Alias the module
       #    service = Vault::VaultService.new
       #
-      # @see https://developers.google.com/vault
+      # @see https://developers.google.com/workspace/vault
       class VaultService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://vault.$UNIVERSE_DOMAIN$/"
 

@@ -29,7 +29,7 @@ module Google
     # an account needs the **Manage Exports** privilege and the matter shared with
     # them.
     #
-    # @see https://developers.google.com/vault
+    # @see https://developers.google.com/workspace/vault
     module VaultV1
       # Version of the Google Vault API this client connects to.
       # This is NOT the gem version.
