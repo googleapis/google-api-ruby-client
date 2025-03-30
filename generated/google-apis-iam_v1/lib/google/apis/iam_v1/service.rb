@@ -1921,6 +1921,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets IAM policies for one of WorkloadIdentityPool
+        # WorkloadIdentityPoolNamespace WorkloadIdentityPoolManagedIdentity
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Google::Apis::IamV1::GetIamPolicyRequest] get_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_workload_identity_pool_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
+          command.request_representation = Google::Apis::IamV1::GetIamPolicyRequest::Representation
+          command.request_object = get_iam_policy_request_object
+          command.response_representation = Google::Apis::IamV1::Policy::Representation
+          command.response_class = Google::Apis::IamV1::Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists all non-deleted WorkloadIdentityPools in a project. If `show_deleted` is
         # set to `true`, then deleted pools are also listed.
         # @param [String] parent
@@ -1999,6 +2035,78 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Sets IAM policies on one of WorkloadIdentityPool WorkloadIdentityPoolNamespace
+        # WorkloadIdentityPoolManagedIdentity
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Google::Apis::IamV1::SetIamPolicyRequest] set_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_workload_identity_pool_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command.request_representation = Google::Apis::IamV1::SetIamPolicyRequest::Representation
+          command.request_object = set_iam_policy_request_object
+          command.response_representation = Google::Apis::IamV1::Policy::Representation
+          command.response_class = Google::Apis::IamV1::Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the caller's permissions on one of WorkloadIdentityPool
+        # WorkloadIdentityPoolNamespace WorkloadIdentityPoolManagedIdentity
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Google::Apis::IamV1::TestIamPermissionsRequest] test_iam_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::TestIamPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::TestIamPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_workload_identity_pool_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command.request_representation = Google::Apis::IamV1::TestIamPermissionsRequest::Representation
+          command.request_object = test_iam_permissions_request_object
+          command.response_representation = Google::Apis::IamV1::TestIamPermissionsResponse::Representation
+          command.response_class = Google::Apis::IamV1::TestIamPermissionsResponse
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Undeletes a WorkloadIdentityPool, as long as it was deleted fewer than 30 days
         # ago.
         # @param [String] name
@@ -2025,6 +2133,589 @@ module Google
           command = make_simple_command(:post, 'v1/{+name}:undelete', options)
           command.request_representation = Google::Apis::IamV1::UndeleteWorkloadIdentityPoolRequest::Representation
           command.request_object = undelete_workload_identity_pool_request_object
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new WorkloadIdentityPoolNamespace in a WorkloadIdentityPool.
+        # @param [String] parent
+        #   Required. The parent resource to create the namespace in. The only supported
+        #   location is `global`.
+        # @param [Google::Apis::IamV1::WorkloadIdentityPoolNamespace] workload_identity_pool_namespace_object
+        # @param [String] workload_identity_pool_namespace_id
+        #   Required. The ID to use for the namespace. This value must: * contain at most
+        #   63 characters * contain only lowercase alphanumeric characters or `-` * start
+        #   with an alphanumeric character * end with an alphanumeric character The prefix
+        #   "gcp-" will be reserved for future uses.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_workload_identity_pool_namespace(parent, workload_identity_pool_namespace_object = nil, workload_identity_pool_namespace_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/namespaces', options)
+          command.request_representation = Google::Apis::IamV1::WorkloadIdentityPoolNamespace::Representation
+          command.request_object = workload_identity_pool_namespace_object
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['workloadIdentityPoolNamespaceId'] = workload_identity_pool_namespace_id unless workload_identity_pool_namespace_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a WorkloadIdentityPoolNamespace. You can undelete a namespace for 30
+        # days. After 30 days, deletion is permanent.
+        # @param [String] name
+        #   Required. The name of the namespace to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_workload_identity_pool_namespace(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an individual WorkloadIdentityPoolNamespace.
+        # @param [String] name
+        #   Required. The name of the namespace to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::WorkloadIdentityPoolNamespace] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::WorkloadIdentityPoolNamespace]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_workload_identity_pool_namespace(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IamV1::WorkloadIdentityPoolNamespace::Representation
+          command.response_class = Google::Apis::IamV1::WorkloadIdentityPoolNamespace
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all non-deleted WorkloadIdentityPoolNamespaces in a workload identity
+        # pool. If `show_deleted` is set to `true`, then deleted namespaces are also
+        # listed.
+        # @param [String] parent
+        #   Required. The parent resource to list namespaces for.
+        # @param [Fixnum] page_size
+        #   The maximum number of namespaces to return. If unspecified, at most 50
+        #   namespaces are returned. The maximum value is 1000; values above are 1000
+        #   truncated to 1000.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListWorkloadIdentityPoolNamespaces`
+        #   call. Provide this to retrieve the subsequent page.
+        # @param [Boolean] show_deleted
+        #   Whether to return soft-deleted namespaces.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::ListWorkloadIdentityPoolNamespacesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::ListWorkloadIdentityPoolNamespacesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_workload_identity_pool_namespaces(parent, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/namespaces', options)
+          command.response_representation = Google::Apis::IamV1::ListWorkloadIdentityPoolNamespacesResponse::Representation
+          command.response_class = Google::Apis::IamV1::ListWorkloadIdentityPoolNamespacesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['showDeleted'] = show_deleted unless show_deleted.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing WorkloadIdentityPoolNamespace in a WorkloadIdentityPool.
+        # @param [String] name
+        #   Output only. The resource name of the namespace.
+        # @param [Google::Apis::IamV1::WorkloadIdentityPoolNamespace] workload_identity_pool_namespace_object
+        # @param [String] update_mask
+        #   Required. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_workload_identity_pool_namespace(name, workload_identity_pool_namespace_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::IamV1::WorkloadIdentityPoolNamespace::Representation
+          command.request_object = workload_identity_pool_namespace_object
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Undeletes a WorkloadIdentityPoolNamespace, as long as it was deleted fewer
+        # than 30 days ago.
+        # @param [String] name
+        #   Required. The name of the namespace to undelete.
+        # @param [Google::Apis::IamV1::UndeleteWorkloadIdentityPoolNamespaceRequest] undelete_workload_identity_pool_namespace_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def undelete_workload_identity_pool_namespace(name, undelete_workload_identity_pool_namespace_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:undelete', options)
+          command.request_representation = Google::Apis::IamV1::UndeleteWorkloadIdentityPoolNamespaceRequest::Representation
+          command.request_object = undelete_workload_identity_pool_namespace_request_object
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Add an AttestationRule on a WorkloadIdentityPoolManagedIdentity. The total
+        # attestation rules after addition must not exceed 50.
+        # @param [String] resource
+        #   Required. The resource name of the managed identity or namespace resource to
+        #   add an attestation rule to.
+        # @param [Google::Apis::IamV1::AddAttestationRuleRequest] add_attestation_rule_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_managed_identity_attestation_rule(resource, add_attestation_rule_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+resource}:addAttestationRule', options)
+          command.request_representation = Google::Apis::IamV1::AddAttestationRuleRequest::Representation
+          command.request_object = add_attestation_rule_request_object
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new WorkloadIdentityPoolManagedIdentity in a
+        # WorkloadIdentityPoolNamespace.
+        # @param [String] parent
+        #   Required. The parent resource to create the manage identity in. The only
+        #   supported location is `global`.
+        # @param [Google::Apis::IamV1::WorkloadIdentityPoolManagedIdentity] workload_identity_pool_managed_identity_object
+        # @param [String] workload_identity_pool_managed_identity_id
+        #   Required. The ID to use for the managed identity. This value must: * contain
+        #   at most 63 characters * contain only lowercase alphanumeric characters or `-` *
+        #   start with an alphanumeric character * end with an alphanumeric character The
+        #   prefix "gcp-" will be reserved for future uses.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_workload_identity_pool_namespace_managed_identity(parent, workload_identity_pool_managed_identity_object = nil, workload_identity_pool_managed_identity_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/managedIdentities', options)
+          command.request_representation = Google::Apis::IamV1::WorkloadIdentityPoolManagedIdentity::Representation
+          command.request_object = workload_identity_pool_managed_identity_object
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['workloadIdentityPoolManagedIdentityId'] = workload_identity_pool_managed_identity_id unless workload_identity_pool_managed_identity_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a WorkloadIdentityPoolManagedIdentity. You can undelete a managed
+        # identity for 30 days. After 30 days, deletion is permanent.
+        # @param [String] name
+        #   Required. The name of the managed identity to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_workload_identity_pool_namespace_managed_identity(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an individual WorkloadIdentityPoolManagedIdentity.
+        # @param [String] name
+        #   Required. The name of the managed identity to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::WorkloadIdentityPoolManagedIdentity] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::WorkloadIdentityPoolManagedIdentity]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_workload_identity_pool_namespace_managed_identity(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IamV1::WorkloadIdentityPoolManagedIdentity::Representation
+          command.response_class = Google::Apis::IamV1::WorkloadIdentityPoolManagedIdentity
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all non-deleted WorkloadIdentityPoolManagedIdentitys in a namespace. If `
+        # show_deleted` is set to `true`, then deleted managed identites are also listed.
+        # @param [String] parent
+        #   Required. The parent resource to list managed identities for.
+        # @param [Fixnum] page_size
+        #   The maximum number of managed identities to return. If unspecified, at most 50
+        #   managed identities are returned. The maximum value is 1000; values above are
+        #   1000 truncated to 1000.
+        # @param [String] page_token
+        #   A page token, received from a previous `
+        #   ListWorkloadIdentityPoolManagedIdentities` call. Provide this to retrieve the
+        #   subsequent page.
+        # @param [Boolean] show_deleted
+        #   Whether to return soft-deleted managed identities.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::ListWorkloadIdentityPoolManagedIdentitiesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::ListWorkloadIdentityPoolManagedIdentitiesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_workload_identity_pool_namespace_managed_identities(parent, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/managedIdentities', options)
+          command.response_representation = Google::Apis::IamV1::ListWorkloadIdentityPoolManagedIdentitiesResponse::Representation
+          command.response_class = Google::Apis::IamV1::ListWorkloadIdentityPoolManagedIdentitiesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['showDeleted'] = show_deleted unless show_deleted.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List all AttestationRule on a WorkloadIdentityPoolManagedIdentity.
+        # @param [String] resource
+        #   Required. The resource name of the managed identity or namespace resource to
+        #   list attestation rules of.
+        # @param [String] filter
+        #   Optional. A query filter. Supports the following function: * `container_ids()`:
+        #   Returns only the AttestationRules under the specific container ids. The
+        #   function expects a comma-delimited list with only project numbers and must use
+        #   the format `projects/`. For example: `container_ids(projects/, projects/,...)`.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of AttestationRules to return. If unspecified, at
+        #   most 50 AttestationRules are returned. The maximum value is 100; values above
+        #   100 are truncated to 100.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `
+        #   ListWorkloadIdentityPoolProviderKeys` call. Provide this to retrieve the
+        #   subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::ListAttestationRulesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::ListAttestationRulesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_workload_identity_pool_namespace_managed_identity_attestation_rules(resource, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+resource}:listAttestationRules', options)
+          command.response_representation = Google::Apis::IamV1::ListAttestationRulesResponse::Representation
+          command.response_class = Google::Apis::IamV1::ListAttestationRulesResponse
+          command.params['resource'] = resource unless resource.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing WorkloadIdentityPoolManagedIdentity in a
+        # WorkloadIdentityPoolNamespace.
+        # @param [String] name
+        #   Output only. The resource name of the managed identity.
+        # @param [Google::Apis::IamV1::WorkloadIdentityPoolManagedIdentity] workload_identity_pool_managed_identity_object
+        # @param [String] update_mask
+        #   Required. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_workload_identity_pool_namespace_managed_identity(name, workload_identity_pool_managed_identity_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::IamV1::WorkloadIdentityPoolManagedIdentity::Representation
+          command.request_object = workload_identity_pool_managed_identity_object
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Remove an AttestationRule on a WorkloadIdentityPoolManagedIdentity.
+        # @param [String] resource
+        #   Required. The resource name of the managed identity or namespace resource to
+        #   remove an attestation rule from.
+        # @param [Google::Apis::IamV1::RemoveAttestationRuleRequest] remove_attestation_rule_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_managed_identity_attestation_rule(resource, remove_attestation_rule_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+resource}:removeAttestationRule', options)
+          command.request_representation = Google::Apis::IamV1::RemoveAttestationRuleRequest::Representation
+          command.request_object = remove_attestation_rule_request_object
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Set all AttestationRule on a WorkloadIdentityPoolManagedIdentity. A maximum of
+        # 50 AttestationRules can be set.
+        # @param [String] resource
+        #   Required. The resource name of the managed identity or namespace resource to
+        #   add an attestation rule to.
+        # @param [Google::Apis::IamV1::SetAttestationRulesRequest] set_attestation_rules_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_managed_identity_attestation_rules(resource, set_attestation_rules_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+resource}:setAttestationRules', options)
+          command.request_representation = Google::Apis::IamV1::SetAttestationRulesRequest::Representation
+          command.request_object = set_attestation_rules_request_object
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Undeletes a WorkloadIdentityPoolManagedIdentity, as long as it was deleted
+        # fewer than 30 days ago.
+        # @param [String] name
+        #   Required. The name of the managed identity to undelete.
+        # @param [Google::Apis::IamV1::UndeleteWorkloadIdentityPoolManagedIdentityRequest] undelete_workload_identity_pool_managed_identity_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def undelete_workload_identity_pool_managed_identity(name, undelete_workload_identity_pool_managed_identity_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:undelete', options)
+          command.request_representation = Google::Apis::IamV1::UndeleteWorkloadIdentityPoolManagedIdentityRequest::Representation
+          command.request_object = undelete_workload_identity_pool_managed_identity_request_object
           command.response_representation = Google::Apis::IamV1::Operation::Representation
           command.response_class = Google::Apis::IamV1::Operation
           command.params['name'] = name unless name.nil?

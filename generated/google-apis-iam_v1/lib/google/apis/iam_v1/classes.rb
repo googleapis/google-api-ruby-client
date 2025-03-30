@@ -51,6 +51,27 @@ module Google
         end
       end
       
+      # Request message for AddAttestationRule.
+      class AddAttestationRuleRequest
+        include Google::Apis::Core::Hashable
+      
+        # Defines which workloads can receive an identity within a pool. When an
+        # AttestationRule is defined under a managed identity, matching workloads may
+        # receive that identity.
+        # Corresponds to the JSON property `attestationRule`
+        # @return [Google::Apis::IamV1::AttestationRule]
+        attr_accessor :attestation_rule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attestation_rule = args[:attestation_rule] if args.key?(:attestation_rule)
+        end
+      end
+      
       # Audit log information specific to Cloud IAM admin APIs. This message is
       # serialized as an `Any` type in the `ServiceData` message of an `AuditLog`
       # message.
@@ -70,6 +91,28 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permission_delta = args[:permission_delta] if args.key?(:permission_delta)
+        end
+      end
+      
+      # Defines which workloads can receive an identity within a pool. When an
+      # AttestationRule is defined under a managed identity, matching workloads may
+      # receive that identity.
+      class AttestationRule
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A single workload operating on Google Cloud. For example: `//compute.
+        # googleapis.com/projects/123/uid/zones/us-central1-a/instances/12345`.
+        # Corresponds to the JSON property `googleCloudResource`
+        # @return [String]
+        attr_accessor :google_cloud_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @google_cloud_resource = args[:google_cloud_resource] if args.key?(:google_cloud_resource)
         end
       end
       
@@ -896,6 +939,106 @@ module Google
         end
       end
       
+      # Represents configuration for generating mutual TLS (mTLS) certificates for the
+      # identities within this pool.
+      class InlineCertificateIssuanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A required mapping of a cloud region to the CA pool resource located
+        # in that region used for certificate issuance, adhering to these constraints: *
+        # Key format: A supported cloud region name equivalent to the location
+        # identifier in the corresponding map entry's value. * Value format: A valid CA
+        # pool resource path format like: "projects/`project`/locations/`location`/
+        # caPools/`ca_pool`" * Region Matching: Workloads are ONLY issued certificates
+        # from CA pools within the same region. Also the CA pool region (in value) must
+        # match the workload's region (key).
+        # Corresponds to the JSON property `caPools`
+        # @return [Hash<String,String>]
+        attr_accessor :ca_pools
+      
+        # Optional. Key algorithm to use when generating the key pair. This key pair
+        # will be used to create the certificate. If unspecified, this will default to
+        # ECDSA_P256.
+        # Corresponds to the JSON property `keyAlgorithm`
+        # @return [String]
+        attr_accessor :key_algorithm
+      
+        # Optional. Lifetime of the workload certificates issued by the CA pool. Must be
+        # between 10 hours - 30 days. If unspecified, this will be defaulted to 24 hours.
+        # Corresponds to the JSON property `lifetime`
+        # @return [String]
+        attr_accessor :lifetime
+      
+        # Optional. Rotation window percentage indicating when certificate rotation
+        # should be initiated based on remaining lifetime. Must be between 10 - 80. If
+        # unspecified, this will be defaulted to 50.
+        # Corresponds to the JSON property `rotationWindowPercentage`
+        # @return [Fixnum]
+        attr_accessor :rotation_window_percentage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ca_pools = args[:ca_pools] if args.key?(:ca_pools)
+          @key_algorithm = args[:key_algorithm] if args.key?(:key_algorithm)
+          @lifetime = args[:lifetime] if args.key?(:lifetime)
+          @rotation_window_percentage = args[:rotation_window_percentage] if args.key?(:rotation_window_percentage)
+        end
+      end
+      
+      # Defines configuration for extending trust to additional trust domains. By
+      # establishing trust with another domain, the current domain will recognize and
+      # accept certificates issued by entities within the trusted domains. Note that a
+      # trust domain automatically trusts itself, eliminating the need for explicit
+      # configuration.
+      class InlineTrustConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Maps specific trust domains (e.g., "example.com") to their
+        # corresponding TrustStore objects, which contain the trusted root certificates
+        # for that domain. There can be a maximum of 10 trust domain entries in this map.
+        # Note that a trust domain automatically trusts itself and don't need to be
+        # specified here. If however, this WorkloadIdentityPool's trust domain contains
+        # any trust anchors in the additional_trust_bundles map, those trust anchors
+        # will be *appended to* the Trust Bundle automatically derived from your
+        # InlineCertificateIssuanceConfig's ca_pools.
+        # Corresponds to the JSON property `additionalTrustBundles`
+        # @return [Hash<String,Google::Apis::IamV1::TrustStore>]
+        attr_accessor :additional_trust_bundles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_trust_bundles = args[:additional_trust_bundles] if args.key?(:additional_trust_bundles)
+        end
+      end
+      
+      # Intermediate CA certificates used for building the trust chain to trust anchor
+      class IntermediateCa
+        include Google::Apis::Core::Hashable
+      
+        # PEM certificate of the PKI used for validation. Must only contain one ca
+        # certificate.
+        # Corresponds to the JSON property `pemCertificate`
+        # @return [String]
+        attr_accessor :pem_certificate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pem_certificate = args[:pem_certificate] if args.key?(:pem_certificate)
+        end
+      end
+      
       # Represents a public key data along with its format.
       class KeyData
         include Google::Apis::Core::Hashable
@@ -1060,6 +1203,32 @@ module Google
           @location_offset = args[:location_offset] if args.key?(:location_offset)
           @severity = args[:severity] if args.key?(:severity)
           @validation_unit_name = args[:validation_unit_name] if args.key?(:validation_unit_name)
+        end
+      end
+      
+      # Response message for ListAttestationRules.
+      class ListAttestationRulesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of AttestationRules.
+        # Corresponds to the JSON property `attestationRules`
+        # @return [Array<Google::Apis::IamV1::AttestationRule>]
+        attr_accessor :attestation_rules
+      
+        # Optional. A token, which can be sent as `page_token` to retrieve the next page.
+        # If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attestation_rules = args[:attestation_rules] if args.key?(:attestation_rules)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -1254,6 +1423,58 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @workforce_pools = args[:workforce_pools] if args.key?(:workforce_pools)
+        end
+      end
+      
+      # Response message for ListWorkloadIdentityPoolManagedIdentities.
+      class ListWorkloadIdentityPoolManagedIdentitiesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of managed identities.
+        # Corresponds to the JSON property `workloadIdentityPoolManagedIdentities`
+        # @return [Array<Google::Apis::IamV1::WorkloadIdentityPoolManagedIdentity>]
+        attr_accessor :workload_identity_pool_managed_identities
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @workload_identity_pool_managed_identities = args[:workload_identity_pool_managed_identities] if args.key?(:workload_identity_pool_managed_identities)
+        end
+      end
+      
+      # Response message for ListWorkloadIdentityPoolNamespaces.
+      class ListWorkloadIdentityPoolNamespacesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of namespaces.
+        # Corresponds to the JSON property `workloadIdentityPoolNamespaces`
+        # @return [Array<Google::Apis::IamV1::WorkloadIdentityPoolNamespace>]
+        attr_accessor :workload_identity_pool_namespaces
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @workload_identity_pool_namespaces = args[:workload_identity_pool_namespaces] if args.key?(:workload_identity_pool_namespaces)
         end
       end
       
@@ -1642,6 +1863,26 @@ module Google
           @status_detail = args[:status_detail] if args.key?(:status_detail)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # The Google Cloud service that owns this namespace.
+      class OwnerService
+        include Google::Apis::Core::Hashable
+      
+        # Required. The service agent principal subject, e.g. "serviceAccount:service-
+        # 1234@gcp-sa-gkehub.iam.gserviceaccount.com".
+        # Corresponds to the JSON property `principalSubject`
+        # @return [String]
+        attr_accessor :principal_subject
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @principal_subject = args[:principal_subject] if args.key?(:principal_subject)
         end
       end
       
@@ -2080,6 +2321,27 @@ module Google
         end
       end
       
+      # Request message for RemoveAttestationRule.
+      class RemoveAttestationRuleRequest
+        include Google::Apis::Core::Hashable
+      
+        # Defines which workloads can receive an identity within a pool. When an
+        # AttestationRule is defined under a managed identity, matching workloads may
+        # receive that identity.
+        # Corresponds to the JSON property `attestationRule`
+        # @return [Google::Apis::IamV1::AttestationRule]
+        attr_accessor :attestation_rule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attestation_rule = args[:attestation_rule] if args.key?(:attestation_rule)
+        end
+      end
+      
       # A role in the Identity and Access Management API.
       class Role
         include Google::Apis::Core::Hashable
@@ -2401,6 +2663,26 @@ module Google
         end
       end
       
+      # Request message for SetAttestationRules.
+      class SetAttestationRulesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The attestation rules to be set. At most 50 attestation rules can be
+        # set.
+        # Corresponds to the JSON property `attestationRules`
+        # @return [Array<Google::Apis::IamV1::AttestationRule>]
+        attr_accessor :attestation_rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attestation_rules = args[:attestation_rules] if args.key?(:attestation_rules)
+        end
+      end
+      
       # Request message for `SetIamPolicy` method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -2639,6 +2921,56 @@ module Google
         end
       end
       
+      # Represents a root of trust.
+      class TrustAnchor
+        include Google::Apis::Core::Hashable
+      
+        # PEM certificate of the PKI used for validation. Must only contain one ca
+        # certificate(either root or intermediate cert).
+        # Corresponds to the JSON property `pemCertificate`
+        # @return [String]
+        attr_accessor :pem_certificate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pem_certificate = args[:pem_certificate] if args.key?(:pem_certificate)
+        end
+      end
+      
+      # Trust store that contains trust anchors and optional intermediate CAs used in
+      # PKI to build trust chain and verify client's identity.
+      class TrustStore
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Set of intermediate CA certificates used for building the trust
+        # chain to trust anchor. IMPORTANT: * Intermediate CAs are only supported when
+        # configuring x509 federation.
+        # Corresponds to the JSON property `intermediateCas`
+        # @return [Array<Google::Apis::IamV1::IntermediateCa>]
+        attr_accessor :intermediate_cas
+      
+        # Required. List of Trust Anchors to be used while performing validation against
+        # a given TrustStore. The incoming end entity's certificate must be chained up
+        # to one of the trust anchors here.
+        # Corresponds to the JSON property `trustAnchors`
+        # @return [Array<Google::Apis::IamV1::TrustAnchor>]
+        attr_accessor :trust_anchors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intermediate_cas = args[:intermediate_cas] if args.key?(:intermediate_cas)
+          @trust_anchors = args[:trust_anchors] if args.key?(:trust_anchors)
+        end
+      end
+      
       # Request message for UndeleteOauthClient.
       class UndeleteOauthClientRequest
         include Google::Apis::Core::Hashable
@@ -2751,6 +3083,32 @@ module Google
       
       # Request message for UndeleteWorkforcePoolSubject.
       class UndeleteWorkforcePoolSubjectRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for UndeleteWorkloadIdentityPoolManagedIdentity.
+      class UndeleteWorkloadIdentityPoolManagedIdentityRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for UndeleteWorkloadIdentityPoolNamespace.
+      class UndeleteWorkloadIdentityPoolNamespaceRequest
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -3123,6 +3481,26 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
+        # Represents configuration for generating mutual TLS (mTLS) certificates for the
+        # identities within this pool.
+        # Corresponds to the JSON property `inlineCertificateIssuanceConfig`
+        # @return [Google::Apis::IamV1::InlineCertificateIssuanceConfig]
+        attr_accessor :inline_certificate_issuance_config
+      
+        # Defines configuration for extending trust to additional trust domains. By
+        # establishing trust with another domain, the current domain will recognize and
+        # accept certificates issued by entities within the trusted domains. Note that a
+        # trust domain automatically trusts itself, eliminating the need for explicit
+        # configuration.
+        # Corresponds to the JSON property `inlineTrustConfig`
+        # @return [Google::Apis::IamV1::InlineTrustConfig]
+        attr_accessor :inline_trust_config
+      
+        # Immutable. The mode the pool is operating in.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
         # Output only. The resource name of the pool.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -3143,7 +3521,111 @@ module Google
           @disabled = args[:disabled] if args.key?(:disabled)
           @display_name = args[:display_name] if args.key?(:display_name)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @inline_certificate_issuance_config = args[:inline_certificate_issuance_config] if args.key?(:inline_certificate_issuance_config)
+          @inline_trust_config = args[:inline_trust_config] if args.key?(:inline_trust_config)
+          @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Represents a managed identity for a workload identity pool namespace.
+      class WorkloadIdentityPoolManagedIdentity
+        include Google::Apis::Core::Hashable
+      
+        # A description of the managed identity. Cannot exceed 256 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Whether the managed identity is disabled. If disabled, credentials may no
+        # longer be issued for the identity, however existing credentials will still be
+        # accepted until they expire.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # Output only. Time after which the managed identity will be permanently purged
+        # and cannot be recovered.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only. The resource name of the managed identity.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The state of the managed identity.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Represents a namespace for a workload identity pool. Namespaces are used to
+      # segment identities within the pool.
+      class WorkloadIdentityPoolNamespace
+        include Google::Apis::Core::Hashable
+      
+        # A description of the namespace. Cannot exceed 256 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Whether the namespace is disabled. If disabled, credentials may no longer be
+        # issued for identities within this namespace, however existing credentials will
+        # still be accepted until they expire.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # Output only. Time after which the namespace will be permanently purged and
+        # cannot be recovered.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only. The resource name of the namespace.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The Google Cloud service that owns this namespace.
+        # Corresponds to the JSON property `ownerService`
+        # @return [Google::Apis::IamV1::OwnerService]
+        attr_accessor :owner_service
+      
+        # Output only. The state of the namespace.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @name = args[:name] if args.key?(:name)
+          @owner_service = args[:owner_service] if args.key?(:owner_service)
           @state = args[:state] if args.key?(:state)
         end
       end
