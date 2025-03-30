@@ -272,6 +272,12 @@ module Google
       class AndroidModel
         include Google::Apis::Core::Hashable
       
+        # Reasons for access denial. This model is accessible if this list is empty,
+        # otherwise the model is viewable only.
+        # Corresponds to the JSON property `accessDeniedReasons`
+        # @return [Array<String>]
+        attr_accessor :access_denied_reasons
+      
         # The company that this device is branded with. Example: "Google", "Samsung".
         # Corresponds to the JSON property `brand`
         # @return [String]
@@ -372,6 +378,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @access_denied_reasons = args[:access_denied_reasons] if args.key?(:access_denied_reasons)
           @brand = args[:brand] if args.key?(:brand)
           @codename = args[:codename] if args.key?(:codename)
           @form = args[:form] if args.key?(:form)
