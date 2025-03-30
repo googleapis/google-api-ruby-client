@@ -31,7 +31,7 @@ module Google
       #    Keep = Google::Apis::KeepV1 # Alias the module
       #    service = Keep::KeepService.new
       #
-      # @see https://developers.google.com/keep/api
+      # @see https://developers.google.com/workspace/keep/api
       class KeepService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://keep.$UNIVERSE_DOMAIN$/"
 
