@@ -3219,9 +3219,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists Annotations belongs to a dataitem This RPC is only available in
-        # InternalDatasetService. It is only used for exporting conversation data to
-        # CCAI Insights.
+        # Lists Annotations belongs to a dataitem.
         # @param [String] parent
         #   Required. The resource name of the DataItem to list Annotations from. Format: `
         #   projects/`project`/locations/`location`/datasets/`dataset`/dataItems/`

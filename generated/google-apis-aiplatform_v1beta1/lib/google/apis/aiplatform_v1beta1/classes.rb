@@ -13239,6 +13239,12 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :args
       
+        # Optional. The unique id of the function call. If populated, the client to
+        # execute the `function_call` and return the response with the matching `id`.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
         # Required. The name of the function to call. Matches [FunctionDeclaration.name].
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -13251,6 +13257,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @args = args[:args] if args.key?(:args)
+          @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -13337,6 +13344,12 @@ module Google
       class GoogleCloudAiplatformV1beta1FunctionResponse
         include Google::Apis::Core::Hashable
       
+        # Optional. The id of the function call this response is for. Populated by the
+        # client to match the corresponding function call `id`.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
         # Required. The name of the function to call. Matches [FunctionDeclaration.name]
         # and [FunctionCall.name].
         # Corresponds to the JSON property `name`
@@ -13357,6 +13370,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
         end
@@ -14396,6 +14410,11 @@ module Google
       class GoogleCloudAiplatformV1beta1GroundingChunkWeb
         include Google::Apis::Core::Hashable
       
+        # Domain of the (original) URI.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
         # Title of the chunk.
         # Corresponds to the JSON property `title`
         # @return [String]
@@ -14412,6 +14431,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
           @title = args[:title] if args.key?(:title)
           @uri = args[:uri] if args.key?(:uri)
         end
@@ -37598,8 +37618,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The name of the secret in Cloud Secret Manager. Format: `secret_name`
-        # if the secret is in the same project. projects/`project`/secrets/`secret_name`
-        # if the secret is in a different project.
+        # .
         # Corresponds to the JSON property `secret`
         # @return [String]
         attr_accessor :secret
