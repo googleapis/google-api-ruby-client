@@ -1372,6 +1372,7 @@ module Google
           property :etag, as: 'etag'
           property :expire_time, as: 'expireTime'
           property :generation, :numeric_string => true, as: 'generation'
+          property :iap_enabled, as: 'iapEnabled'
           property :ingress, as: 'ingress'
           property :invoker_iam_disabled, as: 'invokerIamDisabled'
           hash :labels, as: 'labels'
@@ -1389,6 +1390,7 @@ module Google
       
           property :terminal_condition, as: 'terminalCondition', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
       
+          property :threat_detection_enabled, as: 'threatDetectionEnabled'
           collection :traffic, as: 'traffic', class: Google::Apis::RunV2::GoogleCloudRunV2TrafficTarget, decorator: Google::Apis::RunV2::GoogleCloudRunV2TrafficTarget::Representation
       
           collection :traffic_statuses, as: 'trafficStatuses', class: Google::Apis::RunV2::GoogleCloudRunV2TrafficTargetStatus, decorator: Google::Apis::RunV2::GoogleCloudRunV2TrafficTargetStatus::Representation
@@ -1667,8 +1669,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :manual_instance_count, as: 'manualInstanceCount'
           property :max_instance_count, as: 'maxInstanceCount'
-          property :max_surge, as: 'maxSurge'
-          property :max_unavailable, as: 'maxUnavailable'
           property :min_instance_count, as: 'minInstanceCount'
           property :scaling_mode, as: 'scalingMode'
         end

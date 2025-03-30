@@ -2547,6 +2547,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :generation
       
+        # Optional. IAP settings on the Service.
+        # Corresponds to the JSON property `iapEnabled`
+        # @return [Boolean]
+        attr_accessor :iap_enabled
+        alias_method :iap_enabled?, :iap_enabled
+      
         # Optional. Provides the ingress settings for this Service. On output, returns
         # the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no
         # revision is active.
@@ -2555,9 +2561,8 @@ module Google
         attr_accessor :ingress
       
         # Optional. Disables IAM permission check for run.routes.invoke for callers of
-        # this service. This feature is available by invitation only. For more
-        # information, visit https://cloud.google.com/run/docs/securing/managing-access#
-        # invoker_check.
+        # this service. For more information, visit https://cloud.google.com/run/docs/
+        # securing/managing-access#invoker_check.
         # Corresponds to the JSON property `invokerIamDisabled`
         # @return [Boolean]
         attr_accessor :invoker_iam_disabled
@@ -2667,6 +2672,13 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2Condition]
         attr_accessor :terminal_condition
       
+        # Output only. True if Cloud Run Threat Detection monitoring is enabled for the
+        # parent project of this Service.
+        # Corresponds to the JSON property `threatDetectionEnabled`
+        # @return [Boolean]
+        attr_accessor :threat_detection_enabled
+        alias_method :threat_detection_enabled?, :threat_detection_enabled
+      
         # Optional. Specifies how to distribute traffic over a collection of Revisions
         # belonging to the Service. If traffic is empty or not provided, defaults to 100%
         # traffic to the latest `Ready` Revision.
@@ -2723,6 +2735,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @generation = args[:generation] if args.key?(:generation)
+          @iap_enabled = args[:iap_enabled] if args.key?(:iap_enabled)
           @ingress = args[:ingress] if args.key?(:ingress)
           @invoker_iam_disabled = args[:invoker_iam_disabled] if args.key?(:invoker_iam_disabled)
           @labels = args[:labels] if args.key?(:labels)
@@ -2737,6 +2750,7 @@ module Google
           @scaling = args[:scaling] if args.key?(:scaling)
           @template = args[:template] if args.key?(:template)
           @terminal_condition = args[:terminal_condition] if args.key?(:terminal_condition)
+          @threat_detection_enabled = args[:threat_detection_enabled] if args.key?(:threat_detection_enabled)
           @traffic = args[:traffic] if args.key?(:traffic)
           @traffic_statuses = args[:traffic_statuses] if args.key?(:traffic_statuses)
           @uid = args[:uid] if args.key?(:uid)
@@ -3947,27 +3961,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_instance_count
       
-        # Optional. A maximum percentage of instances that will be moved in each step of
-        # traffic split changes. When set to a positive value, the server will bring up,
-        # at most, that percentage of new instances at a time before moving traffic to
-        # them. After moving traffic, the server will bring down instances of the old
-        # revision. This can reduce a spike of total active instances during changes
-        # from one revision to another but specifying how many extra instances can be
-        # brought up at a time.
-        # Corresponds to the JSON property `maxSurge`
-        # @return [Fixnum]
-        attr_accessor :max_surge
-      
-        # Optional. A maximum percentage of instances that may be unavailable during
-        # changes from one revision to another. When set to a positive value, the server
-        # may bring down instances before bringing up new instances. This can prevent a
-        # spike of total active instances during changes from one revision by reducing
-        # the pool of instances before bringing up new ones. Some requests may be slow
-        # or fail to serve during the transition.
-        # Corresponds to the JSON property `maxUnavailable`
-        # @return [Fixnum]
-        attr_accessor :max_unavailable
-      
         # Optional. The minimum count of instances distributed among revisions based on
         # the specified instance split percentages.
         # Corresponds to the JSON property `minInstanceCount`
@@ -3987,8 +3980,6 @@ module Google
         def update!(**args)
           @manual_instance_count = args[:manual_instance_count] if args.key?(:manual_instance_count)
           @max_instance_count = args[:max_instance_count] if args.key?(:max_instance_count)
-          @max_surge = args[:max_surge] if args.key?(:max_surge)
-          @max_unavailable = args[:max_unavailable] if args.key?(:max_unavailable)
           @min_instance_count = args[:min_instance_count] if args.key?(:min_instance_count)
           @scaling_mode = args[:scaling_mode] if args.key?(:scaling_mode)
         end
@@ -6551,7 +6542,7 @@ module Google
         end
       end
       
-      # 
+      # This is proto2's version of MessageSet.
       class Proto2BridgeMessageSet
         include Google::Apis::Core::Hashable
       
@@ -6588,9 +6579,7 @@ module Google
         # @return [String]
         attr_accessor :message
       
-        # message_set associates an arbitrary proto message with the status. copybara:
-        # strip_begin(b/383363683) copybara:strip_end_and_replace optional proto2.bridge.
-        # MessageSet message_set = 5;
+        # This is proto2's version of MessageSet.
         # Corresponds to the JSON property `messageSet`
         # @return [Google::Apis::RunV2::Proto2BridgeMessageSet]
         attr_accessor :message_set
