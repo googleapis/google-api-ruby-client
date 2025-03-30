@@ -33,6 +33,12 @@ module Google
         
         class Actor
           class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class ApplicationInfo
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
         
           include Google::Apis::Core::JsonObjectSupport
         end
@@ -70,13 +76,73 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppliedLabel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Channel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Date
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FieldValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FieldValueSelectionListValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FieldValueSelectionValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FieldValueTextListValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FieldValueUserListValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FieldValueUserValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NestedParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Reason
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -142,15 +208,28 @@ module Google
           property :ip_address, as: 'ipAddress'
           property :kind, as: 'kind'
           property :owner_domain, as: 'ownerDomain'
+          collection :resource_details, as: 'resourceDetails', class: Google::Apis::AdminReportsV1::ResourceDetails, decorator: Google::Apis::AdminReportsV1::ResourceDetails::Representation
+      
         end
         
         class Actor
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
+            property :application_info, as: 'applicationInfo', class: Google::Apis::AdminReportsV1::Activity::Actor::ApplicationInfo, decorator: Google::Apis::AdminReportsV1::Activity::Actor::ApplicationInfo::Representation
+        
             property :caller_type, as: 'callerType'
             property :email, as: 'email'
             property :key, as: 'key'
             property :profile_id, as: 'profileId'
+          end
+          
+          class ApplicationInfo
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :application_name, as: 'applicationName'
+              property :impersonation, as: 'impersonation'
+              property :oauth_client_id, as: 'oauthClientId'
+            end
           end
         end
         
@@ -160,6 +239,7 @@ module Google
             property :name, as: 'name'
             collection :parameters, as: 'parameters', class: Google::Apis::AdminReportsV1::Activity::Event::Parameter, decorator: Google::Apis::AdminReportsV1::Activity::Event::Parameter::Representation
         
+            collection :resource_ids, as: 'resourceIds'
             property :type, as: 'type'
           end
           
@@ -208,6 +288,18 @@ module Google
         end
       end
       
+      class AppliedLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :field_values, as: 'fieldValues', class: Google::Apis::AdminReportsV1::FieldValue, decorator: Google::Apis::AdminReportsV1::FieldValue::Representation
+      
+          property :id, as: 'id'
+          property :reason, as: 'reason', class: Google::Apis::AdminReportsV1::Reason, decorator: Google::Apis::AdminReportsV1::Reason::Representation
+      
+          property :title, as: 'title'
+        end
+      end
+      
       class Channel
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -224,6 +316,81 @@ module Google
         end
       end
       
+      class Date
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
+        end
+      end
+      
+      class FieldValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date_value, as: 'dateValue', class: Google::Apis::AdminReportsV1::Date, decorator: Google::Apis::AdminReportsV1::Date::Representation
+      
+          property :display_name, as: 'displayName'
+          property :id, as: 'id'
+          property :integer_value, :numeric_string => true, as: 'integerValue'
+          property :long_text_value, as: 'longTextValue'
+          property :reason, as: 'reason', class: Google::Apis::AdminReportsV1::Reason, decorator: Google::Apis::AdminReportsV1::Reason::Representation
+      
+          property :selection_list_value, as: 'selectionListValue', class: Google::Apis::AdminReportsV1::FieldValueSelectionListValue, decorator: Google::Apis::AdminReportsV1::FieldValueSelectionListValue::Representation
+      
+          property :selection_value, as: 'selectionValue', class: Google::Apis::AdminReportsV1::FieldValueSelectionValue, decorator: Google::Apis::AdminReportsV1::FieldValueSelectionValue::Representation
+      
+          property :text_list_value, as: 'textListValue', class: Google::Apis::AdminReportsV1::FieldValueTextListValue, decorator: Google::Apis::AdminReportsV1::FieldValueTextListValue::Representation
+      
+          property :text_value, as: 'textValue'
+          property :type, as: 'type'
+          property :unset_value, as: 'unsetValue'
+          property :user_list_value, as: 'userListValue', class: Google::Apis::AdminReportsV1::FieldValueUserListValue, decorator: Google::Apis::AdminReportsV1::FieldValueUserListValue::Representation
+      
+          property :user_value, as: 'userValue', class: Google::Apis::AdminReportsV1::FieldValueUserValue, decorator: Google::Apis::AdminReportsV1::FieldValueUserValue::Representation
+      
+        end
+      end
+      
+      class FieldValueSelectionListValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values', class: Google::Apis::AdminReportsV1::FieldValueSelectionValue, decorator: Google::Apis::AdminReportsV1::FieldValueSelectionValue::Representation
+      
+        end
+      end
+      
+      class FieldValueSelectionValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :badged, as: 'badged'
+          property :display_name, as: 'displayName'
+          property :id, as: 'id'
+        end
+      end
+      
+      class FieldValueTextListValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values'
+        end
+      end
+      
+      class FieldValueUserListValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values', class: Google::Apis::AdminReportsV1::FieldValueUserValue, decorator: Google::Apis::AdminReportsV1::FieldValueUserValue::Representation
+      
+        end
+      end
+      
+      class FieldValueUserValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+        end
+      end
+      
       class NestedParameter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -234,6 +401,27 @@ module Google
           collection :multi_value, as: 'multiValue'
           property :name, as: 'name'
           property :value, as: 'value'
+        end
+      end
+      
+      class Reason
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reason_type, as: 'reasonType'
+        end
+      end
+      
+      class ResourceDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_id, :numeric_string => true, as: 'applicationId'
+          collection :applied_labels, as: 'appliedLabels', class: Google::Apis::AdminReportsV1::AppliedLabel, decorator: Google::Apis::AdminReportsV1::AppliedLabel::Representation
+      
+          property :id, as: 'id'
+          property :owner_email, as: 'ownerEmail'
+          property :relation, as: 'relation'
+          property :title, as: 'title'
+          property :type, as: 'type'
         end
       end
       
