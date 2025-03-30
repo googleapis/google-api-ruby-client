@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module GamesManagementV1management
-      # Google Play Game Management
+      # Google Play Games Services Management API
       #
       # The Google Play Games Management API allows developers to manage resources
       #  from the Google Play Game service.
