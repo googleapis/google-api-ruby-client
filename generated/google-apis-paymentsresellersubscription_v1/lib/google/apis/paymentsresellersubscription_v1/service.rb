@@ -422,6 +422,78 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Resumes a suspended subscription. The new billing cycle will start at the time
+        # of the request. It should be called directly by the partner using service
+        # accounts.
+        # @param [String] name
+        #   Required. The name of the subscription resource to be resumed. It will have
+        #   the format of "partners/`partner_id`/subscriptions/`subscription_id`"
+        # @param [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest] google_cloud_payments_reseller_subscription_v1_resume_subscription_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def resume_partner_subscription(name, google_cloud_payments_reseller_subscription_v1_resume_subscription_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:resume', options)
+          command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest::Representation
+          command.request_object = google_cloud_payments_reseller_subscription_v1_resume_subscription_request_object
+          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse::Representation
+          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Suspends a subscription. Contract terms may dictate if a prorated refund will
+        # be issued upon suspension. It should be called directly by the partner using
+        # service accounts.
+        # @param [String] name
+        #   Required. The name of the subscription resource to be suspended. It will have
+        #   the format of "partners/`partner_id`/subscriptions/`subscription_id`"
+        # @param [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest] google_cloud_payments_reseller_subscription_v1_suspend_subscription_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def suspend_partner_subscription(name, google_cloud_payments_reseller_subscription_v1_suspend_subscription_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:suspend', options)
+          command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest::Representation
+          command.request_object = google_cloud_payments_reseller_subscription_v1_suspend_subscription_request_object
+          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse::Representation
+          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Currently, it is used by **Google One, Play Pass** partners. Revokes the
         # pending cancellation of a subscription, which is currently in `
         # STATE_CANCEL_AT_END_OF_CYCLE` state. If the subscription is already cancelled,
