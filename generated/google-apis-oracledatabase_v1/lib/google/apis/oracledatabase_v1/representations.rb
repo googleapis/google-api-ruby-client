@@ -328,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SourceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StartAutonomousDatabaseRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -341,6 +347,12 @@ module Google
       end
       
       class StopAutonomousDatabaseRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SwitchoverAutonomousDatabaseRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -374,12 +386,16 @@ module Google
           property :cidr, as: 'cidr'
           property :create_time, as: 'createTime'
           property :database, as: 'database'
+          collection :disaster_recovery_supported_locations, as: 'disasterRecoverySupportedLocations'
           property :display_name, as: 'displayName'
           property :entitlement_id, as: 'entitlementId'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
+          collection :peer_autonomous_databases, as: 'peerAutonomousDatabases'
           property :properties, as: 'properties', class: Google::Apis::OracledatabaseV1::AutonomousDatabaseProperties, decorator: Google::Apis::OracledatabaseV1::AutonomousDatabaseProperties::Representation
+      
+          property :source_config, as: 'sourceConfig', class: Google::Apis::OracledatabaseV1::SourceConfig, decorator: Google::Apis::OracledatabaseV1::SourceConfig::Representation
       
         end
       end
@@ -487,6 +503,7 @@ module Google
           property :cpu_core_count, as: 'cpuCoreCount'
           collection :customer_contacts, as: 'customerContacts', class: Google::Apis::OracledatabaseV1::CustomerContact, decorator: Google::Apis::OracledatabaseV1::CustomerContact::Representation
       
+          property :data_guard_role_changed_time, as: 'dataGuardRoleChangedTime'
           property :data_safe_state, as: 'dataSafeState'
           property :data_storage_size_gb, as: 'dataStorageSizeGb'
           property :data_storage_size_tb, as: 'dataStorageSizeTb'
@@ -494,6 +511,7 @@ module Google
           property :db_edition, as: 'dbEdition'
           property :db_version, as: 'dbVersion'
           property :db_workload, as: 'dbWorkload'
+          property :disaster_recovery_role_changed_time, as: 'disasterRecoveryRoleChangedTime'
           property :failed_data_recovery_duration, as: 'failedDataRecoveryDuration'
           property :is_auto_scaling_enabled, as: 'isAutoScalingEnabled'
           property :is_local_data_guard_enabled, as: 'isLocalDataGuardEnabled'
@@ -1018,6 +1036,14 @@ module Google
         end
       end
       
+      class SourceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :automatic_backups_replication_enabled, as: 'automaticBackupsReplicationEnabled'
+          property :autonomous_database, as: 'autonomousDatabase'
+        end
+      end
+      
       class StartAutonomousDatabaseRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1036,6 +1062,13 @@ module Google
       class StopAutonomousDatabaseRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SwitchoverAutonomousDatabaseRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :peer_autonomous_database, as: 'peerAutonomousDatabase'
         end
       end
       

@@ -84,6 +84,12 @@ module Google
         # @return [String]
         attr_accessor :database
       
+        # Output only. List of supported GCP region to clone the Autonomous Database for
+        # disaster recovery. Format: `project/`project`/locations/`location``.
+        # Corresponds to the JSON property `disasterRecoverySupportedLocations`
+        # @return [Array<String>]
+        attr_accessor :disaster_recovery_supported_locations
+      
         # Optional. The display name for the Autonomous Database. The name does not have
         # to be unique within your project.
         # Corresponds to the JSON property `displayName`
@@ -114,10 +120,21 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Output only. The peer Autonomous Database names of the given Autonomous
+        # Database.
+        # Corresponds to the JSON property `peerAutonomousDatabases`
+        # @return [Array<String>]
+        attr_accessor :peer_autonomous_databases
+      
         # The properties of an Autonomous Database.
         # Corresponds to the JSON property `properties`
         # @return [Google::Apis::OracledatabaseV1::AutonomousDatabaseProperties]
         attr_accessor :properties
+      
+        # The source configuration for the standby Autonomnous Database.
+        # Corresponds to the JSON property `sourceConfig`
+        # @return [Google::Apis::OracledatabaseV1::SourceConfig]
+        attr_accessor :source_config
       
         def initialize(**args)
            update!(**args)
@@ -129,12 +146,15 @@ module Google
           @cidr = args[:cidr] if args.key?(:cidr)
           @create_time = args[:create_time] if args.key?(:create_time)
           @database = args[:database] if args.key?(:database)
+          @disaster_recovery_supported_locations = args[:disaster_recovery_supported_locations] if args.key?(:disaster_recovery_supported_locations)
           @display_name = args[:display_name] if args.key?(:display_name)
           @entitlement_id = args[:entitlement_id] if args.key?(:entitlement_id)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @peer_autonomous_databases = args[:peer_autonomous_databases] if args.key?(:peer_autonomous_databases)
           @properties = args[:properties] if args.key?(:properties)
+          @source_config = args[:source_config] if args.key?(:source_config)
         end
       end
       
@@ -603,6 +623,12 @@ module Google
         # @return [Array<Google::Apis::OracledatabaseV1::CustomerContact>]
         attr_accessor :customer_contacts
       
+        # Output only. The date and time the Autonomous Data Guard role was changed for
+        # the standby Autonomous Database.
+        # Corresponds to the JSON property `dataGuardRoleChangedTime`
+        # @return [String]
+        attr_accessor :data_guard_role_changed_time
+      
         # Output only. The current state of the Data Safe registration for the
         # Autonomous Database.
         # Corresponds to the JSON property `dataSafeState`
@@ -639,6 +665,12 @@ module Google
         # Corresponds to the JSON property `dbWorkload`
         # @return [String]
         attr_accessor :db_workload
+      
+        # Output only. The date and time the Disaster Recovery role was changed for the
+        # standby Autonomous Database.
+        # Corresponds to the JSON property `disasterRecoveryRoleChangedTime`
+        # @return [String]
+        attr_accessor :disaster_recovery_role_changed_time
       
         # Output only. This field indicates the number of seconds of data loss during a
         # Data Guard failover.
@@ -864,6 +896,7 @@ module Google
           @connection_urls = args[:connection_urls] if args.key?(:connection_urls)
           @cpu_core_count = args[:cpu_core_count] if args.key?(:cpu_core_count)
           @customer_contacts = args[:customer_contacts] if args.key?(:customer_contacts)
+          @data_guard_role_changed_time = args[:data_guard_role_changed_time] if args.key?(:data_guard_role_changed_time)
           @data_safe_state = args[:data_safe_state] if args.key?(:data_safe_state)
           @data_storage_size_gb = args[:data_storage_size_gb] if args.key?(:data_storage_size_gb)
           @data_storage_size_tb = args[:data_storage_size_tb] if args.key?(:data_storage_size_tb)
@@ -871,6 +904,7 @@ module Google
           @db_edition = args[:db_edition] if args.key?(:db_edition)
           @db_version = args[:db_version] if args.key?(:db_version)
           @db_workload = args[:db_workload] if args.key?(:db_workload)
+          @disaster_recovery_role_changed_time = args[:disaster_recovery_role_changed_time] if args.key?(:disaster_recovery_role_changed_time)
           @failed_data_recovery_duration = args[:failed_data_recovery_duration] if args.key?(:failed_data_recovery_duration)
           @is_auto_scaling_enabled = args[:is_auto_scaling_enabled] if args.key?(:is_auto_scaling_enabled)
           @is_local_data_guard_enabled = args[:is_local_data_guard_enabled] if args.key?(:is_local_data_guard_enabled)
@@ -2802,6 +2836,34 @@ module Google
         end
       end
       
+      # The source configuration for the standby Autonomnous Database.
+      class SourceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. This field specifies if the replication of automatic backups is
+        # enabled when creating a Data Guard.
+        # Corresponds to the JSON property `automaticBackupsReplicationEnabled`
+        # @return [Boolean]
+        attr_accessor :automatic_backups_replication_enabled
+        alias_method :automatic_backups_replication_enabled?, :automatic_backups_replication_enabled
+      
+        # Optional. The name of the primary Autonomous Database that is used to create a
+        # Peer Autonomous Database from a source.
+        # Corresponds to the JSON property `autonomousDatabase`
+        # @return [String]
+        attr_accessor :autonomous_database
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @automatic_backups_replication_enabled = args[:automatic_backups_replication_enabled] if args.key?(:automatic_backups_replication_enabled)
+          @autonomous_database = args[:autonomous_database] if args.key?(:autonomous_database)
+        end
+      end
+      
       # The request for `AutonomousDatabase.Start`.
       class StartAutonomousDatabaseRequest
         include Google::Apis::Core::Hashable
@@ -2864,6 +2926,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The request for `AutonomousDatabase.Switchover`.
+      class SwitchoverAutonomousDatabaseRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The peer database name to switch over to.
+        # Corresponds to the JSON property `peerAutonomousDatabase`
+        # @return [String]
+        attr_accessor :peer_autonomous_database
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @peer_autonomous_database = args[:peer_autonomous_database] if args.key?(:peer_autonomous_database)
         end
       end
       
