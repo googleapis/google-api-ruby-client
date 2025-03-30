@@ -259,7 +259,9 @@ module Google
         # @return [String]
         attr_accessor :uid
       
-        # Output only. Update time stamp
+        # Output only. Update time stamp Users should not infer any meaning from this
+        # field. Its value is generally unrelated to the timing of the backup creation
+        # operation.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
