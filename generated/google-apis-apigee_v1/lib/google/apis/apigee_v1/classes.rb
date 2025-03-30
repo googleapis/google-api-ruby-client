@@ -5566,10 +5566,10 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Customer Managed Encryption Key (CMEK) used for disk and volume encryption. If
-        # not specified, a Google-Managed encryption key will be used. Use the following
-        # format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)
-        # `
+        # Optional. Customer Managed Encryption Key (CMEK) used for disk and volume
+        # encryption. If not specified, a Google-Managed encryption key will be used.
+        # Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/
+        # cryptoKeys/([^/]+)`
         # Corresponds to the JSON property `diskEncryptionKeyName`
         # @return [String]
         attr_accessor :disk_encryption_key_name
@@ -7541,17 +7541,19 @@ module Google
         # @return [String]
         attr_accessor :analytics_region
       
-        # Cloud KMS key name used for encrypting API consumer data. If not specified or [
-        # BillingType](#BillingType) is `EVALUATION`, a Google-Managed encryption key
-        # will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+        # Optional. Cloud KMS key name used for encrypting API consumer data. If not
+        # specified or [BillingType](#BillingType) is `EVALUATION`, a Google-Managed
+        # encryption key will be used. Format: `projects/*/locations/*/keyRings/*/
+        # cryptoKeys/*`
         # Corresponds to the JSON property `apiConsumerDataEncryptionKeyName`
         # @return [String]
         attr_accessor :api_consumer_data_encryption_key_name
       
-        # This field is needed only for customers using non-default data residency
-        # regions. Apigee stores some control plane data only in single region. This
-        # field determines which single region Apigee should use. For example: "us-west1"
-        # when control plane is in US or "europe-west2" when control plane is in EU.
+        # Optional. This field is needed only for customers using non-default data
+        # residency regions. Apigee stores some control plane data only in single region.
+        # This field determines which single region Apigee should use. For example: "us-
+        # west1" when control plane is in US or "europe-west2" when control plane is in
+        # EU.
         # Corresponds to the JSON property `apiConsumerDataLocation`
         # @return [String]
         attr_accessor :api_consumer_data_location
@@ -7568,12 +7570,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :attributes
       
-        # Compute Engine network used for Service Networking to be peered with Apigee
-        # runtime instances. See [Getting started with the Service Networking API](https:
-        # //cloud.google.com/service-infrastructure/docs/service-networking/getting-
-        # started). Valid only when [RuntimeType](#RuntimeType) is set to `CLOUD`. The
-        # value must be set before the creation of a runtime instance and can be updated
-        # only when there are no runtime instances. For example: `default`. When
+        # Optional. Compute Engine network used for Service Networking to be peered with
+        # Apigee runtime instances. See [Getting started with the Service Networking API]
+        # (https://cloud.google.com/service-infrastructure/docs/service-networking/
+        # getting-started). Valid only when [RuntimeType](#RuntimeType) is set to `CLOUD`
+        # . The value must be set before the creation of a runtime instance and can be
+        # updated only when there are no runtime instances. For example: `default`. When
         # changing authorizedNetwork, you must reconfigure VPC peering. After VPC
         # peering with previous network is deleted, [run the following command](https://
         # cloud.google.com/sdk/gcloud/reference/services/vpc-peerings/delete): `gcloud
@@ -7591,8 +7593,8 @@ module Google
         # @return [String]
         attr_accessor :authorized_network
       
-        # Billing type of the Apigee organization. See [Apigee pricing](https://cloud.
-        # google.com/apigee/pricing).
+        # Optional. Billing type of the Apigee organization. See [Apigee pricing](https:/
+        # /cloud.google.com/apigee/pricing).
         # Corresponds to the JSON property `billingType`
         # @return [String]
         attr_accessor :billing_type
@@ -7604,11 +7606,11 @@ module Google
         # @return [String]
         attr_accessor :ca_certificate
       
-        # Cloud KMS key name used for encrypting control plane data that is stored in a
-        # multi region. Only used for the data residency region "US" or "EU". If not
-        # specified or [BillingType](#BillingType) is `EVALUATION`, a Google-Managed
-        # encryption key will be used. Format: `projects/*/locations/*/keyRings/*/
-        # cryptoKeys/*`
+        # Optional. Cloud KMS key name used for encrypting control plane data that is
+        # stored in a multi region. Only used for the data residency region "US" or "EU".
+        # If not specified or [BillingType](#BillingType) is `EVALUATION`, a Google-
+        # Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*
+        # /cryptoKeys/*`
         # Corresponds to the JSON property `controlPlaneEncryptionKeyName`
         # @return [String]
         attr_accessor :control_plane_encryption_key_name
@@ -7624,7 +7626,7 @@ module Google
         # @return [String]
         attr_accessor :customer_name
       
-        # Description of the Apigee organization.
+        # Optional. Description of the Apigee organization.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -7644,7 +7646,8 @@ module Google
         attr_accessor :disable_vpc_peering
         alias_method :disable_vpc_peering?, :disable_vpc_peering
       
-        # Display name for the Apigee organization. Unused, but reserved for future use.
+        # Optional. Display name for the Apigee organization. Unused, but reserved for
+        # future use.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -7670,7 +7673,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Configuration for the Portals settings.
+        # Optional. Configuration for the Portals settings.
         # Corresponds to the JSON property `portalDisabled`
         # @return [Boolean]
         attr_accessor :portal_disabled
@@ -7687,11 +7690,12 @@ module Google
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Properties]
         attr_accessor :properties
       
-        # Cloud KMS key name used for encrypting the data that is stored and replicated
-        # across runtime instances. Update is not allowed after the organization is
-        # created. If not specified or [RuntimeType](#RuntimeType) is `TRIAL`, a Google-
-        # Managed encryption key will be used. For example: "projects/foo/locations/us/
-        # keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
+        # Optional. Cloud KMS key name used for encrypting the data that is stored and
+        # replicated across runtime instances. Update is not allowed after the
+        # organization is created. If not specified or [RuntimeType](#RuntimeType) is `
+        # TRIAL`, a Google-Managed encryption key will be used. For example: "projects/
+        # foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for
+        # Apigee hybrid.
         # Corresponds to the JSON property `runtimeDatabaseEncryptionKeyName`
         # @return [String]
         attr_accessor :runtime_database_encryption_key_name
