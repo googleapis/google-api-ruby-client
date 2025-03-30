@@ -4375,8 +4375,9 @@ module Google
         # run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-
         # shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision,
         # Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. *
-        # `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/health-
-        # check-disabled`: Revision. * `run.googleapis.com/ingress`: Service. * `run.
+        # `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/gpu-
+        # zonal-redundancy-disabled`: Revision. * `run.googleapis.com/health-check-
+        # disabled`: Revision. * `run.googleapis.com/ingress`: Service. * `run.
         # googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/minScale`:
         # Service * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.
         # googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.
@@ -4915,9 +4916,9 @@ module Google
         # @return [String]
         attr_accessor :service_account_name
       
-        # TimeoutSeconds holds the max duration the instance is allowed for responding
-        # to a request. Cloud Run: defaults to 300 seconds (5 minutes). Maximum allowed
-        # value is 3600 seconds (1 hour).
+        # Optional. TimeoutSeconds holds the max duration the instance is allowed for
+        # responding to a request. Cloud Run: defaults to 300 seconds (5 minutes).
+        # Maximum allowed value is 3600 seconds (1 hour).
         # Corresponds to the JSON property `timeoutSeconds`
         # @return [Fixnum]
         attr_accessor :timeout_seconds
