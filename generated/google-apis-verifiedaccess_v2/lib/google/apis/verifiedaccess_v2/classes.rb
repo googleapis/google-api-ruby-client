@@ -391,7 +391,11 @@ module Google
         end
       end
       
-      # Result message for VerifiedAccess.VerifyChallengeResponse.
+      # Result message for VerifiedAccess.VerifyChallengeResponse. The response
+      # returned when successful for Managed profiles on Unmanaged browsers will NOT
+      # have devicePermanentId, keyTrustLevel, virtualDeviceId and customerId fields.
+      # Managed profiles will INSTEAD have the profileCustomerId, virtualProfileId,
+      # profilePermanentId and profileKeyTrustLevel fields.
       class VerifyChallengeResponseResult
         include Google::Apis::Core::Hashable
       
