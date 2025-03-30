@@ -3808,6 +3808,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Enable advanced cluster.
+        # Corresponds to the JSON property `enableAdvancedCluster`
+        # @return [Boolean]
+        attr_accessor :enable_advanced_cluster
+        alias_method :enable_advanced_cluster?, :enable_advanced_cluster
+      
         # Output only. The DNS name of VMware admin cluster's API server.
         # Corresponds to the JSON property `endpoint`
         # @return [String]
@@ -3934,6 +3940,7 @@ module Google
           @control_plane_node = args[:control_plane_node] if args.key?(:control_plane_node)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @enable_advanced_cluster = args[:enable_advanced_cluster] if args.key?(:enable_advanced_cluster)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @etag = args[:etag] if args.key?(:etag)
           @fleet = args[:fleet] if args.key?(:fleet)
@@ -4565,6 +4572,12 @@ module Google
         attr_accessor :disable_bundled_ingress
         alias_method :disable_bundled_ingress?, :disable_bundled_ingress
       
+        # Enable advanced cluster.
+        # Corresponds to the JSON property `enableAdvancedCluster`
+        # @return [Boolean]
+        attr_accessor :enable_advanced_cluster
+        alias_method :enable_advanced_cluster?, :enable_advanced_cluster
+      
         # Enable control plane V2. Default to false.
         # Corresponds to the JSON property `enableControlPlaneV2`
         # @return [Boolean]
@@ -4698,6 +4711,7 @@ module Google
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @description = args[:description] if args.key?(:description)
           @disable_bundled_ingress = args[:disable_bundled_ingress] if args.key?(:disable_bundled_ingress)
+          @enable_advanced_cluster = args[:enable_advanced_cluster] if args.key?(:enable_advanced_cluster)
           @enable_control_plane_v2 = args[:enable_control_plane_v2] if args.key?(:enable_control_plane_v2)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @etag = args[:etag] if args.key?(:etag)

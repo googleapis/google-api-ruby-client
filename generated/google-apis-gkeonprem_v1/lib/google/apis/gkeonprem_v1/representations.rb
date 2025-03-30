@@ -2018,6 +2018,7 @@ module Google
       
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :enable_advanced_cluster, as: 'enableAdvancedCluster'
           property :endpoint, as: 'endpoint'
           property :etag, as: 'etag'
           property :fleet, as: 'fleet', class: Google::Apis::GkeonpremV1::Fleet, decorator: Google::Apis::GkeonpremV1::Fleet::Representation
@@ -2212,6 +2213,7 @@ module Google
           property :delete_time, as: 'deleteTime'
           property :description, as: 'description'
           property :disable_bundled_ingress, as: 'disableBundledIngress'
+          property :enable_advanced_cluster, as: 'enableAdvancedCluster'
           property :enable_control_plane_v2, as: 'enableControlPlaneV2'
           property :endpoint, as: 'endpoint'
           property :etag, as: 'etag'
