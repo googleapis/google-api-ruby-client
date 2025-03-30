@@ -1,5 +1,10 @@
 # Release history for google-apis-gmailpostmastertools_v1
 
+### v0.18.0 (2025-03-30)
+
+* Regenerated from discovery document revision 20250325
+* Regenerated using generator version 0.16.0
+
 ### v0.17.0 (2024-05-19)
 
 * Regenerated using generator version 0.15.0
