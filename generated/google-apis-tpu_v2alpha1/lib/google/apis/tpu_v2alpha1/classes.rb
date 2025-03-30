@@ -1291,6 +1291,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The provisioning model for the resource.
+        # Corresponds to the JSON property `provisioningModel`
+        # @return [String]
+        attr_accessor :provisioning_model
+      
         # Defines the policy of the QueuedRequest.
         # Corresponds to the JSON property `queueingPolicy`
         # @return [Google::Apis::TpuV2alpha1::QueueingPolicy]
@@ -1301,6 +1306,11 @@ module Google
         # Corresponds to the JSON property `reservationName`
         # @return [String]
         attr_accessor :reservation_name
+      
+        # Defines the maximum lifetime of the requested resource.
+        # Corresponds to the JSON property `runDuration`
+        # @return [Google::Apis::TpuV2alpha1::RunDuration]
+        attr_accessor :run_duration
       
         # Spot tier definition.
         # Corresponds to the JSON property `spot`
@@ -1327,8 +1337,10 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @guaranteed = args[:guaranteed] if args.key?(:guaranteed)
           @name = args[:name] if args.key?(:name)
+          @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
           @queueing_policy = args[:queueing_policy] if args.key?(:queueing_policy)
           @reservation_name = args[:reservation_name] if args.key?(:reservation_name)
+          @run_duration = args[:run_duration] if args.key?(:run_duration)
           @spot = args[:spot] if args.key?(:spot)
           @state = args[:state] if args.key?(:state)
           @tpu = args[:tpu] if args.key?(:tpu)
@@ -1501,6 +1513,31 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Defines the maximum lifetime of the requested resource.
+      class RunDuration
+        include Google::Apis::Core::Hashable
+      
+        # The maximum duration of the requested resource.
+        # Corresponds to the JSON property `maxRunDuration`
+        # @return [String]
+        attr_accessor :max_run_duration
+      
+        # The time at which the requested resource will be terminated.
+        # Corresponds to the JSON property `terminationTime`
+        # @return [String]
+        attr_accessor :termination_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_run_duration = args[:max_run_duration] if args.key?(:max_run_duration)
+          @termination_time = args[:termination_time] if args.key?(:termination_time)
         end
       end
       
