@@ -542,6 +542,7 @@ module Google
           property :friendly_name, as: 'friendlyName'
           hash :labels, as: 'labels'
           property :location, as: 'location'
+          collection :replica_locations, as: 'replicaLocations'
         end
       end
       
