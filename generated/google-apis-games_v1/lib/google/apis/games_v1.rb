@@ -19,14 +19,14 @@ require 'google/apis/games_v1/gem_version.rb'
 
 module Google
   module Apis
-    # Google Play Game Services
+    # Google Play Games Services API
     #
     # The Google Play Games Service allows developers to enhance games with social
     # leaderboards, achievements, game state, sign-in with Google, and more.
     #
     # @see https://developers.google.com/games/
     module GamesV1
-      # Version of the Google Play Game Services this client connects to.
+      # Version of the Google Play Games Services API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1'
 
