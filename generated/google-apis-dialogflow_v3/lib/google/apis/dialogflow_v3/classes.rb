@@ -8516,6 +8516,22 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :request_headers
       
+        # Optional. The SecretManager secret version resource storing the username:
+        # password pair for HTTP Basic authentication. Format: `projects/`project`/
+        # secrets/`secret`/versions/`version``
+        # Corresponds to the JSON property `secretVersionForUsernamePassword`
+        # @return [String]
+        attr_accessor :secret_version_for_username_password
+      
+        # Optional. The HTTP request headers to send together with webhook requests.
+        # Header values are stored in SecretManager secret versions. When the same
+        # header name is specified in both `request_headers` and `
+        # secret_versions_for_request_headers`, the value in `
+        # secret_versions_for_request_headers` will be used.
+        # Corresponds to the JSON property `secretVersionsForRequestHeaders`
+        # @return [Hash<String,Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue>]
+        attr_accessor :secret_versions_for_request_headers
+      
         # Optional. Indicate the auth token type generated from the [Diglogflow service
         # agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-
         # agent). The generated token is sent in the Authorization header.
@@ -8552,6 +8568,8 @@ module Google
           @password = args[:password] if args.key?(:password)
           @request_body = args[:request_body] if args.key?(:request_body)
           @request_headers = args[:request_headers] if args.key?(:request_headers)
+          @secret_version_for_username_password = args[:secret_version_for_username_password] if args.key?(:secret_version_for_username_password)
+          @secret_versions_for_request_headers = args[:secret_versions_for_request_headers] if args.key?(:secret_versions_for_request_headers)
           @service_agent_auth = args[:service_agent_auth] if args.key?(:service_agent_auth)
           @uri = args[:uri] if args.key?(:uri)
           @username = args[:username] if args.key?(:username)
@@ -8579,6 +8597,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :scopes
       
+        # Optional. The name of the SecretManager secret version resource storing the
+        # client secret. If this field is set, the `client_secret` field will be ignored.
+        # Format: `projects/`project`/secrets/`secret`/versions/`version``
+        # Corresponds to the JSON property `secretVersionForClientSecret`
+        # @return [String]
+        attr_accessor :secret_version_for_client_secret
+      
         # Required. The token endpoint provided by the 3rd party platform to exchange an
         # access token.
         # Corresponds to the JSON property `tokenEndpoint`
@@ -8594,7 +8619,29 @@ module Google
           @client_id = args[:client_id] if args.key?(:client_id)
           @client_secret = args[:client_secret] if args.key?(:client_secret)
           @scopes = args[:scopes] if args.key?(:scopes)
+          @secret_version_for_client_secret = args[:secret_version_for_client_secret] if args.key?(:secret_version_for_client_secret)
           @token_endpoint = args[:token_endpoint] if args.key?(:token_endpoint)
+        end
+      end
+      
+      # Represents the value of an HTTP header stored in a SecretManager secret
+      # version.
+      class GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue
+        include Google::Apis::Core::Hashable
+      
+        # Required. The SecretManager secret version resource storing the header value.
+        # Format: `projects/`project`/secrets/`secret`/versions/`version``
+        # Corresponds to the JSON property `secretVersion`
+        # @return [String]
+        attr_accessor :secret_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @secret_version = args[:secret_version] if args.key?(:secret_version)
         end
       end
       
@@ -12349,6 +12396,22 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :request_headers
       
+        # Optional. The SecretManager secret version resource storing the username:
+        # password pair for HTTP Basic authentication. Format: `projects/`project`/
+        # secrets/`secret`/versions/`version``
+        # Corresponds to the JSON property `secretVersionForUsernamePassword`
+        # @return [String]
+        attr_accessor :secret_version_for_username_password
+      
+        # Optional. The HTTP request headers to send together with webhook requests.
+        # Header values are stored in SecretManager secret versions. When the same
+        # header name is specified in both `request_headers` and `
+        # secret_versions_for_request_headers`, the value in `
+        # secret_versions_for_request_headers` will be used.
+        # Corresponds to the JSON property `secretVersionsForRequestHeaders`
+        # @return [Hash<String,Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVersionHeaderValue>]
+        attr_accessor :secret_versions_for_request_headers
+      
         # Optional. Indicate the auth token type generated from the [Diglogflow service
         # agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-
         # agent). The generated token is sent in the Authorization header.
@@ -12385,6 +12448,8 @@ module Google
           @password = args[:password] if args.key?(:password)
           @request_body = args[:request_body] if args.key?(:request_body)
           @request_headers = args[:request_headers] if args.key?(:request_headers)
+          @secret_version_for_username_password = args[:secret_version_for_username_password] if args.key?(:secret_version_for_username_password)
+          @secret_versions_for_request_headers = args[:secret_versions_for_request_headers] if args.key?(:secret_versions_for_request_headers)
           @service_agent_auth = args[:service_agent_auth] if args.key?(:service_agent_auth)
           @uri = args[:uri] if args.key?(:uri)
           @username = args[:username] if args.key?(:username)
@@ -12412,6 +12477,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :scopes
       
+        # Optional. The name of the SecretManager secret version resource storing the
+        # client secret. If this field is set, the `client_secret` field will be ignored.
+        # Format: `projects/`project`/secrets/`secret`/versions/`version``
+        # Corresponds to the JSON property `secretVersionForClientSecret`
+        # @return [String]
+        attr_accessor :secret_version_for_client_secret
+      
         # Required. The token endpoint provided by the 3rd party platform to exchange an
         # access token.
         # Corresponds to the JSON property `tokenEndpoint`
@@ -12427,7 +12499,29 @@ module Google
           @client_id = args[:client_id] if args.key?(:client_id)
           @client_secret = args[:client_secret] if args.key?(:client_secret)
           @scopes = args[:scopes] if args.key?(:scopes)
+          @secret_version_for_client_secret = args[:secret_version_for_client_secret] if args.key?(:secret_version_for_client_secret)
           @token_endpoint = args[:token_endpoint] if args.key?(:token_endpoint)
+        end
+      end
+      
+      # Represents the value of an HTTP header stored in a SecretManager secret
+      # version.
+      class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVersionHeaderValue
+        include Google::Apis::Core::Hashable
+      
+        # Required. The SecretManager secret version resource storing the header value.
+        # Format: `projects/`project`/secrets/`secret`/versions/`version``
+        # Corresponds to the JSON property `secretVersion`
+        # @return [String]
+        attr_accessor :secret_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @secret_version = args[:secret_version] if args.key?(:secret_version)
         end
       end
       
@@ -13709,6 +13803,11 @@ module Google
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2SummarySuggestion]
         attr_accessor :summary_suggestion
       
+        # Optional. List of request and response for tool calls executed.
+        # Corresponds to the JSON property `toolCallInfo`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo>]
+        attr_accessor :tool_call_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -13717,6 +13816,32 @@ module Google
         def update!(**args)
           @free_form_suggestion = args[:free_form_suggestion] if args.key?(:free_form_suggestion)
           @summary_suggestion = args[:summary_suggestion] if args.key?(:summary_suggestion)
+          @tool_call_info = args[:tool_call_info] if args.key?(:tool_call_info)
+        end
+      end
+      
+      # Request and response for a tool call.
+      class GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo
+        include Google::Apis::Core::Hashable
+      
+        # Represents a call of a specific tool's action with the specified inputs.
+        # Corresponds to the JSON property `toolCall`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ToolCall]
+        attr_accessor :tool_call
+      
+        # The result of calling a tool's action.
+        # Corresponds to the JSON property `toolCallResult`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ToolCallResult]
+        attr_accessor :tool_call_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tool_call = args[:tool_call] if args.key?(:tool_call)
+          @tool_call_result = args[:tool_call_result] if args.key?(:tool_call_result)
         end
       end
       
@@ -16206,6 +16331,115 @@ module Google
         end
       end
       
+      # Represents a call of a specific tool's action with the specified inputs.
+      class GoogleCloudDialogflowV2ToolCall
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the tool's action associated with this call.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Output only. Create time of the tool call.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The action's input parameters.
+        # Corresponds to the JSON property `inputParameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :input_parameters
+      
+        # Required. The tool associated with this call. Format: `projects//locations//
+        # tools/`.
+        # Corresponds to the JSON property `tool`
+        # @return [String]
+        attr_accessor :tool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @input_parameters = args[:input_parameters] if args.key?(:input_parameters)
+          @tool = args[:tool] if args.key?(:tool)
+        end
+      end
+      
+      # The result of calling a tool's action.
+      class GoogleCloudDialogflowV2ToolCallResult
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the tool's action associated with this call.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Only populated if the response content is utf-8 encoded.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # Output only. Create time of the tool call result.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # An error produced by the tool call.
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ToolCallResultError]
+        attr_accessor :error
+      
+        # Only populated if the response content is not utf-8 encoded. (by definition
+        # byte fields are base64 encoded).
+        # Corresponds to the JSON property `rawContent`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :raw_content
+      
+        # Required. The tool associated with this call. Format: `projects//locations//
+        # tools/`.
+        # Corresponds to the JSON property `tool`
+        # @return [String]
+        attr_accessor :tool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @content = args[:content] if args.key?(:content)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @error = args[:error] if args.key?(:error)
+          @raw_content = args[:raw_content] if args.key?(:raw_content)
+          @tool = args[:tool] if args.key?(:tool)
+        end
+      end
+      
+      # An error produced by the tool call.
+      class GoogleCloudDialogflowV2ToolCallResultError
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The error message of the function.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
       # Metadata for a ConversationModels.UndeployConversationModel operation.
       class GoogleCloudDialogflowV2UndeployConversationModelOperationMetadata
         include Google::Apis::Core::Hashable
@@ -17069,6 +17303,11 @@ module Google
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1SummarySuggestion]
         attr_accessor :summary_suggestion
       
+        # Optional. List of request and response for tool calls executed.
+        # Corresponds to the JSON property `toolCallInfo`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1GeneratorSuggestionToolCallInfo>]
+        attr_accessor :tool_call_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -17077,6 +17316,32 @@ module Google
         def update!(**args)
           @free_form_suggestion = args[:free_form_suggestion] if args.key?(:free_form_suggestion)
           @summary_suggestion = args[:summary_suggestion] if args.key?(:summary_suggestion)
+          @tool_call_info = args[:tool_call_info] if args.key?(:tool_call_info)
+        end
+      end
+      
+      # Request and response for a tool call.
+      class GoogleCloudDialogflowV2beta1GeneratorSuggestionToolCallInfo
+        include Google::Apis::Core::Hashable
+      
+        # Represents a call of a specific tool's action with the specified inputs.
+        # Corresponds to the JSON property `toolCall`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1ToolCall]
+        attr_accessor :tool_call
+      
+        # The result of calling a tool's action.
+        # Corresponds to the JSON property `toolCallResult`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1ToolCallResult]
+        attr_accessor :tool_call_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tool_call = args[:tool_call] if args.key?(:tool_call)
+          @tool_call_result = args[:tool_call_result] if args.key?(:tool_call_result)
         end
       end
       
@@ -20347,6 +20612,115 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dtmf_events = args[:dtmf_events] if args.key?(:dtmf_events)
+        end
+      end
+      
+      # Represents a call of a specific tool's action with the specified inputs.
+      class GoogleCloudDialogflowV2beta1ToolCall
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the tool's action associated with this call.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Output only. Create time of the tool call.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The action's input parameters.
+        # Corresponds to the JSON property `inputParameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :input_parameters
+      
+        # Required. The tool associated with this call. Format: `projects//locations//
+        # tools/`.
+        # Corresponds to the JSON property `tool`
+        # @return [String]
+        attr_accessor :tool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @input_parameters = args[:input_parameters] if args.key?(:input_parameters)
+          @tool = args[:tool] if args.key?(:tool)
+        end
+      end
+      
+      # The result of calling a tool's action.
+      class GoogleCloudDialogflowV2beta1ToolCallResult
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the tool's action associated with this call.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Only populated if the response content is utf-8 encoded.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # Output only. Create time of the tool call result.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # An error produced by the tool call.
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1ToolCallResultError]
+        attr_accessor :error
+      
+        # Only populated if the response content is not utf-8 encoded. (by definition
+        # byte fields are base64 encoded).
+        # Corresponds to the JSON property `rawContent`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :raw_content
+      
+        # Required. The tool associated with this call. Format: `projects//locations//
+        # tools/`.
+        # Corresponds to the JSON property `tool`
+        # @return [String]
+        attr_accessor :tool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @content = args[:content] if args.key?(:content)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @error = args[:error] if args.key?(:error)
+          @raw_content = args[:raw_content] if args.key?(:raw_content)
+          @tool = args[:tool] if args.key?(:tool)
+        end
+      end
+      
+      # An error produced by the tool call.
+      class GoogleCloudDialogflowV2beta1ToolCallResultError
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The error message of the function.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
         end
       end
       
