@@ -32,7 +32,7 @@ module Google
       #    Gmailpostmastertools = Google::Apis::GmailpostmastertoolsV1beta1 # Alias the module
       #    service = Gmailpostmastertools::PostmasterToolsService.new
       #
-      # @see https://developers.google.com/gmail/postmaster
+      # @see https://developers.google.com/workspace/gmail/postmaster
       class PostmasterToolsService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://gmailpostmastertools.$UNIVERSE_DOMAIN$/"
 
