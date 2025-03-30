@@ -1,0 +1,7 @@
+{
+    "api_id": "osconfig:v2",
+    "name_pretty": "OS Config API",
+    "distribution_name": "google-apis-osconfig_v2",
+    "language": "ruby",
+    "library_type": "REST"
+}
