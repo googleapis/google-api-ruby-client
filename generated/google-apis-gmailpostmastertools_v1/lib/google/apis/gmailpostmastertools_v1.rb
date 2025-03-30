@@ -25,7 +25,7 @@ module Google
     # email traffic metrics (like spam reports, delivery errors etc) otherwise
     # available through the Gmail Postmaster Tools UI currently.
     #
-    # @see https://developers.google.com/gmail/postmaster
+    # @see https://developers.google.com/workspace/gmail/postmaster
     module GmailpostmastertoolsV1
       # Version of the Gmail Postmaster Tools API this client connects to.
       # This is NOT the gem version.
