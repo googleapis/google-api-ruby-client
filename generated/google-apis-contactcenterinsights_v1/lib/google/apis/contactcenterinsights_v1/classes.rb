@@ -924,6 +924,11 @@ module Google
         # @return [String]
         attr_accessor :parent
       
+        # Google Sheets document details to write the feedback labels to.
+        # Corresponds to the JSON property `sheetsDestination`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination]
+        attr_accessor :sheets_destination
+      
         # Optional. If set, a template for labeling conversations and scorecard
         # questions will be created from the conversation_filter and the questions under
         # the scorecard(s). The feedback label `filter` will be ignored.
@@ -943,6 +948,7 @@ module Google
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
           @max_download_count = args[:max_download_count] if args.key?(:max_download_count)
           @parent = args[:parent] if args.key?(:parent)
+          @sheets_destination = args[:sheets_destination] if args.key?(:sheets_destination)
           @template_qa_scorecard_id = args[:template_qa_scorecard_id] if args.key?(:template_qa_scorecard_id)
         end
       end
@@ -999,6 +1005,35 @@ module Google
         end
       end
       
+      # Google Sheets document details to write the feedback labels to.
+      class GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The title of the new sheet to write the feedback labels to.
+        # Corresponds to the JSON property `sheetTitle`
+        # @return [String]
+        attr_accessor :sheet_title
+      
+        # Required. The Google Sheets document to write the feedback labels to.
+        # Retrieved from Google Sheets URI. E.g. `https://docs.google.com/spreadsheets/d/
+        # 1234567890` The spreadsheet must be shared with the Insights P4SA. The
+        # spreadsheet ID written to will be returned as `file_names` in the
+        # BulkDownloadFeedbackLabelsMetadata.
+        # Corresponds to the JSON property `spreadsheetUri`
+        # @return [String]
+        attr_accessor :spreadsheet_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sheet_title = args[:sheet_title] if args.key?(:sheet_title)
+          @spreadsheet_uri = args[:spreadsheet_uri] if args.key?(:spreadsheet_uri)
+        end
+      end
+      
       # Response for the BulkDownloadFeedbackLabel endpoint.
       class GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsResponse
         include Google::Apis::Core::Hashable
@@ -1021,6 +1056,11 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource]
         attr_accessor :gcs_source
       
+        # Google Sheets document details to get the feedback label file from.
+        # Corresponds to the JSON property `sheetsSource`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource]
+        attr_accessor :sheets_source
+      
         # Optional. If set, upload will not happen and the labels will be validated. If
         # not set, then default behavior will be to upload the labels after validation
         # is complete.
@@ -1036,6 +1076,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+          @sheets_source = args[:sheets_source] if args.key?(:sheets_source)
           @validate_only = args[:validate_only] if args.key?(:validate_only)
         end
       end
@@ -1063,6 +1104,27 @@ module Google
         def update!(**args)
           @format = args[:format] if args.key?(:format)
           @object_uri = args[:object_uri] if args.key?(:object_uri)
+        end
+      end
+      
+      # Google Sheets document details to get the feedback label file from.
+      class GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Google Sheets document to write the feedback labels to.
+        # Retrieved from Google Sheets URI. E.g. `https://docs.google.com/spreadsheets/d/
+        # 1234567890` The spreadsheet must be shared with the Insights P4SA.
+        # Corresponds to the JSON property `spreadsheetUri`
+        # @return [String]
+        attr_accessor :spreadsheet_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @spreadsheet_uri = args[:spreadsheet_uri] if args.key?(:spreadsheet_uri)
         end
       end
       
@@ -5121,6 +5183,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_points = args[:data_points] if args.key?(:data_points)
+        end
+      end
+      
+      # The metadata for querying performance overview.
+      class GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response for querying performance overview.
+      class GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewResponse
+        include Google::Apis::Core::Hashable
+      
+        # The summary text of the performance.
+        # Corresponds to the JSON property `summaryText`
+        # @return [String]
+        attr_accessor :summary_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @summary_text = args[:summary_text] if args.key?(:summary_text)
         end
       end
       
@@ -9647,6 +9741,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_points = args[:data_points] if args.key?(:data_points)
+        end
+      end
+      
+      # The metadata for querying performance overview.
+      class GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response for querying performance overview.
+      class GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewResponse
+        include Google::Apis::Core::Hashable
+      
+        # The summary text of the performance.
+        # Corresponds to the JSON property `summaryText`
+        # @return [String]
+        attr_accessor :summary_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @summary_text = args[:summary_text] if args.key?(:summary_text)
         end
       end
       

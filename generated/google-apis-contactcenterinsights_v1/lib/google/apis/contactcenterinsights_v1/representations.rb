@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,6 +185,12 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -869,6 +881,18 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceTimeSeries
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1624,6 +1648,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1alpha1RedactionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1985,6 +2021,8 @@ module Google
       
           property :max_download_count, as: 'maxDownloadCount'
           property :parent, as: 'parent'
+          property :sheets_destination, as: 'sheetsDestination', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination::Representation
+      
           collection :template_qa_scorecard_id, as: 'templateQaScorecardId'
         end
       end
@@ -2000,6 +2038,14 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sheet_title, as: 'sheetTitle'
+          property :spreadsheet_uri, as: 'spreadsheetUri'
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2011,6 +2057,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_source, as: 'gcsSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource::Representation
       
+          property :sheets_source, as: 'sheetsSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource::Representation
+      
           property :validate_only, as: 'validateOnly'
         end
       end
@@ -2020,6 +2068,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :format, as: 'format'
           property :object_uri, as: 'objectUri'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :spreadsheet_uri, as: 'spreadsheetUri'
         end
       end
       
@@ -3204,6 +3259,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :data_points, as: 'dataPoints', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint::Representation
       
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :summary_text, as: 'summaryText'
         end
       end
       
@@ -4512,6 +4580,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :data_points, as: 'dataPoints', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint::Representation
       
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :summary_text, as: 'summaryText'
         end
       end
       
