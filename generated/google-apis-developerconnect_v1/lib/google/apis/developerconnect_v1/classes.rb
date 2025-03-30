@@ -22,6 +22,73 @@ module Google
   module Apis
     module DeveloperconnectV1
       
+      # AccountConnector encapsulates what a platform administrator needs to configure
+      # for users to connect to the service providers, which includes, among other
+      # fields, the OAuth client ID, client secret, and authorization and token
+      # endpoints.
+      class AccountConnector
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Allows users to store small amounts of arbitrary data.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Output only. The timestamp when the userConnection was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. This checksum is computed by the server based on the value of other
+        # fields, and may be sent on update and delete requests to ensure the client has
+        # an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. Labels as key value pairs
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The resource name of the userConnection, in the format `projects/`
+        # project`/locations/`location`/accountConnectors/`account_connector_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Start OAuth flow by clicking on this URL.
+        # Corresponds to the JSON property `oauthStartUri`
+        # @return [String]
+        attr_accessor :oauth_start_uri
+      
+        # ProviderOAuthConfig is the OAuth config for a provider.
+        # Corresponds to the JSON property `providerOauthConfig`
+        # @return [Google::Apis::DeveloperconnectV1::ProviderOAuthConfig]
+        attr_accessor :provider_oauth_config
+      
+        # Output only. The timestamp when the userConnection was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @oauth_start_uri = args[:oauth_start_uri] if args.key?(:oauth_start_uri)
+          @provider_oauth_config = args[:provider_oauth_config] if args.key?(:provider_oauth_config)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Configuration for connections to an instance of Bitbucket Cloud.
       class BitbucketCloudConfig
         include Google::Apis::Core::Hashable
@@ -311,6 +378,81 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Message for representing an error from exchanging OAuth tokens.
+      class ExchangeError
+        include Google::Apis::Core::Hashable
+      
+        # https://datatracker.ietf.org/doc/html/rfc6749#section-5.2 - error
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # https://datatracker.ietf.org/doc/html/rfc6749#section-5.2 - error_description
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @description = args[:description] if args.key?(:description)
+        end
+      end
+      
+      # Message for fetching an OAuth access token.
+      class FetchAccessTokenRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Message for responding to getting an OAuth access token.
+      class FetchAccessTokenResponse
+        include Google::Apis::Core::Hashable
+      
+        # Message for representing an error from exchanging OAuth tokens.
+        # Corresponds to the JSON property `exchangeError`
+        # @return [Google::Apis::DeveloperconnectV1::ExchangeError]
+        attr_accessor :exchange_error
+      
+        # Expiration timestamp. Can be empty if unknown or non-expiring.
+        # Corresponds to the JSON property `expirationTime`
+        # @return [String]
+        attr_accessor :expiration_time
+      
+        # The scopes of the access token.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
+        # The token content.
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exchange_error = args[:exchange_error] if args.key?(:exchange_error)
+          @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
+          @scopes = args[:scopes] if args.key?(:scopes)
+          @token = args[:token] if args.key?(:token)
         end
       end
       
@@ -932,6 +1074,37 @@ module Google
         end
       end
       
+      # Message for response to listing AccountConnectors
+      class ListAccountConnectorsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of AccountConnectors
+        # Corresponds to the JSON property `accountConnectors`
+        # @return [Array<Google::Apis::DeveloperconnectV1::AccountConnector>]
+        attr_accessor :account_connectors
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_connectors = args[:account_connectors] if args.key?(:account_connectors)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Message for response to listing Connections
       class ListConnectionsResponse
         include Google::Apis::Core::Hashable
@@ -1041,6 +1214,37 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # Message for response to listing Users
+      class ListUsersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        # The list of Users
+        # Corresponds to the JSON property `users`
+        # @return [Array<Google::Apis::DeveloperconnectV1::User>]
+        attr_accessor :users
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+          @users = args[:users] if args.key?(:users)
         end
       end
       
@@ -1410,6 +1614,33 @@ module Google
         end
       end
       
+      # ProviderOAuthConfig is the OAuth config for a provider.
+      class ProviderOAuthConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. User selected scopes to apply to the Oauth config In the event of
+        # changing scopes, user records under AccountConnector will be deleted and users
+        # will re-auth again.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
+        # Immutable. Developer Connect provided OAuth.
+        # Corresponds to the JSON property `systemProviderId`
+        # @return [String]
+        attr_accessor :system_provider_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scopes = args[:scopes] if args.key?(:scopes)
+          @system_provider_id = args[:system_provider_id] if args.key?(:system_provider_id)
+        end
+      end
+      
       # ServiceDirectoryConfig represents Service Directory configuration for a
       # connection.
       class ServiceDirectoryConfig
@@ -1467,6 +1698,46 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # User represents a user connected to the service providers through a
+      # AccountConnector.
+      class User
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the user was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Developer Connect automatically converts user identity to some
+        # human readable description, e.g., email address.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The timestamp when the token was last requested.
+        # Corresponds to the JSON property `lastTokenRequestTime`
+        # @return [String]
+        attr_accessor :last_token_request_time
+      
+        # Identifier. Resource name of the user, in the format `projects/*/locations/*/
+        # accountConnectors/*/users/*`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @last_token_request_time = args[:last_token_request_time] if args.key?(:last_token_request_time)
+          @name = args[:name] if args.key?(:name)
         end
       end
       

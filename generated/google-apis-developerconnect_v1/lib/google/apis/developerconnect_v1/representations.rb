@@ -22,6 +22,12 @@ module Google
   module Apis
     module DeveloperconnectV1
       
+      class AccountConnector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BitbucketCloudConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,6 +59,24 @@ module Google
       end
       
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExchangeError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FetchAccessTokenRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FetchAccessTokenResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -160,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAccountConnectorsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListConnectionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,6 +209,12 @@ module Google
       end
       
       class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListUsersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -238,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProviderOAuthConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceDirectoryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -250,10 +292,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class User
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserCredential
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccountConnector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :create_time, as: 'createTime'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :oauth_start_uri, as: 'oauthStartUri'
+          property :provider_oauth_config, as: 'providerOauthConfig', class: Google::Apis::DeveloperconnectV1::ProviderOAuthConfig, decorator: Google::Apis::DeveloperconnectV1::ProviderOAuthConfig::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
       end
       
       class BitbucketCloudConfig
@@ -334,6 +397,31 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ExchangeError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :description, as: 'description'
+        end
+      end
+      
+      class FetchAccessTokenRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class FetchAccessTokenResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exchange_error, as: 'exchangeError', class: Google::Apis::DeveloperconnectV1::ExchangeError, decorator: Google::Apis::DeveloperconnectV1::ExchangeError::Representation
+      
+          property :expiration_time, as: 'expirationTime'
+          collection :scopes, as: 'scopes'
+          property :token, as: 'token'
         end
       end
       
@@ -506,6 +594,16 @@ module Google
         end
       end
       
+      class ListAccountConnectorsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :account_connectors, as: 'accountConnectors', class: Google::Apis::DeveloperconnectV1::AccountConnector, decorator: Google::Apis::DeveloperconnectV1::AccountConnector::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListConnectionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -540,6 +638,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::DeveloperconnectV1::Operation, decorator: Google::Apis::DeveloperconnectV1::Operation::Representation
+      
+        end
+      end
+      
+      class ListUsersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+          collection :users, as: 'users', class: Google::Apis::DeveloperconnectV1::User, decorator: Google::Apis::DeveloperconnectV1::User::Representation
       
         end
       end
@@ -628,6 +736,14 @@ module Google
         end
       end
       
+      class ProviderOAuthConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :scopes, as: 'scopes'
+          property :system_provider_id, as: 'systemProviderId'
+        end
+      end
+      
       class ServiceDirectoryConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -641,6 +757,16 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class User
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :last_token_request_time, as: 'lastTokenRequestTime'
+          property :name, as: 'name'
         end
       end
       
