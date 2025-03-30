@@ -614,6 +614,7 @@ module Google
       class AndroidModel
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :access_denied_reasons, as: 'accessDeniedReasons'
           property :brand, as: 'brand'
           property :codename, as: 'codename'
           property :form, as: 'form'
