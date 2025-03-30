@@ -2777,6 +2777,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :cpu_count
       
+        # Optional. Machine type of the VM instance. E.g. "n2-highmem-4", "n2-highmem-8",
+        # "c4a-highmem-4-lssd". cpu_count must match the number of vCPUs in the machine
+        # type.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2784,6 +2791,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cpu_count = args[:cpu_count] if args.key?(:cpu_count)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
         end
       end
       
@@ -3204,6 +3212,12 @@ module Google
         # @return [Google::Apis::DatamigrationV1::SqlServerHomogeneousMigrationJobConfig]
         attr_accessor :sqlserver_homogeneous_migration_job_config
       
+        # Configuration for heterogeneous **SQL Server to Cloud SQL for PostgreSQL**
+        # migrations.
+        # Corresponds to the JSON property `sqlserverToPostgresConfig`
+        # @return [Google::Apis::DatamigrationV1::SqlServerToPostgresConfig]
+        attr_accessor :sqlserver_to_postgres_config
+      
         # The current migration job state.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -3267,6 +3281,7 @@ module Google
           @source = args[:source] if args.key?(:source)
           @source_database = args[:source_database] if args.key?(:source_database)
           @sqlserver_homogeneous_migration_job_config = args[:sqlserver_homogeneous_migration_job_config] if args.key?(:sqlserver_homogeneous_migration_job_config)
+          @sqlserver_to_postgres_config = args[:sqlserver_to_postgres_config] if args.key?(:sqlserver_to_postgres_config)
           @state = args[:state] if args.key?(:state)
           @static_ip_connectivity = args[:static_ip_connectivity] if args.key?(:static_ip_connectivity)
           @type = args[:type] if args.key?(:type)
@@ -5224,6 +5239,11 @@ module Google
         # @return [String]
         attr_accessor :cloud_sql_id
       
+        # Required. The name of the specific database within the host.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
         # Forward SSH Tunnel connectivity.
         # Corresponds to the JSON property `forwardSshConnectivity`
         # @return [Google::Apis::DatamigrationV1::ForwardSshTunnelConnectivity]
@@ -5291,6 +5311,7 @@ module Google
         def update!(**args)
           @backups = args[:backups] if args.key?(:backups)
           @cloud_sql_id = args[:cloud_sql_id] if args.key?(:cloud_sql_id)
+          @database = args[:database] if args.key?(:database)
           @forward_ssh_connectivity = args[:forward_ssh_connectivity] if args.key?(:forward_ssh_connectivity)
           @host = args[:host] if args.key?(:host)
           @password = args[:password] if args.key?(:password)
@@ -5410,6 +5431,72 @@ module Google
           @database_backups = args[:database_backups] if args.key?(:database_backups)
           @promote_when_ready = args[:promote_when_ready] if args.key?(:promote_when_ready)
           @use_diff_backup = args[:use_diff_backup] if args.key?(:use_diff_backup)
+        end
+      end
+      
+      # Configuration for SQL Server as a source in a migration.
+      class SqlServerSourceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The log sequence number (LSN) to start CDC data migration from.
+        # Corresponds to the JSON property `cdcStartPosition`
+        # @return [String]
+        attr_accessor :cdc_start_position
+      
+        # Optional. Maximum number of connections Database Migration Service will open
+        # to the source for CDC phase.
+        # Corresponds to the JSON property `maxConcurrentCdcConnections`
+        # @return [Fixnum]
+        attr_accessor :max_concurrent_cdc_connections
+      
+        # Optional. Maximum number of connections Database Migration Service will open
+        # to the source for full dump phase.
+        # Corresponds to the JSON property `maxConcurrentFullDumpConnections`
+        # @return [Fixnum]
+        attr_accessor :max_concurrent_full_dump_connections
+      
+        # Optional. Whether to skip full dump or not.
+        # Corresponds to the JSON property `skipFullDump`
+        # @return [Boolean]
+        attr_accessor :skip_full_dump
+        alias_method :skip_full_dump?, :skip_full_dump
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cdc_start_position = args[:cdc_start_position] if args.key?(:cdc_start_position)
+          @max_concurrent_cdc_connections = args[:max_concurrent_cdc_connections] if args.key?(:max_concurrent_cdc_connections)
+          @max_concurrent_full_dump_connections = args[:max_concurrent_full_dump_connections] if args.key?(:max_concurrent_full_dump_connections)
+          @skip_full_dump = args[:skip_full_dump] if args.key?(:skip_full_dump)
+        end
+      end
+      
+      # Configuration for heterogeneous **SQL Server to Cloud SQL for PostgreSQL**
+      # migrations.
+      class SqlServerToPostgresConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for Postgres as a destination in a migration.
+        # Corresponds to the JSON property `postgresDestinationConfig`
+        # @return [Google::Apis::DatamigrationV1::PostgresDestinationConfig]
+        attr_accessor :postgres_destination_config
+      
+        # Configuration for SQL Server as a source in a migration.
+        # Corresponds to the JSON property `sqlserverSourceConfig`
+        # @return [Google::Apis::DatamigrationV1::SqlServerSourceConfig]
+        attr_accessor :sqlserver_source_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @postgres_destination_config = args[:postgres_destination_config] if args.key?(:postgres_destination_config)
+          @sqlserver_source_config = args[:sqlserver_source_config] if args.key?(:sqlserver_source_config)
         end
       end
       

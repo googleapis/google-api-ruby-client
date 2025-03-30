@@ -772,6 +772,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlServerSourceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlServerToPostgresConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SshScript
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1649,6 +1661,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cpu_count, as: 'cpuCount'
+          property :machine_type, as: 'machineType'
         end
       end
       
@@ -1747,6 +1760,8 @@ module Google
           property :source_database, as: 'sourceDatabase', class: Google::Apis::DatamigrationV1::DatabaseType, decorator: Google::Apis::DatamigrationV1::DatabaseType::Representation
       
           property :sqlserver_homogeneous_migration_job_config, as: 'sqlserverHomogeneousMigrationJobConfig', class: Google::Apis::DatamigrationV1::SqlServerHomogeneousMigrationJobConfig, decorator: Google::Apis::DatamigrationV1::SqlServerHomogeneousMigrationJobConfig::Representation
+      
+          property :sqlserver_to_postgres_config, as: 'sqlserverToPostgresConfig', class: Google::Apis::DatamigrationV1::SqlServerToPostgresConfig, decorator: Google::Apis::DatamigrationV1::SqlServerToPostgresConfig::Representation
       
           property :state, as: 'state'
           property :static_ip_connectivity, as: 'staticIpConnectivity', class: Google::Apis::DatamigrationV1::StaticIpConnectivity, decorator: Google::Apis::DatamigrationV1::StaticIpConnectivity::Representation
@@ -2261,6 +2276,7 @@ module Google
           property :backups, as: 'backups', class: Google::Apis::DatamigrationV1::SqlServerBackups, decorator: Google::Apis::DatamigrationV1::SqlServerBackups::Representation
       
           property :cloud_sql_id, as: 'cloudSqlId'
+          property :database, as: 'database'
           property :forward_ssh_connectivity, as: 'forwardSshConnectivity', class: Google::Apis::DatamigrationV1::ForwardSshTunnelConnectivity, decorator: Google::Apis::DatamigrationV1::ForwardSshTunnelConnectivity::Representation
       
           property :host, as: 'host'
@@ -2305,6 +2321,26 @@ module Google
       
           property :promote_when_ready, as: 'promoteWhenReady'
           property :use_diff_backup, as: 'useDiffBackup'
+        end
+      end
+      
+      class SqlServerSourceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cdc_start_position, as: 'cdcStartPosition'
+          property :max_concurrent_cdc_connections, as: 'maxConcurrentCdcConnections'
+          property :max_concurrent_full_dump_connections, as: 'maxConcurrentFullDumpConnections'
+          property :skip_full_dump, as: 'skipFullDump'
+        end
+      end
+      
+      class SqlServerToPostgresConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :postgres_destination_config, as: 'postgresDestinationConfig', class: Google::Apis::DatamigrationV1::PostgresDestinationConfig, decorator: Google::Apis::DatamigrationV1::PostgresDestinationConfig::Representation
+      
+          property :sqlserver_source_config, as: 'sqlserverSourceConfig', class: Google::Apis::DatamigrationV1::SqlServerSourceConfig, decorator: Google::Apis::DatamigrationV1::SqlServerSourceConfig::Representation
+      
         end
       end
       
