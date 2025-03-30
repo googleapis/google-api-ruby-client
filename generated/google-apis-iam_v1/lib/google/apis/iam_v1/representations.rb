@@ -28,7 +28,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AddAttestationRuleRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdminAuditData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AttestationRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -190,6 +202,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InlineCertificateIssuanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InlineTrustConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IntermediateCa
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class KeyData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +239,12 @@ module Google
       end
       
       class LintResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAttestationRulesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -262,6 +298,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListWorkloadIdentityPoolManagedIdentitiesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListWorkloadIdentityPoolNamespacesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListWorkloadIdentityPoolProviderKeysResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -305,6 +353,12 @@ module Google
       end
       
       class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OwnerService
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -382,6 +436,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RemoveAttestationRuleRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Role
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -407,6 +467,12 @@ module Google
       end
       
       class ServiceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetAttestationRulesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -460,6 +526,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TrustAnchor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TrustStore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UndeleteOauthClientRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -503,6 +581,18 @@ module Google
       end
       
       class UndeleteWorkforcePoolSubjectRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UndeleteWorkloadIdentityPoolManagedIdentityRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UndeleteWorkloadIdentityPoolNamespaceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -556,6 +646,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkloadIdentityPoolManagedIdentity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkloadIdentityPoolNamespace
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WorkloadIdentityPoolOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -583,11 +685,26 @@ module Google
         end
       end
       
+      class AddAttestationRuleRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attestation_rule, as: 'attestationRule', class: Google::Apis::IamV1::AttestationRule, decorator: Google::Apis::IamV1::AttestationRule::Representation
+      
+        end
+      end
+      
       class AdminAuditData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :permission_delta, as: 'permissionDelta', class: Google::Apis::IamV1::PermissionDelta, decorator: Google::Apis::IamV1::PermissionDelta::Representation
       
+        end
+      end
+      
+      class AttestationRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :google_cloud_resource, as: 'googleCloudResource'
         end
       end
       
@@ -807,6 +924,31 @@ module Google
         end
       end
       
+      class InlineCertificateIssuanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :ca_pools, as: 'caPools'
+          property :key_algorithm, as: 'keyAlgorithm'
+          property :lifetime, as: 'lifetime'
+          property :rotation_window_percentage, as: 'rotationWindowPercentage'
+        end
+      end
+      
+      class InlineTrustConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :additional_trust_bundles, as: 'additionalTrustBundles', class: Google::Apis::IamV1::TrustStore, decorator: Google::Apis::IamV1::TrustStore::Representation
+      
+        end
+      end
+      
+      class IntermediateCa
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pem_certificate, as: 'pemCertificate'
+        end
+      end
+      
       class KeyData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -844,6 +986,15 @@ module Google
           property :location_offset, as: 'locationOffset'
           property :severity, as: 'severity'
           property :validation_unit_name, as: 'validationUnitName'
+        end
+      end
+      
+      class ListAttestationRulesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attestation_rules, as: 'attestationRules', class: Google::Apis::IamV1::AttestationRule, decorator: Google::Apis::IamV1::AttestationRule::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -913,6 +1064,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :workforce_pools, as: 'workforcePools', class: Google::Apis::IamV1::WorkforcePool, decorator: Google::Apis::IamV1::WorkforcePool::Representation
+      
+        end
+      end
+      
+      class ListWorkloadIdentityPoolManagedIdentitiesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :workload_identity_pool_managed_identities, as: 'workloadIdentityPoolManagedIdentities', class: Google::Apis::IamV1::WorkloadIdentityPoolManagedIdentity, decorator: Google::Apis::IamV1::WorkloadIdentityPoolManagedIdentity::Representation
+      
+        end
+      end
+      
+      class ListWorkloadIdentityPoolNamespacesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :workload_identity_pool_namespaces, as: 'workloadIdentityPoolNamespaces', class: Google::Apis::IamV1::WorkloadIdentityPoolNamespace, decorator: Google::Apis::IamV1::WorkloadIdentityPoolNamespace::Representation
       
         end
       end
@@ -1002,6 +1171,13 @@ module Google
           property :status_detail, as: 'statusDetail'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class OwnerService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :principal_subject, as: 'principalSubject'
         end
       end
       
@@ -1116,6 +1292,14 @@ module Google
         end
       end
       
+      class RemoveAttestationRuleRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attestation_rule, as: 'attestationRule', class: Google::Apis::IamV1::AttestationRule, decorator: Google::Apis::IamV1::AttestationRule::Representation
+      
+        end
+      end
+      
       class Role
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1174,6 +1358,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :domain, as: 'domain'
+        end
+      end
+      
+      class SetAttestationRulesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attestation_rules, as: 'attestationRules', class: Google::Apis::IamV1::AttestationRule, decorator: Google::Apis::IamV1::AttestationRule::Representation
+      
         end
       end
       
@@ -1239,6 +1431,23 @@ module Google
         end
       end
       
+      class TrustAnchor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pem_certificate, as: 'pemCertificate'
+        end
+      end
+      
+      class TrustStore
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :intermediate_cas, as: 'intermediateCas', class: Google::Apis::IamV1::IntermediateCa, decorator: Google::Apis::IamV1::IntermediateCa::Representation
+      
+          collection :trust_anchors, as: 'trustAnchors', class: Google::Apis::IamV1::TrustAnchor, decorator: Google::Apis::IamV1::TrustAnchor::Representation
+      
+        end
+      end
+      
       class UndeleteOauthClientRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1285,6 +1494,18 @@ module Google
       end
       
       class UndeleteWorkforcePoolSubjectRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UndeleteWorkloadIdentityPoolManagedIdentityRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UndeleteWorkloadIdentityPoolNamespaceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -1370,7 +1591,36 @@ module Google
           property :disabled, as: 'disabled'
           property :display_name, as: 'displayName'
           property :expire_time, as: 'expireTime'
+          property :inline_certificate_issuance_config, as: 'inlineCertificateIssuanceConfig', class: Google::Apis::IamV1::InlineCertificateIssuanceConfig, decorator: Google::Apis::IamV1::InlineCertificateIssuanceConfig::Representation
+      
+          property :inline_trust_config, as: 'inlineTrustConfig', class: Google::Apis::IamV1::InlineTrustConfig, decorator: Google::Apis::IamV1::InlineTrustConfig::Representation
+      
+          property :mode, as: 'mode'
           property :name, as: 'name'
+          property :state, as: 'state'
+        end
+      end
+      
+      class WorkloadIdentityPoolManagedIdentity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :disabled, as: 'disabled'
+          property :expire_time, as: 'expireTime'
+          property :name, as: 'name'
+          property :state, as: 'state'
+        end
+      end
+      
+      class WorkloadIdentityPoolNamespace
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :disabled, as: 'disabled'
+          property :expire_time, as: 'expireTime'
+          property :name, as: 'name'
+          property :owner_service, as: 'ownerService', class: Google::Apis::IamV1::OwnerService, decorator: Google::Apis::IamV1::OwnerService::Representation
+      
           property :state, as: 'state'
         end
       end
