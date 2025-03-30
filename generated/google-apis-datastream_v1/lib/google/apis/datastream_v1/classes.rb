@@ -54,6 +54,11 @@ module Google
       class BackfillAllStrategy
         include Google::Apis::Core::Hashable
       
+        # MongoDB Cluster structure.
+        # Corresponds to the JSON property `mongodbExcludedObjects`
+        # @return [Google::Apis::DatastreamV1::MongodbCluster]
+        attr_accessor :mongodb_excluded_objects
+      
         # MySQL database structure
         # Corresponds to the JSON property `mysqlExcludedObjects`
         # @return [Google::Apis::DatastreamV1::MysqlRdbms]
@@ -85,6 +90,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @mongodb_excluded_objects = args[:mongodb_excluded_objects] if args.key?(:mongodb_excluded_objects)
           @mysql_excluded_objects = args[:mysql_excluded_objects] if args.key?(:mysql_excluded_objects)
           @oracle_excluded_objects = args[:oracle_excluded_objects] if args.key?(:oracle_excluded_objects)
           @postgresql_excluded_objects = args[:postgresql_excluded_objects] if args.key?(:postgresql_excluded_objects)
@@ -378,6 +384,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # MongoDB profile.
+        # Corresponds to the JSON property `mongodbProfile`
+        # @return [Google::Apis::DatastreamV1::MongodbProfile]
+        attr_accessor :mongodb_profile
+      
         # MySQL database profile.
         # Corresponds to the JSON property `mysqlProfile`
         # @return [Google::Apis::DatastreamV1::MysqlProfile]
@@ -449,6 +460,7 @@ module Google
           @forward_ssh_connectivity = args[:forward_ssh_connectivity] if args.key?(:forward_ssh_connectivity)
           @gcs_profile = args[:gcs_profile] if args.key?(:gcs_profile)
           @labels = args[:labels] if args.key?(:labels)
+          @mongodb_profile = args[:mongodb_profile] if args.key?(:mongodb_profile)
           @mysql_profile = args[:mysql_profile] if args.key?(:mysql_profile)
           @name = args[:name] if args.key?(:name)
           @oracle_profile = args[:oracle_profile] if args.key?(:oracle_profile)
@@ -560,6 +572,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :hierarchy_depth
       
+        # MongoDB Cluster structure.
+        # Corresponds to the JSON property `mongodbCluster`
+        # @return [Google::Apis::DatastreamV1::MongodbCluster]
+        attr_accessor :mongodb_cluster
+      
         # MySQL database structure
         # Corresponds to the JSON property `mysqlRdbms`
         # @return [Google::Apis::DatastreamV1::MysqlRdbms]
@@ -574,6 +591,11 @@ module Google
         # Corresponds to the JSON property `postgresqlRdbms`
         # @return [Google::Apis::DatastreamV1::PostgresqlRdbms]
         attr_accessor :postgresql_rdbms
+      
+        # Salesforce organization structure.
+        # Corresponds to the JSON property `salesforceOrg`
+        # @return [Google::Apis::DatastreamV1::SalesforceOrg]
+        attr_accessor :salesforce_org
       
         # SQLServer database structure.
         # Corresponds to the JSON property `sqlServerRdbms`
@@ -590,9 +612,11 @@ module Google
           @connection_profile_name = args[:connection_profile_name] if args.key?(:connection_profile_name)
           @full_hierarchy = args[:full_hierarchy] if args.key?(:full_hierarchy)
           @hierarchy_depth = args[:hierarchy_depth] if args.key?(:hierarchy_depth)
+          @mongodb_cluster = args[:mongodb_cluster] if args.key?(:mongodb_cluster)
           @mysql_rdbms = args[:mysql_rdbms] if args.key?(:mysql_rdbms)
           @oracle_rdbms = args[:oracle_rdbms] if args.key?(:oracle_rdbms)
           @postgresql_rdbms = args[:postgresql_rdbms] if args.key?(:postgresql_rdbms)
+          @salesforce_org = args[:salesforce_org] if args.key?(:salesforce_org)
           @sql_server_rdbms = args[:sql_server_rdbms] if args.key?(:sql_server_rdbms)
         end
       end
@@ -600,6 +624,11 @@ module Google
       # Response from a discover request.
       class DiscoverConnectionProfileResponse
         include Google::Apis::Core::Hashable
+      
+        # MongoDB Cluster structure.
+        # Corresponds to the JSON property `mongodbCluster`
+        # @return [Google::Apis::DatastreamV1::MongodbCluster]
+        attr_accessor :mongodb_cluster
       
         # MySQL database structure
         # Corresponds to the JSON property `mysqlRdbms`
@@ -616,6 +645,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::PostgresqlRdbms]
         attr_accessor :postgresql_rdbms
       
+        # Salesforce organization structure.
+        # Corresponds to the JSON property `salesforceOrg`
+        # @return [Google::Apis::DatastreamV1::SalesforceOrg]
+        attr_accessor :salesforce_org
+      
         # SQLServer database structure.
         # Corresponds to the JSON property `sqlServerRdbms`
         # @return [Google::Apis::DatastreamV1::SqlServerRdbms]
@@ -627,9 +661,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @mongodb_cluster = args[:mongodb_cluster] if args.key?(:mongodb_cluster)
           @mysql_rdbms = args[:mysql_rdbms] if args.key?(:mysql_rdbms)
           @oracle_rdbms = args[:oracle_rdbms] if args.key?(:oracle_rdbms)
           @postgresql_rdbms = args[:postgresql_rdbms] if args.key?(:postgresql_rdbms)
+          @salesforce_org = args[:salesforce_org] if args.key?(:salesforce_org)
           @sql_server_rdbms = args[:sql_server_rdbms] if args.key?(:sql_server_rdbms)
         end
       end
@@ -856,6 +892,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A HostAddress represents a transport end point, which is the combination of an
+      # IP address or hostname and a port number.
+      class HostAddress
+        include Google::Apis::Core::Hashable
+      
+        # Required. Hostname for the connection.
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
+        # Optional. Port for the connection.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hostname = args[:hostname] if args.key?(:hostname)
+          @port = args[:port] if args.key?(:port)
         end
       end
       
@@ -1203,6 +1265,202 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # MongoDB Cluster structure.
+      class MongodbCluster
+        include Google::Apis::Core::Hashable
+      
+        # MongoDB databases in the cluster.
+        # Corresponds to the JSON property `databases`
+        # @return [Array<Google::Apis::DatastreamV1::MongodbDatabase>]
+        attr_accessor :databases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @databases = args[:databases] if args.key?(:databases)
+        end
+      end
+      
+      # MongoDB Collection.
+      class MongodbCollection
+        include Google::Apis::Core::Hashable
+      
+        # Collection name.
+        # Corresponds to the JSON property `collection`
+        # @return [String]
+        attr_accessor :collection
+      
+        # Fields in the collection.
+        # Corresponds to the JSON property `fields`
+        # @return [Array<Google::Apis::DatastreamV1::MongodbField>]
+        attr_accessor :fields
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @collection = args[:collection] if args.key?(:collection)
+          @fields = args[:fields] if args.key?(:fields)
+        end
+      end
+      
+      # MongoDB Database.
+      class MongodbDatabase
+        include Google::Apis::Core::Hashable
+      
+        # Collections in the database.
+        # Corresponds to the JSON property `collections`
+        # @return [Array<Google::Apis::DatastreamV1::MongodbCollection>]
+        attr_accessor :collections
+      
+        # Database name.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @collections = args[:collections] if args.key?(:collections)
+          @database = args[:database] if args.key?(:database)
+        end
+      end
+      
+      # MongoDB Field.
+      class MongodbField
+        include Google::Apis::Core::Hashable
+      
+        # Field name.
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field = args[:field] if args.key?(:field)
+        end
+      end
+      
+      # MongoDB data source object identifier.
+      class MongodbObjectIdentifier
+        include Google::Apis::Core::Hashable
+      
+        # Required. The collection name.
+        # Corresponds to the JSON property `collection`
+        # @return [String]
+        attr_accessor :collection
+      
+        # Required. The database name.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @collection = args[:collection] if args.key?(:collection)
+          @database = args[:database] if args.key?(:database)
+        end
+      end
+      
+      # MongoDB profile.
+      class MongodbProfile
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of host addresses for a MongoDB cluster.
+        # Corresponds to the JSON property `hostAddresses`
+        # @return [Array<Google::Apis::DatastreamV1::HostAddress>]
+        attr_accessor :host_addresses
+      
+        # Optional. Password for the MongoDB connection. Mutually exclusive with the `
+        # secret_manager_stored_password` field.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Optional. Name of the replica set. Only needed for self hosted replica set
+        # type MongoDB cluster.
+        # Corresponds to the JSON property `replicaSet`
+        # @return [String]
+        attr_accessor :replica_set
+      
+        # Optional. A reference to a Secret Manager resource name storing the SQLServer
+        # connection password. Mutually exclusive with the `password` field.
+        # Corresponds to the JSON property `secretManagerStoredPassword`
+        # @return [String]
+        attr_accessor :secret_manager_stored_password
+      
+        # Srv connection format.
+        # Corresponds to the JSON property `srvConnectionFormat`
+        # @return [Google::Apis::DatastreamV1::SrvConnectionFormat]
+        attr_accessor :srv_connection_format
+      
+        # Standard connection format.
+        # Corresponds to the JSON property `standardConnectionFormat`
+        # @return [Google::Apis::DatastreamV1::StandardConnectionFormat]
+        attr_accessor :standard_connection_format
+      
+        # Required. Username for the MongoDB connection.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host_addresses = args[:host_addresses] if args.key?(:host_addresses)
+          @password = args[:password] if args.key?(:password)
+          @replica_set = args[:replica_set] if args.key?(:replica_set)
+          @secret_manager_stored_password = args[:secret_manager_stored_password] if args.key?(:secret_manager_stored_password)
+          @srv_connection_format = args[:srv_connection_format] if args.key?(:srv_connection_format)
+          @standard_connection_format = args[:standard_connection_format] if args.key?(:standard_connection_format)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # MongoDB source configuration.
+      class MongodbSourceConfig
+        include Google::Apis::Core::Hashable
+      
+        # MongoDB Cluster structure.
+        # Corresponds to the JSON property `excludeObjects`
+        # @return [Google::Apis::DatastreamV1::MongodbCluster]
+        attr_accessor :exclude_objects
+      
+        # MongoDB Cluster structure.
+        # Corresponds to the JSON property `includeObjects`
+        # @return [Google::Apis::DatastreamV1::MongodbCluster]
+        attr_accessor :include_objects
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclude_objects = args[:exclude_objects] if args.key?(:exclude_objects)
+          @include_objects = args[:include_objects] if args.key?(:include_objects)
         end
       end
       
@@ -2925,6 +3183,11 @@ module Google
       class SourceConfig
         include Google::Apis::Core::Hashable
       
+        # MongoDB source configuration.
+        # Corresponds to the JSON property `mongodbSourceConfig`
+        # @return [Google::Apis::DatastreamV1::MongodbSourceConfig]
+        attr_accessor :mongodb_source_config
+      
         # MySQL source configuration
         # Corresponds to the JSON property `mysqlSourceConfig`
         # @return [Google::Apis::DatastreamV1::MysqlSourceConfig]
@@ -2962,6 +3225,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @mongodb_source_config = args[:mongodb_source_config] if args.key?(:mongodb_source_config)
           @mysql_source_config = args[:mysql_source_config] if args.key?(:mysql_source_config)
           @oracle_source_config = args[:oracle_source_config] if args.key?(:oracle_source_config)
           @postgresql_source_config = args[:postgresql_source_config] if args.key?(:postgresql_source_config)
@@ -2995,6 +3259,11 @@ module Google
       class SourceObjectIdentifier
         include Google::Apis::Core::Hashable
       
+        # MongoDB data source object identifier.
+        # Corresponds to the JSON property `mongodbIdentifier`
+        # @return [Google::Apis::DatastreamV1::MongodbObjectIdentifier]
+        attr_accessor :mongodb_identifier
+      
         # Mysql data source object identifier.
         # Corresponds to the JSON property `mysqlIdentifier`
         # @return [Google::Apis::DatastreamV1::MysqlObjectIdentifier]
@@ -3026,6 +3295,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @mongodb_identifier = args[:mongodb_identifier] if args.key?(:mongodb_identifier)
           @mysql_identifier = args[:mysql_identifier] if args.key?(:mysql_identifier)
           @oracle_identifier = args[:oracle_identifier] if args.key?(:oracle_identifier)
           @postgresql_identifier = args[:postgresql_identifier] if args.key?(:postgresql_identifier)
@@ -3363,6 +3633,32 @@ module Google
       
       # Configuration to use Transaction Logs CDC read method.
       class SqlServerTransactionLogs
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Srv connection format.
+      class SrvConnectionFormat
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Standard connection format.
+      class StandardConnectionFormat
         include Google::Apis::Core::Hashable
       
         def initialize(**args)

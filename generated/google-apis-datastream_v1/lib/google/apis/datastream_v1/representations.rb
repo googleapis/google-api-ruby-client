@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HostAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class JsonFileFormat
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -245,6 +251,48 @@ module Google
       end
       
       class Merge
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MongodbCluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MongodbCollection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MongodbDatabase
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MongodbField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MongodbObjectIdentifier
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MongodbProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MongodbSourceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -622,6 +670,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SrvConnectionFormat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StandardConnectionFormat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StartBackfillJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -721,6 +781,8 @@ module Google
       class BackfillAllStrategy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :mongodb_excluded_objects, as: 'mongodbExcludedObjects', class: Google::Apis::DatastreamV1::MongodbCluster, decorator: Google::Apis::DatastreamV1::MongodbCluster::Representation
+      
           property :mysql_excluded_objects, as: 'mysqlExcludedObjects', class: Google::Apis::DatastreamV1::MysqlRdbms, decorator: Google::Apis::DatastreamV1::MysqlRdbms::Representation
       
           property :oracle_excluded_objects, as: 'oracleExcludedObjects', class: Google::Apis::DatastreamV1::OracleRdbms, decorator: Google::Apis::DatastreamV1::OracleRdbms::Representation
@@ -832,6 +894,8 @@ module Google
           property :gcs_profile, as: 'gcsProfile', class: Google::Apis::DatastreamV1::GcsProfile, decorator: Google::Apis::DatastreamV1::GcsProfile::Representation
       
           hash :labels, as: 'labels'
+          property :mongodb_profile, as: 'mongodbProfile', class: Google::Apis::DatastreamV1::MongodbProfile, decorator: Google::Apis::DatastreamV1::MongodbProfile::Representation
+      
           property :mysql_profile, as: 'mysqlProfile', class: Google::Apis::DatastreamV1::MysqlProfile, decorator: Google::Apis::DatastreamV1::MysqlProfile::Representation
       
           property :name, as: 'name'
@@ -881,11 +945,15 @@ module Google
           property :connection_profile_name, as: 'connectionProfileName'
           property :full_hierarchy, as: 'fullHierarchy'
           property :hierarchy_depth, as: 'hierarchyDepth'
+          property :mongodb_cluster, as: 'mongodbCluster', class: Google::Apis::DatastreamV1::MongodbCluster, decorator: Google::Apis::DatastreamV1::MongodbCluster::Representation
+      
           property :mysql_rdbms, as: 'mysqlRdbms', class: Google::Apis::DatastreamV1::MysqlRdbms, decorator: Google::Apis::DatastreamV1::MysqlRdbms::Representation
       
           property :oracle_rdbms, as: 'oracleRdbms', class: Google::Apis::DatastreamV1::OracleRdbms, decorator: Google::Apis::DatastreamV1::OracleRdbms::Representation
       
           property :postgresql_rdbms, as: 'postgresqlRdbms', class: Google::Apis::DatastreamV1::PostgresqlRdbms, decorator: Google::Apis::DatastreamV1::PostgresqlRdbms::Representation
+      
+          property :salesforce_org, as: 'salesforceOrg', class: Google::Apis::DatastreamV1::SalesforceOrg, decorator: Google::Apis::DatastreamV1::SalesforceOrg::Representation
       
           property :sql_server_rdbms, as: 'sqlServerRdbms', class: Google::Apis::DatastreamV1::SqlServerRdbms, decorator: Google::Apis::DatastreamV1::SqlServerRdbms::Representation
       
@@ -895,11 +963,15 @@ module Google
       class DiscoverConnectionProfileResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :mongodb_cluster, as: 'mongodbCluster', class: Google::Apis::DatastreamV1::MongodbCluster, decorator: Google::Apis::DatastreamV1::MongodbCluster::Representation
+      
           property :mysql_rdbms, as: 'mysqlRdbms', class: Google::Apis::DatastreamV1::MysqlRdbms, decorator: Google::Apis::DatastreamV1::MysqlRdbms::Representation
       
           property :oracle_rdbms, as: 'oracleRdbms', class: Google::Apis::DatastreamV1::OracleRdbms, decorator: Google::Apis::DatastreamV1::OracleRdbms::Representation
       
           property :postgresql_rdbms, as: 'postgresqlRdbms', class: Google::Apis::DatastreamV1::PostgresqlRdbms, decorator: Google::Apis::DatastreamV1::PostgresqlRdbms::Representation
+      
+          property :salesforce_org, as: 'salesforceOrg', class: Google::Apis::DatastreamV1::SalesforceOrg, decorator: Google::Apis::DatastreamV1::SalesforceOrg::Representation
       
           property :sql_server_rdbms, as: 'sqlServerRdbms', class: Google::Apis::DatastreamV1::SqlServerRdbms, decorator: Google::Apis::DatastreamV1::SqlServerRdbms::Representation
       
@@ -972,6 +1044,14 @@ module Google
       class Gtid
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class HostAddress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hostname, as: 'hostname'
+          property :port, as: 'port'
         end
       end
       
@@ -1086,6 +1166,73 @@ module Google
       class Merge
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class MongodbCluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :databases, as: 'databases', class: Google::Apis::DatastreamV1::MongodbDatabase, decorator: Google::Apis::DatastreamV1::MongodbDatabase::Representation
+      
+        end
+      end
+      
+      class MongodbCollection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :collection, as: 'collection'
+          collection :fields, as: 'fields', class: Google::Apis::DatastreamV1::MongodbField, decorator: Google::Apis::DatastreamV1::MongodbField::Representation
+      
+        end
+      end
+      
+      class MongodbDatabase
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :collections, as: 'collections', class: Google::Apis::DatastreamV1::MongodbCollection, decorator: Google::Apis::DatastreamV1::MongodbCollection::Representation
+      
+          property :database, as: 'database'
+        end
+      end
+      
+      class MongodbField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field, as: 'field'
+        end
+      end
+      
+      class MongodbObjectIdentifier
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :collection, as: 'collection'
+          property :database, as: 'database'
+        end
+      end
+      
+      class MongodbProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :host_addresses, as: 'hostAddresses', class: Google::Apis::DatastreamV1::HostAddress, decorator: Google::Apis::DatastreamV1::HostAddress::Representation
+      
+          property :password, as: 'password'
+          property :replica_set, as: 'replicaSet'
+          property :secret_manager_stored_password, as: 'secretManagerStoredPassword'
+          property :srv_connection_format, as: 'srvConnectionFormat', class: Google::Apis::DatastreamV1::SrvConnectionFormat, decorator: Google::Apis::DatastreamV1::SrvConnectionFormat::Representation
+      
+          property :standard_connection_format, as: 'standardConnectionFormat', class: Google::Apis::DatastreamV1::StandardConnectionFormat, decorator: Google::Apis::DatastreamV1::StandardConnectionFormat::Representation
+      
+          property :username, as: 'username'
+        end
+      end
+      
+      class MongodbSourceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclude_objects, as: 'excludeObjects', class: Google::Apis::DatastreamV1::MongodbCluster, decorator: Google::Apis::DatastreamV1::MongodbCluster::Representation
+      
+          property :include_objects, as: 'includeObjects', class: Google::Apis::DatastreamV1::MongodbCluster, decorator: Google::Apis::DatastreamV1::MongodbCluster::Representation
+      
         end
       end
       
@@ -1586,6 +1733,8 @@ module Google
       class SourceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :mongodb_source_config, as: 'mongodbSourceConfig', class: Google::Apis::DatastreamV1::MongodbSourceConfig, decorator: Google::Apis::DatastreamV1::MongodbSourceConfig::Representation
+      
           property :mysql_source_config, as: 'mysqlSourceConfig', class: Google::Apis::DatastreamV1::MysqlSourceConfig, decorator: Google::Apis::DatastreamV1::MysqlSourceConfig::Representation
       
           property :oracle_source_config, as: 'oracleSourceConfig', class: Google::Apis::DatastreamV1::OracleSourceConfig, decorator: Google::Apis::DatastreamV1::OracleSourceConfig::Representation
@@ -1611,6 +1760,8 @@ module Google
       class SourceObjectIdentifier
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :mongodb_identifier, as: 'mongodbIdentifier', class: Google::Apis::DatastreamV1::MongodbObjectIdentifier, decorator: Google::Apis::DatastreamV1::MongodbObjectIdentifier::Representation
+      
           property :mysql_identifier, as: 'mysqlIdentifier', class: Google::Apis::DatastreamV1::MysqlObjectIdentifier, decorator: Google::Apis::DatastreamV1::MysqlObjectIdentifier::Representation
       
           property :oracle_identifier, as: 'oracleIdentifier', class: Google::Apis::DatastreamV1::OracleObjectIdentifier, decorator: Google::Apis::DatastreamV1::OracleObjectIdentifier::Representation
@@ -1728,6 +1879,18 @@ module Google
       end
       
       class SqlServerTransactionLogs
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SrvConnectionFormat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class StandardConnectionFormat
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
