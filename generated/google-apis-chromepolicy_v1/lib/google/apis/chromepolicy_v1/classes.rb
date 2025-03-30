@@ -1689,6 +1689,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Names of files imported by this file purely for the purpose of providing
+        # option extensions. These are excluded from the dependency list above.
+        # Corresponds to the JSON property `optionDependency`
+        # @return [Array<String>]
+        attr_accessor :option_dependency
+      
         # e.g. "foo", "foo.bar", etc.
         # Corresponds to the JSON property `package`
         # @return [String]
@@ -1713,6 +1719,7 @@ module Google
           @enum_type = args[:enum_type] if args.key?(:enum_type)
           @message_type = args[:message_type] if args.key?(:message_type)
           @name = args[:name] if args.key?(:name)
+          @option_dependency = args[:option_dependency] if args.key?(:option_dependency)
           @package = args[:package] if args.key?(:package)
           @syntax = args[:syntax] if args.key?(:syntax)
         end
