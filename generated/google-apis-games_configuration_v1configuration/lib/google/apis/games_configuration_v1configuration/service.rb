@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module GamesConfigurationV1configuration
-      # Google Play Game Services Publishing API
+      # Google Play Games Services Publishing API
       #
       # The Google Play Game Services Publishing API allows developers to configure
       #  their games in Game Services.
