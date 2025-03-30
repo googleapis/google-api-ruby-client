@@ -9324,6 +9324,22 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. A Service Account unique to this FeatureGroup. The role bigquery.
+        # dataViewer should be granted to this service account to allow Vertex AI
+        # Feature Store to access source data while running jobs under this FeatureGroup.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
+        # Optional. Service agent type used during jobs under a FeatureGroup. By default,
+        # the Vertex AI Service Agent is used. When using an IAM Policy to isolate this
+        # FeatureGroup within a project, a separate service account should be
+        # provisioned by setting this field to `SERVICE_AGENT_TYPE_FEATURE_GROUP`. This
+        # will generate a separate service account to access the BigQuery source table.
+        # Corresponds to the JSON property `serviceAgentType`
+        # @return [String]
+        attr_accessor :service_agent_type
+      
         # Output only. Timestamp when this FeatureGroup was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -9341,6 +9357,8 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+          @service_agent_type = args[:service_agent_type] if args.key?(:service_agent_type)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -12454,6 +12472,11 @@ module Google
       class GoogleCloudAiplatformV1GroundingChunkWeb
         include Google::Apis::Core::Hashable
       
+        # Domain of the (original) URI.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
         # Title of the chunk.
         # Corresponds to the JSON property `title`
         # @return [String]
@@ -12470,6 +12493,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
           @title = args[:title] if args.key?(:title)
           @uri = args[:uri] if args.key?(:uri)
         end
@@ -23369,6 +23393,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagVectorDbConfig]
         attr_accessor :vector_db_config
       
+        # Config for the Vertex AI Search.
+        # Corresponds to the JSON property `vertexAiSearchConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VertexAiSearchConfig]
+        attr_accessor :vertex_ai_search_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -23382,6 +23411,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
           @vector_db_config = args[:vector_db_config] if args.key?(:vector_db_config)
+          @vertex_ai_search_config = args[:vertex_ai_search_config] if args.key?(:vertex_ai_search_config)
         end
       end
       
@@ -23675,6 +23705,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagRetrievalConfigFilter]
         attr_accessor :filter
       
+        # Config for ranking and reranking.
+        # Corresponds to the JSON property `ranking`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagRetrievalConfigRanking]
+        attr_accessor :ranking
+      
         # Optional. The number of contexts to retrieve.
         # Corresponds to the JSON property `topK`
         # @return [Fixnum]
@@ -23687,6 +23722,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @filter = args[:filter] if args.key?(:filter)
+          @ranking = args[:ranking] if args.key?(:ranking)
           @top_k = args[:top_k] if args.key?(:top_k)
         end
       end
@@ -23721,6 +23757,70 @@ module Google
           @metadata_filter = args[:metadata_filter] if args.key?(:metadata_filter)
           @vector_distance_threshold = args[:vector_distance_threshold] if args.key?(:vector_distance_threshold)
           @vector_similarity_threshold = args[:vector_similarity_threshold] if args.key?(:vector_similarity_threshold)
+        end
+      end
+      
+      # Config for ranking and reranking.
+      class GoogleCloudAiplatformV1RagRetrievalConfigRanking
+        include Google::Apis::Core::Hashable
+      
+        # Config for LlmRanker.
+        # Corresponds to the JSON property `llmRanker`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagRetrievalConfigRankingLlmRanker]
+        attr_accessor :llm_ranker
+      
+        # Config for Rank Service.
+        # Corresponds to the JSON property `rankService`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagRetrievalConfigRankingRankService]
+        attr_accessor :rank_service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @llm_ranker = args[:llm_ranker] if args.key?(:llm_ranker)
+          @rank_service = args[:rank_service] if args.key?(:rank_service)
+        end
+      end
+      
+      # Config for LlmRanker.
+      class GoogleCloudAiplatformV1RagRetrievalConfigRankingLlmRanker
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The model name used for ranking. Format: `gemini-1.5-pro`
+        # Corresponds to the JSON property `modelName`
+        # @return [String]
+        attr_accessor :model_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @model_name = args[:model_name] if args.key?(:model_name)
+        end
+      end
+      
+      # Config for Rank Service.
+      class GoogleCloudAiplatformV1RagRetrievalConfigRankingRankService
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The model name of the rank service. Format: `semantic-ranker-512@
+        # latest`
+        # Corresponds to the JSON property `modelName`
+        # @return [String]
+        attr_accessor :model_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @model_name = args[:model_name] if args.key?(:model_name)
         end
       end
       
@@ -32871,8 +32971,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The name of the secret in Cloud Secret Manager. Format: `secret_name`
-        # if the secret is in the same project. projects/`project`/secrets/`secret_name`
-        # if the secret is in a different project.
+        # .
         # Corresponds to the JSON property `secret`
         # @return [String]
         attr_accessor :secret
@@ -38417,6 +38516,29 @@ module Google
         def update!(**args)
           @datastore = args[:datastore] if args.key?(:datastore)
           @engine = args[:engine] if args.key?(:engine)
+        end
+      end
+      
+      # Config for the Vertex AI Search.
+      class GoogleCloudAiplatformV1VertexAiSearchConfig
+        include Google::Apis::Core::Hashable
+      
+        # Vertex AI Search Serving Config resource full name. For example, `projects/`
+        # project`/locations/`location`/collections/`collection`/engines/`engine`/
+        # servingConfigs/`serving_config`` or `projects/`project`/locations/`location`/
+        # collections/`collection`/dataStores/`data_store`/servingConfigs/`
+        # serving_config``.
+        # Corresponds to the JSON property `servingConfig`
+        # @return [String]
+        attr_accessor :serving_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @serving_config = args[:serving_config] if args.key?(:serving_config)
         end
       end
       
