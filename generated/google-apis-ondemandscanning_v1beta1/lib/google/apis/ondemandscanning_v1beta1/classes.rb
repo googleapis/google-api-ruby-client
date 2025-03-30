@@ -307,8 +307,7 @@ module Google
         # The binary package. This is significant when the source is different than the
         # binary itself. Historically if they've differed, we've stored the name of the
         # source and its version in the package/version fields, but we should also store
-        # the binary package info, as that's what's actually installed. See b/175908657#
-        # comment15.
+        # the binary package info, as that's what's actually installed.
         # Corresponds to the JSON property `binaryVersion`
         # @return [Google::Apis::OndemandscanningV1beta1::PackageVersion]
         attr_accessor :binary_version
@@ -1138,9 +1137,7 @@ module Google
         # @return [String]
         attr_accessor :file_path
       
-        # Details about the layer a package was found in. This should be the same as the
-        # LayerDetails message in google3/third_party/scalibr/binary/proto/scan_result.
-        # proto.
+        # Details about the layer a package was found in.
         # Corresponds to the JSON property `layerDetails`
         # @return [Google::Apis::OndemandscanningV1beta1::LayerDetails]
         attr_accessor :layer_details
@@ -1862,9 +1859,7 @@ module Google
         end
       end
       
-      # Details about the layer a package was found in. This should be the same as the
-      # LayerDetails message in google3/third_party/scalibr/binary/proto/scan_result.
-      # proto.
+      # Details about the layer a package was found in.
       class LayerDetails
         include Google::Apis::Core::Hashable
       
@@ -2413,9 +2408,7 @@ module Google
         # @return [String]
         attr_accessor :hash_digest
       
-        # Details about the layer a package was found in. This should be the same as the
-        # LayerDetails message in google3/third_party/scalibr/binary/proto/scan_result.
-        # proto.
+        # Details about the layer a package was found in.
         # Corresponds to the JSON property `layerDetails`
         # @return [Google::Apis::OndemandscanningV1beta1::LayerDetails]
         attr_accessor :layer_details
@@ -2455,8 +2448,7 @@ module Google
         # @return [String]
         attr_accessor :package_type
       
-        # CVEs that this package is no longer vulnerable to go/drydock-dd-custom-binary-
-        # scanning
+        # CVEs that this package is no longer vulnerable to
         # Corresponds to the JSON property `patchedCve`
         # @return [Array<String>]
         attr_accessor :patched_cve
