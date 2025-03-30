@@ -471,8 +471,7 @@ module Google
       class ConnectivityTest
         include Google::Apis::Core::Hashable
       
-        # Whether the test should skip firewall checking. If not provided, we assume
-        # false.
+        # Whether the analysis should skip firewall checking. Default value is false.
         # Corresponds to the JSON property `bypassFirewallChecks`
         # @return [Boolean]
         attr_accessor :bypass_firewall_checks
@@ -775,9 +774,9 @@ module Google
         # A forwarding rule and its corresponding IP address represent the frontend
         # configuration of a Google Cloud load balancer. Forwarding rules are also used
         # for protocol forwarding, Private Service Connect and other network services to
-        # provide forwarding information in the control plane. Format: projects/`project`
-        # /global/forwardingRules/`id` or projects/`project`/regions/`region`/
-        # forwardingRules/`id`
+        # provide forwarding information in the control plane. Applicable only to
+        # destination endpoint. Format: projects/`project`/global/forwardingRules/`id`
+        # or projects/`project`/regions/`region`/forwardingRules/`id`
         # Corresponds to the JSON property `forwardingRule`
         # @return [String]
         attr_accessor :forwarding_rule
@@ -822,7 +821,7 @@ module Google
         # @return [String]
         attr_accessor :load_balancer_type
       
-        # A Compute Engine network URI.
+        # A VPC network URI.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -839,9 +838,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :port
       
-        # Project ID where the endpoint is located. The Project ID can be derived from
-        # the URI if you provide a VM instance or network URI. The following are two
-        # cases where you must provide the project ID: 1. Only the IP address is
+        # Project ID where the endpoint is located. The project ID can be derived from
+        # the URI if you provide a endpoint or network URI. The following are two cases
+        # where you may need to provide the project ID: 1. Only the IP address is
         # specified, and the IP address is within a Google Cloud project. 2. When you
         # are using Shared VPC and the IP address that you provide is from the service
         # project. In this case, the network that the IP address resides in is defined
@@ -851,11 +850,13 @@ module Google
         attr_accessor :project_id
       
         # A [Redis Cluster](https://cloud.google.com/memorystore/docs/cluster) URI.
+        # Applicable only to destination endpoint.
         # Corresponds to the JSON property `redisCluster`
         # @return [String]
         attr_accessor :redis_cluster
       
         # A [Redis Instance](https://cloud.google.com/memorystore/docs/redis) URI.
+        # Applicable only to destination endpoint.
         # Corresponds to the JSON property `redisInstance`
         # @return [String]
         attr_accessor :redis_instance
