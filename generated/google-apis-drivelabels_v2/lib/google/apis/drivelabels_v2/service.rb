@@ -30,7 +30,7 @@ module Google
       #    Drivelabels = Google::Apis::DrivelabelsV2 # Alias the module
       #    service = Drivelabels::DriveLabelsService.new
       #
-      # @see https://developers.google.com/drive/labels
+      # @see https://developers.google.com/workspace/drive/labels
       class DriveLabelsService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://drivelabels.$UNIVERSE_DOMAIN$/"
 
