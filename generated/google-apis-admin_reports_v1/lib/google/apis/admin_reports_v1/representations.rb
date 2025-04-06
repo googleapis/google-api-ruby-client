@@ -414,11 +414,9 @@ module Google
       class ResourceDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :application_id, :numeric_string => true, as: 'applicationId'
           collection :applied_labels, as: 'appliedLabels', class: Google::Apis::AdminReportsV1::AppliedLabel, decorator: Google::Apis::AdminReportsV1::AppliedLabel::Representation
       
           property :id, as: 'id'
-          property :owner_email, as: 'ownerEmail'
           property :relation, as: 'relation'
           property :title, as: 'title'
           property :type, as: 'type'
