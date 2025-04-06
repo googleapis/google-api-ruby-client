@@ -1893,6 +1893,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :match_case, as: 'matchCase'
+          property :search_by_regex, as: 'searchByRegex'
           property :text, as: 'text'
         end
       end

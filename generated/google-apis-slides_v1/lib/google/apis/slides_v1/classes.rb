@@ -2125,7 +2125,7 @@ module Google
       
         # A PageElement kind representing a generic shape that doesn't have a more
         # specific classification. For more information, see [Size and position page
-        # elements](https://developers.google.com/slides/api/guides/transform).
+        # elements](https://developers.google.com/workspace/slides/api/guides/transform).
         # Corresponds to the JSON property `shape`
         # @return [Google::Apis::SlidesV1::Shape]
         attr_accessor :shape
@@ -3336,7 +3336,7 @@ module Google
       
       # A PageElement kind representing a generic shape that doesn't have a more
       # specific classification. For more information, see [Size and position page
-      # elements](https://developers.google.com/slides/api/guides/transform).
+      # elements](https://developers.google.com/workspace/slides/api/guides/transform).
       class Shape
         include Google::Apis::Core::Hashable
       
@@ -3723,6 +3723,15 @@ module Google
         attr_accessor :match_case
         alias_method :match_case?, :match_case
       
+        # Optional. True if the find value should be treated as a regular expression.
+        # Any backslashes in the pattern should be escaped. - `True`: the search text is
+        # treated as a regular expressions. - `False`: the search text is treated as a
+        # substring for matching.
+        # Corresponds to the JSON property `searchByRegex`
+        # @return [Boolean]
+        attr_accessor :search_by_regex
+        alias_method :search_by_regex?, :search_by_regex
+      
         # The text to search for in the shape or table.
         # Corresponds to the JSON property `text`
         # @return [String]
@@ -3735,6 +3744,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @match_case = args[:match_case] if args.key?(:match_case)
+          @search_by_regex = args[:search_by_regex] if args.key?(:search_by_regex)
           @text = args[:text] if args.key?(:text)
         end
       end
