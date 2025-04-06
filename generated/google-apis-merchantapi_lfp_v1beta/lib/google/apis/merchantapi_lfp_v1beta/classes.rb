@@ -22,6 +22,65 @@ module Google
   module Apis
     module MerchantapiLfpV1beta
       
+      # Country-specific settings for the merchant.
+      class CountrySettings
+        include Google::Apis::Core::Hashable
+      
+        # True if this merchant has enabled free local listings in MC.
+        # Corresponds to the JSON property `freeLocalListingsEnabled`
+        # @return [Boolean]
+        attr_accessor :free_local_listings_enabled
+        alias_method :free_local_listings_enabled?, :free_local_listings_enabled
+      
+        # Output only. The verification state of this merchant's instock serving feature.
+        # Corresponds to the JSON property `instockServingVerificationState`
+        # @return [String]
+        attr_accessor :instock_serving_verification_state
+      
+        # Output only. The verification state of this merchant's inventory check.
+        # Corresponds to the JSON property `inventoryVerificationState`
+        # @return [String]
+        attr_accessor :inventory_verification_state
+      
+        # True if this merchant has enabled local inventory ads in MC.
+        # Corresponds to the JSON property `localInventoryAdsEnabled`
+        # @return [Boolean]
+        attr_accessor :local_inventory_ads_enabled
+        alias_method :local_inventory_ads_enabled?, :local_inventory_ads_enabled
+      
+        # Output only. The verification state of this merchant's pickup serving feature.
+        # Corresponds to the JSON property `pickupServingVerificationState`
+        # @return [String]
+        attr_accessor :pickup_serving_verification_state
+      
+        # Output only. The product page type selected by this merchant.
+        # Corresponds to the JSON property `productPageType`
+        # @return [String]
+        attr_accessor :product_page_type
+      
+        # Required. The [CLDR territory code](https://github.com/unicode-org/cldr/blob/
+        # latest/common/main/en.xml) for the country for which these settings are
+        # defined.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @free_local_listings_enabled = args[:free_local_listings_enabled] if args.key?(:free_local_listings_enabled)
+          @instock_serving_verification_state = args[:instock_serving_verification_state] if args.key?(:instock_serving_verification_state)
+          @inventory_verification_state = args[:inventory_verification_state] if args.key?(:inventory_verification_state)
+          @local_inventory_ads_enabled = args[:local_inventory_ads_enabled] if args.key?(:local_inventory_ads_enabled)
+          @pickup_serving_verification_state = args[:pickup_serving_verification_state] if args.key?(:pickup_serving_verification_state)
+          @product_page_type = args[:product_page_type] if args.key?(:product_page_type)
+          @region_code = args[:region_code] if args.key?(:region_code)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -35,6 +94,47 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The inventory statistics for a merchant.
+      class InventoryStats
+        include Google::Apis::Core::Hashable
+      
+        # Number of entries (understanding entry as a pair of product and store) that
+        # were built based on provided inventories/sales and submitted to Google.
+        # Corresponds to the JSON property `submittedEntries`
+        # @return [Fixnum]
+        attr_accessor :submitted_entries
+      
+        # Number of submitted in stock entries.
+        # Corresponds to the JSON property `submittedInStockEntries`
+        # @return [Fixnum]
+        attr_accessor :submitted_in_stock_entries
+      
+        # Number of products from provided inventories/sales that were created from
+        # matches to existing online products provided by the merchant or to the Google
+        # catalog.
+        # Corresponds to the JSON property `submittedProducts`
+        # @return [Fixnum]
+        attr_accessor :submitted_products
+      
+        # Number of entries that were built based on provided inventories/sales and
+        # couldn't be submitted to Google due to errors like missing product.
+        # Corresponds to the JSON property `unsubmittedEntries`
+        # @return [Fixnum]
+        attr_accessor :unsubmitted_entries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @submitted_entries = args[:submitted_entries] if args.key?(:submitted_entries)
+          @submitted_in_stock_entries = args[:submitted_in_stock_entries] if args.key?(:submitted_in_stock_entries)
+          @submitted_products = args[:submitted_products] if args.key?(:submitted_products)
+          @unsubmitted_entries = args[:unsubmitted_entries] if args.key?(:unsubmitted_entries)
         end
       end
       
@@ -150,6 +250,50 @@ module Google
           @region_code = args[:region_code] if args.key?(:region_code)
           @store_code = args[:store_code] if args.key?(:store_code)
           @target_account = args[:target_account] if args.key?(:target_account)
+        end
+      end
+      
+      # The LFP state of a merchant.
+      class LfpMerchantState
+        include Google::Apis::Core::Hashable
+      
+        # Country-specific settings for the merchant.
+        # Corresponds to the JSON property `countrySettings`
+        # @return [Array<Google::Apis::MerchantapiLfpV1beta::CountrySettings>]
+        attr_accessor :country_settings
+      
+        # The inventory statistics for a merchant.
+        # Corresponds to the JSON property `inventoryStats`
+        # @return [Google::Apis::MerchantapiLfpV1beta::InventoryStats]
+        attr_accessor :inventory_stats
+      
+        # Number of [GBPs](https://www.google.com/business/) this merchant has access to.
+        # Corresponds to the JSON property `linkedGbps`
+        # @return [Fixnum]
+        attr_accessor :linked_gbps
+      
+        # Identifier. The name of the `LfpMerchantState` resource. Format: `accounts/`
+        # account`/lfpMerchantStates/`target_merchant``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The state per store from the specified merchant.
+        # Corresponds to the JSON property `storeStates`
+        # @return [Array<Google::Apis::MerchantapiLfpV1beta::LfpStoreState>]
+        attr_accessor :store_states
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @country_settings = args[:country_settings] if args.key?(:country_settings)
+          @inventory_stats = args[:inventory_stats] if args.key?(:inventory_stats)
+          @linked_gbps = args[:linked_gbps] if args.key?(:linked_gbps)
+          @name = args[:name] if args.key?(:name)
+          @store_states = args[:store_states] if args.key?(:store_states)
         end
       end
       
@@ -343,6 +487,37 @@ module Google
           @store_name = args[:store_name] if args.key?(:store_name)
           @target_account = args[:target_account] if args.key?(:target_account)
           @website_uri = args[:website_uri] if args.key?(:website_uri)
+        end
+      end
+      
+      # The state of a specific merchant's store.
+      class LfpStoreState
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The store matching state.
+        # Corresponds to the JSON property `matchingState`
+        # @return [String]
+        attr_accessor :matching_state
+      
+        # The hint of why the matching has failed (only set if matching_state is FAILED).
+        # Corresponds to the JSON property `matchingStateHint`
+        # @return [String]
+        attr_accessor :matching_state_hint
+      
+        # Required. Immutable. The identifier of this store.
+        # Corresponds to the JSON property `storeCode`
+        # @return [String]
+        attr_accessor :store_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @matching_state = args[:matching_state] if args.key?(:matching_state)
+          @matching_state_hint = args[:matching_state_hint] if args.key?(:matching_state_hint)
+          @store_code = args[:store_code] if args.key?(:store_code)
         end
       end
       
