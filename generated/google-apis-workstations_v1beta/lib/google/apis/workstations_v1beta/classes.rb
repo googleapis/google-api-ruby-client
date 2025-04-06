@@ -746,9 +746,10 @@ module Google
         # empty if source_image is set. Must be empty if read_only is false. Updating
         # source_snapshot will update content in the ephemeral directory after the
         # workstation is restarted. Only file systems supported by Container-Optimized
-        # OS (COS) are explicitly supported. For a list of supported file systems,
-        # please refer to the [COS documentation](https://cloud.google.com/container-
-        # optimized-os/docs/concepts/supported-filesystems). This field is mutable.
+        # OS (COS) are explicitly supported. For a list of supported file systems, see [
+        # the filesystems available in Container-Optimized OS](https://cloud.google.com/
+        # container-optimized-os/docs/concepts/supported-filesystems). This field is
+        # mutable.
         # Corresponds to the JSON property `sourceSnapshot`
         # @return [String]
         attr_accessor :source_snapshot
