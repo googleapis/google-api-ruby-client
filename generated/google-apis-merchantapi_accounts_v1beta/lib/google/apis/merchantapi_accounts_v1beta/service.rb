@@ -51,8 +51,8 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Creates a standalone Merchant Center account with additional configuration.
-        # Adds the user that makes the request as an admin for the new account.
+        # Creates a Merchant Center account with additional configuration. Adds the user
+        # that makes the request as an admin for the new account.
         # @param [Google::Apis::MerchantapiAccountsV1beta::CreateAndConfigureAccountRequest] create_and_configure_account_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1243,7 +1243,7 @@ module Google
         # Retrieve shipping setting information.
         # @param [String] name
         #   Required. The name of the shipping setting to retrieve. Format: `accounts/`
-        #   account`/shippingsetting`
+        #   account`/shippingsettings`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1309,7 +1309,7 @@ module Google
         # Returns the state of a terms of service agreement.
         # @param [String] name
         #   Required. The resource name of the terms of service version. Format: `accounts/
-        #   `account`/termsOfServiceAgreementState/`identifier`` The identifier format is:
+        #   `account`/termsOfServiceAgreementStates/`identifier`` The identifier format is:
         #   ``TermsOfServiceKind`-`country``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

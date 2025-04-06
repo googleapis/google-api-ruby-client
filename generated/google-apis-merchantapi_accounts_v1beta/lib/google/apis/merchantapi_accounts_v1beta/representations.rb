@@ -1023,6 +1023,7 @@ module Google
           property :process_refund_days, as: 'processRefundDays'
           property :restocking_fee, as: 'restockingFee', class: Google::Apis::MerchantapiAccountsV1beta::RestockingFee, decorator: Google::Apis::MerchantapiAccountsV1beta::RestockingFee::Representation
       
+          property :return_label_source, as: 'returnLabelSource'
           collection :return_methods, as: 'returnMethods'
           property :return_policy_id, as: 'returnPolicyId'
           property :return_policy_uri, as: 'returnPolicyUri'
