@@ -1507,6 +1507,11 @@ module Google
         # @return [Array<Google::Apis::ChromepolicyV1::Proto2OneofDescriptorProto>]
         attr_accessor :oneof_decl
       
+        # Support for `export` and `local` keywords on enums.
+        # Corresponds to the JSON property `visibility`
+        # @return [String]
+        attr_accessor :visibility
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1518,6 +1523,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @nested_type = args[:nested_type] if args.key?(:nested_type)
           @oneof_decl = args[:oneof_decl] if args.key?(:oneof_decl)
+          @visibility = args[:visibility] if args.key?(:visibility)
         end
       end
       
@@ -1535,6 +1541,11 @@ module Google
         # @return [Array<Google::Apis::ChromepolicyV1::Proto2EnumValueDescriptorProto>]
         attr_accessor :value
       
+        # Support for `export` and `local` keywords on enums.
+        # Corresponds to the JSON property `visibility`
+        # @return [String]
+        attr_accessor :visibility
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1543,6 +1554,7 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @value = args[:value] if args.key?(:value)
+          @visibility = args[:visibility] if args.key?(:visibility)
         end
       end
       
