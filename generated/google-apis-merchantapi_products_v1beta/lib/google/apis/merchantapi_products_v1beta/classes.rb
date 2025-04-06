@@ -641,6 +641,37 @@ module Google
         end
       end
       
+      # Information regarding Automated Discounts.
+      class AutomatedDiscounts
+        include Google::Apis::Core::Hashable
+      
+        # The price represented as a number and currency.
+        # Corresponds to the JSON property `gadPrice`
+        # @return [Google::Apis::MerchantapiProductsV1beta::Price]
+        attr_accessor :gad_price
+      
+        # The price represented as a number and currency.
+        # Corresponds to the JSON property `priorPrice`
+        # @return [Google::Apis::MerchantapiProductsV1beta::Price]
+        attr_accessor :prior_price
+      
+        # The price represented as a number and currency.
+        # Corresponds to the JSON property `priorPriceProgressive`
+        # @return [Google::Apis::MerchantapiProductsV1beta::Price]
+        attr_accessor :prior_price_progressive
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gad_price = args[:gad_price] if args.key?(:gad_price)
+          @prior_price = args[:prior_price] if args.key?(:prior_price)
+          @prior_price_progressive = args[:prior_price_progressive] if args.key?(:prior_price_progressive)
+        end
+      end
+      
       # Product [certification](https://support.google.com/merchants/answer/13528839),
       # initially introduced for EU energy efficiency labeling compliance using the EU
       # EPREL database.
@@ -1156,14 +1187,13 @@ module Google
       
       # The processed product, built from multiple product inputs after applying rules
       # and supplemental data sources. This processed product matches what is shown in
-      # your Merchant Center account and in Shopping ads and other surfaces across
-      # Google. Each product is built from exactly one primary data source product
-      # input, and multiple supplemental data source inputs. After inserting, updating,
-      # or deleting a product input, it may take several minutes before the updated
-      # processed product can be retrieved. All fields in the processed product and
-      # its sub-messages match the name of their corresponding attribute in the [
-      # Product data specification](https://support.google.com/merchants/answer/
-      # 7052112) with some exceptions.
+      # your Merchant Center account. Each product is built from exactly one primary
+      # data source product input, and multiple supplemental data source inputs. After
+      # inserting, updating, or deleting a product input, it may take several minutes
+      # before the updated processed product can be retrieved. All fields in the
+      # processed product and its sub-messages match the name of their corresponding
+      # attribute in the [Product data specification](https://support.google.com/
+      # merchants/answer/7052112) with some exceptions.
       class Product
         include Google::Apis::Core::Hashable
       
@@ -1171,6 +1201,11 @@ module Google
         # Corresponds to the JSON property `attributes`
         # @return [Google::Apis::MerchantapiProductsV1beta::Attributes]
         attr_accessor :attributes
+      
+        # Information regarding Automated Discounts.
+        # Corresponds to the JSON property `automatedDiscounts`
+        # @return [Google::Apis::MerchantapiProductsV1beta::AutomatedDiscounts]
+        attr_accessor :automated_discounts
       
         # Output only. The [channel](https://support.google.com/merchants/answer/7361332)
         # of the product.
@@ -1203,10 +1238,10 @@ module Google
         # @return [String]
         attr_accessor :feed_label
       
-        # The name of the product. Format: `"`product.name=accounts/`account`/products/`
-        # product``"` where the last section `product` consists of 4 parts: channel~
-        # content_language~feed_label~offer_id example for product name is "accounts/123/
-        # products/online~en~US~sku123"
+        # The name of the product. Format: `accounts/`account`/products/`product`` where
+        # the last section `product` consists of 4 parts: `channel~content_language~
+        # feed_label~offer_id` example for product name is `accounts/123/products/online~
+        # en~US~sku123`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1244,6 +1279,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @attributes = args[:attributes] if args.key?(:attributes)
+          @automated_discounts = args[:automated_discounts] if args.key?(:automated_discounts)
           @channel = args[:channel] if args.key?(:channel)
           @content_language = args[:content_language] if args.key?(:content_language)
           @custom_attributes = args[:custom_attributes] if args.key?(:custom_attributes)
@@ -1395,12 +1431,11 @@ module Google
         # Optional. A list of custom (merchant-provided) attributes. It can also be used
         # for submitting any attribute of the data specification in its generic form (
         # for example, `` "name": "size type", "value": "regular" ``). This is useful
-        # for submitting attributes not explicitly exposed by the API, such as
-        # additional attributes used for Buy on Google. Maximum allowed number of
-        # characters for each custom attribute is 10240 (represents sum of characters
-        # for name and value). Maximum 2500 custom attributes can be set per product,
-        # with total size of 102.4kB. Underscores in custom attribute names are replaced
-        # by spaces upon insertion.
+        # for submitting attributes not explicitly exposed by the API. Maximum allowed
+        # number of characters for each custom attribute is 10240 (represents sum of
+        # characters for name and value). Maximum 2500 custom attributes can be set per
+        # product, with total size of 102.4kB. Underscores in custom attribute names are
+        # replaced by spaces upon insertion.
         # Corresponds to the JSON property `customAttributes`
         # @return [Array<Google::Apis::MerchantapiProductsV1beta::CustomAttribute>]
         attr_accessor :custom_attributes
@@ -1411,11 +1446,10 @@ module Google
         # @return [String]
         attr_accessor :feed_label
       
-        # Identifier. The name of the product input. Format: `"`productinput.name=
-        # accounts/`account`/productInputs/`productinput``"` where the last section `
-        # productinput` consists of 4 parts: channel~content_language~feed_label~
-        # offer_id example for product input name is "accounts/123/productInputs/online~
-        # en~US~sku123"
+        # Identifier. The name of the product input. Format: `accounts/`account`/
+        # productInputs/`productinput`` where the last section `productinput` consists
+        # of 4 parts: `channel~content_language~feed_label~offer_id` example for product
+        # input name is `accounts/123/productInputs/online~en~US~sku123`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1429,8 +1463,8 @@ module Google
         # @return [String]
         attr_accessor :offer_id
       
-        # Output only. The name of the processed product. Format: `"`product.name=
-        # accounts/`account`/products/`product``"`
+        # Output only. The name of the processed product. Format: `accounts/`account`/
+        # products/`product``
         # Corresponds to the JSON property `product`
         # @return [String]
         attr_accessor :product

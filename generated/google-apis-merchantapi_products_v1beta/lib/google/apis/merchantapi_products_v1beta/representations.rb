@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutomatedDiscounts
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Certification
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -341,6 +347,18 @@ module Google
         end
       end
       
+      class AutomatedDiscounts
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gad_price, as: 'gadPrice', class: Google::Apis::MerchantapiProductsV1beta::Price, decorator: Google::Apis::MerchantapiProductsV1beta::Price::Representation
+      
+          property :prior_price, as: 'priorPrice', class: Google::Apis::MerchantapiProductsV1beta::Price, decorator: Google::Apis::MerchantapiProductsV1beta::Price::Representation
+      
+          property :prior_price_progressive, as: 'priorPriceProgressive', class: Google::Apis::MerchantapiProductsV1beta::Price, decorator: Google::Apis::MerchantapiProductsV1beta::Price::Representation
+      
+        end
+      end
+      
       class Certification
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -481,6 +499,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :attributes, as: 'attributes', class: Google::Apis::MerchantapiProductsV1beta::Attributes, decorator: Google::Apis::MerchantapiProductsV1beta::Attributes::Representation
+      
+          property :automated_discounts, as: 'automatedDiscounts', class: Google::Apis::MerchantapiProductsV1beta::AutomatedDiscounts, decorator: Google::Apis::MerchantapiProductsV1beta::AutomatedDiscounts::Representation
       
           property :channel, as: 'channel'
           property :content_language, as: 'contentLanguage'
