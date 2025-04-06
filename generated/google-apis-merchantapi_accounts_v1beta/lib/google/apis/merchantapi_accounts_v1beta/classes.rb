@@ -1796,6 +1796,12 @@ module Google
         # @return [Google::Apis::MerchantapiAccountsV1beta::RestockingFee]
         attr_accessor :restocking_fee
       
+        # The field specifies the return label source. This field is required when
+        # return method is BY_MAIL.
+        # Corresponds to the JSON property `returnLabelSource`
+        # @return [String]
+        attr_accessor :return_label_source
+      
         # Optional. The return methods of how customers can return an item. This value
         # is required to not be empty unless the type of return policy is noReturns.
         # Corresponds to the JSON property `returnMethods`
@@ -1840,6 +1846,7 @@ module Google
           @policy = args[:policy] if args.key?(:policy)
           @process_refund_days = args[:process_refund_days] if args.key?(:process_refund_days)
           @restocking_fee = args[:restocking_fee] if args.key?(:restocking_fee)
+          @return_label_source = args[:return_label_source] if args.key?(:return_label_source)
           @return_methods = args[:return_methods] if args.key?(:return_methods)
           @return_policy_id = args[:return_policy_id] if args.key?(:return_policy_id)
           @return_policy_uri = args[:return_policy_uri] if args.key?(:return_policy_uri)
@@ -2742,8 +2749,8 @@ module Google
         end
       end
       
-      # The merchant account's [shipping setting](https://support.google.com/merchants/
-      # answer/6069284).
+      # The merchant account's [shipping settings](https://support.google.com/
+      # merchants/answer/6069284).
       class ShippingSettings
         include Google::Apis::Core::Hashable
       
@@ -2761,8 +2768,8 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Identifier. The resource name of the shipping setting. Format: `accounts/`
-        # account`/shippingSetting`
+        # Identifier. The resource name of the shipping settings. Format: `accounts/`
+        # account`/shippingSettings`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2935,13 +2942,13 @@ module Google
       end
       
       # The `TermsOfService` message represents a specific version of the terms of
-      # service that merchants must accept to access certain features or services (see
-      # https://support.google.com/merchants/answer/160173). This message is important
-      # for the onboarding process, ensuring that merchants agree to the necessary
-      # legal agreements for using the service. Merchants can retrieve the latest
-      # terms of service for a given `kind` and `region` through `
-      # RetrieveLatestTermsOfService`, and accept them as required through `
-      # AcceptTermsOfService`.
+      # service that merchants must accept to access certain features or services. For
+      # more information, see [Terms of Service](https://support.google.com/merchants/
+      # answer/160173). This message is important for the onboarding process, ensuring
+      # that merchants agree to the necessary legal agreements for using the service.
+      # Merchants can retrieve the latest terms of service for a given `kind` and `
+      # region` through `RetrieveLatestTermsOfService`, and accept them as required
+      # through `AcceptTermsOfService`.
       class TermsOfService
         include Google::Apis::Core::Hashable
       
