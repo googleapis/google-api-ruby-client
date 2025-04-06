@@ -23,7 +23,7 @@ module Google
     #
     # Reads and writes Google Docs documents.
     #
-    # @see https://developers.google.com/docs/
+    # @see https://developers.google.com/workspace/docs/
     module DocsV1
       # Version of the Google Docs API this client connects to.
       # This is NOT the gem version.
