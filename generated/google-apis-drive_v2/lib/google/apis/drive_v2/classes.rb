@@ -1043,7 +1043,7 @@ module Google
       
         # A region of the document represented as a JSON string. For details on defining
         # anchor properties, refer to [Add comments and replies](https://developers.
-        # google.com/drive/api/v2/manage-comments).
+        # google.com/workspace/drive/api/v2/manage-comments).
         # Corresponds to the JSON property `anchor`
         # @return [String]
         attr_accessor :anchor

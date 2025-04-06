@@ -23,7 +23,7 @@ module Google
     #
     # The Google Drive API allows clients to access resources from Google Drive.
     #
-    # @see https://developers.google.com/drive/
+    # @see https://developers.google.com/workspace/drive/
     module DriveV2
       # Version of the Google Drive API this client connects to.
       # This is NOT the gem version.
