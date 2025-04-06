@@ -147,6 +147,9 @@ module Google
         # Lists information about the supported locations for this service.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
+        # @param [Array<String>, String] extra_location_types
+        #   Optional. A list of extra location types that should be used as conditions for
+        #   controlling the visibility of the locations.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -174,11 +177,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_locations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_locations(name, extra_location_types: nil, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/locations', options)
           command.response_representation = Google::Apis::ConnectorsV1::ListLocationsResponse::Representation
           command.response_class = Google::Apis::ConnectorsV1::ListLocationsResponse
           command.params['name'] = name unless name.nil?
+          command.query['extraLocationTypes'] = extra_location_types unless extra_location_types.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -2001,6 +2005,9 @@ module Google
         #   Page size.
         # @param [String] page_token
         #   Page token.
+        # @param [Boolean] return_partial_success
+        #   Optional. If true, allow partial responses for multi-regional Aggregated List
+        #   requests.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2018,7 +2025,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_global_managed_zones(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_global_managed_zones(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/managedZones', options)
           command.response_representation = Google::Apis::ConnectorsV1::ListManagedZonesResponse::Representation
           command.response_class = Google::Apis::ConnectorsV1::ListManagedZonesResponse
@@ -2027,6 +2034,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -1211,6 +1211,7 @@ module Google
           property :migrate_deployment_model, as: 'migrateDeploymentModel'
           property :migrate_tls, as: 'migrateTls'
           property :provision_cloud_spanner, as: 'provisionCloudSpanner'
+          property :provision_memstore, as: 'provisionMemstore'
           property :ratelimit_threshold, :numeric_string => true, as: 'ratelimitThreshold'
           property :resource_limits, as: 'resourceLimits', class: Google::Apis::ConnectorsV1::ResourceLimits, decorator: Google::Apis::ConnectorsV1::ResourceLimits::Representation
       
@@ -1898,6 +1899,7 @@ module Google
           collection :managed_zones, as: 'managedZones', class: Google::Apis::ConnectorsV1::ManagedZone, decorator: Google::Apis::ConnectorsV1::ManagedZone::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
