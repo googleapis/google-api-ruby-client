@@ -1,5 +1,9 @@
 # Release history for google-apis-slides_v1
 
+### v0.30.0 (2025-04-06)
+
+* Regenerated from discovery document revision 20250325
+
 ### v0.29.0 (2025-02-26)
 
 * Regenerated from discovery document revision 20250218
