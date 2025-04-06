@@ -30,7 +30,7 @@ module Google
       #    Drive = Google::Apis::DriveV2 # Alias the module
       #    service = Drive::DriveService.new
       #
-      # @see https://developers.google.com/drive/
+      # @see https://developers.google.com/workspace/drive/
       class DriveService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://www.$UNIVERSE_DOMAIN$/"
 
@@ -970,8 +970,8 @@ module Google
         
         # Lists the user's shared drives. This method accepts the `q` parameter, which
         # is a search query combining one or more search terms. For more information,
-        # see the [Search for shared drives](/drive/api/guides/search-shareddrives)
-        # guide.
+        # see the [Search for shared drives](/workspace/drive/api/guides/search-
+        # shareddrives) guide.
         # @param [Fixnum] max_results
         #   Maximum number of shared drives to return per page.
         # @param [String] page_token
@@ -1307,9 +1307,9 @@ module Google
         # Gets a file's metadata or content by ID. If you provide the URL parameter `
         # alt=media`, then the response includes the file contents in the response body.
         # Downloading content with `alt=media` only works if the file is stored in Drive.
-        # To download Google Docs, Sheets, and Slides use [`files.export`](/drive/api/
-        # reference/rest/v2/files/export) instead. For more information, see [Download &
-        # export files](/drive/api/guides/manage-downloads).
+        # To download Google Docs, Sheets, and Slides use [`files.export`](/workspace/
+        # drive/api/reference/rest/v2/files/export) instead. For more information, see [
+        # Download & export files](/workspace/drive/api/guides/manage-downloads).
         # @param [String] file_id
         #   The ID for the file in question.
         # @param [Boolean] acknowledge_abuse
@@ -1382,18 +1382,18 @@ module Google
         # 120 GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid MIME type,
         # rather than the literal `*/*` value. The literal `*/*` is only used to
         # indicate that any valid MIME type can be uploaded. For more information on
-        # uploading files, see [Upload file data](/drive/api/guides/manage-uploads).
-        # Apps creating shortcuts with `files.insert` must specify the MIME type `
-        # application/vnd.google-apps.shortcut`. Apps should specify a file extension in
-        # the `title` property when inserting files with the API. For example, an
-        # operation to insert a JPEG file should specify something like `"title": "cat.
-        # jpg"` in the metadata. Subsequent `GET` requests include the read-only `
-        # fileExtension` property populated with the extension originally specified in
-        # the `title` property. When a Google Drive user requests to download a file, or
-        # when the file is downloaded through the sync client, Drive builds a full
-        # filename (with extension) based on the title. In cases where the extension is
-        # missing, Drive attempts to determine the extension based on the file's MIME
-        # type.
+        # uploading files, see [Upload file data](/workspace/drive/api/guides/manage-
+        # uploads). Apps creating shortcuts with `files.insert` must specify the MIME
+        # type `application/vnd.google-apps.shortcut`. Apps should specify a file
+        # extension in the `title` property when inserting files with the API. For
+        # example, an operation to insert a JPEG file should specify something like `"
+        # title": "cat.jpg"` in the metadata. Subsequent `GET` requests include the read-
+        # only `fileExtension` property populated with the extension originally
+        # specified in the `title` property. When a Google Drive user requests to
+        # download a file, or when the file is downloaded through the sync client, Drive
+        # builds a full filename (with extension) based on the title. In cases where the
+        # extension is missing, Drive attempts to determine the extension based on the
+        # file's MIME type.
         # @param [Google::Apis::DriveV2::File] file_object
         # @param [Boolean] convert
         #   Whether to convert this file to the corresponding Docs Editors format.
@@ -1478,10 +1478,10 @@ module Google
         
         # Lists the user's files. This method accepts the `q` parameter, which is a
         # search query combining one or more search terms. For more information, see the
-        # [Search for files & folders](/drive/api/guides/search-files) guide. *Note:*
-        # This method returns *all* files by default, including trashed files. If you
-        # don't want trashed files to appear in the list, use the `trashed=false` query
-        # parameter to remove trashed files from the results.
+        # [Search for files & folders](/workspace/drive/api/guides/search-files) guide. *
+        # Note:* This method returns *all* files by default, including trashed files. If
+        # you don't want trashed files to appear in the list, use the `trashed=false`
+        # query parameter to remove trashed files from the results.
         # @param [String] corpora
         #   Bodies of items (files/documents) to which the query applies. Supported bodies
         #   are `default`, `domain`, `drive` and `allDrives`. Prefer `default` or `drive`
@@ -1897,7 +1897,8 @@ module Google
         # size:* 5,120 GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid MIME
         # type, rather than the literal `*/*` value. The literal `*/*` is only used to
         # indicate that any valid MIME type can be uploaded. For more information on
-        # uploading files, see [Upload file data](/drive/api/guides/manage-uploads).
+        # uploading files, see [Upload file data](/workspace/drive/api/guides/manage-
+        # uploads).
         # @param [String] file_id
         #   The ID of the file to update.
         # @param [Google::Apis::DriveV2::File] file_object
