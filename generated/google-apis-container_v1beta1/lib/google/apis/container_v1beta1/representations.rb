@@ -1000,6 +1000,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RotationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SandboxConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2122,6 +2128,7 @@ module Google
       class EphemeralStorageLocalSsdConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_cache_count, as: 'dataCacheCount'
           property :local_ssd_count, as: 'localSsdCount'
         end
       end
@@ -2684,6 +2691,7 @@ module Google
       
           property :fast_socket, as: 'fastSocket', class: Google::Apis::ContainerV1beta1::FastSocket, decorator: Google::Apis::ContainerV1beta1::FastSocket::Representation
       
+          property :flex_start, as: 'flexStart'
           property :gcfs_config, as: 'gcfsConfig', class: Google::Apis::ContainerV1beta1::GcfsConfig, decorator: Google::Apis::ContainerV1beta1::GcfsConfig::Representation
       
           property :gvnic, as: 'gvnic', class: Google::Apis::ContainerV1beta1::VirtualNic, decorator: Google::Apis::ContainerV1beta1::VirtualNic::Representation
@@ -3217,6 +3225,14 @@ module Google
         end
       end
       
+      class RotationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :rotation_interval, as: 'rotationInterval'
+        end
+      end
+      
       class SandboxConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3243,6 +3259,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+          property :rotation_config, as: 'rotationConfig', class: Google::Apis::ContainerV1beta1::RotationConfig, decorator: Google::Apis::ContainerV1beta1::RotationConfig::Representation
+      
         end
       end
       
@@ -3569,6 +3587,7 @@ module Google
           property :etag, as: 'etag'
           property :fast_socket, as: 'fastSocket', class: Google::Apis::ContainerV1beta1::FastSocket, decorator: Google::Apis::ContainerV1beta1::FastSocket::Representation
       
+          property :flex_start, as: 'flexStart'
           property :gcfs_config, as: 'gcfsConfig', class: Google::Apis::ContainerV1beta1::GcfsConfig, decorator: Google::Apis::ContainerV1beta1::GcfsConfig::Representation
       
           property :gvnic, as: 'gvnic', class: Google::Apis::ContainerV1beta1::VirtualNic, decorator: Google::Apis::ContainerV1beta1::VirtualNic::Representation

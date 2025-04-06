@@ -3026,6 +3026,11 @@ module Google
       class EphemeralStorageLocalSsdConfig
         include Google::Apis::Core::Hashable
       
+        # Number of local SSDs to use for GKE Data Cache.
+        # Corresponds to the JSON property `dataCacheCount`
+        # @return [Fixnum]
+        attr_accessor :data_cache_count
+      
         # Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. A
         # zero (or unset) value has different meanings depending on machine type being
         # used: 1. For pre-Gen3 machines, which support flexible numbers of local ssds,
@@ -3048,6 +3053,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_cache_count = args[:data_cache_count] if args.key?(:data_cache_count)
           @local_ssd_count = args[:local_ssd_count] if args.key?(:local_ssd_count)
         end
       end
@@ -5030,6 +5036,12 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::FastSocket]
         attr_accessor :fast_socket
       
+        # Flex Start flag for enabling Flex Start VM.
+        # Corresponds to the JSON property `flexStart`
+        # @return [Boolean]
+        attr_accessor :flex_start
+        alias_method :flex_start?, :flex_start
+      
         # GcfsConfig contains configurations of Google Container File System.
         # Corresponds to the JSON property `gcfsConfig`
         # @return [Google::Apis::ContainerV1beta1::GcfsConfig]
@@ -5282,6 +5294,7 @@ module Google
           @ephemeral_storage_config = args[:ephemeral_storage_config] if args.key?(:ephemeral_storage_config)
           @ephemeral_storage_local_ssd_config = args[:ephemeral_storage_local_ssd_config] if args.key?(:ephemeral_storage_local_ssd_config)
           @fast_socket = args[:fast_socket] if args.key?(:fast_socket)
+          @flex_start = args[:flex_start] if args.key?(:flex_start)
           @gcfs_config = args[:gcfs_config] if args.key?(:gcfs_config)
           @gvnic = args[:gvnic] if args.key?(:gvnic)
           @host_maintenance_policy = args[:host_maintenance_policy] if args.key?(:host_maintenance_policy)
@@ -7168,6 +7181,33 @@ module Google
         end
       end
       
+      # RotationConfig is config for secret manager auto rotation.
+      class RotationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether the rotation is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # The interval between two consecutive rotations. Default rotation interval is 2
+        # minutes.
+        # Corresponds to the JSON property `rotationInterval`
+        # @return [String]
+        attr_accessor :rotation_interval
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @rotation_interval = args[:rotation_interval] if args.key?(:rotation_interval)
+        end
+      end
+      
       # SandboxConfig contains configurations of the sandbox to use for the node.
       class SandboxConfig
         include Google::Apis::Core::Hashable
@@ -7243,6 +7283,11 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
+        # RotationConfig is config for secret manager auto rotation.
+        # Corresponds to the JSON property `rotationConfig`
+        # @return [Google::Apis::ContainerV1beta1::RotationConfig]
+        attr_accessor :rotation_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7250,6 +7295,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+          @rotation_config = args[:rotation_config] if args.key?(:rotation_config)
         end
       end
       
@@ -8587,6 +8633,12 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::FastSocket]
         attr_accessor :fast_socket
       
+        # Flex Start flag for enabling Flex Start VM.
+        # Corresponds to the JSON property `flexStart`
+        # @return [Boolean]
+        attr_accessor :flex_start
+        alias_method :flex_start?, :flex_start
+      
         # GcfsConfig contains configurations of Google Container File System.
         # Corresponds to the JSON property `gcfsConfig`
         # @return [Google::Apis::ContainerV1beta1::GcfsConfig]
@@ -8790,6 +8842,7 @@ module Google
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @etag = args[:etag] if args.key?(:etag)
           @fast_socket = args[:fast_socket] if args.key?(:fast_socket)
+          @flex_start = args[:flex_start] if args.key?(:flex_start)
           @gcfs_config = args[:gcfs_config] if args.key?(:gcfs_config)
           @gvnic = args[:gvnic] if args.key?(:gvnic)
           @image_type = args[:image_type] if args.key?(:image_type)
