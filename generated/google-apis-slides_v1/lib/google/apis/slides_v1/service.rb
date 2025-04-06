@@ -30,7 +30,7 @@ module Google
       #    Slides = Google::Apis::SlidesV1 # Alias the module
       #    service = Slides::SlidesService.new
       #
-      # @see https://developers.google.com/slides/
+      # @see https://developers.google.com/workspace/slides/
       class SlidesService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://slides.$UNIVERSE_DOMAIN$/"
 

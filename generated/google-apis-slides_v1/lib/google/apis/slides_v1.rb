@@ -23,7 +23,7 @@ module Google
     #
     # Reads and writes Google Slides presentations.
     #
-    # @see https://developers.google.com/slides/
+    # @see https://developers.google.com/workspace/slides/
     module SlidesV1
       # Version of the Google Slides API this client connects to.
       # This is NOT the gem version.
