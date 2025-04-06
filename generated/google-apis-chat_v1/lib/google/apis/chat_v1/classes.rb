@@ -859,9 +859,37 @@ module Google
         end
       end
       
-      # Represents a custom emoji.
+      # Represents a [custom emoji](https://support.google.com/chat/answer/12800149).
       class CustomEmoji
         include Google::Apis::Core::Hashable
+      
+        # Optional. Immutable. User-provided name for the custom emoji, which is unique
+        # within the organization. Required when the custom emoji is created, output
+        # only otherwise. Emoji names must start and end with colons, must be lowercase
+        # and can only contain alphanumeric characters, hyphens, and underscores.
+        # Hyphens and underscores should be used to separate words and cannot be used
+        # consecutively. Example: `:valid-emoji-name:`
+        # Corresponds to the JSON property `emojiName`
+        # @return [String]
+        attr_accessor :emoji_name
+      
+        # Identifier. The resource name of the custom emoji, assigned by the server.
+        # Format: `customEmojis/`customEmoji``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Payload data for the custom emoji.
+        # Corresponds to the JSON property `payload`
+        # @return [Google::Apis::ChatV1::CustomEmojiPayload]
+        attr_accessor :payload
+      
+        # Output only. A temporary image URL for the custom emoji, valid for at least 10
+        # minutes. Note that this is not populated in the response when the custom emoji
+        # is created.
+        # Corresponds to the JSON property `temporaryImageUri`
+        # @return [String]
+        attr_accessor :temporary_image_uri
       
         # Output only. Unique key for the custom emoji resource.
         # Corresponds to the JSON property `uid`
@@ -874,6 +902,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @emoji_name = args[:emoji_name] if args.key?(:emoji_name)
+          @name = args[:name] if args.key?(:name)
+          @payload = args[:payload] if args.key?(:payload)
+          @temporary_image_uri = args[:temporary_image_uri] if args.key?(:temporary_image_uri)
           @uid = args[:uid] if args.key?(:uid)
         end
       end
@@ -882,7 +914,7 @@ module Google
       class CustomEmojiMetadata
         include Google::Apis::Core::Hashable
       
-        # Represents a custom emoji.
+        # Represents a [custom emoji](https://support.google.com/chat/answer/12800149).
         # Corresponds to the JSON property `customEmoji`
         # @return [Google::Apis::ChatV1::CustomEmoji]
         attr_accessor :custom_emoji
@@ -894,6 +926,35 @@ module Google
         # Update properties of this object
         def update!(**args)
           @custom_emoji = args[:custom_emoji] if args.key?(:custom_emoji)
+        end
+      end
+      
+      # Payload data for the custom emoji.
+      class CustomEmojiPayload
+        include Google::Apis::Core::Hashable
+      
+        # Required. Input only. The image used for the custom emoji. The payload must be
+        # under 256 KB and the dimension of the image must be square and between 64 and
+        # 500 pixels. The restrictions are subject to change.
+        # Corresponds to the JSON property `fileContent`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :file_content
+      
+        # Required. Input only. The image file name. Supported file extensions: `.png`, `
+        # .jpg`, `.gif`.
+        # Corresponds to the JSON property `filename`
+        # @return [String]
+        attr_accessor :filename
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_content = args[:file_content] if args.key?(:file_content)
+          @filename = args[:filename] if args.key?(:filename)
         end
       end
       
@@ -1225,7 +1286,7 @@ module Google
       class Emoji
         include Google::Apis::Core::Hashable
       
-        # Represents a custom emoji.
+        # Represents a [custom emoji](https://support.google.com/chat/answer/12800149).
         # Corresponds to the JSON property `customEmoji`
         # @return [Google::Apis::ChatV1::CustomEmoji]
         attr_accessor :custom_emoji
@@ -4023,6 +4084,32 @@ module Google
           @icon_url = args[:icon_url] if args.key?(:icon_url)
           @on_click = args[:on_click] if args.key?(:on_click)
           @top_label = args[:top_label] if args.key?(:top_label)
+        end
+      end
+      
+      # A response to list custom emojis.
+      class ListCustomEmojisResponse
+        include Google::Apis::Core::Hashable
+      
+        # Unordered list. List of custom emojis.
+        # Corresponds to the JSON property `customEmojis`
+        # @return [Array<Google::Apis::ChatV1::CustomEmoji>]
+        attr_accessor :custom_emojis
+      
+        # A token that you can send as `pageToken` to retrieve the next page of results.
+        # If empty, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_emojis = args[:custom_emojis] if args.key?(:custom_emojis)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       

@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomEmojiPayload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DateInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -527,6 +533,12 @@ module Google
       end
       
       class KeyValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListCustomEmojisResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1118,6 +1130,11 @@ module Google
       class CustomEmoji
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :emoji_name, as: 'emojiName'
+          property :name, as: 'name'
+          property :payload, as: 'payload', class: Google::Apis::ChatV1::CustomEmojiPayload, decorator: Google::Apis::ChatV1::CustomEmojiPayload::Representation
+      
+          property :temporary_image_uri, as: 'temporaryImageUri'
           property :uid, as: 'uid'
         end
       end
@@ -1127,6 +1144,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :custom_emoji, as: 'customEmoji', class: Google::Apis::ChatV1::CustomEmoji, decorator: Google::Apis::ChatV1::CustomEmoji::Representation
       
+        end
+      end
+      
+      class CustomEmojiPayload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_content, :base64 => true, as: 'fileContent'
+          property :filename, as: 'filename'
         end
       end
       
@@ -1830,6 +1855,15 @@ module Google
           property :on_click, as: 'onClick', class: Google::Apis::ChatV1::OnClick, decorator: Google::Apis::ChatV1::OnClick::Representation
       
           property :top_label, as: 'topLabel'
+        end
+      end
+      
+      class ListCustomEmojisResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :custom_emojis, as: 'customEmojis', class: Google::Apis::ChatV1::CustomEmoji, decorator: Google::Apis::ChatV1::CustomEmoji::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

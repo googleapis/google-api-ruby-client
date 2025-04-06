@@ -52,6 +52,176 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Creates a custom emoji. Custom emojis are only available for Google Workspace
+        # accounts, and the administrator must turn custom emojis on for the
+        # organization. For more information, see [Learn about custom emojis in Google
+        # Chat](https://support.google.com/chat/answer/12800149) and [Manage custom
+        # emoji permissions](https://support.google.com/a/answer/12850085). Requires [
+        # user authentication](https://developers.google.com/workspace/chat/authenticate-
+        # authorize-chat-user).
+        # @param [Google::Apis::ChatV1::CustomEmoji] custom_emoji_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::CustomEmoji] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::CustomEmoji]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_custom_emoji(custom_emoji_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/customEmojis', options)
+          command.request_representation = Google::Apis::ChatV1::CustomEmoji::Representation
+          command.request_object = custom_emoji_object
+          command.response_representation = Google::Apis::ChatV1::CustomEmoji::Representation
+          command.response_class = Google::Apis::ChatV1::CustomEmoji
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a custom emoji. By default, users can only delete custom emoji they
+        # created. [Emoji managers](https://support.google.com/a/answer/12850085)
+        # assigned by the administrator can delete any custom emoji in the organization.
+        # See [Learn about custom emojis in Google Chat](https://support.google.com/chat/
+        # answer/12800149). Custom emojis are only available for Google Workspace
+        # accounts, and the administrator must turn custom emojis on for the
+        # organization. For more information, see [Learn about custom emojis in Google
+        # Chat](https://support.google.com/chat/answer/12800149) and [Manage custom
+        # emoji permissions](https://support.google.com/a/answer/12850085). Requires [
+        # user authentication](https://developers.google.com/workspace/chat/authenticate-
+        # authorize-chat-user).
+        # @param [String] name
+        #   Required. Resource name of the custom emoji to delete. Format: `customEmojis/`
+        #   customEmoji`` You can use the emoji name as an alias for ``customEmoji``. For
+        #   example, `customEmojis/:example-emoji:` where `:example-emoji:` is the emoji
+        #   name for a custom emoji.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_custom_emoji(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ChatV1::Empty::Representation
+          command.response_class = Google::Apis::ChatV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns details about a custom emoji. Custom emojis are only available for
+        # Google Workspace accounts, and the administrator must turn custom emojis on
+        # for the organization. For more information, see [Learn about custom emojis in
+        # Google Chat](https://support.google.com/chat/answer/12800149) and [Manage
+        # custom emoji permissions](https://support.google.com/a/answer/12850085).
+        # Requires [user authentication](https://developers.google.com/workspace/chat/
+        # authenticate-authorize-chat-user).
+        # @param [String] name
+        #   Required. Resource name of the custom emoji. Format: `customEmojis/`
+        #   customEmoji`` You can use the emoji name as an alias for ``customEmoji``. For
+        #   example, `customEmojis/:example-emoji:` where `:example-emoji:` is the emoji
+        #   name for a custom emoji.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::CustomEmoji] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::CustomEmoji]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_custom_emoji(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ChatV1::CustomEmoji::Representation
+          command.response_class = Google::Apis::ChatV1::CustomEmoji
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists custom emojis visible to the authenticated user. Custom emojis are only
+        # available for Google Workspace accounts, and the administrator must turn
+        # custom emojis on for the organization. For more information, see [Learn about
+        # custom emojis in Google Chat](https://support.google.com/chat/answer/12800149)
+        # and [Manage custom emoji permissions](https://support.google.com/a/answer/
+        # 12850085). Requires [user authentication](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user).
+        # @param [String] filter
+        #   Optional. A query filter. Supports filtering by creator. To filter by creator,
+        #   you must specify a valid value. Currently only `creator("users/me")` and `NOT
+        #   creator("users/me")` are accepted to filter custom emojis by whether they were
+        #   created by the calling user or not. For example, the following query returns
+        #   custom emojis created by the caller: ``` creator("users/me") ``` Invalid
+        #   queries are rejected with an `INVALID_ARGUMENT` error.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of custom emojis returned. The service can return
+        #   fewer custom emojis than this value. If unspecified, the default value is 25.
+        #   The maximum value is 200; values above 200 are changed to 200.
+        # @param [String] page_token
+        #   Optional. (If resuming from a previous query.) A page token received from a
+        #   previous list custom emoji call. Provide this to retrieve the subsequent page.
+        #   When paginating, the filter value should match the call that provided the page
+        #   token. Passing a different value might lead to unexpected results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::ListCustomEmojisResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::ListCustomEmojisResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_custom_emojis(filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/customEmojis', options)
+          command.response_representation = Google::Apis::ChatV1::ListCustomEmojisResponse::Representation
+          command.response_class = Google::Apis::ChatV1::ListCustomEmojisResponse
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Downloads media. Download is supported on the URI `/v1/media/`+name`?alt=media`
         # .
         # @param [String] resource_name
@@ -1541,7 +1711,7 @@ module Google
         #   emoji.unicode = "🙂" OR user.name = "users/`user`" emoji.unicode = "🙂" OR emoji.
         #   custom_emoji.uid = "`uid`" OR user.name = "users/`user`" emoji.unicode = "🙂"
         #   OR emoji.custom_emoji.uid = "`uid`" AND user.name = "users/`user`" ``` Invalid
-        #   queries are rejected by the server with an `INVALID_ARGUMENT` error.
+        #   queries are rejected with an `INVALID_ARGUMENT` error.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of reactions returned. The service can return
         #   fewer reactions than this value. If unspecified, the default value is 25. The
