@@ -3599,6 +3599,44 @@ module Google
         end
       end
       
+      # Map of placeholder in metric prompt template to contents of model input.
+      class GoogleCloudAiplatformV1ContentMap
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Map of placeholder to contents.
+        # Corresponds to the JSON property `values`
+        # @return [Hash<String,Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ContentMapContents>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Repeated Content type.
+      class GoogleCloudAiplatformV1ContentMapContents
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Repeated contents.
+        # Corresponds to the JSON property `contents`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content>]
+        attr_accessor :contents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contents = args[:contents] if args.key?(:contents)
+        end
+      end
+      
       # Instance of a general context.
       class GoogleCloudAiplatformV1Context
         include Google::Apis::Core::Hashable
@@ -4859,6 +4897,45 @@ module Google
           @service_account = args[:service_account] if args.key?(:service_account)
           @tensorboard = args[:tensorboard] if args.key?(:tensorboard)
           @worker_pool_specs = args[:worker_pool_specs] if args.key?(:worker_pool_specs)
+        end
+      end
+      
+      # Spec for custom output.
+      class GoogleCloudAiplatformV1CustomOutput
+        include Google::Apis::Core::Hashable
+      
+        # Raw output.
+        # Corresponds to the JSON property `rawOutputs`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RawOutput]
+        attr_accessor :raw_outputs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @raw_outputs = args[:raw_outputs] if args.key?(:raw_outputs)
+        end
+      end
+      
+      # Spec for custom output format configuration.
+      class GoogleCloudAiplatformV1CustomOutputFormatConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to return raw output.
+        # Corresponds to the JSON property `returnRawOutput`
+        # @return [Boolean]
+        attr_accessor :return_raw_output
+        alias_method :return_raw_output?, :return_raw_output
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @return_raw_output = args[:return_raw_output] if args.key?(:return_raw_output)
         end
       end
       
@@ -6546,8 +6623,10 @@ module Google
         attr_accessor :create_time
       
         # Output only. DNS of the dedicated endpoint. Will only be populated if
-        # dedicated_endpoint_enabled is true. Format: `https://`endpoint_id`.`region`-`
-        # project_number`.prediction.vertexai.goog`.
+        # dedicated_endpoint_enabled is true. Depending on the features enabled, uid
+        # might be a random number or a string. For example, if fast_tryout is enabled,
+        # uid will be fasttryout. Format: `https://`endpoint_id`.`region`-`uid`.
+        # prediction.vertexai.goog`.
         # Corresponds to the JSON property `dedicatedEndpointDns`
         # @return [String]
         attr_accessor :dedicated_endpoint_dns
@@ -7066,6 +7145,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RougeInput]
         attr_accessor :rouge_input
       
+        # Instance and metric spec for RubricBasedInstructionFollowing metric.
+        # Corresponds to the JSON property `rubricBasedInstructionFollowingInput`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RubricBasedInstructionFollowingInput]
+        attr_accessor :rubric_based_instruction_following_input
+      
         # Input for safety metric.
         # Corresponds to the JSON property `safetyInput`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetyInput]
@@ -7160,6 +7244,7 @@ module Google
           @question_answering_quality_input = args[:question_answering_quality_input] if args.key?(:question_answering_quality_input)
           @question_answering_relevance_input = args[:question_answering_relevance_input] if args.key?(:question_answering_relevance_input)
           @rouge_input = args[:rouge_input] if args.key?(:rouge_input)
+          @rubric_based_instruction_following_input = args[:rubric_based_instruction_following_input] if args.key?(:rubric_based_instruction_following_input)
           @safety_input = args[:safety_input] if args.key?(:safety_input)
           @summarization_helpfulness_input = args[:summarization_helpfulness_input] if args.key?(:summarization_helpfulness_input)
           @summarization_quality_input = args[:summarization_quality_input] if args.key?(:summarization_quality_input)
@@ -7268,6 +7353,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RougeResults]
         attr_accessor :rouge_results
       
+        # Result for RubricBasedInstructionFollowing metric.
+        # Corresponds to the JSON property `rubricBasedInstructionFollowingResult`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RubricBasedInstructionFollowingResult]
+        attr_accessor :rubric_based_instruction_following_result
+      
         # Spec for safety result.
         # Corresponds to the JSON property `safetyResult`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetyResult]
@@ -7361,6 +7451,7 @@ module Google
           @question_answering_quality_result = args[:question_answering_quality_result] if args.key?(:question_answering_quality_result)
           @question_answering_relevance_result = args[:question_answering_relevance_result] if args.key?(:question_answering_relevance_result)
           @rouge_results = args[:rouge_results] if args.key?(:rouge_results)
+          @rubric_based_instruction_following_result = args[:rubric_based_instruction_following_result] if args.key?(:rubric_based_instruction_following_result)
           @safety_result = args[:safety_result] if args.key?(:safety_result)
           @summarization_helpfulness_result = args[:summarization_helpfulness_result] if args.key?(:summarization_helpfulness_result)
           @summarization_quality_result = args[:summarization_quality_result] if args.key?(:summarization_quality_result)
@@ -11911,6 +12002,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_token_count
       
+        # Output only. Traffic type. This shows whether a request consumes Pay-As-You-Go
+        # or Provisioned Throughput quota.
+        # Corresponds to the JSON property `trafficType`
+        # @return [String]
+        attr_accessor :traffic_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -11927,6 +12024,7 @@ module Google
           @tool_use_prompt_token_count = args[:tool_use_prompt_token_count] if args.key?(:tool_use_prompt_token_count)
           @tool_use_prompt_tokens_details = args[:tool_use_prompt_tokens_details] if args.key?(:tool_use_prompt_tokens_details)
           @total_token_count = args[:total_token_count] if args.key?(:total_token_count)
+          @traffic_type = args[:traffic_type] if args.key?(:traffic_type)
         end
       end
       
@@ -20026,6 +20124,11 @@ module Google
       class GoogleCloudAiplatformV1PairwiseMetricInstance
         include Google::Apis::Core::Hashable
       
+        # Map of placeholder in metric prompt template to contents of model input.
+        # Corresponds to the JSON property `contentMapInstance`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ContentMap]
+        attr_accessor :content_map_instance
+      
         # Instance specified as a json string. String key-value pairs are expected in
         # the json_instance to render PairwiseMetricSpec.instance_prompt_template.
         # Corresponds to the JSON property `jsonInstance`
@@ -20038,6 +20141,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @content_map_instance = args[:content_map_instance] if args.key?(:content_map_instance)
           @json_instance = args[:json_instance] if args.key?(:json_instance)
         end
       end
@@ -20045,6 +20149,11 @@ module Google
       # Spec for pairwise metric result.
       class GoogleCloudAiplatformV1PairwiseMetricResult
         include Google::Apis::Core::Hashable
+      
+        # Spec for custom output.
+        # Corresponds to the JSON property `customOutput`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CustomOutput]
+        attr_accessor :custom_output
       
         # Output only. Explanation for pairwise metric score.
         # Corresponds to the JSON property `explanation`
@@ -20062,6 +20171,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_output = args[:custom_output] if args.key?(:custom_output)
           @explanation = args[:explanation] if args.key?(:explanation)
           @pairwise_choice = args[:pairwise_choice] if args.key?(:pairwise_choice)
         end
@@ -20081,6 +20191,11 @@ module Google
         # @return [String]
         attr_accessor :candidate_response_field_name
       
+        # Spec for custom output format configuration.
+        # Corresponds to the JSON property `customOutputFormatConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CustomOutputFormatConfig]
+        attr_accessor :custom_output_format_config
+      
         # Required. Metric prompt template for pairwise metric.
         # Corresponds to the JSON property `metricPromptTemplate`
         # @return [String]
@@ -20099,6 +20214,7 @@ module Google
         def update!(**args)
           @baseline_response_field_name = args[:baseline_response_field_name] if args.key?(:baseline_response_field_name)
           @candidate_response_field_name = args[:candidate_response_field_name] if args.key?(:candidate_response_field_name)
+          @custom_output_format_config = args[:custom_output_format_config] if args.key?(:custom_output_format_config)
           @metric_prompt_template = args[:metric_prompt_template] if args.key?(:metric_prompt_template)
           @system_instruction = args[:system_instruction] if args.key?(:system_instruction)
         end
@@ -21210,6 +21326,11 @@ module Google
       class GoogleCloudAiplatformV1PointwiseMetricInstance
         include Google::Apis::Core::Hashable
       
+        # Map of placeholder in metric prompt template to contents of model input.
+        # Corresponds to the JSON property `contentMapInstance`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ContentMap]
+        attr_accessor :content_map_instance
+      
         # Instance specified as a json string. String key-value pairs are expected in
         # the json_instance to render PointwiseMetricSpec.instance_prompt_template.
         # Corresponds to the JSON property `jsonInstance`
@@ -21222,6 +21343,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @content_map_instance = args[:content_map_instance] if args.key?(:content_map_instance)
           @json_instance = args[:json_instance] if args.key?(:json_instance)
         end
       end
@@ -21229,6 +21351,11 @@ module Google
       # Spec for pointwise metric result.
       class GoogleCloudAiplatformV1PointwiseMetricResult
         include Google::Apis::Core::Hashable
+      
+        # Spec for custom output.
+        # Corresponds to the JSON property `customOutput`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CustomOutput]
+        attr_accessor :custom_output
       
         # Output only. Explanation for pointwise metric score.
         # Corresponds to the JSON property `explanation`
@@ -21246,6 +21373,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_output = args[:custom_output] if args.key?(:custom_output)
           @explanation = args[:explanation] if args.key?(:explanation)
           @score = args[:score] if args.key?(:score)
         end
@@ -21254,6 +21382,11 @@ module Google
       # Spec for pointwise metric.
       class GoogleCloudAiplatformV1PointwiseMetricSpec
         include Google::Apis::Core::Hashable
+      
+        # Spec for custom output format configuration.
+        # Corresponds to the JSON property `customOutputFormatConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CustomOutputFormatConfig]
+        attr_accessor :custom_output_format_config
       
         # Required. Metric prompt template for pointwise metric.
         # Corresponds to the JSON property `metricPromptTemplate`
@@ -21271,6 +21404,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_output_format_config = args[:custom_output_format_config] if args.key?(:custom_output_format_config)
           @metric_prompt_template = args[:metric_prompt_template] if args.key?(:metric_prompt_template)
           @system_instruction = args[:system_instruction] if args.key?(:system_instruction)
         end
@@ -23927,6 +24061,25 @@ module Google
         end
       end
       
+      # Raw output.
+      class GoogleCloudAiplatformV1RawOutput
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Raw output string.
+        # Corresponds to the JSON property `rawOutput`
+        # @return [Array<String>]
+        attr_accessor :raw_output
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @raw_output = args[:raw_output] if args.key?(:raw_output)
+        end
+      end
+      
       # Request message for PredictionService.RawPredict.
       class GoogleCloudAiplatformV1RawPredictRequest
         include Google::Apis::Core::Hashable
@@ -25230,6 +25383,121 @@ module Google
           @rouge_type = args[:rouge_type] if args.key?(:rouge_type)
           @split_summaries = args[:split_summaries] if args.key?(:split_summaries)
           @use_stemmer = args[:use_stemmer] if args.key?(:use_stemmer)
+        end
+      end
+      
+      # Instance and metric spec for RubricBasedInstructionFollowing metric.
+      class GoogleCloudAiplatformV1RubricBasedInstructionFollowingInput
+        include Google::Apis::Core::Hashable
+      
+        # Instance for RubricBasedInstructionFollowing metric - one instance corresponds
+        # to one row in an evaluation dataset.
+        # Corresponds to the JSON property `instance`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RubricBasedInstructionFollowingInstance]
+        attr_accessor :instance
+      
+        # Spec for RubricBasedInstructionFollowing metric - returns rubrics and verdicts
+        # corresponding to rubrics along with overall score.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RubricBasedInstructionFollowingSpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Instance for RubricBasedInstructionFollowing metric - one instance corresponds
+      # to one row in an evaluation dataset.
+      class GoogleCloudAiplatformV1RubricBasedInstructionFollowingInstance
+        include Google::Apis::Core::Hashable
+      
+        # Required. Instance specified as a json string. String key-value pairs are
+        # expected in the json_instance to render RubricBasedInstructionFollowing prompt
+        # templates.
+        # Corresponds to the JSON property `jsonInstance`
+        # @return [String]
+        attr_accessor :json_instance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @json_instance = args[:json_instance] if args.key?(:json_instance)
+        end
+      end
+      
+      # Result for RubricBasedInstructionFollowing metric.
+      class GoogleCloudAiplatformV1RubricBasedInstructionFollowingResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of per rubric critique results.
+        # Corresponds to the JSON property `rubricCritiqueResults`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RubricCritiqueResult>]
+        attr_accessor :rubric_critique_results
+      
+        # Output only. Overall score for the instruction following.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rubric_critique_results = args[:rubric_critique_results] if args.key?(:rubric_critique_results)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Spec for RubricBasedInstructionFollowing metric - returns rubrics and verdicts
+      # corresponding to rubrics along with overall score.
+      class GoogleCloudAiplatformV1RubricBasedInstructionFollowingSpec
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Rubric critique result.
+      class GoogleCloudAiplatformV1RubricCritiqueResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Rubric to be evaluated.
+        # Corresponds to the JSON property `rubric`
+        # @return [String]
+        attr_accessor :rubric
+      
+        # Output only. Verdict for the rubric - true if the rubric is met, false
+        # otherwise.
+        # Corresponds to the JSON property `verdict`
+        # @return [Boolean]
+        attr_accessor :verdict
+        alias_method :verdict?, :verdict
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rubric = args[:rubric] if args.key?(:rubric)
+          @verdict = args[:verdict] if args.key?(:verdict)
         end
       end
       
