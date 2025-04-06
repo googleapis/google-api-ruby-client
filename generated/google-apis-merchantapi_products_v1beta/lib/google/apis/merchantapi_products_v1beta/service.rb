@@ -55,10 +55,10 @@ module Google
         # updating, or deleting a product input, it may take several minutes before the
         # processed product can be retrieved.
         # @param [String] name
-        #   Required. The name of the product input resource to delete. Format: accounts/`
-        #   account`/productInputs/`product` where the last section `product` consists of
-        #   4 parts: channel~content_language~feed_label~offer_id example for product name
-        #   is "accounts/123/productInputs/online~en~US~sku123"
+        #   Required. The name of the product input resource to delete. Format: `accounts/`
+        #   account`/productInputs/`product`` where the last section `product` consists of
+        #   4 parts: `channel~content_language~feed_label~offer_id` example for product
+        #   name is `accounts/123/productInputs/online~en~US~sku123`.
         # @param [String] data_source
         #   Required. The primary or supplemental data source from which the product input
         #   should be deleted. Format: `accounts/`account`/dataSources/`datasource``.
@@ -95,8 +95,8 @@ module Google
         # replaces that entry. After inserting, updating, or deleting a product input,
         # it may take several minutes before the processed product can be retrieved.
         # @param [String] parent
-        #   Required. The account where this product will be inserted. Format: accounts/`
-        #   account`
+        #   Required. The account where this product will be inserted. Format: `accounts/`
+        #   account``
         # @param [Google::Apis::MerchantapiProductsV1beta::ProductInput] product_input_object
         # @param [String] data_source
         #   Required. The primary or supplemental product data source name. If the product
@@ -137,11 +137,10 @@ module Google
         # inserting, updating, or deleting a product input, it may take several minutes
         # before the processed product can be retrieved.
         # @param [String] name
-        #   Identifier. The name of the product input. Format: `"`productinput.name=
-        #   accounts/`account`/productInputs/`productinput``"` where the last section `
-        #   productinput` consists of 4 parts: channel~content_language~feed_label~
-        #   offer_id example for product input name is "accounts/123/productInputs/online~
-        #   en~US~sku123"
+        #   Identifier. The name of the product input. Format: `accounts/`account`/
+        #   productInputs/`productinput`` where the last section `productinput` consists
+        #   of 4 parts: `channel~content_language~feed_label~offer_id` example for product
+        #   input name is `accounts/123/productInputs/online~en~US~sku123`
         # @param [Google::Apis::MerchantapiProductsV1beta::ProductInput] product_input_object
         # @param [String] data_source
         #   Required. The primary or supplemental product data source where `data_source`
@@ -192,9 +191,9 @@ module Google
         # before the updated final product can be retrieved.
         # @param [String] name
         #   Required. The name of the product to retrieve. Format: `accounts/`account`/
-        #   products/`product`` where the last section `product` consists of 4 parts:
-        #   channel~content_language~feed_label~offer_id example for product name is "
-        #   accounts/123/products/online~en~US~sku123"
+        #   products/`product`` where the last section `product` consists of 4 parts: `
+        #   channel~content_language~feed_label~offer_id` example for product name is `
+        #   accounts/123/products/online~en~US~sku123`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -223,13 +222,13 @@ module Google
         end
         
         # Lists the processed products in your Merchant Center account. The response
-        # might contain fewer items than specified by pageSize. Rely on pageToken to
+        # might contain fewer items than specified by `pageSize`. Rely on `pageToken` to
         # determine if there are more items to be requested. After inserting, updating,
         # or deleting a product input, it may take several minutes before the updated
         # processed product can be retrieved.
         # @param [String] parent
-        #   Required. The account to list processed products for. Format: accounts/`
-        #   account`
+        #   Required. The account to list processed products for. Format: `accounts/`
+        #   account``
         # @param [Fixnum] page_size
         #   The maximum number of products to return. The service may return fewer than
         #   this value. The maximum value is 250; values above 250 will be coerced to 250.
