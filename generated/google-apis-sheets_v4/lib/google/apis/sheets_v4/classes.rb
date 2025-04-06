@@ -1513,10 +1513,10 @@ module Google
       class BatchClearValuesByDataFilterResponse
         include Google::Apis::Core::Hashable
       
-        # The ranges that were cleared, in [A1 notation](/sheets/api/guides/concepts#
-        # cell). If the requests are for an unbounded range or a ranger larger than the
-        # bounds of the sheet, this is the actual ranges that were cleared, bounded to
-        # the sheet's limits.
+        # The ranges that were cleared, in [A1 notation](https://developers.google.com/
+        # workspace/sheets/api/guides/concepts#cell). If the requests are for an
+        # unbounded range or a ranger larger than the bounds of the sheet, this is the
+        # actual ranges that were cleared, bounded to the sheet's limits.
         # Corresponds to the JSON property `clearedRanges`
         # @return [Array<String>]
         attr_accessor :cleared_ranges
@@ -1541,8 +1541,8 @@ module Google
       class BatchClearValuesRequest
         include Google::Apis::Core::Hashable
       
-        # The ranges to clear, in [A1 notation or R1C1 notation](/sheets/api/guides/
-        # concepts#cell).
+        # The ranges to clear, in [A1 notation or R1C1 notation](https://developers.
+        # google.com/workspace/sheets/api/guides/concepts#cell).
         # Corresponds to the JSON property `ranges`
         # @return [Array<String>]
         attr_accessor :ranges
@@ -6874,8 +6874,8 @@ module Google
       
         # Pattern string used for formatting. If not set, a default pattern based on the
         # user's locale will be used if necessary for the given type. See the [Date and
-        # Number Formats guide](/sheets/api/guides/formats) for more information about
-        # the supported patterns.
+        # Number Formats guide](https://developers.google.com/workspace/sheets/api/
+        # guides/formats) for more information about the supported patterns.
         # Corresponds to the JSON property `pattern`
         # @return [String]
         attr_accessor :pattern
@@ -11125,8 +11125,8 @@ module Google
         # @return [Google::Apis::SheetsV4::ValueRange]
         attr_accessor :updated_data
       
-        # The range (in [A1 notation](/sheets/api/guides/concepts#cell)) that updates
-        # were applied to.
+        # The range (in [A1 notation](https://developers.google.com/workspace/sheets/api/
+        # guides/concepts#cell)) that updates were applied to.
         # Corresponds to the JSON property `updatedRange`
         # @return [String]
         attr_accessor :updated_range
@@ -11215,11 +11215,11 @@ module Google
         # @return [String]
         attr_accessor :major_dimension
       
-        # The range the values cover, in [A1 notation](/sheets/api/guides/concepts#cell).
-        # For output, this range indicates the entire requested range, even though the
-        # values will exclude trailing rows and columns. When appending values, this
-        # field represents the range to search for a table, after which values will be
-        # appended.
+        # The range the values cover, in [A1 notation](https://developers.google.com/
+        # workspace/sheets/api/guides/concepts#cell). For output, this range indicates
+        # the entire requested range, even though the values will exclude trailing rows
+        # and columns. When appending values, this field represents the range to search
+        # for a table, after which values will be appended.
         # Corresponds to the JSON property `range`
         # @return [String]
         attr_accessor :range
