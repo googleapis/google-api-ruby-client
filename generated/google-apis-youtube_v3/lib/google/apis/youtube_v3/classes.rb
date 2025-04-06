@@ -2128,7 +2128,7 @@ module Google
       class CommentSnippet
         include Google::Apis::Core::Hashable
       
-        # The id of the author's YouTube channel, if any.
+        # Contains the id of the author's YouTube channel, if any.
         # Corresponds to the JSON property `authorChannelId`
         # @return [Google::Apis::YoutubeV3::CommentSnippetAuthorChannelId]
         attr_accessor :author_channel_id
@@ -2155,8 +2155,8 @@ module Google
         alias_method :can_rate?, :can_rate
       
         # The id of the corresponding YouTube channel. In case of a channel comment this
-        # is the channel the comment refers to. In case of a video comment it's the
-        # video's channel.
+        # is the channel the comment refers to. In case of a video or post comment it's
+        # the video/post's channel.
         # Corresponds to the JSON property `channelId`
         # @return [String]
         attr_accessor :channel_id
@@ -2172,10 +2172,15 @@ module Google
         # @return [String]
         attr_accessor :moderation_status
       
-        # The unique id of the parent comment, only set for replies.
+        # The unique id of the top-level comment, only set for replies.
         # Corresponds to the JSON property `parentId`
         # @return [String]
         attr_accessor :parent_id
+      
+        # The ID of the post the comment refers to, if any.
+        # Corresponds to the JSON property `postId`
+        # @return [String]
+        attr_accessor :post_id
       
         # The date and time when the comment was originally published.
         # Corresponds to the JSON property `publishedAt`
@@ -2229,6 +2234,7 @@ module Google
           @like_count = args[:like_count] if args.key?(:like_count)
           @moderation_status = args[:moderation_status] if args.key?(:moderation_status)
           @parent_id = args[:parent_id] if args.key?(:parent_id)
+          @post_id = args[:post_id] if args.key?(:post_id)
           @published_at = args[:published_at] if args.key?(:published_at)
           @text_display = args[:text_display] if args.key?(:text_display)
           @text_original = args[:text_original] if args.key?(:text_original)
@@ -2238,11 +2244,11 @@ module Google
         end
       end
       
-      # The id of the author's YouTube channel, if any.
+      # Contains the id of the author's YouTube channel, if any.
       class CommentSnippetAuthorChannelId
         include Google::Apis::Core::Hashable
       
-        # 
+        # The id of the author's YouTube channel.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -2400,8 +2406,8 @@ module Google
         alias_method :can_reply?, :can_reply
       
         # The YouTube channel the comments in the thread refer to or the channel with
-        # the video the comments refer to. If video_id isn't set the comments refer to
-        # the channel itself.
+        # the video the comments refer to. If neither video_id nor post_id is set the
+        # comments refer to the channel itself.
         # Corresponds to the JSON property `channelId`
         # @return [String]
         attr_accessor :channel_id
@@ -2413,6 +2419,11 @@ module Google
         attr_accessor :is_public
         alias_method :is_public?, :is_public
       
+        # The ID of the post the comments refer to, if any.
+        # Corresponds to the JSON property `postId`
+        # @return [String]
+        attr_accessor :post_id
+      
         # A *comment* represents a single YouTube comment.
         # Corresponds to the JSON property `topLevelComment`
         # @return [Google::Apis::YoutubeV3::Comment]
@@ -2423,8 +2434,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_reply_count
       
-        # The ID of the video the comments refer to, if any. No video_id implies a
-        # channel discussion comment.
+        # The ID of the video the comments refer to, if any.
         # Corresponds to the JSON property `videoId`
         # @return [String]
         attr_accessor :video_id
@@ -2438,6 +2448,7 @@ module Google
           @can_reply = args[:can_reply] if args.key?(:can_reply)
           @channel_id = args[:channel_id] if args.key?(:channel_id)
           @is_public = args[:is_public] if args.key?(:is_public)
+          @post_id = args[:post_id] if args.key?(:post_id)
           @top_level_comment = args[:top_level_comment] if args.key?(:top_level_comment)
           @total_reply_count = args[:total_reply_count] if args.key?(:total_reply_count)
           @video_id = args[:video_id] if args.key?(:video_id)

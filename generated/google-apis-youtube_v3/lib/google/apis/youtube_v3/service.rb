@@ -888,6 +888,8 @@ module Google
         #   The *pageToken* parameter identifies a specific page in the result set that
         #   should be returned. In an API response, the nextPageToken and prevPageToken
         #   properties identify other pages that could be retrieved.
+        # @param [String] post_id
+        #   Returns the comment threads of the specified post.
         # @param [String] search_terms
         #   Limits the returned comment threads to those matching the specified key words.
         #   Not compatible with the 'id' filter.
@@ -912,7 +914,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_comment_threads(part, all_threads_related_to_channel_id: nil, channel_id: nil, id: nil, max_results: nil, moderation_status: nil, order: nil, page_token: nil, search_terms: nil, text_format: nil, video_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_comment_threads(part, all_threads_related_to_channel_id: nil, channel_id: nil, id: nil, max_results: nil, moderation_status: nil, order: nil, page_token: nil, post_id: nil, search_terms: nil, text_format: nil, video_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'youtube/v3/commentThreads', options)
           command.response_representation = Google::Apis::YoutubeV3::ListCommentThreadsResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::ListCommentThreadsResponse
@@ -924,6 +926,7 @@ module Google
           command.query['order'] = order unless order.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['part'] = part unless part.nil?
+          command.query['postId'] = post_id unless post_id.nil?
           command.query['searchTerms'] = search_terms unless search_terms.nil?
           command.query['textFormat'] = text_format unless text_format.nil?
           command.query['videoId'] = video_id unless video_id.nil?
