@@ -11478,6 +11478,27 @@ module Google
         end
       end
       
+      # Request to enable/disable http call for a provisioned client
+      class GoogleCloudIntegrationsV1alphaToggleHttpRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. REQUIRED: True if http call feature should be turned on for this
+        # region
+        # Corresponds to the JSON property `enableHttpCall`
+        # @return [Boolean]
+        attr_accessor :enable_http_call
+        alias_method :enable_http_call?, :enable_http_call
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_http_call = args[:enable_http_call] if args.key?(:enable_http_call)
+        end
+      end
+      
       # Configuration detail of a trigger.
       class GoogleCloudIntegrationsV1alphaTriggerConfig
         include Google::Apis::Core::Hashable
