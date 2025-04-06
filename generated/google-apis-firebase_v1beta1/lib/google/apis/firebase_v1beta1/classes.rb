@@ -1016,7 +1016,15 @@ module Google
         end
       end
       
-      # This is proto2's version of MessageSet.
+      # This is proto2's version of MessageSet. DEPRECATED: DO NOT USE FOR NEW FIELDS.
+      # If you are using editions or proto2, please make your own extendable messages
+      # for your use case. If you are using proto3, please use `Any` instead.
+      # MessageSet was the implementation of extensions for proto1. When proto2 was
+      # introduced, extensions were implemented as a first-class feature. This schema
+      # for MessageSet was meant to be a "bridge" solution to migrate MessageSet-
+      # bearing messages from proto1 to proto2. This schema has been open-sourced only
+      # to facilitate the migration of Google products with MessageSet-bearing
+      # messages to open-source environments.
       class MessageSet
         include Google::Apis::Core::Hashable
       
@@ -1461,7 +1469,15 @@ module Google
         # @return [String]
         attr_accessor :message
       
-        # This is proto2's version of MessageSet.
+        # This is proto2's version of MessageSet. DEPRECATED: DO NOT USE FOR NEW FIELDS.
+        # If you are using editions or proto2, please make your own extendable messages
+        # for your use case. If you are using proto3, please use `Any` instead.
+        # MessageSet was the implementation of extensions for proto1. When proto2 was
+        # introduced, extensions were implemented as a first-class feature. This schema
+        # for MessageSet was meant to be a "bridge" solution to migrate MessageSet-
+        # bearing messages from proto1 to proto2. This schema has been open-sourced only
+        # to facilitate the migration of Google products with MessageSet-bearing
+        # messages to open-source environments.
         # Corresponds to the JSON property `messageSet`
         # @return [Google::Apis::FirebaseV1beta1::MessageSet]
         attr_accessor :message_set
