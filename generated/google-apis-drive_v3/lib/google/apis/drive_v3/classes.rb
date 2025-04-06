@@ -772,7 +772,7 @@ module Google
       
         # A region of the document represented as a JSON string. For details on defining
         # anchor properties, refer to [Manage comments and replies](https://developers.
-        # google.com/drive/api/v3/manage-comments).
+        # google.com/workspace/drive/api/v3/manage-comments).
         # Corresponds to the JSON property `anchor`
         # @return [String]
         attr_accessor :anchor
@@ -3112,10 +3112,10 @@ module Google
       # A permission for a file. A permission grants a user, group, domain, or the
       # world access to a file or a folder hierarchy. By default, permissions requests
       # only return a subset of fields. Permission kind, ID, type, and role are always
-      # returned. To retrieve specific fields, see https://developers.google.com/drive/
-      # api/guides/fields-parameter. Some resource methods (such as `permissions.
-      # update`) require a `permissionId`. Use the `permissions.list` method to
-      # retrieve the ID for a file, folder, or shared drive.
+      # returned. To retrieve specific fields, see https://developers.google.com/
+      # workspace/drive/api/guides/fields-parameter. Some resource methods (such as `
+      # permissions.update`) require a `permissionId`. Use the `permissions.list`
+      # method to retrieve the ID for a file, folder, or shared drive.
       class Permission
         include Google::Apis::Core::Hashable
       
