@@ -24,7 +24,7 @@ module Google
     # The Gmail API lets you view and manage Gmail mailbox data like threads,
     # messages, and labels.
     #
-    # @see https://developers.google.com/gmail/api/
+    # @see https://developers.google.com/workspace/gmail/api/
     module GmailV1
       # Version of the Gmail API this client connects to.
       # This is NOT the gem version.
