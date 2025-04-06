@@ -311,6 +311,9 @@ module Google
         # Returns all workstation clusters in the specified location.
         # @param [String] parent
         #   Required. Parent resource name.
+        # @param [String] filter
+        #   Optional. Filter the WorkstationClusters to be listed. Possible filters are
+        #   described in https://google.aip.dev/160.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of items to return.
         # @param [String] page_token
@@ -332,11 +335,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_workstation_clusters(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_workstation_clusters(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta/{+parent}/workstationClusters', options)
           command.response_representation = Google::Apis::WorkstationsV1beta::ListWorkstationClustersResponse::Representation
           command.response_class = Google::Apis::WorkstationsV1beta::ListWorkstationClustersResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -550,6 +554,9 @@ module Google
         # Returns all workstation configurations in the specified cluster.
         # @param [String] parent
         #   Required. Parent resource name.
+        # @param [String] filter
+        #   Optional. Filter the WorkstationConfigs to be listed. Possible filters are
+        #   described in https://google.aip.dev/160.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of items to return.
         # @param [String] page_token
@@ -571,11 +578,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_workstation_cluster_workstation_configs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_workstation_cluster_workstation_configs(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta/{+parent}/workstationConfigs', options)
           command.response_representation = Google::Apis::WorkstationsV1beta::ListWorkstationConfigsResponse::Representation
           command.response_class = Google::Apis::WorkstationsV1beta::ListWorkstationConfigsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -934,6 +942,9 @@ module Google
         # Returns all Workstations using the specified workstation configuration.
         # @param [String] parent
         #   Required. Parent resource name.
+        # @param [String] filter
+        #   Optional. Filter the Workstations to be listed. Possible filters are described
+        #   in https://google.aip.dev/160.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of items to return.
         # @param [String] page_token
@@ -955,11 +966,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_workstation_cluster_workstation_config_workstations(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_workstation_cluster_workstation_config_workstations(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta/{+parent}/workstations', options)
           command.response_representation = Google::Apis::WorkstationsV1beta::ListWorkstationsResponse::Representation
           command.response_class = Google::Apis::WorkstationsV1beta::ListWorkstationsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
