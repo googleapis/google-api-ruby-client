@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LdapConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListBackupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -371,6 +377,8 @@ module Google
       class DirectoryServicesConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ldap, as: 'ldap', class: Google::Apis::FileV1beta1::LdapConfig, decorator: Google::Apis::FileV1beta1::LdapConfig::Representation
+      
           property :managed_active_directory, as: 'managedActiveDirectory', class: Google::Apis::FileV1beta1::ManagedActiveDirectoryConfig, decorator: Google::Apis::FileV1beta1::ManagedActiveDirectoryConfig::Representation
       
         end
@@ -545,6 +553,16 @@ module Google
           collection :suspension_reasons, as: 'suspensionReasons'
           hash :tags, as: 'tags'
           property :tier, as: 'tier'
+        end
+      end
+      
+      class LdapConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+          property :groups_ou, as: 'groupsOu'
+          collection :servers, as: 'servers'
+          property :users_ou, as: 'usersOu'
         end
       end
       
