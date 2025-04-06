@@ -1078,7 +1078,7 @@ module Google
         # includes a specific apartment number, then the `input_granularity` here will
         # be `SUB_PREMISE`. If we cannot match the apartment number in the databases or
         # the apartment number is invalid, the `validation_granularity` will likely be `
-        # PREMISE` or below.
+        # PREMISE` or worse.
         # Corresponds to the JSON property `inputGranularity`
         # @return [String]
         attr_accessor :input_granularity
