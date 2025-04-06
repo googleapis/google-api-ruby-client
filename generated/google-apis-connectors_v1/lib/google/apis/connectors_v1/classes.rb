@@ -1227,6 +1227,12 @@ module Google
         attr_accessor :provision_cloud_spanner
         alias_method :provision_cloud_spanner?, :provision_cloud_spanner
       
+        # Indicate whether memstore is required for connector job.
+        # Corresponds to the JSON property `provisionMemstore`
+        # @return [Boolean]
+        attr_accessor :provision_memstore
+        alias_method :provision_memstore?, :provision_memstore
+      
         # Max QPS supported by the connector version before throttling of requests.
         # Corresponds to the JSON property `ratelimitThreshold`
         # @return [Fixnum]
@@ -1263,6 +1269,7 @@ module Google
           @migrate_deployment_model = args[:migrate_deployment_model] if args.key?(:migrate_deployment_model)
           @migrate_tls = args[:migrate_tls] if args.key?(:migrate_tls)
           @provision_cloud_spanner = args[:provision_cloud_spanner] if args.key?(:provision_cloud_spanner)
+          @provision_memstore = args[:provision_memstore] if args.key?(:provision_memstore)
           @ratelimit_threshold = args[:ratelimit_threshold] if args.key?(:ratelimit_threshold)
           @resource_limits = args[:resource_limits] if args.key?(:resource_limits)
           @resource_requests = args[:resource_requests] if args.key?(:resource_requests)
@@ -3784,6 +3791,11 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3792,6 +3804,7 @@ module Google
         def update!(**args)
           @managed_zones = args[:managed_zones] if args.key?(:managed_zones)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
