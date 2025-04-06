@@ -997,8 +997,7 @@ module Google
         end
       end
       
-      # An event generated when an enterprise is upgraded. **Note:** This feature is
-      # not generally available.
+      # An event generated when an enterprise is upgraded.
       class EnterpriseUpgradeEvent
         include Google::Apis::Core::Hashable
       
@@ -1807,8 +1806,7 @@ module Google
         # @return [String]
         attr_accessor :enterprise_id
       
-        # An event generated when an enterprise is upgraded. **Note:** This feature is
-        # not generally available.
+        # An event generated when an enterprise is upgraded.
         # Corresponds to the JSON property `enterpriseUpgradeEvent`
         # @return [Google::Apis::AndroidenterpriseV1::EnterpriseUpgradeEvent]
         attr_accessor :enterprise_upgrade_event
