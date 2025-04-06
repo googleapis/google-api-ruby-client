@@ -548,7 +548,8 @@ module Google
         attr_accessor :publish_settings
       
         # Output only. The form URI to share with responders. This opens a page that
-        # allows the user to submit responses but not edit the questions.
+        # allows the user to submit responses but not edit the questions. For forms that
+        # have `publish_settings` value set, this will be the published form URI.
         # Corresponds to the JSON property `responderUri`
         # @return [String]
         attr_accessor :responder_uri
@@ -558,10 +559,12 @@ module Google
         # of the revision ID may change over time, so it should be treated opaquely. A
         # returned revision ID is only guaranteed to be valid for 24 hours after it has
         # been returned and cannot be shared across users. If the revision ID is
-        # unchanged between calls, then the form has not changed. Conversely, a changed
-        # ID (for the same form and user) usually means the form has been updated;
-        # however, a changed ID can also be due to internal factors such as ID format
-        # changes.
+        # unchanged between calls, then the form *content* has not changed. Conversely,
+        # a changed ID (for the same form and user) usually means the form *content* has
+        # been updated; however, a changed ID can also be due to internal factors such
+        # as ID format changes. Form content excludes form metadata, including: *
+        # sharing settings (who has access to the form) * `publish_settings` (if the
+        # form supports publishing and if it is published)
         # Corresponds to the JSON property `revisionId`
         # @return [String]
         attr_accessor :revision_id
