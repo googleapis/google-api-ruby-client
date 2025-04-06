@@ -31,7 +31,7 @@ module Google
       #    Gmail = Google::Apis::GmailV1 # Alias the module
       #    service = Gmail::GmailService.new
       #
-      # @see https://developers.google.com/gmail/api/
+      # @see https://developers.google.com/workspace/gmail/api/
       class GmailService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://gmail.$UNIVERSE_DOMAIN$/"
 
@@ -925,7 +925,7 @@ module Google
         #   Only return messages with labels that match all of the specified label IDs.
         #   Messages in a thread might have labels that other messages in the same thread
         #   don't have. To learn more, see [Manage labels on messages and threads](https://
-        #   developers.google.com/gmail/api/guides/labels#
+        #   developers.google.com/workspace/gmail/api/guides/labels#
         #   manage_labels_on_messages_threads).
         # @param [Fixnum] max_results
         #   Maximum number of messages to return. This field defaults to 100. The maximum
@@ -1008,7 +1008,7 @@ module Google
         
         # Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc`
         # headers. For example usage, see [Sending email](https://developers.google.com/
-        # gmail/api/guides/sending).
+        # workspace/gmail/api/guides/sending).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
