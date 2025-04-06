@@ -382,7 +382,7 @@ module Google
       
         # Required. The type of the alert. This is output only after alert is created.
         # For a list of available alert types see [Google Workspace Alert types](https://
-        # developers.google.com/admin-sdk/alertcenter/reference/alert-types).
+        # developers.google.com/workspace/admin/alertcenter/reference/alert-types).
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1561,8 +1561,8 @@ module Google
       end
       
       # Settings for callback notifications. For more details see [Google Workspace
-      # Alert Notification](https://developers.google.com/admin-sdk/alertcenter/guides/
-      # notifications).
+      # Alert Notification](https://developers.google.com/workspace/admin/alertcenter/
+      # guides/notifications).
       class Notification
         include Google::Apis::Core::Hashable
       
@@ -1584,8 +1584,8 @@ module Google
       end
       
       # Alert for a spike in user reported phishing. *Warning*: This type has been
-      # deprecated. Use [MailPhishing](/admin-sdk/alertcenter/reference/rest/v1beta1/
-      # MailPhishing) instead.
+      # deprecated. Use [MailPhishing](https://developers.google.com/workspace/admin/
+      # alertcenter/reference/rest/v1beta1/MailPhishing) instead.
       class PhishingSpike
         include Google::Apis::Core::Hashable
       
