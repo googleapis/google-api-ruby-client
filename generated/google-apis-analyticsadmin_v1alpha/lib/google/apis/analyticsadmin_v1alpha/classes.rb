@@ -1903,6 +1903,12 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty]
         attr_accessor :property
       
+        # A Reporting Data Annotation is a comment connected to certain dates for
+        # reporting data.
+        # Corresponds to the JSON property `reportingDataAnnotation`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation]
+        attr_accessor :reporting_data_annotation
+      
         # A link between a Google Analytics property and a Search Ads 360 entity.
         # Corresponds to the JSON property `searchAds360Link`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSearchAds360Link]
@@ -1943,6 +1949,7 @@ module Google
           @key_event = args[:key_event] if args.key?(:key_event)
           @measurement_protocol_secret = args[:measurement_protocol_secret] if args.key?(:measurement_protocol_secret)
           @property = args[:property] if args.key?(:property)
+          @reporting_data_annotation = args[:reporting_data_annotation] if args.key?(:reporting_data_annotation)
           @search_ads360_link = args[:search_ads360_link] if args.key?(:search_ads360_link)
           @skadnetwork_conversion_value_schema = args[:skadnetwork_conversion_value_schema] if args.key?(:skadnetwork_conversion_value_schema)
         end
@@ -4574,6 +4581,32 @@ module Google
         end
       end
       
+      # Response message for ListReportingDataAnnotation RPC.
+      class GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of Reporting Data Annotations.
+        # Corresponds to the JSON property `reportingDataAnnotations`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation>]
+        attr_accessor :reporting_data_annotations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @reporting_data_annotations = args[:reporting_data_annotations] if args.key?(:reporting_data_annotations)
+        end
+      end
+      
       # Response message for ListRollupPropertySourceLinks RPC.
       class GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse
         include Google::Apis::Core::Hashable
@@ -5110,6 +5143,114 @@ module Google
         # Update properties of this object
         def update!(**args)
           @event_edit_rules = args[:event_edit_rules] if args.key?(:event_edit_rules)
+        end
+      end
+      
+      # A Reporting Data Annotation is a comment connected to certain dates for
+      # reporting data.
+      class GoogleAnalyticsAdminV1alphaReportingDataAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `annotationDate`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleTypeDate]
+        attr_accessor :annotation_date
+      
+        # Represents a Reporting Data Annotation's date range, both start and end dates
+        # are inclusive. Time zones are based on the parent property.
+        # Corresponds to the JSON property `annotationDateRange`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange]
+        attr_accessor :annotation_date_range
+      
+        # Required. The color used for display of this Reporting Data Annotation.
+        # Corresponds to the JSON property `color`
+        # @return [String]
+        attr_accessor :color
+      
+        # Optional. Description for this Reporting Data Annotation.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Identifier. Resource name of this Reporting Data Annotation. Format:
+        # 'properties/`property_id`/reportingDataAnnotations/`reporting_data_annotation`'
+        # Format: 'properties/123/reportingDataAnnotations/456'
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. If true, this annotation was generated by the Google Analytics
+        # system. System-generated annotations cannot be updated or deleted.
+        # Corresponds to the JSON property `systemGenerated`
+        # @return [Boolean]
+        attr_accessor :system_generated
+        alias_method :system_generated?, :system_generated
+      
+        # Required. Human-readable title for this Reporting Data Annotation.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotation_date = args[:annotation_date] if args.key?(:annotation_date)
+          @annotation_date_range = args[:annotation_date_range] if args.key?(:annotation_date_range)
+          @color = args[:color] if args.key?(:color)
+          @description = args[:description] if args.key?(:description)
+          @name = args[:name] if args.key?(:name)
+          @system_generated = args[:system_generated] if args.key?(:system_generated)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Represents a Reporting Data Annotation's date range, both start and end dates
+      # are inclusive. Time zones are based on the parent property.
+      class GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `endDate`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleTypeDate]
+        attr_accessor :end_date
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `startDate`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleTypeDate]
+        attr_accessor :start_date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @start_date = args[:start_date] if args.key?(:start_date)
         end
       end
       
@@ -5789,6 +5930,47 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Represents a whole or partial calendar date, such as a birthday. The time of
+      # day and time zone are either specified elsewhere or are insignificant. The
+      # date is relative to the Gregorian Calendar. This can represent one of the
+      # following: * A full date, with non-zero year, month, and day values. * A month
+      # and day, with a zero year (for example, an anniversary). * A year on its own,
+      # with a zero month and a zero day. * A year and month, with a zero day (for
+      # example, a credit card expiration date). Related types: * google.type.
+      # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+      class GoogleTypeDate
+        include Google::Apis::Core::Hashable
+      
+        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        # specify a year by itself or a year and month where the day isn't significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        # and day.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        # year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
         end
       end
     end
