@@ -286,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EnterpriseUpgradeEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExtensionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1421,6 +1427,14 @@ module Google
       
           collection :terms_and_conditions, as: 'termsAndConditions', class: Google::Apis::AndroidmanagementV1::TermsAndConditions, decorator: Google::Apis::AndroidmanagementV1::TermsAndConditions::Representation
       
+        end
+      end
+      
+      class EnterpriseUpgradeEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enterprise, as: 'enterprise'
+          property :upgrade_state, as: 'upgradeState'
         end
       end
       

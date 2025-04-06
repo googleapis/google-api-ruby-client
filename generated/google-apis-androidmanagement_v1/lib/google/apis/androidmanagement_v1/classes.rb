@@ -2338,6 +2338,33 @@ module Google
         end
       end
       
+      # An event sent for an enterprise upgrade. An enterprise upgrade is a process
+      # that upgrades a managed Google Play Accounts enterprise to a managed Google
+      # domain.
+      class EnterpriseUpgradeEvent
+        include Google::Apis::Core::Hashable
+      
+        # The name of upgraded enterprise in the format "enterprises/`enterprise`"
+        # Corresponds to the JSON property `enterprise`
+        # @return [String]
+        attr_accessor :enterprise
+      
+        # Output only. The upgrade state of the enterprise.
+        # Corresponds to the JSON property `upgradeState`
+        # @return [String]
+        attr_accessor :upgrade_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enterprise = args[:enterprise] if args.key?(:enterprise)
+          @upgrade_state = args[:upgrade_state] if args.key?(:upgrade_state)
+        end
+      end
+      
       # Configuration to enable an app as an extension app, with the capability of
       # interacting with Android Device Policy offline. For Android versions 11 and
       # above, extension apps are exempt from battery restrictions so will not be
