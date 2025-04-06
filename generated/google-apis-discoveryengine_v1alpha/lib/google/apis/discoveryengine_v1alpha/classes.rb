@@ -127,6 +127,17 @@ module Google
         # @return [String]
         attr_accessor :data_storage_transform
       
+        # For the first notification of a |diff_encoded| HttpRequestInfo, this is the
+        # index of the blob mint that Scotty should use when writing the resulting blob.
+        # This field is optional. It's not required ever, even if `
+        # original_object_blob_mint_index` is set. In situations like that, we will use
+        # the destination blob's mint for the destination blob and regular blob ACL
+        # checks for the original object. Note: This field is only for use by Drive API
+        # for diff uploads.
+        # Corresponds to the JSON property `destinationBlobMintIndex`
+        # @return [Fixnum]
+        attr_accessor :destination_blob_mint_index
+      
         # Specifies the Scotty Drop Target to use for uploads. If present in a media
         # response, Scotty does not upload to a standard drop zone. Instead, Scotty
         # saves the upload directly to the location specified in this drop target.
@@ -151,6 +162,17 @@ module Google
         # Corresponds to the JSON property `mediaForDiff`
         # @return [Google::Apis::DiscoveryengineV1alpha::GdataMedia]
         attr_accessor :media_for_diff
+      
+        # For the first notification of a |diff_encoded| HttpRequestInfo, this is the
+        # index of the blob mint that Scotty should use when reading the original blob.
+        # This field is optional. It's not required ever, even if `
+        # destination_blob_mint_index` is set. In situations like that, we will use the
+        # destination blob's mint for the destination blob and regular blob ACL checks
+        # for the original object. Note: This field is only for use by Drive API for
+        # diff uploads.
+        # Corresponds to the JSON property `originalObjectBlobMintIndex`
+        # @return [Fixnum]
+        attr_accessor :original_object_blob_mint_index
       
         # Request class to use for all Blobstore operations for this request.
         # Corresponds to the JSON property `requestClass`
@@ -193,9 +215,11 @@ module Google
         def update!(**args)
           @custom_data = args[:custom_data] if args.key?(:custom_data)
           @data_storage_transform = args[:data_storage_transform] if args.key?(:data_storage_transform)
+          @destination_blob_mint_index = args[:destination_blob_mint_index] if args.key?(:destination_blob_mint_index)
           @dynamic_drop_target = args[:dynamic_drop_target] if args.key?(:dynamic_drop_target)
           @dynamic_dropzone = args[:dynamic_dropzone] if args.key?(:dynamic_dropzone)
           @media_for_diff = args[:media_for_diff] if args.key?(:media_for_diff)
+          @original_object_blob_mint_index = args[:original_object_blob_mint_index] if args.key?(:original_object_blob_mint_index)
           @request_class = args[:request_class] if args.key?(:request_class)
           @scotty_agent_user_id = args[:scotty_agent_user_id] if args.key?(:scotty_agent_user_id)
           @scotty_customer_log = args[:scotty_customer_log] if args.key?(:scotty_customer_log)
@@ -9835,6 +9859,12 @@ module Google
         # @return [String]
         attr_accessor :realtime_state
       
+        # The configuration for realtime sync to store additional params for realtime
+        # sync.
+        # Corresponds to the JSON property `realtimeSyncConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig]
+        attr_accessor :realtime_sync_config
+      
         # Required. The refresh interval for data sync. If duration is set to 0, the
         # data will be synced in real time. The streaming feature is not supported yet.
         # The minimum is 30 minutes and maximum is 7 days.
@@ -9895,12 +9925,40 @@ module Google
           @params = args[:params] if args.key?(:params)
           @private_connectivity_project_id = args[:private_connectivity_project_id] if args.key?(:private_connectivity_project_id)
           @realtime_state = args[:realtime_state] if args.key?(:realtime_state)
+          @realtime_sync_config = args[:realtime_sync_config] if args.key?(:realtime_sync_config)
           @refresh_interval = args[:refresh_interval] if args.key?(:refresh_interval)
           @state = args[:state] if args.key?(:state)
           @static_ip_addresses = args[:static_ip_addresses] if args.key?(:static_ip_addresses)
           @static_ip_enabled = args[:static_ip_enabled] if args.key?(:static_ip_enabled)
           @sync_mode = args[:sync_mode] if args.key?(:sync_mode)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The configuration for realtime sync to store additional params for realtime
+      # sync.
+      class GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The ID of the Secret Manager secret used for webhook secret.
+        # Corresponds to the JSON property `realtimeSyncSecret`
+        # @return [String]
+        attr_accessor :realtime_sync_secret
+      
+        # Optional. Webhook url for the connector to specify additional params for
+        # realtime sync.
+        # Corresponds to the JSON property `webhookUri`
+        # @return [String]
+        attr_accessor :webhook_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @realtime_sync_secret = args[:realtime_sync_secret] if args.key?(:realtime_sync_secret)
+          @webhook_uri = args[:webhook_uri] if args.key?(:webhook_uri)
         end
       end
       

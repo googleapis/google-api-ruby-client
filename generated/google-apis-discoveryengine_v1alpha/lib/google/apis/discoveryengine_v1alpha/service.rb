@@ -853,10 +853,11 @@ module Google
         # @param [String] update_mask
         #   Indicates which fields in the provided DataConnector to update. Supported
         #   field paths include: - refresh_interval - params - auto_run_disabled -
-        #   action_config - destination_configs - blocking_reasons Note: Support for these
-        #   fields may vary depending on the connector type. For example, not all
-        #   connectors support `destination_configs`. If an unsupported or unknown field
-        #   path is provided, the request will return an INVALID_ARGUMENT error.
+        #   action_config - destination_configs - blocking_reasons - sync_mode Note:
+        #   Support for these fields may vary depending on the connector type. For example,
+        #   not all connectors support `destination_configs`. If an unsupported or
+        #   unknown field path is provided, the request will return an INVALID_ARGUMENT
+        #   error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
