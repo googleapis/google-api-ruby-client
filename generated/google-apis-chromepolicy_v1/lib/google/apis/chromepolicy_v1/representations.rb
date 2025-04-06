@@ -787,6 +787,7 @@ module Google
       
           collection :oneof_decl, as: 'oneofDecl', class: Google::Apis::ChromepolicyV1::Proto2OneofDescriptorProto, decorator: Google::Apis::ChromepolicyV1::Proto2OneofDescriptorProto::Representation
       
+          property :visibility, as: 'visibility'
         end
       end
       
@@ -796,6 +797,7 @@ module Google
           property :name, as: 'name'
           collection :value, as: 'value', class: Google::Apis::ChromepolicyV1::Proto2EnumValueDescriptorProto, decorator: Google::Apis::ChromepolicyV1::Proto2EnumValueDescriptorProto::Representation
       
+          property :visibility, as: 'visibility'
         end
       end
       
