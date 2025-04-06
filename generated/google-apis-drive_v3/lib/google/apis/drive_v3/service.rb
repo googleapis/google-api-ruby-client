@@ -30,7 +30,7 @@ module Google
       #    Drive = Google::Apis::DriveV3 # Alias the module
       #    service = Drive::DriveService.new
       #
-      # @see https://developers.google.com/drive/
+      # @see https://developers.google.com/workspace/drive/
       class DriveService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://www.$UNIVERSE_DOMAIN$/"
 
@@ -53,9 +53,9 @@ module Google
         
         # Gets information about the user, the user's Drive, and system capabilities.
         # For more information, see [Return user info](https://developers.google.com/
-        # drive/api/guides/user-info). Required: The `fields` parameter must be set. To
-        # return the exact fields you need, see [Return specific fields](https://
-        # developers.google.com/drive/api/guides/fields-parameter).
+        # workspace/drive/api/guides/user-info). Required: The `fields` parameter must
+        # be set. To return the exact fields you need, see [Return specific fields](
+        # https://developers.google.com/workspace/drive/api/guides/fields-parameter).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -187,7 +187,7 @@ module Google
         end
         
         # Gets a specific app. For more information, see [Return user info](https://
-        # developers.google.com/drive/api/guides/user-info).
+        # developers.google.com/workspace/drive/api/guides/user-info).
         # @param [String] app_id
         #   The ID of the app.
         # @param [String] fields
@@ -218,7 +218,7 @@ module Google
         end
         
         # Lists a user's installed apps. For more information, see [Return user info](
-        # https://developers.google.com/drive/api/guides/user-info).
+        # https://developers.google.com/workspace/drive/api/guides/user-info).
         # @param [String] app_filter_extensions
         #   A comma-separated list of file extensions to limit returned results. All
         #   results within the given app query scope which can open any of the given file
@@ -262,8 +262,8 @@ module Google
         end
         
         # Gets the starting pageToken for listing future changes. For more information,
-        # see [Retrieve changes](https://developers.google.com/drive/api/guides/manage-
-        # changes).
+        # see [Retrieve changes](https://developers.google.com/workspace/drive/api/
+        # guides/manage-changes).
         # @param [String] drive_id
         #   The ID of the shared drive for which the starting pageToken for listing future
         #   changes from that shared drive will be returned.
@@ -304,8 +304,8 @@ module Google
         end
         
         # Lists the changes for a user or shared drive. For more information, see [
-        # Retrieve changes](https://developers.google.com/drive/api/guides/manage-
-        # changes).
+        # Retrieve changes](https://developers.google.com/workspace/drive/api/guides/
+        # manage-changes).
         # @param [String] page_token
         #   The token for continuing a previous list request on the next page. This should
         #   be set to the value of 'nextPageToken' from the previous response or to the
@@ -388,7 +388,8 @@ module Google
         end
         
         # Subscribes to changes for a user. For more information, see [Notifications for
-        # resource changes](https://developers.google.com/drive/api/guides/push).
+        # resource changes](https://developers.google.com/workspace/drive/api/guides/
+        # push).
         # @param [String] page_token
         #   The token for continuing a previous list request on the next page. This should
         #   be set to the value of 'nextPageToken' from the previous response or to the
@@ -474,8 +475,8 @@ module Google
         end
         
         # Stops watching resources through this channel. For more information, see [
-        # Notifications for resource changes](https://developers.google.com/drive/api/
-        # guides/push).
+        # Notifications for resource changes](https://developers.google.com/workspace/
+        # drive/api/guides/push).
         # @param [Google::Apis::DriveV3::Channel] channel_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -504,10 +505,10 @@ module Google
         end
         
         # Creates a comment on a file. For more information, see [Manage comments and
-        # replies](https://developers.google.com/drive/api/guides/manage-comments).
-        # Required: The `fields` parameter must be set. To return the exact fields you
-        # need, see [Return specific fields](https://developers.google.com/drive/api/
-        # guides/fields-parameter).
+        # replies](https://developers.google.com/workspace/drive/api/guides/manage-
+        # comments). Required: The `fields` parameter must be set. To return the exact
+        # fields you need, see [Return specific fields](https://developers.google.com/
+        # workspace/drive/api/guides/fields-parameter).
         # @param [String] file_id
         #   The ID of the file.
         # @param [Google::Apis::DriveV3::Comment] comment_object
@@ -541,10 +542,10 @@ module Google
         end
         
         # Deletes a comment. For more information, see [Manage comments and replies](
-        # https://developers.google.com/drive/api/guides/manage-comments). Required: The
-        # `fields` parameter must be set. To return the exact fields you need, see [
-        # Return specific fields](https://developers.google.com/drive/api/guides/fields-
-        # parameter).
+        # https://developers.google.com/workspace/drive/api/guides/manage-comments).
+        # Required: The `fields` parameter must be set. To return the exact fields you
+        # need, see [Return specific fields](https://developers.google.com/workspace/
+        # drive/api/guides/fields-parameter).
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] comment_id
@@ -576,10 +577,10 @@ module Google
         end
         
         # Gets a comment by ID. For more information, see [Manage comments and replies](
-        # https://developers.google.com/drive/api/guides/manage-comments). Required: The
-        # `fields` parameter must be set. To return the exact fields you need, see [
-        # Return specific fields](https://developers.google.com/drive/api/guides/fields-
-        # parameter).
+        # https://developers.google.com/workspace/drive/api/guides/manage-comments).
+        # Required: The `fields` parameter must be set. To return the exact fields you
+        # need, see [Return specific fields](https://developers.google.com/workspace/
+        # drive/api/guides/fields-parameter).
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] comment_id
@@ -617,10 +618,10 @@ module Google
         end
         
         # Lists a file's comments. For more information, see [Manage comments and
-        # replies](https://developers.google.com/drive/api/guides/manage-comments).
-        # Required: The `fields` parameter must be set. To return the exact fields you
-        # need, see [Return specific fields](https://developers.google.com/drive/api/
-        # guides/fields-parameter).
+        # replies](https://developers.google.com/workspace/drive/api/guides/manage-
+        # comments). Required: The `fields` parameter must be set. To return the exact
+        # fields you need, see [Return specific fields](https://developers.google.com/
+        # workspace/drive/api/guides/fields-parameter).
         # @param [String] file_id
         #   The ID of the file.
         # @param [Boolean] include_deleted
@@ -666,10 +667,10 @@ module Google
         end
         
         # Updates a comment with patch semantics. For more information, see [Manage
-        # comments and replies](https://developers.google.com/drive/api/guides/manage-
-        # comments). Required: The `fields` parameter must be set. To return the exact
-        # fields you need, see [Return specific fields](https://developers.google.com/
-        # drive/api/guides/fields-parameter).
+        # comments and replies](https://developers.google.com/workspace/drive/api/guides/
+        # manage-comments). Required: The `fields` parameter must be set. To return the
+        # exact fields you need, see [Return specific fields](https://developers.google.
+        # com/workspace/drive/api/guides/fields-parameter).
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] comment_id
@@ -847,8 +848,8 @@ module Google
         
         # Lists the user's shared drives. This method accepts the `q` parameter, which
         # is a search query combining one or more search terms. For more information,
-        # see the [Search for shared drives](/drive/api/guides/search-shareddrives)
-        # guide.
+        # see the [Search for shared drives](/workspace/drive/api/guides/search-
+        # shareddrives) guide.
         # @param [Fixnum] page_size
         #   Maximum number of shared drives to return per page.
         # @param [String] page_token
@@ -1028,18 +1029,18 @@ module Google
         # 120 GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid MIME type,
         # rather than the literal `*/*` value. The literal `*/*` is only used to
         # indicate that any valid MIME type can be uploaded. For more information on
-        # uploading files, see [Upload file data](/drive/api/guides/manage-uploads).
-        # Apps creating shortcuts with `files.create` must specify the MIME type `
-        # application/vnd.google-apps.shortcut`. Apps should specify a file extension in
-        # the `name` property when inserting files with the API. For example, an
-        # operation to insert a JPEG file should specify something like `"name": "cat.
-        # jpg"` in the metadata. Subsequent `GET` requests include the read-only `
-        # fileExtension` property populated with the extension originally specified in
-        # the `title` property. When a Google Drive user requests to download a file, or
-        # when the file is downloaded through the sync client, Drive builds a full
-        # filename (with extension) based on the title. In cases where the extension is
-        # missing, Drive attempts to determine the extension based on the file's MIME
-        # type.
+        # uploading files, see [Upload file data](/workspace/drive/api/guides/manage-
+        # uploads). Apps creating shortcuts with `files.create` must specify the MIME
+        # type `application/vnd.google-apps.shortcut`. Apps should specify a file
+        # extension in the `name` property when inserting files with the API. For
+        # example, an operation to insert a JPEG file should specify something like `"
+        # name": "cat.jpg"` in the metadata. Subsequent `GET` requests include the read-
+        # only `fileExtension` property populated with the extension originally
+        # specified in the `title` property. When a Google Drive user requests to
+        # download a file, or when the file is downloaded through the sync client, Drive
+        # builds a full filename (with extension) based on the title. In cases where the
+        # extension is missing, Drive attempts to determine the extension based on the
+        # file's MIME type.
         # @param [Google::Apis::DriveV3::File] file_object
         # @param [Boolean] enforce_single_parent
         #   Deprecated. Creating files in multiple folders is no longer supported.
@@ -1312,9 +1313,9 @@ module Google
         # Gets a file's metadata or content by ID. If you provide the URL parameter `
         # alt=media`, then the response includes the file contents in the response body.
         # Downloading content with `alt=media` only works if the file is stored in Drive.
-        # To download Google Docs, Sheets, and Slides use [`files.export`](/drive/api/
-        # reference/rest/v3/files/export) instead. For more information, see [Download &
-        # export files](/drive/api/guides/manage-downloads).
+        # To download Google Docs, Sheets, and Slides use [`files.export`](/workspace/
+        # drive/api/reference/rest/v3/files/export) instead. For more information, see [
+        # Download & export files](/workspace/drive/api/guides/manage-downloads).
         # @param [String] file_id
         #   The ID of the file.
         # @param [Boolean] acknowledge_abuse
@@ -1373,10 +1374,10 @@ module Google
         
         # Lists the user's files. This method accepts the `q` parameter, which is a
         # search query combining one or more search terms. For more information, see the
-        # [Search for files & folders](/drive/api/guides/search-files) guide. *Note:*
-        # This method returns *all* files by default, including trashed files. If you
-        # don't want trashed files to appear in the list, use the `trashed=false` query
-        # parameter to remove trashed files from the results.
+        # [Search for files & folders](/workspace/drive/api/guides/search-files) guide. *
+        # Note:* This method returns *all* files by default, including trashed files. If
+        # you don't want trashed files to appear in the list, use the `trashed=false`
+        # query parameter to remove trashed files from the results.
         # @param [String] corpora
         #   Bodies of items (files/documents) to which the query applies. Supported bodies
         #   are 'user', 'domain', 'drive', and 'allDrives'. Prefer 'user' or 'drive' to '
@@ -1549,7 +1550,8 @@ module Google
         # size:* 5,120 GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid MIME
         # type, rather than the literal `*/*` value. The literal `*/*` is only used to
         # indicate that any valid MIME type can be uploaded. For more information on
-        # uploading files, see [Upload file data](/drive/api/guides/manage-uploads).
+        # uploading files, see [Upload file data](/workspace/drive/api/guides/manage-
+        # uploads).
         # @param [String] file_id
         #   The ID of the file.
         # @param [Google::Apis::DriveV3::File] file_object
