@@ -1732,6 +1732,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIntegrationsV1alphaToggleHttpRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIntegrationsV1alphaTriggerConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5025,6 +5031,13 @@ module Google
           property :task_config, as: 'taskConfig', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTaskConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTaskConfig::Representation
       
           property :task_number, as: 'taskNumber'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaToggleHttpRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_http_call, as: 'enableHttpCall'
         end
       end
       
