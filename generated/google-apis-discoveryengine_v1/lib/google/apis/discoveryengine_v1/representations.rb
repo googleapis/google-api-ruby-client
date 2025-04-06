@@ -808,6 +808,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1DocumentAclInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1DocumentAclInfoAccessRestriction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1DocumentContent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1211,6 +1223,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1PanelInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1Principal
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2093,6 +2111,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaDataConnector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5101,6 +5125,8 @@ module Google
       class GoogleCloudDiscoveryengineV1Document
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :acl_info, as: 'aclInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DocumentAclInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DocumentAclInfo::Representation
+      
           property :content, as: 'content', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DocumentContent, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DocumentContent::Representation
       
           hash :derived_struct_data, as: 'derivedStructData'
@@ -5113,6 +5139,23 @@ module Google
           property :parent_document_id, as: 'parentDocumentId'
           property :schema_id, as: 'schemaId'
           hash :struct_data, as: 'structData'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1DocumentAclInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :readers, as: 'readers', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DocumentAclInfoAccessRestriction, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DocumentAclInfoAccessRestriction::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1DocumentAclInfoAccessRestriction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :idp_wide, as: 'idpWide'
+          collection :principals, as: 'principals', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Principal, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Principal::Representation
+      
         end
       end
       
@@ -5767,6 +5810,14 @@ module Google
           property :panel_id, as: 'panelId'
           property :panel_position, as: 'panelPosition'
           property :total_panels, as: 'totalPanels'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1Principal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :group_id, as: 'groupId'
+          property :user_id, as: 'userId'
         end
       end
       
@@ -7313,12 +7364,22 @@ module Google
           hash :params, as: 'params'
           property :private_connectivity_project_id, as: 'privateConnectivityProjectId'
           property :realtime_state, as: 'realtimeState'
+          property :realtime_sync_config, as: 'realtimeSyncConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig::Representation
+      
           property :refresh_interval, as: 'refreshInterval'
           property :state, as: 'state'
           collection :static_ip_addresses, as: 'staticIpAddresses'
           property :static_ip_enabled, as: 'staticIpEnabled'
           property :sync_mode, as: 'syncMode'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :realtime_sync_secret, as: 'realtimeSyncSecret'
+          property :webhook_uri, as: 'webhookUri'
         end
       end
       
