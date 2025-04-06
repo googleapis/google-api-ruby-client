@@ -22,13 +22,31 @@ module Google
   module Apis
     module MerchantapiLfpV1beta
       
+      class CountrySettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InventoryStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LfpInventory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LfpMerchantState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -41,6 +59,12 @@ module Google
       end
       
       class LfpStore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LfpStoreState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -70,9 +94,32 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CountrySettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :free_local_listings_enabled, as: 'freeLocalListingsEnabled'
+          property :instock_serving_verification_state, as: 'instockServingVerificationState'
+          property :inventory_verification_state, as: 'inventoryVerificationState'
+          property :local_inventory_ads_enabled, as: 'localInventoryAdsEnabled'
+          property :pickup_serving_verification_state, as: 'pickupServingVerificationState'
+          property :product_page_type, as: 'productPageType'
+          property :region_code, as: 'regionCode'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class InventoryStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :submitted_entries, :numeric_string => true, as: 'submittedEntries'
+          property :submitted_in_stock_entries, :numeric_string => true, as: 'submittedInStockEntries'
+          property :submitted_products, :numeric_string => true, as: 'submittedProducts'
+          property :unsubmitted_entries, :numeric_string => true, as: 'unsubmittedEntries'
         end
       end
       
@@ -94,6 +141,20 @@ module Google
           property :region_code, as: 'regionCode'
           property :store_code, as: 'storeCode'
           property :target_account, :numeric_string => true, as: 'targetAccount'
+        end
+      end
+      
+      class LfpMerchantState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :country_settings, as: 'countrySettings', class: Google::Apis::MerchantapiLfpV1beta::CountrySettings, decorator: Google::Apis::MerchantapiLfpV1beta::CountrySettings::Representation
+      
+          property :inventory_stats, as: 'inventoryStats', class: Google::Apis::MerchantapiLfpV1beta::InventoryStats, decorator: Google::Apis::MerchantapiLfpV1beta::InventoryStats::Representation
+      
+          property :linked_gbps, :numeric_string => true, as: 'linkedGbps'
+          property :name, as: 'name'
+          collection :store_states, as: 'storeStates', class: Google::Apis::MerchantapiLfpV1beta::LfpStoreState, decorator: Google::Apis::MerchantapiLfpV1beta::LfpStoreState::Representation
+      
         end
       end
       
@@ -130,6 +191,15 @@ module Google
           property :store_name, as: 'storeName'
           property :target_account, :numeric_string => true, as: 'targetAccount'
           property :website_uri, as: 'websiteUri'
+        end
+      end
+      
+      class LfpStoreState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :matching_state, as: 'matchingState'
+          property :matching_state_hint, as: 'matchingStateHint'
+          property :store_code, as: 'storeCode'
         end
       end
       
