@@ -24,7 +24,7 @@ module Google
     # Manages alerts on issues affecting your domain. Note: The current version of
     # this API (v1beta1) is available to all Google Workspace customers.
     #
-    # @see https://developers.google.com/admin-sdk/alertcenter/
+    # @see https://developers.google.com/workspace/admin/alertcenter/
     module AlertcenterV1beta1
       # Version of the Google Workspace Alert Center API this client connects to.
       # This is NOT the gem version.

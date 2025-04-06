@@ -31,7 +31,7 @@ module Google
       #    Alertcenter = Google::Apis::AlertcenterV1beta1 # Alias the module
       #    service = Alertcenter::AlertCenterService.new
       #
-      # @see https://developers.google.com/admin-sdk/alertcenter/
+      # @see https://developers.google.com/workspace/admin/alertcenter/
       class AlertCenterService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://alertcenter.$UNIVERSE_DOMAIN$/"
 
@@ -238,9 +238,9 @@ module Google
         #   cloudidentity/answer/10070793).
         # @param [String] filter
         #   Optional. A query string for filtering alert results. For more details, see [
-        #   Query filters](https://developers.google.com/admin-sdk/alertcenter/guides/
-        #   query-filters) and [Supported query filter fields](https://developers.google.
-        #   com/admin-sdk/alertcenter/reference/filter-fields#alerts.list).
+        #   Query filters](https://developers.google.com/workspace/admin/alertcenter/
+        #   guides/query-filters) and [Supported query filter fields](https://developers.
+        #   google.com/workspace/admin/alertcenter/reference/filter-fields#alerts.list).
         # @param [String] order_by
         #   Optional. The sort order of the list results. If not specified results may be
         #   returned in arbitrary order. You can sort the results in descending order
@@ -377,10 +377,10 @@ module Google
         #   answer/10070793).
         # @param [String] filter
         #   Optional. A query string for filtering alert feedback results. For more
-        #   details, see [Query filters](https://developers.google.com/admin-sdk/
+        #   details, see [Query filters](https://developers.google.com/workspace/admin/
         #   alertcenter/guides/query-filters) and [Supported query filter fields](https://
-        #   developers.google.com/admin-sdk/alertcenter/reference/filter-fields#alerts.
-        #   feedback.list).
+        #   developers.google.com/workspace/admin/alertcenter/reference/filter-fields#
+        #   alerts.feedback.list).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
