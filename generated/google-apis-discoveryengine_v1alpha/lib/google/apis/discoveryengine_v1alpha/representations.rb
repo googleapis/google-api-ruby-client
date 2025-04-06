@@ -1522,6 +1522,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaDataConnectorSourceEntity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4200,10 +4206,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :custom_data, as: 'customData'
           property :data_storage_transform, :base64 => true, as: 'dataStorageTransform'
+          property :destination_blob_mint_index, as: 'destinationBlobMintIndex'
           property :dynamic_drop_target, :base64 => true, as: 'dynamicDropTarget'
           property :dynamic_dropzone, as: 'dynamicDropzone'
           property :media_for_diff, as: 'mediaForDiff', class: Google::Apis::DiscoveryengineV1alpha::GdataMedia, decorator: Google::Apis::DiscoveryengineV1alpha::GdataMedia::Representation
       
+          property :original_object_blob_mint_index, as: 'originalObjectBlobMintIndex'
           property :request_class, as: 'requestClass'
           property :scotty_agent_user_id, :numeric_string => true, as: 'scottyAgentUserId'
           property :scotty_customer_log, :base64 => true, as: 'scottyCustomerLog'
@@ -6771,12 +6779,22 @@ module Google
           hash :params, as: 'params'
           property :private_connectivity_project_id, as: 'privateConnectivityProjectId'
           property :realtime_state, as: 'realtimeState'
+          property :realtime_sync_config, as: 'realtimeSyncConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig::Representation
+      
           property :refresh_interval, as: 'refreshInterval'
           property :state, as: 'state'
           collection :static_ip_addresses, as: 'staticIpAddresses'
           property :static_ip_enabled, as: 'staticIpEnabled'
           property :sync_mode, as: 'syncMode'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :realtime_sync_secret, as: 'realtimeSyncSecret'
+          property :webhook_uri, as: 'webhookUri'
         end
       end
       
