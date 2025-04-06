@@ -23,7 +23,7 @@ module Google
     #
     # Reads and writes Google Sheets.
     #
-    # @see https://developers.google.com/sheets/
+    # @see https://developers.google.com/workspace/sheets/
     module SheetsV4
       # Version of the Google Sheets API this client connects to.
       # This is NOT the gem version.
