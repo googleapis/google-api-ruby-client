@@ -6196,6 +6196,12 @@ module Google
         # @return [String]
         attr_accessor :realtime_state
       
+        # The configuration for realtime sync to store additional params for realtime
+        # sync.
+        # Corresponds to the JSON property `realtimeSyncConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig]
+        attr_accessor :realtime_sync_config
+      
         # Required. The refresh interval for data sync. If duration is set to 0, the
         # data will be synced in real time. The streaming feature is not supported yet.
         # The minimum is 30 minutes and maximum is 7 days.
@@ -6256,12 +6262,40 @@ module Google
           @params = args[:params] if args.key?(:params)
           @private_connectivity_project_id = args[:private_connectivity_project_id] if args.key?(:private_connectivity_project_id)
           @realtime_state = args[:realtime_state] if args.key?(:realtime_state)
+          @realtime_sync_config = args[:realtime_sync_config] if args.key?(:realtime_sync_config)
           @refresh_interval = args[:refresh_interval] if args.key?(:refresh_interval)
           @state = args[:state] if args.key?(:state)
           @static_ip_addresses = args[:static_ip_addresses] if args.key?(:static_ip_addresses)
           @static_ip_enabled = args[:static_ip_enabled] if args.key?(:static_ip_enabled)
           @sync_mode = args[:sync_mode] if args.key?(:sync_mode)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The configuration for realtime sync to store additional params for realtime
+      # sync.
+      class GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The ID of the Secret Manager secret used for webhook secret.
+        # Corresponds to the JSON property `realtimeSyncSecret`
+        # @return [String]
+        attr_accessor :realtime_sync_secret
+      
+        # Optional. Webhook url for the connector to specify additional params for
+        # realtime sync.
+        # Corresponds to the JSON property `webhookUri`
+        # @return [String]
+        attr_accessor :webhook_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @realtime_sync_secret = args[:realtime_sync_secret] if args.key?(:realtime_sync_secret)
+          @webhook_uri = args[:webhook_uri] if args.key?(:webhook_uri)
         end
       end
       
@@ -16231,6 +16265,11 @@ module Google
       class GoogleCloudDiscoveryengineV1betaDocument
         include Google::Apis::Core::Hashable
       
+        # ACL Information of the Document.
+        # Corresponds to the JSON property `aclInfo`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentAclInfo]
+        attr_accessor :acl_info
+      
         # Unstructured data linked to this document.
         # Corresponds to the JSON property `content`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentContent]
@@ -16299,6 +16338,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @acl_info = args[:acl_info] if args.key?(:acl_info)
           @content = args[:content] if args.key?(:content)
           @derived_struct_data = args[:derived_struct_data] if args.key?(:derived_struct_data)
           @id = args[:id] if args.key?(:id)
@@ -16309,6 +16349,59 @@ module Google
           @parent_document_id = args[:parent_document_id] if args.key?(:parent_document_id)
           @schema_id = args[:schema_id] if args.key?(:schema_id)
           @struct_data = args[:struct_data] if args.key?(:struct_data)
+        end
+      end
+      
+      # ACL Information of the Document.
+      class GoogleCloudDiscoveryengineV1betaDocumentAclInfo
+        include Google::Apis::Core::Hashable
+      
+        # Readers of the document.
+        # Corresponds to the JSON property `readers`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentAclInfoAccessRestriction>]
+        attr_accessor :readers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @readers = args[:readers] if args.key?(:readers)
+        end
+      end
+      
+      # AclRestriction to model complex inheritance restrictions. Example: Modeling a "
+      # Both Permit" inheritance, where to access a child document, user needs to have
+      # access to parent document. Document Hierarchy - Space_S --> Page_P. Readers:
+      # Space_S: group_1, user_1 Page_P: group_2, group_3, user_2 Space_S ACL
+      # Restriction - ` "acl_info": ` "readers": [ ` "principals": [ ` "group_id": "
+      # group_1" `, ` "user_id": "user_1" ` ] ` ] ` ` Page_P ACL Restriction. ` "
+      # acl_info": ` "readers": [ ` "principals": [ ` "group_id": "group_2" `, ` "
+      # group_id": "group_3" `, ` "user_id": "user_2" ` ], `, ` "principals": [ ` "
+      # group_id": "group_1" `, ` "user_id": "user_1" ` ], ` ] ` `
+      class GoogleCloudDiscoveryengineV1betaDocumentAclInfoAccessRestriction
+        include Google::Apis::Core::Hashable
+      
+        # All users within the Identity Provider.
+        # Corresponds to the JSON property `idpWide`
+        # @return [Boolean]
+        attr_accessor :idp_wide
+        alias_method :idp_wide?, :idp_wide
+      
+        # List of principals.
+        # Corresponds to the JSON property `principals`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaPrincipal>]
+        attr_accessor :principals
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @idp_wide = args[:idp_wide] if args.key?(:idp_wide)
+          @principals = args[:principals] if args.key?(:principals)
         end
       end
       
@@ -19111,6 +19204,37 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Principal identifier of a user or a group.
+      class GoogleCloudDiscoveryengineV1betaPrincipal
+        include Google::Apis::Core::Hashable
+      
+        # Group identifier. For Google Workspace user account, group_id should be the
+        # google workspace group email. For non-google identity provider user account,
+        # group_id is the mapped group identifier configured during the workforcepool
+        # config.
+        # Corresponds to the JSON property `groupId`
+        # @return [String]
+        attr_accessor :group_id
+      
+        # User identifier. For Google Workspace user account, user_id should be the
+        # google workspace user email. For non-google identity provider user account,
+        # user_id is the mapped user identifier configured during the workforcepool
+        # config.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group_id = args[:group_id] if args.key?(:group_id)
+          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
       

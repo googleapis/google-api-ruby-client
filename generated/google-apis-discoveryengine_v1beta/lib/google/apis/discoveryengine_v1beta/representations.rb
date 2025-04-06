@@ -1006,6 +1006,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaDataConnectorSourceEntity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2626,6 +2632,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaDocumentAclInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaDocumentAclInfoAccessRestriction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaDocumentContent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3149,6 +3167,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaPauseEngineRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaPrincipal
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5645,12 +5669,22 @@ module Google
           hash :params, as: 'params'
           property :private_connectivity_project_id, as: 'privateConnectivityProjectId'
           property :realtime_state, as: 'realtimeState'
+          property :realtime_sync_config, as: 'realtimeSyncConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig::Representation
+      
           property :refresh_interval, as: 'refreshInterval'
           property :state, as: 'state'
           collection :static_ip_addresses, as: 'staticIpAddresses'
           property :static_ip_enabled, as: 'staticIpEnabled'
           property :sync_mode, as: 'syncMode'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :realtime_sync_secret, as: 'realtimeSyncSecret'
+          property :webhook_uri, as: 'webhookUri'
         end
       end
       
@@ -8368,6 +8402,8 @@ module Google
       class GoogleCloudDiscoveryengineV1betaDocument
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :acl_info, as: 'aclInfo', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentAclInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentAclInfo::Representation
+      
           property :content, as: 'content', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentContent, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentContent::Representation
       
           hash :derived_struct_data, as: 'derivedStructData'
@@ -8380,6 +8416,23 @@ module Google
           property :parent_document_id, as: 'parentDocumentId'
           property :schema_id, as: 'schemaId'
           hash :struct_data, as: 'structData'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaDocumentAclInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :readers, as: 'readers', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentAclInfoAccessRestriction, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentAclInfoAccessRestriction::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaDocumentAclInfoAccessRestriction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :idp_wide, as: 'idpWide'
+          collection :principals, as: 'principals', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaPrincipal, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaPrincipal::Representation
+      
         end
       end
       
@@ -9227,6 +9280,14 @@ module Google
       class GoogleCloudDiscoveryengineV1betaPauseEngineRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaPrincipal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :group_id, as: 'groupId'
+          property :user_id, as: 'userId'
         end
       end
       
