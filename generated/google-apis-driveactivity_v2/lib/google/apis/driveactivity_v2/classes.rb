@@ -38,7 +38,7 @@ module Google
       
         # Information about the target of activity. For more information on how activity
         # history is shared with users, see [Activity history visibility](https://
-        # developers.google.com/drive/activity/v2#activityhistory).
+        # developers.google.com/workspace/drive/activity/v2#activityhistory).
         # Corresponds to the JSON property `target`
         # @return [Google::Apis::DriveactivityV2::Target]
         attr_accessor :target
@@ -697,8 +697,8 @@ module Google
         # @return [Google::Apis::DriveactivityV2::Folder]
         attr_accessor :folder
       
-        # The MIME type of the Drive item. See https://developers.google.com/drive/v3/
-        # web/mime-types.
+        # The MIME type of the Drive item. See https://developers.google.com/workspace/
+        # drive/v3/web/mime-types.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -940,16 +940,16 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The comment in the discussion thread. This identifier is an opaque string
-        # compatible with the Drive API; see https://developers.google.com/drive/v3/
-        # reference/comments/get
+        # compatible with the Drive API; see https://developers.google.com/workspace/
+        # drive/v3/reference/comments/get
         # Corresponds to the JSON property `legacyCommentId`
         # @return [String]
         attr_accessor :legacy_comment_id
       
         # The discussion thread to which the comment was added. This identifier is an
         # opaque string compatible with the Drive API and references the first comment
-        # in a discussion; see https://developers.google.com/drive/v3/reference/comments/
-        # get
+        # in a discussion; see https://developers.google.com/workspace/drive/v3/
+        # reference/comments/get
         # Corresponds to the JSON property `legacyDiscussionId`
         # @return [String]
         attr_accessor :legacy_discussion_id
@@ -1221,8 +1221,8 @@ module Google
         attr_accessor :group
       
         # Indicates the [Google Drive permissions role](https://developers.google.com/
-        # drive/web/manage-sharing#roles). The role determines a user's ability to read,
-        # write, and comment on items.
+        # workspace/drive/web/manage-sharing#roles). The role determines a user's
+        # ability to read, write, and comment on items.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -1579,7 +1579,7 @@ module Google
       
       # Information about the target of activity. For more information on how activity
       # history is shared with users, see [Activity history visibility](https://
-      # developers.google.com/drive/activity/v2#activityhistory).
+      # developers.google.com/workspace/drive/activity/v2#activityhistory).
       class Target
         include Google::Apis::Core::Hashable
       

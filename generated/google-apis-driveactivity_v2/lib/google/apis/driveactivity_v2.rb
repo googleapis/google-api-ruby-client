@@ -23,7 +23,7 @@ module Google
     #
     # Provides a historical view of activity in Google Drive.
     #
-    # @see https://developers.google.com/drive/activity/
+    # @see https://developers.google.com/workspace/drive/activity/
     module DriveactivityV2
       # Version of the Drive Activity API this client connects to.
       # This is NOT the gem version.
