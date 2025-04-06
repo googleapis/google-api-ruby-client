@@ -276,9 +276,14 @@ module Google
         end
       end
       
-      # Directory Services configuration for Kerberos-based authentication.
+      # Directory Services configuration.
       class DirectoryServicesConfig
         include Google::Apis::Core::Hashable
+      
+        # LdapConfig contains all the parameters for connecting to LDAP servers.
+        # Corresponds to the JSON property `ldap`
+        # @return [Google::Apis::FileV1beta1::LdapConfig]
+        attr_accessor :ldap
       
         # ManagedActiveDirectoryConfig contains all the parameters for connecting to
         # Managed Service for Microsoft Active Directory (Managed Microsoft AD).
@@ -292,6 +297,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ldap = args[:ldap] if args.key?(:ldap)
           @managed_active_directory = args[:managed_active_directory] if args.key?(:managed_active_directory)
         end
       end
@@ -871,7 +877,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Directory Services configuration for Kerberos-based authentication.
+        # Directory Services configuration.
         # Corresponds to the JSON property `directoryServices`
         # @return [Google::Apis::FileV1beta1::DirectoryServicesConfig]
         attr_accessor :directory_services
@@ -1034,6 +1040,51 @@ module Google
           @suspension_reasons = args[:suspension_reasons] if args.key?(:suspension_reasons)
           @tags = args[:tags] if args.key?(:tags)
           @tier = args[:tier] if args.key?(:tier)
+        end
+      end
+      
+      # LdapConfig contains all the parameters for connecting to LDAP servers.
+      class LdapConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The LDAP domain name in the format of `my-domain.com`.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # Optional. The groups Organizational Unit (OU) is optional. This parameter is a
+        # hint to allow faster lookup in the LDAP namespace. In case that this parameter
+        # is not provided, Filestore instance will query the whole LDAP namespace.
+        # Corresponds to the JSON property `groupsOu`
+        # @return [String]
+        attr_accessor :groups_ou
+      
+        # Required. The servers names are used for specifying the LDAP servers names.
+        # The LDAP servers names can come with two formats: 1. DNS name, for example: `
+        # ldap.example1.com`, `ldap.example2.com`. 2. IP address, for example: `10.0.0.1`
+        # , `10.0.0.2`, `10.0.0.3`. All servers names must be in the same format: either
+        # all DNS names or all IP addresses.
+        # Corresponds to the JSON property `servers`
+        # @return [Array<String>]
+        attr_accessor :servers
+      
+        # Optional. The users Organizational Unit (OU) is optional. This parameter is a
+        # hint to allow faster lookup in the LDAP namespace. In case that this parameter
+        # is not provided, Filestore instance will query the whole LDAP namespace.
+        # Corresponds to the JSON property `usersOu`
+        # @return [String]
+        attr_accessor :users_ou
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+          @groups_ou = args[:groups_ou] if args.key?(:groups_ou)
+          @servers = args[:servers] if args.key?(:servers)
+          @users_ou = args[:users_ou] if args.key?(:users_ou)
         end
       end
       
