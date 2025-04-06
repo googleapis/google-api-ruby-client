@@ -854,11 +854,6 @@ module Google
       class ResourceDetails
         include Google::Apis::Core::Hashable
       
-        # Id of the application to which this resource belongs
-        # Corresponds to the JSON property `applicationId`
-        # @return [Fixnum]
-        attr_accessor :application_id
-      
         # List of labels applied on the resource
         # Corresponds to the JSON property `appliedLabels`
         # @return [Array<Google::Apis::AdminReportsV1::AppliedLabel>]
@@ -868,11 +863,6 @@ module Google
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
-      
-        # Owner of the resource.
-        # Corresponds to the JSON property `ownerEmail`
-        # @return [String]
-        attr_accessor :owner_email
       
         # Defines relationship of the resource to the events
         # Corresponds to the JSON property `relation`
@@ -896,10 +886,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @application_id = args[:application_id] if args.key?(:application_id)
           @applied_labels = args[:applied_labels] if args.key?(:applied_labels)
           @id = args[:id] if args.key?(:id)
-          @owner_email = args[:owner_email] if args.key?(:owner_email)
           @relation = args[:relation] if args.key?(:relation)
           @title = args[:title] if args.key?(:title)
           @type = args[:type] if args.key?(:type)
