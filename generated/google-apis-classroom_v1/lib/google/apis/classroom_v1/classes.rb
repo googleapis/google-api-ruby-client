@@ -781,6 +781,15 @@ module Google
         # @return [Google::Apis::ClassroomV1::GradeCategory]
         attr_accessor :grade_category
       
+        # Identifier of the grading period associated with the coursework. * At creation,
+        # if unspecified, the grading period ID will be set based on the `dueDate` (or `
+        # scheduledTime` if no `dueDate` is set). * To indicate no association to any
+        # grading period, set this field to an empty string (""). * If specified, it
+        # must match an existing grading period ID in the course.
+        # Corresponds to the JSON property `gradingPeriodId`
+        # @return [String]
+        attr_accessor :grading_period_id
+      
         # Classroom-assigned identifier of this course work, unique per course. Read-
         # only.
         # Corresponds to the JSON property `id`
@@ -865,6 +874,7 @@ module Google
           @due_date = args[:due_date] if args.key?(:due_date)
           @due_time = args[:due_time] if args.key?(:due_time)
           @grade_category = args[:grade_category] if args.key?(:grade_category)
+          @grading_period_id = args[:grading_period_id] if args.key?(:grading_period_id)
           @id = args[:id] if args.key?(:id)
           @individual_students_options = args[:individual_students_options] if args.key?(:individual_students_options)
           @materials = args[:materials] if args.key?(:materials)
@@ -1393,6 +1403,93 @@ module Google
           @calculation_type = args[:calculation_type] if args.key?(:calculation_type)
           @display_setting = args[:display_setting] if args.key?(:display_setting)
           @grade_categories = args[:grade_categories] if args.key?(:grade_categories)
+        end
+      end
+      
+      # An individual grading period. Grading periods must not have overlapping date
+      # ranges and must be listed in chronological order. For example, if the end_date
+      # of a grading period is 2024-01-25, then the start_date of the next grading
+      # period must be 2024-01-26 or later. Each grading period must have a unique
+      # title within a course.
+      class GradingPeriod
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `endDate`
+        # @return [Google::Apis::ClassroomV1::Date]
+        attr_accessor :end_date
+      
+        # Output only. System generated grading period ID. Read-only.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `startDate`
+        # @return [Google::Apis::ClassroomV1::Date]
+        attr_accessor :start_date
+      
+        # Required. Title of the grading period. For example, “Semester 1”.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @id = args[:id] if args.key?(:id)
+          @start_date = args[:start_date] if args.key?(:start_date)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Grading period settings that include all the individual grading periods in a
+      # course.
+      class GradingPeriodSettings
+        include Google::Apis::Core::Hashable
+      
+        # Supports toggling the application of grading periods on existing stream items.
+        # Once set, this value is persisted meaning that it does not need to be set in
+        # every request to update `GradingPeriodSettings`. If not previously set, the
+        # default is False.
+        # Corresponds to the JSON property `applyToExistingCoursework`
+        # @return [Boolean]
+        attr_accessor :apply_to_existing_coursework
+        alias_method :apply_to_existing_coursework?, :apply_to_existing_coursework
+      
+        # The list of grading periods in a specific course. Grading periods must not
+        # have overlapping date ranges and must be listed in chronological order. Each
+        # grading period must have a unique title within a course.
+        # Corresponds to the JSON property `gradingPeriods`
+        # @return [Array<Google::Apis::ClassroomV1::GradingPeriod>]
+        attr_accessor :grading_periods
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apply_to_existing_coursework = args[:apply_to_existing_coursework] if args.key?(:apply_to_existing_coursework)
+          @grading_periods = args[:grading_periods] if args.key?(:grading_periods)
         end
       end
       

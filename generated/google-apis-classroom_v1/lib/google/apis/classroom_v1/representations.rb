@@ -196,6 +196,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GradingPeriod
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GradingPeriodSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Guardian
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -674,6 +686,7 @@ module Google
       
           property :grade_category, as: 'gradeCategory', class: Google::Apis::ClassroomV1::GradeCategory, decorator: Google::Apis::ClassroomV1::GradeCategory::Representation
       
+          property :grading_period_id, as: 'gradingPeriodId'
           property :id, as: 'id'
           property :individual_students_options, as: 'individualStudentsOptions', class: Google::Apis::ClassroomV1::IndividualStudentsOptions, decorator: Google::Apis::ClassroomV1::IndividualStudentsOptions::Representation
       
@@ -828,6 +841,27 @@ module Google
           property :calculation_type, as: 'calculationType'
           property :display_setting, as: 'displaySetting'
           collection :grade_categories, as: 'gradeCategories', class: Google::Apis::ClassroomV1::GradeCategory, decorator: Google::Apis::ClassroomV1::GradeCategory::Representation
+      
+        end
+      end
+      
+      class GradingPeriod
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_date, as: 'endDate', class: Google::Apis::ClassroomV1::Date, decorator: Google::Apis::ClassroomV1::Date::Representation
+      
+          property :id, as: 'id'
+          property :start_date, as: 'startDate', class: Google::Apis::ClassroomV1::Date, decorator: Google::Apis::ClassroomV1::Date::Representation
+      
+          property :title, as: 'title'
+        end
+      end
+      
+      class GradingPeriodSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :apply_to_existing_coursework, as: 'applyToExistingCoursework'
+          collection :grading_periods, as: 'gradingPeriods', class: Google::Apis::ClassroomV1::GradingPeriod, decorator: Google::Apis::ClassroomV1::GradingPeriod::Representation
       
         end
       end

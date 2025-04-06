@@ -158,6 +158,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns the grading period settings in a course. This method returns the
+        # following error codes: * `PERMISSION_DENIED` if the requesting user isn't
+        # permitted to access the grading period settings in the requested course or for
+        # access errors. * `NOT_FOUND` if the requested course does not exist.
+        # @param [String] course_id
+        #   Required. The identifier of the course.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::GradingPeriodSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::GradingPeriodSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_course_grading_period_settings(course_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/gradingPeriodSettings', options)
+          command.response_representation = Google::Apis::ClassroomV1::GradingPeriodSettings::Representation
+          command.response_class = Google::Apis::ClassroomV1::GradingPeriodSettings
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns a list of courses that the requesting user is permitted to view,
         # restricted to those that match the request. Returned courses are ordered by
         # creation time, with the most recently created coming first. This method
@@ -298,6 +331,59 @@ module Google
           command.response_representation = Google::Apis::ClassroomV1::Course::Representation
           command.response_class = Google::Apis::ClassroomV1::Course
           command.params['id'] = id unless id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates grading period settings of a course. Individual grading periods can be
+        # added, removed, or modified using this method. The requesting user and course
+        # owner must be eligible to modify Grading Periods. For details, see [licensing
+        # requirements](https://developers.google.com/classroom/grading-periods/manage-
+        # grading-periods#licensing_requirements). This method returns the following
+        # error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
+        # modify the grading period settings in a course or for access errors: *
+        # UserIneligibleToUpdateGradingPeriodSettings * `INVALID_ARGUMENT` if the
+        # request is malformed. * `NOT_FOUND` if the requested course does not exist.
+        # @param [String] course_id
+        #   Required. The identifier of the course.
+        # @param [Google::Apis::ClassroomV1::GradingPeriodSettings] grading_period_settings_object
+        # @param [String] update_mask
+        #   Mask that identifies which fields in the GradingPeriodSettings to update. The
+        #   GradingPeriodSettings `grading_periods` list will be fully replaced by the
+        #   grading periods specified in the update request. For example: * Grading
+        #   periods included in the list without an ID are considered additions, and a new
+        #   ID will be assigned when the request is made. * Grading periods that currently
+        #   exist, but are missing from the request will be considered deletions. *
+        #   Grading periods with an existing ID and modified data are considered edits.
+        #   Unmodified data will be left as is. * Grading periods included with an unknown
+        #   ID will result in an error. The following fields may be specified: * `
+        #   grading_periods` * `apply_to_existing_coursework`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::GradingPeriodSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::GradingPeriodSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_course_grading_period_settings(course_id, grading_period_settings_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/courses/{courseId}/gradingPeriodSettings', options)
+          command.request_representation = Google::Apis::ClassroomV1::GradingPeriodSettings::Representation
+          command.request_object = grading_period_settings_object
+          command.response_representation = Google::Apis::ClassroomV1::GradingPeriodSettings::Representation
+          command.response_class = Google::Apis::ClassroomV1::GradingPeriodSettings
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1310,9 +1396,7 @@ module Google
         #   CourseWork` object, an `INVALID_ARGUMENT` error is returned. The following
         #   fields may be specified by teachers: * `title` * `description` * `state` * `
         #   due_date` * `due_time` * `max_points` * `scheduled_time` * `
-        #   submission_modification_mode` * `topic_id` * `grading_period_id` Available in [
-        #   V1_20240401_PREVIEW](https://developers.google.com/classroom/reference/preview)
-        #   and later.
+        #   submission_modification_mode` * `topic_id` * `grading_period_id`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
