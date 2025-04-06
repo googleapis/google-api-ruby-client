@@ -30,7 +30,7 @@ module Google
       #    Docs = Google::Apis::DocsV1 # Alias the module
       #    service = Docs::DocsService.new
       #
-      # @see https://developers.google.com/docs/
+      # @see https://developers.google.com/workspace/docs/
       class DocsService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://docs.$UNIVERSE_DOMAIN$/"
 
