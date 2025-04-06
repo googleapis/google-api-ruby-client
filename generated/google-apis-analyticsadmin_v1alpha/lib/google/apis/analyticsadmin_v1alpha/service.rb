@@ -5259,6 +5259,207 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a Reporting Data Annotation.
+        # @param [String] parent
+        #   Required. The property for which to create a Reporting Data Annotation. Format:
+        #   properties/property_id Example: properties/123
+        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation] google_analytics_admin_v1alpha_reporting_data_annotation_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_property_reporting_data_annotation(parent, google_analytics_admin_v1alpha_reporting_data_annotation_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/reportingDataAnnotations', options)
+          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation::Representation
+          command.request_object = google_analytics_admin_v1alpha_reporting_data_annotation_object
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a Reporting Data Annotation.
+        # @param [String] name
+        #   Required. Resource name of the Reporting Data Annotation to delete. Format:
+        #   properties/property_id/reportingDataAnnotations/reporting_data_annotation
+        #   Example: properties/123/reportingDataAnnotations/456
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_property_reporting_data_annotation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lookup a single Reporting Data Annotation.
+        # @param [String] name
+        #   Required. Resource name of the Reporting Data Annotation to lookup. Format:
+        #   properties/property_id/reportingDataAnnotations/reportingDataAnnotation
+        #   Example: properties/123/reportingDataAnnotations/456
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_property_reporting_data_annotation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List all Reporting Data Annotations on a property.
+        # @param [String] parent
+        #   Required. Resource name of the property. Format: properties/property_id
+        #   Example: properties/123
+        # @param [String] filter
+        #   Optional. Filter that restricts which reporting data annotations under the
+        #   parent property are listed. Supported fields are: * 'name' * `title` * `
+        #   description` * `annotation_date` * `annotation_date_range` * `color`
+        #   Additionally, this API provides the following helper functions: *
+        #   annotation_duration() : the duration that this annotation marks, [durations](
+        #   https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/
+        #   duration.proto). expect a numeric representation of seconds followed by an `s`
+        #   suffix. * is_annotation_in_range(start_date, end_date) : if the annotation is
+        #   in the range specified by the `start_date` and `end_date`. The dates are in
+        #   ISO-8601 format, for example `2031-06-28`. Supported operations: * `=` :
+        #   equals * `!=` : not equals * `<` : less than * `>` : greater than * `<=` :
+        #   less than or equals * `>=` : greater than or equals * `:` : has operator * `=~`
+        #   : [regular expression](https://github.com/google/re2/wiki/Syntax) match * `!~`
+        #   : [regular expression](https://github.com/google/re2/wiki/Syntax) does not
+        #   match * `NOT` : Logical not * `AND` : Logical and * `OR` : Logical or Examples:
+        #   1. `title="Holiday Sale"` 2. `description=~"[Bb]ig [Gg]ame.*[Ss]ale"` 3. `
+        #   is_annotation_in_range("2025-12-25", "2026-01-16") = true` 4. `
+        #   annotation_duration() >= 172800s AND title:BOGO`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of resources to return. The service may return
+        #   fewer than this value, even if there are additional pages. If unspecified, at
+        #   most 50 resources will be returned. The maximum value is 200; (higher values
+        #   will be coerced to the maximum)
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListReportingDataAnnotations`
+        #   call. Provide this to retrieve the subsequent page. When paginating, all
+        #   other parameters provided to `ListReportingDataAnnotations` must match the
+        #   call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_property_reporting_data_annotations(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/reportingDataAnnotations', options)
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a Reporting Data Annotation.
+        # @param [String] name
+        #   Required. Identifier. Resource name of this Reporting Data Annotation. Format:
+        #   'properties/`property_id`/reportingDataAnnotations/`reporting_data_annotation`'
+        #   Format: 'properties/123/reportingDataAnnotations/456'
+        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation] google_analytics_admin_v1alpha_reporting_data_annotation_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update. Field names must be in snake case (for
+        #   example, "field_to_update"). Omitted fields will not be updated. To replace
+        #   the entire entity, use one path with the string "*" to match all fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_property_reporting_data_annotation(name, google_analytics_admin_v1alpha_reporting_data_annotation_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation::Representation
+          command.request_object = google_analytics_admin_v1alpha_reporting_data_annotation_object
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a roll-up property source link. Only roll-up properties can have
         # source links, so this method will throw an error if used on other types of
         # properties.

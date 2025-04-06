@@ -814,6 +814,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -905,6 +911,18 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaReportingDataAnnotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1007,6 +1025,12 @@ module Google
       end
       
       class GoogleProtobufEmpty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleTypeDate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1598,6 +1622,8 @@ module Google
           property :measurement_protocol_secret, as: 'measurementProtocolSecret', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret::Representation
       
           property :property, as: 'property', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty::Representation
+      
+          property :reporting_data_annotation, as: 'reportingDataAnnotation', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation::Representation
       
           property :search_ads360_link, as: 'searchAds360Link', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSearchAds360Link, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSearchAds360Link::Representation
       
@@ -2335,6 +2361,15 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :reporting_data_annotations, as: 'reportingDataAnnotations', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation::Representation
+      
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2484,6 +2519,31 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :event_edit_rules, as: 'eventEditRules'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaReportingDataAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :annotation_date, as: 'annotationDate', class: Google::Apis::AnalyticsadminV1alpha::GoogleTypeDate, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleTypeDate::Representation
+      
+          property :annotation_date_range, as: 'annotationDateRange', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange::Representation
+      
+          property :color, as: 'color'
+          property :description, as: 'description'
+          property :name, as: 'name'
+          property :system_generated, as: 'systemGenerated'
+          property :title, as: 'title'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_date, as: 'endDate', class: Google::Apis::AnalyticsadminV1alpha::GoogleTypeDate, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleTypeDate::Representation
+      
+          property :start_date, as: 'startDate', class: Google::Apis::AnalyticsadminV1alpha::GoogleTypeDate, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleTypeDate::Representation
+      
         end
       end
       
@@ -2667,6 +2727,15 @@ module Google
       class GoogleProtobufEmpty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleTypeDate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
         end
       end
     end
