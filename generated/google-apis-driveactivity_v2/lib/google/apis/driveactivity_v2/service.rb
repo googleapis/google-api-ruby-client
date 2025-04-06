@@ -30,7 +30,7 @@ module Google
       #    Driveactivity = Google::Apis::DriveactivityV2 # Alias the module
       #    service = Driveactivity::DriveActivityService.new
       #
-      # @see https://developers.google.com/drive/activity/
+      # @see https://developers.google.com/workspace/drive/activity/
       class DriveActivityService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://driveactivity.$UNIVERSE_DOMAIN$/"
 
