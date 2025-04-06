@@ -23,7 +23,7 @@ module Google
     #
     # An API for managing Drive Labels
     #
-    # @see https://developers.google.com/drive/labels
+    # @see https://developers.google.com/workspace/drive/labels
     module DrivelabelsV2beta
       # Version of the Drive Labels API this client connects to.
       # This is NOT the gem version.
