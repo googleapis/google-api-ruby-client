@@ -280,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SetAutoscalerLinkOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetCommonInstanceMetadataOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -574,6 +580,8 @@ module Google
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
+          property :set_autoscaler_link_operation_metadata, as: 'setAutoscalerLinkOperationMetadata', class: Google::Apis::DeploymentmanagerV2::SetAutoscalerLinkOperationMetadata, decorator: Google::Apis::DeploymentmanagerV2::SetAutoscalerLinkOperationMetadata::Representation
+      
           property :set_common_instance_metadata_operation_metadata, as: 'setCommonInstanceMetadataOperationMetadata', class: Google::Apis::DeploymentmanagerV2::SetCommonInstanceMetadataOperationMetadata, decorator: Google::Apis::DeploymentmanagerV2::SetCommonInstanceMetadataOperationMetadata::Representation
       
           property :start_time, as: 'startTime'
@@ -798,6 +806,13 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :resources, as: 'resources', class: Google::Apis::DeploymentmanagerV2::Resource, decorator: Google::Apis::DeploymentmanagerV2::Resource::Representation
       
+        end
+      end
+      
+      class SetAutoscalerLinkOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :zonal_igm_ids, as: 'zonalIgmIds'
         end
       end
       
