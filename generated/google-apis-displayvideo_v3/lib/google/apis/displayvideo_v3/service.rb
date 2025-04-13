@@ -7027,37 +7027,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of an asynchronous SDF download task operation. Clients
-        # should poll this method at intervals of 30 seconds.
-        # @param [String] name
-        #   The name of the operation resource.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DisplayvideoV3::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DisplayvideoV3::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_sdfuploadtask_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v3/{+name}', options)
-          command.response_representation = Google::Apis::DisplayvideoV3::Operation::Representation
-          command.response_class = Google::Apis::DisplayvideoV3::Operation
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Gets a single targeting option.
         # @param [String] targeting_type
         #   Required. The type of targeting option to retrieve. Accepted values are: * `
