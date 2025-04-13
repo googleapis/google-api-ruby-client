@@ -717,16 +717,6 @@ module Google
         # @return [String]
         attr_accessor :num_gtag_configs
       
-        # Number of macros in the container version.
-        # Corresponds to the JSON property `numMacros`
-        # @return [String]
-        attr_accessor :num_macros
-      
-        # Number of rules in the container version.
-        # Corresponds to the JSON property `numRules`
-        # @return [String]
-        attr_accessor :num_rules
-      
         # Number of tags in the container version.
         # Corresponds to the JSON property `numTags`
         # @return [String]
@@ -771,8 +761,6 @@ module Google
           @num_clients = args[:num_clients] if args.key?(:num_clients)
           @num_custom_templates = args[:num_custom_templates] if args.key?(:num_custom_templates)
           @num_gtag_configs = args[:num_gtag_configs] if args.key?(:num_gtag_configs)
-          @num_macros = args[:num_macros] if args.key?(:num_macros)
-          @num_rules = args[:num_rules] if args.key?(:num_rules)
           @num_tags = args[:num_tags] if args.key?(:num_tags)
           @num_transformations = args[:num_transformations] if args.key?(:num_transformations)
           @num_triggers = args[:num_triggers] if args.key?(:num_triggers)
@@ -2319,12 +2307,6 @@ module Google
         # @return [String]
         attr_accessor :account_id
       
-        # Blocking rule IDs. If any of the listed rules evaluate to true, the tag will
-        # not fire.
-        # Corresponds to the JSON property `blockingRuleId`
-        # @return [Array<String>]
-        attr_accessor :blocking_rule_id
-      
         # Blocking trigger IDs. If any of the listed triggers evaluate to true, the tag
         # will not fire.
         # Corresponds to the JSON property `blockingTriggerId`
@@ -2346,12 +2328,6 @@ module Google
         # Corresponds to the JSON property `fingerprint`
         # @return [String]
         attr_accessor :fingerprint
-      
-        # Firing rule IDs. A tag will fire when any of the listed rules are true and all
-        # of its blockingRuleIds (if any specified) are false.
-        # Corresponds to the JSON property `firingRuleId`
-        # @return [Array<String>]
-        attr_accessor :firing_rule_id
       
         # Firing trigger IDs. A tag will fire when any of the listed triggers are true
         # and all of its blockingTriggerIds (if any specified) are false.
@@ -2465,12 +2441,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account_id = args[:account_id] if args.key?(:account_id)
-          @blocking_rule_id = args[:blocking_rule_id] if args.key?(:blocking_rule_id)
           @blocking_trigger_id = args[:blocking_trigger_id] if args.key?(:blocking_trigger_id)
           @consent_settings = args[:consent_settings] if args.key?(:consent_settings)
           @container_id = args[:container_id] if args.key?(:container_id)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
-          @firing_rule_id = args[:firing_rule_id] if args.key?(:firing_rule_id)
           @firing_trigger_id = args[:firing_trigger_id] if args.key?(:firing_trigger_id)
           @live_only = args[:live_only] if args.key?(:live_only)
           @monitoring_metadata = args[:monitoring_metadata] if args.key?(:monitoring_metadata)
