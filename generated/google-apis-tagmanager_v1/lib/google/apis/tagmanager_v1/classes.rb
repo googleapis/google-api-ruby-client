@@ -265,11 +265,6 @@ module Google
         # @return [Array<Google::Apis::TagmanagerV1::Folder>]
         attr_accessor :folder
       
-        # The macros in the container that this version was taken from.
-        # Corresponds to the JSON property `macro`
-        # @return [Array<Google::Apis::TagmanagerV1::Macro>]
-        attr_accessor :macro
-      
         # Container version display name.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -279,11 +274,6 @@ module Google
         # Corresponds to the JSON property `notes`
         # @return [String]
         attr_accessor :notes
-      
-        # The rules in the container that this version was taken from.
-        # Corresponds to the JSON property `rule`
-        # @return [Array<Google::Apis::TagmanagerV1::Rule>]
-        attr_accessor :rule
       
         # The tags in the container that this version was taken from.
         # Corresponds to the JSON property `tag`
@@ -313,10 +303,8 @@ module Google
           @deleted = args[:deleted] if args.key?(:deleted)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @folder = args[:folder] if args.key?(:folder)
-          @macro = args[:macro] if args.key?(:macro)
           @name = args[:name] if args.key?(:name)
           @notes = args[:notes] if args.key?(:notes)
-          @rule = args[:rule] if args.key?(:rule)
           @tag = args[:tag] if args.key?(:tag)
           @trigger = args[:trigger] if args.key?(:trigger)
           @variable = args[:variable] if args.key?(:variable)
@@ -353,16 +341,6 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Number of macros in the container version.
-        # Corresponds to the JSON property `numMacros`
-        # @return [String]
-        attr_accessor :num_macros
-      
-        # Number of rules in the container version.
-        # Corresponds to the JSON property `numRules`
-        # @return [String]
-        attr_accessor :num_rules
-      
         # Number of tags in the container version.
         # Corresponds to the JSON property `numTags`
         # @return [String]
@@ -389,8 +367,6 @@ module Google
           @container_version_id = args[:container_version_id] if args.key?(:container_version_id)
           @deleted = args[:deleted] if args.key?(:deleted)
           @name = args[:name] if args.key?(:name)
-          @num_macros = args[:num_macros] if args.key?(:num_macros)
-          @num_rules = args[:num_rules] if args.key?(:num_rules)
           @num_tags = args[:num_tags] if args.key?(:num_tags)
           @num_triggers = args[:num_triggers] if args.key?(:num_triggers)
           @num_variables = args[:num_variables] if args.key?(:num_variables)
@@ -798,102 +774,6 @@ module Google
         end
       end
       
-      # Represents a Google Tag Manager Macro.
-      class Macro
-        include Google::Apis::Core::Hashable
-      
-        # GTM Account ID.
-        # Corresponds to the JSON property `accountId`
-        # @return [String]
-        attr_accessor :account_id
-      
-        # GTM Container ID.
-        # Corresponds to the JSON property `containerId`
-        # @return [String]
-        attr_accessor :container_id
-      
-        # For mobile containers only: A list of rule IDs for disabling conditional
-        # macros; the macro is enabled if one of the enabling rules is true while all
-        # the disabling rules are false. Treated as an unordered set.
-        # Corresponds to the JSON property `disablingRuleId`
-        # @return [Array<String>]
-        attr_accessor :disabling_rule_id
-      
-        # For mobile containers only: A list of rule IDs for enabling conditional macros;
-        # the macro is enabled if one of the enabling rules is true while all the
-        # disabling rules are false. Treated as an unordered set.
-        # Corresponds to the JSON property `enablingRuleId`
-        # @return [Array<String>]
-        attr_accessor :enabling_rule_id
-      
-        # The fingerprint of the GTM Macro as computed at storage time. This value is
-        # recomputed whenever the macro is modified.
-        # Corresponds to the JSON property `fingerprint`
-        # @return [String]
-        attr_accessor :fingerprint
-      
-        # The Macro ID uniquely identifies the GTM Macro.
-        # Corresponds to the JSON property `macroId`
-        # @return [String]
-        attr_accessor :macro_id
-      
-        # Macro display name.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # User notes on how to apply this macro in the container.
-        # Corresponds to the JSON property `notes`
-        # @return [String]
-        attr_accessor :notes
-      
-        # The macro's parameters.
-        # Corresponds to the JSON property `parameter`
-        # @return [Array<Google::Apis::TagmanagerV1::Parameter>]
-        attr_accessor :parameter
-      
-        # Parent folder id.
-        # Corresponds to the JSON property `parentFolderId`
-        # @return [String]
-        attr_accessor :parent_folder_id
-      
-        # The end timestamp in milliseconds to schedule a macro.
-        # Corresponds to the JSON property `scheduleEndMs`
-        # @return [Fixnum]
-        attr_accessor :schedule_end_ms
-      
-        # The start timestamp in milliseconds to schedule a macro.
-        # Corresponds to the JSON property `scheduleStartMs`
-        # @return [Fixnum]
-        attr_accessor :schedule_start_ms
-      
-        # GTM Macro Type.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @account_id = args[:account_id] if args.key?(:account_id)
-          @container_id = args[:container_id] if args.key?(:container_id)
-          @disabling_rule_id = args[:disabling_rule_id] if args.key?(:disabling_rule_id)
-          @enabling_rule_id = args[:enabling_rule_id] if args.key?(:enabling_rule_id)
-          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
-          @macro_id = args[:macro_id] if args.key?(:macro_id)
-          @name = args[:name] if args.key?(:name)
-          @notes = args[:notes] if args.key?(:notes)
-          @parameter = args[:parameter] if args.key?(:parameter)
-          @parent_folder_id = args[:parent_folder_id] if args.key?(:parent_folder_id)
-          @schedule_end_ms = args[:schedule_end_ms] if args.key?(:schedule_end_ms)
-          @schedule_start_ms = args[:schedule_start_ms] if args.key?(:schedule_start_ms)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
       # Represents a Google Tag Manager Parameter.
       class Parameter
         include Google::Apis::Core::Hashable
@@ -972,62 +852,6 @@ module Google
         end
       end
       
-      # Represents a Google Tag Manager Rule.
-      class Rule
-        include Google::Apis::Core::Hashable
-      
-        # GTM Account ID.
-        # Corresponds to the JSON property `accountId`
-        # @return [String]
-        attr_accessor :account_id
-      
-        # The list of conditions that make up this rule (implicit AND between them).
-        # Corresponds to the JSON property `condition`
-        # @return [Array<Google::Apis::TagmanagerV1::Condition>]
-        attr_accessor :condition
-      
-        # GTM Container ID.
-        # Corresponds to the JSON property `containerId`
-        # @return [String]
-        attr_accessor :container_id
-      
-        # The fingerprint of the GTM Rule as computed at storage time. This value is
-        # recomputed whenever the rule is modified.
-        # Corresponds to the JSON property `fingerprint`
-        # @return [String]
-        attr_accessor :fingerprint
-      
-        # Rule display name.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # User notes on how to apply this rule in the container.
-        # Corresponds to the JSON property `notes`
-        # @return [String]
-        attr_accessor :notes
-      
-        # The Rule ID uniquely identifies the GTM Rule.
-        # Corresponds to the JSON property `ruleId`
-        # @return [String]
-        attr_accessor :rule_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @account_id = args[:account_id] if args.key?(:account_id)
-          @condition = args[:condition] if args.key?(:condition)
-          @container_id = args[:container_id] if args.key?(:container_id)
-          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
-          @name = args[:name] if args.key?(:name)
-          @notes = args[:notes] if args.key?(:notes)
-          @rule_id = args[:rule_id] if args.key?(:rule_id)
-        end
-      end
-      
       # 
       class SetupTag
         include Google::Apis::Core::Hashable
@@ -1064,12 +888,6 @@ module Google
         # @return [String]
         attr_accessor :account_id
       
-        # Blocking rule IDs. If any of the listed rules evaluate to true, the tag will
-        # not fire.
-        # Corresponds to the JSON property `blockingRuleId`
-        # @return [Array<String>]
-        attr_accessor :blocking_rule_id
-      
         # Blocking trigger IDs. If any of the listed triggers evaluate to true, the tag
         # will not fire.
         # Corresponds to the JSON property `blockingTriggerId`
@@ -1086,12 +904,6 @@ module Google
         # Corresponds to the JSON property `fingerprint`
         # @return [String]
         attr_accessor :fingerprint
-      
-        # Firing rule IDs. A tag will fire when any of the listed rules are true and all
-        # of its blockingRuleIds (if any specified) are false.
-        # Corresponds to the JSON property `firingRuleId`
-        # @return [Array<String>]
-        attr_accessor :firing_rule_id
       
         # Firing trigger IDs. A tag will fire when any of the listed triggers are true
         # and all of its blockingTriggerIds (if any specified) are false.
@@ -1179,11 +991,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account_id = args[:account_id] if args.key?(:account_id)
-          @blocking_rule_id = args[:blocking_rule_id] if args.key?(:blocking_rule_id)
           @blocking_trigger_id = args[:blocking_trigger_id] if args.key?(:blocking_trigger_id)
           @container_id = args[:container_id] if args.key?(:container_id)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
-          @firing_rule_id = args[:firing_rule_id] if args.key?(:firing_rule_id)
           @firing_trigger_id = args[:firing_trigger_id] if args.key?(:firing_trigger_id)
           @live_only = args[:live_only] if args.key?(:live_only)
           @name = args[:name] if args.key?(:name)
