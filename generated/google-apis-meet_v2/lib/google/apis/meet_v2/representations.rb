@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ArtifactConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConferenceRecord
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -100,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ModerationRestrictions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Participant
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -124,7 +136,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RecordingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SignedinUser
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SmartNotesConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -154,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TranscriptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ActiveConference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -165,6 +195,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+        end
+      end
+      
+      class ArtifactConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :recording_config, as: 'recordingConfig', class: Google::Apis::MeetV2::RecordingConfig, decorator: Google::Apis::MeetV2::RecordingConfig::Representation
+      
+          property :smart_notes_config, as: 'smartNotesConfig', class: Google::Apis::MeetV2::SmartNotesConfig, decorator: Google::Apis::MeetV2::SmartNotesConfig::Representation
+      
+          property :transcription_config, as: 'transcriptionConfig', class: Google::Apis::MeetV2::TranscriptionConfig, decorator: Google::Apis::MeetV2::TranscriptionConfig::Representation
+      
         end
       end
       
@@ -262,6 +304,16 @@ module Google
         end
       end
       
+      class ModerationRestrictions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :chat_restriction, as: 'chatRestriction'
+          property :default_join_as_viewer_type, as: 'defaultJoinAsViewerType'
+          property :present_restriction, as: 'presentRestriction'
+          property :reaction_restriction, as: 'reactionRestriction'
+        end
+      end
+      
       class Participant
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -305,11 +357,25 @@ module Google
         end
       end
       
+      class RecordingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_recording_generation, as: 'autoRecordingGeneration'
+        end
+      end
+      
       class SignedinUser
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :user, as: 'user'
+        end
+      end
+      
+      class SmartNotesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_smart_notes_generation, as: 'autoSmartNotesGeneration'
         end
       end
       
@@ -330,7 +396,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_type, as: 'accessType'
+          property :artifact_config, as: 'artifactConfig', class: Google::Apis::MeetV2::ArtifactConfig, decorator: Google::Apis::MeetV2::ArtifactConfig::Representation
+      
+          property :attendance_report_generation_type, as: 'attendanceReportGenerationType'
           property :entry_point_access, as: 'entryPointAccess'
+          property :moderation, as: 'moderation'
+          property :moderation_restrictions, as: 'moderationRestrictions', class: Google::Apis::MeetV2::ModerationRestrictions, decorator: Google::Apis::MeetV2::ModerationRestrictions::Representation
+      
         end
       end
       
@@ -355,6 +427,13 @@ module Google
           property :participant, as: 'participant'
           property :start_time, as: 'startTime'
           property :text, as: 'text'
+        end
+      end
+      
+      class TranscriptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_transcription_generation, as: 'autoTranscriptionGeneration'
         end
       end
     end
