@@ -801,7 +801,7 @@ module Google
         #   such as `en-US` or `sr-Latn`. If not value is provided, `en-US` will be used.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of issues to return. The service may return fewer
-        #   than this value. If unspecified, at most 50 users will be returned. The
+        #   than this value. If unspecified, at most 50 issues will be returned. The
         #   maximum value is 100; values above 100 will be coerced to 100
         # @param [String] page_token
         #   Optional. A page token, received from a previous `ListAccountIssues` call.
@@ -1559,7 +1559,7 @@ module Google
         #   Required. The resource name of the terms of service version. Format: `
         #   termsOfService/`version``
         # @param [String] account
-        #   Required. The account for which to accept the ToS.
+        #   Required. The account for which to accept the ToS. Format: `accounts/`account``
         # @param [String] region_code
         #   Required. Region code as defined by [CLDR](https://cldr.unicode.org/). This is
         #   either a country when the ToS applies specifically to that country or 001 when
