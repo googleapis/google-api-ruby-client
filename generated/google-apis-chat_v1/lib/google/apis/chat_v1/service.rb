@@ -944,17 +944,23 @@ module Google
         # authentication](https://developers.google.com/workspace/chat/authenticate-
         # authorize-chat-user) You can authenticate and authorize this method with
         # administrator privileges by setting the `use_admin_access` field in the
-        # request.
+        # request. To delete memberships for space managers, the requester must be a
+        # space manager. If you're using [app authentication](https://developers.google.
+        # com/workspace/chat/authenticate-authorize-chat-app) the application must be
+        # the space creator.
         # @param [String] name
         #   Required. Resource name of the membership to delete. Chat apps can delete
         #   human users' or their own memberships. Chat apps can't delete other apps'
         #   memberships. When deleting a human membership, requires the `chat.memberships`
-        #   scope and `spaces/`space`/members/`member`` format. You can use the email as
-        #   an alias for ``member``. For example, `spaces/`space`/members/example@gmail.
-        #   com` where `example@gmail.com` is the email of the Google Chat user. When
-        #   deleting an app membership, requires the `chat.memberships.app` scope and `
-        #   spaces/`space`/members/app` format. Format: `spaces/`space`/members/`member``
-        #   or `spaces/`space`/members/app`.
+        #   scope with [user authentication](https://developers.google.com/workspace/chat/
+        #   authenticate-authorize-chat-user) or the `chat.memberships.app` scope with [
+        #   app authentication](https://developers.google.com/workspace/chat/authenticate-
+        #   authorize-chat-app) and the `spaces/`space`/members/`member`` format. You can
+        #   use the email as an alias for ``member``. For example, `spaces/`space`/members/
+        #   example@gmail.com` where `example@gmail.com` is the email of the Google Chat
+        #   user. When deleting an app membership, requires the `chat.memberships.app`
+        #   scope and `spaces/`space`/members/app` format. Format: `spaces/`space`/members/
+        #   `member`` or `spaces/`space`/members/app`.
         # @param [Boolean] use_admin_access
         #   Optional. When `true`, the method runs using the user's Google Workspace
         #   administrator privileges. The calling user must be a Google Workspace
