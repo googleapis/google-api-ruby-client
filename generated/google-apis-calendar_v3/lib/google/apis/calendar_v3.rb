@@ -23,7 +23,7 @@ module Google
     #
     # Manipulates events and other calendar data.
     #
-    # @see https://developers.google.com/google-apps/calendar/firstapp
+    # @see https://developers.google.com/workspace/calendar/firstapp
     module CalendarV3
       # Version of the Calendar API this client connects to.
       # This is NOT the gem version.
