@@ -1,0 +1,7 @@
+{
+    "api_id": "storagebatchoperations:v1",
+    "name_pretty": "Storage Batch Operations API",
+    "distribution_name": "google-apis-storagebatchoperations_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
