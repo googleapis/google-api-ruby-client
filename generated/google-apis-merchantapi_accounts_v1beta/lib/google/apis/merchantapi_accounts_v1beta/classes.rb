@@ -2469,15 +2469,13 @@ module Google
       class Required
         include Google::Apis::Core::Hashable
       
-        # The [termsOfService](google.shopping.merchant.accounts.v1main.TermsOfService)
-        # that need to be accepted.
+        # The `TermsOfService` that need to be accepted.
         # Corresponds to the JSON property `termsOfService`
         # @return [String]
         attr_accessor :terms_of_service
       
-        # Full URL to the terms of service file. This field is the same as [
-        # TermsOfService.file_uri](TermsOfService.file_uri), it is added here for
-        # convenience only.
+        # Full URL to the terms of service file. This field is the same as `
+        # TermsOfService.file_uri`, it is added here for convenience only.
         # Corresponds to the JSON property `tosFileUri`
         # @return [String]
         attr_accessor :tos_file_uri
@@ -3002,21 +3000,17 @@ module Google
       
       # This resource represents the agreement state for a given account and terms of
       # service kind. The state is as follows: * If the merchant has accepted a terms
-      # of service: [accepted](TermsOfServiceAggrementState.accepted) will be
-      # populated, otherwise it will be empty * If the merchant must sign a terms of
-      # service: [required](TermsOfServiceAggrementState.required) will be populated,
-      # otherwise it will be empty. Note that both [required](
-      # TermsOfServiceAggrementState.required) and [accepted](
-      # TermsOfServiceAggrementState.accepted) can be present. In this case the `
-      # accepted` terms of services will have an expiration date set in the [
-      # valid_until](Accepted.valid_until) field. The `required` terms of services
-      # need to be accepted before `valid_until` in order for the account to continue
-      # having a valid agreement. When accepting new terms of services we expect 3Ps
-      # to display the text associated with the given terms of service agreement (the
-      # url to the file containing the text is added in the Required message below as [
-      # tos_file_uri](Accepted.tos_file_uri). The actual acceptance of the terms of
-      # service is done by calling accept on the [TermsOfService](TermsOfService)
-      # resource.
+      # of service, `accepted` will be populated, otherwise it will be empty * If the
+      # merchant must sign a terms of service, `required` will be populated, otherwise
+      # it will be empty. Note that both `required` and `accepted` can be present. In
+      # this case the `accepted` terms of services will have an expiration date set in
+      # the `valid_until` field. The `required` terms of services need to be accepted
+      # before `valid_until` in order for the account to continue having a valid
+      # agreement. When accepting new terms of services we expect 3Ps to display the
+      # text associated with the given terms of service agreement (the url to the file
+      # containing the text is added in the Required message below as `tos_file_uri`.
+      # The actual acceptance of the terms of service is done by calling accept on the
+      # `TermsOfService` resource.
       class TermsOfServiceAgreementState
         include Google::Apis::Core::Hashable
       
