@@ -41,7 +41,9 @@ module Google
       :quota_project,
       :query,
       :add_invocation_id_header,
-      :upload_chunk_size)
+      :upload_chunk_size,
+      :add_idempotency_token_header
+    )
 
     # General client options
     class ClientOptions
@@ -139,5 +141,6 @@ module Google
     RequestOptions.default.quota_project = nil
     RequestOptions.default.add_invocation_id_header = false
     RequestOptions.default.upload_chunk_size = 100 * 1024 * 1024 # 100 MB
+    RequestOptions.default.add_idempotency_token_header = true
   end
 end

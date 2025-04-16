@@ -34,7 +34,6 @@ RSpec.describe Google::Apis::Core::ApiCommand do
 
   let(:client_version) { "1.2.3" }
   let(:x_goog_api_client_value) { "gl-ruby/#{RUBY_VERSION} gdcl/#{client_version}" }
-
   context('with preparation') do
     let(:command) do
       Google::Apis::Core::ApiCommand.new(:get, 'https://www.googleapis.com/zoo/animals', client_version: client_version)
@@ -89,6 +88,12 @@ RSpec.describe Google::Apis::Core::ApiCommand do
       command.options.add_invocation_id_header = true
       command.prepare!
       expect(command.header["X-Goog-Api-Client"]).to include("gccl-invocation-id")
+    end
+
+    it "should set the X-Goog-Gcs-Idempotency-Token header" do
+      command.options.add_idempotency_token_header = true
+      command.prepare!
+      expect(command.header['X-Goog-Gcs-Idempotency-Token']).not_to be_nil
     end
   end
 
