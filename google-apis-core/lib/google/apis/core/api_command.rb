@@ -144,7 +144,6 @@ module Google
         end
 
         private
-        INVOCATION_ID = SecureRandom.uuid
 
         def set_api_client_header
           old_xgac = header
@@ -177,11 +176,11 @@ module Google
         end
   
         def set_idempotency_token_header
-          header['X-Goog-Gcs-Idempotency-Token'] = INVOCATION_ID
+          header['X-Goog-Gcs-Idempotency-Token'] = SecureRandom.uuid
         end
 
         def invocation_id_header
-          "gccl-invocation-id/#{INVOCATION_ID}"
+          "gccl-invocation-id/#{SecureRandom.uuid}"
         end
 
         # Attempt to parse a JSON error message
