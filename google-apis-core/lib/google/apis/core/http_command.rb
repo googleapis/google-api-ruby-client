@@ -283,7 +283,7 @@ module Google
         # @yield [nil, err] if block given
         # @raise [StandardError] if no block
         def error(err, rethrow: false, &block)
-          logger.debug { sprintf('Error - %s', PP.pp(err, '')) }
+          logger.debug { sprintf('Error - %s', PP.pp(err, ''.dup)) }
           if err.is_a?(HTTPClient::BadResponseError)
             begin
               res = err.res
@@ -385,7 +385,7 @@ module Google
         end
 
         def safe_pretty_representation obj
-          out = ""
+          out = "".dup
           printer = RedactingPP.new out, 79
           printer.guard_inspect_key { printer.pp obj }
           printer.flush
@@ -393,7 +393,7 @@ module Google
         end
 
         def safe_single_line_representation obj
-          out = ""
+          out = "".dup
           printer = RedactingSingleLine.new out
           printer.guard_inspect_key { printer.pp obj }
           printer.flush
