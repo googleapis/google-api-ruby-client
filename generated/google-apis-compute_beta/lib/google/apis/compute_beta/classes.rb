@@ -3164,7 +3164,7 @@ module Google
         attr_accessor :client_ttl
       
         # Specifies the default TTL for cached content served by this origin for
-        # responses that do not have an existing valid TTL (max-age or s-max-age).
+        # responses that do not have an existing valid TTL (max-age or s-maxage).
         # Setting a TTL of "0" means "always revalidate". The value of defaultTTL cannot
         # be set to a value greater than that of maxTTL, but can be equal. When the
         # cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set
@@ -3228,7 +3228,7 @@ module Google
         # that do not specify a max-stale directive. Stale responses that exceed the TTL
         # configured here will not be served. The default limit (max-stale) is 86400s (1
         # day), which will allow stale content to be served up to this limit beyond the
-        # max-age (or s-max-age) of a cached response. The maximum allowed value is
+        # max-age (or s-maxage) of a cached response. The maximum allowed value is
         # 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
         # Corresponds to the JSON property `serveWhileStale`
         # @return [Fixnum]
@@ -4319,7 +4319,7 @@ module Google
         attr_accessor :client_ttl
       
         # Specifies the default TTL for cached content served by this origin for
-        # responses that do not have an existing valid TTL (max-age or s-max-age).
+        # responses that do not have an existing valid TTL (max-age or s-maxage).
         # Setting a TTL of "0" means "always revalidate". The value of defaultTTL cannot
         # be set to a value greater than that of maxTTL, but can be equal. When the
         # cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set
@@ -4383,7 +4383,7 @@ module Google
         # that do not specify a max-stale directive. Stale responses that exceed the TTL
         # configured here will not be served. The default limit (max-stale) is 86400s (1
         # day), which will allow stale content to be served up to this limit beyond the
-        # max-age (or s-max-age) of a cached response. The maximum allowed value is
+        # max-age (or s-maxage) of a cached response. The maximum allowed value is
         # 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
         # Corresponds to the JSON property `serveWhileStale`
         # @return [Fixnum]
@@ -4753,12 +4753,13 @@ module Google
         # one of its backends is 64. - The maximum number of backend services with
         # fastIPMove in a VPC in a region is 64. - The network endpoints that are
         # attached to a backend of a backend service with fastIPMove cannot resolve to
-        # C3 machines. - Traffic directed to the leader by a static route next hop will
-        # not be redirected to a new leader by fast failover. Such traffic will only be
-        # redirected once an haPolicy.leader update has taken effect. Only traffic to
-        # the forwarding rule's virtual IP will be redirected to a new leader by fast
-        # failover. haPolicy.fastIPMove can be set only at backend service creation time.
-        # Once set, it cannot be updated. By default, fastIpMove is set to DISABLED.
+        # Gen3+ machines for IPv6. - Traffic directed to the leader by a static route
+        # next hop will not be redirected to a new leader by fast failover. Such traffic
+        # will only be redirected once an haPolicy.leader update has taken effect. Only
+        # traffic to the forwarding rule's virtual IP will be redirected to a new leader
+        # by fast failover. haPolicy.fastIPMove can be set only at backend service
+        # creation time. Once set, it cannot be updated. By default, fastIpMove is set
+        # to DISABLED.
         # Corresponds to the JSON property `fastIPMove`
         # @return [String]
         attr_accessor :fast_ip_move
@@ -6150,8 +6151,8 @@ module Google
       class CacheInvalidationRule
         include Google::Apis::Core::Hashable
       
-        # [Preview] A list of cache tags used to identify cached objects. - Cache tags
-        # are specified when the response is first cached, by setting the `Cache-Tag`
+        # A list of cache tags used to identify cached objects. - Cache tags are
+        # specified when the response is first cached, by setting the `Cache-Tag`
         # response header at the origin. - Multiple cache tags in the same invalidation
         # request are treated as Boolean `OR` - for example, `tag1 OR tag2 OR tag3`. -
         # If other fields are also specified, these are treated as Boolean `AND` with
@@ -7184,11 +7185,6 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output Only] Server-defined URL for this resource with the resource id.
-        # Corresponds to the JSON property `selfLinkWithId`
-        # @return [String]
-        attr_accessor :self_link_with_id
-      
         def initialize(**args)
            update!(**args)
         end
@@ -7201,7 +7197,6 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
-          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
         end
       end
       
@@ -9964,6 +9959,11 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Additional firewall parameters.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeBeta::FirewallParams]
+        attr_accessor :params
+      
         # Priority for this rule. This is an integer between `0` and `65535`, both
         # inclusive. The default value is `1000`. Relative priorities determine which
         # rule takes effect if multiple rules apply. Lower values indicate higher
@@ -10057,6 +10057,7 @@ module Google
           @log_config = args[:log_config] if args.key?(:log_config)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @params = args[:params] if args.key?(:params)
           @priority = args[:priority] if args.key?(:priority)
           @self_link = args[:self_link] if args.key?(:self_link)
           @source_ranges = args[:source_ranges] if args.key?(:source_ranges)
@@ -10272,6 +10273,32 @@ module Google
         def update!(**args)
           @enable = args[:enable] if args.key?(:enable)
           @metadata = args[:metadata] if args.key?(:metadata)
+        end
+      end
+      
+      # Additional firewall parameters.
+      class FirewallParams
+        include Google::Apis::Core::Hashable
+      
+        # Tag keys/values directly bound to this resource. Tag keys and values have the
+        # same definition as resource manager tags. The field is allowed for INSERT only.
+        # The keys/values to set on the resource should be specified in either ID ` : `
+        # or Namespaced format ` : `. For example the following are valid inputs: * `"
+        # tagKeys/333" : "tagValues/444", "tagKeys/123" : "tagValues/456"` * `"123/
+        # environment" : "production", "345/abc" : "xyz"` Note: * Invalid combinations
+        # of ID & namespaced format is not supported. For instance: `"123/environment" :
+        # "tagValues/444"` is invalid.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
@@ -10562,6 +10589,15 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # An integer indicating the priority of an association. The priority must be a
+        # positive value between 1 and 2147483647. Firewall Policies are evaluated from
+        # highest to lowest priority where 1 is the highest priority and 2147483647 is
+        # the lowest priority. The default value is `1000`. If two associations have the
+        # same priority then lexicographical order on association names is applied.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
         # [Output Only] The short name of the firewall policy of the association.
         # Corresponds to the JSON property `shortName`
         # @return [String]
@@ -10577,6 +10613,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @firewall_policy_id = args[:firewall_policy_id] if args.key?(:firewall_policy_id)
           @name = args[:name] if args.key?(:name)
+          @priority = args[:priority] if args.key?(:priority)
           @short_name = args[:short_name] if args.key?(:short_name)
         end
       end
@@ -13115,6 +13152,59 @@ module Google
       end
       
       # 
+      class GrpctlsHealthCheck
+        include Google::Apis::Core::Hashable
+      
+        # The gRPC service name for the health check. This field is optional. The value
+        # of grpc_service_name has the following meanings by convention: - Empty
+        # service_name means the overall status of all services at the backend. - Non-
+        # empty service_name means the health of that gRPC service, as defined by the
+        # owner of the service. The grpc_service_name can only be ASCII.
+        # Corresponds to the JSON property `grpcServiceName`
+        # @return [String]
+        attr_accessor :grpc_service_name
+      
+        # The TCP port number to which the health check prober sends packets. Valid
+        # values are 1 through 65535.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Specifies how a port is selected for health checking. Can be one of the
+        # following values: USE_FIXED_PORT: Specifies a port number explicitly using the
+        # port field in the health check. Supported by backend services for passthrough
+        # load balancers and backend services for proxy load balancers. Not supported by
+        # target pools. The health check supports all backends supported by the backend
+        # service provided the backend can be health checked. For example, GCE_VM_IP
+        # network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance
+        # group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an
+        # indirect method of specifying the health check port by referring to the
+        # backend service. Only supported by backend services for proxy load balancers.
+        # Not supported by target pools. Not supported by backend services for
+        # passthrough load balancers. Supports all backends that can be health checked;
+        # for example, GCE_VM_IP_PORT network endpoint groups and instance group
+        # backends. For GCE_VM_IP_PORT network endpoint group backends, the health check
+        # uses the port number specified for each endpoint in the network endpoint group.
+        # For instance group backends, the health check uses the port number determined
+        # by looking up the backend service's named port in the instance group's list of
+        # named ports.
+        # Corresponds to the JSON property `portSpecification`
+        # @return [String]
+        attr_accessor :port_specification
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @grpc_service_name = args[:grpc_service_name] if args.key?(:grpc_service_name)
+          @port = args[:port] if args.key?(:port)
+          @port_specification = args[:port_specification] if args.key?(:port_specification)
+        end
+      end
+      
+      # 
       class GlobalAddressesMoveRequest
         include Google::Apis::Core::Hashable
       
@@ -13484,8 +13574,8 @@ module Google
         # values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE -
         # WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE -
         # SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE_V2 - SEV_SNP_CAPABLE -
-        # TDX_CAPABLE - IDPF For more information, see Enabling guest operating system
-        # features.
+        # TDX_CAPABLE - IDPF - SNP_SVSM_CAPABLE For more information, see Enabling guest
+        # operating system features.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -13784,6 +13874,11 @@ module Google
         # @return [Google::Apis::ComputeBeta::GrpcHealthCheck]
         attr_accessor :grpc_health_check
       
+        # 
+        # Corresponds to the JSON property `grpcTlsHealthCheck`
+        # @return [Google::Apis::ComputeBeta::GrpctlsHealthCheck]
+        attr_accessor :grpc_tls_health_check
+      
         # A so-far unhealthy instance will be marked healthy after this many consecutive
         # successes. The default value is 2.
         # Corresponds to the JSON property `healthyThreshold`
@@ -13898,6 +13993,7 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @grpc_health_check = args[:grpc_health_check] if args.key?(:grpc_health_check)
+          @grpc_tls_health_check = args[:grpc_tls_health_check] if args.key?(:grpc_tls_health_check)
           @healthy_threshold = args[:healthy_threshold] if args.key?(:healthy_threshold)
           @http2_health_check = args[:http2_health_check] if args.key?(:http2_health_check)
           @http_health_check = args[:http_health_check] if args.key?(:http_health_check)
@@ -18152,11 +18248,12 @@ module Google
       class InstanceGroupManagerInstanceLifecyclePolicy
         include Google::Apis::Core::Hashable
       
-        # The action that a MIG performs on a failed or an unhealthy VM. A VM is marked
-        # as unhealthy when the application running on that VM fails a health check.
-        # Valid values are - REPAIR (default): MIG automatically repairs a failed or an
-        # unhealthy VM by recreating it. For more information, see About repairing VMs
-        # in a MIG. - DO_NOTHING: MIG does not repair a failed or an unhealthy VM.
+        # The action that a MIG performs on a failed VM. If the value of the
+        # onFailedHealthCheck field is `DEFAULT_ACTION`, then the same action also
+        # applies to the VMs on which your application fails a health check. Valid
+        # values are - REPAIR (default): MIG automatically repairs a failed VM by
+        # recreating it. For more information, see About repairing VMs in a MIG. -
+        # DO_NOTHING: MIG does not repair a failed VM.
         # Corresponds to the JSON property `defaultActionOnFailure`
         # @return [String]
         attr_accessor :default_action_on_failure
@@ -18362,6 +18459,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # The names of instances to be created by this resize request. The number of
+        # names specified determines the number of instances to create. The group's
+        # target size will be increased by this number. This field cannot be used
+        # together with 'resize_by'.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::ComputeBeta::PerInstanceConfig>]
+        attr_accessor :instances
+      
         # [Output Only] The resource type, which is always compute#
         # instanceGroupManagerResizeRequest for resize requests.
         # Corresponds to the JSON property `kind`
@@ -18431,6 +18536,7 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
+          @instances = args[:instances] if args.key?(:instances)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @region = args[:region] if args.key?(:region)
@@ -21477,7 +21583,7 @@ module Google
       class InstancesReportHostAsFaultyRequest
         include Google::Apis::Core::Hashable
       
-        # The disruption schedule for the VM. Default to IMMEDIATE.
+        # The disruption schedule for the VM. Required field, only allows IMMEDIATE.
         # Corresponds to the JSON property `disruptionSchedule`
         # @return [String]
         attr_accessor :disruption_schedule
@@ -23996,7 +24102,7 @@ module Google
       
         # [Output only] List of link types available at this InterconnectLocation, which
         # can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR -
-        # LINK_TYPE_ETHERNET_100G_LR
+        # LINK_TYPE_ETHERNET_100G_LR - LINK_TYPE_ETHERNET_400G_LR4
         # Corresponds to the JSON property `availableLinkTypes`
         # @return [Array<String>]
         attr_accessor :available_link_types
@@ -25440,6 +25546,23 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # A fingerprint for the labels being applied to this machine image, which is
+        # essentially a hash of the labels set used for optimistic locking. The
+        # fingerprint is initially generated by Compute Engine and changes after every
+        # request to modify or update labels. You must always provide an up-to-date
+        # fingerprint hash in order to update or change labels. To see the latest
+        # fingerprint, make get() request to the machine image.
+        # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :label_fingerprint
+      
+        # Labels to apply to this machine image. These can be later modified by the
+        # setLabels method.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Encrypts the machine image using a customer-supplied encryption key. After you
         # encrypt a machine image using a customer-supplied key, you must provide the
         # same key if you use the machine image later. For example, you must provide the
@@ -25536,6 +25659,8 @@ module Google
           @id = args[:id] if args.key?(:id)
           @instance_properties = args[:instance_properties] if args.key?(:instance_properties)
           @kind = args[:kind] if args.key?(:kind)
+          @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
+          @labels = args[:labels] if args.key?(:labels)
           @machine_image_encryption_key = args[:machine_image_encryption_key] if args.key?(:machine_image_encryption_key)
           @name = args[:name] if args.key?(:name)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
@@ -27060,6 +27185,11 @@ module Google
         # @return [String]
         attr_accessor :network_profile
       
+        # Additional network parameters.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeBeta::NetworkParams]
+        attr_accessor :params
+      
         # [Output Only] A list of network peerings for the resource.
         # Corresponds to the JSON property `peerings`
         # @return [Array<Google::Apis::ComputeBeta::NetworkPeering>]
@@ -27108,6 +27238,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network_firewall_policy_enforcement_order = args[:network_firewall_policy_enforcement_order] if args.key?(:network_firewall_policy_enforcement_order)
           @network_profile = args[:network_profile] if args.key?(:network_profile)
+          @params = args[:params] if args.key?(:params)
           @peerings = args[:peerings] if args.key?(:peerings)
           @routing_config = args[:routing_config] if args.key?(:routing_config)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -29406,6 +29537,32 @@ module Google
         end
       end
       
+      # Additional network parameters.
+      class NetworkParams
+        include Google::Apis::Core::Hashable
+      
+        # Tag keys/values directly bound to this resource. Tag keys and values have the
+        # same definition as resource manager tags. The field is allowed for INSERT only.
+        # The keys/values to set on the resource should be specified in either ID ` : `
+        # or Namespaced format ` : `. For example the following are valid inputs: * `"
+        # tagKeys/333" : "tagValues/444", "tagKeys/123" : "tagValues/456"` * `"123/
+        # environment" : "production", "345/abc" : "xyz"` Note: * Invalid combinations
+        # of ID & namespaced format is not supported. For instance: `"123/environment" :
+        # "tagValues/444"` is invalid.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
+        end
+      end
+      
       # A network peering attached to a network resource. The message includes the
       # peering name, peer network, peering state, and a flag indicating whether
       # Google Compute Engine should automatically create routes for the peering.
@@ -29479,7 +29636,7 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # Maximum Transmission Unit in bytes.
+        # [Output Only] Maximum Transmission Unit in bytes of the peer network.
         # Corresponds to the JSON property `peerMtu`
         # @return [Fixnum]
         attr_accessor :peer_mtu
@@ -29670,6 +29827,11 @@ module Google
         # @return [String]
         attr_accessor :allow_cloud_router
       
+        # Specifies whether default NIC attachment is allowed.
+        # Corresponds to the JSON property `allowDefaultNicAttachment`
+        # @return [String]
+        attr_accessor :allow_default_nic_attachment
+      
         # Specifies whether VMs are allowed to have external IP access on network
         # interfaces connected to this VPC.
         # Corresponds to the JSON property `allowExternalIpAccess`
@@ -29681,6 +29843,11 @@ module Google
         # @return [String]
         attr_accessor :allow_interconnect
       
+        # Specifies whether IP forwarding is allowed.
+        # Corresponds to the JSON property `allowIpForwarding`
+        # @return [String]
+        attr_accessor :allow_ip_forwarding
+      
         # Specifies whether cloud load balancing is allowed.
         # Corresponds to the JSON property `allowLoadBalancing`
         # @return [String]
@@ -29690,6 +29857,16 @@ module Google
         # Corresponds to the JSON property `allowMultiNicInSameNetwork`
         # @return [String]
         attr_accessor :allow_multi_nic_in_same_network
+      
+        # Specifies whether NCC is allowed.
+        # Corresponds to the JSON property `allowNcc`
+        # @return [String]
+        attr_accessor :allow_ncc
+      
+        # Specifies whether VM network migration is allowed.
+        # Corresponds to the JSON property `allowNetworkMigration`
+        # @return [String]
+        attr_accessor :allow_network_migration
       
         # Specifies whether Packet Mirroring 1.0 is supported.
         # Corresponds to the JSON property `allowPacketMirroring`
@@ -29747,6 +29924,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :subnet_stack_types
       
+        # Specifies which subnetwork purposes are supported.
+        # Corresponds to the JSON property `subnetworkPurposes`
+        # @return [Array<String>]
+        attr_accessor :subnetwork_purposes
+      
+        # Specifies which subnetwork stack types are supported.
+        # Corresponds to the JSON property `subnetworkStackTypes`
+        # @return [Array<String>]
+        attr_accessor :subnetwork_stack_types
+      
         # Specifies which type of unicast is supported.
         # Corresponds to the JSON property `unicast`
         # @return [String]
@@ -29764,10 +29951,14 @@ module Google
           @allow_class_d_firewalls = args[:allow_class_d_firewalls] if args.key?(:allow_class_d_firewalls)
           @allow_cloud_nat = args[:allow_cloud_nat] if args.key?(:allow_cloud_nat)
           @allow_cloud_router = args[:allow_cloud_router] if args.key?(:allow_cloud_router)
+          @allow_default_nic_attachment = args[:allow_default_nic_attachment] if args.key?(:allow_default_nic_attachment)
           @allow_external_ip_access = args[:allow_external_ip_access] if args.key?(:allow_external_ip_access)
           @allow_interconnect = args[:allow_interconnect] if args.key?(:allow_interconnect)
+          @allow_ip_forwarding = args[:allow_ip_forwarding] if args.key?(:allow_ip_forwarding)
           @allow_load_balancing = args[:allow_load_balancing] if args.key?(:allow_load_balancing)
           @allow_multi_nic_in_same_network = args[:allow_multi_nic_in_same_network] if args.key?(:allow_multi_nic_in_same_network)
+          @allow_ncc = args[:allow_ncc] if args.key?(:allow_ncc)
+          @allow_network_migration = args[:allow_network_migration] if args.key?(:allow_network_migration)
           @allow_packet_mirroring = args[:allow_packet_mirroring] if args.key?(:allow_packet_mirroring)
           @allow_private_google_access = args[:allow_private_google_access] if args.key?(:allow_private_google_access)
           @allow_psc = args[:allow_psc] if args.key?(:allow_psc)
@@ -29779,6 +29970,8 @@ module Google
           @interface_types = args[:interface_types] if args.key?(:interface_types)
           @subnet_purposes = args[:subnet_purposes] if args.key?(:subnet_purposes)
           @subnet_stack_types = args[:subnet_stack_types] if args.key?(:subnet_stack_types)
+          @subnetwork_purposes = args[:subnetwork_purposes] if args.key?(:subnetwork_purposes)
+          @subnetwork_stack_types = args[:subnetwork_stack_types] if args.key?(:subnetwork_stack_types)
           @unicast = args[:unicast] if args.key?(:unicast)
         end
       end
@@ -37548,6 +37741,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # [Output Only] Full or partial URL to parent commitments. This field displays
+        # for reservations that are tied to multiple commitments.
+        # Corresponds to the JSON property `linkedCommitments`
+        # @return [Array<String>]
+        attr_accessor :linked_commitments
+      
         # The name of the resource, provided by the client when initially creating the
         # resource. The resource name must be 1-63 characters long, and comply with
         # RFC1035. Specifically, the name must be 1-63 characters long and match the
@@ -37640,6 +37839,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @linked_commitments = args[:linked_commitments] if args.key?(:linked_commitments)
           @name = args[:name] if args.key?(:name)
           @reservation_mode = args[:reservation_mode] if args.key?(:reservation_mode)
           @reservation_sharing_policy = args[:reservation_sharing_policy] if args.key?(:reservation_sharing_policy)
@@ -39223,6 +39423,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Region where the snapshot is scoped to.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # Cloud Storage bucket storage location of the auto snapshot (regional or multi-
         # regional).
         # Corresponds to the JSON property `storageLocations`
@@ -39238,6 +39443,7 @@ module Google
           @chain_name = args[:chain_name] if args.key?(:chain_name)
           @guest_flush = args[:guest_flush] if args.key?(:guest_flush)
           @labels = args[:labels] if args.key?(:labels)
+          @region = args[:region] if args.key?(:region)
           @storage_locations = args[:storage_locations] if args.key?(:storage_locations)
         end
       end
@@ -39610,8 +39816,9 @@ module Google
         attr_accessor :next_hop_inter_region_cost
       
         # [Output Only] The URL to an InterconnectAttachment which is the next hop for
-        # the route. This field will only be populated for the dynamic routes generated
-        # by Cloud Router with a linked interconnectAttachment.
+        # the route. This field will only be populated for dynamic routes generated by
+        # Cloud Router with a linked interconnectAttachment or the static route
+        # generated by each L2 Interconnect Attachment.
         # Corresponds to the JSON property `nextHopInterconnectAttachment`
         # @return [String]
         attr_accessor :next_hop_interconnect_attachment
@@ -39653,6 +39860,11 @@ module Google
         # Corresponds to the JSON property `nextHopVpnTunnel`
         # @return [String]
         attr_accessor :next_hop_vpn_tunnel
+      
+        # Additional route parameters.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeBeta::RouteParams]
+        attr_accessor :params
       
         # The priority of this route. Priority is used to break ties in cases where
         # there is more than one matching route of equal prefix length. In cases where
@@ -39719,6 +39931,7 @@ module Google
           @next_hop_origin = args[:next_hop_origin] if args.key?(:next_hop_origin)
           @next_hop_peering = args[:next_hop_peering] if args.key?(:next_hop_peering)
           @next_hop_vpn_tunnel = args[:next_hop_vpn_tunnel] if args.key?(:next_hop_vpn_tunnel)
+          @params = args[:params] if args.key?(:params)
           @priority = args[:priority] if args.key?(:priority)
           @route_status = args[:route_status] if args.key?(:route_status)
           @route_type = args[:route_type] if args.key?(:route_type)
@@ -39937,6 +40150,32 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Additional route parameters.
+      class RouteParams
+        include Google::Apis::Core::Hashable
+      
+        # Tag keys/values directly bound to this resource. Tag keys and values have the
+        # same definition as resource manager tags. The field is allowed for INSERT only.
+        # The keys/values to set on the resource should be specified in either ID ` : `
+        # or Namespaced format ` : `. For example the following are valid inputs: * `"
+        # tagKeys/333" : "tagValues/444", "tagKeys/123" : "tagValues/456"` * `"123/
+        # environment" : "production", "345/abc" : "xyz"` Note: * Invalid combinations
+        # of ID & namespaced format is not supported. For instance: `"123/environment" :
+        # "tagValues/444"` is invalid.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
@@ -45492,7 +45731,7 @@ module Google
       
       # Represents a Persistent Disk Snapshot resource. You can use snapshots to back
       # up data on a regular interval. For more information, read Creating persistent
-      # disk snapshots.
+      # disk snapshots. LINT.IfChange
       class Snapshot
         include Google::Apis::Core::Hashable
       
@@ -49062,6 +49301,11 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Additional subnetwork parameters.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeBeta::SubnetworkParams]
+        attr_accessor :params
+      
         # Whether the VMs in this subnet can access Google services without assigned
         # external IP addresses. This field can be both set at resource creation time
         # and updated using setPrivateIpGoogleAccess.
@@ -49076,20 +49320,7 @@ module Google
         # @return [String]
         attr_accessor :private_ipv6_google_access
       
-        # The purpose of the resource. This field can be either PRIVATE,
-        # GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PEER_MIGRATION,
-        # PRIVATE_SERVICE_CONNECT or PRIVATE_NAT. PRIVATE is the default purpose for
-        # user-created subnets or subnets that are automatically created in auto mode
-        # networks. Subnets with purpose set to GLOBAL_MANAGED_PROXY or
-        # REGIONAL_MANAGED_PROXY are user-created subnetworks that are reserved for
-        # Envoy-based load balancers. A subnet with purpose set to
-        # PRIVATE_SERVICE_CONNECT is used to publish services using Private Service
-        # Connect. A subnet with purpose set to PEER_MIGRATION is used for subnet
-        # migration from one peered VPC to another. A subnet with purpose set to
-        # PRIVATE_NAT is used for Private NAT IP address by Private NAT Gateway. If
-        # unspecified, the subnet purpose defaults to PRIVATE. The enableFlowLogs field
-        # isn't supported if the subnet purpose field is set to GLOBAL_MANAGED_PROXY or
-        # REGIONAL_MANAGED_PROXY.
+        # 
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
@@ -49170,6 +49401,7 @@ module Google
           @log_config = args[:log_config] if args.key?(:log_config)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @params = args[:params] if args.key?(:params)
           @private_ip_google_access = args[:private_ip_google_access] if args.key?(:private_ip_google_access)
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @purpose = args[:purpose] if args.key?(:purpose)
@@ -49488,6 +49720,32 @@ module Google
           @flow_sampling = args[:flow_sampling] if args.key?(:flow_sampling)
           @metadata = args[:metadata] if args.key?(:metadata)
           @metadata_fields = args[:metadata_fields] if args.key?(:metadata_fields)
+        end
+      end
+      
+      # Additional subnetwork parameters.
+      class SubnetworkParams
+        include Google::Apis::Core::Hashable
+      
+        # Tag keys/values directly bound to this resource. Tag keys and values have the
+        # same definition as resource manager tags. The field is allowed for INSERT only.
+        # The keys/values to set on the resource should be specified in either ID ` : `
+        # or Namespaced format ` : `. For example the following are valid inputs: * `"
+        # tagKeys/333" : "tagValues/444", "tagKeys/123" : "tagValues/456"` * `"123/
+        # environment" : "production", "345/abc" : "xyz"` Note: * Invalid combinations
+        # of ID & namespaced format is not supported. For instance: `"123/environment" :
+        # "tagValues/444"` is invalid.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
@@ -53516,6 +53774,12 @@ module Google
         # @return [String]
         attr_accessor :latest_window_start_time
       
+        # Indicates whether the UpcomingMaintenance will be triggered on VM shutdown.
+        # Corresponds to the JSON property `maintenanceOnShutdown`
+        # @return [Boolean]
+        attr_accessor :maintenance_on_shutdown
+        alias_method :maintenance_on_shutdown?, :maintenance_on_shutdown
+      
         # 
         # Corresponds to the JSON property `maintenanceStatus`
         # @return [String]
@@ -53546,6 +53810,7 @@ module Google
         def update!(**args)
           @can_reschedule = args[:can_reschedule] if args.key?(:can_reschedule)
           @latest_window_start_time = args[:latest_window_start_time] if args.key?(:latest_window_start_time)
+          @maintenance_on_shutdown = args[:maintenance_on_shutdown] if args.key?(:maintenance_on_shutdown)
           @maintenance_status = args[:maintenance_status] if args.key?(:maintenance_status)
           @type = args[:type] if args.key?(:type)
           @window_end_time = args[:window_end_time] if args.key?(:window_end_time)
@@ -54351,20 +54616,7 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # The purpose of the resource. This field can be either PRIVATE,
-        # GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PEER_MIGRATION,
-        # PRIVATE_SERVICE_CONNECT or PRIVATE_NAT. PRIVATE is the default purpose for
-        # user-created subnets or subnets that are automatically created in auto mode
-        # networks. Subnets with purpose set to GLOBAL_MANAGED_PROXY or
-        # REGIONAL_MANAGED_PROXY are user-created subnetworks that are reserved for
-        # Envoy-based load balancers. A subnet with purpose set to
-        # PRIVATE_SERVICE_CONNECT is used to publish services using Private Service
-        # Connect. A subnet with purpose set to PEER_MIGRATION is used for subnet
-        # migration from one peered VPC to another. A subnet with purpose set to
-        # PRIVATE_NAT is used for Private NAT IP address by Private NAT Gateway. If
-        # unspecified, the subnet purpose defaults to PRIVATE. The enableFlowLogs field
-        # isn't supported if the subnet purpose field is set to GLOBAL_MANAGED_PROXY or
-        # REGIONAL_MANAGED_PROXY.
+        # 
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
@@ -56280,11 +56532,6 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # 
-        # Corresponds to the JSON property `selfLinkWithId`
-        # @return [String]
-        attr_accessor :self_link_with_id
-      
         # Topology details for the wire group.
         # Corresponds to the JSON property `topology`
         # @return [Google::Apis::ComputeBeta::WireGroupTopology]
@@ -56320,7 +56567,6 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
-          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @topology = args[:topology] if args.key?(:topology)
           @wire_group_properties = args[:wire_group_properties] if args.key?(:wire_group_properties)
           @wire_properties = args[:wire_properties] if args.key?(:wire_properties)
