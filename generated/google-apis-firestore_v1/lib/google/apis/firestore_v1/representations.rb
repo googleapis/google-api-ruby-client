@@ -298,6 +298,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirestoreAdminV1DisableUserCredsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1EnableUserCredsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1EncryptionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -418,6 +430,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirestoreAdminV1ListUserCredsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1LocationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -425,6 +443,18 @@ module Google
       end
       
       class GoogleFirestoreAdminV1Progress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1ResetUserPasswordRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1ResourceIdentity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -473,6 +503,12 @@ module Google
       end
       
       class GoogleFirestoreAdminV1UpdateDatabaseMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1UserCreds
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1148,10 +1184,12 @@ module Google
       
           property :concurrency_mode, as: 'concurrencyMode'
           property :create_time, as: 'createTime'
+          property :database_edition, as: 'databaseEdition'
           property :delete_protection_state, as: 'deleteProtectionState'
           property :delete_time, as: 'deleteTime'
           property :earliest_version_time, as: 'earliestVersionTime'
           property :etag, as: 'etag'
+          property :free_tier, as: 'freeTier'
           property :key_prefix, as: 'keyPrefix'
           property :location_id, as: 'locationId'
           property :name, as: 'name'
@@ -1159,6 +1197,7 @@ module Google
           property :previous_id, as: 'previousId'
           property :source_info, as: 'sourceInfo', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SourceInfo, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SourceInfo::Representation
       
+          hash :tags, as: 'tags'
           property :type, as: 'type'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
@@ -1167,6 +1206,18 @@ module Google
       end
       
       class GoogleFirestoreAdminV1DeleteDatabaseMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleFirestoreAdminV1DisableUserCredsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleFirestoreAdminV1EnableUserCredsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -1288,10 +1339,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_scope, as: 'apiScope'
+          property :density, as: 'density'
           collection :fields, as: 'fields', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1IndexField, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1IndexField::Representation
       
+          property :multikey, as: 'multikey'
           property :name, as: 'name'
           property :query_scope, as: 'queryScope'
+          property :shard_count, as: 'shardCount'
           property :state, as: 'state'
         end
       end
@@ -1385,6 +1439,14 @@ module Google
         end
       end
       
+      class GoogleFirestoreAdminV1ListUserCredsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :user_creds, as: 'userCreds', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1UserCreds, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1UserCreds::Representation
+      
+        end
+      end
+      
       class GoogleFirestoreAdminV1LocationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1396,6 +1458,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :completed_work, :numeric_string => true, as: 'completedWork'
           property :estimated_work, :numeric_string => true, as: 'estimatedWork'
+        end
+      end
+      
+      class GoogleFirestoreAdminV1ResetUserPasswordRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleFirestoreAdminV1ResourceIdentity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :principal, as: 'principal'
         end
       end
       
@@ -1419,6 +1494,7 @@ module Google
           property :database_id, as: 'databaseId'
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1EncryptionConfig, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1EncryptionConfig::Representation
       
+          hash :tags, as: 'tags'
         end
       end
       
@@ -1463,6 +1539,19 @@ module Google
       class GoogleFirestoreAdminV1UpdateDatabaseMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleFirestoreAdminV1UserCreds
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+          property :resource_identity, as: 'resourceIdentity', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ResourceIdentity, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ResourceIdentity::Representation
+      
+          property :secure_password, as: 'securePassword'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
         end
       end
       
