@@ -16,13 +16,13 @@ module Google
   module Apis
     module CloudschedulerV1beta1
       # Version of the google-apis-cloudscheduler_v1beta1 gem
-      GEM_VERSION = "0.33.0"
+      GEM_VERSION = "0.34.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.15.1"
+      GENERATOR_VERSION = "0.16.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20241113"
+      REVISION = "20250411"
     end
   end
 end
