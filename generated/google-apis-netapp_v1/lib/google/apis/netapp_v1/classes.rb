@@ -184,6 +184,12 @@ module Google
       class Backup
         include Google::Apis::Core::Hashable
       
+        # Output only. Region in which backup is stored. Format: `projects/`project_id`/
+        # locations/`location``
+        # Corresponds to the JSON property `backupRegion`
+        # @return [String]
+        attr_accessor :backup_region
+      
         # Output only. Type of backup, manually created or created by a backup policy.
         # Corresponds to the JSON property `backupType`
         # @return [String]
@@ -248,6 +254,12 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Output only. Region of the volume from which the backup was created. Format: `
+        # projects/`project_id`/locations/`location``
+        # Corresponds to the JSON property `volumeRegion`
+        # @return [String]
+        attr_accessor :volume_region
+      
         # Output only. Size of the file system when the backup was created. When
         # creating a new volume from the backup, the volume capacity will have to be at
         # least as big.
@@ -261,6 +273,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @backup_region = args[:backup_region] if args.key?(:backup_region)
           @backup_type = args[:backup_type] if args.key?(:backup_type)
           @chain_storage_bytes = args[:chain_storage_bytes] if args.key?(:chain_storage_bytes)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -272,6 +285,7 @@ module Google
           @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
           @source_volume = args[:source_volume] if args.key?(:source_volume)
           @state = args[:state] if args.key?(:state)
+          @volume_region = args[:volume_region] if args.key?(:volume_region)
           @volume_usage_bytes = args[:volume_usage_bytes] if args.key?(:volume_usage_bytes)
         end
       end
@@ -401,6 +415,17 @@ module Google
       class BackupVault
         include Google::Apis::Core::Hashable
       
+        # Optional. Region where the backups are stored. Format: `projects/`project_id`/
+        # locations/`location``
+        # Corresponds to the JSON property `backupRegion`
+        # @return [String]
+        attr_accessor :backup_region
+      
+        # Optional. Type of backup vault to be created. Default is IN_REGION.
+        # Corresponds to the JSON property `backupVaultType`
+        # @return [String]
+        attr_accessor :backup_vault_type
+      
         # Output only. Create time of the backup vault.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -410,6 +435,12 @@ module Google
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # Output only. Name of the Backup vault created in backup region. Format: `
+        # projects/`project_id`/locations/`location`/backupVaults/`backup_vault_id``
+        # Corresponds to the JSON property `destinationBackupVault`
+        # @return [String]
+        attr_accessor :destination_backup_vault
       
         # Resource labels to represent user provided metadata.
         # Corresponds to the JSON property `labels`
@@ -422,6 +453,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Name of the Backup vault created in source region. Format: `
+        # projects/`project_id`/locations/`location`/backupVaults/`backup_vault_id``
+        # Corresponds to the JSON property `sourceBackupVault`
+        # @return [String]
+        attr_accessor :source_backup_vault
+      
+        # Output only. Region in which the backup vault is created. Format: `projects/`
+        # project_id`/locations/`location``
+        # Corresponds to the JSON property `sourceRegion`
+        # @return [String]
+        attr_accessor :source_region
+      
         # Output only. The backup vault state.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -433,10 +476,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @backup_region = args[:backup_region] if args.key?(:backup_region)
+          @backup_vault_type = args[:backup_vault_type] if args.key?(:backup_vault_type)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @destination_backup_vault = args[:destination_backup_vault] if args.key?(:destination_backup_vault)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @source_backup_vault = args[:source_backup_vault] if args.key?(:source_backup_vault)
+          @source_region = args[:source_region] if args.key?(:source_region)
           @state = args[:state] if args.key?(:state)
         end
       end
