@@ -430,6 +430,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VaultAcceleratedDeletion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VoiceMisconfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1119,6 +1125,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class VaultAcceleratedDeletion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_type, as: 'actionType'
+          property :app_type, as: 'appType'
+          property :create_time, as: 'createTime'
+          property :deletion_request_id, as: 'deletionRequestId'
+          property :matter_id, as: 'matterId'
         end
       end
       
