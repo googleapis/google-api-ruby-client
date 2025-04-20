@@ -3485,6 +3485,8 @@ module Google
       
           property :registration_destination_config, as: 'registrationDestinationConfig', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1DestinationConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1DestinationConfig::Representation
       
+          property :ssl_config, as: 'sslConfig', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1SslConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1SslConfig::Representation
+      
         end
       end
       
