@@ -959,67 +959,6 @@ module Google
         end
       end
       
-      # Result containing the properties and count of a ComplianceSnapshot request.
-      class ComplianceSnapshot
-        include Google::Apis::Core::Hashable
-      
-        # The category of Findings matching.
-        # Corresponds to the JSON property `category`
-        # @return [String]
-        attr_accessor :category
-      
-        # The cloud provider for the compliance snapshot.
-        # Corresponds to the JSON property `cloudProvider`
-        # @return [String]
-        attr_accessor :cloud_provider
-      
-        # The compliance standard (ie CIS).
-        # Corresponds to the JSON property `complianceStandard`
-        # @return [String]
-        attr_accessor :compliance_standard
-      
-        # The compliance version (ie 1.3) in CIS 1.3.
-        # Corresponds to the JSON property `complianceVersion`
-        # @return [String]
-        attr_accessor :compliance_version
-      
-        # Total count of findings for the given properties.
-        # Corresponds to the JSON property `count`
-        # @return [Fixnum]
-        attr_accessor :count
-      
-        # The leaf container resource name that is closest to the snapshot.
-        # Corresponds to the JSON property `leafContainerResource`
-        # @return [String]
-        attr_accessor :leaf_container_resource
-      
-        # The compliance snapshot name. Format: //sources//complianceSnapshots/
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The snapshot time of the snapshot.
-        # Corresponds to the JSON property `snapshotTime`
-        # @return [String]
-        attr_accessor :snapshot_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @category = args[:category] if args.key?(:category)
-          @cloud_provider = args[:cloud_provider] if args.key?(:cloud_provider)
-          @compliance_standard = args[:compliance_standard] if args.key?(:compliance_standard)
-          @compliance_version = args[:compliance_version] if args.key?(:compliance_version)
-          @count = args[:count] if args.key?(:count)
-          @leaf_container_resource = args[:leaf_container_resource] if args.key?(:leaf_container_resource)
-          @name = args[:name] if args.key?(:name)
-          @snapshot_time = args[:snapshot_time] if args.key?(:snapshot_time)
-        end
-      end
-      
       # Configuration of a module.
       class Config
         include Google::Apis::Core::Hashable
