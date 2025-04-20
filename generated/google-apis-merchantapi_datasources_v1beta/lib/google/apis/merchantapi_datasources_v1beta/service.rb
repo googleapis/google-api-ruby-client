@@ -229,8 +229,8 @@ module Google
         # Updates the existing data source configuration. The fields that are set in the
         # update mask but not provided in the resource will be deleted.
         # @param [String] name
-        #   Identifier. The name of the data source. Format: ``datasource.name=accounts/`
-        #   account`/dataSources/`datasource```
+        #   Identifier. The name of the data source. Format: `accounts/`account`/
+        #   dataSources/`datasource``
         # @param [Google::Apis::MerchantapiDatasourcesV1beta::DataSource] data_source_object
         # @param [String] update_mask
         #   Required. The list of data source fields to be updated. Fields specified in
