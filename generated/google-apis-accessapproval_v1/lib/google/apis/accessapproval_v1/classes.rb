@@ -71,6 +71,16 @@ module Google
         attr_accessor :ancestor_has_active_key_version
         alias_method :ancestor_has_active_key_version?, :ancestor_has_active_key_version
       
+        # Represents all the policies that can be set for Customer Approval.
+        # Corresponds to the JSON property `approvalPolicy`
+        # @return [Google::Apis::AccessapprovalV1::CustomerApprovalApprovalPolicy]
+        attr_accessor :approval_policy
+      
+        # Represents all the policies that can be set for Customer Approval.
+        # Corresponds to the JSON property `effectiveApprovalPolicy`
+        # @return [Google::Apis::AccessapprovalV1::CustomerApprovalApprovalPolicy]
+        attr_accessor :effective_approval_policy
+      
         # Output only. This field is read only (not settable via
         # UpdateAccessApprovalSettings method). If the field is true, that indicates
         # that at least one service is enrolled for Access Approval in one or more
@@ -162,6 +172,8 @@ module Google
         def update!(**args)
           @active_key_version = args[:active_key_version] if args.key?(:active_key_version)
           @ancestor_has_active_key_version = args[:ancestor_has_active_key_version] if args.key?(:ancestor_has_active_key_version)
+          @approval_policy = args[:approval_policy] if args.key?(:approval_policy)
+          @effective_approval_policy = args[:effective_approval_policy] if args.key?(:effective_approval_policy)
           @enrolled_ancestor = args[:enrolled_ancestor] if args.key?(:enrolled_ancestor)
           @enrolled_services = args[:enrolled_services] if args.key?(:enrolled_services)
           @invalid_key_version = args[:invalid_key_version] if args.key?(:invalid_key_version)
@@ -364,6 +376,12 @@ module Google
         # @return [String]
         attr_accessor :invalidate_time
       
+        # True when the request has been approved by the customer's defined policy.
+        # Corresponds to the JSON property `policyApproved`
+        # @return [Boolean]
+        attr_accessor :policy_approved
+        alias_method :policy_approved?, :policy_approved
+      
         # Information about the digital signature of the resource.
         # Corresponds to the JSON property `signatureInfo`
         # @return [Google::Apis::AccessapprovalV1::SignatureInfo]
@@ -379,6 +397,7 @@ module Google
           @auto_approved = args[:auto_approved] if args.key?(:auto_approved)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @invalidate_time = args[:invalidate_time] if args.key?(:invalidate_time)
+          @policy_approved = args[:policy_approved] if args.key?(:policy_approved)
           @signature_info = args[:signature_info] if args.key?(:signature_info)
         end
       end
@@ -400,6 +419,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @command = args[:command] if args.key?(:command)
+        end
+      end
+      
+      # Represents all the policies that can be set for Customer Approval.
+      class CustomerApprovalApprovalPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Policy for approval based on the justification given.
+        # Corresponds to the JSON property `justificationBasedApprovalPolicy`
+        # @return [String]
+        attr_accessor :justification_based_approval_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @justification_based_approval_policy = args[:justification_based_approval_policy] if args.key?(:justification_based_approval_policy)
         end
       end
       
