@@ -2464,6 +2464,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The recommended versions of the discovery client.
+        # Corresponds to the JSON property `recommendedVersions`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::DiscoveryClientDiscoveryClientRecommendedVersion>]
+        attr_accessor :recommended_versions
+      
         # Required. Service account used by the discovery client for various operation.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
@@ -2517,12 +2522,38 @@ module Google
           @heartbeat_time = args[:heartbeat_time] if args.key?(:heartbeat_time)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @recommended_versions = args[:recommended_versions] if args.key?(:recommended_versions)
           @service_account = args[:service_account] if args.key?(:service_account)
           @signals_endpoint = args[:signals_endpoint] if args.key?(:signals_endpoint)
           @source = args[:source] if args.key?(:source)
           @state = args[:state] if args.key?(:state)
           @ttl = args[:ttl] if args.key?(:ttl)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Discovery client recommended version.
+      class DiscoveryClientDiscoveryClientRecommendedVersion
+        include Google::Apis::Core::Hashable
+      
+        # The URI of the discovery client version.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        # The version of the discovery client.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
           @version = args[:version] if args.key?(:version)
         end
       end
