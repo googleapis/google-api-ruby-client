@@ -678,10 +678,7 @@ module Google
         attr_accessor :link_id
       
         # Required. The full resource name of the bucket to create a link for. "projects/
-        # [PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
-        # ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
-        # [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
-        # FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+        # [PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
