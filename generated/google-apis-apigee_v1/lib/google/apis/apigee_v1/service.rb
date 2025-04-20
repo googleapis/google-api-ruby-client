@@ -7596,7 +7596,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the certificate in an alias.
+        # Updates the certificate in an alias. The updated certificate must be in PEM-
+        # or DER-encoded X.509 format.
         # @param [String] name
         #   Required. Name of the alias. Use the following format in your request: `
         #   organizations/`org`/environments/`env`/keystores/`keystore`/aliases/`alias``
