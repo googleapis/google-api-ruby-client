@@ -644,6 +644,13 @@ module Google
         # @return [String]
         attr_accessor :state_message
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: "123/environment": "production", "123/costCenter": "
+        # marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # Output only. The name of the tenant project.
         # Corresponds to the JSON property `tenantProjectId`
         # @return [String]
@@ -714,6 +721,7 @@ module Google
           @service_endpoint = args[:service_endpoint] if args.key?(:service_endpoint)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
+          @tags = args[:tags] if args.key?(:tags)
           @tenant_project_id = args[:tenant_project_id] if args.key?(:tenant_project_id)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
