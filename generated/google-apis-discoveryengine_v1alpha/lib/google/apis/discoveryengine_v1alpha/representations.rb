@@ -1912,6 +1912,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaGetConnectorSecretResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaGetSessionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5211,6 +5217,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
+          property :document, as: 'document'
           property :enabled, as: 'enabled'
           property :image_uri, as: 'imageUri'
           property :title, as: 'title'
@@ -6317,9 +6324,11 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaChunk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :annotation_contents, as: 'annotationContents'
           property :chunk_metadata, as: 'chunkMetadata', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunkChunkMetadata, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunkChunkMetadata::Representation
       
           property :content, as: 'content'
+          collection :data_urls, as: 'dataUrls'
           hash :derived_struct_data, as: 'derivedStructData'
           property :document_metadata, as: 'documentMetadata', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunkDocumentMetadata, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunkDocumentMetadata::Representation
       
@@ -7430,6 +7439,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_schema, as: 'dataSchema'
           collection :input_uris, as: 'inputUris'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaGetConnectorSecretResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app, as: 'app'
+          property :client_id, as: 'clientId'
+          property :instance, as: 'instance'
+          property :redirect_uri, as: 'redirectUri'
+          property :tenant_id, as: 'tenantId'
         end
       end
       
@@ -8624,6 +8644,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
+          property :document, as: 'document'
           property :enabled, as: 'enabled'
           property :image_uri, as: 'imageUri'
           property :title, as: 'title'
@@ -10665,6 +10686,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
+          property :document, as: 'document'
           property :enabled, as: 'enabled'
           property :image_uri, as: 'imageUri'
           property :title, as: 'title'

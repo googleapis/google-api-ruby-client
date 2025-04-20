@@ -1789,7 +1789,8 @@ module Google
         attr_accessor :active_time_range
       
         # Optional. Query regex to match the whole search query. Cannot be set when
-        # Condition.query_terms is set. This is currently supporting promotion use case.
+        # Condition.query_terms is set. Only supported for Basic Site Search promotion
+        # serving controls.
         # Corresponds to the JSON property `queryRegex`
         # @return [String]
         attr_accessor :query_regex
@@ -3983,6 +3984,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. The Document the user wants to promote. For site search, leave unset
+        # and only populate uri. Can be set along with uri.
+        # Corresponds to the JSON property `document`
+        # @return [String]
+        attr_accessor :document
+      
         # Optional. The enabled promotion will be returned for any serving configs
         # associated with the parent of the control this promotion is attached to. This
         # flag is used for basic site search only.
@@ -4014,6 +4021,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @description = args[:description] if args.key?(:description)
+          @document = args[:document] if args.key?(:document)
           @enabled = args[:enabled] if args.key?(:enabled)
           @image_uri = args[:image_uri] if args.key?(:image_uri)
           @title = args[:title] if args.key?(:title)
@@ -8069,6 +8077,11 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaChunk
         include Google::Apis::Core::Hashable
       
+        # Output only. Annotation contents if the current chunk contains annotations.
+        # Corresponds to the JSON property `annotationContents`
+        # @return [Array<String>]
+        attr_accessor :annotation_contents
+      
         # Metadata of the current chunk. This field is only populated on SearchService.
         # Search API.
         # Corresponds to the JSON property `chunkMetadata`
@@ -8079,6 +8092,13 @@ module Google
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
+      
+        # Output only. Image Data URLs if the current chunk contains images. Data URLs
+        # are composed of four parts: a prefix (data:), a MIME type indicating the type
+        # of data, an optional base64 token if non-textual, and the data itself: data:,
+        # Corresponds to the JSON property `dataUrls`
+        # @return [Array<String>]
+        attr_accessor :data_urls
       
         # Output only. This field is OUTPUT_ONLY. It contains derived data that are not
         # in the original input document.
@@ -8123,8 +8143,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @annotation_contents = args[:annotation_contents] if args.key?(:annotation_contents)
           @chunk_metadata = args[:chunk_metadata] if args.key?(:chunk_metadata)
           @content = args[:content] if args.key?(:content)
+          @data_urls = args[:data_urls] if args.key?(:data_urls)
           @derived_struct_data = args[:derived_struct_data] if args.key?(:derived_struct_data)
           @document_metadata = args[:document_metadata] if args.key?(:document_metadata)
           @id = args[:id] if args.key?(:id)
@@ -8546,7 +8568,8 @@ module Google
         attr_accessor :active_time_range
       
         # Optional. Query regex to match the whole search query. Cannot be set when
-        # Condition.query_terms is set. This is currently supporting promotion use case.
+        # Condition.query_terms is set. Only supported for Basic Site Search promotion
+        # serving controls.
         # Corresponds to the JSON property `queryRegex`
         # @return [String]
         attr_accessor :query_regex
@@ -10803,10 +10826,15 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The MIME type of the content. Supported types: * `application/pdf` (PDF, only
-        # native PDFs are supported for now) * `text/html` (HTML) * `application/vnd.
-        # openxmlformats-officedocument.wordprocessingml.document` (DOCX) * `application/
-        # vnd.openxmlformats-officedocument.presentationml.presentation` (PPTX) * `text/
-        # plain` (TXT) See https://www.iana.org/assignments/media-types/media-types.
+        # native PDFs are supported for now) * `text/html` (HTML) * `text/plain` (TXT) *
+        # `text/xml` (XML) * `application/json` (JSON) * `application/vnd.openxmlformats-
+        # officedocument.wordprocessingml.document` (DOCX) * `application/vnd.
+        # openxmlformats-officedocument.presentationml.presentation` (PPTX) * `
+        # application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` (XLSX) * `
+        # application/vnd.ms-excel.sheet.macroenabled.12` (XLSM) The following types are
+        # supported only if layout parser is enabled in the data store: * `image/bmp` (
+        # BMP) * `image/gif` (GIF) * `image/jpeg` (JPEG) * `image/png` (PNG) * `image/
+        # tiff` (TIFF) See https://www.iana.org/assignments/media-types/media-types.
         # xhtml.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
@@ -12302,6 +12330,49 @@ module Google
         def update!(**args)
           @data_schema = args[:data_schema] if args.key?(:data_schema)
           @input_uris = args[:input_uris] if args.key?(:input_uris)
+        end
+      end
+      
+      # Response message for DataConnectorService.GetConnectorSecret.
+      class GoogleCloudDiscoveryengineV1alphaGetConnectorSecretResponse
+        include Google::Apis::Core::Hashable
+      
+        # The app name of the associated Connector.
+        # Corresponds to the JSON property `app`
+        # @return [String]
+        attr_accessor :app
+      
+        # The client id of the associated Connector.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # The instance name of the associated Connector.
+        # Corresponds to the JSON property `instance`
+        # @return [String]
+        attr_accessor :instance
+      
+        # The redirect url of the associated Connector.
+        # Corresponds to the JSON property `redirectUri`
+        # @return [String]
+        attr_accessor :redirect_uri
+      
+        # The tenant id of the associated Connector.
+        # Corresponds to the JSON property `tenantId`
+        # @return [String]
+        attr_accessor :tenant_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app = args[:app] if args.key?(:app)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @instance = args[:instance] if args.key?(:instance)
+          @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
+          @tenant_id = args[:tenant_id] if args.key?(:tenant_id)
         end
       end
       
@@ -16367,6 +16438,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. The Document the user wants to promote. For site search, leave unset
+        # and only populate uri. Can be set along with uri.
+        # Corresponds to the JSON property `document`
+        # @return [String]
+        attr_accessor :document
+      
         # Optional. The enabled promotion will be returned for any serving configs
         # associated with the parent of the control this promotion is attached to. This
         # flag is used for basic site search only.
@@ -16398,6 +16475,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @description = args[:description] if args.key?(:description)
+          @document = args[:document] if args.key?(:document)
           @enabled = args[:enabled] if args.key?(:enabled)
           @image_uri = args[:image_uri] if args.key?(:image_uri)
           @title = args[:title] if args.key?(:title)
@@ -21411,7 +21489,8 @@ module Google
         attr_accessor :active_time_range
       
         # Optional. Query regex to match the whole search query. Cannot be set when
-        # Condition.query_terms is set. This is currently supporting promotion use case.
+        # Condition.query_terms is set. Only supported for Basic Site Search promotion
+        # serving controls.
         # Corresponds to the JSON property `queryRegex`
         # @return [String]
         attr_accessor :query_regex
@@ -24112,6 +24191,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. The Document the user wants to promote. For site search, leave unset
+        # and only populate uri. Can be set along with uri.
+        # Corresponds to the JSON property `document`
+        # @return [String]
+        attr_accessor :document
+      
         # Optional. The enabled promotion will be returned for any serving configs
         # associated with the parent of the control this promotion is attached to. This
         # flag is used for basic site search only.
@@ -24143,6 +24228,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @description = args[:description] if args.key?(:description)
+          @document = args[:document] if args.key?(:document)
           @enabled = args[:enabled] if args.key?(:enabled)
           @image_uri = args[:image_uri] if args.key?(:image_uri)
           @title = args[:title] if args.key?(:title)
