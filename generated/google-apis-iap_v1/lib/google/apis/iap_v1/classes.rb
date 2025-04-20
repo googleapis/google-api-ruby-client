@@ -1051,8 +1051,8 @@ module Google
         # backend uses these attributes to enforce custom org policies. For create
         # operations, GCP service is expected to pass resource from customer request as
         # is. For update/patch operations, GCP service is expected to compute the next
-        # state with the patch provided by the user. See go/custom-constraints-org-
-        # policy-integration-guide for additional details.
+        # state with the patch provided by the user. See go/federated-custom-org-policy-
+        # integration-guide for additional details.
         # Corresponds to the JSON property `expectedNextState`
         # @return [Hash<String,Object>]
         attr_accessor :expected_next_state
