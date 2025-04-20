@@ -700,6 +700,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kms_key, as: 'kmsKey'
+          collection :kms_keys, as: 'kmsKeys'
         end
       end
       
