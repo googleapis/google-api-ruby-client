@@ -60,8 +60,8 @@ module Google
         # @return [Google::Apis::MerchantapiDatasourcesV1beta::MerchantReviewDataSource]
         attr_accessor :merchant_review_data_source
       
-        # Identifier. The name of the data source. Format: ``datasource.name=accounts/`
-        # account`/dataSources/`datasource```
+        # Identifier. The name of the data source. Format: `accounts/`account`/
+        # dataSources/`datasource``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
