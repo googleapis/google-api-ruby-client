@@ -488,6 +488,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :actual_used_data_storage_size_tb, as: 'actualUsedDataStorageSizeTb'
           property :allocated_storage_size_tb, as: 'allocatedStorageSizeTb'
+          collection :allowlisted_ips, as: 'allowlistedIps'
           property :apex_details, as: 'apexDetails', class: Google::Apis::OracledatabaseV1::AutonomousDatabaseApex, decorator: Google::Apis::OracledatabaseV1::AutonomousDatabaseApex::Representation
       
           property :are_primary_allowlisted_ips_used, as: 'arePrimaryAllowlistedIpsUsed'
