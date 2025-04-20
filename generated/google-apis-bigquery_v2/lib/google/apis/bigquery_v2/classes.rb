@@ -690,7 +690,8 @@ module Google
         end
       end
       
-      # Configuration for BigLake managed tables.
+      # Configuration for BigQuery tables for Apache Iceberg (formerly BigLake managed
+      # tables.)
       class BigLakeConfiguration
         include Google::Apis::Core::Hashable
       
@@ -9608,7 +9609,8 @@ module Google
       class Table
         include Google::Apis::Core::Hashable
       
-        # Configuration for BigLake managed tables.
+        # Configuration for BigQuery tables for Apache Iceberg (formerly BigLake managed
+        # tables.)
         # Corresponds to the JSON property `biglakeConfiguration`
         # @return [Google::Apis::BigqueryV2::BigLakeConfiguration]
         attr_accessor :biglake_configuration
