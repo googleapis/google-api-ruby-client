@@ -2672,8 +2672,8 @@ module Google
         attr_accessor :active
         alias_method :active?, :active
       
-        # The CLDR code of the currency to which this service applies. Must match that
-        # of the prices in rate groups.
+        # Required. The CLDR code of the currency to which this service applies. Must
+        # match that of the prices in rate groups.
         # Corresponds to the JSON property `currencyCode`
         # @return [String]
         attr_accessor :currency_code
