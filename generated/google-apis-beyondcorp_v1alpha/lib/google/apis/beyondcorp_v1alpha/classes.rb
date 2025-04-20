@@ -1848,63 +1848,6 @@ module Google
         end
       end
       
-      # Browser DLP Rule for a PartnerTenant
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaBrowserDlpRule
-        include Google::Apis::Core::Hashable
-      
-        # Message to capture group information
-        # Corresponds to the JSON property `group`
-        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaGroup]
-        attr_accessor :group
-      
-        # Output only. Unique resource name. The name is ignored when creating
-        # BrowserDlpRule.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Message to capture settings for a BrowserDlpRule
-        # Corresponds to the JSON property `ruleSetting`
-        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting]
-        attr_accessor :rule_setting
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @group = args[:group] if args.key?(:group)
-          @name = args[:name] if args.key?(:name)
-          @rule_setting = args[:rule_setting] if args.key?(:rule_setting)
-        end
-      end
-      
-      # Message contains the JWT encryption information for the proxy server.
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Service Account for encryption key.
-        # Corresponds to the JSON property `encryptionSaEmail`
-        # @return [String]
-        attr_accessor :encryption_sa_email
-      
-        # Optional. JWK in string.
-        # Corresponds to the JSON property `jwk`
-        # @return [String]
-        attr_accessor :jwk
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @encryption_sa_email = args[:encryption_sa_email] if args.key?(:encryption_sa_email)
-          @jwk = args[:jwk] if args.key?(:jwk)
-        end
-      end
-      
       # Message to capture group information
       class GoogleCloudBeyondcorpPartnerservicesV1alphaGroup
         include Google::Apis::Core::Hashable
@@ -1927,25 +1870,6 @@ module Google
         def update!(**args)
           @email = args[:email] if args.key?(:email)
           @id = args[:id] if args.key?(:id)
-        end
-      end
-      
-      # Message for response to listing BrowserDlpRules.
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaListBrowserDlpRulesResponse
-        include Google::Apis::Core::Hashable
-      
-        # The list of BrowserDlpRule objects.
-        # Corresponds to the JSON property `browserDlpRules`
-        # @return [Array<Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaBrowserDlpRule>]
-        attr_accessor :browser_dlp_rules
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @browser_dlp_rules = args[:browser_dlp_rules] if args.key?(:browser_dlp_rules)
         end
       end
       
@@ -1972,32 +1896,6 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @partner_tenants = args[:partner_tenants] if args.key?(:partner_tenants)
-        end
-      end
-      
-      # Message for response to listing ProxyConfigs.
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaListProxyConfigsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A token to retrieve the next page of results, or empty if there are no more
-        # results in the list.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # The list of ProxyConfig objects.
-        # Corresponds to the JSON property `proxyConfigs`
-        # @return [Array<Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaProxyConfig>]
-        attr_accessor :proxy_configs
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @proxy_configs = args[:proxy_configs] if args.key?(:proxy_configs)
         end
       end
       
@@ -2135,165 +2033,6 @@ module Google
           @name = args[:name] if args.key?(:name)
           @partner_metadata = args[:partner_metadata] if args.key?(:partner_metadata)
           @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
-      # Proxy Configuration of a PartnerTenant.
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaProxyConfig
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Timestamp when the resource was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Optional. An arbitrary caller-provided name for the ProxyConfig. Cannot exceed
-        # 64 characters.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Message contains the JWT encryption information for the proxy server.
-        # Corresponds to the JSON property `encryptionInfo`
-        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo]
-        attr_accessor :encryption_info
-      
-        # Output only. ProxyConfig resource name.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The protocol data that specifies how to communicate with Partner's Proxy.
-        # Corresponds to the JSON property `proxyProtocolConfig`
-        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaProxyProtocolConfig]
-        attr_accessor :proxy_protocol_config
-      
-        # Required. The URI of the proxy server.
-        # Corresponds to the JSON property `proxyUri`
-        # @return [String]
-        attr_accessor :proxy_uri
-      
-        # Message contains the routing information to direct traffic to the proxy server.
-        # Corresponds to the JSON property `routingInfo`
-        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo]
-        attr_accessor :routing_info
-      
-        # Message contains the transport layer information to verify the proxy server.
-        # Corresponds to the JSON property `transportInfo`
-        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo]
-        attr_accessor :transport_info
-      
-        # Output only. Timestamp when the resource was last modified.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @encryption_info = args[:encryption_info] if args.key?(:encryption_info)
-          @name = args[:name] if args.key?(:name)
-          @proxy_protocol_config = args[:proxy_protocol_config] if args.key?(:proxy_protocol_config)
-          @proxy_uri = args[:proxy_uri] if args.key?(:proxy_uri)
-          @routing_info = args[:routing_info] if args.key?(:routing_info)
-          @transport_info = args[:transport_info] if args.key?(:transport_info)
-          @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
-      # The protocol data that specifies how to communicate with Partner's Proxy.
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaProxyProtocolConfig
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Untyped property bag to be sent back to the proxy using client
-        # specific mechanism.
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,String>]
-        attr_accessor :metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @metadata = args[:metadata] if args.key?(:metadata)
-        end
-      end
-      
-      # Message contains the routing information to direct traffic to the proxy server.
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo
-        include Google::Apis::Core::Hashable
-      
-        # Required. Proxy Auto-Configuration (PAC) URI.
-        # Corresponds to the JSON property `pacUri`
-        # @return [String]
-        attr_accessor :pac_uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @pac_uri = args[:pac_uri] if args.key?(:pac_uri)
-        end
-      end
-      
-      # Message to capture settings for a BrowserDlpRule
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting
-        include Google::Apis::Core::Hashable
-      
-        # Required. Immutable. The type of the Setting. .
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        # Required. The value of the Setting.
-        # Corresponds to the JSON property `value`
-        # @return [Hash<String,Object>]
-        attr_accessor :value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @type = args[:type] if args.key?(:type)
-          @value = args[:value] if args.key?(:value)
-        end
-      end
-      
-      # Message contains the transport layer information to verify the proxy server.
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo
-        include Google::Apis::Core::Hashable
-      
-        # Required. PEM encoded CA certificate associated with the proxy server
-        # certificate.
-        # Corresponds to the JSON property `serverCaCertPem`
-        # @return [String]
-        attr_accessor :server_ca_cert_pem
-      
-        # Optional. PEM encoded CA certificate associated with the certificate used by
-        # proxy server for SSL decryption.
-        # Corresponds to the JSON property `sslDecryptCaCertPem`
-        # @return [String]
-        attr_accessor :ssl_decrypt_ca_cert_pem
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @server_ca_cert_pem = args[:server_ca_cert_pem] if args.key?(:server_ca_cert_pem)
-          @ssl_decrypt_ca_cert_pem = args[:ssl_decrypt_ca_cert_pem] if args.key?(:ssl_decrypt_ca_cert_pem)
         end
       end
       
@@ -4171,26 +3910,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @email = args[:email] if args.key?(:email)
-        end
-      end
-      
-      # Response message for calling ShouldThrottle
-      class ShouldThrottleResponse
-        include Google::Apis::Core::Hashable
-      
-        # Whether the port should be throttled
-        # Corresponds to the JSON property `shouldThrottle`
-        # @return [Boolean]
-        attr_accessor :should_throttle
-        alias_method :should_throttle?, :should_throttle
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @should_throttle = args[:should_throttle] if args.key?(:should_throttle)
         end
       end
       
