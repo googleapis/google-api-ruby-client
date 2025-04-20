@@ -56,7 +56,8 @@ module Google
         end
         
         # Batch writes new spans to new or existing traces. You cannot update existing
-        # spans.
+        # spans. If a span ID already exists, an additional copy of the span will be
+        # stored.
         # @param [String] name
         #   Required. The name of the project where the spans belong. The format is `
         #   projects/[PROJECT_ID]`.
@@ -90,7 +91,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new span.
+        # Creates a new span. If a span ID already exists, an additional copy of the
+        # span will be stored.
         # @param [String] name
         #   Required. The resource name of the span in the following format: * `projects/[
         #   PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]` `[TRACE_ID]` is a unique

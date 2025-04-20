@@ -16,13 +16,13 @@ module Google
   module Apis
     module CloudtraceV2
       # Version of the google-apis-cloudtrace_v2 gem
-      GEM_VERSION = "0.23.0"
+      GEM_VERSION = "0.24.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.15.0"
+      GENERATOR_VERSION = "0.16.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20230511"
+      REVISION = "20250411"
     end
   end
 end
