@@ -894,7 +894,8 @@ module Google
         #   id (e.g. ehoadneljpdggcbbknedodolkkjodefl). For Android apps, the package name
         #   (e.g. com.evernote).
         # @param [String] app_type
-        #   Type of the app.
+        #   Type of the app. Optional. If not provided, an app type will be inferred from
+        #   the format of the app ID.
         # @param [String] filter
         #   Query string to filter results, AND-separated fields in EBNF syntax. Note: OR
         #   operations are not supported in this filter. Supported filter fields: *
