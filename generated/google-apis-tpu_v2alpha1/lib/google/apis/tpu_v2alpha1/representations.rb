@@ -458,6 +458,7 @@ module Google
           property :customer_encryption_key, as: 'customerEncryptionKey', class: Google::Apis::TpuV2alpha1::CustomerEncryptionKey, decorator: Google::Apis::TpuV2alpha1::CustomerEncryptionKey::Representation
       
           property :enable_confidential_compute, as: 'enableConfidentialCompute'
+          property :source_image, as: 'sourceImage'
         end
       end
       
@@ -871,6 +872,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :preemptible, as: 'preemptible'
+          property :provisioning_model, as: 'provisioningModel'
           property :reserved, as: 'reserved'
           property :spot, as: 'spot'
           property :termination_timestamp, as: 'terminationTimestamp'
