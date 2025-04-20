@@ -544,6 +544,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListLogicalViewsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListMaterializedViewsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1587,6 +1599,24 @@ module Google
         end
       end
       
+      class ListLogicalViewsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :logical_views, as: 'logicalViews', class: Google::Apis::BigtableadminV2::LogicalView, decorator: Google::Apis::BigtableadminV2::LogicalView::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListMaterializedViewsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :materialized_views, as: 'materializedViews', class: Google::Apis::BigtableadminV2::MaterializedView, decorator: Google::Apis::BigtableadminV2::MaterializedView::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1833,6 +1863,8 @@ module Google
           property :granularity, as: 'granularity'
           property :name, as: 'name'
           property :restore_info, as: 'restoreInfo', class: Google::Apis::BigtableadminV2::RestoreInfo, decorator: Google::Apis::BigtableadminV2::RestoreInfo::Representation
+      
+          property :row_key_schema, as: 'rowKeySchema', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStruct, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStruct::Representation
       
           property :stats, as: 'stats', class: Google::Apis::BigtableadminV2::TableStats, decorator: Google::Apis::BigtableadminV2::TableStats::Representation
       
