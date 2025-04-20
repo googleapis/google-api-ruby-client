@@ -204,7 +204,7 @@ module Google
         end
       end
       
-      # Instructions for AI driven test
+      # 
       class GoogleFirebaseAppdistroV1alphaAiInstructions
         include Google::Apis::Core::Hashable
       
@@ -1037,19 +1037,6 @@ module Google
         end
       end
       
-      # The response message for `ProvisionApp`.
-      class GoogleFirebaseAppdistroV1alphaProvisionAppResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Proto defining a release object
       class GoogleFirebaseAppdistroV1alphaRelease
         include Google::Apis::Core::Hashable
@@ -1152,7 +1139,7 @@ module Google
       class GoogleFirebaseAppdistroV1alphaReleaseTest
         include Google::Apis::Core::Hashable
       
-        # Instructions for AI driven test
+        # Optional. Instructions for AI driven test.
         # Corresponds to the JSON property `aiInstructions`
         # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiInstructions]
         attr_accessor :ai_instructions
@@ -1217,7 +1204,7 @@ module Google
       class GoogleFirebaseAppdistroV1alphaRoboCrawler
         include Google::Apis::Core::Hashable
       
-        # Instructions for AI driven test
+        # Optional. Instructions for AI driven test
         # Corresponds to the JSON property `aiInstructions`
         # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiInstructions]
         attr_accessor :ai_instructions
@@ -1336,7 +1323,7 @@ module Google
       class GoogleFirebaseAppdistroV1alphaTestCase
         include Google::Apis::Core::Hashable
       
-        # Instructions for AI driven test
+        # Optional. Instructions for AI driven test.
         # Corresponds to the JSON property `aiInstructions`
         # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiInstructions]
         attr_accessor :ai_instructions
