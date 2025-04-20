@@ -238,12 +238,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ComplianceSnapshot
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Connection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2184,20 +2178,6 @@ module Google
           collection :ids, as: 'ids'
           property :standard, as: 'standard'
           property :version, as: 'version'
-        end
-      end
-      
-      class ComplianceSnapshot
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :category, as: 'category'
-          property :cloud_provider, as: 'cloudProvider'
-          property :compliance_standard, as: 'complianceStandard'
-          property :compliance_version, as: 'complianceVersion'
-          property :count, :numeric_string => true, as: 'count'
-          property :leaf_container_resource, as: 'leafContainerResource'
-          property :name, as: 'name'
-          property :snapshot_time, as: 'snapshotTime'
         end
       end
       
