@@ -898,6 +898,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :tags
       
+        # Upcoming Maintenance notification information.
+        # Corresponds to the JSON property `upcomingMaintenance`
+        # @return [Google::Apis::TpuV2::UpcomingMaintenance]
+        attr_accessor :upcoming_maintenance
+      
         def initialize(**args)
            update!(**args)
         end
@@ -929,6 +934,7 @@ module Google
           @state = args[:state] if args.key?(:state)
           @symptoms = args[:symptoms] if args.key?(:symptoms)
           @tags = args[:tags] if args.key?(:tags)
+          @upcoming_maintenance = args[:upcoming_maintenance] if args.key?(:upcoming_maintenance)
         end
       end
       
@@ -1587,6 +1593,59 @@ module Google
         # Update properties of this object
         def update!(**args)
           @node_spec = args[:node_spec] if args.key?(:node_spec)
+        end
+      end
+      
+      # Upcoming Maintenance notification information.
+      class UpcomingMaintenance
+        include Google::Apis::Core::Hashable
+      
+        # Indicates if the maintenance can be customer triggered.
+        # Corresponds to the JSON property `canReschedule`
+        # @return [Boolean]
+        attr_accessor :can_reschedule
+        alias_method :can_reschedule?, :can_reschedule
+      
+        # The latest time for the planned maintenance window to start. This timestamp
+        # value is in RFC3339 text format.
+        # Corresponds to the JSON property `latestWindowStartTime`
+        # @return [String]
+        attr_accessor :latest_window_start_time
+      
+        # The status of the maintenance.
+        # Corresponds to the JSON property `maintenanceStatus`
+        # @return [String]
+        attr_accessor :maintenance_status
+      
+        # Defines the type of maintenance.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The time by which the maintenance disruption will be completed. This timestamp
+        # value is in RFC3339 text format.
+        # Corresponds to the JSON property `windowEndTime`
+        # @return [String]
+        attr_accessor :window_end_time
+      
+        # The current start time of the maintenance window. This timestamp value is in
+        # RFC3339 text format.
+        # Corresponds to the JSON property `windowStartTime`
+        # @return [String]
+        attr_accessor :window_start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @can_reschedule = args[:can_reschedule] if args.key?(:can_reschedule)
+          @latest_window_start_time = args[:latest_window_start_time] if args.key?(:latest_window_start_time)
+          @maintenance_status = args[:maintenance_status] if args.key?(:maintenance_status)
+          @type = args[:type] if args.key?(:type)
+          @window_end_time = args[:window_end_time] if args.key?(:window_end_time)
+          @window_start_time = args[:window_start_time] if args.key?(:window_start_time)
         end
       end
     end
