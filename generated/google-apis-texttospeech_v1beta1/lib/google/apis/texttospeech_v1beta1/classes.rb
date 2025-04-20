@@ -79,10 +79,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :sample_rate_hertz
       
-        # Optional. Input only. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is
+        # Optional. Input only. Speaking rate/speed, in the range [0.25, 2.0]. 1.0 is
         # the normal native speed supported by the specific voice. 2.0 is twice as fast,
         # and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any
-        # other values < 0.25 or > 4.0 will return an error.
+        # other values < 0.25 or > 2.0 will return an error.
         # Corresponds to the JSON property `speakingRate`
         # @return [Float]
         attr_accessor :speaking_rate
