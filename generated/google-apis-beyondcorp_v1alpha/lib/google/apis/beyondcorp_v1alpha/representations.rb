@@ -286,37 +286,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaBrowserDlpRule
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudBeyondcorpPartnerservicesV1alphaGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaListBrowserDlpRulesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudBeyondcorpPartnerservicesV1alphaListPartnerTenantsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaListProxyConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -335,36 +311,6 @@ module Google
       end
       
       class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerTenant
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaProxyConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaProxyProtocolConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -659,12 +605,6 @@ module Google
       end
       
       class ServiceAccount
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ShouldThrottleResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1157,25 +1097,6 @@ module Google
         end
       end
       
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaBrowserDlpRule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :group, as: 'group', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaGroup, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaGroup::Representation
-      
-          property :name, as: 'name'
-          property :rule_setting, as: 'ruleSetting', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting::Representation
-      
-        end
-      end
-      
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :encryption_sa_email, as: 'encryptionSaEmail'
-          property :jwk, as: 'jwk'
-        end
-      end
-      
       class GoogleCloudBeyondcorpPartnerservicesV1alphaGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1184,28 +1105,11 @@ module Google
         end
       end
       
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaListBrowserDlpRulesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :browser_dlp_rules, as: 'browserDlpRules', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaBrowserDlpRule, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaBrowserDlpRule::Representation
-      
-        end
-      end
-      
       class GoogleCloudBeyondcorpPartnerservicesV1alphaListPartnerTenantsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :partner_tenants, as: 'partnerTenants', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerTenant, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerTenant::Representation
-      
-        end
-      end
-      
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaListProxyConfigsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :proxy_configs, as: 'proxyConfigs', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaProxyConfig, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaProxyConfig::Representation
       
         end
       end
@@ -1242,55 +1146,6 @@ module Google
           property :partner_metadata, as: 'partnerMetadata', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata::Representation
       
           property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaProxyConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :display_name, as: 'displayName'
-          property :encryption_info, as: 'encryptionInfo', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo::Representation
-      
-          property :name, as: 'name'
-          property :proxy_protocol_config, as: 'proxyProtocolConfig', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaProxyProtocolConfig, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaProxyProtocolConfig::Representation
-      
-          property :proxy_uri, as: 'proxyUri'
-          property :routing_info, as: 'routingInfo', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo::Representation
-      
-          property :transport_info, as: 'transportInfo', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo::Representation
-      
-          property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaProxyProtocolConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :metadata, as: 'metadata'
-        end
-      end
-      
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :pac_uri, as: 'pacUri'
-        end
-      end
-      
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :type, as: 'type'
-          hash :value, as: 'value'
-        end
-      end
-      
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :server_ca_cert_pem, as: 'serverCaCertPem'
-          property :ssl_decrypt_ca_cert_pem, as: 'sslDecryptCaCertPem'
         end
       end
       
@@ -1772,13 +1627,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
-        end
-      end
-      
-      class ShouldThrottleResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :should_throttle, as: 'shouldThrottle'
         end
       end
       
