@@ -184,6 +184,13 @@ module Google
         attr_accessor :enable_confidential_compute
         alias_method :enable_confidential_compute?, :enable_confidential_compute
       
+        # Optional. Image from which boot disk is to be created. If not specified, the
+        # default image for the runtime version will be used. Example: `projects/$
+        # PROJECT_ID/global/images/$IMAGE_NAME`.
+        # Corresponds to the JSON property `sourceImage`
+        # @return [String]
+        attr_accessor :source_image
+      
         def initialize(**args)
            update!(**args)
         end
@@ -192,6 +199,7 @@ module Google
         def update!(**args)
           @customer_encryption_key = args[:customer_encryption_key] if args.key?(:customer_encryption_key)
           @enable_confidential_compute = args[:enable_confidential_compute] if args.key?(:enable_confidential_compute)
+          @source_image = args[:source_image] if args.key?(:source_image)
         end
       end
       
@@ -1576,6 +1584,11 @@ module Google
         attr_accessor :preemptible
         alias_method :preemptible?, :preemptible
       
+        # Optional. Defines the provisioning model for the node.
+        # Corresponds to the JSON property `provisioningModel`
+        # @return [String]
+        attr_accessor :provisioning_model
+      
         # Whether the node is created under a reservation.
         # Corresponds to the JSON property `reserved`
         # @return [Boolean]
@@ -1600,6 +1613,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
+          @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
           @reserved = args[:reserved] if args.key?(:reserved)
           @spot = args[:spot] if args.key?(:spot)
           @termination_timestamp = args[:termination_timestamp] if args.key?(:termination_timestamp)
