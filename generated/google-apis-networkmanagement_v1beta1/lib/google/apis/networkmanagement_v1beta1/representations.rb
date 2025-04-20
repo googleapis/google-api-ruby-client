@@ -334,6 +334,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SingleEdgeResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -878,10 +884,13 @@ module Google
           property :abort_cause, as: 'abortCause'
           property :destination_egress_location, as: 'destinationEgressLocation', class: Google::Apis::NetworkmanagementV1beta1::EdgeLocation, decorator: Google::Apis::NetworkmanagementV1beta1::EdgeLocation::Representation
       
+          collection :edge_responses, as: 'edgeResponses', class: Google::Apis::NetworkmanagementV1beta1::SingleEdgeResponse, decorator: Google::Apis::NetworkmanagementV1beta1::SingleEdgeResponse::Representation
+      
           property :endpoint_info, as: 'endpointInfo', class: Google::Apis::NetworkmanagementV1beta1::EndpointInfo, decorator: Google::Apis::NetworkmanagementV1beta1::EndpointInfo::Representation
       
           property :error, as: 'error', class: Google::Apis::NetworkmanagementV1beta1::Status, decorator: Google::Apis::NetworkmanagementV1beta1::Status::Representation
       
+          property :probed_all_devices, as: 'probedAllDevices'
           property :probing_latency, as: 'probingLatency', class: Google::Apis::NetworkmanagementV1beta1::LatencyDistribution, decorator: Google::Apis::NetworkmanagementV1beta1::LatencyDistribution::Representation
       
           property :result, as: 'result'
@@ -1000,6 +1009,20 @@ module Google
           property :policy, as: 'policy', class: Google::Apis::NetworkmanagementV1beta1::Policy, decorator: Google::Apis::NetworkmanagementV1beta1::Policy::Representation
       
           property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class SingleEdgeResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_egress_location, as: 'destinationEgressLocation', class: Google::Apis::NetworkmanagementV1beta1::EdgeLocation, decorator: Google::Apis::NetworkmanagementV1beta1::EdgeLocation::Representation
+      
+          property :destination_router, as: 'destinationRouter'
+          property :probing_latency, as: 'probingLatency', class: Google::Apis::NetworkmanagementV1beta1::LatencyDistribution, decorator: Google::Apis::NetworkmanagementV1beta1::LatencyDistribution::Representation
+      
+          property :result, as: 'result'
+          property :sent_probe_count, as: 'sentProbeCount'
+          property :successful_probe_count, as: 'successfulProbeCount'
         end
       end
       
