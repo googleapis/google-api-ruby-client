@@ -942,7 +942,7 @@ module Google
         # 'attributes' : `Object` * Returning empty `attributes` will remove all
         # attributes from the * message. * * @param `(Object)>` Pub/Sub * message. Keys:
         # * - (required) 'data' : `string` * - (required) 'attributes' : `Object` * * @
-        # param `Object` metadata - Pub/Sub message metadata. * Keys: * - (required) '
+        # param `Object` metadata - Pub/Sub message metadata. * Keys: * - (optional) '
         # message_id' : `string` * - (optional) 'publish_time': `string` YYYY-MM-DDTHH:
         # MM:SSZ format * - (optional) 'ordering_key': `string` */ function (message,
         # metadata) ` ` ```
