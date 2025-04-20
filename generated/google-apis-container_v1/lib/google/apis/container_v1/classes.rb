@@ -2243,6 +2243,11 @@ module Google
       class ConfidentialNodes
         include Google::Apis::Core::Hashable
       
+        # Defines the type of technology used by the confidential node.
+        # Corresponds to the JSON property `confidentialInstanceType`
+        # @return [String]
+        attr_accessor :confidential_instance_type
+      
         # Whether Confidential Nodes feature is enabled.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
@@ -2255,6 +2260,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @confidential_instance_type = args[:confidential_instance_type] if args.key?(:confidential_instance_type)
           @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
