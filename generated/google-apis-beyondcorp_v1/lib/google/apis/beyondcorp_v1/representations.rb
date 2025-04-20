@@ -406,12 +406,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ShouldThrottleResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Tunnelv1ProtoTunnelerError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1080,13 +1074,6 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
-        end
-      end
-      
-      class ShouldThrottleResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :should_throttle, as: 'shouldThrottle'
         end
       end
       
