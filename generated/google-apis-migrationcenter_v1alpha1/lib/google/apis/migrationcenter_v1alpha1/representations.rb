@@ -448,6 +448,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DiscoveryClientDiscoveryClientRecommendedVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DiskEntry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2162,12 +2168,22 @@ module Google
           property :heartbeat_time, as: 'heartbeatTime'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          collection :recommended_versions, as: 'recommendedVersions', class: Google::Apis::MigrationcenterV1alpha1::DiscoveryClientDiscoveryClientRecommendedVersion, decorator: Google::Apis::MigrationcenterV1alpha1::DiscoveryClientDiscoveryClientRecommendedVersion::Representation
+      
           property :service_account, as: 'serviceAccount'
           property :signals_endpoint, as: 'signalsEndpoint'
           property :source, as: 'source'
           property :state, as: 'state'
           property :ttl, as: 'ttl'
           property :update_time, as: 'updateTime'
+          property :version, as: 'version'
+        end
+      end
+      
+      class DiscoveryClientDiscoveryClientRecommendedVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
           property :version, as: 'version'
         end
       end
