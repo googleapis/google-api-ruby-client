@@ -29,8 +29,8 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1'
 
-      # Associate you with your personal info on Google
-      PENID = 'openid'
+      # See and/or control the devices that you selected
+      AUTH_SDM_SERVICE = 'https://www.googleapis.com/auth/sdm.service'
     end
   end
 end
