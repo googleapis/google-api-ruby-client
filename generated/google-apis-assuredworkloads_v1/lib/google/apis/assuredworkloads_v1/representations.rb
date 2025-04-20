@@ -40,6 +40,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssuredworkloadsV1AssetMoveAnalysis
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -52,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -59,6 +83,12 @@ module Google
       end
       
       class GoogleCloudAssuredworkloadsV1ListViolationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1ListWorkloadUpdatesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -94,6 +124,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssuredworkloadsV1OrgPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRuleStringValues
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1OrgPolicyUpdate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -101,6 +155,12 @@ module Google
       end
       
       class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1UpdateDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -190,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssuredworkloadsV1WorkloadUpdate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -244,6 +310,30 @@ module Google
         end
       end
       
+      class GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :create_time, as: 'createTime'
+          property :update_name, as: 'updateName'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :applied_update, as: 'appliedUpdate', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadUpdate, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadUpdate::Representation
+      
+        end
+      end
+      
       class GoogleCloudAssuredworkloadsV1AssetMoveAnalysis
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -264,6 +354,12 @@ module Google
         end
       end
       
+      class GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -275,6 +371,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :violations, as: 'violations', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1Violation, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1Violation::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1ListWorkloadUpdatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :workload_updates, as: 'workloadUpdates', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadUpdate, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadUpdate::Representation
       
         end
       end
@@ -326,6 +431,47 @@ module Google
         end
       end
       
+      class GoogleCloudAssuredworkloadsV1OrgPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :constraint, as: 'constraint'
+          property :inherit, as: 'inherit'
+          property :reset, as: 'reset'
+          property :resource, as: 'resource'
+          property :rule, as: 'rule', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRule, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRule::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_all, as: 'allowAll'
+          property :deny_all, as: 'denyAll'
+          property :enforce, as: 'enforce'
+          property :values, as: 'values', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRuleStringValues, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRuleStringValues::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRuleStringValues
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_values, as: 'allowedValues'
+          collection :denied_values, as: 'deniedValues'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1OrgPolicyUpdate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :applied_policy, as: 'appliedPolicy', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1OrgPolicy, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1OrgPolicy::Representation
+      
+          property :suggested_policy, as: 'suggestedPolicy', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1OrgPolicy, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1OrgPolicy::Representation
+      
+        end
+      end
+      
       class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -336,6 +482,14 @@ module Google
       class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1UpdateDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :org_policy_update, as: 'orgPolicyUpdate', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1OrgPolicyUpdate, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1OrgPolicyUpdate::Representation
+      
         end
       end
       
@@ -510,6 +664,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :setup_errors, as: 'setupErrors'
           property :setup_status, as: 'setupStatus'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1WorkloadUpdate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :details, as: 'details', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1UpdateDetails, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1UpdateDetails::Representation
+      
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
         end
       end
       
