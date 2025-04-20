@@ -2134,6 +2134,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1CustomPronunciationParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1DetectIntentRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7159,6 +7165,15 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1CustomPronunciationParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :phonetic_encoding, as: 'phoneticEncoding'
+          property :phrase, as: 'phrase'
+          property :pronunciation, as: 'pronunciation'
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1DetectIntentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9344,6 +9359,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :effects_profile_id, as: 'effectsProfileId'
           property :pitch, as: 'pitch'
+          collection :pronunciations, as: 'pronunciations', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1CustomPronunciationParams, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1CustomPronunciationParams::Representation
+      
           property :speaking_rate, as: 'speakingRate'
           property :voice, as: 'voice', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1VoiceSelectionParams, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1VoiceSelectionParams::Representation
       

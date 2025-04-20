@@ -13368,6 +13368,39 @@ module Google
         end
       end
       
+      # Pronunciation customization for a phrase.
+      class GoogleCloudDialogflowV2beta1CustomPronunciationParams
+        include Google::Apis::Core::Hashable
+      
+        # The phonetic encoding of the phrase.
+        # Corresponds to the JSON property `phoneticEncoding`
+        # @return [String]
+        attr_accessor :phonetic_encoding
+      
+        # The phrase to which the customization is applied. The phrase can be multiple
+        # words, such as proper nouns, but shouldn't span the length of the sentence.
+        # Corresponds to the JSON property `phrase`
+        # @return [String]
+        attr_accessor :phrase
+      
+        # The pronunciation of the phrase. This must be in the phonetic encoding
+        # specified above.
+        # Corresponds to the JSON property `pronunciation`
+        # @return [String]
+        attr_accessor :pronunciation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @phonetic_encoding = args[:phonetic_encoding] if args.key?(:phonetic_encoding)
+          @phrase = args[:phrase] if args.key?(:phrase)
+          @pronunciation = args[:pronunciation] if args.key?(:pronunciation)
+        end
+      end
+      
       # The request to detect user's intent.
       class GoogleCloudDialogflowV2beta1DetectIntentRequest
         include Google::Apis::Core::Hashable
@@ -21325,6 +21358,11 @@ module Google
         # @return [Float]
         attr_accessor :pitch
       
+        # Optional. The custom pronunciations for the synthesized audio.
+        # Corresponds to the JSON property `pronunciations`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1CustomPronunciationParams>]
+        attr_accessor :pronunciations
+      
         # Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal
         # native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is
         # half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other
@@ -21358,6 +21396,7 @@ module Google
         def update!(**args)
           @effects_profile_id = args[:effects_profile_id] if args.key?(:effects_profile_id)
           @pitch = args[:pitch] if args.key?(:pitch)
+          @pronunciations = args[:pronunciations] if args.key?(:pronunciations)
           @speaking_rate = args[:speaking_rate] if args.key?(:speaking_rate)
           @voice = args[:voice] if args.key?(:voice)
           @volume_gain_db = args[:volume_gain_db] if args.key?(:volume_gain_db)
