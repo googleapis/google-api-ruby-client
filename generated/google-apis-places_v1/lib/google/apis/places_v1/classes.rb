@@ -699,17 +699,11 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
         attr_accessor :content
       
-        # Experimental: See https://developers.google.com/maps/documentation/places/web-
-        # service/experimental/places-generative for more details. Reference that the
-        # generative content is related to.
-        # Corresponds to the JSON property `references`
-        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1References]
-        attr_accessor :references
-      
-        # The topic of the content, for example "overview" or "restaurant".
-        # Corresponds to the JSON property `topic`
-        # @return [String]
-        attr_accessor :topic
+        # The list of resource names of the referenced places. This name can be used in
+        # other APIs that accept Place resource names.
+        # Corresponds to the JSON property `referencedPlaces`
+        # @return [Array<String>]
+        attr_accessor :referenced_places
       
         def initialize(**args)
            update!(**args)
@@ -718,8 +712,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @content = args[:content] if args.key?(:content)
-          @references = args[:references] if args.key?(:references)
-          @topic = args[:topic] if args.key?(:topic)
+          @referenced_places = args[:referenced_places] if args.key?(:referenced_places)
         end
       end
       
@@ -1169,13 +1162,6 @@ module Google
         attr_accessor :allows_dogs
         alias_method :allows_dogs?, :allows_dogs
       
-        # Experimental: See https://developers.google.com/maps/documentation/places/web-
-        # service/experimental/places-generative for more details. AI-generated summary
-        # of the area that the place is in.
-        # Corresponds to the JSON property `areaSummary`
-        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAreaSummary]
-        attr_accessor :area_summary
-      
         # A set of data provider that must be shown with this result.
         # Corresponds to the JSON property `attributions`
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAttribution>]
@@ -1236,6 +1222,13 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
         attr_accessor :editorial_summary
       
+        # The summary of amenities near the EV charging station. This only applies to
+        # places with type `electric_vehicle_charging_station`. The `overview` field is
+        # guaranteed to be provided while the other fields are optional.
+        # Corresponds to the JSON property `evChargeAmenitySummary`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceEvChargeAmenitySummary]
+        attr_accessor :ev_charge_amenity_summary
+      
         # Information about the EV Charge Station hosted in Place. Terminology follows
         # https://afdc.energy.gov/fuels/electricity_infrastructure.html One port could
         # charge one car at a time. One port has one or more connectors. One station has
@@ -1255,9 +1248,7 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1FuelOptions]
         attr_accessor :fuel_options
       
-        # Experimental: See https://developers.google.com/maps/documentation/places/web-
-        # service/experimental/places-generative for more details. AI-generated summary
-        # of the place.
+        # AI-generated summary of the place.
         # Corresponds to the JSON property `generativeSummary`
         # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceGenerativeSummary]
         attr_accessor :generative_summary
@@ -1341,6 +1332,11 @@ module Google
         # Corresponds to the JSON property `nationalPhoneNumber`
         # @return [String]
         attr_accessor :national_phone_number
+      
+        # A summary of points of interest near the place.
+        # Corresponds to the JSON property `neighborhoodSummary`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceNeighborhoodSummary]
+        attr_accessor :neighborhood_summary
       
         # Place provides outdoor seating.
         # Corresponds to the JSON property `outdoorSeating`
@@ -1452,6 +1448,11 @@ module Google
         # @return [Boolean]
         attr_accessor :restroom
         alias_method :restroom?, :restroom
+      
+        # AI-generated summary of the place using user reviews.
+        # Corresponds to the JSON property `reviewSummary`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceReviewSummary]
+        attr_accessor :review_summary
       
         # List of reviews about this place, sorted by relevance. A maximum of 5 reviews
         # can be returned.
@@ -1598,7 +1599,6 @@ module Google
           @address_descriptor = args[:address_descriptor] if args.key?(:address_descriptor)
           @adr_format_address = args[:adr_format_address] if args.key?(:adr_format_address)
           @allows_dogs = args[:allows_dogs] if args.key?(:allows_dogs)
-          @area_summary = args[:area_summary] if args.key?(:area_summary)
           @attributions = args[:attributions] if args.key?(:attributions)
           @business_status = args[:business_status] if args.key?(:business_status)
           @containing_places = args[:containing_places] if args.key?(:containing_places)
@@ -1609,6 +1609,7 @@ module Google
           @dine_in = args[:dine_in] if args.key?(:dine_in)
           @display_name = args[:display_name] if args.key?(:display_name)
           @editorial_summary = args[:editorial_summary] if args.key?(:editorial_summary)
+          @ev_charge_amenity_summary = args[:ev_charge_amenity_summary] if args.key?(:ev_charge_amenity_summary)
           @ev_charge_options = args[:ev_charge_options] if args.key?(:ev_charge_options)
           @formatted_address = args[:formatted_address] if args.key?(:formatted_address)
           @fuel_options = args[:fuel_options] if args.key?(:fuel_options)
@@ -1627,6 +1628,7 @@ module Google
           @menu_for_children = args[:menu_for_children] if args.key?(:menu_for_children)
           @name = args[:name] if args.key?(:name)
           @national_phone_number = args[:national_phone_number] if args.key?(:national_phone_number)
+          @neighborhood_summary = args[:neighborhood_summary] if args.key?(:neighborhood_summary)
           @outdoor_seating = args[:outdoor_seating] if args.key?(:outdoor_seating)
           @parking_options = args[:parking_options] if args.key?(:parking_options)
           @payment_options = args[:payment_options] if args.key?(:payment_options)
@@ -1643,6 +1645,7 @@ module Google
           @regular_secondary_opening_hours = args[:regular_secondary_opening_hours] if args.key?(:regular_secondary_opening_hours)
           @reservable = args[:reservable] if args.key?(:reservable)
           @restroom = args[:restroom] if args.key?(:restroom)
+          @review_summary = args[:review_summary] if args.key?(:review_summary)
           @reviews = args[:reviews] if args.key?(:reviews)
           @serves_beer = args[:serves_beer] if args.key?(:serves_beer)
           @serves_breakfast = args[:serves_breakfast] if args.key?(:serves_breakfast)
@@ -1749,34 +1752,6 @@ module Google
         end
       end
       
-      # Experimental: See https://developers.google.com/maps/documentation/places/web-
-      # service/experimental/places-generative for more details. AI-generated summary
-      # of the area that the place is in.
-      class GoogleMapsPlacesV1PlaceAreaSummary
-        include Google::Apis::Core::Hashable
-      
-        # Content blocks that compose the area summary. Each block has a separate topic
-        # about the area.
-        # Corresponds to the JSON property `contentBlocks`
-        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1ContentBlock>]
-        attr_accessor :content_blocks
-      
-        # A link where users can flag a problem with the summary.
-        # Corresponds to the JSON property `flagContentUri`
-        # @return [String]
-        attr_accessor :flag_content_uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @content_blocks = args[:content_blocks] if args.key?(:content_blocks)
-          @flag_content_uri = args[:flag_content_uri] if args.key?(:flag_content_uri)
-        end
-      end
-      
       # Information about data providers of this place.
       class GoogleMapsPlacesV1PlaceAttribution
         include Google::Apis::Core::Hashable
@@ -1827,21 +1802,65 @@ module Google
         end
       end
       
-      # Experimental: See https://developers.google.com/maps/documentation/places/web-
-      # service/experimental/places-generative for more details. AI-generated summary
-      # of the place.
+      # The summary of amenities near the EV charging station. This only applies to
+      # places with type `electric_vehicle_charging_station`. The `overview` field is
+      # guaranteed to be provided while the other fields are optional.
+      class GoogleMapsPlacesV1PlaceEvChargeAmenitySummary
+        include Google::Apis::Core::Hashable
+      
+        # A block of content that can be served individually.
+        # Corresponds to the JSON property `coffee`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1ContentBlock]
+        attr_accessor :coffee
+      
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `disclosureText`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :disclosure_text
+      
+        # A link where users can flag a problem with the summary.
+        # Corresponds to the JSON property `flagContentUri`
+        # @return [String]
+        attr_accessor :flag_content_uri
+      
+        # A block of content that can be served individually.
+        # Corresponds to the JSON property `overview`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1ContentBlock]
+        attr_accessor :overview
+      
+        # A block of content that can be served individually.
+        # Corresponds to the JSON property `restaurant`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1ContentBlock]
+        attr_accessor :restaurant
+      
+        # A block of content that can be served individually.
+        # Corresponds to the JSON property `store`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1ContentBlock]
+        attr_accessor :store
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @coffee = args[:coffee] if args.key?(:coffee)
+          @disclosure_text = args[:disclosure_text] if args.key?(:disclosure_text)
+          @flag_content_uri = args[:flag_content_uri] if args.key?(:flag_content_uri)
+          @overview = args[:overview] if args.key?(:overview)
+          @restaurant = args[:restaurant] if args.key?(:restaurant)
+          @store = args[:store] if args.key?(:store)
+        end
+      end
+      
+      # AI-generated summary of the place.
       class GoogleMapsPlacesV1PlaceGenerativeSummary
         include Google::Apis::Core::Hashable
       
         # Localized variant of a text in a particular language.
-        # Corresponds to the JSON property `description`
+        # Corresponds to the JSON property `disclosureText`
         # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
-        attr_accessor :description
-      
-        # A link where users can flag a problem with the description summary.
-        # Corresponds to the JSON property `descriptionFlagContentUri`
-        # @return [String]
-        attr_accessor :description_flag_content_uri
+        attr_accessor :disclosure_text
       
         # Localized variant of a text in a particular language.
         # Corresponds to the JSON property `overview`
@@ -1853,24 +1872,15 @@ module Google
         # @return [String]
         attr_accessor :overview_flag_content_uri
       
-        # Experimental: See https://developers.google.com/maps/documentation/places/web-
-        # service/experimental/places-generative for more details. Reference that the
-        # generative content is related to.
-        # Corresponds to the JSON property `references`
-        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1References]
-        attr_accessor :references
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @description_flag_content_uri = args[:description_flag_content_uri] if args.key?(:description_flag_content_uri)
+          @disclosure_text = args[:disclosure_text] if args.key?(:disclosure_text)
           @overview = args[:overview] if args.key?(:overview)
           @overview_flag_content_uri = args[:overview_flag_content_uri] if args.key?(:overview_flag_content_uri)
-          @references = args[:references] if args.key?(:references)
         end
       end
       
@@ -1918,6 +1928,43 @@ module Google
           @place_uri = args[:place_uri] if args.key?(:place_uri)
           @reviews_uri = args[:reviews_uri] if args.key?(:reviews_uri)
           @write_a_review_uri = args[:write_a_review_uri] if args.key?(:write_a_review_uri)
+        end
+      end
+      
+      # A summary of points of interest near the place.
+      class GoogleMapsPlacesV1PlaceNeighborhoodSummary
+        include Google::Apis::Core::Hashable
+      
+        # A block of content that can be served individually.
+        # Corresponds to the JSON property `description`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1ContentBlock]
+        attr_accessor :description
+      
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `disclosureText`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :disclosure_text
+      
+        # A link where users can flag a problem with the summary.
+        # Corresponds to the JSON property `flagContentUri`
+        # @return [String]
+        attr_accessor :flag_content_uri
+      
+        # A block of content that can be served individually.
+        # Corresponds to the JSON property `overview`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1ContentBlock]
+        attr_accessor :overview
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @disclosure_text = args[:disclosure_text] if args.key?(:disclosure_text)
+          @flag_content_uri = args[:flag_content_uri] if args.key?(:flag_content_uri)
+          @overview = args[:overview] if args.key?(:overview)
         end
       end
       
@@ -2235,6 +2282,37 @@ module Google
         end
       end
       
+      # AI-generated summary of the place using user reviews.
+      class GoogleMapsPlacesV1PlaceReviewSummary
+        include Google::Apis::Core::Hashable
+      
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `disclosureText`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :disclosure_text
+      
+        # A link where users can flag a problem with the summary.
+        # Corresponds to the JSON property `flagContentUri`
+        # @return [String]
+        attr_accessor :flag_content_uri
+      
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `text`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disclosure_text = args[:disclosure_text] if args.key?(:disclosure_text)
+          @flag_content_uri = args[:flag_content_uri] if args.key?(:flag_content_uri)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
       # Sub-destinations are specific places associated with a main place. These
       # provide more specific destinations for users who are searching within a large
       # or complex place, like an airport, national park, university, or stadium. For
@@ -2316,34 +2394,6 @@ module Google
         def update!(**args)
           @end_price = args[:end_price] if args.key?(:end_price)
           @start_price = args[:start_price] if args.key?(:start_price)
-        end
-      end
-      
-      # Experimental: See https://developers.google.com/maps/documentation/places/web-
-      # service/experimental/places-generative for more details. Reference that the
-      # generative content is related to.
-      class GoogleMapsPlacesV1References
-        include Google::Apis::Core::Hashable
-      
-        # The list of resource names of the referenced places. This name can be used in
-        # other APIs that accept Place resource names.
-        # Corresponds to the JSON property `places`
-        # @return [Array<String>]
-        attr_accessor :places
-      
-        # Reviews that serve as references.
-        # Corresponds to the JSON property `reviews`
-        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1Review>]
-        attr_accessor :reviews
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @places = args[:places] if args.key?(:places)
-          @reviews = args[:reviews] if args.key?(:reviews)
         end
       end
       
