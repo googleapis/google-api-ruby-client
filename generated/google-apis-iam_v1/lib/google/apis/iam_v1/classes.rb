@@ -1717,7 +1717,10 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_audiences
       
-        # Required. The OIDC issuer URL. Must be an HTTPS endpoint.
+        # Required. The OIDC issuer URL. Must be an HTTPS endpoint. Used per OpenID
+        # Connect Discovery 1.0 spec to locate the provider's public keys (via `jwks_uri`
+        # ) for verifying tokens like the OIDC ID token. These public key types must be '
+        # EC' or 'RSA'.
         # Corresponds to the JSON property `issuerUri`
         # @return [String]
         attr_accessor :issuer_uri
@@ -3754,6 +3757,12 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # An X.509-type identity provider represents a CA. It is trusted to assert a
+        # client identity if the client has a certificate that chains up to this CA.
+        # Corresponds to the JSON property `x509`
+        # @return [Google::Apis::IamV1::X509]
+        attr_accessor :x509
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3771,6 +3780,7 @@ module Google
           @oidc = args[:oidc] if args.key?(:oidc)
           @saml = args[:saml] if args.key?(:saml)
           @state = args[:state] if args.key?(:state)
+          @x509 = args[:x509] if args.key?(:x509)
         end
       end
       
@@ -3819,6 +3829,27 @@ module Google
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @use = args[:use] if args.key?(:use)
+        end
+      end
+      
+      # An X.509-type identity provider represents a CA. It is trusted to assert a
+      # client identity if the client has a certificate that chains up to this CA.
+      class X509
+        include Google::Apis::Core::Hashable
+      
+        # Trust store that contains trust anchors and optional intermediate CAs used in
+        # PKI to build trust chain and verify client's identity.
+        # Corresponds to the JSON property `trustStore`
+        # @return [Google::Apis::IamV1::TrustStore]
+        attr_accessor :trust_store
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @trust_store = args[:trust_store] if args.key?(:trust_store)
         end
       end
     end

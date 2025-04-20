@@ -676,6 +676,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class X509
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccessRestrictions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1648,6 +1654,8 @@ module Google
           property :saml, as: 'saml', class: Google::Apis::IamV1::Saml, decorator: Google::Apis::IamV1::Saml::Representation
       
           property :state, as: 'state'
+          property :x509, as: 'x509', class: Google::Apis::IamV1::X509, decorator: Google::Apis::IamV1::X509::Representation
+      
         end
       end
       
@@ -1660,6 +1668,14 @@ module Google
           property :name, as: 'name'
           property :state, as: 'state'
           property :use, as: 'use'
+        end
+      end
+      
+      class X509
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :trust_store, as: 'trustStore', class: Google::Apis::IamV1::TrustStore, decorator: Google::Apis::IamV1::TrustStore::Representation
+      
         end
       end
     end
