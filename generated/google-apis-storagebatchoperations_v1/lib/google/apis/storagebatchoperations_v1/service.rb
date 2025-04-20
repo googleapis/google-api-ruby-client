@@ -30,7 +30,7 @@ module Google
       #    Storagebatchoperations = Google::Apis::StoragebatchoperationsV1 # Alias the module
       #    service = Storagebatchoperations::StorageBatchOperationsService.new
       #
-      # @see https://cloud.google.com/storage/docs/metadata
+      # @see https://cloud.google.com/storage/docs/batch-operations/overview
       class StorageBatchOperationsService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://storagebatchoperations.$UNIVERSE_DOMAIN$/"
 
@@ -173,8 +173,8 @@ module Google
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID in case you need to retry your request. Requests with same `
-        #   request_id` will ignored for at least 60 minutes since the first request. The
-        #   request ID must be a valid UUID with the exception that zero UUID is not
+        #   request_id` will be ignored for at least 60 minutes since the first request.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
         #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -214,8 +214,8 @@ module Google
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID in case you need to retry your request. Requests with same `
-        #   request_id` will ignored for at least 60 minutes since the first request. The
-        #   request ID must be a valid UUID with the exception that zero UUID is not
+        #   request_id` will be ignored for at least 60 minutes since the first request.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
         #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

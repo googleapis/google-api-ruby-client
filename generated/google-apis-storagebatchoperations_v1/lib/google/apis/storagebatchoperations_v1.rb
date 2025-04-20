@@ -23,7 +23,7 @@ module Google
     #
     # 
     #
-    # @see https://cloud.google.com/storage/docs/metadata
+    # @see https://cloud.google.com/storage/docs/batch-operations/overview
     module StoragebatchoperationsV1
       # Version of the Storage Batch Operations API this client connects to.
       # This is NOT the gem version.
