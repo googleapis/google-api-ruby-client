@@ -1697,6 +1697,244 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create a user creds.
+        # @param [String] parent
+        #   Required. A parent name of the form `projects/`project_id`/databases/`
+        #   database_id``
+        # @param [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1UserCreds] google_firestore_admin_v1_user_creds_object
+        # @param [String] user_creds_id
+        #   Required. The ID to use for the user creds, which will become the final
+        #   component of the user creds's resource name. This value should be 4-63
+        #   characters. Valid characters are /a-z-/ with first character a letter and the
+        #   last a letter or a number. Must not be UUID-like /[0-9a-f]`8`(-[0-9a-f]`4`)`3`-
+        #   [0-9a-f]`12`/.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1UserCreds] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1UserCreds]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_database_user_cred(parent, google_firestore_admin_v1_user_creds_object = nil, user_creds_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/userCreds', options)
+          command.request_representation = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1UserCreds::Representation
+          command.request_object = google_firestore_admin_v1_user_creds_object
+          command.response_representation = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1UserCreds::Representation
+          command.response_class = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1UserCreds
+          command.params['parent'] = parent unless parent.nil?
+          command.query['userCredsId'] = user_creds_id unless user_creds_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a user creds.
+        # @param [String] name
+        #   Required. A name of the form `projects/`project_id`/databases/`database_id`/
+        #   userCreds/`user_creds_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_database_user_cred(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::FirestoreV1::Empty::Representation
+          command.response_class = Google::Apis::FirestoreV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Disables a user creds. No-op if the user creds are already disabled.
+        # @param [String] name
+        #   Required. A name of the form `projects/`project_id`/databases/`database_id`/
+        #   userCreds/`user_creds_id``
+        # @param [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1DisableUserCredsRequest] google_firestore_admin_v1_disable_user_creds_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1UserCreds] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1UserCreds]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def disable_project_database_user_cred(name, google_firestore_admin_v1_disable_user_creds_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:disable', options)
+          command.request_representation = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1DisableUserCredsRequest::Representation
+          command.request_object = google_firestore_admin_v1_disable_user_creds_request_object
+          command.response_representation = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1UserCreds::Representation
+          command.response_class = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1UserCreds
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Enables a user creds. No-op if the user creds are already enabled.
+        # @param [String] name
+        #   Required. A name of the form `projects/`project_id`/databases/`database_id`/
+        #   userCreds/`user_creds_id``
+        # @param [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1EnableUserCredsRequest] google_firestore_admin_v1_enable_user_creds_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1UserCreds] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1UserCreds]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def enable_project_database_user_cred(name, google_firestore_admin_v1_enable_user_creds_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:enable', options)
+          command.request_representation = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1EnableUserCredsRequest::Representation
+          command.request_object = google_firestore_admin_v1_enable_user_creds_request_object
+          command.response_representation = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1UserCreds::Representation
+          command.response_class = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1UserCreds
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a user creds resource. Note that the returned resource does not contain
+        # the secret value itself.
+        # @param [String] name
+        #   Required. A name of the form `projects/`project_id`/databases/`database_id`/
+        #   userCreds/`user_creds_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1UserCreds] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1UserCreds]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_database_user_cred(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1UserCreds::Representation
+          command.response_class = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1UserCreds
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List all user creds in the database. Note that the returned resource does not
+        # contain the secret value itself.
+        # @param [String] parent
+        #   Required. A parent database name of the form `projects/`project_id`/databases/`
+        #   database_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ListUserCredsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ListUserCredsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_database_user_creds(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/userCreds', options)
+          command.response_representation = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ListUserCredsResponse::Representation
+          command.response_class = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ListUserCredsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Resets the password of a user creds.
+        # @param [String] name
+        #   Required. A name of the form `projects/`project_id`/databases/`database_id`/
+        #   userCreds/`user_creds_id``
+        # @param [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ResetUserPasswordRequest] google_firestore_admin_v1_reset_user_password_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1UserCreds] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1UserCreds]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def reset_project_database_user_cred_password(name, google_firestore_admin_v1_reset_user_password_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:resetPassword', options)
+          command.request_representation = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ResetUserPasswordRequest::Representation
+          command.request_object = google_firestore_admin_v1_reset_user_password_request_object
+          command.response_representation = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1UserCreds::Representation
+          command.response_class = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1UserCreds
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets information about a location.
         # @param [String] name
         #   Resource name for the location.
@@ -1730,6 +1968,9 @@ module Google
         # Lists information about the supported locations for this service.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
+        # @param [Array<String>, String] extra_location_types
+        #   Optional. A list of extra location types that should be used as conditions for
+        #   controlling the visibility of the locations.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -1757,11 +1998,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_locations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_locations(name, extra_location_types: nil, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/locations', options)
           command.response_representation = Google::Apis::FirestoreV1::ListLocationsResponse::Representation
           command.response_class = Google::Apis::FirestoreV1::ListLocationsResponse
           command.params['name'] = name unless name.nil?
+          command.query['extraLocationTypes'] = extra_location_types unless extra_location_types.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
