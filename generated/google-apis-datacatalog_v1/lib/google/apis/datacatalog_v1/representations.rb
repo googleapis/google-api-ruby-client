@@ -1242,6 +1242,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :catalog_ui_experience, as: 'catalogUiExperience'
           property :tag_template_migration, as: 'tagTemplateMigration'
+          property :template_migration_enabled_time, as: 'templateMigrationEnabledTime'
         end
       end
       
