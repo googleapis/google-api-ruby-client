@@ -726,8 +726,7 @@ module Google
         # @return [Google::Apis::MeetV2::ArtifactConfig]
         attr_accessor :artifact_config
       
-        # [Developer Preview](https://developers.google.com/workspace/preview): Whether
-        # attendance report is enabled for the meeting space.
+        # Whether attendance report is enabled for the meeting space.
         # Corresponds to the JSON property `attendanceReportGenerationType`
         # @return [String]
         attr_accessor :attendance_report_generation_type
@@ -738,9 +737,8 @@ module Google
         # @return [String]
         attr_accessor :entry_point_access
       
-        # [Developer Preview](https://developers.google.com/workspace/preview): The pre-
-        # configured moderation mode for the Meeting. Default: Controlled by the user's
-        # policies.
+        # The pre-configured moderation mode for the Meeting. Default: Controlled by the
+        # user's policies.
         # Corresponds to the JSON property `moderation`
         # @return [String]
         attr_accessor :moderation
