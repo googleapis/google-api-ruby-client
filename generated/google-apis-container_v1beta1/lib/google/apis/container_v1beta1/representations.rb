@@ -1970,6 +1970,7 @@ module Google
       class ConfidentialNodes
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidential_instance_type, as: 'confidentialInstanceType'
           property :enabled, as: 'enabled'
         end
       end
