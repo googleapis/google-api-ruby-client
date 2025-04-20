@@ -138,7 +138,7 @@ module Google
         #   asset-types).
         # @param [Fixnum] page_size
         #   Optional. Page size. If a value is not specified, the default value of 10 is
-        #   used.
+        #   used. The maximum value is 50.
         # @param [String] page_token
         #   Optional. The page token from the previous response. It needs to be passed in
         #   the second and following requests.
