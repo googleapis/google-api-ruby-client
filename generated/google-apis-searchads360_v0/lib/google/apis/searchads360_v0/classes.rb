@@ -5299,7 +5299,7 @@ module Google
         end
       end
       
-      # A view on the usage of ad group ad asset combination.
+      # A view on the usage of asset group asset top combinations.
       class GoogleAdsSearchads360V0ResourcesAssetGroupTopCombinationView
         include Google::Apis::Core::Hashable
       
@@ -6839,6 +6839,12 @@ module Google
       class GoogleAdsSearchads360V0ResourcesCustomer
         include Google::Apis::Core::Hashable
       
+        # Output only. The account level of the customer: Manager, Sub-manager,
+        # Associate manager, Service account.
+        # Corresponds to the JSON property `accountLevel`
+        # @return [String]
+        attr_accessor :account_level
+      
         # Output only. Account status, for example, Enabled, Paused, Removed, etc.
         # Corresponds to the JSON property `accountStatus`
         # @return [String]
@@ -6849,6 +6855,17 @@ module Google
         # Corresponds to the JSON property `accountType`
         # @return [String]
         attr_accessor :account_type
+      
+        # Output only. The descriptive name of the associate manager.
+        # Corresponds to the JSON property `associateManagerDescriptiveName`
+        # @return [String]
+        attr_accessor :associate_manager_descriptive_name
+      
+        # Output only. The customer ID of the associate manager. A 0 value indicates
+        # that the customer has no SA360 associate manager.
+        # Corresponds to the JSON property `associateManagerId`
+        # @return [Fixnum]
+        attr_accessor :associate_manager_id
       
         # Whether auto-tagging is enabled for the customer.
         # Corresponds to the JSON property `autoTaggingEnabled`
@@ -6911,6 +6928,17 @@ module Google
         attr_accessor :manager
         alias_method :manager?, :manager
       
+        # Output only. The descriptive name of the manager.
+        # Corresponds to the JSON property `managerDescriptiveName`
+        # @return [String]
+        attr_accessor :manager_descriptive_name
+      
+        # Output only. The customer ID of the manager. A 0 value indicates that the
+        # customer has no SA360 manager.
+        # Corresponds to the JSON property `managerId`
+        # @return [Fixnum]
+        attr_accessor :manager_id
+      
         # Immutable. The resource name of the customer. Customer resource names have the
         # form: `customers/`customer_id``
         # Corresponds to the JSON property `resourceName`
@@ -6921,6 +6949,17 @@ module Google
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
+      
+        # Output only. The descriptive name of the sub manager.
+        # Corresponds to the JSON property `subManagerDescriptiveName`
+        # @return [String]
+        attr_accessor :sub_manager_descriptive_name
+      
+        # Output only. The customer ID of the sub manager. A 0 value indicates that the
+        # customer has no sub SA360 manager.
+        # Corresponds to the JSON property `subManagerId`
+        # @return [Fixnum]
+        attr_accessor :sub_manager_id
       
         # Immutable. The local timezone ID of the customer.
         # Corresponds to the JSON property `timeZone`
@@ -6938,8 +6977,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @account_level = args[:account_level] if args.key?(:account_level)
           @account_status = args[:account_status] if args.key?(:account_status)
           @account_type = args[:account_type] if args.key?(:account_type)
+          @associate_manager_descriptive_name = args[:associate_manager_descriptive_name] if args.key?(:associate_manager_descriptive_name)
+          @associate_manager_id = args[:associate_manager_id] if args.key?(:associate_manager_id)
           @auto_tagging_enabled = args[:auto_tagging_enabled] if args.key?(:auto_tagging_enabled)
           @conversion_tracking_setting = args[:conversion_tracking_setting] if args.key?(:conversion_tracking_setting)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
@@ -6951,8 +6993,12 @@ module Google
           @id = args[:id] if args.key?(:id)
           @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
           @manager = args[:manager] if args.key?(:manager)
+          @manager_descriptive_name = args[:manager_descriptive_name] if args.key?(:manager_descriptive_name)
+          @manager_id = args[:manager_id] if args.key?(:manager_id)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @status = args[:status] if args.key?(:status)
+          @sub_manager_descriptive_name = args[:sub_manager_descriptive_name] if args.key?(:sub_manager_descriptive_name)
+          @sub_manager_id = args[:sub_manager_id] if args.key?(:sub_manager_id)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
           @tracking_url_template = args[:tracking_url_template] if args.key?(:tracking_url_template)
         end
@@ -8271,7 +8317,7 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetGroupSignal]
         attr_accessor :asset_group_signal
       
-        # A view on the usage of ad group ad asset combination.
+        # A view on the usage of asset group asset top combinations.
         # Corresponds to the JSON property `assetGroupTopCombinationView`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetGroupTopCombinationView]
         attr_accessor :asset_group_top_combination_view
