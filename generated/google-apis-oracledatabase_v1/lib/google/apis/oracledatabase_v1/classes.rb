@@ -551,6 +551,11 @@ module Google
         # @return [Float]
         attr_accessor :allocated_storage_size_tb
       
+        # Optional. The list of allowlisted IP addresses for the Autonomous Database.
+        # Corresponds to the JSON property `allowlistedIps`
+        # @return [Array<String>]
+        attr_accessor :allowlisted_ips
+      
         # Oracle APEX Application Development. https://docs.oracle.com/en-us/iaas/api/#/
         # en/database/20160918/datatypes/AutonomousDatabaseApex
         # Corresponds to the JSON property `apexDetails`
@@ -885,6 +890,7 @@ module Google
         def update!(**args)
           @actual_used_data_storage_size_tb = args[:actual_used_data_storage_size_tb] if args.key?(:actual_used_data_storage_size_tb)
           @allocated_storage_size_tb = args[:allocated_storage_size_tb] if args.key?(:allocated_storage_size_tb)
+          @allowlisted_ips = args[:allowlisted_ips] if args.key?(:allowlisted_ips)
           @apex_details = args[:apex_details] if args.key?(:apex_details)
           @are_primary_allowlisted_ips_used = args[:are_primary_allowlisted_ips_used] if args.key?(:are_primary_allowlisted_ips_used)
           @autonomous_container_database_id = args[:autonomous_container_database_id] if args.key?(:autonomous_container_database_id)
