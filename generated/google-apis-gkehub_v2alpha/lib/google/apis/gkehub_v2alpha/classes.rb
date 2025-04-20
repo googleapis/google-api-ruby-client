@@ -1484,6 +1484,12 @@ module Google
         # @return [Google::Apis::GkehubV2alpha::PolicyControllerSpec]
         attr_accessor :policycontroller
       
+        # **RBAC RoleBinding Actuation**: The membership-specific input for
+        # RBACRoleBindingActuation feature.
+        # Corresponds to the JSON property `rbacrolebindingactuation`
+        # @return [Google::Apis::GkehubV2alpha::RbacRoleBindingActuationSpec]
+        attr_accessor :rbacrolebindingactuation
+      
         # **Service Mesh**: Spec for a single Membership for the servicemesh feature
         # Corresponds to the JSON property `servicemesh`
         # @return [Google::Apis::GkehubV2alpha::ServiceMeshSpec]
@@ -1506,6 +1512,7 @@ module Google
           @identityservice = args[:identityservice] if args.key?(:identityservice)
           @origin = args[:origin] if args.key?(:origin)
           @policycontroller = args[:policycontroller] if args.key?(:policycontroller)
+          @rbacrolebindingactuation = args[:rbacrolebindingactuation] if args.key?(:rbacrolebindingactuation)
           @servicemesh = args[:servicemesh] if args.key?(:servicemesh)
           @workloadcertificate = args[:workloadcertificate] if args.key?(:workloadcertificate)
         end
@@ -1548,6 +1555,12 @@ module Google
         # @return [Google::Apis::GkehubV2alpha::PolicyControllerState]
         attr_accessor :policycontroller
       
+        # **RBAC RoleBinding Actuation**: A membership-specific Feature state for the
+        # RBACRoleBindingActuation fleet feature.
+        # Corresponds to the JSON property `rbacrolebindingactuation`
+        # @return [Google::Apis::GkehubV2alpha::RbacRoleBindingActuationState]
+        attr_accessor :rbacrolebindingactuation
+      
         # **Service Mesh**: State for a single Membership, as analyzed by the Service
         # Mesh Hub Controller.
         # Corresponds to the JSON property `servicemesh`
@@ -1571,6 +1584,7 @@ module Google
           @identityservice = args[:identityservice] if args.key?(:identityservice)
           @metering = args[:metering] if args.key?(:metering)
           @policycontroller = args[:policycontroller] if args.key?(:policycontroller)
+          @rbacrolebindingactuation = args[:rbacrolebindingactuation] if args.key?(:rbacrolebindingactuation)
           @servicemesh = args[:servicemesh] if args.key?(:servicemesh)
           @state = args[:state] if args.key?(:state)
         end
@@ -3064,6 +3078,75 @@ module Google
           @key = args[:key] if args.key?(:key)
           @operator = args[:operator] if args.key?(:operator)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # RBACRoleBindingState is the status of an RBACRoleBinding which exists on a
+      # membership.
+      class RbacRoleBindingActuationRbacRoleBindingState
+        include Google::Apis::Core::Hashable
+      
+        # The reason for the failure.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The state of the RBACRoleBinding.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The time the RBACRoleBinding status was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # **RBAC RoleBinding Actuation**: The membership-specific input for
+      # RBACRoleBindingActuation feature.
+      class RbacRoleBindingActuationSpec
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # **RBAC RoleBinding Actuation**: A membership-specific Feature state for the
+      # RBACRoleBindingActuation fleet feature.
+      class RbacRoleBindingActuationState
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The state of RBACRoleBindings using custom roles that exist on
+        # the cluster, keyed by RBACRoleBinding resource name with format: projects/`
+        # project`/locations/`location`/scopes/`scope`/rbacrolebindings/`rbacrolebinding`
+        # .
+        # Corresponds to the JSON property `rbacrolebindingStates`
+        # @return [Hash<String,Google::Apis::GkehubV2alpha::RbacRoleBindingActuationRbacRoleBindingState>]
+        attr_accessor :rbacrolebinding_states
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rbacrolebinding_states = args[:rbacrolebinding_states] if args.key?(:rbacrolebinding_states)
         end
       end
       

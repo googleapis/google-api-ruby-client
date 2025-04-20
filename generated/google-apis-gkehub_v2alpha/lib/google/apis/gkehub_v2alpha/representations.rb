@@ -508,6 +508,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RbacRoleBindingActuationRbacRoleBindingState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RbacRoleBindingActuationSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RbacRoleBindingActuationState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceMeshAnalysisMessage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1001,6 +1019,8 @@ module Google
       
           property :policycontroller, as: 'policycontroller', class: Google::Apis::GkehubV2alpha::PolicyControllerSpec, decorator: Google::Apis::GkehubV2alpha::PolicyControllerSpec::Representation
       
+          property :rbacrolebindingactuation, as: 'rbacrolebindingactuation', class: Google::Apis::GkehubV2alpha::RbacRoleBindingActuationSpec, decorator: Google::Apis::GkehubV2alpha::RbacRoleBindingActuationSpec::Representation
+      
           property :servicemesh, as: 'servicemesh', class: Google::Apis::GkehubV2alpha::ServiceMeshSpec, decorator: Google::Apis::GkehubV2alpha::ServiceMeshSpec::Representation
       
           property :workloadcertificate, as: 'workloadcertificate', class: Google::Apis::GkehubV2alpha::WorkloadCertificateSpec, decorator: Google::Apis::GkehubV2alpha::WorkloadCertificateSpec::Representation
@@ -1022,6 +1042,8 @@ module Google
           property :metering, as: 'metering', class: Google::Apis::GkehubV2alpha::MeteringState, decorator: Google::Apis::GkehubV2alpha::MeteringState::Representation
       
           property :policycontroller, as: 'policycontroller', class: Google::Apis::GkehubV2alpha::PolicyControllerState, decorator: Google::Apis::GkehubV2alpha::PolicyControllerState::Representation
+      
+          property :rbacrolebindingactuation, as: 'rbacrolebindingactuation', class: Google::Apis::GkehubV2alpha::RbacRoleBindingActuationState, decorator: Google::Apis::GkehubV2alpha::RbacRoleBindingActuationState::Representation
       
           property :servicemesh, as: 'servicemesh', class: Google::Apis::GkehubV2alpha::ServiceMeshState, decorator: Google::Apis::GkehubV2alpha::ServiceMeshState::Representation
       
@@ -1439,6 +1461,29 @@ module Google
           property :key, as: 'key'
           property :operator, as: 'operator'
           property :value, as: 'value'
+        end
+      end
+      
+      class RbacRoleBindingActuationRbacRoleBindingState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class RbacRoleBindingActuationSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RbacRoleBindingActuationState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :rbacrolebinding_states, as: 'rbacrolebindingStates', class: Google::Apis::GkehubV2alpha::RbacRoleBindingActuationRbacRoleBindingState, decorator: Google::Apis::GkehubV2alpha::RbacRoleBindingActuationRbacRoleBindingState::Representation
+      
         end
       end
       
