@@ -701,6 +701,7 @@ module Google
           hash :annotations, as: 'annotations'
           property :cluster_name, as: 'clusterName'
           property :cluster_uid, as: 'clusterUid'
+          property :create_completion_time, as: 'createCompletionTime'
           property :create_time, as: 'createTime'
           property :database_version, as: 'databaseVersion'
           property :delete_time, as: 'deleteTime'
