@@ -726,7 +726,6 @@ module Google
       class GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :enable_thinking, as: 'enableThinking'
           property :thinking_budget, as: 'thinkingBudget'
         end
       end
@@ -1029,6 +1028,7 @@ module Google
       class GoogleCloudAiplatformV1beta1SpeechConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :language_code, as: 'languageCode'
           property :voice_config, as: 'voiceConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VoiceConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VoiceConfig::Representation
       
         end
