@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomerApprovalApprovalPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DismissApprovalRequestMessage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,6 +137,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :active_key_version, as: 'activeKeyVersion'
           property :ancestor_has_active_key_version, as: 'ancestorHasActiveKeyVersion'
+          property :approval_policy, as: 'approvalPolicy', class: Google::Apis::AccessapprovalV1::CustomerApprovalApprovalPolicy, decorator: Google::Apis::AccessapprovalV1::CustomerApprovalApprovalPolicy::Representation
+      
+          property :effective_approval_policy, as: 'effectiveApprovalPolicy', class: Google::Apis::AccessapprovalV1::CustomerApprovalApprovalPolicy, decorator: Google::Apis::AccessapprovalV1::CustomerApprovalApprovalPolicy::Representation
+      
           property :enrolled_ancestor, as: 'enrolledAncestor'
           collection :enrolled_services, as: 'enrolledServices', class: Google::Apis::AccessapprovalV1::EnrolledService, decorator: Google::Apis::AccessapprovalV1::EnrolledService::Representation
       
@@ -198,6 +208,7 @@ module Google
           property :auto_approved, as: 'autoApproved'
           property :expire_time, as: 'expireTime'
           property :invalidate_time, as: 'invalidateTime'
+          property :policy_approved, as: 'policyApproved'
           property :signature_info, as: 'signatureInfo', class: Google::Apis::AccessapprovalV1::SignatureInfo, decorator: Google::Apis::AccessapprovalV1::SignatureInfo::Representation
       
         end
@@ -207,6 +218,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :command, as: 'command'
+        end
+      end
+      
+      class CustomerApprovalApprovalPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :justification_based_approval_policy, as: 'justificationBasedApprovalPolicy'
         end
       end
       
