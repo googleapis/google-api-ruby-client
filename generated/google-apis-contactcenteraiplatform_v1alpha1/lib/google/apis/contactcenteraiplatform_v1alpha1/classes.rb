@@ -99,6 +99,12 @@ module Google
         # @return [Google::Apis::ContactcenteraiplatformV1alpha1::AdminUser]
         attr_accessor :admin_user
       
+        # Optional. Whether the advanced reporting feature is enabled.
+        # Corresponds to the JSON property `advancedReportingEnabled`
+        # @return [Boolean]
+        attr_accessor :advanced_reporting_enabled
+        alias_method :advanced_reporting_enabled?, :advanced_reporting_enabled
+      
         # Optional. Whether to enable users to be created in the CCAIP-instance
         # concurrently to having users in Cloud identity
         # Corresponds to the JSON property `ccaipManagedUsers`
@@ -202,6 +208,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @admin_user = args[:admin_user] if args.key?(:admin_user)
+          @advanced_reporting_enabled = args[:advanced_reporting_enabled] if args.key?(:advanced_reporting_enabled)
           @ccaip_managed_users = args[:ccaip_managed_users] if args.key?(:ccaip_managed_users)
           @create_time = args[:create_time] if args.key?(:create_time)
           @critical = args[:critical] if args.key?(:critical)
