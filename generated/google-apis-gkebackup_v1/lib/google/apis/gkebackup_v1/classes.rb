@@ -325,6 +325,88 @@ module Google
         end
       end
       
+      # A BackupChannel imposes constraints on where clusters can be backed up. The
+      # BackupChannel should be in the same project and region as the cluster being
+      # backed up. The backup can be created only in destination_project.
+      class BackupChannel
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when this BackupChannel resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. User specified descriptive string for this BackupChannel.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Immutable. The project where Backups are allowed to be stored. The
+        # format is `projects/`project``. Currently, `project` can only be the project
+        # number. Support for project IDs will be added in the future.
+        # Corresponds to the JSON property `destinationProject`
+        # @return [String]
+        attr_accessor :destination_project
+      
+        # Output only. The project_id where Backups are allowed to be stored. Example
+        # Project ID: "my-project-id". This will be an OUTPUT_ONLY field to return the
+        # project_id of the destination project.
+        # Corresponds to the JSON property `destinationProjectId`
+        # @return [String]
+        attr_accessor :destination_project_id
+      
+        # Output only. `etag` is used for optimistic concurrency control as a way to
+        # help prevent simultaneous updates of a BackupChannel from overwriting each
+        # other. It is strongly suggested that systems make use of the 'etag' in the
+        # read-modify-write cycle to perform BackupChannel updates in order to avoid
+        # race conditions: An `etag` is returned in the response to `GetBackupChannel`,
+        # and systems are expected to put that etag in the request to `
+        # UpdateBackupChannel` or `DeleteBackupChannel` to ensure that their change will
+        # be applied to the same version of the resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. A set of custom labels supplied by user.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The fully qualified name of the BackupChannel. `projects/*/
+        # locations/*/backupChannels/*`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Server generated global unique identifier of [UUID](https://en.
+        # wikipedia.org/wiki/Universally_unique_identifier) format.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The timestamp when this BackupChannel resource was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @destination_project = args[:destination_project] if args.key?(:destination_project)
+          @destination_project_id = args[:destination_project_id] if args.key?(:destination_project_id)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # BackupConfig defines the configuration of Backups created via this BackupPlan.
       class BackupConfig
         include Google::Apis::Core::Hashable
@@ -534,6 +616,136 @@ module Google
           @state_reason = args[:state_reason] if args.key?(:state_reason)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A BackupPlanBinding binds a BackupPlan with a BackupChannel. This resource is
+      # created automatically when a BackupPlan is created using a BackupChannel. This
+      # also serves as a holder for cross-project fields that need to be displayed in
+      # the current project.
+      class BackupPlanBinding
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Immutable. The fully qualified name of the BackupPlan bound with
+        # the parent BackupChannel. `projects/*/locations/*/backupPlans/`backup_plan``
+        # Corresponds to the JSON property `backupPlan`
+        # @return [String]
+        attr_accessor :backup_plan
+      
+        # Contains metadata about the backup plan/backup.
+        # Corresponds to the JSON property `backupPlanDetails`
+        # @return [Google::Apis::GkebackupV1::BackupPlanDetails]
+        attr_accessor :backup_plan_details
+      
+        # Output only. Immutable. The fully qualified name of the cluster that is being
+        # backed up Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/
+        # zones/*/clusters/*`
+        # Corresponds to the JSON property `cluster`
+        # @return [String]
+        attr_accessor :cluster
+      
+        # Output only. The timestamp when this binding was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. `etag` is used for optimistic concurrency control as a way to
+        # help prevent simultaneous updates of a BackupPlanBinding from overwriting each
+        # other. It is strongly suggested that systems make use of the 'etag' in the
+        # read-modify-write cycle to perform BackupPlanBinding updates in order to avoid
+        # race conditions: An `etag` is returned in the response to `
+        # GetBackupPlanBinding`, and systems are expected to put that etag in the
+        # request to `UpdateBackupPlanBinding` or `DeleteBackupPlanBinding` to ensure
+        # that their change will be applied to the same version of the resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Identifier. The fully qualified name of the BackupPlanBinding. `projects/*/
+        # locations/*/backupChannels/*/backupPlanBindings/*`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Server generated global unique identifier of [UUID4](https://en.
+        # wikipedia.org/wiki/Universally_unique_identifier)
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The timestamp when this binding was created.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_plan = args[:backup_plan] if args.key?(:backup_plan)
+          @backup_plan_details = args[:backup_plan_details] if args.key?(:backup_plan_details)
+          @cluster = args[:cluster] if args.key?(:cluster)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Contains metadata about the backup plan/backup.
+      class BackupPlanDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The fully qualified name of the last successful Backup created
+        # under this BackupPlan. `projects/*/locations/*/backupPlans/*/backups/*`
+        # Corresponds to the JSON property `lastSuccessfulBackup`
+        # @return [String]
+        attr_accessor :last_successful_backup
+      
+        # Output only. Completion time of the last successful Backup. This is sourced
+        # from a successful Backup's complete_time field.
+        # Corresponds to the JSON property `lastSuccessfulBackupTime`
+        # @return [String]
+        attr_accessor :last_successful_backup_time
+      
+        # Output only. Start time of next scheduled backup under this BackupPlan by
+        # either cron_schedule or rpo config. This is sourced from BackupPlan.
+        # Corresponds to the JSON property `nextScheduledBackupTime`
+        # @return [String]
+        attr_accessor :next_scheduled_backup_time
+      
+        # Output only. The number of Kubernetes Pods backed up in the last successful
+        # Backup created via this BackupPlan.
+        # Corresponds to the JSON property `protectedPodCount`
+        # @return [Fixnum]
+        attr_accessor :protected_pod_count
+      
+        # Output only. A number that represents the current risk level of this
+        # BackupPlan from RPO perspective with 1 being no risk and 5 being highest risk.
+        # Corresponds to the JSON property `rpoRiskLevel`
+        # @return [Fixnum]
+        attr_accessor :rpo_risk_level
+      
+        # Output only. State of the BackupPlan.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_successful_backup = args[:last_successful_backup] if args.key?(:last_successful_backup)
+          @last_successful_backup_time = args[:last_successful_backup_time] if args.key?(:last_successful_backup_time)
+          @next_scheduled_backup_time = args[:next_scheduled_backup_time] if args.key?(:next_scheduled_backup_time)
+          @protected_pod_count = args[:protected_pod_count] if args.key?(:protected_pod_count)
+          @rpo_risk_level = args[:rpo_risk_level] if args.key?(:rpo_risk_level)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -989,7 +1201,7 @@ module Google
       class GetBackupIndexDownloadUrlResponse
         include Google::Apis::Core::Hashable
       
-        # 
+        # Required. The signed URL for downloading the backup index.
         # Corresponds to the JSON property `signedUrl`
         # @return [String]
         attr_accessor :signed_url
@@ -1201,6 +1413,72 @@ module Google
         end
       end
       
+      # Response message for ListBackupChannels.
+      class ListBackupChannelsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of BackupChannels matching the given criteria.
+        # Corresponds to the JSON property `backupChannels`
+        # @return [Array<Google::Apis::GkebackupV1::BackupChannel>]
+        attr_accessor :backup_channels
+      
+        # A token which may be sent as page_token in a subsequent `ListBackupChannels`
+        # call to retrieve the next page of results. If this field is omitted or empty,
+        # then there are no more results to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_channels = args[:backup_channels] if args.key?(:backup_channels)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for ListBackupPlanBindings.
+      class ListBackupPlanBindingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of BackupPlanBindings matching the given criteria.
+        # Corresponds to the JSON property `backupPlanBindings`
+        # @return [Array<Google::Apis::GkebackupV1::BackupPlanBinding>]
+        attr_accessor :backup_plan_bindings
+      
+        # A token which may be sent as page_token in a subsequent `
+        # ListBackupPlanBindingss` call to retrieve the next page of results. If this
+        # field is omitted or empty, then there are no more results to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_plan_bindings = args[:backup_plan_bindings] if args.key?(:backup_plan_bindings)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response message for ListBackupPlans.
       class ListBackupPlansResponse
         include Google::Apis::Core::Hashable
@@ -1289,6 +1567,72 @@ module Google
         def update!(**args)
           @locations = args[:locations] if args.key?(:locations)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ListRestoreChannels.
+      class ListRestoreChannelsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token which may be sent as page_token in a subsequent `ListRestoreChannels`
+        # call to retrieve the next page of results. If this field is omitted or empty,
+        # then there are no more results to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of RestoreChannels matching the given criteria.
+        # Corresponds to the JSON property `restoreChannels`
+        # @return [Array<Google::Apis::GkebackupV1::RestoreChannel>]
+        attr_accessor :restore_channels
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @restore_channels = args[:restore_channels] if args.key?(:restore_channels)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for ListRestorePlanBindings.
+      class ListRestorePlanBindingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token which may be sent as page_token in a subsequent `
+        # ListRestorePlanBindings` call to retrieve the next page of results. If this
+        # field is omitted or empty, then there are no more results to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of RestorePlanBindings matching the given criteria.
+        # Corresponds to the JSON property `restorePlanBindings`
+        # @return [Array<Google::Apis::GkebackupV1::RestorePlanBinding>]
+        attr_accessor :restore_plan_bindings
+      
+        # Unordered list. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @restore_plan_bindings = args[:restore_plan_bindings] if args.key?(:restore_plan_bindings)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1921,6 +2265,88 @@ module Google
         end
       end
       
+      # A RestoreChannel imposes constraints on where backups can be restored. The
+      # RestoreChannel should be in the same project and region as the backups. The
+      # backups can only be restored in the `destination_project`.
+      class RestoreChannel
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when this RestoreChannel was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. User specified descriptive string for this RestoreChannel.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Immutable. The project into which the backups will be restored. The
+        # format is `projects/`project``. Currently, `project` can only be the project
+        # number. Support for project IDs will be added in the future.
+        # Corresponds to the JSON property `destinationProject`
+        # @return [String]
+        attr_accessor :destination_project
+      
+        # Output only. The project_id where backups will be restored. Example Project ID:
+        # "my-project-id". This will be an OUTPUT_ONLY field to return the project_id
+        # of the destination project.
+        # Corresponds to the JSON property `destinationProjectId`
+        # @return [String]
+        attr_accessor :destination_project_id
+      
+        # Output only. `etag` is used for optimistic concurrency control as a way to
+        # help prevent simultaneous updates of a RestoreChannel from overwriting each
+        # other. It is strongly suggested that systems make use of the 'etag' in the
+        # read-modify-write cycle to perform RestoreChannel updates in order to avoid
+        # race conditions: An `etag` is returned in the response to `GetRestoreChannel`,
+        # and systems are expected to put that etag in the request to `
+        # UpdateRestoreChannel` or `DeleteRestoreChannel` to ensure that their change
+        # will be applied to the same version of the resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. A set of custom labels supplied by user.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The fully qualified name of the RestoreChannel. `projects/*/
+        # locations/*/restoreChannels/*`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Server generated global unique identifier of [UUID](https://en.
+        # wikipedia.org/wiki/Universally_unique_identifier) format.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The timestamp when this RestoreChannel was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @destination_project = args[:destination_project] if args.key?(:destination_project)
+          @destination_project_id = args[:destination_project_id] if args.key?(:destination_project_id)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Configuration of a restore.
       class RestoreConfig
         include Google::Apis::Core::Hashable
@@ -2163,6 +2589,75 @@ module Google
           @restore_config = args[:restore_config] if args.key?(:restore_config)
           @state = args[:state] if args.key?(:state)
           @state_reason = args[:state_reason] if args.key?(:state_reason)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A RestorePlanBinding binds a RestorePlan with a RestoreChannel. This resource
+      # is created automatically when a RestorePlan is created using a RestoreChannel.
+      # This also serves as a holder for cross-project fields that need to be
+      # displayed in the current project.
+      class RestorePlanBinding
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The fully qualified name of the BackupPlan bound to the specified
+        # RestorePlan. `projects/*/locations/*/backukpPlans/`backup_plan``
+        # Corresponds to the JSON property `backupPlan`
+        # @return [String]
+        attr_accessor :backup_plan
+      
+        # Output only. The timestamp when this binding was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. `etag` is used for optimistic concurrency control as a way to
+        # help prevent simultaneous updates of a RestorePlanBinding from overwriting
+        # each other. It is strongly suggested that systems make use of the 'etag' in
+        # the read-modify-write cycle to perform RestorePlanBinding updates in order to
+        # avoid race conditions: An `etag` is returned in the response to `
+        # GetRestorePlanBinding`, and systems are expected to put that etag in the
+        # request to `UpdateRestorePlanBinding` or `DeleteRestorePlanBinding` to ensure
+        # that their change will be applied to the same version of the resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Identifier. The fully qualified name of the RestorePlanBinding. `projects/*/
+        # locations/*/restoreChannels/*/restorePlanBindings/*`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The fully qualified name of the RestorePlan bound to this
+        # RestoreChannel. `projects/*/locations/*/restorePlans/`restore_plan``
+        # Corresponds to the JSON property `restorePlan`
+        # @return [String]
+        attr_accessor :restore_plan
+      
+        # Output only. Server generated global unique identifier of [UUID4](https://en.
+        # wikipedia.org/wiki/Universally_unique_identifier)
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The timestamp when this binding was created.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_plan = args[:backup_plan] if args.key?(:backup_plan)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @restore_plan = args[:restore_plan] if args.key?(:restore_plan)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end

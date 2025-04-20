@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackupChannel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackupConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -47,6 +53,18 @@ module Google
       end
       
       class BackupPlan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupPlanBinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupPlanDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -154,6 +172,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListBackupChannelsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListBackupPlanBindingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListBackupPlansResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,6 +197,18 @@ module Google
       end
       
       class ListLocationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListRestoreChannelsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListRestorePlanBindingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -250,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RestoreChannel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RestoreConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -263,6 +311,12 @@ module Google
       end
       
       class RestorePlan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RestorePlanBinding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -409,6 +463,21 @@ module Google
         end
       end
       
+      class BackupChannel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :destination_project, as: 'destinationProject'
+          property :destination_project_id, as: 'destinationProjectId'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class BackupConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -449,6 +518,33 @@ module Google
           property :state_reason, as: 'stateReason'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class BackupPlanBinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_plan, as: 'backupPlan'
+          property :backup_plan_details, as: 'backupPlanDetails', class: Google::Apis::GkebackupV1::BackupPlanDetails, decorator: Google::Apis::GkebackupV1::BackupPlanDetails::Representation
+      
+          property :cluster, as: 'cluster'
+          property :create_time, as: 'createTime'
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class BackupPlanDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_successful_backup, as: 'lastSuccessfulBackup'
+          property :last_successful_backup_time, as: 'lastSuccessfulBackupTime'
+          property :next_scheduled_backup_time, as: 'nextScheduledBackupTime'
+          property :protected_pod_count, as: 'protectedPodCount'
+          property :rpo_risk_level, as: 'rpoRiskLevel'
+          property :state, as: 'state'
         end
       end
       
@@ -609,6 +705,26 @@ module Google
         end
       end
       
+      class ListBackupChannelsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backup_channels, as: 'backupChannels', class: Google::Apis::GkebackupV1::BackupChannel, decorator: Google::Apis::GkebackupV1::BackupChannel::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListBackupPlanBindingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backup_plan_bindings, as: 'backupPlanBindings', class: Google::Apis::GkebackupV1::BackupPlanBinding, decorator: Google::Apis::GkebackupV1::BackupPlanBinding::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListBackupPlansResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -635,6 +751,26 @@ module Google
           collection :locations, as: 'locations', class: Google::Apis::GkebackupV1::Location, decorator: Google::Apis::GkebackupV1::Location::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListRestoreChannelsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :restore_channels, as: 'restoreChannels', class: Google::Apis::GkebackupV1::RestoreChannel, decorator: Google::Apis::GkebackupV1::RestoreChannel::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListRestorePlanBindingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :restore_plan_bindings, as: 'restorePlanBindings', class: Google::Apis::GkebackupV1::RestorePlanBinding, decorator: Google::Apis::GkebackupV1::RestorePlanBinding::Representation
+      
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -784,6 +920,21 @@ module Google
         end
       end
       
+      class RestoreChannel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :destination_project, as: 'destinationProject'
+          property :destination_project_id, as: 'destinationProjectId'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class RestoreConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -833,6 +984,19 @@ module Google
       
           property :state, as: 'state'
           property :state_reason, as: 'stateReason'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class RestorePlanBinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_plan, as: 'backupPlan'
+          property :create_time, as: 'createTime'
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :restore_plan, as: 'restorePlan'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
