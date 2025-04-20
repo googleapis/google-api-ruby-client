@@ -661,12 +661,15 @@ module Google
         # namespace `com.google....`. For example: `com.google.lb_traffic_extension.
         # lbtrafficextension1.chain1.ext1`. The following variables are supported in the
         # metadata: ``forwarding_rule_id`` - substituted with the forwarding rule's
-        # fully qualified resource name. This field is subject to following limitations:
-        # * The total size of the metadata must be less than 1KiB. * The total number of
-        # keys in the metadata must be less than 20. * The length of each key must be
+        # fully qualified resource name. This field must not be set for plugin
+        # extensions. Setting it results in a validation error. You can set metadata at
+        # either the resource level or the extension level. The extension level metadata
+        # is recommended because you can pass a different set of metadata through each
+        # extension to the backend. This field is subject to following limitations: *
+        # The total size of the metadata must be less than 1KiB. * The total number of
+        # keys in the metadata must be less than 16. * The length of each key must be
         # less than 64 characters. * The length of each value must be less than 1024
-        # characters. * All values must be strings. This field is not supported for
-        # plugin extensions. Setting it results in a validation error.
+        # characters. * All values must be strings.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
@@ -2358,8 +2361,8 @@ module Google
         attr_accessor :extension_chains
       
         # Required. A list of references to the forwarding rules to which this service
-        # extension is attached. At least one forwarding rule is required. There can be
-        # only one `LbRouteExtension` resource per forwarding rule.
+        # extension is attached. At least one forwarding rule is required. Only one `
+        # LbRouteExtension` resource can be associated with a forwarding rule.
         # Corresponds to the JSON property `forwardingRules`
         # @return [Array<String>]
         attr_accessor :forwarding_rules
@@ -2382,11 +2385,15 @@ module Google
       
         # Optional. The metadata provided here is included as part of the `
         # metadata_context` (of type `google.protobuf.Struct`) in the `ProcessingRequest`
-        # message sent to the extension server. The metadata is available under the
-        # namespace `com.google.lb_route_extension.`. The following variables are
-        # supported in the metadata Struct: ``forwarding_rule_id`` - substituted with
-        # the forwarding rule's fully qualified resource name. This field is not
-        # supported for plugin extensions. Setting it results in a validation error.
+        # message sent to the extension server. The metadata applies to all extensions
+        # in all extensions chains in this resource. The metadata is available under the
+        # key `com.google.lb_route_extension.`. The following variables are supported in
+        # the metadata: ``forwarding_rule_id`` - substituted with the forwarding rule's
+        # fully qualified resource name. This field must not be set if at least one of
+        # the extension chains contains plugin extensions. Setting it results in a
+        # validation error. You can set metadata at either the resource level or the
+        # extension level. The extension level metadata is recommended because you can
+        # pass a different set of metadata through each extension to the backend.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
@@ -2448,8 +2455,8 @@ module Google
         attr_accessor :extension_chains
       
         # Optional. A list of references to the forwarding rules to which this service
-        # extension is attached. At least one forwarding rule is required. There can be
-        # only one `LBTrafficExtension` resource per forwarding rule.
+        # extension is attached. At least one forwarding rule is required. Only one `
+        # LbTrafficExtension` resource can be associated with a forwarding rule.
         # Corresponds to the JSON property `forwardingRules`
         # @return [Array<String>]
         attr_accessor :forwarding_rules
@@ -2470,12 +2477,17 @@ module Google
         # @return [String]
         attr_accessor :load_balancing_scheme
       
-        # Optional. The metadata provided here is included in the `ProcessingRequest.
-        # metadata_context.filter_metadata` map field. The metadata is available under
-        # the key `com.google.lb_traffic_extension.`. The following variables are
-        # supported in the metadata: ``forwarding_rule_id`` - substituted with the
-        # forwarding rule's fully qualified resource name. This field is not supported
-        # for plugin extensions. Setting it results in a validation error.
+        # Optional. The metadata provided here is included as part of the `
+        # metadata_context` (of type `google.protobuf.Struct`) in the `ProcessingRequest`
+        # message sent to the extension server. The metadata applies to all extensions
+        # in all extensions chains in this resource. The metadata is available under the
+        # key `com.google.lb_traffic_extension.`. The following variables are supported
+        # in the metadata: ``forwarding_rule_id`` - substituted with the forwarding rule'
+        # s fully qualified resource name. This field must not be set if at least one of
+        # the extension chains contains plugin extensions. Setting it results in a
+        # validation error. You can set metadata at either the resource level or the
+        # extension level. The extension level metadata is recommended because you can
+        # pass a different set of metadata through each extension to the backend.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
@@ -3526,7 +3538,8 @@ module Google
       # ServiceBinding can be used to: - Bind a Service Directory Service to be used
       # in a BackendService resource. This feature will be deprecated soon. - Bind a
       # Private Service Connect producer service to be used in consumer Cloud Service
-      # Mesh or Application Load Balancers.
+      # Mesh or Application Load Balancers. - Bind a Cloud Run service to be used in
+      # consumer Cloud Service Mesh or Application Load Balancers.
       class ServiceBinding
         include Google::Apis::Core::Hashable
       
