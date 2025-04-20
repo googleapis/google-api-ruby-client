@@ -2859,6 +2859,58 @@ module Google
         end
       end
       
+      # Response message for BigtableInstanceAdmin.ListLogicalViews.
+      class ListLogicalViewsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of requested logical views.
+        # Corresponds to the JSON property `logicalViews`
+        # @return [Array<Google::Apis::BigtableadminV2::LogicalView>]
+        attr_accessor :logical_views
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @logical_views = args[:logical_views] if args.key?(:logical_views)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for BigtableInstanceAdmin.ListMaterializedViews.
+      class ListMaterializedViewsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of requested materialized views.
+        # Corresponds to the JSON property `materializedViews`
+        # @return [Array<Google::Apis::BigtableadminV2::MaterializedView>]
+        attr_accessor :materialized_views
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @materialized_views = args[:materialized_views] if args.key?(:materialized_views)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -3808,6 +3860,13 @@ module Google
         # @return [Google::Apis::BigtableadminV2::RestoreInfo]
         attr_accessor :restore_info
       
+        # A structured data value, consisting of fields which map to dynamically typed
+        # values. Values of type `Struct` are stored in `Value.array_value` where
+        # entries are in the same order and number as `field_types`.
+        # Corresponds to the JSON property `rowKeySchema`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStruct]
+        attr_accessor :row_key_schema
+      
         # Approximate statistics related to a table. These statistics are calculated
         # infrequently, while simultaneously, data in the table can change rapidly. Thus
         # the values reported here (e.g. row count) are very likely out-of date, even
@@ -3832,6 +3891,7 @@ module Google
           @granularity = args[:granularity] if args.key?(:granularity)
           @name = args[:name] if args.key?(:name)
           @restore_info = args[:restore_info] if args.key?(:restore_info)
+          @row_key_schema = args[:row_key_schema] if args.key?(:row_key_schema)
           @stats = args[:stats] if args.key?(:stats)
         end
       end
