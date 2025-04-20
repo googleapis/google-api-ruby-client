@@ -1879,12 +1879,21 @@ module Google
       class SetupFunctionUpgradeConfigRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The trigger's service account. The service account must have
+        # permission to invoke Cloud Run services, the permission is `run.routes.invoke`.
+        # If empty, defaults to the Compute Engine default service account: ``
+        # project_number`-compute@developer.gserviceaccount.com`.
+        # Corresponds to the JSON property `triggerServiceAccount`
+        # @return [String]
+        attr_accessor :trigger_service_account
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @trigger_service_account = args[:trigger_service_account] if args.key?(:trigger_service_account)
         end
       end
       

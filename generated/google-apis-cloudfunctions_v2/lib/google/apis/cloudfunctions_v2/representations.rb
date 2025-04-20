@@ -727,6 +727,7 @@ module Google
       class SetupFunctionUpgradeConfigRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :trigger_service_account, as: 'triggerServiceAccount'
         end
       end
       
