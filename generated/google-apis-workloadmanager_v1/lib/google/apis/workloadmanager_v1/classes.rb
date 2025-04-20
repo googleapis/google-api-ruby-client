@@ -432,7 +432,7 @@ module Google
         end
       end
       
-      # LINT.IfChange Message describing Evaluation object
+      # Message describing Evaluation object
       class Evaluation
         include Google::Apis::Core::Hashable
       
