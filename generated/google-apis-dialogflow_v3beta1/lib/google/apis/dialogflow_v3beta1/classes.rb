@@ -3816,15 +3816,32 @@ module Google
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AgentUtterance]
         attr_accessor :agent_utterance
       
+        # Output only. Timestamp of the completion of the agent action.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Output only. The display name of the action.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # Event represents the event sent by the customer.
         # Corresponds to the JSON property `event`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Event]
         attr_accessor :event
       
-        # Stores metadata of the invocation of a CX flow.
+        # Stores metadata of the invocation of a child CX flow. Flow invocation actions
+        # enter the child flow.
         # Corresponds to the JSON property `flowInvocation`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FlowInvocation]
         attr_accessor :flow_invocation
+      
+        # Stores metadata of the state update action, such as a state machine execution
+        # in flows.
+        # Corresponds to the JSON property `flowStateUpdate`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ActionFlowStateUpdate]
+        attr_accessor :flow_state_update
       
         # Stores metadata of the transition to a target CX flow. Flow transition actions
         # exit the caller playbook and enter the child flow.
@@ -3832,7 +3849,18 @@ module Google
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FlowTransition]
         attr_accessor :flow_transition
       
-        # Stores metadata of the invocation of a child playbook.
+        # Stores metadata of the intent match action.
+        # Corresponds to the JSON property `intentMatch`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ActionIntentMatch]
+        attr_accessor :intent_match
+      
+        # Stores metadata of the call of an LLM.
+        # Corresponds to the JSON property `llmCall`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1LlmCall]
+        attr_accessor :llm_call
+      
+        # Stores metadata of the invocation of a child playbook. Playbook invocation
+        # actions enter the child playbook.
         # Corresponds to the JSON property `playbookInvocation`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PlaybookInvocation]
         attr_accessor :playbook_invocation
@@ -3843,10 +3871,36 @@ module Google
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PlaybookTransition]
         attr_accessor :playbook_transition
       
+        # Output only. Timestamp of the start of the agent action.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The status of the action.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Status]
+        attr_accessor :status
+      
+        # Stores metadata of the Speech-to-Text action.
+        # Corresponds to the JSON property `stt`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ActionStt]
+        attr_accessor :stt
+      
+        # Optional. The detailed tracing information for sub execution steps of the
+        # action.
+        # Corresponds to the JSON property `subExecutionSteps`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Span>]
+        attr_accessor :sub_execution_steps
+      
         # Stores metadata of the invocation of an action supported by a tool.
         # Corresponds to the JSON property `toolUse`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ToolUse]
         attr_accessor :tool_use
+      
+        # Stores metadata of the Text-to-Speech action.
+        # Corresponds to the JSON property `tts`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ActionTts]
+        attr_accessor :tts
       
         # UserUtterance represents one message sent by the customer.
         # Corresponds to the JSON property `userUtterance`
@@ -3860,13 +3914,200 @@ module Google
         # Update properties of this object
         def update!(**args)
           @agent_utterance = args[:agent_utterance] if args.key?(:agent_utterance)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @event = args[:event] if args.key?(:event)
           @flow_invocation = args[:flow_invocation] if args.key?(:flow_invocation)
+          @flow_state_update = args[:flow_state_update] if args.key?(:flow_state_update)
           @flow_transition = args[:flow_transition] if args.key?(:flow_transition)
+          @intent_match = args[:intent_match] if args.key?(:intent_match)
+          @llm_call = args[:llm_call] if args.key?(:llm_call)
           @playbook_invocation = args[:playbook_invocation] if args.key?(:playbook_invocation)
           @playbook_transition = args[:playbook_transition] if args.key?(:playbook_transition)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @status = args[:status] if args.key?(:status)
+          @stt = args[:stt] if args.key?(:stt)
+          @sub_execution_steps = args[:sub_execution_steps] if args.key?(:sub_execution_steps)
           @tool_use = args[:tool_use] if args.key?(:tool_use)
+          @tts = args[:tts] if args.key?(:tts)
           @user_utterance = args[:user_utterance] if args.key?(:user_utterance)
+        end
+      end
+      
+      # Stores metadata of the state update action, such as a state machine execution
+      # in flows.
+      class GoogleCloudDialogflowCxV3beta1ActionFlowStateUpdate
+        include Google::Apis::Core::Hashable
+      
+        # The destination of the transition. Format: `projects//locations//agents//flows/
+        # /pages/` or `projects//locations//agents//playbooks/`.
+        # Corresponds to the JSON property `destination`
+        # @return [String]
+        attr_accessor :destination
+      
+        # The type of the event that triggered the state update.
+        # Corresponds to the JSON property `eventType`
+        # @return [String]
+        attr_accessor :event_type
+      
+        # Stores the metadata of a function call to execute.
+        # Corresponds to the JSON property `functionCall`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ActionFlowStateUpdateFunctionCall]
+        attr_accessor :function_call
+      
+        # Stores the state of a page and its flow.
+        # Corresponds to the JSON property `pageState`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ActionFlowStateUpdatePageState]
+        attr_accessor :page_state
+      
+        # The updated parameters.
+        # Corresponds to the JSON property `updatedParameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :updated_parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination = args[:destination] if args.key?(:destination)
+          @event_type = args[:event_type] if args.key?(:event_type)
+          @function_call = args[:function_call] if args.key?(:function_call)
+          @page_state = args[:page_state] if args.key?(:page_state)
+          @updated_parameters = args[:updated_parameters] if args.key?(:updated_parameters)
+        end
+      end
+      
+      # Stores the metadata of a function call to execute.
+      class GoogleCloudDialogflowCxV3beta1ActionFlowStateUpdateFunctionCall
+        include Google::Apis::Core::Hashable
+      
+        # The name of the function call.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Stores the state of a page and its flow.
+      class GoogleCloudDialogflowCxV3beta1ActionFlowStateUpdatePageState
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the page.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The ID of the page. Format: `projects//locations//agents//flows//pages/`.
+        # Corresponds to the JSON property `page`
+        # @return [String]
+        attr_accessor :page
+      
+        # The status of the page.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @page = args[:page] if args.key?(:page)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Stores metadata of the intent match action.
+      class GoogleCloudDialogflowCxV3beta1ActionIntentMatch
+        include Google::Apis::Core::Hashable
+      
+        # The matched intent.
+        # Corresponds to the JSON property `matchedIntents`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ActionIntentMatchMatchedIntent>]
+        attr_accessor :matched_intents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @matched_intents = args[:matched_intents] if args.key?(:matched_intents)
+        end
+      end
+      
+      # Stores the matched intent, which is the result of the intent match action.
+      class GoogleCloudDialogflowCxV3beta1ActionIntentMatchMatchedIntent
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the matched intent.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The generative fallback response of the matched intent.
+        # Corresponds to the JSON property `generativeFallback`
+        # @return [Hash<String,Object>]
+        attr_accessor :generative_fallback
+      
+        # The ID of the matched intent.
+        # Corresponds to the JSON property `intentId`
+        # @return [String]
+        attr_accessor :intent_id
+      
+        # The score of the matched intent.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @generative_fallback = args[:generative_fallback] if args.key?(:generative_fallback)
+          @intent_id = args[:intent_id] if args.key?(:intent_id)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Stores metadata of the Speech-to-Text action.
+      class GoogleCloudDialogflowCxV3beta1ActionStt
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Stores metadata of the Text-to-Speech action.
+      class GoogleCloudDialogflowCxV3beta1ActionTts
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -4464,6 +4705,15 @@ module Google
       class GoogleCloudDialogflowCxV3beta1AgentUtterance
         include Google::Apis::Core::Hashable
       
+        # Optional. True if the agent utterance needs to be generated by the LLM. Only
+        # used in webhook response to differentiate from empty text. Revisit whether we
+        # need this field or mark `text` as optional when we expose webhook interface to
+        # customer.
+        # Corresponds to the JSON property `requireGeneration`
+        # @return [Boolean]
+        attr_accessor :require_generation
+        alias_method :require_generation?, :require_generation
+      
         # Required. Message content in text.
         # Corresponds to the JSON property `text`
         # @return [String]
@@ -4475,6 +4725,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @require_generation = args[:require_generation] if args.key?(:require_generation)
           @text = args[:text] if args.key?(:text)
         end
       end
@@ -6600,6 +6851,11 @@ module Google
         # @return [String]
         attr_accessor :event
       
+        # Optional. Unstructured text payload of the event.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6607,6 +6863,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @event = args[:event] if args.key?(:event)
+          @text = args[:text] if args.key?(:text)
         end
       end
       
@@ -6777,6 +7034,25 @@ module Google
           @playbook_output = args[:playbook_output] if args.key?(:playbook_output)
           @token_count = args[:token_count] if args.key?(:token_count)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Exception thrown during the execution of an action.
+      class GoogleCloudDialogflowCxV3beta1Exception
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The error message.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_message = args[:error_message] if args.key?(:error_message)
         end
       end
       
@@ -7416,6 +7692,38 @@ module Google
         end
       end
       
+      # The request message for Playbooks.ExportPlaybook.
+      class GoogleCloudDialogflowCxV3beta1ExportPlaybookRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The data format of the exported agent. If not specified, `BLOB` is
+        # assumed.
+        # Corresponds to the JSON property `dataFormat`
+        # @return [String]
+        attr_accessor :data_format
+      
+        # Optional. The [Google Cloud Storage](https://cloud.google.com/storage/docs/)
+        # URI to export the playbook to. The format of this URI must be `gs:///`. If
+        # left unspecified, the serialized playbook is returned inline. Dialogflow
+        # performs a write operation for the Cloud Storage object on the caller's behalf,
+        # so your request authentication must have write permissions for the object.
+        # For more information, see [Dialogflow access control](https://cloud.google.com/
+        # dialogflow/cx/docs/concept/access-control#storage).
+        # Corresponds to the JSON property `playbookUri`
+        # @return [String]
+        attr_accessor :playbook_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_format = args[:data_format] if args.key?(:data_format)
+          @playbook_uri = args[:playbook_uri] if args.key?(:playbook_uri)
+        end
+      end
+      
       # Metadata returned for the TestCases.ExportTestCases long running operation.
       # This message currently has no fields.
       class GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata
@@ -7717,7 +8025,8 @@ module Google
         end
       end
       
-      # Stores metadata of the invocation of a CX flow.
+      # Stores metadata of the invocation of a child CX flow. Flow invocation actions
+      # enter the child flow.
       class GoogleCloudDialogflowCxV3beta1FlowInvocation
         include Google::Apis::Core::Hashable
       
@@ -7727,7 +8036,7 @@ module Google
         attr_accessor :display_name
       
         # Required. The unique identifier of the flow. Format: `projects//locations//
-        # agents//flows/`.
+        # agents/`.
         # Corresponds to the JSON property `flow`
         # @return [String]
         attr_accessor :flow
@@ -7808,6 +8117,11 @@ module Google
         # @return [String]
         attr_accessor :flow
       
+        # A list of input parameters for the action.
+        # Corresponds to the JSON property `inputActionParameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :input_action_parameters
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7816,6 +8130,7 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @flow = args[:flow] if args.key?(:flow)
+          @input_action_parameters = args[:input_action_parameters] if args.key?(:input_action_parameters)
         end
       end
       
@@ -9009,6 +9324,40 @@ module Google
         def update!(**args)
           @entity_display_names = args[:entity_display_names] if args.key?(:entity_display_names)
           @intent_display_names = args[:intent_display_names] if args.key?(:intent_display_names)
+        end
+      end
+      
+      # The request message for Playbooks.ImportPlaybook.
+      class GoogleCloudDialogflowCxV3beta1ImportPlaybookRequest
+        include Google::Apis::Core::Hashable
+      
+        # The playbook import strategy used for resource conflict resolution associated
+        # with an ImportPlaybookRequest.
+        # Corresponds to the JSON property `importStrategy`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PlaybookImportStrategy]
+        attr_accessor :import_strategy
+      
+        # Uncompressed raw byte content for playbook.
+        # Corresponds to the JSON property `playbookContent`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :playbook_content
+      
+        # [Dialogflow access control] (https://cloud.google.com/dialogflow/cx/docs/
+        # concept/access-control#storage).
+        # Corresponds to the JSON property `playbookUri`
+        # @return [String]
+        attr_accessor :playbook_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @import_strategy = args[:import_strategy] if args.key?(:import_strategy)
+          @playbook_content = args[:playbook_content] if args.key?(:playbook_content)
+          @playbook_uri = args[:playbook_uri] if args.key?(:playbook_uri)
         end
       end
       
@@ -10261,6 +10610,117 @@ module Google
         end
       end
       
+      # Stores metadata of the call of an LLM.
+      class GoogleCloudDialogflowCxV3beta1LlmCall
+        include Google::Apis::Core::Hashable
+      
+        # The model of the LLM call.
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        # A list of relevant examples used for the LLM prompt.
+        # Corresponds to the JSON property `retrievedExamples`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1LlmCallRetrievedExample>]
+        attr_accessor :retrieved_examples
+      
+        # The temperature of the LLM call.
+        # Corresponds to the JSON property `temperature`
+        # @return [Float]
+        attr_accessor :temperature
+      
+        # Stores token counts of the LLM call.
+        # Corresponds to the JSON property `tokenCount`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1LlmCallTokenCount]
+        attr_accessor :token_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @model = args[:model] if args.key?(:model)
+          @retrieved_examples = args[:retrieved_examples] if args.key?(:retrieved_examples)
+          @temperature = args[:temperature] if args.key?(:temperature)
+          @token_count = args[:token_count] if args.key?(:token_count)
+        end
+      end
+      
+      # Relevant example used for the LLM prompt.
+      class GoogleCloudDialogflowCxV3beta1LlmCallRetrievedExample
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the example.
+        # Corresponds to the JSON property `exampleDisplayName`
+        # @return [String]
+        attr_accessor :example_display_name
+      
+        # The id of the example.
+        # Corresponds to the JSON property `exampleId`
+        # @return [String]
+        attr_accessor :example_id
+      
+        # Optional. The matched retrieval label of this LLM call.
+        # Corresponds to the JSON property `matchedRetrievalLabel`
+        # @return [String]
+        attr_accessor :matched_retrieval_label
+      
+        # Retrieval strategy of the example.
+        # Corresponds to the JSON property `retrievalStrategy`
+        # @return [String]
+        attr_accessor :retrieval_strategy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @example_display_name = args[:example_display_name] if args.key?(:example_display_name)
+          @example_id = args[:example_id] if args.key?(:example_id)
+          @matched_retrieval_label = args[:matched_retrieval_label] if args.key?(:matched_retrieval_label)
+          @retrieval_strategy = args[:retrieval_strategy] if args.key?(:retrieval_strategy)
+        end
+      end
+      
+      # Stores token counts of the LLM call.
+      class GoogleCloudDialogflowCxV3beta1LlmCallTokenCount
+        include Google::Apis::Core::Hashable
+      
+        # The number of tokens used for the conversation history in the prompt.
+        # Corresponds to the JSON property `conversationContextTokenCount`
+        # @return [Fixnum]
+        attr_accessor :conversation_context_token_count
+      
+        # The number of tokens used for the retrieved examples in the prompt.
+        # Corresponds to the JSON property `exampleTokenCount`
+        # @return [Fixnum]
+        attr_accessor :example_token_count
+      
+        # The total number of tokens used for the input to the LLM call.
+        # Corresponds to the JSON property `totalInputTokenCount`
+        # @return [Fixnum]
+        attr_accessor :total_input_token_count
+      
+        # The total number of tokens used for the output of the LLM call.
+        # Corresponds to the JSON property `totalOutputTokenCount`
+        # @return [Fixnum]
+        attr_accessor :total_output_token_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_context_token_count = args[:conversation_context_token_count] if args.key?(:conversation_context_token_count)
+          @example_token_count = args[:example_token_count] if args.key?(:example_token_count)
+          @total_input_token_count = args[:total_input_token_count] if args.key?(:total_input_token_count)
+          @total_output_token_count = args[:total_output_token_count] if args.key?(:total_output_token_count)
+        end
+      end
+      
       # Settings for LLM models.
       class GoogleCloudDialogflowCxV3beta1LlmModelSettings
         include Google::Apis::Core::Hashable
@@ -10501,6 +10961,38 @@ module Google
           @transcript = args[:transcript] if args.key?(:transcript)
           @trigger_event = args[:trigger_event] if args.key?(:trigger_event)
           @trigger_intent = args[:trigger_intent] if args.key?(:trigger_intent)
+        end
+      end
+      
+      # A named metric is a metric with name, value and unit.
+      class GoogleCloudDialogflowCxV3beta1NamedMetric
+        include Google::Apis::Core::Hashable
+      
+        # The name of the metric.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The unit in which this metric is reported. Follows [The Unified Code for Units
+        # of Measure](https://unitsofmeasure.org/ucum.html) standard.
+        # Corresponds to the JSON property `unit`
+        # @return [String]
+        attr_accessor :unit
+      
+        # The value of the metric.
+        # Corresponds to the JSON property `value`
+        # @return [Object]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @unit = args[:unit] if args.key?(:unit)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -10990,6 +11482,43 @@ module Google
         end
       end
       
+      # The playbook import strategy used for resource conflict resolution associated
+      # with an ImportPlaybookRequest.
+      class GoogleCloudDialogflowCxV3beta1PlaybookImportStrategy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the import strategy used when resolving conflicts with the
+        # main playbook. If not specified, 'CREATE_NEW' is assumed.
+        # Corresponds to the JSON property `mainPlaybookImportStrategy`
+        # @return [String]
+        attr_accessor :main_playbook_import_strategy
+      
+        # Optional. Specifies the import strategy used when resolving referenced
+        # playbook/flow conflicts. If not specified, 'CREATE_NEW' is assumed.
+        # Corresponds to the JSON property `nestedResourceImportStrategy`
+        # @return [String]
+        attr_accessor :nested_resource_import_strategy
+      
+        # Optional. Specifies the import strategy used when resolving tool conflicts. If
+        # not specified, 'CREATE_NEW' is assumed. This will be applied after the main
+        # playbook and nested resource import strategies, meaning if the playbook that
+        # references the tool is skipped, the tool will also be skipped.
+        # Corresponds to the JSON property `toolImportStrategy`
+        # @return [String]
+        attr_accessor :tool_import_strategy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @main_playbook_import_strategy = args[:main_playbook_import_strategy] if args.key?(:main_playbook_import_strategy)
+          @nested_resource_import_strategy = args[:nested_resource_import_strategy] if args.key?(:nested_resource_import_strategy)
+          @tool_import_strategy = args[:tool_import_strategy] if args.key?(:tool_import_strategy)
+        end
+      end
+      
       # Input of the playbook.
       class GoogleCloudDialogflowCxV3beta1PlaybookInput
         include Google::Apis::Core::Hashable
@@ -11043,7 +11572,8 @@ module Google
         end
       end
       
-      # Stores metadata of the invocation of a child playbook.
+      # Stores metadata of the invocation of a child playbook. Playbook invocation
+      # actions enter the child playbook.
       class GoogleCloudDialogflowCxV3beta1PlaybookInvocation
         include Google::Apis::Core::Hashable
       
@@ -11101,6 +11631,11 @@ module Google
         # @return [String]
         attr_accessor :execution_summary
       
+        # End state of the playbook.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -11109,6 +11644,7 @@ module Google
         def update!(**args)
           @action_parameters = args[:action_parameters] if args.key?(:action_parameters)
           @execution_summary = args[:execution_summary] if args.key?(:execution_summary)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -11147,6 +11683,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # A list of input parameters for the action.
+        # Corresponds to the JSON property `inputActionParameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :input_action_parameters
+      
         # Required. The unique identifier of the playbook. Format: `projects//locations//
         # agents//playbooks/`.
         # Corresponds to the JSON property `playbook`
@@ -11160,6 +11701,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @input_action_parameters = args[:input_action_parameters] if args.key?(:input_action_parameters)
           @playbook = args[:playbook] if args.key?(:playbook)
         end
       end
@@ -12145,6 +12687,43 @@ module Google
         end
       end
       
+      # The request message for Playbooks.RestorePlaybookVersion.
+      class GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response message for Playbooks.RestorePlaybookVersion.
+      class GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionResponse
+        include Google::Apis::Core::Hashable
+      
+        # Playbook is the basic building block to instruct the LLM how to execute a
+        # certain task. A playbook consists of a goal to accomplish, an optional list of
+        # step by step instructions (the step instruction may refers to name of the
+        # custom or default plugin tools to use) to perform the task, a list of
+        # contextual input data to be passed in at the beginning of the invoked, and a
+        # list of output parameters to store the playbook result.
+        # Corresponds to the JSON property `playbook`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Playbook]
+        attr_accessor :playbook
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @playbook = args[:playbook] if args.key?(:playbook)
+        end
+      end
+      
       # The request message for Tools.RestoreToolVersion.
       class GoogleCloudDialogflowCxV3beta1RestoreToolVersionRequest
         include Google::Apis::Core::Hashable
@@ -12754,6 +13333,49 @@ module Google
         end
       end
       
+      # A span represents a sub execution step of an action.
+      class GoogleCloudDialogflowCxV3beta1Span
+        include Google::Apis::Core::Hashable
+      
+        # Timestamp of the completion of the span.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # The unordered collection of metrics in this span.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1NamedMetric>]
+        attr_accessor :metrics
+      
+        # The name of the span.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Timestamp of the start of the span.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The metadata tags of the span such as span type.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @name = args[:name] if args.key?(:name)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
       # Settings related to speech recognition.
       class GoogleCloudDialogflowCxV3beta1SpeechToTextSettings
         include Google::Apis::Core::Hashable
@@ -12784,6 +13406,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The status of the action.
+      class GoogleCloudDialogflowCxV3beta1Status
+        include Google::Apis::Core::Hashable
+      
+        # Exception thrown during the execution of an action.
+        # Corresponds to the JSON property `exception`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Exception]
+        attr_accessor :exception
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exception = args[:exception] if args.key?(:exception)
         end
       end
       
@@ -13920,6 +14561,11 @@ module Google
         # @return [String]
         attr_accessor :action
       
+        # The tracing information for the data store tool.
+        # Corresponds to the JSON property `dataStoreToolTrace`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ToolUseDataStoreToolTrace]
+        attr_accessor :data_store_tool_trace
+      
         # Output only. The display name of the tool.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -13941,6 +14587,11 @@ module Google
         # @return [String]
         attr_accessor :tool
       
+        # The tracing information for the webhook tool.
+        # Corresponds to the JSON property `webhookToolTrace`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ToolUseWebhookToolTrace]
+        attr_accessor :webhook_tool_trace
+      
         def initialize(**args)
            update!(**args)
         end
@@ -13948,10 +14599,59 @@ module Google
         # Update properties of this object
         def update!(**args)
           @action = args[:action] if args.key?(:action)
+          @data_store_tool_trace = args[:data_store_tool_trace] if args.key?(:data_store_tool_trace)
           @display_name = args[:display_name] if args.key?(:display_name)
           @input_action_parameters = args[:input_action_parameters] if args.key?(:input_action_parameters)
           @output_action_parameters = args[:output_action_parameters] if args.key?(:output_action_parameters)
           @tool = args[:tool] if args.key?(:tool)
+          @webhook_tool_trace = args[:webhook_tool_trace] if args.key?(:webhook_tool_trace)
+        end
+      end
+      
+      # The tracing information for the data store tool.
+      class GoogleCloudDialogflowCxV3beta1ToolUseDataStoreToolTrace
+        include Google::Apis::Core::Hashable
+      
+        # Data store connection feature output signals. Might be only partially field if
+        # processing stop before the final answer. Reasons for this can be, but are not
+        # limited to: empty UCS search results, positive RAI check outcome, grounding
+        # failure, ...
+        # Corresponds to the JSON property `dataStoreConnectionSignals`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignals]
+        attr_accessor :data_store_connection_signals
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_store_connection_signals = args[:data_store_connection_signals] if args.key?(:data_store_connection_signals)
+        end
+      end
+      
+      # The tracing information for the webhook tool.
+      class GoogleCloudDialogflowCxV3beta1ToolUseWebhookToolTrace
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The tag of the webhook.
+        # Corresponds to the JSON property `webhookTag`
+        # @return [String]
+        attr_accessor :webhook_tag
+      
+        # Optional. The url of the webhook.
+        # Corresponds to the JSON property `webhookUri`
+        # @return [String]
+        attr_accessor :webhook_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @webhook_tag = args[:webhook_tag] if args.key?(:webhook_tag)
+          @webhook_uri = args[:webhook_uri] if args.key?(:webhook_uri)
         end
       end
       
@@ -14495,6 +15195,17 @@ module Google
       class GoogleCloudDialogflowCxV3beta1UserUtterance
         include Google::Apis::Core::Hashable
       
+        # Optional. Audio input.
+        # Corresponds to the JSON property `audio`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :audio
+      
+        # Optional. Tokens of the audio input.
+        # Corresponds to the JSON property `audioTokens`
+        # @return [Array<Fixnum>]
+        attr_accessor :audio_tokens
+      
         # Required. Message content in text.
         # Corresponds to the JSON property `text`
         # @return [String]
@@ -14506,6 +15217,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @audio = args[:audio] if args.key?(:audio)
+          @audio_tokens = args[:audio_tokens] if args.key?(:audio_tokens)
           @text = args[:text] if args.key?(:text)
         end
       end
