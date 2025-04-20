@@ -853,11 +853,11 @@ module Google
         # @param [String] update_mask
         #   Indicates which fields in the provided DataConnector to update. Supported
         #   field paths include: - refresh_interval - params - auto_run_disabled -
-        #   action_config - destination_configs - blocking_reasons - sync_mode Note:
-        #   Support for these fields may vary depending on the connector type. For example,
-        #   not all connectors support `destination_configs`. If an unsupported or
-        #   unknown field path is provided, the request will return an INVALID_ARGUMENT
-        #   error.
+        #   action_config - action_config.action_params - action_config.service_name -
+        #   destination_configs - blocking_reasons - sync_mode Note: Support for these
+        #   fields may vary depending on the connector type. For example, not all
+        #   connectors support `destination_configs`. If an unsupported or unknown field
+        #   path is provided, the request will return an INVALID_ARGUMENT error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -883,6 +883,36 @@ module Google
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataConnector
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the secret for the associated connector.
+        # @param [String] name
+        #   Required. The full resource name of the associated data connector.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGetConnectorSecretResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGetConnectorSecretResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_collection_data_connector_connector_secret(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}:getConnectorSecret', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGetConnectorSecretResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGetConnectorSecretResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1628,6 +1658,8 @@ module Google
         #   access the Document, regardless of whether or not it exists, a `
         #   PERMISSION_DENIED` error is returned. If the requested Document does not exist,
         #   a `NOT_FOUND` error is returned.
+        # @param [String] image_id
+        #   Optional. Specifies config for IMAGE_BYTES.
         # @param [String] processed_document_format
         #   What format output should be. If unspecified, defaults to JSON.
         # @param [String] processed_document_type
@@ -1649,11 +1681,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_collection_data_store_branch_document_processed_document(name, processed_document_format: nil, processed_document_type: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_collection_data_store_branch_document_processed_document(name, image_id: nil, processed_document_format: nil, processed_document_type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+name}:getProcessedDocument', options)
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaProcessedDocument::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaProcessedDocument
           command.params['name'] = name unless name.nil?
+          command.query['imageId'] = image_id unless image_id.nil?
           command.query['processedDocumentFormat'] = processed_document_format unless processed_document_format.nil?
           command.query['processedDocumentType'] = processed_document_type unless processed_document_type.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -6569,6 +6602,8 @@ module Google
         #   access the Document, regardless of whether or not it exists, a `
         #   PERMISSION_DENIED` error is returned. If the requested Document does not exist,
         #   a `NOT_FOUND` error is returned.
+        # @param [String] image_id
+        #   Optional. Specifies config for IMAGE_BYTES.
         # @param [String] processed_document_format
         #   What format output should be. If unspecified, defaults to JSON.
         # @param [String] processed_document_type
@@ -6590,11 +6625,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_data_store_branch_document_processed_document(name, processed_document_format: nil, processed_document_type: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_data_store_branch_document_processed_document(name, image_id: nil, processed_document_format: nil, processed_document_type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+name}:getProcessedDocument', options)
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaProcessedDocument::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaProcessedDocument
           command.params['name'] = name unless name.nil?
+          command.query['imageId'] = image_id unless image_id.nil?
           command.query['processedDocumentFormat'] = processed_document_format unless processed_document_format.nil?
           command.query['processedDocumentType'] = processed_document_type unless processed_document_type.nil?
           command.query['fields'] = fields unless fields.nil?
