@@ -96,8 +96,7 @@ module Google
         # @param [Google::Apis::AnalyticshubV1::DataExchange] data_exchange_object
         # @param [String] data_exchange_id
         #   Required. The ID of the data exchange. Must contain only Unicode letters,
-        #   numbers (0-9), underscores (_). Should not use characters that require URL-
-        #   escaping, or characters outside of ASCII, spaces. Max length: 100 bytes.
+        #   numbers (0-9), underscores (_). Max length: 100 bytes.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -456,8 +455,7 @@ module Google
         # @param [Google::Apis::AnalyticshubV1::Listing] listing_object
         # @param [String] listing_id
         #   Required. The ID of the listing to create. Must contain only Unicode letters,
-        #   numbers (0-9), underscores (_). Should not use characters that require URL-
-        #   escaping, or characters outside of ASCII, spaces. Max length: 100 bytes.
+        #   numbers (0-9), underscores (_). Max length: 100 bytes.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

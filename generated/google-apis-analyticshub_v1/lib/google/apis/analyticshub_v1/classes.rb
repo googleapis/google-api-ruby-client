@@ -22,35 +22,6 @@ module Google
   module Apis
     module AnalyticshubV1
       
-      # Information about an associated [Analytics Hub subscription](https://cloud.
-      # google.com/bigquery/docs/analytics-hub-manage-subscriptions).
-      class AnalyticsHubSubscriptionInfo
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The name of the associated Analytics Hub listing resource. Pattern: "
-        # projects/`project`/locations/`location`/dataExchanges/`data_exchange`/listings/
-        # `listing`"
-        # Corresponds to the JSON property `listing`
-        # @return [String]
-        attr_accessor :listing
-      
-        # Optional. The name of the associated Analytics Hub subscription resource.
-        # Pattern: "projects/`project`/locations/`location`/subscriptions/`subscription`"
-        # Corresponds to the JSON property `subscription`
-        # @return [String]
-        attr_accessor :subscription
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @listing = args[:listing] if args.key?(:listing)
-          @subscription = args[:subscription] if args.key?(:subscription)
-        end
-      end
-      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -178,12 +149,6 @@ module Google
         # @return [String]
         attr_accessor :service_account_email
       
-        # Output only. An output-only field that indicates whether or not the
-        # subscription can receive messages.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
         # Optional. The name of the table to which to write data, of the form `projectId`
         # .`datasetId`.`tableId`
         # Corresponds to the JSON property `table`
@@ -224,7 +189,6 @@ module Google
         def update!(**args)
           @drop_unknown_fields = args[:drop_unknown_fields] if args.key?(:drop_unknown_fields)
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
-          @state = args[:state] if args.key?(:state)
           @table = args[:table] if args.key?(:table)
           @use_table_schema = args[:use_table_schema] if args.key?(:use_table_schema)
           @use_topic_schema = args[:use_topic_schema] if args.key?(:use_topic_schema)
@@ -416,9 +380,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_bytes
       
-        # Optional. The maximum duration that can elapse before a new Cloud Storage file
-        # is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed
-        # the subscription's acknowledgment deadline.
+        # Optional. File batching settings. If no max_duration setting is specified, a
+        # max_duration of 5 minutes will be set by default. max_duration is required
+        # regardless of whether other file batching settings are specified. The maximum
+        # duration that can elapse before a new Cloud Storage file is created. Min 1
+        # minute, max 10 minutes, default 5 minutes. May not exceed the subscription's
+        # acknowledgement deadline.
         # Corresponds to the JSON property `maxDuration`
         # @return [String]
         attr_accessor :max_duration
@@ -437,12 +404,6 @@ module Google
         # Corresponds to the JSON property `serviceAccountEmail`
         # @return [String]
         attr_accessor :service_account_email
-      
-        # Output only. An output-only field that indicates whether or not the
-        # subscription can receive messages.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
       
         # Configuration for writing message data in text format. Message payloads will
         # be written to files as raw text, separated by a newline.
@@ -465,7 +426,6 @@ module Google
           @max_duration = args[:max_duration] if args.key?(:max_duration)
           @max_messages = args[:max_messages] if args.key?(:max_messages)
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
-          @state = args[:state] if args.key?(:state)
           @text_config = args[:text_config] if args.key?(:text_config)
         end
       end
@@ -644,11 +604,11 @@ module Google
       
         # Optional. The maximum number of delivery attempts for any message. The value
         # must be between 5 and 100. The number of delivery attempts is defined as 1 + (
-        # the sum of number of NACKs and number of times the acknowledgment deadline has
-        # been exceeded for the message). A NACK is any call to ModifyAckDeadline with a
-        # 0 deadline. Note that client libraries may automatically extend ack_deadlines.
-        # This field will be honored on a best effort basis. If this parameter is 0, a
-        # default value of 5 is used.
+        # the sum of number of NACKs and number of times the acknowledgement deadline
+        # has been exceeded for the message). A NACK is any call to ModifyAckDeadline
+        # with a 0 deadline. Note that client libraries may automatically extend
+        # ack_deadlines. This field will be honored on a best effort basis. If this
+        # parameter is 0, a default value of 5 is used.
         # Corresponds to the JSON property `maxDeliveryAttempts`
         # @return [Fixnum]
         attr_accessor :max_delivery_attempts
@@ -762,9 +722,10 @@ module Google
       class DestinationPubSubSubscription
         include Google::Apis::Core::Hashable
       
-        # A subscription resource. If none of `push_config`, `bigquery_config`, or `
-        # cloud_storage_config` is set, then the subscriber will pull and ack messages
-        # using API methods. At most one of these fields may be set.
+        # Defines the destination Pub/Sub subscription. If none of `push_config`, `
+        # bigquery_config`, `cloud_storage_config`, `pubsub_export_config`, or `
+        # pubsublite_export_config` is set, then the subscriber will pull and ack
+        # messages using API methods. At most one of these fields may be set.
         # Corresponds to the JSON property `pubsubSubscription`
         # @return [Google::Apis::AnalyticshubV1::GooglePubsubV1Subscription]
         attr_accessor :pubsub_subscription
@@ -1006,9 +967,10 @@ module Google
         end
       end
       
-      # A subscription resource. If none of `push_config`, `bigquery_config`, or `
-      # cloud_storage_config` is set, then the subscriber will pull and ack messages
-      # using API methods. At most one of these fields may be set.
+      # Defines the destination Pub/Sub subscription. If none of `push_config`, `
+      # bigquery_config`, `cloud_storage_config`, `pubsub_export_config`, or `
+      # pubsublite_export_config` is set, then the subscriber will pull and ack
+      # messages using API methods. At most one of these fields may be set.
       class GooglePubsubV1Subscription
         include Google::Apis::Core::Hashable
       
@@ -1030,12 +992,6 @@ module Google
         # Corresponds to the JSON property `ackDeadlineSeconds`
         # @return [Fixnum]
         attr_accessor :ack_deadline_seconds
-      
-        # Information about an associated [Analytics Hub subscription](https://cloud.
-        # google.com/bigquery/docs/analytics-hub-manage-subscriptions).
-        # Corresponds to the JSON property `analyticsHubSubscriptionInfo`
-        # @return [Google::Apis::AnalyticshubV1::AnalyticsHubSubscriptionInfo]
-        attr_accessor :analytics_hub_subscription_info
       
         # Configuration for a BigQuery subscription.
         # Corresponds to the JSON property `bigqueryConfig`
@@ -1068,7 +1024,7 @@ module Google
         # Optional. If true, Pub/Sub provides the following guarantees for the delivery
         # of a message with a given value of `message_id` on this subscription: * The
         # message sent to a subscriber is guaranteed not to be resent before the message'
-        # s acknowledgment deadline expires. * An acknowledged message will not be
+        # s acknowledgement deadline expires. * An acknowledged message will not be
         # resent to a subscriber. Note that subscribers may still receive multiple
         # copies of a message when `enable_exactly_once_delivery` is true if the message
         # was published multiple times by a publisher client. These copies are
@@ -1147,29 +1103,13 @@ module Google
         # A policy that specifies how Pub/Sub retries message delivery. Retry delay will
         # be exponential based on provided minimum and maximum backoffs. https://en.
         # wikipedia.org/wiki/Exponential_backoff. RetryPolicy will be triggered on NACKs
-        # or acknowledgment deadline exceeded events for a given message. Retry Policy
+        # or acknowledgement deadline exceeded events for a given message. Retry Policy
         # is implemented on a best effort basis. At times, the delay between consecutive
         # deliveries may not match the configuration. That is, delay can be more or less
         # than configured backoff.
         # Corresponds to the JSON property `retryPolicy`
         # @return [Google::Apis::AnalyticshubV1::RetryPolicy]
         attr_accessor :retry_policy
-      
-        # Output only. An output-only field indicating whether or not the subscription
-        # can receive messages.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # Output only. Indicates the minimum duration for which a message is retained
-        # after it is published to the subscription's topic. If this field is set,
-        # messages published to the subscription's topic in the last `
-        # topic_message_retention_duration` are always available to subscribers. See the
-        # `message_retention_duration` field in `Topic`. This field is set only in
-        # responses from the server; it is ignored if it is set in any requests.
-        # Corresponds to the JSON property `topicMessageRetentionDuration`
-        # @return [String]
-        attr_accessor :topic_message_retention_duration
       
         def initialize(**args)
            update!(**args)
@@ -1178,7 +1118,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ack_deadline_seconds = args[:ack_deadline_seconds] if args.key?(:ack_deadline_seconds)
-          @analytics_hub_subscription_info = args[:analytics_hub_subscription_info] if args.key?(:analytics_hub_subscription_info)
           @bigquery_config = args[:bigquery_config] if args.key?(:bigquery_config)
           @cloud_storage_config = args[:cloud_storage_config] if args.key?(:cloud_storage_config)
           @dead_letter_policy = args[:dead_letter_policy] if args.key?(:dead_letter_policy)
@@ -1194,8 +1133,6 @@ module Google
           @push_config = args[:push_config] if args.key?(:push_config)
           @retain_acked_messages = args[:retain_acked_messages] if args.key?(:retain_acked_messages)
           @retry_policy = args[:retry_policy] if args.key?(:retry_policy)
-          @state = args[:state] if args.key?(:state)
-          @topic_message_retention_duration = args[:topic_message_retention_duration] if args.key?(:topic_message_retention_duration)
         end
       end
       
@@ -1853,8 +1790,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Region hint on where the data might be published. Data affinity
-        # regions are modifiable. See go/regions for full listing of possible Cloud
-        # regions.
+        # regions are modifiable. See https://cloud.google.com/about/locations for full
+        # listing of possible Cloud regions.
         # Corresponds to the JSON property `dataAffinityRegions`
         # @return [Array<String>]
         attr_accessor :data_affinity_regions
@@ -2085,7 +2022,7 @@ module Google
       # A policy that specifies how Pub/Sub retries message delivery. Retry delay will
       # be exponential based on provided minimum and maximum backoffs. https://en.
       # wikipedia.org/wiki/Exponential_backoff. RetryPolicy will be triggered on NACKs
-      # or acknowledgment deadline exceeded events for a given message. Retry Policy
+      # or acknowledgement deadline exceeded events for a given message. Retry Policy
       # is implemented on a best effort basis. At times, the delay between consecutive
       # deliveries may not match the configuration. That is, delay can be more or less
       # than configured backoff.
