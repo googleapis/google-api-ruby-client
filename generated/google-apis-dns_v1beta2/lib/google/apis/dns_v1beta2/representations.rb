@@ -637,6 +637,7 @@ module Google
       class ManagedZoneForwardingConfigNameServerTarget
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain_name, as: 'domainName'
           property :forwarding_path, as: 'forwardingPath'
           property :ipv4_address, as: 'ipv4Address'
           property :ipv6_address, as: 'ipv6Address'
