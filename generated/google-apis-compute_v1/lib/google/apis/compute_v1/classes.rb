@@ -1324,6 +1324,16 @@ module Google
       class AllocationResourceStatus
         include Google::Apis::Core::Hashable
       
+        # The number of reservation blocks associated with this reservation.
+        # Corresponds to the JSON property `reservationBlockCount`
+        # @return [Fixnum]
+        attr_accessor :reservation_block_count
+      
+        # Maintenance Info for ReservationBlocks.
+        # Corresponds to the JSON property `reservationMaintenance`
+        # @return [Google::Apis::ComputeV1::GroupMaintenanceInfo]
+        attr_accessor :reservation_maintenance
+      
         # Contains Properties set for the reservation.
         # Corresponds to the JSON property `specificSkuAllocation`
         # @return [Google::Apis::ComputeV1::AllocationResourceStatusSpecificSkuAllocation]
@@ -1335,6 +1345,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @reservation_block_count = args[:reservation_block_count] if args.key?(:reservation_block_count)
+          @reservation_maintenance = args[:reservation_maintenance] if args.key?(:reservation_maintenance)
           @specific_sku_allocation = args[:specific_sku_allocation] if args.key?(:specific_sku_allocation)
         end
       end
@@ -3045,7 +3057,7 @@ module Google
         attr_accessor :client_ttl
       
         # Specifies the default TTL for cached content served by this origin for
-        # responses that do not have an existing valid TTL (max-age or s-max-age).
+        # responses that do not have an existing valid TTL (max-age or s-maxage).
         # Setting a TTL of "0" means "always revalidate". The value of defaultTTL cannot
         # be set to a value greater than that of maxTTL, but can be equal. When the
         # cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set
@@ -3109,7 +3121,7 @@ module Google
         # that do not specify a max-stale directive. Stale responses that exceed the TTL
         # configured here will not be served. The default limit (max-stale) is 86400s (1
         # day), which will allow stale content to be served up to this limit beyond the
-        # max-age (or s-max-age) of a cached response. The maximum allowed value is
+        # max-age (or s-maxage) of a cached response. The maximum allowed value is
         # 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
         # Corresponds to the JSON property `serveWhileStale`
         # @return [Fixnum]
@@ -3513,6 +3525,32 @@ module Google
         attr_accessor :enable_cdn
         alias_method :enable_cdn?, :enable_cdn
       
+        # Specifies the canary migration state. Possible values are PREPARE,
+        # TEST_BY_PERCENTAGE, and TEST_ALL_TRAFFIC. To begin the migration from EXTERNAL
+        # to EXTERNAL_MANAGED, the state must be changed to PREPARE. The state must be
+        # changed to TEST_ALL_TRAFFIC before the loadBalancingScheme can be changed to
+        # EXTERNAL_MANAGED. Optionally, the TEST_BY_PERCENTAGE state can be used to
+        # migrate traffic by percentage using externalManagedMigrationTestingPercentage.
+        # Rolling back a migration requires the states to be set in reverse order. So
+        # changing the scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be
+        # set to TEST_ALL_TRAFFIC at the same time. Optionally, the TEST_BY_PERCENTAGE
+        # state can be used to migrate some traffic back to EXTERNAL or PREPARE can be
+        # used to migrate all traffic back to EXTERNAL.
+        # Corresponds to the JSON property `externalManagedMigrationState`
+        # @return [String]
+        attr_accessor :external_managed_migration_state
+      
+        # Determines the fraction of requests that should be processed by the Global
+        # external Application Load Balancer. The value of this field must be in the
+        # range [0, 100]. Session affinity options will slightly affect this routing
+        # behavior, for more details, see: Session Affinity. This value can only be set
+        # if the loadBalancingScheme in the BackendService is set to EXTERNAL (when
+        # using the classic Application Load Balancer) and the migration state is
+        # TEST_BY_PERCENTAGE.
+        # Corresponds to the JSON property `externalManagedMigrationTestingPercentage`
+        # @return [Float]
+        attr_accessor :external_managed_migration_testing_percentage
+      
         # For load balancers that have configurable failover: [Internal passthrough
         # Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/
         # failover-overview) and [external passthrough Network Load Balancers](https://
@@ -3829,6 +3867,8 @@ module Google
           @description = args[:description] if args.key?(:description)
           @edge_security_policy = args[:edge_security_policy] if args.key?(:edge_security_policy)
           @enable_cdn = args[:enable_cdn] if args.key?(:enable_cdn)
+          @external_managed_migration_state = args[:external_managed_migration_state] if args.key?(:external_managed_migration_state)
+          @external_managed_migration_testing_percentage = args[:external_managed_migration_testing_percentage] if args.key?(:external_managed_migration_testing_percentage)
           @failover_policy = args[:failover_policy] if args.key?(:failover_policy)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @ha_policy = args[:ha_policy] if args.key?(:ha_policy)
@@ -4034,7 +4074,7 @@ module Google
         attr_accessor :client_ttl
       
         # Specifies the default TTL for cached content served by this origin for
-        # responses that do not have an existing valid TTL (max-age or s-max-age).
+        # responses that do not have an existing valid TTL (max-age or s-maxage).
         # Setting a TTL of "0" means "always revalidate". The value of defaultTTL cannot
         # be set to a value greater than that of maxTTL, but can be equal. When the
         # cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set
@@ -4098,7 +4138,7 @@ module Google
         # that do not specify a max-stale directive. Stale responses that exceed the TTL
         # configured here will not be served. The default limit (max-stale) is 86400s (1
         # day), which will allow stale content to be served up to this limit beyond the
-        # max-age (or s-max-age) of a cached response. The maximum allowed value is
+        # max-age (or s-maxage) of a cached response. The maximum allowed value is
         # 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
         # Corresponds to the JSON property `serveWhileStale`
         # @return [Fixnum]
@@ -4427,12 +4467,13 @@ module Google
         # one of its backends is 64. - The maximum number of backend services with
         # fastIPMove in a VPC in a region is 64. - The network endpoints that are
         # attached to a backend of a backend service with fastIPMove cannot resolve to
-        # C3 machines. - Traffic directed to the leader by a static route next hop will
-        # not be redirected to a new leader by fast failover. Such traffic will only be
-        # redirected once an haPolicy.leader update has taken effect. Only traffic to
-        # the forwarding rule's virtual IP will be redirected to a new leader by fast
-        # failover. haPolicy.fastIPMove can be set only at backend service creation time.
-        # Once set, it cannot be updated. By default, fastIpMove is set to DISABLED.
+        # Gen3+ machines for IPv6. - Traffic directed to the leader by a static route
+        # next hop will not be redirected to a new leader by fast failover. Such traffic
+        # will only be redirected once an haPolicy.leader update has taken effect. Only
+        # traffic to the forwarding rule's virtual IP will be redirected to a new leader
+        # by fast failover. haPolicy.fastIPMove can be set only at backend service
+        # creation time. Once set, it cannot be updated. By default, fastIpMove is set
+        # to DISABLED.
         # Corresponds to the JSON property `fastIPMove`
         # @return [String]
         attr_accessor :fast_ip_move
@@ -5644,6 +5685,16 @@ module Google
       class CacheInvalidationRule
         include Google::Apis::Core::Hashable
       
+        # A list of cache tags used to identify cached objects. - Cache tags are
+        # specified when the response is first cached, by setting the `Cache-Tag`
+        # response header at the origin. - Multiple cache tags in the same invalidation
+        # request are treated as Boolean `OR` - for example, `tag1 OR tag2 OR tag3`. -
+        # If other fields are also specified, these are treated as Boolean `AND` with
+        # any tags. Up to 10 tags can be specified in a single invalidation request.
+        # Corresponds to the JSON property `cacheTags`
+        # @return [Array<String>]
+        attr_accessor :cache_tags
+      
         # If set, this invalidation rule will only apply to requests with a Host header
         # matching host.
         # Corresponds to the JSON property `host`
@@ -5661,6 +5712,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cache_tags = args[:cache_tags] if args.key?(:cache_tags)
           @host = args[:host] if args.key?(:host)
           @path = args[:path] if args.key?(:path)
         end
@@ -11176,6 +11228,45 @@ module Google
         end
       end
       
+      # Maintenance Info for ReservationBlocks.
+      class GroupMaintenanceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Progress for ongoing maintenance for this group of VMs/hosts. Describes number
+        # of hosts in the block that have ongoing maintenance.
+        # Corresponds to the JSON property `maintenanceOngoingCount`
+        # @return [Fixnum]
+        attr_accessor :maintenance_ongoing_count
+      
+        # Progress for ongoing maintenance for this group of VMs/hosts. Describes number
+        # of hosts in the block that have pending maintenance.
+        # Corresponds to the JSON property `maintenancePendingCount`
+        # @return [Fixnum]
+        attr_accessor :maintenance_pending_count
+      
+        # The type of maintenance for the reservation.
+        # Corresponds to the JSON property `schedulingType`
+        # @return [String]
+        attr_accessor :scheduling_type
+      
+        # Upcoming Maintenance notification information.
+        # Corresponds to the JSON property `upcomingGroupMaintenance`
+        # @return [Google::Apis::ComputeV1::UpcomingMaintenance]
+        attr_accessor :upcoming_group_maintenance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maintenance_ongoing_count = args[:maintenance_ongoing_count] if args.key?(:maintenance_ongoing_count)
+          @maintenance_pending_count = args[:maintenance_pending_count] if args.key?(:maintenance_pending_count)
+          @scheduling_type = args[:scheduling_type] if args.key?(:scheduling_type)
+          @upcoming_group_maintenance = args[:upcoming_group_maintenance] if args.key?(:upcoming_group_maintenance)
+        end
+      end
+      
       # A guest attributes entry.
       class GuestAttributes
         include Google::Apis::Core::Hashable
@@ -11285,8 +11376,8 @@ module Google
         # values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE -
         # WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE -
         # SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE_V2 - SEV_SNP_CAPABLE -
-        # TDX_CAPABLE - IDPF For more information, see Enabling guest operating system
-        # features.
+        # TDX_CAPABLE - IDPF - SNP_SVSM_CAPABLE For more information, see Enabling guest
+        # operating system features.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -18891,7 +18982,7 @@ module Google
       class InstancesReportHostAsFaultyRequest
         include Google::Apis::Core::Hashable
       
-        # The disruption schedule for the VM. Default to IMMEDIATE.
+        # The disruption schedule for the VM. Required field, only allows IMMEDIATE.
         # Corresponds to the JSON property `disruptionSchedule`
         # @return [String]
         attr_accessor :disruption_schedule
@@ -21260,7 +21351,7 @@ module Google
       
         # [Output only] List of link types available at this InterconnectLocation, which
         # can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR -
-        # LINK_TYPE_ETHERNET_100G_LR
+        # LINK_TYPE_ETHERNET_100G_LR - LINK_TYPE_ETHERNET_400G_LR4
         # Corresponds to the JSON property `availableLinkTypes`
         # @return [Array<String>]
         attr_accessor :available_link_types
@@ -22673,6 +22764,23 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # A fingerprint for the labels being applied to this machine image, which is
+        # essentially a hash of the labels set used for optimistic locking. The
+        # fingerprint is initially generated by Compute Engine and changes after every
+        # request to modify or update labels. You must always provide an up-to-date
+        # fingerprint hash in order to update or change labels. To see the latest
+        # fingerprint, make get() request to the machine image.
+        # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :label_fingerprint
+      
+        # Labels to apply to this machine image. These can be later modified by the
+        # setLabels method.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Encrypts the machine image using a customer-supplied encryption key. After you
         # encrypt a machine image using a customer-supplied key, you must provide the
         # same key if you use the machine image later. For example, you must provide the
@@ -22769,6 +22877,8 @@ module Google
           @id = args[:id] if args.key?(:id)
           @instance_properties = args[:instance_properties] if args.key?(:instance_properties)
           @kind = args[:kind] if args.key?(:kind)
+          @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
+          @labels = args[:labels] if args.key?(:labels)
           @machine_image_encryption_key = args[:machine_image_encryption_key] if args.key?(:machine_image_encryption_key)
           @name = args[:name] if args.key?(:name)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
@@ -26325,7 +26435,7 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # Maximum Transmission Unit in bytes.
+        # [Output Only] Maximum Transmission Unit in bytes of the peer network.
         # Corresponds to the JSON property `peerMtu`
         # @return [Fixnum]
         attr_accessor :peer_mtu
@@ -26516,6 +26626,11 @@ module Google
         # @return [String]
         attr_accessor :allow_cloud_router
       
+        # Specifies whether default NIC attachment is allowed.
+        # Corresponds to the JSON property `allowDefaultNicAttachment`
+        # @return [String]
+        attr_accessor :allow_default_nic_attachment
+      
         # Specifies whether VMs are allowed to have external IP access on network
         # interfaces connected to this VPC.
         # Corresponds to the JSON property `allowExternalIpAccess`
@@ -26527,6 +26642,11 @@ module Google
         # @return [String]
         attr_accessor :allow_interconnect
       
+        # Specifies whether IP forwarding is allowed.
+        # Corresponds to the JSON property `allowIpForwarding`
+        # @return [String]
+        attr_accessor :allow_ip_forwarding
+      
         # Specifies whether cloud load balancing is allowed.
         # Corresponds to the JSON property `allowLoadBalancing`
         # @return [String]
@@ -26536,6 +26656,16 @@ module Google
         # Corresponds to the JSON property `allowMultiNicInSameNetwork`
         # @return [String]
         attr_accessor :allow_multi_nic_in_same_network
+      
+        # Specifies whether NCC is allowed.
+        # Corresponds to the JSON property `allowNcc`
+        # @return [String]
+        attr_accessor :allow_ncc
+      
+        # Specifies whether VM network migration is allowed.
+        # Corresponds to the JSON property `allowNetworkMigration`
+        # @return [String]
+        attr_accessor :allow_network_migration
       
         # Specifies whether Packet Mirroring 1.0 is supported.
         # Corresponds to the JSON property `allowPacketMirroring`
@@ -26593,6 +26723,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :subnet_stack_types
       
+        # Specifies which subnetwork purposes are supported.
+        # Corresponds to the JSON property `subnetworkPurposes`
+        # @return [Array<String>]
+        attr_accessor :subnetwork_purposes
+      
+        # Specifies which subnetwork stack types are supported.
+        # Corresponds to the JSON property `subnetworkStackTypes`
+        # @return [Array<String>]
+        attr_accessor :subnetwork_stack_types
+      
         # Specifies which type of unicast is supported.
         # Corresponds to the JSON property `unicast`
         # @return [String]
@@ -26610,10 +26750,14 @@ module Google
           @allow_class_d_firewalls = args[:allow_class_d_firewalls] if args.key?(:allow_class_d_firewalls)
           @allow_cloud_nat = args[:allow_cloud_nat] if args.key?(:allow_cloud_nat)
           @allow_cloud_router = args[:allow_cloud_router] if args.key?(:allow_cloud_router)
+          @allow_default_nic_attachment = args[:allow_default_nic_attachment] if args.key?(:allow_default_nic_attachment)
           @allow_external_ip_access = args[:allow_external_ip_access] if args.key?(:allow_external_ip_access)
           @allow_interconnect = args[:allow_interconnect] if args.key?(:allow_interconnect)
+          @allow_ip_forwarding = args[:allow_ip_forwarding] if args.key?(:allow_ip_forwarding)
           @allow_load_balancing = args[:allow_load_balancing] if args.key?(:allow_load_balancing)
           @allow_multi_nic_in_same_network = args[:allow_multi_nic_in_same_network] if args.key?(:allow_multi_nic_in_same_network)
+          @allow_ncc = args[:allow_ncc] if args.key?(:allow_ncc)
+          @allow_network_migration = args[:allow_network_migration] if args.key?(:allow_network_migration)
           @allow_packet_mirroring = args[:allow_packet_mirroring] if args.key?(:allow_packet_mirroring)
           @allow_private_google_access = args[:allow_private_google_access] if args.key?(:allow_private_google_access)
           @allow_psc = args[:allow_psc] if args.key?(:allow_psc)
@@ -26625,6 +26769,8 @@ module Google
           @interface_types = args[:interface_types] if args.key?(:interface_types)
           @subnet_purposes = args[:subnet_purposes] if args.key?(:subnet_purposes)
           @subnet_stack_types = args[:subnet_stack_types] if args.key?(:subnet_stack_types)
+          @subnetwork_purposes = args[:subnetwork_purposes] if args.key?(:subnetwork_purposes)
+          @subnetwork_stack_types = args[:subnetwork_stack_types] if args.key?(:subnetwork_stack_types)
           @unicast = args[:unicast] if args.key?(:unicast)
         end
       end
@@ -34023,6 +34169,11 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
+        # Specifies the deployment strategy for this reservation.
+        # Corresponds to the JSON property `deploymentType`
+        # @return [String]
+        attr_accessor :deployment_type
+      
         # An optional description of this resource. Provide this property when you
         # create the resource.
         # Corresponds to the JSON property `description`
@@ -34040,6 +34191,12 @@ module Google
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # [Output Only] Full or partial URL to parent commitments. This field displays
+        # for reservations that are tied to multiple commitments.
+        # Corresponds to the JSON property `linkedCommitments`
+        # @return [Array<String>]
+        attr_accessor :linked_commitments
       
         # The name of the resource, provided by the client when initially creating the
         # resource. The resource name must be 1-63 characters long, and comply with
@@ -34122,9 +34279,11 @@ module Google
           @aggregate_reservation = args[:aggregate_reservation] if args.key?(:aggregate_reservation)
           @commitment = args[:commitment] if args.key?(:commitment)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @deployment_type = args[:deployment_type] if args.key?(:deployment_type)
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @linked_commitments = args[:linked_commitments] if args.key?(:linked_commitments)
           @name = args[:name] if args.key?(:name)
           @reservation_sharing_policy = args[:reservation_sharing_policy] if args.key?(:reservation_sharing_policy)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
@@ -34300,6 +34459,259 @@ module Google
         end
       end
       
+      # Represents a reservation block resource.
+      class ReservationBlock
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The number of resources that are allocated in this reservation
+        # block.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] The number of instances that are currently in use on this
+        # reservation block.
+        # Corresponds to the JSON property `inUseCount`
+        # @return [Fixnum]
+        attr_accessor :in_use_count
+      
+        # [Output Only] Type of the resource. Always compute#reservationBlock for
+        # reservation blocks.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] The name of this reservation block generated by Google Compute
+        # Engine. The name must be 1-63 characters long, and comply with RFC1035 @
+        # pattern [a-z](?:[-a-z0-9]`0,61`[a-z0-9])?
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] The physical topology of the reservation block.
+        # Corresponds to the JSON property `physicalTopology`
+        # @return [Google::Apis::ComputeV1::ReservationBlockPhysicalTopology]
+        attr_accessor :physical_topology
+      
+        # Maintenance Info for ReservationBlocks.
+        # Corresponds to the JSON property `reservationMaintenance`
+        # @return [Google::Apis::ComputeV1::GroupMaintenanceInfo]
+        attr_accessor :reservation_maintenance
+      
+        # [Output Only] Server-defined fully-qualified URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Server-defined URL for this resource with the resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        # [Output Only] Status of the reservation block.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # [Output Only] Zone in which the reservation block resides.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @id = args[:id] if args.key?(:id)
+          @in_use_count = args[:in_use_count] if args.key?(:in_use_count)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @physical_topology = args[:physical_topology] if args.key?(:physical_topology)
+          @reservation_maintenance = args[:reservation_maintenance] if args.key?(:reservation_maintenance)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @status = args[:status] if args.key?(:status)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # 
+      class ReservationBlockPhysicalTopology
+        include Google::Apis::Core::Hashable
+      
+        # The hash of the capacity block within the cluster.
+        # Corresponds to the JSON property `block`
+        # @return [String]
+        attr_accessor :block
+      
+        # The cluster name of the reservation block.
+        # Corresponds to the JSON property `cluster`
+        # @return [String]
+        attr_accessor :cluster
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @block = args[:block] if args.key?(:block)
+          @cluster = args[:cluster] if args.key?(:cluster)
+        end
+      end
+      
+      # 
+      class ReservationBlocksGetResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents a reservation block resource.
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::ComputeV1::ReservationBlock]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
+      # A list of reservation blocks under a single reservation.
+      class ReservationBlocksListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of reservation block resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::ReservationBlock>]
+        attr_accessor :items
+      
+        # Type of the resource. Always compute#reservationBlock for a list of
+        # reservation blocks.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # This token allows you to get the next page of results for list requests. If
+        # the number of results is larger than maxResults, use the nextPageToken as a
+        # value for the query parameter pageToken in the next list request. Subsequent
+        # list requests will have their own nextPageToken to continue paging through the
+        # results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::ReservationBlocksListResponse::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::ReservationBlocksListResponse::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # 
       class ReservationList
         include Google::Apis::Core::Hashable
@@ -34416,6 +34828,44 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class ReservationsBlocksPerformMaintenanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Specifies if all, running or unused hosts are in scope for this request.
+        # Corresponds to the JSON property `maintenanceScope`
+        # @return [String]
+        attr_accessor :maintenance_scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maintenance_scope = args[:maintenance_scope] if args.key?(:maintenance_scope)
+        end
+      end
+      
+      # 
+      class ReservationsPerformMaintenanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Specifies if all, running or unused hosts are in scope for this request.
+        # Corresponds to the JSON property `maintenanceScope`
+        # @return [String]
+        attr_accessor :maintenance_scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maintenance_scope = args[:maintenance_scope] if args.key?(:maintenance_scope)
         end
       end
       
@@ -37012,6 +37462,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # List of Subnetwork resources whose traffic should be translated by NAT64
+        # Gateway. It is used only when LIST_OF_IPV6_SUBNETWORKS is selected for the
+        # SubnetworkIpRangeToNat64Option above.
+        # Corresponds to the JSON property `nat64Subnetworks`
+        # @return [Array<Google::Apis::ComputeV1::RouterNatSubnetworkToNat64>]
+        attr_accessor :nat64_subnetworks
+      
         # Specify the NatIpAllocateOption, which can take one of the following values: -
         # MANUAL_ONLY: Uses only Nat IP addresses provided by customers. When there are
         # not enough specified Nat IPs, the Nat service fails for new VMs. - AUTO_ONLY:
@@ -37043,6 +37500,18 @@ module Google
         # Corresponds to the JSON property `sourceSubnetworkIpRangesToNat`
         # @return [String]
         attr_accessor :source_subnetwork_ip_ranges_to_nat
+      
+        # Specify the Nat option for NAT64, which can take one of the following values: -
+        # ALL_IPV6_SUBNETWORKS: All of the IP ranges in every Subnetwork are allowed to
+        # Nat. - LIST_OF_IPV6_SUBNETWORKS: A list of Subnetworks are allowed to Nat (
+        # specified in the field nat64_subnetwork below) The default is
+        # NAT64_OPTION_UNSPECIFIED. Note that if this field contains
+        # NAT64_ALL_V6_SUBNETWORKS no other Router.Nat section in this region can also
+        # enable NAT64 for any Subnetworks in this network. Other Router.Nat sections
+        # can still be present to enable NAT44 only.
+        # Corresponds to the JSON property `sourceSubnetworkIpRangesToNat64`
+        # @return [String]
+        attr_accessor :source_subnetwork_ip_ranges_to_nat64
       
         # A list of Subnetwork resources whose traffic should be translated by NAT
         # Gateway. It is used only when LIST_OF_SUBNETWORKS is selected for the
@@ -37096,10 +37565,12 @@ module Google
           @max_ports_per_vm = args[:max_ports_per_vm] if args.key?(:max_ports_per_vm)
           @min_ports_per_vm = args[:min_ports_per_vm] if args.key?(:min_ports_per_vm)
           @name = args[:name] if args.key?(:name)
+          @nat64_subnetworks = args[:nat64_subnetworks] if args.key?(:nat64_subnetworks)
           @nat_ip_allocate_option = args[:nat_ip_allocate_option] if args.key?(:nat_ip_allocate_option)
           @nat_ips = args[:nat_ips] if args.key?(:nat_ips)
           @rules = args[:rules] if args.key?(:rules)
           @source_subnetwork_ip_ranges_to_nat = args[:source_subnetwork_ip_ranges_to_nat] if args.key?(:source_subnetwork_ip_ranges_to_nat)
+          @source_subnetwork_ip_ranges_to_nat64 = args[:source_subnetwork_ip_ranges_to_nat64] if args.key?(:source_subnetwork_ip_ranges_to_nat64)
           @subnetworks = args[:subnetworks] if args.key?(:subnetworks)
           @tcp_established_idle_timeout_sec = args[:tcp_established_idle_timeout_sec] if args.key?(:tcp_established_idle_timeout_sec)
           @tcp_time_wait_timeout_sec = args[:tcp_time_wait_timeout_sec] if args.key?(:tcp_time_wait_timeout_sec)
@@ -37264,6 +37735,25 @@ module Google
           @name = args[:name] if args.key?(:name)
           @secondary_ip_range_names = args[:secondary_ip_range_names] if args.key?(:secondary_ip_range_names)
           @source_ip_ranges_to_nat = args[:source_ip_ranges_to_nat] if args.key?(:source_ip_ranges_to_nat)
+        end
+      end
+      
+      # Specifies a subnetwork to enable NAT64.
+      class RouterNatSubnetworkToNat64
+        include Google::Apis::Core::Hashable
+      
+        # URL for the subnetwork resource that will use NAT64.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -41030,7 +41520,7 @@ module Google
       
       # Represents a Persistent Disk Snapshot resource. You can use snapshots to back
       # up data on a regular interval. For more information, read Creating persistent
-      # disk snapshots.
+      # disk snapshots. LINT.IfChange
       class Snapshot
         include Google::Apis::Core::Hashable
       
@@ -41089,6 +41579,13 @@ module Google
         # @return [Boolean]
         attr_accessor :enable_confidential_compute
         alias_method :enable_confidential_compute?, :enable_confidential_compute
+      
+        # [Input Only] Whether to attempt an application consistent snapshot by
+        # informing the OS to prepare for the snapshot process.
+        # Corresponds to the JSON property `guestFlush`
+        # @return [Boolean]
+        attr_accessor :guest_flush
+        alias_method :guest_flush?, :guest_flush
       
         # [Output Only] A list of features to enable on the guest operating system.
         # Applicable only for bootable images. Read Enabling guest operating system
@@ -41287,6 +41784,7 @@ module Google
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @download_bytes = args[:download_bytes] if args.key?(:download_bytes)
           @enable_confidential_compute = args[:enable_confidential_compute] if args.key?(:enable_confidential_compute)
+          @guest_flush = args[:guest_flush] if args.key?(:guest_flush)
           @guest_os_features = args[:guest_os_features] if args.key?(:guest_os_features)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
@@ -44276,20 +44774,7 @@ module Google
         # @return [String]
         attr_accessor :private_ipv6_google_access
       
-        # The purpose of the resource. This field can be either PRIVATE,
-        # GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PEER_MIGRATION,
-        # PRIVATE_SERVICE_CONNECT or PRIVATE_NAT. PRIVATE is the default purpose for
-        # user-created subnets or subnets that are automatically created in auto mode
-        # networks. Subnets with purpose set to GLOBAL_MANAGED_PROXY or
-        # REGIONAL_MANAGED_PROXY are user-created subnetworks that are reserved for
-        # Envoy-based load balancers. A subnet with purpose set to
-        # PRIVATE_SERVICE_CONNECT is used to publish services using Private Service
-        # Connect. A subnet with purpose set to PEER_MIGRATION is used for subnet
-        # migration from one peered VPC to another. A subnet with purpose set to
-        # PRIVATE_NAT is used for Private NAT IP address by Private NAT Gateway. If
-        # unspecified, the subnet purpose defaults to PRIVATE. The enableFlowLogs field
-        # isn't supported if the subnet purpose field is set to GLOBAL_MANAGED_PROXY or
-        # REGIONAL_MANAGED_PROXY.
+        # 
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
@@ -49419,20 +49904,7 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # The purpose of the resource. This field can be either PRIVATE,
-        # GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PEER_MIGRATION,
-        # PRIVATE_SERVICE_CONNECT or PRIVATE_NAT. PRIVATE is the default purpose for
-        # user-created subnets or subnets that are automatically created in auto mode
-        # networks. Subnets with purpose set to GLOBAL_MANAGED_PROXY or
-        # REGIONAL_MANAGED_PROXY are user-created subnetworks that are reserved for
-        # Envoy-based load balancers. A subnet with purpose set to
-        # PRIVATE_SERVICE_CONNECT is used to publish services using Private Service
-        # Connect. A subnet with purpose set to PEER_MIGRATION is used for subnet
-        # migration from one peered VPC to another. A subnet with purpose set to
-        # PRIVATE_NAT is used for Private NAT IP address by Private NAT Gateway. If
-        # unspecified, the subnet purpose defaults to PRIVATE. The enableFlowLogs field
-        # isn't supported if the subnet purpose field is set to GLOBAL_MANAGED_PROXY or
-        # REGIONAL_MANAGED_PROXY.
+        # 
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose

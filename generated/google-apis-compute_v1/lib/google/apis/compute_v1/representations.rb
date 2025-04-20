@@ -1330,6 +1330,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GroupMaintenanceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GuestAttributes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4444,6 +4450,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReservationBlock
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationBlockPhysicalTopology
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationBlocksGetResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationBlocksListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReservationList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -4458,6 +4500,18 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationsBlocksPerformMaintenanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationsPerformMaintenanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -4823,6 +4877,12 @@ module Google
       end
       
       class RouterNatSubnetworkToNat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RouterNatSubnetworkToNat64
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7092,6 +7152,9 @@ module Google
       class AllocationResourceStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :reservation_block_count, as: 'reservationBlockCount'
+          property :reservation_maintenance, as: 'reservationMaintenance', class: Google::Apis::ComputeV1::GroupMaintenanceInfo, decorator: Google::Apis::ComputeV1::GroupMaintenanceInfo::Representation
+      
           property :specific_sku_allocation, as: 'specificSkuAllocation', class: Google::Apis::ComputeV1::AllocationResourceStatusSpecificSkuAllocation, decorator: Google::Apis::ComputeV1::AllocationResourceStatusSpecificSkuAllocation::Representation
       
         end
@@ -7560,6 +7623,8 @@ module Google
           property :description, as: 'description'
           property :edge_security_policy, as: 'edgeSecurityPolicy'
           property :enable_cdn, as: 'enableCDN'
+          property :external_managed_migration_state, as: 'externalManagedMigrationState'
+          property :external_managed_migration_testing_percentage, as: 'externalManagedMigrationTestingPercentage'
           property :failover_policy, as: 'failoverPolicy', class: Google::Apis::ComputeV1::BackendServiceFailoverPolicy, decorator: Google::Apis::ComputeV1::BackendServiceFailoverPolicy::Representation
       
           property :fingerprint, :base64 => true, as: 'fingerprint'
@@ -8015,6 +8080,7 @@ module Google
       class CacheInvalidationRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cache_tags, as: 'cacheTags'
           property :host, as: 'host'
           property :path, as: 'path'
         end
@@ -9266,6 +9332,17 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :policy, as: 'policy', class: Google::Apis::ComputeV1::Policy, decorator: Google::Apis::ComputeV1::Policy::Representation
+      
+        end
+      end
+      
+      class GroupMaintenanceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :maintenance_ongoing_count, as: 'maintenanceOngoingCount'
+          property :maintenance_pending_count, as: 'maintenancePendingCount'
+          property :scheduling_type, as: 'schedulingType'
+          property :upcoming_group_maintenance, as: 'upcomingGroupMaintenance', class: Google::Apis::ComputeV1::UpcomingMaintenance, decorator: Google::Apis::ComputeV1::UpcomingMaintenance::Representation
       
         end
       end
@@ -12113,6 +12190,8 @@ module Google
           property :instance_properties, as: 'instanceProperties', class: Google::Apis::ComputeV1::InstanceProperties, decorator: Google::Apis::ComputeV1::InstanceProperties::Representation
       
           property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
           property :machine_image_encryption_key, as: 'machineImageEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
       
           property :name, as: 'name'
@@ -13070,10 +13149,14 @@ module Google
           property :allow_class_d_firewalls, as: 'allowClassDFirewalls'
           property :allow_cloud_nat, as: 'allowCloudNat'
           property :allow_cloud_router, as: 'allowCloudRouter'
+          property :allow_default_nic_attachment, as: 'allowDefaultNicAttachment'
           property :allow_external_ip_access, as: 'allowExternalIpAccess'
           property :allow_interconnect, as: 'allowInterconnect'
+          property :allow_ip_forwarding, as: 'allowIpForwarding'
           property :allow_load_balancing, as: 'allowLoadBalancing'
           property :allow_multi_nic_in_same_network, as: 'allowMultiNicInSameNetwork'
+          property :allow_ncc, as: 'allowNcc'
+          property :allow_network_migration, as: 'allowNetworkMigration'
           property :allow_packet_mirroring, as: 'allowPacketMirroring'
           property :allow_private_google_access, as: 'allowPrivateGoogleAccess'
           property :allow_psc, as: 'allowPsc'
@@ -13085,6 +13168,8 @@ module Google
           collection :interface_types, as: 'interfaceTypes'
           collection :subnet_purposes, as: 'subnetPurposes'
           collection :subnet_stack_types, as: 'subnetStackTypes'
+          collection :subnetwork_purposes, as: 'subnetworkPurposes'
+          collection :subnetwork_stack_types, as: 'subnetworkStackTypes'
           property :unicast, as: 'unicast'
         end
       end
@@ -15027,9 +15112,11 @@ module Google
       
           property :commitment, as: 'commitment'
           property :creation_timestamp, as: 'creationTimestamp'
+          property :deployment_type, as: 'deploymentType'
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          collection :linked_commitments, as: 'linkedCommitments'
           property :name, as: 'name'
           property :reservation_sharing_policy, as: 'reservationSharingPolicy', class: Google::Apis::ComputeV1::AllocationReservationSharingPolicy, decorator: Google::Apis::ComputeV1::AllocationReservationSharingPolicy::Representation
       
@@ -15090,6 +15177,74 @@ module Google
         end
       end
       
+      class ReservationBlock
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, as: 'count'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :id, :numeric_string => true, as: 'id'
+          property :in_use_count, as: 'inUseCount'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :physical_topology, as: 'physicalTopology', class: Google::Apis::ComputeV1::ReservationBlockPhysicalTopology, decorator: Google::Apis::ComputeV1::ReservationBlockPhysicalTopology::Representation
+      
+          property :reservation_maintenance, as: 'reservationMaintenance', class: Google::Apis::ComputeV1::GroupMaintenanceInfo, decorator: Google::Apis::ComputeV1::GroupMaintenanceInfo::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :status, as: 'status'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class ReservationBlockPhysicalTopology
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :block, as: 'block'
+          property :cluster, as: 'cluster'
+        end
+      end
+      
+      class ReservationBlocksGetResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource, as: 'resource', class: Google::Apis::ComputeV1::ReservationBlock, decorator: Google::Apis::ComputeV1::ReservationBlock::Representation
+      
+        end
+      end
+      
+      class ReservationBlocksListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::ReservationBlock, decorator: Google::Apis::ComputeV1::ReservationBlock::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::ReservationBlocksListResponse::Warning, decorator: Google::Apis::ComputeV1::ReservationBlocksListResponse::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::ReservationBlocksListResponse::Warning::Datum, decorator: Google::Apis::ComputeV1::ReservationBlocksListResponse::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class ReservationList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -15119,6 +15274,20 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class ReservationsBlocksPerformMaintenanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :maintenance_scope, as: 'maintenanceScope'
+        end
+      end
+      
+      class ReservationsPerformMaintenanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :maintenance_scope, as: 'maintenanceScope'
         end
       end
       
@@ -15762,11 +15931,14 @@ module Google
           property :max_ports_per_vm, as: 'maxPortsPerVm'
           property :min_ports_per_vm, as: 'minPortsPerVm'
           property :name, as: 'name'
+          collection :nat64_subnetworks, as: 'nat64Subnetworks', class: Google::Apis::ComputeV1::RouterNatSubnetworkToNat64, decorator: Google::Apis::ComputeV1::RouterNatSubnetworkToNat64::Representation
+      
           property :nat_ip_allocate_option, as: 'natIpAllocateOption'
           collection :nat_ips, as: 'natIps'
           collection :rules, as: 'rules', class: Google::Apis::ComputeV1::RouterNatRule, decorator: Google::Apis::ComputeV1::RouterNatRule::Representation
       
           property :source_subnetwork_ip_ranges_to_nat, as: 'sourceSubnetworkIpRangesToNat'
+          property :source_subnetwork_ip_ranges_to_nat64, as: 'sourceSubnetworkIpRangesToNat64'
           collection :subnetworks, as: 'subnetworks', class: Google::Apis::ComputeV1::RouterNatSubnetworkToNat, decorator: Google::Apis::ComputeV1::RouterNatSubnetworkToNat::Representation
       
           property :tcp_established_idle_timeout_sec, as: 'tcpEstablishedIdleTimeoutSec'
@@ -15812,6 +15984,13 @@ module Google
           property :name, as: 'name'
           collection :secondary_ip_range_names, as: 'secondaryIpRangeNames'
           collection :source_ip_ranges_to_nat, as: 'sourceIpRangesToNat'
+        end
+      end
+      
+      class RouterNatSubnetworkToNat64
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -16781,6 +16960,7 @@ module Google
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :download_bytes, :numeric_string => true, as: 'downloadBytes'
           property :enable_confidential_compute, as: 'enableConfidentialCompute'
+          property :guest_flush, as: 'guestFlush'
           collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeV1::GuestOsFeature, decorator: Google::Apis::ComputeV1::GuestOsFeature::Representation
       
           property :id, :numeric_string => true, as: 'id'
