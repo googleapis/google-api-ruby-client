@@ -214,12 +214,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleMapsPlacesV1PlaceAreaSummary
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleMapsPlacesV1PlaceAttribution
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -232,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleMapsPlacesV1PlaceEvChargeAmenitySummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleMapsPlacesV1PlaceGenerativeSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -239,6 +239,12 @@ module Google
       end
       
       class GoogleMapsPlacesV1PlaceGoogleMapsLinks
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1PlaceNeighborhoodSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -286,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleMapsPlacesV1PlaceReviewSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleMapsPlacesV1PlaceSubDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -299,12 +311,6 @@ module Google
       end
       
       class GoogleMapsPlacesV1PriceRange
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleMapsPlacesV1References
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -608,9 +614,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, as: 'content', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
       
-          property :references, as: 'references', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1References, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1References::Representation
-      
-          property :topic, as: 'topic'
+          collection :referenced_places, as: 'referencedPlaces'
         end
       end
       
@@ -743,8 +747,6 @@ module Google
       
           property :adr_format_address, as: 'adrFormatAddress'
           property :allows_dogs, as: 'allowsDogs'
-          property :area_summary, as: 'areaSummary', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAreaSummary, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAreaSummary::Representation
-      
           collection :attributions, as: 'attributions', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAttribution, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAttribution::Representation
       
           property :business_status, as: 'businessStatus'
@@ -760,6 +762,8 @@ module Google
           property :display_name, as: 'displayName', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
       
           property :editorial_summary, as: 'editorialSummary', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
+          property :ev_charge_amenity_summary, as: 'evChargeAmenitySummary', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceEvChargeAmenitySummary, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceEvChargeAmenitySummary::Representation
       
           property :ev_charge_options, as: 'evChargeOptions', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1EvChargeOptions, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1EvChargeOptions::Representation
       
@@ -784,6 +788,8 @@ module Google
           property :menu_for_children, as: 'menuForChildren'
           property :name, as: 'name'
           property :national_phone_number, as: 'nationalPhoneNumber'
+          property :neighborhood_summary, as: 'neighborhoodSummary', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceNeighborhoodSummary, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceNeighborhoodSummary::Representation
+      
           property :outdoor_seating, as: 'outdoorSeating'
           property :parking_options, as: 'parkingOptions', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceParkingOptions, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceParkingOptions::Representation
       
@@ -809,6 +815,8 @@ module Google
       
           property :reservable, as: 'reservable'
           property :restroom, as: 'restroom'
+          property :review_summary, as: 'reviewSummary', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceReviewSummary, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceReviewSummary::Representation
+      
           collection :reviews, as: 'reviews', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1Review, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1Review::Representation
       
           property :serves_beer, as: 'servesBeer'
@@ -856,15 +864,6 @@ module Google
         end
       end
       
-      class GoogleMapsPlacesV1PlaceAreaSummary
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :content_blocks, as: 'contentBlocks', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1ContentBlock, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1ContentBlock::Representation
-      
-          property :flag_content_uri, as: 'flagContentUri'
-        end
-      end
-      
       class GoogleMapsPlacesV1PlaceAttribution
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -881,17 +880,31 @@ module Google
         end
       end
       
+      class GoogleMapsPlacesV1PlaceEvChargeAmenitySummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :coffee, as: 'coffee', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1ContentBlock, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1ContentBlock::Representation
+      
+          property :disclosure_text, as: 'disclosureText', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
+          property :flag_content_uri, as: 'flagContentUri'
+          property :overview, as: 'overview', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1ContentBlock, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1ContentBlock::Representation
+      
+          property :restaurant, as: 'restaurant', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1ContentBlock, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1ContentBlock::Representation
+      
+          property :store, as: 'store', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1ContentBlock, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1ContentBlock::Representation
+      
+        end
+      end
+      
       class GoogleMapsPlacesV1PlaceGenerativeSummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+          property :disclosure_text, as: 'disclosureText', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
       
-          property :description_flag_content_uri, as: 'descriptionFlagContentUri'
           property :overview, as: 'overview', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
       
           property :overview_flag_content_uri, as: 'overviewFlagContentUri'
-          property :references, as: 'references', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1References, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1References::Representation
-      
         end
       end
       
@@ -903,6 +916,19 @@ module Google
           property :place_uri, as: 'placeUri'
           property :reviews_uri, as: 'reviewsUri'
           property :write_a_review_uri, as: 'writeAReviewUri'
+        end
+      end
+      
+      class GoogleMapsPlacesV1PlaceNeighborhoodSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1ContentBlock, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1ContentBlock::Representation
+      
+          property :disclosure_text, as: 'disclosureText', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
+          property :flag_content_uri, as: 'flagContentUri'
+          property :overview, as: 'overview', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1ContentBlock, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1ContentBlock::Representation
+      
         end
       end
       
@@ -982,6 +1008,17 @@ module Google
         end
       end
       
+      class GoogleMapsPlacesV1PlaceReviewSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disclosure_text, as: 'disclosureText', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
+          property :flag_content_uri, as: 'flagContentUri'
+          property :text, as: 'text', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
+        end
+      end
+      
       class GoogleMapsPlacesV1PlaceSubDestination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1003,15 +1040,6 @@ module Google
           property :end_price, as: 'endPrice', class: Google::Apis::PlacesV1::GoogleTypeMoney, decorator: Google::Apis::PlacesV1::GoogleTypeMoney::Representation
       
           property :start_price, as: 'startPrice', class: Google::Apis::PlacesV1::GoogleTypeMoney, decorator: Google::Apis::PlacesV1::GoogleTypeMoney::Representation
-      
-        end
-      end
-      
-      class GoogleMapsPlacesV1References
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :places, as: 'places'
-          collection :reviews, as: 'reviews', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1Review, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1Review::Representation
       
         end
       end
