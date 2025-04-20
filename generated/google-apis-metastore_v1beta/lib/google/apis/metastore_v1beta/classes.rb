@@ -888,6 +888,14 @@ module Google
         # @return [String]
         attr_accessor :kms_key
       
+        # Optional. The list of fully qualified customer provided Cloud KMS key names
+        # for the multi-regional service. Each key must be in the following format:
+        # projects/`project_number`/locations/`location_id`/keyRings/`key_ring_id`/
+        # cryptoKeys/`crypto_key_id`.
+        # Corresponds to the JSON property `kmsKeys`
+        # @return [Array<String>]
+        attr_accessor :kms_keys
+      
         def initialize(**args)
            update!(**args)
         end
@@ -895,6 +903,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
+          @kms_keys = args[:kms_keys] if args.key?(:kms_keys)
         end
       end
       
