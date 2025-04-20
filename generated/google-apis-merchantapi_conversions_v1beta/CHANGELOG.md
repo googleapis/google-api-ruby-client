@@ -1,5 +1,9 @@
 # Release history for google-apis-merchantapi_conversions_v1beta
 
+### v0.6.0 (2025-04-20)
+
+* Regenerated from discovery document revision 20250416
+
 ### v0.5.0 (2025-03-16)
 
 * Regenerated from discovery document revision 20250311
