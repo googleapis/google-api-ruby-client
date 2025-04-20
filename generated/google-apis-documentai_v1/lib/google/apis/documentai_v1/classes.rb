@@ -1839,6 +1839,11 @@ module Google
         # @return [String]
         attr_accessor :content
       
+        # Optional. An internal identifier for document. Should be loggable (no PII).
+        # Corresponds to the JSON property `docid`
+        # @return [String]
+        attr_accessor :docid
+      
         # Represents the parsed layout of a document as a collection of blocks that the
         # document is divided into.
         # Corresponds to the JSON property `documentLayout`
@@ -1921,6 +1926,7 @@ module Google
         def update!(**args)
           @chunked_document = args[:chunked_document] if args.key?(:chunked_document)
           @content = args[:content] if args.key?(:content)
+          @docid = args[:docid] if args.key?(:docid)
           @document_layout = args[:document_layout] if args.key?(:document_layout)
           @entities = args[:entities] if args.key?(:entities)
           @entity_relations = args[:entity_relations] if args.key?(:entity_relations)
@@ -2109,6 +2115,11 @@ module Google
         # @return [String]
         attr_accessor :block_id
       
+        # A bounding polygon for the detected image annotation.
+        # Corresponds to the JSON property `boundingBox`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1BoundingPoly]
+        attr_accessor :bounding_box
+      
         # Represents a list type block.
         # Corresponds to the JSON property `listBlock`
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock]
@@ -2136,6 +2147,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @block_id = args[:block_id] if args.key?(:block_id)
+          @bounding_box = args[:bounding_box] if args.key?(:bounding_box)
           @list_block = args[:list_block] if args.key?(:list_block)
           @page_span = args[:page_span] if args.key?(:page_span)
           @table_block = args[:table_block] if args.key?(:table_block)
