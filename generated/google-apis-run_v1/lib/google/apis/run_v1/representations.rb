@@ -514,6 +514,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceSplit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Job
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -599,6 +605,12 @@ module Google
       end
       
       class ListTasksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListWorkerPoolsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -839,6 +851,24 @@ module Google
       end
       
       class VolumeMount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkerPool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkerPoolSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkerPoolStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1766,6 +1796,15 @@ module Google
         end
       end
       
+      class InstanceSplit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :latest_revision, as: 'latestRevision'
+          property :percent, as: 'percent'
+          property :revision_name, as: 'revisionName'
+        end
+      end
+      
       class Job
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1934,6 +1973,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
           collection :items, as: 'items', class: Google::Apis::RunV1::Task, decorator: Google::Apis::RunV1::Task::Representation
+      
+          property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ListMeta, decorator: Google::Apis::RunV1::ListMeta::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListWorkerPoolsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          collection :items, as: 'items', class: Google::Apis::RunV1::WorkerPool, decorator: Google::Apis::RunV1::WorkerPool::Representation
       
           property :kind, as: 'kind'
           property :metadata, as: 'metadata', class: Google::Apis::RunV1::ListMeta, decorator: Google::Apis::RunV1::ListMeta::Representation
@@ -2403,6 +2455,43 @@ module Google
           property :name, as: 'name'
           property :read_only, as: 'readOnly'
           property :sub_path, as: 'subPath'
+        end
+      end
+      
+      class WorkerPool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ObjectMeta, decorator: Google::Apis::RunV1::ObjectMeta::Representation
+      
+          property :spec, as: 'spec', class: Google::Apis::RunV1::WorkerPoolSpec, decorator: Google::Apis::RunV1::WorkerPoolSpec::Representation
+      
+          property :status, as: 'status', class: Google::Apis::RunV1::WorkerPoolStatus, decorator: Google::Apis::RunV1::WorkerPoolStatus::Representation
+      
+        end
+      end
+      
+      class WorkerPoolSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instance_splits, as: 'instanceSplits', class: Google::Apis::RunV1::InstanceSplit, decorator: Google::Apis::RunV1::InstanceSplit::Representation
+      
+          property :template, as: 'template', class: Google::Apis::RunV1::RevisionTemplate, decorator: Google::Apis::RunV1::RevisionTemplate::Representation
+      
+        end
+      end
+      
+      class WorkerPoolStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conditions, as: 'conditions', class: Google::Apis::RunV1::GoogleCloudRunV1Condition, decorator: Google::Apis::RunV1::GoogleCloudRunV1Condition::Representation
+      
+          collection :instance_splits, as: 'instanceSplits', class: Google::Apis::RunV1::InstanceSplit, decorator: Google::Apis::RunV1::InstanceSplit::Representation
+      
+          property :latest_created_revision_name, as: 'latestCreatedRevisionName'
+          property :latest_ready_revision_name, as: 'latestReadyRevisionName'
+          property :observed_generation, as: 'observedGeneration'
         end
       end
     end

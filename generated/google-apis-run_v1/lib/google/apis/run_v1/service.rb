@@ -1296,6 +1296,212 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new WorkerPool. WorkerPool creation will trigger a new deployment.
+        # Use GetWorkerPool, and check worker_pool.status to determine if the WorkerPool
+        # is ready.
+        # @param [String] parent
+        #   Required. The resource's parent. In Cloud Run, it may be one of the following:
+        #   * ``project_id_or_number`` * `namespaces/`project_id_or_number`` * `namespaces/
+        #   `project_id_or_number`/workerpools` * `projects/`project_id_or_number`/
+        #   locations/`region`` * `projects/`project_id_or_number`/regions/`region``
+        # @param [Google::Apis::RunV1::WorkerPool] worker_pool_object
+        # @param [String] dry_run
+        #   Indicates that the server should validate the request and populate default
+        #   values without persisting the request. Supported values: `all`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV1::WorkerPool] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV1::WorkerPool]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_namespace_workerpool(parent, worker_pool_object = nil, dry_run: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'apis/run.googleapis.com/v1/{+parent}/workerpools', options)
+          command.request_representation = Google::Apis::RunV1::WorkerPool::Representation
+          command.request_object = worker_pool_object
+          command.response_representation = Google::Apis::RunV1::WorkerPool::Representation
+          command.response_class = Google::Apis::RunV1::WorkerPool
+          command.params['parent'] = parent unless parent.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the provided worker pool. This will cause the WorkerPool to stop all
+        # instances and will delete all associated WorkerPoolRevisions.
+        # @param [String] name
+        #   Required. The fully qualified name of the worker pool to delete. It can be any
+        #   of the following forms: * `namespaces/`project_id_or_number`/workerpools/`
+        #   worker_pool_name`` (only when the `endpoint` is regional) * `projects/`
+        #   project_id_or_number`/locations/`region`/workerpools/`worker_pool_name`` * `
+        #   projects/`project_id_or_number`/regions/`region`/workerpools/`worker_pool_name`
+        #   `
+        # @param [String] dry_run
+        #   Indicates that the server should validate the request and populate default
+        #   values without persisting the request. Supported values: `all`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV1::Status] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV1::Status]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_namespace_workerpool(name, dry_run: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'apis/run.googleapis.com/v1/{+name}', options)
+          command.response_representation = Google::Apis::RunV1::Status::Representation
+          command.response_class = Google::Apis::RunV1::Status
+          command.params['name'] = name unless name.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets information about a worker pool.
+        # @param [String] name
+        #   Required. The fully qualified name of the worker pool to retrieve. It can be
+        #   any of the following forms: * `namespaces/`project_id_or_number`/workerpools/`
+        #   worker_pool_name`` (only when the `endpoint` is regional) * `projects/`
+        #   project_id_or_number`/locations/`region`/workerpools/`worker_pool_name`` * `
+        #   projects/`project_id_or_number`/regions/`region`/workerpools/`worker_pool_name`
+        #   `
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV1::WorkerPool] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV1::WorkerPool]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_namespace_workerpool(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'apis/run.googleapis.com/v1/{+name}', options)
+          command.response_representation = Google::Apis::RunV1::WorkerPool::Representation
+          command.response_class = Google::Apis::RunV1::WorkerPool
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists worker pools for the given project and region. Results are sorted by
+        # creation time, descending.
+        # @param [String] parent
+        #   Required. The parent from where the resources should be listed. In Cloud Run,
+        #   it may be one of the following: * ``project_id_or_number`` * `namespaces/`
+        #   project_id_or_number`` * `namespaces/`project_id_or_number`/workerpools` * `
+        #   projects/`project_id_or_number`/locations/`region`` * `projects/`
+        #   project_id_or_number`/regions/`region``
+        # @param [String] continue
+        #   Encoded string to continue paging.
+        # @param [String] label_selector
+        #   =, !=, exists, in, and notIn.
+        # @param [Fixnum] limit
+        #   The maximum number of records that should be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV1::ListWorkerPoolsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV1::ListWorkerPoolsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_namespace_workerpools(parent, continue: nil, label_selector: nil, limit: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'apis/run.googleapis.com/v1/{+parent}/workerpools', options)
+          command.response_representation = Google::Apis::RunV1::ListWorkerPoolsResponse::Representation
+          command.response_class = Google::Apis::RunV1::ListWorkerPoolsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['continue'] = continue unless continue.nil?
+          command.query['labelSelector'] = label_selector unless label_selector.nil?
+          command.query['limit'] = limit unless limit.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Replaces a worker pool. Only the spec and metadata labels and annotations are
+        # modifiable. After the Update request, Cloud Run will work to make the 'status'
+        # match the requested 'spec'. May provide metadata.resourceVersion to enforce
+        # update from last read for optimistic concurrency control.
+        # @param [String] name
+        #   Required. The fully qualified name of the worker pool to replace. It can be
+        #   any of the following forms: * `namespaces/`project_id_or_number`/workerpools/`
+        #   worker_pool_name`` (only when the `endpoint` is regional) * `projects/`
+        #   project_id_or_number`/locations/`region`/workerpools/`worker_pool_name`` * `
+        #   projects/`project_id_or_number`/regions/`region`/workerpools/`worker_pool_name`
+        #   `
+        # @param [Google::Apis::RunV1::WorkerPool] worker_pool_object
+        # @param [String] dry_run
+        #   Indicates that the server should validate the request and populate default
+        #   values without persisting the request. Supported values: `all`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV1::WorkerPool] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV1::WorkerPool]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def replace_namespace_workerpool_worker_pool(name, worker_pool_object = nil, dry_run: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'apis/run.googleapis.com/v1/{+name}', options)
+          command.request_representation = Google::Apis::RunV1::WorkerPool::Representation
+          command.request_object = worker_pool_object
+          command.response_representation = Google::Apis::RunV1::WorkerPool::Representation
+          command.response_class = Google::Apis::RunV1::WorkerPool
+          command.params['name'] = name unless name.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # List authorized domains.
         # @param [String] parent
         #   Name of the parent Project resource. Example: `projects/myproject`.

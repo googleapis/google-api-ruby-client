@@ -3639,6 +3639,42 @@ module Google
         end
       end
       
+      # Holds a single instance split entry for the Worker. Allocations can be done to
+      # a specific Revision name, or pointing to the latest Ready Revision.
+      class InstanceSplit
+        include Google::Apis::Core::Hashable
+      
+        # Uses the "status.latestReadyRevisionName" to determine the traffic target.
+        # When it changes, traffic will automatically migrate from the prior "latest
+        # ready" revision to the new one.
+        # Corresponds to the JSON property `latestRevision`
+        # @return [Boolean]
+        attr_accessor :latest_revision
+        alias_method :latest_revision?, :latest_revision
+      
+        # Specifies percent of the instance split to this Revision. This defaults to
+        # zero if unspecified.
+        # Corresponds to the JSON property `percent`
+        # @return [Fixnum]
+        attr_accessor :percent
+      
+        # Revision to which to assign this portion of instances.
+        # Corresponds to the JSON property `revisionName`
+        # @return [String]
+        attr_accessor :revision_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latest_revision = args[:latest_revision] if args.key?(:latest_revision)
+          @percent = args[:percent] if args.key?(:percent)
+          @revision_name = args[:revision_name] if args.key?(:revision_name)
+        end
+      end
+      
       # Job represents the configuration of a single job, which references a container
       # image which is run to completion.
       class Job
@@ -4228,6 +4264,51 @@ module Google
         attr_accessor :metadata
       
         # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # A list of WorkerPool resources.
+      class ListWorkerPoolsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The API version for this call; returns "run.googleapis.com/v1".
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # List of WorkerPools.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::RunV1::WorkerPool>]
+        attr_accessor :items
+      
+        # The kind of this resource; returns "WorkerPoolList".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Metadata for synthetic resources like List. In Cloud Run, all List Resources
+        # Responses will have a ListMeta instead of ObjectMeta.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1::ListMeta]
+        attr_accessor :metadata
+      
+        # For calls against the global endpoint, returns the list of Cloud locations
+        # that could not be reached. For regional calls, this field is not used.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -6157,6 +6238,130 @@ module Google
           @name = args[:name] if args.key?(:name)
           @read_only = args[:read_only] if args.key?(:read_only)
           @sub_path = args[:sub_path] if args.key?(:sub_path)
+        end
+      end
+      
+      # WorkerPool acts as a top-level container that manages a set instance splits
+      # among a set of Revisions and a template for creating new Revisions.
+      class WorkerPool
+        include Google::Apis::Core::Hashable
+      
+        # The API version for this call. It must be "run.googleapis.com/v1".
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # The kind of resource. It must be "WorkerPool".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # google.cloud.run.meta.v1.ObjectMeta is metadata that all persisted resources
+        # must have, which includes all objects users must create.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1::ObjectMeta]
+        attr_accessor :metadata
+      
+        # WorkerPoolSpec holds the desired state of the WorkerPool's template and
+        # instance splits.
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::RunV1::WorkerPoolSpec]
+        attr_accessor :spec
+      
+        # The current state of the WorkerPool. Output only.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::RunV1::WorkerPoolStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @spec = args[:spec] if args.key?(:spec)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # WorkerPoolSpec holds the desired state of the WorkerPool's template and
+      # instance splits.
+      class WorkerPoolSpec
+        include Google::Apis::Core::Hashable
+      
+        # Specifies how to distribute instances over a collection of Revisions.
+        # Corresponds to the JSON property `instanceSplits`
+        # @return [Array<Google::Apis::RunV1::InstanceSplit>]
+        attr_accessor :instance_splits
+      
+        # RevisionTemplateSpec describes the data a revision should have when created
+        # from a template.
+        # Corresponds to the JSON property `template`
+        # @return [Google::Apis::RunV1::RevisionTemplate]
+        attr_accessor :template
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_splits = args[:instance_splits] if args.key?(:instance_splits)
+          @template = args[:template] if args.key?(:template)
+        end
+      end
+      
+      # The current state of the WorkerPool. Output only.
+      class WorkerPoolStatus
+        include Google::Apis::Core::Hashable
+      
+        # Conditions communicate information about ongoing/complete reconciliation
+        # processes that bring the `spec` inline with the observed state of the world. *
+        # `Ready`: `True` when all underlying resources are ready.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::RunV1::GoogleCloudRunV1Condition>]
+        attr_accessor :conditions
+      
+        # Holds the configured traffic distribution. These entries will always contain
+        # RevisionName references. When ConfigurationName appears in the spec, this will
+        # hold the LatestReadyRevisionName that we last observed.
+        # Corresponds to the JSON property `instanceSplits`
+        # @return [Array<Google::Apis::RunV1::InstanceSplit>]
+        attr_accessor :instance_splits
+      
+        # Name of the last revision that was created from this WorkerPool's template. It
+        # might not be ready yet, for that use LatestReadyRevisionName.
+        # Corresponds to the JSON property `latestCreatedRevisionName`
+        # @return [String]
+        attr_accessor :latest_created_revision_name
+      
+        # Name of the latest Revision from this WorkerPool's template that has had its `
+        # Ready` condition become `True`.
+        # Corresponds to the JSON property `latestReadyRevisionName`
+        # @return [String]
+        attr_accessor :latest_ready_revision_name
+      
+        # Returns the generation last seen by the system. Clients polling for completed
+        # reconciliation should poll until observedGeneration = metadata.generation and
+        # the Ready condition's status is True or False.
+        # Corresponds to the JSON property `observedGeneration`
+        # @return [Fixnum]
+        attr_accessor :observed_generation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @instance_splits = args[:instance_splits] if args.key?(:instance_splits)
+          @latest_created_revision_name = args[:latest_created_revision_name] if args.key?(:latest_created_revision_name)
+          @latest_ready_revision_name = args[:latest_ready_revision_name] if args.key?(:latest_ready_revision_name)
+          @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
         end
       end
     end
