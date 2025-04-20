@@ -584,9 +584,9 @@ module Google
         end
       end
       
-      # * Alerts from AppSettingsChanged bucket Rules configured by Admin which
-      # contain the below rules. Calendar settings changed Drive settings changed
-      # Email settings changed Mobile settings changed
+      # Alerts from AppSettingsChanged bucket Rules configured by Admin which contain
+      # the following rules: - Calendar settings changed - Drive settings changed -
+      # Email settings changed - Mobile settings changed
       class AppSettingsChanged
         include Google::Apis::Core::Hashable
       
@@ -1642,8 +1642,8 @@ module Google
         end
       end
       
-      # * Event occurred when primary admin changed in customer's account. The event
-      # are being received from insight forwarder
+      # Event occurred when primary admin changed in customer's account. The event are
+      # being received from insight forwarder
       class PrimaryAdminChangedEvent
         include Google::Apis::Core::Hashable
       
@@ -1895,7 +1895,7 @@ module Google
         end
       end
       
-      # * Event occurred when SSO Profile created in customer's account. The event are
+      # Event occurred when SSO Profile created in customer's account. The event are
       # being received from insight forwarder
       class SsoProfileCreatedEvent
         include Google::Apis::Core::Hashable
@@ -1915,7 +1915,7 @@ module Google
         end
       end
       
-      # * Event occurred when SSO Profile deleted in customer's account. The event are
+      # Event occurred when SSO Profile deleted in customer's account. The event are
       # being received from insight forwarder
       class SsoProfileDeletedEvent
         include Google::Apis::Core::Hashable
@@ -1935,7 +1935,7 @@ module Google
         end
       end
       
-      # * Event occurred when SSO Profile updated in customer's account. The event are
+      # Event occurred when SSO Profile updated in customer's account. The event are
       # being received from insight forwarder
       class SsoProfileUpdatedEvent
         include Google::Apis::Core::Hashable
@@ -1975,31 +1975,31 @@ module Google
         # @return [String]
         attr_accessor :event_time
       
-        # * Event occurred when primary admin changed in customer's account. The event
-        # are being received from insight forwarder
+        # Event occurred when primary admin changed in customer's account. The event are
+        # being received from insight forwarder
         # Corresponds to the JSON property `primaryAdminChangedEvent`
         # @return [Google::Apis::AlertcenterV1beta1::PrimaryAdminChangedEvent]
         attr_accessor :primary_admin_changed_event
       
-        # * Event occurred when SSO Profile created in customer's account. The event are
+        # Event occurred when SSO Profile created in customer's account. The event are
         # being received from insight forwarder
         # Corresponds to the JSON property `ssoProfileCreatedEvent`
         # @return [Google::Apis::AlertcenterV1beta1::SsoProfileCreatedEvent]
         attr_accessor :sso_profile_created_event
       
-        # * Event occurred when SSO Profile deleted in customer's account. The event are
+        # Event occurred when SSO Profile deleted in customer's account. The event are
         # being received from insight forwarder
         # Corresponds to the JSON property `ssoProfileDeletedEvent`
         # @return [Google::Apis::AlertcenterV1beta1::SsoProfileDeletedEvent]
         attr_accessor :sso_profile_deleted_event
       
-        # * Event occurred when SSO Profile updated in customer's account. The event are
+        # Event occurred when SSO Profile updated in customer's account. The event are
         # being received from insight forwarder
         # Corresponds to the JSON property `ssoProfileUpdatedEvent`
         # @return [Google::Apis::AlertcenterV1beta1::SsoProfileUpdatedEvent]
         attr_accessor :sso_profile_updated_event
       
-        # * Event occurred when password was reset for super admin in customer's account.
+        # Event occurred when password was reset for super admin in customer's account.
         # The event are being received from insight forwarder
         # Corresponds to the JSON property `superAdminPasswordResetEvent`
         # @return [Google::Apis::AlertcenterV1beta1::SuperAdminPasswordResetEvent]
@@ -2098,7 +2098,7 @@ module Google
         end
       end
       
-      # * Event occurred when password was reset for super admin in customer's account.
+      # Event occurred when password was reset for super admin in customer's account.
       # The event are being received from insight forwarder
       class SuperAdminPasswordResetEvent
         include Google::Apis::Core::Hashable
@@ -2347,10 +2347,10 @@ module Google
         end
       end
       
-      # * Alerts from UserChanges bucket Rules for predefined rules which contain the
-      # below rules. Suspended user made active New user Added User suspended (by
-      # admin) User granted admin privileges User admin privileges revoked User
-      # deleted Users password changed
+      # Alerts from UserChanges bucket Rules for predefined rules which contain the
+      # following rules: - Suspended user made active - New user added - User
+      # suspended (by admin) - User granted admin privileges - User admin privileges
+      # revoked - User deleted - Users password changed
       class UserChanges
         include Google::Apis::Core::Hashable
       
@@ -2391,6 +2391,52 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # Alert that is triggered when a Vault accelerated deletion request is created
+      # or canceled.
+      class VaultAcceleratedDeletion
+        include Google::Apis::Core::Hashable
+      
+        # The action can be one of create and cancel
+        # Corresponds to the JSON property `actionType`
+        # @return [String]
+        attr_accessor :action_type
+      
+        # Currentlty only Gmail is supported as app type
+        # Corresponds to the JSON property `appType`
+        # @return [String]
+        attr_accessor :app_type
+      
+        # The UTC timestamp of when the AD request was created
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Accelerated deletion request ID intended to be used to construct the Vault UI
+        # link to the AD request
+        # Corresponds to the JSON property `deletionRequestId`
+        # @return [String]
+        attr_accessor :deletion_request_id
+      
+        # Matter ID of the accelerated deletion request intended to be used to construct
+        # the Vault UI link to the AD request
+        # Corresponds to the JSON property `matterId`
+        # @return [String]
+        attr_accessor :matter_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_type = args[:action_type] if args.key?(:action_type)
+          @app_type = args[:app_type] if args.key?(:app_type)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @deletion_request_id = args[:deletion_request_id] if args.key?(:deletion_request_id)
+          @matter_id = args[:matter_id] if args.key?(:matter_id)
         end
       end
       
