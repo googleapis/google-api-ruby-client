@@ -48,6 +48,14 @@ module Google
         # @return [Integer]
         attr_accessor :upload_chunk_size
 
+        # Unique upload_id of a resumable upload
+        # @return [String]
+        attr_accessor :upload_id
+
+        # Boolean Value to specify is a resumable upload is to be deleted or not
+        # @return [Boolean]
+        attr_accessor :delete_upload
+
         # Ensure the content is readable and wrapped in an IO instance.
         #
         # @return [void]
@@ -94,8 +102,6 @@ module Google
         def execute(client)
           prepare!
           opencensus_begin_span
-          upload_id = options.upload_id
-          delete_upload = options.delete_upload
           @upload_chunk_size = options.upload_chunk_size
           if upload_id.nil?
             do_retry :initiate_resumable_upload, client
@@ -171,7 +177,6 @@ module Google
 
           remaining_content_size = upload_io.size - @offset
           current_chunk_size = get_current_chunk_size remaining_content_size
-
           request_header = header.dup
           request_header[CONTENT_RANGE_HEADER] = get_content_range_header current_chunk_size
           request_header[CONTENT_LENGTH_HEADER] = current_chunk_size
@@ -249,9 +254,8 @@ module Google
           request_header[CONTENT_LENGTH_HEADER] = '0'
           # Initiating call
           response = client.delete(@upload_url, header: request_header, follow_redirect: true)
-
           case response.code.to_i
-          when 499
+          when 400..499
             @close_io_on_finish = true
             @upload_incomplete = false
           else

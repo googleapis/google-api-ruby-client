@@ -350,6 +350,23 @@ module Google
           true
         end
 
+        # Restarts Or Deletes An Ongoing Resumable upload
+        # @param [String] bucket
+        #   Name of the bucket where the upload is being performed.
+        # @param [IO, String] upload_source
+        #   IO stream or filename containing content to upload
+        # @param [IO, String] upload_id
+        #   unique id generated for an ongoing upload
+
+        def restart_delete_ongoing_resumable_upload(bucket, upload_source, upload_id, options: nil)
+          command = make_storage_upload_command(:post, 'b/{bucket}/o', options)
+          command.upload_source = upload_source
+          command.upload_id = upload_id
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.delete_upload = options[:delete_upload ] unless options[:delete_upload].nil?
+          execute_or_queue_command(command)
+        end
+
         protected
 
         # Create a new upload command.
