@@ -1018,6 +1018,11 @@ module Google
       class ManagedZoneForwardingConfigNameServerTarget
         include Google::Apis::Core::Hashable
       
+        # Fully qualified domain name for the forwarding target.
+        # Corresponds to the JSON property `domainName`
+        # @return [String]
+        attr_accessor :domain_name
+      
         # Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud
         # DNS makes forwarding decisions based on IP address ranges; that is, RFC1918
         # addresses go to the VPC network, non-RFC1918 addresses go to the internet.
@@ -1049,6 +1054,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @domain_name = args[:domain_name] if args.key?(:domain_name)
           @forwarding_path = args[:forwarding_path] if args.key?(:forwarding_path)
           @ipv4_address = args[:ipv4_address] if args.key?(:ipv4_address)
           @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)

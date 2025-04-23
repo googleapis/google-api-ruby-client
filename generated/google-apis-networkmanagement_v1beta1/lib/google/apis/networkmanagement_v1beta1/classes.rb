@@ -2081,6 +2081,11 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1beta1::EdgeLocation]
         attr_accessor :destination_egress_location
       
+        # Probing results for all edge devices.
+        # Corresponds to the JSON property `edgeResponses`
+        # @return [Array<Google::Apis::NetworkmanagementV1beta1::SingleEdgeResponse>]
+        attr_accessor :edge_responses
+      
         # For display only. The specification of the endpoints for the test.
         # EndpointInfo is derived from source and destination Endpoint and validated by
         # the backend data plane model.
@@ -2097,6 +2102,12 @@ module Google
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::NetworkmanagementV1beta1::Status]
         attr_accessor :error
+      
+        # Whether all relevant edge devices were probed.
+        # Corresponds to the JSON property `probedAllDevices`
+        # @return [Boolean]
+        attr_accessor :probed_all_devices
+        alias_method :probed_all_devices?, :probed_all_devices
       
         # Describes measured latency distribution.
         # Corresponds to the JSON property `probingLatency`
@@ -2131,8 +2142,10 @@ module Google
         def update!(**args)
           @abort_cause = args[:abort_cause] if args.key?(:abort_cause)
           @destination_egress_location = args[:destination_egress_location] if args.key?(:destination_egress_location)
+          @edge_responses = args[:edge_responses] if args.key?(:edge_responses)
           @endpoint_info = args[:endpoint_info] if args.key?(:endpoint_info)
           @error = args[:error] if args.key?(:error)
+          @probed_all_devices = args[:probed_all_devices] if args.key?(:probed_all_devices)
           @probing_latency = args[:probing_latency] if args.key?(:probing_latency)
           @result = args[:result] if args.key?(:result)
           @sent_probe_count = args[:sent_probe_count] if args.key?(:sent_probe_count)
@@ -2643,6 +2656,57 @@ module Google
         end
       end
       
+      # Probing results for a single edge device.
+      class SingleEdgeResponse
+        include Google::Apis::Core::Hashable
+      
+        # Representation of a network edge location as per https://cloud.google.com/vpc/
+        # docs/edge-locations.
+        # Corresponds to the JSON property `destinationEgressLocation`
+        # @return [Google::Apis::NetworkmanagementV1beta1::EdgeLocation]
+        attr_accessor :destination_egress_location
+      
+        # Router name in the format '`router`.`metroshard`'. For example: pf01.aaa01,
+        # pr02.aaa01.
+        # Corresponds to the JSON property `destinationRouter`
+        # @return [String]
+        attr_accessor :destination_router
+      
+        # Describes measured latency distribution.
+        # Corresponds to the JSON property `probingLatency`
+        # @return [Google::Apis::NetworkmanagementV1beta1::LatencyDistribution]
+        attr_accessor :probing_latency
+      
+        # The overall result of active probing for this egress device.
+        # Corresponds to the JSON property `result`
+        # @return [String]
+        attr_accessor :result
+      
+        # Number of probes sent.
+        # Corresponds to the JSON property `sentProbeCount`
+        # @return [Fixnum]
+        attr_accessor :sent_probe_count
+      
+        # Number of probes that reached the destination.
+        # Corresponds to the JSON property `successfulProbeCount`
+        # @return [Fixnum]
+        attr_accessor :successful_probe_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_egress_location = args[:destination_egress_location] if args.key?(:destination_egress_location)
+          @destination_router = args[:destination_router] if args.key?(:destination_router)
+          @probing_latency = args[:probing_latency] if args.key?(:probing_latency)
+          @result = args[:result] if args.key?(:result)
+          @sent_probe_count = args[:sent_probe_count] if args.key?(:sent_probe_count)
+          @successful_probe_count = args[:successful_probe_count] if args.key?(:successful_probe_count)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -3106,7 +3170,8 @@ module Google
         attr_accessor :name
       
         # Optional. The state of the VPC Flow Log configuration. Default value is
-        # ENABLED. When creating a new configuration, it must be enabled.
+        # ENABLED. When creating a new configuration, it must be enabled. Setting state=
+        # DISABLED will pause the log generation for this config.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state

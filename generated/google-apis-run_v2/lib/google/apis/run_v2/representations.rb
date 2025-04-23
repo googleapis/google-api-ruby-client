@@ -1478,6 +1478,7 @@ module Google
           property :execution_environment, as: 'executionEnvironment'
           property :expire_time, as: 'expireTime'
           property :generation, :numeric_string => true, as: 'generation'
+          property :gpu_zonal_redundancy_disabled, as: 'gpuZonalRedundancyDisabled'
           property :index, as: 'index'
           property :job, as: 'job'
           hash :labels, as: 'labels'

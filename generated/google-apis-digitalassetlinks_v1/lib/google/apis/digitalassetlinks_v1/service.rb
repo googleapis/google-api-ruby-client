@@ -112,6 +112,14 @@ module Google
         #   relation strings must match exactly. Example: A query with relation `
         #   delegate_permission/common.handle_all_urls` matches an asset link with
         #   relation `delegate_permission/common.handle_all_urls`.
+        # @param [Boolean] return_relation_extensions
+        #   Whether to return relation_extensions payloads specified in the source Digital
+        #   Asset Links statements linking the requested source and target assets by the
+        #   requested relation type. If this is set to `false` (default),
+        #   relation_extensions specified will not be returned, even if they are specified
+        #   in the DAL statement file. If set to `true`, the API will propagate any and
+        #   all relation_extensions, across statements, linking the source and target
+        #   assets by the requested relation type, if specified in the DAL statement file.
         # @param [String] source_android_app_certificate_sha256_fingerprint
         #   The uppercase SHA-265 fingerprint of the certificate. From the PEM certificate,
         #   it can be acquired like this: $ keytool -printcert -file $CERTFILE | grep
@@ -193,11 +201,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def check_assetlink(relation: nil, source_android_app_certificate_sha256_fingerprint: nil, source_android_app_package_name: nil, source_web_site: nil, target_android_app_certificate_sha256_fingerprint: nil, target_android_app_package_name: nil, target_web_site: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def check_assetlink(relation: nil, return_relation_extensions: nil, source_android_app_certificate_sha256_fingerprint: nil, source_android_app_package_name: nil, source_web_site: nil, target_android_app_certificate_sha256_fingerprint: nil, target_android_app_package_name: nil, target_web_site: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/assetlinks:check', options)
           command.response_representation = Google::Apis::DigitalassetlinksV1::CheckResponse::Representation
           command.response_class = Google::Apis::DigitalassetlinksV1::CheckResponse
           command.query['relation'] = relation unless relation.nil?
+          command.query['returnRelationExtensions'] = return_relation_extensions unless return_relation_extensions.nil?
           command.query['source.androidApp.certificate.sha256Fingerprint'] = source_android_app_certificate_sha256_fingerprint unless source_android_app_certificate_sha256_fingerprint.nil?
           command.query['source.androidApp.packageName'] = source_android_app_package_name unless source_android_app_package_name.nil?
           command.query['source.web.site'] = source_web_site unless source_web_site.nil?
@@ -230,6 +239,13 @@ module Google
         #   string is empty or missing. Example: A query with relation `
         #   delegate_permission/common.handle_all_urls` matches an asset link with
         #   relation `delegate_permission/common.handle_all_urls`.
+        # @param [Boolean] return_relation_extensions
+        #   Whether to return any relation_extensions payloads specified in the source
+        #   digital asset links statements. If this is set to `false` (default),
+        #   relation_extensions specified will not be returned, even if they are specified
+        #   in the DAL statement file. If set to `true`, the API will propagate
+        #   relation_extensions associated with each statement's relation type, if
+        #   specified in the DAL statement file.
         # @param [String] source_android_app_certificate_sha256_fingerprint
         #   The uppercase SHA-265 fingerprint of the certificate. From the PEM certificate,
         #   it can be acquired like this: $ keytool -printcert -file $CERTFILE | grep
@@ -279,11 +295,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_statements(relation: nil, source_android_app_certificate_sha256_fingerprint: nil, source_android_app_package_name: nil, source_web_site: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_statements(relation: nil, return_relation_extensions: nil, source_android_app_certificate_sha256_fingerprint: nil, source_android_app_package_name: nil, source_web_site: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/statements:list', options)
           command.response_representation = Google::Apis::DigitalassetlinksV1::ListResponse::Representation
           command.response_class = Google::Apis::DigitalassetlinksV1::ListResponse
           command.query['relation'] = relation unless relation.nil?
+          command.query['returnRelationExtensions'] = return_relation_extensions unless return_relation_extensions.nil?
           command.query['source.androidApp.certificate.sha256Fingerprint'] = source_android_app_certificate_sha256_fingerprint unless source_android_app_certificate_sha256_fingerprint.nil?
           command.query['source.androidApp.packageName'] = source_android_app_package_name unless source_android_app_package_name.nil?
           command.query['source.web.site'] = source_web_site unless source_web_site.nil?

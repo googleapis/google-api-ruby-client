@@ -118,6 +118,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListQuotaGroupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MethodDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Price
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,6 +149,12 @@ module Google
       end
       
       class ProductWeight
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QuotaGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -385,6 +403,25 @@ module Google
         end
       end
       
+      class ListQuotaGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :quota_groups, as: 'quotaGroups', class: Google::Apis::CssV1::QuotaGroup, decorator: Google::Apis::CssV1::QuotaGroup::Representation
+      
+        end
+      end
+      
+      class MethodDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :method_prop, as: 'method'
+          property :path, as: 'path'
+          property :subapi, as: 'subapi'
+          property :version, as: 'version'
+        end
+      end
+      
       class Price
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -415,6 +452,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :unit, as: 'unit'
           property :value, as: 'value'
+        end
+      end
+      
+      class QuotaGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :method_details, as: 'methodDetails', class: Google::Apis::CssV1::MethodDetails, decorator: Google::Apis::CssV1::MethodDetails::Representation
+      
+          property :name, as: 'name'
+          property :quota_limit, :numeric_string => true, as: 'quotaLimit'
+          property :quota_minute_limit, :numeric_string => true, as: 'quotaMinuteLimit'
+          property :quota_usage, :numeric_string => true, as: 'quotaUsage'
         end
       end
       

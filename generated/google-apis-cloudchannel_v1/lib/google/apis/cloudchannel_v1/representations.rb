@@ -2043,6 +2043,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :event_type, as: 'eventType'
           property :opportunity, as: 'opportunity'
+          property :partner, as: 'partner'
         end
       end
       

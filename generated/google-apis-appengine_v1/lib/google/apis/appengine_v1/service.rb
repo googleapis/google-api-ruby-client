@@ -901,6 +901,9 @@ module Google
         # Lists information about the supported locations for this service.
         # @param [String] apps_id
         #   Part of `name`. The resource that owns the locations collection, if applicable.
+        # @param [Array<String>, String] extra_location_types
+        #   Optional. A list of extra location types that should be used as conditions for
+        #   controlling the visibility of the locations.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like "displayName=tokyo", and is documented in more detail in
@@ -928,11 +931,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_app_locations(apps_id, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_app_locations(apps_id, extra_location_types: nil, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/apps/{appsId}/locations', options)
           command.response_representation = Google::Apis::AppengineV1::ListLocationsResponse::Representation
           command.response_class = Google::Apis::AppengineV1::ListLocationsResponse
           command.params['appsId'] = apps_id unless apps_id.nil?
+          command.query['extraLocationTypes'] = extra_location_types unless extra_location_types.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -1760,6 +1764,93 @@ module Google
           command.params['applicationsId'] = applications_id unless applications_id.nil?
           command.params['servicesId'] = services_id unless services_id.nil?
           command.params['versionsId'] = versions_id unless versions_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified Version resource. You can specify the following fields
+        # depending on the App Engine environment and type of scaling that the version
+        # resource uses:Standard environment instance_class (https://cloud.google.com/
+        # appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.
+        # FIELDS.instance_class)automatic scaling in the standard environment:
+        # automatic_scaling.min_idle_instances (https://cloud.google.com/appengine/docs/
+        # admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.
+        # automatic_scaling) automatic_scaling.max_idle_instances (https://cloud.google.
+        # com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.
+        # FIELDS.automatic_scaling) automaticScaling.standard_scheduler_settings.
+        # max_instances (https://cloud.google.com/appengine/docs/admin-api/reference/
+        # rest/v1/apps.services.versions#StandardSchedulerSettings) automaticScaling.
+        # standard_scheduler_settings.min_instances (https://cloud.google.com/appengine/
+        # docs/admin-api/reference/rest/v1/apps.services.versions#
+        # StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.
+        # target_cpu_utilization (https://cloud.google.com/appengine/docs/admin-api/
+        # reference/rest/v1/apps.services.versions#StandardSchedulerSettings)
+        # automaticScaling.standard_scheduler_settings.target_throughput_utilization (
+        # https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.
+        # services.versions#StandardSchedulerSettings)basic scaling or manual scaling in
+        # the standard environment: serving_status (https://cloud.google.com/appengine/
+        # docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.
+        # serving_status) manual_scaling.instances (https://cloud.google.com/appengine/
+        # docs/admin-api/reference/rest/v1/apps.services.versions#manualscaling)Flexible
+        # environment serving_status (https://cloud.google.com/appengine/docs/admin-api/
+        # reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status)
+        # automatic scaling in the flexible environment: automatic_scaling.
+        # min_total_instances (https://cloud.google.com/appengine/docs/admin-api/
+        # reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
+        # automatic_scaling.max_total_instances (https://cloud.google.com/appengine/docs/
+        # admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.
+        # automatic_scaling) automatic_scaling.cool_down_period_sec (https://cloud.
+        # google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#
+        # Version.FIELDS.automatic_scaling) automatic_scaling.cpu_utilization.
+        # target_utilization (https://cloud.google.com/appengine/docs/admin-api/
+        # reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
+        # manual scaling in the flexible environment: manual_scaling.instances (https://
+        # cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.
+        # versions#manualscaling)
+        # @param [String] projects_id
+        #   Part of `name`. Name of the resource to update. Example: apps/myapp/services/
+        #   default/versions/1.
+        # @param [String] locations_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] applications_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] services_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] versions_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [Google::Apis::AppengineV1::Version] version_object
+        # @param [String] update_mask
+        #   Standard field mask for the set of fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_application_service_version(projects_id, locations_id, applications_id, services_id, versions_id, version_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}', options)
+          command.request_representation = Google::Apis::AppengineV1::Version::Representation
+          command.request_object = version_object
+          command.response_representation = Google::Apis::AppengineV1::Operation::Representation
+          command.response_class = Google::Apis::AppengineV1::Operation
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['applicationsId'] = applications_id unless applications_id.nil?
+          command.params['servicesId'] = services_id unless services_id.nil?
+          command.params['versionsId'] = versions_id unless versions_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

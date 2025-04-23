@@ -1,5 +1,9 @@
 # Release history for google-apis-calendar_v3
 
+### v0.47.0 (2025-04-13)
+
+* Regenerated from discovery document revision 20250404
+
 ### v0.46.0 (2025-01-26)
 
 * Regenerated from discovery document revision 20250115

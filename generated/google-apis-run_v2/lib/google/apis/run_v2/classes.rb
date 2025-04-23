@@ -3049,6 +3049,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :generation
       
+        # Optional. Output only. True if GPU zonal redundancy is disabled on this task.
+        # Corresponds to the JSON property `gpuZonalRedundancyDisabled`
+        # @return [Boolean]
+        attr_accessor :gpu_zonal_redundancy_disabled
+        alias_method :gpu_zonal_redundancy_disabled?, :gpu_zonal_redundancy_disabled
+      
         # Output only. Index of the Task, unique per execution, and beginning at 0.
         # Corresponds to the JSON property `index`
         # @return [Fixnum]
@@ -3188,6 +3194,7 @@ module Google
           @execution_environment = args[:execution_environment] if args.key?(:execution_environment)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @generation = args[:generation] if args.key?(:generation)
+          @gpu_zonal_redundancy_disabled = args[:gpu_zonal_redundancy_disabled] if args.key?(:gpu_zonal_redundancy_disabled)
           @index = args[:index] if args.key?(:index)
           @job = args[:job] if args.key?(:job)
           @labels = args[:labels] if args.key?(:labels)
@@ -6542,7 +6549,15 @@ module Google
         end
       end
       
-      # This is proto2's version of MessageSet.
+      # This is proto2's version of MessageSet. DEPRECATED: DO NOT USE FOR NEW FIELDS.
+      # If you are using editions or proto2, please make your own extendable messages
+      # for your use case. If you are using proto3, please use `Any` instead.
+      # MessageSet was the implementation of extensions for proto1. When proto2 was
+      # introduced, extensions were implemented as a first-class feature. This schema
+      # for MessageSet was meant to be a "bridge" solution to migrate MessageSet-
+      # bearing messages from proto1 to proto2. This schema has been open-sourced only
+      # to facilitate the migration of Google products with MessageSet-bearing
+      # messages to open-source environments.
       class Proto2BridgeMessageSet
         include Google::Apis::Core::Hashable
       
@@ -6579,7 +6594,15 @@ module Google
         # @return [String]
         attr_accessor :message
       
-        # This is proto2's version of MessageSet.
+        # This is proto2's version of MessageSet. DEPRECATED: DO NOT USE FOR NEW FIELDS.
+        # If you are using editions or proto2, please make your own extendable messages
+        # for your use case. If you are using proto3, please use `Any` instead.
+        # MessageSet was the implementation of extensions for proto1. When proto2 was
+        # introduced, extensions were implemented as a first-class feature. This schema
+        # for MessageSet was meant to be a "bridge" solution to migrate MessageSet-
+        # bearing messages from proto1 to proto2. This schema has been open-sourced only
+        # to facilitate the migration of Google products with MessageSet-bearing
+        # messages to open-source environments.
         # Corresponds to the JSON property `messageSet`
         # @return [Google::Apis::RunV2::Proto2BridgeMessageSet]
         attr_accessor :message_set

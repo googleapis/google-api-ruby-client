@@ -30,7 +30,7 @@ module Google
       #    Calendar = Google::Apis::CalendarV3 # Alias the module
       #    service = Calendar::CalendarService.new
       #
-      # @see https://developers.google.com/google-apps/calendar/firstapp
+      # @see https://developers.google.com/workspace/calendar/firstapp
       class CalendarService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://www.$UNIVERSE_DOMAIN$/"
 

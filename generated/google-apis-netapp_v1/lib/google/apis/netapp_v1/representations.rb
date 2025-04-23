@@ -383,6 +383,7 @@ module Google
       class Backup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_region, as: 'backupRegion'
           property :backup_type, as: 'backupType'
           property :chain_storage_bytes, :numeric_string => true, as: 'chainStorageBytes'
           property :create_time, as: 'createTime'
@@ -394,6 +395,7 @@ module Google
           property :source_snapshot, as: 'sourceSnapshot'
           property :source_volume, as: 'sourceVolume'
           property :state, as: 'state'
+          property :volume_region, as: 'volumeRegion'
           property :volume_usage_bytes, :numeric_string => true, as: 'volumeUsageBytes'
         end
       end
@@ -427,10 +429,15 @@ module Google
       class BackupVault
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_region, as: 'backupRegion'
+          property :backup_vault_type, as: 'backupVaultType'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :destination_backup_vault, as: 'destinationBackupVault'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :source_backup_vault, as: 'sourceBackupVault'
+          property :source_region, as: 'sourceRegion'
           property :state, as: 'state'
         end
       end

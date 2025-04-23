@@ -387,8 +387,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns all tasks in the specified task list. Does not return assigned tasks
-        # be default (from Docs, Chat Spaces). A user can have up to 20,000 non-hidden
+        # Returns all tasks in the specified task list. Doesn't return assigned tasks by
+        # default (from Docs, Chat Spaces). A user can have up to 20,000 non-hidden
         # tasks per list and up to 100,000 tasks in total at a time.
         # @param [String] tasklist
         #   Task list identifier.

@@ -148,12 +148,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Macro
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Parameter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,12 +155,6 @@ module Google
       end
       
       class PublishContainerVersionResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Rule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -271,12 +259,8 @@ module Google
           property :fingerprint, as: 'fingerprint'
           collection :folder, as: 'folder', class: Google::Apis::TagmanagerV1::Folder, decorator: Google::Apis::TagmanagerV1::Folder::Representation
       
-          collection :macro, as: 'macro', class: Google::Apis::TagmanagerV1::Macro, decorator: Google::Apis::TagmanagerV1::Macro::Representation
-      
           property :name, as: 'name'
           property :notes, as: 'notes'
-          collection :rule, as: 'rule', class: Google::Apis::TagmanagerV1::Rule, decorator: Google::Apis::TagmanagerV1::Rule::Representation
-      
           collection :tag, as: 'tag', class: Google::Apis::TagmanagerV1::Tag, decorator: Google::Apis::TagmanagerV1::Tag::Representation
       
           collection :trigger, as: 'trigger', class: Google::Apis::TagmanagerV1::Trigger, decorator: Google::Apis::TagmanagerV1::Trigger::Representation
@@ -294,8 +278,6 @@ module Google
           property :container_version_id, as: 'containerVersionId'
           property :deleted, as: 'deleted'
           property :name, as: 'name'
-          property :num_macros, as: 'numMacros'
-          property :num_rules, as: 'numRules'
           property :num_tags, as: 'numTags'
           property :num_triggers, as: 'numTriggers'
           property :num_variables, as: 'numVariables'
@@ -435,26 +417,6 @@ module Google
         end
       end
       
-      class Macro
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
-          property :container_id, as: 'containerId'
-          collection :disabling_rule_id, as: 'disablingRuleId'
-          collection :enabling_rule_id, as: 'enablingRuleId'
-          property :fingerprint, as: 'fingerprint'
-          property :macro_id, as: 'macroId'
-          property :name, as: 'name'
-          property :notes, as: 'notes'
-          collection :parameter, as: 'parameter', class: Google::Apis::TagmanagerV1::Parameter, decorator: Google::Apis::TagmanagerV1::Parameter::Representation
-      
-          property :parent_folder_id, as: 'parentFolderId'
-          property :schedule_end_ms, :numeric_string => true, as: 'scheduleEndMs'
-          property :schedule_start_ms, :numeric_string => true, as: 'scheduleStartMs'
-          property :type, as: 'type'
-        end
-      end
-      
       class Parameter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -477,20 +439,6 @@ module Google
         end
       end
       
-      class Rule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
-          collection :condition, as: 'condition', class: Google::Apis::TagmanagerV1::Condition, decorator: Google::Apis::TagmanagerV1::Condition::Representation
-      
-          property :container_id, as: 'containerId'
-          property :fingerprint, as: 'fingerprint'
-          property :name, as: 'name'
-          property :notes, as: 'notes'
-          property :rule_id, as: 'ruleId'
-        end
-      end
-      
       class SetupTag
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -503,11 +451,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
-          collection :blocking_rule_id, as: 'blockingRuleId'
           collection :blocking_trigger_id, as: 'blockingTriggerId'
           property :container_id, as: 'containerId'
           property :fingerprint, as: 'fingerprint'
-          collection :firing_rule_id, as: 'firingRuleId'
           collection :firing_trigger_id, as: 'firingTriggerId'
           property :live_only, as: 'liveOnly'
           property :name, as: 'name'

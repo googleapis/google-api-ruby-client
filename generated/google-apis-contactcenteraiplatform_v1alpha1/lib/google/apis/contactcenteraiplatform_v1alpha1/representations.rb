@@ -199,6 +199,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :admin_user, as: 'adminUser', class: Google::Apis::ContactcenteraiplatformV1alpha1::AdminUser, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::AdminUser::Representation
       
+          property :advanced_reporting_enabled, as: 'advancedReportingEnabled'
           property :ccaip_managed_users, as: 'ccaipManagedUsers'
           property :create_time, as: 'createTime'
           property :critical, as: 'critical', class: Google::Apis::ContactcenteraiplatformV1alpha1::Critical, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::Critical::Representation

@@ -608,8 +608,6 @@ module Google
           property :num_clients, as: 'numClients'
           property :num_custom_templates, as: 'numCustomTemplates'
           property :num_gtag_configs, as: 'numGtagConfigs'
-          property :num_macros, as: 'numMacros'
-          property :num_rules, as: 'numRules'
           property :num_tags, as: 'numTags'
           property :num_transformations, as: 'numTransformations'
           property :num_triggers, as: 'numTriggers'
@@ -1100,13 +1098,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
-          collection :blocking_rule_id, as: 'blockingRuleId'
           collection :blocking_trigger_id, as: 'blockingTriggerId'
           property :consent_settings, as: 'consentSettings', class: Google::Apis::TagmanagerV2::TagConsentSetting, decorator: Google::Apis::TagmanagerV2::TagConsentSetting::Representation
       
           property :container_id, as: 'containerId'
           property :fingerprint, as: 'fingerprint'
-          collection :firing_rule_id, as: 'firingRuleId'
           collection :firing_trigger_id, as: 'firingTriggerId'
           property :live_only, as: 'liveOnly'
           property :monitoring_metadata, as: 'monitoringMetadata', class: Google::Apis::TagmanagerV2::Parameter, decorator: Google::Apis::TagmanagerV2::Parameter::Representation

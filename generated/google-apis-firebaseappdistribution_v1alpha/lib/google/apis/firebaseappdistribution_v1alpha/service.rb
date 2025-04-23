@@ -117,38 +117,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Provision app distribution for an existing Firebase app, enabling it to
-        # subsequently be used by appdistro.
-        # @param [String] mobilesdk_app_id
-        #   Unique id for a Firebase app of the format: `version`:`project_number`:`
-        #   platform`:`hash(bundle_id)` Example: 1:581234567376:android:aa0a3c7b135e90289
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaProvisionAppResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaProvisionAppResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def provision_app_app(mobilesdk_app_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha/apps/{mobilesdkAppId}', options)
-          command.response_representation = Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaProvisionAppResponse::Representation
-          command.response_class = Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaProvisionAppResponse
-          command.params['mobilesdkAppId'] = mobilesdk_app_id unless mobilesdk_app_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # GET Release by binary upload hash
         # @param [String] mobilesdk_app_id
         #   Unique id for a Firebase app of the format: `version`:`project_number`:`
@@ -388,7 +356,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a release.
+        # Updates automated test configuration.
         # @param [String] name
         #   Identifier. The name of the test configuration resource. Format: `projects/`
         #   project_number`/apps/`app_id`/testConfig`

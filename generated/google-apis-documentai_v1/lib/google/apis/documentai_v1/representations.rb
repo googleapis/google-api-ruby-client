@@ -2150,6 +2150,7 @@ module Google
           property :chunked_document, as: 'chunkedDocument', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentChunkedDocument, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentChunkedDocument::Representation
       
           property :content, :base64 => true, as: 'content'
+          property :docid, as: 'docid'
           property :document_layout, as: 'documentLayout', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentDocumentLayout, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentDocumentLayout::Representation
       
           collection :entities, as: 'entities', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntity, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntity::Representation
@@ -2235,6 +2236,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :block_id, as: 'blockId'
+          property :bounding_box, as: 'boundingBox', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1BoundingPoly, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1BoundingPoly::Representation
+      
           property :list_block, as: 'listBlock', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock::Representation
       
           property :page_span, as: 'pageSpan', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan::Representation

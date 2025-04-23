@@ -1004,6 +1004,74 @@ module Google
         end
       end
       
+      # Response message for the ListMethodGroups method.
+      class ListQuotaGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The methods, current quota usage and limits per each group. The quota is
+        # shared between all methods in the group. The groups are sorted in descending
+        # order based on quota_usage.
+        # Corresponds to the JSON property `quotaGroups`
+        # @return [Array<Google::Apis::CssV1::QuotaGroup>]
+        attr_accessor :quota_groups
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @quota_groups = args[:quota_groups] if args.key?(:quota_groups)
+        end
+      end
+      
+      # The method details per method in the CSS API.
+      class MethodDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The name of the method for example `cssproductsservice.
+        # listcssproducts`.
+        # Corresponds to the JSON property `method`
+        # @return [String]
+        attr_accessor :method_prop
+      
+        # Output only. The path for the method such as `v1/cssproductsservice.
+        # listcssproducts`.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Output only. The sub-API that the method belongs to. In the CSS API, this is
+        # always `css`.
+        # Corresponds to the JSON property `subapi`
+        # @return [String]
+        attr_accessor :subapi
+      
+        # Output only. The API version that the method belongs to.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
+          @path = args[:path] if args.key?(:path)
+          @subapi = args[:subapi] if args.key?(:subapi)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # The price represented as a number and currency.
       class Price
         include Google::Apis::Core::Hashable
@@ -1112,6 +1180,55 @@ module Google
         def update!(**args)
           @unit = args[:unit] if args.key?(:unit)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # The group information for methods in the CSS API. The quota is shared between
+      # all methods in the group. Even if none of the methods within the group have
+      # usage the information for the group is returned.
+      class QuotaGroup
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of all methods group quota applies to.
+        # Corresponds to the JSON property `methodDetails`
+        # @return [Array<Google::Apis::CssV1::MethodDetails>]
+        attr_accessor :method_details
+      
+        # Identifier. The resource name of the quota group. Format: accounts/`account`/
+        # quotas/`group` Example: `accounts/12345678/quotas/css-products-insert` Note:
+        # The `group` part is not guaranteed to follow a specific pattern.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The maximum number of calls allowed per day for the group.
+        # Corresponds to the JSON property `quotaLimit`
+        # @return [Fixnum]
+        attr_accessor :quota_limit
+      
+        # Output only. The maximum number of calls allowed per minute for the group.
+        # Corresponds to the JSON property `quotaMinuteLimit`
+        # @return [Fixnum]
+        attr_accessor :quota_minute_limit
+      
+        # Output only. The current quota usage, meaning the number of calls already made
+        # on a given day to the methods in the group. The daily quota limits reset at at
+        # 12:00 PM midday UTC.
+        # Corresponds to the JSON property `quotaUsage`
+        # @return [Fixnum]
+        attr_accessor :quota_usage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @method_details = args[:method_details] if args.key?(:method_details)
+          @name = args[:name] if args.key?(:name)
+          @quota_limit = args[:quota_limit] if args.key?(:quota_limit)
+          @quota_minute_limit = args[:quota_minute_limit] if args.key?(:quota_minute_limit)
+          @quota_usage = args[:quota_usage] if args.key?(:quota_usage)
         end
       end
       

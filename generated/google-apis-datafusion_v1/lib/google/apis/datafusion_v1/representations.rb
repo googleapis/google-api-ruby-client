@@ -352,6 +352,7 @@ module Google
           property :service_endpoint, as: 'serviceEndpoint'
           property :state, as: 'state'
           property :state_message, as: 'stateMessage'
+          hash :tags, as: 'tags'
           property :tenant_project_id, as: 'tenantProjectId'
           property :type, as: 'type'
           property :update_time, as: 'updateTime'

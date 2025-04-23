@@ -514,6 +514,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WeeklyTimeInterval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Announcement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -606,6 +612,8 @@ module Google
       class Constraints
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disallowed_intervals, as: 'disallowedIntervals', class: Google::Apis::VmwareengineV1::WeeklyTimeInterval, decorator: Google::Apis::VmwareengineV1::WeeklyTimeInterval::Representation
+      
           property :min_hours_day, as: 'minHoursDay'
           property :min_hours_week, as: 'minHoursWeek'
           property :reschedule_date_range, as: 'rescheduleDateRange', class: Google::Apis::VmwareengineV1::Interval, decorator: Google::Apis::VmwareengineV1::Interval::Representation
@@ -1410,6 +1418,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :network, as: 'network'
           property :type, as: 'type'
+        end
+      end
+      
+      class WeeklyTimeInterval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_day, as: 'endDay'
+          property :end_time, as: 'endTime', class: Google::Apis::VmwareengineV1::TimeOfDay, decorator: Google::Apis::VmwareengineV1::TimeOfDay::Representation
+      
+          property :start_day, as: 'startDay'
+          property :start_time, as: 'startTime', class: Google::Apis::VmwareengineV1::TimeOfDay, decorator: Google::Apis::VmwareengineV1::TimeOfDay::Representation
+      
         end
       end
     end

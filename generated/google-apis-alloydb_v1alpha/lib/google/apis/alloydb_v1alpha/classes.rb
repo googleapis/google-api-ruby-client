@@ -140,6 +140,11 @@ module Google
         # @return [String]
         attr_accessor :cluster_uid
       
+        # Output only. Timestamp when the resource finished being created.
+        # Corresponds to the JSON property `createCompletionTime`
+        # @return [String]
+        attr_accessor :create_completion_time
+      
         # Output only. Create time stamp
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -281,6 +286,7 @@ module Google
           @annotations = args[:annotations] if args.key?(:annotations)
           @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
           @cluster_uid = args[:cluster_uid] if args.key?(:cluster_uid)
+          @create_completion_time = args[:create_completion_time] if args.key?(:create_completion_time)
           @create_time = args[:create_time] if args.key?(:create_time)
           @database_version = args[:database_version] if args.key?(:database_version)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
@@ -518,8 +524,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Cluster level configuration parameters related to the Gemini in Databases add-
-        # on.
+        # Deprecated and unused. This field will be removed in the near future.
         # Corresponds to the JSON property `geminiConfig`
         # @return [Google::Apis::AlloydbV1alpha::GeminiClusterConfig]
         attr_accessor :gemini_config
@@ -818,8 +823,7 @@ module Google
         # @return [String]
         attr_accessor :default_pool_size
       
-        # Optional. Deprecated; Prefer 'enabled' as this will be removed soon. TODO(b/
-        # 394996708) move to reserved once the field is removed from the gcloud client.
+        # Optional. Deprecated; Prefer 'enabled' as this will be removed soon.
         # Corresponds to the JSON property `enable`
         # @return [Boolean]
         attr_accessor :enable
@@ -1334,15 +1338,12 @@ module Google
         end
       end
       
-      # Cluster level configuration parameters related to the Gemini in Databases add-
-      # on.
+      # Deprecated and unused. This field will be removed in the near future.
       class GeminiClusterConfig
         include Google::Apis::Core::Hashable
       
-        # Output only. Whether the Gemini in Databases add-on is enabled for the cluster.
-        # It will be true only if the add-on has been enabled for the billing account
-        # corresponding to the cluster. Its status is toggled from the Admin Control
-        # Center (ACC) and cannot be toggled using AlloyDB's APIs.
+        # Output only. Deprecated and unused. This field will be removed in the near
+        # future.
         # Corresponds to the JSON property `entitled`
         # @return [Boolean]
         attr_accessor :entitled
@@ -1358,15 +1359,12 @@ module Google
         end
       end
       
-      # Instance level configuration parameters related to the Gemini in Databases add-
-      # on.
+      # Deprecated and unused. This field will be removed in the near future.
       class GeminiInstanceConfig
         include Google::Apis::Core::Hashable
       
-        # Output only. Whether the Gemini in Databases add-on is enabled for the
-        # instance. It will be true only if the add-on has been enabled for the billing
-        # account corresponding to the instance. Its status is toggled from the Admin
-        # Control Center (ACC) and cannot be toggled using AlloyDB's APIs.
+        # Output only. Deprecated and unused. This field will be removed in the near
+        # future.
         # Corresponds to the JSON property `entitled`
         # @return [Boolean]
         attr_accessor :entitled
@@ -1712,8 +1710,7 @@ module Google
         # @return [String]
         attr_accessor :gce_zone
       
-        # Instance level configuration parameters related to the Gemini in Databases add-
-        # on.
+        # Deprecated and unused. This field will be removed in the near future.
         # Corresponds to the JSON property `geminiConfig`
         # @return [Google::Apis::AlloydbV1alpha::GeminiInstanceConfig]
         attr_accessor :gemini_config
@@ -2658,7 +2655,16 @@ module Google
         # @return [String]
         attr_accessor :consumer_network
       
-        # Output only. The status of the service connection policy.
+        # Output only. The status of the service connection policy. Possible values: "
+        # STATE_UNSPECIFIED" - Default state, when Connection Map is created initially. "
+        # VALID" - Set when policy and map configuration is valid, and their matching
+        # can lead to allowing creation of PSC Connections subject to other constraints
+        # like connections limit. "CONNECTION_POLICY_MISSING" - No Service Connection
+        # Policy found for this network and Service Class "POLICY_LIMIT_REACHED" -
+        # Service Connection Policy limit reached for this network and Service Class "
+        # CONSUMER_INSTANCE_PROJECT_NOT_ALLOWLISTED" - The consumer instance project is
+        # not in AllowedGoogleProducersResourceHierarchyLevels of the matching
+        # ServiceConnectionPolicy.
         # Corresponds to the JSON property `consumerNetworkStatus`
         # @return [String]
         attr_accessor :consumer_network_status
@@ -2674,7 +2680,14 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
-        # Output only. The status of the PSC service automation connection.
+        # Output only. The status of the PSC service automation connection. Possible
+        # values: "STATE_UNSPECIFIED" - An invalid state as the default case. "ACTIVE" -
+        # The connection has been created successfully. "FAILED" - The connection is not
+        # functional since some resources on the connection fail to be created. "
+        # CREATING" - The connection is being created. "DELETING" - The connection is
+        # being deleted. "CREATE_REPAIRING" - The connection is being repaired to
+        # complete creation. "DELETE_REPAIRING" - The connection is being repaired to
+        # complete deletion.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -2973,7 +2986,7 @@ module Google
       end
       
       # Message for restoring a Cluster from a backup or another cluster at a given
-      # point in time.
+      # point in time. NEXT_ID: 11
       class RestoreClusterRequest
         include Google::Apis::Core::Hashable
       

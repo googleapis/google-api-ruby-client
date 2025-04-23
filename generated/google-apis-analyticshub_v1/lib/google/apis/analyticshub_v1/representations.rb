@@ -22,12 +22,6 @@ module Google
   module Apis
     module AnalyticshubV1
       
-      class AnalyticsHubSubscriptionInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -400,14 +394,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AnalyticsHubSubscriptionInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :listing, as: 'listing'
-          property :subscription, as: 'subscription'
-        end
-      end
-      
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -438,7 +424,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :drop_unknown_fields, as: 'dropUnknownFields'
           property :service_account_email, as: 'serviceAccountEmail'
-          property :state, as: 'state'
           property :table, as: 'table'
           property :use_table_schema, as: 'useTableSchema'
           property :use_topic_schema, as: 'useTopicSchema'
@@ -480,7 +465,6 @@ module Google
           property :max_duration, as: 'maxDuration'
           property :max_messages, :numeric_string => true, as: 'maxMessages'
           property :service_account_email, as: 'serviceAccountEmail'
-          property :state, as: 'state'
           property :text_config, as: 'textConfig', class: Google::Apis::AnalyticshubV1::TextConfig, decorator: Google::Apis::AnalyticshubV1::TextConfig::Representation
       
         end
@@ -635,8 +619,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ack_deadline_seconds, as: 'ackDeadlineSeconds'
-          property :analytics_hub_subscription_info, as: 'analyticsHubSubscriptionInfo', class: Google::Apis::AnalyticshubV1::AnalyticsHubSubscriptionInfo, decorator: Google::Apis::AnalyticshubV1::AnalyticsHubSubscriptionInfo::Representation
-      
           property :bigquery_config, as: 'bigqueryConfig', class: Google::Apis::AnalyticshubV1::BigQueryConfig, decorator: Google::Apis::AnalyticshubV1::BigQueryConfig::Representation
       
           property :cloud_storage_config, as: 'cloudStorageConfig', class: Google::Apis::AnalyticshubV1::CloudStorageConfig, decorator: Google::Apis::AnalyticshubV1::CloudStorageConfig::Representation
@@ -659,8 +641,6 @@ module Google
           property :retain_acked_messages, as: 'retainAckedMessages'
           property :retry_policy, as: 'retryPolicy', class: Google::Apis::AnalyticshubV1::RetryPolicy, decorator: Google::Apis::AnalyticshubV1::RetryPolicy::Representation
       
-          property :state, as: 'state'
-          property :topic_message_retention_duration, as: 'topicMessageRetentionDuration'
         end
       end
       

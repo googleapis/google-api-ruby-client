@@ -1868,6 +1868,12 @@ module Google
         # @return [String]
         attr_accessor :tag_template_migration
       
+        # The time when the Tag Template migration was enabled. If the Tag Template
+        # migration is not enabled, this field is not set.
+        # Corresponds to the JSON property `templateMigrationEnabledTime`
+        # @return [String]
+        attr_accessor :template_migration_enabled_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1876,6 +1882,7 @@ module Google
         def update!(**args)
           @catalog_ui_experience = args[:catalog_ui_experience] if args.key?(:catalog_ui_experience)
           @tag_template_migration = args[:tag_template_migration] if args.key?(:tag_template_migration)
+          @template_migration_enabled_time = args[:template_migration_enabled_time] if args.key?(:template_migration_enabled_time)
         end
       end
       

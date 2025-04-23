@@ -30,7 +30,7 @@ module Google
       #    Meet = Google::Apis::MeetV2 # Alias the module
       #    service = Meet::MeetService.new
       #
-      # @see https://developers.google.com/meet/api
+      # @see https://developers.google.com/workspace/meet/api
       class MeetService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://meet.$UNIVERSE_DOMAIN$/"
 
@@ -533,14 +533,14 @@ module Google
         end
         
         # Ends an active conference (if there's one). For an example, see [End active
-        # conference](https://developers.google.com/meet/api/guides/meeting-spaces#end-
-        # active-conference).
+        # conference](https://developers.google.com/workspace/meet/api/guides/meeting-
+        # spaces#end-active-conference).
         # @param [String] name
         #   Required. Resource name of the space. Format: `spaces/`space``. ``space`` is
         #   the resource identifier for the space. It's a unique, server-generated ID and
         #   is case sensitive. For example, `jQCFfuBOdN5z`. For more information, see [How
-        #   Meet identifies a meeting space](https://developers.google.com/meet/api/guides/
-        #   meeting-spaces#identify-meeting-space).
+        #   Meet identifies a meeting space](https://developers.google.com/workspace/meet/
+        #   api/guides/meeting-spaces#identify-meeting-space).
         # @param [Google::Apis::MeetV2::EndActiveConferenceRequest] end_active_conference_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -572,8 +572,8 @@ module Google
         end
         
         # Gets details about a meeting space. For an example, see [Get a meeting space](
-        # https://developers.google.com/meet/api/guides/meeting-spaces#get-meeting-space)
-        # .
+        # https://developers.google.com/workspace/meet/api/guides/meeting-spaces#get-
+        # meeting-space).
         # @param [String] name
         #   Required. Resource name of the space. Format: `spaces/`space`` or `spaces/`
         #   meetingCode``. ``space`` is the resource identifier for the space. It's a
@@ -585,8 +585,8 @@ module Google
         #   meeting spaces in the future. Generally, a `meetingCode` expires 365 days
         #   after last use. For more information, see [Learn about meeting codes in Google
         #   Meet](https://support.google.com/meet/answer/10710509). For more information,
-        #   see [How Meet identifies a meeting space](https://developers.google.com/meet/
-        #   api/guides/meeting-spaces#identify-meeting-space).
+        #   see [How Meet identifies a meeting space](https://developers.google.com/
+        #   workspace/meet/api/guides/meeting-spaces#identify-meeting-space).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -615,14 +615,14 @@ module Google
         end
         
         # Updates details about a meeting space. For an example, see [Update a meeting
-        # space](https://developers.google.com/meet/api/guides/meeting-spaces#update-
-        # meeting-space).
+        # space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#
+        # update-meeting-space).
         # @param [String] name
         #   Immutable. Resource name of the space. Format: `spaces/`space``. ``space`` is
         #   the resource identifier for the space. It's a unique, server-generated ID and
         #   is case sensitive. For example, `jQCFfuBOdN5z`. For more information, see [How
-        #   Meet identifies a meeting space](https://developers.google.com/meet/api/guides/
-        #   meeting-spaces#identify-meeting-space).
+        #   Meet identifies a meeting space](https://developers.google.com/workspace/meet/
+        #   api/guides/meeting-spaces#identify-meeting-space).
         # @param [Google::Apis::MeetV2::Space] space_object
         # @param [String] update_mask
         #   Optional. Field mask used to specify the fields to be updated in the space. If

@@ -2906,6 +2906,7 @@ module Google
       # Represents a conversation, resource, and label provided by the user. Can take
       # the form of a string label or a QaAnswer label. QaAnswer labels are used for
       # Quality AI example conversations. String labels are used for Topic Modeling.
+      # AgentAssistSummary labels are used for Agent Assist Summarization.
       class GoogleCloudContactcenterinsightsV1FeedbackLabel
         include Google::Apis::Core::Hashable
       
@@ -2919,9 +2920,11 @@ module Google
         # @return [String]
         attr_accessor :label
       
-        # Resource name of the resource to be labeled. Supported resources: -
-        # qaScorecards/`scorecard`/revisions/`revision`/qaQuestions/`question` -
-        # issueModels/`issue_model`
+        # Name of the resource to be labeled. Supported resources are: * `projects/`
+        # project`/locations/`location`/qaScorecards/`scorecard`/revisions/`revision`/
+        # qaQuestions/`question`` * `projects/`project`/locations/`location`/issueModels/
+        # `issue_model`` * `projects/`project`/locations/`location`/generators/`
+        # generator_id``
         # Corresponds to the JSON property `labeledResource`
         # @return [String]
         attr_accessor :labeled_resource
@@ -8213,6 +8216,7 @@ module Google
       # Represents a conversation, resource, and label provided by the user. Can take
       # the form of a string label or a QaAnswer label. QaAnswer labels are used for
       # Quality AI example conversations. String labels are used for Topic Modeling.
+      # AgentAssistSummary labels are used for Agent Assist Summarization.
       class GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel
         include Google::Apis::Core::Hashable
       
@@ -8226,9 +8230,11 @@ module Google
         # @return [String]
         attr_accessor :label
       
-        # Resource name of the resource to be labeled. Supported resources: -
-        # qaScorecards/`scorecard`/revisions/`revision`/qaQuestions/`question` -
-        # issueModels/`issue_model`
+        # Name of the resource to be labeled. Supported resources are: * `projects/`
+        # project`/locations/`location`/qaScorecards/`scorecard`/revisions/`revision`/
+        # qaQuestions/`question`` * `projects/`project`/locations/`location`/issueModels/
+        # `issue_model`` * `projects/`project`/locations/`location`/generators/`
+        # generator_id``
         # Corresponds to the JSON property `labeledResource`
         # @return [String]
         attr_accessor :labeled_resource

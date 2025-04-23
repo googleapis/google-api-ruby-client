@@ -3839,7 +3839,8 @@ module Google
         # @return [String]
         attr_accessor :app_family
       
-        # ID of the developer app.
+        # ID of the developer app. This ID is not user specified but is automatically
+        # generated on app creation. appId is a UUID.
         # Corresponds to the JSON property `appId`
         # @return [String]
         attr_accessor :app_id

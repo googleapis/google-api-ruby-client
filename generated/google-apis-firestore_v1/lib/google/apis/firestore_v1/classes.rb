@@ -1509,6 +1509,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Immutable. The edition of the database.
+        # Corresponds to the JSON property `databaseEdition`
+        # @return [String]
+        attr_accessor :database_edition
+      
         # State of delete protection for the database.
         # Corresponds to the JSON property `deleteProtectionState`
         # @return [String]
@@ -1536,6 +1541,19 @@ module Google
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
+      
+        # Output only. Background: Free tier is the ability of a Firestore database to
+        # use a small amount of resources every day without being charged. Once usage
+        # exceeds the free tier limit further usage is charged. Whether this database
+        # can make use of the free tier. Only one database per project can be eligible
+        # for the free tier. The first (or next) database that is created in a project
+        # without a free tier database will be marked as eligible for the free tier.
+        # Databases that are created while there is a free tier database will not be
+        # eligible for the free tier.
+        # Corresponds to the JSON property `freeTier`
+        # @return [Boolean]
+        attr_accessor :free_tier
+        alias_method :free_tier?, :free_tier
       
         # Output only. The key_prefix for this database. This key_prefix is used, in
         # combination with the project ID ("~") to construct the application ID that is
@@ -1574,6 +1592,13 @@ module Google
         # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SourceInfo]
         attr_accessor :source_info
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: "123/environment": "production", "123/costCenter": "
+        # marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # The type of the database. See https://cloud.google.com/datastore/docs/
         # firestore-or-datastore for information about how to choose.
         # Corresponds to the JSON property `type`
@@ -1611,16 +1636,19 @@ module Google
           @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
           @concurrency_mode = args[:concurrency_mode] if args.key?(:concurrency_mode)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @database_edition = args[:database_edition] if args.key?(:database_edition)
           @delete_protection_state = args[:delete_protection_state] if args.key?(:delete_protection_state)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @earliest_version_time = args[:earliest_version_time] if args.key?(:earliest_version_time)
           @etag = args[:etag] if args.key?(:etag)
+          @free_tier = args[:free_tier] if args.key?(:free_tier)
           @key_prefix = args[:key_prefix] if args.key?(:key_prefix)
           @location_id = args[:location_id] if args.key?(:location_id)
           @name = args[:name] if args.key?(:name)
           @point_in_time_recovery_enablement = args[:point_in_time_recovery_enablement] if args.key?(:point_in_time_recovery_enablement)
           @previous_id = args[:previous_id] if args.key?(:previous_id)
           @source_info = args[:source_info] if args.key?(:source_info)
+          @tags = args[:tags] if args.key?(:tags)
           @type = args[:type] if args.key?(:type)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -1630,6 +1658,32 @@ module Google
       
       # Metadata related to the delete database operation.
       class GoogleFirestoreAdminV1DeleteDatabaseMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The request for FirestoreAdmin.DisableUserCreds.
+      class GoogleFirestoreAdminV1DisableUserCredsRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The request for FirestoreAdmin.EnableUserCreds.
+      class GoogleFirestoreAdminV1EnableUserCredsRequest
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -2079,6 +2133,11 @@ module Google
         # @return [String]
         attr_accessor :api_scope
       
+        # Immutable. The density configuration of the index.
+        # Corresponds to the JSON property `density`
+        # @return [String]
+        attr_accessor :density
+      
         # The fields supported by this index. For composite indexes, this requires a
         # minimum of 2 and a maximum of 100 fields. The last field entry is always for
         # the field path `__name__`. If, on creation, `__name__` was not specified as
@@ -2090,6 +2149,17 @@ module Google
         # Corresponds to the JSON property `fields`
         # @return [Array<Google::Apis::FirestoreV1::GoogleFirestoreAdminV1IndexField>]
         attr_accessor :fields
+      
+        # Optional. Whether the index is multikey. By default, the index is not multikey.
+        # For non-multikey indexes, none of the paths in the index definition reach or
+        # traverse an array, except via an explicit array index. For multikey indexes,
+        # at most one of the paths in the index definition reach or traverse an array,
+        # except via an explicit array index. Violations will result in errors. Note
+        # this field only applies to index with MONGODB_COMPATIBLE_API ApiScope.
+        # Corresponds to the JSON property `multikey`
+        # @return [Boolean]
+        attr_accessor :multikey
+        alias_method :multikey?, :multikey
       
         # Output only. A server defined name for this index. The form of this name for
         # composite indexes will be: `projects/`project_id`/databases/`database_id`/
@@ -2109,6 +2179,11 @@ module Google
         # @return [String]
         attr_accessor :query_scope
       
+        # Optional. The number of shards for the index.
+        # Corresponds to the JSON property `shardCount`
+        # @return [Fixnum]
+        attr_accessor :shard_count
+      
         # Output only. The serving state of the index.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -2121,9 +2196,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @api_scope = args[:api_scope] if args.key?(:api_scope)
+          @density = args[:density] if args.key?(:density)
           @fields = args[:fields] if args.key?(:fields)
+          @multikey = args[:multikey] if args.key?(:multikey)
           @name = args[:name] if args.key?(:name)
           @query_scope = args[:query_scope] if args.key?(:query_scope)
+          @shard_count = args[:shard_count] if args.key?(:shard_count)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -2427,6 +2505,25 @@ module Google
         end
       end
       
+      # The response for FirestoreAdmin.ListUserCreds.
+      class GoogleFirestoreAdminV1ListUserCredsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The user creds for the database.
+        # Corresponds to the JSON property `userCreds`
+        # @return [Array<Google::Apis::FirestoreV1::GoogleFirestoreAdminV1UserCreds>]
+        attr_accessor :user_creds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @user_creds = args[:user_creds] if args.key?(:user_creds)
+        end
+      end
+      
       # The metadata message for google.cloud.location.Location.metadata.
       class GoogleFirestoreAdminV1LocationMetadata
         include Google::Apis::Core::Hashable
@@ -2463,6 +2560,39 @@ module Google
         def update!(**args)
           @completed_work = args[:completed_work] if args.key?(:completed_work)
           @estimated_work = args[:estimated_work] if args.key?(:estimated_work)
+        end
+      end
+      
+      # The request for FirestoreAdmin.ResetUserPassword.
+      class GoogleFirestoreAdminV1ResetUserPasswordRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Describes a Resource Identity principal.
+      class GoogleFirestoreAdminV1ResourceIdentity
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Principal identifier string. See: https://cloud.google.com/iam/
+        # docs/principal-identifiers
+        # Corresponds to the JSON property `principal`
+        # @return [String]
+        attr_accessor :principal
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @principal = args[:principal] if args.key?(:principal)
         end
       end
       
@@ -2544,6 +2674,13 @@ module Google
         # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1EncryptionConfig]
         attr_accessor :encryption_config
       
+        # Optional. Immutable. Tags to be bound to the restored database. The tags
+        # should be provided in the format of `tagKeys/`tag_key_id` -> tagValues/`
+        # tag_value_id``.
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2553,6 +2690,7 @@ module Google
           @backup = args[:backup] if args.key?(:backup)
           @database_id = args[:database_id] if args.key?(:database_id)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
@@ -2681,6 +2819,58 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A Cloud Firestore User Creds.
+      class GoogleFirestoreAdminV1UserCreds
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the user creds were created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Identifier. The resource name of the UserCreds. Format: `projects/`project`/
+        # databases/`database`/userCreds/`user_creds``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Describes a Resource Identity principal.
+        # Corresponds to the JSON property `resourceIdentity`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ResourceIdentity]
+        attr_accessor :resource_identity
+      
+        # Output only. The plaintext server-generated password for the user creds. Only
+        # populated in responses for CreateUserCreds and ResetUserPassword.
+        # Corresponds to the JSON property `securePassword`
+        # @return [String]
+        attr_accessor :secure_password
+      
+        # Output only. Whether the user creds are enabled or disabled. Defaults to
+        # ENABLED on creation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The time the user creds were last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @resource_identity = args[:resource_identity] if args.key?(:resource_identity)
+          @secure_password = args[:secure_password] if args.key?(:secure_password)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       

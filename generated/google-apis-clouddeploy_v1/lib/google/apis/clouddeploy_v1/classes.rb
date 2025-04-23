@@ -1017,7 +1017,8 @@ module Google
         # @return [Google::Apis::ClouddeployV1::Predeploy]
         attr_accessor :predeploy
       
-        # Optional. Whether to run verify tests after each percentage deployment.
+        # Optional. Whether to run verify tests after each percentage deployment via `
+        # skaffold verify`.
         # Corresponds to the JSON property `verify`
         # @return [Boolean]
         attr_accessor :verify
@@ -1977,7 +1978,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The weak etag of the `Automation` resource. This checksum is computed by the
+        # The weak etag of the `DeployPolicy` resource. This checksum is computed by the
         # server based on the value of other fields, and may be sent on update and
         # delete requests to ensure the client has an up-to-date value before proceeding.
         # Corresponds to the JSON property `etag`
@@ -3557,7 +3558,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :profiles
       
-        # Optional. Whether to run verify tests after the deployment.
+        # Optional. Whether to run verify tests after the deployment via `skaffold
+        # verify`.
         # Corresponds to the JSON property `verify`
         # @return [Boolean]
         attr_accessor :verify
@@ -5675,7 +5677,7 @@ module Google
         # @return [Google::Apis::ClouddeployV1::Predeploy]
         attr_accessor :predeploy
       
-        # Optional. Whether to verify a deployment.
+        # Optional. Whether to verify a deployment via `skaffold verify`.
         # Corresponds to the JSON property `verify`
         # @return [Boolean]
         attr_accessor :verify

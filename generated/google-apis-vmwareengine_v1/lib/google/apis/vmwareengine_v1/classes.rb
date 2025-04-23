@@ -470,6 +470,13 @@ module Google
       class Constraints
         include Google::Apis::Core::Hashable
       
+        # Output only. Output Only. A list of intervals in which maintenance windows are
+        # not allowed. Any time window that overlaps with any of these intervals will be
+        # considered invalid.
+        # Corresponds to the JSON property `disallowedIntervals`
+        # @return [Array<Google::Apis::VmwareengineV1::WeeklyTimeInterval>]
+        attr_accessor :disallowed_intervals
+      
         # Output only. Minimum number of hours must be allotted for the upgrade
         # activities for each selected day. This is a minimum; the upgrade schedule can
         # allot more hours for the given day.
@@ -498,6 +505,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disallowed_intervals = args[:disallowed_intervals] if args.key?(:disallowed_intervals)
           @min_hours_day = args[:min_hours_day] if args.key?(:min_hours_day)
           @min_hours_week = args[:min_hours_week] if args.key?(:min_hours_week)
           @reschedule_date_range = args[:reschedule_date_range] if args.key?(:reschedule_date_range)
@@ -3812,6 +3820,48 @@ module Google
         def update!(**args)
           @network = args[:network] if args.key?(:network)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Represents a time interval, spanning across days of the week. Until local
+      # timezones are supported, this interval is in UTC.
+      class WeeklyTimeInterval
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The day on which the interval ends. Can be same as start day.
+        # Corresponds to the JSON property `endDay`
+        # @return [String]
+        attr_accessor :end_day
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `endTime`
+        # @return [Google::Apis::VmwareengineV1::TimeOfDay]
+        attr_accessor :end_time
+      
+        # Output only. The day on which the interval starts.
+        # Corresponds to the JSON property `startDay`
+        # @return [String]
+        attr_accessor :start_day
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `startTime`
+        # @return [Google::Apis::VmwareengineV1::TimeOfDay]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_day = args[:end_day] if args.key?(:end_day)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_day = args[:start_day] if args.key?(:start_day)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
     end

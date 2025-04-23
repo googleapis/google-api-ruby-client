@@ -101,6 +101,13 @@ module Google
         # @return [Google::Apis::DigitalassetlinksV1::Asset]
         attr_accessor :default_target
       
+        # Same configuration as in CheckRequest; all statement checks will use the same
+        # configuration.
+        # Corresponds to the JSON property `returnRelationExtensions`
+        # @return [Boolean]
+        attr_accessor :return_relation_extensions
+        alias_method :return_relation_extensions?, :return_relation_extensions
+      
         # List of statements to check. For each statement, you can omit a field if the
         # corresponding default_* field below was supplied. Minimum 1 statement; maximum
         # 1,000 statements. Any additional statements will be ignored.
@@ -117,6 +124,7 @@ module Google
           @default_relation = args[:default_relation] if args.key?(:default_relation)
           @default_source = args[:default_source] if args.key?(:default_source)
           @default_target = args[:default_target] if args.key?(:default_target)
+          @return_relation_extensions = args[:return_relation_extensions] if args.key?(:return_relation_extensions)
           @statements = args[:statements] if args.key?(:statements)
         end
       end
@@ -214,6 +222,15 @@ module Google
         # @return [String]
         attr_accessor :max_age
       
+        # Statements may specify relation level extensions/payloads to express more
+        # details when declaring permissions to grant from the source asset to the
+        # target asset. When requested, the API will return relation_extensions
+        # specified in any and all statements linking the requested source and target
+        # assets by the relation specified in the request.
+        # Corresponds to the JSON property `relationExtensions`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :relation_extensions
+      
         def initialize(**args)
            update!(**args)
         end
@@ -224,6 +241,7 @@ module Google
           @error_code = args[:error_code] if args.key?(:error_code)
           @linked = args[:linked] if args.key?(:linked)
           @max_age = args[:max_age] if args.key?(:max_age)
+          @relation_extensions = args[:relation_extensions] if args.key?(:relation_extensions)
         end
       end
       
@@ -292,6 +310,22 @@ module Google
         # @return [String]
         attr_accessor :relation
       
+        # Statements may specify relation level extensions/payloads to express more
+        # details when declaring permissions to grant from the source asset to the
+        # target asset. These relation extensions should be specified in the `
+        # relation_extensions` object, keyed by the relation type they're associated
+        # with. ` relation: ["delegate_permission/common.handle_all_urls"], target: `...`
+        # , relation_extensions: ` "delegate_permission/common.handle_all_urls": ` ...
+        # handle_all_urls specific payload specified here... ` ` ` When requested, and
+        # specified in the statement file, the API will return relation_extensions
+        # associated with the statement's relation type. i.e. the API will only return
+        # relation_extensions specified for "delegate_permission/common.handle_all_urls"
+        # if this statement object's relation type is "delegate_permission/common.
+        # handle_all_urls".
+        # Corresponds to the JSON property `relationExtensions`
+        # @return [Hash<String,Object>]
+        attr_accessor :relation_extensions
+      
         # Uniquely identifies an asset. A digital asset is an identifiable and
         # addressable online entity that typically provides some service or content.
         # Examples of assets are websites, Android apps, Twitter feeds, and Plus Pages.
@@ -313,6 +347,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @relation = args[:relation] if args.key?(:relation)
+          @relation_extensions = args[:relation_extensions] if args.key?(:relation_extensions)
           @source = args[:source] if args.key?(:source)
           @target = args[:target] if args.key?(:target)
         end

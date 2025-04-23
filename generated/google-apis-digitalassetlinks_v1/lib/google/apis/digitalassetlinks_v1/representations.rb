@@ -109,6 +109,7 @@ module Google
       
           property :default_target, as: 'defaultTarget', class: Google::Apis::DigitalassetlinksV1::Asset, decorator: Google::Apis::DigitalassetlinksV1::Asset::Representation
       
+          property :return_relation_extensions, as: 'returnRelationExtensions'
           collection :statements, as: 'statements', class: Google::Apis::DigitalassetlinksV1::StatementTemplate, decorator: Google::Apis::DigitalassetlinksV1::StatementTemplate::Representation
       
         end
@@ -137,6 +138,7 @@ module Google
           collection :error_code, as: 'errorCode'
           property :linked, as: 'linked'
           property :max_age, as: 'maxAge'
+          collection :relation_extensions, as: 'relationExtensions'
         end
       end
       
@@ -155,6 +157,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :relation, as: 'relation'
+          hash :relation_extensions, as: 'relationExtensions'
           property :source, as: 'source', class: Google::Apis::DigitalassetlinksV1::Asset, decorator: Google::Apis::DigitalassetlinksV1::Asset::Representation
       
           property :target, as: 'target', class: Google::Apis::DigitalassetlinksV1::Asset, decorator: Google::Apis::DigitalassetlinksV1::Asset::Representation

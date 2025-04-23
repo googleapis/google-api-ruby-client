@@ -4207,6 +4207,11 @@ module Google
         # @return [String]
         attr_accessor :opportunity
       
+        # Resource name of the partner. Format: partners/`partner`
+        # Corresponds to the JSON property `partner`
+        # @return [String]
+        attr_accessor :partner
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4215,6 +4220,7 @@ module Google
         def update!(**args)
           @event_type = args[:event_type] if args.key?(:event_type)
           @opportunity = args[:opportunity] if args.key?(:opportunity)
+          @partner = args[:partner] if args.key?(:partner)
         end
       end
       

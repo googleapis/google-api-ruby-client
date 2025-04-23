@@ -7350,7 +7350,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/
-        # attestation/blob/main/spec/field_types.md#DigestSet
+        # attestation/blob/main/spec/v1/digest_set.md.
         # Corresponds to the JSON property `digest`
         # @return [Hash<String,String>]
         attr_accessor :digest

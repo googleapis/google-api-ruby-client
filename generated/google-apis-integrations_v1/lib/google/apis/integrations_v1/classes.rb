@@ -5525,7 +5525,7 @@ module Google
         # @return [String]
         attr_accessor :envoy_image_location
       
-        # Eventing Configuration of a connection
+        # Eventing Configuration of a connection next: 18
         # Corresponds to the JSON property `eventingConfig`
         # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingConfig]
         attr_accessor :eventing_config
@@ -5896,7 +5896,7 @@ module Google
         end
       end
       
-      # Eventing Configuration of a connection
+      # Eventing Configuration of a connection next: 18
       class GoogleCloudConnectorsV1EventingConfig
         include Google::Apis::Core::Hashable
       
@@ -5953,6 +5953,11 @@ module Google
         # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1DestinationConfig]
         attr_accessor :registration_destination_config
       
+        # SSL Configuration of a connection
+        # Corresponds to the JSON property `sslConfig`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1SslConfig]
+        attr_accessor :ssl_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5969,6 +5974,7 @@ module Google
           @private_connectivity_enabled = args[:private_connectivity_enabled] if args.key?(:private_connectivity_enabled)
           @proxy_destination_config = args[:proxy_destination_config] if args.key?(:proxy_destination_config)
           @registration_destination_config = args[:registration_destination_config] if args.key?(:registration_destination_config)
+          @ssl_config = args[:ssl_config] if args.key?(:ssl_config)
         end
       end
       
@@ -6683,12 +6689,12 @@ module Google
         # @return [String]
         attr_accessor :override_valid_time
       
-        # The reason / details of the current status.
+        # Output only. The reason / details of the current status.
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
       
-        # The status of the auth config.
+        # Output only. The status of the auth config.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -10460,15 +10466,15 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Indicated if a channel has any active integrations referencing it. Set to
-        # false when the channel is created, and set to true if there is any integration
-        # published with the channel configured in it.
+        # Output only. Indicated if a channel has any active integrations referencing it.
+        # Set to false when the channel is created, and set to true if there is any
+        # integration published with the channel configured in it.
         # Corresponds to the JSON property `isActive`
         # @return [Boolean]
         attr_accessor :is_active
         alias_method :is_active?, :is_active
       
-        # Last sfdc messsage replay id for channel
+        # Output only. Last sfdc messsage replay id for channel
         # Corresponds to the JSON property `lastReplayId`
         # @return [String]
         attr_accessor :last_replay_id
@@ -10537,8 +10543,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # URL used for API calls after authentication (the login authority is configured
-        # within the referenced AuthConfig).
+        # Optional. URL used for API calls after authentication (the login authority is
+        # configured within the referenced AuthConfig).
         # Corresponds to the JSON property `serviceAuthority`
         # @return [String]
         attr_accessor :service_authority

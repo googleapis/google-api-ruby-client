@@ -385,6 +385,12 @@ module Google
       class QueryHistoryRequest
         include Google::Apis::Core::Hashable
       
+        # The number of collection periods to return. If not specified, the default is
+        # 25. If present, must be in the range [1, 40].
+        # Corresponds to the JSON property `collectionPeriodCount`
+        # @return [Fixnum]
+        attr_accessor :collection_period_count
+      
         # The form factor is a query dimension that specifies the device class that the
         # record's data should belong to. Note: If no form factor is specified, then a
         # special record with aggregated data over all form factors will be returned.
@@ -419,6 +425,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @collection_period_count = args[:collection_period_count] if args.key?(:collection_period_count)
           @form_factor = args[:form_factor] if args.key?(:form_factor)
           @metrics = args[:metrics] if args.key?(:metrics)
           @origin = args[:origin] if args.key?(:origin)

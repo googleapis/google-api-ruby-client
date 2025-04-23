@@ -1,5 +1,9 @@
 # Release history for google-apis-digitalassetlinks_v1
 
+### v0.20.0 (2025-04-13)
+
+* Regenerated from discovery document revision 20250405
+
 ### v0.19.0 (2025-02-26)
 
 * Regenerated from discovery document revision 20250211

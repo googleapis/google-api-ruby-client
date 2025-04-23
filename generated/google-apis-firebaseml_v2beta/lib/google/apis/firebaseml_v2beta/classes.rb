@@ -499,8 +499,8 @@ module Google
       class GoogleCloudAiplatformV1beta1FunctionCall
         include Google::Apis::Core::Hashable
       
-        # Optional. Required. The function parameters and values in JSON object format.
-        # See [FunctionDeclaration.parameters] for parameter details.
+        # Optional. The function parameters and values in JSON object format. See [
+        # FunctionDeclaration.parameters] for parameter details.
         # Corresponds to the JSON property `args`
         # @return [Hash<String,Object>]
         attr_accessor :args
@@ -1097,8 +1097,9 @@ module Google
       class GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigManualRoutingMode
         include Google::Apis::Core::Hashable
       
-        # The model name to use. Only the public LLM models are accepted. e.g. 'gemini-1.
-        # 5-pro-001'.
+        # The model name to use. Only the public LLM models are accepted. See [Supported
+        # models](https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/
+        # inference#supported-models).
         # Corresponds to the JSON property `modelName`
         # @return [String]
         attr_accessor :model_name
@@ -1117,13 +1118,6 @@ module Google
       class GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Indicates whether to enable thinking mode. If true, the model will
-        # enable thinking mode.
-        # Corresponds to the JSON property `enableThinking`
-        # @return [Boolean]
-        attr_accessor :enable_thinking
-        alias_method :enable_thinking?, :enable_thinking
-      
         # Optional. Indicates the thinking budget in tokens. This is only applied when
         # enable_thinking is true.
         # Corresponds to the JSON property `thinkingBudget`
@@ -1136,7 +1130,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @enable_thinking = args[:enable_thinking] if args.key?(:enable_thinking)
           @thinking_budget = args[:thinking_budget] if args.key?(:thinking_budget)
         end
       end
@@ -1710,7 +1703,9 @@ module Google
       class GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingLlmRanker
         include Google::Apis::Core::Hashable
       
-        # Optional. The model name used for ranking. Format: `gemini-1.5-pro`
+        # Optional. The model name used for ranking. See [Supported models](https://
+        # cloud.google.com/vertex-ai/generative-ai/docs/model-reference/inference#
+        # supported-models).
         # Corresponds to the JSON property `modelName`
         # @return [String]
         attr_accessor :model_name
@@ -2143,6 +2138,11 @@ module Google
       class GoogleCloudAiplatformV1beta1SpeechConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Language code (ISO 639. e.g. en-US) for the speech synthesization.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
         # The configuration for the voice to use.
         # Corresponds to the JSON property `voiceConfig`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VoiceConfig]
@@ -2154,6 +2154,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @language_code = args[:language_code] if args.key?(:language_code)
           @voice_config = args[:voice_config] if args.key?(:voice_config)
         end
       end

@@ -229,6 +229,7 @@ module Google
       class QueryHistoryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :collection_period_count, as: 'collectionPeriodCount'
           property :form_factor, as: 'formFactor'
           collection :metrics, as: 'metrics'
           property :origin, as: 'origin'

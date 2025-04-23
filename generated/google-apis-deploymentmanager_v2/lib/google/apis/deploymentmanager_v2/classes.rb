@@ -1084,6 +1084,12 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
+        # This field is used internally by the Autoscaler team and should not be
+        # promoted to "alpha/beta/v1".
+        # Corresponds to the JSON property `setAutoscalerLinkOperationMetadata`
+        # @return [Google::Apis::DeploymentmanagerV2::SetAutoscalerLinkOperationMetadata]
+        attr_accessor :set_autoscaler_link_operation_metadata
+      
         # [Output Only] If the operation is for projects.setCommonInstanceMetadata, this
         # field will contain information on all underlying zonal actions and their state.
         # Corresponds to the JSON property `setCommonInstanceMetadataOperationMetadata`
@@ -1163,6 +1169,7 @@ module Google
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @set_autoscaler_link_operation_metadata = args[:set_autoscaler_link_operation_metadata] if args.key?(:set_autoscaler_link_operation_metadata)
           @set_common_instance_metadata_operation_metadata = args[:set_common_instance_metadata_operation_metadata] if args.key?(:set_common_instance_metadata_operation_metadata)
           @start_time = args[:start_time] if args.key?(:start_time)
           @status = args[:status] if args.key?(:status)
@@ -1986,6 +1993,25 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
+      # 
+      class SetAutoscalerLinkOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # List of zonal IGM IDs part of the RMIG.
+        # Corresponds to the JSON property `zonalIgmIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :zonal_igm_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @zonal_igm_ids = args[:zonal_igm_ids] if args.key?(:zonal_igm_ids)
         end
       end
       

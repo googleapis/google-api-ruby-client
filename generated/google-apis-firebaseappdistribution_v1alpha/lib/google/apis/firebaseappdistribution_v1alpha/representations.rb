@@ -226,12 +226,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleFirebaseAppdistroV1alphaProvisionAppResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleFirebaseAppdistroV1alphaRelease
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -630,12 +624,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :password_resource_name, as: 'passwordResourceName'
           property :username_resource_name, as: 'usernameResourceName'
-        end
-      end
-      
-      class GoogleFirebaseAppdistroV1alphaProvisionAppResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

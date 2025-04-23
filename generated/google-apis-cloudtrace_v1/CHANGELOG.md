@@ -1,5 +1,10 @@
 # Release history for google-apis-cloudtrace_v1
 
+### v0.22.0 (2025-04-20)
+
+* Regenerated from discovery document revision 20250411
+* Regenerated using generator version 0.16.0
+
 ### v0.21.0 (2024-12-02)
 
 * Regenerated from discovery document revision 20240816

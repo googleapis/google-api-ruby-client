@@ -129,6 +129,294 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new BackupChannel in a given location.
+        # @param [String] parent
+        #   Required. The location within which to create the BackupChannel. Format: `
+        #   projects/*/locations/*`
+        # @param [Google::Apis::GkebackupV1::BackupChannel] backup_channel_object
+        # @param [String] backup_channel_id
+        #   Optional. The client-provided short name for the BackupChannel resource. This
+        #   name must: - be between 1 and 63 characters long (inclusive) - consist of only
+        #   lower-case ASCII letters, numbers, and dashes - start with a lower-case letter
+        #   - end with a lower-case letter or number - be unique within the set of
+        #   BackupChannels in this location If the user does not provide a name, a uuid
+        #   will be used as the name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkebackupV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkebackupV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_backup_channel(parent, backup_channel_object = nil, backup_channel_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/backupChannels', options)
+          command.request_representation = Google::Apis::GkebackupV1::BackupChannel::Representation
+          command.request_object = backup_channel_object
+          command.response_representation = Google::Apis::GkebackupV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::GkebackupV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['backupChannelId'] = backup_channel_id unless backup_channel_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an existing BackupChannel.
+        # @param [String] name
+        #   Required. Fully qualified BackupChannel name. Format: `projects/*/locations/*/
+        #   backupChannels/*`
+        # @param [String] etag
+        #   Optional. If provided, this value must match the current value of the target
+        #   BackupChannel's etag field or the request is rejected.
+        # @param [Boolean] force
+        #   Optional. If set to true, any BackupPlanAssociations below this BackupChannel
+        #   will also be deleted. Otherwise, the request will only succeed if the
+        #   BackupChannel has no BackupPlanAssociations.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkebackupV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkebackupV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_backup_channel(name, etag: nil, force: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::GkebackupV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::GkebackupV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieve the details of a single BackupChannel.
+        # @param [String] name
+        #   Required. Fully qualified BackupChannel name. Format: `projects/*/locations/*/
+        #   backupChannels/*`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkebackupV1::BackupChannel] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkebackupV1::BackupChannel]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_backup_channel(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::GkebackupV1::BackupChannel::Representation
+          command.response_class = Google::Apis::GkebackupV1::BackupChannel
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists BackupChannels in a given location.
+        # @param [String] parent
+        #   Required. The location that contains the BackupChannels to list. Format: `
+        #   projects/*/locations/*`
+        # @param [String] filter
+        #   Optional. Field match expression used to filter the results.
+        # @param [String] order_by
+        #   Optional. Field by which to sort the results.
+        # @param [Fixnum] page_size
+        #   Optional. The target number of results to return in a single response. If not
+        #   specified, a default value will be chosen by the service. Note that the
+        #   response may include a partial list and a caller should only rely on the
+        #   response's next_page_token to determine if there are more instances left to be
+        #   queried.
+        # @param [String] page_token
+        #   Optional. The value of next_page_token received from a previous `
+        #   ListBackupChannels` call. Provide this to retrieve the subsequent page in a
+        #   multi-page list of results. When paginating, all other parameters provided to `
+        #   ListBackupChannels` must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkebackupV1::ListBackupChannelsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkebackupV1::ListBackupChannelsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_backup_channels(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/backupChannels', options)
+          command.response_representation = Google::Apis::GkebackupV1::ListBackupChannelsResponse::Representation
+          command.response_class = Google::Apis::GkebackupV1::ListBackupChannelsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a BackupChannel.
+        # @param [String] name
+        #   Identifier. The fully qualified name of the BackupChannel. `projects/*/
+        #   locations/*/backupChannels/*`
+        # @param [Google::Apis::GkebackupV1::BackupChannel] backup_channel_object
+        # @param [String] update_mask
+        #   Optional. This is used to specify the fields to be overwritten in the
+        #   BackupChannel targeted for update. The values for each of these updated fields
+        #   will be taken from the `backup_channel` provided with this request. Field
+        #   names are relative to the root of the resource (e.g., `description`, `labels`,
+        #   etc.) If no `update_mask` is provided, all fields in `backup_channel` will be
+        #   written to the target BackupChannel resource. Note that OUTPUT_ONLY and
+        #   IMMUTABLE fields in `backup_channel` are ignored and are not used to update
+        #   the target BackupChannel.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkebackupV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkebackupV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_backup_channel(name, backup_channel_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::GkebackupV1::BackupChannel::Representation
+          command.request_object = backup_channel_object
+          command.response_representation = Google::Apis::GkebackupV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::GkebackupV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieve the details of a single BackupPlanBinding.
+        # @param [String] name
+        #   Required. Fully qualified BackupPlanBinding name. Format: `projects/*/
+        #   locations/*/backupChannels/*/backupPlanBindings/*`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkebackupV1::BackupPlanBinding] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkebackupV1::BackupPlanBinding]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_backup_channel_backup_plan_binding(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::GkebackupV1::BackupPlanBinding::Representation
+          command.response_class = Google::Apis::GkebackupV1::BackupPlanBinding
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists BackupPlanBindings in a given location.
+        # @param [String] parent
+        #   Required. The BackupChannel that contains the BackupPlanBindings to list.
+        #   Format: `projects/*/locations/*/backupChannels/*`
+        # @param [String] filter
+        #   Optional. Field match expression used to filter the results.
+        # @param [String] order_by
+        #   Optional. Field by which to sort the results.
+        # @param [Fixnum] page_size
+        #   Optional. The target number of results to return in a single response. If not
+        #   specified, a default value will be chosen by the service. Note that the
+        #   response may include a partial list and a caller should only rely on the
+        #   response's next_page_token to determine if there are more instances left to be
+        #   queried.
+        # @param [String] page_token
+        #   Optional. The value of next_page_token received from a previous `
+        #   ListBackupPlanBindings` call. Provide this to retrieve the subsequent page in
+        #   a multi-page list of results. When paginating, all other parameters provided
+        #   to `ListBackupPlanBindings` must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkebackupV1::ListBackupPlanBindingsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkebackupV1::ListBackupPlanBindingsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_backup_channel_backup_plan_bindings(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/backupPlanBindings', options)
+          command.response_representation = Google::Apis::GkebackupV1::ListBackupPlanBindingsResponse::Representation
+          command.response_class = Google::Apis::GkebackupV1::ListBackupPlanBindingsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new BackupPlan in a given location.
         # @param [String] parent
         #   Required. The location within which to create the BackupPlan. Format: `
@@ -1151,6 +1439,289 @@ module Google
           command.response_class = Google::Apis::GkebackupV1::GoogleLongrunningListOperationsResponse
           command.params['name'] = name unless name.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new RestoreChannel in a given location.
+        # @param [String] parent
+        #   Required. The location within which to create the RestoreChannel. Format: `
+        #   projects/*/locations/*`
+        # @param [Google::Apis::GkebackupV1::RestoreChannel] restore_channel_object
+        # @param [String] restore_channel_id
+        #   Optional. The client-provided short name for the RestoreChannel resource. This
+        #   name must: - be between 1 and 63 characters long (inclusive) - consist of only
+        #   lower-case ASCII letters, numbers, and dashes - start with a lower-case letter
+        #   - end with a lower-case letter or number - be unique within the set of
+        #   RestoreChannels in this location If the user does not provide a name, a uuid
+        #   will be used as the name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkebackupV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkebackupV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_restore_channel(parent, restore_channel_object = nil, restore_channel_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/restoreChannels', options)
+          command.request_representation = Google::Apis::GkebackupV1::RestoreChannel::Representation
+          command.request_object = restore_channel_object
+          command.response_representation = Google::Apis::GkebackupV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::GkebackupV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['restoreChannelId'] = restore_channel_id unless restore_channel_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an existing RestoreChannel.
+        # @param [String] name
+        #   Required. Fully qualified RestoreChannel name. Format: `projects/*/locations/*/
+        #   restoreChannels/*`
+        # @param [String] etag
+        #   Optional. If provided, this value must match the current value of the target
+        #   RestoreChannel's etag field or the request is rejected.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkebackupV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkebackupV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_restore_channel(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::GkebackupV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::GkebackupV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieve the details of a single RestoreChannel.
+        # @param [String] name
+        #   Required. Fully qualified RestoreChannel name. Format: `projects/*/locations/*/
+        #   restoreChannels/*`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkebackupV1::RestoreChannel] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkebackupV1::RestoreChannel]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_restore_channel(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::GkebackupV1::RestoreChannel::Representation
+          command.response_class = Google::Apis::GkebackupV1::RestoreChannel
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists RestoreChannels in a given location.
+        # @param [String] parent
+        #   Required. The location that contains the RestoreChannels to list. Format: `
+        #   projects/*/locations/*`
+        # @param [String] filter
+        #   Optional. Field match expression used to filter the results.
+        # @param [String] order_by
+        #   Optional. Field by which to sort the results.
+        # @param [Fixnum] page_size
+        #   Optional. The target number of results to return in a single response. If not
+        #   specified, a default value will be chosen by the service. Note that the
+        #   response may include a partial list and a caller should only rely on the
+        #   response's next_page_token to determine if there are more instances left to be
+        #   queried.
+        # @param [String] page_token
+        #   Optional. The value of next_page_token received from a previous `
+        #   ListRestoreChannels` call. Provide this to retrieve the subsequent page in a
+        #   multi-page list of results. When paginating, all other parameters provided to `
+        #   ListRestoreChannels` must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkebackupV1::ListRestoreChannelsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkebackupV1::ListRestoreChannelsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_restore_channels(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/restoreChannels', options)
+          command.response_representation = Google::Apis::GkebackupV1::ListRestoreChannelsResponse::Representation
+          command.response_class = Google::Apis::GkebackupV1::ListRestoreChannelsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a RestoreChannel.
+        # @param [String] name
+        #   Identifier. The fully qualified name of the RestoreChannel. `projects/*/
+        #   locations/*/restoreChannels/*`
+        # @param [Google::Apis::GkebackupV1::RestoreChannel] restore_channel_object
+        # @param [String] update_mask
+        #   Optional. This is used to specify the fields to be overwritten in the
+        #   RestoreChannel targeted for update. The values for each of these updated
+        #   fields will be taken from the `restore_channel` provided with this request.
+        #   Field names are relative to the root of the resource (e.g., `description`, `
+        #   destination_project_id`, etc.) If no `update_mask` is provided, all fields in `
+        #   restore_channel` will be written to the target RestoreChannel resource. Note
+        #   that OUTPUT_ONLY and IMMUTABLE fields in `restore_channel` are ignored and are
+        #   not used to update the target RestoreChannel.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkebackupV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkebackupV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_restore_channel(name, restore_channel_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::GkebackupV1::RestoreChannel::Representation
+          command.request_object = restore_channel_object
+          command.response_representation = Google::Apis::GkebackupV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::GkebackupV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieve the details of a single RestorePlanBinding.
+        # @param [String] name
+        #   Required. Fully qualified RestorePlanBinding name. Format: `projects/*/
+        #   locations/*/restoreChannels/*/restorePlanBindings/*`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkebackupV1::RestorePlanBinding] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkebackupV1::RestorePlanBinding]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_restore_channel_restore_plan_binding(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::GkebackupV1::RestorePlanBinding::Representation
+          command.response_class = Google::Apis::GkebackupV1::RestorePlanBinding
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists RestorePlanBindings in a given location.
+        # @param [String] parent
+        #   Required. The RestoreChannel that contains the ListRestorePlanBindings to list.
+        #   Format: `projects/*/locations/*/restoreChannels/*`
+        # @param [String] filter
+        #   Optional. Field match expression used to filter the results.
+        # @param [String] order_by
+        #   Optional. Field by which to sort the results.
+        # @param [Fixnum] page_size
+        #   Optional. The target number of results to return in a single response. If not
+        #   specified, a default value will be chosen by the service. Note that the
+        #   response may include a partial list and a caller should only rely on the
+        #   response's next_page_token to determine if there are more instances left to be
+        #   queried.
+        # @param [String] page_token
+        #   Optional. The value of next_page_token received from a previous `
+        #   ListRestorePlanBindings` call. Provide this to retrieve the subsequent page in
+        #   a multi-page list of results. When paginating, all other parameters provided
+        #   to `ListRestorePlanBindings` must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkebackupV1::ListRestorePlanBindingsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkebackupV1::ListRestorePlanBindingsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_restore_channel_restore_plan_bindings(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/restorePlanBindings', options)
+          command.response_representation = Google::Apis::GkebackupV1::ListRestorePlanBindingsResponse::Representation
+          command.response_class = Google::Apis::GkebackupV1::ListRestorePlanBindingsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?

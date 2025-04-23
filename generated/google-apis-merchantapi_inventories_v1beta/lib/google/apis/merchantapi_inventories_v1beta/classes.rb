@@ -427,7 +427,7 @@ module Google
       
         # Availability of the product in this region. For accepted attribute values, see
         # the [regional product inventory data specification](https://support.google.com/
-        # merchants/answer/3061342)
+        # merchants/answer/6324448).
         # Corresponds to the JSON property `availability`
         # @return [String]
         attr_accessor :availability

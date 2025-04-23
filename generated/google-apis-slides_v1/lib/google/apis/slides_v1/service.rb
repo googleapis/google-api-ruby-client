@@ -194,7 +194,8 @@ module Google
         
         # Generates a thumbnail of the latest version of the specified page in the
         # presentation and returns a URL to the thumbnail image. This request counts as
-        # an [expensive read request](/slides/limits) for quota purposes.
+        # an [expensive read request](https://developers.google.com/workspace/slides/
+        # limits) for quota purposes.
         # @param [String] presentation_id
         #   The ID of the presentation to retrieve.
         # @param [String] page_object_id

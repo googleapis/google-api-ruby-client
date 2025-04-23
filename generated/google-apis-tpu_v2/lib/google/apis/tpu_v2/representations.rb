@@ -328,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpcomingMaintenance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AcceleratorConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -605,6 +611,8 @@ module Google
           collection :symptoms, as: 'symptoms', class: Google::Apis::TpuV2::Symptom, decorator: Google::Apis::TpuV2::Symptom::Representation
       
           collection :tags, as: 'tags'
+          property :upcoming_maintenance, as: 'upcomingMaintenance', class: Google::Apis::TpuV2::UpcomingMaintenance, decorator: Google::Apis::TpuV2::UpcomingMaintenance::Representation
+      
         end
       end
       
@@ -805,6 +813,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :node_spec, as: 'nodeSpec', class: Google::Apis::TpuV2::NodeSpec, decorator: Google::Apis::TpuV2::NodeSpec::Representation
       
+        end
+      end
+      
+      class UpcomingMaintenance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :can_reschedule, as: 'canReschedule'
+          property :latest_window_start_time, as: 'latestWindowStartTime'
+          property :maintenance_status, as: 'maintenanceStatus'
+          property :type, as: 'type'
+          property :window_end_time, as: 'windowEndTime'
+          property :window_start_time, as: 'windowStartTime'
         end
       end
     end

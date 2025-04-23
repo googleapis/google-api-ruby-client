@@ -1264,6 +1264,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FirewallParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FirewallPoliciesListAssociationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1589,6 +1595,12 @@ module Google
       end
       
       class GrpcHealthCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GrpctlsHealthCheck
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3730,6 +3742,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkPeering
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5254,6 +5272,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RouteParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RoutePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6455,6 +6479,12 @@ module Google
       end
       
       class SubnetworkLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubnetworkParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -9140,7 +9170,6 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
-          property :self_link_with_id, as: 'selfLinkWithId'
         end
       end
       
@@ -9801,6 +9830,8 @@ module Google
       
           property :name, as: 'name'
           property :network, as: 'network'
+          property :params, as: 'params', class: Google::Apis::ComputeBeta::FirewallParams, decorator: Google::Apis::ComputeBeta::FirewallParams::Representation
+      
           property :priority, as: 'priority'
           property :self_link, as: 'selfLink'
           collection :source_ranges, as: 'sourceRanges'
@@ -9864,6 +9895,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable, as: 'enable'
           property :metadata, as: 'metadata'
+        end
+      end
+      
+      class FirewallParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -9936,6 +9974,7 @@ module Google
           property :display_name, as: 'displayName'
           property :firewall_policy_id, as: 'firewallPolicyId'
           property :name, as: 'name'
+          property :priority, as: 'priority'
           property :short_name, as: 'shortName'
         end
       end
@@ -10525,6 +10564,15 @@ module Google
         end
       end
       
+      class GrpctlsHealthCheck
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :grpc_service_name, as: 'grpcServiceName'
+          property :port, as: 'port'
+          property :port_specification, as: 'portSpecification'
+        end
+      end
+      
       class GlobalAddressesMoveRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10673,6 +10721,8 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :grpc_health_check, as: 'grpcHealthCheck', class: Google::Apis::ComputeBeta::GrpcHealthCheck, decorator: Google::Apis::ComputeBeta::GrpcHealthCheck::Representation
+      
+          property :grpc_tls_health_check, as: 'grpcTlsHealthCheck', class: Google::Apis::ComputeBeta::GrpctlsHealthCheck, decorator: Google::Apis::ComputeBeta::GrpctlsHealthCheck::Representation
       
           property :healthy_threshold, as: 'healthyThreshold'
           property :http2_health_check, as: 'http2HealthCheck', class: Google::Apis::ComputeBeta::Http2HealthCheck, decorator: Google::Apis::ComputeBeta::Http2HealthCheck::Representation
@@ -11725,6 +11775,8 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
+          collection :instances, as: 'instances', class: Google::Apis::ComputeBeta::PerInstanceConfig, decorator: Google::Apis::ComputeBeta::PerInstanceConfig::Representation
+      
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :region, as: 'region'
@@ -13578,6 +13630,8 @@ module Google
           property :instance_properties, as: 'instanceProperties', class: Google::Apis::ComputeBeta::InstanceProperties, decorator: Google::Apis::ComputeBeta::InstanceProperties::Representation
       
           property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
           property :machine_image_encryption_key, as: 'machineImageEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
           property :name, as: 'name'
@@ -13995,6 +14049,8 @@ module Google
           property :name, as: 'name'
           property :network_firewall_policy_enforcement_order, as: 'networkFirewallPolicyEnforcementOrder'
           property :network_profile, as: 'networkProfile'
+          property :params, as: 'params', class: Google::Apis::ComputeBeta::NetworkParams, decorator: Google::Apis::ComputeBeta::NetworkParams::Representation
+      
           collection :peerings, as: 'peerings', class: Google::Apis::ComputeBeta::NetworkPeering, decorator: Google::Apis::ComputeBeta::NetworkPeering::Representation
       
           property :routing_config, as: 'routingConfig', class: Google::Apis::ComputeBeta::NetworkRoutingConfig, decorator: Google::Apis::ComputeBeta::NetworkRoutingConfig::Representation
@@ -14571,6 +14627,13 @@ module Google
         end
       end
       
+      class NetworkParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
+        end
+      end
+      
       class NetworkPeering
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14630,10 +14693,14 @@ module Google
           property :allow_class_d_firewalls, as: 'allowClassDFirewalls'
           property :allow_cloud_nat, as: 'allowCloudNat'
           property :allow_cloud_router, as: 'allowCloudRouter'
+          property :allow_default_nic_attachment, as: 'allowDefaultNicAttachment'
           property :allow_external_ip_access, as: 'allowExternalIpAccess'
           property :allow_interconnect, as: 'allowInterconnect'
+          property :allow_ip_forwarding, as: 'allowIpForwarding'
           property :allow_load_balancing, as: 'allowLoadBalancing'
           property :allow_multi_nic_in_same_network, as: 'allowMultiNicInSameNetwork'
+          property :allow_ncc, as: 'allowNcc'
+          property :allow_network_migration, as: 'allowNetworkMigration'
           property :allow_packet_mirroring, as: 'allowPacketMirroring'
           property :allow_private_google_access, as: 'allowPrivateGoogleAccess'
           property :allow_psc, as: 'allowPsc'
@@ -14645,6 +14712,8 @@ module Google
           collection :interface_types, as: 'interfaceTypes'
           collection :subnet_purposes, as: 'subnetPurposes'
           collection :subnet_stack_types, as: 'subnetStackTypes'
+          collection :subnetwork_purposes, as: 'subnetworkPurposes'
+          collection :subnetwork_stack_types, as: 'subnetworkStackTypes'
           property :unicast, as: 'unicast'
         end
       end
@@ -16690,6 +16759,7 @@ module Google
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          collection :linked_commitments, as: 'linkedCommitments'
           property :name, as: 'name'
           property :reservation_mode, as: 'reservationMode'
           property :reservation_sharing_policy, as: 'reservationSharingPolicy', class: Google::Apis::ComputeBeta::AllocationReservationSharingPolicy, decorator: Google::Apis::ComputeBeta::AllocationReservationSharingPolicy::Representation
@@ -17148,6 +17218,7 @@ module Google
           property :chain_name, as: 'chainName'
           property :guest_flush, as: 'guestFlush'
           hash :labels, as: 'labels'
+          property :region, as: 'region'
           collection :storage_locations, as: 'storageLocations'
         end
       end
@@ -17254,6 +17325,8 @@ module Google
           property :next_hop_origin, as: 'nextHopOrigin'
           property :next_hop_peering, as: 'nextHopPeering'
           property :next_hop_vpn_tunnel, as: 'nextHopVpnTunnel'
+          property :params, as: 'params', class: Google::Apis::ComputeBeta::RouteParams, decorator: Google::Apis::ComputeBeta::RouteParams::Representation
+      
           property :priority, as: 'priority'
           property :route_status, as: 'routeStatus'
           property :route_type, as: 'routeType'
@@ -17319,6 +17392,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class RouteParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -19556,6 +19636,8 @@ module Google
       
           property :name, as: 'name'
           property :network, as: 'network'
+          property :params, as: 'params', class: Google::Apis::ComputeBeta::SubnetworkParams, decorator: Google::Apis::ComputeBeta::SubnetworkParams::Representation
+      
           property :private_ip_google_access, as: 'privateIpGoogleAccess'
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :purpose, as: 'purpose'
@@ -19644,6 +19726,13 @@ module Google
           property :flow_sampling, as: 'flowSampling'
           property :metadata, as: 'metadata'
           collection :metadata_fields, as: 'metadataFields'
+        end
+      end
+      
+      class SubnetworkParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -20651,6 +20740,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :can_reschedule, as: 'canReschedule'
           property :latest_window_start_time, as: 'latestWindowStartTime'
+          property :maintenance_on_shutdown, as: 'maintenanceOnShutdown'
           property :maintenance_status, as: 'maintenanceStatus'
           property :type, as: 'type'
           property :window_end_time, as: 'windowEndTime'
@@ -21328,7 +21418,6 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
-          property :self_link_with_id, as: 'selfLinkWithId'
           property :topology, as: 'topology', class: Google::Apis::ComputeBeta::WireGroupTopology, decorator: Google::Apis::ComputeBeta::WireGroupTopology::Representation
       
           property :wire_group_properties, as: 'wireGroupProperties', class: Google::Apis::ComputeBeta::WireGroupProperties, decorator: Google::Apis::ComputeBeta::WireGroupProperties::Representation

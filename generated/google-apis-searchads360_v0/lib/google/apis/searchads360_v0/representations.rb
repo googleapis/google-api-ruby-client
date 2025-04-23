@@ -2602,8 +2602,11 @@ module Google
       class GoogleAdsSearchads360V0ResourcesCustomer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_level, as: 'accountLevel'
           property :account_status, as: 'accountStatus'
           property :account_type, as: 'accountType'
+          property :associate_manager_descriptive_name, as: 'associateManagerDescriptiveName'
+          property :associate_manager_id, :numeric_string => true, as: 'associateManagerId'
           property :auto_tagging_enabled, as: 'autoTaggingEnabled'
           property :conversion_tracking_setting, as: 'conversionTrackingSetting', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesConversionTrackingSetting, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesConversionTrackingSetting::Representation
       
@@ -2617,8 +2620,12 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :last_modified_time, as: 'lastModifiedTime'
           property :manager, as: 'manager'
+          property :manager_descriptive_name, as: 'managerDescriptiveName'
+          property :manager_id, :numeric_string => true, as: 'managerId'
           property :resource_name, as: 'resourceName'
           property :status, as: 'status'
+          property :sub_manager_descriptive_name, as: 'subManagerDescriptiveName'
+          property :sub_manager_id, :numeric_string => true, as: 'subManagerId'
           property :time_zone, as: 'timeZone'
           property :tracking_url_template, as: 'trackingUrlTemplate'
         end

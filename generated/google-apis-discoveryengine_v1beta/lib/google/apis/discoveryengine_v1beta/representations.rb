@@ -4862,6 +4862,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
+          property :document, as: 'document'
           property :enabled, as: 'enabled'
           property :image_uri, as: 'imageUri'
           property :title, as: 'title'
@@ -6591,6 +6592,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
+          property :document, as: 'document'
           property :enabled, as: 'enabled'
           property :image_uri, as: 'imageUri'
           property :title, as: 'title'
@@ -7895,9 +7897,11 @@ module Google
       class GoogleCloudDiscoveryengineV1betaChunk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :annotation_contents, as: 'annotationContents'
           property :chunk_metadata, as: 'chunkMetadata', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaChunkChunkMetadata, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaChunkChunkMetadata::Representation
       
           property :content, as: 'content'
+          collection :data_urls, as: 'dataUrls'
           hash :derived_struct_data, as: 'derivedStructData'
           property :document_metadata, as: 'documentMetadata', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaChunkDocumentMetadata, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaChunkDocumentMetadata::Representation
       
@@ -9677,6 +9681,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
+          property :document, as: 'document'
           property :enabled, as: 'enabled'
           property :image_uri, as: 'imageUri'
           property :title, as: 'title'

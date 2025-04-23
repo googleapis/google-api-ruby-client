@@ -23,7 +23,7 @@ module Google
     #
     # Create and manage meetings in Google Meet.
     #
-    # @see https://developers.google.com/meet/api
+    # @see https://developers.google.com/workspace/meet/api
     module MeetV2
       # Version of the Google Meet API this client connects to.
       # This is NOT the gem version.
