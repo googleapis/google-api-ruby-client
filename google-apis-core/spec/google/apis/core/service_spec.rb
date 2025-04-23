@@ -341,6 +341,7 @@ Content-Transfer-Encoding: binary
 
 POST /upload/zoo/animals\\? HTTP/1\\.1
 X-Goog-Api-Client: #{Regexp.escape(x_goog_api_client_value)}
+X-Goog-Gcs-Idempotency-Token: b1981e17-f622-49af-b2eb-203308b1b17d
 Content-Type: multipart/related; boundary=inner
 X-Goog-Upload-Protocol: multipart
 Authorization: Bearer a token
