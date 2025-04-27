@@ -1176,6 +1176,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :compute_count
       
+        # Output only. The compute model of the Exadata Infrastructure.
+        # Corresponds to the JSON property `computeModel`
+        # @return [String]
+        attr_accessor :compute_model
+      
         # Output only. The number of enabled CPU cores.
         # Corresponds to the JSON property `cpuCount`
         # @return [Fixnum]
@@ -1190,6 +1195,11 @@ module Google
         # Corresponds to the JSON property `dataStorageSizeTb`
         # @return [Float]
         attr_accessor :data_storage_size_tb
+      
+        # Output only. The database server type of the Exadata Infrastructure.
+        # Corresponds to the JSON property `databaseServerType`
+        # @return [String]
+        attr_accessor :database_server_type
       
         # Output only. The local node storage allocated in GBs.
         # Corresponds to the JSON property `dbNodeStorageSizeGb`
@@ -1288,6 +1298,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :storage_count
       
+        # Output only. The storage server type of the Exadata Infrastructure.
+        # Corresponds to the JSON property `storageServerType`
+        # @return [String]
+        attr_accessor :storage_server_type
+      
         # Output only. The software version of the storage servers (cells) in the
         # Exadata Infrastructure.
         # Corresponds to the JSON property `storageServerVersion`
@@ -1310,9 +1325,11 @@ module Google
           @additional_storage_count = args[:additional_storage_count] if args.key?(:additional_storage_count)
           @available_storage_size_gb = args[:available_storage_size_gb] if args.key?(:available_storage_size_gb)
           @compute_count = args[:compute_count] if args.key?(:compute_count)
+          @compute_model = args[:compute_model] if args.key?(:compute_model)
           @cpu_count = args[:cpu_count] if args.key?(:cpu_count)
           @customer_contacts = args[:customer_contacts] if args.key?(:customer_contacts)
           @data_storage_size_tb = args[:data_storage_size_tb] if args.key?(:data_storage_size_tb)
+          @database_server_type = args[:database_server_type] if args.key?(:database_server_type)
           @db_node_storage_size_gb = args[:db_node_storage_size_gb] if args.key?(:db_node_storage_size_gb)
           @db_server_version = args[:db_server_version] if args.key?(:db_server_version)
           @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
@@ -1331,6 +1348,7 @@ module Google
           @shape = args[:shape] if args.key?(:shape)
           @state = args[:state] if args.key?(:state)
           @storage_count = args[:storage_count] if args.key?(:storage_count)
+          @storage_server_type = args[:storage_server_type] if args.key?(:storage_server_type)
           @storage_server_version = args[:storage_server_version] if args.key?(:storage_server_version)
           @total_storage_size_gb = args[:total_storage_size_gb] if args.key?(:total_storage_size_gb)
         end
@@ -1341,12 +1359,12 @@ module Google
       class CloudVmCluster
         include Google::Apis::Core::Hashable
       
-        # Required. CIDR range of the backup subnet.
+        # Optional. CIDR range of the backup subnet.
         # Corresponds to the JSON property `backupSubnetCidr`
         # @return [String]
         attr_accessor :backup_subnet_cidr
       
-        # Required. Network settings. CIDR to use for cluster IP allocation.
+        # Optional. Network settings. CIDR to use for cluster IP allocation.
         # Corresponds to the JSON property `cidr`
         # @return [String]
         attr_accessor :cidr
@@ -1385,7 +1403,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. The name of the VPC network. Format: projects/`project`/global/
+        # Optional. The name of the VPC network. Format: projects/`project`/global/
         # networks/`network`
         # Corresponds to the JSON property `network`
         # @return [String]
@@ -1428,6 +1446,11 @@ module Google
         # Corresponds to the JSON property `compartmentId`
         # @return [String]
         attr_accessor :compartment_id
+      
+        # Output only. The compute model of the VM Cluster.
+        # Corresponds to the JSON property `computeModel`
+        # @return [String]
+        attr_accessor :compute_model
       
         # Required. Number of enabled CPU cores.
         # Corresponds to the JSON property `cpuCoreCount`
@@ -1593,6 +1616,7 @@ module Google
         def update!(**args)
           @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
           @compartment_id = args[:compartment_id] if args.key?(:compartment_id)
+          @compute_model = args[:compute_model] if args.key?(:compute_model)
           @cpu_core_count = args[:cpu_core_count] if args.key?(:cpu_core_count)
           @data_storage_size_tb = args[:data_storage_size_tb] if args.key?(:data_storage_size_tb)
           @db_node_storage_size_gb = args[:db_node_storage_size_gb] if args.key?(:db_node_storage_size_gb)
