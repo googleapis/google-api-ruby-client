@@ -549,7 +549,7 @@ module Google
       
         # Output only. The form URI to share with responders. This opens a page that
         # allows the user to submit responses but not edit the questions. For forms that
-        # have `publish_settings` value set, this will be the published form URI.
+        # have `publish_settings` value set, this is the published form URI.
         # Corresponds to the JSON property `responderUri`
         # @return [String]
         attr_accessor :responder_uri

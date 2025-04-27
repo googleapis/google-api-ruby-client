@@ -1,5 +1,9 @@
 # Release history for google-apis-forms_v1
 
+### v0.18.0 (2025-04-27)
+
+* Regenerated from discovery document revision 20250415
+
 ### v0.17.0 (2025-04-06)
 
 * Regenerated from discovery document revision 20250325
