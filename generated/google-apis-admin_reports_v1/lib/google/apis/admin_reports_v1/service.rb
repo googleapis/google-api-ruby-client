@@ -32,7 +32,7 @@ module Google
       #    Admin = Google::Apis::AdminReportsV1 # Alias the module
       #    service = Admin::ReportsService.new
       #
-      # @see https://developers.google.com/admin-sdk/
+      # @see https://developers.google.com/workspace/admin/
       class ReportsService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://admin.$UNIVERSE_DOMAIN$/"
 
