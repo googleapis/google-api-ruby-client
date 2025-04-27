@@ -244,6 +244,90 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EndUserAuthentication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndUserAuthenticationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndUserAuthenticationConfigOauth2AuthCodeFlow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndUserAuthenticationConfigOauth2ClientCredentials
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndUserAuthenticationConfigOauth2JwtBearer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndUserAuthenticationConfigOauth2JwtBearerJwtClaims
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndUserAuthenticationConfigSshPublicKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndUserAuthenticationConfigUserPassword
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndUserAuthenticationConfigVariable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndUserAuthenticationEndUserAuthenticationStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndUserAuthenticationNotifyEndpointDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndUserAuthenticationNotifyEndpointDestinationEndPoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndUserAuthenticationNotifyEndpointDestinationEndPointHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EndpointAttachment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -436,6 +520,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListEndUserAuthenticationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListEndpointAttachmentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -593,6 +683,12 @@ module Google
       end
       
       class NotificationParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OAuthTokenData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1454,6 +1550,168 @@ module Google
         end
       end
       
+      class EndUserAuthentication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :config_variables, as: 'configVariables', class: Google::Apis::ConnectorsV1::EndUserAuthenticationConfigVariable, decorator: Google::Apis::ConnectorsV1::EndUserAuthenticationConfigVariable::Representation
+      
+          property :create_time, as: 'createTime'
+          collection :destination_configs, as: 'destinationConfigs', class: Google::Apis::ConnectorsV1::DestinationConfig, decorator: Google::Apis::ConnectorsV1::DestinationConfig::Representation
+      
+          property :end_user_authentication_config, as: 'endUserAuthenticationConfig', class: Google::Apis::ConnectorsV1::EndUserAuthenticationConfig, decorator: Google::Apis::ConnectorsV1::EndUserAuthenticationConfig::Representation
+      
+          collection :labels, as: 'labels'
+          property :name, as: 'name'
+          property :notify_endpoint_destination, as: 'notifyEndpointDestination', class: Google::Apis::ConnectorsV1::EndUserAuthenticationNotifyEndpointDestination, decorator: Google::Apis::ConnectorsV1::EndUserAuthenticationNotifyEndpointDestination::Representation
+      
+          property :status, as: 'status', class: Google::Apis::ConnectorsV1::EndUserAuthenticationEndUserAuthenticationStatus, decorator: Google::Apis::ConnectorsV1::EndUserAuthenticationEndUserAuthenticationStatus::Representation
+      
+          property :update_time, as: 'updateTime'
+          property :user_email, as: 'userEmail'
+          property :user_id, as: 'userId'
+        end
+      end
+      
+      class EndUserAuthenticationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_variables, as: 'additionalVariables', class: Google::Apis::ConnectorsV1::EndUserAuthenticationConfigVariable, decorator: Google::Apis::ConnectorsV1::EndUserAuthenticationConfigVariable::Representation
+      
+          property :auth_key, as: 'authKey'
+          property :auth_type, as: 'authType'
+          property :oauth2_auth_code_flow, as: 'oauth2AuthCodeFlow', class: Google::Apis::ConnectorsV1::EndUserAuthenticationConfigOauth2AuthCodeFlow, decorator: Google::Apis::ConnectorsV1::EndUserAuthenticationConfigOauth2AuthCodeFlow::Representation
+      
+          property :oauth2_auth_code_flow_google_managed, as: 'oauth2AuthCodeFlowGoogleManaged', class: Google::Apis::ConnectorsV1::EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged, decorator: Google::Apis::ConnectorsV1::EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged::Representation
+      
+          property :oauth2_client_credentials, as: 'oauth2ClientCredentials', class: Google::Apis::ConnectorsV1::EndUserAuthenticationConfigOauth2ClientCredentials, decorator: Google::Apis::ConnectorsV1::EndUserAuthenticationConfigOauth2ClientCredentials::Representation
+      
+          property :oauth2_jwt_bearer, as: 'oauth2JwtBearer', class: Google::Apis::ConnectorsV1::EndUserAuthenticationConfigOauth2JwtBearer, decorator: Google::Apis::ConnectorsV1::EndUserAuthenticationConfigOauth2JwtBearer::Representation
+      
+          property :ssh_public_key, as: 'sshPublicKey', class: Google::Apis::ConnectorsV1::EndUserAuthenticationConfigSshPublicKey, decorator: Google::Apis::ConnectorsV1::EndUserAuthenticationConfigSshPublicKey::Representation
+      
+          property :user_password, as: 'userPassword', class: Google::Apis::ConnectorsV1::EndUserAuthenticationConfigUserPassword, decorator: Google::Apis::ConnectorsV1::EndUserAuthenticationConfigUserPassword::Representation
+      
+        end
+      end
+      
+      class EndUserAuthenticationConfigOauth2AuthCodeFlow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auth_code, as: 'authCode'
+          property :auth_uri, as: 'authUri'
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret'
+          property :enable_pkce, as: 'enablePkce'
+          property :oauth_token_data, as: 'oauthTokenData', class: Google::Apis::ConnectorsV1::OAuthTokenData, decorator: Google::Apis::ConnectorsV1::OAuthTokenData::Representation
+      
+          property :pkce_verifier, as: 'pkceVerifier'
+          property :redirect_uri, as: 'redirectUri'
+          collection :scopes, as: 'scopes'
+        end
+      end
+      
+      class EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auth_code, as: 'authCode'
+          property :oauth_token_data, as: 'oauthTokenData', class: Google::Apis::ConnectorsV1::OAuthTokenData, decorator: Google::Apis::ConnectorsV1::OAuthTokenData::Representation
+      
+          property :redirect_uri, as: 'redirectUri'
+          collection :scopes, as: 'scopes'
+        end
+      end
+      
+      class EndUserAuthenticationConfigOauth2ClientCredentials
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret'
+        end
+      end
+      
+      class EndUserAuthenticationConfigOauth2JwtBearer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_key, as: 'clientKey'
+          property :jwt_claims, as: 'jwtClaims', class: Google::Apis::ConnectorsV1::EndUserAuthenticationConfigOauth2JwtBearerJwtClaims, decorator: Google::Apis::ConnectorsV1::EndUserAuthenticationConfigOauth2JwtBearerJwtClaims::Representation
+      
+        end
+      end
+      
+      class EndUserAuthenticationConfigOauth2JwtBearerJwtClaims
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audience, as: 'audience'
+          property :issuer, as: 'issuer'
+          property :subject, as: 'subject'
+        end
+      end
+      
+      class EndUserAuthenticationConfigSshPublicKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cert_type, as: 'certType'
+          property :ssh_client_cert, as: 'sshClientCert'
+          property :ssh_client_cert_pass, as: 'sshClientCertPass'
+          property :username, as: 'username'
+        end
+      end
+      
+      class EndUserAuthenticationConfigUserPassword
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :password, as: 'password'
+          property :username, as: 'username'
+        end
+      end
+      
+      class EndUserAuthenticationConfigVariable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bool_value, as: 'boolValue'
+          property :int_value, :numeric_string => true, as: 'intValue'
+          property :key, as: 'key'
+          property :secret_value, as: 'secretValue', class: Google::Apis::ConnectorsV1::Secret, decorator: Google::Apis::ConnectorsV1::Secret::Representation
+      
+          property :string_value, as: 'stringValue'
+        end
+      end
+      
+      class EndUserAuthenticationEndUserAuthenticationStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :state, as: 'state'
+        end
+      end
+      
+      class EndUserAuthenticationNotifyEndpointDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :endpoint, as: 'endpoint', class: Google::Apis::ConnectorsV1::EndUserAuthenticationNotifyEndpointDestinationEndPoint, decorator: Google::Apis::ConnectorsV1::EndUserAuthenticationNotifyEndpointDestinationEndPoint::Representation
+      
+          property :service_account, as: 'serviceAccount'
+          property :type, as: 'type'
+        end
+      end
+      
+      class EndUserAuthenticationNotifyEndpointDestinationEndPoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :endpoint_uri, as: 'endpointUri'
+          collection :headers, as: 'headers', class: Google::Apis::ConnectorsV1::EndUserAuthenticationNotifyEndpointDestinationEndPointHeader, decorator: Google::Apis::ConnectorsV1::EndUserAuthenticationNotifyEndpointDestinationEndPointHeader::Representation
+      
+        end
+      end
+      
+      class EndUserAuthenticationNotifyEndpointDestinationEndPointHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
+        end
+      end
+      
       class EndpointAttachment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1558,6 +1816,8 @@ module Google
       
           property :registration_destination_config, as: 'registrationDestinationConfig', class: Google::Apis::ConnectorsV1::DestinationConfig, decorator: Google::Apis::ConnectorsV1::DestinationConfig::Representation
       
+          property :ssl_config, as: 'sslConfig', class: Google::Apis::ConnectorsV1::SslConfig, decorator: Google::Apis::ConnectorsV1::SslConfig::Representation
+      
         end
       end
       
@@ -1580,6 +1840,8 @@ module Google
           property :proxy_destination_config, as: 'proxyDestinationConfig', class: Google::Apis::ConnectorsV1::DestinationConfigTemplate, decorator: Google::Apis::ConnectorsV1::DestinationConfigTemplate::Representation
       
           property :registration_destination_config, as: 'registrationDestinationConfig', class: Google::Apis::ConnectorsV1::DestinationConfigTemplate, decorator: Google::Apis::ConnectorsV1::DestinationConfigTemplate::Representation
+      
+          property :ssl_config_template, as: 'sslConfigTemplate', class: Google::Apis::ConnectorsV1::SslConfigTemplate, decorator: Google::Apis::ConnectorsV1::SslConfigTemplate::Representation
       
           collection :trigger_config_variables, as: 'triggerConfigVariables', class: Google::Apis::ConnectorsV1::ConfigVariableTemplate, decorator: Google::Apis::ConnectorsV1::ConfigVariableTemplate::Representation
       
@@ -1846,6 +2108,16 @@ module Google
         end
       end
       
+      class ListEndUserAuthenticationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :end_user_authentications, as: 'endUserAuthentications', class: Google::Apis::ConnectorsV1::EndUserAuthentication, decorator: Google::Apis::ConnectorsV1::EndUserAuthentication::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListEndpointAttachmentsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2102,6 +2374,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :values, as: 'values'
+        end
+      end
+      
+      class OAuthTokenData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_token, as: 'accessToken'
+          property :create_time, as: 'createTime'
+          property :expiry, as: 'expiry'
+          property :refresh_token, as: 'refreshToken'
         end
       end
       
