@@ -22,6 +22,35 @@ module Google
   module Apis
     module NetworkconnectivityV1alpha1
       
+      # Range auto-allocation options, to be optionally used when CIDR block is not
+      # explicitly set.
+      class AllocationOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Allocation strategy Not setting this field when the allocation is
+        # requested means an implementation defined strategy is used.
+        # Corresponds to the JSON property `allocationStrategy`
+        # @return [String]
+        attr_accessor :allocation_strategy
+      
+        # Optional. This field must be set only when allocation_strategy is set to
+        # RANDOM_FIRST_N_AVAILABLE. The value should be the maximum expected parallelism
+        # of range creation requests issued to the same space of peered netwroks.
+        # Corresponds to the JSON property `firstAvailableRangesLookupSize`
+        # @return [Fixnum]
+        attr_accessor :first_available_ranges_lookup_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allocation_strategy = args[:allocation_strategy] if args.key?(:allocation_strategy)
+          @first_available_ranges_lookup_size = args[:first_available_ranges_lookup_size] if args.key?(:first_available_ranges_lookup_size)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -478,6 +507,12 @@ module Google
       class InternalRange
         include Google::Apis::Core::Hashable
       
+        # Range auto-allocation options, to be optionally used when CIDR block is not
+        # explicitly set.
+        # Corresponds to the JSON property `allocationOptions`
+        # @return [Google::Apis::NetworkconnectivityV1alpha1::AllocationOptions]
+        attr_accessor :allocation_options
+      
         # Time when the internal range was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -591,6 +626,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allocation_options = args[:allocation_options] if args.key?(:allocation_options)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @exclude_cidr_ranges = args[:exclude_cidr_ranges] if args.key?(:exclude_cidr_ranges)
