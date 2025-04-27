@@ -1,5 +1,9 @@
 # Release history for google-apis-managedkafka_v1
 
+### v0.5.0 (2025-04-27)
+
+* Regenerated from discovery document revision 20250414
+
 ### v0.4.0 (2025-04-20)
 
 * Regenerated from discovery document revision 20250327
