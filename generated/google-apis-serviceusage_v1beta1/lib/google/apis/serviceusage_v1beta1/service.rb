@@ -357,9 +357,9 @@ module Google
         
         # Retrieves a summary of quota information for a specific quota metric
         # @param [String] name
-        #   The resource name of the quota limit. An example name would be: `projects/123/
-        #   services/serviceusage.googleapis.com/quotas/metrics/serviceusage.googleapis.
-        #   com%2Fmutate_requests`
+        #   The resource name of the quota. An example name would be: `projects/123/
+        #   services/serviceusage.googleapis.com/consumerQuotaMetrics/serviceusage.
+        #   googleapis.com%2Fmutate_requests`
         # @param [String] view
         #   Specifies the level of detail for quota information in the response.
         # @param [String] fields
