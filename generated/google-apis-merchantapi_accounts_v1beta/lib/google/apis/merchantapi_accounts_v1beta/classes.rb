@@ -22,6 +22,37 @@ module Google
   module Apis
     module MerchantapiAccountsV1beta
       
+      # Response message for the `AcceptTermsOfService` method.
+      class AcceptTermsOfServiceResponse
+        include Google::Apis::Core::Hashable
+      
+        # This resource represents the agreement state for a given account and terms of
+        # service kind. The state is as follows: * If the merchant has accepted a terms
+        # of service, `accepted` will be populated, otherwise it will be empty * If the
+        # merchant must sign a terms of service, `required` will be populated, otherwise
+        # it will be empty. Note that both `required` and `accepted` can be present. In
+        # this case the `accepted` terms of services will have an expiration date set in
+        # the `valid_until` field. The `required` terms of services need to be accepted
+        # before `valid_until` in order for the account to continue having a valid
+        # agreement. When accepting new terms of services we expect 3Ps to display the
+        # text associated with the given terms of service agreement (the url to the file
+        # containing the text is added in the Required message below as `tos_file_uri`.
+        # The actual acceptance of the terms of service is done by calling accept on the
+        # `TermsOfService` resource.
+        # Corresponds to the JSON property `termsOfServiceAgreementState`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::TermsOfServiceAgreementState]
+        attr_accessor :terms_of_service_agreement_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @terms_of_service_agreement_state = args[:terms_of_service_agreement_state] if args.key?(:terms_of_service_agreement_state)
+        end
+      end
+      
       # Describes the accepted terms of service.
       class Accepted
         include Google::Apis::Core::Hashable

@@ -210,7 +210,7 @@ module Google
         # the same results as calling `ListsAccounts` with the following filter: `
         # relationship(providerId=`parent` AND service(type="ACCOUNT_AGGREGATION"))`
         # @param [String] provider
-        #   Required. The aggregation service provider. Format: `providers/`providerId``
+        #   Required. The aggregation service provider. Format: `accounts/`providerId``
         # @param [Fixnum] page_size
         #   Optional. The maximum number of accounts to return. The service may return
         #   fewer than this value. If unspecified, at most 250 accounts are returned. The
@@ -791,7 +791,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all account issues of a Merchant Center account.
+        # Lists all account issues of a Merchant Center account. When called on a multi-
+        # client account, this method only returns issues belonging to that account, not
+        # its sub-accounts. To retrieve issues for sub-accounts, you must first call the
+        # accounts.listSubaccounts method to obtain a list of sub-accounts, and then
+        # call `accounts.issues.list` for each sub-account individually.
         # @param [String] parent
         #   Required. The parent, which owns this collection of issues. Format: `accounts/`
         #   account``
@@ -1575,18 +1579,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::Empty] parsed result object
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::AcceptTermsOfServiceResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MerchantapiAccountsV1beta::Empty]
+        # @return [Google::Apis::MerchantapiAccountsV1beta::AcceptTermsOfServiceResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def accept_terms_of_service(name, account: nil, region_code: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'accounts/v1beta/{+name}:accept', options)
-          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::Empty::Representation
-          command.response_class = Google::Apis::MerchantapiAccountsV1beta::Empty
+          command = make_simple_command(:post, 'accounts/v1beta/{+name}:accept', options)
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::AcceptTermsOfServiceResponse::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::AcceptTermsOfServiceResponse
           command.params['name'] = name unless name.nil?
           command.query['account'] = account unless account.nil?
           command.query['regionCode'] = region_code unless region_code.nil?
