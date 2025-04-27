@@ -1914,6 +1914,12 @@ module Google
       class GoogleCloudAiplatformV1beta1Schema
         include Google::Apis::Core::Hashable
       
+        # Optional. Can either be a boolean or an object; controls the presence of
+        # additional properties.
+        # Corresponds to the JSON property `additionalProperties`
+        # @return [Object]
+        attr_accessor :additional_properties
+      
         # Optional. The value should be validated against any (one or more) of the
         # subschemas in the list.
         # Corresponds to the JSON property `anyOf`
@@ -1924,6 +1930,12 @@ module Google
         # Corresponds to the JSON property `default`
         # @return [Object]
         attr_accessor :default
+      
+        # Optional. A map of definitions for use by `ref` Only allowed at the root of
+        # the schema.
+        # Corresponds to the JSON property `defs`
+        # @return [Hash<String,Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema>]
+        attr_accessor :defs
       
         # Optional. The description of the data.
         # Corresponds to the JSON property `description`
@@ -2022,6 +2034,17 @@ module Google
         # @return [Array<String>]
         attr_accessor :property_ordering
       
+        # Optional. Allows indirect references between schema nodes. The value should be
+        # a valid reference to a child of the root `defs`. For example, the following
+        # schema defines a reference to a schema node named "Pet": type: object
+        # properties: pet: ref: #/defs/Pet defs: Pet: type: object properties: name:
+        # type: string The value of the "pet" property is a reference to the schema node
+        # named "Pet". See details in https://json-schema.org/understanding-json-schema/
+        # structuring
+        # Corresponds to the JSON property `ref`
+        # @return [String]
+        attr_accessor :ref
+      
         # Optional. Required properties of Type.OBJECT.
         # Corresponds to the JSON property `required`
         # @return [Array<String>]
@@ -2043,8 +2066,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_properties = args[:additional_properties] if args.key?(:additional_properties)
           @any_of = args[:any_of] if args.key?(:any_of)
           @default = args[:default] if args.key?(:default)
+          @defs = args[:defs] if args.key?(:defs)
           @description = args[:description] if args.key?(:description)
           @enum = args[:enum] if args.key?(:enum)
           @example = args[:example] if args.key?(:example)
@@ -2062,6 +2087,7 @@ module Google
           @pattern = args[:pattern] if args.key?(:pattern)
           @properties = args[:properties] if args.key?(:properties)
           @property_ordering = args[:property_ordering] if args.key?(:property_ordering)
+          @ref = args[:ref] if args.key?(:ref)
           @required = args[:required] if args.key?(:required)
           @title = args[:title] if args.key?(:title)
           @type = args[:type] if args.key?(:type)

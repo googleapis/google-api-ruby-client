@@ -979,9 +979,12 @@ module Google
       class GoogleCloudAiplatformV1beta1Schema
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_properties, as: 'additionalProperties'
           collection :any_of, as: 'anyOf', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema::Representation
       
           property :default, as: 'default'
+          hash :defs, as: 'defs', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema::Representation
+      
           property :description, as: 'description'
           collection :enum, as: 'enum'
           property :example, as: 'example'
@@ -1001,6 +1004,7 @@ module Google
           hash :properties, as: 'properties', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema::Representation
       
           collection :property_ordering, as: 'propertyOrdering'
+          property :ref, as: 'ref'
           collection :required, as: 'required'
           property :title, as: 'title'
           property :type, as: 'type'
