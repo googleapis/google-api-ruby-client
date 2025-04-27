@@ -3849,6 +3849,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :function_name, as: 'functionName'
           property :function_region, as: 'functionRegion'
+          property :gcf_api_version, as: 'gcfApiVersion'
           property :project_id, as: 'projectId'
         end
       end
