@@ -819,7 +819,9 @@ module Google
         # @return [String]
         attr_accessor :infrastructure_type
       
-        # Optional. GCP labels for this membership.
+        # Optional. GCP labels for this membership. These labels are not leveraged by
+        # multi-cluster features, instead, we prefer cluster labels, which can be set on
+        # GKE cluster or other cluster types.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
