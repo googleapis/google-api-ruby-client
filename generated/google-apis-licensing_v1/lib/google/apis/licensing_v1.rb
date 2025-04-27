@@ -24,7 +24,7 @@ module Google
     # The Google Enterprise License Manager API lets you manage Google Workspace and
     # related licenses for all users of a customer that you manage.
     #
-    # @see https://developers.google.com/admin-sdk/licensing/
+    # @see https://developers.google.com/workspace/admin/licensing/
     module LicensingV1
       # Version of the Enterprise License Manager API this client connects to.
       # This is NOT the gem version.

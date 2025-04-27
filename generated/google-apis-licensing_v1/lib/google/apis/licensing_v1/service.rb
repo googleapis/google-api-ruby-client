@@ -31,7 +31,7 @@ module Google
       #    Licensing = Google::Apis::LicensingV1 # Alias the module
       #    service = Licensing::LicensingService.new
       #
-      # @see https://developers.google.com/admin-sdk/licensing/
+      # @see https://developers.google.com/workspace/admin/licensing/
       class LicensingService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://licensing.$UNIVERSE_DOMAIN$/"
 
