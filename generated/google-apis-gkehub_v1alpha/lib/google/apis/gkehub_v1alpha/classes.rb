@@ -876,11 +876,22 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::NamespaceActuationFeatureSpec]
         attr_accessor :namespaceactuation
       
+        # **RBAC RoleBinding Actuation**: The Hub-wide input for the
+        # RBACRoleBindingActuation feature.
+        # Corresponds to the JSON property `rbacrolebindingactuation`
+        # @return [Google::Apis::GkehubV1alpha::RbacRoleBindingActuationFeatureSpec]
+        attr_accessor :rbacrolebindingactuation
+      
         # **Workload Certificate**: The Hub-wide input for the WorkloadCertificate
         # feature.
         # Corresponds to the JSON property `workloadcertificate`
         # @return [Google::Apis::GkehubV1alpha::FeatureSpec]
         attr_accessor :workloadcertificate
+      
+        # **WorkloadIdentity**: Global feature specification.
+        # Corresponds to the JSON property `workloadidentity`
+        # @return [Google::Apis::GkehubV1alpha::WorkloadIdentityFeatureSpec]
+        attr_accessor :workloadidentity
       
         def initialize(**args)
            update!(**args)
@@ -895,7 +906,9 @@ module Google
           @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)
           @multiclusteringress = args[:multiclusteringress] if args.key?(:multiclusteringress)
           @namespaceactuation = args[:namespaceactuation] if args.key?(:namespaceactuation)
+          @rbacrolebindingactuation = args[:rbacrolebindingactuation] if args.key?(:rbacrolebindingactuation)
           @workloadcertificate = args[:workloadcertificate] if args.key?(:workloadcertificate)
+          @workloadidentity = args[:workloadidentity] if args.key?(:workloadidentity)
         end
       end
       
@@ -923,6 +936,12 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::NamespaceActuationFeatureState]
         attr_accessor :namespaceactuation
       
+        # **RBAC RoleBinding Actuation**: An empty state left as an example Hub-wide
+        # Feature state.
+        # Corresponds to the JSON property `rbacrolebindingactuation`
+        # @return [Google::Apis::GkehubV1alpha::RbacRoleBindingActuationFeatureState]
+        attr_accessor :rbacrolebindingactuation
+      
         # **Service Mesh**: State for the whole Hub, as analyzed by the Service Mesh Hub
         # Controller.
         # Corresponds to the JSON property `servicemesh`
@@ -936,6 +955,11 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::FeatureState]
         attr_accessor :state
       
+        # **WorkloadIdentity**: Global feature state.
+        # Corresponds to the JSON property `workloadidentity`
+        # @return [Google::Apis::GkehubV1alpha::WorkloadIdentityFeatureState]
+        attr_accessor :workloadidentity
+      
         def initialize(**args)
            update!(**args)
         end
@@ -946,8 +970,10 @@ module Google
           @clusterupgrade = args[:clusterupgrade] if args.key?(:clusterupgrade)
           @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)
           @namespaceactuation = args[:namespaceactuation] if args.key?(:namespaceactuation)
+          @rbacrolebindingactuation = args[:rbacrolebindingactuation] if args.key?(:rbacrolebindingactuation)
           @servicemesh = args[:servicemesh] if args.key?(:servicemesh)
           @state = args[:state] if args.key?(:state)
+          @workloadidentity = args[:workloadidentity] if args.key?(:workloadidentity)
         end
       end
       
@@ -4278,7 +4304,9 @@ module Google
         # @return [String]
         attr_accessor :external_id
       
-        # Optional. Labels for this membership.
+        # Optional. Labels for this membership. These labels are not leveraged by multi-
+        # cluster features, instead, we prefer cluster labels, which can be set on GKE
+        # cluster or other cluster types.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -4634,6 +4662,12 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::FeatureState]
         attr_accessor :state
       
+        # **WorkloadIdentity**: The membership-specific state for WorkloadIdentity
+        # feature.
+        # Corresponds to the JSON property `workloadidentity`
+        # @return [Google::Apis::GkehubV1alpha::WorkloadIdentityMembershipState]
+        attr_accessor :workloadidentity
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4650,6 +4684,7 @@ module Google
           @policycontroller = args[:policycontroller] if args.key?(:policycontroller)
           @servicemesh = args[:servicemesh] if args.key?(:servicemesh)
           @state = args[:state] if args.key?(:state)
+          @workloadidentity = args[:workloadidentity] if args.key?(:workloadidentity)
         end
       end
       
@@ -5786,6 +5821,42 @@ module Google
         end
       end
       
+      # **RBAC RoleBinding Actuation**: The Hub-wide input for the
+      # RBACRoleBindingActuation feature.
+      class RbacRoleBindingActuationFeatureSpec
+        include Google::Apis::Core::Hashable
+      
+        # The list of allowed custom roles (ClusterRoles). If a ClusterRole is not part
+        # of this list, it cannot be used in a Scope RBACRoleBinding. If a ClusterRole
+        # in this list is in use, it cannot be removed from the list.
+        # Corresponds to the JSON property `allowedCustomRoles`
+        # @return [Array<String>]
+        attr_accessor :allowed_custom_roles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_custom_roles = args[:allowed_custom_roles] if args.key?(:allowed_custom_roles)
+        end
+      end
+      
+      # **RBAC RoleBinding Actuation**: An empty state left as an example Hub-wide
+      # Feature state.
+      class RbacRoleBindingActuationFeatureState
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # RBACRoleBindingLifecycleState describes the state of a RbacRoleBinding
       # resource.
       class RbacRoleBindingLifecycleState
@@ -5877,6 +5948,11 @@ module Google
       class Role
         include Google::Apis::Core::Hashable
       
+        # Optional. custom_role is the name of a custom KubernetesClusterRole to use.
+        # Corresponds to the JSON property `customRole`
+        # @return [String]
+        attr_accessor :custom_role
+      
         # predefined_role is the Kubernetes default role to use
         # Corresponds to the JSON property `predefinedRole`
         # @return [String]
@@ -5888,6 +5964,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_role = args[:custom_role] if args.key?(:custom_role)
           @predefined_role = args[:predefined_role] if args.key?(:predefined_role)
         end
       end
@@ -6134,8 +6211,7 @@ module Google
         end
       end
       
-      # Condition being reported. TODO b/395151419: Remove this message once the
-      # membership-level conditions field uses the common Condition message.
+      # Condition being reported.
       class ServiceMeshCondition
         include Google::Apis::Core::Hashable
       
@@ -6229,8 +6305,7 @@ module Google
         end
       end
       
-      # Condition being reported. TODO b/395151419: This message should be used to
-      # replace the membership-level Condition message.
+      # Condition being reported.
       class ServiceMeshFeatureCondition
         include Google::Apis::Core::Hashable
       
@@ -6344,8 +6419,7 @@ module Google
         # @return [Array<Google::Apis::GkehubV1alpha::ServiceMeshAnalysisMessage>]
         attr_accessor :analysis_messages
       
-        # Output only. List of conditions reported for this membership. TODO b/395151419:
-        # Use the common Condition message.
+        # Output only. List of conditions reported for this membership.
         # Corresponds to the JSON property `conditions`
         # @return [Array<Google::Apis::GkehubV1alpha::ServiceMeshCondition>]
         attr_accessor :conditions
@@ -6680,6 +6754,141 @@ module Google
           @result = args[:result] if args.key?(:result)
           @success = args[:success] if args.key?(:success)
           @validator = args[:validator] if args.key?(:validator)
+        end
+      end
+      
+      # **WorkloadIdentity**: Global feature specification.
+      class WorkloadIdentityFeatureSpec
+        include Google::Apis::Core::Hashable
+      
+        # Pool to be used for Workload Identity. This pool in trust-domain mode is used
+        # with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/
+        # locations/global/workloadidentitypools/custompool
+        # Corresponds to the JSON property `scopeTenancyPool`
+        # @return [String]
+        attr_accessor :scope_tenancy_pool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scope_tenancy_pool = args[:scope_tenancy_pool] if args.key?(:scope_tenancy_pool)
+        end
+      end
+      
+      # **WorkloadIdentity**: Global feature state.
+      class WorkloadIdentityFeatureState
+        include Google::Apis::Core::Hashable
+      
+        # The state of the IAM namespaces for the fleet.
+        # Corresponds to the JSON property `namespaceStateDetails`
+        # @return [Hash<String,Google::Apis::GkehubV1alpha::WorkloadIdentityNamespaceStateDetail>]
+        attr_accessor :namespace_state_details
+      
+        # Deprecated, will erase after code is changed to use the new field.
+        # Corresponds to the JSON property `namespaceStates`
+        # @return [Hash<String,String>]
+        attr_accessor :namespace_states
+      
+        # The full name of the scope-tenancy pool for the fleet.
+        # Corresponds to the JSON property `scopeTenancyWorkloadIdentityPool`
+        # @return [String]
+        attr_accessor :scope_tenancy_workload_identity_pool
+      
+        # The full name of the svc.id.goog pool for the fleet.
+        # Corresponds to the JSON property `workloadIdentityPool`
+        # @return [String]
+        attr_accessor :workload_identity_pool
+      
+        # The state of the Workload Identity Pools for the fleet.
+        # Corresponds to the JSON property `workloadIdentityPoolStateDetails`
+        # @return [Hash<String,Google::Apis::GkehubV1alpha::WorkloadIdentityWorkloadIdentityPoolStateDetail>]
+        attr_accessor :workload_identity_pool_state_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @namespace_state_details = args[:namespace_state_details] if args.key?(:namespace_state_details)
+          @namespace_states = args[:namespace_states] if args.key?(:namespace_states)
+          @scope_tenancy_workload_identity_pool = args[:scope_tenancy_workload_identity_pool] if args.key?(:scope_tenancy_workload_identity_pool)
+          @workload_identity_pool = args[:workload_identity_pool] if args.key?(:workload_identity_pool)
+          @workload_identity_pool_state_details = args[:workload_identity_pool_state_details] if args.key?(:workload_identity_pool_state_details)
+        end
+      end
+      
+      # **WorkloadIdentity**: The membership-specific state for WorkloadIdentity
+      # feature.
+      class WorkloadIdentityMembershipState
+        include Google::Apis::Core::Hashable
+      
+        # Deprecated, will erase after code is changed to use the new field.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+        end
+      end
+      
+      # NamespaceStateDetail represents the state of a IAM namespace.
+      class WorkloadIdentityNamespaceStateDetail
+        include Google::Apis::Core::Hashable
+      
+        # The state of the IAM namespace.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # A human-readable description of the current state or returned error.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @description = args[:description] if args.key?(:description)
+        end
+      end
+      
+      # WorkloadIdentityPoolStateDetail represents the state of the Workload Identity
+      # Pools for the fleet.
+      class WorkloadIdentityWorkloadIdentityPoolStateDetail
+        include Google::Apis::Core::Hashable
+      
+        # The state of the Workload Identity Pool.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # A human-readable description of the current state or returned error.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @description = args[:description] if args.key?(:description)
         end
       end
     end

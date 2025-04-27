@@ -958,6 +958,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RbacRoleBindingActuationFeatureSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RbacRoleBindingActuationFeatureState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RbacRoleBindingLifecycleState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1127,6 +1139,36 @@ module Google
       end
       
       class ValidationResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkloadIdentityFeatureSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkloadIdentityFeatureState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkloadIdentityMembershipState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkloadIdentityNamespaceStateDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkloadIdentityWorkloadIdentityPoolStateDetail
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1377,7 +1419,11 @@ module Google
       
           property :namespaceactuation, as: 'namespaceactuation', class: Google::Apis::GkehubV1alpha::NamespaceActuationFeatureSpec, decorator: Google::Apis::GkehubV1alpha::NamespaceActuationFeatureSpec::Representation
       
+          property :rbacrolebindingactuation, as: 'rbacrolebindingactuation', class: Google::Apis::GkehubV1alpha::RbacRoleBindingActuationFeatureSpec, decorator: Google::Apis::GkehubV1alpha::RbacRoleBindingActuationFeatureSpec::Representation
+      
           property :workloadcertificate, as: 'workloadcertificate', class: Google::Apis::GkehubV1alpha::FeatureSpec, decorator: Google::Apis::GkehubV1alpha::FeatureSpec::Representation
+      
+          property :workloadidentity, as: 'workloadidentity', class: Google::Apis::GkehubV1alpha::WorkloadIdentityFeatureSpec, decorator: Google::Apis::GkehubV1alpha::WorkloadIdentityFeatureSpec::Representation
       
         end
       end
@@ -1393,9 +1439,13 @@ module Google
       
           property :namespaceactuation, as: 'namespaceactuation', class: Google::Apis::GkehubV1alpha::NamespaceActuationFeatureState, decorator: Google::Apis::GkehubV1alpha::NamespaceActuationFeatureState::Representation
       
+          property :rbacrolebindingactuation, as: 'rbacrolebindingactuation', class: Google::Apis::GkehubV1alpha::RbacRoleBindingActuationFeatureState, decorator: Google::Apis::GkehubV1alpha::RbacRoleBindingActuationFeatureState::Representation
+      
           property :servicemesh, as: 'servicemesh', class: Google::Apis::GkehubV1alpha::ServiceMeshFeatureState, decorator: Google::Apis::GkehubV1alpha::ServiceMeshFeatureState::Representation
       
           property :state, as: 'state', class: Google::Apis::GkehubV1alpha::FeatureState, decorator: Google::Apis::GkehubV1alpha::FeatureState::Representation
+      
+          property :workloadidentity, as: 'workloadidentity', class: Google::Apis::GkehubV1alpha::WorkloadIdentityFeatureState, decorator: Google::Apis::GkehubV1alpha::WorkloadIdentityFeatureState::Representation
       
         end
       end
@@ -2454,6 +2504,8 @@ module Google
       
           property :state, as: 'state', class: Google::Apis::GkehubV1alpha::FeatureState, decorator: Google::Apis::GkehubV1alpha::FeatureState::Representation
       
+          property :workloadidentity, as: 'workloadidentity', class: Google::Apis::GkehubV1alpha::WorkloadIdentityMembershipState, decorator: Google::Apis::GkehubV1alpha::WorkloadIdentityMembershipState::Representation
+      
         end
       end
       
@@ -2764,6 +2816,19 @@ module Google
         end
       end
       
+      class RbacRoleBindingActuationFeatureSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_custom_roles, as: 'allowedCustomRoles'
+        end
+      end
+      
+      class RbacRoleBindingActuationFeatureState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class RbacRoleBindingLifecycleState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2791,6 +2856,7 @@ module Google
       class Role
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_role, as: 'customRole'
           property :predefined_role, as: 'predefinedRole'
         end
       end
@@ -3024,6 +3090,49 @@ module Google
           property :result, as: 'result'
           property :success, as: 'success'
           property :validator, as: 'validator'
+        end
+      end
+      
+      class WorkloadIdentityFeatureSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scope_tenancy_pool, as: 'scopeTenancyPool'
+        end
+      end
+      
+      class WorkloadIdentityFeatureState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :namespace_state_details, as: 'namespaceStateDetails', class: Google::Apis::GkehubV1alpha::WorkloadIdentityNamespaceStateDetail, decorator: Google::Apis::GkehubV1alpha::WorkloadIdentityNamespaceStateDetail::Representation
+      
+          hash :namespace_states, as: 'namespaceStates'
+          property :scope_tenancy_workload_identity_pool, as: 'scopeTenancyWorkloadIdentityPool'
+          property :workload_identity_pool, as: 'workloadIdentityPool'
+          hash :workload_identity_pool_state_details, as: 'workloadIdentityPoolStateDetails', class: Google::Apis::GkehubV1alpha::WorkloadIdentityWorkloadIdentityPoolStateDetail, decorator: Google::Apis::GkehubV1alpha::WorkloadIdentityWorkloadIdentityPoolStateDetail::Representation
+      
+        end
+      end
+      
+      class WorkloadIdentityMembershipState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+        end
+      end
+      
+      class WorkloadIdentityNamespaceStateDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :description, as: 'description'
+        end
+      end
+      
+      class WorkloadIdentityWorkloadIdentityPoolStateDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :description, as: 'description'
         end
       end
     end
