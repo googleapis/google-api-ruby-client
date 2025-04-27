@@ -141,6 +141,7 @@ module Google
           property :constraint_default, as: 'constraintDefault'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :equivalent_constraint, as: 'equivalentConstraint'
           property :list_constraint, as: 'listConstraint', class: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintListConstraint, decorator: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintListConstraint::Representation
       
           property :name, as: 'name'

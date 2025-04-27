@@ -88,6 +88,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Managed constraint and canned constraint sometimes can have equivalents. This
+        # field is used to store the equivalent constraint name.
+        # Corresponds to the JSON property `equivalentConstraint`
+        # @return [String]
+        attr_accessor :equivalent_constraint
+      
         # A constraint type that allows or disallows a list of string values, which are
         # configured in the `PolicyRule`.
         # Corresponds to the JSON property `listConstraint`
@@ -125,6 +131,7 @@ module Google
           @constraint_default = args[:constraint_default] if args.key?(:constraint_default)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @equivalent_constraint = args[:equivalent_constraint] if args.key?(:equivalent_constraint)
           @list_constraint = args[:list_constraint] if args.key?(:list_constraint)
           @name = args[:name] if args.key?(:name)
           @supports_dry_run = args[:supports_dry_run] if args.key?(:supports_dry_run)
