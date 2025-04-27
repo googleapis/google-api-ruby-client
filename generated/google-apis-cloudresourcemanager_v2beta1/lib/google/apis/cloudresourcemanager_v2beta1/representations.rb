@@ -411,9 +411,11 @@ module Google
       class Folder
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :configured_capabilities, as: 'configuredCapabilities'
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :lifecycle_state, as: 'lifecycleState'
+          property :management_project, as: 'managementProject'
           property :name, as: 'name'
           property :parent, as: 'parent'
           hash :tags, as: 'tags'
