@@ -22,6 +22,12 @@ module Google
   module Apis
     module NetworkconnectivityV1alpha1
       
+      class AllocationOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -166,6 +172,14 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AllocationOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocation_strategy, as: 'allocationStrategy'
+          property :first_available_ranges_lookup_size, as: 'firstAvailableRangesLookupSize'
+        end
+      end
+      
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -262,6 +276,8 @@ module Google
       class InternalRange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocation_options, as: 'allocationOptions', class: Google::Apis::NetworkconnectivityV1alpha1::AllocationOptions, decorator: Google::Apis::NetworkconnectivityV1alpha1::AllocationOptions::Representation
+      
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           collection :exclude_cidr_ranges, as: 'excludeCidrRanges'
