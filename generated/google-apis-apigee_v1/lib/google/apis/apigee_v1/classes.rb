@@ -1377,7 +1377,7 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
-        # Output only. Time at which the API Security add-on expires in in milliseconds
+        # Output only. Time at which the API Security add-on expires in milliseconds
         # since epoch. If unspecified, the add-on will never expire.
         # Corresponds to the JSON property `expiresAt`
         # @return [Fixnum]
