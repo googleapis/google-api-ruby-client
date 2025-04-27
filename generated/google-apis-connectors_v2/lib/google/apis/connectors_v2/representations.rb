@@ -478,6 +478,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :consumer_defined_name, as: 'consumerDefinedName'
+          property :consumer_project_number, as: 'consumerProjectNumber'
           property :create_time, as: 'createTime'
           property :instance_type, as: 'instanceType'
           hash :labels, as: 'labels'
