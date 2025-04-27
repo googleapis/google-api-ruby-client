@@ -76,6 +76,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkforcePoolAllowedLocations
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkloadIdentityPoolAllowedLocations
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GenerateAccessTokenRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -99,6 +111,7 @@ module Google
           property :audience, as: 'audience'
           collection :delegates, as: 'delegates'
           property :include_email, as: 'includeEmail'
+          property :organization_number_included, as: 'organizationNumberIncluded'
         end
       end
       
@@ -146,6 +159,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key_id, as: 'keyId'
           property :signed_jwt, as: 'signedJwt'
+        end
+      end
+      
+      class WorkforcePoolAllowedLocations
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encoded_locations, as: 'encodedLocations'
+          collection :locations, as: 'locations'
+        end
+      end
+      
+      class WorkloadIdentityPoolAllowedLocations
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encoded_locations, as: 'encodedLocations'
+          collection :locations, as: 'locations'
         end
       end
     end
