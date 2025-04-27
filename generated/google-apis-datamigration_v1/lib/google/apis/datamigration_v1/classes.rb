@@ -5014,6 +5014,18 @@ module Google
         # @return [String]
         attr_accessor :database
       
+        # Optional. The schema name. This will be required only if the object uses a
+        # schema name as part of its unique identifier.
+        # Corresponds to the JSON property `schema`
+        # @return [String]
+        attr_accessor :schema
+      
+        # Optional. The table name. This will be required only if the object is a level
+        # below database or schema.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
         # Required. The type of the migration job object.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -5026,6 +5038,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @database = args[:database] if args.key?(:database)
+          @schema = args[:schema] if args.key?(:schema)
+          @table = args[:table] if args.key?(:table)
           @type = args[:type] if args.key?(:type)
         end
       end

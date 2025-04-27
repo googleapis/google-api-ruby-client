@@ -2212,6 +2212,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :database, as: 'database'
+          property :schema, as: 'schema'
+          property :table, as: 'table'
           property :type, as: 'type'
         end
       end
