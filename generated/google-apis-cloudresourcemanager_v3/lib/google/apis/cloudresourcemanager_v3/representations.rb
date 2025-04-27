@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Capability
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -421,6 +427,14 @@ module Google
         end
       end
       
+      class Capability
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value'
+        end
+      end
+      
       class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -543,10 +557,12 @@ module Google
       class Folder
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :configured_capabilities, as: 'configuredCapabilities'
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
           property :etag, as: 'etag'
+          property :management_project, as: 'managementProject'
           property :name, as: 'name'
           property :parent, as: 'parent'
           property :state, as: 'state'
