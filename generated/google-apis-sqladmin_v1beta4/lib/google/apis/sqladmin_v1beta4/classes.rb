@@ -203,7 +203,8 @@ module Google
         # @return [String]
         attr_accessor :backup_run
       
-        # Output only. The database version of the instance of when this backup was made.
+        # Output only. The database version of the instance of at the time this backup
+        # was made.
         # Corresponds to the JSON property `databaseVersion`
         # @return [String]
         attr_accessor :database_version
@@ -523,7 +524,7 @@ module Google
         # @return [String]
         attr_accessor :backup_kind
       
-        # Output only. The instance database version when this backup was made.
+        # Output only. The instance database version at the time this backup was made.
         # Corresponds to the JSON property `databaseVersion`
         # @return [String]
         attr_accessor :database_version
@@ -792,27 +793,27 @@ module Google
         end
       end
       
-      # Details of a single node of a read pool.
+      # Details of a single read pool node of a read pool.
       class ConnectPoolNodeConfig
         include Google::Apis::Core::Hashable
       
-        # Output only. The DNS name of the node.
+        # Output only. The DNS name of the read pool node.
         # Corresponds to the JSON property `dnsName`
         # @return [String]
         attr_accessor :dns_name
       
-        # Output only. The list of DNS names used by this instance.
+        # Output only. The list of DNS names used by this read pool node.
         # Corresponds to the JSON property `dnsNames`
         # @return [Array<Google::Apis::SqladminV1beta4::DnsNameMapping>]
         attr_accessor :dns_names
       
         # Output only. Mappings containing IP addresses that can be used to connect to
-        # the node.
+        # the read pool node.
         # Corresponds to the JSON property `ipAddresses`
         # @return [Array<Google::Apis::SqladminV1beta4::IpMapping>]
         attr_accessor :ip_addresses
       
-        # Output only. The name of the node. Doesn't include the project ID.
+        # Output only. The name of the read pool node. Doesn't include the project ID.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -878,12 +879,13 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The number of nodes in a read pool.
+        # The number of read pool nodes in a read pool.
         # Corresponds to the JSON property `nodeCount`
         # @return [Fixnum]
         attr_accessor :node_count
       
-        # Output only. Entries containing information about each node of the read pool.
+        # Output only. Entries containing information about each read pool node of the
+        # read pool.
         # Corresponds to the JSON property `nodes`
         # @return [Array<Google::Apis::SqladminV1beta4::ConnectPoolNodeConfig>]
         attr_accessor :nodes
@@ -936,16 +938,6 @@ module Google
       class ConnectionPoolConfig
         include Google::Apis::Core::Hashable
       
-        # Client idle timeout.
-        # Corresponds to the JSON property `clientConnectionIdleTimeout`
-        # @return [String]
-        attr_accessor :client_connection_idle_timeout
-      
-        # Managed connection pool size.
-        # Corresponds to the JSON property `connPoolSize`
-        # @return [Fixnum]
-        attr_accessor :conn_pool_size
-      
         # Whether managed connection pooling is enabled.
         # Corresponds to the JSON property `connectionPoolingEnabled`
         # @return [Boolean]
@@ -957,40 +949,14 @@ module Google
         # @return [Array<Google::Apis::SqladminV1beta4::ConnectionPoolFlags>]
         attr_accessor :flags
       
-        # Maximum number of client connections in connection pool.
-        # Corresponds to the JSON property `maxClientConnections`
-        # @return [Fixnum]
-        attr_accessor :max_client_connections
-      
-        # The managed connection pool mode for the instance.
-        # Corresponds to the JSON property `poolMode`
-        # @return [String]
-        attr_accessor :pool_mode
-      
-        # Query wait timeout.
-        # Corresponds to the JSON property `queryWaitTimeout`
-        # @return [String]
-        attr_accessor :query_wait_timeout
-      
-        # Server idle timeout.
-        # Corresponds to the JSON property `serverConnectionIdleTimeout`
-        # @return [String]
-        attr_accessor :server_connection_idle_timeout
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @client_connection_idle_timeout = args[:client_connection_idle_timeout] if args.key?(:client_connection_idle_timeout)
-          @conn_pool_size = args[:conn_pool_size] if args.key?(:conn_pool_size)
           @connection_pooling_enabled = args[:connection_pooling_enabled] if args.key?(:connection_pooling_enabled)
           @flags = args[:flags] if args.key?(:flags)
-          @max_client_connections = args[:max_client_connections] if args.key?(:max_client_connections)
-          @pool_mode = args[:pool_mode] if args.key?(:pool_mode)
-          @query_wait_timeout = args[:query_wait_timeout] if args.key?(:query_wait_timeout)
-          @server_connection_idle_timeout = args[:server_connection_idle_timeout] if args.key?(:server_connection_idle_timeout)
         end
       end
       
@@ -1280,12 +1246,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The number of nodes in a read pool.
+        # The number of read pool nodes in a read pool.
         # Corresponds to the JSON property `nodeCount`
         # @return [Fixnum]
         attr_accessor :node_count
       
-        # Output only. Entries containing information about each node of the read pool.
+        # Output only. Entries containing information about each read pool node of the
+        # read pool.
         # Corresponds to the JSON property `nodes`
         # @return [Array<Google::Apis::SqladminV1beta4::PoolNodeConfig>]
         attr_accessor :nodes
@@ -1882,7 +1849,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Option for export offload.
+        # Whether to perform a serverless export.
         # Corresponds to the JSON property `offload`
         # @return [Boolean]
         attr_accessor :offload
@@ -2116,8 +2083,8 @@ module Google
           class PostgresExportOptions
             include Google::Apis::Core::Hashable
           
-            # Optional. Use this option to include DROP SQL statements. These statements are
-            # used to delete database objects before running the import operation.
+            # Optional. Use this option to include DROP <object> SQL statements. Use these
+            # statements to delete database objects before running the import operation.
             # Corresponds to the JSON property `clean`
             # @return [Boolean]
             attr_accessor :clean
@@ -4118,38 +4085,38 @@ module Google
         end
       end
       
-      # Details of a single node of a read pool.
+      # Details of a single read pool node of a read pool.
       class PoolNodeConfig
         include Google::Apis::Core::Hashable
       
-        # Output only. The DNS name of the node.
+        # Output only. The DNS name of the read pool node.
         # Corresponds to the JSON property `dnsName`
         # @return [String]
         attr_accessor :dns_name
       
-        # Output only. The list of DNS names used by this node.
+        # Output only. The list of DNS names used by this read pool node.
         # Corresponds to the JSON property `dnsNames`
         # @return [Array<Google::Apis::SqladminV1beta4::DnsNameMapping>]
         attr_accessor :dns_names
       
-        # Output only. The serving zone of the node.
+        # Output only. The zone of the read pool node.
         # Corresponds to the JSON property `gceZone`
         # @return [String]
         attr_accessor :gce_zone
       
         # Output only. Mappings containing IP addresses that can be used to connect to
-        # the node.
+        # the read pool node.
         # Corresponds to the JSON property `ipAddresses`
         # @return [Array<Google::Apis::SqladminV1beta4::IpMapping>]
         attr_accessor :ip_addresses
       
-        # Output only. The name of the node, to be used for retrieving metrics and logs
-        # for the node.
+        # Output only. The name of the read pool node, to be used for retrieving metrics
+        # and logs.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. The current state of the node.
+        # Output only. The current state of the read pool node.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -4620,8 +4587,8 @@ module Google
       
         # Optional. When this parameter is set to true, Cloud SQL instances can connect
         # to Vertex AI to pass requests for real-time predictions and insights to the AI.
-        # The default value is false. This applies only to Cloud SQL for PostgreSQL
-        # instances.
+        # The default value is false. This applies only to Cloud SQL for MySQL and
+        # Cloud SQL for PostgreSQL instances.
         # Corresponds to the JSON property `enableGoogleMlIntegration`
         # @return [Boolean]
         attr_accessor :enable_google_ml_integration
@@ -5624,6 +5591,11 @@ module Google
         # @return [String]
         attr_accessor :host
       
+        # Indicates if user is active for IAM Authentication.
+        # Corresponds to the JSON property `iamStatus`
+        # @return [String]
+        attr_accessor :iam_status
+      
         # The name of the Cloud SQL instance. This does not include the project ID. Can
         # be omitted for *update* because it is already specified on the URL.
         # Corresponds to the JSON property `instance`
@@ -5678,6 +5650,7 @@ module Google
           @dual_password_type = args[:dual_password_type] if args.key?(:dual_password_type)
           @etag = args[:etag] if args.key?(:etag)
           @host = args[:host] if args.key?(:host)
+          @iam_status = args[:iam_status] if args.key?(:iam_status)
           @instance = args[:instance] if args.key?(:instance)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
