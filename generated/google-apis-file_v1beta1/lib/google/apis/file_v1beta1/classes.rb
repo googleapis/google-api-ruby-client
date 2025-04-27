@@ -407,6 +407,17 @@ module Google
         # @return [String]
         attr_accessor :consumer_defined_name
       
+        # Optional. The consumer_project_number associated with this Apigee instance.
+        # This field is added specifically to support Apigee integration with SLM
+        # Rollout and UMM. It represents the numerical project ID of the GCP project
+        # that consumes this Apigee instance. It is used for SLM rollout notifications
+        # and UMM integration, enabling proper mapping to customer projects and log
+        # delivery for Apigee instances. This field complements consumer_project_id and
+        # may be used for specific Apigee scenarios where the numerical ID is required.
+        # Corresponds to the JSON property `consumerProjectNumber`
+        # @return [String]
+        attr_accessor :consumer_project_number
+      
         # Output only. Timestamp when the resource was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -523,6 +534,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @consumer_defined_name = args[:consumer_defined_name] if args.key?(:consumer_defined_name)
+          @consumer_project_number = args[:consumer_project_number] if args.key?(:consumer_project_number)
           @create_time = args[:create_time] if args.key?(:create_time)
           @instance_type = args[:instance_type] if args.key?(:instance_type)
           @labels = args[:labels] if args.key?(:labels)
@@ -1466,6 +1478,11 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Private Service Connect configuration.
+        # Corresponds to the JSON property `pscConfig`
+        # @return [Google::Apis::FileV1beta1::PscConfig]
+        attr_accessor :psc_config
+      
         # Optional, reserved_ip_range can have one of the following two types of values.
         # * CIDR range value when using DIRECT_PEERING connect mode. * [Allocated IP
         # address range](https://cloud.google.com/compute/docs/ip-addresses/reserve-
@@ -1494,6 +1511,7 @@ module Google
           @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
           @modes = args[:modes] if args.key?(:modes)
           @network = args[:network] if args.key?(:network)
+          @psc_config = args[:psc_config] if args.key?(:psc_config)
           @reserved_ip_range = args[:reserved_ip_range] if args.key?(:reserved_ip_range)
         end
       end
@@ -1533,6 +1551,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :ip_ranges
       
+        # Optional. The source VPC network for ip_ranges. Required for instances using
+        # Private Service Connect, optional otherwise. If provided, must be the same
+        # network specified in the `NetworkConfig.network` field.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
         # The security flavors allowed for mount operations. The default is AUTH_SYS.
         # Corresponds to the JSON property `securityFlavors`
         # @return [Array<String>]
@@ -1554,6 +1579,7 @@ module Google
           @anon_gid = args[:anon_gid] if args.key?(:anon_gid)
           @anon_uid = args[:anon_uid] if args.key?(:anon_uid)
           @ip_ranges = args[:ip_ranges] if args.key?(:ip_ranges)
+          @network = args[:network] if args.key?(:network)
           @security_flavors = args[:security_flavors] if args.key?(:security_flavors)
           @squash_mode = args[:squash_mode] if args.key?(:squash_mode)
         end
@@ -1772,6 +1798,28 @@ module Google
         # Update properties of this object
         def update!(**args)
           @peer_instance = args[:peer_instance] if args.key?(:peer_instance)
+        end
+      end
+      
+      # Private Service Connect configuration.
+      class PscConfig
+        include Google::Apis::Core::Hashable
+      
+        # Consumer service project in which the Private Service Connect endpoint would
+        # be set up. This is optional, and only relevant in case the network is a shared
+        # VPC. If this is not specified, the endpoint would be setup in the VPC host
+        # project.
+        # Corresponds to the JSON property `endpointProject`
+        # @return [String]
+        attr_accessor :endpoint_project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoint_project = args[:endpoint_project] if args.key?(:endpoint_project)
         end
       end
       
