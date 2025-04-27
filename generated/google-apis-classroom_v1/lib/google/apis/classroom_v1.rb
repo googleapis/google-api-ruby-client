@@ -23,7 +23,7 @@ module Google
     #
     # Manages classes, rosters, and invitations in Google Classroom.
     #
-    # @see https://developers.google.com/classroom/
+    # @see https://developers.google.com/workspace/classroom/
     module ClassroomV1
       # Version of the Google Classroom API this client connects to.
       # This is NOT the gem version.
