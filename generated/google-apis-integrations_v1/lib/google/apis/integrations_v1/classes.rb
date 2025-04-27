@@ -7315,6 +7315,11 @@ module Google
         # @return [String]
         attr_accessor :function_region
       
+        # Optional. The api version of CF to be created
+        # Corresponds to the JSON property `gcfApiVersion`
+        # @return [String]
+        attr_accessor :gcf_api_version
+      
         # Indicates the id of the GCP project that the function will be created in.
         # Corresponds to the JSON property `projectId`
         # @return [String]
@@ -7328,6 +7333,7 @@ module Google
         def update!(**args)
           @function_name = args[:function_name] if args.key?(:function_name)
           @function_region = args[:function_region] if args.key?(:function_region)
+          @gcf_api_version = args[:gcf_api_version] if args.key?(:gcf_api_version)
           @project_id = args[:project_id] if args.key?(:project_id)
         end
       end
