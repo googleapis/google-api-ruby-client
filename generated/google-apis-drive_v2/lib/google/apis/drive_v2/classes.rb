@@ -4706,7 +4706,7 @@ module Google
         class Picture
           include Google::Apis::Core::Hashable
         
-          # Output Only. A URL that points to a profile picture of this user.
+          # Output only. A URL that points to a profile picture of this user.
           # Corresponds to the JSON property `url`
           # @return [String]
           attr_accessor :url
