@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AlgorithmRulesFloodlightActivityConversionSignal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AlgorithmRulesRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2229,7 +2235,10 @@ module Google
       class AlgorithmRules
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribution_model_id, :numeric_string => true, as: 'attributionModelId'
           property :impression_signal_ruleset, as: 'impressionSignalRuleset', class: Google::Apis::DisplayvideoV4::AlgorithmRulesRuleset, decorator: Google::Apis::DisplayvideoV4::AlgorithmRulesRuleset::Representation
+      
+          property :post_impression_signal_ruleset, as: 'postImpressionSignalRuleset', class: Google::Apis::DisplayvideoV4::AlgorithmRulesRuleset, decorator: Google::Apis::DisplayvideoV4::AlgorithmRulesRuleset::Representation
       
         end
       end
@@ -2249,6 +2258,16 @@ module Google
           property :int64_value, :numeric_string => true, as: 'int64Value'
           property :on_screen_position_value, as: 'onScreenPositionValue'
           property :string_value, as: 'stringValue'
+          property :video_player_size_value, as: 'videoPlayerSizeValue'
+        end
+      end
+      
+      class AlgorithmRulesFloodlightActivityConversionSignal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversion_counting, as: 'conversionCounting'
+          property :counting_method, as: 'countingMethod'
+          property :floodlight_activity_id, :numeric_string => true, as: 'floodlightActivityId'
         end
       end
       
@@ -2285,6 +2304,8 @@ module Google
       class AlgorithmRulesSignal
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_view_signal, as: 'activeViewSignal'
+          property :click_signal, as: 'clickSignal'
           property :impression_signal, as: 'impressionSignal'
         end
       end
@@ -2303,6 +2324,9 @@ module Google
       class AlgorithmRulesSignalValue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_view_signal, as: 'activeViewSignal'
+          property :floodlight_activity_conversion_signal, as: 'floodlightActivityConversionSignal', class: Google::Apis::DisplayvideoV4::AlgorithmRulesFloodlightActivityConversionSignal, decorator: Google::Apis::DisplayvideoV4::AlgorithmRulesFloodlightActivityConversionSignal::Representation
+      
           property :number, as: 'number'
         end
       end
