@@ -1090,6 +1090,7 @@ module Google
       
           property :correlation_id, as: 'correlationId'
           property :create_time, as: 'createTime'
+          property :customer_attestation_state, as: 'customerAttestationState'
           property :domain, as: 'domain'
           property :language_code, as: 'languageCode'
           property :name, as: 'name'
