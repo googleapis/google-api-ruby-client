@@ -22,6 +22,12 @@ module Google
   module Apis
     module MerchantapiAccountsV1beta
       
+      class AcceptTermsOfServiceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Accepted
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -536,6 +542,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcceptTermsOfServiceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :terms_of_service_agreement_state, as: 'termsOfServiceAgreementState', class: Google::Apis::MerchantapiAccountsV1beta::TermsOfServiceAgreementState, decorator: Google::Apis::MerchantapiAccountsV1beta::TermsOfServiceAgreementState::Representation
+      
+        end
       end
       
       class Accepted
