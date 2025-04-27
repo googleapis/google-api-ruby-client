@@ -424,6 +424,25 @@ module Google
         end
       end
       
+      # Adds a new table to the spreadsheet.
+      class AddTableRequest
+        include Google::Apis::Core::Hashable
+      
+        # A table.
+        # Corresponds to the JSON property `table`
+        # @return [Google::Apis::SheetsV4::Table]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @table = args[:table] if args.key?(:table)
+        end
+      end
+      
       # Adds new cells after the last row with data in a sheet, inserting new rows
       # into the sheet if necessary.
       class AppendCellsRequest
@@ -446,6 +465,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :sheet_id
       
+        # The ID of the table to append data to. The data will be only appended to the
+        # table body. This field also takes precedence over the `sheet_id` field.
+        # Corresponds to the JSON property `tableId`
+        # @return [String]
+        attr_accessor :table_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -455,6 +480,7 @@ module Google
           @fields = args[:fields] if args.key?(:fields)
           @rows = args[:rows] if args.key?(:rows)
           @sheet_id = args[:sheet_id] if args.key?(:sheet_id)
+          @table_id = args[:table_id] if args.key?(:table_id)
         end
       end
       
@@ -1394,6 +1420,12 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::SortSpec>]
         attr_accessor :sort_specs
       
+        # The table this filter is backed by, if any. When writing, only one of range or
+        # table_id may be set.
+        # Corresponds to the JSON property `tableId`
+        # @return [String]
+        attr_accessor :table_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1404,6 +1436,7 @@ module Google
           @filter_specs = args[:filter_specs] if args.key?(:filter_specs)
           @range = args[:range] if args.key?(:range)
           @sort_specs = args[:sort_specs] if args.key?(:sort_specs)
+          @table_id = args[:table_id] if args.key?(:table_id)
         end
       end
       
@@ -4860,6 +4893,25 @@ module Google
         end
       end
       
+      # Removes the table with the given ID from the spreadsheet.
+      class DeleteTableRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the table to delete.
+        # Corresponds to the JSON property `tableId`
+        # @return [String]
+        attr_accessor :table_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @table_id = args[:table_id] if args.key?(:table_id)
+        end
+      end
+      
       # Developer metadata associated with a location or object in a spreadsheet.
       # Developer metadata may be used to associate arbitrary data with various parts
       # of a spreadsheet and will remain associated at those locations as they move
@@ -5699,7 +5751,7 @@ module Google
         attr_accessor :filter_view_id
       
         # The named range this filter view is backed by, if any. When writing, only one
-        # of range or named_range_id may be set.
+        # of range or named_range_id or table_id may be set.
         # Corresponds to the JSON property `namedRangeId`
         # @return [String]
         attr_accessor :named_range_id
@@ -5727,6 +5779,12 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::SortSpec>]
         attr_accessor :sort_specs
       
+        # The table this filter view is backed by, if any. When writing, only one of
+        # range or named_range_id or table_id may be set.
+        # Corresponds to the JSON property `tableId`
+        # @return [String]
+        attr_accessor :table_id
+      
         # The name of the filter view.
         # Corresponds to the JSON property `title`
         # @return [String]
@@ -5744,6 +5802,7 @@ module Google
           @named_range_id = args[:named_range_id] if args.key?(:named_range_id)
           @range = args[:range] if args.key?(:range)
           @sort_specs = args[:sort_specs] if args.key?(:sort_specs)
+          @table_id = args[:table_id] if args.key?(:table_id)
           @title = args[:title] if args.key?(:title)
         end
       end
@@ -5893,6 +5952,12 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::DataFilter>]
         attr_accessor :data_filters
       
+        # True if tables should be excluded in the banded ranges. False if not set.
+        # Corresponds to the JSON property `excludeTablesInBandedRanges`
+        # @return [Boolean]
+        attr_accessor :exclude_tables_in_banded_ranges
+        alias_method :exclude_tables_in_banded_ranges?, :exclude_tables_in_banded_ranges
+      
         # True if grid data should be returned. This parameter is ignored if a field
         # mask was set in the request.
         # Corresponds to the JSON property `includeGridData`
@@ -5907,6 +5972,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_filters = args[:data_filters] if args.key?(:data_filters)
+          @exclude_tables_in_banded_ranges = args[:exclude_tables_in_banded_ranges] if args.key?(:exclude_tables_in_banded_ranges)
           @include_grid_data = args[:include_grid_data] if args.key?(:include_grid_data)
         end
       end
@@ -7738,7 +7804,7 @@ module Google
         attr_accessor :editors
       
         # The named range this protected range is backed by, if any. When writing, only
-        # one of range or named_range_id may be set.
+        # one of range or named_range_id or table_id may be set.
         # Corresponds to the JSON property `namedRangeId`
         # @return [String]
         attr_accessor :named_range_id
@@ -7772,6 +7838,12 @@ module Google
         attr_accessor :requesting_user_can_edit
         alias_method :requesting_user_can_edit?, :requesting_user_can_edit
       
+        # The table this protected range is backed by, if any. When writing, only one of
+        # range or named_range_id or table_id may be set.
+        # Corresponds to the JSON property `tableId`
+        # @return [String]
+        attr_accessor :table_id
+      
         # The list of unprotected ranges within a protected sheet. Unprotected ranges
         # are only supported on protected sheets.
         # Corresponds to the JSON property `unprotectedRanges`
@@ -7802,6 +7874,7 @@ module Google
           @protected_range_id = args[:protected_range_id] if args.key?(:protected_range_id)
           @range = args[:range] if args.key?(:range)
           @requesting_user_can_edit = args[:requesting_user_can_edit] if args.key?(:requesting_user_can_edit)
+          @table_id = args[:table_id] if args.key?(:table_id)
           @unprotected_ranges = args[:unprotected_ranges] if args.key?(:unprotected_ranges)
           @warning_only = args[:warning_only] if args.key?(:warning_only)
         end
@@ -8090,6 +8163,11 @@ module Google
         # @return [Google::Apis::SheetsV4::AddSlicerRequest]
         attr_accessor :add_slicer
       
+        # Adds a new table to the spreadsheet.
+        # Corresponds to the JSON property `addTable`
+        # @return [Google::Apis::SheetsV4::AddTableRequest]
+        attr_accessor :add_table
+      
         # Adds new cells after the last row with data in a sheet, inserting new rows
         # into the sheet if necessary.
         # Corresponds to the JSON property `appendCells`
@@ -8216,6 +8294,11 @@ module Google
         # Corresponds to the JSON property `deleteSheet`
         # @return [Google::Apis::SheetsV4::DeleteSheetRequest]
         attr_accessor :delete_sheet
+      
+        # Removes the table with the given ID from the spreadsheet.
+        # Corresponds to the JSON property `deleteTable`
+        # @return [Google::Apis::SheetsV4::DeleteTableRequest]
+        attr_accessor :delete_table
       
         # Duplicates a particular filter view.
         # Corresponds to the JSON property `duplicateFilterView`
@@ -8422,6 +8505,11 @@ module Google
         # @return [Google::Apis::SheetsV4::UpdateSpreadsheetPropertiesRequest]
         attr_accessor :update_spreadsheet_properties
       
+        # Updates a table in the spreadsheet.
+        # Corresponds to the JSON property `updateTable`
+        # @return [Google::Apis::SheetsV4::UpdateTableRequest]
+        attr_accessor :update_table
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8438,6 +8526,7 @@ module Google
           @add_protected_range = args[:add_protected_range] if args.key?(:add_protected_range)
           @add_sheet = args[:add_sheet] if args.key?(:add_sheet)
           @add_slicer = args[:add_slicer] if args.key?(:add_slicer)
+          @add_table = args[:add_table] if args.key?(:add_table)
           @append_cells = args[:append_cells] if args.key?(:append_cells)
           @append_dimension = args[:append_dimension] if args.key?(:append_dimension)
           @auto_fill = args[:auto_fill] if args.key?(:auto_fill)
@@ -8460,6 +8549,7 @@ module Google
           @delete_protected_range = args[:delete_protected_range] if args.key?(:delete_protected_range)
           @delete_range = args[:delete_range] if args.key?(:delete_range)
           @delete_sheet = args[:delete_sheet] if args.key?(:delete_sheet)
+          @delete_table = args[:delete_table] if args.key?(:delete_table)
           @duplicate_filter_view = args[:duplicate_filter_view] if args.key?(:duplicate_filter_view)
           @duplicate_sheet = args[:duplicate_sheet] if args.key?(:duplicate_sheet)
           @find_replace = args[:find_replace] if args.key?(:find_replace)
@@ -8494,6 +8584,7 @@ module Google
           @update_sheet_properties = args[:update_sheet_properties] if args.key?(:update_sheet_properties)
           @update_slicer_spec = args[:update_slicer_spec] if args.key?(:update_slicer_spec)
           @update_spreadsheet_properties = args[:update_spreadsheet_properties] if args.key?(:update_spreadsheet_properties)
+          @update_table = args[:update_table] if args.key?(:update_table)
         end
       end
       
@@ -8926,6 +9017,11 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::Slicer>]
         attr_accessor :slicers
       
+        # The tables on this sheet.
+        # Corresponds to the JSON property `tables`
+        # @return [Array<Google::Apis::SheetsV4::Table>]
+        attr_accessor :tables
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8945,6 +9041,7 @@ module Google
           @protected_ranges = args[:protected_ranges] if args.key?(:protected_ranges)
           @row_groups = args[:row_groups] if args.key?(:row_groups)
           @slicers = args[:slicers] if args.key?(:slicers)
+          @tables = args[:tables] if args.key?(:tables)
         end
       end
       
@@ -9615,6 +9712,156 @@ module Google
         def update!(**args)
           @primary_font_family = args[:primary_font_family] if args.key?(:primary_font_family)
           @theme_colors = args[:theme_colors] if args.key?(:theme_colors)
+        end
+      end
+      
+      # A table.
+      class Table
+        include Google::Apis::Core::Hashable
+      
+        # The table column properties.
+        # Corresponds to the JSON property `columnProperties`
+        # @return [Array<Google::Apis::SheetsV4::TableColumnProperties>]
+        attr_accessor :column_properties
+      
+        # The table name. This is unique to all tables in the same spreadsheet.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
+        # Corresponds to the JSON property `range`
+        # @return [Google::Apis::SheetsV4::GridRange]
+        attr_accessor :range
+      
+        # The table row properties.
+        # Corresponds to the JSON property `rowsProperties`
+        # @return [Google::Apis::SheetsV4::TableRowsProperties]
+        attr_accessor :rows_properties
+      
+        # The id of the table.
+        # Corresponds to the JSON property `tableId`
+        # @return [String]
+        attr_accessor :table_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column_properties = args[:column_properties] if args.key?(:column_properties)
+          @name = args[:name] if args.key?(:name)
+          @range = args[:range] if args.key?(:range)
+          @rows_properties = args[:rows_properties] if args.key?(:rows_properties)
+          @table_id = args[:table_id] if args.key?(:table_id)
+        end
+      end
+      
+      # A data validation rule for a column in a table.
+      class TableColumnDataValidationRule
+        include Google::Apis::Core::Hashable
+      
+        # A condition that can evaluate to true or false. BooleanConditions are used by
+        # conditional formatting, data validation, and the criteria in filters.
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::SheetsV4::BooleanCondition]
+        attr_accessor :condition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
+        end
+      end
+      
+      # The table column.
+      class TableColumnProperties
+        include Google::Apis::Core::Hashable
+      
+        # The 0-based column index. This index is relative to its position in the table
+        # and is not necessarily the same as the column index in the sheet.
+        # Corresponds to the JSON property `columnIndex`
+        # @return [Fixnum]
+        attr_accessor :column_index
+      
+        # The column name.
+        # Corresponds to the JSON property `columnName`
+        # @return [String]
+        attr_accessor :column_name
+      
+        # The column type.
+        # Corresponds to the JSON property `columnType`
+        # @return [String]
+        attr_accessor :column_type
+      
+        # A data validation rule for a column in a table.
+        # Corresponds to the JSON property `dataValidationRule`
+        # @return [Google::Apis::SheetsV4::TableColumnDataValidationRule]
+        attr_accessor :data_validation_rule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column_index = args[:column_index] if args.key?(:column_index)
+          @column_name = args[:column_name] if args.key?(:column_name)
+          @column_type = args[:column_type] if args.key?(:column_type)
+          @data_validation_rule = args[:data_validation_rule] if args.key?(:data_validation_rule)
+        end
+      end
+      
+      # The table row properties.
+      class TableRowsProperties
+        include Google::Apis::Core::Hashable
+      
+        # A color value.
+        # Corresponds to the JSON property `firstBandColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :first_band_color_style
+      
+        # A color value.
+        # Corresponds to the JSON property `footerColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :footer_color_style
+      
+        # A color value.
+        # Corresponds to the JSON property `headerColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :header_color_style
+      
+        # A color value.
+        # Corresponds to the JSON property `secondBandColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :second_band_color_style
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @first_band_color_style = args[:first_band_color_style] if args.key?(:first_band_color_style)
+          @footer_color_style = args[:footer_color_style] if args.key?(:footer_color_style)
+          @header_color_style = args[:header_color_style] if args.key?(:header_color_style)
+          @second_band_color_style = args[:second_band_color_style] if args.key?(:second_band_color_style)
         end
       end
       
@@ -11098,6 +11345,33 @@ module Google
         def update!(**args)
           @fields = args[:fields] if args.key?(:fields)
           @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # Updates a table in the spreadsheet.
+      class UpdateTableRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The fields that should be updated. At least one field must be
+        # specified. The root `table` is implied and should not be specified. A single `"
+        # *"` can be used as short-hand for listing every field.
+        # Corresponds to the JSON property `fields`
+        # @return [String]
+        attr_accessor :fields
+      
+        # A table.
+        # Corresponds to the JSON property `table`
+        # @return [Google::Apis::SheetsV4::Table]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fields = args[:fields] if args.key?(:fields)
+          @table = args[:table] if args.key?(:table)
         end
       end
       

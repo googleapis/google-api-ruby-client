@@ -142,6 +142,8 @@ module Google
         # portions of the spreadsheet that intersect the requested ranges.
         # @param [String] spreadsheet_id
         #   The spreadsheet to request.
+        # @param [Boolean] exclude_tables_in_banded_ranges
+        #   True if tables should be excluded in the banded ranges. False if not set.
         # @param [Boolean] include_grid_data
         #   True if grid data should be returned. This parameter is ignored if a field
         #   mask was set in the request.
@@ -164,11 +166,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_spreadsheet(spreadsheet_id, include_grid_data: nil, ranges: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_spreadsheet(spreadsheet_id, exclude_tables_in_banded_ranges: nil, include_grid_data: nil, ranges: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v4/spreadsheets/{spreadsheetId}', options)
           command.response_representation = Google::Apis::SheetsV4::Spreadsheet::Representation
           command.response_class = Google::Apis::SheetsV4::Spreadsheet
           command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
+          command.query['excludeTablesInBandedRanges'] = exclude_tables_in_banded_ranges unless exclude_tables_in_banded_ranges.nil?
           command.query['includeGridData'] = include_grid_data unless include_grid_data.nil?
           command.query['ranges'] = ranges unless ranges.nil?
           command.query['fields'] = fields unless fields.nil?
