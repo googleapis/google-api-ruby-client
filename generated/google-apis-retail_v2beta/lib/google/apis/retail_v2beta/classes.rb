@@ -5004,7 +5004,11 @@ module Google
         # variants set the true availability at the primary level. Corresponding
         # properties: Google Merchant Center property [availability](https://support.
         # google.com/merchants/answer/6324448). Schema.org property [Offer.availability](
-        # https://schema.org/availability).
+        # https://schema.org/availability). This field is currently only used by the
+        # Recommendations API. For Search, please make use of fulfillment_types or
+        # custom attributes for similar behaviour. See [here]( https://cloud.google.com/
+        # retail/docs/local-inventory-updates#local-inventory-update-methods) for more
+        # details.
         # Corresponds to the JSON property `availability`
         # @return [String]
         attr_accessor :availability
