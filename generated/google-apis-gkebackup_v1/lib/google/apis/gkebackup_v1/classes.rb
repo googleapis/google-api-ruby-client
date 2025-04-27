@@ -2146,7 +2146,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # User specified descriptive string for this Restore.
+        # Optional. User specified descriptive string for this Restore.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
