@@ -28,6 +28,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Acl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AclEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddAclEntryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -101,6 +119,12 @@ module Google
       end
       
       class GcpConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAclsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -190,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RemoveAclEntryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RestartConnectorRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -249,6 +279,38 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :network_configs, as: 'networkConfigs', class: Google::Apis::ManagedkafkaV1::NetworkConfig, decorator: Google::Apis::ManagedkafkaV1::NetworkConfig::Representation
       
+        end
+      end
+      
+      class Acl
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :acl_entries, as: 'aclEntries', class: Google::Apis::ManagedkafkaV1::AclEntry, decorator: Google::Apis::ManagedkafkaV1::AclEntry::Representation
+      
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :pattern_type, as: 'patternType'
+          property :resource_name, as: 'resourceName'
+          property :resource_type, as: 'resourceType'
+        end
+      end
+      
+      class AclEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host, as: 'host'
+          property :operation, as: 'operation'
+          property :permission_type, as: 'permissionType'
+          property :principal, as: 'principal'
+        end
+      end
+      
+      class AddAclEntryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :acl, as: 'acl', class: Google::Apis::ManagedkafkaV1::Acl, decorator: Google::Apis::ManagedkafkaV1::Acl::Representation
+      
+          property :acl_created, as: 'aclCreated'
         end
       end
       
@@ -379,6 +441,15 @@ module Google
         end
       end
       
+      class ListAclsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :acls, as: 'acls', class: Google::Apis::ManagedkafkaV1::Acl, decorator: Google::Apis::ManagedkafkaV1::Acl::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListClustersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -503,6 +574,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :mode, as: 'mode'
+        end
+      end
+      
+      class RemoveAclEntryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :acl, as: 'acl', class: Google::Apis::ManagedkafkaV1::Acl, decorator: Google::Apis::ManagedkafkaV1::Acl::Representation
+      
+          property :acl_deleted, as: 'aclDeleted'
         end
       end
       

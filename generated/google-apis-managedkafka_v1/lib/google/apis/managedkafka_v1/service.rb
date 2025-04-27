@@ -351,6 +351,284 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Incremental update: Adds an acl entry to an acl. Creates the acl if it does
+        # not exist yet.
+        # @param [String] acl
+        #   Required. The name of the acl to add the acl entry to. Structured like: `
+        #   projects/`project`/locations/`location`/clusters/`cluster`/acls/`acl_id``. The
+        #   structure of `acl_id` defines the Resource Pattern (resource_type,
+        #   resource_name, pattern_type) of the acl. See `Acl.name` for details.
+        # @param [Google::Apis::ManagedkafkaV1::AclEntry] acl_entry_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::AddAclEntryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::AddAclEntryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_project_location_cluster_acl_acl_entry(acl, acl_entry_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+acl}:addAclEntry', options)
+          command.request_representation = Google::Apis::ManagedkafkaV1::AclEntry::Representation
+          command.request_object = acl_entry_object
+          command.response_representation = Google::Apis::ManagedkafkaV1::AddAclEntryResponse::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::AddAclEntryResponse
+          command.params['acl'] = acl unless acl.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new acl in the given project, location, and cluster.
+        # @param [String] parent
+        #   Required. The parent cluster in which to create the acl. Structured like `
+        #   projects/`project`/locations/`location`/clusters/`cluster``.
+        # @param [Google::Apis::ManagedkafkaV1::Acl] acl_object
+        # @param [String] acl_id
+        #   Required. The ID to use for the acl, which will become the final component of
+        #   the acl's name. The structure of `acl_id` defines the Resource Pattern (
+        #   resource_type, resource_name, pattern_type) of the acl. `acl_id` is structured
+        #   like one of the following: For acls on the cluster: `cluster` For acls on a
+        #   single resource within the cluster: `topic/`resource_name`` `consumerGroup/`
+        #   resource_name`` `transactionalId/`resource_name`` For acls on all resources
+        #   that match a prefix: `topicPrefixed/`resource_name`` `consumerGroupPrefixed/`
+        #   resource_name`` `transactionalIdPrefixed/`resource_name`` For acls on all
+        #   resources of a given type (i.e. the wildcard literal "*"): `allTopics` (
+        #   represents `topic/*`) `allConsumerGroups` (represents `consumerGroup/*`) `
+        #   allTransactionalIds` (represents `transactionalId/*`)
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::Acl] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::Acl]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_cluster_acl(parent, acl_object = nil, acl_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/acls', options)
+          command.request_representation = Google::Apis::ManagedkafkaV1::Acl::Representation
+          command.request_object = acl_object
+          command.response_representation = Google::Apis::ManagedkafkaV1::Acl::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::Acl
+          command.params['parent'] = parent unless parent.nil?
+          command.query['aclId'] = acl_id unless acl_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an acl.
+        # @param [String] name
+        #   Required. The name of the acl to delete. Structured like: `projects/`project`/
+        #   locations/`location`/clusters/`cluster`/acls/`acl_id``. The structure of `
+        #   acl_id` defines the Resource Pattern (resource_type, resource_name,
+        #   pattern_type) of the acl. See `Acl.name` for details.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_cluster_acl(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::Empty::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the properties of a single acl.
+        # @param [String] name
+        #   Required. The name of the acl to return. Structured like: `projects/`project`/
+        #   locations/`location`/clusters/`cluster`/acls/`acl_id``. The structure of `
+        #   acl_id` defines the Resource Pattern (resource_type, resource_name,
+        #   pattern_type) of the acl. See `Acl.name` for details.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::Acl] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::Acl]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_cluster_acl(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::Acl::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::Acl
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the acls in a given cluster.
+        # @param [String] parent
+        #   Required. The parent cluster whose acls are to be listed. Structured like `
+        #   projects/`project`/locations/`location`/clusters/`cluster``.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of acls to return. The service may return fewer
+        #   than this value. If unset or zero, all acls for the parent is returned.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListAcls` call. Provide this
+        #   to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListAcls` must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::ListAclsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::ListAclsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_cluster_acls(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/acls', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::ListAclsResponse::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::ListAclsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the properties of a single acl.
+        # @param [String] name
+        #   Identifier. The name for the acl. Represents a single Resource Pattern.
+        #   Structured like: projects/`project`/locations/`location`/clusters/`cluster`/
+        #   acls/`acl_id` The structure of `acl_id` defines the Resource Pattern (
+        #   resource_type, resource_name, pattern_type) of the acl. `acl_id` is structured
+        #   like one of the following: For acls on the cluster: `cluster` For acls on a
+        #   single resource within the cluster: `topic/`resource_name`` `consumerGroup/`
+        #   resource_name`` `transactionalId/`resource_name`` For acls on all resources
+        #   that match a prefix: `topicPrefixed/`resource_name`` `consumerGroupPrefixed/`
+        #   resource_name`` `transactionalIdPrefixed/`resource_name`` For acls on all
+        #   resources of a given type (i.e. the wildcard literal "*"): `allTopics` (
+        #   represents `topic/*`) `allConsumerGroups` (represents `consumerGroup/*`) `
+        #   allTransactionalIds` (represents `transactionalId/*`)
+        # @param [Google::Apis::ManagedkafkaV1::Acl] acl_object
+        # @param [String] update_mask
+        #   Optional. Field mask is used to specify the fields to be overwritten in the
+        #   Acl resource by the update. The fields specified in the update_mask are
+        #   relative to the resource, not the full request. A field will be overwritten if
+        #   it is in the mask.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::Acl] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::Acl]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_cluster_acl(name, acl_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ManagedkafkaV1::Acl::Representation
+          command.request_object = acl_object
+          command.response_representation = Google::Apis::ManagedkafkaV1::Acl::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::Acl
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Incremental update: Removes an acl entry from an acl. Deletes the acl if its
+        # acl entries become empty (i.e. if the removed entry was the last one in the
+        # acl).
+        # @param [String] acl
+        #   Required. The name of the acl to remove the acl entry from. Structured like: `
+        #   projects/`project`/locations/`location`/clusters/`cluster`/acls/`acl_id``. The
+        #   structure of `acl_id` defines the Resource Pattern (resource_type,
+        #   resource_name, pattern_type) of the acl. See `Acl.name` for details.
+        # @param [Google::Apis::ManagedkafkaV1::AclEntry] acl_entry_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::RemoveAclEntryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::RemoveAclEntryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_project_location_cluster_acl_acl_entry(acl, acl_entry_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+acl}:removeAclEntry', options)
+          command.request_representation = Google::Apis::ManagedkafkaV1::AclEntry::Representation
+          command.request_object = acl_entry_object
+          command.response_representation = Google::Apis::ManagedkafkaV1::RemoveAclEntryResponse::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::RemoveAclEntryResponse
+          command.params['acl'] = acl unless acl.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes a single consumer group.
         # @param [String] name
         #   Required. The name of the consumer group to delete. `projects/`project`/
