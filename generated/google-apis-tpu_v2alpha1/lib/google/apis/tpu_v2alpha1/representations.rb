@@ -457,7 +457,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :customer_encryption_key, as: 'customerEncryptionKey', class: Google::Apis::TpuV2alpha1::CustomerEncryptionKey, decorator: Google::Apis::TpuV2alpha1::CustomerEncryptionKey::Representation
       
+          property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :enable_confidential_compute, as: 'enableConfidentialCompute'
+          property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
+          property :provisioned_throughput, :numeric_string => true, as: 'provisionedThroughput'
           property :source_image, as: 'sourceImage'
         end
       end
