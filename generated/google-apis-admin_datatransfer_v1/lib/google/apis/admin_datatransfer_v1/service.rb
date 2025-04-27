@@ -32,7 +32,7 @@ module Google
       #    Admin = Google::Apis::AdminDatatransferV1 # Alias the module
       #    service = Admin::DataTransferService.new
       #
-      # @see https://developers.google.com/admin-sdk/
+      # @see https://developers.google.com/workspace/admin/
       class DataTransferService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://admin.$UNIVERSE_DOMAIN$/"
 
