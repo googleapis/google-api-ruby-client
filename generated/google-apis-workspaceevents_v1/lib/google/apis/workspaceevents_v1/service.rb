@@ -83,10 +83,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # [Developer Preview](https://developers.google.com/workspace/preview): Creates
-        # a Google Workspace subscription. To learn how to use this method, see [Create
-        # a Google Workspace subscription](https://developers.google.com/workspace/
-        # events/guides/create-subscription).
+        # Creates a Google Workspace subscription. To learn how to use this method, see [
+        # Create a Google Workspace subscription](https://developers.google.com/
+        # workspace/events/guides/create-subscription).
         # @param [Google::Apis::WorkspaceeventsV1::Subscription] subscription_object
         # @param [Boolean] validate_only
         #   Optional. If set to `true`, validates and previews the request, but doesn't
@@ -120,10 +119,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # [Developer Preview](https://developers.google.com/workspace/preview): Deletes
-        # a Google Workspace subscription. To learn how to use this method, see [Delete
-        # a Google Workspace subscription](https://developers.google.com/workspace/
-        # events/guides/delete-subscription).
+        # Deletes a Google Workspace subscription. To learn how to use this method, see [
+        # Delete a Google Workspace subscription](https://developers.google.com/
+        # workspace/events/guides/delete-subscription).
         # @param [String] name
         #   Required. Resource name of the subscription to delete. Format: `subscriptions/`
         #   subscription``
@@ -166,10 +164,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # [Developer Preview](https://developers.google.com/workspace/preview): Gets
-        # details about a Google Workspace subscription. To learn how to use this method,
-        # see [Get details about a Google Workspace subscription](https://developers.
-        # google.com/workspace/events/guides/get-subscription).
+        # Gets details about a Google Workspace subscription. To learn how to use this
+        # method, see [Get details about a Google Workspace subscription](https://
+        # developers.google.com/workspace/events/guides/get-subscription).
         # @param [String] name
         #   Required. Resource name of the subscription. Format: `subscriptions/`
         #   subscription``
@@ -200,10 +197,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # [Developer Preview](https://developers.google.com/workspace/preview): Lists
-        # Google Workspace subscriptions. To learn how to use this method, see [List
-        # Google Workspace subscriptions](https://developers.google.com/workspace/events/
-        # guides/list-subscriptions).
+        # Lists Google Workspace subscriptions. To learn how to use this method, see [
+        # List Google Workspace subscriptions](https://developers.google.com/workspace/
+        # events/guides/list-subscriptions).
         # @param [String] filter
         #   Required. A query filter. You can filter subscriptions by event type (`
         #   event_types`) and target resource (`target_resource`). You must specify at
@@ -257,10 +253,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # [Developer Preview](https://developers.google.com/workspace/preview): Updates
-        # or renews a Google Workspace subscription. To learn how to use this method,
-        # see [Update or renew a Google Workspace subscription](https://developers.
-        # google.com/workspace/events/guides/update-subscription).
+        # Updates or renews a Google Workspace subscription. To learn how to use this
+        # method, see [Update or renew a Google Workspace subscription](https://
+        # developers.google.com/workspace/events/guides/update-subscription).
         # @param [String] name
         #   Identifier. Resource name of the subscription. Format: `subscriptions/`
         #   subscription``
@@ -307,7 +302,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # [Developer Preview](https://developers.google.com/workspace/preview):
         # Reactivates a suspended Google Workspace subscription. This method resets your
         # subscription's `State` field to `ACTIVE`. Before you use this method, you must
         # fix the error that suspended the subscription. This method will ignore or
