@@ -544,6 +544,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3ToolCall
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ToolCallResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ToolCallResultError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3TransitionRoute
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1114,7 +1132,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDialogflowCxV3beta1Exception
+      class GoogleCloudDialogflowCxV3beta1ExceptionDetail
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4535,6 +4553,8 @@ module Google
           property :language_code, as: 'languageCode'
           property :text, as: 'text', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3TextInput, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3TextInput::Representation
       
+          property :tool_call_result, as: 'toolCallResult', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ToolCallResult, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ToolCallResult::Representation
+      
         end
       end
       
@@ -4561,6 +4581,8 @@ module Google
           property :telephony_transfer_call, as: 'telephonyTransferCall', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall::Representation
       
           property :text, as: 'text', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ResponseMessageText, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ResponseMessageText::Representation
+      
+          property :tool_call, as: 'toolCall', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ToolCall, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ToolCall::Representation
       
         end
       end
@@ -4748,6 +4770,33 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ToolCall
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          hash :input_parameters, as: 'inputParameters'
+          property :tool, as: 'tool'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ToolCallResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :error, as: 'error', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ToolCallResultError, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ToolCallResultError::Representation
+      
+          hash :output_parameters, as: 'outputParameters'
+          property :tool, as: 'tool'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ToolCallResultError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
         end
       end
       
@@ -5811,7 +5860,7 @@ module Google
         end
       end
       
-      class GoogleCloudDialogflowCxV3beta1Exception
+      class GoogleCloudDialogflowCxV3beta1ExceptionDetail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :error_message, as: 'errorMessage'
@@ -7539,7 +7588,7 @@ module Google
       class GoogleCloudDialogflowCxV3beta1Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :exception, as: 'exception', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Exception, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Exception::Representation
+          property :exception, as: 'exception', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExceptionDetail, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExceptionDetail::Representation
       
         end
       end
