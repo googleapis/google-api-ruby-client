@@ -503,8 +503,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. Resource name of the message bus identifying the source of the
-        # messages. It matches the form projects/`project`/locations/`location`/
+        # Required. Immutable. Resource name of the message bus identifying the source
+        # of the messages. It matches the form projects/`project`/locations/`location`/
         # messageBuses/`messageBus`.
         # Corresponds to the JSON property `messageBus`
         # @return [String]
