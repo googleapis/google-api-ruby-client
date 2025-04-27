@@ -2095,6 +2095,7 @@ module Google
       class MetricUpdate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bounded_trie, as: 'boundedTrie'
           property :cumulative, as: 'cumulative'
           property :distribution, as: 'distribution'
           property :gauge, as: 'gauge'

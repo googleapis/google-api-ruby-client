@@ -3480,6 +3480,14 @@ module Google
       class MetricUpdate
         include Google::Apis::Core::Hashable
       
+        # Worker-computed aggregate value for the "Trie" aggregation kind. The only
+        # possible value type is a BoundedTrieNode. Introduced this field to avoid
+        # breaking older SDKs when Dataflow service starts to populate the `bounded_trie`
+        # field.
+        # Corresponds to the JSON property `boundedTrie`
+        # @return [Object]
+        attr_accessor :bounded_trie
+      
         # True if this metric is reported as the total cumulative aggregate value
         # accumulated since the worker started working on this WorkItem. By default this
         # is false, indicating that this metric is reported as a delta that is not
@@ -3566,6 +3574,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bounded_trie = args[:bounded_trie] if args.key?(:bounded_trie)
           @cumulative = args[:cumulative] if args.key?(:cumulative)
           @distribution = args[:distribution] if args.key?(:distribution)
           @gauge = args[:gauge] if args.key?(:gauge)
