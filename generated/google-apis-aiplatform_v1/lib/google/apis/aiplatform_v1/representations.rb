@@ -2014,6 +2014,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1GenerationConfigThinkingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1GenericOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3202,6 +3208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1NotebookReservationAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1NotebookRuntime
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3785,6 +3797,18 @@ module Google
       end
       
       class GoogleCloudAiplatformV1QuestionAnsweringRelevanceSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1RagChunk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1RagChunkPageSpan
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -9377,6 +9401,8 @@ module Google
       class GoogleCloudAiplatformV1Fact
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :chunk, as: 'chunk', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagChunk, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagChunk::Representation
+      
           property :query, as: 'query'
           property :score, as: 'score'
           property :summary, as: 'summary'
@@ -10195,6 +10221,8 @@ module Google
       
           collection :stop_sequences, as: 'stopSequences'
           property :temperature, as: 'temperature'
+          property :thinking_config, as: 'thinkingConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfigThinkingConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfigThinkingConfig::Representation
+      
           property :top_k, as: 'topK'
           property :top_p, as: 'topP'
         end
@@ -10221,6 +10249,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :model_name, as: 'modelName'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1GenerationConfigThinkingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :thinking_budget, as: 'thinkingBudget'
         end
       end
       
@@ -10312,6 +10347,8 @@ module Google
       class GoogleCloudAiplatformV1GroundingChunkRetrievedContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :rag_chunk, as: 'ragChunk', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagChunk, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagChunk::Representation
+      
           property :text, as: 'text'
           property :title, as: 'title'
           property :uri, as: 'uri'
@@ -12309,6 +12346,15 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1NotebookReservationAffinity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consume_reservation_type, as: 'consumeReservationType'
+          property :key, as: 'key'
+          collection :values, as: 'values'
+        end
+      end
+      
       class GoogleCloudAiplatformV1NotebookRuntime
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12337,6 +12383,8 @@ module Google
       
           property :notebook_runtime_type, as: 'notebookRuntimeType'
           property :proxy_uri, as: 'proxyUri'
+          property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookReservationAffinity, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookReservationAffinity::Representation
+      
           property :runtime_state, as: 'runtimeState'
           property :runtime_user, as: 'runtimeUser'
           property :satisfies_pzi, as: 'satisfiesPzi'
@@ -12375,6 +12423,8 @@ module Google
       
           collection :network_tags, as: 'networkTags'
           property :notebook_runtime_type, as: 'notebookRuntimeType'
+          property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookReservationAffinity, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookReservationAffinity::Representation
+      
           property :service_account, as: 'serviceAccount'
           property :shielded_vm_config, as: 'shieldedVmConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ShieldedVmConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ShieldedVmConfig::Representation
       
@@ -13368,6 +13418,23 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1RagChunk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :page_span, as: 'pageSpan', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagChunkPageSpan, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagChunkPageSpan::Representation
+      
+          property :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1RagChunkPageSpan
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :first_page, as: 'firstPage'
+          property :last_page, as: 'lastPage'
+        end
+      end
+      
       class GoogleCloudAiplatformV1RagContexts
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -13379,6 +13446,8 @@ module Google
       class GoogleCloudAiplatformV1RagContextsContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :chunk, as: 'chunk', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagChunk, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagChunk::Representation
+      
           property :score, as: 'score'
           property :source_display_name, as: 'sourceDisplayName'
           property :source_uri, as: 'sourceUri'
@@ -16257,6 +16326,7 @@ module Google
       class GoogleCloudAiplatformV1SpeechConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :language_code, as: 'languageCode'
           property :voice_config, as: 'voiceConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VoiceConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VoiceConfig::Representation
       
         end
