@@ -312,13 +312,13 @@ module Google
         
         # Updates the parameters of a single AccountConnector.
         # @param [String] name
-        #   Identifier. The resource name of the userConnection, in the format `projects/`
-        #   project`/locations/`location`/accountConnectors/`account_connector_id``.
+        #   Identifier. The resource name of the accountConnector, in the format `projects/
+        #   `project`/locations/`location`/accountConnectors/`account_connector_id``.
         # @param [Google::Apis::DeveloperconnectV1::AccountConnector] account_connector_object
         # @param [Boolean] allow_missing
-        #   Optional. If set to true, and the userConnection is not found a new
-        #   userConnection will be created. In this situation `update_mask` is ignored.
-        #   The creation will succeed only if the input userConnection has all the
+        #   Optional. If set to true, and the accountConnector is not found a new
+        #   accountConnector will be created. In this situation `update_mask` is ignored.
+        #   The creation will succeed only if the input accountConnector has all the
         #   necessary
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
@@ -418,7 +418,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete the User of the user themselves.
+        # Delete the User based on the user credentials.
         # @param [String] name
         #   Required. Name of the AccountConnector resource
         # @param [String] fields
@@ -482,7 +482,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Fetches the User of the user themselves.
+        # Fetch the User based on the user credentials.
         # @param [String] name
         #   Required. Name of the AccountConnector resource
         # @param [String] fields

@@ -34,7 +34,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
-        # Output only. The timestamp when the userConnection was created.
+        # Output only. The timestamp when the accountConnector was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -51,8 +51,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Identifier. The resource name of the userConnection, in the format `projects/`
-        # project`/locations/`location`/accountConnectors/`account_connector_id``.
+        # Identifier. The resource name of the accountConnector, in the format `projects/
+        # `project`/locations/`location`/accountConnectors/`account_connector_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -67,7 +67,7 @@ module Google
         # @return [Google::Apis::DeveloperconnectV1::ProviderOAuthConfig]
         attr_accessor :provider_oauth_config
       
-        # Output only. The timestamp when the userConnection was updated.
+        # Output only. The timestamp when the accountConnector was updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
