@@ -1016,15 +1016,9 @@ module Google
       class ConnectionPoolConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :client_connection_idle_timeout, as: 'clientConnectionIdleTimeout'
-          property :conn_pool_size, as: 'connPoolSize'
           property :connection_pooling_enabled, as: 'connectionPoolingEnabled'
           collection :flags, as: 'flags', class: Google::Apis::SqladminV1::ConnectionPoolFlags, decorator: Google::Apis::SqladminV1::ConnectionPoolFlags::Representation
       
-          property :max_client_connections, as: 'maxClientConnections'
-          property :pool_mode, as: 'poolMode'
-          property :query_wait_timeout, as: 'queryWaitTimeout'
-          property :server_connection_idle_timeout, as: 'serverConnectionIdleTimeout'
         end
       end
       
@@ -2248,6 +2242,7 @@ module Google
           property :dual_password_type, as: 'dualPasswordType'
           property :etag, as: 'etag'
           property :host, as: 'host'
+          property :iam_status, as: 'iamStatus'
           property :instance, as: 'instance'
           property :kind, as: 'kind'
           property :name, as: 'name'
