@@ -178,11 +178,31 @@ module Google
         # @return [Google::Apis::TpuV2alpha1::CustomerEncryptionKey]
         attr_accessor :customer_encryption_key
       
+        # Optional. Size of the boot disk in GB. It must be larger than or equal to the
+        # size of the image.
+        # Corresponds to the JSON property `diskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :disk_size_gb
+      
         # Optional. Whether the boot disk will be created with confidential compute mode.
         # Corresponds to the JSON property `enableConfidentialCompute`
         # @return [Boolean]
         attr_accessor :enable_confidential_compute
         alias_method :enable_confidential_compute?, :enable_confidential_compute
+      
+        # Optional. Indicates how many IOPS to provision for the disk. This sets the
+        # number of I/O operations per second that the disk can handle. To learn more
+        # about IOPS, see [Provisioning persistent disk performance](https://cloud.
+        # google.com/compute/docs/disks/performance#provisioned-iops).
+        # Corresponds to the JSON property `provisionedIops`
+        # @return [Fixnum]
+        attr_accessor :provisioned_iops
+      
+        # Optional. Indicates how much throughput to provision for the disk. This sets
+        # the number of throughput MB per second that the disk can handle.
+        # Corresponds to the JSON property `provisionedThroughput`
+        # @return [Fixnum]
+        attr_accessor :provisioned_throughput
       
         # Optional. Image from which boot disk is to be created. If not specified, the
         # default image for the runtime version will be used. Example: `projects/$
@@ -198,7 +218,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @customer_encryption_key = args[:customer_encryption_key] if args.key?(:customer_encryption_key)
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @enable_confidential_compute = args[:enable_confidential_compute] if args.key?(:enable_confidential_compute)
+          @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
+          @provisioned_throughput = args[:provisioned_throughput] if args.key?(:provisioned_throughput)
           @source_image = args[:source_image] if args.key?(:source_image)
         end
       end
