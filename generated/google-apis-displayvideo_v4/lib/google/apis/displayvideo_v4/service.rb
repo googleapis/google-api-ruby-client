@@ -3838,10 +3838,8 @@ module Google
         end
         
         # Updates an existing custom bidding algorithm. Returns the updated custom
-        # bidding algorithm if successful. *Warning*: Starting **April 1, 2025**,
-        # requests updating custom bidding algorithms that are assigned to line items
-        # will return an error. [Read more about this announced change](/display-video/
-        # api/deprecations#features.custom_bidding_floodlight).
+        # bidding algorithm if successful. Requests updating a custom bidding algorithm
+        # assigned to a line item will return an error.
         # @param [Fixnum] custom_bidding_algorithm_id
         #   Output only. The unique ID of the custom bidding algorithm. Assigned by the
         #   system.
@@ -3958,10 +3956,8 @@ module Google
         end
         
         # Creates a new rules resource. Returns the newly created rules resource if
-        # successful. *Warning*: Starting **April 1, 2025**, requests updating custom
-        # bidding algorithms that are assigned to line items will return an error. [Read
-        # more about this announced change](/display-video/api/deprecations#features.
-        # custom_bidding_floodlight).
+        # successful. Requests creating a custom bidding rules resource under an
+        # algorithm assigned to a line item will return an error.
         # @param [Fixnum] custom_bidding_algorithm_id
         #   Required. The ID of the custom bidding algorithm that owns the rules resource.
         # @param [Google::Apis::DisplayvideoV4::CustomBiddingAlgorithmRules] custom_bidding_algorithm_rules_object
@@ -4094,10 +4090,8 @@ module Google
         end
         
         # Creates a new custom bidding script. Returns the newly created script if
-        # successful. *Warning*: Starting **April 1, 2025**, requests updating custom
-        # bidding algorithms that are assigned to line items will return an error. [Read
-        # more about this announced change](/display-video/api/deprecations#features.
-        # custom_bidding_floodlight).
+        # successful. Requests creating a custom bidding script under an algorithm
+        # assigned to a line item will return an error.
         # @param [Fixnum] custom_bidding_algorithm_id
         #   Required. The ID of the custom bidding algorithm that owns the script.
         # @param [Google::Apis::DisplayvideoV4::CustomBiddingScript] custom_bidding_script_object
@@ -6431,8 +6425,8 @@ module Google
         # SdfDownloadTaskMetadata. If the request is successful, the response type of
         # the operation is SdfDownloadTask. The response will not include the download
         # files, which must be retrieved with media.download. The state of operation can
-        # be retrieved with sdfdownloadtask.operations.get. Any errors can be found in
-        # the error.message. Note that error.details is expected to be empty.
+        # be retrieved with `sdfdownloadtasks.operations.get`. Any errors can be found
+        # in the error.message. Note that error.details is expected to be empty.
         # @param [Google::Apis::DisplayvideoV4::CreateSdfDownloadTaskRequest] create_sdf_download_task_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

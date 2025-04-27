@@ -306,7 +306,7 @@ module Google
         end
       end
       
-      # Details of Adloox brand safety settings.
+      # Details of Scope3 (previously known as Adloox) brand safety settings.
       class Adloox
         include Google::Apis::Core::Hashable
       
@@ -345,12 +345,12 @@ module Google
         # @return [String]
         attr_accessor :display_iab_viewability
       
-        # Adloox categories to exclude.
+        # Scope3 categories to exclude.
         # Corresponds to the JSON property `excludedAdlooxCategories`
         # @return [Array<String>]
         attr_accessor :excluded_adloox_categories
       
-        # Optional. Adloox's fraud IVT MFA categories to exclude.
+        # Optional. Scope3's fraud IVT MFA categories to exclude.
         # Corresponds to the JSON property `excludedFraudIvtMfaCategories`
         # @return [Array<String>]
         attr_accessor :excluded_fraud_ivt_mfa_categories
@@ -811,11 +811,22 @@ module Google
       class AlgorithmRules
         include Google::Apis::Core::Hashable
       
+        # Attribution model for the algorithm.
+        # Corresponds to the JSON property `attributionModelId`
+        # @return [Fixnum]
+        attr_accessor :attribution_model_id
+      
         # A ruleset consisting of a list of rules and how to aggregate the resulting
         # values.
         # Corresponds to the JSON property `impressionSignalRuleset`
         # @return [Google::Apis::DisplayvideoV4::AlgorithmRulesRuleset]
         attr_accessor :impression_signal_ruleset
+      
+        # A ruleset consisting of a list of rules and how to aggregate the resulting
+        # values.
+        # Corresponds to the JSON property `postImpressionSignalRuleset`
+        # @return [Google::Apis::DisplayvideoV4::AlgorithmRulesRuleset]
+        attr_accessor :post_impression_signal_ruleset
       
         def initialize(**args)
            update!(**args)
@@ -823,7 +834,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @attribution_model_id = args[:attribution_model_id] if args.key?(:attribution_model_id)
           @impression_signal_ruleset = args[:impression_signal_ruleset] if args.key?(:impression_signal_ruleset)
+          @post_impression_signal_ruleset = args[:post_impression_signal_ruleset] if args.key?(:post_impression_signal_ruleset)
         end
       end
       
@@ -882,6 +895,11 @@ module Google
         # @return [String]
         attr_accessor :string_value
       
+        # Video player size value.
+        # Corresponds to the JSON property `videoPlayerSizeValue`
+        # @return [String]
+        attr_accessor :video_player_size_value
+      
         def initialize(**args)
            update!(**args)
         end
@@ -898,6 +916,40 @@ module Google
           @int64_value = args[:int64_value] if args.key?(:int64_value)
           @on_screen_position_value = args[:on_screen_position_value] if args.key?(:on_screen_position_value)
           @string_value = args[:string_value] if args.key?(:string_value)
+          @video_player_size_value = args[:video_player_size_value] if args.key?(:video_player_size_value)
+        end
+      end
+      
+      # The rule to score impressions based on Floodlight conversion events.
+      class AlgorithmRulesFloodlightActivityConversionSignal
+        include Google::Apis::Core::Hashable
+      
+        # Required. The type of conversions to be used in impression value computation,
+        # for example, post-click conversions.
+        # Corresponds to the JSON property `conversionCounting`
+        # @return [String]
+        attr_accessor :conversion_counting
+      
+        # Required. The way to acquire value from the floodlight activity, for example,
+        # count of the conversion.
+        # Corresponds to the JSON property `countingMethod`
+        # @return [String]
+        attr_accessor :counting_method
+      
+        # Required. Id of the floodlight activity.
+        # Corresponds to the JSON property `floodlightActivityId`
+        # @return [Fixnum]
+        attr_accessor :floodlight_activity_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversion_counting = args[:conversion_counting] if args.key?(:conversion_counting)
+          @counting_method = args[:counting_method] if args.key?(:counting_method)
+          @floodlight_activity_id = args[:floodlight_activity_id] if args.key?(:floodlight_activity_id)
         end
       end
       
@@ -991,6 +1043,16 @@ module Google
       class AlgorithmRulesSignal
         include Google::Apis::Core::Hashable
       
+        # Signal based on active views.
+        # Corresponds to the JSON property `activeViewSignal`
+        # @return [String]
+        attr_accessor :active_view_signal
+      
+        # Signal based on clicks.
+        # Corresponds to the JSON property `clickSignal`
+        # @return [String]
+        attr_accessor :click_signal
+      
         # Signal based on impressions.
         # Corresponds to the JSON property `impressionSignal`
         # @return [String]
@@ -1002,6 +1064,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @active_view_signal = args[:active_view_signal] if args.key?(:active_view_signal)
+          @click_signal = args[:click_signal] if args.key?(:click_signal)
           @impression_signal = args[:impression_signal] if args.key?(:impression_signal)
         end
       end
@@ -1045,6 +1109,16 @@ module Google
       class AlgorithmRulesSignalValue
         include Google::Apis::Core::Hashable
       
+        # Signal based on active views. Only `TIME_ON_SCREEN` is supported.
+        # Corresponds to the JSON property `activeViewSignal`
+        # @return [String]
+        attr_accessor :active_view_signal
+      
+        # The rule to score impressions based on Floodlight conversion events.
+        # Corresponds to the JSON property `floodlightActivityConversionSignal`
+        # @return [Google::Apis::DisplayvideoV4::AlgorithmRulesFloodlightActivityConversionSignal]
+        attr_accessor :floodlight_activity_conversion_signal
+      
         # Value to use as result.
         # Corresponds to the JSON property `number`
         # @return [Float]
@@ -1056,6 +1130,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @active_view_signal = args[:active_view_signal] if args.key?(:active_view_signal)
+          @floodlight_activity_conversion_signal = args[:floodlight_activity_conversion_signal] if args.key?(:floodlight_activity_conversion_signal)
           @number = args[:number] if args.key?(:number)
         end
       end
@@ -4084,13 +4160,10 @@ module Google
       
         # The Floodlight activity configs used to track conversions. The number of
         # conversions counted is the sum of all of the conversions counted by all of the
-        # Floodlight activity IDs specified in this field. *Warning*: Starting **April 1,
-        # 2025**, this field will no longer be writable while a custom bidding
-        # algorithm is assigned to the line item. If you set this field and assign a
-        # custom bidding algorithm in the same request, the floodlight activities must
-        # match the ones used by the custom bidding algorithm. [Read more about this
-        # announced change](/display-video/api/deprecations#features.
-        # custom_bidding_floodlight).
+        # Floodlight activity IDs specified in this field. This field can't be updated
+        # if a custom bidding algorithm is assigned to the line item. If you set this
+        # field and assign a custom bidding algorithm in the same request, the
+        # floodlight activities must match the ones used by the custom bidding algorithm.
         # Corresponds to the JSON property `floodlightActivityConfigs`
         # @return [Array<Google::Apis::DisplayvideoV4::TrackingFloodlightActivityConfig>]
         attr_accessor :floodlight_activity_configs
@@ -6244,16 +6317,10 @@ module Google
         attr_accessor :gmail_audience_size
       
         # Output only. The duration in days that an entry remains in the audience after
-        # the qualifying event. If the audience has no expiration, set the value of this
-        # field to 10000. Otherwise, the set value must be greater than 0 and less than
-        # or equal to 540. Only applicable to first party audiences. This field is
-        # required if one of the following audience_type is used: * `
-        # CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID` *Warning*: Starting
-        # on **April 7, 2025**, audiences will no longer be able to have infinite
-        # membership duration. This field will no longer accept the value 10000 and all
-        # audiences with membership durations greater than 540 days will be updated to a
-        # membership duration of 540 days. [Read more about this announced change](/
-        # display-video/api/deprecations#features.audience_duration).
+        # the qualifying event. The set value must be greater than 0 and less than or
+        # equal to 540. Only applicable to first party audiences. This field is required
+        # if one of the following audience_type is used: * `CUSTOMER_MATCH_CONTACT_INFO`
+        # * `CUSTOMER_MATCH_DEVICE_ID`
         # Corresponds to the JSON property `membershipDurationDays`
         # @return [Fixnum]
         attr_accessor :membership_duration_days
@@ -9568,11 +9635,9 @@ module Google
       
         # The ID of the Custom Bidding Algorithm used by this strategy. Only applicable
         # when performance_goal_type is set to `
-        # BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. *Warning*: Starting **
-        # April 1, 2025**, assigning a custom bidding algorithm that uses floodlight
-        # activities not identified in floodlightActivityConfigs will return an error. [
-        # Read more about this announced change](/display-video/api/deprecations#
-        # features.custom_bidding_floodlight).
+        # BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. Assigning a custom
+        # bidding algorithm that uses floodlight activities not identified in
+        # floodlightActivityConfigs will return an error.
         # Corresponds to the JSON property `customBiddingAlgorithmId`
         # @return [Fixnum]
         attr_accessor :custom_bidding_algorithm_id
@@ -10625,11 +10690,9 @@ module Google
       
         # The ID of the Custom Bidding Algorithm used by this strategy. Only applicable
         # when performance_goal_type is set to `
-        # BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. *Warning*: Starting **
-        # April 1, 2025**, assigning a custom bidding algorithm that uses floodlight
-        # activities not identified in floodlightActivityConfigs will return an error. [
-        # Read more about this announced change](/display-video/api/deprecations#
-        # features.custom_bidding_floodlight).
+        # BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. Assigning a custom
+        # bidding algorithm that uses floodlight activities not identified in
+        # floodlightActivityConfigs will return an error.
         # Corresponds to the JSON property `customBiddingAlgorithmId`
         # @return [Fixnum]
         attr_accessor :custom_bidding_algorithm_id
@@ -11254,8 +11317,7 @@ module Google
         end
       end
       
-      # Type for the response returned by [SdfDownloadTaskService.
-      # CreateSdfDownloadTask].
+      # Type for the response returned by SdfDownloadTaskService.CreateSdfDownloadTask.
       class SdfDownloadTask
         include Google::Apis::Core::Hashable
       
@@ -11277,8 +11339,7 @@ module Google
         end
       end
       
-      # Type for the metadata returned by [SdfDownloadTaskService.
-      # CreateSdfDownloadTask].
+      # Type for the metadata returned by SdfDownloadTaskService.CreateSdfDownloadTask.
       class SdfDownloadTaskMetadata
         include Google::Apis::Core::Hashable
       
@@ -12076,7 +12137,7 @@ module Google
       class ThirdPartyVerifierAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Details of Adloox brand safety settings.
+        # Details of Scope3 (previously known as Adloox) brand safety settings.
         # Corresponds to the JSON property `adloox`
         # @return [Google::Apis::DisplayvideoV4::Adloox]
         attr_accessor :adloox
