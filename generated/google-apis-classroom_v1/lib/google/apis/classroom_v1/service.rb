@@ -30,7 +30,7 @@ module Google
       #    Classroom = Google::Apis::ClassroomV1 # Alias the module
       #    service = Classroom::ClassroomService.new
       #
-      # @see https://developers.google.com/classroom/
+      # @see https://developers.google.com/workspace/classroom/
       class ClassroomService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://classroom.$UNIVERSE_DOMAIN$/"
 
@@ -339,12 +339,12 @@ module Google
         # Updates grading period settings of a course. Individual grading periods can be
         # added, removed, or modified using this method. The requesting user and course
         # owner must be eligible to modify Grading Periods. For details, see [licensing
-        # requirements](https://developers.google.com/classroom/grading-periods/manage-
-        # grading-periods#licensing_requirements). This method returns the following
-        # error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
-        # modify the grading period settings in a course or for access errors: *
-        # UserIneligibleToUpdateGradingPeriodSettings * `INVALID_ARGUMENT` if the
-        # request is malformed. * `NOT_FOUND` if the requested course does not exist.
+        # requirements](https://developers.google.com/workspace/classroom/grading-
+        # periods/manage-grading-periods#licensing_requirements). This method returns
+        # the following error codes: * `PERMISSION_DENIED` if the requesting user is not
+        # permitted to modify the grading period settings in a course or for access
+        # errors: * UserIneligibleToUpdateGradingPeriodSettings * `INVALID_ARGUMENT` if
+        # the request is malformed. * `NOT_FOUND` if the requested course does not exist.
         # @param [String] course_id
         #   Required. The identifier of the course.
         # @param [Google::Apis::ClassroomV1::GradingPeriodSettings] grading_period_settings_object
@@ -633,9 +633,9 @@ module Google
         # Gets metadata for Classroom add-ons in the context of a specific post. To
         # maintain the integrity of its own data and permissions model, an add-on should
         # call this to validate query parameters and the requesting user's role whenever
-        # the add-on is opened in an [iframe](https://developers.google.com/classroom/
-        # add-ons/get-started/iframes/iframes-overview). This method returns the
-        # following error codes: * `PERMISSION_DENIED` for access errors. * `
+        # the add-on is opened in an [iframe](https://developers.google.com/workspace/
+        # classroom/add-ons/get-started/iframes/iframes-overview). This method returns
+        # the following error codes: * `PERMISSION_DENIED` for access errors. * `
         # INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the
         # identified resources does not exist.
         # @param [String] course_id
@@ -653,8 +653,8 @@ module Google
         # @param [String] attachment_id
         #   Optional. The identifier of the attachment. This field is required for all
         #   requests except when the user is in the [Attachment Discovery iframe](https://
-        #   developers.google.com/classroom/add-ons/get-started/iframes/attachment-
-        #   discovery-iframe).
+        #   developers.google.com/workspace/classroom/add-ons/get-started/iframes/
+        #   attachment-discovery-iframe).
         # @param [String] post_id
         #   Optional. Deprecated, use `item_id` instead.
         # @param [String] fields
@@ -1216,9 +1216,9 @@ module Google
         # Gets metadata for Classroom add-ons in the context of a specific post. To
         # maintain the integrity of its own data and permissions model, an add-on should
         # call this to validate query parameters and the requesting user's role whenever
-        # the add-on is opened in an [iframe](https://developers.google.com/classroom/
-        # add-ons/get-started/iframes/iframes-overview). This method returns the
-        # following error codes: * `PERMISSION_DENIED` for access errors. * `
+        # the add-on is opened in an [iframe](https://developers.google.com/workspace/
+        # classroom/add-ons/get-started/iframes/iframes-overview). This method returns
+        # the following error codes: * `PERMISSION_DENIED` for access errors. * `
         # INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the
         # identified resources does not exist.
         # @param [String] course_id
@@ -1236,8 +1236,8 @@ module Google
         # @param [String] attachment_id
         #   Optional. The identifier of the attachment. This field is required for all
         #   requests except when the user is in the [Attachment Discovery iframe](https://
-        #   developers.google.com/classroom/add-ons/get-started/iframes/attachment-
-        #   discovery-iframe).
+        #   developers.google.com/workspace/classroom/add-ons/get-started/iframes/
+        #   attachment-discovery-iframe).
         # @param [String] post_id
         #   Optional. Deprecated, use `item_id` instead.
         # @param [String] fields
@@ -1432,19 +1432,19 @@ module Google
         # can be updated. Rubric update capabilities are [limited](/classroom/rubrics/
         # limitations) once grading has started. The requesting user and course owner
         # must have rubrics creation capabilities. For details, see [licensing
-        # requirements](https://developers.google.com/classroom/rubrics/limitations#
-        # license-requirements). This request must be made by the Google Cloud console
-        # of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used
-        # to create the parent course work item. This method returns the following error
-        # codes: * `PERMISSION_DENIED` if the requesting developer project didn't create
-        # the corresponding course work, if the user isn't permitted to make the
-        # requested modification to the rubric, or for access errors. This error code is
-        # also returned if grading has already started on the rubric. * `
-        # INVALID_ARGUMENT` if the request is malformed and for the following request
-        # error: * `RubricCriteriaInvalidFormat` * `NOT_FOUND` if the requested course,
-        # course work, or rubric doesn't exist or if the user doesn't have access to the
-        # corresponding course work. * `INTERNAL` if grading has already started on the
-        # rubric.
+        # requirements](https://developers.google.com/workspace/classroom/rubrics/
+        # limitations#license-requirements). This request must be made by the Google
+        # Cloud console of the [OAuth client ID](https://support.google.com/cloud/answer/
+        # 6158849) used to create the parent course work item. This method returns the
+        # following error codes: * `PERMISSION_DENIED` if the requesting developer
+        # project didn't create the corresponding course work, if the user isn't
+        # permitted to make the requested modification to the rubric, or for access
+        # errors. This error code is also returned if grading has already started on the
+        # rubric. * `INVALID_ARGUMENT` if the request is malformed and for the following
+        # request error: * `RubricCriteriaInvalidFormat` * `NOT_FOUND` if the requested
+        # course, course work, or rubric doesn't exist or if the user doesn't have
+        # access to the corresponding course work. * `INTERNAL` if grading has already
+        # started on the rubric.
         # @param [String] course_id
         #   Required. Identifier of the course.
         # @param [String] course_work_id
@@ -1855,18 +1855,19 @@ module Google
         
         # Creates a rubric. The requesting user and course owner must have rubrics
         # creation capabilities. For details, see [licensing requirements](https://
-        # developers.google.com/classroom/rubrics/limitations#license-requirements). For
-        # further details, see [Rubrics structure and known limitations](/classroom/
-        # rubrics/limitations). This request must be made by the Google Cloud console of
-        # the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to
-        # create the parent course work item. This method returns the following error
-        # codes: * `PERMISSION_DENIED` if the requesting user isn't permitted to create
-        # rubrics for course work in the requested course. * `INTERNAL` if the request
-        # has insufficient OAuth scopes. * `INVALID_ARGUMENT` if the request is
-        # malformed and for the following request error: * `RubricCriteriaInvalidFormat`
-        # * `NOT_FOUND` if the requested course or course work don't exist or the user
-        # doesn't have access to the course or course work. * `FAILED_PRECONDITION` for
-        # the following request error: * `AttachmentNotVisible`
+        # developers.google.com/workspace/classroom/rubrics/limitations#license-
+        # requirements). For further details, see [Rubrics structure and known
+        # limitations](/classroom/rubrics/limitations). This request must be made by the
+        # Google Cloud console of the [OAuth client ID](https://support.google.com/cloud/
+        # answer/6158849) used to create the parent course work item. This method
+        # returns the following error codes: * `PERMISSION_DENIED` if the requesting
+        # user isn't permitted to create rubrics for course work in the requested course.
+        # * `INTERNAL` if the request has insufficient OAuth scopes. * `
+        # INVALID_ARGUMENT` if the request is malformed and for the following request
+        # error: * `RubricCriteriaInvalidFormat` * `NOT_FOUND` if the requested course
+        # or course work don't exist or the user doesn't have access to the course or
+        # course work. * `FAILED_PRECONDITION` for the following request error: * `
+        # AttachmentNotVisible`
         # @param [String] course_id
         #   Required. Identifier of the course.
         # @param [String] course_work_id
@@ -1904,11 +1905,11 @@ module Google
         
         # Deletes a rubric. The requesting user and course owner must have rubrics
         # creation capabilities. For details, see [licensing requirements](https://
-        # developers.google.com/classroom/rubrics/limitations#license-requirements).
-        # This request must be made by the Google Cloud console of the [OAuth client ID](
-        # https://support.google.com/cloud/answer/6158849) used to create the
-        # corresponding rubric. This method returns the following error codes: * `
-        # PERMISSION_DENIED` if the requesting developer project didn't create the
+        # developers.google.com/workspace/classroom/rubrics/limitations#license-
+        # requirements). This request must be made by the Google Cloud console of the [
+        # OAuth client ID](https://support.google.com/cloud/answer/6158849) used to
+        # create the corresponding rubric. This method returns the following error codes:
+        # * `PERMISSION_DENIED` if the requesting developer project didn't create the
         # corresponding rubric, or if the requesting user isn't permitted to delete the
         # requested rubric. * `NOT_FOUND` if no rubric exists with the requested ID or
         # the user does not have access to the course, course work, or rubric. * `
@@ -2037,19 +2038,19 @@ module Google
         # can be updated. Rubric update capabilities are [limited](/classroom/rubrics/
         # limitations) once grading has started. The requesting user and course owner
         # must have rubrics creation capabilities. For details, see [licensing
-        # requirements](https://developers.google.com/classroom/rubrics/limitations#
-        # license-requirements). This request must be made by the Google Cloud console
-        # of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used
-        # to create the parent course work item. This method returns the following error
-        # codes: * `PERMISSION_DENIED` if the requesting developer project didn't create
-        # the corresponding course work, if the user isn't permitted to make the
-        # requested modification to the rubric, or for access errors. This error code is
-        # also returned if grading has already started on the rubric. * `
-        # INVALID_ARGUMENT` if the request is malformed and for the following request
-        # error: * `RubricCriteriaInvalidFormat` * `NOT_FOUND` if the requested course,
-        # course work, or rubric doesn't exist or if the user doesn't have access to the
-        # corresponding course work. * `INTERNAL` if grading has already started on the
-        # rubric.
+        # requirements](https://developers.google.com/workspace/classroom/rubrics/
+        # limitations#license-requirements). This request must be made by the Google
+        # Cloud console of the [OAuth client ID](https://support.google.com/cloud/answer/
+        # 6158849) used to create the parent course work item. This method returns the
+        # following error codes: * `PERMISSION_DENIED` if the requesting developer
+        # project didn't create the corresponding course work, if the user isn't
+        # permitted to make the requested modification to the rubric, or for access
+        # errors. This error code is also returned if grading has already started on the
+        # rubric. * `INVALID_ARGUMENT` if the request is malformed and for the following
+        # request error: * `RubricCriteriaInvalidFormat` * `NOT_FOUND` if the requested
+        # course, course work, or rubric doesn't exist or if the user doesn't have
+        # access to the corresponding course work. * `INTERNAL` if grading has already
+        # started on the rubric.
         # @param [String] course_id
         #   Required. Identifier of the course.
         # @param [String] course_work_id
@@ -2593,9 +2594,9 @@ module Google
         # Gets metadata for Classroom add-ons in the context of a specific post. To
         # maintain the integrity of its own data and permissions model, an add-on should
         # call this to validate query parameters and the requesting user's role whenever
-        # the add-on is opened in an [iframe](https://developers.google.com/classroom/
-        # add-ons/get-started/iframes/iframes-overview). This method returns the
-        # following error codes: * `PERMISSION_DENIED` for access errors. * `
+        # the add-on is opened in an [iframe](https://developers.google.com/workspace/
+        # classroom/add-ons/get-started/iframes/iframes-overview). This method returns
+        # the following error codes: * `PERMISSION_DENIED` for access errors. * `
         # INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the
         # identified resources does not exist.
         # @param [String] course_id
@@ -2613,8 +2614,8 @@ module Google
         # @param [String] attachment_id
         #   Optional. The identifier of the attachment. This field is required for all
         #   requests except when the user is in the [Attachment Discovery iframe](https://
-        #   developers.google.com/classroom/add-ons/get-started/iframes/attachment-
-        #   discovery-iframe).
+        #   developers.google.com/workspace/classroom/add-ons/get-started/iframes/
+        #   attachment-discovery-iframe).
         # @param [String] post_id
         #   Optional. Deprecated, use `item_id` instead.
         # @param [String] fields
@@ -3021,9 +3022,9 @@ module Google
         # Gets metadata for Classroom add-ons in the context of a specific post. To
         # maintain the integrity of its own data and permissions model, an add-on should
         # call this to validate query parameters and the requesting user's role whenever
-        # the add-on is opened in an [iframe](https://developers.google.com/classroom/
-        # add-ons/get-started/iframes/iframes-overview). This method returns the
-        # following error codes: * `PERMISSION_DENIED` for access errors. * `
+        # the add-on is opened in an [iframe](https://developers.google.com/workspace/
+        # classroom/add-ons/get-started/iframes/iframes-overview). This method returns
+        # the following error codes: * `PERMISSION_DENIED` for access errors. * `
         # INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the
         # identified resources does not exist.
         # @param [String] course_id
@@ -3039,8 +3040,8 @@ module Google
         # @param [String] attachment_id
         #   Optional. The identifier of the attachment. This field is required for all
         #   requests except when the user is in the [Attachment Discovery iframe](https://
-        #   developers.google.com/classroom/add-ons/get-started/iframes/attachment-
-        #   discovery-iframe).
+        #   developers.google.com/workspace/classroom/add-ons/get-started/iframes/
+        #   attachment-discovery-iframe).
         # @param [String] item_id
         #   Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under
         #   which the attachment is attached. This field is required, but is not marked as
@@ -3434,10 +3435,10 @@ module Google
         end
         
         # Adds a user as a student of a course. Domain administrators are permitted to [
-        # directly add](https://developers.google.com/classroom/guides/manage-users)
-        # users within their domain as students to courses within their domain. Students
-        # are permitted to add themselves to a course using an enrollment code. This
-        # method returns the following error codes: * `PERMISSION_DENIED` if the
+        # directly add](https://developers.google.com/workspace/classroom/guides/manage-
+        # users) users within their domain as students to courses within their domain.
+        # Students are permitted to add themselves to a course using an enrollment code.
+        # This method returns the following error codes: * `PERMISSION_DENIED` if the
         # requesting user is not permitted to create students in this course or for
         # access errors. * `NOT_FOUND` if the requested course ID does not exist. * `
         # FAILED_PRECONDITION` if the requested user's account is disabled, for the
@@ -3603,9 +3604,9 @@ module Google
         end
         
         # Creates a teacher of a course. Domain administrators are permitted to [
-        # directly add](https://developers.google.com/classroom/guides/manage-users)
-        # users within their domain as teachers to courses within their domain. Non-
-        # admin users should send an Invitation instead. This method returns the
+        # directly add](https://developers.google.com/workspace/classroom/guides/manage-
+        # users) users within their domain as teachers to courses within their domain.
+        # Non-admin users should send an Invitation instead. This method returns the
         # following error codes: * `PERMISSION_DENIED` if the requesting user is not
         # permitted to create teachers in this course or for access errors. * `NOT_FOUND`
         # if the requested course ID does not exist. * `FAILED_PRECONDITION` if the
