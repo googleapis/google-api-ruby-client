@@ -482,7 +482,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists Repositories in a given project and location.
+        # Lists Repositories in a given project and location. **Note:** *This method can
+        # return repositories not shown in the [Dataform UI](https://console.cloud.
+        # google.com/bigquery/dataform)*.
         # @param [String] parent
         #   Required. The location in which to list repositories. Must be in the format `
         #   projects/*/locations/*`.

@@ -22,6 +22,133 @@ module Google
   module Apis
     module DataformV1beta1
       
+      # Error table information, used to write error data into a BigQuery table.
+      class ActionErrorTable
+        include Google::Apis::Core::Hashable
+      
+        # Error table partition expiration in days. Only positive values are allowed.
+        # Corresponds to the JSON property `retentionDays`
+        # @return [Fixnum]
+        attr_accessor :retention_days
+      
+        # Represents an action identifier. If the action writes output, the output will
+        # be written to the referenced database object.
+        # Corresponds to the JSON property `target`
+        # @return [Google::Apis::DataformV1beta1::Target]
+        attr_accessor :target
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @retention_days = args[:retention_days] if args.key?(:retention_days)
+          @target = args[:target] if args.key?(:target)
+        end
+      end
+      
+      # Load definition for incremental load modes
+      class ActionIncrementalLoadMode
+        include Google::Apis::Core::Hashable
+      
+        # Column name for incremental load modes
+        # Corresponds to the JSON property `column`
+        # @return [String]
+        attr_accessor :column
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+        end
+      end
+      
+      # Simplified load configuration for actions
+      class ActionLoadConfig
+        include Google::Apis::Core::Hashable
+      
+        # Simple load definition
+        # Corresponds to the JSON property `append`
+        # @return [Google::Apis::DataformV1beta1::ActionSimpleLoadMode]
+        attr_accessor :append
+      
+        # Load definition for incremental load modes
+        # Corresponds to the JSON property `maximum`
+        # @return [Google::Apis::DataformV1beta1::ActionIncrementalLoadMode]
+        attr_accessor :maximum
+      
+        # Simple load definition
+        # Corresponds to the JSON property `replace`
+        # @return [Google::Apis::DataformV1beta1::ActionSimpleLoadMode]
+        attr_accessor :replace
+      
+        # Load definition for incremental load modes
+        # Corresponds to the JSON property `unique`
+        # @return [Google::Apis::DataformV1beta1::ActionIncrementalLoadMode]
+        attr_accessor :unique
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @append = args[:append] if args.key?(:append)
+          @maximum = args[:maximum] if args.key?(:maximum)
+          @replace = args[:replace] if args.key?(:replace)
+          @unique = args[:unique] if args.key?(:unique)
+        end
+      end
+      
+      # Simple load definition
+      class ActionSimpleLoadMode
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Definition of a SQL Data Preparation
+      class ActionSqlDefinition
+        include Google::Apis::Core::Hashable
+      
+        # Error table information, used to write error data into a BigQuery table.
+        # Corresponds to the JSON property `errorTable`
+        # @return [Google::Apis::DataformV1beta1::ActionErrorTable]
+        attr_accessor :error_table
+      
+        # Simplified load configuration for actions
+        # Corresponds to the JSON property `loadConfig`
+        # @return [Google::Apis::DataformV1beta1::ActionLoadConfig]
+        attr_accessor :load_config
+      
+        # The SQL query representing the data preparation steps. Formatted as a Pipe SQL
+        # query statement.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_table = args[:error_table] if args.key?(:error_table)
+          @load_config = args[:load_config] if args.key?(:load_config)
+          @query = args[:query] if args.key?(:query)
+        end
+      end
+      
       # Represents an assertion upon a SQL query which is required return zero rows.
       class Assertion
         include Google::Apis::Core::Hashable
@@ -236,6 +363,11 @@ module Google
         # @return [String]
         attr_accessor :assertion_schema
       
+        # Optional. The prefix to prepend to built-in assertion names.
+        # Corresponds to the JSON property `builtinAssertionNamePrefix`
+        # @return [String]
+        attr_accessor :builtin_assertion_name_prefix
+      
         # Optional. The suffix that should be appended to all database (Google Cloud
         # project ID) names.
         # Corresponds to the JSON property `databaseSuffix`
@@ -288,6 +420,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @assertion_schema = args[:assertion_schema] if args.key?(:assertion_schema)
+          @builtin_assertion_name_prefix = args[:builtin_assertion_name_prefix] if args.key?(:builtin_assertion_name_prefix)
           @database_suffix = args[:database_suffix] if args.key?(:database_suffix)
           @default_database = args[:default_database] if args.key?(:default_database)
           @default_location = args[:default_location] if args.key?(:default_location)
@@ -656,6 +789,11 @@ module Google
         # @return [Google::Apis::DataformV1beta1::Target]
         attr_accessor :canonical_target
       
+        # Defines a compiled Data Preparation entity
+        # Corresponds to the JSON property `dataPreparation`
+        # @return [Google::Apis::DataformV1beta1::DataPreparation]
+        attr_accessor :data_preparation
+      
         # Represents a relation which is not managed by Dataform but which may be
         # referenced by Dataform actions.
         # Corresponds to the JSON property `declaration`
@@ -704,6 +842,7 @@ module Google
         def update!(**args)
           @assertion = args[:assertion] if args.key?(:assertion)
           @canonical_target = args[:canonical_target] if args.key?(:canonical_target)
+          @data_preparation = args[:data_preparation] if args.key?(:data_preparation)
           @declaration = args[:declaration] if args.key?(:declaration)
           @file_path = args[:file_path] if args.key?(:file_path)
           @internal_metadata = args[:internal_metadata] if args.key?(:internal_metadata)
@@ -775,6 +914,90 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kms_key_version_name = args[:kms_key_version_name] if args.key?(:kms_key_version_name)
+        end
+      end
+      
+      # Defines a compiled Data Preparation entity
+      class DataPreparation
+        include Google::Apis::Core::Hashable
+      
+        # Definition of a SQL Data Preparation
+        # Corresponds to the JSON property `contentsSql`
+        # @return [Google::Apis::DataformV1beta1::SqlDefinition]
+        attr_accessor :contents_sql
+      
+        # The data preparation definition, stored as a YAML string.
+        # Corresponds to the JSON property `contentsYaml`
+        # @return [String]
+        attr_accessor :contents_yaml
+      
+        # A list of actions that this action depends on.
+        # Corresponds to the JSON property `dependencyTargets`
+        # @return [Array<Google::Apis::DataformV1beta1::Target>]
+        attr_accessor :dependency_targets
+      
+        # Whether this action is disabled (i.e. should not be run).
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # Arbitrary, user-defined tags on this action.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contents_sql = args[:contents_sql] if args.key?(:contents_sql)
+          @contents_yaml = args[:contents_yaml] if args.key?(:contents_yaml)
+          @dependency_targets = args[:dependency_targets] if args.key?(:dependency_targets)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # Represents a workflow action that will run a Data Preparation.
+      class DataPreparationAction
+        include Google::Apis::Core::Hashable
+      
+        # Definition of a SQL Data Preparation
+        # Corresponds to the JSON property `contentsSql`
+        # @return [Google::Apis::DataformV1beta1::ActionSqlDefinition]
+        attr_accessor :contents_sql
+      
+        # Output only. YAML representing the contents of the data preparation. Can be
+        # used to show the customer what the input was to their workflow.
+        # Corresponds to the JSON property `contentsYaml`
+        # @return [String]
+        attr_accessor :contents_yaml
+      
+        # Output only. The generated BigQuery SQL script that will be executed. For
+        # reference only.
+        # Corresponds to the JSON property `generatedSql`
+        # @return [String]
+        attr_accessor :generated_sql
+      
+        # Output only. The ID of the BigQuery job that executed the SQL in sql_script.
+        # Only set once the job has started to run.
+        # Corresponds to the JSON property `jobId`
+        # @return [String]
+        attr_accessor :job_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contents_sql = args[:contents_sql] if args.key?(:contents_sql)
+          @contents_yaml = args[:contents_yaml] if args.key?(:contents_yaml)
+          @generated_sql = args[:generated_sql] if args.key?(:generated_sql)
+          @job_id = args[:job_id] if args.key?(:job_id)
         end
       end
       
@@ -868,6 +1091,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Error table information, used to write error data into a BigQuery table.
+      class ErrorTable
+        include Google::Apis::Core::Hashable
+      
+        # Error table partition expiration in days. Only positive values are allowed.
+        # Corresponds to the JSON property `retentionDays`
+        # @return [Fixnum]
+        attr_accessor :retention_days
+      
+        # Represents an action identifier. If the action writes output, the output will
+        # be written to the referenced database object.
+        # Corresponds to the JSON property `target`
+        # @return [Google::Apis::DataformV1beta1::Target]
+        attr_accessor :target
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @retention_days = args[:retention_days] if args.key?(:retention_days)
+          @target = args[:target] if args.key?(:target)
         end
       end
       
@@ -1122,6 +1371,25 @@ module Google
           @ssh_authentication_config = args[:ssh_authentication_config] if args.key?(:ssh_authentication_config)
           @token_status = args[:token_status] if args.key?(:token_status)
           @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Load definition for incremental load modes
+      class IncrementalLoadMode
+        include Google::Apis::Core::Hashable
+      
+        # Column name for incremental load modes
+        # Corresponds to the JSON property `column`
+        # @return [String]
+        attr_accessor :column
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
         end
       end
       
@@ -1505,6 +1773,43 @@ module Google
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
           @workspaces = args[:workspaces] if args.key?(:workspaces)
+        end
+      end
+      
+      # Simplified load configuration for actions
+      class LoadConfig
+        include Google::Apis::Core::Hashable
+      
+        # Simple load definition
+        # Corresponds to the JSON property `append`
+        # @return [Google::Apis::DataformV1beta1::SimpleLoadMode]
+        attr_accessor :append
+      
+        # Load definition for incremental load modes
+        # Corresponds to the JSON property `maximum`
+        # @return [Google::Apis::DataformV1beta1::IncrementalLoadMode]
+        attr_accessor :maximum
+      
+        # Simple load definition
+        # Corresponds to the JSON property `replace`
+        # @return [Google::Apis::DataformV1beta1::SimpleLoadMode]
+        attr_accessor :replace
+      
+        # Load definition for incremental load modes
+        # Corresponds to the JSON property `unique`
+        # @return [Google::Apis::DataformV1beta1::IncrementalLoadMode]
+        attr_accessor :unique
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @append = args[:append] if args.key?(:append)
+          @maximum = args[:maximum] if args.key?(:maximum)
+          @replace = args[:replace] if args.key?(:replace)
+          @unique = args[:unique] if args.key?(:unique)
         end
       end
       
@@ -2769,6 +3074,51 @@ module Google
         end
       end
       
+      # Simple load definition
+      class SimpleLoadMode
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Definition of a SQL Data Preparation
+      class SqlDefinition
+        include Google::Apis::Core::Hashable
+      
+        # Error table information, used to write error data into a BigQuery table.
+        # Corresponds to the JSON property `errorTable`
+        # @return [Google::Apis::DataformV1beta1::ErrorTable]
+        attr_accessor :error_table
+      
+        # Simplified load configuration for actions
+        # Corresponds to the JSON property `load`
+        # @return [Google::Apis::DataformV1beta1::LoadConfig]
+        attr_accessor :load
+      
+        # The SQL query representing the data preparation steps. Formatted as a Pipe SQL
+        # query statement.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_table = args[:error_table] if args.key?(:error_table)
+          @load = args[:load] if args.key?(:load)
+          @query = args[:query] if args.key?(:query)
+        end
+      end
+      
       # Configures fields for performing SSH authentication.
       class SshAuthenticationConfig
         include Google::Apis::Core::Hashable
@@ -2948,6 +3298,12 @@ module Google
         # @return [String]
         attr_accessor :cron_schedule
       
+        # Optional. Disables automatic creation of workflow invocations.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
         # Output only. All the metadata information that is used internally to serve the
         # resource. For example: timestamps, flags, status fields, etc. The format of
         # this field is a JSON string.
@@ -3000,6 +3356,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @cron_schedule = args[:cron_schedule] if args.key?(:cron_schedule)
+          @disabled = args[:disabled] if args.key?(:disabled)
           @internal_metadata = args[:internal_metadata] if args.key?(:internal_metadata)
           @invocation_config = args[:invocation_config] if args.key?(:invocation_config)
           @name = args[:name] if args.key?(:name)
@@ -3102,6 +3459,11 @@ module Google
         # @return [Google::Apis::DataformV1beta1::Target]
         attr_accessor :canonical_target
       
+        # Represents a workflow action that will run a Data Preparation.
+        # Corresponds to the JSON property `dataPreparationAction`
+        # @return [Google::Apis::DataformV1beta1::DataPreparationAction]
+        attr_accessor :data_preparation_action
+      
         # Output only. If and only if action's state is FAILED a failure reason is set.
         # Corresponds to the JSON property `failureReason`
         # @return [String]
@@ -3146,6 +3508,7 @@ module Google
         def update!(**args)
           @bigquery_action = args[:bigquery_action] if args.key?(:bigquery_action)
           @canonical_target = args[:canonical_target] if args.key?(:canonical_target)
+          @data_preparation_action = args[:data_preparation_action] if args.key?(:data_preparation_action)
           @failure_reason = args[:failure_reason] if args.key?(:failure_reason)
           @internal_metadata = args[:internal_metadata] if args.key?(:internal_metadata)
           @invocation_timing = args[:invocation_timing] if args.key?(:invocation_timing)
