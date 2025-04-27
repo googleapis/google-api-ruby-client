@@ -72,8 +72,9 @@ module Google
         # @return [Google::Apis::MeetV2::RecordingConfig]
         attr_accessor :recording_config
       
-        # Configuration related to smart notes in a meeting space. More details about
-        # smart notes https://support.google.com/meet/answer/14754931?hl=en.
+        # Configuration related to smart notes in a meeting space. For more information
+        # about smart notes, see ["Take notes for me" in Google Meet](https://support.
+        # google.com/meet/answer/14754931).
         # Corresponds to the JSON property `smartNotesConfig`
         # @return [Google::Apis::MeetV2::SmartNotesConfig]
         attr_accessor :smart_notes_config
@@ -635,8 +636,9 @@ module Google
         end
       end
       
-      # Configuration related to smart notes in a meeting space. More details about
-      # smart notes https://support.google.com/meet/answer/14754931?hl=en.
+      # Configuration related to smart notes in a meeting space. For more information
+      # about smart notes, see ["Take notes for me" in Google Meet](https://support.
+      # google.com/meet/answer/14754931).
       class SmartNotesConfig
         include Google::Apis::Core::Hashable
       
