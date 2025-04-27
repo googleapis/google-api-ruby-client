@@ -117,7 +117,8 @@ module Google
         # @return [String]
         attr_accessor :label_type
       
-        # The resource name of the label. Format: accounts/`account`/labels/`label`
+        # Identifier. The resource name of the label. Format: accounts/`account`/labels/`
+        # label`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -626,7 +627,7 @@ module Google
         # @return [String]
         attr_accessor :freshness_time
       
-        # The name of the CSS Product input. Format: `accounts/`account`/
+        # Identifier. The name of the CSS Product input. Format: `accounts/`account`/
         # cssProductInputs/`css_product_input``, where the last section `
         # css_product_input` consists of 3 parts: contentLanguage~feedLabel~offerId.
         # Example: accounts/123/cssProductInputs/de~DE~rawProvidedId123
