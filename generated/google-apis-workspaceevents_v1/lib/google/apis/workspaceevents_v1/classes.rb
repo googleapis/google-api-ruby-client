@@ -222,8 +222,7 @@ module Google
         end
       end
       
-      # [Developer Preview](https://developers.google.com/workspace/preview). A
-      # subscription to receive events about a Google Workspace resource. To learn
+      # A subscription to receive events about a Google Workspace resource. To learn
       # more about subscriptions, see the [Google Workspace Events API overview](https:
       # //developers.google.com/workspace/events).
       class Subscription
