@@ -2759,6 +2759,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+          property :grounding_config, as: 'groundingConfig'
           property :name, as: 'name'
           property :occurrence_type, as: 'occurrenceType'
           property :value_type, as: 'valueType'
