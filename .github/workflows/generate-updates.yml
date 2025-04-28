@@ -15,10 +15,10 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-      - name: Install Ruby 3.3
+      - name: Install Ruby 3.4
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.3"
+          ruby-version: "3.4"
       - name: Install tools
         run: |
           gem install --no-document toys

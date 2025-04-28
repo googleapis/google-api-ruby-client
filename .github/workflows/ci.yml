@@ -14,9 +14,6 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            ruby: "3.0"
-            task: "--include-spec"
-          - os: ubuntu-latest
             ruby: "3.1"
             task: "--include-spec"
           - os: ubuntu-latest
@@ -24,12 +21,15 @@ jobs:
             task: "--include-spec"
           - os: ubuntu-latest
             ruby: "3.3"
+            task: "--include-spec"
+          - os: ubuntu-latest
+            ruby: "3.4"
             task: "--include-spec --include-yardoc --include-build"
           - os: macos-latest
-            ruby: "3.3"
+            ruby: "3.4"
             task: "--include-spec"
           - os: windows-latest
-            ruby: "3.3"
+            ruby: "3.4"
             task: "--include-spec"
       fail-fast: false
     runs-on: ${{ matrix.os }}

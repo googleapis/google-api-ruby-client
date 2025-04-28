@@ -20,7 +20,7 @@ Gem::Specification.new do |gem|
   gem.executables = ["generate-api"]
   gem.require_paths = ["lib"]
 
-  gem.required_ruby_version = ">= 2.7"
+  gem.required_ruby_version = ">= 3.1"
   gem.add_runtime_dependency "activesupport", ">= 5.0"
   gem.add_runtime_dependency "gems", "~> 1.2"
   gem.add_runtime_dependency "google-apis-core", ">= 0.15.0", "< 2.a"
