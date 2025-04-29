@@ -363,7 +363,6 @@ module Google
           command.upload_source = upload_source
           command.upload_id = upload_id
           command.params['bucket'] = bucket unless bucket.nil?
-          command.delete_upload = options[:delete_upload ] unless options[:delete_upload].nil?
           execute_or_queue_command(command)
         end
 
