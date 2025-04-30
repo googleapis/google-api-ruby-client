@@ -3849,7 +3849,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
 
-
         # Retrieves an HMAC key's metadata
         # @param [String] project_id
         #   Project ID owning the service account of the requested key.
