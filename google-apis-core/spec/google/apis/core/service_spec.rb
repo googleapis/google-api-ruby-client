@@ -311,6 +311,7 @@ RSpec.describe Google::Apis::Core::BaseService do
     it 'should cancel a resumable upload' do
       command
       expect(a_request(:delete, upload_url)).to have_been_made
+      expect(command).to be_truthy
     end
   end
 

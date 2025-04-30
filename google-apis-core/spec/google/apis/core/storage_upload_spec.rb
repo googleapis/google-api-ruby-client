@@ -165,7 +165,7 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
 
   context('should not restart resumable upload if upload is completed') do
     let(:file) { StringIO.new('Hello world' * 3) }
-    let(:upload_id) {"TestId"}
+    let(:upload_id) { 'TestId' }
     let(:upload_url) { "https://www.googleapis.com/zoo/animals?uploadType=resumable&upload_id=#{upload_id}" }
 
     before(:example) do
@@ -224,6 +224,7 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
       command.delete_upload = true
       command.execute(client)
       expect(a_request(:delete, upload_url)).to have_been_made
+      expect(command).to be_truthy
     end
 
     it 'should not call resumable upload when upload is cancelled' do

@@ -104,13 +104,13 @@ module Google
           opencensus_begin_span
           @upload_chunk_size = options.upload_chunk_size
           if upload_id.nil?
-            do_retry :initiate_resumable_upload, client
+            res = do_retry :initiate_resumable_upload, client
           elsif delete_upload && !upload_id.nil?
             make_resumable_upload_url upload_id
-            do_retry :cancel_resumable_upload, client
+            res = do_retry :cancel_resumable_upload, client
           else
             make_resumable_upload_url upload_id
-            do_retry :reinitiate_resumable_upload,client
+            res = do_retry :reinitiate_resumable_upload, client
           end
 
           while @upload_incomplete
@@ -174,7 +174,6 @@ module Google
         # @raise [Google::Apis::ServerError] Unable to send the request
         def send_upload_command(client)
           logger.debug { sprintf('Sending upload command to %s', @upload_url) }
-
           remaining_content_size = upload_io.size - @offset
           current_chunk_size = get_current_chunk_size remaining_content_size
           request_header = header.dup
@@ -258,8 +257,10 @@ module Google
           when 400..499
             @close_io_on_finish = true
             @upload_incomplete = false
+            true # method returns true if upload is sucessfully cancelled
           else
             puts "Failed to cancel upload session. Response: #{response.code} - #{response.body}"
+            false # method returns false if upload is not cancelled
           end
         end
 
