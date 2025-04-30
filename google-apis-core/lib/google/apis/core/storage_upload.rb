@@ -173,10 +173,10 @@ module Google
         # @raise [Google::Apis::ServerError] Unable to send the request
         def send_upload_command(client)
           logger.debug { sprintf('Sending upload command to %s', @upload_url) }
-          
+
           remaining_content_size = upload_io.size - @offset
           current_chunk_size = get_current_chunk_size remaining_content_size
-          
+
           request_header = header.dup
           request_header[CONTENT_RANGE_HEADER] = get_content_range_header current_chunk_size
           request_header[CONTENT_LENGTH_HEADER] = current_chunk_size
@@ -188,7 +188,7 @@ module Google
             end
 
           response = client.put(@upload_url, body: chunk_body, header: request_header, follow_redirect: true)
-          
+
           result = process_response(response.status_code, response.header, response.body)
           @upload_incomplete = false if response.status_code.eql? OK_STATUS
           @offset += current_chunk_size if @upload_incomplete
