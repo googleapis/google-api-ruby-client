@@ -31,7 +31,7 @@ module Google
         end
 
         def to_io(boundary)
-          part = ''
+          part = +''
           part << "--#{boundary}\r\n"
           part << "Content-Type: application/json\r\n"
           @header.each do |(k, v)|
@@ -59,7 +59,7 @@ module Google
         end
 
         def to_io(boundary)
-          head = ''
+          head = +''
           head << "--#{boundary}\r\n"
           @header.each do |(k, v)|
             head << "#{k}: #{v}\r\n"
@@ -67,7 +67,7 @@ module Google
           head << "Content-Length: #{@length}\r\n" unless @length.nil?
           head << "Content-Transfer-Encoding: binary\r\n"
           head << "\r\n"
-          Google::Apis::Core::CompositeIO.new(StringIO.new(head), @io, StringIO.new("\r\n"))
+          Google::Apis::Core::CompositeIO.new(StringIO.new(head), @io, StringIO.new(+"\r\n"))
         end
       end
 
@@ -126,7 +126,7 @@ module Google
         # @return [IO]
         #  IO stream
         def assemble
-          @parts <<  StringIO.new("--#{@boundary}--\r\n\r\n")
+          @parts <<  StringIO.new(+"--#{@boundary}--\r\n\r\n")
           Google::Apis::Core::CompositeIO.new(*@parts)
         end
       end

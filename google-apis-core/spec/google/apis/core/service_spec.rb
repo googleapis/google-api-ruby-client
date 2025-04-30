@@ -305,7 +305,7 @@ EOF
       expect do |b|
         service.batch_upload do |service|
           command = service.send(:make_upload_command, :post, 'zoo/animals', {})
-          command.upload_source = StringIO.new('test')
+          command.upload_source = StringIO.new(+'test')
           command.upload_content_type = 'text/plain'
           service.send(:execute_or_queue_command, command, &b)
         end
@@ -316,7 +316,7 @@ EOF
       expect do |b|
         service.batch_upload do |service|
           command = service.send(:make_upload_command, :post, 'zoo/animals', {})
-          command.upload_source = StringIO.new('test')
+          command.upload_source = StringIO.new(+'test')
           command.upload_content_type = 'text/plain'
           expect(command).to be_an_instance_of(Google::Apis::Core::MultipartUploadCommand)
           service.send(:execute_or_queue_command, command, &b)
@@ -328,7 +328,7 @@ EOF
       Google::Apis::RequestOptions.default.authorization = 'a token'
       service.batch_upload do |service|
         command = service.send(:make_upload_command, :post, 'zoo/animals', {})
-        command.upload_source = StringIO.new('test')
+        command.upload_source = StringIO.new(+'test')
         command.upload_content_type = 'text/plain'
         service.send(:execute_or_queue_command, command)
       end
