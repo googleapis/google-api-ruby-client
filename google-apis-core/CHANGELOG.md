@@ -1,5 +1,15 @@
 # Release History
 
+### 0.17.0 (2025-04-30)
+
+#### Features
+
+* ruby 3.1 minimum, 3.4 default ([#22594](https://github.com/googleapis/google-api-ruby-client/issues/22594)) 
+#### Bug Fixes
+
+* Fixed a method redefined warning ([#21572](https://github.com/googleapis/google-api-ruby-client/issues/21572)) 
+* Ensure compatibility with frozen string literals ([#21648](https://github.com/googleapis/google-api-ruby-client/issues/21648)) 
+
 ### 0.16.0 (2025-01-12)
 
 #### Features
