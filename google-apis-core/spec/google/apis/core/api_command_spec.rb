@@ -255,10 +255,16 @@ EOF
       command.options.add_invocation_id_header = true
       result = command.execute(client)
       invocation_id_header = command.header["X-Goog-Api-Client"]
-      
       expect(invocation_id_header).to include("gccl-invocation-id")
       expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
         .with { |req| req.headers['X-Goog-Api-Client'] == invocation_id_header }).to have_been_made.times(2)
+    end
+
+    it 'should keep same idempotency_token across retries' do
+      command.options.add_idempotency_token_header = true
+      result = command.execute(client)
+      idempotency_token_header = command.header['X-Goog-Gcs-Idempotency-Token']
+      expect(command.header['X-Goog-Gcs-Idempotency-Token']).to eq(idempotency_token_header)
     end
   end
 
