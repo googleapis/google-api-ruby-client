@@ -1083,6 +1083,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :datastore, as: 'datastore'
           property :engine, as: 'engine'
+          property :filter, as: 'filter'
+          property :max_results, as: 'maxResults'
         end
       end
       
