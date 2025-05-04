@@ -1,5 +1,9 @@
 # Release history for google-apis-versionhistory_v1
 
+### v0.16.0 (2025-05-04)
+
+* Regenerated using generator version 0.17.0
+
 ### v0.15.0 (2024-06-02)
 
 * Regenerated from discovery document revision 20240528
