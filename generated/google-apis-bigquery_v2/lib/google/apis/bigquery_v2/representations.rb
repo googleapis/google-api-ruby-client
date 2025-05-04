@@ -3281,6 +3281,7 @@ module Google
           property :elapsed_ms, :numeric_string => true, as: 'elapsedMs'
           property :estimated_runnable_units, :numeric_string => true, as: 'estimatedRunnableUnits'
           property :pending_units, :numeric_string => true, as: 'pendingUnits'
+          property :shuffle_ram_usage_ratio, as: 'shuffleRamUsageRatio'
           property :total_slot_ms, :numeric_string => true, as: 'totalSlotMs'
         end
       end

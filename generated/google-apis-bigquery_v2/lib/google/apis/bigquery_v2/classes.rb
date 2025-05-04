@@ -4967,8 +4967,8 @@ module Google
         # @return [Google::Apis::BigqueryV2::TimePartitioning]
         attr_accessor :time_partitioning
       
-        # Optional. [Experimental] Default time zone that will apply when parsing
-        # timestamp values that have no specific time zone.
+        # Optional. Default time zone that will apply when parsing timestamp values that
+        # have no specific time zone.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
         attr_accessor :time_zone
@@ -5907,8 +5907,7 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::RoutineReference>]
         attr_accessor :referenced_routines
       
-        # Output only. Referenced tables for the job. Queries that reference more than
-        # 50 tables will not have a complete list.
+        # Output only. Referenced tables for the job.
         # Corresponds to the JSON property `referencedTables`
         # @return [Array<Google::Apis::BigqueryV2::TableReference>]
         attr_accessor :referenced_tables
@@ -8083,6 +8082,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :pending_units
       
+        # Total shuffle usage ratio in shuffle RAM per reservation of this query. This
+        # will be provided for reservation customers only.
+        # Corresponds to the JSON property `shuffleRamUsageRatio`
+        # @return [Float]
+        attr_accessor :shuffle_ram_usage_ratio
+      
         # Cumulative slot-ms consumed by the query.
         # Corresponds to the JSON property `totalSlotMs`
         # @return [Fixnum]
@@ -8099,6 +8104,7 @@ module Google
           @elapsed_ms = args[:elapsed_ms] if args.key?(:elapsed_ms)
           @estimated_runnable_units = args[:estimated_runnable_units] if args.key?(:estimated_runnable_units)
           @pending_units = args[:pending_units] if args.key?(:pending_units)
+          @shuffle_ram_usage_ratio = args[:shuffle_ram_usage_ratio] if args.key?(:shuffle_ram_usage_ratio)
           @total_slot_ms = args[:total_slot_ms] if args.key?(:total_slot_ms)
         end
       end
