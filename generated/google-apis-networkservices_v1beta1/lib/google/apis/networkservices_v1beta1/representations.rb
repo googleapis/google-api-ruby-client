@@ -478,6 +478,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceLbPolicyIsolationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1398,6 +1404,8 @@ module Google
           property :description, as: 'description'
           property :failover_config, as: 'failoverConfig', class: Google::Apis::NetworkservicesV1beta1::ServiceLbPolicyFailoverConfig, decorator: Google::Apis::NetworkservicesV1beta1::ServiceLbPolicyFailoverConfig::Representation
       
+          property :isolation_config, as: 'isolationConfig', class: Google::Apis::NetworkservicesV1beta1::ServiceLbPolicyIsolationConfig, decorator: Google::Apis::NetworkservicesV1beta1::ServiceLbPolicyIsolationConfig::Representation
+      
           hash :labels, as: 'labels'
           property :load_balancing_algorithm, as: 'loadBalancingAlgorithm'
           property :name, as: 'name'
@@ -1416,6 +1424,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :failover_health_threshold, as: 'failoverHealthThreshold'
+        end
+      end
+      
+      class ServiceLbPolicyIsolationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :isolation_granularity, as: 'isolationGranularity'
+          property :isolation_mode, as: 'isolationMode'
         end
       end
       
