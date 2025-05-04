@@ -244,10 +244,10 @@ module Google
         #   Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/
         #   filters) guide for more information.
         # @param [String] order_by
-        #   Field by which to sort the list. Acceptable values are: * `displayName` (
-        #   default) * `entityStatus` * `updateTime` The default sorting order is
-        #   ascending. To specify descending order for a field, a suffix "desc" should be
-        #   added to the field name. For example, `displayName desc`.
+        #   Field by which to sort the list. Acceptable values are: * `advertiserId` (
+        #   default) * `displayName` * `entityStatus` * `updateTime` The default sorting
+        #   order is ascending. To specify descending order for a field, a suffix "desc"
+        #   should be added to the field name. For example, `displayName desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `200`. If unspecified will
         #   default to `100`.
@@ -3396,7 +3396,8 @@ module Google
         #   targeting types: * `TARGETING_TYPE_CHANNEL` * `
         #   TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `
         #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` *
-        #   `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD`
+        #   `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD` * `
+        #   TARGETING_TYPE_CONTENT_THEME_EXCLUSION`
         # @param [String] assigned_targeting_option_id
         #   Required. An identifier unique to the targeting type in this advertiser that
         #   identifies the assigned targeting option being requested.
@@ -3437,7 +3438,8 @@ module Google
         #   targeting types: * `TARGETING_TYPE_CHANNEL` * `
         #   TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `
         #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` *
-        #   `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD`
+        #   `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD` * `
+        #   TARGETING_TYPE_CONTENT_THEME_EXCLUSION`
         # @param [String] filter
         #   Allows filtering by assigned targeting option fields. Supported syntax: *
         #   Filter expressions are made up of one or more restrictions. * Restrictions can
