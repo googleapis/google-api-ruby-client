@@ -16,10 +16,10 @@ module Google
   module Apis
     module DataprocV1
       # Version of the google-apis-dataproc_v1 gem
-      GEM_VERSION = "0.76.0"
+      GEM_VERSION = "0.77.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.16.0"
+      GENERATOR_VERSION = "0.17.0"
 
       # Revision of the discovery document this client was generated from
       REVISION = "20250315"
