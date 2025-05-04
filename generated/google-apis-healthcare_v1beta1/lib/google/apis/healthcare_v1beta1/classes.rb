@@ -1705,13 +1705,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. For future use.
+        # Output only. Whether the dataset satisfies zone isolation.
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
         attr_accessor :satisfies_pzi
         alias_method :satisfies_pzi?, :satisfies_pzi
       
-        # Output only. For future use.
+        # Output only. Whether the dataset satisfies zone separation.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
         attr_accessor :satisfies_pzs
