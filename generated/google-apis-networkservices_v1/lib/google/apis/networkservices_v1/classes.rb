@@ -709,7 +709,7 @@ module Google
         attr_accessor :supported_events
       
         # Optional. Specifies the timeout for each individual message on the stream. The
-        # timeout must be between `10`-`1000` milliseconds. Required for callout
+        # timeout must be between `10`-`10000` milliseconds. Required for callout
         # extensions. This field is not supported for plugin extensions. Setting it
         # results in a validation error.
         # Corresponds to the JSON property `timeout`
