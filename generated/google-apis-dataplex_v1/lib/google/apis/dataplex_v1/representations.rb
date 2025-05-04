@@ -652,6 +652,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1EncryptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1EncryptionConfigFailureDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1Entity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -677,6 +689,18 @@ module Google
       end
       
       class GoogleCloudDataplexV1EntryGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1EntryLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1EntryLinkEntryReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -767,6 +791,24 @@ module Google
       end
       
       class GoogleCloudDataplexV1GenerateDataQualityRulesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1Glossary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1GlossaryCategory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1GlossaryTerm
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -874,6 +916,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1ListEncryptionConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1ListEntitiesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -899,6 +947,24 @@ module Google
       end
       
       class GoogleCloudDataplexV1ListEnvironmentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1ListGlossariesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1ListGlossaryCategoriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1ListGlossaryTermsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2468,6 +2534,28 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1EncryptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :encryption_state, as: 'encryptionState'
+          property :etag, as: 'etag'
+          property :failure_details, as: 'failureDetails', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1EncryptionConfigFailureDetails, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1EncryptionConfigFailureDetails::Representation
+      
+          property :key, as: 'key'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDataplexV1EncryptionConfigFailureDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_code, as: 'errorCode'
+          property :error_message, as: 'errorMessage'
+        end
+      end
+      
       class GoogleCloudDataplexV1Entity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2542,6 +2630,27 @@ module Google
           property :transfer_status, as: 'transferStatus'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDataplexV1EntryLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :entry_link_type, as: 'entryLinkType'
+          collection :entry_references, as: 'entryReferences', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLinkEntryReference, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLinkEntryReference::Representation
+      
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDataplexV1EntryLinkEntryReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :path, as: 'path'
+          property :type, as: 'type'
         end
       end
       
@@ -2699,6 +2808,50 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :rule, as: 'rule', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRule, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRule::Representation
       
+        end
+      end
+      
+      class GoogleCloudDataplexV1Glossary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category_count, as: 'categoryCount'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :term_count, as: 'termCount'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDataplexV1GlossaryCategory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :parent, as: 'parent'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDataplexV1GlossaryTerm
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :parent, as: 'parent'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -2889,6 +3042,16 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1ListEncryptionConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :encryption_configs, as: 'encryptionConfigs', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1EncryptionConfig, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1EncryptionConfig::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable_locations, as: 'unreachableLocations'
+        end
+      end
+      
       class GoogleCloudDataplexV1ListEntitiesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2933,6 +3096,36 @@ module Google
           collection :environments, as: 'environments', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1Environment, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1Environment::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudDataplexV1ListGlossariesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :glossaries, as: 'glossaries', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1Glossary, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1Glossary::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable_locations, as: 'unreachableLocations'
+        end
+      end
+      
+      class GoogleCloudDataplexV1ListGlossaryCategoriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :categories, as: 'categories', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryCategory, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryCategory::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable_locations, as: 'unreachableLocations'
+        end
+      end
+      
+      class GoogleCloudDataplexV1ListGlossaryTermsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :terms, as: 'terms', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryTerm, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryTerm::Representation
+      
+          collection :unreachable_locations, as: 'unreachableLocations'
         end
       end
       
