@@ -3044,6 +3044,8 @@ module Google
         #   metageneration does not match the given value. `ifSourceMetagenerationMatch`
         #   and `ifSourceMetagenerationNotMatch` conditions are mutually exclusive: it's
         #   an error for both of them to be set in the request.
+        # @param [String] projection
+        #   Set of properties to return. Defaults to noAcl.
         # @param [String] user_project
         #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
@@ -3065,7 +3067,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def move_object(bucket, source_object, destination_object, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, if_source_generation_match: nil, if_source_generation_not_match: nil, if_source_metageneration_match: nil, if_source_metageneration_not_match: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def move_object(bucket, source_object, destination_object, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, if_source_generation_match: nil, if_source_generation_not_match: nil, if_source_metageneration_match: nil, if_source_metageneration_not_match: nil, projection: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'b/{bucket}/o/{sourceObject}/moveTo/o/{destinationObject}', options)
           command.response_representation = Google::Apis::StorageV1::Object::Representation
           command.response_class = Google::Apis::StorageV1::Object
@@ -3080,6 +3082,7 @@ module Google
           command.query['ifSourceGenerationNotMatch'] = if_source_generation_not_match unless if_source_generation_not_match.nil?
           command.query['ifSourceMetagenerationMatch'] = if_source_metageneration_match unless if_source_metageneration_match.nil?
           command.query['ifSourceMetagenerationNotMatch'] = if_source_metageneration_not_match unless if_source_metageneration_not_match.nil?
+          command.query['projection'] = projection unless projection.nil?
           command.query['userProject'] = user_project unless user_project.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
