@@ -787,6 +787,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :is_tombstoned, as: 'isTombstoned'
           property :name, as: 'name'
         end
       end
