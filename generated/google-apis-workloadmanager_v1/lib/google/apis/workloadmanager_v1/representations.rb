@@ -22,25 +22,7 @@ module Google
   module Apis
     module WorkloadmanagerV1
       
-      class ApiLayerServer
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AgentCommand
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AvailabilityGroup
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class BackendServer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -70,12 +52,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Cluster
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Command
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,12 +59,6 @@ module Google
       end
       
       class ComponentHealth
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Database
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -125,12 +95,6 @@ module Google
       end
       
       class ExternalDataSources
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class FrontEndServer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -215,12 +179,6 @@ module Google
       end
       
       class ListScannedResourcesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LoadBalancerServer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -430,12 +388,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SqlserverWorkload
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -443,12 +395,6 @@ module Google
       end
       
       class Summary
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ThreeTierWorkload
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -496,43 +442,11 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ApiLayerServer
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :os_version, as: 'osVersion'
-          collection :resources, as: 'resources', class: Google::Apis::WorkloadmanagerV1::CloudResource, decorator: Google::Apis::WorkloadmanagerV1::CloudResource::Representation
-      
-        end
-      end
-      
       class AgentCommand
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :command, as: 'command'
           hash :parameters, as: 'parameters'
-        end
-      end
-      
-      class AvailabilityGroup
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :databases, as: 'databases'
-          property :name, as: 'name'
-          property :primary_server, as: 'primaryServer'
-          collection :secondary_servers, as: 'secondaryServers'
-        end
-      end
-      
-      class BackendServer
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :backup_file, as: 'backupFile'
-          property :backup_schedule, as: 'backupSchedule'
-          property :name, as: 'name'
-          property :os_version, as: 'osVersion'
-          collection :resources, as: 'resources', class: Google::Apis::WorkloadmanagerV1::CloudResource, decorator: Google::Apis::WorkloadmanagerV1::CloudResource::Representation
-      
         end
       end
       
@@ -568,14 +482,6 @@ module Google
         end
       end
       
-      class Cluster
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :nodes, as: 'nodes'
-          property :witness_server, as: 'witnessServer'
-        end
-      end
-      
       class Command
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -597,16 +503,6 @@ module Google
           property :state, as: 'state'
           collection :sub_component_healthes, as: 'subComponentHealthes', class: Google::Apis::WorkloadmanagerV1::ComponentHealth, decorator: Google::Apis::WorkloadmanagerV1::ComponentHealth::Representation
       
-        end
-      end
-      
-      class Database
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :backup_file, as: 'backupFile'
-          property :backup_schedule, as: 'backupSchedule'
-          property :host_vm, as: 'hostVm'
-          property :name, as: 'name'
         end
       end
       
@@ -693,16 +589,6 @@ module Google
           property :name, as: 'name'
           property :type, as: 'type'
           property :uri, as: 'uri'
-        end
-      end
-      
-      class FrontEndServer
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :os_version, as: 'osVersion'
-          collection :resources, as: 'resources', class: Google::Apis::WorkloadmanagerV1::CloudResource, decorator: Google::Apis::WorkloadmanagerV1::CloudResource::Representation
-      
         end
       end
       
@@ -848,14 +734,6 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :scanned_resources, as: 'scannedResources', class: Google::Apis::WorkloadmanagerV1::ScannedResource, decorator: Google::Apis::WorkloadmanagerV1::ScannedResource::Representation
       
-        end
-      end
-      
-      class LoadBalancerServer
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :ip, as: 'ip'
-          property :vm, as: 'vm'
         end
       end
       
@@ -1229,20 +1107,6 @@ module Google
         end
       end
       
-      class SqlserverWorkload
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :ags, as: 'ags', class: Google::Apis::WorkloadmanagerV1::AvailabilityGroup, decorator: Google::Apis::WorkloadmanagerV1::AvailabilityGroup::Representation
-      
-          property :cluster, as: 'cluster', class: Google::Apis::WorkloadmanagerV1::Cluster, decorator: Google::Apis::WorkloadmanagerV1::Cluster::Representation
-      
-          collection :databases, as: 'databases', class: Google::Apis::WorkloadmanagerV1::Database, decorator: Google::Apis::WorkloadmanagerV1::Database::Representation
-      
-          property :load_balancer_server, as: 'loadBalancerServer', class: Google::Apis::WorkloadmanagerV1::LoadBalancerServer, decorator: Google::Apis::WorkloadmanagerV1::LoadBalancerServer::Representation
-      
-        end
-      end
-      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1258,19 +1122,6 @@ module Google
           property :failures, :numeric_string => true, as: 'failures'
           property :new_failures, :numeric_string => true, as: 'newFailures'
           property :new_fixes, :numeric_string => true, as: 'newFixes'
-        end
-      end
-      
-      class ThreeTierWorkload
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_layer, as: 'apiLayer', class: Google::Apis::WorkloadmanagerV1::ApiLayerServer, decorator: Google::Apis::WorkloadmanagerV1::ApiLayerServer::Representation
-      
-          property :backend, as: 'backend', class: Google::Apis::WorkloadmanagerV1::BackendServer, decorator: Google::Apis::WorkloadmanagerV1::BackendServer::Representation
-      
-          property :endpoint, as: 'endpoint'
-          property :frontend, as: 'frontend', class: Google::Apis::WorkloadmanagerV1::FrontEndServer, decorator: Google::Apis::WorkloadmanagerV1::FrontEndServer::Representation
-      
         end
       end
       
@@ -1290,6 +1141,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
           property :maintenance_status, as: 'maintenanceStatus'
+          property :on_host_maintenance, as: 'onHostMaintenance'
           property :start_time, as: 'startTime'
           property :type, as: 'type'
         end
@@ -1318,11 +1170,7 @@ module Google
           property :refreshed_time, as: 'refreshedTime'
           property :sap_workload, as: 'sapWorkload', class: Google::Apis::WorkloadmanagerV1::SapWorkload, decorator: Google::Apis::WorkloadmanagerV1::SapWorkload::Representation
       
-          property :sqlserver_workload, as: 'sqlserverWorkload', class: Google::Apis::WorkloadmanagerV1::SqlserverWorkload, decorator: Google::Apis::WorkloadmanagerV1::SqlserverWorkload::Representation
-      
           property :state, as: 'state'
-          property :three_tier_workload, as: 'threeTierWorkload', class: Google::Apis::WorkloadmanagerV1::ThreeTierWorkload, decorator: Google::Apis::WorkloadmanagerV1::ThreeTierWorkload::Representation
-      
           property :workload_type, as: 'workloadType'
         end
       end
