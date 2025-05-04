@@ -2449,6 +2449,11 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
         attr_accessor :text
       
+        # The date when the author visited the place. This is trucated to month.
+        # Corresponds to the JSON property `visitDate`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1ReviewVisitDate]
+        attr_accessor :visit_date
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2464,6 +2469,32 @@ module Google
           @rating = args[:rating] if args.key?(:rating)
           @relative_publish_time_description = args[:relative_publish_time_description] if args.key?(:relative_publish_time_description)
           @text = args[:text] if args.key?(:text)
+          @visit_date = args[:visit_date] if args.key?(:visit_date)
+        end
+      end
+      
+      # The date when the author visited the place. This is trucated to month.
+      class GoogleMapsPlacesV1ReviewVisitDate
+        include Google::Apis::Core::Hashable
+      
+        # The month the author visited the place, e.g. 4. The value is between 1 and 12.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # The year the author visited the place, e.g. 2025.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
         end
       end
       
