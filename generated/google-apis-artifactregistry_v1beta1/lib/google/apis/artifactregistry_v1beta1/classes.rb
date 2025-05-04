@@ -705,13 +705,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. If set, the repository satisfies physical zone isolation.
+        # Output only. Whether or not this repository satisfies PZI.
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
         attr_accessor :satisfies_pzi
         alias_method :satisfies_pzi?, :satisfies_pzi
       
-        # Output only. If set, the repository satisfies physical zone separation.
+        # Output only. Whether or not this repository satisfies PZS.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
         attr_accessor :satisfies_pzs
