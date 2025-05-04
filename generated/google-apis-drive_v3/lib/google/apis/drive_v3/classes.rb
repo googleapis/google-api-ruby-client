@@ -4171,7 +4171,7 @@ module Google
         attr_accessor :email_address
       
         # Output only. Identifies what kind of resource this is. Value: the fixed string
-        # `"drive#user"`.
+        # `drive#user`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
