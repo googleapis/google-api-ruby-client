@@ -2967,6 +2967,14 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load
+        # balancer. If loadBalancingScheme is not specified, the backend bucket can be
+        # used by classic global external load balancers, or global application external
+        # load balancers, or both.
+        # Corresponds to the JSON property `loadBalancingScheme`
+        # @return [String]
+        attr_accessor :load_balancing_scheme
+      
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
@@ -3003,6 +3011,7 @@ module Google
           @enable_cdn = args[:enable_cdn] if args.key?(:enable_cdn)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
           @used_by = args[:used_by] if args.key?(:used_by)
@@ -3683,7 +3692,7 @@ module Google
         # faster table lookup build times and host selection times. For more information
         # about Maglev, see https://ai.google/research/pubs/pub44824 This field is
         # applicable to either: - A regional backend service with the service_protocol
-        # set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to
+        # set to HTTP, HTTPS, HTTP2 or H2C, and load_balancing_scheme set to
         # INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme
         # set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If
         # sessionAffinity is not configured—that is, if session affinity remains at the
@@ -3760,11 +3769,11 @@ module Google
         attr_accessor :port_name
       
         # The protocol this BackendService uses to communicate with backends. Possible
-        # values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen
-        # load balancer or Traffic Director configuration. Refer to the documentation
-        # for the load balancers or for Traffic Director for more information. Must be
-        # set to GRPC when the backend service is referenced by a URL map that is bound
-        # to target gRPC proxy.
+        # values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP or GRPC. depending on the
+        # chosen load balancer or Traffic Director configuration. Refer to the
+        # documentation for the load balancers or for Traffic Director for more
+        # information. Must be set to GRPC when the backend service is referenced by a
+        # URL map that is bound to target gRPC proxy.
         # Corresponds to the JSON property `protocol`
         # @return [String]
         attr_accessor :protocol
@@ -4478,6 +4487,17 @@ module Google
         # @return [String]
         attr_accessor :fast_ip_move
       
+        # Selects one of the network endpoints attached to the backend NEGs of this
+        # service as the active endpoint (the leader) that receives all traffic. When
+        # the leader changes, there is no connection draining to persist existing
+        # connections on the old leader. You are responsible for selecting a suitable
+        # endpoint as the leader. For example, preferring a healthy endpoint over
+        # unhealthy ones. Note that this service does not track backend endpoint health,
+        # and selects the configured leader unconditionally.
+        # Corresponds to the JSON property `leader`
+        # @return [Google::Apis::ComputeV1::BackendServiceHaPolicyLeader]
+        attr_accessor :leader
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4485,6 +4505,62 @@ module Google
         # Update properties of this object
         def update!(**args)
           @fast_ip_move = args[:fast_ip_move] if args.key?(:fast_ip_move)
+          @leader = args[:leader] if args.key?(:leader)
+        end
+      end
+      
+      # 
+      class BackendServiceHaPolicyLeader
+        include Google::Apis::Core::Hashable
+      
+        # A fully-qualified URL (starting with https://www.googleapis.com/) of the zonal
+        # Network Endpoint Group (NEG) with `GCE_VM_IP` endpoints that the leader is
+        # attached to. The leader's backendGroup must already be specified as a backend
+        # of this backend service. Removing a backend that is designated as the leader's
+        # backendGroup is not permitted.
+        # Corresponds to the JSON property `backendGroup`
+        # @return [String]
+        attr_accessor :backend_group
+      
+        # The network endpoint within the leader.backendGroup that is designated as the
+        # leader. This network endpoint cannot be detached from the NEG specified in the
+        # haPolicy.leader.backendGroup until the leader is updated with another network
+        # endpoint, or the leader is removed from the haPolicy.
+        # Corresponds to the JSON property `networkEndpoint`
+        # @return [Google::Apis::ComputeV1::BackendServiceHaPolicyLeaderNetworkEndpoint]
+        attr_accessor :network_endpoint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backend_group = args[:backend_group] if args.key?(:backend_group)
+          @network_endpoint = args[:network_endpoint] if args.key?(:network_endpoint)
+        end
+      end
+      
+      # 
+      class BackendServiceHaPolicyLeaderNetworkEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # The name of the VM instance of the leader network endpoint. The instance must
+        # already be attached to the NEG specified in the haPolicy.leader.backendGroup.
+        # The name must be 1-63 characters long, and comply with RFC1035. Authorization
+        # requires the following IAM permission on the specified resource instance:
+        # compute.instances.use
+        # Corresponds to the JSON property `instance`
+        # @return [String]
+        attr_accessor :instance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
         end
       end
       
@@ -10261,6 +10337,33 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Specifies the canary migration state for the backend buckets attached to this
+        # forwarding rule. Possible values are PREPARE, TEST_BY_PERCENTAGE, and
+        # TEST_ALL_TRAFFIC. To begin the migration from EXTERNAL to EXTERNAL_MANAGED,
+        # the state must be changed to PREPARE. The state must be changed to
+        # TEST_ALL_TRAFFIC before the loadBalancingScheme can be changed to
+        # EXTERNAL_MANAGED. Optionally, the TEST_BY_PERCENTAGE state can be used to
+        # migrate traffic to backend buckets attached to this forwarding rule by
+        # percentage using externalManagedBackendBucketMigrationTestingPercentage.
+        # Rolling back a migration requires the states to be set in reverse order. So
+        # changing the scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be
+        # set to TEST_ALL_TRAFFIC at the same time. Optionally, the TEST_BY_PERCENTAGE
+        # state can be used to migrate some traffic back to EXTERNAL or PREPARE can be
+        # used to migrate all traffic back to EXTERNAL.
+        # Corresponds to the JSON property `externalManagedBackendBucketMigrationState`
+        # @return [String]
+        attr_accessor :external_managed_backend_bucket_migration_state
+      
+        # Determines the fraction of requests to backend buckets that should be
+        # processed by the global external Application Load Balancer. The value of this
+        # field must be in the range [0, 100]. This value can only be set if the
+        # loadBalancingScheme in the BackendService is set to EXTERNAL (when using the
+        # classic Application Load Balancer) and the migration state is
+        # TEST_BY_PERCENTAGE.
+        # Corresponds to the JSON property `externalManagedBackendBucketMigrationTestingPercentage`
+        # @return [Float]
+        attr_accessor :external_managed_backend_bucket_migration_testing_percentage
+      
         # Fingerprint of this resource. A hash of the contents stored in this object.
         # This field is used in optimistic locking. This field will be ignored when
         # inserting a ForwardingRule. Include the fingerprint in patch request to ensure
@@ -10531,6 +10634,8 @@ module Google
           @base_forwarding_rule = args[:base_forwarding_rule] if args.key?(:base_forwarding_rule)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @external_managed_backend_bucket_migration_state = args[:external_managed_backend_bucket_migration_state] if args.key?(:external_managed_backend_bucket_migration_state)
+          @external_managed_backend_bucket_migration_testing_percentage = args[:external_managed_backend_bucket_migration_testing_percentage] if args.key?(:external_managed_backend_bucket_migration_testing_percentage)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
           @ip_collection = args[:ip_collection] if args.key?(:ip_collection)
@@ -19921,6 +20026,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :interconnect_attachments
       
+        # [Output Only] URLs of InterconnectGroups that include this Interconnect. Order
+        # is arbitrary and items are unique.
+        # Corresponds to the JSON property `interconnectGroups`
+        # @return [Array<String>]
+        attr_accessor :interconnect_groups
+      
         # Type of interconnect, which can take one of the following values: - PARTNER: A
         # partner-managed interconnection shared between customers though a partner. -
         # DEDICATED: A dedicated physical interconnection with the customer. Note that a
@@ -20087,6 +20198,7 @@ module Google
           @google_reference_id = args[:google_reference_id] if args.key?(:google_reference_id)
           @id = args[:id] if args.key?(:id)
           @interconnect_attachments = args[:interconnect_attachments] if args.key?(:interconnect_attachments)
+          @interconnect_groups = args[:interconnect_groups] if args.key?(:interconnect_groups)
           @interconnect_type = args[:interconnect_type] if args.key?(:interconnect_type)
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
@@ -20122,6 +20234,11 @@ module Google
         # @return [Boolean]
         attr_accessor :admin_enabled
         alias_method :admin_enabled?, :admin_enabled
+      
+        # [Output Only] URL of the AttachmentGroup that includes this Attachment.
+        # Corresponds to the JSON property `attachmentGroup`
+        # @return [String]
+        attr_accessor :attachment_group
       
         # Provisioned bandwidth capacity for the interconnect attachment. For
         # attachments of type DEDICATED, the user can set the bandwidth. For attachments
@@ -20443,6 +20560,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @admin_enabled = args[:admin_enabled] if args.key?(:admin_enabled)
+          @attachment_group = args[:attachment_group] if args.key?(:attachment_group)
           @bandwidth = args[:bandwidth] if args.key?(:bandwidth)
           @candidate_ipv6_subnets = args[:candidate_ipv6_subnets] if args.key?(:candidate_ipv6_subnets)
           @candidate_subnets = args[:candidate_subnets] if args.key?(:candidate_subnets)
@@ -20669,6 +20787,634 @@ module Google
         def update!(**args)
           @max = args[:max] if args.key?(:max)
           @min = args[:min] if args.key?(:min)
+        end
+      end
+      
+      # An interconnect attachment group resource allows customers to create, analyze,
+      # and expand highly available deployments.
+      class InterconnectAttachmentGroup
+        include Google::Apis::Core::Hashable
+      
+        # Attachments in the AttachmentGroup. Keys are arbitrary user-specified strings.
+        # Users are encouraged, but not required, to use their preferred format for
+        # resource links as keys. Note that there are add-members and remove-members
+        # methods in gcloud. The size of this map is limited by an "Attachments per
+        # group" quota.
+        # Corresponds to the JSON property `attachments`
+        # @return [Hash<String,Google::Apis::ComputeV1::InterconnectAttachmentGroupAttachment>]
+        attr_accessor :attachments
+      
+        # [Output Only] The redundancy this group is configured to support. The way a
+        # user queries what SLA their Attachment gets is by looking at this field of the
+        # Attachment's AttachmentGroup.
+        # Corresponds to the JSON property `configured`
+        # @return [Google::Apis::ComputeV1::InterconnectAttachmentGroupConfigured]
+        attr_accessor :configured
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Opaque system-generated token that uniquely identifies the configuration. If
+        # provided when patching a configuration in update mode, the provided token must
+        # match the current token or the update is rejected. This provides a reliable
+        # means of doing read-modify-write (optimistic locking) as described by AIP 154.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] The unique identifier for the resource type. The server
+        # generates this identifier.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # The user's intent for this AttachmentGroup. This is the only required field
+        # besides the name that must be specified on group creation.
+        # Corresponds to the JSON property `intent`
+        # @return [Google::Apis::ComputeV1::InterconnectAttachmentGroupIntent]
+        attr_accessor :intent
+      
+        # The URL of an InterconnectGroup that groups these Attachments' Interconnects.
+        # Customers do not need to set this unless directed by Google Support.
+        # Corresponds to the JSON property `interconnectGroup`
+        # @return [String]
+        attr_accessor :interconnect_group
+      
+        # [Output Only] Type of the resource. Always compute#interconnectAttachmentGroup.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] An analysis of the logical layout of Attachments in this group.
+        # Every Attachment in the group is shown once in this structure.
+        # Corresponds to the JSON property `logicalStructure`
+        # @return [Google::Apis::ComputeV1::InterconnectAttachmentGroupLogicalStructure]
+        attr_accessor :logical_structure
+      
+        # Name of the resource. Provided by the client when the resource is created. The
+        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
+        # and all following characters must be a dash, lowercase letter, or digit,
+        # except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attachments = args[:attachments] if args.key?(:attachments)
+          @configured = args[:configured] if args.key?(:configured)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @intent = args[:intent] if args.key?(:intent)
+          @interconnect_group = args[:interconnect_group] if args.key?(:interconnect_group)
+          @kind = args[:kind] if args.key?(:kind)
+          @logical_structure = args[:logical_structure] if args.key?(:logical_structure)
+          @name = args[:name] if args.key?(:name)
+          @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # An Attachment in this AttachmentGroup.
+      class InterconnectAttachmentGroupAttachment
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `attachment`
+        # @return [String]
+        attr_accessor :attachment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attachment = args[:attachment] if args.key?(:attachment)
+        end
+      end
+      
+      # [Output Only] The redundancy this group is configured to support. The way a
+      # user queries what SLA their Attachment gets is by looking at this field of the
+      # Attachment's AttachmentGroup.
+      class InterconnectAttachmentGroupConfigured
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Which SLA this group is configured to support, and why this
+        # group does or does not meet that SLA's requirements.
+        # Corresponds to the JSON property `availabilitySla`
+        # @return [Google::Apis::ComputeV1::InterconnectAttachmentGroupConfiguredAvailabilitySla]
+        attr_accessor :availability_sla
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @availability_sla = args[:availability_sla] if args.key?(:availability_sla)
+        end
+      end
+      
+      # [Output Only] Which SLA this group is configured to support, and why this
+      # group does or does not meet that SLA's requirements.
+      class InterconnectAttachmentGroupConfiguredAvailabilitySla
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `effectiveSla`
+        # @return [String]
+        attr_accessor :effective_sla
+      
+        # 
+        # Corresponds to the JSON property `intendedSlaBlockers`
+        # @return [Array<Google::Apis::ComputeV1::InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlockers>]
+        attr_accessor :intended_sla_blockers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_sla = args[:effective_sla] if args.key?(:effective_sla)
+          @intended_sla_blockers = args[:intended_sla_blockers] if args.key?(:intended_sla_blockers)
+        end
+      end
+      
+      # [Output Only] Reasons why configuration.availabilitySLA.sla differs from
+      # intent.availabilitySLA. This list is empty if and only if those are the same.
+      class InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlockers
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] URLs of any particular Attachments to explain this blocker in
+        # more detail.
+        # Corresponds to the JSON property `attachments`
+        # @return [Array<String>]
+        attr_accessor :attachments
+      
+        # 
+        # Corresponds to the JSON property `blockerType`
+        # @return [String]
+        attr_accessor :blocker_type
+      
+        # [Output Only] The url of Google Cloud public documentation explaining this
+        # requirement. This is set for every type of requirement.
+        # Corresponds to the JSON property `documentationLink`
+        # @return [String]
+        attr_accessor :documentation_link
+      
+        # [Output Only] A human-readable explanation of this requirement and why it's
+        # not met. This is set for every type of requirement.
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # [Output Only] Metros used to explain this blocker in more detail. These are
+        # three-letter lowercase strings like "iad". This will be set for some blockers (
+        # like NO_ATTACHMENTS_IN_METRO_AND_ZONE) but does not apply to others.
+        # Corresponds to the JSON property `metros`
+        # @return [Array<String>]
+        attr_accessor :metros
+      
+        # [Output Only] Regions used to explain this blocker in more detail. These are
+        # region names formatted like "us-central1". This will be set for some blockers (
+        # like INCOMPATIBLE_REGIONS) but does not apply to others.
+        # Corresponds to the JSON property `regions`
+        # @return [Array<String>]
+        attr_accessor :regions
+      
+        # [Output Only] Zones used to explain this blocker in more detail. Format is "
+        # zone1" and/or "zone2". This will be set for some blockers (like MISSING_ZONE)
+        # but does not apply to others.
+        # Corresponds to the JSON property `zones`
+        # @return [Array<String>]
+        attr_accessor :zones
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attachments = args[:attachments] if args.key?(:attachments)
+          @blocker_type = args[:blocker_type] if args.key?(:blocker_type)
+          @documentation_link = args[:documentation_link] if args.key?(:documentation_link)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @metros = args[:metros] if args.key?(:metros)
+          @regions = args[:regions] if args.key?(:regions)
+          @zones = args[:zones] if args.key?(:zones)
+        end
+      end
+      
+      # The user's intent for this AttachmentGroup. This is the only required field
+      # besides the name that must be specified on group creation.
+      class InterconnectAttachmentGroupIntent
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `availabilitySla`
+        # @return [String]
+        attr_accessor :availability_sla
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @availability_sla = args[:availability_sla] if args.key?(:availability_sla)
+        end
+      end
+      
+      # [Output Only] An analysis of the logical layout of Attachments in this group.
+      # Every Attachment in the group is shown once in this structure.
+      class InterconnectAttachmentGroupLogicalStructure
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `regions`
+        # @return [Array<Google::Apis::ComputeV1::InterconnectAttachmentGroupLogicalStructureRegion>]
+        attr_accessor :regions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @regions = args[:regions] if args.key?(:regions)
+        end
+      end
+      
+      # [Output Only] The regions Attachments in this group are in.
+      class InterconnectAttachmentGroupLogicalStructureRegion
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `metros`
+        # @return [Array<Google::Apis::ComputeV1::InterconnectAttachmentGroupLogicalStructureRegionMetro>]
+        attr_accessor :metros
+      
+        # [Output Only] The name of a region, like "us-central1".
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metros = args[:metros] if args.key?(:metros)
+          @region = args[:region] if args.key?(:region)
+        end
+      end
+      
+      # [Output Only] The metros of Attachments in this group in this region.
+      class InterconnectAttachmentGroupLogicalStructureRegionMetro
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `facilities`
+        # @return [Array<Google::Apis::ComputeV1::InterconnectAttachmentGroupLogicalStructureRegionMetroFacility>]
+        attr_accessor :facilities
+      
+        # [Output Only] The name of the metro, as a three-letter lowercase string like "
+        # iad". This is the first component of the location of an Interconnect.
+        # Corresponds to the JSON property `metro`
+        # @return [String]
+        attr_accessor :metro
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @facilities = args[:facilities] if args.key?(:facilities)
+          @metro = args[:metro] if args.key?(:metro)
+        end
+      end
+      
+      # [Output Only] The facilities used for this group's Attachments' Interconnects.
+      class InterconnectAttachmentGroupLogicalStructureRegionMetroFacility
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The name of a facility, like "iad-1234".
+        # Corresponds to the JSON property `facility`
+        # @return [String]
+        attr_accessor :facility
+      
+        # 
+        # Corresponds to the JSON property `zones`
+        # @return [Array<Google::Apis::ComputeV1::InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone>]
+        attr_accessor :zones
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @facility = args[:facility] if args.key?(:facility)
+          @zones = args[:zones] if args.key?(:zones)
+        end
+      end
+      
+      # [Output Only] The zones that Attachments in this group are present in, in the
+      # given facilities. This is inherited from their Interconnects.
+      class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] URLs of Attachments in the given zone, to the given region, on
+        # Interconnects in the given facility and metro. Every Attachment in the AG has
+        # such an entry.
+        # Corresponds to the JSON property `attachments`
+        # @return [Array<String>]
+        attr_accessor :attachments
+      
+        # [Output Only] The name of a zone, either "zone1" or "zone2".
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attachments = args[:attachments] if args.key?(:attachments)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # Response for the InterconnectAttachmentGroupsGetOperationalStatusResponse.
+      class InterconnectAttachmentGroupsGetOperationalStatusResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # 
+        # Corresponds to the JSON property `result`
+        # @return [Google::Apis::ComputeV1::InterconnectAttachmentGroupsOperationalStatus]
+        attr_accessor :result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @result = args[:result] if args.key?(:result)
+        end
+      end
+      
+      # 
+      class InterconnectAttachmentGroupsListResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of InterconnectAttachmentGroup resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::InterconnectAttachmentGroup>]
+        attr_accessor :items
+      
+        # 
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources. end_interface:
+        # MixerListResponseWithEtagBuilder
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::InterconnectAttachmentGroupsListResponse::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::InterconnectAttachmentGroupsListResponse::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class InterconnectAttachmentGroupsOperationalStatus
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `attachmentStatuses`
+        # @return [Array<Google::Apis::ComputeV1::InterconnectAttachmentGroupsOperationalStatusAttachmentStatus>]
+        attr_accessor :attachment_statuses
+      
+        # [Output Only] The redundancy this group is configured to support. The way a
+        # user queries what SLA their Attachment gets is by looking at this field of the
+        # Attachment's AttachmentGroup.
+        # Corresponds to the JSON property `configured`
+        # @return [Google::Apis::ComputeV1::InterconnectAttachmentGroupConfigured]
+        attr_accessor :configured
+      
+        # Summarizes the status of the group.
+        # Corresponds to the JSON property `groupStatus`
+        # @return [String]
+        attr_accessor :group_status
+      
+        # The user's intent for this AttachmentGroup. This is the only required field
+        # besides the name that must be specified on group creation.
+        # Corresponds to the JSON property `intent`
+        # @return [Google::Apis::ComputeV1::InterconnectAttachmentGroupIntent]
+        attr_accessor :intent
+      
+        # [Output Only] The redundancy this group is configured to support. The way a
+        # user queries what SLA their Attachment gets is by looking at this field of the
+        # Attachment's AttachmentGroup.
+        # Corresponds to the JSON property `operational`
+        # @return [Google::Apis::ComputeV1::InterconnectAttachmentGroupConfigured]
+        attr_accessor :operational
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attachment_statuses = args[:attachment_statuses] if args.key?(:attachment_statuses)
+          @configured = args[:configured] if args.key?(:configured)
+          @group_status = args[:group_status] if args.key?(:group_status)
+          @intent = args[:intent] if args.key?(:intent)
+          @operational = args[:operational] if args.key?(:operational)
+        end
+      end
+      
+      # The status of one Attachment in the group. List order is arbitrary.
+      class InterconnectAttachmentGroupsOperationalStatusAttachmentStatus
+        include Google::Apis::Core::Hashable
+      
+        # Whether this Attachment is enabled. This becomes false when the customer
+        # drains their Attachment.
+        # Corresponds to the JSON property `adminEnabled`
+        # @return [Boolean]
+        attr_accessor :admin_enabled
+        alias_method :admin_enabled?, :admin_enabled
+      
+        # The URL of the Attachment being described.
+        # Corresponds to the JSON property `attachment`
+        # @return [String]
+        attr_accessor :attachment
+      
+        # Whether this Attachment is participating in the redundant configuration. This
+        # will be ACTIVE if and only if the status below is CONNECTION_UP. Any INACTIVE
+        # Attachments are excluded from the analysis that generates operational.
+        # availabilitySLA.
+        # Corresponds to the JSON property `isActive`
+        # @return [String]
+        attr_accessor :is_active
+      
+        # Whether this Attachment is active, and if so, whether BGP is up. This is based
+        # on the statuses available in the Pantheon UI here: http://google3/java/com/
+        # google/cloud/boq/clientapi/gce/hybrid/api/interconnect_models.proto
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @admin_enabled = args[:admin_enabled] if args.key?(:admin_enabled)
+          @attachment = args[:attachment] if args.key?(:attachment)
+          @is_active = args[:is_active] if args.key?(:is_active)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -21202,6 +21948,761 @@ module Google
         def update!(**args)
           @ckn = args[:ckn] if args.key?(:ckn)
           @operational = args[:operational] if args.key?(:operational)
+        end
+      end
+      
+      # An interconnect group resource allows customers to create, analyze, and expand
+      # their redundant connections.
+      class InterconnectGroup
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The status of the group as configured. This has the same
+        # structure as the operational field reported by the OperationalStatus method,
+        # but does not take into account the operational status of each resource.
+        # Corresponds to the JSON property `configured`
+        # @return [Google::Apis::ComputeV1::InterconnectGroupConfigured]
+        attr_accessor :configured
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Opaque system-generated token that uniquely identifies the configuration. If
+        # provided when patching a configuration in update mode, the provided token must
+        # match the current token or the update is rejected. This provides a reliable
+        # means of doing read-modify-write (optimistic locking) as described by API 154.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] The unique identifier for the resource type. The server
+        # generates this identifier.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # The user's intent for this group. This is the only required field besides the
+        # name that must be specified on group creation.
+        # Corresponds to the JSON property `intent`
+        # @return [Google::Apis::ComputeV1::InterconnectGroupIntent]
+        attr_accessor :intent
+      
+        # Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+        # strings. Users are encouraged, but not required, to use their preferred format
+        # for resource links as keys. Note that there are add-members and remove-members
+        # methods in gcloud. The size of this map is limited by an "Interconnects per
+        # group" quota.
+        # Corresponds to the JSON property `interconnects`
+        # @return [Hash<String,Google::Apis::ComputeV1::InterconnectGroupInterconnect>]
+        attr_accessor :interconnects
+      
+        # [Output Only] Type of the resource. Always compute#InterconnectGroup
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Name of the resource. Provided by the client when the resource is created. The
+        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
+        # and all following characters must be a dash, lowercase letter, or digit,
+        # except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] An analysis of the physical layout of Interconnects in this
+        # group. Every Interconnect in the group is shown once in this structure.
+        # Corresponds to the JSON property `physicalStructure`
+        # @return [Google::Apis::ComputeV1::InterconnectGroupPhysicalStructure]
+        attr_accessor :physical_structure
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @configured = args[:configured] if args.key?(:configured)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @intent = args[:intent] if args.key?(:intent)
+          @interconnects = args[:interconnects] if args.key?(:interconnects)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @physical_structure = args[:physical_structure] if args.key?(:physical_structure)
+          @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # [Output Only] The status of the group as configured. This has the same
+      # structure as the operational field reported by the OperationalStatus method,
+      # but does not take into account the operational status of each resource.
+      class InterconnectGroupConfigured
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] How reliable this topology is configured to be, and why this
+        # group does or does not meet the requirements for the intended capability.
+        # Corresponds to the JSON property `topologyCapability`
+        # @return [Google::Apis::ComputeV1::InterconnectGroupConfiguredTopologyCapability]
+        attr_accessor :topology_capability
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @topology_capability = args[:topology_capability] if args.key?(:topology_capability)
+        end
+      end
+      
+      # [Output Only] How reliable this topology is configured to be, and why this
+      # group does or does not meet the requirements for the intended capability.
+      class InterconnectGroupConfiguredTopologyCapability
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `intendedCapabilityBlockers`
+        # @return [Array<Google::Apis::ComputeV1::InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockers>]
+        attr_accessor :intended_capability_blockers
+      
+        # 
+        # Corresponds to the JSON property `supportedSla`
+        # @return [String]
+        attr_accessor :supported_sla
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intended_capability_blockers = args[:intended_capability_blockers] if args.key?(:intended_capability_blockers)
+          @supported_sla = args[:supported_sla] if args.key?(:supported_sla)
+        end
+      end
+      
+      # [Output Only] Reasons why configuration.topologyCapability.sla differs from
+      # intent.topologyCapability. This list is empty if and only if those are the
+      # same.
+      class InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockers
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `blockerType`
+        # @return [String]
+        attr_accessor :blocker_type
+      
+        # [Output Only] The url of Google Cloud public documentation explaining this
+        # requirement. This is set for every type of requirement.
+        # Corresponds to the JSON property `documentationLink`
+        # @return [String]
+        attr_accessor :documentation_link
+      
+        # [Output Only] A human-readable explanation of this requirement and why it's
+        # not met. This is set for every type of requirement.
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # [Output Only] Facilities used to explain this blocker in more detail. Like
+        # physicalStructure.metros.facilities.facility, this is a numeric string like "
+        # 5467".
+        # Corresponds to the JSON property `facilities`
+        # @return [Array<String>]
+        attr_accessor :facilities
+      
+        # [Output Only] Interconnects used to explain this blocker in more detail.
+        # Corresponds to the JSON property `interconnects`
+        # @return [Array<String>]
+        attr_accessor :interconnects
+      
+        # [Output Only] Metros used to explain this blocker in more detail. These are
+        # three-letter lowercase strings like "iad". A blocker like INCOMPATIBLE_METROS
+        # will specify the problematic metros in this field.
+        # Corresponds to the JSON property `metros`
+        # @return [Array<String>]
+        attr_accessor :metros
+      
+        # [Output Only] Zones used to explain this blocker in more detail. Zone names
+        # are "zone1" and/or "zone2".
+        # Corresponds to the JSON property `zones`
+        # @return [Array<String>]
+        attr_accessor :zones
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blocker_type = args[:blocker_type] if args.key?(:blocker_type)
+          @documentation_link = args[:documentation_link] if args.key?(:documentation_link)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @facilities = args[:facilities] if args.key?(:facilities)
+          @interconnects = args[:interconnects] if args.key?(:interconnects)
+          @metros = args[:metros] if args.key?(:metros)
+          @zones = args[:zones] if args.key?(:zones)
+        end
+      end
+      
+      # The user's intent for this group. This is the only required field besides the
+      # name that must be specified on group creation.
+      class InterconnectGroupIntent
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `topologyCapability`
+        # @return [String]
+        attr_accessor :topology_capability
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @topology_capability = args[:topology_capability] if args.key?(:topology_capability)
+        end
+      end
+      
+      # An Interconnect in this InterconnectGroup.
+      class InterconnectGroupInterconnect
+        include Google::Apis::Core::Hashable
+      
+        # The URL of an Interconnect in this group. All Interconnects in the group are
+        # unique.
+        # Corresponds to the JSON property `interconnect`
+        # @return [String]
+        attr_accessor :interconnect
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @interconnect = args[:interconnect] if args.key?(:interconnect)
+        end
+      end
+      
+      # [Output Only] An analysis of the physical layout of Interconnects in this
+      # group. Every Interconnect in the group is shown once in this structure.
+      class InterconnectGroupPhysicalStructure
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `metros`
+        # @return [Array<Google::Apis::ComputeV1::InterconnectGroupPhysicalStructureMetros>]
+        attr_accessor :metros
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metros = args[:metros] if args.key?(:metros)
+        end
+      end
+      
+      # [Output Only] The metros Interconnects in this group are in.
+      class InterconnectGroupPhysicalStructureMetros
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `facilities`
+        # @return [Array<Google::Apis::ComputeV1::InterconnectGroupPhysicalStructureMetrosFacilities>]
+        attr_accessor :facilities
+      
+        # [Output Only] The name of the metro, as a three-letter lowercase string like "
+        # iad". This is the first component of the location of Interconnects underneath
+        # this.
+        # Corresponds to the JSON property `metro`
+        # @return [String]
+        attr_accessor :metro
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @facilities = args[:facilities] if args.key?(:facilities)
+          @metro = args[:metro] if args.key?(:metro)
+        end
+      end
+      
+      # [Output Only] The facilities Interconnects in this metro are present in.
+      class InterconnectGroupPhysicalStructureMetrosFacilities
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The ID of this facility, as a numeric string like "5467". This
+        # is the third component of the location of Interconnects in this facility.
+        # Corresponds to the JSON property `facility`
+        # @return [String]
+        attr_accessor :facility
+      
+        # 
+        # Corresponds to the JSON property `zones`
+        # @return [Array<Google::Apis::ComputeV1::InterconnectGroupPhysicalStructureMetrosFacilitiesZones>]
+        attr_accessor :zones
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @facility = args[:facility] if args.key?(:facility)
+          @zones = args[:zones] if args.key?(:zones)
+        end
+      end
+      
+      # [Output Only] The zones that Interconnects in this facility are present in.
+      class InterconnectGroupPhysicalStructureMetrosFacilitiesZones
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] URLs of Interconnects in this redundancy group in the given
+        # metro, facility, and zone.
+        # Corresponds to the JSON property `interconnects`
+        # @return [Array<String>]
+        attr_accessor :interconnects
+      
+        # [Output Only] The name of the zone, either "zone1" or "zone2". This is the
+        # second component of the location of Interconnects in this facility.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @interconnects = args[:interconnects] if args.key?(:interconnects)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # 
+      class InterconnectGroupsCreateMembers
+        include Google::Apis::Core::Hashable
+      
+        # How to behave when configured.topologyCapability.supportedSLA would not equal
+        # intent.topologyCapability after this call.
+        # Corresponds to the JSON property `intentMismatchBehavior`
+        # @return [String]
+        attr_accessor :intent_mismatch_behavior
+      
+        # 
+        # Corresponds to the JSON property `interconnects`
+        # @return [Array<Google::Apis::ComputeV1::InterconnectGroupsCreateMembersInterconnectInput>]
+        attr_accessor :interconnects
+      
+        # LINT.IfChange
+        # Corresponds to the JSON property `templateInterconnect`
+        # @return [Google::Apis::ComputeV1::InterconnectGroupsCreateMembersInterconnectInput]
+        attr_accessor :template_interconnect
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intent_mismatch_behavior = args[:intent_mismatch_behavior] if args.key?(:intent_mismatch_behavior)
+          @interconnects = args[:interconnects] if args.key?(:interconnects)
+          @template_interconnect = args[:template_interconnect] if args.key?(:template_interconnect)
+        end
+      end
+      
+      # LINT.IfChange
+      class InterconnectGroupsCreateMembersInterconnectInput
+        include Google::Apis::Core::Hashable
+      
+        # Administrative status of the interconnect. When this is set to true, the
+        # Interconnect is functional and can carry traffic. When set to false, no
+        # packets can be carried over the interconnect and no BGP routes are exchanged
+        # over it. By default, the status is set to true.
+        # Corresponds to the JSON property `adminEnabled`
+        # @return [Boolean]
+        attr_accessor :admin_enabled
+        alias_method :admin_enabled?, :admin_enabled
+      
+        # Customer name, to put in the Letter of Authorization as the party authorized
+        # to request a crossconnect.
+        # Corresponds to the JSON property `customerName`
+        # @return [String]
+        attr_accessor :customer_name
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # A zone-free location to use for all Interconnects created in this call, like "
+        # iad-1234".
+        # Corresponds to the JSON property `facility`
+        # @return [String]
+        attr_accessor :facility
+      
+        # Type of interconnect, which can take one of the following values: - PARTNER: A
+        # partner-managed interconnection shared between customers though a partner. -
+        # DEDICATED: A dedicated physical interconnection with the customer. Note that a
+        # value IT_PRIVATE has been deprecated in favor of DEDICATED.
+        # Corresponds to the JSON property `interconnectType`
+        # @return [String]
+        attr_accessor :interconnect_type
+      
+        # Type of link requested, which can take one of the following values: -
+        # LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics -
+        # LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. -
+        # LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics. Note that this
+        # field indicates the speed of each of the links in the bundle, not the speed of
+        # the entire bundle.
+        # Corresponds to the JSON property `linkType`
+        # @return [String]
+        attr_accessor :link_type
+      
+        # Name of the Interconnects to be created. This must be specified on the
+        # template and/or on each individual interconnect. The name, if not empty, must
+        # be 1-63 characters long, and comply with RFC1035. Specifically, any nonempty
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
+        # and all following characters must be a dash, lowercase letter, or digit,
+        # except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Email address to contact the customer NOC for operations and maintenance
+        # notifications regarding this Interconnect. If specified, this will be used for
+        # notifications in addition to all other forms described, such as Cloud
+        # Monitoring logs alerting and Cloud Notifications. This field is required for
+        # users who sign up for Cloud Interconnect using workforce identity federation.
+        # Corresponds to the JSON property `nocContactEmail`
+        # @return [String]
+        attr_accessor :noc_contact_email
+      
+        # Indicates that this is a Cross-Cloud Interconnect. This field specifies the
+        # location outside of Google's network that the interconnect is connected to.
+        # Corresponds to the JSON property `remoteLocation`
+        # @return [String]
+        attr_accessor :remote_location
+      
+        # Optional. List of features requested for this Interconnect connection, which
+        # can take one of the following values: - IF_MACSEC If specified then the
+        # connection is created on MACsec capable hardware ports. If not specified, the
+        # default value is false, which allocates non-MACsec capable ports first if
+        # available. This parameter can be provided only with Interconnect INSERT. It
+        # isn't valid for Interconnect PATCH.
+        # Corresponds to the JSON property `requestedFeatures`
+        # @return [Array<String>]
+        attr_accessor :requested_features
+      
+        # Target number of physical links in the link bundle, as requested by the
+        # customer.
+        # Corresponds to the JSON property `requestedLinkCount`
+        # @return [Fixnum]
+        attr_accessor :requested_link_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @admin_enabled = args[:admin_enabled] if args.key?(:admin_enabled)
+          @customer_name = args[:customer_name] if args.key?(:customer_name)
+          @description = args[:description] if args.key?(:description)
+          @facility = args[:facility] if args.key?(:facility)
+          @interconnect_type = args[:interconnect_type] if args.key?(:interconnect_type)
+          @link_type = args[:link_type] if args.key?(:link_type)
+          @name = args[:name] if args.key?(:name)
+          @noc_contact_email = args[:noc_contact_email] if args.key?(:noc_contact_email)
+          @remote_location = args[:remote_location] if args.key?(:remote_location)
+          @requested_features = args[:requested_features] if args.key?(:requested_features)
+          @requested_link_count = args[:requested_link_count] if args.key?(:requested_link_count)
+        end
+      end
+      
+      # 
+      class InterconnectGroupsCreateMembersRequest
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ComputeV1::InterconnectGroupsCreateMembers]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # Response for the InterconnectGroupsGetOperationalStatusResponse.
+      class InterconnectGroupsGetOperationalStatusResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Request to get the status of the interconnect group with extra detail.
+        # Corresponds to the JSON property `result`
+        # @return [Google::Apis::ComputeV1::InterconnectGroupsOperationalStatus]
+        attr_accessor :result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @result = args[:result] if args.key?(:result)
+        end
+      end
+      
+      # 
+      class InterconnectGroupsListResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of InterconnectGroup resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::InterconnectGroup>]
+        attr_accessor :items
+      
+        # 
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources. end_interface:
+        # MixerListResponseWithEtagBuilder
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::InterconnectGroupsListResponse::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::InterconnectGroupsListResponse::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # Request to get the status of the interconnect group with extra detail.
+      class InterconnectGroupsOperationalStatus
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The status of the group as configured. This has the same
+        # structure as the operational field reported by the OperationalStatus method,
+        # but does not take into account the operational status of each resource.
+        # Corresponds to the JSON property `configured`
+        # @return [Google::Apis::ComputeV1::InterconnectGroupConfigured]
+        attr_accessor :configured
+      
+        # Summarizes the status of the group.
+        # Corresponds to the JSON property `groupStatus`
+        # @return [String]
+        attr_accessor :group_status
+      
+        # The user's intent for this group. This is the only required field besides the
+        # name that must be specified on group creation.
+        # Corresponds to the JSON property `intent`
+        # @return [Google::Apis::ComputeV1::InterconnectGroupIntent]
+        attr_accessor :intent
+      
+        # 
+        # Corresponds to the JSON property `interconnectStatuses`
+        # @return [Array<Google::Apis::ComputeV1::InterconnectGroupsOperationalStatusInterconnectStatus>]
+        attr_accessor :interconnect_statuses
+      
+        # [Output Only] The status of the group as configured. This has the same
+        # structure as the operational field reported by the OperationalStatus method,
+        # but does not take into account the operational status of each resource.
+        # Corresponds to the JSON property `operational`
+        # @return [Google::Apis::ComputeV1::InterconnectGroupConfigured]
+        attr_accessor :operational
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @configured = args[:configured] if args.key?(:configured)
+          @group_status = args[:group_status] if args.key?(:group_status)
+          @intent = args[:intent] if args.key?(:intent)
+          @interconnect_statuses = args[:interconnect_statuses] if args.key?(:interconnect_statuses)
+          @operational = args[:operational] if args.key?(:operational)
+        end
+      end
+      
+      # The status of one Interconnect in the group. The order is arbitrary.
+      class InterconnectGroupsOperationalStatusInterconnectStatus
+        include Google::Apis::Core::Hashable
+      
+        # Whether the Interconnect is enabled.
+        # Corresponds to the JSON property `adminEnabled`
+        # @return [Boolean]
+        attr_accessor :admin_enabled
+        alias_method :admin_enabled?, :admin_enabled
+      
+        # Diagnostics information about the Interconnect connection, which contains
+        # detailed and current technical information about Google's side of the
+        # connection.
+        # Corresponds to the JSON property `diagnostics`
+        # @return [Google::Apis::ComputeV1::InterconnectDiagnostics]
+        attr_accessor :diagnostics
+      
+        # The URL of the Interconnect being described.
+        # Corresponds to the JSON property `interconnect`
+        # @return [String]
+        attr_accessor :interconnect
+      
+        # Whether this interconnect is participating in the redundant configuration.
+        # Corresponds to the JSON property `isActive`
+        # @return [String]
+        attr_accessor :is_active
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @admin_enabled = args[:admin_enabled] if args.key?(:admin_enabled)
+          @diagnostics = args[:diagnostics] if args.key?(:diagnostics)
+          @interconnect = args[:interconnect] if args.key?(:interconnect)
+          @is_active = args[:is_active] if args.key?(:is_active)
         end
       end
       
@@ -22243,6 +23744,18 @@ module Google
       class License
         include Google::Apis::Core::Hashable
       
+        # Specifies licenseCodes of licenses that can replace this license. Note: such
+        # replacements are allowed even if removable_from_disk is false.
+        # Corresponds to the JSON property `allowedReplacementLicenses`
+        # @return [Array<String>]
+        attr_accessor :allowed_replacement_licenses
+      
+        # If true, this license can be appended to an existing disk's set of licenses.
+        # Corresponds to the JSON property `appendableToDisk`
+        # @return [Boolean]
+        attr_accessor :appendable_to_disk
+        alias_method :appendable_to_disk?, :appendable_to_disk
+      
         # [Output Only] Deprecated. This field no longer reflects whether a license
         # charges a usage fee.
         # Corresponds to the JSON property `chargesUseFee`
@@ -22267,6 +23780,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # Specifies licenseCodes of licenses that are incompatible with this license. If
+        # a license is incompatible with this license, it cannot be attached to the same
+        # disk or image.
+        # Corresponds to the JSON property `incompatibleLicenses`
+        # @return [Array<String>]
+        attr_accessor :incompatible_licenses
+      
         # [Output Only] Type of resource. Always compute#license for licenses.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -22278,11 +23798,46 @@ module Google
         # @return [Fixnum]
         attr_accessor :license_code
       
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `minimumRetention`
+        # @return [Google::Apis::ComputeV1::Duration]
+        attr_accessor :minimum_retention
+      
+        # If true, this license can only be used on VMs on multi tenant nodes.
+        # Corresponds to the JSON property `multiTenantOnly`
+        # @return [Boolean]
+        attr_accessor :multi_tenant_only
+        alias_method :multi_tenant_only?, :multi_tenant_only
+      
         # Name of the resource. The name must be 1-63 characters long and comply with
         # RFC1035.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # If true, indicates this is an OS license. Only one OS license can be attached
+        # to a disk or image at a time.
+        # Corresponds to the JSON property `osLicense`
+        # @return [Boolean]
+        attr_accessor :os_license
+        alias_method :os_license?, :os_license
+      
+        # If true, this license can be removed from a disk's set of licenses, with no
+        # replacement license needed.
+        # Corresponds to the JSON property `removableFromDisk`
+        # @return [Boolean]
+        attr_accessor :removable_from_disk
+        alias_method :removable_from_disk?, :removable_from_disk
+      
+        # Specifies the set of permissible coattached licenseCodes of licenses that
+        # satisfy the coattachment requirement of this license. At least one license
+        # from the set must be attached to the same disk or image as this license.
+        # Corresponds to the JSON property `requiredCoattachedLicenses`
+        # @return [Array<String>]
+        attr_accessor :required_coattached_licenses
       
         # [Input Only] Deprecated.
         # Corresponds to the JSON property `resourceRequirements`
@@ -22294,6 +23849,17 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Server-defined URL for this resource with the resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        # If true, this license can only be used on VMs on sole tenant nodes.
+        # Corresponds to the JSON property `soleTenantOnly`
+        # @return [Boolean]
+        attr_accessor :sole_tenant_only
+        alias_method :sole_tenant_only?, :sole_tenant_only
+      
         # If false, licenses will not be copied from the source resource when creating
         # an image from a disk, disk from snapshot, or snapshot from disk.
         # Corresponds to the JSON property `transferable`
@@ -22301,22 +23867,38 @@ module Google
         attr_accessor :transferable
         alias_method :transferable?, :transferable
       
+        # [Output Only] Last update timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `updateTimestamp`
+        # @return [String]
+        attr_accessor :update_timestamp
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @allowed_replacement_licenses = args[:allowed_replacement_licenses] if args.key?(:allowed_replacement_licenses)
+          @appendable_to_disk = args[:appendable_to_disk] if args.key?(:appendable_to_disk)
           @charges_use_fee = args[:charges_use_fee] if args.key?(:charges_use_fee)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
+          @incompatible_licenses = args[:incompatible_licenses] if args.key?(:incompatible_licenses)
           @kind = args[:kind] if args.key?(:kind)
           @license_code = args[:license_code] if args.key?(:license_code)
+          @minimum_retention = args[:minimum_retention] if args.key?(:minimum_retention)
+          @multi_tenant_only = args[:multi_tenant_only] if args.key?(:multi_tenant_only)
           @name = args[:name] if args.key?(:name)
+          @os_license = args[:os_license] if args.key?(:os_license)
+          @removable_from_disk = args[:removable_from_disk] if args.key?(:removable_from_disk)
+          @required_coattached_licenses = args[:required_coattached_licenses] if args.key?(:required_coattached_licenses)
           @resource_requirements = args[:resource_requirements] if args.key?(:resource_requirements)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @sole_tenant_only = args[:sole_tenant_only] if args.key?(:sole_tenant_only)
           @transferable = args[:transferable] if args.key?(:transferable)
+          @update_timestamp = args[:update_timestamp] if args.key?(:update_timestamp)
         end
       end
       
@@ -23095,11 +24677,6 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # [Output Only] A list of extended scratch disks assigned to the instance.
-        # Corresponds to the JSON property `scratchDisks`
-        # @return [Array<Google::Apis::ComputeV1::MachineType::ScratchDisk>]
-        attr_accessor :scratch_disks
-      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -23131,7 +24708,6 @@ module Google
           @maximum_persistent_disks_size_gb = args[:maximum_persistent_disks_size_gb] if args.key?(:maximum_persistent_disks_size_gb)
           @memory_mb = args[:memory_mb] if args.key?(:memory_mb)
           @name = args[:name] if args.key?(:name)
-          @scratch_disks = args[:scratch_disks] if args.key?(:scratch_disks)
           @self_link = args[:self_link] if args.key?(:self_link)
           @zone = args[:zone] if args.key?(:zone)
         end
@@ -23158,25 +24734,6 @@ module Google
           def update!(**args)
             @guest_accelerator_count = args[:guest_accelerator_count] if args.key?(:guest_accelerator_count)
             @guest_accelerator_type = args[:guest_accelerator_type] if args.key?(:guest_accelerator_type)
-          end
-        end
-        
-        # 
-        class ScratchDisk
-          include Google::Apis::Core::Hashable
-        
-          # Size of the scratch disk, defined in GB.
-          # Corresponds to the JSON property `diskGb`
-          # @return [Fixnum]
-          attr_accessor :disk_gb
-        
-          def initialize(**args)
-             update!(**args)
-          end
-        
-          # Update properties of this object
-          def update!(**args)
-            @disk_gb = args[:disk_gb] if args.key?(:disk_gb)
           end
         end
       end
@@ -31754,8 +33311,8 @@ module Google
         # following values: - `INITIALIZING` The public delegated prefix is being
         # initialized and addresses cannot be created yet. - `READY_TO_ANNOUNCE` The
         # public delegated prefix is a live migration prefix and is active. - `ANNOUNCED`
-        # The public delegated prefix is active. - `DELETING` The public delegated
-        # prefix is being deprovsioned.
+        # The public delegated prefix is announced and ready to use. - `DELETING` The
+        # public delegated prefix is being deprovsioned.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -34169,6 +35726,20 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `deleteAfterDuration`
+        # @return [Google::Apis::ComputeV1::Duration]
+        attr_accessor :delete_after_duration
+      
+        # Absolute time in future when the reservation will be auto-deleted by Compute
+        # Engine. Timestamp is represented in RFC3339 text format.
+        # Corresponds to the JSON property `deleteAtTime`
+        # @return [String]
+        attr_accessor :delete_at_time
+      
         # Specifies the deployment strategy for this reservation.
         # Corresponds to the JSON property `deploymentType`
         # @return [String]
@@ -34279,6 +35850,8 @@ module Google
           @aggregate_reservation = args[:aggregate_reservation] if args.key?(:aggregate_reservation)
           @commitment = args[:commitment] if args.key?(:commitment)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @delete_after_duration = args[:delete_after_duration] if args.key?(:delete_after_duration)
+          @delete_at_time = args[:delete_at_time] if args.key?(:delete_at_time)
           @deployment_type = args[:deployment_type] if args.key?(:deployment_type)
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
@@ -44831,6 +46404,18 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Output only. [Output Only] The array of external IPv6 network ranges reserved
+        # from the subnetwork's external IPv6 range for system use.
+        # Corresponds to the JSON property `systemReservedExternalIpv6Ranges`
+        # @return [Array<String>]
+        attr_accessor :system_reserved_external_ipv6_ranges
+      
+        # Output only. [Output Only] The array of internal IPv6 network ranges reserved
+        # from the subnetwork's internal IPv6 range for system use.
+        # Corresponds to the JSON property `systemReservedInternalIpv6Ranges`
+        # @return [Array<String>]
+        attr_accessor :system_reserved_internal_ipv6_ranges
+      
         def initialize(**args)
            update!(**args)
         end
@@ -44864,6 +46449,8 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @stack_type = args[:stack_type] if args.key?(:stack_type)
           @state = args[:state] if args.key?(:state)
+          @system_reserved_external_ipv6_ranges = args[:system_reserved_external_ipv6_ranges] if args.key?(:system_reserved_external_ipv6_ranges)
+          @system_reserved_internal_ipv6_ranges = args[:system_reserved_internal_ipv6_ranges] if args.key?(:system_reserved_internal_ipv6_ranges)
         end
       end
       
@@ -45272,6 +46859,95 @@ module Google
           # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::SubnetworksScopedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class SubnetworksScopedWarning
+        include Google::Apis::Core::Hashable
+      
+        # Name of the scope containing this set of Subnetworks.
+        # Corresponds to the JSON property `scopeName`
+        # @return [String]
+        attr_accessor :scope_name
+      
+        # An informational warning about unreachable scope
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::SubnetworksScopedWarning::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scope_name = args[:scope_name] if args.key?(:scope_name)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # An informational warning about unreachable scope
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::SubnetworksScopedWarning::Warning::Datum>]
           attr_accessor :data
         
           # [Output Only] A human-readable description of the warning code.
@@ -50015,10 +51691,21 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # [Output Only] Informational warning messages for failures encountered from
+        # scopes.
+        # Corresponds to the JSON property `scopedWarnings`
+        # @return [Array<Google::Apis::ComputeV1::SubnetworksScopedWarning>]
+        attr_accessor :scoped_warnings
+      
         # [Output Only] Server-defined URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
       
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
@@ -50035,7 +51722,9 @@ module Google
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @scoped_warnings = args[:scoped_warnings] if args.key?(:scoped_warnings)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
