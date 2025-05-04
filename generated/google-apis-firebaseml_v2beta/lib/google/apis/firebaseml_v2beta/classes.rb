@@ -2321,6 +2321,17 @@ module Google
         # @return [String]
         attr_accessor :engine
       
+        # Optional. Filter strings to be passed to the search API.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Optional. Number of search results to return per query. The default value is
+        # 10. The maximumm allowed value is 10.
+        # Corresponds to the JSON property `maxResults`
+        # @return [Fixnum]
+        attr_accessor :max_results
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2329,6 +2340,8 @@ module Google
         def update!(**args)
           @datastore = args[:datastore] if args.key?(:datastore)
           @engine = args[:engine] if args.key?(:engine)
+          @filter = args[:filter] if args.key?(:filter)
+          @max_results = args[:max_results] if args.key?(:max_results)
         end
       end
       
