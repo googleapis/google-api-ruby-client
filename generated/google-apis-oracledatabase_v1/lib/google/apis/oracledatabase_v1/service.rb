@@ -560,8 +560,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Initiates a switchover of specified autonomous deatabase to the associated
-        # peer database.
+        # Initiates a switchover of specified autonomous database to the associated peer
+        # database.
         # @param [String] name
         #   Required. The name of the Autonomous Database in the following format:
         #   projects/`project`/locations/`location`/autonomousDatabases/`
