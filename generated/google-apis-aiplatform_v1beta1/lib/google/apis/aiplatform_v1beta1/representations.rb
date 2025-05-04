@@ -2368,6 +2368,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1GeminiRequestReadConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1GeminiTemplateConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8235,6 +8241,8 @@ module Google
       class GoogleCloudAiplatformV1beta1AssembleDataRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :gemini_request_read_config, as: 'geminiRequestReadConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GeminiRequestReadConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GeminiRequestReadConfig::Representation
+      
           property :gemini_template_config, as: 'geminiTemplateConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GeminiTemplateConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GeminiTemplateConfig::Representation
       
           property :request_column_name, as: 'requestColumnName'
@@ -8247,6 +8255,8 @@ module Google
           property :batch_prediction_resource_usage_assessment_config, as: 'batchPredictionResourceUsageAssessmentConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AssessDataRequestBatchPredictionResourceUsageAssessmentConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AssessDataRequestBatchPredictionResourceUsageAssessmentConfig::Representation
       
           property :batch_prediction_validation_assessment_config, as: 'batchPredictionValidationAssessmentConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AssessDataRequestBatchPredictionValidationAssessmentConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AssessDataRequestBatchPredictionValidationAssessmentConfig::Representation
+      
+          property :gemini_request_read_config, as: 'geminiRequestReadConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GeminiRequestReadConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GeminiRequestReadConfig::Representation
       
           property :gemini_template_config, as: 'geminiTemplateConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GeminiTemplateConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GeminiTemplateConfig::Representation
       
@@ -9931,6 +9941,7 @@ module Google
           property :dedicated_resources, as: 'dedicatedResources', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DedicatedResources, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DedicatedResources::Representation
       
           property :fast_tryout_enabled, as: 'fastTryoutEnabled'
+          hash :system_labels, as: 'systemLabels'
         end
       end
       
@@ -11981,6 +11992,15 @@ module Google
           property :tool_config, as: 'toolConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolConfig::Representation
       
           collection :tools, as: 'tools', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Tool, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Tool::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1GeminiRequestReadConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :assembled_request_column_name, as: 'assembledRequestColumnName'
+          property :template_config, as: 'templateConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GeminiTemplateConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GeminiTemplateConfig::Representation
       
         end
       end
@@ -14351,7 +14371,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :checkpoint_id, as: 'checkpointId'
           property :epoch, :numeric_string => true, as: 'epoch'
-          property :name, as: 'name'
           property :step, :numeric_string => true, as: 'step'
         end
       end
