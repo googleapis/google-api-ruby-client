@@ -1107,6 +1107,11 @@ module Google
       class GoogleCloudAiplatformV1beta1AssembleDataRequest
         include Google::Apis::Core::Hashable
       
+        # Configuration for how to read Gemini requests from a multimodal dataset.
+        # Corresponds to the JSON property `geminiRequestReadConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GeminiRequestReadConfig]
+        attr_accessor :gemini_request_read_config
+      
         # Template configuration to create Gemini examples from a multimodal dataset.
         # Corresponds to the JSON property `geminiTemplateConfig`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GeminiTemplateConfig]
@@ -1125,6 +1130,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @gemini_request_read_config = args[:gemini_request_read_config] if args.key?(:gemini_request_read_config)
           @gemini_template_config = args[:gemini_template_config] if args.key?(:gemini_template_config)
           @request_column_name = args[:request_column_name] if args.key?(:request_column_name)
         end
@@ -1144,6 +1150,11 @@ module Google
         # Corresponds to the JSON property `batchPredictionValidationAssessmentConfig`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AssessDataRequestBatchPredictionValidationAssessmentConfig]
         attr_accessor :batch_prediction_validation_assessment_config
+      
+        # Configuration for how to read Gemini requests from a multimodal dataset.
+        # Corresponds to the JSON property `geminiRequestReadConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GeminiRequestReadConfig]
+        attr_accessor :gemini_request_read_config
       
         # Template configuration to create Gemini examples from a multimodal dataset.
         # Corresponds to the JSON property `geminiTemplateConfig`
@@ -1174,6 +1185,7 @@ module Google
         def update!(**args)
           @batch_prediction_resource_usage_assessment_config = args[:batch_prediction_resource_usage_assessment_config] if args.key?(:batch_prediction_resource_usage_assessment_config)
           @batch_prediction_validation_assessment_config = args[:batch_prediction_validation_assessment_config] if args.key?(:batch_prediction_validation_assessment_config)
+          @gemini_request_read_config = args[:gemini_request_read_config] if args.key?(:gemini_request_read_config)
           @gemini_template_config = args[:gemini_template_config] if args.key?(:gemini_template_config)
           @request_column_name = args[:request_column_name] if args.key?(:request_column_name)
           @tuning_resource_usage_assessment_config = args[:tuning_resource_usage_assessment_config] if args.key?(:tuning_resource_usage_assessment_config)
@@ -6822,6 +6834,12 @@ module Google
         attr_accessor :fast_tryout_enabled
         alias_method :fast_tryout_enabled?, :fast_tryout_enabled
       
+        # Optional. System labels for Model Garden deployments. These labels are managed
+        # by Google and for tracking purposes only.
+        # Corresponds to the JSON property `systemLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :system_labels
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6830,6 +6848,7 @@ module Google
         def update!(**args)
           @dedicated_resources = args[:dedicated_resources] if args.key?(:dedicated_resources)
           @fast_tryout_enabled = args[:fast_tryout_enabled] if args.key?(:fast_tryout_enabled)
+          @system_labels = args[:system_labels] if args.key?(:system_labels)
         end
       end
       
@@ -14273,11 +14292,37 @@ module Google
         end
       end
       
+      # Configuration for how to read Gemini requests from a multimodal dataset.
+      class GoogleCloudAiplatformV1beta1GeminiRequestReadConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Column name in the dataset table that contains already fully
+        # assembled Gemini requests.
+        # Corresponds to the JSON property `assembledRequestColumnName`
+        # @return [String]
+        attr_accessor :assembled_request_column_name
+      
+        # Template configuration to create Gemini examples from a multimodal dataset.
+        # Corresponds to the JSON property `templateConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GeminiTemplateConfig]
+        attr_accessor :template_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assembled_request_column_name = args[:assembled_request_column_name] if args.key?(:assembled_request_column_name)
+          @template_config = args[:template_config] if args.key?(:template_config)
+        end
+      end
+      
       # Template configuration to create Gemini examples from a multimodal dataset.
       class GoogleCloudAiplatformV1beta1GeminiTemplateConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Map of template params to the columns in the dataset table.
+        # Required. Map of template parameters to the columns in the dataset table.
         # Corresponds to the JSON property `fieldMapping`
         # @return [Hash<String,String>]
         attr_accessor :field_mapping
@@ -17199,7 +17244,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # A list of events matching the request.
+        # A list of events matching the request. Ordered by timestamp in ascending order.
         # Corresponds to the JSON property `sessionEvents`
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SessionEvent>]
         attr_accessor :session_events
@@ -22461,13 +22506,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :epoch
       
-        # Identifier. The resource name of the ModelVersionCheckpoint. Format: `projects/
-        # `project`/locations/`location`/models/`model`/versions/`version`/checkpoints/`
-        # checkpoint``
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
         # The step of the checkpoint.
         # Corresponds to the JSON property `step`
         # @return [Fixnum]
@@ -22481,7 +22519,6 @@ module Google
         def update!(**args)
           @checkpoint_id = args[:checkpoint_id] if args.key?(:checkpoint_id)
           @epoch = args[:epoch] if args.key?(:epoch)
-          @name = args[:name] if args.key?(:name)
           @step = args[:step] if args.key?(:step)
         end
       end

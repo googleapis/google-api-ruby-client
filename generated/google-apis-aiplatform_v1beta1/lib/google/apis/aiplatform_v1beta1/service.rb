@@ -22452,11 +22452,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new Session in a given project and location.
+        # Creates a new Session.
         # @param [String] parent
         #   Required. The resource name of the location to create the session in. Format: `
-        #   projects/`project`/locations/`location`` or `projects/`project`/locations/`
-        #   location`/reasoningEngines/`reasoning_engine``
+        #   projects/`project`/locations/`location`/reasoningEngines/`reasoning_engine``
         # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Session] google_cloud_aiplatform_v1beta1_session_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -22490,8 +22489,7 @@ module Google
         # Deletes details of the specific Session.
         # @param [String] name
         #   Required. The resource name of the session. Format: `projects/`project`/
-        #   locations/`location`/sessions/`session`` or `projects/`project`/locations/`
-        #   location`/reasoningEngines/`reasoning_engine`/sessions/`session``
+        #   locations/`location`/reasoningEngines/`reasoning_engine`/sessions/`session``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -22550,7 +22548,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists Sessions in a given project and location.
+        # Lists Sessions in a given reasoning engine.
         # @param [String] parent
         #   Required. The resource name of the location to list sessions from. Format: `
         #   projects/`project`/locations/`location`/reasoningEngines/`reasoning_engine``
@@ -22644,7 +22642,8 @@ module Google
         #   sessions/`session``
         # @param [Fixnum] page_size
         #   Optional. The maximum number of events to return. The service may return fewer
-        #   than this value. If unspecified, at most 100 events will be returned.
+        #   than this value. If unspecified, at most 100 events will be returned. These
+        #   events are ordered by timestamp in ascending order.
         # @param [String] page_token
         #   Optional. The next_page_token value returned from a previous list
         #   SessionService.ListEvents call.
@@ -23133,191 +23132,6 @@ module Google
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['timeout'] = timeout unless timeout.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates a new Session in a given project and location.
-        # @param [String] parent
-        #   Required. The resource name of the location to create the session in. Format: `
-        #   projects/`project`/locations/`location`` or `projects/`project`/locations/`
-        #   location`/reasoningEngines/`reasoning_engine``
-        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Session] google_cloud_aiplatform_v1beta1_session_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_session(parent, google_cloud_aiplatform_v1beta1_session_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta1/{+parent}/sessions', options)
-          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Session::Representation
-          command.request_object = google_cloud_aiplatform_v1beta1_session_object
-          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
-          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
-          command.params['parent'] = parent unless parent.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deletes details of the specific Session.
-        # @param [String] name
-        #   Required. The resource name of the session. Format: `projects/`project`/
-        #   locations/`location`/sessions/`session`` or `projects/`project`/locations/`
-        #   location`/reasoningEngines/`reasoning_engine`/sessions/`session``
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_session(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
-          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
-          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets details of the specific Session.
-        # @param [String] name
-        #   Required. The resource name of the session. Format: `projects/`project`/
-        #   locations/`location`/reasoningEngines/`reasoning_engine`/sessions/`session``
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Session] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Session]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_session(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1beta1/{+name}', options)
-          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Session::Representation
-          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Session
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Lists Sessions in a given project and location.
-        # @param [String] parent
-        #   Required. The resource name of the location to list sessions from. Format: `
-        #   projects/`project`/locations/`location`/reasoningEngines/`reasoning_engine``
-        # @param [String] filter
-        #   Optional. The standard list filter. Supported fields: * `display_name` Example:
-        #   `display_name=abc`.
-        # @param [String] order_by
-        #   Optional. A comma-separated list of fields to order by, sorted in ascending
-        #   order. Use "desc" after a field name for descending. Supported fields: * `
-        #   create_time` * `update_time` Example: `create_time desc`.
-        # @param [Fixnum] page_size
-        #   Optional. The maximum number of sessions to return. The service may return
-        #   fewer than this value. If unspecified, at most 100 sessions will be returned.
-        # @param [String] page_token
-        #   Optional. The next_page_token value returned from a previous list
-        #   SessionService.ListSessions call.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListSessionsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListSessionsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_sessions(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1beta1/{+parent}/sessions', options)
-          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListSessionsResponse::Representation
-          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListSessionsResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['filter'] = filter unless filter.nil?
-          command.query['orderBy'] = order_by unless order_by.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates the specific Session.
-        # @param [String] name
-        #   Required. Identifier. The resource name of the session. Format: 'projects/`
-        #   project`/locations/`location`/reasoningEngines/`reasoning_engine`/sessions/`
-        #   session`'.
-        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Session] google_cloud_aiplatform_v1beta1_session_object
-        # @param [String] update_mask
-        #   Optional. Field mask is used to control which fields get updated. If the mask
-        #   is not present, all fields will be updated.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Session] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Session]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_session(name, google_cloud_aiplatform_v1beta1_session_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
-          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Session::Representation
-          command.request_object = google_cloud_aiplatform_v1beta1_session_object
-          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Session::Representation
-          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Session
-          command.params['name'] = name unless name.nil?
-          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
