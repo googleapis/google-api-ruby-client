@@ -1,5 +1,10 @@
 # Release history for google-apis-doubleclickbidmanager_v2
 
+### v0.15.0 (2025-05-04)
+
+* Regenerated from discovery document revision 20250305
+* Regenerated using generator version 0.17.0
+
 ### v0.14.0 (2024-08-11)
 
 * Regenerated from discovery document revision 20240731
