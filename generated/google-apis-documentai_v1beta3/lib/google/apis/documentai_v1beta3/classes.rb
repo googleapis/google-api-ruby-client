@@ -3399,6 +3399,11 @@ module Google
       class GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock
         include Google::Apis::Core::Hashable
       
+        # Represents the annotation of a block or a chunk.
+        # Corresponds to the JSON property `annotations`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentAnnotations]
+        attr_accessor :annotations
+      
         # Body rows containing main table content.
         # Corresponds to the JSON property `bodyRows`
         # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow>]
@@ -3420,6 +3425,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
           @body_rows = args[:body_rows] if args.key?(:body_rows)
           @caption = args[:caption] if args.key?(:caption)
           @header_rows = args[:header_rows] if args.key?(:header_rows)
@@ -3667,6 +3673,12 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleTypeMoney]
         attr_accessor :money_value
       
+        # 
+        # Corresponds to the JSON property `signatureValue`
+        # @return [Boolean]
+        attr_accessor :signature_value
+        alias_method :signature_value?, :signature_value
+      
         # Optional. An optional field to store a normalized string. For some entity
         # types, one of respective `structured_value` fields may also be populated. Also
         # not all the types of `structured_value` will be normalized. For example, some
@@ -3692,6 +3704,7 @@ module Google
           @float_value = args[:float_value] if args.key?(:float_value)
           @integer_value = args[:integer_value] if args.key?(:integer_value)
           @money_value = args[:money_value] if args.key?(:money_value)
+          @signature_value = args[:signature_value] if args.key?(:signature_value)
           @text = args[:text] if args.key?(:text)
         end
       end
@@ -6933,11 +6946,29 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessOptionsLayoutConfigChunkingConfig]
         attr_accessor :chunking_config
       
+        # Optional. Whether to include image annotations in layout parser response.
+        # Corresponds to the JSON property `enableImageAnnotation`
+        # @return [Boolean]
+        attr_accessor :enable_image_annotation
+        alias_method :enable_image_annotation?, :enable_image_annotation
+      
+        # Optional. Whether to extract images in layout parser response.
+        # Corresponds to the JSON property `enableImageExtraction`
+        # @return [Boolean]
+        attr_accessor :enable_image_extraction
+        alias_method :enable_image_extraction?, :enable_image_extraction
+      
         # Optional. Whether to refine PDF layout using LLM.
         # Corresponds to the JSON property `enableLlmLayoutParsing`
         # @return [Boolean]
         attr_accessor :enable_llm_layout_parsing
         alias_method :enable_llm_layout_parsing?, :enable_llm_layout_parsing
+      
+        # Optional. Whether to include table annotations in layout parser response.
+        # Corresponds to the JSON property `enableTableAnnotation`
+        # @return [Boolean]
+        attr_accessor :enable_table_annotation
+        alias_method :enable_table_annotation?, :enable_table_annotation
       
         # Optional. Whether to include bounding boxes in layout parser processor
         # response.
@@ -6959,7 +6990,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @chunking_config = args[:chunking_config] if args.key?(:chunking_config)
+          @enable_image_annotation = args[:enable_image_annotation] if args.key?(:enable_image_annotation)
+          @enable_image_extraction = args[:enable_image_extraction] if args.key?(:enable_image_extraction)
           @enable_llm_layout_parsing = args[:enable_llm_layout_parsing] if args.key?(:enable_llm_layout_parsing)
+          @enable_table_annotation = args[:enable_table_annotation] if args.key?(:enable_table_annotation)
           @return_bounding_boxes = args[:return_bounding_boxes] if args.key?(:return_bounding_boxes)
           @return_images = args[:return_images] if args.key?(:return_images)
         end

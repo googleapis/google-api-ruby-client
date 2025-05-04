@@ -2815,6 +2815,8 @@ module Google
       class GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :annotations, as: 'annotations', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentAnnotations, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentAnnotations::Representation
+      
           collection :body_rows, as: 'bodyRows', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow::Representation
       
           property :caption, as: 'caption'
@@ -2887,6 +2889,7 @@ module Google
           property :integer_value, as: 'integerValue'
           property :money_value, as: 'moneyValue', class: Google::Apis::DocumentaiV1beta3::GoogleTypeMoney, decorator: Google::Apis::DocumentaiV1beta3::GoogleTypeMoney::Representation
       
+          property :signature_value, as: 'signatureValue'
           property :text, as: 'text'
         end
       end
@@ -3829,7 +3832,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :chunking_config, as: 'chunkingConfig', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessOptionsLayoutConfigChunkingConfig, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessOptionsLayoutConfigChunkingConfig::Representation
       
+          property :enable_image_annotation, as: 'enableImageAnnotation'
+          property :enable_image_extraction, as: 'enableImageExtraction'
           property :enable_llm_layout_parsing, as: 'enableLlmLayoutParsing'
+          property :enable_table_annotation, as: 'enableTableAnnotation'
           property :return_bounding_boxes, as: 'returnBoundingBoxes'
           property :return_images, as: 'returnImages'
         end
