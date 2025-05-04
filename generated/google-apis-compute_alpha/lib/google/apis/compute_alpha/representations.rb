@@ -11794,6 +11794,7 @@ module Google
           collection :dest_fqdns, as: 'destFqdns'
           collection :dest_ip_ranges, as: 'destIpRanges'
           property :dest_network_scope, as: 'destNetworkScope'
+          property :dest_network_type, as: 'destNetworkType'
           collection :dest_region_codes, as: 'destRegionCodes'
           collection :dest_threat_intelligences, as: 'destThreatIntelligences'
           collection :layer4_configs, as: 'layer4Configs', class: Google::Apis::ComputeAlpha::FirewallPolicyRuleMatcherLayer4Config, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRuleMatcherLayer4Config::Representation
@@ -11802,6 +11803,7 @@ module Google
           collection :src_fqdns, as: 'srcFqdns'
           collection :src_ip_ranges, as: 'srcIpRanges'
           property :src_network_scope, as: 'srcNetworkScope'
+          property :src_network_type, as: 'srcNetworkType'
           collection :src_networks, as: 'srcNetworks'
           collection :src_region_codes, as: 'srcRegionCodes'
           collection :src_secure_tags, as: 'srcSecureTags', class: Google::Apis::ComputeAlpha::FirewallPolicyRuleSecureTag, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRuleSecureTag::Representation
@@ -12405,6 +12407,8 @@ module Google
           property :maintenance_ongoing_count, as: 'maintenanceOngoingCount'
           property :maintenance_pending_count, as: 'maintenancePendingCount'
           property :scheduling_type, as: 'schedulingType'
+          property :subblock_infra_maintenance_ongoing_count, as: 'subblockInfraMaintenanceOngoingCount'
+          property :subblock_infra_maintenance_pending_count, as: 'subblockInfraMaintenancePendingCount'
           property :upcoming_group_maintenance, as: 'upcomingGroupMaintenance', class: Google::Apis::ComputeAlpha::UpcomingMaintenance, decorator: Google::Apis::ComputeAlpha::UpcomingMaintenance::Representation
       
         end
@@ -15996,6 +16000,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :expected_rtt_ms, :numeric_string => true, as: 'expectedRttMs'
+          property :l2_forwarding_enabled, as: 'l2ForwardingEnabled'
           property :location_presence, as: 'locationPresence'
           property :region, as: 'region'
         end
@@ -20340,6 +20345,7 @@ module Google
           property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeAlpha::AllocationResourceStatus, decorator: Google::Apis::ComputeAlpha::AllocationResourceStatus::Representation
       
           property :satisfies_pzs, as: 'satisfiesPzs'
+          property :scheduling_type, as: 'schedulingType'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :share_settings, as: 'shareSettings', class: Google::Apis::ComputeAlpha::ShareSettings, decorator: Google::Apis::ComputeAlpha::ShareSettings::Representation
@@ -20507,6 +20513,8 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :physical_topology, as: 'physicalTopology', class: Google::Apis::ComputeAlpha::ReservationSubBlockPhysicalTopology, decorator: Google::Apis::ComputeAlpha::ReservationSubBlockPhysicalTopology::Representation
+      
+          property :reservation_sub_block_maintenance, as: 'reservationSubBlockMaintenance', class: Google::Apis::ComputeAlpha::GroupMaintenanceInfo, decorator: Google::Apis::ComputeAlpha::GroupMaintenanceInfo::Representation
       
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
@@ -20980,7 +20988,12 @@ module Google
       class ResourceStatusEffectiveInstanceMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :block_project_ssh_keys_metadata_value, as: 'blockProjectSshKeysMetadataValue'
+          property :enable_guest_attributes_metadata_value, as: 'enableGuestAttributesMetadataValue'
+          property :enable_os_inventory_metadata_value, as: 'enableOsInventoryMetadataValue'
+          property :enable_osconfig_metadata_value, as: 'enableOsconfigMetadataValue'
           property :enable_oslogin_metadata_value, as: 'enableOsloginMetadataValue'
+          property :serial_port_enable_metadata_value, as: 'serialPortEnableMetadataValue'
           property :vm_dns_setting_metadata_value, as: 'vmDnsSettingMetadataValue'
         end
       end
@@ -23645,6 +23658,8 @@ module Google
           property :self_link_with_id, as: 'selfLinkWithId'
           property :stack_type, as: 'stackType'
           property :state, as: 'state'
+          collection :system_reserved_external_ipv6_ranges, as: 'systemReservedExternalIpv6Ranges'
+          collection :system_reserved_internal_ipv6_ranges, as: 'systemReservedInternalIpv6Ranges'
           property :utilization_details, as: 'utilizationDetails', class: Google::Apis::ComputeAlpha::SubnetworkUtilizationDetails, decorator: Google::Apis::ComputeAlpha::SubnetworkUtilizationDetails::Representation
       
           collection :vlans, as: 'vlans'
