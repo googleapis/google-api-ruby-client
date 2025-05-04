@@ -1477,10 +1477,10 @@ module Google
         # @return [String]
         attr_accessor :group_id
       
-        # Path to an artifact in the build's workspace to be uploaded to Artifact
-        # Registry. This can be either an absolute path, e.g. /workspace/my-app/target/
-        # my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/
-        # my-app-1.0.SNAPSHOT.jar.
+        # Optional. Path to an artifact in the build's workspace to be uploaded to
+        # Artifact Registry. This can be either an absolute path, e.g. /workspace/my-app/
+        # target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/
+        # target/my-app-1.0.SNAPSHOT.jar.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
