@@ -397,6 +397,9 @@ module Google
         #   unspecified, server will pick an appropriate default.
         # @param [String] page_token
         #   A token identifying a page of results the server should return.
+        # @param [Boolean] show_hidden
+        #   Optional. When this value is set to 'true,' the response will include all
+        #   assets, including those that are hidden.
         # @param [String] view
         #   View of the assets. Defaults to BASIC.
         # @param [String] fields
@@ -416,7 +419,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_assets(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_assets(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, show_hidden: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/assets', options)
           command.response_representation = Google::Apis::MigrationcenterV1::ListAssetsResponse::Representation
           command.response_class = Google::Apis::MigrationcenterV1::ListAssetsResponse
@@ -425,6 +428,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['showHidden'] = show_hidden unless show_hidden.nil?
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

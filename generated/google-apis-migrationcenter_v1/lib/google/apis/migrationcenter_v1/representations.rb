@@ -1124,6 +1124,7 @@ module Google
           collection :aggregations, as: 'aggregations', class: Google::Apis::MigrationcenterV1::Aggregation, decorator: Google::Apis::MigrationcenterV1::Aggregation::Representation
       
           property :filter, as: 'filter'
+          property :show_hidden, as: 'showHidden'
         end
       end
       
@@ -1238,6 +1239,9 @@ module Google
       
           property :database_details, as: 'databaseDetails', class: Google::Apis::MigrationcenterV1::DatabaseDetails, decorator: Google::Apis::MigrationcenterV1::DatabaseDetails::Representation
       
+          property :hidden, as: 'hidden'
+          property :hide_reason, as: 'hideReason'
+          property :hide_time, as: 'hideTime'
           property :insight_list, as: 'insightList', class: Google::Apis::MigrationcenterV1::InsightList, decorator: Google::Apis::MigrationcenterV1::InsightList::Representation
       
           hash :labels, as: 'labels'
