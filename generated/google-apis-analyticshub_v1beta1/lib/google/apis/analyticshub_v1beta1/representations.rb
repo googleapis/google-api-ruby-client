@@ -368,6 +368,7 @@ module Google
       class Listing
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_only_metadata_sharing, as: 'allowOnlyMetadataSharing'
           property :bigquery_dataset, as: 'bigqueryDataset', class: Google::Apis::AnalyticshubV1beta1::BigQueryDatasetSource, decorator: Google::Apis::AnalyticshubV1beta1::BigQueryDatasetSource::Representation
       
           collection :categories, as: 'categories'
