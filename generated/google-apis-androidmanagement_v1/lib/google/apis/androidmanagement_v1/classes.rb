@@ -832,6 +832,37 @@ module Google
         end
       end
       
+      # An admin has enabled or disabled backup service.
+      class BackupServiceToggledEvent
+        include Google::Apis::Core::Hashable
+      
+        # Package name of the admin app requesting the change.
+        # Corresponds to the JSON property `adminPackageName`
+        # @return [String]
+        attr_accessor :admin_package_name
+      
+        # User ID of the admin app from the which the change was requested.
+        # Corresponds to the JSON property `adminUserId`
+        # @return [Fixnum]
+        attr_accessor :admin_user_id
+      
+        # Whether the backup service is enabled
+        # Corresponds to the JSON property `backupServiceState`
+        # @return [String]
+        attr_accessor :backup_service_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @admin_package_name = args[:admin_package_name] if args.key?(:admin_package_name)
+          @admin_user_id = args[:admin_user_id] if args.key?(:admin_user_id)
+          @backup_service_state = args[:backup_service_state] if args.key?(:backup_service_state)
+        end
+      end
+      
       # Batched event logs of events from the device.
       class BatchUsageLogEvents
         include Google::Apis::Core::Hashable
@@ -1123,7 +1154,11 @@ module Google
         attr_accessor :duration
       
         # If the command failed, an error code explaining the failure. This is not set
-        # when the command is cancelled by the caller.
+        # when the command is cancelled by the caller. For reasoning about command
+        # errors, prefer fields in the following order (most preferred first): 1.
+        # Command-specific fields like clearAppsDataStatus, startLostModeStatus, or
+        # similar, if they exist. 2. This field, if set. 3. The generic error field in
+        # the Operation that wraps the command.
         # Corresponds to the JSON property `errorCode`
         # @return [String]
         attr_accessor :error_code
@@ -1134,6 +1169,17 @@ module Google
         # Corresponds to the JSON property `newPassword`
         # @return [String]
         attr_accessor :new_password
+      
+        # Parameters associated with the REQUEST_DEVICE_INFO command to get device
+        # related information.
+        # Corresponds to the JSON property `requestDeviceInfoParams`
+        # @return [Google::Apis::AndroidmanagementV1::RequestDeviceInfoParams]
+        attr_accessor :request_device_info_params
+      
+        # Status of the REQUEST_DEVICE_INFO command.
+        # Corresponds to the JSON property `requestDeviceInfoStatus`
+        # @return [Google::Apis::AndroidmanagementV1::RequestDeviceInfoStatus]
+        attr_accessor :request_device_info_status
       
         # For commands of type RESET_PASSWORD, optionally specifies flags.
         # Corresponds to the JSON property `resetPasswordFlags`
@@ -1187,6 +1233,8 @@ module Google
           @duration = args[:duration] if args.key?(:duration)
           @error_code = args[:error_code] if args.key?(:error_code)
           @new_password = args[:new_password] if args.key?(:new_password)
+          @request_device_info_params = args[:request_device_info_params] if args.key?(:request_device_info_params)
+          @request_device_info_status = args[:request_device_info_status] if args.key?(:request_device_info_status)
           @reset_password_flags = args[:reset_password_flags] if args.key?(:reset_password_flags)
           @start_lost_mode_params = args[:start_lost_mode_params] if args.key?(:start_lost_mode_params)
           @start_lost_mode_status = args[:start_lost_mode_status] if args.key?(:start_lost_mode_status)
@@ -1789,6 +1837,11 @@ module Google
       class DeviceConnectivityManagement
         include Google::Apis::Core::Hashable
       
+        # Optional. Controls whether Bluetooth sharing is allowed.
+        # Corresponds to the JSON property `bluetoothSharing`
+        # @return [String]
+        attr_accessor :bluetooth_sharing
+      
         # Controls Wi-Fi configuring privileges. Based on the option set, user will have
         # either full or limited or no control in configuring Wi-Fi networks.
         # Corresponds to the JSON property `configureWifi`
@@ -1831,6 +1884,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bluetooth_sharing = args[:bluetooth_sharing] if args.key?(:bluetooth_sharing)
           @configure_wifi = args[:configure_wifi] if args.key?(:configure_wifi)
           @tethering_settings = args[:tethering_settings] if args.key?(:tethering_settings)
           @usb_data_access = args[:usb_data_access] if args.key?(:usb_data_access)
@@ -2092,6 +2146,44 @@ module Google
         def update!(**args)
           @additional_data = args[:additional_data] if args.key?(:additional_data)
           @previous_dpc = args[:previous_dpc] if args.key?(:previous_dpc)
+        end
+      end
+      
+      # EID information for each eUICC chip.
+      class Eid
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The EID
+        # Corresponds to the JSON property `eid`
+        # @return [String]
+        attr_accessor :eid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @eid = args[:eid] if args.key?(:eid)
+        end
+      end
+      
+      # Information related to the EIDs of the device.
+      class EidInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. EID information for each eUICC chip.
+        # Corresponds to the JSON property `eids`
+        # @return [Array<Google::Apis::AndroidmanagementV1::Eid>]
+        attr_accessor :eids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @eids = args[:eids] if args.key?(:eids)
         end
       end
       
@@ -2362,6 +2454,27 @@ module Google
         def update!(**args)
           @enterprise = args[:enterprise] if args.key?(:enterprise)
           @upgrade_state = args[:upgrade_state] if args.key?(:upgrade_state)
+        end
+      end
+      
+      # Information related to the eUICC chip.
+      class EuiccChipInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The Embedded Identity Document (EID) that identifies the eUICC
+        # chip for each eUICC chip on the device. This is available on company owned
+        # devices running Android 13 and above.
+        # Corresponds to the JSON property `eid`
+        # @return [String]
+        attr_accessor :eid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @eid = args[:eid] if args.key?(:eid)
         end
       end
       
@@ -2653,6 +2766,11 @@ module Google
         # @return [String]
         attr_accessor :enterprise_specific_id
       
+        # Output only. Information related to the eUICC chip.
+        # Corresponds to the JSON property `euiccChipInfo`
+        # @return [Array<Google::Apis::AndroidmanagementV1::EuiccChipInfo>]
+        attr_accessor :euicc_chip_info
+      
         # GPU shutdown temperature thresholds in Celsius for each GPU on the device.
         # Corresponds to the JSON property `gpuShutdownTemperatures`
         # @return [Array<Float>]
@@ -2706,6 +2824,7 @@ module Google
           @cpu_throttling_temperatures = args[:cpu_throttling_temperatures] if args.key?(:cpu_throttling_temperatures)
           @device_baseband_version = args[:device_baseband_version] if args.key?(:device_baseband_version)
           @enterprise_specific_id = args[:enterprise_specific_id] if args.key?(:enterprise_specific_id)
+          @euicc_chip_info = args[:euicc_chip_info] if args.key?(:euicc_chip_info)
           @gpu_shutdown_temperatures = args[:gpu_shutdown_temperatures] if args.key?(:gpu_shutdown_temperatures)
           @gpu_throttling_temperatures = args[:gpu_throttling_temperatures] if args.key?(:gpu_throttling_temperatures)
           @hardware = args[:hardware] if args.key?(:hardware)
@@ -4312,6 +4431,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :account_types_with_management_disabled
       
+        # Optional. Whether bluetooth sharing is allowed.
+        # Corresponds to the JSON property `bluetoothSharing`
+        # @return [String]
+        attr_accessor :bluetooth_sharing
+      
         # If true, the camera is disabled on the personal profile.
         # Corresponds to the JSON property `cameraDisabled`
         # @return [Boolean]
@@ -4357,6 +4481,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account_types_with_management_disabled = args[:account_types_with_management_disabled] if args.key?(:account_types_with_management_disabled)
+          @bluetooth_sharing = args[:bluetooth_sharing] if args.key?(:bluetooth_sharing)
           @camera_disabled = args[:camera_disabled] if args.key?(:camera_disabled)
           @max_days_with_work_off = args[:max_days_with_work_off] if args.key?(:max_days_with_work_off)
           @personal_applications = args[:personal_applications] if args.key?(:personal_applications)
@@ -5353,6 +5478,51 @@ module Google
         end
       end
       
+      # Parameters associated with the REQUEST_DEVICE_INFO command to get device
+      # related information.
+      class RequestDeviceInfoParams
+        include Google::Apis::Core::Hashable
+      
+        # Required. Type of device information to be requested.
+        # Corresponds to the JSON property `deviceInfo`
+        # @return [String]
+        attr_accessor :device_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_info = args[:device_info] if args.key?(:device_info)
+        end
+      end
+      
+      # Status of the REQUEST_DEVICE_INFO command.
+      class RequestDeviceInfoStatus
+        include Google::Apis::Core::Hashable
+      
+        # Information related to the EIDs of the device.
+        # Corresponds to the JSON property `eidInfo`
+        # @return [Google::Apis::AndroidmanagementV1::EidInfo]
+        attr_accessor :eid_info
+      
+        # Output only. Status of a REQUEST_DEVICE_INFO command.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @eid_info = args[:eid_info] if args.key?(:eid_info)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
       # Controls for the screen brightness settings.
       class ScreenBrightnessSettings
         include Google::Apis::Core::Hashable
@@ -6138,6 +6308,11 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::AppProcessStartEvent]
         attr_accessor :app_process_start_event
       
+        # An admin has enabled or disabled backup service.
+        # Corresponds to the JSON property `backupServiceToggledEvent`
+        # @return [Google::Apis::AndroidmanagementV1::BackupServiceToggledEvent]
+        attr_accessor :backup_service_toggled_event
+      
         # A new root certificate was installed into the system's trusted credential
         # storage. This is available device-wide on fully managed devices and within the
         # work profile on organization-owned devices with a work profile.
@@ -6332,6 +6507,7 @@ module Google
           @adb_shell_command_event = args[:adb_shell_command_event] if args.key?(:adb_shell_command_event)
           @adb_shell_interactive_event = args[:adb_shell_interactive_event] if args.key?(:adb_shell_interactive_event)
           @app_process_start_event = args[:app_process_start_event] if args.key?(:app_process_start_event)
+          @backup_service_toggled_event = args[:backup_service_toggled_event] if args.key?(:backup_service_toggled_event)
           @cert_authority_installed_event = args[:cert_authority_installed_event] if args.key?(:cert_authority_installed_event)
           @cert_authority_removed_event = args[:cert_authority_removed_event] if args.key?(:cert_authority_removed_event)
           @cert_validation_failure_event = args[:cert_validation_failure_event] if args.key?(:cert_validation_failure_event)
