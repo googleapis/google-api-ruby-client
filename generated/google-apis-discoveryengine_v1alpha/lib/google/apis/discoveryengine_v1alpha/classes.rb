@@ -26814,6 +26814,18 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::ApiservingMediaRequestInfo]
         attr_accessor :media_request_info
       
+        # The project (notebook) id of the uploaded source. Prefer to use the parent
+        # field instead.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # The source id of the associated file. If not set, a source id will be
+        # generated and a new tentative source will be created.
+        # Corresponds to the JSON property `sourceId`
+        # @return [String]
+        attr_accessor :source_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -26822,6 +26834,8 @@ module Google
         def update!(**args)
           @blob = args[:blob] if args.key?(:blob)
           @media_request_info = args[:media_request_info] if args.key?(:media_request_info)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @source_id = args[:source_id] if args.key?(:source_id)
         end
       end
       

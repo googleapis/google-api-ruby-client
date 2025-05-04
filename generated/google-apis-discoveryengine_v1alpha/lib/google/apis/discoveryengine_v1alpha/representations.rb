@@ -11451,6 +11451,8 @@ module Google
       
           property :media_request_info, as: 'mediaRequestInfo', class: Google::Apis::DiscoveryengineV1alpha::ApiservingMediaRequestInfo, decorator: Google::Apis::DiscoveryengineV1alpha::ApiservingMediaRequestInfo::Representation
       
+          property :project_id, as: 'projectId'
+          property :source_id, as: 'sourceId'
         end
       end
       
