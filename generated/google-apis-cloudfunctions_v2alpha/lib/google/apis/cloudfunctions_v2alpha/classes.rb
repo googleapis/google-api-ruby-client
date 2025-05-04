@@ -240,12 +240,12 @@ module Google
       
         # Docker Registry to use for this deployment. This configuration is only
         # applicable to 1st Gen functions, 2nd Gen functions can only use Artifact
-        # Registry. Deprecated: Container Registry option will no longer be available
-        # after March 2025: https://cloud.google.com/artifact-registry/docs/transition/
-        # transition-from-gcr Please use Artifact Registry instead, which is the default
-        # choice. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `
-        # docker_repository` field is specified, this field should either be left
-        # unspecified or set to `ARTIFACT_REGISTRY`.
+        # Registry. Deprecated: as of March 2025, `CONTAINER_REGISTRY` option is no
+        # longer available in response to Container Registry's deprecation: https://
+        # cloud.google.com/artifact-registry/docs/transition/transition-from-gcr Please
+        # use Artifact Registry instead, which is the default choice. If unspecified, it
+        # defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified,
+        # this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
         # Corresponds to the JSON property `dockerRegistry`
         # @return [String]
         attr_accessor :docker_registry
