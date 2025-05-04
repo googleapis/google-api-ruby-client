@@ -181,7 +181,7 @@ module Google
         end
       end
       
-      # A backup resource.
+      # A backup resource. Next ID: 30
       class Backup
         include Google::Apis::Core::Hashable
       
@@ -359,6 +359,11 @@ module Google
         # @return [Google::Apis::SqladminV1::BackupRetentionSettings]
         attr_accessor :backup_retention_settings
       
+        # Output only. Backup tier that manages the backups for the instance.
+        # Corresponds to the JSON property `backupTier`
+        # @return [String]
+        attr_accessor :backup_tier
+      
         # (MySQL only) Whether binary log is enabled. If backup configuration is
         # disabled, binarylog must be disabled as well.
         # Corresponds to the JSON property `binaryLogEnabled`
@@ -419,6 +424,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backup_retention_settings = args[:backup_retention_settings] if args.key?(:backup_retention_settings)
+          @backup_tier = args[:backup_tier] if args.key?(:backup_tier)
           @binary_log_enabled = args[:binary_log_enabled] if args.key?(:binary_log_enabled)
           @enabled = args[:enabled] if args.key?(:enabled)
           @kind = args[:kind] if args.key?(:kind)
@@ -3135,6 +3141,14 @@ module Google
         # @return [String]
         attr_accessor :backup
       
+        # The name of the backup that's used to restore a Cloud SQL instance: Format: "
+        # projects/`project-id`/locations/`location`/backupVaults/`backupvault`/
+        # dataSources/`datasource`/backups/`backup-uid`". Only one of
+        # restore_backup_context, backup, backupdr_backup can be passed to the input.
+        # Corresponds to the JSON property `backupdrBackup`
+        # @return [String]
+        attr_accessor :backupdr_backup
+      
         # Database instance restore from backup context. Backup context contains source
         # instance id and project id.
         # Corresponds to the JSON property `restoreBackupContext`
@@ -3153,6 +3167,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backup = args[:backup] if args.key?(:backup)
+          @backupdr_backup = args[:backupdr_backup] if args.key?(:backupdr_backup)
           @restore_backup_context = args[:restore_backup_context] if args.key?(:restore_backup_context)
           @restore_instance_settings = args[:restore_instance_settings] if args.key?(:restore_instance_settings)
         end
@@ -4081,6 +4096,75 @@ module Google
         # Update properties of this object
         def update!(**args)
           @target_size_gb = args[:target_size_gb] if args.key?(:target_size_gb)
+        end
+      end
+      
+      # The context to perform a point-in-time recovery of an instance managed by
+      # Google Cloud Backup and Disaster Recovery.
+      class PointInTimeRestoreContext
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the allocated IP range for the internal IP Cloud SQL
+        # instance. For example: "google-managed-services-default". If you set this,
+        # then Cloud SQL creates the IP address for the cloned instance in the allocated
+        # range. This range must comply with [RFC 1035](https://tools.ietf.org/html/
+        # rfc1035) standards. Specifically, the name must be 1-63 characters long and
+        # match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?. Reserved for future
+        # use. http://go/speckle-subnet-picker-clone
+        # Corresponds to the JSON property `allocatedIpRange`
+        # @return [String]
+        attr_accessor :allocated_ip_range
+      
+        # The Google Cloud Backup and Disaster Recovery Datasource URI. Format: projects/
+        # `project`/locations/`region`/backupVaults/`backupvault`/dataSources/`
+        # datasource`.
+        # Corresponds to the JSON property `datasource`
+        # @return [String]
+        attr_accessor :datasource
+      
+        # Required. The date and time to which you want to restore the instance.
+        # Corresponds to the JSON property `pointInTime`
+        # @return [String]
+        attr_accessor :point_in_time
+      
+        # Optional. Point-in-time recovery of a regional instance in the specified zones.
+        # If not specified, clone to the same secondary zone as the source instance.
+        # This value cannot be the same as the preferred_zone field.
+        # Corresponds to the JSON property `preferredSecondaryZone`
+        # @return [String]
+        attr_accessor :preferred_secondary_zone
+      
+        # Optional. Point-in-time recovery of an instance to the specified zone. If no
+        # zone is specified, then clone to the same primary zone as the source instance.
+        # Corresponds to the JSON property `preferredZone`
+        # @return [String]
+        attr_accessor :preferred_zone
+      
+        # Optional. The resource link for the VPC network from which the Cloud SQL
+        # instance is accessible for private IP. For example, `/projects/myProject/
+        # global/networks/default`.
+        # Corresponds to the JSON property `privateNetwork`
+        # @return [String]
+        attr_accessor :private_network
+      
+        # Target instance name.
+        # Corresponds to the JSON property `targetInstance`
+        # @return [String]
+        attr_accessor :target_instance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allocated_ip_range = args[:allocated_ip_range] if args.key?(:allocated_ip_range)
+          @datasource = args[:datasource] if args.key?(:datasource)
+          @point_in_time = args[:point_in_time] if args.key?(:point_in_time)
+          @preferred_secondary_zone = args[:preferred_secondary_zone] if args.key?(:preferred_secondary_zone)
+          @preferred_zone = args[:preferred_zone] if args.key?(:preferred_zone)
+          @private_network = args[:private_network] if args.key?(:private_network)
+          @target_instance = args[:target_instance] if args.key?(:target_instance)
         end
       end
       
@@ -5590,11 +5674,6 @@ module Google
         # @return [String]
         attr_accessor :host
       
-        # Indicates if user is active for IAM Authentication.
-        # Corresponds to the JSON property `iamStatus`
-        # @return [String]
-        attr_accessor :iam_status
-      
         # The name of the Cloud SQL instance. This does not include the project ID. Can
         # be omitted for `update` because it is already specified on the URL.
         # Corresponds to the JSON property `instance`
@@ -5649,7 +5728,6 @@ module Google
           @dual_password_type = args[:dual_password_type] if args.key?(:dual_password_type)
           @etag = args[:etag] if args.key?(:etag)
           @host = args[:host] if args.key?(:host)
-          @iam_status = args[:iam_status] if args.key?(:iam_status)
           @instance = args[:instance] if args.key?(:instance)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)

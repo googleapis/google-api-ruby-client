@@ -550,6 +550,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PointInTimeRestoreContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PoolNodeConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -878,6 +884,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup_retention_settings, as: 'backupRetentionSettings', class: Google::Apis::SqladminV1::BackupRetentionSettings, decorator: Google::Apis::SqladminV1::BackupRetentionSettings::Representation
       
+          property :backup_tier, as: 'backupTier'
           property :binary_log_enabled, as: 'binaryLogEnabled'
           property :enabled, as: 'enabled'
           property :kind, as: 'kind'
@@ -1591,6 +1598,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup, as: 'backup'
+          property :backupdr_backup, as: 'backupdrBackup'
           property :restore_backup_context, as: 'restoreBackupContext', class: Google::Apis::SqladminV1::RestoreBackupContext, decorator: Google::Apis::SqladminV1::RestoreBackupContext::Representation
       
           property :restore_instance_settings, as: 'restoreInstanceSettings', class: Google::Apis::SqladminV1::DatabaseInstance, decorator: Google::Apis::SqladminV1::DatabaseInstance::Representation
@@ -1831,6 +1839,19 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :target_size_gb, :numeric_string => true, as: 'targetSizeGb'
+        end
+      end
+      
+      class PointInTimeRestoreContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocated_ip_range, as: 'allocatedIpRange'
+          property :datasource, as: 'datasource'
+          property :point_in_time, as: 'pointInTime'
+          property :preferred_secondary_zone, as: 'preferredSecondaryZone'
+          property :preferred_zone, as: 'preferredZone'
+          property :private_network, as: 'privateNetwork'
+          property :target_instance, as: 'targetInstance'
         end
       end
       
@@ -2242,7 +2263,6 @@ module Google
           property :dual_password_type, as: 'dualPasswordType'
           property :etag, as: 'etag'
           property :host, as: 'host'
-          property :iam_status, as: 'iamStatus'
           property :instance, as: 'instance'
           property :kind, as: 'kind'
           property :name, as: 'name'
