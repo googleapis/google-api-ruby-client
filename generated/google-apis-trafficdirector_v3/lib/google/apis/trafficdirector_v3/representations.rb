@@ -670,6 +670,7 @@ module Google
           property :address, as: 'address'
           property :ipv4_compat, as: 'ipv4Compat'
           property :named_port, as: 'namedPort'
+          property :network_namespace_filepath, as: 'networkNamespaceFilepath'
           property :port_value, as: 'portValue'
           property :protocol, as: 'protocol'
           property :resolver_name, as: 'resolverName'
