@@ -278,7 +278,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. The state per store from the specified merchant.
+        # Output only. The state per store from the specified merchant. The field will
+        # be absent if the merchant has no stores submitted through LFP.
         # Corresponds to the JSON property `storeStates`
         # @return [Array<Google::Apis::MerchantapiLfpV1beta::LfpStoreState>]
         attr_accessor :store_states
