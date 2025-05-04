@@ -157,7 +157,7 @@ module Google
         # Updates the publish settings of a form. Legacy forms aren't supported because
         # they don't have the `publish_settings` field.
         # @param [String] form_id
-        #   Required. The ID of the form. You can get the id from `Form.form_id` field.
+        #   Required. The ID of the form. You can get the id from Form.form_id field.
         # @param [Google::Apis::FormsV1::SetPublishSettingsRequest] set_publish_settings_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
