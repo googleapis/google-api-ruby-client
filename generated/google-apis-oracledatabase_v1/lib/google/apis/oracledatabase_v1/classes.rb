@@ -2959,7 +2959,7 @@ module Google
         end
       end
       
-      # The request for `AutonomousDatabase.Switchover`.
+      # The request for `OracleDatabase.SwitchoverAutonomousDatabase`.
       class SwitchoverAutonomousDatabaseRequest
         include Google::Apis::Core::Hashable
       
