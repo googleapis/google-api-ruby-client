@@ -4101,7 +4101,7 @@ module Google
         # faster table lookup build times and host selection times. For more information
         # about Maglev, see https://ai.google/research/pubs/pub44824 This field is
         # applicable to either: - A regional backend service with the service_protocol
-        # set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to
+        # set to HTTP, HTTPS, HTTP2 or H2C, and load_balancing_scheme set to
         # INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme
         # set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If
         # sessionAffinity is not configured—that is, if session affinity remains at the
@@ -4184,11 +4184,11 @@ module Google
         attr_accessor :port_name
       
         # The protocol this BackendService uses to communicate with backends. Possible
-        # values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen
-        # load balancer or Traffic Director configuration. Refer to the documentation
-        # for the load balancers or for Traffic Director for more information. Must be
-        # set to GRPC when the backend service is referenced by a URL map that is bound
-        # to target gRPC proxy.
+        # values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP or GRPC. depending on the
+        # chosen load balancer or Traffic Director configuration. Refer to the
+        # documentation for the load balancers or for Traffic Director for more
+        # information. Must be set to GRPC when the backend service is referenced by a
+        # URL map that is bound to target gRPC proxy.
         # Corresponds to the JSON property `protocol`
         # @return [String]
         attr_accessor :protocol
@@ -12156,6 +12156,12 @@ module Google
         # @return [String]
         attr_accessor :dest_network_scope
       
+        # Network type of the traffic destination. Allowed values are: - UNSPECIFIED -
+        # INTERNET - NON_INTERNET
+        # Corresponds to the JSON property `destNetworkType`
+        # @return [String]
+        attr_accessor :dest_network_type
+      
         # Region codes whose IP addresses will be used to match for destination of
         # traffic. Should be specified as 2 letter country code defined as per ISO 3166
         # alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is
@@ -12197,6 +12203,12 @@ module Google
         # @return [String]
         attr_accessor :src_network_scope
       
+        # Network type of the traffic source. Allowed values are: - UNSPECIFIED -
+        # INTERNET - INTRA_VPC - NON_INTERNET - VPC_NETWORKS
+        # Corresponds to the JSON property `srcNetworkType`
+        # @return [String]
+        attr_accessor :src_network_type
+      
         # Networks of the traffic source. It can be either a full or partial url.
         # Corresponds to the JSON property `srcNetworks`
         # @return [Array<String>]
@@ -12233,6 +12245,7 @@ module Google
           @dest_fqdns = args[:dest_fqdns] if args.key?(:dest_fqdns)
           @dest_ip_ranges = args[:dest_ip_ranges] if args.key?(:dest_ip_ranges)
           @dest_network_scope = args[:dest_network_scope] if args.key?(:dest_network_scope)
+          @dest_network_type = args[:dest_network_type] if args.key?(:dest_network_type)
           @dest_region_codes = args[:dest_region_codes] if args.key?(:dest_region_codes)
           @dest_threat_intelligences = args[:dest_threat_intelligences] if args.key?(:dest_threat_intelligences)
           @layer4_configs = args[:layer4_configs] if args.key?(:layer4_configs)
@@ -12240,6 +12253,7 @@ module Google
           @src_fqdns = args[:src_fqdns] if args.key?(:src_fqdns)
           @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
           @src_network_scope = args[:src_network_scope] if args.key?(:src_network_scope)
+          @src_network_type = args[:src_network_type] if args.key?(:src_network_type)
           @src_networks = args[:src_networks] if args.key?(:src_networks)
           @src_region_codes = args[:src_region_codes] if args.key?(:src_region_codes)
           @src_secure_tags = args[:src_secure_tags] if args.key?(:src_secure_tags)
@@ -14765,6 +14779,22 @@ module Google
         # @return [String]
         attr_accessor :scheduling_type
       
+        # Describes number of subblock Infrastructure that has ongoing maintenance. Here,
+        # Subblock Infrastructure Maintenance pertains to upstream hardware contained
+        # in the Subblock that is necessary for a VM Family(e.g. NVLink Domains). Not
+        # all VM Families will support this field.
+        # Corresponds to the JSON property `subblockInfraMaintenanceOngoingCount`
+        # @return [Fixnum]
+        attr_accessor :subblock_infra_maintenance_ongoing_count
+      
+        # Describes number of subblock Infrastructure that has pending maintenance. Here,
+        # Subblock Infrastructure Maintenance pertains to upstream hardware contained
+        # in the Subblock that is necessary for a VM Family (e.g. NVLink Domains). Not
+        # all VM Families will support this field.
+        # Corresponds to the JSON property `subblockInfraMaintenancePendingCount`
+        # @return [Fixnum]
+        attr_accessor :subblock_infra_maintenance_pending_count
+      
         # Upcoming Maintenance notification information.
         # Corresponds to the JSON property `upcomingGroupMaintenance`
         # @return [Google::Apis::ComputeAlpha::UpcomingMaintenance]
@@ -14779,6 +14809,8 @@ module Google
           @maintenance_ongoing_count = args[:maintenance_ongoing_count] if args.key?(:maintenance_ongoing_count)
           @maintenance_pending_count = args[:maintenance_pending_count] if args.key?(:maintenance_pending_count)
           @scheduling_type = args[:scheduling_type] if args.key?(:scheduling_type)
+          @subblock_infra_maintenance_ongoing_count = args[:subblock_infra_maintenance_ongoing_count] if args.key?(:subblock_infra_maintenance_ongoing_count)
+          @subblock_infra_maintenance_pending_count = args[:subblock_infra_maintenance_pending_count] if args.key?(:subblock_infra_maintenance_pending_count)
           @upcoming_group_maintenance = args[:upcoming_group_maintenance] if args.key?(:upcoming_group_maintenance)
         end
       end
@@ -27014,12 +27046,13 @@ module Google
         attr_accessor :multicast_enabled
         alias_method :multicast_enabled?, :multicast_enabled
       
-        # Name of the resource. Provided by the client when the resource is created. The
-        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
-        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
-        # and all following characters must be a dash, lowercase letter, or digit,
-        # except the last character, which cannot be a dash.
+        # Name of the resource. Provided by the client when the resource is created.
+        # Must be set on either the template_attachment or on each specific attachment.
+        # If set, the name must be 1-63 characters long, and comply with RFC1035.
+        # Specifically, the name must be 1-63 characters long and match the regular
+        # expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must
+        # be a lowercase letter, and all following characters must be a dash, lowercase
+        # letter, or digit, except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -28500,8 +28533,9 @@ module Google
         # @return [String]
         attr_accessor :link_type
       
-        # Name of the resource. Provided by the client when the resource is created. The
-        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        # Name of the Interconnects to be created. This must be specified on the
+        # template and/or on each individual interconnect. The name, if not empty, must
+        # be 1-63 characters long, and comply with RFC1035. Specifically, any nonempty
         # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
         # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
@@ -29256,6 +29290,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :expected_rtt_ms
       
+        # Identifies whether L2 Interconnect Attachments can be created in this region
+        # for interconnects that are in this location.
+        # Corresponds to the JSON property `l2ForwardingEnabled`
+        # @return [Boolean]
+        attr_accessor :l2_forwarding_enabled
+        alias_method :l2_forwarding_enabled?, :l2_forwarding_enabled
+      
         # Identifies the network presence of this location.
         # Corresponds to the JSON property `locationPresence`
         # @return [String]
@@ -29273,6 +29314,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @expected_rtt_ms = args[:expected_rtt_ms] if args.key?(:expected_rtt_ms)
+          @l2_forwarding_enabled = args[:l2_forwarding_enabled] if args.key?(:l2_forwarding_enabled)
           @location_presence = args[:location_presence] if args.key?(:location_presence)
           @region = args[:region] if args.key?(:region)
         end
@@ -32459,8 +32501,8 @@ module Google
       class ManagedInstanceScheduling
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The timestamp when the MIG will automatically terminate the
-        # instance. The value is in RFC3339 text format.
+        # [Output Only] The timestamp at which the managed instance will be terminated.
+        # This is in RFC3339 text format.
         # Corresponds to the JSON property `terminationTimestamp`
         # @return [String]
         attr_accessor :termination_timestamp
@@ -36055,9 +36097,9 @@ module Google
       class NetworkPeeringConnectionStatus
         include Google::Apis::Core::Hashable
       
-        # Surfaces relevant state for a consensus peering connection update/delete
-        # semantics. Only set when connection_status.update_strategy is CONSENSUS or one
-        # network peering is proposing upgrading to CONSENSUS.
+        # The status of update/delete for a consensus peering connection. Only set when
+        # connection_status.update_strategy is CONSENSUS or a network peering is
+        # proposing to update the strategy to CONSENSUS.
         # Corresponds to the JSON property `consensusState`
         # @return [Google::Apis::ComputeAlpha::NetworkPeeringConnectionStatusConsensusState]
         attr_accessor :consensus_state
@@ -36086,9 +36128,9 @@ module Google
         end
       end
       
-      # Surfaces relevant state for a consensus peering connection update/delete
-      # semantics. Only set when connection_status.update_strategy is CONSENSUS or one
-      # network peering is proposing upgrading to CONSENSUS.
+      # The status of update/delete for a consensus peering connection. Only set when
+      # connection_status.update_strategy is CONSENSUS or a network peering is
+      # proposing to update the strategy to CONSENSUS.
       class NetworkPeeringConnectionStatusConsensusState
         include Google::Apis::Core::Hashable
       
@@ -36123,20 +36165,20 @@ module Google
         attr_accessor :export_custom_routes_to_peer
         alias_method :export_custom_routes_to_peer?, :export_custom_routes_to_peer
       
-        # Whether subnet routes with public IP range are being exported to the peer
+        # Whether subnet routes with public IP ranges are being exported to the peer
         # network.
         # Corresponds to the JSON property `exportSubnetRoutesWithPublicIpToPeer`
         # @return [Boolean]
         attr_accessor :export_subnet_routes_with_public_ip_to_peer
         alias_method :export_subnet_routes_with_public_ip_to_peer?, :export_subnet_routes_with_public_ip_to_peer
       
-        # Whether custom routes is being imported from the peer network.
+        # Whether custom routes are being imported from the peer network.
         # Corresponds to the JSON property `importCustomRoutesFromPeer`
         # @return [Boolean]
         attr_accessor :import_custom_routes_from_peer
         alias_method :import_custom_routes_from_peer?, :import_custom_routes_from_peer
       
-        # Whether subnet routes with public IP range are being imported from the peer
+        # Whether subnet routes with public IP ranges are being imported from the peer
         # network.
         # Corresponds to the JSON property `importSubnetRoutesWithPublicIpFromPeer`
         # @return [Boolean]
@@ -42480,8 +42522,8 @@ module Google
         # following values: - `INITIALIZING` The public delegated prefix is being
         # initialized and addresses cannot be created yet. - `READY_TO_ANNOUNCE` The
         # public delegated prefix is a live migration prefix and is active. - `ANNOUNCED`
-        # The public delegated prefix is active. - `DELETING` The public delegated
-        # prefix is being deprovsioned.
+        # The public delegated prefix is announced and ready to use. - `DELETING` The
+        # public delegated prefix is being deprovsioned.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -46134,6 +46176,11 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
+        # The type of maintenance for the reservation.
+        # Corresponds to the JSON property `schedulingType`
+        # @return [String]
+        attr_accessor :scheduling_type
+      
         # [Output Only] Server-defined fully-qualified URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -46199,6 +46246,7 @@ module Google
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @resource_status = args[:resource_status] if args.key?(:resource_status)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
+          @scheduling_type = args[:scheduling_type] if args.key?(:scheduling_type)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @share_settings = args[:share_settings] if args.key?(:share_settings)
@@ -46811,6 +46859,11 @@ module Google
         # @return [Google::Apis::ComputeAlpha::ReservationSubBlockPhysicalTopology]
         attr_accessor :physical_topology
       
+        # Maintenance Info for ReservationBlocks.
+        # Corresponds to the JSON property `reservationSubBlockMaintenance`
+        # @return [Google::Apis::ComputeAlpha::GroupMaintenanceInfo]
+        attr_accessor :reservation_sub_block_maintenance
+      
         # [Output Only] Server-defined fully-qualified URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -46844,6 +46897,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @physical_topology = args[:physical_topology] if args.key?(:physical_topology)
+          @reservation_sub_block_maintenance = args[:reservation_sub_block_maintenance] if args.key?(:reservation_sub_block_maintenance)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @status = args[:status] if args.key?(:status)
@@ -48450,11 +48504,41 @@ module Google
       class ResourceStatusEffectiveInstanceMetadata
         include Google::Apis::Core::Hashable
       
+        # Effective block-project-ssh-keys value at Instance level.
+        # Corresponds to the JSON property `blockProjectSshKeysMetadataValue`
+        # @return [Boolean]
+        attr_accessor :block_project_ssh_keys_metadata_value
+        alias_method :block_project_ssh_keys_metadata_value?, :block_project_ssh_keys_metadata_value
+      
+        # Effective enable-guest-attributes value at Instance level.
+        # Corresponds to the JSON property `enableGuestAttributesMetadataValue`
+        # @return [Boolean]
+        attr_accessor :enable_guest_attributes_metadata_value
+        alias_method :enable_guest_attributes_metadata_value?, :enable_guest_attributes_metadata_value
+      
+        # Effective enable-osinventory value at Instance level.
+        # Corresponds to the JSON property `enableOsInventoryMetadataValue`
+        # @return [Boolean]
+        attr_accessor :enable_os_inventory_metadata_value
+        alias_method :enable_os_inventory_metadata_value?, :enable_os_inventory_metadata_value
+      
+        # Effective enable-osconfig value at Instance level.
+        # Corresponds to the JSON property `enableOsconfigMetadataValue`
+        # @return [Boolean]
+        attr_accessor :enable_osconfig_metadata_value
+        alias_method :enable_osconfig_metadata_value?, :enable_osconfig_metadata_value
+      
         # Effective enable-oslogin value at Instance level.
         # Corresponds to the JSON property `enableOsloginMetadataValue`
         # @return [Boolean]
         attr_accessor :enable_oslogin_metadata_value
         alias_method :enable_oslogin_metadata_value?, :enable_oslogin_metadata_value
+      
+        # Effective serial-port-enable value at Instance level.
+        # Corresponds to the JSON property `serialPortEnableMetadataValue`
+        # @return [Boolean]
+        attr_accessor :serial_port_enable_metadata_value
+        alias_method :serial_port_enable_metadata_value?, :serial_port_enable_metadata_value
       
         # Effective VM DNS setting at Instance level.
         # Corresponds to the JSON property `vmDnsSettingMetadataValue`
@@ -48467,7 +48551,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @block_project_ssh_keys_metadata_value = args[:block_project_ssh_keys_metadata_value] if args.key?(:block_project_ssh_keys_metadata_value)
+          @enable_guest_attributes_metadata_value = args[:enable_guest_attributes_metadata_value] if args.key?(:enable_guest_attributes_metadata_value)
+          @enable_os_inventory_metadata_value = args[:enable_os_inventory_metadata_value] if args.key?(:enable_os_inventory_metadata_value)
+          @enable_osconfig_metadata_value = args[:enable_osconfig_metadata_value] if args.key?(:enable_osconfig_metadata_value)
           @enable_oslogin_metadata_value = args[:enable_oslogin_metadata_value] if args.key?(:enable_oslogin_metadata_value)
+          @serial_port_enable_metadata_value = args[:serial_port_enable_metadata_value] if args.key?(:serial_port_enable_metadata_value)
           @vm_dns_setting_metadata_value = args[:vm_dns_setting_metadata_value] if args.key?(:vm_dns_setting_metadata_value)
         end
       end
@@ -52835,8 +52924,9 @@ module Google
         # @return [String]
         attr_accessor :log_level
       
-        # The maximum request size chosen by the customer with Waf enabled. Currently
-        # only "8KB" and "128KB" are supported. Values are case insensitive.
+        # The maximum request size chosen by the customer with Waf enabled. Values
+        # supported are "8KB", "16KB, "32KB", "48KB" and "64KB". Values are case
+        # insensitive.
         # Corresponds to the JSON property `requestBodyInspectionSize`
         # @return [String]
         attr_accessor :request_body_inspection_size
@@ -59366,6 +59456,18 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Output only. [Output Only] The array of external IPv6 network ranges reserved
+        # from the subnetwork's external IPv6 range for system use.
+        # Corresponds to the JSON property `systemReservedExternalIpv6Ranges`
+        # @return [Array<String>]
+        attr_accessor :system_reserved_external_ipv6_ranges
+      
+        # Output only. [Output Only] The array of internal IPv6 network ranges reserved
+        # from the subnetwork's internal IPv6 range for system use.
+        # Corresponds to the JSON property `systemReservedInternalIpv6Ranges`
+        # @return [Array<String>]
+        attr_accessor :system_reserved_internal_ipv6_ranges
+      
         # The current IP utilization of all subnetwork ranges. Contains the total number
         # of allocated and free IPs in each range.
         # Corresponds to the JSON property `utilizationDetails`
@@ -59421,6 +59523,8 @@ module Google
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @stack_type = args[:stack_type] if args.key?(:stack_type)
           @state = args[:state] if args.key?(:state)
+          @system_reserved_external_ipv6_ranges = args[:system_reserved_external_ipv6_ranges] if args.key?(:system_reserved_external_ipv6_ranges)
+          @system_reserved_internal_ipv6_ranges = args[:system_reserved_internal_ipv6_ranges] if args.key?(:system_reserved_internal_ipv6_ranges)
           @utilization_details = args[:utilization_details] if args.key?(:utilization_details)
           @vlans = args[:vlans] if args.key?(:vlans)
         end
