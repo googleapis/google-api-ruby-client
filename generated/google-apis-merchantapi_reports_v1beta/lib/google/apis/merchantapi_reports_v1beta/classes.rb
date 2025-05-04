@@ -1805,8 +1805,10 @@ module Google
         attr_accessor :page_token
       
         # Required. Query that defines a report to be retrieved. For details on how to
-        # construct your query, see the Query Language guide. For the full list of
-        # available tables and fields, see the Available fields.
+        # construct your query, see the [Query Language guide](/merchant/api/guides/
+        # reports/query-language). For the full list of available tables and fields, see
+        # the [Available fields](/merchant/api/reference/rest/reports_v1beta/accounts.
+        # reports).
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
