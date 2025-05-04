@@ -2412,7 +2412,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the inventory verification contract for the specified country.
+        # Sets the inventory verification contact for the specified country.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
         #   then this account must be a multi-client account and `accountId` must be the
