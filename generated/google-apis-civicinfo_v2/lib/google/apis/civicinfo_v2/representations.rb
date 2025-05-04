@@ -46,18 +46,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CivicinfoApiprotosV2RepresentativeInfoData
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CivicinfoApiprotosV2RepresentativeInfoResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CivicinfoApiprotosV2VoterInfoResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,18 +101,6 @@ module Google
       end
       
       class CivicinfoSchemaV2GeographicDivision
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CivicinfoSchemaV2Office
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CivicinfoSchemaV2Official
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -188,33 +164,6 @@ module Google
           collection :elections, as: 'elections', class: Google::Apis::CivicinfoV2::CivicinfoSchemaV2Election, decorator: Google::Apis::CivicinfoV2::CivicinfoSchemaV2Election::Representation
       
           property :kind, as: 'kind'
-        end
-      end
-      
-      class CivicinfoApiprotosV2RepresentativeInfoData
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :divisions, as: 'divisions', class: Google::Apis::CivicinfoV2::CivicinfoSchemaV2GeographicDivision, decorator: Google::Apis::CivicinfoV2::CivicinfoSchemaV2GeographicDivision::Representation
-      
-          collection :offices, as: 'offices', class: Google::Apis::CivicinfoV2::CivicinfoSchemaV2Office, decorator: Google::Apis::CivicinfoV2::CivicinfoSchemaV2Office::Representation
-      
-          collection :officials, as: 'officials', class: Google::Apis::CivicinfoV2::CivicinfoSchemaV2Official, decorator: Google::Apis::CivicinfoV2::CivicinfoSchemaV2Official::Representation
-      
-        end
-      end
-      
-      class CivicinfoApiprotosV2RepresentativeInfoResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :divisions, as: 'divisions', class: Google::Apis::CivicinfoV2::CivicinfoSchemaV2GeographicDivision, decorator: Google::Apis::CivicinfoV2::CivicinfoSchemaV2GeographicDivision::Representation
-      
-          property :kind, as: 'kind'
-          property :normalized_input, as: 'normalizedInput', class: Google::Apis::CivicinfoV2::CivicinfoSchemaV2SimpleAddressType, decorator: Google::Apis::CivicinfoV2::CivicinfoSchemaV2SimpleAddressType::Representation
-      
-          collection :offices, as: 'offices', class: Google::Apis::CivicinfoV2::CivicinfoSchemaV2Office, decorator: Google::Apis::CivicinfoV2::CivicinfoSchemaV2Office::Representation
-      
-          collection :officials, as: 'officials', class: Google::Apis::CivicinfoV2::CivicinfoSchemaV2Official, decorator: Google::Apis::CivicinfoV2::CivicinfoSchemaV2Official::Representation
-      
         end
       end
       
@@ -375,35 +324,6 @@ module Google
           collection :also_known_as, as: 'alsoKnownAs'
           property :name, as: 'name'
           collection :office_indices, as: 'officeIndices'
-        end
-      end
-      
-      class CivicinfoSchemaV2Office
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :division_id, as: 'divisionId'
-          collection :levels, as: 'levels'
-          property :name, as: 'name'
-          collection :official_indices, as: 'officialIndices'
-          collection :roles, as: 'roles'
-          collection :sources, as: 'sources', class: Google::Apis::CivicinfoV2::CivicinfoSchemaV2Source, decorator: Google::Apis::CivicinfoV2::CivicinfoSchemaV2Source::Representation
-      
-        end
-      end
-      
-      class CivicinfoSchemaV2Official
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :address, as: 'address', class: Google::Apis::CivicinfoV2::CivicinfoSchemaV2SimpleAddressType, decorator: Google::Apis::CivicinfoV2::CivicinfoSchemaV2SimpleAddressType::Representation
-      
-          collection :channels, as: 'channels', class: Google::Apis::CivicinfoV2::CivicinfoSchemaV2Channel, decorator: Google::Apis::CivicinfoV2::CivicinfoSchemaV2Channel::Representation
-      
-          collection :emails, as: 'emails'
-          property :name, as: 'name'
-          property :party, as: 'party'
-          collection :phones, as: 'phones'
-          property :photo_url, as: 'photoUrl'
-          collection :urls, as: 'urls'
         end
       end
       
