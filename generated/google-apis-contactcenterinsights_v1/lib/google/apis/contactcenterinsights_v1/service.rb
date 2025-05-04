@@ -1856,6 +1856,196 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes a conversation.
+        # @param [String] name
+        #   Required. The name of the conversation to delete.
+        # @param [Boolean] force
+        #   If set to true, all of this conversation's analyses will also be deleted.
+        #   Otherwise, the request will only succeed if the conversation has no analyses.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContactcenterinsightsV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_dataset_conversation(name, force: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a conversation.
+        # @param [String] name
+        #   Required. The name of the conversation to get.
+        # @param [String] view
+        #   The level of details of the conversation. Default is `FULL`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Conversation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Conversation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_dataset_conversation(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Conversation::Representation
+          command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Conversation
+          command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Imports conversations and processes them according to the user's configuration.
+        # @param [String] parent
+        #   Required. The parent resource for new conversations.
+        # @param [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsRequest] google_cloud_contactcenterinsights_v1_ingest_conversations_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def ingest_project_location_dataset_conversation(parent, google_cloud_contactcenterinsights_v1_ingest_conversations_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/conversations:ingest', options)
+          command.request_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsRequest::Representation
+          command.request_object = google_cloud_contactcenterinsights_v1_ingest_conversations_request_object
+          command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists conversations.
+        # @param [String] parent
+        #   Required. The parent resource of the conversation.
+        # @param [String] filter
+        #   A filter to reduce results to a specific subset. Useful for querying
+        #   conversations with specific properties.
+        # @param [String] order_by
+        #   Optional. The attribute by which to order conversations in the response. If
+        #   empty, conversations will be ordered by descending creation time. Supported
+        #   values are one of the following: * create_time * customer_satisfaction_rating *
+        #   duration * latest_analysis * start_time * turn_count The default sort order
+        #   is ascending. To specify order, append `asc` or `desc` (`create_time desc`).
+        #   For more details, see [Google AIPs Ordering](https://google.aip.dev/132#
+        #   ordering).
+        # @param [Fixnum] page_size
+        #   The maximum number of conversations to return in the response. A valid page
+        #   size ranges from 0 to 100,000 inclusive. If the page size is zero or
+        #   unspecified, a default page size of 100 will be chosen. Note that a call might
+        #   return fewer results than the requested page size.
+        # @param [String] page_token
+        #   The value returned by the last `ListConversationsResponse`. This value
+        #   indicates that this is a continuation of a prior `ListConversations` call and
+        #   that the system should return the next page of data.
+        # @param [String] view
+        #   The level of details of the conversation. Default is `BASIC`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ListConversationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ListConversationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_dataset_conversations(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/conversations', options)
+          command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ListConversationsResponse::Representation
+          command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ListConversationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Export insights data to a destination defined in the request body.
+        # @param [String] parent
+        #   Required. The parent resource to export data from.
+        # @param [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest] google_cloud_contactcenterinsights_v1_export_insights_data_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def export_project_location_dataset_insightsdatum(parent, google_cloud_contactcenterinsights_v1_export_insights_data_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/insightsdata:export', options)
+          command.request_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest::Representation
+          command.request_object = google_cloud_contactcenterinsights_v1_export_insights_data_request_object
+          command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Initializes a location-level encryption key specification. An error will
         # result if the location has resources already created before the initialization.
         # After the encryption specification is initialized at a location, it is
