@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1Bot
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1ChallengeMetrics
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -541,6 +547,14 @@ module Google
         end
       end
       
+      class GoogleCloudRecaptchaenterpriseV1Bot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bot_type, as: 'botType'
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1ChallengeMetrics
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -908,6 +922,8 @@ module Google
           collection :extended_verdict_reasons, as: 'extendedVerdictReasons'
           collection :reasons, as: 'reasons'
           property :score, as: 'score'
+          collection :verified_bots, as: 'verifiedBots', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Bot, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Bot::Representation
+      
         end
       end
       
