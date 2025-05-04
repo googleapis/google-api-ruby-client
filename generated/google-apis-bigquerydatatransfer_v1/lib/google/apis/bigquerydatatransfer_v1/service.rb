@@ -94,9 +94,11 @@ module Google
         # Returns true if valid credentials exist for the given data source and
         # requesting user.
         # @param [String] name
-        #   Required. The data source in the form: `projects/`project_id`/dataSources/`
-        #   data_source_id`` or `projects/`project_id`/locations/`location_id`/dataSources/
-        #   `data_source_id``.
+        #   Required. The name of the data source. If you are using the regionless method,
+        #   the location must be `US` and the name should be in the following form: * `
+        #   projects/`project_id`/dataSources/`data_source_id`` If you are using the
+        #   regionalized method, the name should be in the following form: * `projects/`
+        #   project_id`/locations/`location_id`/dataSources/`data_source_id``
         # @param [Google::Apis::BigquerydatatransferV1::CheckValidCredsRequest] check_valid_creds_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -129,9 +131,11 @@ module Google
         
         # Retrieves a supported data source and returns its settings.
         # @param [String] name
-        #   Required. The field will contain name of the resource requested, for example: `
-        #   projects/`project_id`/dataSources/`data_source_id`` or `projects/`project_id`/
-        #   locations/`location_id`/dataSources/`data_source_id``
+        #   Required. The name of the resource requested. If you are using the regionless
+        #   method, the location must be `US` and the name should be in the following form:
+        #   * `projects/`project_id`/dataSources/`data_source_id`` If you are using the
+        #   regionalized method, the name should be in the following form: * `projects/`
+        #   project_id`/locations/`location_id`/dataSources/`data_source_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -356,9 +360,11 @@ module Google
         # Returns true if valid credentials exist for the given data source and
         # requesting user.
         # @param [String] name
-        #   Required. The data source in the form: `projects/`project_id`/dataSources/`
-        #   data_source_id`` or `projects/`project_id`/locations/`location_id`/dataSources/
-        #   `data_source_id``.
+        #   Required. The name of the data source. If you are using the regionless method,
+        #   the location must be `US` and the name should be in the following form: * `
+        #   projects/`project_id`/dataSources/`data_source_id`` If you are using the
+        #   regionalized method, the name should be in the following form: * `projects/`
+        #   project_id`/locations/`location_id`/dataSources/`data_source_id``
         # @param [Google::Apis::BigquerydatatransferV1::CheckValidCredsRequest] check_valid_creds_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -391,9 +397,11 @@ module Google
         
         # Retrieves a supported data source and returns its settings.
         # @param [String] name
-        #   Required. The field will contain name of the resource requested, for example: `
-        #   projects/`project_id`/dataSources/`data_source_id`` or `projects/`project_id`/
-        #   locations/`location_id`/dataSources/`data_source_id``
+        #   Required. The name of the resource requested. If you are using the regionless
+        #   method, the location must be `US` and the name should be in the following form:
+        #   * `projects/`project_id`/dataSources/`data_source_id`` If you are using the
+        #   regionalized method, the name should be in the following form: * `projects/`
+        #   project_id`/locations/`location_id`/dataSources/`data_source_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -538,9 +546,11 @@ module Google
         # Deletes a data transfer configuration, including any associated transfer runs
         # and logs.
         # @param [String] name
-        #   Required. The field will contain name of the resource requested, for example: `
-        #   projects/`project_id`/transferConfigs/`config_id`` or `projects/`project_id`/
-        #   locations/`location_id`/transferConfigs/`config_id``
+        #   Required. The name of the resource to delete. If you are using the regionless
+        #   method, the location must be `US` and the name should be in the following form:
+        #   * `projects/`project_id`/transferConfigs/`config_id`` If you are using the
+        #   regionalized method, the name should be in the following form: * `projects/`
+        #   project_id`/locations/`location_id`/transferConfigs/`config_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -570,9 +580,11 @@ module Google
         
         # Returns information about a data transfer config.
         # @param [String] name
-        #   Required. The field will contain name of the resource requested, for example: `
-        #   projects/`project_id`/transferConfigs/`config_id`` or `projects/`project_id`/
-        #   locations/`location_id`/transferConfigs/`config_id``
+        #   Required. The name of the resource requested. If you are using the regionless
+        #   method, the location must be `US` and the name should be in the following form:
+        #   * `projects/`project_id`/transferConfigs/`config_id`` If you are using the
+        #   regionalized method, the name should be in the following form: * `projects/`
+        #   project_id`/locations/`location_id`/transferConfigs/`config_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -604,8 +616,10 @@ module Google
         # specified location.
         # @param [String] parent
         #   Required. The BigQuery project id for which transfer configs should be
-        #   returned: `projects/`project_id`` or `projects/`project_id`/locations/`
-        #   location_id``
+        #   returned. If you are using the regionless method, the location must be `US`
+        #   and `parent` should be in the following form: * `projects/`project_id` If you
+        #   are using the regionalized method, `parent` should be in the following form: *
+        #   `projects/`project_id`/locations/`location_id``
         # @param [Array<String>, String] data_source_ids
         #   When specified, only configurations of requested data sources are returned.
         # @param [Fixnum] page_size
@@ -728,9 +742,11 @@ module Google
         # run is created. Note that runs are created per UTC time in the time range.
         # DEPRECATED: use StartManualTransferRuns instead.
         # @param [String] parent
-        #   Required. Transfer configuration name in the form: `projects/`project_id`/
-        #   transferConfigs/`config_id`` or `projects/`project_id`/locations/`location_id`/
-        #   transferConfigs/`config_id``.
+        #   Required. Transfer configuration name. If you are using the regionless method,
+        #   the location must be `US` and the name should be in the following form: * `
+        #   projects/`project_id`/transferConfigs/`config_id`` If you are using the
+        #   regionalized method, the name should be in the following form: * `projects/`
+        #   project_id`/locations/`location_id`/transferConfigs/`config_id``
         # @param [Google::Apis::BigquerydatatransferV1::ScheduleTransferRunsRequest] schedule_transfer_runs_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -761,14 +777,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Start manual transfer runs to be executed now with schedule_time equal to
-        # current time. The transfer runs can be created for a time range where the
-        # run_time is between start_time (inclusive) and end_time (exclusive), or for a
-        # specific run_time.
+        # Manually initiates transfer runs. You can schedule these runs in two ways: 1.
+        # For a specific point in time using the 'requested_run_time' parameter. 2. For
+        # a period between 'start_time' (inclusive) and 'end_time' (exclusive). If
+        # scheduling a single run, it is set to execute immediately (schedule_time
+        # equals the current time). When scheduling multiple runs within a time range,
+        # the first run starts now, and subsequent runs are delayed by 15 seconds each.
         # @param [String] parent
-        #   Required. Transfer configuration name in the form: `projects/`project_id`/
-        #   transferConfigs/`config_id`` or `projects/`project_id`/locations/`location_id`/
-        #   transferConfigs/`config_id``.
+        #   Required. Transfer configuration name. If you are using the regionless method,
+        #   the location must be `US` and the name should be in the following form: * `
+        #   projects/`project_id`/transferConfigs/`config_id`` If you are using the
+        #   regionalized method, the name should be in the following form: * `projects/`
+        #   project_id`/locations/`location_id`/transferConfigs/`config_id``
         # @param [Google::Apis::BigquerydatatransferV1::StartManualTransferRunsRequest] start_manual_transfer_runs_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -801,9 +821,12 @@ module Google
         
         # Deletes the specified transfer run.
         # @param [String] name
-        #   Required. The field will contain name of the resource requested, for example: `
-        #   projects/`project_id`/transferConfigs/`config_id`/runs/`run_id`` or `projects/`
-        #   project_id`/locations/`location_id`/transferConfigs/`config_id`/runs/`run_id``
+        #   Required. The name of the resource requested. If you are using the regionless
+        #   method, the location must be `US` and the name should be in the following form:
+        #   * `projects/`project_id`/transferConfigs/`config_id`/runs/`run_id`` If you
+        #   are using the regionalized method, the name should be in the following form: *
+        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id`/
+        #   runs/`run_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -833,9 +856,12 @@ module Google
         
         # Returns information about the particular transfer run.
         # @param [String] name
-        #   Required. The field will contain name of the resource requested, for example: `
-        #   projects/`project_id`/transferConfigs/`config_id`/runs/`run_id`` or `projects/`
-        #   project_id`/locations/`location_id`/transferConfigs/`config_id`/runs/`run_id``
+        #   Required. The name of the resource requested. If you are using the regionless
+        #   method, the location must be `US` and the name should be in the following form:
+        #   * `projects/`project_id`/transferConfigs/`config_id`/runs/`run_id`` If you
+        #   are using the regionalized method, the name should be in the following form: *
+        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id`/
+        #   runs/`run_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -866,9 +892,11 @@ module Google
         # Returns information about running and completed transfer runs.
         # @param [String] parent
         #   Required. Name of transfer configuration for which transfer runs should be
-        #   retrieved. Format of transfer configuration resource name is: `projects/`
-        #   project_id`/transferConfigs/`config_id`` or `projects/`project_id`/locations/`
-        #   location_id`/transferConfigs/`config_id``.
+        #   retrieved. If you are using the regionless method, the location must be `US`
+        #   and the name should be in the following form: * `projects/`project_id`/
+        #   transferConfigs/`config_id`` If you are using the regionalized method, the
+        #   name should be in the following form: * `projects/`project_id`/locations/`
+        #   location_id`/transferConfigs/`config_id``
         # @param [Fixnum] page_size
         #   Page size. The default page size is the maximum value of 1000 results.
         # @param [String] page_token
@@ -913,9 +941,12 @@ module Google
         
         # Returns log messages for the transfer run.
         # @param [String] parent
-        #   Required. Transfer run name in the form: `projects/`project_id`/
-        #   transferConfigs/`config_id`/runs/`run_id`` or `projects/`project_id`/locations/
-        #   `location_id`/transferConfigs/`config_id`/runs/`run_id``
+        #   Required. Transfer run name. If you are using the regionless method, the
+        #   location must be `US` and the name should be in the following form: * `
+        #   projects/`project_id`/transferConfigs/`config_id`/runs/`run_id`` If you are
+        #   using the regionalized method, the name should be in the following form: * `
+        #   projects/`project_id`/locations/`location_id`/transferConfigs/`config_id`/runs/
+        #   `run_id``
         # @param [Array<String>, String] message_types
         #   Message types to return. If not populated - INFO, WARNING and ERROR messages
         #   are returned.
@@ -1032,9 +1063,11 @@ module Google
         # Deletes a data transfer configuration, including any associated transfer runs
         # and logs.
         # @param [String] name
-        #   Required. The field will contain name of the resource requested, for example: `
-        #   projects/`project_id`/transferConfigs/`config_id`` or `projects/`project_id`/
-        #   locations/`location_id`/transferConfigs/`config_id``
+        #   Required. The name of the resource to delete. If you are using the regionless
+        #   method, the location must be `US` and the name should be in the following form:
+        #   * `projects/`project_id`/transferConfigs/`config_id`` If you are using the
+        #   regionalized method, the name should be in the following form: * `projects/`
+        #   project_id`/locations/`location_id`/transferConfigs/`config_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1064,9 +1097,11 @@ module Google
         
         # Returns information about a data transfer config.
         # @param [String] name
-        #   Required. The field will contain name of the resource requested, for example: `
-        #   projects/`project_id`/transferConfigs/`config_id`` or `projects/`project_id`/
-        #   locations/`location_id`/transferConfigs/`config_id``
+        #   Required. The name of the resource requested. If you are using the regionless
+        #   method, the location must be `US` and the name should be in the following form:
+        #   * `projects/`project_id`/transferConfigs/`config_id`` If you are using the
+        #   regionalized method, the name should be in the following form: * `projects/`
+        #   project_id`/locations/`location_id`/transferConfigs/`config_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1098,8 +1133,10 @@ module Google
         # specified location.
         # @param [String] parent
         #   Required. The BigQuery project id for which transfer configs should be
-        #   returned: `projects/`project_id`` or `projects/`project_id`/locations/`
-        #   location_id``
+        #   returned. If you are using the regionless method, the location must be `US`
+        #   and `parent` should be in the following form: * `projects/`project_id` If you
+        #   are using the regionalized method, `parent` should be in the following form: *
+        #   `projects/`project_id`/locations/`location_id``
         # @param [Array<String>, String] data_source_ids
         #   When specified, only configurations of requested data sources are returned.
         # @param [Fixnum] page_size
@@ -1222,9 +1259,11 @@ module Google
         # run is created. Note that runs are created per UTC time in the time range.
         # DEPRECATED: use StartManualTransferRuns instead.
         # @param [String] parent
-        #   Required. Transfer configuration name in the form: `projects/`project_id`/
-        #   transferConfigs/`config_id`` or `projects/`project_id`/locations/`location_id`/
-        #   transferConfigs/`config_id``.
+        #   Required. Transfer configuration name. If you are using the regionless method,
+        #   the location must be `US` and the name should be in the following form: * `
+        #   projects/`project_id`/transferConfigs/`config_id`` If you are using the
+        #   regionalized method, the name should be in the following form: * `projects/`
+        #   project_id`/locations/`location_id`/transferConfigs/`config_id``
         # @param [Google::Apis::BigquerydatatransferV1::ScheduleTransferRunsRequest] schedule_transfer_runs_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1255,14 +1294,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Start manual transfer runs to be executed now with schedule_time equal to
-        # current time. The transfer runs can be created for a time range where the
-        # run_time is between start_time (inclusive) and end_time (exclusive), or for a
-        # specific run_time.
+        # Manually initiates transfer runs. You can schedule these runs in two ways: 1.
+        # For a specific point in time using the 'requested_run_time' parameter. 2. For
+        # a period between 'start_time' (inclusive) and 'end_time' (exclusive). If
+        # scheduling a single run, it is set to execute immediately (schedule_time
+        # equals the current time). When scheduling multiple runs within a time range,
+        # the first run starts now, and subsequent runs are delayed by 15 seconds each.
         # @param [String] parent
-        #   Required. Transfer configuration name in the form: `projects/`project_id`/
-        #   transferConfigs/`config_id`` or `projects/`project_id`/locations/`location_id`/
-        #   transferConfigs/`config_id``.
+        #   Required. Transfer configuration name. If you are using the regionless method,
+        #   the location must be `US` and the name should be in the following form: * `
+        #   projects/`project_id`/transferConfigs/`config_id`` If you are using the
+        #   regionalized method, the name should be in the following form: * `projects/`
+        #   project_id`/locations/`location_id`/transferConfigs/`config_id``
         # @param [Google::Apis::BigquerydatatransferV1::StartManualTransferRunsRequest] start_manual_transfer_runs_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1295,9 +1338,12 @@ module Google
         
         # Deletes the specified transfer run.
         # @param [String] name
-        #   Required. The field will contain name of the resource requested, for example: `
-        #   projects/`project_id`/transferConfigs/`config_id`/runs/`run_id`` or `projects/`
-        #   project_id`/locations/`location_id`/transferConfigs/`config_id`/runs/`run_id``
+        #   Required. The name of the resource requested. If you are using the regionless
+        #   method, the location must be `US` and the name should be in the following form:
+        #   * `projects/`project_id`/transferConfigs/`config_id`/runs/`run_id`` If you
+        #   are using the regionalized method, the name should be in the following form: *
+        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id`/
+        #   runs/`run_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1327,9 +1373,12 @@ module Google
         
         # Returns information about the particular transfer run.
         # @param [String] name
-        #   Required. The field will contain name of the resource requested, for example: `
-        #   projects/`project_id`/transferConfigs/`config_id`/runs/`run_id`` or `projects/`
-        #   project_id`/locations/`location_id`/transferConfigs/`config_id`/runs/`run_id``
+        #   Required. The name of the resource requested. If you are using the regionless
+        #   method, the location must be `US` and the name should be in the following form:
+        #   * `projects/`project_id`/transferConfigs/`config_id`/runs/`run_id`` If you
+        #   are using the regionalized method, the name should be in the following form: *
+        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id`/
+        #   runs/`run_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1360,9 +1409,11 @@ module Google
         # Returns information about running and completed transfer runs.
         # @param [String] parent
         #   Required. Name of transfer configuration for which transfer runs should be
-        #   retrieved. Format of transfer configuration resource name is: `projects/`
-        #   project_id`/transferConfigs/`config_id`` or `projects/`project_id`/locations/`
-        #   location_id`/transferConfigs/`config_id``.
+        #   retrieved. If you are using the regionless method, the location must be `US`
+        #   and the name should be in the following form: * `projects/`project_id`/
+        #   transferConfigs/`config_id`` If you are using the regionalized method, the
+        #   name should be in the following form: * `projects/`project_id`/locations/`
+        #   location_id`/transferConfigs/`config_id``
         # @param [Fixnum] page_size
         #   Page size. The default page size is the maximum value of 1000 results.
         # @param [String] page_token
@@ -1407,9 +1458,12 @@ module Google
         
         # Returns log messages for the transfer run.
         # @param [String] parent
-        #   Required. Transfer run name in the form: `projects/`project_id`/
-        #   transferConfigs/`config_id`/runs/`run_id`` or `projects/`project_id`/locations/
-        #   `location_id`/transferConfigs/`config_id`/runs/`run_id``
+        #   Required. Transfer run name. If you are using the regionless method, the
+        #   location must be `US` and the name should be in the following form: * `
+        #   projects/`project_id`/transferConfigs/`config_id`/runs/`run_id`` If you are
+        #   using the regionalized method, the name should be in the following form: * `
+        #   projects/`project_id`/locations/`location_id`/transferConfigs/`config_id`/runs/
+        #   `run_id``
         # @param [Array<String>, String] message_types
         #   Message types to return. If not populated - INFO, WARNING and ERROR messages
         #   are returned.
