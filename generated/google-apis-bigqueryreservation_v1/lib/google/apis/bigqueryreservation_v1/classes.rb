@@ -90,7 +90,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :current_slots
       
-        # Number of slots to be scaled when needed.
+        # Optional. Number of slots to be scaled when needed.
         # Corresponds to the JSON property `maxSlots`
         # @return [Fixnum]
         attr_accessor :max_slots
@@ -470,12 +470,12 @@ module Google
         # @return [Google::Apis::BigqueryreservationV1::Autoscale]
         attr_accessor :autoscale
       
-        # Job concurrency target which sets a soft upper bound on the number of jobs
-        # that can run concurrently in this reservation. This is a soft target due to
-        # asynchronous nature of the system and various optimizations for small queries.
-        # Default value is 0 which means that concurrency target will be automatically
-        # computed by the system. NOTE: this field is exposed as target job concurrency
-        # in the Information Schema, DDL and BigQuery CLI.
+        # Optional. Job concurrency target which sets a soft upper bound on the number
+        # of jobs that can run concurrently in this reservation. This is a soft target
+        # due to asynchronous nature of the system and various optimizations for small
+        # queries. Default value is 0 which means that concurrency target will be
+        # automatically computed by the system. NOTE: this field is exposed as target
+        # job concurrency in the Information Schema, DDL and BigQuery CLI.
         # Corresponds to the JSON property `concurrency`
         # @return [Fixnum]
         attr_accessor :concurrency
@@ -485,15 +485,15 @@ module Google
         # @return [String]
         attr_accessor :creation_time
       
-        # Edition of the reservation.
+        # Optional. Edition of the reservation.
         # Corresponds to the JSON property `edition`
         # @return [String]
         attr_accessor :edition
       
-        # If false, any query or pipeline job using this reservation will use idle slots
-        # from other reservations within the same admin project. If true, a query or
-        # pipeline job using this reservation will execute with the slot capacity
-        # specified in the slot_capacity field at most.
+        # Optional. If false, any query or pipeline job using this reservation will use
+        # idle slots from other reservations within the same admin project. If true, a
+        # query or pipeline job using this reservation will execute with the slot
+        # capacity specified in the slot_capacity field at most.
         # Corresponds to the JSON property `ignoreIdleSlots`
         # @return [Boolean]
         attr_accessor :ignore_idle_slots
@@ -553,8 +553,8 @@ module Google
         attr_accessor :multi_region_auxiliary
         alias_method :multi_region_auxiliary?, :multi_region_auxiliary
       
-        # The resource name of the reservation, e.g., `projects/*/locations/*/
-        # reservations/team1-prod`. The reservation_id must only contain lower case
+        # Identifier. The resource name of the reservation, e.g., `projects/*/locations/*
+        # /reservations/team1-prod`. The reservation_id must only contain lower case
         # alphanumeric characters or dashes. It must start with a letter and must not
         # end with a dash. Its maximum length is 64 characters.
         # Corresponds to the JSON property `name`
@@ -579,9 +579,9 @@ module Google
         # @return [Google::Apis::BigqueryreservationV1::ReplicationStatus]
         attr_accessor :replication_status
       
-        # The scaling mode for the reservation. If the field is present but max_slots is
-        # not present, requests will be rejected with error code `google.rpc.Code.
-        # INVALID_ARGUMENT`.
+        # Optional. The scaling mode for the reservation. If the field is present but
+        # max_slots is not present, requests will be rejected with error code `google.
+        # rpc.Code.INVALID_ARGUMENT`.
         # Corresponds to the JSON property `scalingMode`
         # @return [String]
         attr_accessor :scaling_mode
@@ -595,7 +595,7 @@ module Google
         # @return [String]
         attr_accessor :secondary_location
       
-        # Baseline slots available to this reservation. A slot is a unit of
+        # Optional. Baseline slots available to this reservation. A slot is a unit of
         # computational power in BigQuery, and serves as the unit of parallelism.
         # Queries using this reservation might use more slots during runtime if
         # ignore_idle_slots is set to false, or autoscaling is enabled. The total

@@ -672,8 +672,8 @@ module Google
         
         # Updates an existing reservation resource.
         # @param [String] name
-        #   The resource name of the reservation, e.g., `projects/*/locations/*/
-        #   reservations/team1-prod`. The reservation_id must only contain lower case
+        #   Identifier. The resource name of the reservation, e.g., `projects/*/locations/*
+        #   /reservations/team1-prod`. The reservation_id must only contain lower case
         #   alphanumeric characters or dashes. It must start with a letter and must not
         #   end with a dash. Its maximum length is 64 characters.
         # @param [Google::Apis::BigqueryreservationV1::Reservation] reservation_object
