@@ -1,5 +1,9 @@
 # Release history for google-apis-readerrevenuesubscriptionlinking_v1
 
+### v0.6.0 (2025-05-04)
+
+* Regenerated using generator version 0.17.0
+
 ### v0.5.0 (2024-10-20)
 
 * Regenerated from discovery document revision 20241015
