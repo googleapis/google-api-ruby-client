@@ -17863,6 +17863,442 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes the specified InterconnectAttachmentGroup in the given scope
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] interconnect_attachment_group
+        #   Name of the InterconnectAttachmentGroup resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
+        #   MixerMutationRequestBuilder
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_interconnect_attachment_group(project, interconnect_attachment_group, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'projects/{project}/global/interconnectAttachmentGroups/{interconnectAttachmentGroup}', options)
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['interconnectAttachmentGroup'] = interconnect_attachment_group unless interconnect_attachment_group.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the specified InterconnectAttachmentGroup resource in the given scope.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] interconnect_attachment_group
+        #   Name of the InterconnectAttachmentGroup resource to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::InterconnectAttachmentGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::InterconnectAttachmentGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_interconnect_attachment_group(project, interconnect_attachment_group, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/global/interconnectAttachmentGroups/{interconnectAttachmentGroup}', options)
+          command.response_representation = Google::Apis::ComputeBeta::InterconnectAttachmentGroup::Representation
+          command.response_class = Google::Apis::ComputeBeta::InterconnectAttachmentGroup
+          command.params['project'] = project unless project.nil?
+          command.params['interconnectAttachmentGroup'] = interconnect_attachment_group unless interconnect_attachment_group.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the access control policy for a resource. May be empty if no such policy
+        # or resource exists.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Fixnum] options_requested_policy_version
+        #   Requested IAM Policy version.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_interconnect_attachment_group_iam_policy(project, resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/global/interconnectAttachmentGroups/{resource}/getIamPolicy', options)
+          command.response_representation = Google::Apis::ComputeBeta::Policy::Representation
+          command.response_class = Google::Apis::ComputeBeta::Policy
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['optionsRequestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the InterconnectAttachmentStatuses for the specified
+        # InterconnectAttachmentGroup resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] interconnect_attachment_group
+        #   Name of the interconnectAttachmentGroup resource to query.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::InterconnectAttachmentGroupsGetOperationalStatusResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::InterconnectAttachmentGroupsGetOperationalStatusResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_interconnect_attachment_group_operational_status(project, interconnect_attachment_group, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/global/interconnectAttachmentGroups/{interconnectAttachmentGroup}/getOperationalStatus', options)
+          command.response_representation = Google::Apis::ComputeBeta::InterconnectAttachmentGroupsGetOperationalStatusResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::InterconnectAttachmentGroupsGetOperationalStatusResponse
+          command.params['project'] = project unless project.nil?
+          command.params['interconnectAttachmentGroup'] = interconnect_attachment_group unless interconnect_attachment_group.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a InterconnectAttachmentGroup in the specified project in the given
+        # scope using the parameters that are included in the request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [Google::Apis::ComputeBeta::InterconnectAttachmentGroup] interconnect_attachment_group_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
+        #   MixerMutationRequestBuilder
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_interconnect_attachment_group(project, interconnect_attachment_group_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/interconnectAttachmentGroups', options)
+          command.request_representation = Google::Apis::ComputeBeta::InterconnectAttachmentGroup::Representation
+          command.request_object = interconnect_attachment_group_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the InterconnectAttachmentGroups for a project in the given scope.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. Most
+        #   Compute resources support two types of filter expressions: expressions that
+        #   support regular expressions and expressions that follow API improvement
+        #   proposal AIP-160. These two types of filter expressions cannot be mixed in one
+        #   request. If you want to use AIP-160, your expression must specify the field
+        #   name, an operator, and the value that you want to use for filtering. The value
+        #   must be a string, a number, or a boolean. The operator must be either `=`, `!=`
+        #   , `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute
+        #   Engine instances, you can exclude instances named `example-instance` by
+        #   specifying `name != example-instance`. The `:*` comparison can be used to test
+        #   whether a key has been defined. For example, to find all objects with `owner`
+        #   label use: ``` labels.owner:* ``` You can also filter nested fields. For
+        #   example, you could specify `scheduling.automaticRestart = false` to include
+        #   instances only if they are not scheduled for automatic restarts. You can use
+        #   filtering on nested fields to filter based on resource labels. To filter on
+        #   multiple expressions, provide each separate expression within parentheses. For
+        #   example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel
+        #   Skylake") ``` By default, each expression is an `AND` expression. However, you
+        #   can include `AND` and `OR` expressions explicitly. For example: ``` (
+        #   cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (
+        #   scheduling.automaticRestart = true) ``` If you want to use a regular
+        #   expression, use the `eq` (equal) or `ne` (not equal) operator against a single
+        #   un-parenthesized expression with or without quotes or against multiple
+        #   parenthesized expressions. Examples: `fieldname eq unquoted literal` `
+        #   fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(
+        #   fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is
+        #   interpreted as a regular expression using Google RE2 library syntax. The
+        #   literal value must match the entire field. For example, to filter for
+        #   instances that do not end with name "instance", you would use `name ne .*
+        #   instance`. You cannot combine constraints on multiple fields using regular
+        #   expressions.
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name. You can also sort results in
+        #   descending order based on the creation timestamp using `orderBy="
+        #   creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
+        #   field in reverse chronological order (newest result first). Use this to sort
+        #   resources like operations so that the newest operation is returned first.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
+        # @param [Boolean] return_partial_success
+        #   Opt-in for partial success behavior which provides partial results in case of
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::InterconnectAttachmentGroupsListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::InterconnectAttachmentGroupsListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_interconnect_attachment_groups(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/global/interconnectAttachmentGroups', options)
+          command.response_representation = Google::Apis::ComputeBeta::InterconnectAttachmentGroupsListResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::InterconnectAttachmentGroupsListResponse
+          command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Patches the specified InterconnectAttachmentGroup resource with the data
+        # included in the request. This method supports PATCH semantics and uses JSON
+        # merge patch format and processing rules.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] interconnect_attachment_group
+        #   Name of the InterconnectAttachmentGroup resource to patch.
+        # @param [Google::Apis::ComputeBeta::InterconnectAttachmentGroup] interconnect_attachment_group_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
+        #   MixerMutationRequestBuilder
+        # @param [String] update_mask
+        #   The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_interconnect_attachment_group(project, interconnect_attachment_group, interconnect_attachment_group_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'projects/{project}/global/interconnectAttachmentGroups/{interconnectAttachmentGroup}', options)
+          command.request_representation = Google::Apis::ComputeBeta::InterconnectAttachmentGroup::Representation
+          command.request_object = interconnect_attachment_group_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['interconnectAttachmentGroup'] = interconnect_attachment_group unless interconnect_attachment_group.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the access control policy on the specified resource. Replaces any
+        # existing policy.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::GlobalSetPolicyRequest] global_set_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_interconnect_attachment_group_iam_policy(project, resource, global_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/interconnectAttachmentGroups/{resource}/setIamPolicy', options)
+          command.request_representation = Google::Apis::ComputeBeta::GlobalSetPolicyRequest::Representation
+          command.request_object = global_set_policy_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Policy::Representation
+          command.response_class = Google::Apis::ComputeBeta::Policy
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_interconnect_attachment_group_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/interconnectAttachmentGroups/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves an aggregated list of interconnect attachments. To prevent failure,
         # Google recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
@@ -18349,6 +18785,481 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Create Interconnects with redundancy by creating them in a specified
+        # interconnect group.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] interconnect_group
+        #   Name of the group resource to create members for.
+        # @param [Google::Apis::ComputeBeta::InterconnectGroupsCreateMembersRequest] interconnect_groups_create_members_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_interconnect_group_members(project, interconnect_group, interconnect_groups_create_members_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/interconnectGroups/{interconnectGroup}/createMembers', options)
+          command.request_representation = Google::Apis::ComputeBeta::InterconnectGroupsCreateMembersRequest::Representation
+          command.request_object = interconnect_groups_create_members_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['interconnectGroup'] = interconnect_group unless interconnect_group.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified InterconnectGroup in the given scope
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] interconnect_group
+        #   Name of the InterconnectGroup resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
+        #   MixerMutationRequestBuilder
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_interconnect_group(project, interconnect_group, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'projects/{project}/global/interconnectGroups/{interconnectGroup}', options)
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['interconnectGroup'] = interconnect_group unless interconnect_group.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the specified InterconnectGroup resource in the given scope.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] interconnect_group
+        #   Name of the InterconnectGroup resource to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::InterconnectGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::InterconnectGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_interconnect_group(project, interconnect_group, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/global/interconnectGroups/{interconnectGroup}', options)
+          command.response_representation = Google::Apis::ComputeBeta::InterconnectGroup::Representation
+          command.response_class = Google::Apis::ComputeBeta::InterconnectGroup
+          command.params['project'] = project unless project.nil?
+          command.params['interconnectGroup'] = interconnect_group unless interconnect_group.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the access control policy for a resource. May be empty if no such policy
+        # or resource exists.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Fixnum] options_requested_policy_version
+        #   Requested IAM Policy version.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_interconnect_group_iam_policy(project, resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/global/interconnectGroups/{resource}/getIamPolicy', options)
+          command.response_representation = Google::Apis::ComputeBeta::Policy::Representation
+          command.response_class = Google::Apis::ComputeBeta::Policy
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['optionsRequestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the interconnectStatuses for the specified InterconnectGroup.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] interconnect_group
+        #   Name of the interconnectGroup resource to query.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::InterconnectGroupsGetOperationalStatusResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::InterconnectGroupsGetOperationalStatusResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_interconnect_group_operational_status(project, interconnect_group, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/global/interconnectGroups/{interconnectGroup}/getOperationalStatus', options)
+          command.response_representation = Google::Apis::ComputeBeta::InterconnectGroupsGetOperationalStatusResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::InterconnectGroupsGetOperationalStatusResponse
+          command.params['project'] = project unless project.nil?
+          command.params['interconnectGroup'] = interconnect_group unless interconnect_group.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a InterconnectGroup in the specified project in the given scope using
+        # the parameters that are included in the request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [Google::Apis::ComputeBeta::InterconnectGroup] interconnect_group_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
+        #   MixerMutationRequestBuilder
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_interconnect_group(project, interconnect_group_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/interconnectGroups', options)
+          command.request_representation = Google::Apis::ComputeBeta::InterconnectGroup::Representation
+          command.request_object = interconnect_group_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the InterconnectGroups for a project in the given scope.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. Most
+        #   Compute resources support two types of filter expressions: expressions that
+        #   support regular expressions and expressions that follow API improvement
+        #   proposal AIP-160. These two types of filter expressions cannot be mixed in one
+        #   request. If you want to use AIP-160, your expression must specify the field
+        #   name, an operator, and the value that you want to use for filtering. The value
+        #   must be a string, a number, or a boolean. The operator must be either `=`, `!=`
+        #   , `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute
+        #   Engine instances, you can exclude instances named `example-instance` by
+        #   specifying `name != example-instance`. The `:*` comparison can be used to test
+        #   whether a key has been defined. For example, to find all objects with `owner`
+        #   label use: ``` labels.owner:* ``` You can also filter nested fields. For
+        #   example, you could specify `scheduling.automaticRestart = false` to include
+        #   instances only if they are not scheduled for automatic restarts. You can use
+        #   filtering on nested fields to filter based on resource labels. To filter on
+        #   multiple expressions, provide each separate expression within parentheses. For
+        #   example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel
+        #   Skylake") ``` By default, each expression is an `AND` expression. However, you
+        #   can include `AND` and `OR` expressions explicitly. For example: ``` (
+        #   cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (
+        #   scheduling.automaticRestart = true) ``` If you want to use a regular
+        #   expression, use the `eq` (equal) or `ne` (not equal) operator against a single
+        #   un-parenthesized expression with or without quotes or against multiple
+        #   parenthesized expressions. Examples: `fieldname eq unquoted literal` `
+        #   fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(
+        #   fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is
+        #   interpreted as a regular expression using Google RE2 library syntax. The
+        #   literal value must match the entire field. For example, to filter for
+        #   instances that do not end with name "instance", you would use `name ne .*
+        #   instance`. You cannot combine constraints on multiple fields using regular
+        #   expressions.
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name. You can also sort results in
+        #   descending order based on the creation timestamp using `orderBy="
+        #   creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
+        #   field in reverse chronological order (newest result first). Use this to sort
+        #   resources like operations so that the newest operation is returned first.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
+        # @param [Boolean] return_partial_success
+        #   Opt-in for partial success behavior which provides partial results in case of
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::InterconnectGroupsListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::InterconnectGroupsListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_interconnect_groups(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/global/interconnectGroups', options)
+          command.response_representation = Google::Apis::ComputeBeta::InterconnectGroupsListResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::InterconnectGroupsListResponse
+          command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Patches the specified InterconnectGroup resource with the data included in the
+        # request. This method supports PATCH semantics and uses JSON merge patch format
+        # and processing rules.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] interconnect_group
+        #   Name of the InterconnectGroup resource to patch.
+        # @param [Google::Apis::ComputeBeta::InterconnectGroup] interconnect_group_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
+        #   MixerMutationRequestBuilder
+        # @param [String] update_mask
+        #   The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_interconnect_group(project, interconnect_group, interconnect_group_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'projects/{project}/global/interconnectGroups/{interconnectGroup}', options)
+          command.request_representation = Google::Apis::ComputeBeta::InterconnectGroup::Representation
+          command.request_object = interconnect_group_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['interconnectGroup'] = interconnect_group unless interconnect_group.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the access control policy on the specified resource. Replaces any
+        # existing policy.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::GlobalSetPolicyRequest] global_set_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_interconnect_group_iam_policy(project, resource, global_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/interconnectGroups/{resource}/setIamPolicy', options)
+          command.request_representation = Google::Apis::ComputeBeta::GlobalSetPolicyRequest::Representation
+          command.request_object = global_set_policy_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Policy::Representation
+          command.response_class = Google::Apis::ComputeBeta::Policy
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_interconnect_group_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/interconnectGroups/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
           command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -19473,6 +20384,61 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
           command.params['project'] = project unless project.nil?
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a License resource in the specified project. *Caution* This resource
+        # is intended for use only by third-party partners who are creating Cloud
+        # Marketplace images.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] license
+        #   The license name for this request.
+        # @param [Google::Apis::ComputeBeta::License] license_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   update_mask indicates fields to be updated as part of this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_license(project, license, license_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'projects/{project}/global/licenses/{license}', options)
+          command.request_representation = Google::Apis::ComputeBeta::License::Representation
+          command.request_object = license_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['license'] = license unless license.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -23257,6 +24223,57 @@ module Google
           command = make_simple_command(:post, 'projects/{project}/global/networks/{network}/removePeering', options)
           command.request_representation = Google::Apis::ComputeBeta::NetworksRemovePeeringRequest::Representation
           command.request_object = networks_remove_peering_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['network'] = network unless network.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Requests to remove a peering from the specified network. Applicable only for
+        # PeeringConnection with update_strategy=CONSENSUS.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] network
+        #   Name of the network resource to remove peering from.
+        # @param [Google::Apis::ComputeBeta::NetworksRequestRemovePeeringRequest] networks_request_remove_peering_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def request_network_remove_peering(project, network, networks_request_remove_peering_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/networks/{network}/requestRemovePeering', options)
+          command.request_representation = Google::Apis::ComputeBeta::NetworksRequestRemovePeeringRequest::Representation
+          command.request_object = networks_request_remove_peering_request_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
