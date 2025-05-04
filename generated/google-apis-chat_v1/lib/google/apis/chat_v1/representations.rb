@@ -1669,6 +1669,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bottom_text, as: 'bottomText'
+          property :material_icon, as: 'materialIcon', class: Google::Apis::ChatV1::GoogleAppsCardV1MaterialIcon, decorator: Google::Apis::ChatV1::GoogleAppsCardV1MaterialIcon::Representation
+      
           property :selected, as: 'selected'
           property :start_icon_uri, as: 'startIconUri'
           property :text, as: 'text'
