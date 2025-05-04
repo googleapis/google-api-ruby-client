@@ -201,8 +201,9 @@ module Google
       class BatchDeleteVersionsRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The names of the versions to delete. A maximum of 10000 versions can
-        # be deleted in a batch.
+        # Required. The names of the versions to delete. The maximum number of versions
+        # deleted per batch is determined by the service and is dependent on the
+        # available resources in the region.
         # Corresponds to the JSON property `names`
         # @return [Array<String>]
         attr_accessor :names
@@ -2512,13 +2513,13 @@ module Google
         # @return [Google::Apis::ArtifactregistryV1::RemoteRepositoryConfig]
         attr_accessor :remote_repository_config
       
-        # Output only. If set, the repository satisfies physical zone isolation.
+        # Output only. Whether or not this repository satisfies PZI.
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
         attr_accessor :satisfies_pzi
         alias_method :satisfies_pzi?, :satisfies_pzi
       
-        # Output only. If set, the repository satisfies physical zone separation.
+        # Output only. Whether or not this repository satisfies PZS.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
         attr_accessor :satisfies_pzs
@@ -2894,9 +2895,9 @@ module Google
       
         # The ID of the version of the generic artifact. If the version does not exist,
         # a new version will be created. The version_id must start and end with a letter
-        # or number, can only contain lowercase letters, numbers, hyphens and periods, i.
-        # e. [a-z0-9-.] and cannot exceed a total of 128 characters. Creating a version
-        # called `latest` is not allowed.
+        # or number, can only contain lowercase letters, numbers, the following
+        # characters [-.+~:], i.e.[a-z0-9-.+~:] and cannot exceed a total of 128
+        # characters. Creating a version called `latest` is not allowed.
         # Corresponds to the JSON property `versionId`
         # @return [String]
         attr_accessor :version_id
