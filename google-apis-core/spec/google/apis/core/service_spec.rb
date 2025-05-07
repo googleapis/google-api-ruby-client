@@ -291,12 +291,11 @@ RSpec.describe Google::Apis::Core::BaseService do
 
   context 'delete resumable upload with upload_id' do
     let(:bucket_name) { 'test_bucket' }
-    let(:file) { StringIO.new('Hello world' * 3) }
     let(:upload_id) { 'foo' }
     let(:command) do
       service.send(
         :delete_resumable_upload,
-        bucket_name, file, upload_id,
+        bucket_name, upload_id,
         options: { upload_chunk_size: 11, delete_upload: true }
       )
     end

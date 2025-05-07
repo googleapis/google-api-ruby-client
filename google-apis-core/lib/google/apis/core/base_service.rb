@@ -350,7 +350,7 @@ module Google
           true
         end
 
-        # Restarts An Ongoing Resumable upload
+        # Restarts An interrupted Resumable upload
         # @param [String] bucket
         #   Name of the bucket where the upload is being performed.
         # @param [IO, String] upload_source
@@ -366,7 +366,7 @@ module Google
           execute_or_queue_command(command)
         end
 
-        # Deletes An Ongoing Resumable upload
+        # Deletes An interrupted Resumable upload
         # @param [String] bucket
         #   Name of the bucket where the upload is being performed.
         # @param [IO, String] upload_source
@@ -374,12 +374,11 @@ module Google
         # @param [IO, String] upload_id
         #   unique id generated for an ongoing upload
 
-        def delete_resumable_upload(bucket, upload_source, upload_id, options: nil)
+        def delete_resumable_upload(bucket, upload_id, options: nil)
           command = make_storage_upload_command(:post, 'b/{bucket}/o', options)
-          command.upload_source = upload_source
           command.upload_id = upload_id
           command.params['bucket'] = bucket unless bucket.nil?
-          command.delete_upload = options[:delete_upload ] unless options[:delete_upload].nil?
+          command.delete_upload = options[:delete_upload] unless options[:delete_upload].nil?
           execute_or_queue_command(command)
         end
 
