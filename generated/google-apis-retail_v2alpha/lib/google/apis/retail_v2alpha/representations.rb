@@ -2570,7 +2570,6 @@ module Google
       
           collection :refined_search, as: 'refinedSearch', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponseRefinedSearch, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponseRefinedSearch::Representation
       
-          property :rephrased_query, as: 'rephrasedQuery'
         end
       end
       

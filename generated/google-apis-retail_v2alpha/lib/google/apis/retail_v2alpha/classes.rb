@@ -3004,14 +3004,6 @@ module Google
         # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponseRefinedSearch>]
         attr_accessor :refined_search
       
-        # This field is deprecated. Please find the refinded_query from search response
-        # when using CONVERSATIONAL_FILTER_ONLY mode in ConversationalSearchResponse.
-        # refined_search instead. The rephrased query based on the user's query and the
-        # conversation history. It can be used to fetch the relevant search results.
-        # Corresponds to the JSON property `rephrasedQuery`
-        # @return [String]
-        attr_accessor :rephrased_query
-      
         def initialize(**args)
            update!(**args)
         end
@@ -3021,7 +3013,6 @@ module Google
           @conversation_id = args[:conversation_id] if args.key?(:conversation_id)
           @conversational_filtering_result = args[:conversational_filtering_result] if args.key?(:conversational_filtering_result)
           @refined_search = args[:refined_search] if args.key?(:refined_search)
-          @rephrased_query = args[:rephrased_query] if args.key?(:rephrased_query)
         end
       end
       
