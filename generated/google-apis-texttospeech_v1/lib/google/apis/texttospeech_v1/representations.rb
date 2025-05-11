@@ -270,6 +270,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :custom_pronunciations, as: 'customPronunciations', class: Google::Apis::TexttospeechV1::CustomPronunciations, decorator: Google::Apis::TexttospeechV1::CustomPronunciations::Representation
       
+          property :markup, as: 'markup'
           property :multi_speaker_markup, as: 'multiSpeakerMarkup', class: Google::Apis::TexttospeechV1::MultiSpeakerMarkup, decorator: Google::Apis::TexttospeechV1::MultiSpeakerMarkup::Representation
       
           property :ssml, as: 'ssml'
