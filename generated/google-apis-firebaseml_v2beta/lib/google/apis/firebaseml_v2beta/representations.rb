@@ -726,6 +726,7 @@ module Google
       class GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_thoughts, as: 'includeThoughts'
           property :thinking_budget, as: 'thinkingBudget'
         end
       end
