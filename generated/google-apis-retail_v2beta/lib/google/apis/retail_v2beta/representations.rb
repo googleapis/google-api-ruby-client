@@ -3039,7 +3039,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :attributes, as: 'attributes', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCustomAttribute, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCustomAttribute::Representation
       
-          property :availability, as: 'availability'
           collection :fulfillment_types, as: 'fulfillmentTypes'
           property :place_id, as: 'placeId'
           property :price_info, as: 'priceInfo', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaPriceInfo, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaPriceInfo::Representation

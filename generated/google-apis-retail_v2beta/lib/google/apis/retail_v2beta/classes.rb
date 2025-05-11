@@ -4996,23 +4996,6 @@ module Google
         # @return [Hash<String,Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCustomAttribute>]
         attr_accessor :attributes
       
-        # Optional. The availability of the Product at this place_id. Default to
-        # Availability.IN_STOCK. For primary products with variants set the availability
-        # of the primary as Availability.OUT_OF_STOCK and set the true availability at
-        # the variant level. This way the primary product will be considered "in stock"
-        # as long as it has at least one variant in stock. For primary products with no
-        # variants set the true availability at the primary level. Corresponding
-        # properties: Google Merchant Center property [availability](https://support.
-        # google.com/merchants/answer/6324448). Schema.org property [Offer.availability](
-        # https://schema.org/availability). This field is currently only used by the
-        # Recommendations API. For Search, please make use of fulfillment_types or
-        # custom attributes for similar behaviour. See [here]( https://cloud.google.com/
-        # retail/docs/local-inventory-updates#local-inventory-update-methods) for more
-        # details.
-        # Corresponds to the JSON property `availability`
-        # @return [String]
-        attr_accessor :availability
-      
         # Optional. Supported fulfillment types. Valid fulfillment type values include
         # commonly used types (such as pickup in store and same day delivery), and
         # custom types. Customers have to map custom types to their display names before
@@ -5042,7 +5025,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @attributes = args[:attributes] if args.key?(:attributes)
-          @availability = args[:availability] if args.key?(:availability)
           @fulfillment_types = args[:fulfillment_types] if args.key?(:fulfillment_types)
           @place_id = args[:place_id] if args.key?(:place_id)
           @price_info = args[:price_info] if args.key?(:price_info)
