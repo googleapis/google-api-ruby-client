@@ -1337,6 +1337,13 @@ module Google
       class Listing
         include Google::Apis::Core::Hashable
       
+        # Optional. If true, the listing is only available to get the resource metadata.
+        # Listing is non subscribable.
+        # Corresponds to the JSON property `allowOnlyMetadataSharing`
+        # @return [Boolean]
+        attr_accessor :allow_only_metadata_sharing
+        alias_method :allow_only_metadata_sharing?, :allow_only_metadata_sharing
+      
         # A reference to a shared dataset. It is an existing BigQuery dataset with a
         # collection of objects such as tables and views that you want to share with
         # subscribers. When subscriber's subscribe to a listing, Analytics Hub creates a
@@ -1456,6 +1463,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allow_only_metadata_sharing = args[:allow_only_metadata_sharing] if args.key?(:allow_only_metadata_sharing)
           @bigquery_dataset = args[:bigquery_dataset] if args.key?(:bigquery_dataset)
           @categories = args[:categories] if args.key?(:categories)
           @commercial_info = args[:commercial_info] if args.key?(:commercial_info)
