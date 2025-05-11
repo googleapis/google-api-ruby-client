@@ -67,7 +67,7 @@ module Google
         # @return [String]
         attr_accessor :admin_password
       
-        # Optional. The subnet CIDR range for the Autonmous Database.
+        # Optional. The subnet CIDR range for the Autonomous Database.
         # Corresponds to the JSON property `cidr`
         # @return [String]
         attr_accessor :cidr
@@ -131,7 +131,7 @@ module Google
         # @return [Google::Apis::OracledatabaseV1::AutonomousDatabaseProperties]
         attr_accessor :properties
       
-        # The source configuration for the standby Autonomnous Database.
+        # The source configuration for the standby Autonomous Database.
         # Corresponds to the JSON property `sourceConfig`
         # @return [Google::Apis::OracledatabaseV1::SourceConfig]
         attr_accessor :source_config
@@ -2866,7 +2866,7 @@ module Google
         end
       end
       
-      # The source configuration for the standby Autonomnous Database.
+      # The source configuration for the standby Autonomous Database.
       class SourceConfig
         include Google::Apis::Core::Hashable
       
