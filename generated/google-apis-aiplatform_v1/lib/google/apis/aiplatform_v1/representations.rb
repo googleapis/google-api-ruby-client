@@ -574,6 +574,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1Checkpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1Citation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6376,6 +6382,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1TunedModelCheckpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1TunedModelRef
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7662,6 +7674,15 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1Checkpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :checkpoint_id, as: 'checkpointId'
+          property :epoch, :numeric_string => true, as: 'epoch'
+          property :step, :numeric_string => true, as: 'step'
+        end
+      end
+      
       class GoogleCloudAiplatformV1Citation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8546,6 +8567,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :automatic_resources, as: 'automaticResources', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AutomaticResources, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AutomaticResources::Representation
       
+          property :checkpoint_id, as: 'checkpointId'
           property :create_time, as: 'createTime'
           property :dedicated_resources, as: 'dedicatedResources', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DedicatedResources, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DedicatedResources::Representation
       
@@ -11548,6 +11570,8 @@ module Google
           property :artifact_uri, as: 'artifactUri'
           property :base_model_source, as: 'baseModelSource', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModelBaseModelSource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModelBaseModelSource::Representation
       
+          collection :checkpoints, as: 'checkpoints', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Checkpoint, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Checkpoint::Representation
+      
           property :container_spec, as: 'containerSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModelContainerSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModelContainerSpec::Representation
       
           property :create_time, as: 'createTime'
@@ -11961,7 +11985,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :checkpoint_id, as: 'checkpointId'
           property :epoch, :numeric_string => true, as: 'epoch'
-          property :name, as: 'name'
           property :step, :numeric_string => true, as: 'step'
         end
       end
@@ -14282,9 +14305,12 @@ module Google
       class GoogleCloudAiplatformV1Schema
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_properties, as: 'additionalProperties'
           collection :any_of, as: 'anyOf', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema::Representation
       
           property :default, as: 'default'
+          hash :defs, as: 'defs', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema::Representation
+      
           property :description, as: 'description'
           collection :enum, as: 'enum'
           property :example, as: 'example'
@@ -14304,6 +14330,7 @@ module Google
           hash :properties, as: 'properties', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema::Representation
       
           collection :property_ordering, as: 'propertyOrdering'
+          property :ref, as: 'ref'
           collection :required, as: 'required'
           property :title, as: 'title'
           property :type, as: 'type'
@@ -16826,6 +16853,7 @@ module Google
       class GoogleCloudAiplatformV1SupervisedTuningSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :export_last_checkpoint_only, as: 'exportLastCheckpointOnly'
           property :hyper_parameters, as: 'hyperParameters', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SupervisedHyperParameters, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SupervisedHyperParameters::Representation
       
           property :training_dataset_uri, as: 'trainingDatasetUri'
@@ -17556,8 +17584,20 @@ module Google
       class GoogleCloudAiplatformV1TunedModel
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :checkpoints, as: 'checkpoints', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TunedModelCheckpoint, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TunedModelCheckpoint::Representation
+      
           property :endpoint, as: 'endpoint'
           property :model, as: 'model'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TunedModelCheckpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :checkpoint_id, as: 'checkpointId'
+          property :endpoint, as: 'endpoint'
+          property :epoch, :numeric_string => true, as: 'epoch'
+          property :step, :numeric_string => true, as: 'step'
         end
       end
       
