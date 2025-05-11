@@ -1649,6 +1649,7 @@ module Google
       class LogicalView
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :deletion_protection, as: 'deletionProtection'
           property :etag, as: 'etag'
           property :name, as: 'name'
           property :query, as: 'query'
