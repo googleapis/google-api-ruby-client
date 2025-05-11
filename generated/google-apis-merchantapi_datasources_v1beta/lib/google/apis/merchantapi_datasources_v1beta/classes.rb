@@ -22,8 +22,8 @@ module Google
   module Apis
     module MerchantapiDatasourcesV1beta
       
-      # The [data source](https://support.google.com/merchants/answer/7439058) for the
-      # Merchant Center account.
+      # The [data source](/merchant/api/guides/data-sources/overview) for the Merchant
+      # Center account.
       class DataSource
         include Google::Apis::Core::Hashable
       
@@ -60,7 +60,7 @@ module Google
         # @return [Google::Apis::MerchantapiDatasourcesV1beta::MerchantReviewDataSource]
         attr_accessor :merchant_review_data_source
       
-        # Identifier. The name of the data source. Format: `accounts/`account`/
+        # Required. Identifier. The name of the data source. Format: `accounts/`account`/
         # dataSources/`datasource``
         # Corresponds to the JSON property `name`
         # @return [String]
