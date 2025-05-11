@@ -466,6 +466,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequestInlineSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1252,6 +1264,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1ListUserLicensesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1MediaInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1828,6 +1846,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1UserLicense
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1WorkspaceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2003,6 +2027,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSitesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3035,6 +3071,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaUserInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaUserLicense
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4648,6 +4690,26 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delete_unassigned_user_licenses, as: 'deleteUnassignedUserLicenses'
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1GcsSource, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1GcsSource::Representation
+      
+          property :inline_source, as: 'inlineSource', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequestInlineSource, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequestInlineSource::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequestInlineSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :update_mask, as: 'updateMask'
+          collection :user_licenses, as: 'userLicenses', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1UserLicense, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1UserLicense::Representation
+      
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5958,6 +6020,15 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1ListUserLicensesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :user_licenses, as: 'userLicenses', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1UserLicense, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1UserLicense::Representation
+      
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1MediaInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6445,6 +6516,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :boost_spec, as: 'boostSpec', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchRequestBoostSpec, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchRequestBoostSpec::Representation
       
+          property :custom_search_operators, as: 'customSearchOperators'
           property :data_store, as: 'dataStore'
           property :filter, as: 'filter'
         end
@@ -6965,6 +7037,20 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1UserLicense
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :last_login_time, as: 'lastLoginTime'
+          property :license_assignment_state, as: 'licenseAssignmentState'
+          property :license_config, as: 'licenseConfig'
+          property :update_time, as: 'updateTime'
+          property :user, as: 'user'
+          property :user_principal, as: 'userPrincipal'
+          property :user_profile, as: 'userProfile'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1WorkspaceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7265,6 +7351,26 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :failure_count, :numeric_string => true, as: 'failureCount'
+          property :success_count, :numeric_string => true, as: 'successCount'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :error_samples, as: 'errorSamples', class: Google::Apis::DiscoveryengineV1::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1::GoogleRpcStatus::Representation
+      
+          collection :user_licenses, as: 'userLicenses', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaUserLicense, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaUserLicense::Representation
+      
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaCmekConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7524,6 +7630,7 @@ module Google
           collection :blocking_reasons, as: 'blockingReasons'
           collection :connector_modes, as: 'connectorModes'
           property :connector_type, as: 'connectorType'
+          property :create_eua_saas, as: 'createEuaSaas'
           property :create_time, as: 'createTime'
           property :data_source, as: 'dataSource'
           collection :destination_configs, as: 'destinationConfigs', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaDestinationConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaDestinationConfig::Representation
@@ -8697,6 +8804,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :boost_spec, as: 'boostSpec', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpec, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpec::Representation
       
+          property :custom_search_operators, as: 'customSearchOperators'
           property :data_store, as: 'dataStore'
           property :filter, as: 'filter'
         end
@@ -9010,6 +9118,20 @@ module Google
           property :time_zone, as: 'timeZone'
           property :user_agent, as: 'userAgent'
           property :user_id, as: 'userId'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaUserLicense
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :last_login_time, as: 'lastLoginTime'
+          property :license_assignment_state, as: 'licenseAssignmentState'
+          property :license_config, as: 'licenseConfig'
+          property :update_time, as: 'updateTime'
+          property :user, as: 'user'
+          property :user_principal, as: 'userPrincipal'
+          property :user_profile, as: 'userProfile'
         end
       end
       
@@ -10080,6 +10202,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :boost_spec, as: 'boostSpec', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec::Representation
       
+          property :custom_search_operators, as: 'customSearchOperators'
           property :data_store, as: 'dataStore'
           property :filter, as: 'filter'
         end
