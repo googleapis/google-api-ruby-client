@@ -736,6 +736,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BulkSetLabelsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BulkZoneSetLabelsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BundledLocalSsds
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -917,6 +929,12 @@ module Google
       end
       
       class CustomerEncryptionKeyProtectedDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Date
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4631,6 +4649,66 @@ module Google
       end
       
       class PreservedStatePreservedNetworkIpIpAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreviewFeature
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreviewFeatureList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreviewFeatureRolloutOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreviewFeatureRolloutOperationRolloutInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreviewFeatureRolloutOperationRolloutStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreviewFeatureRolloutOperationRolloutStatusRolloutMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreviewFeatureStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreviewFeatureStatusReleaseStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -9200,6 +9278,22 @@ module Google
         end
       end
       
+      class BulkSetLabelsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
+        end
+      end
+      
+      class BulkZoneSetLabelsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::ComputeBeta::BulkSetLabelsRequest, decorator: Google::Apis::ComputeBeta::BulkSetLabelsRequest::Representation
+      
+        end
+      end
+      
       class BundledLocalSsds
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9530,6 +9624,15 @@ module Google
           property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
           property :source, as: 'source'
+        end
+      end
+      
+      class Date
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
         end
       end
       
@@ -13277,6 +13380,10 @@ module Google
           property :admin_enabled, as: 'adminEnabled'
           property :attachment_group, as: 'attachmentGroup'
           property :bandwidth, as: 'bandwidth'
+          property :candidate_cloud_router_ip_address, as: 'candidateCloudRouterIpAddress'
+          property :candidate_cloud_router_ipv6_address, as: 'candidateCloudRouterIpv6Address'
+          property :candidate_customer_router_ip_address, as: 'candidateCustomerRouterIpAddress'
+          property :candidate_customer_router_ipv6_address, as: 'candidateCustomerRouterIpv6Address'
           collection :candidate_ipv6_subnets, as: 'candidateIpv6Subnets'
           collection :candidate_subnets, as: 'candidateSubnets'
           property :cloud_router_ip_address, as: 'cloudRouterIpAddress'
@@ -16581,6 +16688,113 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address, as: 'address'
           property :literal, as: 'literal'
+        end
+      end
+      
+      class PreviewFeature
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :activation_status, as: 'activationStatus'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :rollout_operation, as: 'rolloutOperation', class: Google::Apis::ComputeBeta::PreviewFeatureRolloutOperation, decorator: Google::Apis::ComputeBeta::PreviewFeatureRolloutOperation::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :status, as: 'status', class: Google::Apis::ComputeBeta::PreviewFeatureStatus, decorator: Google::Apis::ComputeBeta::PreviewFeatureStatus::Representation
+      
+        end
+      end
+      
+      class PreviewFeatureList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::PreviewFeature, decorator: Google::Apis::ComputeBeta::PreviewFeature::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::PreviewFeatureList::Warning, decorator: Google::Apis::ComputeBeta::PreviewFeatureList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::PreviewFeatureList::Warning::Datum, decorator: Google::Apis::ComputeBeta::PreviewFeatureList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class PreviewFeatureRolloutOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rollout_input, as: 'rolloutInput', class: Google::Apis::ComputeBeta::PreviewFeatureRolloutOperationRolloutInput, decorator: Google::Apis::ComputeBeta::PreviewFeatureRolloutOperationRolloutInput::Representation
+      
+          property :rollout_status, as: 'rolloutStatus', class: Google::Apis::ComputeBeta::PreviewFeatureRolloutOperationRolloutStatus, decorator: Google::Apis::ComputeBeta::PreviewFeatureRolloutOperationRolloutStatus::Representation
+      
+        end
+      end
+      
+      class PreviewFeatureRolloutOperationRolloutInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :predefined_rollout_plan, as: 'predefinedRolloutPlan'
+          property :retry_uuid, as: 'retryUuid'
+        end
+      end
+      
+      class PreviewFeatureRolloutOperationRolloutStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ongoing_rollouts, as: 'ongoingRollouts', class: Google::Apis::ComputeBeta::PreviewFeatureRolloutOperationRolloutStatusRolloutMetadata, decorator: Google::Apis::ComputeBeta::PreviewFeatureRolloutOperationRolloutStatusRolloutMetadata::Representation
+      
+          property :previous_rollout, as: 'previousRollout', class: Google::Apis::ComputeBeta::PreviewFeatureRolloutOperationRolloutStatusRolloutMetadata, decorator: Google::Apis::ComputeBeta::PreviewFeatureRolloutOperationRolloutStatusRolloutMetadata::Representation
+      
+        end
+      end
+      
+      class PreviewFeatureRolloutOperationRolloutStatusRolloutMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rollout, as: 'rollout'
+          property :rollout_plan, as: 'rolloutPlan'
+          property :status, as: 'status', class: Google::Apis::ComputeBeta::PreviewFeatureStatus, decorator: Google::Apis::ComputeBeta::PreviewFeatureStatus::Representation
+      
+        end
+      end
+      
+      class PreviewFeatureStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :release_status, as: 'releaseStatus', class: Google::Apis::ComputeBeta::PreviewFeatureStatusReleaseStatus, decorator: Google::Apis::ComputeBeta::PreviewFeatureStatusReleaseStatus::Representation
+      
+        end
+      end
+      
+      class PreviewFeatureStatusReleaseStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stage, as: 'stage'
+          property :update_date, as: 'updateDate', class: Google::Apis::ComputeBeta::Date, decorator: Google::Apis::ComputeBeta::Date::Representation
+      
         end
       end
       
