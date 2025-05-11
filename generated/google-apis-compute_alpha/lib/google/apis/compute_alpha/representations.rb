@@ -2446,6 +2446,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerInstanceLifecyclePolicyOnRepair
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -12404,6 +12410,8 @@ module Google
       class GroupMaintenanceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_maintenance_ongoing_count, as: 'instanceMaintenanceOngoingCount'
+          property :instance_maintenance_pending_count, as: 'instanceMaintenancePendingCount'
           property :maintenance_ongoing_count, as: 'maintenanceOngoingCount'
           property :maintenance_pending_count, as: 'maintenancePendingCount'
           property :scheduling_type, as: 'schedulingType'
@@ -13779,6 +13787,8 @@ module Google
           property :metadata_based_readiness_signal, as: 'metadataBasedReadinessSignal', class: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal::Representation
       
           property :on_failed_health_check, as: 'onFailedHealthCheck'
+          property :on_repair, as: 'onRepair', class: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceLifecyclePolicyOnRepair, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceLifecyclePolicyOnRepair::Representation
+      
         end
       end
       
@@ -13786,6 +13796,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :timeout_sec, as: 'timeoutSec'
+        end
+      end
+      
+      class InstanceGroupManagerInstanceLifecyclePolicyOnRepair
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_changing_zone, as: 'allowChangingZone'
         end
       end
       
@@ -20338,6 +20355,7 @@ module Google
           property :kind, as: 'kind'
           collection :linked_commitments, as: 'linkedCommitments'
           property :name, as: 'name'
+          property :protection_tier, as: 'protectionTier'
           property :reservation_mode, as: 'reservationMode'
           property :reservation_sharing_policy, as: 'reservationSharingPolicy', class: Google::Apis::ComputeAlpha::AllocationReservationSharingPolicy, decorator: Google::Apis::ComputeAlpha::AllocationReservationSharingPolicy::Representation
       
@@ -20994,6 +21012,7 @@ module Google
           property :enable_osconfig_metadata_value, as: 'enableOsconfigMetadataValue'
           property :enable_oslogin_metadata_value, as: 'enableOsloginMetadataValue'
           property :serial_port_enable_metadata_value, as: 'serialPortEnableMetadataValue'
+          property :serial_port_logging_enable_metadata_value, as: 'serialPortLoggingEnableMetadataValue'
           property :vm_dns_setting_metadata_value, as: 'vmDnsSettingMetadataValue'
         end
       end
@@ -22061,6 +22080,8 @@ module Google
       class SecurityPolicyDdosProtectionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ddos_adaptive_protection, as: 'ddosAdaptiveProtection'
+          property :ddos_impacted_baseline_threshold, as: 'ddosImpactedBaselineThreshold'
           property :ddos_protection, as: 'ddosProtection'
         end
       end

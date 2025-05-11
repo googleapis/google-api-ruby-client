@@ -14762,6 +14762,16 @@ module Google
       class GroupMaintenanceInfo
         include Google::Apis::Core::Hashable
       
+        # Describes number of instances that have ongoing maintenance.
+        # Corresponds to the JSON property `instanceMaintenanceOngoingCount`
+        # @return [Fixnum]
+        attr_accessor :instance_maintenance_ongoing_count
+      
+        # Describes number of instances that have pending maintenance.
+        # Corresponds to the JSON property `instanceMaintenancePendingCount`
+        # @return [Fixnum]
+        attr_accessor :instance_maintenance_pending_count
+      
         # Progress for ongoing maintenance for this group of VMs/hosts. Describes number
         # of hosts in the block that have ongoing maintenance.
         # Corresponds to the JSON property `maintenanceOngoingCount`
@@ -14806,6 +14816,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @instance_maintenance_ongoing_count = args[:instance_maintenance_ongoing_count] if args.key?(:instance_maintenance_ongoing_count)
+          @instance_maintenance_pending_count = args[:instance_maintenance_pending_count] if args.key?(:instance_maintenance_pending_count)
           @maintenance_ongoing_count = args[:maintenance_ongoing_count] if args.key?(:maintenance_ongoing_count)
           @maintenance_pending_count = args[:maintenance_pending_count] if args.key?(:maintenance_pending_count)
           @scheduling_type = args[:scheduling_type] if args.key?(:scheduling_type)
@@ -20777,6 +20789,11 @@ module Google
         # @return [String]
         attr_accessor :on_failed_health_check
       
+        # Configuration for VM repairs in the MIG.
+        # Corresponds to the JSON property `onRepair`
+        # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceLifecyclePolicyOnRepair]
+        attr_accessor :on_repair
+      
         def initialize(**args)
            update!(**args)
         end
@@ -20787,6 +20804,7 @@ module Google
           @force_update_on_repair = args[:force_update_on_repair] if args.key?(:force_update_on_repair)
           @metadata_based_readiness_signal = args[:metadata_based_readiness_signal] if args.key?(:metadata_based_readiness_signal)
           @on_failed_health_check = args[:on_failed_health_check] if args.key?(:on_failed_health_check)
+          @on_repair = args[:on_repair] if args.key?(:on_repair)
         end
       end
       
@@ -20807,6 +20825,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
+        end
+      end
+      
+      # Configuration for VM repairs in the MIG.
+      class InstanceGroupManagerInstanceLifecyclePolicyOnRepair
+        include Google::Apis::Core::Hashable
+      
+        # Specifies whether the MIG can change a VM's zone during repair.
+        # Corresponds to the JSON property `allowChangingZone`
+        # @return [String]
+        attr_accessor :allow_changing_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_changing_zone = args[:allow_changing_zone] if args.key?(:allow_changing_zone)
         end
       end
       
@@ -26079,8 +26116,8 @@ module Google
         attr_accessor :labels
       
         # Maximum Transmission Unit (MTU), in bytes, of packets passing through this
-        # interconnect attachment. Only 1440 and 1500 are allowed. If not specified, the
-        # value will default to 1440.
+        # interconnect attachment. Valid values are 1440, 1460, 1500, and 8896. If not
+        # specified, the value will default to 1440.
         # Corresponds to the JSON property `mtu`
         # @return [Fixnum]
         attr_accessor :mtu
@@ -27033,8 +27070,8 @@ module Google
         attr_accessor :l2_forwarding
       
         # Maximum Transmission Unit (MTU), in bytes, of packets passing through this
-        # interconnect attachment. Only 1440 and 1500 are allowed. If not specified, the
-        # value will default to 1440.
+        # interconnect attachment. Valid values are 1440, 1460, 1500, or 8896. If not
+        # specified, the value will default to 1440.
         # Corresponds to the JSON property `mtu`
         # @return [Fixnum]
         attr_accessor :mtu
@@ -46147,6 +46184,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Protection tier for the workload which specifies the workload expectations in
+        # the event of infrastructure failures at data center (e.g. power and/or cooling
+        # failures).
+        # Corresponds to the JSON property `protectionTier`
+        # @return [String]
+        attr_accessor :protection_tier
+      
         # [Output only] Indicates the reservation mode of the reservation.
         # Corresponds to the JSON property `reservationMode`
         # @return [String]
@@ -46241,6 +46285,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @linked_commitments = args[:linked_commitments] if args.key?(:linked_commitments)
           @name = args[:name] if args.key?(:name)
+          @protection_tier = args[:protection_tier] if args.key?(:protection_tier)
           @reservation_mode = args[:reservation_mode] if args.key?(:reservation_mode)
           @reservation_sharing_policy = args[:reservation_sharing_policy] if args.key?(:reservation_sharing_policy)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
@@ -48516,7 +48561,7 @@ module Google
         attr_accessor :enable_guest_attributes_metadata_value
         alias_method :enable_guest_attributes_metadata_value?, :enable_guest_attributes_metadata_value
       
-        # Effective enable-osinventory value at Instance level.
+        # Effective enable-os-inventory value at Instance level.
         # Corresponds to the JSON property `enableOsInventoryMetadataValue`
         # @return [Boolean]
         attr_accessor :enable_os_inventory_metadata_value
@@ -48540,6 +48585,12 @@ module Google
         attr_accessor :serial_port_enable_metadata_value
         alias_method :serial_port_enable_metadata_value?, :serial_port_enable_metadata_value
       
+        # Effective serial-port-logging-enable value at Instance level.
+        # Corresponds to the JSON property `serialPortLoggingEnableMetadataValue`
+        # @return [Boolean]
+        attr_accessor :serial_port_logging_enable_metadata_value
+        alias_method :serial_port_logging_enable_metadata_value?, :serial_port_logging_enable_metadata_value
+      
         # Effective VM DNS setting at Instance level.
         # Corresponds to the JSON property `vmDnsSettingMetadataValue`
         # @return [String]
@@ -48557,6 +48608,7 @@ module Google
           @enable_osconfig_metadata_value = args[:enable_osconfig_metadata_value] if args.key?(:enable_osconfig_metadata_value)
           @enable_oslogin_metadata_value = args[:enable_oslogin_metadata_value] if args.key?(:enable_oslogin_metadata_value)
           @serial_port_enable_metadata_value = args[:serial_port_enable_metadata_value] if args.key?(:serial_port_enable_metadata_value)
+          @serial_port_logging_enable_metadata_value = args[:serial_port_logging_enable_metadata_value] if args.key?(:serial_port_logging_enable_metadata_value)
           @vm_dns_setting_metadata_value = args[:vm_dns_setting_metadata_value] if args.key?(:vm_dns_setting_metadata_value)
         end
       end
@@ -53054,6 +53106,22 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
+        # Corresponds to the JSON property `ddosAdaptiveProtection`
+        # @return [String]
+        attr_accessor :ddos_adaptive_protection
+      
+        # Adaptive Protection for Network Load Balancers (and VMs with public IPs)
+        # builds DDos mitigations that minimize collateral damage. It quantifies this as
+        # the fraction of a non-abuse baseline that's inadvertently blocked. Rules whose
+        # collateral damage exceeds ddosAdaptiveImpactedBaselineThreshold will not be
+        # deployed. Using a lower value will prioritize keeping collateral damage low,
+        # possibly at the cost of its effectiveness in rate limiting some or all of the
+        # attack. It should typically be between 0.01 and 0.10.
+        # Corresponds to the JSON property `ddosImpactedBaselineThreshold`
+        # @return [Float]
+        attr_accessor :ddos_impacted_baseline_threshold
+      
+        # 
         # Corresponds to the JSON property `ddosProtection`
         # @return [String]
         attr_accessor :ddos_protection
@@ -53064,6 +53132,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ddos_adaptive_protection = args[:ddos_adaptive_protection] if args.key?(:ddos_adaptive_protection)
+          @ddos_impacted_baseline_threshold = args[:ddos_impacted_baseline_threshold] if args.key?(:ddos_impacted_baseline_threshold)
           @ddos_protection = args[:ddos_protection] if args.key?(:ddos_protection)
         end
       end

@@ -28378,7 +28378,7 @@ module Google
         # Returns the details of the given PreviewFeature.
         # @param [String] project
         #   Project ID for this request.
-        # @param [String] resource_id
+        # @param [String] preview_feature
         #   Name of the PreviewFeature for this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -28399,12 +28399,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_preview_feature(project, resource_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'projects/{project}/global/previewFeatures/{resourceId}', options)
+        def get_preview_feature(project, preview_feature, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/global/previewFeatures/{previewFeature}', options)
           command.response_representation = Google::Apis::ComputeAlpha::PreviewFeature::Representation
           command.response_class = Google::Apis::ComputeAlpha::PreviewFeature
           command.params['project'] = project unless project.nil?
-          command.params['resourceId'] = resource_id unless resource_id.nil?
+          command.params['previewFeature'] = preview_feature unless preview_feature.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -28506,7 +28506,7 @@ module Google
         # PreviewFeature.
         # @param [String] project
         #   Project ID for this request.
-        # @param [String] resource_id
+        # @param [String] preview_feature
         #   Name of the PreviewFeature for this request.
         # @param [Google::Apis::ComputeAlpha::PreviewFeature] preview_feature_object
         # @param [String] request_id
@@ -28538,14 +28538,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_preview_feature(project, resource_id, preview_feature_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'projects/{project}/global/previewFeatures/{resourceId}', options)
+        def update_preview_feature(project, preview_feature, preview_feature_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'projects/{project}/global/previewFeatures/{previewFeature}', options)
           command.request_representation = Google::Apis::ComputeAlpha::PreviewFeature::Representation
           command.request_object = preview_feature_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
-          command.params['resourceId'] = resource_id unless resource_id.nil?
+          command.params['previewFeature'] = preview_feature unless preview_feature.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
