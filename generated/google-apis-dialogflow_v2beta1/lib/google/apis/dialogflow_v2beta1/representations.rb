@@ -7502,6 +7502,7 @@ module Google
           property :generator, as: 'generator', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Generator, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Generator::Representation
       
           property :generator_name, as: 'generatorName'
+          property :security_settings, as: 'securitySettings'
           collection :trigger_events, as: 'triggerEvents'
         end
       end
