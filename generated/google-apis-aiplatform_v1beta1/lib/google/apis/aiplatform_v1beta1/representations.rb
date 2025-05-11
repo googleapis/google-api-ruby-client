@@ -682,6 +682,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1Checkpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1Citation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7480,6 +7486,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1TunedModelCheckpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1TunedModelRef
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8982,6 +8994,15 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1Checkpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :checkpoint_id, as: 'checkpointId'
+          property :epoch, :numeric_string => true, as: 'epoch'
+          property :step, :numeric_string => true, as: 'step'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1Citation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10027,6 +10048,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :automatic_resources, as: 'automaticResources', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AutomaticResources, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AutomaticResources::Representation
       
+          property :checkpoint_id, as: 'checkpointId'
           property :create_time, as: 'createTime'
           property :dedicated_resources, as: 'dedicatedResources', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DedicatedResources, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DedicatedResources::Representation
       
@@ -10562,6 +10584,7 @@ module Google
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :example_id, as: 'exampleId'
+          property :name, as: 'name'
           property :stored_contents_example, as: 'storedContentsExample', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1StoredContentsExample, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1StoredContentsExample::Representation
       
         end
@@ -13591,6 +13614,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :artifact_uri, as: 'artifactUri'
           property :base_model_source, as: 'baseModelSource', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelBaseModelSource, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelBaseModelSource::Representation
+      
+          collection :checkpoints, as: 'checkpoints', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Checkpoint, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Checkpoint::Representation
       
           property :container_spec, as: 'containerSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelContainerSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelContainerSpec::Representation
       
@@ -17078,9 +17103,12 @@ module Google
       class GoogleCloudAiplatformV1beta1Schema
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_properties, as: 'additionalProperties'
           collection :any_of, as: 'anyOf', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Schema, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Schema::Representation
       
           property :default, as: 'default'
+          hash :defs, as: 'defs', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Schema, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Schema::Representation
+      
           property :description, as: 'description'
           collection :enum, as: 'enum'
           property :example, as: 'example'
@@ -17100,6 +17128,7 @@ module Google
           hash :properties, as: 'properties', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Schema, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Schema::Representation
       
           collection :property_ordering, as: 'propertyOrdering'
+          property :ref, as: 'ref'
           collection :required, as: 'required'
           property :title, as: 'title'
           property :type, as: 'type'
@@ -19848,6 +19877,7 @@ module Google
       class GoogleCloudAiplatformV1beta1SupervisedTuningSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :export_last_checkpoint_only, as: 'exportLastCheckpointOnly'
           property :hyper_parameters, as: 'hyperParameters', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SupervisedHyperParameters, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SupervisedHyperParameters::Representation
       
           property :training_dataset_uri, as: 'trainingDatasetUri'
@@ -20600,8 +20630,20 @@ module Google
       class GoogleCloudAiplatformV1beta1TunedModel
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :checkpoints, as: 'checkpoints', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TunedModelCheckpoint, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TunedModelCheckpoint::Representation
+      
           property :endpoint, as: 'endpoint'
           property :model, as: 'model'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1TunedModelCheckpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :checkpoint_id, as: 'checkpointId'
+          property :endpoint, as: 'endpoint'
+          property :epoch, :numeric_string => true, as: 'epoch'
+          property :step, :numeric_string => true, as: 'step'
         end
       end
       
