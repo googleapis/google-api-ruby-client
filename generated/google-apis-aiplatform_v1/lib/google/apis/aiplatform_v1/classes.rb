@@ -1056,7 +1056,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A runtime is a virtual machine allocated to a particular user for a particular
-        # Notebook file on temporary basis with lifetime limited to 24 hours.
+        # Notebook file on temporary basis with lifetime. Default runtimes have a
+        # lifetime of 18 hours, while custom runtimes last for 6 months from their
+        # creation or last upgrade.
         # Corresponds to the JSON property `notebookRuntime`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookRuntime]
         attr_accessor :notebook_runtime
@@ -3006,6 +3008,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @should_stop = args[:should_stop] if args.key?(:should_stop)
+        end
+      end
+      
+      # Describes the machine learning model version checkpoint.
+      class GoogleCloudAiplatformV1Checkpoint
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the checkpoint.
+        # Corresponds to the JSON property `checkpointId`
+        # @return [String]
+        attr_accessor :checkpoint_id
+      
+        # The epoch of the checkpoint.
+        # Corresponds to the JSON property `epoch`
+        # @return [Fixnum]
+        attr_accessor :epoch
+      
+        # The step of the checkpoint.
+        # Corresponds to the JSON property `step`
+        # @return [Fixnum]
+        attr_accessor :step
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @checkpoint_id = args[:checkpoint_id] if args.key?(:checkpoint_id)
+          @epoch = args[:epoch] if args.key?(:epoch)
+          @step = args[:step] if args.key?(:step)
         end
       end
       
@@ -6096,6 +6129,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AutomaticResources]
         attr_accessor :automatic_resources
       
+        # The checkpoint id of the model.
+        # Corresponds to the JSON property `checkpointId`
+        # @return [String]
+        attr_accessor :checkpoint_id
+      
         # Output only. Timestamp when the DeployedModel was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -6219,6 +6257,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @automatic_resources = args[:automatic_resources] if args.key?(:automatic_resources)
+          @checkpoint_id = args[:checkpoint_id] if args.key?(:checkpoint_id)
           @create_time = args[:create_time] if args.key?(:create_time)
           @dedicated_resources = args[:dedicated_resources] if args.key?(:dedicated_resources)
           @disable_container_logging = args[:disable_container_logging] if args.key?(:disable_container_logging)
@@ -16568,6 +16607,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModelBaseModelSource]
         attr_accessor :base_model_source
       
+        # Optional. Output only. The checkpoints of the model.
+        # Corresponds to the JSON property `checkpoints`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Checkpoint>]
+        attr_accessor :checkpoints
+      
         # Specification of a container for serving predictions. Some fields in this
         # message correspond to fields in the [Kubernetes Container v1 core
         # specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/
@@ -16808,6 +16852,7 @@ module Google
         def update!(**args)
           @artifact_uri = args[:artifact_uri] if args.key?(:artifact_uri)
           @base_model_source = args[:base_model_source] if args.key?(:base_model_source)
+          @checkpoints = args[:checkpoints] if args.key?(:checkpoints)
           @container_spec = args[:container_spec] if args.key?(:container_spec)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_stats = args[:data_stats] if args.key?(:data_stats)
@@ -18339,13 +18384,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :epoch
       
-        # Identifier. The resource name of the ModelVersionCheckpoint. Format: `projects/
-        # `project`/locations/`location`/models/`model`/versions/`version`/checkpoints/`
-        # checkpoint``
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
         # The step of the checkpoint.
         # Corresponds to the JSON property `step`
         # @return [Fixnum]
@@ -18359,7 +18397,6 @@ module Google
         def update!(**args)
           @checkpoint_id = args[:checkpoint_id] if args.key?(:checkpoint_id)
           @epoch = args[:epoch] if args.key?(:epoch)
-          @name = args[:name] if args.key?(:name)
           @step = args[:step] if args.key?(:step)
         end
       end
@@ -19719,7 +19756,9 @@ module Google
       end
       
       # A runtime is a virtual machine allocated to a particular user for a particular
-      # Notebook file on temporary basis with lifetime limited to 24 hours.
+      # Notebook file on temporary basis with lifetime. Default runtimes have a
+      # lifetime of 18 hours, while custom runtimes last for 6 months from their
+      # creation or last upgrade.
       class GoogleCloudAiplatformV1NotebookRuntime
         include Google::Apis::Core::Hashable
       
@@ -19878,7 +19917,8 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ShieldedVmConfig]
         attr_accessor :shielded_vm_config
       
-        # Notebook Software Config.
+        # Notebook Software Config. This is passed to the backend when user makes
+        # software configurations in UI.
         # Corresponds to the JSON property `softwareConfig`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookSoftwareConfig]
         attr_accessor :software_config
@@ -20048,7 +20088,8 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ShieldedVmConfig]
         attr_accessor :shielded_vm_config
       
-        # Notebook Software Config.
+        # Notebook Software Config. This is passed to the backend when user makes
+        # software configurations in UI.
         # Corresponds to the JSON property `softwareConfig`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookSoftwareConfig]
         attr_accessor :software_config
@@ -20107,7 +20148,8 @@ module Google
         end
       end
       
-      # Notebook Software Config.
+      # Notebook Software Config. This is passed to the backend when user makes
+      # software configurations in UI.
       class GoogleCloudAiplatformV1NotebookSoftwareConfig
         include Google::Apis::Core::Hashable
       
@@ -26259,6 +26301,12 @@ module Google
       class GoogleCloudAiplatformV1Schema
         include Google::Apis::Core::Hashable
       
+        # Optional. Can either be a boolean or an object; controls the presence of
+        # additional properties.
+        # Corresponds to the JSON property `additionalProperties`
+        # @return [Object]
+        attr_accessor :additional_properties
+      
         # Optional. The value should be validated against any (one or more) of the
         # subschemas in the list.
         # Corresponds to the JSON property `anyOf`
@@ -26269,6 +26317,12 @@ module Google
         # Corresponds to the JSON property `default`
         # @return [Object]
         attr_accessor :default
+      
+        # Optional. A map of definitions for use by `ref` Only allowed at the root of
+        # the schema.
+        # Corresponds to the JSON property `defs`
+        # @return [Hash<String,Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema>]
+        attr_accessor :defs
       
         # Optional. The description of the data.
         # Corresponds to the JSON property `description`
@@ -26367,6 +26421,17 @@ module Google
         # @return [Array<String>]
         attr_accessor :property_ordering
       
+        # Optional. Allows indirect references between schema nodes. The value should be
+        # a valid reference to a child of the root `defs`. For example, the following
+        # schema defines a reference to a schema node named "Pet": type: object
+        # properties: pet: ref: #/defs/Pet defs: Pet: type: object properties: name:
+        # type: string The value of the "pet" property is a reference to the schema node
+        # named "Pet". See details in https://json-schema.org/understanding-json-schema/
+        # structuring
+        # Corresponds to the JSON property `ref`
+        # @return [String]
+        attr_accessor :ref
+      
         # Optional. Required properties of Type.OBJECT.
         # Corresponds to the JSON property `required`
         # @return [Array<String>]
@@ -26388,8 +26453,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_properties = args[:additional_properties] if args.key?(:additional_properties)
           @any_of = args[:any_of] if args.key?(:any_of)
           @default = args[:default] if args.key?(:default)
+          @defs = args[:defs] if args.key?(:defs)
           @description = args[:description] if args.key?(:description)
           @enum = args[:enum] if args.key?(:enum)
           @example = args[:example] if args.key?(:example)
@@ -26407,6 +26474,7 @@ module Google
           @pattern = args[:pattern] if args.key?(:pattern)
           @properties = args[:properties] if args.key?(:properties)
           @property_ordering = args[:property_ordering] if args.key?(:property_ordering)
+          @ref = args[:ref] if args.key?(:ref)
           @required = args[:required] if args.key?(:required)
           @title = args[:title] if args.key?(:title)
           @type = args[:type] if args.key?(:type)
@@ -35419,7 +35487,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. For each index in `truncated_example_indices`, the user-facing
-        # reason why the example was dropped. Must not include example itself.
+        # reason why the example was dropped.
         # Corresponds to the JSON property `droppedExampleReasons`
         # @return [Array<String>]
         attr_accessor :dropped_example_reasons
@@ -35606,6 +35674,14 @@ module Google
       class GoogleCloudAiplatformV1SupervisedTuningSpec
         include Google::Apis::Core::Hashable
       
+        # Optional. If set to true, disable intermediate checkpoints for SFT and only
+        # the last checkpoint will be exported. Otherwise, enable intermediate
+        # checkpoints for SFT. Default is false.
+        # Corresponds to the JSON property `exportLastCheckpointOnly`
+        # @return [Boolean]
+        attr_accessor :export_last_checkpoint_only
+        alias_method :export_last_checkpoint_only?, :export_last_checkpoint_only
+      
         # Hyperparameters for SFT.
         # Corresponds to the JSON property `hyperParameters`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SupervisedHyperParameters]
@@ -35629,6 +35705,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @export_last_checkpoint_only = args[:export_last_checkpoint_only] if args.key?(:export_last_checkpoint_only)
           @hyper_parameters = args[:hyper_parameters] if args.key?(:hyper_parameters)
           @training_dataset_uri = args[:training_dataset_uri] if args.key?(:training_dataset_uri)
           @validation_dataset_uri = args[:validation_dataset_uri] if args.key?(:validation_dataset_uri)
@@ -37936,6 +38013,12 @@ module Google
       class GoogleCloudAiplatformV1TunedModel
         include Google::Apis::Core::Hashable
       
+        # Output only. The checkpoints associated with this TunedModel. This field is
+        # only populated for tuning jobs that enable intermediate checkpoints.
+        # Corresponds to the JSON property `checkpoints`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TunedModelCheckpoint>]
+        attr_accessor :checkpoints
+      
         # Output only. A resource name of an Endpoint. Format: `projects/`project`/
         # locations/`location`/endpoints/`endpoint``.
         # Corresponds to the JSON property `endpoint`
@@ -37954,8 +38037,47 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @checkpoints = args[:checkpoints] if args.key?(:checkpoints)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @model = args[:model] if args.key?(:model)
+        end
+      end
+      
+      # TunedModelCheckpoint for the Tuned Model of a Tuning Job.
+      class GoogleCloudAiplatformV1TunedModelCheckpoint
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the checkpoint.
+        # Corresponds to the JSON property `checkpointId`
+        # @return [String]
+        attr_accessor :checkpoint_id
+      
+        # The Endpoint resource name that the checkpoint is deployed to. Format: `
+        # projects/`project`/locations/`location`/endpoints/`endpoint``.
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        # The epoch of the checkpoint.
+        # Corresponds to the JSON property `epoch`
+        # @return [Fixnum]
+        attr_accessor :epoch
+      
+        # The step of the checkpoint.
+        # Corresponds to the JSON property `step`
+        # @return [Fixnum]
+        attr_accessor :step
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @checkpoint_id = args[:checkpoint_id] if args.key?(:checkpoint_id)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @epoch = args[:epoch] if args.key?(:epoch)
+          @step = args[:step] if args.key?(:step)
         end
       end
       
