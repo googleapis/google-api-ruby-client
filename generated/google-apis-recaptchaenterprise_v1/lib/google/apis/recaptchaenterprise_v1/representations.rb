@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -691,6 +697,8 @@ module Google
       
           property :card_testing_verdict, as: 'cardTestingVerdict', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict::Representation
       
+          collection :risk_reasons, as: 'riskReasons', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason::Representation
+      
           property :stolen_instrument_verdict, as: 'stolenInstrumentVerdict', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict::Representation
       
           property :transaction_risk, as: 'transactionRisk'
@@ -708,6 +716,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :risk, as: 'risk'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reason, as: 'reason'
         end
       end
       
