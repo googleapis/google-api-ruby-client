@@ -1537,6 +1537,12 @@ module Google
         # @return [String]
         attr_accessor :temp_storage_prefix
       
+        # Optional. True when any worker pool that uses public IPs is present.
+        # Corresponds to the JSON property `usePublicIps`
+        # @return [Boolean]
+        attr_accessor :use_public_ips
+        alias_method :use_public_ips?, :use_public_ips
+      
         # Output only. Whether the job uses the Streaming Engine resource-based billing
         # model.
         # Corresponds to the JSON property `useStreamingEngineResourceBasedBilling`
@@ -1597,6 +1603,7 @@ module Google
           @shuffle_mode = args[:shuffle_mode] if args.key?(:shuffle_mode)
           @streaming_mode = args[:streaming_mode] if args.key?(:streaming_mode)
           @temp_storage_prefix = args[:temp_storage_prefix] if args.key?(:temp_storage_prefix)
+          @use_public_ips = args[:use_public_ips] if args.key?(:use_public_ips)
           @use_streaming_engine_resource_based_billing = args[:use_streaming_engine_resource_based_billing] if args.key?(:use_streaming_engine_resource_based_billing)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
           @version = args[:version] if args.key?(:version)

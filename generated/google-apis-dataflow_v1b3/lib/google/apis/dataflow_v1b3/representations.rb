@@ -1579,6 +1579,7 @@ module Google
           property :shuffle_mode, as: 'shuffleMode'
           property :streaming_mode, as: 'streamingMode'
           property :temp_storage_prefix, as: 'tempStoragePrefix'
+          property :use_public_ips, as: 'usePublicIps'
           property :use_streaming_engine_resource_based_billing, as: 'useStreamingEngineResourceBasedBilling'
           hash :user_agent, as: 'userAgent'
           hash :version, as: 'version'
