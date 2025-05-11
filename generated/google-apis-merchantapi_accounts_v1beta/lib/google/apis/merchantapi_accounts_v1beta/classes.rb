@@ -259,7 +259,8 @@ module Google
         # @return [String]
         attr_accessor :account_id_alias
       
-        # Identifier. The resource name of the account relationship.
+        # Identifier. The resource name of the account relationship. Format: `accounts/`
+        # account`/relationships/`relationship``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -345,7 +346,8 @@ module Google
         # @return [String]
         attr_accessor :mutability
       
-        # Identifier. The resource name of the account service.
+        # Identifier. The resource name of the account service. Format: `accounts/`
+        # account`/services/`service``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -945,8 +947,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. When set to `true`, this option removes any existing claim on the
-        # requested website and replaces it with a claim from the account that makes the
-        # request.
+        # requested website from any other account to the account making the request,
+        # effectively replacing the previous claim.
         # Corresponds to the JSON property `overwrite`
         # @return [Boolean]
         attr_accessor :overwrite
@@ -2599,11 +2601,10 @@ module Google
       # Defines participation in a given program for the specified account. Programs
       # provide a mechanism for adding functionality to merchant accounts. A typical
       # example of this is the [Free product listings](https://support.google.com/
-      # merchants/topic/9240261?ref_topic=7257954,7259405,&sjid=796648681813264022-EU)
-      # program, which enables products from a merchant's store to be shown across
-      # Google for free. The following list is the available set of program resource
-      # IDs accessible through the API: * `free-listings` * `shopping-ads` * `youtube-
-      # shopping-checkout`
+      # merchants/answer/13889434) program, which enables products from a merchant's
+      # store to be shown across Google for free. The following list is the available
+      # set of program resource IDs accessible through the API: * `free-listings` * `
+      # shopping-ads` * `youtube-shopping-checkout`
       class Program
         include Google::Apis::Core::Hashable
       
@@ -3696,7 +3697,8 @@ module Google
         # @return [String]
         attr_accessor :carrier_service
       
-        # Required. Warehouse name. This should match warehouse
+        # Required. Warehouse name. This should match [warehouse](/merchant/api/
+        # reference/rest/accounts_v1beta/accounts.shippingSettings#warehouse)
         # Corresponds to the JSON property `warehouse`
         # @return [String]
         attr_accessor :warehouse
