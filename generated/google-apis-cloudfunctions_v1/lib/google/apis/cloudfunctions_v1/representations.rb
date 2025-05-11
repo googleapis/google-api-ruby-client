@@ -293,6 +293,8 @@ module Google
           property :on_deploy_update_policy, as: 'onDeployUpdatePolicy', class: Google::Apis::CloudfunctionsV1::OnDeployUpdatePolicy, decorator: Google::Apis::CloudfunctionsV1::OnDeployUpdatePolicy::Representation
       
           property :runtime, as: 'runtime'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           collection :secret_environment_variables, as: 'secretEnvironmentVariables', class: Google::Apis::CloudfunctionsV1::SecretEnvVar, decorator: Google::Apis::CloudfunctionsV1::SecretEnvVar::Representation
       
           collection :secret_volumes, as: 'secretVolumes', class: Google::Apis::CloudfunctionsV1::SecretVolume, decorator: Google::Apis::CloudfunctionsV1::SecretVolume::Representation
