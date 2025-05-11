@@ -4585,6 +4585,29 @@ module Google
         end
       end
       
+      # The option enables the Kubernetes NUMA-aware Memory Manager feature. Detailed
+      # description about the feature can be found [here](https://kubernetes.io/docs/
+      # tasks/administer-cluster/memory-manager/).
+      class MemoryManager
+        include Google::Apis::Core::Hashable
+      
+        # Controls the memory management policy on the Node. See https://kubernetes.io/
+        # docs/tasks/administer-cluster/memory-manager/#policies The following values
+        # are allowed. * "none" * "static" The default value is 'none' if unspecified.
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
       # Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
       class MeshCertificates
         include Google::Apis::Core::Hashable
@@ -5490,6 +5513,13 @@ module Google
         attr_accessor :insecure_kubelet_readonly_port_enabled
         alias_method :insecure_kubelet_readonly_port_enabled?, :insecure_kubelet_readonly_port_enabled
       
+        # The option enables the Kubernetes NUMA-aware Memory Manager feature. Detailed
+        # description about the feature can be found [here](https://kubernetes.io/docs/
+        # tasks/administer-cluster/memory-manager/).
+        # Corresponds to the JSON property `memoryManager`
+        # @return [Google::Apis::ContainerV1beta1::MemoryManager]
+        attr_accessor :memory_manager
+      
         # Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-
         # limiting/#pod-pid-limits Controls the maximum number of processes allowed to
         # run in a pod. The value must be greater than or equal to 1024 and less than
@@ -5497,6 +5527,12 @@ module Google
         # Corresponds to the JSON property `podPidsLimit`
         # @return [Fixnum]
         attr_accessor :pod_pids_limit
+      
+        # TopologyManager defines the configuration options for Topology Manager feature.
+        # See https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/
+        # Corresponds to the JSON property `topologyManager`
+        # @return [Google::Apis::ContainerV1beta1::TopologyManager]
+        attr_accessor :topology_manager
       
         def initialize(**args)
            update!(**args)
@@ -5515,7 +5551,9 @@ module Google
           @image_maximum_gc_age = args[:image_maximum_gc_age] if args.key?(:image_maximum_gc_age)
           @image_minimum_gc_age = args[:image_minimum_gc_age] if args.key?(:image_minimum_gc_age)
           @insecure_kubelet_readonly_port_enabled = args[:insecure_kubelet_readonly_port_enabled] if args.key?(:insecure_kubelet_readonly_port_enabled)
+          @memory_manager = args[:memory_manager] if args.key?(:memory_manager)
           @pod_pids_limit = args[:pod_pids_limit] if args.key?(:pod_pids_limit)
+          @topology_manager = args[:topology_manager] if args.key?(:topology_manager)
         end
       end
       
@@ -8424,6 +8462,48 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @maintenance_exclusion_options = args[:maintenance_exclusion_options] if args.key?(:maintenance_exclusion_options)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # TopologyManager defines the configuration options for Topology Manager feature.
+      # See https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/
+      class TopologyManager
+        include Google::Apis::Core::Hashable
+      
+        # Configures the strategy for resource alignment. Allowed values are: * none:
+        # the default policy, and does not perform any topology alignment. * restricted:
+        # the topology manager stores the preferred NUMA node affinity for the container,
+        # and will reject the pod if the affinity if not preferred. * best-effort: the
+        # topology manager stores the preferred NUMA node affinity for the container. If
+        # the affinity is not preferred, the topology manager will admit the pod to the
+        # node anyway. * single-numa-node: the topology manager determines if the single
+        # NUMA node affinity is possible. If it is, Topology Manager will store this and
+        # the Hint Providers can then use this information when making the resource
+        # allocation decision. If, however, this is not possible then the Topology
+        # Manager will reject the pod from the node. This will result in a pod in a
+        # Terminated state with a pod admission failure. The default policy value is '
+        # none' if unspecified. Details about each strategy can be found [here](https://
+        # kubernetes.io/docs/tasks/administer-cluster/topology-manager/#topology-manager-
+        # policies).
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        # The Topology Manager aligns resources in following scopes: * container * pod
+        # The default scope is 'container' if unspecified. See https://kubernetes.io/
+        # docs/tasks/administer-cluster/topology-manager/#topology-manager-scopes
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
+          @scope = args[:scope] if args.key?(:scope)
         end
       end
       
