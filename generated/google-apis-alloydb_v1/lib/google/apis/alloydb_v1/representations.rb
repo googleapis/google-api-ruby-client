@@ -1021,6 +1021,7 @@ module Google
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :activation_policy, as: 'activationPolicy'
           hash :annotations, as: 'annotations'
           property :availability_type, as: 'availabilityType'
           property :client_connection_config, as: 'clientConnectionConfig', class: Google::Apis::AlloydbV1::ClientConnectionConfig, decorator: Google::Apis::AlloydbV1::ClientConnectionConfig::Representation
