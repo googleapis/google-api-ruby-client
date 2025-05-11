@@ -5387,6 +5387,71 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the UserLicenseService.
+      # BatchUpdateUserLicenses operation. This will be returned by the google.
+      # longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Count of user licenses that failed to be updated.
+        # Corresponds to the JSON property `failureCount`
+        # @return [Fixnum]
+        attr_accessor :failure_count
+      
+        # Count of user licenses successfully updated.
+        # Corresponds to the JSON property `successCount`
+        # @return [Fixnum]
+        attr_accessor :success_count
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @failure_count = args[:failure_count] if args.key?(:failure_count)
+          @success_count = args[:success_count] if args.key?(:success_count)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response message for UserLicenseService.BatchUpdateUserLicenses method.
+      class GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        # UserLicenses successfully updated.
+        # Corresponds to the JSON property `userLicenses`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaUserLicense>]
+        attr_accessor :user_licenses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
+          @user_licenses = args[:user_licenses] if args.key?(:user_licenses)
+        end
+      end
+      
       # Configurations used to enable CMEK data encryption with Cloud KMS keys.
       class GoogleCloudDiscoveryengineV1alphaCmekConfig
         include Google::Apis::Core::Hashable
@@ -6351,10 +6416,16 @@ module Google
       
         # Output only. The type of connector. Each source can only map to one type. For
         # example, salesforce, confluence and jira have THIRD_PARTY connector type. It
-        # is notmutable once set by system.
+        # is not mutable once set by system.
         # Corresponds to the JSON property `connectorType`
         # @return [String]
         attr_accessor :connector_type
+      
+        # Optional. Whether the END USER AUTHENTICATION connector is created in SaaS.
+        # Corresponds to the JSON property `createEuaSaas`
+        # @return [Boolean]
+        attr_accessor :create_eua_saas
+        alias_method :create_eua_saas?, :create_eua_saas
       
         # Output only. Timestamp the DataConnector was created at.
         # Corresponds to the JSON property `createTime`
@@ -6538,6 +6609,7 @@ module Google
           @blocking_reasons = args[:blocking_reasons] if args.key?(:blocking_reasons)
           @connector_modes = args[:connector_modes] if args.key?(:connector_modes)
           @connector_type = args[:connector_type] if args.key?(:connector_type)
+          @create_eua_saas = args[:create_eua_saas] if args.key?(:create_eua_saas)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_source = args[:data_source] if args.key?(:data_source)
           @destination_configs = args[:destination_configs] if args.key?(:destination_configs)
@@ -10889,6 +10961,14 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpec]
         attr_accessor :boost_spec
       
+        # Optional. Custom search operators which if specified will be used to filter
+        # results from workspace data stores. For more information on custom search
+        # operators, see [SearchOperators](https://support.google.com/cloudsearch/answer/
+        # 6172299).
+        # Corresponds to the JSON property `customSearchOperators`
+        # @return [String]
+        attr_accessor :custom_search_operators
+      
         # Required. Full resource name of DataStore, such as `projects/`project`/
         # locations/`location`/collections/`collection_id`/dataStores/`data_store_id``.
         # Corresponds to the JSON property `dataStore`
@@ -10909,6 +10989,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @boost_spec = args[:boost_spec] if args.key?(:boost_spec)
+          @custom_search_operators = args[:custom_search_operators] if args.key?(:custom_search_operators)
           @data_store = args[:data_store] if args.key?(:data_store)
           @filter = args[:filter] if args.key?(:filter)
         end
@@ -12025,6 +12106,79 @@ module Google
           @time_zone = args[:time_zone] if args.key?(:time_zone)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
           @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # User License information assigned by the admin.
+      class GoogleCloudDiscoveryengineV1alphaUserLicense
+        include Google::Apis::Core::Hashable
+      
+        # Output only. User created timestamp.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. User last logged in time. If the user has not logged in yet, this
+        # field will be empty.
+        # Corresponds to the JSON property `lastLoginTime`
+        # @return [String]
+        attr_accessor :last_login_time
+      
+        # Output only. License assignment state of the user. If the user is assigned
+        # with a license config, the user loggin will be assigned with the license; If
+        # the user's license assignment state is unassigned or unspecified, no license
+        # config will be associated to the user;
+        # Corresponds to the JSON property `licenseAssignmentState`
+        # @return [String]
+        attr_accessor :license_assignment_state
+      
+        # Optional. The full resource name of the Subscription(LicenseConfig) assigned
+        # to the user.
+        # Corresponds to the JSON property `licenseConfig`
+        # @return [String]
+        attr_accessor :license_config
+      
+        # Output only. User update timestamp.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Optional. The full resource name of the User, in the format of `projects/`
+        # project`/locations/`location`/userStores/`user_store`/users/`user_id``. This
+        # field must be a UTF-8 encoded string with a length limit of 2048 characters.
+        # If the user field is empty, it's indicating the user has not logged in yet and
+        # no User entity is created.
+        # Corresponds to the JSON property `user`
+        # @return [String]
+        attr_accessor :user
+      
+        # Required. Immutable. The user principal of the User, could be email address or
+        # other prinical identifier. This field is immutable. Admin assign licenses
+        # based on the user principal.
+        # Corresponds to the JSON property `userPrincipal`
+        # @return [String]
+        attr_accessor :user_principal
+      
+        # Optional. The user profile. We user user full name(First name + Last name) as
+        # user profile.
+        # Corresponds to the JSON property `userProfile`
+        # @return [String]
+        attr_accessor :user_profile
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @last_login_time = args[:last_login_time] if args.key?(:last_login_time)
+          @license_assignment_state = args[:license_assignment_state] if args.key?(:license_assignment_state)
+          @license_config = args[:license_config] if args.key?(:license_config)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @user = args[:user] if args.key?(:user)
+          @user_principal = args[:user_principal] if args.key?(:user_principal)
+          @user_profile = args[:user_profile] if args.key?(:user_profile)
         end
       end
       
@@ -14475,6 +14629,66 @@ module Google
         end
       end
       
+      # Request message for UserLicenseService.BatchUpdateUserLicenses method.
+      class GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, if user licenses removed associated license config, the
+        # user license will be deleted. By default which is false, the user license will
+        # be updated to unassigned state.
+        # Corresponds to the JSON property `deleteUnassignedUserLicenses`
+        # @return [Boolean]
+        attr_accessor :delete_unassigned_user_licenses
+        alias_method :delete_unassigned_user_licenses?, :delete_unassigned_user_licenses
+      
+        # Cloud Storage location for input content.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaGcsSource]
+        attr_accessor :gcs_source
+      
+        # The inline source for the input config for BatchUpdateUserLicenses method.
+        # Corresponds to the JSON property `inlineSource`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesRequestInlineSource]
+        attr_accessor :inline_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delete_unassigned_user_licenses = args[:delete_unassigned_user_licenses] if args.key?(:delete_unassigned_user_licenses)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+          @inline_source = args[:inline_source] if args.key?(:inline_source)
+        end
+      end
+      
+      # The inline source for the input config for BatchUpdateUserLicenses method.
+      class GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesRequestInlineSource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The list of fields to update.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        # Required. A list of user licenses to update. Each user license must have a
+        # valid UserLicense.user_principal.
+        # Corresponds to the JSON property `userLicenses`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaUserLicense>]
+        attr_accessor :user_licenses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+          @user_licenses = args[:user_licenses] if args.key?(:user_licenses)
+        end
+      end
+      
       # Request message for SiteSearchEngineService.BatchVerifyTargetSites method.
       class GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest
         include Google::Apis::Core::Hashable
@@ -14862,7 +15076,8 @@ module Google
         alias_method :grounding_check_required?, :grounding_check_required
       
         # Confidence score for the claim in the answer candidate, in the range of [0, 1].
-        # This is set only when enable_claim_level_score is true.
+        # This is set only when `CheckGroundingRequest.grounding_spec.
+        # enable_claim_level_score` is true.
         # Corresponds to the JSON property `score`
         # @return [Float]
         attr_accessor :score
@@ -19677,6 +19892,32 @@ module Google
         end
       end
       
+      # Response message for UserLicenseService.ListUserLicenses.
+      class GoogleCloudDiscoveryengineV1betaListUserLicensesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # All the customer's UserLicenses.
+        # Corresponds to the JSON property `userLicenses`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaUserLicense>]
+        attr_accessor :user_licenses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @user_licenses = args[:user_licenses] if args.key?(:user_licenses)
+        end
+      end
+      
       # Media-specific user event information.
       class GoogleCloudDiscoveryengineV1betaMediaInfo
         include Google::Apis::Core::Hashable
@@ -22299,6 +22540,14 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec]
         attr_accessor :boost_spec
       
+        # Optional. Custom search operators which if specified will be used to filter
+        # results from workspace data stores. For more information on custom search
+        # operators, see [SearchOperators](https://support.google.com/cloudsearch/answer/
+        # 6172299).
+        # Corresponds to the JSON property `customSearchOperators`
+        # @return [String]
+        attr_accessor :custom_search_operators
+      
         # Required. Full resource name of DataStore, such as `projects/`project`/
         # locations/`location`/collections/`collection_id`/dataStores/`data_store_id``.
         # Corresponds to the JSON property `dataStore`
@@ -22319,6 +22568,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @boost_spec = args[:boost_spec] if args.key?(:boost_spec)
+          @custom_search_operators = args[:custom_search_operators] if args.key?(:custom_search_operators)
           @data_store = args[:data_store] if args.key?(:data_store)
           @filter = args[:filter] if args.key?(:filter)
         end
@@ -23031,12 +23281,6 @@ module Google
         # @return [String]
         attr_accessor :rewritten_query
       
-        # The SQL request that was generated from the natural language query
-        # understanding phase.
-        # Corresponds to the JSON property `sqlRequest`
-        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoSqlRequest]
-        attr_accessor :sql_request
-      
         # The filters that were extracted from the input query represented in a
         # structured form.
         # Corresponds to the JSON property `structuredExtractedFilter`
@@ -23052,28 +23296,7 @@ module Google
           @classified_intents = args[:classified_intents] if args.key?(:classified_intents)
           @extracted_filters = args[:extracted_filters] if args.key?(:extracted_filters)
           @rewritten_query = args[:rewritten_query] if args.key?(:rewritten_query)
-          @sql_request = args[:sql_request] if args.key?(:sql_request)
           @structured_extracted_filter = args[:structured_extracted_filter] if args.key?(:structured_extracted_filter)
-        end
-      end
-      
-      # The SQL request that was generated from the natural language query
-      # understanding phase.
-      class GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoSqlRequest
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The SQL query in text format.
-        # Corresponds to the JSON property `sqlQuery`
-        # @return [String]
-        attr_accessor :sql_query
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @sql_query = args[:sql_query] if args.key?(:sql_query)
         end
       end
       
@@ -25116,6 +25339,79 @@ module Google
           @time_zone = args[:time_zone] if args.key?(:time_zone)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
           @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # User License information assigned by the admin.
+      class GoogleCloudDiscoveryengineV1betaUserLicense
+        include Google::Apis::Core::Hashable
+      
+        # Output only. User created timestamp.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. User last logged in time. If the user has not logged in yet, this
+        # field will be empty.
+        # Corresponds to the JSON property `lastLoginTime`
+        # @return [String]
+        attr_accessor :last_login_time
+      
+        # Output only. License assignment state of the user. If the user is assigned
+        # with a license config, the user loggin will be assigned with the license; If
+        # the user's license assignment state is unassigned or unspecified, no license
+        # config will be associated to the user;
+        # Corresponds to the JSON property `licenseAssignmentState`
+        # @return [String]
+        attr_accessor :license_assignment_state
+      
+        # Optional. The full resource name of the Subscription(LicenseConfig) assigned
+        # to the user.
+        # Corresponds to the JSON property `licenseConfig`
+        # @return [String]
+        attr_accessor :license_config
+      
+        # Output only. User update timestamp.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Optional. The full resource name of the User, in the format of `projects/`
+        # project`/locations/`location`/userStores/`user_store`/users/`user_id``. This
+        # field must be a UTF-8 encoded string with a length limit of 2048 characters.
+        # If the user field is empty, it's indicating the user has not logged in yet and
+        # no User entity is created.
+        # Corresponds to the JSON property `user`
+        # @return [String]
+        attr_accessor :user
+      
+        # Required. Immutable. The user principal of the User, could be email address or
+        # other prinical identifier. This field is immutable. Admin assign licenses
+        # based on the user principal.
+        # Corresponds to the JSON property `userPrincipal`
+        # @return [String]
+        attr_accessor :user_principal
+      
+        # Optional. The user profile. We user user full name(First name + Last name) as
+        # user profile.
+        # Corresponds to the JSON property `userProfile`
+        # @return [String]
+        attr_accessor :user_profile
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @last_login_time = args[:last_login_time] if args.key?(:last_login_time)
+          @license_assignment_state = args[:license_assignment_state] if args.key?(:license_assignment_state)
+          @license_config = args[:license_config] if args.key?(:license_config)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @user = args[:user] if args.key?(:user)
+          @user_principal = args[:user_principal] if args.key?(:user_principal)
+          @user_profile = args[:user_profile] if args.key?(:user_profile)
         end
       end
       

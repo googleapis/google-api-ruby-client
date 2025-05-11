@@ -9225,6 +9225,93 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates the User License. This method is used for batch assign/unassign
+        # licenses to users.
+        # @param [String] parent
+        #   Required. The parent UserStore resource name, format: `projects/`project`/
+        #   locations/`location`/userStores/`user_store_id``.
+        # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesRequest] google_cloud_discoveryengine_v1beta_batch_update_user_licenses_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_project_location_user_store_update_user_licenses(parent, google_cloud_discoveryengine_v1beta_batch_update_user_licenses_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+parent}:batchUpdateUserLicenses', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1beta_batch_update_user_licenses_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the User Licenses.
+        # @param [String] parent
+        #   Required. The parent UserStore resource name, format: `projects/`project`/
+        #   locations/`location`/userStores/`user_store_id``.
+        # @param [String] filter
+        #   Optional. Filter for the list request. Supported fields: * `
+        #   license_assignment_state` Examples: * `license_assignment_state = ASSIGNED` to
+        #   list assigned user licenses. * `license_assignment_state = NO_LICENSE` to list
+        #   not licensed users. * `license_assignment_state = NO_LICENSE_ATTEMPTED_LOGIN`
+        #   to list users who attempted login but no license assigned. * `
+        #   license_assignment_state != NO_LICENSE_ATTEMPTED_LOGIN` to filter out users
+        #   who attempted login but no license assigned.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, defaults to 10. The maximum value is 50; values above 50 will
+        #   be coerced to 50. If this field is negative, an INVALID_ARGUMENT error is
+        #   returned.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListUserLicenses` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListUserLicenses` must match the call that provided
+        #   the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaListUserLicensesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaListUserLicensesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_user_store_user_licenses(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+parent}/userLicenses', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaListUserLicensesResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaListUserLicensesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the latest state of a long-running operation. Clients can use this method
         # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
