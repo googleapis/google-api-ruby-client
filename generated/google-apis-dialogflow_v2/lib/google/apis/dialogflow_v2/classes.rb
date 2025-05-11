@@ -11057,6 +11057,15 @@ module Google
         # @return [String]
         attr_accessor :generator_name
       
+        # Optional. Name of the CX SecuritySettings which is used to redact generated
+        # response. If this field is empty, try to fetch v2 security_settings, which is
+        # a project level setting. If this field is empty and no v2 security_settings
+        # set up in this project, no redaction will be done. Format: `projects//
+        # locations//securitySettings/`.
+        # Corresponds to the JSON property `securitySettings`
+        # @return [String]
+        attr_accessor :security_settings
+      
         # Optional. A list of trigger events. Generator will be triggered only if it's
         # trigger event is included here.
         # Corresponds to the JSON property `triggerEvents`
@@ -11073,6 +11082,7 @@ module Google
           @conversation_context = args[:conversation_context] if args.key?(:conversation_context)
           @generator = args[:generator] if args.key?(:generator)
           @generator_name = args[:generator_name] if args.key?(:generator_name)
+          @security_settings = args[:security_settings] if args.key?(:security_settings)
           @trigger_events = args[:trigger_events] if args.key?(:trigger_events)
         end
       end
