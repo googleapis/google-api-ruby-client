@@ -1385,7 +1385,10 @@ module Google
       class MongodbProfile
         include Google::Apis::Core::Hashable
       
-        # Required. List of host addresses for a MongoDB cluster.
+        # Required. List of host addresses for a MongoDB cluster. For SRV connection
+        # format, this list must contain exactly one DNS host without a port. For
+        # Standard connection format, this list must contain all the required hosts in
+        # the cluster with their respective ports.
         # Corresponds to the JSON property `hostAddresses`
         # @return [Array<Google::Apis::DatastreamV1::HostAddress>]
         attr_accessor :host_addresses
@@ -1397,7 +1400,8 @@ module Google
         attr_accessor :password
       
         # Optional. Name of the replica set. Only needed for self hosted replica set
-        # type MongoDB cluster.
+        # type MongoDB cluster. For SRV connection format, this field must be empty. For
+        # Standard connection format, this field must be specified.
         # Corresponds to the JSON property `replicaSet`
         # @return [String]
         attr_accessor :replica_set
