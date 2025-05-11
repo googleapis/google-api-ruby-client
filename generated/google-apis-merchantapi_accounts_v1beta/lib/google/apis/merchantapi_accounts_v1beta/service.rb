@@ -651,10 +651,11 @@ module Google
         # merchant is exempted from claiming, which also exempts from verification) and
         # return a successful response. If ownership can no longer be verified, it will
         # return an error, but it won't clear the claim. In case of failure, a canonical
-        # error message will be returned: * PERMISSION_DENIED: user doesn't have the
-        # necessary permissions on this MC account; * FAILED_PRECONDITION: - The account
-        # is not a Merchant Center account; - MC account doesn't have a homepage; -
-        # claiming failed (in this case the error message will contain more details).
+        # error message is returned: * PERMISSION_DENIED: User doesn't have the
+        # necessary permissions on this Merchant Center account. * FAILED_PRECONDITION: -
+        # The account is not a Merchant Center account. - Merchant Center account doesn'
+        # t have a homepage. - Claiming failed (in this case the error message contains
+        # more details).
         # @param [String] name
         #   Required. The name of the homepage to claim. Format: `accounts/`account`/
         #   homepage`
@@ -1246,7 +1247,8 @@ module Google
         
         # Retrieve an account relationship.
         # @param [String] name
-        #   Required. The resource name of the account relationship to get.
+        #   Required. The resource name of the account relationship to get. Format: `
+        #   accounts/`account`/relationships/`relationship``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1276,7 +1278,8 @@ module Google
         
         # List account relationships for the specified account.
         # @param [String] parent
-        #   Required. The parent account of the account relationship to filter by.
+        #   Required. The parent account of the account relationship to filter by. Format:
+        #   `accounts/`account``
         # @param [Fixnum] page_size
         #   Optional. The maximum number of elements to return in the response. Use for
         #   paging. If no `page_size` is specified, `100` is used as the default value.
@@ -1314,7 +1317,8 @@ module Google
         
         # Updates the account relationship. Executing this method requires admin access.
         # @param [String] name
-        #   Identifier. The resource name of the account relationship.
+        #   Identifier. The resource name of the account relationship. Format: `accounts/`
+        #   account`/relationships/`relationship``
         # @param [Google::Apis::MerchantapiAccountsV1beta::AccountRelationship] account_relationship_object
         # @param [String] update_mask
         #   Optional. List of fields being updated. The following fields are supported (in
@@ -1351,7 +1355,8 @@ module Google
         
         # Approve an account service proposal.
         # @param [String] name
-        #   Required. The resource name of the account service to approve.
+        #   Required. The resource name of the account service to approve. Format: `
+        #   accounts/`account`/services/`service``
         # @param [Google::Apis::MerchantapiAccountsV1beta::ApproveAccountServiceRequest] approve_account_service_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1384,7 +1389,8 @@ module Google
         
         # Retrieve an account service.
         # @param [String] name
-        #   Required. The resource name of the account service to get.
+        #   Required. The resource name of the account service to get. Format: `accounts/`
+        #   account`/services/`service``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1414,7 +1420,8 @@ module Google
         
         # List account services for the specified accounts. Supports filtering.
         # @param [String] parent
-        #   Required. The parent account of the account service to filter by.
+        #   Required. The parent account of the account service to filter by. Format: `
+        #   accounts/`account``
         # @param [Fixnum] page_size
         #   Optional. The maximum number of elements to return in the response. Use for
         #   paging. If no `page_size` is specified, `100` is used as the default value.
@@ -1452,7 +1459,8 @@ module Google
         
         # Propose an account service.
         # @param [String] parent
-        #   Required. The resource name of the parent account for the service.
+        #   Required. The resource name of the parent account for the service. Format: `
+        #   accounts/`account``
         # @param [Google::Apis::MerchantapiAccountsV1beta::ProposeAccountServiceRequest] propose_account_service_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1485,7 +1493,8 @@ module Google
         
         # Reject an account service (both proposed and approve services can be rejected).
         # @param [String] name
-        #   Required. The resource name of the account service to reject.
+        #   Required. The resource name of the account service to reject. Format: `
+        #   accounts/`account`/services/`service``
         # @param [Google::Apis::MerchantapiAccountsV1beta::RejectAccountServiceRequest] reject_account_service_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
