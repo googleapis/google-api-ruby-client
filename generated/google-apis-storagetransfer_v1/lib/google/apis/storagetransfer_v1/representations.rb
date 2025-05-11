@@ -633,6 +633,7 @@ module Google
       
           property :schedule, as: 'schedule', class: Google::Apis::StoragetransferV1::Schedule, decorator: Google::Apis::StoragetransferV1::Schedule::Representation
       
+          property :service_account, as: 'serviceAccount'
           property :status, as: 'status'
           property :transfer_spec, as: 'transferSpec', class: Google::Apis::StoragetransferV1::TransferSpec, decorator: Google::Apis::StoragetransferV1::TransferSpec::Representation
       

@@ -600,8 +600,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The URL that points to the file that stores the object list entries.
-        # This file must allow public access. Currently, only URLs with HTTP and HTTPS
-        # schemes are supported.
+        # This file must allow public access. The URL is either an HTTP/HTTPS address (e.
+        # g. `https://example.com/urllist.tsv`) or a Cloud Storage path (e.g. `gs://my-
+        # bucket/urllist.tsv`).
         # Corresponds to the JSON property `listUrl`
         # @return [String]
         attr_accessor :list_url
@@ -863,7 +864,12 @@ module Google
       # refers to the time of the last change to the object's content or metadata —
       # specifically, this is the `updated` property of Cloud Storage objects, the `
       # LastModified` field of S3 objects, and the `Last-Modified` header of Azure
-      # blobs. Transfers with a PosixFilesystem source or destination don't support `
+      # blobs. For S3 objects, the `LastModified` value is the time the object begins
+      # uploading. If the object meets your "last modification time" criteria, but has
+      # not finished uploading, the object is not transferred. See [Transfer from
+      # Amazon S3 to Cloud Storage](https://cloud.google.com/storage-transfer/docs/
+      # create-transfers/agentless/s3#transfer_options) for more information.
+      # Transfers with a PosixFilesystem source or destination don't support `
       # ObjectConditions`.
       class ObjectConditions
         include Google::Apis::Core::Hashable
@@ -1084,7 +1090,12 @@ module Google
         # refers to the time of the last change to the object's content or metadata —
         # specifically, this is the `updated` property of Cloud Storage objects, the `
         # LastModified` field of S3 objects, and the `Last-Modified` header of Azure
-        # blobs. Transfers with a PosixFilesystem source or destination don't support `
+        # blobs. For S3 objects, the `LastModified` value is the time the object begins
+        # uploading. If the object meets your "last modification time" criteria, but has
+        # not finished uploading, the object is not transferred. See [Transfer from
+        # Amazon S3 to Cloud Storage](https://cloud.google.com/storage-transfer/docs/
+        # create-transfers/agentless/s3#transfer_options) for more information.
+        # Transfers with a PosixFilesystem source or destination don't support `
         # ObjectConditions`.
         # Corresponds to the JSON property `objectConditions`
         # @return [Google::Apis::StoragetransferV1::ObjectConditions]
@@ -1576,6 +1587,20 @@ module Google
         # @return [Google::Apis::StoragetransferV1::Schedule]
         attr_accessor :schedule
       
+        # Optional. The service account to be used to access resources in the consumer
+        # project in the transfer job. We accept `email` or `uniqueId` for the service
+        # account. Service account format is projects/-/serviceAccounts/`
+        # ACCOUNT_EMAIL_OR_UNIQUEID` See https://cloud.google.com/iam/docs/reference/
+        # credentials/rest/v1/projects.serviceAccounts/generateAccessToken#path-
+        # parameters for details. Caller requires the following IAM permission on the
+        # specified service account: `iam.serviceAccounts.actAs`. project-PROJECT_NUMBER@
+        # storage-transfer-service.iam.gserviceaccount.com requires the following IAM
+        # permission on the specified service account: `iam.serviceAccounts.
+        # getAccessToken`
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
         # Status of the job. This value MUST be specified for `CreateTransferJobRequests`
         # . **Note:** The effect of the new job status takes place during a subsequent
         # job run. For example, if you change the job status from ENABLED to DISABLED,
@@ -1608,6 +1633,7 @@ module Google
           @project_id = args[:project_id] if args.key?(:project_id)
           @replication_spec = args[:replication_spec] if args.key?(:replication_spec)
           @schedule = args[:schedule] if args.key?(:schedule)
+          @service_account = args[:service_account] if args.key?(:service_account)
           @status = args[:status] if args.key?(:status)
           @transfer_spec = args[:transfer_spec] if args.key?(:transfer_spec)
         end
@@ -1864,7 +1890,12 @@ module Google
         # refers to the time of the last change to the object's content or metadata —
         # specifically, this is the `updated` property of Cloud Storage objects, the `
         # LastModified` field of S3 objects, and the `Last-Modified` header of Azure
-        # blobs. Transfers with a PosixFilesystem source or destination don't support `
+        # blobs. For S3 objects, the `LastModified` value is the time the object begins
+        # uploading. If the object meets your "last modification time" criteria, but has
+        # not finished uploading, the object is not transferred. See [Transfer from
+        # Amazon S3 to Cloud Storage](https://cloud.google.com/storage-transfer/docs/
+        # create-transfers/agentless/s3#transfer_options) for more information.
+        # Transfers with a PosixFilesystem source or destination don't support `
         # ObjectConditions`.
         # Corresponds to the JSON property `objectConditions`
         # @return [Google::Apis::StoragetransferV1::ObjectConditions]
