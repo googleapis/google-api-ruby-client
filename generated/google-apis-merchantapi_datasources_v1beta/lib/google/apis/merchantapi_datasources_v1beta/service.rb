@@ -51,7 +51,8 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Creates the new data source configuration for the given account.
+        # Creates the new data source configuration for the given account. This method
+        # always creates a new data source.
         # @param [String] parent
         #   Required. The account where this data source will be created. Format: `
         #   accounts/`account``
@@ -229,7 +230,7 @@ module Google
         # Updates the existing data source configuration. The fields that are set in the
         # update mask but not provided in the resource will be deleted.
         # @param [String] name
-        #   Identifier. The name of the data source. Format: `accounts/`account`/
+        #   Required. Identifier. The name of the data source. Format: `accounts/`account`/
         #   dataSources/`datasource``
         # @param [Google::Apis::MerchantapiDatasourcesV1beta::DataSource] data_source_object
         # @param [String] update_mask
