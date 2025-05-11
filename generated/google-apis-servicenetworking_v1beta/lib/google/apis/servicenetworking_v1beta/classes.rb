@@ -276,7 +276,7 @@ module Google
         attr_accessor :kind
       
         # Content of the configuration. The underlying schema should be defined by
-        # Aspect owners as protobuf message under `apiserving/configaspects/proto`.
+        # Aspect owners as protobuf message under `google/api/configaspects/proto`.
         # Corresponds to the JSON property `spec`
         # @return [Hash<String,Object>]
         attr_accessor :spec
