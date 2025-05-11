@@ -20413,8 +20413,8 @@ module Google
         attr_accessor :labels
       
         # Maximum Transmission Unit (MTU), in bytes, of packets passing through this
-        # interconnect attachment. Only 1440 and 1500 are allowed. If not specified, the
-        # value will default to 1440.
+        # interconnect attachment. Valid values are 1440, 1460, 1500, and 8896. If not
+        # specified, the value will default to 1440.
         # Corresponds to the JSON property `mtu`
         # @return [Fixnum]
         attr_accessor :mtu
