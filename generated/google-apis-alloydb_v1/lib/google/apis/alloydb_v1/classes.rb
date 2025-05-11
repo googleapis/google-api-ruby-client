@@ -1478,6 +1478,16 @@ module Google
       class Instance
         include Google::Apis::Core::Hashable
       
+        # Optional. Specifies whether an instance needs to spin up. Once the instance is
+        # active, the activation policy can be updated to the `NEVER` to stop the
+        # instance. Likewise, the activation policy can be updated to `ALWAYS` to start
+        # the instance. There are restrictions around when an instance can/cannot be
+        # activated (for example, a read pool instance should be stopped before stopping
+        # primary etc.). Please refer to the API documentation for more details.
+        # Corresponds to the JSON property `activationPolicy`
+        # @return [String]
+        attr_accessor :activation_policy
+      
         # Annotations to allow client tools to store small amount of arbitrary data.
         # This is distinct from labels. https://google.aip.dev/128
         # Corresponds to the JSON property `annotations`
@@ -1663,6 +1673,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @activation_policy = args[:activation_policy] if args.key?(:activation_policy)
           @annotations = args[:annotations] if args.key?(:annotations)
           @availability_type = args[:availability_type] if args.key?(:availability_type)
           @client_connection_config = args[:client_connection_config] if args.key?(:client_connection_config)
