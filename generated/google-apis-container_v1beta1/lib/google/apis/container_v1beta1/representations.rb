@@ -664,6 +664,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MemoryManager
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MeshCertificates
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1175,6 +1181,12 @@ module Google
       end
       
       class TimeWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TopologyManager
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2567,6 +2579,13 @@ module Google
         end
       end
       
+      class MemoryManager
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy'
+        end
+      end
+      
       class MeshCertificates
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2776,7 +2795,11 @@ module Google
           property :image_maximum_gc_age, as: 'imageMaximumGcAge'
           property :image_minimum_gc_age, as: 'imageMinimumGcAge'
           property :insecure_kubelet_readonly_port_enabled, as: 'insecureKubeletReadonlyPortEnabled'
+          property :memory_manager, as: 'memoryManager', class: Google::Apis::ContainerV1beta1::MemoryManager, decorator: Google::Apis::ContainerV1beta1::MemoryManager::Representation
+      
           property :pod_pids_limit, :numeric_string => true, as: 'podPidsLimit'
+          property :topology_manager, as: 'topologyManager', class: Google::Apis::ContainerV1beta1::TopologyManager, decorator: Google::Apis::ContainerV1beta1::TopologyManager::Representation
+      
         end
       end
       
@@ -3530,6 +3553,14 @@ module Google
           property :maintenance_exclusion_options, as: 'maintenanceExclusionOptions', class: Google::Apis::ContainerV1beta1::MaintenanceExclusionOptions, decorator: Google::Apis::ContainerV1beta1::MaintenanceExclusionOptions::Representation
       
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class TopologyManager
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy'
+          property :scope, as: 'scope'
         end
       end
       
