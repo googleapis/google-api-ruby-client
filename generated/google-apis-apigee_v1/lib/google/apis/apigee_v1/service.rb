@@ -2687,10 +2687,10 @@ module Google
         # avoid service disruptions, a consumer key and secret should not exceed 2 KBs
         # each. **Note**: When creating the consumer key and secret, an association to
         # API products will not be made. Therefore, you should not specify the
-        # associated API products in your request. Instead, use the
-        # ProductizeAppGroupAppKey API to make the association after the consumer key
-        # and secret are created. If a consumer key and secret already exist, you can
-        # keep them or delete them using the DeleteAppGroupAppKey API.
+        # associated API products in your request. Instead, use the UpdateAppGroupAppKey
+        # API to make the association after the consumer key and secret are created. If
+        # a consumer key and secret already exist, you can keep them or delete them
+        # using the DeleteAppGroupAppKey API.
         # @param [String] parent
         #   Required. Parent of the AppGroup app key. Use the following structure in your
         #   request: `organizations/`org`/appgroups/`app_group_name`/apps/`app`/keys`
@@ -7940,8 +7940,7 @@ module Google
         # @param [String] filter
         #   Filter that enables you to drill-down on specific dimension values.
         # @param [String] limit
-        #   Maximum number of result items to return. The default and maximum value that
-        #   can be returned is 14400.
+        #   Maximum number of result items to return.
         # @param [String] offset
         #   Offset value. Use `offset` with `limit` to enable pagination of results. For
         #   example, to display results 11-20, set limit to `10` and offset to `10`.
@@ -7956,7 +7955,7 @@ module Google
         #   Flag that specifies whether the sort order should be ascending or descending.
         #   Valid values include `DESC` and `ASC`.
         # @param [String] sortby
-        #   Comma-separated list of columns to sort the final result.
+        #   Comma-separated list of metrics to sort the final result.
         # @param [String] time_range
         #   Required. Time interval for the interactive query. Time range is specified in
         #   GMT as `start~end`. For example: `04/15/2017 00:00~05/15/2017 23:59`
@@ -9368,8 +9367,7 @@ module Google
         # @param [String] filter
         #   Filter that enables you to drill down on specific dimension values.
         # @param [String] limit
-        #   Maximum number of result items to return. The default and maximum value that
-        #   can be returned is 14400.
+        #   Maximum number of result items to return.
         # @param [String] offset
         #   Offset value. Use `offset` with `limit` to enable pagination of results. For
         #   example, to display results 11-20, set limit to `10` and offset to `10`.
@@ -9384,7 +9382,7 @@ module Google
         #   Flag that specifies whether the sort order should be ascending or descending.
         #   Valid values include: `DESC` and `ASC`.
         # @param [String] sortby
-        #   Comma-separated list of columns to sort the final result.
+        #   Comma-separated list of metrics to sort the final result.
         # @param [String] time_range
         #   Time interval for the interactive query. Time range is specified in GMT as `
         #   start~end`. For example: `04/15/2017 00:00~05/15/2017 23:59`
@@ -10162,8 +10160,7 @@ module Google
         # @param [String] filter
         #   Flag that enables drill-down on specific dimension values.
         # @param [String] limit
-        #   Maximum number of result items to return. The default and maximum value that
-        #   can be returned is 14400.
+        #   Maximum number of result items to return.
         # @param [String] offset
         #   Offset value. Use `offset` with `limit` to enable pagination of results. For
         #   example, to display results 11-20, set limit to `10` and offset to `10`.
@@ -10176,7 +10173,7 @@ module Google
         #   Flag that specifies if the sort order should be ascending or descending. Valid
         #   values are `DESC` and `ASC`.
         # @param [String] sortby
-        #   Comma-separated list of columns to sort the final result.
+        #   Comma-separated list of metrics to sort the final result.
         # @param [String] time_range
         #   Time interval for the interactive query. Time range is specified in GMT as `
         #   start~end`. For example: `04/15/2017 00:00~05/15/2017 23:59`
@@ -11190,8 +11187,7 @@ module Google
         # @param [String] filter
         #   Filter that enables you to drill-down on specific dimension values.
         # @param [String] limit
-        #   Maximum number of result items to return. The default and maximum value that
-        #   can be returned is 14400.
+        #   Maximum number of result items to return.
         # @param [String] offset
         #   Offset value. Use `offset` with `limit` to enable pagination of results. For
         #   example, to display results 11-20, set limit to `10` and offset to `10`.
@@ -11204,7 +11200,7 @@ module Google
         #   Flag that specifies whether the sort order should be ascending or descending.
         #   Valid values include `DESC` and `ASC`.
         # @param [String] sortby
-        #   Comma-separated list of columns used to sort the final result.
+        #   Comma-separated list of metrics used to sort the final result.
         # @param [String] time_range
         #   Required. Time interval for the interactive query. Time range is specified in
         #   GMT as `start~end`. For example: `04/15/2017 00:00~05/15/2017 23:59`.
