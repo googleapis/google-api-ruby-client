@@ -811,7 +811,8 @@ module Google
       class AlgorithmRules
         include Google::Apis::Core::Hashable
       
-        # Attribution model for the algorithm.
+        # Attribution model for the algorithm. This field is only supported for
+        # allowlisted partners.
         # Corresponds to the JSON property `attributionModelId`
         # @return [Fixnum]
         attr_accessor :attribution_model_id
@@ -895,7 +896,7 @@ module Google
         # @return [String]
         attr_accessor :string_value
       
-        # Video player size value.
+        # Video player size value. This field is only supported for allowlisted partners.
         # Corresponds to the JSON property `videoPlayerSizeValue`
         # @return [String]
         attr_accessor :video_player_size_value
@@ -1043,12 +1044,13 @@ module Google
       class AlgorithmRulesSignal
         include Google::Apis::Core::Hashable
       
-        # Signal based on active views.
+        # Signal based on active views. This field is only supported for allowlisted
+        # partners.
         # Corresponds to the JSON property `activeViewSignal`
         # @return [String]
         attr_accessor :active_view_signal
       
-        # Signal based on clicks.
+        # Signal based on clicks. This field is only supported for allowlisted partners.
         # Corresponds to the JSON property `clickSignal`
         # @return [String]
         attr_accessor :click_signal
@@ -1109,7 +1111,8 @@ module Google
       class AlgorithmRulesSignalValue
         include Google::Apis::Core::Hashable
       
-        # Signal based on active views. Only `TIME_ON_SCREEN` is supported.
+        # Signal based on active views. Only `TIME_ON_SCREEN` is supported. This field
+        # is only supported for allowlisted partners.
         # Corresponds to the JSON property `activeViewSignal`
         # @return [String]
         attr_accessor :active_view_signal
