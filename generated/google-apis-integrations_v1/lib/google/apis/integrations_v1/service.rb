@@ -959,6 +959,257 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Request to create a new AgentFlow with user-provided flow configuration.
+        # @param [String] parent
+        #   Required. Parent resource name where this AgentFlow will be created.
+        # @param [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow] google_cloud_integrations_v1alpha_agent_flow_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_collection_engine_assistant_agent_flow(parent, google_cloud_integrations_v1alpha_agent_flow_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/agentFlows', options)
+          command.request_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow::Representation
+          command.request_object = google_cloud_integrations_v1alpha_agent_flow_object
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an existing AgentFlow.
+        # @param [String] name
+        #   Required. The resource name of the AgentFlow to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_collection_engine_assistant_agent_flow(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Uses Natural Language (NL) to generate an AgentFlow configuration and create a
+        # new AgentFlow.
+        # @param [String] parent
+        #   Required. Parent resource name where this AgentFlow will be created.
+        # @param [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaGenerateAgentFlowRequest] google_cloud_integrations_v1alpha_generate_agent_flow_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaGenerateAgentFlowResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaGenerateAgentFlowResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_project_location_collection_engine_assistant_agent_flow(parent, google_cloud_integrations_v1alpha_generate_agent_flow_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/agentFlows:generate', options)
+          command.request_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaGenerateAgentFlowRequest::Representation
+          command.request_object = google_cloud_integrations_v1alpha_generate_agent_flow_request_object
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaGenerateAgentFlowResponse::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaGenerateAgentFlowResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Uses Natural Language (NL) to generate an AgentFlow configuration and update
+        # an existing AgentFlow.
+        # @param [String] name
+        #   Required. The resource name of the AgentFlow to update.
+        # @param [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaGenerateAndUpdateAgentFlowRequest] google_cloud_integrations_v1alpha_generate_and_update_agent_flow_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaGenerateAndUpdateAgentFlowResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaGenerateAndUpdateAgentFlowResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_project_location_collection_engine_assistant_agent_flow_and_update(name, google_cloud_integrations_v1alpha_generate_and_update_agent_flow_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:generateAndUpdate', options)
+          command.request_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaGenerateAndUpdateAgentFlowRequest::Representation
+          command.request_object = google_cloud_integrations_v1alpha_generate_and_update_agent_flow_request_object
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaGenerateAndUpdateAgentFlowResponse::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaGenerateAndUpdateAgentFlowResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an existing AgentFlow.
+        # @param [String] name
+        #   Required. The resource name of the AgentFlow to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_collection_engine_assistant_agent_flow(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all AgentFlows.
+        # @param [String] parent
+        #   Required. The parent resource where this AgentFlow was created.
+        # @param [String] filter
+        #   Optional. Standard filter field. Filtering as supported in https://developers.
+        #   google.com/authorized-buyers/apis/guides/list-filters.
+        # @param [String] order_by
+        #   Optional. The results would be returned in order specified here. Currently
+        #   supported sort keys are: Descending sort order for "create_time", "update_time"
+        #   . Ascending sort order for "agent_flow_id", "display_name".
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of AgentFlows to return. The service may return
+        #   fewer than this value. If unspecified, at most 100 AgentFlows will be returned.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListAgentFlows` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListAgentFlows` must match the call that provided the
+        #   page token.
+        # @param [String] read_mask
+        #   Optional. The mask which specifies fields that need to be returned in the
+        #   AgentFlow's response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaListAgentFlowsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaListAgentFlowsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_collection_engine_assistant_agent_flows(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/agentFlows', options)
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaListAgentFlowsResponse::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaListAgentFlowsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing AgentFlow.
+        # @param [String] name
+        #   Required. Resource name of the agent flow.
+        # @param [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow] google_cloud_integrations_v1alpha_agent_flow_object
+        # @param [String] update_mask
+        #   Optional. Field mask specifying the fields in the above AgentFlow that have
+        #   been modified and need to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_collection_engine_assistant_agent_flow(name, google_cloud_integrations_v1alpha_agent_flow_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow::Representation
+          command.request_object = google_cloud_integrations_v1alpha_agent_flow_object
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists the available entities and actions associated with a Connection.
         # @param [String] name
         #   Required. ConnectionSchemaMetadata name. Format: projects/`project`/locations/`
