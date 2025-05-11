@@ -59,8 +59,8 @@ module Google
         # @return [Google::Apis::BigtableadminV2::MultiClusterRoutingUseAny]
         attr_accessor :multi_cluster_routing_use_any
       
-        # The unique name of the app profile. Values are of the form `projects/`project`/
-        # instances/`instance`/appProfiles/_a-zA-Z0-9*`.
+        # The unique name of the app profile, up to 50 characters long. Values are of
+        # the form `projects/`project`/instances/`instance`/appProfiles/_a-zA-Z0-9*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3013,6 +3013,12 @@ module Google
       class LogicalView
         include Google::Apis::Core::Hashable
       
+        # Optional. Set to true to make the LogicalView protected against deletion.
+        # Corresponds to the JSON property `deletionProtection`
+        # @return [Boolean]
+        attr_accessor :deletion_protection
+        alias_method :deletion_protection?, :deletion_protection
+      
         # Optional. The etag for this logical view. This may be sent on update requests
         # to ensure that the client has an up-to-date value before proceeding. The
         # server returns an ABORTED error on a mismatched etag.
@@ -3037,6 +3043,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @deletion_protection = args[:deletion_protection] if args.key?(:deletion_protection)
           @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @query = args[:query] if args.key?(:query)

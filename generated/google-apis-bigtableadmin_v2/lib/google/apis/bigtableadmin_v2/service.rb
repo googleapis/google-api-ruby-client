@@ -591,8 +591,8 @@ module Google
         
         # Updates an app profile within an instance.
         # @param [String] name
-        #   The unique name of the app profile. Values are of the form `projects/`project`/
-        #   instances/`instance`/appProfiles/_a-zA-Z0-9*`.
+        #   The unique name of the app profile, up to 50 characters long. Values are of
+        #   the form `projects/`project`/instances/`instance`/appProfiles/_a-zA-Z0-9*`.
         # @param [Google::Apis::BigtableadminV2::AppProfile] app_profile_object
         # @param [Boolean] ignore_warnings
         #   If true, ignore safety checks when updating the app profile.
