@@ -1,5 +1,9 @@
 # Release history for google-apis-cloudprofiler_v2
 
+### v0.26.0 (2025-05-11)
+
+* Regenerated using generator version 0.17.0
+
 ### v0.25.0 (2024-05-19)
 
 * Regenerated using generator version 0.15.0
