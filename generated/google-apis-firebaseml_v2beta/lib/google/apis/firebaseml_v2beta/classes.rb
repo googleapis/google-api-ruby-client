@@ -1118,6 +1118,13 @@ module Google
       class GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Indicates whether to include thoughts in the response. If true,
+        # thoughts are returned only when available.
+        # Corresponds to the JSON property `includeThoughts`
+        # @return [Boolean]
+        attr_accessor :include_thoughts
+        alias_method :include_thoughts?, :include_thoughts
+      
         # Optional. Indicates the thinking budget in tokens. This is only applied when
         # enable_thinking is true.
         # Corresponds to the JSON property `thinkingBudget`
@@ -1130,6 +1137,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @include_thoughts = args[:include_thoughts] if args.key?(:include_thoughts)
           @thinking_budget = args[:thinking_budget] if args.key?(:thinking_budget)
         end
       end
