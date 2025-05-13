@@ -108,10 +108,10 @@ module Google
           if upload_id.nil?
             res = do_retry :initiate_resumable_upload, client
           elsif delete_upload && !upload_id.nil?
-            make_resumable_upload_url upload_id
+            construct_resumable_upload_url upload_id
             res = do_retry :cancel_resumable_upload, client
           else
-            make_resumable_upload_url upload_id
+            construct_resumable_upload_url upload_id
             res = do_retry :reinitiate_resumable_upload, client
           end
 
