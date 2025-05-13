@@ -156,7 +156,7 @@ module Google
         end
 
         # Making resumable upload url from upload_id
-        def make_resumable_upload_url(upload_id)
+        def construct_resumable_upload_url(upload_id)
           query_params = query.dup
           query_params['uploadType'] = RESUMABLE
           query_params['upload_id'] = upload_id
