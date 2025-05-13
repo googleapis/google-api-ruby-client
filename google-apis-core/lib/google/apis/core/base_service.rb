@@ -359,7 +359,7 @@ module Google
         #   unique id generated for an ongoing upload
 
         def restart_resumable_upload(bucket, upload_source, upload_id, options: nil)
-          command = make_storage_upload_command(:post, 'b/{bucket}/o', options)
+          command = make_storage_upload_command(:put, 'b/{bucket}/o', options)
           command.upload_source = upload_source
           command.upload_id = upload_id
           command.params['bucket'] = bucket unless bucket.nil?
@@ -375,7 +375,7 @@ module Google
         #   unique id generated for an ongoing upload
 
         def delete_resumable_upload(bucket, upload_id, options: nil)
-          command = make_storage_upload_command(:post, 'b/{bucket}/o', options)
+          command = make_storage_upload_command(:delete, 'b/{bucket}/o', options)
           command.upload_id = upload_id
           command.params['bucket'] = bucket unless bucket.nil?
           command.delete_upload = options[:delete_upload] unless options[:delete_upload].nil?
