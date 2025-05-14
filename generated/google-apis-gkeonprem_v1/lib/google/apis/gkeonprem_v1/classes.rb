@@ -964,6 +964,11 @@ module Google
         # @return [String]
         attr_accessor :local_name
       
+        # Output only. The namespace of the cluster.
+        # Corresponds to the JSON property `localNamespace`
+        # @return [String]
+        attr_accessor :local_namespace
+      
         # Specifies configurations to put bare metal nodes in and out of maintenance.
         # Corresponds to the JSON property `maintenanceConfig`
         # @return [Google::Apis::GkeonpremV1::BareMetalMaintenanceConfig]
@@ -1073,6 +1078,7 @@ module Google
           @fleet = args[:fleet] if args.key?(:fleet)
           @load_balancer = args[:load_balancer] if args.key?(:load_balancer)
           @local_name = args[:local_name] if args.key?(:local_name)
+          @local_namespace = args[:local_namespace] if args.key?(:local_namespace)
           @maintenance_config = args[:maintenance_config] if args.key?(:maintenance_config)
           @maintenance_status = args[:maintenance_status] if args.key?(:maintenance_status)
           @name = args[:name] if args.key?(:name)

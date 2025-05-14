@@ -1215,6 +1215,7 @@ module Google
           property :load_balancer, as: 'loadBalancer', class: Google::Apis::GkeonpremV1::BareMetalLoadBalancerConfig, decorator: Google::Apis::GkeonpremV1::BareMetalLoadBalancerConfig::Representation
       
           property :local_name, as: 'localName'
+          property :local_namespace, as: 'localNamespace'
           property :maintenance_config, as: 'maintenanceConfig', class: Google::Apis::GkeonpremV1::BareMetalMaintenanceConfig, decorator: Google::Apis::GkeonpremV1::BareMetalMaintenanceConfig::Representation
       
           property :maintenance_status, as: 'maintenanceStatus', class: Google::Apis::GkeonpremV1::BareMetalMaintenanceStatus, decorator: Google::Apis::GkeonpremV1::BareMetalMaintenanceStatus::Representation
