@@ -2349,6 +2349,7 @@ module Google
           property :integer_value, as: 'integerValue'
           property :money_value, as: 'moneyValue', class: Google::Apis::DocumentaiV1::GoogleTypeMoney, decorator: Google::Apis::DocumentaiV1::GoogleTypeMoney::Representation
       
+          property :signature_value, as: 'signatureValue'
           property :text, as: 'text'
         end
       end

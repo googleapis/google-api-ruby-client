@@ -2498,6 +2498,12 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleTypeMoney]
         attr_accessor :money_value
       
+        # 
+        # Corresponds to the JSON property `signatureValue`
+        # @return [Boolean]
+        attr_accessor :signature_value
+        alias_method :signature_value?, :signature_value
+      
         # Optional. An optional field to store a normalized string. For some entity
         # types, one of respective `structured_value` fields may also be populated. Also
         # not all the types of `structured_value` will be normalized. For example, some
@@ -2523,6 +2529,7 @@ module Google
           @float_value = args[:float_value] if args.key?(:float_value)
           @integer_value = args[:integer_value] if args.key?(:integer_value)
           @money_value = args[:money_value] if args.key?(:money_value)
+          @signature_value = args[:signature_value] if args.key?(:signature_value)
           @text = args[:text] if args.key?(:text)
         end
       end
