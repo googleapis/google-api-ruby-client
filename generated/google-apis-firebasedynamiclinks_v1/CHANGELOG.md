@@ -1,5 +1,10 @@
 # Release history for google-apis-firebasedynamiclinks_v1
 
+### v0.21.0 (2025-05-04)
+
+* Regenerated from discovery document revision 20241125
+* Regenerated using generator version 0.17.0
+
 ### v0.20.0 (2024-08-25)
 
 * Regenerated from discovery document revision 20240821
