@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackupServiceToggledEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchUsageLogEvents
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -262,6 +268,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Eid
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EidInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -287,6 +305,12 @@ module Google
       end
       
       class EnterpriseUpgradeEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EuiccChipInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -688,6 +712,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RequestDeviceInfoParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RequestDeviceInfoStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ScreenBrightnessSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1066,6 +1102,15 @@ module Google
         end
       end
       
+      class BackupServiceToggledEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :admin_package_name, as: 'adminPackageName'
+          property :admin_user_id, as: 'adminUserId'
+          property :backup_service_state, as: 'backupServiceState'
+        end
+      end
+      
       class BatchUsageLogEvents
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1145,6 +1190,10 @@ module Google
           property :duration, as: 'duration'
           property :error_code, as: 'errorCode'
           property :new_password, as: 'newPassword'
+          property :request_device_info_params, as: 'requestDeviceInfoParams', class: Google::Apis::AndroidmanagementV1::RequestDeviceInfoParams, decorator: Google::Apis::AndroidmanagementV1::RequestDeviceInfoParams::Representation
+      
+          property :request_device_info_status, as: 'requestDeviceInfoStatus', class: Google::Apis::AndroidmanagementV1::RequestDeviceInfoStatus, decorator: Google::Apis::AndroidmanagementV1::RequestDeviceInfoStatus::Representation
+      
           collection :reset_password_flags, as: 'resetPasswordFlags'
           property :start_lost_mode_params, as: 'startLostModeParams', class: Google::Apis::AndroidmanagementV1::StartLostModeParams, decorator: Google::Apis::AndroidmanagementV1::StartLostModeParams::Representation
       
@@ -1300,6 +1349,7 @@ module Google
       class DeviceConnectivityManagement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bluetooth_sharing, as: 'bluetoothSharing'
           property :configure_wifi, as: 'configureWifi'
           property :tethering_settings, as: 'tetheringSettings'
           property :usb_data_access, as: 'usbDataAccess'
@@ -1376,6 +1426,21 @@ module Google
         end
       end
       
+      class Eid
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :eid, as: 'eid'
+        end
+      end
+      
+      class EidInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :eids, as: 'eids', class: Google::Apis::AndroidmanagementV1::Eid, decorator: Google::Apis::AndroidmanagementV1::Eid::Representation
+      
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1435,6 +1500,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enterprise, as: 'enterprise'
           property :upgrade_state, as: 'upgradeState'
+        end
+      end
+      
+      class EuiccChipInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :eid, as: 'eid'
         end
       end
       
@@ -1510,6 +1582,8 @@ module Google
           collection :cpu_throttling_temperatures, as: 'cpuThrottlingTemperatures'
           property :device_baseband_version, as: 'deviceBasebandVersion'
           property :enterprise_specific_id, as: 'enterpriseSpecificId'
+          collection :euicc_chip_info, as: 'euiccChipInfo', class: Google::Apis::AndroidmanagementV1::EuiccChipInfo, decorator: Google::Apis::AndroidmanagementV1::EuiccChipInfo::Representation
+      
           collection :gpu_shutdown_temperatures, as: 'gpuShutdownTemperatures'
           collection :gpu_throttling_temperatures, as: 'gpuThrottlingTemperatures'
           property :hardware, as: 'hardware'
@@ -1967,6 +2041,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :account_types_with_management_disabled, as: 'accountTypesWithManagementDisabled'
+          property :bluetooth_sharing, as: 'bluetoothSharing'
           property :camera_disabled, as: 'cameraDisabled'
           property :max_days_with_work_off, as: 'maxDaysWithWorkOff'
           collection :personal_applications, as: 'personalApplications', class: Google::Apis::AndroidmanagementV1::PersonalApplicationPolicy, decorator: Google::Apis::AndroidmanagementV1::PersonalApplicationPolicy::Representation
@@ -2166,6 +2241,22 @@ module Google
           property :admin_package_name, as: 'adminPackageName'
           property :admin_user_id, as: 'adminUserId'
           property :target_user_id, as: 'targetUserId'
+        end
+      end
+      
+      class RequestDeviceInfoParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_info, as: 'deviceInfo'
+        end
+      end
+      
+      class RequestDeviceInfoStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :eid_info, as: 'eidInfo', class: Google::Apis::AndroidmanagementV1::EidInfo, decorator: Google::Apis::AndroidmanagementV1::EidInfo::Representation
+      
+          property :status, as: 'status'
         end
       end
       
@@ -2377,6 +2468,8 @@ module Google
           property :adb_shell_interactive_event, as: 'adbShellInteractiveEvent', class: Google::Apis::AndroidmanagementV1::AdbShellInteractiveEvent, decorator: Google::Apis::AndroidmanagementV1::AdbShellInteractiveEvent::Representation
       
           property :app_process_start_event, as: 'appProcessStartEvent', class: Google::Apis::AndroidmanagementV1::AppProcessStartEvent, decorator: Google::Apis::AndroidmanagementV1::AppProcessStartEvent::Representation
+      
+          property :backup_service_toggled_event, as: 'backupServiceToggledEvent', class: Google::Apis::AndroidmanagementV1::BackupServiceToggledEvent, decorator: Google::Apis::AndroidmanagementV1::BackupServiceToggledEvent::Representation
       
           property :cert_authority_installed_event, as: 'certAuthorityInstalledEvent', class: Google::Apis::AndroidmanagementV1::CertAuthorityInstalledEvent, decorator: Google::Apis::AndroidmanagementV1::CertAuthorityInstalledEvent::Representation
       

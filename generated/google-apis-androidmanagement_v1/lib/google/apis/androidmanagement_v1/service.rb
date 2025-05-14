@@ -1072,7 +1072,7 @@ module Google
         
         # Gets a web app.
         # @param [String] name
-        #   The name of the web app in the form enterprises/`enterpriseId`/webApp/`
+        #   The name of the web app in the form enterprises/`enterpriseId`/webApps/`
         #   packageName`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
