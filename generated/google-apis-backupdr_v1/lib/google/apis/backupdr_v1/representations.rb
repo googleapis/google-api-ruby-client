@@ -238,6 +238,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DiskBackupProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskDataSourceProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskRestoreProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskTargetEnvironment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DisplayDevice
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -461,6 +485,12 @@ module Google
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionDiskTargetEnvironment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -710,6 +740,8 @@ module Google
           property :consistency_time, as: 'consistencyTime'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :disk_backup_properties, as: 'diskBackupProperties', class: Google::Apis::BackupdrV1::DiskBackupProperties, decorator: Google::Apis::BackupdrV1::DiskBackupProperties::Representation
+      
           property :enforced_retention_end_time, as: 'enforcedRetentionEndTime'
           property :etag, as: 'etag'
           property :expire_time, as: 'expireTime'
@@ -855,6 +887,7 @@ module Google
           property :name, as: 'name'
           property :resource_type, as: 'resourceType'
           property :state, as: 'state'
+          collection :supported_resource_types, as: 'supportedResourceTypes'
           property :update_time, as: 'updateTime'
         end
       end
@@ -1042,6 +1075,7 @@ module Google
       class DataSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_blocked_by_vault_access_restriction, as: 'backupBlockedByVaultAccessRestriction'
           property :backup_config_info, as: 'backupConfigInfo', class: Google::Apis::BackupdrV1::BackupConfigInfo, decorator: Google::Apis::BackupdrV1::BackupConfigInfo::Representation
       
           property :backup_count, :numeric_string => true, as: 'backupCount'
@@ -1078,9 +1112,71 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :compute_instance_datasource_properties, as: 'computeInstanceDatasourceProperties', class: Google::Apis::BackupdrV1::ComputeInstanceDataSourceProperties, decorator: Google::Apis::BackupdrV1::ComputeInstanceDataSourceProperties::Representation
       
+          property :disk_datasource_properties, as: 'diskDatasourceProperties', class: Google::Apis::BackupdrV1::DiskDataSourceProperties, decorator: Google::Apis::BackupdrV1::DiskDataSourceProperties::Representation
+      
           property :gcp_resourcename, as: 'gcpResourcename'
           property :location, as: 'location'
           property :type, as: 'type'
+        end
+      end
+      
+      class DiskBackupProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
+          property :description, as: 'description'
+          collection :guest_os_feature, as: 'guestOsFeature', class: Google::Apis::BackupdrV1::GuestOsFeature, decorator: Google::Apis::BackupdrV1::GuestOsFeature::Representation
+      
+          collection :licenses, as: 'licenses'
+          property :region, as: 'region'
+          collection :replica_zones, as: 'replicaZones'
+          property :size_gb, :numeric_string => true, as: 'sizeGb'
+          property :source_disk, as: 'sourceDisk'
+          property :type, as: 'type'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class DiskDataSourceProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :name, as: 'name'
+          property :size_gb, :numeric_string => true, as: 'sizeGb'
+          property :type, as: 'type'
+        end
+      end
+      
+      class DiskRestoreProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_mode, as: 'accessMode'
+          property :architecture, as: 'architecture'
+          property :description, as: 'description'
+          property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::BackupdrV1::CustomerEncryptionKey, decorator: Google::Apis::BackupdrV1::CustomerEncryptionKey::Representation
+      
+          property :enable_confidential_compute, as: 'enableConfidentialCompute'
+          collection :guest_os_feature, as: 'guestOsFeature', class: Google::Apis::BackupdrV1::GuestOsFeature, decorator: Google::Apis::BackupdrV1::GuestOsFeature::Representation
+      
+          hash :labels, as: 'labels'
+          collection :licenses, as: 'licenses'
+          property :name, as: 'name'
+          property :physical_block_size_bytes, :numeric_string => true, as: 'physicalBlockSizeBytes'
+          property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
+          property :provisioned_throughput, :numeric_string => true, as: 'provisionedThroughput'
+          hash :resource_manager_tags, as: 'resourceManagerTags'
+          collection :resource_policy, as: 'resourcePolicy'
+          property :size_gb, :numeric_string => true, as: 'sizeGb'
+          property :storage_pool, as: 'storagePool'
+          property :type, as: 'type'
+        end
+      end
+      
+      class DiskTargetEnvironment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project, as: 'project'
+          property :zone, as: 'zone'
         end
       end
       
@@ -1461,6 +1557,15 @@ module Google
         end
       end
       
+      class RegionDiskTargetEnvironment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project, as: 'project'
+          property :region, as: 'region'
+          collection :replica_zones, as: 'replicaZones'
+        end
+      end
+      
       class RemoveDataSourceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1490,6 +1595,12 @@ module Google
           property :compute_instance_restore_properties, as: 'computeInstanceRestoreProperties', class: Google::Apis::BackupdrV1::ComputeInstanceRestoreProperties, decorator: Google::Apis::BackupdrV1::ComputeInstanceRestoreProperties::Representation
       
           property :compute_instance_target_environment, as: 'computeInstanceTargetEnvironment', class: Google::Apis::BackupdrV1::ComputeInstanceTargetEnvironment, decorator: Google::Apis::BackupdrV1::ComputeInstanceTargetEnvironment::Representation
+      
+          property :disk_restore_properties, as: 'diskRestoreProperties', class: Google::Apis::BackupdrV1::DiskRestoreProperties, decorator: Google::Apis::BackupdrV1::DiskRestoreProperties::Representation
+      
+          property :disk_target_environment, as: 'diskTargetEnvironment', class: Google::Apis::BackupdrV1::DiskTargetEnvironment, decorator: Google::Apis::BackupdrV1::DiskTargetEnvironment::Representation
+      
+          property :region_disk_target_environment, as: 'regionDiskTargetEnvironment', class: Google::Apis::BackupdrV1::RegionDiskTargetEnvironment, decorator: Google::Apis::BackupdrV1::RegionDiskTargetEnvironment::Representation
       
           property :request_id, as: 'requestId'
         end
