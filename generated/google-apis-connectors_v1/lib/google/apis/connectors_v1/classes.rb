@@ -97,17 +97,17 @@ module Google
       class AuthConfig
         include Google::Apis::Core::Hashable
       
-        # List containing additional auth configs.
+        # Optional. List containing additional auth configs.
         # Corresponds to the JSON property `additionalVariables`
         # @return [Array<Google::Apis::ConnectorsV1::ConfigVariable>]
         attr_accessor :additional_variables
       
-        # Identifier key for auth config
+        # Optional. Identifier key for auth config
         # Corresponds to the JSON property `authKey`
         # @return [String]
         attr_accessor :auth_key
       
-        # The type of authentication configured.
+        # Optional. The type of authentication configured.
         # Corresponds to the JSON property `authType`
         # @return [String]
         attr_accessor :auth_type
@@ -588,7 +588,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :int_value
       
-        # Key of the config variable.
+        # Optional. Key of the config variable.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -814,6 +814,11 @@ module Google
         # @return [String]
         attr_accessor :envoy_image_location
       
+        # AuthConfig defines details of a authentication type.
+        # Corresponds to the JSON property `euaOauthAuthConfig`
+        # @return [Google::Apis::ConnectorsV1::AuthConfig]
+        attr_accessor :eua_oauth_auth_config
+      
         # Eventing Configuration of a connection next: 18
         # Corresponds to the JSON property `eventingConfig`
         # @return [Google::Apis::ConnectorsV1::EventingConfig]
@@ -829,6 +834,15 @@ module Google
         # Corresponds to the JSON property `eventingRuntimeData`
         # @return [Google::Apis::ConnectorsV1::EventingRuntimeData]
         attr_accessor :eventing_runtime_data
+      
+        # Optional. Fallback on admin credentials for the connection. If this both
+        # auth_override_enabled and fallback_on_admin_credentials are set to true, the
+        # connection will use the admin credentials if the dynamic auth header is not
+        # present during auth override.
+        # Corresponds to the JSON property `fallbackOnAdminCredentials`
+        # @return [Boolean]
+        attr_accessor :fallback_on_admin_credentials
+        alias_method :fallback_on_admin_credentials?, :fallback_on_admin_credentials
       
         # Output only. The name of the Hostname of the Service Directory service with
         # TLS.
@@ -947,9 +961,11 @@ module Google
           @description = args[:description] if args.key?(:description)
           @destination_configs = args[:destination_configs] if args.key?(:destination_configs)
           @envoy_image_location = args[:envoy_image_location] if args.key?(:envoy_image_location)
+          @eua_oauth_auth_config = args[:eua_oauth_auth_config] if args.key?(:eua_oauth_auth_config)
           @eventing_config = args[:eventing_config] if args.key?(:eventing_config)
           @eventing_enablement_type = args[:eventing_enablement_type] if args.key?(:eventing_enablement_type)
           @eventing_runtime_data = args[:eventing_runtime_data] if args.key?(:eventing_runtime_data)
+          @fallback_on_admin_credentials = args[:fallback_on_admin_credentials] if args.key?(:fallback_on_admin_credentials)
           @host = args[:host] if args.key?(:host)
           @image_location = args[:image_location] if args.key?(:image_location)
           @is_trusted_tester = args[:is_trusted_tester] if args.key?(:is_trusted_tester)
@@ -1221,6 +1237,11 @@ module Google
         attr_accessor :migrate_tls
         alias_method :migrate_tls?, :migrate_tls
       
+        # Indicate whether connector is being migrated to use direct VPC egress.
+        # Corresponds to the JSON property `networkEgressMode`
+        # @return [String]
+        attr_accessor :network_egress_mode
+      
         # Indicate whether cloud spanner is required for connector job.
         # Corresponds to the JSON property `provisionCloudSpanner`
         # @return [Boolean]
@@ -1268,6 +1289,7 @@ module Google
           @max_instance_request_concurrency = args[:max_instance_request_concurrency] if args.key?(:max_instance_request_concurrency)
           @migrate_deployment_model = args[:migrate_deployment_model] if args.key?(:migrate_deployment_model)
           @migrate_tls = args[:migrate_tls] if args.key?(:migrate_tls)
+          @network_egress_mode = args[:network_egress_mode] if args.key?(:network_egress_mode)
           @provision_cloud_spanner = args[:provision_cloud_spanner] if args.key?(:provision_cloud_spanner)
           @provision_memstore = args[:provision_memstore] if args.key?(:provision_memstore)
           @ratelimit_threshold = args[:ratelimit_threshold] if args.key?(:ratelimit_threshold)
@@ -1362,6 +1384,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The priority entity types for the connector version.
+        # Corresponds to the JSON property `priorityEntityTypes`
+        # @return [Array<Google::Apis::ConnectorsV1::PriorityEntityType>]
+        attr_accessor :priority_entity_types
+      
         # Output only. ReleaseVersion of the connector, for example: "1.0.1-alpha".
         # Corresponds to the JSON property `releaseVersion`
         # @return [String]
@@ -1436,6 +1463,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @name = args[:name] if args.key?(:name)
+          @priority_entity_types = args[:priority_entity_types] if args.key?(:priority_entity_types)
           @release_version = args[:release_version] if args.key?(:release_version)
           @role_grant = args[:role_grant] if args.key?(:role_grant)
           @role_grants = args[:role_grants] if args.key?(:role_grants)
@@ -1534,7 +1562,8 @@ module Google
       class ConnectorsLogConfig
         include Google::Apis::Core::Hashable
       
-        # Enabled represents whether logging is enabled or not for a connection.
+        # Optional. Enabled represents whether logging is enabled or not for a
+        # connection.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
@@ -2066,6 +2095,32 @@ module Google
         end
       end
       
+      # EUASecret provides a reference to entries in Secret Manager.
+      class EuaSecret
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The plain string value of the secret.
+        # Corresponds to the JSON property `secretValue`
+        # @return [String]
+        attr_accessor :secret_value
+      
+        # Optional. The resource name of the secret version in the format, format as: `
+        # projects/*/secrets/*/versions/*`.
+        # Corresponds to the JSON property `secretVersion`
+        # @return [String]
+        attr_accessor :secret_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @secret_value = args[:secret_value] if args.key?(:secret_value)
+          @secret_version = args[:secret_version] if args.key?(:secret_version)
+        end
+      end
+      
       # Egress control config for connector runtime. These configurations define the
       # rules to identify which outbound domains/hosts needs to be whitelisted. It may
       # be a static information for a particular connector version or it is derived
@@ -2143,9 +2198,9 @@ module Google
       class EncryptionKey
         include Google::Apis::Core::Hashable
       
-        # The [KMS key name] with which the content of the Operation is encrypted. The
-        # expected format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`. Will be
-        # empty string if google managed.
+        # Optional. The [KMS key name] with which the content of the Operation is
+        # encrypted. The expected format: `projects/*/locations/*/keyRings/*/cryptoKeys/*
+        # `. Will be empty string if google managed.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
@@ -2170,12 +2225,12 @@ module Google
       class EndPoint
         include Google::Apis::Core::Hashable
       
-        # The URI of the Endpoint.
+        # Optional. The URI of the Endpoint.
         # Corresponds to the JSON property `endpointUri`
         # @return [String]
         attr_accessor :endpoint_uri
       
-        # List of Header to be added to the Endpoint.
+        # Optional. List of Header to be added to the Endpoint.
         # Corresponds to the JSON property `headers`
         # @return [Array<Google::Apis::ConnectorsV1::Header>]
         attr_accessor :headers
@@ -2188,6 +2243,573 @@ module Google
         def update!(**args)
           @endpoint_uri = args[:endpoint_uri] if args.key?(:endpoint_uri)
           @headers = args[:headers] if args.key?(:headers)
+        end
+      end
+      
+      # AuthConfig defines details of a authentication type.
+      class EndUserAuthentication
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Config variables for the EndUserAuthentication.
+        # Corresponds to the JSON property `configVariables`
+        # @return [Array<Google::Apis::ConnectorsV1::EndUserAuthenticationConfigVariable>]
+        attr_accessor :config_variables
+      
+        # Output only. Created time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Destination configs for the EndUserAuthentication.
+        # Corresponds to the JSON property `destinationConfigs`
+        # @return [Array<Google::Apis::ConnectorsV1::DestinationConfig>]
+        attr_accessor :destination_configs
+      
+        # EndUserAuthenticationConfig defines details of a authentication configuration
+        # for EUC
+        # Corresponds to the JSON property `endUserAuthenticationConfig`
+        # @return [Google::Apis::ConnectorsV1::EndUserAuthenticationConfig]
+        attr_accessor :end_user_authentication_config
+      
+        # Optional. Labels for the EndUserAuthentication.
+        # Corresponds to the JSON property `labels`
+        # @return [Array<String>]
+        attr_accessor :labels
+      
+        # Required. Identifier. Resource name of the EndUserAuthentication. Format:
+        # projects/`project`/locations/`location`/connections/`connection`/
+        # endUserAuthentications/`end_user_authentication`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Message for NotifyEndpointDestination Destination to hit when the refresh
+        # token is expired.
+        # Corresponds to the JSON property `notifyEndpointDestination`
+        # @return [Google::Apis::ConnectorsV1::EndUserAuthenticationNotifyEndpointDestination]
+        attr_accessor :notify_endpoint_destination
+      
+        # Optional. Roles for the EndUserAuthentication.
+        # Corresponds to the JSON property `roles`
+        # @return [Array<String>]
+        attr_accessor :roles
+      
+        # EndUserAuthentication Status denotes the status of the EndUserAuthentication
+        # resource.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ConnectorsV1::EndUserAuthenticationEndUserAuthenticationStatus]
+        attr_accessor :status
+      
+        # Output only. Updated time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Optional. The user id of the user.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config_variables = args[:config_variables] if args.key?(:config_variables)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @destination_configs = args[:destination_configs] if args.key?(:destination_configs)
+          @end_user_authentication_config = args[:end_user_authentication_config] if args.key?(:end_user_authentication_config)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @notify_endpoint_destination = args[:notify_endpoint_destination] if args.key?(:notify_endpoint_destination)
+          @roles = args[:roles] if args.key?(:roles)
+          @status = args[:status] if args.key?(:status)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # EndUserAuthenticationConfig defines details of a authentication configuration
+      # for EUC
+      class EndUserAuthenticationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List containing additional auth configs.
+        # Corresponds to the JSON property `additionalVariables`
+        # @return [Array<Google::Apis::ConnectorsV1::EndUserAuthenticationConfigVariable>]
+        attr_accessor :additional_variables
+      
+        # Identifier key for auth config
+        # Corresponds to the JSON property `authKey`
+        # @return [String]
+        attr_accessor :auth_key
+      
+        # The type of authentication configured.
+        # Corresponds to the JSON property `authType`
+        # @return [String]
+        attr_accessor :auth_type
+      
+        # Parameters to support Oauth 2.0 Auth Code Grant Authentication. See https://
+        # www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
+        # Corresponds to the JSON property `oauth2AuthCodeFlow`
+        # @return [Google::Apis::ConnectorsV1::EndUserAuthenticationConfigOauth2AuthCodeFlow]
+        attr_accessor :oauth2_auth_code_flow
+      
+        # Parameters to support Oauth 2.0 Auth Code Grant Authentication using Google
+        # Provided OAuth Client. See https://tools.ietf.org/html/rfc6749#section-1.3.1
+        # for more details.
+        # Corresponds to the JSON property `oauth2AuthCodeFlowGoogleManaged`
+        # @return [Google::Apis::ConnectorsV1::EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged]
+        attr_accessor :oauth2_auth_code_flow_google_managed
+      
+        # Parameters to support Oauth 2.0 Client Credentials Grant Authentication. See
+        # https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
+        # Corresponds to the JSON property `oauth2ClientCredentials`
+        # @return [Google::Apis::ConnectorsV1::EndUserAuthenticationConfigOauth2ClientCredentials]
+        attr_accessor :oauth2_client_credentials
+      
+        # Parameters to support JSON Web Token (JWT) Profile for Oauth 2.0 Authorization
+        # Grant based authentication. See https://tools.ietf.org/html/rfc7523 for more
+        # details.
+        # Corresponds to the JSON property `oauth2JwtBearer`
+        # @return [Google::Apis::ConnectorsV1::EndUserAuthenticationConfigOauth2JwtBearer]
+        attr_accessor :oauth2_jwt_bearer
+      
+        # Parameters to support Ssh public key Authentication.
+        # Corresponds to the JSON property `sshPublicKey`
+        # @return [Google::Apis::ConnectorsV1::EndUserAuthenticationConfigSshPublicKey]
+        attr_accessor :ssh_public_key
+      
+        # Parameters to support Username and Password Authentication.
+        # Corresponds to the JSON property `userPassword`
+        # @return [Google::Apis::ConnectorsV1::EndUserAuthenticationConfigUserPassword]
+        attr_accessor :user_password
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_variables = args[:additional_variables] if args.key?(:additional_variables)
+          @auth_key = args[:auth_key] if args.key?(:auth_key)
+          @auth_type = args[:auth_type] if args.key?(:auth_type)
+          @oauth2_auth_code_flow = args[:oauth2_auth_code_flow] if args.key?(:oauth2_auth_code_flow)
+          @oauth2_auth_code_flow_google_managed = args[:oauth2_auth_code_flow_google_managed] if args.key?(:oauth2_auth_code_flow_google_managed)
+          @oauth2_client_credentials = args[:oauth2_client_credentials] if args.key?(:oauth2_client_credentials)
+          @oauth2_jwt_bearer = args[:oauth2_jwt_bearer] if args.key?(:oauth2_jwt_bearer)
+          @ssh_public_key = args[:ssh_public_key] if args.key?(:ssh_public_key)
+          @user_password = args[:user_password] if args.key?(:user_password)
+        end
+      end
+      
+      # Parameters to support Oauth 2.0 Auth Code Grant Authentication. See https://
+      # www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
+      class EndUserAuthenticationConfigOauth2AuthCodeFlow
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Authorization code to be exchanged for access and refresh tokens.
+        # Corresponds to the JSON property `authCode`
+        # @return [String]
+        attr_accessor :auth_code
+      
+        # Optional. Auth URL for Authorization Code Flow
+        # Corresponds to the JSON property `authUri`
+        # @return [String]
+        attr_accessor :auth_uri
+      
+        # Optional. Client ID for user-provided OAuth app.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # EUASecret provides a reference to entries in Secret Manager.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [Google::Apis::ConnectorsV1::EuaSecret]
+        attr_accessor :client_secret
+      
+        # Optional. Whether to enable PKCE when the user performs the auth code flow.
+        # Corresponds to the JSON property `enablePkce`
+        # @return [Boolean]
+        attr_accessor :enable_pkce
+        alias_method :enable_pkce?, :enable_pkce
+      
+        # pass only at create and not update using updateMask Auth Code Data
+        # Corresponds to the JSON property `oauthTokenData`
+        # @return [Google::Apis::ConnectorsV1::OAuthTokenData]
+        attr_accessor :oauth_token_data
+      
+        # Optional. PKCE verifier to be used during the auth code exchange.
+        # Corresponds to the JSON property `pkceVerifier`
+        # @return [String]
+        attr_accessor :pkce_verifier
+      
+        # Optional. Redirect URI to be provided during the auth code exchange.
+        # Corresponds to the JSON property `redirectUri`
+        # @return [String]
+        attr_accessor :redirect_uri
+      
+        # Optional. Scopes the connection will request when the user performs the auth
+        # code flow.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_code = args[:auth_code] if args.key?(:auth_code)
+          @auth_uri = args[:auth_uri] if args.key?(:auth_uri)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+          @enable_pkce = args[:enable_pkce] if args.key?(:enable_pkce)
+          @oauth_token_data = args[:oauth_token_data] if args.key?(:oauth_token_data)
+          @pkce_verifier = args[:pkce_verifier] if args.key?(:pkce_verifier)
+          @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
+          @scopes = args[:scopes] if args.key?(:scopes)
+        end
+      end
+      
+      # Parameters to support Oauth 2.0 Auth Code Grant Authentication using Google
+      # Provided OAuth Client. See https://tools.ietf.org/html/rfc6749#section-1.3.1
+      # for more details.
+      class EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Authorization code to be exchanged for access and refresh tokens.
+        # Corresponds to the JSON property `authCode`
+        # @return [String]
+        attr_accessor :auth_code
+      
+        # pass only at create and not update using updateMask Auth Code Data
+        # Corresponds to the JSON property `oauthTokenData`
+        # @return [Google::Apis::ConnectorsV1::OAuthTokenData]
+        attr_accessor :oauth_token_data
+      
+        # Optional. Redirect URI to be provided during the auth code exchange.
+        # Corresponds to the JSON property `redirectUri`
+        # @return [String]
+        attr_accessor :redirect_uri
+      
+        # Required. Scopes the connection will request when the user performs the auth
+        # code flow.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_code = args[:auth_code] if args.key?(:auth_code)
+          @oauth_token_data = args[:oauth_token_data] if args.key?(:oauth_token_data)
+          @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
+          @scopes = args[:scopes] if args.key?(:scopes)
+        end
+      end
+      
+      # Parameters to support Oauth 2.0 Client Credentials Grant Authentication. See
+      # https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
+      class EndUserAuthenticationConfigOauth2ClientCredentials
+        include Google::Apis::Core::Hashable
+      
+        # The client identifier.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # EUASecret provides a reference to entries in Secret Manager.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [Google::Apis::ConnectorsV1::EuaSecret]
+        attr_accessor :client_secret
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+        end
+      end
+      
+      # Parameters to support JSON Web Token (JWT) Profile for Oauth 2.0 Authorization
+      # Grant based authentication. See https://tools.ietf.org/html/rfc7523 for more
+      # details.
+      class EndUserAuthenticationConfigOauth2JwtBearer
+        include Google::Apis::Core::Hashable
+      
+        # EUASecret provides a reference to entries in Secret Manager.
+        # Corresponds to the JSON property `clientKey`
+        # @return [Google::Apis::ConnectorsV1::EuaSecret]
+        attr_accessor :client_key
+      
+        # JWT claims used for the jwt-bearer authorization grant.
+        # Corresponds to the JSON property `jwtClaims`
+        # @return [Google::Apis::ConnectorsV1::EndUserAuthenticationConfigOauth2JwtBearerJwtClaims]
+        attr_accessor :jwt_claims
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_key = args[:client_key] if args.key?(:client_key)
+          @jwt_claims = args[:jwt_claims] if args.key?(:jwt_claims)
+        end
+      end
+      
+      # JWT claims used for the jwt-bearer authorization grant.
+      class EndUserAuthenticationConfigOauth2JwtBearerJwtClaims
+        include Google::Apis::Core::Hashable
+      
+        # Value for the "aud" claim.
+        # Corresponds to the JSON property `audience`
+        # @return [String]
+        attr_accessor :audience
+      
+        # Value for the "iss" claim.
+        # Corresponds to the JSON property `issuer`
+        # @return [String]
+        attr_accessor :issuer
+      
+        # Value for the "sub" claim.
+        # Corresponds to the JSON property `subject`
+        # @return [String]
+        attr_accessor :subject
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audience = args[:audience] if args.key?(:audience)
+          @issuer = args[:issuer] if args.key?(:issuer)
+          @subject = args[:subject] if args.key?(:subject)
+        end
+      end
+      
+      # Parameters to support Ssh public key Authentication.
+      class EndUserAuthenticationConfigSshPublicKey
+        include Google::Apis::Core::Hashable
+      
+        # Format of SSH Client cert.
+        # Corresponds to the JSON property `certType`
+        # @return [String]
+        attr_accessor :cert_type
+      
+        # EUASecret provides a reference to entries in Secret Manager.
+        # Corresponds to the JSON property `sshClientCert`
+        # @return [Google::Apis::ConnectorsV1::EuaSecret]
+        attr_accessor :ssh_client_cert
+      
+        # EUASecret provides a reference to entries in Secret Manager.
+        # Corresponds to the JSON property `sshClientCertPass`
+        # @return [Google::Apis::ConnectorsV1::EuaSecret]
+        attr_accessor :ssh_client_cert_pass
+      
+        # The user account used to authenticate.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cert_type = args[:cert_type] if args.key?(:cert_type)
+          @ssh_client_cert = args[:ssh_client_cert] if args.key?(:ssh_client_cert)
+          @ssh_client_cert_pass = args[:ssh_client_cert_pass] if args.key?(:ssh_client_cert_pass)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # Parameters to support Username and Password Authentication.
+      class EndUserAuthenticationConfigUserPassword
+        include Google::Apis::Core::Hashable
+      
+        # EUASecret provides a reference to entries in Secret Manager.
+        # Corresponds to the JSON property `password`
+        # @return [Google::Apis::ConnectorsV1::EuaSecret]
+        attr_accessor :password
+      
+        # Username.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @password = args[:password] if args.key?(:password)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # EndUserAuthenticationConfigVariable represents a configuration variable
+      # present in a EndUserAuthentication.
+      class EndUserAuthenticationConfigVariable
+        include Google::Apis::Core::Hashable
+      
+        # Value is a bool.
+        # Corresponds to the JSON property `boolValue`
+        # @return [Boolean]
+        attr_accessor :bool_value
+        alias_method :bool_value?, :bool_value
+      
+        # Value is an integer
+        # Corresponds to the JSON property `intValue`
+        # @return [Fixnum]
+        attr_accessor :int_value
+      
+        # Required. Key of the config variable.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # EUASecret provides a reference to entries in Secret Manager.
+        # Corresponds to the JSON property `secretValue`
+        # @return [Google::Apis::ConnectorsV1::EuaSecret]
+        attr_accessor :secret_value
+      
+        # Value is a string.
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @int_value = args[:int_value] if args.key?(:int_value)
+          @key = args[:key] if args.key?(:key)
+          @secret_value = args[:secret_value] if args.key?(:secret_value)
+          @string_value = args[:string_value] if args.key?(:string_value)
+        end
+      end
+      
+      # EndUserAuthentication Status denotes the status of the EndUserAuthentication
+      # resource.
+      class EndUserAuthenticationEndUserAuthenticationStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Description of the state.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. State of Event Subscription resource.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Message for NotifyEndpointDestination Destination to hit when the refresh
+      # token is expired.
+      class EndUserAuthenticationNotifyEndpointDestination
+        include Google::Apis::Core::Hashable
+      
+        # Endpoint message includes details of the Destination endpoint.
+        # Corresponds to the JSON property `endpoint`
+        # @return [Google::Apis::ConnectorsV1::EndUserAuthenticationNotifyEndpointDestinationEndPoint]
+        attr_accessor :endpoint
+      
+        # Required. Service account needed for runtime plane to notify the backend.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # Required. type of the destination
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Endpoint message includes details of the Destination endpoint.
+      class EndUserAuthenticationNotifyEndpointDestinationEndPoint
+        include Google::Apis::Core::Hashable
+      
+        # Required. The URI of the Endpoint.
+        # Corresponds to the JSON property `endpointUri`
+        # @return [String]
+        attr_accessor :endpoint_uri
+      
+        # Optional. List of Header to be added to the Endpoint.
+        # Corresponds to the JSON property `headers`
+        # @return [Array<Google::Apis::ConnectorsV1::EndUserAuthenticationNotifyEndpointDestinationEndPointHeader>]
+        attr_accessor :headers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoint_uri = args[:endpoint_uri] if args.key?(:endpoint_uri)
+          @headers = args[:headers] if args.key?(:headers)
+        end
+      end
+      
+      # Header details for a given header to be added to Endpoint.
+      class EndUserAuthenticationNotifyEndpointDestinationEndPointHeader
+        include Google::Apis::Core::Hashable
+      
+        # Required. Key of Header.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Required. Value of Header.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -2334,8 +2956,8 @@ module Google
         # @return [Google::Apis::ConnectorsV1::Jms]
         attr_accessor :jms
       
-        # Required. Resource name of the EventSubscription. Format: projects/`project`/
-        # locations/`location`/connections/`connection`/eventSubscriptions/`
+        # Required. Identifier. Resource name of the EventSubscription. Format: projects/
+        # `project`/locations/`location`/connections/`connection`/eventSubscriptions/`
         # event_subscription`
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2399,12 +3021,12 @@ module Google
         # @return [Google::Apis::ConnectorsV1::PubSub]
         attr_accessor :pubsub
       
-        # Service account needed for runtime plane to trigger IP workflow.
+        # Optional. Service account needed for runtime plane to trigger IP workflow.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
       
-        # type of the destination
+        # Optional. type of the destination
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -3098,12 +3720,12 @@ module Google
       class Header
         include Google::Apis::Core::Hashable
       
-        # Key of Header.
+        # Optional. Key of Header.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
       
-        # Value of Header.
+        # Optional. Value of Header.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -3477,17 +4099,17 @@ module Google
       class JwtClaims
         include Google::Apis::Core::Hashable
       
-        # Value for the "aud" claim.
+        # Optional. Value for the "aud" claim.
         # Corresponds to the JSON property `audience`
         # @return [String]
         attr_accessor :audience
       
-        # Value for the "iss" claim.
+        # Optional. Value for the "iss" claim.
         # Corresponds to the JSON property `issuer`
         # @return [String]
         attr_accessor :issuer
       
-        # Value for the "sub" claim.
+        # Optional. Value for the "sub" claim.
         # Corresponds to the JSON property `subject`
         # @return [String]
         attr_accessor :subject
@@ -3679,6 +4301,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @custom_connectors = args[:custom_connectors] if args.key?(:custom_connectors)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for ConnectorsService.ListEndUserAuthentications
+      class ListEndUserAuthenticationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Subscriptions.
+        # Corresponds to the JSON property `endUserAuthentications`
+        # @return [Array<Google::Apis::ConnectorsV1::EndUserAuthentication>]
+        attr_accessor :end_user_authentications
+      
+        # Next page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_user_authentications = args[:end_user_authentications] if args.key?(:end_user_authentications)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
@@ -4042,13 +4695,13 @@ module Google
       class LockConfig
         include Google::Apis::Core::Hashable
       
-        # Indicates whether or not the connection is locked.
+        # Optional. Indicates whether or not the connection is locked.
         # Corresponds to the JSON property `locked`
         # @return [Boolean]
         attr_accessor :locked
         alias_method :locked?, :locked
       
-        # Describes why a connection is locked.
+        # Optional. Describes why a connection is locked.
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -4476,12 +5129,12 @@ module Google
       class NodeConfig
         include Google::Apis::Core::Hashable
       
-        # Maximum number of nodes in the runtime nodes.
+        # Optional. Maximum number of nodes in the runtime nodes.
         # Corresponds to the JSON property `maxNodeCount`
         # @return [Fixnum]
         attr_accessor :max_node_count
       
-        # Minimum number of nodes in the runtime nodes.
+        # Optional. Minimum number of nodes in the runtime nodes.
         # Corresponds to the JSON property `minNodeCount`
         # @return [Fixnum]
         attr_accessor :min_node_count
@@ -4550,22 +5203,59 @@ module Google
         end
       end
       
+      # pass only at create and not update using updateMask Auth Code Data
+      class OAuthTokenData
+        include Google::Apis::Core::Hashable
+      
+        # EUASecret provides a reference to entries in Secret Manager.
+        # Corresponds to the JSON property `accessToken`
+        # @return [Google::Apis::ConnectorsV1::EuaSecret]
+        attr_accessor :access_token
+      
+        # Optional. Timestamp when the access token was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Time in seconds when the access token expires.
+        # Corresponds to the JSON property `expiry`
+        # @return [String]
+        attr_accessor :expiry
+      
+        # EUASecret provides a reference to entries in Secret Manager.
+        # Corresponds to the JSON property `refreshToken`
+        # @return [Google::Apis::ConnectorsV1::EuaSecret]
+        attr_accessor :refresh_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_token = args[:access_token] if args.key?(:access_token)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @expiry = args[:expiry] if args.key?(:expiry)
+          @refresh_token = args[:refresh_token] if args.key?(:refresh_token)
+        end
+      end
+      
       # Parameters to support Oauth 2.0 Auth Code Grant Authentication. See https://
       # www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
       class Oauth2AuthCodeFlow
         include Google::Apis::Core::Hashable
       
-        # Authorization code to be exchanged for access and refresh tokens.
+        # Optional. Authorization code to be exchanged for access and refresh tokens.
         # Corresponds to the JSON property `authCode`
         # @return [String]
         attr_accessor :auth_code
       
-        # Auth URL for Authorization Code Flow
+        # Optional. Auth URL for Authorization Code Flow
         # Corresponds to the JSON property `authUri`
         # @return [String]
         attr_accessor :auth_uri
       
-        # Client ID for user-provided OAuth app.
+        # Optional. Client ID for user-provided OAuth app.
         # Corresponds to the JSON property `clientId`
         # @return [String]
         attr_accessor :client_id
@@ -4575,23 +5265,24 @@ module Google
         # @return [Google::Apis::ConnectorsV1::Secret]
         attr_accessor :client_secret
       
-        # Whether to enable PKCE when the user performs the auth code flow.
+        # Optional. Whether to enable PKCE when the user performs the auth code flow.
         # Corresponds to the JSON property `enablePkce`
         # @return [Boolean]
         attr_accessor :enable_pkce
         alias_method :enable_pkce?, :enable_pkce
       
-        # PKCE verifier to be used during the auth code exchange.
+        # Optional. PKCE verifier to be used during the auth code exchange.
         # Corresponds to the JSON property `pkceVerifier`
         # @return [String]
         attr_accessor :pkce_verifier
       
-        # Redirect URI to be provided during the auth code exchange.
+        # Optional. Redirect URI to be provided during the auth code exchange.
         # Corresponds to the JSON property `redirectUri`
         # @return [String]
         attr_accessor :redirect_uri
       
-        # Scopes the connection will request when the user performs the auth code flow.
+        # Optional. Scopes the connection will request when the user performs the auth
+        # code flow.
         # Corresponds to the JSON property `scopes`
         # @return [Array<String>]
         attr_accessor :scopes
@@ -4652,7 +5343,7 @@ module Google
       class Oauth2ClientCredentials
         include Google::Apis::Core::Hashable
       
-        # The client identifier.
+        # Optional. The client identifier.
         # Corresponds to the JSON property `clientId`
         # @return [String]
         attr_accessor :client_id
@@ -5067,6 +5758,44 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # PriorityEntityType represents an entity type with its associated priority and
+      # order.
+      class PriorityEntityType
+        include Google::Apis::Core::Hashable
+      
+        # The description of the entity type.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The entity type.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The order of the entity type within its priority group.
+        # Corresponds to the JSON property `order`
+        # @return [Fixnum]
+        attr_accessor :order
+      
+        # The priority of the entity type, such as P0, P1, etc.
+        # Corresponds to the JSON property `priority`
+        # @return [String]
+        attr_accessor :priority
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @order = args[:order] if args.key?(:order)
+          @priority = args[:priority] if args.key?(:priority)
         end
       end
       
@@ -5832,8 +6561,8 @@ module Google
       class Secret
         include Google::Apis::Core::Hashable
       
-        # The resource name of the secret version in the format, format as: `projects/*/
-        # secrets/*/versions/*`.
+        # Optional. The resource name of the secret version in the format, format as: `
+        # projects/*/secrets/*/versions/*`.
         # Corresponds to the JSON property `secretVersion`
         # @return [String]
         attr_accessor :secret_version
@@ -6036,7 +6765,7 @@ module Google
       class SshPublicKey
         include Google::Apis::Core::Hashable
       
-        # Format of SSH Client cert.
+        # Optional. Format of SSH Client cert.
         # Corresponds to the JSON property `certType`
         # @return [String]
         attr_accessor :cert_type
@@ -6051,7 +6780,7 @@ module Google
         # @return [Google::Apis::ConnectorsV1::Secret]
         attr_accessor :ssh_client_cert_pass
       
-        # The user account used to authenticate.
+        # Optional. The user account used to authenticate.
         # Corresponds to the JSON property `username`
         # @return [String]
         attr_accessor :username
@@ -6475,7 +7204,7 @@ module Google
         # @return [Google::Apis::ConnectorsV1::Secret]
         attr_accessor :password
       
-        # Username.
+        # Optional. Username.
         # Corresponds to the JSON property `username`
         # @return [String]
         attr_accessor :username

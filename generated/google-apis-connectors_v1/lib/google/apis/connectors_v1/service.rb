@@ -493,8 +493,11 @@ module Google
         #   locations/`location`/connections/`connection`
         # @param [Google::Apis::ConnectorsV1::Connection] connection_object
         # @param [String] update_mask
-        #   Required. You can modify only the fields listed below. To lock/unlock a
-        #   connection: * `lock_config` To suspend/resume a connection: * `suspended` To
+        #   Required. The list of fields to update. Fields are specified relative to the
+        #   connection. A field will be overwritten if it is in the mask. The field mask
+        #   must not be empty, and it must not contain fields that are immutable or only
+        #   set by the server. You can modify only the fields listed below. To lock/unlock
+        #   a connection: * `lock_config` To suspend/resume a connection: * `suspended` To
         #   update the connection details: * `description` * `labels` * `connector_version`
         #   * `config_variables` * `auth_config` * `destination_configs` * `node_config` *
         #   `log_config` * `ssl_config` * `eventing_enablement_type` * `eventing_config` *
@@ -866,6 +869,192 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new EndUserAuthentication in a given project,location and connection.
+        # @param [String] parent
+        #   Required. Parent resource of the EndUserAuthentication, of the form: `projects/
+        #   */locations/*/connections/*`
+        # @param [Google::Apis::ConnectorsV1::EndUserAuthentication] end_user_authentication_object
+        # @param [String] end_user_authentication_id
+        #   Required. Identifier to assign to the EndUserAuthentication. Must be unique
+        #   within scope of the parent resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_connection_end_user_authentication(parent, end_user_authentication_object = nil, end_user_authentication_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/endUserAuthentications', options)
+          command.request_representation = Google::Apis::ConnectorsV1::EndUserAuthentication::Representation
+          command.request_object = end_user_authentication_object
+          command.response_representation = Google::Apis::ConnectorsV1::Operation::Representation
+          command.response_class = Google::Apis::ConnectorsV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['endUserAuthenticationId'] = end_user_authentication_id unless end_user_authentication_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single EndUserAuthentication.
+        # @param [String] name
+        #   Required. Resource name of the form: `projects/*/locations/*/connections/*/
+        #   endUserAuthentication/*`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_connection_end_user_authentication(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ConnectorsV1::Operation::Representation
+          command.response_class = Google::Apis::ConnectorsV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single EndUserAuthentication.
+        # @param [String] name
+        #   Required. Resource name of the form: `projects/*/locations/*/connections/*/
+        #   EndUserAuthentications/*`
+        # @param [String] view
+        #   Optional. View of the EndUserAuthentication to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::EndUserAuthentication] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::EndUserAuthentication]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_connection_end_user_authentication(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ConnectorsV1::EndUserAuthentication::Representation
+          command.response_class = Google::Apis::ConnectorsV1::EndUserAuthentication
+          command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List EndUserAuthentications in a given project,location and connection.
+        # @param [String] parent
+        #   Required. Parent resource of the EndUserAuthentication, of the form: `projects/
+        #   */locations/*/connections/*`
+        # @param [String] filter
+        #   Filter.
+        # @param [String] order_by
+        #   Order by parameters.
+        # @param [Fixnum] page_size
+        #   Page size.
+        # @param [String] page_token
+        #   Page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::ListEndUserAuthenticationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::ListEndUserAuthenticationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_connection_end_user_authentications(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/endUserAuthentications', options)
+          command.response_representation = Google::Apis::ConnectorsV1::ListEndUserAuthenticationsResponse::Representation
+          command.response_class = Google::Apis::ConnectorsV1::ListEndUserAuthenticationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the parameters of a single EndUserAuthentication.
+        # @param [String] name
+        #   Required. Identifier. Resource name of the EndUserAuthentication. Format:
+        #   projects/`project`/locations/`location`/connections/`connection`/
+        #   endUserAuthentications/`end_user_authentication`
+        # @param [Google::Apis::ConnectorsV1::EndUserAuthentication] end_user_authentication_object
+        # @param [String] update_mask
+        #   Required. The list of fields to update. A field will be overwritten if it is
+        #   in the mask. You can modify only the fields listed below. To update the
+        #   EndUserAuthentication details: * `notify_endpoint_destination`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_connection_end_user_authentication(name, end_user_authentication_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ConnectorsV1::EndUserAuthentication::Representation
+          command.request_object = end_user_authentication_object
+          command.response_representation = Google::Apis::ConnectorsV1::Operation::Representation
+          command.response_class = Google::Apis::ConnectorsV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new EventSubscription in a given project,location and connection.
         # @param [String] parent
         #   Required. Parent resource of the EventSubscription, of the form: `projects/*/
@@ -1011,8 +1200,8 @@ module Google
         
         # Updates the parameters of a single EventSubscription.
         # @param [String] name
-        #   Required. Resource name of the EventSubscription. Format: projects/`project`/
-        #   locations/`location`/connections/`connection`/eventSubscriptions/`
+        #   Required. Identifier. Resource name of the EventSubscription. Format: projects/
+        #   `project`/locations/`location`/connections/`connection`/eventSubscriptions/`
         #   event_subscription`
         # @param [Google::Apis::ConnectorsV1::EventSubscription] event_subscription_object
         # @param [String] update_mask
@@ -2525,6 +2714,9 @@ module Google
         #   Required. Resource name of the form: `projects/*/locations/*/providers/*/
         #   connectors/*/versions/*` Only global location is supported for
         #   ConnectorVersion resource.
+        # @param [String] schema_view
+        #   Optional. Enum to control whether schema enrichment related fields should be
+        #   included in the response.
         # @param [String] view
         #   Specifies which fields of the ConnectorVersion are returned in the response.
         #   Defaults to `CUSTOMER` view.
@@ -2545,11 +2737,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_provider_connector_version(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_provider_connector_version(name, schema_view: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ConnectorsV1::ConnectorVersion::Representation
           command.response_class = Google::Apis::ConnectorsV1::ConnectorVersion
           command.params['name'] = name unless name.nil?
+          command.query['schemaView'] = schema_view unless schema_view.nil?
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2565,6 +2758,9 @@ module Google
         #   Page size.
         # @param [String] page_token
         #   Page token.
+        # @param [String] schema_view
+        #   Optional. Enum to control whether schema enrichment related fields should be
+        #   included in the response.
         # @param [String] view
         #   Specifies which fields of the ConnectorVersion are returned in the response.
         #   Defaults to `BASIC` view.
@@ -2585,13 +2781,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_provider_connector_versions(parent, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_provider_connector_versions(parent, page_size: nil, page_token: nil, schema_view: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/versions', options)
           command.response_representation = Google::Apis::ConnectorsV1::ListConnectorVersionsResponse::Representation
           command.response_class = Google::Apis::ConnectorsV1::ListConnectorVersionsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['schemaView'] = schema_view unless schema_view.nil?
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
