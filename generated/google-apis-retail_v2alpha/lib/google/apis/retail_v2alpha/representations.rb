@@ -3051,6 +3051,7 @@ module Google
       class GoogleCloudRetailV2alphaMerchantCenterAccountLinkMerchantCenterFeedFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source_id, :numeric_string => true, as: 'dataSourceId'
           property :primary_feed_id, :numeric_string => true, as: 'primaryFeedId'
           property :primary_feed_name, as: 'primaryFeedName'
         end
@@ -3059,6 +3060,7 @@ module Google
       class GoogleCloudRetailV2alphaMerchantCenterFeedFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source_id, :numeric_string => true, as: 'dataSourceId'
           property :primary_feed_id, :numeric_string => true, as: 'primaryFeedId'
           property :primary_feed_name, as: 'primaryFeedName'
         end
