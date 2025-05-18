@@ -179,6 +179,209 @@ module Google
         end
       end
       
+      # Access Point Name (APN) policy. Configuration for Access Point Names (APNs)
+      # which may override any other APNs on the device. See OVERRIDE_APNS_ENABLED and
+      # overrideApns for details.
+      class ApnPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. APN settings for override APNs. There must not be any conflict
+        # between any of APN settings provided, otherwise the policy will be rejected.
+        # Two ApnSettings are considered to conflict when all of the following fields
+        # match on both: numericOperatorId, apn, proxyAddress, proxyPort,
+        # mmsProxyAddress, mmsProxyPort, mmsc, mvnoType, protocol, roamingProtocol. If
+        # some of the APN settings result in non-compliance of INVALID_VALUE , they will
+        # be ignored. This can be set on fully managed devices on Android 10 and above.
+        # This can also be set on work profiles on Android 13 and above and only with
+        # ApnSetting's with ENTERPRISE APN type. A nonComplianceDetail with API_LEVEL is
+        # reported if the Android version is less than 10. A nonComplianceDetail with
+        # MANAGEMENT_MODE is reported for work profiles on Android versions less than 13.
+        # Corresponds to the JSON property `apnSettings`
+        # @return [Array<Google::Apis::AndroidmanagementV1::ApnSetting>]
+        attr_accessor :apn_settings
+      
+        # Optional. Whether override APNs are disabled or enabled. See
+        # DevicePolicyManager.setOverrideApnsEnabled (https://developer.android.com/
+        # reference/android/app/admin/DevicePolicyManager#setOverrideApnsEnabled) for
+        # more details.
+        # Corresponds to the JSON property `overrideApns`
+        # @return [String]
+        attr_accessor :override_apns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apn_settings = args[:apn_settings] if args.key?(:apn_settings)
+          @override_apns = args[:override_apns] if args.key?(:override_apns)
+        end
+      end
+      
+      # An Access Point Name (APN) configuration for a carrier data connection. The
+      # APN provides configuration to connect a cellular network device to an IP data
+      # network. A carrier uses this setting to decide which IP address to assign, any
+      # security methods to apply, and how the device might be connected to private
+      # networks.
+      class ApnSetting
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether User Plane resources have to be activated during every
+        # transition from CM-IDLE mode to CM-CONNECTED state for this APN. See 3GPP TS
+        # 23.501 section 5.6.13.
+        # Corresponds to the JSON property `alwaysOnSetting`
+        # @return [String]
+        attr_accessor :always_on_setting
+      
+        # Required. Name of the APN. Policy will be rejected if this field is empty.
+        # Corresponds to the JSON property `apn`
+        # @return [String]
+        attr_accessor :apn
+      
+        # Required. Usage categories for the APN. Policy will be rejected if this field
+        # is empty or contains APN_TYPE_UNSPECIFIED or duplicates. Multiple APN types
+        # can be set on fully managed devices. ENTERPRISE is the only allowed APN type
+        # on work profiles. A nonComplianceDetail with MANAGEMENT_MODE is reported for
+        # any other value on work profiles. APN types that are not supported on the
+        # device or management mode will be ignored. If this results in the empty list,
+        # the APN setting will be ignored, because apnTypes is a required field. A
+        # nonComplianceDetail with INVALID_VALUE is reported if none of the APN types
+        # are supported on the device or management mode.
+        # Corresponds to the JSON property `apnTypes`
+        # @return [Array<String>]
+        attr_accessor :apn_types
+      
+        # Optional. Authentication type of the APN.
+        # Corresponds to the JSON property `authType`
+        # @return [String]
+        attr_accessor :auth_type
+      
+        # Optional. Carrier ID for the APN. A value of 0 (default) means not set and
+        # negative values are rejected.
+        # Corresponds to the JSON property `carrierId`
+        # @return [Fixnum]
+        attr_accessor :carrier_id
+      
+        # Required. Human-readable name that describes the APN. Policy will be rejected
+        # if this field is empty.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. MMS (Multimedia Messaging Service) proxy address of the APN which
+        # can be an IP address or hostname (not a URL).
+        # Corresponds to the JSON property `mmsProxyAddress`
+        # @return [String]
+        attr_accessor :mms_proxy_address
+      
+        # Optional. MMS (Multimedia Messaging Service) proxy port of the APN. A value of
+        # 0 (default) means not set and negative values are rejected.
+        # Corresponds to the JSON property `mmsProxyPort`
+        # @return [Fixnum]
+        attr_accessor :mms_proxy_port
+      
+        # Optional. MMSC (Multimedia Messaging Service Center) URI of the APN.
+        # Corresponds to the JSON property `mmsc`
+        # @return [String]
+        attr_accessor :mmsc
+      
+        # Optional. The default MTU (Maximum Transmission Unit) size in bytes of the
+        # IPv4 routes brought up by this APN setting. A value of 0 (default) means not
+        # set and negative values are rejected. Supported on Android 13 and above. A
+        # nonComplianceDetail with API_LEVEL is reported if the Android version is less
+        # than 13.
+        # Corresponds to the JSON property `mtuV4`
+        # @return [Fixnum]
+        attr_accessor :mtu_v4
+      
+        # Optional. The MTU (Maximum Transmission Unit) size of the IPv6 mobile
+        # interface to which the APN connected. A value of 0 (default) means not set and
+        # negative values are rejected. Supported on Android 13 and above. A
+        # nonComplianceDetail with API_LEVEL is reported if the Android version is less
+        # than 13.
+        # Corresponds to the JSON property `mtuV6`
+        # @return [Fixnum]
+        attr_accessor :mtu_v6
+      
+        # Optional. MVNO match type for the APN.
+        # Corresponds to the JSON property `mvnoType`
+        # @return [String]
+        attr_accessor :mvno_type
+      
+        # Optional. Radio technologies (network types) the APN may use. Policy will be
+        # rejected if this field contains NETWORK_TYPE_UNSPECIFIED or duplicates.
+        # Corresponds to the JSON property `networkTypes`
+        # @return [Array<String>]
+        attr_accessor :network_types
+      
+        # Optional. The numeric operator ID of the APN. Numeric operator ID is defined
+        # as MCC (Mobile Country Code) + MNC (Mobile Network Code).
+        # Corresponds to the JSON property `numericOperatorId`
+        # @return [String]
+        attr_accessor :numeric_operator_id
+      
+        # Optional. APN password of the APN.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Optional. The protocol to use to connect to this APN.
+        # Corresponds to the JSON property `protocol`
+        # @return [String]
+        attr_accessor :protocol
+      
+        # Optional. The proxy address of the APN.
+        # Corresponds to the JSON property `proxyAddress`
+        # @return [String]
+        attr_accessor :proxy_address
+      
+        # Optional. The proxy port of the APN. A value of 0 (default) means not set and
+        # negative values are rejected.
+        # Corresponds to the JSON property `proxyPort`
+        # @return [Fixnum]
+        attr_accessor :proxy_port
+      
+        # Optional. The protocol to use to connect to this APN while the device is
+        # roaming.
+        # Corresponds to the JSON property `roamingProtocol`
+        # @return [String]
+        attr_accessor :roaming_protocol
+      
+        # Optional. APN username of the APN.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @always_on_setting = args[:always_on_setting] if args.key?(:always_on_setting)
+          @apn = args[:apn] if args.key?(:apn)
+          @apn_types = args[:apn_types] if args.key?(:apn_types)
+          @auth_type = args[:auth_type] if args.key?(:auth_type)
+          @carrier_id = args[:carrier_id] if args.key?(:carrier_id)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @mms_proxy_address = args[:mms_proxy_address] if args.key?(:mms_proxy_address)
+          @mms_proxy_port = args[:mms_proxy_port] if args.key?(:mms_proxy_port)
+          @mmsc = args[:mmsc] if args.key?(:mmsc)
+          @mtu_v4 = args[:mtu_v4] if args.key?(:mtu_v4)
+          @mtu_v6 = args[:mtu_v6] if args.key?(:mtu_v6)
+          @mvno_type = args[:mvno_type] if args.key?(:mvno_type)
+          @network_types = args[:network_types] if args.key?(:network_types)
+          @numeric_operator_id = args[:numeric_operator_id] if args.key?(:numeric_operator_id)
+          @password = args[:password] if args.key?(:password)
+          @protocol = args[:protocol] if args.key?(:protocol)
+          @proxy_address = args[:proxy_address] if args.key?(:proxy_address)
+          @proxy_port = args[:proxy_port] if args.key?(:proxy_port)
+          @roaming_protocol = args[:roaming_protocol] if args.key?(:roaming_protocol)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
       # Information about a process. It contains process name, start time, app Uid,
       # app Pid, seinfo tag, hash of the base APK.
       class AppProcessInfo
@@ -679,6 +882,18 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::PermissionGrant>]
         attr_accessor :permission_grants
       
+        # Optional. ID of the preferential network the application uses. There must be a
+        # configuration for the specified network ID in
+        # preferentialNetworkServiceConfigs. If set to
+        # PREFERENTIAL_NETWORK_ID_UNSPECIFIED, the application will use the default
+        # network ID specified in defaultPreferentialNetworkId. See the documentation of
+        # defaultPreferentialNetworkId for the list of apps excluded from this
+        # defaulting. This applies on both work profiles and fully managed devices on
+        # Android 13 and above.
+        # Corresponds to the JSON property `preferentialNetworkId`
+        # @return [String]
+        attr_accessor :preferential_network_id
+      
         # Optional. Specifies whether user control is permitted for the app. User
         # control includes user actions like force-stopping and clearing app data.
         # Supported on Android 11 and above.
@@ -716,6 +931,7 @@ module Google
           @minimum_version_code = args[:minimum_version_code] if args.key?(:minimum_version_code)
           @package_name = args[:package_name] if args.key?(:package_name)
           @permission_grants = args[:permission_grants] if args.key?(:permission_grants)
+          @preferential_network_id = args[:preferential_network_id] if args.key?(:preferential_network_id)
           @user_control_settings = args[:user_control_settings] if args.key?(:user_control_settings)
           @work_profile_widgets = args[:work_profile_widgets] if args.key?(:work_profile_widgets)
         end
@@ -1837,6 +2053,13 @@ module Google
       class DeviceConnectivityManagement
         include Google::Apis::Core::Hashable
       
+        # Access Point Name (APN) policy. Configuration for Access Point Names (APNs)
+        # which may override any other APNs on the device. See OVERRIDE_APNS_ENABLED and
+        # overrideApns for details.
+        # Corresponds to the JSON property `apnPolicy`
+        # @return [Google::Apis::AndroidmanagementV1::ApnPolicy]
+        attr_accessor :apn_policy
+      
         # Optional. Controls whether Bluetooth sharing is allowed.
         # Corresponds to the JSON property `bluetoothSharing`
         # @return [String]
@@ -1847,6 +2070,11 @@ module Google
         # Corresponds to the JSON property `configureWifi`
         # @return [String]
         attr_accessor :configure_wifi
+      
+        # Preferential network service settings.
+        # Corresponds to the JSON property `preferentialNetworkServiceSettings`
+        # @return [Google::Apis::AndroidmanagementV1::PreferentialNetworkServiceSettings]
+        attr_accessor :preferential_network_service_settings
       
         # Controls tethering settings. Based on the value set, the user is partially or
         # fully disallowed from using different forms of tethering.
@@ -1884,8 +2112,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @apn_policy = args[:apn_policy] if args.key?(:apn_policy)
           @bluetooth_sharing = args[:bluetooth_sharing] if args.key?(:bluetooth_sharing)
           @configure_wifi = args[:configure_wifi] if args.key?(:configure_wifi)
+          @preferential_network_service_settings = args[:preferential_network_service_settings] if args.key?(:preferential_network_service_settings)
           @tethering_settings = args[:tethering_settings] if args.key?(:tethering_settings)
           @usb_data_access = args[:usb_data_access] if args.key?(:usb_data_access)
           @wifi_direct_settings = args[:wifi_direct_settings] if args.key?(:wifi_direct_settings)
@@ -4712,6 +4942,12 @@ module Google
         attr_accessor :ensure_verify_apps_enabled
         alias_method :ensure_verify_apps_enabled?, :ensure_verify_apps_enabled
       
+        # Optional. Controls whether the enterpriseDisplayName is visible on the device (
+        # e.g. lock screen message on company-owned devices).
+        # Corresponds to the JSON property `enterpriseDisplayNameVisibility`
+        # @return [String]
+        attr_accessor :enterprise_display_name_visibility
+      
         # Whether factory resetting from settings is disabled.
         # Corresponds to the JSON property `factoryResetDisabled`
         # @return [Boolean]
@@ -4922,12 +5158,14 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::PolicyEnforcementRule>]
         attr_accessor :policy_enforcement_rules
       
-        # Controls whether preferential network service is enabled on the work profile.
-        # For example, an organization may have an agreement with a carrier that all of
-        # the work data from its employees' devices will be sent via a network service
-        # dedicated for enterprise use. An example of a supported preferential network
-        # service is the enterprise slice on 5G networks. This has no effect on fully
-        # managed devices.
+        # Controls whether preferential network service is enabled on the work profile
+        # or on fully managed devices. For example, an organization may have an
+        # agreement with a carrier that all of the work data from its employees' devices
+        # will be sent via a network service dedicated for enterprise use. An example of
+        # a supported preferential network service is the enterprise slice on 5G
+        # networks. This policy has no effect if preferentialNetworkServiceSettings or
+        # ApplicationPolicy.preferentialNetworkId is set on devices running Android 13
+        # or above.
         # Corresponds to the JSON property `preferentialNetworkService`
         # @return [String]
         attr_accessor :preferential_network_service
@@ -5163,6 +5401,7 @@ module Google
           @display_settings = args[:display_settings] if args.key?(:display_settings)
           @encryption_policy = args[:encryption_policy] if args.key?(:encryption_policy)
           @ensure_verify_apps_enabled = args[:ensure_verify_apps_enabled] if args.key?(:ensure_verify_apps_enabled)
+          @enterprise_display_name_visibility = args[:enterprise_display_name_visibility] if args.key?(:enterprise_display_name_visibility)
           @factory_reset_disabled = args[:factory_reset_disabled] if args.key?(:factory_reset_disabled)
           @frp_admin_emails = args[:frp_admin_emails] if args.key?(:frp_admin_emails)
           @fun_disabled = args[:fun_disabled] if args.key?(:fun_disabled)
@@ -5323,6 +5562,88 @@ module Google
           @battery_level = args[:battery_level] if args.key?(:battery_level)
           @create_time = args[:create_time] if args.key?(:create_time)
           @event_type = args[:event_type] if args.key?(:event_type)
+        end
+      end
+      
+      # Individual preferential network service configuration.
+      class PreferentialNetworkServiceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether fallback to the device-wide default network is allowed. If
+        # this is set to FALLBACK_TO_DEFAULT_CONNECTION_ALLOWED, then
+        # nonMatchingNetworks must not be set to NON_MATCHING_NETWORKS_DISALLOWED, the
+        # policy will be rejected otherwise. Note: If this is set to
+        # FALLBACK_TO_DEFAULT_CONNECTION_DISALLOWED, applications are not able to access
+        # the internet if the 5G slice is not available.
+        # Corresponds to the JSON property `fallbackToDefaultConnection`
+        # @return [String]
+        attr_accessor :fallback_to_default_connection
+      
+        # Optional. Whether apps this configuration applies to are blocked from using
+        # networks other than the preferential service. If this is set to
+        # NON_MATCHING_NETWORKS_DISALLOWED, then fallbackToDefaultConnection must be set
+        # to FALLBACK_TO_DEFAULT_CONNECTION_DISALLOWED.
+        # Corresponds to the JSON property `nonMatchingNetworks`
+        # @return [String]
+        attr_accessor :non_matching_networks
+      
+        # Required. Preferential network identifier. This must not be set to
+        # NO_PREFERENTIAL_NETWORK or PREFERENTIAL_NETWORK_ID_UNSPECIFIED, the policy
+        # will be rejected otherwise.
+        # Corresponds to the JSON property `preferentialNetworkId`
+        # @return [String]
+        attr_accessor :preferential_network_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fallback_to_default_connection = args[:fallback_to_default_connection] if args.key?(:fallback_to_default_connection)
+          @non_matching_networks = args[:non_matching_networks] if args.key?(:non_matching_networks)
+          @preferential_network_id = args[:preferential_network_id] if args.key?(:preferential_network_id)
+        end
+      end
+      
+      # Preferential network service settings.
+      class PreferentialNetworkServiceSettings
+        include Google::Apis::Core::Hashable
+      
+        # Required. Default preferential network ID for the applications that are not in
+        # applications or if ApplicationPolicy.preferentialNetworkId is set to
+        # PREFERENTIAL_NETWORK_ID_UNSPECIFIED. There must be a configuration for the
+        # specified network ID in preferentialNetworkServiceConfigs, unless this is set
+        # to NO_PREFERENTIAL_NETWORK. If set to PREFERENTIAL_NETWORK_ID_UNSPECIFIED or
+        # unset, this defaults to NO_PREFERENTIAL_NETWORK. Note: If the default
+        # preferential network is misconfigured, applications with no ApplicationPolicy.
+        # preferentialNetworkId set are not able to access the internet. This setting
+        # does not apply to the following critical apps: com.google.android.apps.work.
+        # clouddpc com.google.android.gmsApplicationPolicy.preferentialNetworkId can
+        # still be used to configure the preferential network for them.
+        # Corresponds to the JSON property `defaultPreferentialNetworkId`
+        # @return [String]
+        attr_accessor :default_preferential_network_id
+      
+        # Required. Preferential network service configurations which enables having
+        # multiple enterprise slices. There must not be multiple configurations with the
+        # same preferentialNetworkId. If a configuration is not referenced by any
+        # application by setting ApplicationPolicy.preferentialNetworkId or by setting
+        # defaultPreferentialNetworkId, it will be ignored. For devices on 4G networks,
+        # enterprise APN needs to be configured additionally to set up data call for
+        # preferential network service. These APNs can be added using apnPolicy.
+        # Corresponds to the JSON property `preferentialNetworkServiceConfigs`
+        # @return [Array<Google::Apis::AndroidmanagementV1::PreferentialNetworkServiceConfig>]
+        attr_accessor :preferential_network_service_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_preferential_network_id = args[:default_preferential_network_id] if args.key?(:default_preferential_network_id)
+          @preferential_network_service_configs = args[:preferential_network_service_configs] if args.key?(:preferential_network_service_configs)
         end
       end
       
