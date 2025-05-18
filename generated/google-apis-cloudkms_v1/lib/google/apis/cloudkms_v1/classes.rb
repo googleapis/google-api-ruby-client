@@ -1715,7 +1715,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # The total number of CryptoKeyVersions that matched the query.
+        # The total number of CryptoKeyVersions that matched the query. This field is
+        # not populated if ListCryptoKeyVersionsRequest.filter is applied.
         # Corresponds to the JSON property `totalSize`
         # @return [Fixnum]
         attr_accessor :total_size
@@ -1747,7 +1748,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # The total number of CryptoKeys that matched the query.
+        # The total number of CryptoKeys that matched the query. This field is not
+        # populated if ListCryptoKeysRequest.filter is applied.
         # Corresponds to the JSON property `totalSize`
         # @return [Fixnum]
         attr_accessor :total_size
@@ -1779,7 +1781,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # The total number of EkmConnections that matched the query.
+        # The total number of EkmConnections that matched the query. This field is not
+        # populated if ListEkmConnectionsRequest.filter is applied.
         # Corresponds to the JSON property `totalSize`
         # @return [Fixnum]
         attr_accessor :total_size
@@ -1811,7 +1814,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # The total number of ImportJobs that matched the query.
+        # The total number of ImportJobs that matched the query. This field is not
+        # populated if ListImportJobsRequest.filter is applied.
         # Corresponds to the JSON property `totalSize`
         # @return [Fixnum]
         attr_accessor :total_size
@@ -1869,7 +1873,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # The total number of KeyRings that matched the query.
+        # The total number of KeyRings that matched the query. This field is not
+        # populated if ListKeyRingsRequest.filter is applied.
         # Corresponds to the JSON property `totalSize`
         # @return [Fixnum]
         attr_accessor :total_size
