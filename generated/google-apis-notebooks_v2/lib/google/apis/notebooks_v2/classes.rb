@@ -280,13 +280,6 @@ module Google
         # @return [String]
         attr_accessor :confidential_instance_type
       
-        # Optional. Defines whether the instance should have confidential compute
-        # enabled.
-        # Corresponds to the JSON property `enableConfidentialCompute`
-        # @return [Boolean]
-        attr_accessor :enable_confidential_compute
-        alias_method :enable_confidential_compute?, :enable_confidential_compute
-      
         def initialize(**args)
            update!(**args)
         end
@@ -294,7 +287,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @confidential_instance_type = args[:confidential_instance_type] if args.key?(:confidential_instance_type)
-          @enable_confidential_compute = args[:enable_confidential_compute] if args.key?(:enable_confidential_compute)
         end
       end
       
@@ -714,6 +706,11 @@ module Google
         # @return [Array<Google::Apis::NotebooksV2::NetworkInterface>]
         attr_accessor :network_interfaces
       
+        # A reservation that an instance can consume from.
+        # Corresponds to the JSON property `reservationAffinity`
+        # @return [Google::Apis::NotebooksV2::ReservationAffinity]
+        attr_accessor :reservation_affinity
+      
         # Optional. The service account that serves as an identity for the VM instance.
         # Currently supports only one service account.
         # Corresponds to the JSON property `serviceAccounts`
@@ -757,6 +754,7 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
+          @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @tags = args[:tags] if args.key?(:tags)
@@ -809,6 +807,14 @@ module Google
         attr_accessor :disable_proxy_access
         alias_method :disable_proxy_access?, :disable_proxy_access
       
+        # Optional. If true, deletion protection will be enabled for this Workbench
+        # Instance. If false, deletion protection will be disabled for this Workbench
+        # Instance.
+        # Corresponds to the JSON property `enableDeletionProtection`
+        # @return [Boolean]
+        attr_accessor :enable_deletion_protection
+        alias_method :enable_deletion_protection?, :enable_deletion_protection
+      
         # Optional. Flag that specifies that a notebook can be accessed with third party
         # identity provider.
         # Corresponds to the JSON property `enableThirdPartyIdentity`
@@ -840,10 +846,9 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Optional. Input only. The owner of this instance after creation. Format: `
-        # alias@example.com` Currently supports one owner only. If not specified, all of
-        # the service account users of your VM instance's service account can use the
-        # instance.
+        # Optional. The owner of this instance after creation. Format: `alias@example.
+        # com` Currently supports one owner only. If not specified, all of the service
+        # account users of your VM instance's service account can use the instance.
         # Corresponds to the JSON property `instanceOwners`
         # @return [Array<String>]
         attr_accessor :instance_owners
@@ -907,6 +912,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @creator = args[:creator] if args.key?(:creator)
           @disable_proxy_access = args[:disable_proxy_access] if args.key?(:disable_proxy_access)
+          @enable_deletion_protection = args[:enable_deletion_protection] if args.key?(:enable_deletion_protection)
           @enable_third_party_identity = args[:enable_third_party_identity] if args.key?(:enable_third_party_identity)
           @gce_setup = args[:gce_setup] if args.key?(:gce_setup)
           @health_info = args[:health_info] if args.key?(:health_info)
@@ -1341,6 +1347,44 @@ module Google
         end
       end
       
+      # A reservation that an instance can consume from.
+      class ReservationAffinity
+        include Google::Apis::Core::Hashable
+      
+        # Required. Specifies the type of reservation from which this instance can
+        # consume resources: RESERVATION_ANY (default), RESERVATION_SPECIFIC, or
+        # RESERVATION_NONE. See Consuming reserved instances for examples.
+        # Corresponds to the JSON property `consumeReservationType`
+        # @return [String]
+        attr_accessor :consume_reservation_type
+      
+        # Optional. Corresponds to the label key of a reservation resource. To target a
+        # RESERVATION_SPECIFIC by name, use compute.googleapis.com/reservation-name as
+        # the key and specify the name of your reservation as its value.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Optional. Corresponds to the label values of a reservation resource. This can
+        # be either a name to a reservation in the same project or "projects/different-
+        # project/reservations/some-reservation-name" to target a shared reservation in
+        # the same zone but in a different project.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consume_reservation_type = args[:consume_reservation_type] if args.key?(:consume_reservation_type)
+          @key = args[:key] if args.key?(:key)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
       # Request for resetting a notebook instance
       class ResetInstanceRequest
         include Google::Apis::Core::Hashable
@@ -1507,7 +1551,7 @@ module Google
         # Enables monitoring and attestation of the boot integrity of the VM instance.
         # The attestation is performed against the integrity policy baseline. This
         # baseline is initially derived from the implicitly trusted boot image when the
-        # VM instance is created. Enabled by default.
+        # VM instance is created.
         # Corresponds to the JSON property `enableIntegrityMonitoring`
         # @return [Boolean]
         attr_accessor :enable_integrity_monitoring
@@ -1522,8 +1566,7 @@ module Google
         attr_accessor :enable_secure_boot
         alias_method :enable_secure_boot?, :enable_secure_boot
       
-        # Optional. Defines whether the VM instance has the vTPM enabled. Enabled by
-        # default.
+        # Optional. Defines whether the VM instance has the vTPM enabled.
         # Corresponds to the JSON property `enableVtpm`
         # @return [Boolean]
         attr_accessor :enable_vtpm
