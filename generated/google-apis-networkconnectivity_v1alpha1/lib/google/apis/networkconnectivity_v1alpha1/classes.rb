@@ -27,7 +27,7 @@ module Google
       class AllocationOptions
         include Google::Apis::Core::Hashable
       
-        # Optional. Allocation strategy Not setting this field when the allocation is
+        # Optional. Allocation strategy. Not setting this field when the allocation is
         # requested means an implementation defined strategy is used.
         # Corresponds to the JSON property `allocationStrategy`
         # @return [String]
