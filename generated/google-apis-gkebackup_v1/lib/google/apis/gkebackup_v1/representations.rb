@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackupConfigDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackupPlan
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -328,6 +334,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RetentionPolicyDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RpoConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -494,9 +506,25 @@ module Google
         end
       end
       
+      class BackupConfigDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_namespaces, as: 'allNamespaces'
+          property :encryption_key, as: 'encryptionKey', class: Google::Apis::GkebackupV1::EncryptionKey, decorator: Google::Apis::GkebackupV1::EncryptionKey::Representation
+      
+          property :include_secrets, as: 'includeSecrets'
+          property :include_volume_data, as: 'includeVolumeData'
+          property :selected_applications, as: 'selectedApplications', class: Google::Apis::GkebackupV1::NamespacedNames, decorator: Google::Apis::GkebackupV1::NamespacedNames::Representation
+      
+          property :selected_namespaces, as: 'selectedNamespaces', class: Google::Apis::GkebackupV1::Namespaces, decorator: Google::Apis::GkebackupV1::Namespaces::Representation
+      
+        end
+      end
+      
       class BackupPlan
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_channel, as: 'backupChannel'
           property :backup_config, as: 'backupConfig', class: Google::Apis::GkebackupV1::BackupConfig, decorator: Google::Apis::GkebackupV1::BackupConfig::Representation
       
           property :backup_schedule, as: 'backupSchedule', class: Google::Apis::GkebackupV1::Schedule, decorator: Google::Apis::GkebackupV1::Schedule::Representation
@@ -539,10 +567,14 @@ module Google
       class BackupPlanDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_config_details, as: 'backupConfigDetails', class: Google::Apis::GkebackupV1::BackupConfigDetails, decorator: Google::Apis::GkebackupV1::BackupConfigDetails::Representation
+      
           property :last_successful_backup, as: 'lastSuccessfulBackup'
           property :last_successful_backup_time, as: 'lastSuccessfulBackupTime'
           property :next_scheduled_backup_time, as: 'nextScheduledBackupTime'
           property :protected_pod_count, as: 'protectedPodCount'
+          property :retention_policy_details, as: 'retentionPolicyDetails', class: Google::Apis::GkebackupV1::RetentionPolicyDetails, decorator: Google::Apis::GkebackupV1::RetentionPolicyDetails::Representation
+      
           property :rpo_risk_level, as: 'rpoRiskLevel'
           property :state, as: 'state'
         end
@@ -980,6 +1012,7 @@ module Google
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :restore_channel, as: 'restoreChannel'
           property :restore_config, as: 'restoreConfig', class: Google::Apis::GkebackupV1::RestoreConfig, decorator: Google::Apis::GkebackupV1::RestoreConfig::Representation
       
           property :state, as: 'state'
@@ -1008,6 +1041,14 @@ module Google
           property :backup_delete_lock_days, as: 'backupDeleteLockDays'
           property :backup_retain_days, as: 'backupRetainDays'
           property :locked, as: 'locked'
+        end
+      end
+      
+      class RetentionPolicyDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_delete_lock_days, as: 'backupDeleteLockDays'
+          property :backup_retain_days, as: 'backupRetainDays'
         end
       end
       
