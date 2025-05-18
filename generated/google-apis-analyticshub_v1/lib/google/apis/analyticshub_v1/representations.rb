@@ -526,7 +526,6 @@ module Google
           property :friendly_name, as: 'friendlyName'
           hash :labels, as: 'labels'
           property :location, as: 'location'
-          collection :replica_locations, as: 'replicaLocations'
         end
       end
       
@@ -968,6 +967,8 @@ module Google
       
           property :creation_time, as: 'creationTime'
           property :data_exchange, as: 'dataExchange'
+          property :destination_dataset, as: 'destinationDataset', class: Google::Apis::AnalyticshubV1::DestinationDataset, decorator: Google::Apis::AnalyticshubV1::DestinationDataset::Representation
+      
           property :last_modify_time, as: 'lastModifyTime'
           hash :linked_dataset_map, as: 'linkedDatasetMap', class: Google::Apis::AnalyticshubV1::LinkedResource, decorator: Google::Apis::AnalyticshubV1::LinkedResource::Representation
       
