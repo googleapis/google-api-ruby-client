@@ -169,6 +169,44 @@ module Google
         end
       end
       
+      # Request to decode the PC integrity token.
+      class DecodePcIntegrityTokenRequest
+        include Google::Apis::Core::Hashable
+      
+        # Encoded integrity token.
+        # Corresponds to the JSON property `integrityToken`
+        # @return [String]
+        attr_accessor :integrity_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @integrity_token = args[:integrity_token] if args.key?(:integrity_token)
+        end
+      end
+      
+      # Response containing the decoded PC integrity payload.
+      class DecodePcIntegrityTokenResponse
+        include Google::Apis::Core::Hashable
+      
+        # Contains PC device attestation details.
+        # Corresponds to the JSON property `tokenPayloadExternal`
+        # @return [Google::Apis::PlayintegrityV1::PcTokenPayloadExternal]
+        attr_accessor :token_payload_external
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @token_payload_external = args[:token_payload_external] if args.key?(:token_payload_external)
+        end
+      end
+      
       # Contains information about the device for which the integrity token was
       # generated, e.g. Android SDK version.
       class DeviceAttributes
@@ -290,6 +328,82 @@ module Google
         def update!(**args)
           @app_access_risk_verdict = args[:app_access_risk_verdict] if args.key?(:app_access_risk_verdict)
           @play_protect_verdict = args[:play_protect_verdict] if args.key?(:play_protect_verdict)
+        end
+      end
+      
+      # Contains the device attestation information.
+      class PcDeviceIntegrity
+        include Google::Apis::Core::Hashable
+      
+        # Details about the integrity of the device the app is running on.
+        # Corresponds to the JSON property `deviceRecognitionVerdict`
+        # @return [Array<String>]
+        attr_accessor :device_recognition_verdict
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_recognition_verdict = args[:device_recognition_verdict] if args.key?(:device_recognition_verdict)
+        end
+      end
+      
+      # Contains the integrity request information.
+      class PcRequestDetails
+        include Google::Apis::Core::Hashable
+      
+        # Request hash that was provided in the request.
+        # Corresponds to the JSON property `requestHash`
+        # @return [String]
+        attr_accessor :request_hash
+      
+        # Required. Application package name this attestation was requested for. Note:
+        # This field makes no guarantees or promises on the caller integrity.
+        # Corresponds to the JSON property `requestPackageName`
+        # @return [String]
+        attr_accessor :request_package_name
+      
+        # Required. Timestamp, of the integrity application request.
+        # Corresponds to the JSON property `requestTime`
+        # @return [String]
+        attr_accessor :request_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_hash = args[:request_hash] if args.key?(:request_hash)
+          @request_package_name = args[:request_package_name] if args.key?(:request_package_name)
+          @request_time = args[:request_time] if args.key?(:request_time)
+        end
+      end
+      
+      # Contains PC device attestation details.
+      class PcTokenPayloadExternal
+        include Google::Apis::Core::Hashable
+      
+        # Contains the device attestation information.
+        # Corresponds to the JSON property `deviceIntegrity`
+        # @return [Google::Apis::PlayintegrityV1::PcDeviceIntegrity]
+        attr_accessor :device_integrity
+      
+        # Contains the integrity request information.
+        # Corresponds to the JSON property `requestDetails`
+        # @return [Google::Apis::PlayintegrityV1::PcRequestDetails]
+        attr_accessor :request_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_integrity = args[:device_integrity] if args.key?(:device_integrity)
+          @request_details = args[:request_details] if args.key?(:request_details)
         end
       end
       
