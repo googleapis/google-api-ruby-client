@@ -2345,6 +2345,8 @@ module Google
         # @param [Google::Apis::DriveV2::Permission] permission_object
         # @param [String] email_message
         #   A plain text custom message to include in notification emails.
+        # @param [Boolean] enforce_expansive_access
+        #   Whether the request should enforce expansive access rules.
         # @param [Boolean] enforce_single_parent
         #   Deprecated: See `moveToNewOwnersRoot` for details.
         # @param [Boolean] move_to_new_owners_root
@@ -2381,7 +2383,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_permission(file_id, permission_object = nil, email_message: nil, enforce_single_parent: nil, move_to_new_owners_root: nil, send_notification_emails: nil, supports_all_drives: nil, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def insert_permission(file_id, permission_object = nil, email_message: nil, enforce_expansive_access: nil, enforce_single_parent: nil, move_to_new_owners_root: nil, send_notification_emails: nil, supports_all_drives: nil, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'files/{fileId}/permissions', options)
           command.request_representation = Google::Apis::DriveV2::Permission::Representation
           command.request_object = permission_object
@@ -2389,6 +2391,7 @@ module Google
           command.response_class = Google::Apis::DriveV2::Permission
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['emailMessage'] = email_message unless email_message.nil?
+          command.query['enforceExpansiveAccess'] = enforce_expansive_access unless enforce_expansive_access.nil?
           command.query['enforceSingleParent'] = enforce_single_parent unless enforce_single_parent.nil?
           command.query['moveToNewOwnersRoot'] = move_to_new_owners_root unless move_to_new_owners_root.nil?
           command.query['sendNotificationEmails'] = send_notification_emails unless send_notification_emails.nil?
