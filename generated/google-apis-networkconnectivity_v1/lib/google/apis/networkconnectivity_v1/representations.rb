@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AllocationOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -298,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NextHopSpoke
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NextHopVpnTunnel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -521,6 +533,14 @@ module Google
         end
       end
       
+      class AllocationOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocation_strategy, as: 'allocationStrategy'
+          property :first_available_ranges_lookup_size, as: 'firstAvailableRangesLookupSize'
+        end
+      end
+      
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -721,6 +741,8 @@ module Google
       class InternalRange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocation_options, as: 'allocationOptions', class: Google::Apis::NetworkconnectivityV1::AllocationOptions, decorator: Google::Apis::NetworkconnectivityV1::AllocationOptions::Representation
+      
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           collection :exclude_cidr_ranges, as: 'excludeCidrRanges'
@@ -981,6 +1003,14 @@ module Google
         end
       end
       
+      class NextHopSpoke
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :site_to_site_data_transfer, as: 'siteToSiteDataTransfer'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class NextHopVpnTunnel
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1165,6 +1195,8 @@ module Google
           property :next_hop_interconnect_attachment, as: 'nextHopInterconnectAttachment', class: Google::Apis::NetworkconnectivityV1::NextHopInterconnectAttachment, decorator: Google::Apis::NetworkconnectivityV1::NextHopInterconnectAttachment::Representation
       
           property :next_hop_router_appliance_instance, as: 'nextHopRouterApplianceInstance', class: Google::Apis::NetworkconnectivityV1::NextHopRouterApplianceInstance, decorator: Google::Apis::NetworkconnectivityV1::NextHopRouterApplianceInstance::Representation
+      
+          property :next_hop_spoke, as: 'nextHopSpoke', class: Google::Apis::NetworkconnectivityV1::NextHopSpoke, decorator: Google::Apis::NetworkconnectivityV1::NextHopSpoke::Representation
       
           property :next_hop_vpc_network, as: 'nextHopVpcNetwork', class: Google::Apis::NetworkconnectivityV1::NextHopVpcNetwork, decorator: Google::Apis::NetworkconnectivityV1::NextHopVpcNetwork::Representation
       
