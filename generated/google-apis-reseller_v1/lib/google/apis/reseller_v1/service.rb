@@ -611,10 +611,8 @@ module Google
         #   identifier in your systems where applicable.
         # @param [Google::Apis::ResellerV1::Subscription] subscription_object
         # @param [String] action
-        #   The intented insert action. The usage of this field is governed by certain
-        #   policies which are being developed & tested currently. Hence, these might not
-        #   work as intended. Once this is fully tested & available to consume, we will
-        #   share more information about its usage, limitations and policy documentation.
+        #   The intented insert action. Advised to set this when the customer already has
+        #   a subscription for a different SKU in the same product.
         # @param [String] customer_auth_token
         #   The `customerAuthToken` query string is required when creating a resold
         #   account that transfers a direct customer's subscription or transfers another
@@ -623,10 +621,7 @@ module Google
         #   For more information, see the administrator help center.
         # @param [String] source_sku_id
         #   The sku_id of the existing subscription to be upgraded or downgraded. This is
-        #   required when action is SWITCH. The usage of this field is governed by certain
-        #   policies which are being developed & tested currently. Hence, these might not
-        #   work as intended. Once this is fully tested & available to consume, we will
-        #   share more information about its usage, limitations and policy documentation.
+        #   required when action is SWITCH.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
