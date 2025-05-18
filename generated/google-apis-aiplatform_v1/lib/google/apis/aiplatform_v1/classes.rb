@@ -2650,6 +2650,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Represents a customer-managed encryption key spec that can be applied to a top-
+        # level resource.
+        # Corresponds to the JSON property `encryptionSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EncryptionSpec]
+        attr_accessor :encryption_spec
+      
         # Timestamp of when this resource is considered expired. This is *always*
         # provided on output, regardless of what was sent on input.
         # Corresponds to the JSON property `expireTime`
@@ -2714,6 +2720,7 @@ module Google
           @contents = args[:contents] if args.key?(:contents)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @model = args[:model] if args.key?(:model)
           @name = args[:name] if args.key?(:name)
@@ -6282,6 +6289,11 @@ module Google
       class GoogleCloudAiplatformV1DeployedModelRef
         include Google::Apis::Core::Hashable
       
+        # Immutable. The ID of the Checkpoint deployed in the DeployedModel.
+        # Corresponds to the JSON property `checkpointId`
+        # @return [String]
+        attr_accessor :checkpoint_id
+      
         # Immutable. An ID of a DeployedModel in the above Endpoint.
         # Corresponds to the JSON property `deployedModelId`
         # @return [String]
@@ -6298,6 +6310,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @checkpoint_id = args[:checkpoint_id] if args.key?(:checkpoint_id)
           @deployed_model_id = args[:deployed_model_id] if args.key?(:deployed_model_id)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
         end
@@ -12349,6 +12362,13 @@ module Google
       class GoogleCloudAiplatformV1GenerationConfigThinkingConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Indicates whether to include thoughts in the response. If true,
+        # thoughts are returned only when available.
+        # Corresponds to the JSON property `includeThoughts`
+        # @return [Boolean]
+        attr_accessor :include_thoughts
+        alias_method :include_thoughts?, :include_thoughts
+      
         # Optional. Indicates the thinking budget in tokens. This is only applied when
         # enable_thinking is true.
         # Corresponds to the JSON property `thinkingBudget`
@@ -12361,6 +12381,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @include_thoughts = args[:include_thoughts] if args.key?(:include_thoughts)
           @thinking_budget = args[:thinking_budget] if args.key?(:thinking_budget)
         end
       end
@@ -23932,6 +23953,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagFileParsingConfigLayoutParser]
         attr_accessor :layout_parser
       
+        # Specifies the advanced parsing for RagFiles.
+        # Corresponds to the JSON property `llmParser`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagFileParsingConfigLlmParser]
+        attr_accessor :llm_parser
+      
         def initialize(**args)
            update!(**args)
         end
@@ -23939,6 +23965,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @layout_parser = args[:layout_parser] if args.key?(:layout_parser)
+          @llm_parser = args[:llm_parser] if args.key?(:llm_parser)
         end
       end
       
@@ -23972,6 +23999,41 @@ module Google
         def update!(**args)
           @max_parsing_requests_per_min = args[:max_parsing_requests_per_min] if args.key?(:max_parsing_requests_per_min)
           @processor_name = args[:processor_name] if args.key?(:processor_name)
+        end
+      end
+      
+      # Specifies the advanced parsing for RagFiles.
+      class GoogleCloudAiplatformV1RagFileParsingConfigLlmParser
+        include Google::Apis::Core::Hashable
+      
+        # The prompt to use for parsing. If not specified, a default prompt will be used.
+        # Corresponds to the JSON property `customParsingPrompt`
+        # @return [String]
+        attr_accessor :custom_parsing_prompt
+      
+        # The maximum number of requests the job is allowed to make to the LLM model per
+        # minute. Consult https://cloud.google.com/vertex-ai/generative-ai/docs/quotas
+        # and your document size to set an appropriate value here. If unspecified, a
+        # default value of 5000 QPM would be used.
+        # Corresponds to the JSON property `maxParsingRequestsPerMin`
+        # @return [Fixnum]
+        attr_accessor :max_parsing_requests_per_min
+      
+        # The name of a LLM model used for parsing. Format: * `projects/`project_id`/
+        # locations/`location`/publishers/`publisher`/models/`model``
+        # Corresponds to the JSON property `modelName`
+        # @return [String]
+        attr_accessor :model_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_parsing_prompt = args[:custom_parsing_prompt] if args.key?(:custom_parsing_prompt)
+          @max_parsing_requests_per_min = args[:max_parsing_requests_per_min] if args.key?(:max_parsing_requests_per_min)
+          @model_name = args[:model_name] if args.key?(:model_name)
         end
       end
       
@@ -24745,7 +24807,8 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Identifier. The resource name of the ReasoningEngine.
+        # Identifier. The resource name of the ReasoningEngine. Format: `projects/`
+        # project`/locations/`location`/reasoningEngines/`reasoning_engine``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -39056,6 +39119,17 @@ module Google
         # @return [String]
         attr_accessor :engine
       
+        # Optional. Filter strings to be passed to the search API.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Optional. Number of search results to return per query. The default value is
+        # 10. The maximumm allowed value is 10.
+        # Corresponds to the JSON property `maxResults`
+        # @return [Fixnum]
+        attr_accessor :max_results
+      
         def initialize(**args)
            update!(**args)
         end
@@ -39064,6 +39138,8 @@ module Google
         def update!(**args)
           @datastore = args[:datastore] if args.key?(:datastore)
           @engine = args[:engine] if args.key?(:engine)
+          @filter = args[:filter] if args.key?(:filter)
+          @max_results = args[:max_results] if args.key?(:max_results)
         end
       end
       

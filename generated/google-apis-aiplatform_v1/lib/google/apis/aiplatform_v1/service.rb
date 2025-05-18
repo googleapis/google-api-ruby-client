@@ -18550,7 +18550,8 @@ module Google
         
         # Updates a reasoning engine.
         # @param [String] name
-        #   Identifier. The resource name of the ReasoningEngine.
+        #   Identifier. The resource name of the ReasoningEngine. Format: `projects/`
+        #   project`/locations/`location`/reasoningEngines/`reasoning_engine``
         # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReasoningEngine] google_cloud_aiplatform_v1_reasoning_engine_object
         # @param [String] update_mask
         #   Optional. Mask specifying which fields to update.

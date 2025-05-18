@@ -3880,6 +3880,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1RagFileParsingConfigLlmParser
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1RagFileTransformationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7556,6 +7562,8 @@ module Google
       
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
+          property :encryption_spec, as: 'encryptionSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EncryptionSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EncryptionSpec::Representation
+      
           property :expire_time, as: 'expireTime'
           property :model, as: 'model'
           property :name, as: 'name'
@@ -8597,6 +8605,7 @@ module Google
       class GoogleCloudAiplatformV1DeployedModelRef
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :checkpoint_id, as: 'checkpointId'
           property :deployed_model_id, as: 'deployedModelId'
           property :endpoint, as: 'endpoint'
         end
@@ -10277,6 +10286,7 @@ module Google
       class GoogleCloudAiplatformV1GenerationConfigThinkingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_thoughts, as: 'includeThoughts'
           property :thinking_budget, as: 'thinkingBudget'
         end
       end
@@ -13558,6 +13568,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :layout_parser, as: 'layoutParser', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagFileParsingConfigLayoutParser, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagFileParsingConfigLayoutParser::Representation
       
+          property :llm_parser, as: 'llmParser', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagFileParsingConfigLlmParser, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagFileParsingConfigLlmParser::Representation
+      
         end
       end
       
@@ -13566,6 +13578,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_parsing_requests_per_min, as: 'maxParsingRequestsPerMin'
           property :processor_name, as: 'processorName'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1RagFileParsingConfigLlmParser
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_parsing_prompt, as: 'customParsingPrompt'
+          property :max_parsing_requests_per_min, as: 'maxParsingRequestsPerMin'
+          property :model_name, as: 'modelName'
         end
       end
       
@@ -17930,6 +17951,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :datastore, as: 'datastore'
           property :engine, as: 'engine'
+          property :filter, as: 'filter'
+          property :max_results, as: 'maxResults'
         end
       end
       
