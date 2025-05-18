@@ -1658,6 +1658,1716 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Create a schema registry instance.
+        # @param [String] parent
+        #   Required. The parent whose schema registry instance is to be created.
+        #   Structured like: `projects/`project`/locations/`location``
+        # @param [Google::Apis::ManagedkafkaV1::CreateSchemaRegistryRequest] create_schema_registry_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::SchemaRegistry] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::SchemaRegistry]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_schema_registry(parent, create_schema_registry_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/schemaRegistries', options)
+          command.request_representation = Google::Apis::ManagedkafkaV1::CreateSchemaRegistryRequest::Representation
+          command.request_object = create_schema_registry_request_object
+          command.response_representation = Google::Apis::ManagedkafkaV1::SchemaRegistry::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::SchemaRegistry
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a schema registry instance.
+        # @param [String] name
+        #   Required. The name of the schema registry instance to delete. Structured like:
+        #   `projects/`project`/locations/`location`/schemaRegistries/`schema_registry``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_schema_registry(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::Empty::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the schema registry instance.
+        # @param [String] name
+        #   Required. The name of the schema registry instance to return. Structured like:
+        #   `projects/`project`/locations/`location`/schemaRegistries/`schema_registry``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::SchemaRegistry] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::SchemaRegistry]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_schema_registry(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::SchemaRegistry::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::SchemaRegistry
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List schema registries.
+        # @param [String] parent
+        #   Required. The parent whose schema registry instances are to be listed.
+        #   Structured like: `projects/`project`/locations/`location``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::ListSchemaRegistriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::ListSchemaRegistriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_schema_registries(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/schemaRegistries', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::ListSchemaRegistriesResponse::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::ListSchemaRegistriesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Check compatibility of a schema with all versions or a specific version of a
+        # subject.
+        # @param [String] name
+        #   Required. The name of the resource to check compatibility for. The format is
+        #   either of following: * projects/`project`/locations/`location`/
+        #   schemaRegistries/`schema_registry`/compatibility/subjects/*/versions: Check
+        #   compatibility with one or more versions of the specified subject. * projects/`
+        #   project`/locations/`location`/schemaRegistries/`schema_registry`/compatibility/
+        #   subjects/`subject`/versions/`version`: Check compatibility with a specific
+        #   version of the subject.
+        # @param [Google::Apis::ManagedkafkaV1::CheckCompatibilityRequest] check_compatibility_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::CheckCompatibilityResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::CheckCompatibilityResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def check_project_location_schema_registry_compatibility_compatibility(name, check_compatibility_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ManagedkafkaV1::CheckCompatibilityRequest::Representation
+          command.request_object = check_compatibility_request_object
+          command.response_representation = Google::Apis::ManagedkafkaV1::CheckCompatibilityResponse::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::CheckCompatibilityResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete schema config for a subject.
+        # @param [String] name
+        #   Required. The resource name of subject to delete the config for. The format is
+        #   * projects/`project`/locations/`location`/schemaRegistries/`schema_registry`/
+        #   config/`subject`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::SchemaConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::SchemaConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_schema_registry_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::SchemaConfig::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::SchemaConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get schema config at global level or for a subject.
+        # @param [String] name
+        #   Required. The resource name to get the config for. It can be either of
+        #   following: * projects/`project`/locations/`location`/schemaRegistries/`
+        #   schema_registry`/config: Get config at global level. * projects/`project`/
+        #   locations/`location`/schemaRegistries/`schema_registry`/config/`subject`: Get
+        #   config for a specific subject.
+        # @param [Boolean] default_to_global
+        #   Optional. If true, the config will fall back to the config at the global level
+        #   if no subject level config is found.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::SchemaConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::SchemaConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_schema_registry_config(name, default_to_global: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::SchemaConfig::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::SchemaConfig
+          command.params['name'] = name unless name.nil?
+          command.query['defaultToGlobal'] = default_to_global unless default_to_global.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update config at global level or for a subject. Creates a SchemaSubject-level
+        # SchemaConfig if it does not exist.
+        # @param [String] name
+        #   Required. The resource name to update the config for. It can be either of
+        #   following: * projects/`project`/locations/`location`/schemaRegistries/`
+        #   schema_registry`/config: Update config at global level. * projects/`project`/
+        #   locations/`location`/schemaRegistries/`schema_registry`/config/`subject`:
+        #   Update config for a specific subject.
+        # @param [Google::Apis::ManagedkafkaV1::UpdateSchemaConfigRequest] update_schema_config_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::SchemaConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::SchemaConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_schema_registry_config(name, update_schema_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ManagedkafkaV1::UpdateSchemaConfigRequest::Representation
+          command.request_object = update_schema_config_request_object
+          command.response_representation = Google::Apis::ManagedkafkaV1::SchemaConfig::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::SchemaConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the context.
+        # @param [String] name
+        #   Required. The name of the context to return. Structured like: `projects/`
+        #   project`/locations/`location`/schemaRegistries/`schema_registry`/contexts/`
+        #   context``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::Context] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::Context]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_schema_registry_context(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::Context::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::Context
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List contexts for a schema registry.
+        # @param [String] parent
+        #   Required. The parent of the contexts. Structured like: `projects/`project`/
+        #   locations/`location`/schemaRegistries/`schema_registry``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_schema_registry_contexts(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/contexts', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::HttpBody::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::HttpBody
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Check compatibility of a schema with all versions or a specific version of a
+        # subject.
+        # @param [String] name
+        #   Required. The name of the resource to check compatibility for. The format is
+        #   either of following: * projects/`project`/locations/`location`/
+        #   schemaRegistries/`schema_registry`/compatibility/subjects/*/versions: Check
+        #   compatibility with one or more versions of the specified subject. * projects/`
+        #   project`/locations/`location`/schemaRegistries/`schema_registry`/compatibility/
+        #   subjects/`subject`/versions/`version`: Check compatibility with a specific
+        #   version of the subject.
+        # @param [Google::Apis::ManagedkafkaV1::CheckCompatibilityRequest] check_compatibility_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::CheckCompatibilityResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::CheckCompatibilityResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def check_project_location_schema_registry_context_compatibility_compatibility(name, check_compatibility_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ManagedkafkaV1::CheckCompatibilityRequest::Representation
+          command.request_object = check_compatibility_request_object
+          command.response_representation = Google::Apis::ManagedkafkaV1::CheckCompatibilityResponse::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::CheckCompatibilityResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete schema config for a subject.
+        # @param [String] name
+        #   Required. The resource name of subject to delete the config for. The format is
+        #   * projects/`project`/locations/`location`/schemaRegistries/`schema_registry`/
+        #   config/`subject`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::SchemaConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::SchemaConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_schema_registry_context_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::SchemaConfig::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::SchemaConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get schema config at global level or for a subject.
+        # @param [String] name
+        #   Required. The resource name to get the config for. It can be either of
+        #   following: * projects/`project`/locations/`location`/schemaRegistries/`
+        #   schema_registry`/config: Get config at global level. * projects/`project`/
+        #   locations/`location`/schemaRegistries/`schema_registry`/config/`subject`: Get
+        #   config for a specific subject.
+        # @param [Boolean] default_to_global
+        #   Optional. If true, the config will fall back to the config at the global level
+        #   if no subject level config is found.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::SchemaConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::SchemaConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_schema_registry_context_config(name, default_to_global: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::SchemaConfig::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::SchemaConfig
+          command.params['name'] = name unless name.nil?
+          command.query['defaultToGlobal'] = default_to_global unless default_to_global.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update config at global level or for a subject. Creates a SchemaSubject-level
+        # SchemaConfig if it does not exist.
+        # @param [String] name
+        #   Required. The resource name to update the config for. It can be either of
+        #   following: * projects/`project`/locations/`location`/schemaRegistries/`
+        #   schema_registry`/config: Update config at global level. * projects/`project`/
+        #   locations/`location`/schemaRegistries/`schema_registry`/config/`subject`:
+        #   Update config for a specific subject.
+        # @param [Google::Apis::ManagedkafkaV1::UpdateSchemaConfigRequest] update_schema_config_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::SchemaConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::SchemaConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_schema_registry_context_config(name, update_schema_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ManagedkafkaV1::UpdateSchemaConfigRequest::Representation
+          command.request_object = update_schema_config_request_object
+          command.response_representation = Google::Apis::ManagedkafkaV1::SchemaConfig::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::SchemaConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get mode at global level or for a subject.
+        # @param [String] name
+        #   Required. The resource name of the mode. The format is * projects/`project`/
+        #   locations/`location`/schemaRegistries/`schema_registry`/mode/`subject`: mode
+        #   for a schema registry, or * projects/`project`/locations/`location`/
+        #   schemaRegistries/`schema_registry`/contexts/`context`/mode/`subject`: mode for
+        #   a specific subject in a specific context
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::SchemaMode] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::SchemaMode]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_schema_registry_context_mode(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::SchemaMode::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::SchemaMode
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update mode at global level or for a subject.
+        # @param [String] name
+        #   Required. The resource name of the mode. The format is * projects/`project`/
+        #   locations/`location`/schemaRegistries/`schema_registry`/mode/`subject`: mode
+        #   for a schema registry, or * projects/`project`/locations/`location`/
+        #   schemaRegistries/`schema_registry`/contexts/`context`/mode/`subject`: mode for
+        #   a specific subject in a specific context
+        # @param [Google::Apis::ManagedkafkaV1::UpdateSchemaModeRequest] update_schema_mode_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::SchemaMode] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::SchemaMode]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_schema_registry_context_mode(name, update_schema_mode_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ManagedkafkaV1::UpdateSchemaModeRequest::Representation
+          command.request_object = update_schema_mode_request_object
+          command.response_representation = Google::Apis::ManagedkafkaV1::SchemaMode::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::SchemaMode
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the schema for the given schema id.
+        # @param [String] name
+        #   Required. The name of the schema to return. Structured like: `projects/`
+        #   project`/locations/`location`/schemaRegistries/`schema_registry`/schemas/ids/`
+        #   schema``
+        # @param [String] subject
+        #   Optional. Used to limit the search for the schema ID to a specific subject,
+        #   otherwise the schema ID will be searched for in all subjects in the given
+        #   specified context.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::Schema] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::Schema]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_schema_registry_context_schema(name, subject: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::Schema::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::Schema
+          command.params['name'] = name unless name.nil?
+          command.query['subject'] = subject unless subject.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the schema string for the given schema id. The response will be the schema
+        # string.
+        # @param [String] name
+        #   Required. The name of the schema to return. Structured like: `projects/`
+        #   project`/locations/`location`/schemaRegistries/`schema_registry`/schemas/ids/`
+        #   schema``
+        # @param [String] subject
+        #   Optional. Used to limit the search for the schema ID to a specific subject,
+        #   otherwise the schema ID will be searched for in all subjects in the given
+        #   specified context.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_schema_registry_context_schema_schema(name, subject: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}/schema', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::HttpBody::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::HttpBody
+          command.params['name'] = name unless name.nil?
+          command.query['subject'] = subject unless subject.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List subjects which reference a particular schema id. The response will be an
+        # array of subject names.
+        # @param [String] parent
+        #   Required. The schema resource whose associated subjects are to be listed.
+        #   Structured like: `projects/`project`/locations/`location`/schemaRegistries/`
+        #   schema_registry`/schemas/ids/`schema`` or `projects/`project`/locations/`
+        #   location`/schemaRegistries/`schema_registry`/contexts/`context`/schemas/ids/`
+        #   schema``
+        # @param [Boolean] deleted
+        #   Optional. If true, the response will include soft-deleted subjects. The
+        #   default is false.
+        # @param [String] subject
+        #   Optional. The subject to filter the subjects by.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_schema_registry_context_schema_subjects(parent, deleted: nil, subject: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/subjects', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::HttpBody::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::HttpBody
+          command.params['parent'] = parent unless parent.nil?
+          command.query['deleted'] = deleted unless deleted.nil?
+          command.query['subject'] = subject unless subject.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List the supported schema types. The response will be an array of schema types.
+        # @param [String] parent
+        #   Required. The parent schema registry whose schema types are to be listed.
+        #   Structured like: `projects/`project`/locations/`location`/schemaRegistries/`
+        #   schema_registry``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_schema_registry_context_schema_types(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/schemas/types', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::HttpBody::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::HttpBody
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List the schema versions for the given schema id. The response will be an
+        # array of subject-version pairs as: [`"subject":"subject1", "version":1`, `"
+        # subject":"subject2", "version":2`].
+        # @param [String] parent
+        #   Required. The schema whose schema versions are to be listed. Structured like: `
+        #   projects/`project`/locations/`location`/schemaRegistries/`schema_registry`/
+        #   schemas/ids/`schema`` or `projects/`project`/locations/`location`/
+        #   schemaRegistries/`schema_registry`/contexts/`context`/schemas/ids/`schema``
+        # @param [Boolean] deleted
+        #   Optional. If true, the response will include soft-deleted versions of the
+        #   schema, even if the subject is soft-deleted. The default is false.
+        # @param [String] subject
+        #   Optional. The subject to filter the subjects by.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_schema_registry_context_schema_versions(parent, deleted: nil, subject: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/versions', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::HttpBody::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::HttpBody
+          command.params['parent'] = parent unless parent.nil?
+          command.query['deleted'] = deleted unless deleted.nil?
+          command.query['subject'] = subject unless subject.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a subject. The response will be an array of versions of the deleted
+        # subject.
+        # @param [String] name
+        #   Required. The name of the subject to delete. Structured like: `projects/`
+        #   project`/locations/`location`/schemaRegistries/`schema_registry`/subjects/`
+        #   subject`` or `projects/`project`/locations/`location`/schemaRegistries/`
+        #   schema_registry`/contexts/`context`/subjects/`subject``
+        # @param [Boolean] permanent
+        #   Optional. If true, the subject and all associated metadata including the
+        #   schema ID will be deleted permanently. Otherwise, only the subject is soft-
+        #   deleted. The default is false. Soft-deleted subjects can still be searched in
+        #   ListSubjects API call with deleted=true query parameter. A soft-delete of a
+        #   subject must be performed before a hard-delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_schema_registry_context_subject(name, permanent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::HttpBody::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::HttpBody
+          command.params['name'] = name unless name.nil?
+          command.query['permanent'] = permanent unless permanent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List subjects in the schema registry. The response will be an array of subject
+        # names.
+        # @param [String] parent
+        #   Required. The parent schema registry/context whose subjects are to be listed.
+        #   Structured like: `projects/`project`/locations/`location`/schemaRegistries/`
+        #   schema_registry`` or `projects/`project`/locations/`location`/schemaRegistries/
+        #   `schema_registry`/contexts/`context``
+        # @param [Boolean] deleted
+        #   Optional. If true, the response will include soft-deleted subjects. The
+        #   default is false.
+        # @param [String] subject_prefix
+        #   Optional. The context to filter the subjects by, in the format of `:.`context`:
+        #   `. If unset, all subjects in the registry are returned. Set to empty string or
+        #   add as '?subjectPrefix=' at the end of this request to list subjects in the
+        #   default context.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_schema_registry_context_subjects(parent, deleted: nil, subject_prefix: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/subjects', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::HttpBody::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::HttpBody
+          command.params['parent'] = parent unless parent.nil?
+          command.query['deleted'] = deleted unless deleted.nil?
+          command.query['subjectPrefix'] = subject_prefix unless subject_prefix.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lookup a schema under the specified subject.
+        # @param [String] parent
+        #   Required. The subject to lookup the schema in. Structured like: `projects/`
+        #   project`/locations/`location`/schemaRegistries/`schema_registry`/subjects/`
+        #   subject`` or `projects/`project`/locations/`location`/schemaRegistries/`
+        #   schema_registry`/contexts/`context`/subjects/`subject``
+        # @param [Google::Apis::ManagedkafkaV1::LookupVersionRequest] lookup_version_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::SchemaVersion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::SchemaVersion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def lookup_project_location_schema_registry_context_subject_version(parent, lookup_version_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}', options)
+          command.request_representation = Google::Apis::ManagedkafkaV1::LookupVersionRequest::Representation
+          command.request_object = lookup_version_request_object
+          command.response_representation = Google::Apis::ManagedkafkaV1::SchemaVersion::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::SchemaVersion
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Register a new version under a given subject with the given schema.
+        # @param [String] parent
+        #   Required. The subject to create the version for. Structured like: `projects/`
+        #   project`/locations/`location`/schemaRegistries/`schema_registry`/subjects/`
+        #   subject`` or `projects/`project`/locations/`location`/schemaRegistries/`
+        #   schema_registry`/contexts/`context`/subjects/`subject``
+        # @param [Google::Apis::ManagedkafkaV1::CreateVersionRequest] create_version_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::CreateVersionResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::CreateVersionResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_schema_registry_context_subject_version(parent, create_version_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/versions', options)
+          command.request_representation = Google::Apis::ManagedkafkaV1::CreateVersionRequest::Representation
+          command.request_object = create_version_request_object
+          command.response_representation = Google::Apis::ManagedkafkaV1::CreateVersionResponse::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::CreateVersionResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a version of a subject. The response will be the deleted version id.
+        # @param [String] name
+        #   Required. The name of the subject version to delete. Structured like: `
+        #   projects/`project`/locations/`location`/schemaRegistries/`schema_registry`/
+        #   subjects/`subject`/versions/`version`` or `projects/`project`/locations/`
+        #   location`/schemaRegistries/`schema_registry`/contexts/`context`/subjects/`
+        #   subject`/versions/`version``
+        # @param [Boolean] permanent
+        #   Optional. If true, both the version and the referenced schema ID will be
+        #   permanently deleted. The default is false. If false, the version will be
+        #   deleted but the schema ID will be retained. Soft-deleted versions can still be
+        #   searched in ListVersions API call with deleted=true query parameter. A soft-
+        #   delete of a version must be performed before a hard-delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_schema_registry_context_subject_version(name, permanent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::HttpBody::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::HttpBody
+          command.params['name'] = name unless name.nil?
+          command.query['permanent'] = permanent unless permanent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a versioned schema (schema with subject/version) of a subject.
+        # @param [String] name
+        #   Required. The name of the subject to return versions. Structured like: `
+        #   projects/`project`/locations/`location`/schemaRegistries/`schema_registry`/
+        #   subjects/`subject`/versions/`version`` or `projects/`project`/locations/`
+        #   location`/schemaRegistries/`schema_registry`/contexts/`context`/subjects/`
+        #   subject`/versions/`version``
+        # @param [Boolean] deleted
+        #   Optional. If true, no matter if the subject/version is soft-deleted or not, it
+        #   returns the version details. If false, it returns NOT_FOUND error if the
+        #   subject/version is soft-deleted. The default is false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::SchemaVersion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::SchemaVersion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_schema_registry_context_subject_version(name, deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::SchemaVersion::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::SchemaVersion
+          command.params['name'] = name unless name.nil?
+          command.query['deleted'] = deleted unless deleted.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the schema string only for a version of a subject. The response will be
+        # the schema string.
+        # @param [String] name
+        #   Required. The name of the subject to return versions. Structured like: `
+        #   projects/`project`/locations/`location`/schemaRegistries/`schema_registry`/
+        #   subjects/`subject`/versions/`version`` or `projects/`project`/locations/`
+        #   location`/schemaRegistries/`schema_registry`/contexts/`context`/subjects/`
+        #   subject`/versions/`version``
+        # @param [Boolean] deleted
+        #   Optional. If true, no matter if the subject/version is soft-deleted or not, it
+        #   returns the version details. If false, it returns NOT_FOUND error if the
+        #   subject/version is soft-deleted. The default is false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_schema_registry_context_subject_version_schema(name, deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}/schema', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::HttpBody::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::HttpBody
+          command.params['name'] = name unless name.nil?
+          command.query['deleted'] = deleted unless deleted.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get all versions of a subject. The response will be an array of versions of
+        # the subject.
+        # @param [String] parent
+        #   Required. The subject whose versions are to be listed. Structured like: `
+        #   projects/`project`/locations/`location`/schemaRegistries/`schema_registry`/
+        #   subjects/`subject`` or `projects/`project`/locations/`location`/
+        #   schemaRegistries/`schema_registry`/contexts/`context`/subjects/`subject``
+        # @param [Boolean] deleted
+        #   Optional. If true, the response will include soft-deleted versions of an
+        #   active or soft-deleted subject. The default is false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_schema_registry_context_subject_versions(parent, deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/versions', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::HttpBody::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::HttpBody
+          command.params['parent'] = parent unless parent.nil?
+          command.query['deleted'] = deleted unless deleted.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a list of IDs of schemas that reference the schema with the given subject
+        # and version.
+        # @param [String] parent
+        #   Required. The version to list referenced by. Structured like: `projects/`
+        #   project`/locations/`location`/schemaRegistries/`schema_registry`/subjects/`
+        #   subject`/versions/`version`` or `projects/`project`/locations/`location`/
+        #   schemaRegistries/`schema_registry`/contexts/`context`/subjects/`subject`/
+        #   versions/`version``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_schema_registry_context_subject_version_referencedbies(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/referencedby', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::HttpBody::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::HttpBody
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get mode at global level or for a subject.
+        # @param [String] name
+        #   Required. The resource name of the mode. The format is * projects/`project`/
+        #   locations/`location`/schemaRegistries/`schema_registry`/mode/`subject`: mode
+        #   for a schema registry, or * projects/`project`/locations/`location`/
+        #   schemaRegistries/`schema_registry`/contexts/`context`/mode/`subject`: mode for
+        #   a specific subject in a specific context
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::SchemaMode] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::SchemaMode]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_schema_registry_mode(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::SchemaMode::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::SchemaMode
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update mode at global level or for a subject.
+        # @param [String] name
+        #   Required. The resource name of the mode. The format is * projects/`project`/
+        #   locations/`location`/schemaRegistries/`schema_registry`/mode/`subject`: mode
+        #   for a schema registry, or * projects/`project`/locations/`location`/
+        #   schemaRegistries/`schema_registry`/contexts/`context`/mode/`subject`: mode for
+        #   a specific subject in a specific context
+        # @param [Google::Apis::ManagedkafkaV1::UpdateSchemaModeRequest] update_schema_mode_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::SchemaMode] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::SchemaMode]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_schema_registry_mode(name, update_schema_mode_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ManagedkafkaV1::UpdateSchemaModeRequest::Representation
+          command.request_object = update_schema_mode_request_object
+          command.response_representation = Google::Apis::ManagedkafkaV1::SchemaMode::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::SchemaMode
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the schema for the given schema id.
+        # @param [String] name
+        #   Required. The name of the schema to return. Structured like: `projects/`
+        #   project`/locations/`location`/schemaRegistries/`schema_registry`/schemas/ids/`
+        #   schema``
+        # @param [String] subject
+        #   Optional. Used to limit the search for the schema ID to a specific subject,
+        #   otherwise the schema ID will be searched for in all subjects in the given
+        #   specified context.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::Schema] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::Schema]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_schema_registry_schema(name, subject: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::Schema::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::Schema
+          command.params['name'] = name unless name.nil?
+          command.query['subject'] = subject unless subject.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the schema string for the given schema id. The response will be the schema
+        # string.
+        # @param [String] name
+        #   Required. The name of the schema to return. Structured like: `projects/`
+        #   project`/locations/`location`/schemaRegistries/`schema_registry`/schemas/ids/`
+        #   schema``
+        # @param [String] subject
+        #   Optional. Used to limit the search for the schema ID to a specific subject,
+        #   otherwise the schema ID will be searched for in all subjects in the given
+        #   specified context.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_schema_registry_schema_schema(name, subject: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}/schema', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::HttpBody::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::HttpBody
+          command.params['name'] = name unless name.nil?
+          command.query['subject'] = subject unless subject.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List subjects which reference a particular schema id. The response will be an
+        # array of subject names.
+        # @param [String] parent
+        #   Required. The schema resource whose associated subjects are to be listed.
+        #   Structured like: `projects/`project`/locations/`location`/schemaRegistries/`
+        #   schema_registry`/schemas/ids/`schema`` or `projects/`project`/locations/`
+        #   location`/schemaRegistries/`schema_registry`/contexts/`context`/schemas/ids/`
+        #   schema``
+        # @param [Boolean] deleted
+        #   Optional. If true, the response will include soft-deleted subjects. The
+        #   default is false.
+        # @param [String] subject
+        #   Optional. The subject to filter the subjects by.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_schema_registry_schema_subjects(parent, deleted: nil, subject: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/subjects', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::HttpBody::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::HttpBody
+          command.params['parent'] = parent unless parent.nil?
+          command.query['deleted'] = deleted unless deleted.nil?
+          command.query['subject'] = subject unless subject.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List the supported schema types. The response will be an array of schema types.
+        # @param [String] parent
+        #   Required. The parent schema registry whose schema types are to be listed.
+        #   Structured like: `projects/`project`/locations/`location`/schemaRegistries/`
+        #   schema_registry``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_schema_registry_schema_types(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/schemas/types', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::HttpBody::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::HttpBody
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List the schema versions for the given schema id. The response will be an
+        # array of subject-version pairs as: [`"subject":"subject1", "version":1`, `"
+        # subject":"subject2", "version":2`].
+        # @param [String] parent
+        #   Required. The schema whose schema versions are to be listed. Structured like: `
+        #   projects/`project`/locations/`location`/schemaRegistries/`schema_registry`/
+        #   schemas/ids/`schema`` or `projects/`project`/locations/`location`/
+        #   schemaRegistries/`schema_registry`/contexts/`context`/schemas/ids/`schema``
+        # @param [Boolean] deleted
+        #   Optional. If true, the response will include soft-deleted versions of the
+        #   schema, even if the subject is soft-deleted. The default is false.
+        # @param [String] subject
+        #   Optional. The subject to filter the subjects by.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_schema_registry_schema_versions(parent, deleted: nil, subject: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/versions', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::HttpBody::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::HttpBody
+          command.params['parent'] = parent unless parent.nil?
+          command.query['deleted'] = deleted unless deleted.nil?
+          command.query['subject'] = subject unless subject.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a subject. The response will be an array of versions of the deleted
+        # subject.
+        # @param [String] name
+        #   Required. The name of the subject to delete. Structured like: `projects/`
+        #   project`/locations/`location`/schemaRegistries/`schema_registry`/subjects/`
+        #   subject`` or `projects/`project`/locations/`location`/schemaRegistries/`
+        #   schema_registry`/contexts/`context`/subjects/`subject``
+        # @param [Boolean] permanent
+        #   Optional. If true, the subject and all associated metadata including the
+        #   schema ID will be deleted permanently. Otherwise, only the subject is soft-
+        #   deleted. The default is false. Soft-deleted subjects can still be searched in
+        #   ListSubjects API call with deleted=true query parameter. A soft-delete of a
+        #   subject must be performed before a hard-delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_schema_registry_subject(name, permanent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::HttpBody::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::HttpBody
+          command.params['name'] = name unless name.nil?
+          command.query['permanent'] = permanent unless permanent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List subjects in the schema registry. The response will be an array of subject
+        # names.
+        # @param [String] parent
+        #   Required. The parent schema registry/context whose subjects are to be listed.
+        #   Structured like: `projects/`project`/locations/`location`/schemaRegistries/`
+        #   schema_registry`` or `projects/`project`/locations/`location`/schemaRegistries/
+        #   `schema_registry`/contexts/`context``
+        # @param [Boolean] deleted
+        #   Optional. If true, the response will include soft-deleted subjects. The
+        #   default is false.
+        # @param [String] subject_prefix
+        #   Optional. The context to filter the subjects by, in the format of `:.`context`:
+        #   `. If unset, all subjects in the registry are returned. Set to empty string or
+        #   add as '?subjectPrefix=' at the end of this request to list subjects in the
+        #   default context.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_schema_registry_subjects(parent, deleted: nil, subject_prefix: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/subjects', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::HttpBody::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::HttpBody
+          command.params['parent'] = parent unless parent.nil?
+          command.query['deleted'] = deleted unless deleted.nil?
+          command.query['subjectPrefix'] = subject_prefix unless subject_prefix.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lookup a schema under the specified subject.
+        # @param [String] parent
+        #   Required. The subject to lookup the schema in. Structured like: `projects/`
+        #   project`/locations/`location`/schemaRegistries/`schema_registry`/subjects/`
+        #   subject`` or `projects/`project`/locations/`location`/schemaRegistries/`
+        #   schema_registry`/contexts/`context`/subjects/`subject``
+        # @param [Google::Apis::ManagedkafkaV1::LookupVersionRequest] lookup_version_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::SchemaVersion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::SchemaVersion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def lookup_project_location_schema_registry_subject_version(parent, lookup_version_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}', options)
+          command.request_representation = Google::Apis::ManagedkafkaV1::LookupVersionRequest::Representation
+          command.request_object = lookup_version_request_object
+          command.response_representation = Google::Apis::ManagedkafkaV1::SchemaVersion::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::SchemaVersion
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Register a new version under a given subject with the given schema.
+        # @param [String] parent
+        #   Required. The subject to create the version for. Structured like: `projects/`
+        #   project`/locations/`location`/schemaRegistries/`schema_registry`/subjects/`
+        #   subject`` or `projects/`project`/locations/`location`/schemaRegistries/`
+        #   schema_registry`/contexts/`context`/subjects/`subject``
+        # @param [Google::Apis::ManagedkafkaV1::CreateVersionRequest] create_version_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::CreateVersionResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::CreateVersionResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_schema_registry_subject_version(parent, create_version_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/versions', options)
+          command.request_representation = Google::Apis::ManagedkafkaV1::CreateVersionRequest::Representation
+          command.request_object = create_version_request_object
+          command.response_representation = Google::Apis::ManagedkafkaV1::CreateVersionResponse::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::CreateVersionResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a version of a subject. The response will be the deleted version id.
+        # @param [String] name
+        #   Required. The name of the subject version to delete. Structured like: `
+        #   projects/`project`/locations/`location`/schemaRegistries/`schema_registry`/
+        #   subjects/`subject`/versions/`version`` or `projects/`project`/locations/`
+        #   location`/schemaRegistries/`schema_registry`/contexts/`context`/subjects/`
+        #   subject`/versions/`version``
+        # @param [Boolean] permanent
+        #   Optional. If true, both the version and the referenced schema ID will be
+        #   permanently deleted. The default is false. If false, the version will be
+        #   deleted but the schema ID will be retained. Soft-deleted versions can still be
+        #   searched in ListVersions API call with deleted=true query parameter. A soft-
+        #   delete of a version must be performed before a hard-delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_schema_registry_subject_version(name, permanent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::HttpBody::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::HttpBody
+          command.params['name'] = name unless name.nil?
+          command.query['permanent'] = permanent unless permanent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a versioned schema (schema with subject/version) of a subject.
+        # @param [String] name
+        #   Required. The name of the subject to return versions. Structured like: `
+        #   projects/`project`/locations/`location`/schemaRegistries/`schema_registry`/
+        #   subjects/`subject`/versions/`version`` or `projects/`project`/locations/`
+        #   location`/schemaRegistries/`schema_registry`/contexts/`context`/subjects/`
+        #   subject`/versions/`version``
+        # @param [Boolean] deleted
+        #   Optional. If true, no matter if the subject/version is soft-deleted or not, it
+        #   returns the version details. If false, it returns NOT_FOUND error if the
+        #   subject/version is soft-deleted. The default is false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::SchemaVersion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::SchemaVersion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_schema_registry_subject_version(name, deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::SchemaVersion::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::SchemaVersion
+          command.params['name'] = name unless name.nil?
+          command.query['deleted'] = deleted unless deleted.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the schema string only for a version of a subject. The response will be
+        # the schema string.
+        # @param [String] name
+        #   Required. The name of the subject to return versions. Structured like: `
+        #   projects/`project`/locations/`location`/schemaRegistries/`schema_registry`/
+        #   subjects/`subject`/versions/`version`` or `projects/`project`/locations/`
+        #   location`/schemaRegistries/`schema_registry`/contexts/`context`/subjects/`
+        #   subject`/versions/`version``
+        # @param [Boolean] deleted
+        #   Optional. If true, no matter if the subject/version is soft-deleted or not, it
+        #   returns the version details. If false, it returns NOT_FOUND error if the
+        #   subject/version is soft-deleted. The default is false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_schema_registry_subject_version_schema(name, deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}/schema', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::HttpBody::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::HttpBody
+          command.params['name'] = name unless name.nil?
+          command.query['deleted'] = deleted unless deleted.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get all versions of a subject. The response will be an array of versions of
+        # the subject.
+        # @param [String] parent
+        #   Required. The subject whose versions are to be listed. Structured like: `
+        #   projects/`project`/locations/`location`/schemaRegistries/`schema_registry`/
+        #   subjects/`subject`` or `projects/`project`/locations/`location`/
+        #   schemaRegistries/`schema_registry`/contexts/`context`/subjects/`subject``
+        # @param [Boolean] deleted
+        #   Optional. If true, the response will include soft-deleted versions of an
+        #   active or soft-deleted subject. The default is false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_schema_registry_subject_versions(parent, deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/versions', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::HttpBody::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::HttpBody
+          command.params['parent'] = parent unless parent.nil?
+          command.query['deleted'] = deleted unless deleted.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a list of IDs of schemas that reference the schema with the given subject
+        # and version.
+        # @param [String] parent
+        #   Required. The version to list referenced by. Structured like: `projects/`
+        #   project`/locations/`location`/schemaRegistries/`schema_registry`/subjects/`
+        #   subject`/versions/`version`` or `projects/`project`/locations/`location`/
+        #   schemaRegistries/`schema_registry`/contexts/`context`/subjects/`subject`/
+        #   versions/`version``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_schema_registry_subject_version_referencedbies(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/referencedby', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::HttpBody::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::HttpBody
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 
