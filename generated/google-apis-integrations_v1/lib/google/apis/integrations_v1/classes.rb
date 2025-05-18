@@ -5062,17 +5062,17 @@ module Google
       class GoogleCloudConnectorsV1AuthConfig
         include Google::Apis::Core::Hashable
       
-        # List containing additional auth configs.
+        # Optional. List containing additional auth configs.
         # Corresponds to the JSON property `additionalVariables`
         # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1ConfigVariable>]
         attr_accessor :additional_variables
       
-        # Identifier key for auth config
+        # Optional. Identifier key for auth config
         # Corresponds to the JSON property `authKey`
         # @return [String]
         attr_accessor :auth_key
       
-        # The type of authentication configured.
+        # Optional. The type of authentication configured.
         # Corresponds to the JSON property `authType`
         # @return [String]
         attr_accessor :auth_type
@@ -5136,17 +5136,17 @@ module Google
       class GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow
         include Google::Apis::Core::Hashable
       
-        # Authorization code to be exchanged for access and refresh tokens.
+        # Optional. Authorization code to be exchanged for access and refresh tokens.
         # Corresponds to the JSON property `authCode`
         # @return [String]
         attr_accessor :auth_code
       
-        # Auth URL for Authorization Code Flow
+        # Optional. Auth URL for Authorization Code Flow
         # Corresponds to the JSON property `authUri`
         # @return [String]
         attr_accessor :auth_uri
       
-        # Client ID for user-provided OAuth app.
+        # Optional. Client ID for user-provided OAuth app.
         # Corresponds to the JSON property `clientId`
         # @return [String]
         attr_accessor :client_id
@@ -5156,23 +5156,24 @@ module Google
         # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1Secret]
         attr_accessor :client_secret
       
-        # Whether to enable PKCE when the user performs the auth code flow.
+        # Optional. Whether to enable PKCE when the user performs the auth code flow.
         # Corresponds to the JSON property `enablePkce`
         # @return [Boolean]
         attr_accessor :enable_pkce
         alias_method :enable_pkce?, :enable_pkce
       
-        # PKCE verifier to be used during the auth code exchange.
+        # Optional. PKCE verifier to be used during the auth code exchange.
         # Corresponds to the JSON property `pkceVerifier`
         # @return [String]
         attr_accessor :pkce_verifier
       
-        # Redirect URI to be provided during the auth code exchange.
+        # Optional. Redirect URI to be provided during the auth code exchange.
         # Corresponds to the JSON property `redirectUri`
         # @return [String]
         attr_accessor :redirect_uri
       
-        # Scopes the connection will request when the user performs the auth code flow.
+        # Optional. Scopes the connection will request when the user performs the auth
+        # code flow.
         # Corresponds to the JSON property `scopes`
         # @return [Array<String>]
         attr_accessor :scopes
@@ -5233,7 +5234,7 @@ module Google
       class GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials
         include Google::Apis::Core::Hashable
       
-        # The client identifier.
+        # Optional. The client identifier.
         # Corresponds to the JSON property `clientId`
         # @return [String]
         attr_accessor :client_id
@@ -5285,17 +5286,17 @@ module Google
       class GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims
         include Google::Apis::Core::Hashable
       
-        # Value for the "aud" claim.
+        # Optional. Value for the "aud" claim.
         # Corresponds to the JSON property `audience`
         # @return [String]
         attr_accessor :audience
       
-        # Value for the "iss" claim.
+        # Optional. Value for the "iss" claim.
         # Corresponds to the JSON property `issuer`
         # @return [String]
         attr_accessor :issuer
       
-        # Value for the "sub" claim.
+        # Optional. Value for the "sub" claim.
         # Corresponds to the JSON property `subject`
         # @return [String]
         attr_accessor :subject
@@ -5316,7 +5317,7 @@ module Google
       class GoogleCloudConnectorsV1AuthConfigSshPublicKey
         include Google::Apis::Core::Hashable
       
-        # Format of SSH Client cert.
+        # Optional. Format of SSH Client cert.
         # Corresponds to the JSON property `certType`
         # @return [String]
         attr_accessor :cert_type
@@ -5331,7 +5332,7 @@ module Google
         # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1Secret]
         attr_accessor :ssh_client_cert_pass
       
-        # The user account used to authenticate.
+        # Optional. The user account used to authenticate.
         # Corresponds to the JSON property `username`
         # @return [String]
         attr_accessor :username
@@ -5358,7 +5359,7 @@ module Google
         # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1Secret]
         attr_accessor :password
       
-        # Username.
+        # Optional. Username.
         # Corresponds to the JSON property `username`
         # @return [String]
         attr_accessor :username
@@ -5414,7 +5415,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :int_value
       
-        # Key of the config variable.
+        # Optional. Key of the config variable.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -5525,6 +5526,11 @@ module Google
         # @return [String]
         attr_accessor :envoy_image_location
       
+        # AuthConfig defines details of a authentication type.
+        # Corresponds to the JSON property `euaOauthAuthConfig`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AuthConfig]
+        attr_accessor :eua_oauth_auth_config
+      
         # Eventing Configuration of a connection next: 18
         # Corresponds to the JSON property `eventingConfig`
         # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingConfig]
@@ -5540,6 +5546,15 @@ module Google
         # Corresponds to the JSON property `eventingRuntimeData`
         # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingRuntimeData]
         attr_accessor :eventing_runtime_data
+      
+        # Optional. Fallback on admin credentials for the connection. If this both
+        # auth_override_enabled and fallback_on_admin_credentials are set to true, the
+        # connection will use the admin credentials if the dynamic auth header is not
+        # present during auth override.
+        # Corresponds to the JSON property `fallbackOnAdminCredentials`
+        # @return [Boolean]
+        attr_accessor :fallback_on_admin_credentials
+        alias_method :fallback_on_admin_credentials?, :fallback_on_admin_credentials
       
         # Output only. The name of the Hostname of the Service Directory service with
         # TLS.
@@ -5658,9 +5673,11 @@ module Google
           @description = args[:description] if args.key?(:description)
           @destination_configs = args[:destination_configs] if args.key?(:destination_configs)
           @envoy_image_location = args[:envoy_image_location] if args.key?(:envoy_image_location)
+          @eua_oauth_auth_config = args[:eua_oauth_auth_config] if args.key?(:eua_oauth_auth_config)
           @eventing_config = args[:eventing_config] if args.key?(:eventing_config)
           @eventing_enablement_type = args[:eventing_enablement_type] if args.key?(:eventing_enablement_type)
           @eventing_runtime_data = args[:eventing_runtime_data] if args.key?(:eventing_runtime_data)
+          @fallback_on_admin_credentials = args[:fallback_on_admin_credentials] if args.key?(:fallback_on_admin_credentials)
           @host = args[:host] if args.key?(:host)
           @image_location = args[:image_location] if args.key?(:image_location)
           @is_trusted_tester = args[:is_trusted_tester] if args.key?(:is_trusted_tester)
@@ -5853,9 +5870,9 @@ module Google
       class GoogleCloudConnectorsV1EncryptionKey
         include Google::Apis::Core::Hashable
       
-        # The [KMS key name] with which the content of the Operation is encrypted. The
-        # expected format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`. Will be
-        # empty string if google managed.
+        # Optional. The [KMS key name] with which the content of the Operation is
+        # encrypted. The expected format: `projects/*/locations/*/keyRings/*/cryptoKeys/*
+        # `. Will be empty string if google managed.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
@@ -6174,13 +6191,13 @@ module Google
       class GoogleCloudConnectorsV1LockConfig
         include Google::Apis::Core::Hashable
       
-        # Indicates whether or not the connection is locked.
+        # Optional. Indicates whether or not the connection is locked.
         # Corresponds to the JSON property `locked`
         # @return [Boolean]
         attr_accessor :locked
         alias_method :locked?, :locked
       
-        # Describes why a connection is locked.
+        # Optional. Describes why a connection is locked.
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -6200,7 +6217,8 @@ module Google
       class GoogleCloudConnectorsV1LogConfig
         include Google::Apis::Core::Hashable
       
-        # Enabled represents whether logging is enabled or not for a connection.
+        # Optional. Enabled represents whether logging is enabled or not for a
+        # connection.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
@@ -6226,12 +6244,12 @@ module Google
       class GoogleCloudConnectorsV1NodeConfig
         include Google::Apis::Core::Hashable
       
-        # Maximum number of nodes in the runtime nodes.
+        # Optional. Maximum number of nodes in the runtime nodes.
         # Corresponds to the JSON property `maxNodeCount`
         # @return [Fixnum]
         attr_accessor :max_node_count
       
-        # Minimum number of nodes in the runtime nodes.
+        # Optional. Minimum number of nodes in the runtime nodes.
         # Corresponds to the JSON property `minNodeCount`
         # @return [Fixnum]
         attr_accessor :min_node_count
@@ -6301,8 +6319,8 @@ module Google
       class GoogleCloudConnectorsV1Secret
         include Google::Apis::Core::Hashable
       
-        # The resource name of the secret version in the format, format as: `projects/*/
-        # secrets/*/versions/*`.
+        # Optional. The resource name of the secret version in the format, format as: `
+        # projects/*/secrets/*/versions/*`.
         # Corresponds to the JSON property `secretVersion`
         # @return [String]
         attr_accessor :secret_version
