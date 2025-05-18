@@ -1006,7 +1006,7 @@ module Google
         # Lists the database nodes of a VM Cluster.
         # @param [String] parent
         #   Required. The parent value for database node in the following format: projects/
-        #   `project`/locations/`location`/cloudVmClusters/`cloudVmCluster`.
+        #   `project`/locations/`location`/cloudVmClusters/`cloudVmCluster`. .
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return. If unspecified, at most 50 db
         #   nodes will be returned. The maximum value is 1000; values above 1000 will be
