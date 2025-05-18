@@ -324,6 +324,7 @@ module Google
           property :auth_code, as: 'authCode'
           property :pkce_verifier, as: 'pkceVerifier'
           property :redirect_uri, as: 'redirectUri'
+          collection :scopes, as: 'scopes'
         end
       end
       
