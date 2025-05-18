@@ -322,12 +322,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleMapsPlacesV1ReviewVisitDate
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleMapsPlacesV1RouteModifiers
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1020,6 +1014,7 @@ module Google
           property :disclosure_text, as: 'disclosureText', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
       
           property :flag_content_uri, as: 'flagContentUri'
+          property :reviews_uri, as: 'reviewsUri'
           property :text, as: 'text', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
       
         end
@@ -1065,16 +1060,6 @@ module Google
           property :relative_publish_time_description, as: 'relativePublishTimeDescription'
           property :text, as: 'text', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
       
-          property :visit_date, as: 'visitDate', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1ReviewVisitDate, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1ReviewVisitDate::Representation
-      
-        end
-      end
-      
-      class GoogleMapsPlacesV1ReviewVisitDate
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :month, as: 'month'
-          property :year, as: 'year'
         end
       end
       
