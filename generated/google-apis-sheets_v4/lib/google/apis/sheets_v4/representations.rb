@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AddTableResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppendCellsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1720,6 +1726,14 @@ module Google
       end
       
       class AddTableRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :table, as: 'table', class: Google::Apis::SheetsV4::Table, decorator: Google::Apis::SheetsV4::Table::Representation
+      
+        end
+      end
+      
+      class AddTableResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :table, as: 'table', class: Google::Apis::SheetsV4::Table, decorator: Google::Apis::SheetsV4::Table::Representation
@@ -3792,6 +3806,8 @@ module Google
           property :add_sheet, as: 'addSheet', class: Google::Apis::SheetsV4::AddSheetResponse, decorator: Google::Apis::SheetsV4::AddSheetResponse::Representation
       
           property :add_slicer, as: 'addSlicer', class: Google::Apis::SheetsV4::AddSlicerResponse, decorator: Google::Apis::SheetsV4::AddSlicerResponse::Representation
+      
+          property :add_table, as: 'addTable', class: Google::Apis::SheetsV4::AddTableResponse, decorator: Google::Apis::SheetsV4::AddTableResponse::Representation
       
           property :cancel_data_source_refresh, as: 'cancelDataSourceRefresh', class: Google::Apis::SheetsV4::CancelDataSourceRefreshResponse, decorator: Google::Apis::SheetsV4::CancelDataSourceRefreshResponse::Representation
       

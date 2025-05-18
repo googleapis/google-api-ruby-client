@@ -443,6 +443,25 @@ module Google
         end
       end
       
+      # The result of adding a table.
+      class AddTableResponse
+        include Google::Apis::Core::Hashable
+      
+        # A table.
+        # Corresponds to the JSON property `table`
+        # @return [Google::Apis::SheetsV4::Table]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @table = args[:table] if args.key?(:table)
+        end
+      end
+      
       # Adds new cells after the last row with data in a sheet, inserting new rows
       # into the sheet if necessary.
       class AppendCellsRequest
@@ -8637,6 +8656,11 @@ module Google
         # @return [Google::Apis::SheetsV4::AddSlicerResponse]
         attr_accessor :add_slicer
       
+        # The result of adding a table.
+        # Corresponds to the JSON property `addTable`
+        # @return [Google::Apis::SheetsV4::AddTableResponse]
+        attr_accessor :add_table
+      
         # The response from cancelling one or multiple data source object refreshes.
         # Corresponds to the JSON property `cancelDataSourceRefresh`
         # @return [Google::Apis::SheetsV4::CancelDataSourceRefreshResponse]
@@ -8727,6 +8751,7 @@ module Google
           @add_protected_range = args[:add_protected_range] if args.key?(:add_protected_range)
           @add_sheet = args[:add_sheet] if args.key?(:add_sheet)
           @add_slicer = args[:add_slicer] if args.key?(:add_slicer)
+          @add_table = args[:add_table] if args.key?(:add_table)
           @cancel_data_source_refresh = args[:cancel_data_source_refresh] if args.key?(:cancel_data_source_refresh)
           @create_developer_metadata = args[:create_developer_metadata] if args.key?(:create_developer_metadata)
           @delete_conditional_format_rule = args[:delete_conditional_format_rule] if args.key?(:delete_conditional_format_rule)
