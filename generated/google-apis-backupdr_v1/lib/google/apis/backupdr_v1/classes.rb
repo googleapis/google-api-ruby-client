@@ -483,6 +483,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # DiskBackupProperties represents the properties of a Disk backup.
+        # Corresponds to the JSON property `diskBackupProperties`
+        # @return [Google::Apis::BackupdrV1::DiskBackupProperties]
+        attr_accessor :disk_backup_properties
+      
         # Optional. The backup can not be deleted before this time.
         # Corresponds to the JSON property `enforcedRetentionEndTime`
         # @return [String]
@@ -564,6 +569,7 @@ module Google
           @consistency_time = args[:consistency_time] if args.key?(:consistency_time)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @disk_backup_properties = args[:disk_backup_properties] if args.key?(:disk_backup_properties)
           @enforced_retention_end_time = args[:enforced_retention_end_time] if args.key?(:enforced_retention_end_time)
           @etag = args[:etag] if args.key?(:etag)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
@@ -1082,6 +1088,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Output only. All resource types to which backupPlan can be applied.
+        # Corresponds to the JSON property `supportedResourceTypes`
+        # @return [Array<String>]
+        attr_accessor :supported_resource_types
+      
         # Output only. When the `BackupPlan` was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -1103,6 +1114,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
           @state = args[:state] if args.key?(:state)
+          @supported_resource_types = args[:supported_resource_types] if args.key?(:supported_resource_types)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -1919,6 +1931,13 @@ module Google
       class DataSource
         include Google::Apis::Core::Hashable
       
+        # Output only. This field is set to true if the backup is blocked by vault
+        # access restriction.
+        # Corresponds to the JSON property `backupBlockedByVaultAccessRestriction`
+        # @return [Boolean]
+        attr_accessor :backup_blocked_by_vault_access_restriction
+        alias_method :backup_blocked_by_vault_access_restriction?, :backup_blocked_by_vault_access_restriction
+      
         # BackupConfigInfo has information about how the resource is configured for
         # Backup and about the most recent backup to this vault.
         # Corresponds to the JSON property `backupConfigInfo`
@@ -1995,6 +2014,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @backup_blocked_by_vault_access_restriction = args[:backup_blocked_by_vault_access_restriction] if args.key?(:backup_blocked_by_vault_access_restriction)
           @backup_config_info = args[:backup_config_info] if args.key?(:backup_config_info)
           @backup_count = args[:backup_count] if args.key?(:backup_count)
           @config_state = args[:config_state] if args.key?(:config_state)
@@ -2078,6 +2098,12 @@ module Google
         # @return [Google::Apis::BackupdrV1::ComputeInstanceDataSourceProperties]
         attr_accessor :compute_instance_datasource_properties
       
+        # DiskDataSourceProperties represents the properties of a Disk resource that are
+        # stored in the DataSource. .
+        # Corresponds to the JSON property `diskDatasourceProperties`
+        # @return [Google::Apis::BackupdrV1::DiskDataSourceProperties]
+        attr_accessor :disk_datasource_properties
+      
         # Output only. Full resource pathname URL of the source Google Cloud resource.
         # Corresponds to the JSON property `gcpResourcename`
         # @return [String]
@@ -2101,9 +2127,276 @@ module Google
         # Update properties of this object
         def update!(**args)
           @compute_instance_datasource_properties = args[:compute_instance_datasource_properties] if args.key?(:compute_instance_datasource_properties)
+          @disk_datasource_properties = args[:disk_datasource_properties] if args.key?(:disk_datasource_properties)
           @gcp_resourcename = args[:gcp_resourcename] if args.key?(:gcp_resourcename)
           @location = args[:location] if args.key?(:location)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # DiskBackupProperties represents the properties of a Disk backup.
+      class DiskBackupProperties
+        include Google::Apis::Core::Hashable
+      
+        # The architecture of the source disk. Valid values are ARM64 or X86_64.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
+        # A description of the source disk.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # A list of guest OS features that are applicable to this backup.
+        # Corresponds to the JSON property `guestOsFeature`
+        # @return [Array<Google::Apis::BackupdrV1::GuestOsFeature>]
+        attr_accessor :guest_os_feature
+      
+        # A list of publicly available licenses that are applicable to this backup. This
+        # is applicable if the original image had licenses attached, e.g. Windows image.
+        # Corresponds to the JSON property `licenses`
+        # @return [Array<String>]
+        attr_accessor :licenses
+      
+        # Region and zone are mutually exclusive fields. The URL of the region of the
+        # source disk.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # The URL of the Zones where the source disk should be replicated.
+        # Corresponds to the JSON property `replicaZones`
+        # @return [Array<String>]
+        attr_accessor :replica_zones
+      
+        # Size(in GB) of the source disk.
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Fixnum]
+        attr_accessor :size_gb
+      
+        # The source disk used to create this backup.
+        # Corresponds to the JSON property `sourceDisk`
+        # @return [String]
+        attr_accessor :source_disk
+      
+        # The URL of the type of the disk.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The URL of the Zone where the source disk.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
+          @description = args[:description] if args.key?(:description)
+          @guest_os_feature = args[:guest_os_feature] if args.key?(:guest_os_feature)
+          @licenses = args[:licenses] if args.key?(:licenses)
+          @region = args[:region] if args.key?(:region)
+          @replica_zones = args[:replica_zones] if args.key?(:replica_zones)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
+          @source_disk = args[:source_disk] if args.key?(:source_disk)
+          @type = args[:type] if args.key?(:type)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # DiskDataSourceProperties represents the properties of a Disk resource that are
+      # stored in the DataSource. .
+      class DiskDataSourceProperties
+        include Google::Apis::Core::Hashable
+      
+        # The description of the disk.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Name of the disk backed up by the datasource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The size of the disk in GB.
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Fixnum]
+        attr_accessor :size_gb
+      
+        # The type of the disk.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @name = args[:name] if args.key?(:name)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # DiskRestoreProperties represents the properties of a Disk restore.
+      class DiskRestoreProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The access mode of the disk.
+        # Corresponds to the JSON property `accessMode`
+        # @return [String]
+        attr_accessor :access_mode
+      
+        # Optional. The architecture of the source disk. Valid values are ARM64 or
+        # X86_64.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
+        # Optional. An optional description of this resource. Provide this property when
+        # you create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # A customer-supplied encryption key.
+        # Corresponds to the JSON property `diskEncryptionKey`
+        # @return [Google::Apis::BackupdrV1::CustomerEncryptionKey]
+        attr_accessor :disk_encryption_key
+      
+        # Optional. Indicates whether this disk is using confidential compute mode.
+        # Encryption with a Cloud KMS key is required to enable this option.
+        # Corresponds to the JSON property `enableConfidentialCompute`
+        # @return [Boolean]
+        attr_accessor :enable_confidential_compute
+        alias_method :enable_confidential_compute?, :enable_confidential_compute
+      
+        # Optional. A list of features to enable in the guest operating system. This is
+        # applicable only for bootable images.
+        # Corresponds to the JSON property `guestOsFeature`
+        # @return [Array<Google::Apis::BackupdrV1::GuestOsFeature>]
+        attr_accessor :guest_os_feature
+      
+        # Optional. Labels to apply to this disk. These can be modified later using
+        # setLabels method. Label values can be empty.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Optional. A list of publicly available licenses that are applicable to this
+        # backup. This is applicable if the original image had licenses attached, e.g.
+        # Windows image
+        # Corresponds to the JSON property `licenses`
+        # @return [Array<String>]
+        attr_accessor :licenses
+      
+        # Required. Name of the disk..
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Physical block size of the persistent disk, in bytes. If not present
+        # in a request, a default value is used. Currently, the supported size is 4096.
+        # Corresponds to the JSON property `physicalBlockSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :physical_block_size_bytes
+      
+        # Optional. Indicates how many IOPS to provision for the disk. This sets the
+        # number of I/O operations per second that the disk can handle.
+        # Corresponds to the JSON property `provisionedIops`
+        # @return [Fixnum]
+        attr_accessor :provisioned_iops
+      
+        # Optional. Indicates how much throughput to provision for the disk. This sets
+        # the number of throughput MB per second that the disk can handle.
+        # Corresponds to the JSON property `provisionedThroughput`
+        # @return [Fixnum]
+        attr_accessor :provisioned_throughput
+      
+        # Optional. Resource manager tags to be bound to the disk.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        # Optional. Resource policies applied to this disk.
+        # Corresponds to the JSON property `resourcePolicy`
+        # @return [Array<String>]
+        attr_accessor :resource_policy
+      
+        # Required. The size of the disk in GB.
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Fixnum]
+        attr_accessor :size_gb
+      
+        # Optional. The storage pool in which the new disk is created. You can provide
+        # this as a partial or full URL to the resource.
+        # Corresponds to the JSON property `storagePool`
+        # @return [String]
+        attr_accessor :storage_pool
+      
+        # Required. URL of the disk type resource describing which disk type to use to
+        # create the disk.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_mode = args[:access_mode] if args.key?(:access_mode)
+          @architecture = args[:architecture] if args.key?(:architecture)
+          @description = args[:description] if args.key?(:description)
+          @disk_encryption_key = args[:disk_encryption_key] if args.key?(:disk_encryption_key)
+          @enable_confidential_compute = args[:enable_confidential_compute] if args.key?(:enable_confidential_compute)
+          @guest_os_feature = args[:guest_os_feature] if args.key?(:guest_os_feature)
+          @labels = args[:labels] if args.key?(:labels)
+          @licenses = args[:licenses] if args.key?(:licenses)
+          @name = args[:name] if args.key?(:name)
+          @physical_block_size_bytes = args[:physical_block_size_bytes] if args.key?(:physical_block_size_bytes)
+          @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
+          @provisioned_throughput = args[:provisioned_throughput] if args.key?(:provisioned_throughput)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
+          @resource_policy = args[:resource_policy] if args.key?(:resource_policy)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
+          @storage_pool = args[:storage_pool] if args.key?(:storage_pool)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # DiskTargetEnvironment represents the target environment for the disk.
+      class DiskTargetEnvironment
+        include Google::Apis::Core::Hashable
+      
+        # Required. Target project for the disk.
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
+        # Required. Target zone for the disk.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project = args[:project] if args.key?(:project)
+          @zone = args[:zone] if args.key?(:zone)
         end
       end
       
@@ -3590,6 +3883,37 @@ module Google
         end
       end
       
+      # RegionDiskTargetEnvironment represents the target environment for the disk.
+      class RegionDiskTargetEnvironment
+        include Google::Apis::Core::Hashable
+      
+        # Required. Target project for the disk.
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
+        # Required. Target region for the disk.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # Required. Target URLs of the replica zones for the disk.
+        # Corresponds to the JSON property `replicaZones`
+        # @return [Array<String>]
+        attr_accessor :replica_zones
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project = args[:project] if args.key?(:project)
+          @region = args[:region] if args.key?(:region)
+          @replica_zones = args[:replica_zones] if args.key?(:replica_zones)
+        end
+      end
+      
       # Message for deleting a DataSource.
       class RemoveDataSourceRequest
         include Google::Apis::Core::Hashable
@@ -3714,6 +4038,21 @@ module Google
         # @return [Google::Apis::BackupdrV1::ComputeInstanceTargetEnvironment]
         attr_accessor :compute_instance_target_environment
       
+        # DiskRestoreProperties represents the properties of a Disk restore.
+        # Corresponds to the JSON property `diskRestoreProperties`
+        # @return [Google::Apis::BackupdrV1::DiskRestoreProperties]
+        attr_accessor :disk_restore_properties
+      
+        # DiskTargetEnvironment represents the target environment for the disk.
+        # Corresponds to the JSON property `diskTargetEnvironment`
+        # @return [Google::Apis::BackupdrV1::DiskTargetEnvironment]
+        attr_accessor :disk_target_environment
+      
+        # RegionDiskTargetEnvironment represents the target environment for the disk.
+        # Corresponds to the JSON property `regionDiskTargetEnvironment`
+        # @return [Google::Apis::BackupdrV1::RegionDiskTargetEnvironment]
+        attr_accessor :region_disk_target_environment
+      
         # Optional. An optional request ID to identify requests. Specify a unique
         # request ID so that if you must retry your request, the server will know to
         # ignore the request if it has already been completed. The server will guarantee
@@ -3736,6 +4075,9 @@ module Google
         def update!(**args)
           @compute_instance_restore_properties = args[:compute_instance_restore_properties] if args.key?(:compute_instance_restore_properties)
           @compute_instance_target_environment = args[:compute_instance_target_environment] if args.key?(:compute_instance_target_environment)
+          @disk_restore_properties = args[:disk_restore_properties] if args.key?(:disk_restore_properties)
+          @disk_target_environment = args[:disk_target_environment] if args.key?(:disk_target_environment)
+          @region_disk_target_environment = args[:region_disk_target_environment] if args.key?(:region_disk_target_environment)
           @request_id = args[:request_id] if args.key?(:request_id)
         end
       end
