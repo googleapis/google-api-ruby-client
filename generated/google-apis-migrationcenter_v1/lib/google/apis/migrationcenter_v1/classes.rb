@@ -696,6 +696,11 @@ module Google
         attr_accessor :allow_missing
         alias_method :allow_missing?, :allow_missing
       
+        # Optional. Optional cascading rules for deleting related assets.
+        # Corresponds to the JSON property `cascadingRules`
+        # @return [Array<Google::Apis::MigrationcenterV1::CascadingRule>]
+        attr_accessor :cascading_rules
+      
         # Required. The IDs of the assets to delete. A maximum of 1000 assets can be
         # deleted in a batch. Format: projects/`project`/locations/`location`/assets/`
         # name`.
@@ -710,6 +715,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allow_missing = args[:allow_missing] if args.key?(:allow_missing)
+          @cascading_rules = args[:cascading_rules] if args.key?(:cascading_rules)
           @names = args[:names] if args.key?(:names)
         end
       end
@@ -820,6 +826,38 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Cascading rule for related logical DBs.
+      class CascadeLogicalDBsRule
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Specifies cascading rules for traversing relations.
+      class CascadingRule
+        include Google::Apis::Core::Hashable
+      
+        # Cascading rule for related logical DBs.
+        # Corresponds to the JSON property `cascadeLogicalDbs`
+        # @return [Google::Apis::MigrationcenterV1::CascadeLogicalDBsRule]
+        attr_accessor :cascade_logical_dbs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cascade_logical_dbs = args[:cascade_logical_dbs] if args.key?(:cascade_logical_dbs)
         end
       end
       
