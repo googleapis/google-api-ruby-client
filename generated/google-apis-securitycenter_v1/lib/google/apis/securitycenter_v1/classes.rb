@@ -1672,7 +1672,7 @@ module Google
       class CustomModuleValidationErrors
         include Google::Apis::Core::Hashable
       
-        # 
+        # The list of errors.
         # Corresponds to the JSON property `errors`
         # @return [Array<Google::Apis::SecuritycenterV1::CustomModuleValidationError>]
         attr_accessor :errors
@@ -11168,12 +11168,12 @@ module Google
       class Position
         include Google::Apis::Core::Hashable
       
-        # 
+        # The column number.
         # Corresponds to the JSON property `columnNumber`
         # @return [Fixnum]
         attr_accessor :column_number
       
-        # 
+        # The line number.
         # Corresponds to the JSON property `lineNumber`
         # @return [Fixnum]
         attr_accessor :line_number
