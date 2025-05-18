@@ -1894,8 +1894,7 @@ module Google
         # @return [String]
         attr_accessor :directions_uri
       
-        # A link to show photos of this place. This link is currently not supported on
-        # Google Maps Mobile and only works on the web version of Google Maps.
+        # A link to show reviews of this place on Google Maps.
         # Corresponds to the JSON property `photosUri`
         # @return [String]
         attr_accessor :photos_uri
@@ -1905,14 +1904,12 @@ module Google
         # @return [String]
         attr_accessor :place_uri
       
-        # A link to show reviews of this place. This link is currently not supported on
-        # Google Maps Mobile and only works on the web version of Google Maps.
+        # A link to show reviews of this place on Google Maps.
         # Corresponds to the JSON property `reviewsUri`
         # @return [String]
         attr_accessor :reviews_uri
       
-        # A link to write a review for this place. This link is currently not supported
-        # on Google Maps Mobile and only works on the web version of Google Maps.
+        # A link to write a review for this place on Google Maps.
         # Corresponds to the JSON property `writeAReviewUri`
         # @return [String]
         attr_accessor :write_a_review_uri
@@ -2296,6 +2293,11 @@ module Google
         # @return [String]
         attr_accessor :flag_content_uri
       
+        # A link to show reviews of this place on Google Maps.
+        # Corresponds to the JSON property `reviewsUri`
+        # @return [String]
+        attr_accessor :reviews_uri
+      
         # Localized variant of a text in a particular language.
         # Corresponds to the JSON property `text`
         # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
@@ -2309,6 +2311,7 @@ module Google
         def update!(**args)
           @disclosure_text = args[:disclosure_text] if args.key?(:disclosure_text)
           @flag_content_uri = args[:flag_content_uri] if args.key?(:flag_content_uri)
+          @reviews_uri = args[:reviews_uri] if args.key?(:reviews_uri)
           @text = args[:text] if args.key?(:text)
         end
       end
@@ -2449,11 +2452,6 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
         attr_accessor :text
       
-        # The date when the author visited the place. This is trucated to month.
-        # Corresponds to the JSON property `visitDate`
-        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1ReviewVisitDate]
-        attr_accessor :visit_date
-      
         def initialize(**args)
            update!(**args)
         end
@@ -2469,32 +2467,6 @@ module Google
           @rating = args[:rating] if args.key?(:rating)
           @relative_publish_time_description = args[:relative_publish_time_description] if args.key?(:relative_publish_time_description)
           @text = args[:text] if args.key?(:text)
-          @visit_date = args[:visit_date] if args.key?(:visit_date)
-        end
-      end
-      
-      # The date when the author visited the place. This is trucated to month.
-      class GoogleMapsPlacesV1ReviewVisitDate
-        include Google::Apis::Core::Hashable
-      
-        # The month the author visited the place, e.g. 4. The value is between 1 and 12.
-        # Corresponds to the JSON property `month`
-        # @return [Fixnum]
-        attr_accessor :month
-      
-        # The year the author visited the place, e.g. 2025.
-        # Corresponds to the JSON property `year`
-        # @return [Fixnum]
-        attr_accessor :year
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @month = args[:month] if args.key?(:month)
-          @year = args[:year] if args.key?(:year)
         end
       end
       
