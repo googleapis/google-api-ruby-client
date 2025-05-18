@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReservationAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResetInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -359,7 +365,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidential_instance_type, as: 'confidentialInstanceType'
-          property :enable_confidential_compute, as: 'enableConfidentialCompute'
         end
       end
       
@@ -476,6 +481,8 @@ module Google
           property :min_cpu_platform, as: 'minCpuPlatform'
           collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::NotebooksV2::NetworkInterface, decorator: Google::Apis::NotebooksV2::NetworkInterface::Representation
       
+          property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::NotebooksV2::ReservationAffinity, decorator: Google::Apis::NotebooksV2::ReservationAffinity::Representation
+      
           collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::NotebooksV2::ServiceAccount, decorator: Google::Apis::NotebooksV2::ServiceAccount::Representation
       
           property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::NotebooksV2::ShieldedInstanceConfig, decorator: Google::Apis::NotebooksV2::ShieldedInstanceConfig::Representation
@@ -500,6 +507,7 @@ module Google
           property :create_time, as: 'createTime'
           property :creator, as: 'creator'
           property :disable_proxy_access, as: 'disableProxyAccess'
+          property :enable_deletion_protection, as: 'enableDeletionProtection'
           property :enable_third_party_identity, as: 'enableThirdPartyIdentity'
           property :gce_setup, as: 'gceSetup', class: Google::Apis::NotebooksV2::GceSetup, decorator: Google::Apis::NotebooksV2::GceSetup::Representation
       
@@ -612,6 +620,15 @@ module Google
           property :event, as: 'event', class: Google::Apis::NotebooksV2::Event, decorator: Google::Apis::NotebooksV2::Event::Representation
       
           property :vm_id, as: 'vmId'
+        end
+      end
+      
+      class ReservationAffinity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consume_reservation_type, as: 'consumeReservationType'
+          property :key, as: 'key'
+          collection :values, as: 'values'
         end
       end
       
