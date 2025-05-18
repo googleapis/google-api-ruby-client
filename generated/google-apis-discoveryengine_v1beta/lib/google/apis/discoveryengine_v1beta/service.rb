@@ -763,10 +763,10 @@ module Google
         
         # Updates a DataStore
         # @param [String] name
-        #   Immutable. The full resource name of the data store. Format: `projects/`
-        #   project`/locations/`location`/collections/`collection_id`/dataStores/`
-        #   data_store_id``. This field must be a UTF-8 encoded string with a length limit
-        #   of 1024 characters.
+        #   Immutable. Identifier. The full resource name of the data store. Format: `
+        #   projects/`project`/locations/`location`/collections/`collection_id`/dataStores/
+        #   `data_store_id``. This field must be a UTF-8 encoded string with a length
+        #   limit of 1024 characters.
         # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDataStore] google_cloud_discoveryengine_v1beta_data_store_object
         # @param [String] update_mask
         #   Indicates which fields in the provided DataStore to update. If an unsupported
@@ -3800,11 +3800,11 @@ module Google
         
         # Updates an Engine
         # @param [String] name
-        #   Immutable. The fully qualified resource name of the engine. This field must be
-        #   a UTF-8 encoded string with a length limit of 1024 characters. Format: `
-        #   projects/`project`/locations/`location`/collections/`collection`/engines/`
-        #   engine`` engine should be 1-63 characters, and valid characters are /a-z0-9*/.
-        #   Otherwise, an INVALID_ARGUMENT error is returned.
+        #   Immutable. Identifier. The fully qualified resource name of the engine. This
+        #   field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        #   Format: `projects/`project`/locations/`location`/collections/`collection`/
+        #   engines/`engine`` engine should be 1-63 characters, and valid characters are /
+        #   a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
         # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngine] google_cloud_discoveryengine_v1beta_engine_object
         # @param [String] update_mask
         #   Indicates which fields in the provided Engine to update. If an unsupported or
@@ -5399,10 +5399,10 @@ module Google
         
         # Updates a DataStore
         # @param [String] name
-        #   Immutable. The full resource name of the data store. Format: `projects/`
-        #   project`/locations/`location`/collections/`collection_id`/dataStores/`
-        #   data_store_id``. This field must be a UTF-8 encoded string with a length limit
-        #   of 1024 characters.
+        #   Immutable. Identifier. The full resource name of the data store. Format: `
+        #   projects/`project`/locations/`location`/collections/`collection_id`/dataStores/
+        #   `data_store_id``. This field must be a UTF-8 encoded string with a length
+        #   limit of 1024 characters.
         # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDataStore] google_cloud_discoveryengine_v1beta_data_store_object
         # @param [String] update_mask
         #   Indicates which fields in the provided DataStore to update. If an unsupported
