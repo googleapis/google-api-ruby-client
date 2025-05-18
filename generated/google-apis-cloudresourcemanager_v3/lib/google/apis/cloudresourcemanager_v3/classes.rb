@@ -660,8 +660,8 @@ module Google
         # @return [String]
         attr_accessor :management_project
       
-        # Output only. The resource name of the folder. Its format is `folders/`
-        # folder_id``, for example: "folders/1234".
+        # Identifier. The resource name of the folder. Its format is `folders/`folder_id`
+        # `, for example: "folders/1234".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

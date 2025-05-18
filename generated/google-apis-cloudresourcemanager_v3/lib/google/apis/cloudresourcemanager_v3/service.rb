@@ -357,8 +357,8 @@ module Google
         # name constraint then a `PreconditionFailure` explaining this violation will be
         # returned in the Status.details field.
         # @param [String] name
-        #   Output only. The resource name of the folder. Its format is `folders/`
-        #   folder_id``, for example: "folders/1234".
+        #   Identifier. The resource name of the folder. Its format is `folders/`folder_id`
+        #   `, for example: "folders/1234".
         # @param [Google::Apis::CloudresourcemanagerV3::Folder] folder_object
         # @param [String] update_mask
         #   Required. Fields to be updated. Only the `display_name` can be updated.
