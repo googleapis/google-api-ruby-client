@@ -268,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeveloperConnectEventConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1045,6 +1051,8 @@ module Google
       
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :developer_connect_event_config, as: 'developerConnectEventConfig', class: Google::Apis::CloudbuildV1::DeveloperConnectEventConfig, decorator: Google::Apis::CloudbuildV1::DeveloperConnectEventConfig::Representation
+      
           property :disabled, as: 'disabled'
           property :event_type, as: 'eventType'
           property :filename, as: 'filename'
@@ -1224,6 +1232,18 @@ module Google
           property :dir, as: 'dir'
           property :git_repository_link, as: 'gitRepositoryLink'
           property :revision, as: 'revision'
+        end
+      end
+      
+      class DeveloperConnectEventConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :git_repository_link, as: 'gitRepositoryLink'
+          property :git_repository_link_type, as: 'gitRepositoryLinkType'
+          property :pull_request, as: 'pullRequest', class: Google::Apis::CloudbuildV1::PullRequestFilter, decorator: Google::Apis::CloudbuildV1::PullRequestFilter::Representation
+      
+          property :push, as: 'push', class: Google::Apis::CloudbuildV1::PushFilter, decorator: Google::Apis::CloudbuildV1::PushFilter::Representation
+      
         end
       end
       

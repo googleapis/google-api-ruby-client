@@ -1349,6 +1349,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # The configuration of a trigger that creates a build whenever an event from the
+        # DeveloperConnect API is received.
+        # Corresponds to the JSON property `developerConnectEventConfig`
+        # @return [Google::Apis::CloudbuildV1::DeveloperConnectEventConfig]
+        attr_accessor :developer_connect_event_config
+      
         # If true, the trigger will never automatically execute a build.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
@@ -1499,6 +1505,7 @@ module Google
           @build = args[:build] if args.key?(:build)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @developer_connect_event_config = args[:developer_connect_event_config] if args.key?(:developer_connect_event_config)
           @disabled = args[:disabled] if args.key?(:disabled)
           @event_type = args[:event_type] if args.key?(:event_type)
           @filename = args[:filename] if args.key?(:filename)
@@ -2034,6 +2041,45 @@ module Google
           @dir = args[:dir] if args.key?(:dir)
           @git_repository_link = args[:git_repository_link] if args.key?(:git_repository_link)
           @revision = args[:revision] if args.key?(:revision)
+        end
+      end
+      
+      # The configuration of a trigger that creates a build whenever an event from the
+      # DeveloperConnect API is received.
+      class DeveloperConnectEventConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Developer Connect Git repository link, formatted as `projects/*/
+        # locations/*/connections/*/gitRepositoryLink/*`.
+        # Corresponds to the JSON property `gitRepositoryLink`
+        # @return [String]
+        attr_accessor :git_repository_link
+      
+        # Output only. The type of DeveloperConnect GitRepositoryLink.
+        # Corresponds to the JSON property `gitRepositoryLinkType`
+        # @return [String]
+        attr_accessor :git_repository_link_type
+      
+        # PullRequestFilter contains filter properties for matching GitHub Pull Requests.
+        # Corresponds to the JSON property `pullRequest`
+        # @return [Google::Apis::CloudbuildV1::PullRequestFilter]
+        attr_accessor :pull_request
+      
+        # Push contains filter properties for matching GitHub git pushes.
+        # Corresponds to the JSON property `push`
+        # @return [Google::Apis::CloudbuildV1::PushFilter]
+        attr_accessor :push
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @git_repository_link = args[:git_repository_link] if args.key?(:git_repository_link)
+          @git_repository_link_type = args[:git_repository_link_type] if args.key?(:git_repository_link_type)
+          @pull_request = args[:pull_request] if args.key?(:pull_request)
+          @push = args[:push] if args.key?(:push)
         end
       end
       
@@ -3232,10 +3278,10 @@ module Google
         # @return [String]
         attr_accessor :group_id
       
-        # Path to an artifact in the build's workspace to be uploaded to Artifact
-        # Registry. This can be either an absolute path, e.g. /workspace/my-app/target/
-        # my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/
-        # my-app-1.0.SNAPSHOT.jar.
+        # Optional. Path to an artifact in the build's workspace to be uploaded to
+        # Artifact Registry. This can be either an absolute path, e.g. /workspace/my-app/
+        # target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/
+        # target/my-app-1.0.SNAPSHOT.jar.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
