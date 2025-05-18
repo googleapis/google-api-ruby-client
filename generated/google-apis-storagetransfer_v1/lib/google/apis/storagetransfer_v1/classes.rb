@@ -248,6 +248,20 @@ module Google
         # @return [String]
         attr_accessor :credentials_secret
       
+        # Identities of a user registered Azure application that enables identity
+        # federation to trust tokens issued by the user's Google service account. For
+        # more information about Azure application and identity federation, see [
+        # Register an application with the Microsoft identity platform] (https://learn.
+        # microsoft.com/en-us/entra/identity-platform/quickstart-register-app) Azure
+        # RBAC roles then need be assigned to the Azure application to authorize access
+        # to the user's Azure data source. For more information about Azure RBAC roles
+        # for blobs, see [Manage Access Rights with RBAC] (https://learn.microsoft.com/
+        # en-us/rest/api/storageservices/authorize-with-azure-active-directory#manage-
+        # access-rights-with-rbac)
+        # Corresponds to the JSON property `federatedIdentityConfig`
+        # @return [Google::Apis::StoragetransferV1::FederatedIdentityConfig]
+        attr_accessor :federated_identity_config
+      
         # Root path to transfer objects. Must be an empty string or full path name that
         # ends with a '/'. This field is treated as an object prefix. As such, it should
         # generally not begin with a '/'.
@@ -269,6 +283,7 @@ module Google
           @azure_credentials = args[:azure_credentials] if args.key?(:azure_credentials)
           @container = args[:container] if args.key?(:container)
           @credentials_secret = args[:credentials_secret] if args.key?(:credentials_secret)
+          @federated_identity_config = args[:federated_identity_config] if args.key?(:federated_identity_config)
           @path = args[:path] if args.key?(:path)
           @storage_account = args[:storage_account] if args.key?(:storage_account)
         end
@@ -481,6 +496,41 @@ module Google
           @event_stream_expiration_time = args[:event_stream_expiration_time] if args.key?(:event_stream_expiration_time)
           @event_stream_start_time = args[:event_stream_start_time] if args.key?(:event_stream_start_time)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Identities of a user registered Azure application that enables identity
+      # federation to trust tokens issued by the user's Google service account. For
+      # more information about Azure application and identity federation, see [
+      # Register an application with the Microsoft identity platform] (https://learn.
+      # microsoft.com/en-us/entra/identity-platform/quickstart-register-app) Azure
+      # RBAC roles then need be assigned to the Azure application to authorize access
+      # to the user's Azure data source. For more information about Azure RBAC roles
+      # for blobs, see [Manage Access Rights with RBAC] (https://learn.microsoft.com/
+      # en-us/rest/api/storageservices/authorize-with-azure-active-directory#manage-
+      # access-rights-with-rbac)
+      class FederatedIdentityConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Client (application) ID of the application with federated
+        # credentials.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Required. Tenant (directory) ID of the application with federated credentials.
+        # Corresponds to the JSON property `tenantId`
+        # @return [String]
+        attr_accessor :tenant_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @tenant_id = args[:tenant_id] if args.key?(:tenant_id)
         end
       end
       
