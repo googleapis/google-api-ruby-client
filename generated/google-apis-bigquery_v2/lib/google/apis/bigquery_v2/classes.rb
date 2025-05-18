@@ -2268,6 +2268,11 @@ module Google
           # @return [Google::Apis::BigqueryV2::DatasetReference]
           attr_accessor :dataset_reference
         
+          # Configures the access a dataset defined in an external metadata storage.
+          # Corresponds to the JSON property `externalDatasetReference`
+          # @return [Google::Apis::BigqueryV2::ExternalDatasetReference]
+          attr_accessor :external_dataset_reference
+        
           # An alternate name for the dataset. The friendly name is purely decorative in
           # nature.
           # Corresponds to the JSON property `friendlyName`
@@ -2302,6 +2307,7 @@ module Google
           # Update properties of this object
           def update!(**args)
             @dataset_reference = args[:dataset_reference] if args.key?(:dataset_reference)
+            @external_dataset_reference = args[:external_dataset_reference] if args.key?(:external_dataset_reference)
             @friendly_name = args[:friendly_name] if args.key?(:friendly_name)
             @id = args[:id] if args.key?(:id)
             @kind = args[:kind] if args.key?(:kind)
@@ -4989,12 +4995,14 @@ module Google
         # Optional. Specifies the action that occurs if the destination table already
         # exists. The following values are supported: * WRITE_TRUNCATE: If the table
         # already exists, BigQuery overwrites the data, removes the constraints and uses
-        # the schema from the load job. * WRITE_APPEND: If the table already exists,
-        # BigQuery appends the data to the table. * WRITE_EMPTY: If the table already
-        # exists and contains data, a 'duplicate' error is returned in the job result.
-        # The default value is WRITE_APPEND. Each action is atomic and only occurs if
-        # BigQuery is able to complete the job successfully. Creation, truncation and
-        # append actions occur as one atomic update upon job completion.
+        # the schema from the load job. * WRITE_TRUNCATE_DATA: If the table already
+        # exists, BigQuery overwrites the data, but keeps the constraints and schema of
+        # the existing table. * WRITE_APPEND: If the table already exists, BigQuery
+        # appends the data to the table. * WRITE_EMPTY: If the table already exists and
+        # contains data, a 'duplicate' error is returned in the job result. The default
+        # value is WRITE_APPEND. Each action is atomic and only occurs if BigQuery is
+        # able to complete the job successfully. Creation, truncation and append actions
+        # occur as one atomic update upon job completion.
         # Corresponds to the JSON property `writeDisposition`
         # @return [String]
         attr_accessor :write_disposition
@@ -5250,12 +5258,14 @@ module Google
         # Optional. Specifies the action that occurs if the destination table already
         # exists. The following values are supported: * WRITE_TRUNCATE: If the table
         # already exists, BigQuery overwrites the data, removes the constraints, and
-        # uses the schema from the query result. * WRITE_APPEND: If the table already
-        # exists, BigQuery appends the data to the table. * WRITE_EMPTY: If the table
-        # already exists and contains data, a 'duplicate' error is returned in the job
-        # result. The default value is WRITE_EMPTY. Each action is atomic and only
-        # occurs if BigQuery is able to complete the job successfully. Creation,
-        # truncation and append actions occur as one atomic update upon job completion.
+        # uses the schema from the query result. * WRITE_TRUNCATE_DATA: If the table
+        # already exists, BigQuery overwrites the data, but keeps the constraints and
+        # schema of the existing table. * WRITE_APPEND: If the table already exists,
+        # BigQuery appends the data to the table. * WRITE_EMPTY: If the table already
+        # exists and contains data, a 'duplicate' error is returned in the job result.
+        # The default value is WRITE_EMPTY. Each action is atomic and only occurs if
+        # BigQuery is able to complete the job successfully. Creation, truncation and
+        # append actions occur as one atomic update upon job completion.
         # Corresponds to the JSON property `writeDisposition`
         # @return [String]
         attr_accessor :write_disposition
