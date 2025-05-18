@@ -58,6 +58,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DecodePcIntegrityTokenRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DecodePcIntegrityTokenResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeviceAttributes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -77,6 +89,24 @@ module Google
       end
       
       class EnvironmentDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PcDeviceIntegrity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PcRequestDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PcTokenPayloadExternal
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -178,6 +208,21 @@ module Google
         end
       end
       
+      class DecodePcIntegrityTokenRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :integrity_token, as: 'integrityToken'
+        end
+      end
+      
+      class DecodePcIntegrityTokenResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :token_payload_external, as: 'tokenPayloadExternal', class: Google::Apis::PlayintegrityV1::PcTokenPayloadExternal, decorator: Google::Apis::PlayintegrityV1::PcTokenPayloadExternal::Representation
+      
+        end
+      end
+      
       class DeviceAttributes
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -215,6 +260,32 @@ module Google
           property :app_access_risk_verdict, as: 'appAccessRiskVerdict', class: Google::Apis::PlayintegrityV1::AppAccessRiskVerdict, decorator: Google::Apis::PlayintegrityV1::AppAccessRiskVerdict::Representation
       
           property :play_protect_verdict, as: 'playProtectVerdict'
+        end
+      end
+      
+      class PcDeviceIntegrity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :device_recognition_verdict, as: 'deviceRecognitionVerdict'
+        end
+      end
+      
+      class PcRequestDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_hash, as: 'requestHash'
+          property :request_package_name, as: 'requestPackageName'
+          property :request_time, as: 'requestTime'
+        end
+      end
+      
+      class PcTokenPayloadExternal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_integrity, as: 'deviceIntegrity', class: Google::Apis::PlayintegrityV1::PcDeviceIntegrity, decorator: Google::Apis::PlayintegrityV1::PcDeviceIntegrity::Representation
+      
+          property :request_details, as: 'requestDetails', class: Google::Apis::PlayintegrityV1::PcRequestDetails, decorator: Google::Apis::PlayintegrityV1::PcRequestDetails::Representation
+      
         end
       end
       
