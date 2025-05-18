@@ -1884,6 +1884,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_consumer_projects, as: 'allowedConsumerProjects'
+          property :network_attachment_uri, as: 'networkAttachmentUri'
           collection :psc_auto_connections, as: 'pscAutoConnections', class: Google::Apis::SqladminV1beta4::PscAutoConnectionConfig, decorator: Google::Apis::SqladminV1beta4::PscAutoConnectionConfig::Representation
       
           property :psc_enabled, as: 'pscEnabled'
