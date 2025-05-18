@@ -3962,23 +3962,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :manual_instance_count
       
-        # Optional. The maximum count of instances distributed among revisions based on
-        # the specified instance split percentages.
-        # Corresponds to the JSON property `maxInstanceCount`
-        # @return [Fixnum]
-        attr_accessor :max_instance_count
-      
-        # Optional. The minimum count of instances distributed among revisions based on
-        # the specified instance split percentages.
-        # Corresponds to the JSON property `minInstanceCount`
-        # @return [Fixnum]
-        attr_accessor :min_instance_count
-      
-        # Optional. The scaling mode for the worker pool.
-        # Corresponds to the JSON property `scalingMode`
-        # @return [String]
-        attr_accessor :scaling_mode
-      
         def initialize(**args)
            update!(**args)
         end
@@ -3986,9 +3969,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @manual_instance_count = args[:manual_instance_count] if args.key?(:manual_instance_count)
-          @max_instance_count = args[:max_instance_count] if args.key?(:max_instance_count)
-          @min_instance_count = args[:min_instance_count] if args.key?(:min_instance_count)
-          @scaling_mode = args[:scaling_mode] if args.key?(:scaling_mode)
         end
       end
       

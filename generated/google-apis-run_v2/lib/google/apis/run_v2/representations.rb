@@ -1669,9 +1669,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :manual_instance_count, as: 'manualInstanceCount'
-          property :max_instance_count, as: 'maxInstanceCount'
-          property :min_instance_count, as: 'minInstanceCount'
-          property :scaling_mode, as: 'scalingMode'
         end
       end
       
