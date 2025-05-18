@@ -1022,7 +1022,7 @@ module Google
       class PolicyTopic
         include Google::Apis::Core::Hashable
       
-        # Required. Deprecated. Policy topics no longer have a "must-fix" classification.
+        # Required. Deprecated. Always set to false.
         # Corresponds to the JSON property `mustFix`
         # @return [Boolean]
         attr_accessor :must_fix
