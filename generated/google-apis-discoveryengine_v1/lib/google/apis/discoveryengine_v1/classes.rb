@@ -4598,10 +4598,10 @@ module Google
         # @return [String]
         attr_accessor :kms_key_name
       
-        # Immutable. The full resource name of the data store. Format: `projects/`
-        # project`/locations/`location`/collections/`collection_id`/dataStores/`
-        # data_store_id``. This field must be a UTF-8 encoded string with a length limit
-        # of 1024 characters.
+        # Immutable. Identifier. The full resource name of the data store. Format: `
+        # projects/`project`/locations/`location`/collections/`collection_id`/dataStores/
+        # `data_store_id``. This field must be a UTF-8 encoded string with a length
+        # limit of 1024 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4710,7 +4710,8 @@ module Google
       class GoogleCloudDiscoveryengineV1DataStoreServingConfigDataStore
         include Google::Apis::Core::Hashable
       
-        # If set true, the DataStore will not be available for serving search requests.
+        # Optional. If set true, the DataStore will not be available for serving search
+        # requests.
         # Corresponds to the JSON property `disabledForServing`
         # @return [Boolean]
         attr_accessor :disabled_for_serving
@@ -5579,12 +5580,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and
-        # SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at
-        # most one data store. If solution_type is SOLUTION_TYPE_CHAT, multiple
-        # DataStores in the same Collection can be associated here. Note that when used
-        # in CreateEngineRequest, one DataStore id must be provided as the system will
-        # use it for necessary initializations.
+        # Optional. The data stores associated with this engine. For
+        # SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type of engines, they
+        # can only associate with at most one data store. If solution_type is
+        # SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be
+        # associated here. Note that when used in CreateEngineRequest, one DataStore id
+        # must be provided as the system will use it for necessary initializations.
         # Corresponds to the JSON property `dataStoreIds`
         # @return [Array<String>]
         attr_accessor :data_store_ids
@@ -5601,9 +5602,9 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The industry vertical that the engine registers. The restriction of the Engine
-        # industry vertical is based on DataStore: Vertical on Engine has to match
-        # vertical of the DataStore linked to the engine.
+        # Optional. The industry vertical that the engine registers. The restriction of
+        # the Engine industry vertical is based on DataStore: Vertical on Engine has to
+        # match vertical of the DataStore linked to the engine.
         # Corresponds to the JSON property `industryVertical`
         # @return [String]
         attr_accessor :industry_vertical
@@ -5613,11 +5614,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig]
         attr_accessor :media_recommendation_engine_config
       
-        # Immutable. The fully qualified resource name of the engine. This field must be
-        # a UTF-8 encoded string with a length limit of 1024 characters. Format: `
-        # projects/`project`/locations/`location`/collections/`collection`/engines/`
-        # engine`` engine should be 1-63 characters, and valid characters are /a-z0-9*/.
-        # Otherwise, an INVALID_ARGUMENT error is returned.
+        # Immutable. Identifier. The fully qualified resource name of the engine. This
+        # field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        # Format: `projects/`project`/locations/`location`/collections/`collection`/
+        # engines/`engine`` engine should be 1-63 characters, and valid characters are /
+        # a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -13625,8 +13626,10 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaAlertPolicyConfig>]
         attr_accessor :alert_policy_configs
       
-        # Indicates whether the connector is disabled for auto run. It can be used to
-        # pause periodical and real time sync.
+        # Optional. Indicates whether the connector is disabled for auto run. It can be
+        # used to pause periodical and real time sync. Update: with the introduction of
+        # incremental_sync_disabled, auto_run_disabled is used to pause/disable only
+        # full syncs
         # Corresponds to the JSON property `autoRunDisabled`
         # @return [Boolean]
         attr_accessor :auto_run_disabled
@@ -13705,6 +13708,20 @@ module Google
         # Corresponds to the JSON property `identityScheduleConfig`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaIdentityScheduleConfig]
         attr_accessor :identity_schedule_config
+      
+        # Optional. The refresh interval specifically for incremental data syncs. If
+        # unset, incremental syncs will use the default from env, set to 3hrs. The
+        # minimum is 30 minutes and maximum is 7 days.
+        # Corresponds to the JSON property `incrementalRefreshInterval`
+        # @return [String]
+        attr_accessor :incremental_refresh_interval
+      
+        # Optional. Indicates whether incremental syncs are paused for this connector.
+        # This is independent of auto_run_disabled.
+        # Corresponds to the JSON property `incrementalSyncDisabled`
+        # @return [Boolean]
+        attr_accessor :incremental_sync_disabled
+        alias_method :incremental_sync_disabled?, :incremental_sync_disabled
       
         # Input only. The KMS key to be used to protect the DataStores managed by this
         # connector. Must be set for requests that need to comply with CMEK Org Policy
@@ -13853,6 +13870,8 @@ module Google
           @errors = args[:errors] if args.key?(:errors)
           @identity_refresh_interval = args[:identity_refresh_interval] if args.key?(:identity_refresh_interval)
           @identity_schedule_config = args[:identity_schedule_config] if args.key?(:identity_schedule_config)
+          @incremental_refresh_interval = args[:incremental_refresh_interval] if args.key?(:incremental_refresh_interval)
+          @incremental_sync_disabled = args[:incremental_sync_disabled] if args.key?(:incremental_sync_disabled)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @last_sync_time = args[:last_sync_time] if args.key?(:last_sync_time)
           @latest_pause_time = args[:latest_pause_time] if args.key?(:latest_pause_time)
@@ -14087,10 +14106,10 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaLanguageInfo]
         attr_accessor :language_info
       
-        # Immutable. The full resource name of the data store. Format: `projects/`
-        # project`/locations/`location`/collections/`collection_id`/dataStores/`
-        # data_store_id``. This field must be a UTF-8 encoded string with a length limit
-        # of 1024 characters.
+        # Immutable. Identifier. The full resource name of the data store. Format: `
+        # projects/`project`/locations/`location`/collections/`collection_id`/dataStores/
+        # `data_store_id``. This field must be a UTF-8 encoded string with a length
+        # limit of 1024 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -14207,7 +14226,8 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaDataStoreServingConfigDataStore
         include Google::Apis::Core::Hashable
       
-        # If set true, the DataStore will not be available for serving search requests.
+        # Optional. If set true, the DataStore will not be available for serving search
+        # requests.
         # Corresponds to the JSON property `disabledForServing`
         # @return [Boolean]
         attr_accessor :disabled_for_serving
@@ -14882,12 +14902,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and
-        # SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at
-        # most one data store. If solution_type is SOLUTION_TYPE_CHAT, multiple
-        # DataStores in the same Collection can be associated here. Note that when used
-        # in CreateEngineRequest, one DataStore id must be provided as the system will
-        # use it for necessary initializations.
+        # Optional. The data stores associated with this engine. For
+        # SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type of engines, they
+        # can only associate with at most one data store. If solution_type is
+        # SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be
+        # associated here. Note that when used in CreateEngineRequest, one DataStore id
+        # must be provided as the system will use it for necessary initializations.
         # Corresponds to the JSON property `dataStoreIds`
         # @return [Array<String>]
         attr_accessor :data_store_ids
@@ -14904,9 +14924,9 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The industry vertical that the engine registers. The restriction of the Engine
-        # industry vertical is based on DataStore: Vertical on Engine has to match
-        # vertical of the DataStore linked to the engine.
+        # Optional. The industry vertical that the engine registers. The restriction of
+        # the Engine industry vertical is based on DataStore: Vertical on Engine has to
+        # match vertical of the DataStore linked to the engine.
         # Corresponds to the JSON property `industryVertical`
         # @return [String]
         attr_accessor :industry_vertical
@@ -14916,11 +14936,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig]
         attr_accessor :media_recommendation_engine_config
       
-        # Immutable. The fully qualified resource name of the engine. This field must be
-        # a UTF-8 encoded string with a length limit of 1024 characters. Format: `
-        # projects/`project`/locations/`location`/collections/`collection`/engines/`
-        # engine`` engine should be 1-63 characters, and valid characters are /a-z0-9*/.
-        # Otherwise, an INVALID_ARGUMENT error is returned.
+        # Immutable. Identifier. The fully qualified resource name of the engine. This
+        # field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        # Format: `projects/`project`/locations/`location`/collections/`collection`/
+        # engines/`engine`` engine should be 1-63 characters, and valid characters are /
+        # a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -20280,10 +20300,10 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaLanguageInfo]
         attr_accessor :language_info
       
-        # Immutable. The full resource name of the data store. Format: `projects/`
-        # project`/locations/`location`/collections/`collection_id`/dataStores/`
-        # data_store_id``. This field must be a UTF-8 encoded string with a length limit
-        # of 1024 characters.
+        # Immutable. Identifier. The full resource name of the data store. Format: `
+        # projects/`project`/locations/`location`/collections/`collection_id`/dataStores/
+        # `data_store_id``. This field must be a UTF-8 encoded string with a length
+        # limit of 1024 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -20399,7 +20419,8 @@ module Google
       class GoogleCloudDiscoveryengineV1betaDataStoreServingConfigDataStore
         include Google::Apis::Core::Hashable
       
-        # If set true, the DataStore will not be available for serving search requests.
+        # Optional. If set true, the DataStore will not be available for serving search
+        # requests.
         # Corresponds to the JSON property `disabledForServing`
         # @return [Boolean]
         attr_accessor :disabled_for_serving
@@ -20941,12 +20962,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and
-        # SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at
-        # most one data store. If solution_type is SOLUTION_TYPE_CHAT, multiple
-        # DataStores in the same Collection can be associated here. Note that when used
-        # in CreateEngineRequest, one DataStore id must be provided as the system will
-        # use it for necessary initializations.
+        # Optional. The data stores associated with this engine. For
+        # SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type of engines, they
+        # can only associate with at most one data store. If solution_type is
+        # SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be
+        # associated here. Note that when used in CreateEngineRequest, one DataStore id
+        # must be provided as the system will use it for necessary initializations.
         # Corresponds to the JSON property `dataStoreIds`
         # @return [Array<String>]
         attr_accessor :data_store_ids
@@ -20963,9 +20984,9 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The industry vertical that the engine registers. The restriction of the Engine
-        # industry vertical is based on DataStore: Vertical on Engine has to match
-        # vertical of the DataStore linked to the engine.
+        # Optional. The industry vertical that the engine registers. The restriction of
+        # the Engine industry vertical is based on DataStore: Vertical on Engine has to
+        # match vertical of the DataStore linked to the engine.
         # Corresponds to the JSON property `industryVertical`
         # @return [String]
         attr_accessor :industry_vertical
@@ -20975,11 +20996,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig]
         attr_accessor :media_recommendation_engine_config
       
-        # Immutable. The fully qualified resource name of the engine. This field must be
-        # a UTF-8 encoded string with a length limit of 1024 characters. Format: `
-        # projects/`project`/locations/`location`/collections/`collection`/engines/`
-        # engine`` engine should be 1-63 characters, and valid characters are /a-z0-9*/.
-        # Otherwise, an INVALID_ARGUMENT error is returned.
+        # Immutable. Identifier. The fully qualified resource name of the engine. This
+        # field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        # Format: `projects/`project`/locations/`location`/collections/`collection`/
+        # engines/`engine`` engine should be 1-63 characters, and valid characters are /
+        # a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
