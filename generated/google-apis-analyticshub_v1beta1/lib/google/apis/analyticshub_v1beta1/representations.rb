@@ -64,6 +64,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DestinationDataset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DestinationDatasetReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -268,6 +280,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :primary_contact, as: 'primaryContact'
+        end
+      end
+      
+      class DestinationDataset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_reference, as: 'datasetReference', class: Google::Apis::AnalyticshubV1beta1::DestinationDatasetReference, decorator: Google::Apis::AnalyticshubV1beta1::DestinationDatasetReference::Representation
+      
+          property :description, as: 'description'
+          property :friendly_name, as: 'friendlyName'
+          hash :labels, as: 'labels'
+          property :location, as: 'location'
+        end
+      end
+      
+      class DestinationDatasetReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_id, as: 'datasetId'
+          property :project_id, as: 'projectId'
         end
       end
       
@@ -477,6 +509,8 @@ module Google
       
           property :creation_time, as: 'creationTime'
           property :data_exchange, as: 'dataExchange'
+          property :destination_dataset, as: 'destinationDataset', class: Google::Apis::AnalyticshubV1beta1::DestinationDataset, decorator: Google::Apis::AnalyticshubV1beta1::DestinationDataset::Representation
+      
           property :last_modify_time, as: 'lastModifyTime'
           hash :linked_dataset_map, as: 'linkedDatasetMap', class: Google::Apis::AnalyticshubV1beta1::LinkedResource, decorator: Google::Apis::AnalyticshubV1beta1::LinkedResource::Representation
       
