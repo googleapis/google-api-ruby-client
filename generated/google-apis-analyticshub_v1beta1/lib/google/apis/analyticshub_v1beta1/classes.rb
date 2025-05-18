@@ -281,7 +281,7 @@ module Google
         attr_accessor :listing_count
       
         # Output only. The resource name of the data exchange. e.g. `projects/myproject/
-        # locations/US/dataExchanges/123`.
+        # locations/us/dataExchanges/123`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -330,6 +330,80 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @primary_contact = args[:primary_contact] if args.key?(:primary_contact)
+        end
+      end
+      
+      # Defines the destination bigquery dataset.
+      class DestinationDataset
+        include Google::Apis::Core::Hashable
+      
+        # Required. A reference that identifies the destination dataset.
+        # Corresponds to the JSON property `datasetReference`
+        # @return [Google::Apis::AnalyticshubV1beta1::DestinationDatasetReference]
+        attr_accessor :dataset_reference
+      
+        # Optional. A user-friendly description of the dataset.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. A descriptive name for the dataset.
+        # Corresponds to the JSON property `friendlyName`
+        # @return [String]
+        attr_accessor :friendly_name
+      
+        # Optional. The labels associated with this dataset. You can use these to
+        # organize and group your datasets. You can set this property when inserting or
+        # updating a dataset. See https://cloud.google.com/resource-manager/docs/
+        # creating-managing-labels for more information.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. The geographic location where the dataset should reside. See https://
+        # cloud.google.com/bigquery/docs/locations for supported locations.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_reference = args[:dataset_reference] if args.key?(:dataset_reference)
+          @description = args[:description] if args.key?(:description)
+          @friendly_name = args[:friendly_name] if args.key?(:friendly_name)
+          @labels = args[:labels] if args.key?(:labels)
+          @location = args[:location] if args.key?(:location)
+        end
+      end
+      
+      # 
+      class DestinationDatasetReference
+        include Google::Apis::Core::Hashable
+      
+        # Required. A unique ID for this dataset, without the project name. The ID must
+        # contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The
+        # maximum length is 1,024 characters.
+        # Corresponds to the JSON property `datasetId`
+        # @return [String]
+        attr_accessor :dataset_id
+      
+        # Required. The ID of the project containing this dataset.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @project_id = args[:project_id] if args.key?(:project_id)
         end
       end
       
@@ -716,7 +790,7 @@ module Google
         attr_accessor :icon
       
         # Output only. The resource name of the listing. e.g. `projects/myproject/
-        # locations/US/dataExchanges/123/listings/456`
+        # locations/us/dataExchanges/123/listings/456`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1132,10 +1206,15 @@ module Google
         attr_accessor :creation_time
       
         # Output only. Resource name of the source Data Exchange. e.g. projects/123/
-        # locations/US/dataExchanges/456
+        # locations/us/dataExchanges/456
         # Corresponds to the JSON property `dataExchange`
         # @return [String]
         attr_accessor :data_exchange
+      
+        # Defines the destination bigquery dataset.
+        # Corresponds to the JSON property `destinationDataset`
+        # @return [Google::Apis::AnalyticshubV1beta1::DestinationDataset]
+        attr_accessor :destination_dataset
       
         # Output only. Timestamp when the subscription was last modified.
         # Corresponds to the JSON property `lastModifyTime`
@@ -1143,7 +1222,7 @@ module Google
         attr_accessor :last_modify_time
       
         # Output only. Map of listing resource names to associated linked resource, e.g.
-        # projects/123/locations/US/dataExchanges/456/listings/789 -> projects/123/
+        # projects/123/locations/us/dataExchanges/456/listings/789 -> projects/123/
         # datasets/my_dataset For listing-level subscriptions, this is a map of size 1.
         # Only contains values if state == STATE_ACTIVE.
         # Corresponds to the JSON property `linkedDatasetMap`
@@ -1157,7 +1236,7 @@ module Google
         attr_accessor :linked_resources
       
         # Output only. Resource name of the source Listing. e.g. projects/123/locations/
-        # US/dataExchanges/456/listings/789
+        # us/dataExchanges/456/listings/789
         # Corresponds to the JSON property `listing`
         # @return [String]
         attr_accessor :listing
@@ -1170,7 +1249,7 @@ module Google
         alias_method :log_linked_dataset_query_user_email?, :log_linked_dataset_query_user_email
       
         # Output only. The resource name of the subscription. e.g. `projects/myproject/
-        # locations/US/subscriptions/123`.
+        # locations/us/subscriptions/123`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1209,6 +1288,7 @@ module Google
           @commercial_info = args[:commercial_info] if args.key?(:commercial_info)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @data_exchange = args[:data_exchange] if args.key?(:data_exchange)
+          @destination_dataset = args[:destination_dataset] if args.key?(:destination_dataset)
           @last_modify_time = args[:last_modify_time] if args.key?(:last_modify_time)
           @linked_dataset_map = args[:linked_dataset_map] if args.key?(:linked_dataset_map)
           @linked_resources = args[:linked_resources] if args.key?(:linked_resources)
