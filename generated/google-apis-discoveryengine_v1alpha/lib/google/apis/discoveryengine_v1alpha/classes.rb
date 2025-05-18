@@ -2501,10 +2501,10 @@ module Google
         # @return [String]
         attr_accessor :kms_key_name
       
-        # Immutable. The full resource name of the data store. Format: `projects/`
-        # project`/locations/`location`/collections/`collection_id`/dataStores/`
-        # data_store_id``. This field must be a UTF-8 encoded string with a length limit
-        # of 1024 characters.
+        # Immutable. Identifier. The full resource name of the data store. Format: `
+        # projects/`project`/locations/`location`/collections/`collection_id`/dataStores/
+        # `data_store_id``. This field must be a UTF-8 encoded string with a length
+        # limit of 1024 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2613,7 +2613,8 @@ module Google
       class GoogleCloudDiscoveryengineV1DataStoreServingConfigDataStore
         include Google::Apis::Core::Hashable
       
-        # If set true, the DataStore will not be available for serving search requests.
+        # Optional. If set true, the DataStore will not be available for serving search
+        # requests.
         # Corresponds to the JSON property `disabledForServing`
         # @return [Boolean]
         attr_accessor :disabled_for_serving
@@ -3144,12 +3145,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and
-        # SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at
-        # most one data store. If solution_type is SOLUTION_TYPE_CHAT, multiple
-        # DataStores in the same Collection can be associated here. Note that when used
-        # in CreateEngineRequest, one DataStore id must be provided as the system will
-        # use it for necessary initializations.
+        # Optional. The data stores associated with this engine. For
+        # SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type of engines, they
+        # can only associate with at most one data store. If solution_type is
+        # SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be
+        # associated here. Note that when used in CreateEngineRequest, one DataStore id
+        # must be provided as the system will use it for necessary initializations.
         # Corresponds to the JSON property `dataStoreIds`
         # @return [Array<String>]
         attr_accessor :data_store_ids
@@ -3166,9 +3167,9 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The industry vertical that the engine registers. The restriction of the Engine
-        # industry vertical is based on DataStore: Vertical on Engine has to match
-        # vertical of the DataStore linked to the engine.
+        # Optional. The industry vertical that the engine registers. The restriction of
+        # the Engine industry vertical is based on DataStore: Vertical on Engine has to
+        # match vertical of the DataStore linked to the engine.
         # Corresponds to the JSON property `industryVertical`
         # @return [String]
         attr_accessor :industry_vertical
@@ -3178,11 +3179,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig]
         attr_accessor :media_recommendation_engine_config
       
-        # Immutable. The fully qualified resource name of the engine. This field must be
-        # a UTF-8 encoded string with a length limit of 1024 characters. Format: `
-        # projects/`project`/locations/`location`/collections/`collection`/engines/`
-        # engine`` engine should be 1-63 characters, and valid characters are /a-z0-9*/.
-        # Otherwise, an INVALID_ARGUMENT error is returned.
+        # Immutable. Identifier. The fully qualified resource name of the engine. This
+        # field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        # Format: `projects/`project`/locations/`location`/collections/`collection`/
+        # engines/`engine`` engine should be 1-63 characters, and valid characters are /
+        # a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -7845,6 +7846,131 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the UserLicenseService.
+      # BatchUpdateUserLicenses operation. This will be returned by the google.
+      # longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Count of user licenses that failed to be updated.
+        # Corresponds to the JSON property `failureCount`
+        # @return [Fixnum]
+        attr_accessor :failure_count
+      
+        # Count of user licenses successfully updated.
+        # Corresponds to the JSON property `successCount`
+        # @return [Fixnum]
+        attr_accessor :success_count
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @failure_count = args[:failure_count] if args.key?(:failure_count)
+          @success_count = args[:success_count] if args.key?(:success_count)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Request message for UserLicenseService.BatchUpdateUserLicenses method.
+      class GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, if user licenses removed associated license config, the
+        # user license will be deleted. By default which is false, the user license will
+        # be updated to unassigned state.
+        # Corresponds to the JSON property `deleteUnassignedUserLicenses`
+        # @return [Boolean]
+        attr_accessor :delete_unassigned_user_licenses
+        alias_method :delete_unassigned_user_licenses?, :delete_unassigned_user_licenses
+      
+        # Cloud Storage location for input content.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGcsSource]
+        attr_accessor :gcs_source
+      
+        # The inline source for the input config for BatchUpdateUserLicenses method.
+        # Corresponds to the JSON property `inlineSource`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesRequestInlineSource]
+        attr_accessor :inline_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delete_unassigned_user_licenses = args[:delete_unassigned_user_licenses] if args.key?(:delete_unassigned_user_licenses)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+          @inline_source = args[:inline_source] if args.key?(:inline_source)
+        end
+      end
+      
+      # The inline source for the input config for BatchUpdateUserLicenses method.
+      class GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesRequestInlineSource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The list of fields to update.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        # Required. A list of user licenses to update. Each user license must have a
+        # valid UserLicense.user_principal.
+        # Corresponds to the JSON property `userLicenses`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaUserLicense>]
+        attr_accessor :user_licenses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+          @user_licenses = args[:user_licenses] if args.key?(:user_licenses)
+        end
+      end
+      
+      # Response message for UserLicenseService.BatchUpdateUserLicenses method.
+      class GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        # UserLicenses successfully updated.
+        # Corresponds to the JSON property `userLicenses`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaUserLicense>]
+        attr_accessor :user_licenses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
+          @user_licenses = args[:user_licenses] if args.key?(:user_licenses)
+        end
+      end
+      
       # Request message for SiteSearchEngineService.BatchVerifyTargetSites method.
       class GoogleCloudDiscoveryengineV1alphaBatchVerifyTargetSitesRequest
         include Google::Apis::Core::Hashable
@@ -8232,7 +8358,8 @@ module Google
         alias_method :grounding_check_required?, :grounding_check_required
       
         # Confidence score for the claim in the answer candidate, in the range of [0, 1].
-        # This is set only when enable_claim_level_score is true.
+        # This is set only when `CheckGroundingRequest.grounding_spec.
+        # enable_claim_level_score` is true.
         # Corresponds to the JSON property `score`
         # @return [Float]
         attr_accessor :score
@@ -10103,8 +10230,10 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAlertPolicyConfig>]
         attr_accessor :alert_policy_configs
       
-        # Indicates whether the connector is disabled for auto run. It can be used to
-        # pause periodical and real time sync.
+        # Optional. Indicates whether the connector is disabled for auto run. It can be
+        # used to pause periodical and real time sync. Update: with the introduction of
+        # incremental_sync_disabled, auto_run_disabled is used to pause/disable only
+        # full syncs
         # Corresponds to the JSON property `autoRunDisabled`
         # @return [Boolean]
         attr_accessor :auto_run_disabled
@@ -10129,10 +10258,16 @@ module Google
       
         # Output only. The type of connector. Each source can only map to one type. For
         # example, salesforce, confluence and jira have THIRD_PARTY connector type. It
-        # is notmutable once set by system.
+        # is not mutable once set by system.
         # Corresponds to the JSON property `connectorType`
         # @return [String]
         attr_accessor :connector_type
+      
+        # Optional. Whether the END USER AUTHENTICATION connector is created in SaaS.
+        # Corresponds to the JSON property `createEuaSaas`
+        # @return [Boolean]
+        attr_accessor :create_eua_saas
+        alias_method :create_eua_saas?, :create_eua_saas
       
         # Output only. Timestamp the DataConnector was created at.
         # Corresponds to the JSON property `createTime`
@@ -10177,6 +10312,20 @@ module Google
         # Corresponds to the JSON property `identityScheduleConfig`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaIdentityScheduleConfig]
         attr_accessor :identity_schedule_config
+      
+        # Optional. The refresh interval specifically for incremental data syncs. If
+        # unset, incremental syncs will use the default from env, set to 3hrs. The
+        # minimum is 30 minutes and maximum is 7 days.
+        # Corresponds to the JSON property `incrementalRefreshInterval`
+        # @return [String]
+        attr_accessor :incremental_refresh_interval
+      
+        # Optional. Indicates whether incremental syncs are paused for this connector.
+        # This is independent of auto_run_disabled.
+        # Corresponds to the JSON property `incrementalSyncDisabled`
+        # @return [Boolean]
+        attr_accessor :incremental_sync_disabled
+        alias_method :incremental_sync_disabled?, :incremental_sync_disabled
       
         # Input only. The KMS key to be used to protect the DataStores managed by this
         # connector. Must be set for requests that need to comply with CMEK Org Policy
@@ -10316,6 +10465,7 @@ module Google
           @blocking_reasons = args[:blocking_reasons] if args.key?(:blocking_reasons)
           @connector_modes = args[:connector_modes] if args.key?(:connector_modes)
           @connector_type = args[:connector_type] if args.key?(:connector_type)
+          @create_eua_saas = args[:create_eua_saas] if args.key?(:create_eua_saas)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_source = args[:data_source] if args.key?(:data_source)
           @destination_configs = args[:destination_configs] if args.key?(:destination_configs)
@@ -10324,6 +10474,8 @@ module Google
           @errors = args[:errors] if args.key?(:errors)
           @identity_refresh_interval = args[:identity_refresh_interval] if args.key?(:identity_refresh_interval)
           @identity_schedule_config = args[:identity_schedule_config] if args.key?(:identity_schedule_config)
+          @incremental_refresh_interval = args[:incremental_refresh_interval] if args.key?(:incremental_refresh_interval)
+          @incremental_sync_disabled = args[:incremental_sync_disabled] if args.key?(:incremental_sync_disabled)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @last_sync_time = args[:last_sync_time] if args.key?(:last_sync_time)
           @latest_pause_time = args[:latest_pause_time] if args.key?(:latest_pause_time)
@@ -10558,10 +10710,10 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaLanguageInfo]
         attr_accessor :language_info
       
-        # Immutable. The full resource name of the data store. Format: `projects/`
-        # project`/locations/`location`/collections/`collection_id`/dataStores/`
-        # data_store_id``. This field must be a UTF-8 encoded string with a length limit
-        # of 1024 characters.
+        # Immutable. Identifier. The full resource name of the data store. Format: `
+        # projects/`project`/locations/`location`/collections/`collection_id`/dataStores/
+        # `data_store_id``. This field must be a UTF-8 encoded string with a length
+        # limit of 1024 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -10678,7 +10830,8 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaDataStoreServingConfigDataStore
         include Google::Apis::Core::Hashable
       
-        # If set true, the DataStore will not be available for serving search requests.
+        # Optional. If set true, the DataStore will not be available for serving search
+        # requests.
         # Corresponds to the JSON property `disabledForServing`
         # @return [Boolean]
         attr_accessor :disabled_for_serving
@@ -11710,12 +11863,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and
-        # SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at
-        # most one data store. If solution_type is SOLUTION_TYPE_CHAT, multiple
-        # DataStores in the same Collection can be associated here. Note that when used
-        # in CreateEngineRequest, one DataStore id must be provided as the system will
-        # use it for necessary initializations.
+        # Optional. The data stores associated with this engine. For
+        # SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type of engines, they
+        # can only associate with at most one data store. If solution_type is
+        # SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be
+        # associated here. Note that when used in CreateEngineRequest, one DataStore id
+        # must be provided as the system will use it for necessary initializations.
         # Corresponds to the JSON property `dataStoreIds`
         # @return [Array<String>]
         attr_accessor :data_store_ids
@@ -11732,9 +11885,9 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The industry vertical that the engine registers. The restriction of the Engine
-        # industry vertical is based on DataStore: Vertical on Engine has to match
-        # vertical of the DataStore linked to the engine.
+        # Optional. The industry vertical that the engine registers. The restriction of
+        # the Engine industry vertical is based on DataStore: Vertical on Engine has to
+        # match vertical of the DataStore linked to the engine.
         # Corresponds to the JSON property `industryVertical`
         # @return [String]
         attr_accessor :industry_vertical
@@ -11744,11 +11897,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig]
         attr_accessor :media_recommendation_engine_config
       
-        # Immutable. The fully qualified resource name of the engine. This field must be
-        # a UTF-8 encoded string with a length limit of 1024 characters. Format: `
-        # projects/`project`/locations/`location`/collections/`collection`/engines/`
-        # engine`` engine should be 1-63 characters, and valid characters are /a-z0-9*/.
-        # Otherwise, an INVALID_ARGUMENT error is returned.
+        # Immutable. Identifier. The fully qualified resource name of the engine. This
+        # field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        # Format: `projects/`project`/locations/`location`/collections/`collection`/
+        # engines/`engine`` engine should be 1-63 characters, and valid characters are /
+        # a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -14693,6 +14846,32 @@ module Google
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @target_sites = args[:target_sites] if args.key?(:target_sites)
           @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
+      # Response message for UserLicenseService.ListUserLicenses.
+      class GoogleCloudDiscoveryengineV1alphaListUserLicensesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # All the customer's UserLicenses.
+        # Corresponds to the JSON property `userLicenses`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaUserLicense>]
+        attr_accessor :user_licenses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @user_licenses = args[:user_licenses] if args.key?(:user_licenses)
         end
       end
       
@@ -17894,6 +18073,14 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpec]
         attr_accessor :boost_spec
       
+        # Optional. Custom search operators which if specified will be used to filter
+        # results from workspace data stores. For more information on custom search
+        # operators, see [SearchOperators](https://support.google.com/cloudsearch/answer/
+        # 6172299).
+        # Corresponds to the JSON property `customSearchOperators`
+        # @return [String]
+        attr_accessor :custom_search_operators
+      
         # Required. Full resource name of DataStore, such as `projects/`project`/
         # locations/`location`/collections/`collection_id`/dataStores/`data_store_id``.
         # Corresponds to the JSON property `dataStore`
@@ -17914,6 +18101,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @boost_spec = args[:boost_spec] if args.key?(:boost_spec)
+          @custom_search_operators = args[:custom_search_operators] if args.key?(:custom_search_operators)
           @data_store = args[:data_store] if args.key?(:data_store)
           @filter = args[:filter] if args.key?(:filter)
         end
@@ -18626,12 +18814,6 @@ module Google
         # @return [String]
         attr_accessor :rewritten_query
       
-        # The SQL request that was generated from the natural language query
-        # understanding phase.
-        # Corresponds to the JSON property `sqlRequest`
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoSqlRequest]
-        attr_accessor :sql_request
-      
         # The filters that were extracted from the input query represented in a
         # structured form.
         # Corresponds to the JSON property `structuredExtractedFilter`
@@ -18647,28 +18829,7 @@ module Google
           @classified_intents = args[:classified_intents] if args.key?(:classified_intents)
           @extracted_filters = args[:extracted_filters] if args.key?(:extracted_filters)
           @rewritten_query = args[:rewritten_query] if args.key?(:rewritten_query)
-          @sql_request = args[:sql_request] if args.key?(:sql_request)
           @structured_extracted_filter = args[:structured_extracted_filter] if args.key?(:structured_extracted_filter)
-        end
-      end
-      
-      # The SQL request that was generated from the natural language query
-      # understanding phase.
-      class GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoSqlRequest
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The SQL query in text format.
-        # Corresponds to the JSON property `sqlQuery`
-        # @return [String]
-        attr_accessor :sql_query
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @sql_query = args[:sql_query] if args.key?(:sql_query)
         end
       end
       
@@ -20996,6 +21157,79 @@ module Google
         end
       end
       
+      # User License information assigned by the admin.
+      class GoogleCloudDiscoveryengineV1alphaUserLicense
+        include Google::Apis::Core::Hashable
+      
+        # Output only. User created timestamp.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. User last logged in time. If the user has not logged in yet, this
+        # field will be empty.
+        # Corresponds to the JSON property `lastLoginTime`
+        # @return [String]
+        attr_accessor :last_login_time
+      
+        # Output only. License assignment state of the user. If the user is assigned
+        # with a license config, the user loggin will be assigned with the license; If
+        # the user's license assignment state is unassigned or unspecified, no license
+        # config will be associated to the user;
+        # Corresponds to the JSON property `licenseAssignmentState`
+        # @return [String]
+        attr_accessor :license_assignment_state
+      
+        # Optional. The full resource name of the Subscription(LicenseConfig) assigned
+        # to the user.
+        # Corresponds to the JSON property `licenseConfig`
+        # @return [String]
+        attr_accessor :license_config
+      
+        # Output only. User update timestamp.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Optional. The full resource name of the User, in the format of `projects/`
+        # project`/locations/`location`/userStores/`user_store`/users/`user_id``. This
+        # field must be a UTF-8 encoded string with a length limit of 2048 characters.
+        # If the user field is empty, it's indicating the user has not logged in yet and
+        # no User entity is created.
+        # Corresponds to the JSON property `user`
+        # @return [String]
+        attr_accessor :user
+      
+        # Required. Immutable. The user principal of the User, could be email address or
+        # other prinical identifier. This field is immutable. Admin assign licenses
+        # based on the user principal.
+        # Corresponds to the JSON property `userPrincipal`
+        # @return [String]
+        attr_accessor :user_principal
+      
+        # Optional. The user profile. We user user full name(First name + Last name) as
+        # user profile.
+        # Corresponds to the JSON property `userProfile`
+        # @return [String]
+        attr_accessor :user_profile
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @last_login_time = args[:last_login_time] if args.key?(:last_login_time)
+          @license_assignment_state = args[:license_assignment_state] if args.key?(:license_assignment_state)
+          @license_config = args[:license_config] if args.key?(:license_config)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @user = args[:user] if args.key?(:user)
+          @user_principal = args[:user_principal] if args.key?(:user_principal)
+          @user_profile = args[:user_profile] if args.key?(:user_profile)
+        end
+      end
+      
       # WidgetConfig captures configs at the Widget level.
       class GoogleCloudDiscoveryengineV1alphaWidgetConfig
         include Google::Apis::Core::Hashable
@@ -21088,6 +21322,12 @@ module Google
         # @return [Boolean]
         attr_accessor :enable_conversational_search
         alias_method :enable_conversational_search?, :enable_conversational_search
+      
+        # Optional. Output only. Whether to enable private knowledge graph.
+        # Corresponds to the JSON property `enablePrivateKnowledgeGraph`
+        # @return [Boolean]
+        attr_accessor :enable_private_knowledge_graph
+        alias_method :enable_private_knowledge_graph?, :enable_private_knowledge_graph
       
         # Turn on or off collecting the search result quality feedback from end users.
         # Corresponds to the JSON property `enableQualityFeedback`
@@ -21232,6 +21472,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @enable_autocomplete = args[:enable_autocomplete] if args.key?(:enable_autocomplete)
           @enable_conversational_search = args[:enable_conversational_search] if args.key?(:enable_conversational_search)
+          @enable_private_knowledge_graph = args[:enable_private_knowledge_graph] if args.key?(:enable_private_knowledge_graph)
           @enable_quality_feedback = args[:enable_quality_feedback] if args.key?(:enable_quality_feedback)
           @enable_result_score = args[:enable_result_score] if args.key?(:enable_result_score)
           @enable_safe_search = args[:enable_safe_search] if args.key?(:enable_safe_search)
@@ -22707,10 +22948,10 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaLanguageInfo]
         attr_accessor :language_info
       
-        # Immutable. The full resource name of the data store. Format: `projects/`
-        # project`/locations/`location`/collections/`collection_id`/dataStores/`
-        # data_store_id``. This field must be a UTF-8 encoded string with a length limit
-        # of 1024 characters.
+        # Immutable. Identifier. The full resource name of the data store. Format: `
+        # projects/`project`/locations/`location`/collections/`collection_id`/dataStores/
+        # `data_store_id``. This field must be a UTF-8 encoded string with a length
+        # limit of 1024 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -22826,7 +23067,8 @@ module Google
       class GoogleCloudDiscoveryengineV1betaDataStoreServingConfigDataStore
         include Google::Apis::Core::Hashable
       
-        # If set true, the DataStore will not be available for serving search requests.
+        # Optional. If set true, the DataStore will not be available for serving search
+        # requests.
         # Corresponds to the JSON property `disabledForServing`
         # @return [Boolean]
         attr_accessor :disabled_for_serving
@@ -23368,12 +23610,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and
-        # SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at
-        # most one data store. If solution_type is SOLUTION_TYPE_CHAT, multiple
-        # DataStores in the same Collection can be associated here. Note that when used
-        # in CreateEngineRequest, one DataStore id must be provided as the system will
-        # use it for necessary initializations.
+        # Optional. The data stores associated with this engine. For
+        # SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type of engines, they
+        # can only associate with at most one data store. If solution_type is
+        # SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be
+        # associated here. Note that when used in CreateEngineRequest, one DataStore id
+        # must be provided as the system will use it for necessary initializations.
         # Corresponds to the JSON property `dataStoreIds`
         # @return [Array<String>]
         attr_accessor :data_store_ids
@@ -23390,9 +23632,9 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The industry vertical that the engine registers. The restriction of the Engine
-        # industry vertical is based on DataStore: Vertical on Engine has to match
-        # vertical of the DataStore linked to the engine.
+        # Optional. The industry vertical that the engine registers. The restriction of
+        # the Engine industry vertical is based on DataStore: Vertical on Engine has to
+        # match vertical of the DataStore linked to the engine.
         # Corresponds to the JSON property `industryVertical`
         # @return [String]
         attr_accessor :industry_vertical
@@ -23402,11 +23644,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig]
         attr_accessor :media_recommendation_engine_config
       
-        # Immutable. The fully qualified resource name of the engine. This field must be
-        # a UTF-8 encoded string with a length limit of 1024 characters. Format: `
-        # projects/`project`/locations/`location`/collections/`collection`/engines/`
-        # engine`` engine should be 1-63 characters, and valid characters are /a-z0-9*/.
-        # Otherwise, an INVALID_ARGUMENT error is returned.
+        # Immutable. Identifier. The fully qualified resource name of the engine. This
+        # field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        # Format: `projects/`project`/locations/`location`/collections/`collection`/
+        # engines/`engine`` engine should be 1-63 characters, and valid characters are /
+        # a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -25836,6 +26078,14 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec]
         attr_accessor :boost_spec
       
+        # Optional. Custom search operators which if specified will be used to filter
+        # results from workspace data stores. For more information on custom search
+        # operators, see [SearchOperators](https://support.google.com/cloudsearch/answer/
+        # 6172299).
+        # Corresponds to the JSON property `customSearchOperators`
+        # @return [String]
+        attr_accessor :custom_search_operators
+      
         # Required. Full resource name of DataStore, such as `projects/`project`/
         # locations/`location`/collections/`collection_id`/dataStores/`data_store_id``.
         # Corresponds to the JSON property `dataStore`
@@ -25856,6 +26106,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @boost_spec = args[:boost_spec] if args.key?(:boost_spec)
+          @custom_search_operators = args[:custom_search_operators] if args.key?(:custom_search_operators)
           @data_store = args[:data_store] if args.key?(:data_store)
           @filter = args[:filter] if args.key?(:filter)
         end
@@ -26814,12 +27065,6 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::ApiservingMediaRequestInfo]
         attr_accessor :media_request_info
       
-        # The project (notebook) id of the uploaded source. Prefer to use the parent
-        # field instead.
-        # Corresponds to the JSON property `projectId`
-        # @return [String]
-        attr_accessor :project_id
-      
         # The source id of the associated file. If not set, a source id will be
         # generated and a new tentative source will be created.
         # Corresponds to the JSON property `sourceId`
@@ -26834,7 +27079,6 @@ module Google
         def update!(**args)
           @blob = args[:blob] if args.key?(:blob)
           @media_request_info = args[:media_request_info] if args.key?(:media_request_info)
-          @project_id = args[:project_id] if args.key?(:project_id)
           @source_id = args[:source_id] if args.key?(:source_id)
         end
       end
