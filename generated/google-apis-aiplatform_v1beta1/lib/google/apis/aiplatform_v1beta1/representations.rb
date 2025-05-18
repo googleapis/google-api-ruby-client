@@ -8869,6 +8869,8 @@ module Google
       
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
+          property :encryption_spec, as: 'encryptionSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EncryptionSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EncryptionSpec::Representation
+      
           property :expire_time, as: 'expireTime'
           property :model, as: 'model'
           property :name, as: 'name'
@@ -10080,6 +10082,7 @@ module Google
       class GoogleCloudAiplatformV1beta1DeployedModelRef
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :checkpoint_id, as: 'checkpointId'
           property :deployed_model_id, as: 'deployedModelId'
           property :endpoint, as: 'endpoint'
         end
@@ -10584,7 +10587,6 @@ module Google
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :example_id, as: 'exampleId'
-          property :name, as: 'name'
           property :stored_contents_example, as: 'storedContentsExample', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1StoredContentsExample, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1StoredContentsExample::Representation
       
         end
@@ -12220,6 +12222,7 @@ module Google
       class GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_thoughts, as: 'includeThoughts'
           property :thinking_budget, as: 'thinkingBudget'
         end
       end
@@ -21028,6 +21031,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :datastore, as: 'datastore'
           property :engine, as: 'engine'
+          property :filter, as: 'filter'
+          property :max_results, as: 'maxResults'
         end
       end
       

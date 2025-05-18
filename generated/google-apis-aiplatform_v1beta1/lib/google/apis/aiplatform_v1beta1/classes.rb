@@ -3166,6 +3166,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Represents a customer-managed encryption key spec that can be applied to a top-
+        # level resource.
+        # Corresponds to the JSON property `encryptionSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EncryptionSpec]
+        attr_accessor :encryption_spec
+      
         # Timestamp of when this resource is considered expired. This is *always*
         # provided on output, regardless of what was sent on input.
         # Corresponds to the JSON property `expireTime`
@@ -3230,6 +3236,7 @@ module Google
           @contents = args[:contents] if args.key?(:contents)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @model = args[:model] if args.key?(:model)
           @name = args[:name] if args.key?(:name)
@@ -7370,6 +7377,11 @@ module Google
       class GoogleCloudAiplatformV1beta1DeployedModelRef
         include Google::Apis::Core::Hashable
       
+        # Immutable. The ID of the Checkpoint deployed in the DeployedModel.
+        # Corresponds to the JSON property `checkpointId`
+        # @return [String]
+        attr_accessor :checkpoint_id
+      
         # Immutable. An ID of a DeployedModel in the above Endpoint.
         # Corresponds to the JSON property `deployedModelId`
         # @return [String]
@@ -7386,6 +7398,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @checkpoint_id = args[:checkpoint_id] if args.key?(:checkpoint_id)
           @deployed_model_id = args[:deployed_model_id] if args.key?(:deployed_model_id)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
         end
@@ -9115,7 +9128,7 @@ module Google
         end
       end
       
-      # A single example to upload or read from the Example Store.
+      # 
       class GoogleCloudAiplatformV1beta1Example
         include Google::Apis::Core::Hashable
       
@@ -9135,12 +9148,6 @@ module Google
         # @return [String]
         attr_accessor :example_id
       
-        # Identifier. The resource name of the Example. Format: `projects/`project`/
-        # locations/`location`/reasoningEngines/`reasoning_engine`/examples/`example``
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
         # A ContentsExample to be used with GenerateContent alongside information
         # required for storage and retrieval with Example Store.
         # Corresponds to the JSON property `storedContentsExample`
@@ -9156,7 +9163,6 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @example_id = args[:example_id] if args.key?(:example_id)
-          @name = args[:name] if args.key?(:name)
           @stored_contents_example = args[:stored_contents_example] if args.key?(:stored_contents_example)
         end
       end
@@ -15034,6 +15040,13 @@ module Google
       class GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Indicates whether to include thoughts in the response. If true,
+        # thoughts are returned only when available.
+        # Corresponds to the JSON property `includeThoughts`
+        # @return [Boolean]
+        attr_accessor :include_thoughts
+        alias_method :include_thoughts?, :include_thoughts
+      
         # Optional. Indicates the thinking budget in tokens. This is only applied when
         # enable_thinking is true.
         # Corresponds to the JSON property `thinkingBudget`
@@ -15046,6 +15059,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @include_thoughts = args[:include_thoughts] if args.key?(:include_thoughts)
           @thinking_budget = args[:thinking_budget] if args.key?(:thinking_budget)
         end
       end
@@ -29823,7 +29837,8 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Identifier. The resource name of the ReasoningEngine.
+        # Identifier. The resource name of the ReasoningEngine. Format: `projects/`
+        # project`/locations/`location`/reasoningEngines/`reasoning_engine``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -38700,7 +38715,7 @@ module Google
       class GoogleCloudAiplatformV1beta1SearchExamplesResponseSimilarExample
         include Google::Apis::Core::Hashable
       
-        # A single example to upload or read from the Example Store.
+        # The example that is similar to the searched query.
         # Corresponds to the JSON property `example`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Example]
         attr_accessor :example
@@ -45411,7 +45426,7 @@ module Google
       class GoogleCloudAiplatformV1beta1UpsertExamplesResponseUpsertResult
         include Google::Apis::Core::Hashable
       
-        # A single example to upload or read from the Example Store.
+        # The example created/updated successfully.
         # Corresponds to the JSON property `example`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Example]
         attr_accessor :example
@@ -45525,6 +45540,17 @@ module Google
         # @return [String]
         attr_accessor :engine
       
+        # Optional. Filter strings to be passed to the search API.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Optional. Number of search results to return per query. The default value is
+        # 10. The maximumm allowed value is 10.
+        # Corresponds to the JSON property `maxResults`
+        # @return [Fixnum]
+        attr_accessor :max_results
+      
         def initialize(**args)
            update!(**args)
         end
@@ -45533,6 +45559,8 @@ module Google
         def update!(**args)
           @datastore = args[:datastore] if args.key?(:datastore)
           @engine = args[:engine] if args.key?(:engine)
+          @filter = args[:filter] if args.key?(:filter)
+          @max_results = args[:max_results] if args.key?(:max_results)
         end
       end
       
