@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MessageSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OsPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -304,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StatusProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -465,6 +477,12 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::OsconfigV2::Operation, decorator: Google::Apis::OsconfigV2::Operation::Representation
       
+        end
+      end
+      
+      class MessageSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -793,6 +811,18 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class StatusProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :canonical_code, as: 'canonicalCode'
+          property :code, as: 'code'
+          property :message, as: 'message'
+          property :message_set, as: 'messageSet', class: Google::Apis::OsconfigV2::MessageSet, decorator: Google::Apis::OsconfigV2::MessageSet::Representation
+      
+          property :space, as: 'space'
         end
       end
     end
