@@ -1163,6 +1163,11 @@ module Google
         # @return [Google::Apis::DatamigrationV1::DatabaseEngineInfo]
         attr_accessor :destination
       
+        # Optional. The provider for the destination database.
+        # Corresponds to the JSON property `destinationProvider`
+        # @return [String]
+        attr_accessor :destination_provider
+      
         # Optional. The display name for the workspace.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -1205,6 +1210,11 @@ module Google
         # @return [Google::Apis::DatamigrationV1::DatabaseEngineInfo]
         attr_accessor :source
       
+        # Optional. The provider for the source database.
+        # Corresponds to the JSON property `sourceProvider`
+        # @return [String]
+        attr_accessor :source_provider
+      
         # Output only. The timestamp when the workspace resource was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -1218,6 +1228,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @destination = args[:destination] if args.key?(:destination)
+          @destination_provider = args[:destination_provider] if args.key?(:destination_provider)
           @display_name = args[:display_name] if args.key?(:display_name)
           @global_settings = args[:global_settings] if args.key?(:global_settings)
           @has_uncommitted_changes = args[:has_uncommitted_changes] if args.key?(:has_uncommitted_changes)
@@ -1225,6 +1236,7 @@ module Google
           @latest_commit_time = args[:latest_commit_time] if args.key?(:latest_commit_time)
           @name = args[:name] if args.key?(:name)
           @source = args[:source] if args.key?(:source)
+          @source_provider = args[:source_provider] if args.key?(:source_provider)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
