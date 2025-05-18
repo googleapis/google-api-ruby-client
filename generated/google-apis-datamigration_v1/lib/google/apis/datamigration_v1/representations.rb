@@ -1193,6 +1193,7 @@ module Google
           property :create_time, as: 'createTime'
           property :destination, as: 'destination', class: Google::Apis::DatamigrationV1::DatabaseEngineInfo, decorator: Google::Apis::DatamigrationV1::DatabaseEngineInfo::Representation
       
+          property :destination_provider, as: 'destinationProvider'
           property :display_name, as: 'displayName'
           hash :global_settings, as: 'globalSettings'
           property :has_uncommitted_changes, as: 'hasUncommittedChanges'
@@ -1201,6 +1202,7 @@ module Google
           property :name, as: 'name'
           property :source, as: 'source', class: Google::Apis::DatamigrationV1::DatabaseEngineInfo, decorator: Google::Apis::DatamigrationV1::DatabaseEngineInfo::Representation
       
+          property :source_provider, as: 'sourceProvider'
           property :update_time, as: 'updateTime'
         end
       end
