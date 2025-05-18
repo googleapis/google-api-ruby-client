@@ -1457,6 +1457,13 @@ module Google
         # @return [Google::Apis::DatastreamV1::MongodbCluster]
         attr_accessor :include_objects
       
+        # Optional. Maximum number of concurrent backfill tasks. The number should be
+        # non-negative and less than or equal to 50. If not set (or set to 0), the
+        # system's default value is used
+        # Corresponds to the JSON property `maxConcurrentBackfillTasks`
+        # @return [Fixnum]
+        attr_accessor :max_concurrent_backfill_tasks
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1465,6 +1472,7 @@ module Google
         def update!(**args)
           @exclude_objects = args[:exclude_objects] if args.key?(:exclude_objects)
           @include_objects = args[:include_objects] if args.key?(:include_objects)
+          @max_concurrent_backfill_tasks = args[:max_concurrent_backfill_tasks] if args.key?(:max_concurrent_backfill_tasks)
         end
       end
       
@@ -3665,12 +3673,20 @@ module Google
       class StandardConnectionFormat
         include Google::Apis::Core::Hashable
       
+        # Optional. Specifies whether the client connects directly to the host[:port] in
+        # the connection URI.
+        # Corresponds to the JSON property `directConnection`
+        # @return [Boolean]
+        attr_accessor :direct_connection
+        alias_method :direct_connection?, :direct_connection
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @direct_connection = args[:direct_connection] if args.key?(:direct_connection)
         end
       end
       

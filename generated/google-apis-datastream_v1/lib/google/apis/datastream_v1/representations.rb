@@ -1233,6 +1233,7 @@ module Google
       
           property :include_objects, as: 'includeObjects', class: Google::Apis::DatastreamV1::MongodbCluster, decorator: Google::Apis::DatastreamV1::MongodbCluster::Representation
       
+          property :max_concurrent_backfill_tasks, as: 'maxConcurrentBackfillTasks'
         end
       end
       
@@ -1893,6 +1894,7 @@ module Google
       class StandardConnectionFormat
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :direct_connection, as: 'directConnection'
         end
       end
       
