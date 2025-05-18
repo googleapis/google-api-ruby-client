@@ -27,16 +27,9 @@ module Google
       class GooglePrivacyDlpV2Action
         include Google::Apis::Core::Hashable
       
-        # Create a de-identified copy of the requested table or files. A
-        # TransformationDetail will be created for each transformation. If any rows in
-        # BigQuery are skipped during de-identification (transformation errors or row
-        # size exceeds BigQuery insert API limits) they are placed in the failure output
-        # table. If the original row exceeds the BigQuery insert API limit it will be
-        # truncated when written to the failure output table. The failure output table
-        # can be set in the action.deidentify.output.big_query_output.
-        # deidentified_failure_output_table field, if no table is set, a table will be
-        # automatically created in the same project and dataset as the original table.
-        # Compatible with: Inspect
+        # Create a de-identified copy of a storage bucket. Only compatible with Cloud
+        # Storage buckets. A TransformationDetail will be created for each
+        # transformation. Compatible with: Inspection of Cloud Storage
         # Corresponds to the JSON property `deidentify`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Deidentify]
         attr_accessor :deidentify
@@ -3101,16 +3094,9 @@ module Google
         end
       end
       
-      # Create a de-identified copy of the requested table or files. A
-      # TransformationDetail will be created for each transformation. If any rows in
-      # BigQuery are skipped during de-identification (transformation errors or row
-      # size exceeds BigQuery insert API limits) they are placed in the failure output
-      # table. If the original row exceeds the BigQuery insert API limit it will be
-      # truncated when written to the failure output table. The failure output table
-      # can be set in the action.deidentify.output.big_query_output.
-      # deidentified_failure_output_table field, if no table is set, a table will be
-      # automatically created in the same project and dataset as the original table.
-      # Compatible with: Inspect
+      # Create a de-identified copy of a storage bucket. Only compatible with Cloud
+      # Storage buckets. A TransformationDetail will be created for each
+      # transformation. Compatible with: Inspection of Cloud Storage
       class GooglePrivacyDlpV2Deidentify
         include Google::Apis::Core::Hashable
       
@@ -5028,8 +5014,8 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreInfoTypeSummary>]
         attr_accessor :file_store_info_type_summaries
       
-        # The file store does not have any files. If the profiling failed, this will be
-        # false.
+        # The file store does not have any files. If the profiling operation failed,
+        # this is false.
         # Corresponds to the JSON property `fileStoreIsEmpty`
         # @return [Boolean]
         attr_accessor :file_store_is_empty
