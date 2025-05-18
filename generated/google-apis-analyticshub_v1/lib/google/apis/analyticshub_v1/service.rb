@@ -54,7 +54,7 @@ module Google
         # Lists all data exchanges from projects in a given organization and location.
         # @param [String] organization
         #   Required. The organization resource path of the projects containing
-        #   DataExchanges. e.g. `organizations/myorg/locations/US`.
+        #   DataExchanges. e.g. `organizations/myorg/locations/us`.
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response page. Leverage
         #   the page tokens to iterate through the entire collection.
@@ -92,7 +92,7 @@ module Google
         # Creates a new data exchange.
         # @param [String] parent
         #   Required. The parent resource path of the data exchange. e.g. `projects/
-        #   myproject/locations/US`.
+        #   myproject/locations/us`.
         # @param [Google::Apis::AnalyticshubV1::DataExchange] data_exchange_object
         # @param [String] data_exchange_id
         #   Required. The ID of the data exchange. Must contain only Unicode letters,
@@ -130,7 +130,7 @@ module Google
         # Deletes an existing data exchange.
         # @param [String] name
         #   Required. The full name of the data exchange resource that you want to delete.
-        #   For example, `projects/myproject/locations/US/dataExchanges/123`.
+        #   For example, `projects/myproject/locations/us/dataExchanges/123`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -161,7 +161,7 @@ module Google
         # Gets the details of a data exchange.
         # @param [String] name
         #   Required. The resource name of the data exchange. e.g. `projects/myproject/
-        #   locations/US/dataExchanges/123`.
+        #   locations/us/dataExchanges/123`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -227,7 +227,7 @@ module Google
         # Lists all data exchanges in a given project and location.
         # @param [String] parent
         #   Required. The parent resource path of the data exchanges. e.g. `projects/
-        #   myproject/locations/US`.
+        #   myproject/locations/us`.
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response page. Leverage
         #   the page tokens to iterate through the entire collection.
@@ -265,8 +265,8 @@ module Google
         # Lists all subscriptions on a given Data Exchange or Listing.
         # @param [String] resource
         #   Required. Resource name of the requested target. This resource may be either a
-        #   Listing or a DataExchange. e.g. projects/123/locations/US/dataExchanges/456 OR
-        #   e.g. projects/123/locations/US/dataExchanges/456/listings/789
+        #   Listing or a DataExchange. e.g. projects/123/locations/us/dataExchanges/456 OR
+        #   e.g. projects/123/locations/us/dataExchanges/456/listings/789
         # @param [Boolean] include_deleted_subscriptions
         #   If selected, includes deleted subscriptions in the response (up to 63 days
         #   after deletion).
@@ -307,7 +307,7 @@ module Google
         # Updates an existing data exchange.
         # @param [String] name
         #   Output only. The resource name of the data exchange. e.g. `projects/myproject/
-        #   locations/US/dataExchanges/123`.
+        #   locations/us/dataExchanges/123`.
         # @param [Google::Apis::AnalyticshubV1::DataExchange] data_exchange_object
         # @param [String] update_mask
         #   Required. Field mask specifies the fields to update in the data exchange
@@ -379,10 +379,11 @@ module Google
         end
         
         # Creates a Subscription to a Data Clean Room. This is a long-running operation
-        # as it will create one or more linked datasets.
+        # as it will create one or more linked datasets. Throws a Bad Request error if
+        # the Data Exchange does not contain any listings.
         # @param [String] name
         #   Required. Resource name of the Data Exchange. e.g. `projects/publisherproject/
-        #   locations/US/dataExchanges/123`
+        #   locations/us/dataExchanges/123`
         # @param [Google::Apis::AnalyticshubV1::SubscribeDataExchangeRequest] subscribe_data_exchange_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -451,7 +452,7 @@ module Google
         # Creates a new listing.
         # @param [String] parent
         #   Required. The parent resource path of the listing. e.g. `projects/myproject/
-        #   locations/US/dataExchanges/123`.
+        #   locations/us/dataExchanges/123`.
         # @param [Google::Apis::AnalyticshubV1::Listing] listing_object
         # @param [String] listing_id
         #   Required. The ID of the listing to create. Must contain only Unicode letters,
@@ -489,7 +490,7 @@ module Google
         # Deletes a listing.
         # @param [String] name
         #   Required. Resource name of the listing to delete. e.g. `projects/myproject/
-        #   locations/US/dataExchanges/123/listings/456`.
+        #   locations/us/dataExchanges/123/listings/456`.
         # @param [Boolean] delete_commercial
         #   Optional. If the listing is commercial then this field must be set to true,
         #   otherwise a failure is thrown. This acts as a safety guard to avoid deleting
@@ -525,7 +526,7 @@ module Google
         # Gets the details of a listing.
         # @param [String] name
         #   Required. The resource name of the listing. e.g. `projects/myproject/locations/
-        #   US/dataExchanges/123/listings/456`.
+        #   us/dataExchanges/123/listings/456`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -591,7 +592,7 @@ module Google
         # Lists all listings in a given project and location.
         # @param [String] parent
         #   Required. The parent resource path of the listing. e.g. `projects/myproject/
-        #   locations/US/dataExchanges/123`.
+        #   locations/us/dataExchanges/123`.
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response page. Leverage
         #   the page tokens to iterate through the entire collection.
@@ -629,8 +630,8 @@ module Google
         # Lists all subscriptions on a given Data Exchange or Listing.
         # @param [String] resource
         #   Required. Resource name of the requested target. This resource may be either a
-        #   Listing or a DataExchange. e.g. projects/123/locations/US/dataExchanges/456 OR
-        #   e.g. projects/123/locations/US/dataExchanges/456/listings/789
+        #   Listing or a DataExchange. e.g. projects/123/locations/us/dataExchanges/456 OR
+        #   e.g. projects/123/locations/us/dataExchanges/456/listings/789
         # @param [Boolean] include_deleted_subscriptions
         #   If selected, includes deleted subscriptions in the response (up to 63 days
         #   after deletion).
@@ -671,7 +672,7 @@ module Google
         # Updates an existing listing.
         # @param [String] name
         #   Output only. The resource name of the listing. e.g. `projects/myproject/
-        #   locations/US/dataExchanges/123/listings/456`
+        #   locations/us/dataExchanges/123/listings/456`
         # @param [Google::Apis::AnalyticshubV1::Listing] listing_object
         # @param [String] update_mask
         #   Required. Field mask specifies the fields to update in the listing resource.
@@ -748,7 +749,7 @@ module Google
         # subscriber's project.
         # @param [String] name
         #   Required. Resource name of the listing that you want to subscribe to. e.g. `
-        #   projects/myproject/locations/US/dataExchanges/123/listings/456`.
+        #   projects/myproject/locations/us/dataExchanges/123/listings/456`.
         # @param [Google::Apis::AnalyticshubV1::SubscribeListingRequest] subscribe_listing_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -817,7 +818,7 @@ module Google
         # Deletes a subscription.
         # @param [String] name
         #   Required. Resource name of the subscription to delete. e.g. projects/123/
-        #   locations/US/subscriptions/456
+        #   locations/us/subscriptions/456
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -847,7 +848,7 @@ module Google
         
         # Gets the details of a Subscription.
         # @param [String] name
-        #   Required. Resource name of the subscription. e.g. projects/123/locations/US/
+        #   Required. Resource name of the subscription. e.g. projects/123/locations/us/
         #   subscriptions/456
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -914,7 +915,7 @@ module Google
         # Lists all subscriptions in a given project and location.
         # @param [String] parent
         #   Required. The parent resource path of the subscription. e.g. projects/
-        #   myproject/locations/US
+        #   myproject/locations/us
         # @param [String] filter
         #   An expression for filtering the results of the request. Eligible fields for
         #   filtering are: + `listing` + `data_exchange` Alternatively, a literal wrapped
@@ -963,7 +964,7 @@ module Google
         # may create many linked datasets.
         # @param [String] name
         #   Required. Resource name of the Subscription to refresh. e.g. `projects/
-        #   subscriberproject/locations/US/subscriptions/123`
+        #   subscriberproject/locations/us/subscriptions/123`
         # @param [Google::Apis::AnalyticshubV1::RefreshSubscriptionRequest] refresh_subscription_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -997,7 +998,7 @@ module Google
         # Revokes a given subscription.
         # @param [String] name
         #   Required. Resource name of the subscription to revoke. e.g. projects/123/
-        #   locations/US/subscriptions/456
+        #   locations/us/subscriptions/456
         # @param [Google::Apis::AnalyticshubV1::RevokeSubscriptionRequest] revoke_subscription_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

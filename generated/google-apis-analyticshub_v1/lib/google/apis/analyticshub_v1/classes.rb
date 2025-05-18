@@ -487,7 +487,7 @@ module Google
         alias_method :log_linked_dataset_query_user_email?, :log_linked_dataset_query_user_email
       
         # Output only. The resource name of the data exchange. e.g. `projects/myproject/
-        # locations/US/dataExchanges/123`.
+        # locations/us/dataExchanges/123`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -670,12 +670,6 @@ module Google
         # @return [String]
         attr_accessor :location
       
-        # Optional. The geographic locations where the dataset should be replicated. See
-        # https://cloud.google.com/bigquery/docs/locations for supported locations.
-        # Corresponds to the JSON property `replicaLocations`
-        # @return [Array<String>]
-        attr_accessor :replica_locations
-      
         def initialize(**args)
            update!(**args)
         end
@@ -687,7 +681,6 @@ module Google
           @friendly_name = args[:friendly_name] if args.key?(:friendly_name)
           @labels = args[:labels] if args.key?(:labels)
           @location = args[:location] if args.key?(:location)
-          @replica_locations = args[:replica_locations] if args.key?(:replica_locations)
         end
       end
       
@@ -1414,7 +1407,7 @@ module Google
         alias_method :log_linked_dataset_query_user_email?, :log_linked_dataset_query_user_email
       
         # Output only. The resource name of the listing. e.g. `projects/myproject/
-        # locations/US/dataExchanges/123/listings/456`
+        # locations/us/dataExchanges/123/listings/456`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2247,7 +2240,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The parent resource path of the Subscription. e.g. `projects/
-        # subscriberproject/locations/US`
+        # subscriberproject/locations/us`
         # Corresponds to the JSON property `destination`
         # @return [String]
         attr_accessor :destination
@@ -2364,10 +2357,15 @@ module Google
         attr_accessor :creation_time
       
         # Output only. Resource name of the source Data Exchange. e.g. projects/123/
-        # locations/US/dataExchanges/456
+        # locations/us/dataExchanges/456
         # Corresponds to the JSON property `dataExchange`
         # @return [String]
         attr_accessor :data_exchange
+      
+        # Defines the destination bigquery dataset.
+        # Corresponds to the JSON property `destinationDataset`
+        # @return [Google::Apis::AnalyticshubV1::DestinationDataset]
+        attr_accessor :destination_dataset
       
         # Output only. Timestamp when the subscription was last modified.
         # Corresponds to the JSON property `lastModifyTime`
@@ -2375,7 +2373,7 @@ module Google
         attr_accessor :last_modify_time
       
         # Output only. Map of listing resource names to associated linked resource, e.g.
-        # projects/123/locations/US/dataExchanges/456/listings/789 -> projects/123/
+        # projects/123/locations/us/dataExchanges/456/listings/789 -> projects/123/
         # datasets/my_dataset For listing-level subscriptions, this is a map of size 1.
         # Only contains values if state == STATE_ACTIVE.
         # Corresponds to the JSON property `linkedDatasetMap`
@@ -2389,7 +2387,7 @@ module Google
         attr_accessor :linked_resources
       
         # Output only. Resource name of the source Listing. e.g. projects/123/locations/
-        # US/dataExchanges/456/listings/789
+        # us/dataExchanges/456/listings/789
         # Corresponds to the JSON property `listing`
         # @return [String]
         attr_accessor :listing
@@ -2402,7 +2400,7 @@ module Google
         alias_method :log_linked_dataset_query_user_email?, :log_linked_dataset_query_user_email
       
         # Output only. The resource name of the subscription. e.g. `projects/myproject/
-        # locations/US/subscriptions/123`.
+        # locations/us/subscriptions/123`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2441,6 +2439,7 @@ module Google
           @commercial_info = args[:commercial_info] if args.key?(:commercial_info)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @data_exchange = args[:data_exchange] if args.key?(:data_exchange)
+          @destination_dataset = args[:destination_dataset] if args.key?(:destination_dataset)
           @last_modify_time = args[:last_modify_time] if args.key?(:last_modify_time)
           @linked_dataset_map = args[:linked_dataset_map] if args.key?(:linked_dataset_map)
           @linked_resources = args[:linked_resources] if args.key?(:linked_resources)
