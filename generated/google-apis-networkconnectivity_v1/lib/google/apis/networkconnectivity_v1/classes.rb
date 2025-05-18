@@ -121,6 +121,35 @@ module Google
         end
       end
       
+      # Range auto-allocation options, to be optionally used when CIDR block is not
+      # explicitly set.
+      class AllocationOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Allocation strategy Not setting this field when the allocation is
+        # requested means an implementation defined strategy is used.
+        # Corresponds to the JSON property `allocationStrategy`
+        # @return [String]
+        attr_accessor :allocation_strategy
+      
+        # Optional. This field must be set only when allocation_strategy is set to
+        # RANDOM_FIRST_N_AVAILABLE. The value should be the maximum expected parallelism
+        # of range creation requests issued to the same space of peered netwroks.
+        # Corresponds to the JSON property `firstAvailableRangesLookupSize`
+        # @return [Fixnum]
+        attr_accessor :first_available_ranges_lookup_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allocation_strategy = args[:allocation_strategy] if args.key?(:allocation_strategy)
+          @first_available_ranges_lookup_size = args[:first_available_ranges_lookup_size] if args.key?(:first_available_ranges_lookup_size)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -599,7 +628,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The destination IP range of outgoing packets that this policy-based
-        # route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+        # route applies to. Default is "0.0.0.0/0" if protocol version is IPv4 and "::/0"
+        # if protocol version is IPv6.
         # Corresponds to the JSON property `destRange`
         # @return [String]
         attr_accessor :dest_range
@@ -610,14 +640,15 @@ module Google
         # @return [String]
         attr_accessor :ip_protocol
       
-        # Required. Internet protocol versions this policy-based route applies to. For
-        # this version, only IPV4 is supported. IPV6 is supported in preview.
+        # Required. Internet protocol versions this policy-based route applies to. IPV4
+        # and IPV6 is supported.
         # Corresponds to the JSON property `protocolVersion`
         # @return [String]
         attr_accessor :protocol_version
       
         # Optional. The source IP range of outgoing packets that this policy-based route
-        # applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+        # applies to. Default is "0.0.0.0/0" if protocol version is IPv4 and "::/0" if
+        # protocol version is IPv6.
         # Corresponds to the JSON property `srcRange`
         # @return [String]
         attr_accessor :src_range
@@ -1087,6 +1118,12 @@ module Google
       class InternalRange
         include Google::Apis::Core::Hashable
       
+        # Range auto-allocation options, to be optionally used when CIDR block is not
+        # explicitly set.
+        # Corresponds to the JSON property `allocationOptions`
+        # @return [Google::Apis::NetworkconnectivityV1::AllocationOptions]
+        attr_accessor :allocation_options
+      
         # Time when the internal range was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -1200,6 +1237,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allocation_options = args[:allocation_options] if args.key?(:allocation_options)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @exclude_cidr_ranges = args[:exclude_cidr_ranges] if args.key?(:exclude_cidr_ranges)
@@ -2095,6 +2133,37 @@ module Google
         end
       end
       
+      # A route next hop that leads to a spoke resource.
+      class NextHopSpoke
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether site-to-site data transfer is allowed for this spoke
+        # resource. Data transfer is available only in [supported locations](https://
+        # cloud.google.com/network-connectivity/docs/network-connectivity-center/
+        # concepts/locations). Whether this route is accessible to other hybrid spokes
+        # with site-to-site data transfer enabled. If this is false, the route is only
+        # accessible to VPC spokes of the connected Hub.
+        # Corresponds to the JSON property `siteToSiteDataTransfer`
+        # @return [Boolean]
+        attr_accessor :site_to_site_data_transfer
+        alias_method :site_to_site_data_transfer?, :site_to_site_data_transfer
+      
+        # The URI of the spoke resource.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @site_to_site_data_transfer = args[:site_to_site_data_transfer] if args.key?(:site_to_site_data_transfer)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # A route next hop that leads to a VPN tunnel resource.
       class NextHopVpnTunnel
         include Google::Apis::Core::Hashable
@@ -2950,6 +3019,11 @@ module Google
         # @return [Google::Apis::NetworkconnectivityV1::NextHopRouterApplianceInstance]
         attr_accessor :next_hop_router_appliance_instance
       
+        # A route next hop that leads to a spoke resource.
+        # Corresponds to the JSON property `nextHopSpoke`
+        # @return [Google::Apis::NetworkconnectivityV1::NextHopSpoke]
+        attr_accessor :next_hop_spoke
+      
         # Immutable. The destination VPC network for packets on this route.
         # Corresponds to the JSON property `nextHopVpcNetwork`
         # @return [Google::Apis::NetworkconnectivityV1::NextHopVpcNetwork]
@@ -3011,6 +3085,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @next_hop_interconnect_attachment = args[:next_hop_interconnect_attachment] if args.key?(:next_hop_interconnect_attachment)
           @next_hop_router_appliance_instance = args[:next_hop_router_appliance_instance] if args.key?(:next_hop_router_appliance_instance)
+          @next_hop_spoke = args[:next_hop_spoke] if args.key?(:next_hop_spoke)
           @next_hop_vpc_network = args[:next_hop_vpc_network] if args.key?(:next_hop_vpc_network)
           @next_hop_vpn_tunnel = args[:next_hop_vpn_tunnel] if args.key?(:next_hop_vpn_tunnel)
           @priority = args[:priority] if args.key?(:priority)
