@@ -1921,8 +1921,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets IAM policies for one of WorkloadIdentityPool
-        # WorkloadIdentityPoolNamespace WorkloadIdentityPoolManagedIdentity
+        # Gets the IAM policy of a WorkloadIdentityPool.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested. See [Resource
         #   names](https://cloud.google.com/apis/design/resource_names) for the
@@ -2035,8 +2034,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets IAM policies on one of WorkloadIdentityPool WorkloadIdentityPoolNamespace
-        # WorkloadIdentityPoolManagedIdentity
+        # Sets the IAM policies on a WorkloadIdentityPool
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified. See [Resource
         #   names](https://cloud.google.com/apis/design/resource_names) for the
@@ -2071,8 +2069,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the caller's permissions on one of WorkloadIdentityPool
-        # WorkloadIdentityPoolNamespace WorkloadIdentityPoolManagedIdentity
+        # Returns the caller's permissions on a WorkloadIdentityPool
         # @param [String] resource
         #   REQUIRED: The resource for which the policy detail is being requested. See [
         #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
@@ -2494,7 +2491,8 @@ module Google
         end
         
         # Lists all non-deleted WorkloadIdentityPoolManagedIdentitys in a namespace. If `
-        # show_deleted` is set to `true`, then deleted managed identites are also listed.
+        # show_deleted` is set to `true`, then deleted managed identities are also
+        # listed.
         # @param [String] parent
         #   Required. The parent resource to list managed identities for.
         # @param [Fixnum] page_size
