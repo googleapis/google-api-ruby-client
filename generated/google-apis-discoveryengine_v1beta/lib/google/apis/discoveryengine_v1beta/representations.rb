@@ -5904,6 +5904,8 @@ module Google
           property :identity_refresh_interval, as: 'identityRefreshInterval'
           property :identity_schedule_config, as: 'identityScheduleConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaIdentityScheduleConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaIdentityScheduleConfig::Representation
       
+          property :incremental_refresh_interval, as: 'incrementalRefreshInterval'
+          property :incremental_sync_disabled, as: 'incrementalSyncDisabled'
           property :kms_key_name, as: 'kmsKeyName'
           property :last_sync_time, as: 'lastSyncTime'
           property :latest_pause_time, as: 'latestPauseTime'
