@@ -58,6 +58,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CheckCompatibilityRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CheckCompatibilityResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Cluster
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -112,6 +124,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Context
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateSchemaRegistryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateVersionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateVersionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -119,6 +155,12 @@ module Google
       end
       
       class GcpConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpBody
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -166,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListSchemaRegistriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListTopicsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,6 +221,12 @@ module Google
       end
       
       class Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LookupVersionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -244,6 +298,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Schema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SchemaConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SchemaMode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SchemaReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SchemaRegistry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SchemaVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -269,6 +359,18 @@ module Google
       end
       
       class Topic
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateSchemaConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateSchemaModeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -325,6 +427,25 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :memory_bytes, :numeric_string => true, as: 'memoryBytes'
           property :vcpu_count, :numeric_string => true, as: 'vcpuCount'
+        end
+      end
+      
+      class CheckCompatibilityRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :references, as: 'references', class: Google::Apis::ManagedkafkaV1::SchemaReference, decorator: Google::Apis::ManagedkafkaV1::SchemaReference::Representation
+      
+          property :schema, as: 'schema'
+          property :schema_type, as: 'schemaType'
+          property :verbose, as: 'verbose'
+        end
+      end
+      
+      class CheckCompatibilityResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_compatible, as: 'is_compatible'
+          collection :messages, as: 'messages'
         end
       end
       
@@ -426,6 +547,43 @@ module Google
         end
       end
       
+      class Context
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          collection :subjects, as: 'subjects'
+        end
+      end
+      
+      class CreateSchemaRegistryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :schema_registry, as: 'schemaRegistry', class: Google::Apis::ManagedkafkaV1::SchemaRegistry, decorator: Google::Apis::ManagedkafkaV1::SchemaRegistry::Representation
+      
+          property :schema_registry_id, as: 'schemaRegistryId'
+        end
+      end
+      
+      class CreateVersionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :normalize, as: 'normalize'
+          collection :references, as: 'references', class: Google::Apis::ManagedkafkaV1::SchemaReference, decorator: Google::Apis::ManagedkafkaV1::SchemaReference::Representation
+      
+          property :schema, as: 'schema'
+          property :schema_type, as: 'schemaType'
+          property :version, as: 'version'
+        end
+      end
+      
+      class CreateVersionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -438,6 +596,15 @@ module Google
           property :access_config, as: 'accessConfig', class: Google::Apis::ManagedkafkaV1::AccessConfig, decorator: Google::Apis::ManagedkafkaV1::AccessConfig::Representation
       
           property :kms_key, as: 'kmsKey'
+        end
+      end
+      
+      class HttpBody
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_type, as: 'contentType'
+          property :data, :base64 => true, as: 'data'
+          collection :extensions, as: 'extensions'
         end
       end
       
@@ -506,6 +673,14 @@ module Google
         end
       end
       
+      class ListSchemaRegistriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :schema_registries, as: 'schemaRegistries', class: Google::Apis::ManagedkafkaV1::SchemaRegistry, decorator: Google::Apis::ManagedkafkaV1::SchemaRegistry::Representation
+      
+        end
+      end
+      
       class ListTopicsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -523,6 +698,18 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class LookupVersionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deleted, as: 'deleted'
+          property :normalize, as: 'normalize'
+          collection :references, as: 'references', class: Google::Apis::ManagedkafkaV1::SchemaReference, decorator: Google::Apis::ManagedkafkaV1::SchemaReference::Representation
+      
+          property :schema, as: 'schema'
+          property :schema_type, as: 'schemaType'
         end
       end
       
@@ -610,6 +797,62 @@ module Google
         end
       end
       
+      class Schema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :references, as: 'references', class: Google::Apis::ManagedkafkaV1::SchemaReference, decorator: Google::Apis::ManagedkafkaV1::SchemaReference::Representation
+      
+          property :schema, as: 'schema'
+          property :schema_type, as: 'schemaType'
+        end
+      end
+      
+      class SchemaConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alias, as: 'alias'
+          property :compatibility, as: 'compatibility'
+          property :normalize, as: 'normalize'
+        end
+      end
+      
+      class SchemaMode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
+        end
+      end
+      
+      class SchemaReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :subject, as: 'subject'
+          property :version, as: 'version'
+        end
+      end
+      
+      class SchemaRegistry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :contexts, as: 'contexts'
+          property :name, as: 'name'
+        end
+      end
+      
+      class SchemaVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :references, as: 'references', class: Google::Apis::ManagedkafkaV1::SchemaReference, decorator: Google::Apis::ManagedkafkaV1::SchemaReference::Representation
+      
+          property :schema, as: 'schema'
+          property :schema_type, as: 'schemaType'
+          property :subject, as: 'subject'
+          property :version, as: 'version'
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -646,6 +889,21 @@ module Google
           property :name, as: 'name'
           property :partition_count, as: 'partitionCount'
           property :replication_factor, as: 'replicationFactor'
+        end
+      end
+      
+      class UpdateSchemaConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compatibility, as: 'compatibility'
+          property :normalize, as: 'normalize'
+        end
+      end
+      
+      class UpdateSchemaModeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
         end
       end
     end

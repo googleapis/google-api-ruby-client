@@ -225,6 +225,72 @@ module Google
         end
       end
       
+      # Request for CheckCompatibility.
+      class CheckCompatibilityRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The schema references used by the schema.
+        # Corresponds to the JSON property `references`
+        # @return [Array<Google::Apis::ManagedkafkaV1::SchemaReference>]
+        attr_accessor :references
+      
+        # Required. The schema payload
+        # Corresponds to the JSON property `schema`
+        # @return [String]
+        attr_accessor :schema
+      
+        # Optional. The schema type of the schema.
+        # Corresponds to the JSON property `schemaType`
+        # @return [String]
+        attr_accessor :schema_type
+      
+        # Optional. If true, the response will contain the compatibility check result
+        # with reasons for failed checks. The default is false.
+        # Corresponds to the JSON property `verbose`
+        # @return [Boolean]
+        attr_accessor :verbose
+        alias_method :verbose?, :verbose
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @references = args[:references] if args.key?(:references)
+          @schema = args[:schema] if args.key?(:schema)
+          @schema_type = args[:schema_type] if args.key?(:schema_type)
+          @verbose = args[:verbose] if args.key?(:verbose)
+        end
+      end
+      
+      # Response for CheckCompatibility.
+      class CheckCompatibilityResponse
+        include Google::Apis::Core::Hashable
+      
+        # The compatibility check result. If true, the schema is compatible with the
+        # resource.
+        # Corresponds to the JSON property `is_compatible`
+        # @return [Boolean]
+        attr_accessor :is_compatible
+        alias_method :is_compatible?, :is_compatible
+      
+        # Failure reasons if verbose = true.
+        # Corresponds to the JSON property `messages`
+        # @return [Array<String>]
+        attr_accessor :messages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_compatible = args[:is_compatible] if args.key?(:is_compatible)
+          @messages = args[:messages] if args.key?(:messages)
+        end
+      end
+      
       # An Apache Kafka cluster deployed in a location.
       class Cluster
         include Google::Apis::Core::Hashable
@@ -589,6 +655,139 @@ module Google
         end
       end
       
+      # Context represents an independent schema grouping in a schema registry
+      # instance.
+      class Context
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. The name of the context. Structured like: `projects/`project`/
+        # locations/`location`/schemaRegistries/`schema_registry`/contexts/`context``
+        # The context name `context` can contain the following: * Up to 255 characters. *
+        # Allowed characters: letters (uppercase or lowercase), numbers, and the
+        # following special characters: `.`, `-`, `_`, `+`, `%`, and `~`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The subjects of the context.
+        # Corresponds to the JSON property `subjects`
+        # @return [Array<String>]
+        attr_accessor :subjects
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @subjects = args[:subjects] if args.key?(:subjects)
+        end
+      end
+      
+      # Request to create a schema registry instance.
+      class CreateSchemaRegistryRequest
+        include Google::Apis::Core::Hashable
+      
+        # SchemaRegistry is a schema registry instance.
+        # Corresponds to the JSON property `schemaRegistry`
+        # @return [Google::Apis::ManagedkafkaV1::SchemaRegistry]
+        attr_accessor :schema_registry
+      
+        # Required. The schema registry instance ID to use for this schema registry. The
+        # ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (-).
+        # The maximum length is 63 characters. The ID must not start with a number.
+        # Corresponds to the JSON property `schemaRegistryId`
+        # @return [String]
+        attr_accessor :schema_registry_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schema_registry = args[:schema_registry] if args.key?(:schema_registry)
+          @schema_registry_id = args[:schema_registry_id] if args.key?(:schema_registry_id)
+        end
+      end
+      
+      # Request for CreateVersion.
+      class CreateVersionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The schema ID of the schema. If not specified, the schema ID will be
+        # generated by the server. If the schema ID is specified, it must not be used by
+        # an existing schema that is different from the schema to be created.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Optional. If true, the schema will be normalized before being stored. The
+        # default is false.
+        # Corresponds to the JSON property `normalize`
+        # @return [Boolean]
+        attr_accessor :normalize
+        alias_method :normalize?, :normalize
+      
+        # Optional. The schema references used by the schema.
+        # Corresponds to the JSON property `references`
+        # @return [Array<Google::Apis::ManagedkafkaV1::SchemaReference>]
+        attr_accessor :references
+      
+        # Required. The schema payload
+        # Corresponds to the JSON property `schema`
+        # @return [String]
+        attr_accessor :schema
+      
+        # Optional. The type of the schema. It is optional. If not specified, the schema
+        # type will be AVRO.
+        # Corresponds to the JSON property `schemaType`
+        # @return [String]
+        attr_accessor :schema_type
+      
+        # Optional. The version to create. It is optional. If not specified, the version
+        # will be created with the max version ID of the subject increased by 1. If the
+        # version ID is specified, it will be used as the new version ID and must not be
+        # used by an existing version of the subject.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @normalize = args[:normalize] if args.key?(:normalize)
+          @references = args[:references] if args.key?(:references)
+          @schema = args[:schema] if args.key?(:schema)
+          @schema_type = args[:schema_type] if args.key?(:schema_type)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Response for CreateVersion.
+      class CreateVersionResponse
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier of the schema created.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -630,6 +829,54 @@ module Google
         def update!(**args)
           @access_config = args[:access_config] if args.key?(:access_config)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
+        end
+      end
+      
+      # Message that represents an arbitrary HTTP body. It should only be used for
+      # payload formats that can't be represented as JSON, such as raw binary or an
+      # HTML page. This message can be used both in streaming and non-streaming API
+      # methods in the request as well as the response. It can be used as a top-level
+      # request field, which is convenient if one wants to extract parameters from
+      # either the URL or HTTP template into the request fields and also want access
+      # to the raw HTTP body. Example: message GetResourceRequest ` // A unique
+      # request id. string request_id = 1; // The raw HTTP body is bound to this field.
+      # google.api.HttpBody http_body = 2; ` service ResourceService ` rpc
+      # GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
+      # UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); ` Example
+      # with streaming methods: service CaldavService ` rpc GetCalendar(stream google.
+      # api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream
+      # google.api.HttpBody) returns (stream google.api.HttpBody); ` Use of this type
+      # only changes how the request and response bodies are handled, all other
+      # features will continue to work unchanged.
+      class HttpBody
+        include Google::Apis::Core::Hashable
+      
+        # The HTTP Content-Type header value specifying the content type of the body.
+        # Corresponds to the JSON property `contentType`
+        # @return [String]
+        attr_accessor :content_type
+      
+        # The HTTP request/response body as raw binary.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        # Application specific response metadata. Must be set in the first response for
+        # streaming APIs.
+        # Corresponds to the JSON property `extensions`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :extensions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_type = args[:content_type] if args.key?(:content_type)
+          @data = args[:data] if args.key?(:data)
+          @extensions = args[:extensions] if args.key?(:extensions)
         end
       end
       
@@ -826,6 +1073,25 @@ module Google
         end
       end
       
+      # Request for ListSchemaRegistries.
+      class ListSchemaRegistriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The schema registry instances.
+        # Corresponds to the JSON property `schemaRegistries`
+        # @return [Array<Google::Apis::ManagedkafkaV1::SchemaRegistry>]
+        attr_accessor :schema_registries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schema_registries = args[:schema_registries] if args.key?(:schema_registries)
+        end
+      end
+      
       # Response for ListTopics.
       class ListTopicsResponse
         include Google::Apis::Core::Hashable
@@ -897,6 +1163,54 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Request for LookupVersion.
+      class LookupVersionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, soft-deleted versions will be included in lookup, no matter
+        # if the subject is active or soft-deleted. If false, soft-deleted versions will
+        # be excluded. The default is false.
+        # Corresponds to the JSON property `deleted`
+        # @return [Boolean]
+        attr_accessor :deleted
+        alias_method :deleted?, :deleted
+      
+        # Optional. If true, the schema will be normalized before being looked up. The
+        # default is false.
+        # Corresponds to the JSON property `normalize`
+        # @return [Boolean]
+        attr_accessor :normalize
+        alias_method :normalize?, :normalize
+      
+        # Optional. The schema references used by the schema.
+        # Corresponds to the JSON property `references`
+        # @return [Array<Google::Apis::ManagedkafkaV1::SchemaReference>]
+        attr_accessor :references
+      
+        # Required. The schema payload
+        # Corresponds to the JSON property `schema`
+        # @return [String]
+        attr_accessor :schema
+      
+        # Optional. The schema type of the schema.
+        # Corresponds to the JSON property `schemaType`
+        # @return [String]
+        attr_accessor :schema_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deleted = args[:deleted] if args.key?(:deleted)
+          @normalize = args[:normalize] if args.key?(:normalize)
+          @references = args[:references] if args.key?(:references)
+          @schema = args[:schema] if args.key?(:schema)
+          @schema_type = args[:schema_type] if args.key?(:schema_type)
         end
       end
       
@@ -1171,6 +1485,211 @@ module Google
         end
       end
       
+      # Schema for a Kafka message.
+      class Schema
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The schema references used by the schema.
+        # Corresponds to the JSON property `references`
+        # @return [Array<Google::Apis::ManagedkafkaV1::SchemaReference>]
+        attr_accessor :references
+      
+        # The schema payload.
+        # Corresponds to the JSON property `schema`
+        # @return [String]
+        attr_accessor :schema
+      
+        # Optional. The schema type of the schema.
+        # Corresponds to the JSON property `schemaType`
+        # @return [String]
+        attr_accessor :schema_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @references = args[:references] if args.key?(:references)
+          @schema = args[:schema] if args.key?(:schema)
+          @schema_type = args[:schema_type] if args.key?(:schema_type)
+        end
+      end
+      
+      # SchemaConfig represents configuration for a schema registry or a specific
+      # subject.
+      class SchemaConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The subject to which this subject is an alias of. Only applicable
+        # for subject config.
+        # Corresponds to the JSON property `alias`
+        # @return [String]
+        attr_accessor :alias
+      
+        # Required. The compatibility type of the schema. The default value is BACKWARD.
+        # If unset in a SchemaSubject-level SchemaConfig, defaults to the global value.
+        # If unset in a SchemaRegistry-level SchemaConfig, reverts to the default value.
+        # Corresponds to the JSON property `compatibility`
+        # @return [String]
+        attr_accessor :compatibility
+      
+        # Optional. If true, the schema will be normalized before being stored or looked
+        # up. The default is false. If unset in a SchemaSubject-level SchemaConfig, the
+        # global value will be used. If unset in a SchemaRegistry-level SchemaConfig,
+        # reverts to the default value.
+        # Corresponds to the JSON property `normalize`
+        # @return [Boolean]
+        attr_accessor :normalize
+        alias_method :normalize?, :normalize
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alias = args[:alias] if args.key?(:alias)
+          @compatibility = args[:compatibility] if args.key?(:compatibility)
+          @normalize = args[:normalize] if args.key?(:normalize)
+        end
+      end
+      
+      # SchemaMode represents the mode of a schema registry or a specific subject.
+      # Four modes are supported: * NONE: This is the default mode for a subject and
+      # essentially means that the subject does not have any mode set. This means the
+      # subject will follow the schema registry's mode. * READONLY: The schema
+      # registry is in read-only mode. * READWRITE: The schema registry is in read-
+      # write mode, which allows limited write operations on the schema. * IMPORT: The
+      # schema registry is in import mode, which allows more editing operations on the
+      # schema for data importing purposes.
+      class SchemaMode
+        include Google::Apis::Core::Hashable
+      
+        # Required. The mode type of a schema registry (READWRITE by default) or of a
+        # subject (NONE by default, which means use the global schema registry setting).
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
+        end
+      end
+      
+      # SchemaReference is a reference to a schema.
+      class SchemaReference
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the reference.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The subject of the reference.
+        # Corresponds to the JSON property `subject`
+        # @return [String]
+        attr_accessor :subject
+      
+        # Required. The version of the reference.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @subject = args[:subject] if args.key?(:subject)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # SchemaRegistry is a schema registry instance.
+      class SchemaRegistry
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The contexts of the schema registry instance.
+        # Corresponds to the JSON property `contexts`
+        # @return [Array<String>]
+        attr_accessor :contexts
+      
+        # Identifier. The name of the schema registry instance. Structured like: `
+        # projects/`project`/locations/`location`/schemaRegistries/`schema_registry``
+        # The instance name `schema_registry` can contain the following: * Up to 255
+        # characters. * Letters (uppercase or lowercase), numbers, and underscores.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contexts = args[:contexts] if args.key?(:contexts)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Version of a schema.
+      class SchemaVersion
+        include Google::Apis::Core::Hashable
+      
+        # Required. The schema ID.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Optional. The schema references used by the schema.
+        # Corresponds to the JSON property `references`
+        # @return [Array<Google::Apis::ManagedkafkaV1::SchemaReference>]
+        attr_accessor :references
+      
+        # Required. The schema payload.
+        # Corresponds to the JSON property `schema`
+        # @return [String]
+        attr_accessor :schema
+      
+        # Optional. The schema type of the schema.
+        # Corresponds to the JSON property `schemaType`
+        # @return [String]
+        attr_accessor :schema_type
+      
+        # Required. The subject of the version.
+        # Corresponds to the JSON property `subject`
+        # @return [String]
+        attr_accessor :subject
+      
+        # Required. The version ID
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @references = args[:references] if args.key?(:references)
+          @schema = args[:schema] if args.key?(:schema)
+          @schema_type = args[:schema_type] if args.key?(:schema_type)
+          @subject = args[:subject] if args.key?(:subject)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -1311,6 +1830,57 @@ module Google
           @name = args[:name] if args.key?(:name)
           @partition_count = args[:partition_count] if args.key?(:partition_count)
           @replication_factor = args[:replication_factor] if args.key?(:replication_factor)
+        end
+      end
+      
+      # Request for updating schema config. On a SchemaSubject-level SchemaConfig, an
+      # unset field will be removed from the SchemaConfig.
+      class UpdateSchemaConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The compatibility type of the schemas. Cannot be unset for a
+        # SchemaRegistry-level SchemaConfig. If unset on a SchemaSubject-level
+        # SchemaConfig, removes the compatibility field for the SchemaConfig.
+        # Corresponds to the JSON property `compatibility`
+        # @return [String]
+        attr_accessor :compatibility
+      
+        # Optional. If true, the schema will be normalized before being stored or looked
+        # up. The default is false. Cannot be unset for a SchemaRegistry-level
+        # SchemaConfig. If unset on a SchemaSubject-level SchemaConfig, removes the
+        # normalize field for the SchemaConfig.
+        # Corresponds to the JSON property `normalize`
+        # @return [Boolean]
+        attr_accessor :normalize
+        alias_method :normalize?, :normalize
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compatibility = args[:compatibility] if args.key?(:compatibility)
+          @normalize = args[:normalize] if args.key?(:normalize)
+        end
+      end
+      
+      # Request for updating schema registry or subject mode.
+      class UpdateSchemaModeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The mode type.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
         end
       end
     end
