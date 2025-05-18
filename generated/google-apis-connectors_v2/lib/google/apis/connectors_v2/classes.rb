@@ -131,6 +131,11 @@ module Google
         # @return [String]
         attr_accessor :redirect_uri
       
+        # Scopes the connection will request when the user performs the auth code flow.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -140,6 +145,7 @@ module Google
           @auth_code = args[:auth_code] if args.key?(:auth_code)
           @pkce_verifier = args[:pkce_verifier] if args.key?(:pkce_verifier)
           @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
+          @scopes = args[:scopes] if args.key?(:scopes)
         end
       end
       
