@@ -892,6 +892,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecretLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecretNote
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecretOccurrence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecretStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2324,6 +2348,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :base_images, as: 'baseImages', class: Google::Apis::ContaineranalysisV1::BaseImage, decorator: Google::Apis::ContaineranalysisV1::BaseImage::Representation
       
+          property :chain_id, as: 'chainId'
           property :command, as: 'command'
           property :diff_id, as: 'diffId'
           property :index, as: 'index'
@@ -2433,6 +2458,8 @@ module Google
       
           property :sbom_reference, as: 'sbomReference', class: Google::Apis::ContaineranalysisV1::SbomReferenceNote, decorator: Google::Apis::ContaineranalysisV1::SbomReferenceNote::Representation
       
+          property :secret, as: 'secret', class: Google::Apis::ContaineranalysisV1::SecretNote, decorator: Google::Apis::ContaineranalysisV1::SecretNote::Representation
+      
           property :short_description, as: 'shortDescription'
           property :update_time, as: 'updateTime'
           property :upgrade, as: 'upgrade', class: Google::Apis::ContaineranalysisV1::UpgradeNote, decorator: Google::Apis::ContaineranalysisV1::UpgradeNote::Representation
@@ -2472,6 +2499,8 @@ module Google
           property :remediation, as: 'remediation'
           property :resource_uri, as: 'resourceUri'
           property :sbom_reference, as: 'sbomReference', class: Google::Apis::ContaineranalysisV1::SbomReferenceOccurrence, decorator: Google::Apis::ContaineranalysisV1::SbomReferenceOccurrence::Representation
+      
+          property :secret, as: 'secret', class: Google::Apis::ContaineranalysisV1::SecretOccurrence, decorator: Google::Apis::ContaineranalysisV1::SecretOccurrence::Representation
       
           property :update_time, as: 'updateTime'
           property :upgrade, as: 'upgrade', class: Google::Apis::ContaineranalysisV1::UpgradeOccurrence, decorator: Google::Apis::ContaineranalysisV1::UpgradeOccurrence::Representation
@@ -2692,6 +2721,40 @@ module Google
           property :location, as: 'location'
           property :mime_type, as: 'mimeType'
           property :referrer_id, as: 'referrerId'
+        end
+      end
+      
+      class SecretLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_location, as: 'fileLocation', class: Google::Apis::ContaineranalysisV1::GrafeasV1FileLocation, decorator: Google::Apis::ContaineranalysisV1::GrafeasV1FileLocation::Representation
+      
+        end
+      end
+      
+      class SecretNote
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SecretOccurrence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :locations, as: 'locations', class: Google::Apis::ContaineranalysisV1::SecretLocation, decorator: Google::Apis::ContaineranalysisV1::SecretLocation::Representation
+      
+          collection :statuses, as: 'statuses', class: Google::Apis::ContaineranalysisV1::SecretStatus, decorator: Google::Apis::ContaineranalysisV1::SecretStatus::Representation
+      
+        end
+      end
+      
+      class SecretStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :status, as: 'status'
+          property :update_time, as: 'updateTime'
         end
       end
       

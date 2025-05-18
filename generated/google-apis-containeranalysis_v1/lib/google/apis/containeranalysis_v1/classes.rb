@@ -4766,6 +4766,12 @@ module Google
         # @return [Array<Google::Apis::ContaineranalysisV1::BaseImage>]
         attr_accessor :base_images
       
+        # The layer chain ID (sha256 hash) of the layer in the container image. https://
+        # github.com/opencontainers/image-spec/blob/main/config.md#layer-chainid
+        # Corresponds to the JSON property `chainId`
+        # @return [String]
+        attr_accessor :chain_id
+      
         # The layer build command that was used to build the layer. This may not be
         # found in all layers depending on how the container image is built.
         # Corresponds to the JSON property `command`
@@ -4789,6 +4795,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @base_images = args[:base_images] if args.key?(:base_images)
+          @chain_id = args[:chain_id] if args.key?(:chain_id)
           @command = args[:command] if args.key?(:command)
           @diff_id = args[:diff_id] if args.key?(:diff_id)
           @index = args[:index] if args.key?(:index)
@@ -5138,6 +5145,11 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1::SbomReferenceNote]
         attr_accessor :sbom_reference
       
+        # The note representing a secret.
+        # Corresponds to the JSON property `secret`
+        # @return [Google::Apis::ContaineranalysisV1::SecretNote]
+        attr_accessor :secret
+      
         # A one sentence description of this note.
         # Corresponds to the JSON property `shortDescription`
         # @return [String]
@@ -5190,6 +5202,7 @@ module Google
           @related_note_names = args[:related_note_names] if args.key?(:related_note_names)
           @related_url = args[:related_url] if args.key?(:related_url)
           @sbom_reference = args[:sbom_reference] if args.key?(:sbom_reference)
+          @secret = args[:secret] if args.key?(:secret)
           @short_description = args[:short_description] if args.key?(:short_description)
           @update_time = args[:update_time] if args.key?(:update_time)
           @upgrade = args[:upgrade] if args.key?(:upgrade)
@@ -5300,6 +5313,11 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1::SbomReferenceOccurrence]
         attr_accessor :sbom_reference
       
+        # The occurrence provides details of a secret.
+        # Corresponds to the JSON property `secret`
+        # @return [Google::Apis::ContaineranalysisV1::SecretOccurrence]
+        attr_accessor :secret
+      
         # Output only. The time this occurrence was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -5341,6 +5359,7 @@ module Google
           @remediation = args[:remediation] if args.key?(:remediation)
           @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
           @sbom_reference = args[:sbom_reference] if args.key?(:sbom_reference)
+          @secret = args[:secret] if args.key?(:secret)
           @update_time = args[:update_time] if args.key?(:update_time)
           @upgrade = args[:upgrade] if args.key?(:upgrade)
           @vulnerability = args[:vulnerability] if args.key?(:vulnerability)
@@ -6178,6 +6197,100 @@ module Google
           @location = args[:location] if args.key?(:location)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
           @referrer_id = args[:referrer_id] if args.key?(:referrer_id)
+        end
+      end
+      
+      # The location of the secret.
+      class SecretLocation
+        include Google::Apis::Core::Hashable
+      
+        # Indicates the location at which a package was found.
+        # Corresponds to the JSON property `fileLocation`
+        # @return [Google::Apis::ContaineranalysisV1::GrafeasV1FileLocation]
+        attr_accessor :file_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_location = args[:file_location] if args.key?(:file_location)
+        end
+      end
+      
+      # The note representing a secret.
+      class SecretNote
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The occurrence provides details of a secret.
+      class SecretOccurrence
+        include Google::Apis::Core::Hashable
+      
+        # Required. Type of secret.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Optional. Locations where the secret is detected.
+        # Corresponds to the JSON property `locations`
+        # @return [Array<Google::Apis::ContaineranalysisV1::SecretLocation>]
+        attr_accessor :locations
+      
+        # Optional. Status of the secret.
+        # Corresponds to the JSON property `statuses`
+        # @return [Array<Google::Apis::ContaineranalysisV1::SecretStatus>]
+        attr_accessor :statuses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @locations = args[:locations] if args.key?(:locations)
+          @statuses = args[:statuses] if args.key?(:statuses)
+        end
+      end
+      
+      # The status of the secret with a timestamp.
+      class SecretStatus
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional message about the status code.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Optional. The status of the secret.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Optional. The time the secret status was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @status = args[:status] if args.key?(:status)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
