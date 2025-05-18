@@ -951,7 +951,7 @@ module Google
         attr_accessor :connection_pooling_enabled
         alias_method :connection_pooling_enabled?, :connection_pooling_enabled
       
-        # Optional. List of connection pool configuration flags
+        # Optional. List of connection pool configuration flags.
         # Corresponds to the JSON property `flags`
         # @return [Array<Google::Apis::SqladminV1::ConnectionPoolFlags>]
         attr_accessor :flags
@@ -2803,8 +2803,8 @@ module Google
         attr_accessor :query_plans_per_minute
       
         # Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-
-        # 4500 bytes. Query length more than this field value will be truncated to this
-        # value. When unset, query length will be the default value. Changing query
+        # 4500 bytes. Query lengths greater than this field value will be truncated to
+        # this value. When unset, query length will be the default value. Changing query
         # length will restart the database.
         # Corresponds to the JSON property `queryStringLength`
         # @return [Fixnum]
@@ -4224,10 +4224,10 @@ module Google
       class PscAutoConnectionConfig
         include Google::Apis::Core::Hashable
       
-        # The consumer network of this consumer endpoint. This must be a resource path
-        # that includes both the host project and the network name. For example, `
-        # projects/project1/global/networks/network1`. The consumer host project of this
-        # network might be different from the consumer service project.
+        # Optional. The consumer network of this consumer endpoint. This must be a
+        # resource path that includes both the host project and the network name. For
+        # example, `projects/project1/global/networks/network1`. The consumer host
+        # project of this network might be different from the consumer service project.
         # Corresponds to the JSON property `consumerNetwork`
         # @return [String]
         attr_accessor :consumer_network
@@ -4237,8 +4237,9 @@ module Google
         # @return [String]
         attr_accessor :consumer_network_status
       
-        # This is the project ID of consumer service project of this consumer endpoint.
-        # Optional. This is only applicable if consumer_network is a shared vpc network.
+        # Optional. This is the project ID of consumer service project of this consumer
+        # endpoint. Optional. This is only applicable if consumer_network is a shared
+        # vpc network.
         # Corresponds to the JSON property `consumerProject`
         # @return [String]
         attr_accessor :consumer_project
@@ -4279,6 +4280,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_consumer_projects
       
+        # Optional. The network attachment of the consumer network that the Private
+        # Service Connect enabled Cloud SQL instance is authorized to connect via PSC
+        # interface. format: projects/PROJECT/regions/REGION/networkAttachments/ID
+        # Corresponds to the JSON property `networkAttachmentUri`
+        # @return [String]
+        attr_accessor :network_attachment_uri
+      
         # Optional. The list of settings for requested Private Service Connect consumer
         # endpoints that can be used to connect to this Cloud SQL instance.
         # Corresponds to the JSON property `pscAutoConnections`
@@ -4298,6 +4306,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allowed_consumer_projects = args[:allowed_consumer_projects] if args.key?(:allowed_consumer_projects)
+          @network_attachment_uri = args[:network_attachment_uri] if args.key?(:network_attachment_uri)
           @psc_auto_connections = args[:psc_auto_connections] if args.key?(:psc_auto_connections)
           @psc_enabled = args[:psc_enabled] if args.key?(:psc_enabled)
         end
