@@ -1055,6 +1055,7 @@ module Google
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :activation_policy, as: 'activationPolicy'
           hash :annotations, as: 'annotations'
           property :availability_type, as: 'availabilityType'
           property :client_connection_config, as: 'clientConnectionConfig', class: Google::Apis::AlloydbV1beta::ClientConnectionConfig, decorator: Google::Apis::AlloydbV1beta::ClientConnectionConfig::Representation
@@ -1106,6 +1107,7 @@ module Google
       class InstanceNetworkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocated_ip_range_override, as: 'allocatedIpRangeOverride'
           collection :authorized_external_networks, as: 'authorizedExternalNetworks', class: Google::Apis::AlloydbV1beta::AuthorizedNetwork, decorator: Google::Apis::AlloydbV1beta::AuthorizedNetwork::Representation
       
           property :enable_outbound_public_ip, as: 'enableOutboundPublicIp'
