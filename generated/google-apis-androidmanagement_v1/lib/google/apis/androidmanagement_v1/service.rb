@@ -320,9 +320,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a device. This operation wipes the device. Deleted devices do not show
-        # up in enterprises.devices.list calls and a 404 is returned from enterprises.
-        # devices.get.
+        # Deletes a device. This operation attempts to wipe the device but this is not
+        # guaranteed to succeed if the device is offline for an extended period. Deleted
+        # devices do not show up in enterprises.devices.list calls and a 404 is returned
+        # from enterprises.devices.get.
         # @param [String] name
         #   The name of the device in the form enterprises/`enterpriseId`/devices/`
         #   deviceId`.

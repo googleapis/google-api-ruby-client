@@ -52,6 +52,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApnPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApnSetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppProcessInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -694,6 +706,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PreferentialNetworkServiceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreferentialNetworkServiceSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProvisioningInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -957,6 +981,41 @@ module Google
         end
       end
       
+      class ApnPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :apn_settings, as: 'apnSettings', class: Google::Apis::AndroidmanagementV1::ApnSetting, decorator: Google::Apis::AndroidmanagementV1::ApnSetting::Representation
+      
+          property :override_apns, as: 'overrideApns'
+        end
+      end
+      
+      class ApnSetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :always_on_setting, as: 'alwaysOnSetting'
+          property :apn, as: 'apn'
+          collection :apn_types, as: 'apnTypes'
+          property :auth_type, as: 'authType'
+          property :carrier_id, as: 'carrierId'
+          property :display_name, as: 'displayName'
+          property :mms_proxy_address, as: 'mmsProxyAddress'
+          property :mms_proxy_port, as: 'mmsProxyPort'
+          property :mmsc, as: 'mmsc'
+          property :mtu_v4, as: 'mtuV4'
+          property :mtu_v6, as: 'mtuV6'
+          property :mvno_type, as: 'mvnoType'
+          collection :network_types, as: 'networkTypes'
+          property :numeric_operator_id, as: 'numericOperatorId'
+          property :password, as: 'password'
+          property :protocol, as: 'protocol'
+          property :proxy_address, as: 'proxyAddress'
+          property :proxy_port, as: 'proxyPort'
+          property :roaming_protocol, as: 'roamingProtocol'
+          property :username, as: 'username'
+        end
+      end
+      
       class AppProcessInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1070,6 +1129,7 @@ module Google
           property :package_name, as: 'packageName'
           collection :permission_grants, as: 'permissionGrants', class: Google::Apis::AndroidmanagementV1::PermissionGrant, decorator: Google::Apis::AndroidmanagementV1::PermissionGrant::Representation
       
+          property :preferential_network_id, as: 'preferentialNetworkId'
           property :user_control_settings, as: 'userControlSettings'
           property :work_profile_widgets, as: 'workProfileWidgets'
         end
@@ -1349,8 +1409,12 @@ module Google
       class DeviceConnectivityManagement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :apn_policy, as: 'apnPolicy', class: Google::Apis::AndroidmanagementV1::ApnPolicy, decorator: Google::Apis::AndroidmanagementV1::ApnPolicy::Representation
+      
           property :bluetooth_sharing, as: 'bluetoothSharing'
           property :configure_wifi, as: 'configureWifi'
+          property :preferential_network_service_settings, as: 'preferentialNetworkServiceSettings', class: Google::Apis::AndroidmanagementV1::PreferentialNetworkServiceSettings, decorator: Google::Apis::AndroidmanagementV1::PreferentialNetworkServiceSettings::Representation
+      
           property :tethering_settings, as: 'tetheringSettings'
           property :usb_data_access, as: 'usbDataAccess'
           property :wifi_direct_settings, as: 'wifiDirectSettings'
@@ -2098,6 +2162,7 @@ module Google
       
           property :encryption_policy, as: 'encryptionPolicy'
           property :ensure_verify_apps_enabled, as: 'ensureVerifyAppsEnabled'
+          property :enterprise_display_name_visibility, as: 'enterpriseDisplayNameVisibility'
           property :factory_reset_disabled, as: 'factoryResetDisabled'
           collection :frp_admin_emails, as: 'frpAdminEmails'
           property :fun_disabled, as: 'funDisabled'
@@ -2205,6 +2270,24 @@ module Google
           property :battery_level, as: 'batteryLevel'
           property :create_time, as: 'createTime'
           property :event_type, as: 'eventType'
+        end
+      end
+      
+      class PreferentialNetworkServiceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fallback_to_default_connection, as: 'fallbackToDefaultConnection'
+          property :non_matching_networks, as: 'nonMatchingNetworks'
+          property :preferential_network_id, as: 'preferentialNetworkId'
+        end
+      end
+      
+      class PreferentialNetworkServiceSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_preferential_network_id, as: 'defaultPreferentialNetworkId'
+          collection :preferential_network_service_configs, as: 'preferentialNetworkServiceConfigs', class: Google::Apis::AndroidmanagementV1::PreferentialNetworkServiceConfig, decorator: Google::Apis::AndroidmanagementV1::PreferentialNetworkServiceConfig::Representation
+      
         end
       end
       
