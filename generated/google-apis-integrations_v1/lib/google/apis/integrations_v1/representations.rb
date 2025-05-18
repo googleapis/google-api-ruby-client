@@ -3408,11 +3408,14 @@ module Google
           collection :destination_configs, as: 'destinationConfigs', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1DestinationConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1DestinationConfig::Representation
       
           property :envoy_image_location, as: 'envoyImageLocation'
+          property :eua_oauth_auth_config, as: 'euaOauthAuthConfig', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AuthConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AuthConfig::Representation
+      
           property :eventing_config, as: 'eventingConfig', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingConfig::Representation
       
           property :eventing_enablement_type, as: 'eventingEnablementType'
           property :eventing_runtime_data, as: 'eventingRuntimeData', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingRuntimeData, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingRuntimeData::Representation
       
+          property :fallback_on_admin_credentials, as: 'fallbackOnAdminCredentials'
           property :host, as: 'host'
           property :image_location, as: 'imageLocation'
           property :is_trusted_tester, as: 'isTrustedTester'
