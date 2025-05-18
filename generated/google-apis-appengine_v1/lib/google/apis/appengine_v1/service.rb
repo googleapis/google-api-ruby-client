@@ -1686,6 +1686,46 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the specified domain mapping.
+        # @param [String] projects_id
+        #   Part of `name`. Name of the resource requested. Example: apps/myapp/
+        #   domainMappings/example.com.
+        # @param [String] locations_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] applications_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] domain_mappings_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::DomainMapping] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::DomainMapping]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_application_domain_mapping(projects_id, locations_id, applications_id, domain_mappings_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}', options)
+          command.response_representation = Google::Apis::AppengineV1::DomainMapping::Representation
+          command.response_class = Google::Apis::AppengineV1::DomainMapping
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['applicationsId'] = applications_id unless applications_id.nil?
+          command.params['domainMappingsId'] = domain_mappings_id unless domain_mappings_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the specified service and all enclosed versions.
         # @param [String] projects_id
         #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
@@ -1721,6 +1761,66 @@ module Google
           command.params['locationsId'] = locations_id unless locations_id.nil?
           command.params['applicationsId'] = applications_id unless applications_id.nil?
           command.params['servicesId'] = services_id unless services_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the configuration of the specified service.
+        # @param [String] projects_id
+        #   Part of `name`. Name of the resource to update. Example: apps/myapp/services/
+        #   default.
+        # @param [String] locations_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] applications_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] services_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [Google::Apis::AppengineV1::Service] service_object
+        # @param [Boolean] migrate_traffic
+        #   Set to true to gradually shift traffic to one or more versions that you
+        #   specify. By default, traffic is shifted immediately. For gradual traffic
+        #   migration, the target versions must be located within instances that are
+        #   configured for both warmup requests (https://cloud.google.com/appengine/docs/
+        #   admin-api/reference/rest/v1/apps.services.versions#InboundServiceType) and
+        #   automatic scaling (https://cloud.google.com/appengine/docs/admin-api/reference/
+        #   rest/v1/apps.services.versions#AutomaticScaling). You must specify the shardBy
+        #   (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.
+        #   services#ShardBy) field in the Service resource. Gradual traffic migration is
+        #   not supported in the App Engine flexible environment. For examples, see
+        #   Migrating and Splitting Traffic (https://cloud.google.com/appengine/docs/admin-
+        #   api/migrating-splitting-traffic).
+        # @param [String] update_mask
+        #   Required. Standard field mask for the set of fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_application_service(projects_id, locations_id, applications_id, services_id, service_object = nil, migrate_traffic: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}', options)
+          command.request_representation = Google::Apis::AppengineV1::Service::Representation
+          command.request_object = service_object
+          command.response_representation = Google::Apis::AppengineV1::Operation::Representation
+          command.response_class = Google::Apis::AppengineV1::Operation
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['applicationsId'] = applications_id unless applications_id.nil?
+          command.params['servicesId'] = services_id unless services_id.nil?
+          command.query['migrateTraffic'] = migrate_traffic unless migrate_traffic.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
