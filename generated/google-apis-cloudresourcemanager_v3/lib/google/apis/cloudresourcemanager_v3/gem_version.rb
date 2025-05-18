@@ -16,13 +16,13 @@ module Google
   module Apis
     module CloudresourcemanagerV3
       # Version of the google-apis-cloudresourcemanager_v3 gem
-      GEM_VERSION = "0.56.0"
+      GEM_VERSION = "0.57.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.17.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20250417"
+      REVISION = "20250508"
     end
   end
 end
