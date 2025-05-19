@@ -254,7 +254,7 @@ module Google
             if response.headers['Range']
               range = response.headers['Range']
               @offset = range.split('-').last.to_i + 1
-              logger.debug { sprintf("Upload is incomplete. Bytes uploaded so far: #{response.headers['Range']}") }
+              logger.debug { sprintf("Upload is incomplete. Bytes uploaded so far: #{range}") }
             else
               logger.debug { sprintf('No bytes uploaded yet.') }
             end
