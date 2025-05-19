@@ -369,8 +369,6 @@ module Google
         # Deletes An interrupted Resumable upload
         # @param [String] bucket
         #   Name of the bucket where the upload is being performed.
-        # @param [IO, String] upload_source
-        #   IO stream or filename containing content to upload
         # @param [IO, String] upload_id
         #   unique id generated for an ongoing upload
 
