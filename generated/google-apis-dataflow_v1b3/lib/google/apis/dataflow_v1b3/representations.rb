@@ -322,6 +322,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetWorkerStacktracesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetWorkerStacktracesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Histogram
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -712,6 +724,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Sdk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SdkBug
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -875,6 +893,12 @@ module Google
       end
       
       class SplitInt64
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Stack
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1732,6 +1756,21 @@ module Google
         end
       end
       
+      class GetWorkerStacktracesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :worker_id, as: 'workerId'
+        end
+      end
+      
+      class GetWorkerStacktracesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :sdks, as: 'sdks', class: Google::Apis::DataflowV1b3::Sdk, decorator: Google::Apis::DataflowV1b3::Sdk::Representation
+      
+        end
+      end
+      
       class Histogram
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2454,6 +2493,15 @@ module Google
         end
       end
       
+      class Sdk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sdk_id, as: 'sdkId'
+          collection :stacks, as: 'stacks', class: Google::Apis::DataflowV1b3::Stack, decorator: Google::Apis::DataflowV1b3::Stack::Representation
+      
+        end
+      end
+      
       class SdkBug
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2728,6 +2776,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :high_bits, as: 'highBits'
           property :low_bits, as: 'lowBits'
+        end
+      end
+      
+      class Stack
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stack_content, as: 'stackContent'
+          property :thread_count, as: 'threadCount'
+          property :thread_name, as: 'threadName'
+          property :thread_state, as: 'threadState'
+          property :timestamp, as: 'timestamp'
         end
       end
       

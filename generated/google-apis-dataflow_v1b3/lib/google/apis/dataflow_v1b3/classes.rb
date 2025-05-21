@@ -2160,6 +2160,45 @@ module Google
         end
       end
       
+      # Request to get worker stacktraces from debug capture.
+      class GetWorkerStacktracesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The worker for which to get stacktraces. The returned stacktraces will be for
+        # the SDK harness running on this worker.
+        # Corresponds to the JSON property `workerId`
+        # @return [String]
+        attr_accessor :worker_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @worker_id = args[:worker_id] if args.key?(:worker_id)
+        end
+      end
+      
+      # Response to get worker stacktraces from debug capture.
+      class GetWorkerStacktracesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Repeated as unified worker may have multiple SDK processes.
+        # Corresponds to the JSON property `sdks`
+        # @return [Array<Google::Apis::DataflowV1b3::Sdk>]
+        attr_accessor :sdks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sdks = args[:sdks] if args.key?(:sdks)
+        end
+      end
+      
       # Histogram of value counts for a distribution. Buckets have an inclusive lower
       # bound and exclusive upper bound and use "1,2,5 bucketing": The first bucket
       # range is from [0,1) and all subsequent bucket boundaries are powers of ten
@@ -4856,6 +4895,31 @@ module Google
         end
       end
       
+      # A structured representation of an SDK.
+      class Sdk
+        include Google::Apis::Core::Hashable
+      
+        # The SDK harness id.
+        # Corresponds to the JSON property `sdkId`
+        # @return [String]
+        attr_accessor :sdk_id
+      
+        # The stacktraces for the processes running on the SDK harness.
+        # Corresponds to the JSON property `stacks`
+        # @return [Array<Google::Apis::DataflowV1b3::Stack>]
+        attr_accessor :stacks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sdk_id = args[:sdk_id] if args.key?(:sdk_id)
+          @stacks = args[:stacks] if args.key?(:stacks)
+        end
+      end
+      
       # A bug found in the Dataflow SDK.
       class SdkBug
         include Google::Apis::Core::Hashable
@@ -5806,6 +5870,51 @@ module Google
         def update!(**args)
           @high_bits = args[:high_bits] if args.key?(:high_bits)
           @low_bits = args[:low_bits] if args.key?(:low_bits)
+        end
+      end
+      
+      # A structuredstacktrace for a process running on the worker.
+      class Stack
+        include Google::Apis::Core::Hashable
+      
+        # The raw stack trace.
+        # Corresponds to the JSON property `stackContent`
+        # @return [String]
+        attr_accessor :stack_content
+      
+        # With java thread dumps we may get collapsed stacks e.g., N threads in stack "".
+        # Instead of having to copy over the same stack trace N times, this int field
+        # captures this.
+        # Corresponds to the JSON property `threadCount`
+        # @return [Fixnum]
+        attr_accessor :thread_count
+      
+        # Thread name. For example, "CommitThread-0,10,main"
+        # Corresponds to the JSON property `threadName`
+        # @return [String]
+        attr_accessor :thread_name
+      
+        # The state of the thread. For example, "WAITING".
+        # Corresponds to the JSON property `threadState`
+        # @return [String]
+        attr_accessor :thread_state
+      
+        # Timestamp at which the stack was captured.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stack_content = args[:stack_content] if args.key?(:stack_content)
+          @thread_count = args[:thread_count] if args.key?(:thread_count)
+          @thread_name = args[:thread_name] if args.key?(:thread_name)
+          @thread_state = args[:thread_state] if args.key?(:thread_state)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
         end
       end
       
