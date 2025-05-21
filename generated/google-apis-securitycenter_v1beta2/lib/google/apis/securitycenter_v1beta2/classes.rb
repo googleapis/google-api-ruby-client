@@ -1906,6 +1906,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :hashed_size
       
+        # Operation(s) performed on a file.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::FileOperation>]
+        attr_accessor :operations
+      
         # True when the hash covers only a prefix of the file.
         # Corresponds to the JSON property `partiallyHashed`
         # @return [Boolean]
@@ -1937,10 +1942,30 @@ module Google
           @contents = args[:contents] if args.key?(:contents)
           @disk_path = args[:disk_path] if args.key?(:disk_path)
           @hashed_size = args[:hashed_size] if args.key?(:hashed_size)
+          @operations = args[:operations] if args.key?(:operations)
           @partially_hashed = args[:partially_hashed] if args.key?(:partially_hashed)
           @path = args[:path] if args.key?(:path)
           @sha256 = args[:sha256] if args.key?(:sha256)
           @size = args[:size] if args.key?(:size)
+        end
+      end
+      
+      # Operation(s) performed on a file.
+      class FileOperation
+        include Google::Apis::Core::Hashable
+      
+        # The type of the operation
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -5624,6 +5649,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :hashed_size
       
+        # Operation(s) performed on a file.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2FileOperation>]
+        attr_accessor :operations
+      
         # True when the hash covers only a prefix of the file.
         # Corresponds to the JSON property `partiallyHashed`
         # @return [Boolean]
@@ -5655,10 +5685,30 @@ module Google
           @contents = args[:contents] if args.key?(:contents)
           @disk_path = args[:disk_path] if args.key?(:disk_path)
           @hashed_size = args[:hashed_size] if args.key?(:hashed_size)
+          @operations = args[:operations] if args.key?(:operations)
           @partially_hashed = args[:partially_hashed] if args.key?(:partially_hashed)
           @path = args[:path] if args.key?(:path)
           @sha256 = args[:sha256] if args.key?(:sha256)
           @size = args[:size] if args.key?(:size)
+        end
+      end
+      
+      # Operation(s) performed on a file.
+      class GoogleCloudSecuritycenterV2FileOperation
+        include Google::Apis::Core::Hashable
+      
+        # The type of the operation
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
