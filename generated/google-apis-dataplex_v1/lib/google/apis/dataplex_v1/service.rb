@@ -638,7 +638,7 @@ module Google
         # Searches for Entries matching the given query and scope.
         # @param [String] name
         #   Required. The project to which the request should be attributed in the
-        #   following form: projects/`project`/locations/`location`.
+        #   following form: projects/`project`/locations/global.
         # @param [String] order_by
         #   Optional. Specifies the ordering of results. Supported values are: relevance (
         #   default) last_modified_timestamp last_modified_timestamp asc
@@ -3070,8 +3070,8 @@ module Google
         
         # Creates an Entry Link.
         # @param [String] parent
-        #   Required. The resource name of the parent Entry Group: projects/`project`/
-        #   locations/`location`/entryGroups/`entry_group`.
+        #   Required. The resource name of the parent Entry Group: projects/`
+        #   project_id_or_number`/locations/`location_id`/entryGroups/`entry_group_id`.
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLink] google_cloud_dataplex_v1_entry_link_object
         # @param [String] entry_link_id
         #   Required. Entry Link identifier * Must contain only lowercase letters, numbers
@@ -3109,8 +3109,9 @@ module Google
         
         # Deletes an Entry Link.
         # @param [String] name
-        #   Required. The resource name of the Entry Link: projects/`project`/locations/`
-        #   location`/entryGroups/`entry_group`/entryLinks/`entry_link`.
+        #   Required. The resource name of the Entry Link: projects/`project_id_or_number`/
+        #   locations/`location_id`/entryGroups/`entry_group_id`/entryLinks/`entry_link_id`
+        #   .
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3138,10 +3139,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an entry link.
+        # Gets an Entry Link.
         # @param [String] name
-        #   Required. The resource name of the Entry Link: projects/`project`/locations/`
-        #   location`/entryGroups/`entry_group`/entryLinks/`entry_link`.
+        #   Required. The resource name of the Entry Link: projects/`project_id_or_number`/
+        #   locations/`location_id`/entryGroups/`entry_group_id`/entryLinks/`entry_link_id`
+        #   .
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
