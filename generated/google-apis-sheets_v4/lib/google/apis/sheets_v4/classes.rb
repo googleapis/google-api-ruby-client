@@ -643,10 +643,16 @@ module Google
       class BandedRange
         include Google::Apis::Core::Hashable
       
-        # The ID of the banded range.
+        # The ID of the banded range. If unset, refer to banded_range_reference.
         # Corresponds to the JSON property `bandedRangeId`
         # @return [Fixnum]
         attr_accessor :banded_range_id
+      
+        # Output only. The reference of the banded range, used to identify the ID that
+        # is not supported by the banded_range_id.
+        # Corresponds to the JSON property `bandedRangeReference`
+        # @return [String]
+        attr_accessor :banded_range_reference
       
         # Properties referring a single dimension (either row or column). If both
         # BandedRange.row_properties and BandedRange.column_properties are set, the fill
@@ -700,6 +706,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @banded_range_id = args[:banded_range_id] if args.key?(:banded_range_id)
+          @banded_range_reference = args[:banded_range_reference] if args.key?(:banded_range_reference)
           @column_properties = args[:column_properties] if args.key?(:column_properties)
           @range = args[:range] if args.key?(:range)
           @row_properties = args[:row_properties] if args.key?(:row_properties)
