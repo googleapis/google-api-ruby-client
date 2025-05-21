@@ -1460,6 +1460,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :addons_config, as: 'addonsConfig', class: Google::Apis::ContainerV1::AddonsConfig, decorator: Google::Apis::ContainerV1::AddonsConfig::Representation
       
+          collection :alpha_cluster_feature_gates, as: 'alphaClusterFeatureGates'
           property :authenticator_groups_config, as: 'authenticatorGroupsConfig', class: Google::Apis::ContainerV1::AuthenticatorGroupsConfig, decorator: Google::Apis::ContainerV1::AuthenticatorGroupsConfig::Representation
       
           property :autopilot, as: 'autopilot', class: Google::Apis::ContainerV1::Autopilot, decorator: Google::Apis::ContainerV1::Autopilot::Representation
