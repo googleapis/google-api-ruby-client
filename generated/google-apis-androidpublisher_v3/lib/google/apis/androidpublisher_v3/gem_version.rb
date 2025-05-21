@@ -16,13 +16,13 @@ module Google
   module Apis
     module AndroidpublisherV3
       # Version of the google-apis-androidpublisher_v3 gem
-      GEM_VERSION = "0.79.0"
+      GEM_VERSION = "0.80.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.17.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20250318"
+      REVISION = "20250520"
     end
   end
 end
