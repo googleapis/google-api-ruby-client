@@ -1127,6 +1127,12 @@ module Google
         # @return [String]
         attr_accessor :backend_type
       
+        # Clears private network settings when the instance is restored.
+        # Corresponds to the JSON property `clearNetwork`
+        # @return [Boolean]
+        attr_accessor :clear_network
+        alias_method :clear_network?, :clear_network
+      
         # Connection name of the Cloud SQL instance used in connection strings.
         # Corresponds to the JSON property `connectionName`
         # @return [String]
@@ -1418,6 +1424,7 @@ module Google
         def update!(**args)
           @available_maintenance_versions = args[:available_maintenance_versions] if args.key?(:available_maintenance_versions)
           @backend_type = args[:backend_type] if args.key?(:backend_type)
+          @clear_network = args[:clear_network] if args.key?(:clear_network)
           @connection_name = args[:connection_name] if args.key?(:connection_name)
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_disk_size = args[:current_disk_size] if args.key?(:current_disk_size)
