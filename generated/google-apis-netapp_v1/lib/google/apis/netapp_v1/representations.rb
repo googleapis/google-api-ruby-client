@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackupRetentionPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackupVault
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -388,6 +394,7 @@ module Google
           property :chain_storage_bytes, :numeric_string => true, as: 'chainStorageBytes'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :enforced_retention_end_time, as: 'enforcedRetentionEndTime'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :satisfies_pzi, as: 'satisfiesPzi'
@@ -426,10 +433,23 @@ module Google
         end
       end
       
+      class BackupRetentionPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_minimum_enforced_retention_days, as: 'backupMinimumEnforcedRetentionDays'
+          property :daily_backup_immutable, as: 'dailyBackupImmutable'
+          property :manual_backup_immutable, as: 'manualBackupImmutable'
+          property :monthly_backup_immutable, as: 'monthlyBackupImmutable'
+          property :weekly_backup_immutable, as: 'weeklyBackupImmutable'
+        end
+      end
+      
       class BackupVault
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup_region, as: 'backupRegion'
+          property :backup_retention_policy, as: 'backupRetentionPolicy', class: Google::Apis::NetappV1::BackupRetentionPolicy, decorator: Google::Apis::NetappV1::BackupRetentionPolicy::Representation
+      
           property :backup_vault_type, as: 'backupVaultType'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
@@ -868,6 +888,7 @@ module Google
           property :allow_auto_tiering, as: 'allowAutoTiering'
           property :capacity_gib, :numeric_string => true, as: 'capacityGib'
           property :create_time, as: 'createTime'
+          property :custom_performance_enabled, as: 'customPerformanceEnabled'
           property :description, as: 'description'
           property :encryption_type, as: 'encryptionType'
           property :global_access_allowed, as: 'globalAccessAllowed'
@@ -883,6 +904,8 @@ module Google
           property :service_level, as: 'serviceLevel'
           property :state, as: 'state'
           property :state_details, as: 'stateDetails'
+          property :total_iops, :numeric_string => true, as: 'totalIops'
+          property :total_throughput_mibps, :numeric_string => true, as: 'totalThroughputMibps'
           property :volume_capacity_gib, :numeric_string => true, as: 'volumeCapacityGib'
           property :volume_count, as: 'volumeCount'
           property :zone, as: 'zone'
