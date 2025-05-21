@@ -400,6 +400,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FileOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Finding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -857,6 +863,12 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV2File
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2FileOperation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2451,10 +2463,19 @@ module Google
           property :disk_path, as: 'diskPath', class: Google::Apis::SecuritycenterV1::DiskPath, decorator: Google::Apis::SecuritycenterV1::DiskPath::Representation
       
           property :hashed_size, :numeric_string => true, as: 'hashedSize'
+          collection :operations, as: 'operations', class: Google::Apis::SecuritycenterV1::FileOperation, decorator: Google::Apis::SecuritycenterV1::FileOperation::Representation
+      
           property :partially_hashed, as: 'partiallyHashed'
           property :path, as: 'path'
           property :sha256, as: 'sha256'
           property :size, :numeric_string => true, as: 'size'
+        end
+      end
+      
+      class FileOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
         end
       end
       
@@ -3373,10 +3394,19 @@ module Google
           property :disk_path, as: 'diskPath', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2DiskPath, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2DiskPath::Representation
       
           property :hashed_size, :numeric_string => true, as: 'hashedSize'
+          collection :operations, as: 'operations', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2FileOperation, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2FileOperation::Representation
+      
           property :partially_hashed, as: 'partiallyHashed'
           property :path, as: 'path'
           property :sha256, as: 'sha256'
           property :size, :numeric_string => true, as: 'size'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2FileOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
         end
       end
       
