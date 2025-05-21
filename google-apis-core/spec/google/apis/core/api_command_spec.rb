@@ -273,6 +273,9 @@ EOF
       result = command.execute(client)
       idempotency_token_header = command.header['X-Goog-Gcs-Idempotency-Token']
       expect(command.header['X-Goog-Gcs-Idempotency-Token']).to eq(idempotency_token_header)
+      expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
+        .with { |req| req.headers['X-Goog-Gcs-Idempotency-Token'] == idempotency_token_header })
+        .to have_been_made.times(2)
     end
   end
 
