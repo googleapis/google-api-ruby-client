@@ -4659,7 +4659,7 @@ module Google
         end
       end
       
-      # EntryLink represents a link between two entries.
+      # EntryLink represents a link between two Entries.
       class GoogleCloudDataplexV1EntryLink
         include Google::Apis::Core::Hashable
       
@@ -4669,21 +4669,21 @@ module Google
         attr_accessor :create_time
       
         # Required. Immutable. Relative resource name of the Entry Link Type used to
-        # create this Entry Link, of the form: projects/`project`/locations/`location`/
-        # entryLinkTypes/`entry_link_type`.
+        # create this Entry Link, of the form: `projects/`project_id_or_number`/
+        # locations/`location_id`/entryLinkTypes/`entry_link_type_id`.
         # Corresponds to the JSON property `entryLinkType`
         # @return [String]
         attr_accessor :entry_link_type
       
-        # Required. Specifies the entries referenced in the entry link. There should be
+        # Required. Specifies the Entries referenced in the Entry Link. There should be
         # exactly two entry references.
         # Corresponds to the JSON property `entryReferences`
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLinkEntryReference>]
         attr_accessor :entry_references
       
         # Output only. Immutable. Identifier. The relative resource name of the Entry
-        # Link, of the form: projects/`project`/locations/`location`/entryGroups/`
-        # entry_group`/entryLinks/`entry_link`.
+        # Link, of the form: projects/`project_id_or_number`/locations/`location_id`/
+        # entryGroups/`entry_group_id`/entryLinks/`entry_link_id`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4707,24 +4707,24 @@ module Google
         end
       end
       
-      # Reference to the Entry that is linked through the entry link.
+      # Reference to the Entry that is linked through the Entry Link.
       class GoogleCloudDataplexV1EntryLinkEntryReference
         include Google::Apis::Core::Hashable
       
-        # Required. Immutable. The relative resource name of the referenced entry, of
-        # the form: projects/`project`/locations/`location`/entryGroups/`entryGroup`/
-        # entries/`entry`.
+        # Required. Immutable. The relative resource name of the referenced Entry, of
+        # the form: projects/`project_id_or_number`/locations/`location_id`/entryGroups/`
+        # entry_group_id`/entries/`entry_id`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Immutable. The path in the entry that is referenced in the entry link. Empty
-        # path denotes that the entry itself is referenced in the entry link.
+        # Immutable. The path in the Entry that is referenced in the Entry Link. Empty
+        # path denotes that the Entry itself is referenced in the Entry Link.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
       
-        # Required. Immutable. The reference type of the entry.
+        # Required. Immutable. The reference type of the Entry.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
