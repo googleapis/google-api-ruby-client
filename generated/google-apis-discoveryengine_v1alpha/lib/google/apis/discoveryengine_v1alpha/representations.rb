@@ -1354,6 +1354,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaChunkAnnotationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaChunkChunkMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1367,6 +1373,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaChunkPageSpan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaChunkStructuredContent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6602,6 +6614,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :annotation_contents, as: 'annotationContents'
+          collection :annotation_metadata, as: 'annotationMetadata', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunkAnnotationMetadata, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunkAnnotationMetadata::Representation
+      
           property :chunk_metadata, as: 'chunkMetadata', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunkChunkMetadata, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunkChunkMetadata::Representation
       
           property :content, as: 'content'
@@ -6614,6 +6628,15 @@ module Google
           property :page_span, as: 'pageSpan', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunkPageSpan, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunkPageSpan::Representation
       
           property :relevance_score, as: 'relevanceScore'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaChunkAnnotationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_id, as: 'imageId'
+          property :structured_content, as: 'structuredContent', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunkStructuredContent, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunkStructuredContent::Representation
+      
         end
       end
       
@@ -6641,6 +6664,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :page_end, as: 'pageEnd'
           property :page_start, as: 'pageStart'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaChunkStructuredContent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+          property :structure_type, as: 'structureType'
         end
       end
       

@@ -8572,6 +8572,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :annotation_contents
       
+        # Output only. The annotation metadata includes structured content in the
+        # current chunk.
+        # Corresponds to the JSON property `annotationMetadata`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunkAnnotationMetadata>]
+        attr_accessor :annotation_metadata
+      
         # Metadata of the current chunk. This field is only populated on SearchService.
         # Search API.
         # Corresponds to the JSON property `chunkMetadata`
@@ -8634,6 +8640,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotation_contents = args[:annotation_contents] if args.key?(:annotation_contents)
+          @annotation_metadata = args[:annotation_metadata] if args.key?(:annotation_metadata)
           @chunk_metadata = args[:chunk_metadata] if args.key?(:chunk_metadata)
           @content = args[:content] if args.key?(:content)
           @data_urls = args[:data_urls] if args.key?(:data_urls)
@@ -8643,6 +8650,32 @@ module Google
           @name = args[:name] if args.key?(:name)
           @page_span = args[:page_span] if args.key?(:page_span)
           @relevance_score = args[:relevance_score] if args.key?(:relevance_score)
+        end
+      end
+      
+      # The annotation metadata includes structured content in the current chunk.
+      class GoogleCloudDiscoveryengineV1alphaChunkAnnotationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Image id is provided if the structured content is based on an
+        # image.
+        # Corresponds to the JSON property `imageId`
+        # @return [String]
+        attr_accessor :image_id
+      
+        # The structured content information.
+        # Corresponds to the JSON property `structuredContent`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunkStructuredContent]
+        attr_accessor :structured_content
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_id = args[:image_id] if args.key?(:image_id)
+          @structured_content = args[:structured_content] if args.key?(:structured_content)
         end
       end
       
@@ -8731,6 +8764,31 @@ module Google
         def update!(**args)
           @page_end = args[:page_end] if args.key?(:page_end)
           @page_start = args[:page_start] if args.key?(:page_start)
+        end
+      end
+      
+      # The structured content information.
+      class GoogleCloudDiscoveryengineV1alphaChunkStructuredContent
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The content of the structured content.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # Output only. The structure type of the structured content.
+        # Corresponds to the JSON property `structureType`
+        # @return [String]
+        attr_accessor :structure_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @structure_type = args[:structure_type] if args.key?(:structure_type)
         end
       end
       
