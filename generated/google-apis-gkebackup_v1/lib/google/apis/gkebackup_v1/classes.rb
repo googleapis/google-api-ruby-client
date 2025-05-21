@@ -342,8 +342,7 @@ module Google
         attr_accessor :description
       
         # Required. Immutable. The project where Backups are allowed to be stored. The
-        # format is `projects/`project``. Currently, `project` can only be the project
-        # number. Support for project IDs will be added in the future.
+        # format is `projects/`projectId`` or `projects/`projectNumber``.
         # Corresponds to the JSON property `destinationProject`
         # @return [String]
         attr_accessor :destination_project
@@ -2359,8 +2358,7 @@ module Google
         attr_accessor :description
       
         # Required. Immutable. The project into which the backups will be restored. The
-        # format is `projects/`project``. Currently, `project` can only be the project
-        # number. Support for project IDs will be added in the future.
+        # format is `projects/`projectId`` or `projects/`projectNumber``.
         # Corresponds to the JSON property `destinationProject`
         # @return [String]
         attr_accessor :destination_project
