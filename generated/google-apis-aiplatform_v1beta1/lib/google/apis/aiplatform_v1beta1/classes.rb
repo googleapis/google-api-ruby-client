@@ -934,6 +934,11 @@ module Google
         # @return [String]
         attr_accessor :api_key_secret_version
       
+        # The API key string. Either this or `api_key_secret_version` must be set.
+        # Corresponds to the JSON property `apiKeyString`
+        # @return [String]
+        attr_accessor :api_key_string
+      
         def initialize(**args)
            update!(**args)
         end
@@ -941,6 +946,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @api_key_secret_version = args[:api_key_secret_version] if args.key?(:api_key_secret_version)
+          @api_key_string = args[:api_key_string] if args.key?(:api_key_string)
         end
       end
       
@@ -10984,6 +10990,104 @@ module Google
         end
       end
       
+      # Retrieve from data source powered by external API for grounding. The external
+      # API is not owned by Google, but need to follow the pre-defined API spec.
+      class GoogleCloudAiplatformV1beta1ExternalApi
+        include Google::Apis::Core::Hashable
+      
+        # The generic reusable api auth config. Deprecated. Please use AuthConfig (
+        # google/cloud/aiplatform/master/auth.proto) instead.
+        # Corresponds to the JSON property `apiAuth`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ApiAuth]
+        attr_accessor :api_auth
+      
+        # The API spec that the external API implements.
+        # Corresponds to the JSON property `apiSpec`
+        # @return [String]
+        attr_accessor :api_spec
+      
+        # Auth configuration to run the extension.
+        # Corresponds to the JSON property `authConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AuthConfig]
+        attr_accessor :auth_config
+      
+        # The search parameters to use for the ELASTIC_SEARCH spec.
+        # Corresponds to the JSON property `elasticSearchParams`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExternalApiElasticSearchParams]
+        attr_accessor :elastic_search_params
+      
+        # The endpoint of the external API. The system will call the API at this
+        # endpoint to retrieve the data for grounding. Example: https://acme.com:443/
+        # search
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        # The search parameters to use for SIMPLE_SEARCH spec.
+        # Corresponds to the JSON property `simpleSearchParams`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExternalApiSimpleSearchParams]
+        attr_accessor :simple_search_params
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_auth = args[:api_auth] if args.key?(:api_auth)
+          @api_spec = args[:api_spec] if args.key?(:api_spec)
+          @auth_config = args[:auth_config] if args.key?(:auth_config)
+          @elastic_search_params = args[:elastic_search_params] if args.key?(:elastic_search_params)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @simple_search_params = args[:simple_search_params] if args.key?(:simple_search_params)
+        end
+      end
+      
+      # The search parameters to use for the ELASTIC_SEARCH spec.
+      class GoogleCloudAiplatformV1beta1ExternalApiElasticSearchParams
+        include Google::Apis::Core::Hashable
+      
+        # The ElasticSearch index to use.
+        # Corresponds to the JSON property `index`
+        # @return [String]
+        attr_accessor :index
+      
+        # Optional. Number of hits (chunks) to request. When specified, it is passed to
+        # Elasticsearch as the `num_hits` param.
+        # Corresponds to the JSON property `numHits`
+        # @return [Fixnum]
+        attr_accessor :num_hits
+      
+        # The ElasticSearch search template to use.
+        # Corresponds to the JSON property `searchTemplate`
+        # @return [String]
+        attr_accessor :search_template
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @index = args[:index] if args.key?(:index)
+          @num_hits = args[:num_hits] if args.key?(:num_hits)
+          @search_template = args[:search_template] if args.key?(:search_template)
+        end
+      end
+      
+      # The search parameters to use for SIMPLE_SEARCH spec.
+      class GoogleCloudAiplatformV1beta1ExternalApiSimpleSearchParams
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The fact used in grounding.
       class GoogleCloudAiplatformV1beta1Fact
         include Google::Apis::Core::Hashable
@@ -11883,7 +11987,7 @@ module Google
       
         # Optional. Drift threshold. If calculated difference with baseline data larger
         # than threshold, it will be considered as the feature has drift. If not present,
-        # the threshold will be default to 0.3.
+        # the threshold will be default to 0.3. Must be in range [0, 1).
         # Corresponds to the JSON property `driftThreshold`
         # @return [Float]
         attr_accessor :drift_threshold
@@ -16052,6 +16156,16 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileTransformationConfig]
         attr_accessor :rag_file_transformation_config
       
+        # Rebuilds the ANN index to optimize for recall on the imported data. Only
+        # applicable for RagCorpora running on RagManagedDb with `retrieval_strategy`
+        # set to `ANN`. The rebuild will be performed using the existing ANN config set
+        # on the RagCorpus. To change the ANN config, please use the UpdateRagCorpus API.
+        # Default is false, i.e., index is not rebuilt.
+        # Corresponds to the JSON property `rebuildAnnIndex`
+        # @return [Boolean]
+        attr_accessor :rebuild_ann_index
+        alias_method :rebuild_ann_index?, :rebuild_ann_index
+      
         # The SharePointSources to pass to ImportRagFiles.
         # Corresponds to the JSON property `sharePointSources`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SharePointSources]
@@ -16080,6 +16194,7 @@ module Google
           @rag_file_chunking_config = args[:rag_file_chunking_config] if args.key?(:rag_file_chunking_config)
           @rag_file_parsing_config = args[:rag_file_parsing_config] if args.key?(:rag_file_parsing_config)
           @rag_file_transformation_config = args[:rag_file_transformation_config] if args.key?(:rag_file_transformation_config)
+          @rebuild_ann_index = args[:rebuild_ann_index] if args.key?(:rebuild_ann_index)
           @share_point_sources = args[:share_point_sources] if args.key?(:share_point_sources)
           @slack_source = args[:slack_source] if args.key?(:slack_source)
         end
@@ -20928,6 +21043,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Represents a customer-managed encryption key spec that can be applied to a top-
+        # level resource.
+        # Corresponds to the JSON property `encryptionSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EncryptionSpec]
+        attr_accessor :encryption_spec
+      
         # Specification of Model explanation.
         # Corresponds to the JSON property `explanationSpec`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExplanationSpec]
@@ -20997,6 +21118,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @explanation_spec = args[:explanation_spec] if args.key?(:explanation_spec)
           @model_monitoring_schema = args[:model_monitoring_schema] if args.key?(:model_monitoring_schema)
           @model_monitoring_target = args[:model_monitoring_target] if args.key?(:model_monitoring_target)
@@ -28355,6 +28477,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Represents a customer-managed encryption key spec that can be applied to a top-
+        # level resource.
+        # Corresponds to the JSON property `encryptionSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EncryptionSpec]
+        attr_accessor :encryption_spec
+      
         # Output only. The resource name of the RagCorpus.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -28400,6 +28528,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @name = args[:name] if args.key?(:name)
           @rag_embedding_model_config = args[:rag_embedding_model_config] if args.key?(:rag_embedding_model_config)
           @rag_files_count = args[:rag_files_count] if args.key?(:rag_files_count)
@@ -28745,7 +28874,7 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileParsingConfigLayoutParser]
         attr_accessor :layout_parser
       
-        # Specifies the advanced parsing for RagFiles.
+        # Specifies the LLM parsing for RagFiles.
         # Corresponds to the JSON property `llmParser`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileParsingConfigLlmParser]
         attr_accessor :llm_parser
@@ -28832,7 +28961,7 @@ module Google
         end
       end
       
-      # Specifies the advanced parsing for RagFiles.
+      # Specifies the LLM parsing for RagFiles.
       class GoogleCloudAiplatformV1beta1RagFileParsingConfigLlmParser
         include Google::Apis::Core::Hashable
       
@@ -29251,6 +29380,67 @@ module Google
       
       # The config for the default RAG-managed Vector DB.
       class GoogleCloudAiplatformV1beta1RagVectorDbConfigRagManagedDb
+        include Google::Apis::Core::Hashable
+      
+        # Config for ANN search. RagManagedDb uses a tree-based structure to partition
+        # data and facilitate faster searches. As a tradeoff, it requires longer
+        # indexing time and manual triggering of index rebuild via the ImportRagFiles
+        # and UpdateRagCorpus API.
+        # Corresponds to the JSON property `ann`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagVectorDbConfigRagManagedDbAnn]
+        attr_accessor :ann
+      
+        # Config for KNN search.
+        # Corresponds to the JSON property `knn`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagVectorDbConfigRagManagedDbKnn]
+        attr_accessor :knn
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ann = args[:ann] if args.key?(:ann)
+          @knn = args[:knn] if args.key?(:knn)
+        end
+      end
+      
+      # Config for ANN search. RagManagedDb uses a tree-based structure to partition
+      # data and facilitate faster searches. As a tradeoff, it requires longer
+      # indexing time and manual triggering of index rebuild via the ImportRagFiles
+      # and UpdateRagCorpus API.
+      class GoogleCloudAiplatformV1beta1RagVectorDbConfigRagManagedDbAnn
+        include Google::Apis::Core::Hashable
+      
+        # Number of leaf nodes in the tree-based structure. Each leaf node contains
+        # groups of closely related vectors along with their corresponding centroid.
+        # Recommended value is 10 * sqrt(num of RagFiles in your RagCorpus). Default
+        # value is 500.
+        # Corresponds to the JSON property `leafCount`
+        # @return [Fixnum]
+        attr_accessor :leaf_count
+      
+        # The depth of the tree-based structure. Only depth values of 2 and 3 are
+        # supported. Recommended value is 2 if you have if you have O(10K) files in the
+        # RagCorpus and set this to 3 if more than that. Default value is 2.
+        # Corresponds to the JSON property `treeDepth`
+        # @return [Fixnum]
+        attr_accessor :tree_depth
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @leaf_count = args[:leaf_count] if args.key?(:leaf_count)
+          @tree_depth = args[:tree_depth] if args.key?(:tree_depth)
+        end
+      end
+      
+      # Config for KNN search.
+      class GoogleCloudAiplatformV1beta1RagVectorDbConfigRagManagedDbKnn
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -30546,6 +30736,12 @@ module Google
         attr_accessor :disable_attribution
         alias_method :disable_attribution?, :disable_attribution
       
+        # Retrieve from data source powered by external API for grounding. The external
+        # API is not owned by Google, but need to follow the pre-defined API spec.
+        # Corresponds to the JSON property `externalApi`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExternalApi]
+        attr_accessor :external_api
+      
         # Retrieve from Vertex AI Search datastore or engine for grounding. datastore
         # and engine are mutually exclusive. See https://cloud.google.com/products/agent-
         # builder
@@ -30565,6 +30761,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disable_attribution = args[:disable_attribution] if args.key?(:disable_attribution)
+          @external_api = args[:external_api] if args.key?(:external_api)
           @vertex_ai_search = args[:vertex_ai_search] if args.key?(:vertex_ai_search)
           @vertex_rag_store = args[:vertex_rag_store] if args.key?(:vertex_rag_store)
         end
@@ -45526,6 +45723,13 @@ module Google
       class GoogleCloudAiplatformV1beta1VertexAiSearch
         include Google::Apis::Core::Hashable
       
+        # Specifications that define the specific DataStores to be searched, along with
+        # configurations for those data stores. This is only considered for Engines with
+        # multiple data stores. It should only be set if engine is used.
+        # Corresponds to the JSON property `dataStoreSpecs`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1VertexAiSearchDataStoreSpec>]
+        attr_accessor :data_store_specs
+      
         # Optional. Fully-qualified Vertex AI Search data store resource ID. Format: `
         # projects/`project`/locations/`location`/collections/`collection`/dataStores/`
         # dataStore``
@@ -45557,10 +45761,42 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_store_specs = args[:data_store_specs] if args.key?(:data_store_specs)
           @datastore = args[:datastore] if args.key?(:datastore)
           @engine = args[:engine] if args.key?(:engine)
           @filter = args[:filter] if args.key?(:filter)
           @max_results = args[:max_results] if args.key?(:max_results)
+        end
+      end
+      
+      # Define data stores within engine to filter on in a search call and
+      # configurations for those data stores. For more information, see https://cloud.
+      # google.com/generative-ai-app-builder/docs/reference/rpc/google.cloud.
+      # discoveryengine.v1#datastorespec
+      class GoogleCloudAiplatformV1beta1VertexAiSearchDataStoreSpec
+        include Google::Apis::Core::Hashable
+      
+        # Full resource name of DataStore, such as Format: `projects/`project`/locations/
+        # `location`/collections/`collection`/dataStores/`dataStore``
+        # Corresponds to the JSON property `dataStore`
+        # @return [String]
+        attr_accessor :data_store
+      
+        # Optional. Filter specification to filter documents in the data store specified
+        # by data_store field. For more information on filtering, see [Filtering](https:/
+        # /cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata)
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_store = args[:data_store] if args.key?(:data_store)
+          @filter = args[:filter] if args.key?(:filter)
         end
       end
       
