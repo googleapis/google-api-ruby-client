@@ -298,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MessageSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MetadataExport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -455,6 +461,12 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StatusProto
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -902,6 +914,12 @@ module Google
         end
       end
       
+      class MessageSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class MetadataExport
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1195,6 +1213,18 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class StatusProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :canonical_code, as: 'canonicalCode'
+          property :code, as: 'code'
+          property :message, as: 'message'
+          property :message_set, as: 'messageSet', class: Google::Apis::MetastoreV1alpha::MessageSet, decorator: Google::Apis::MetastoreV1alpha::MessageSet::Representation
+      
+          property :space, as: 'space'
         end
       end
       
