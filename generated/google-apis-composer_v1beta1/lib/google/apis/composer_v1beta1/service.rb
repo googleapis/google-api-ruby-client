@@ -509,9 +509,9 @@ module Google
         
         # Restart Airflow web server.
         # @param [String] name
-        #   The resource name of the environment to restart the web server for, in the
-        #   form: "projects/`projectId`/locations/`locationId`/environments/`environmentId`
-        #   "
+        #   Required. The resource name of the environment to restart the web server for,
+        #   in the form: "projects/`projectId`/locations/`locationId`/environments/`
+        #   environmentId`"
         # @param [Google::Apis::ComposerV1beta1::RestartWebServerRequest] restart_web_server_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
