@@ -1,5 +1,9 @@
 # Release history for google-apis-netapp_v1
 
+### v0.9.0 (2025-05-21)
+
+* Regenerated from discovery document revision 20250515
+
 ### v0.8.0 (2025-05-04)
 
 * Regenerated using generator version 0.17.0
