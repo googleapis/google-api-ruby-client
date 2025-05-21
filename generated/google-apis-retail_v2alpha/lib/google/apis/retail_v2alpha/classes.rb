@@ -3234,6 +3234,25 @@ module Google
         end
       end
       
+      # A message with a list of double values.
+      class GoogleCloudRetailV2alphaDoubleList
+        include Google::Apis::Core::Hashable
+      
+        # The list of double values.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Float>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
       # Metadata related to the EnrollSolution method. This will be returned by the
       # google.longrunning.Operation.metadata field.
       class GoogleCloudRetailV2alphaEnrollSolutionMetadata
@@ -8347,6 +8366,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :matching_variant_fields
       
+        # Google provided available scores.
+        # Corresponds to the JSON property `modelScores`
+        # @return [Hash<String,Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaDoubleList>]
+        attr_accessor :model_scores
+      
         # Specifies previous events related to this product for this user based on
         # UserEvent with same SearchRequest.visitor_id or UserInfo.user_id. This is set
         # only when SearchRequest.PersonalizationSpec.mode is SearchRequest.
@@ -8388,6 +8412,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @matching_variant_count = args[:matching_variant_count] if args.key?(:matching_variant_count)
           @matching_variant_fields = args[:matching_variant_fields] if args.key?(:matching_variant_fields)
+          @model_scores = args[:model_scores] if args.key?(:model_scores)
           @personal_labels = args[:personal_labels] if args.key?(:personal_labels)
           @product = args[:product] if args.key?(:product)
           @variant_rollup_values = args[:variant_rollup_values] if args.key?(:variant_rollup_values)

@@ -616,6 +616,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2alphaDoubleList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2alphaEnrollSolutionMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2640,6 +2646,13 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2alphaDoubleList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values'
+        end
+      end
+      
       class GoogleCloudRetailV2alphaEnrollSolutionMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3927,6 +3940,8 @@ module Google
           property :id, as: 'id'
           property :matching_variant_count, as: 'matchingVariantCount'
           hash :matching_variant_fields, as: 'matchingVariantFields'
+          hash :model_scores, as: 'modelScores', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaDoubleList, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaDoubleList::Representation
+      
           collection :personal_labels, as: 'personalLabels'
           property :product, as: 'product', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProduct, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProduct::Representation
       
