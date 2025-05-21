@@ -1803,6 +1803,19 @@ module Google
         end
       end
       
+      # Restart Airflow web server.
+      class RestartWebServerRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request to create a snapshot of a Cloud Composer environment.
       class SaveSnapshotRequest
         include Google::Apis::Core::Hashable
