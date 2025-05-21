@@ -1004,6 +1004,11 @@ module Google
         # @return [String]
         attr_accessor :cpe
       
+        # Files that make up the resource described by the occurrence.
+        # Corresponds to the JSON property `files`
+        # @return [Array<Google::Apis::OndemandscanningV1beta1::File>]
+        attr_accessor :files
+      
         # The last time this resource was scanned.
         # Corresponds to the JSON property `lastScanTime`
         # @return [String]
@@ -1027,6 +1032,7 @@ module Google
           @archive_time = args[:archive_time] if args.key?(:archive_time)
           @continuous_analysis = args[:continuous_analysis] if args.key?(:continuous_analysis)
           @cpe = args[:cpe] if args.key?(:cpe)
+          @files = args[:files] if args.key?(:files)
           @last_scan_time = args[:last_scan_time] if args.key?(:last_scan_time)
           @sbom_status = args[:sbom_status] if args.key?(:sbom_status)
         end
@@ -1104,6 +1110,31 @@ module Google
         def update!(**args)
           @keyid = args[:keyid] if args.key?(:keyid)
           @sig = args[:sig] if args.key?(:sig)
+        end
+      end
+      
+      # 
+      class File
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `digest`
+        # @return [Hash<String,String>]
+        attr_accessor :digest
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @digest = args[:digest] if args.key?(:digest)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
