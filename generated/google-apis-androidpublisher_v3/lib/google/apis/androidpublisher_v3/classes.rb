@@ -912,6 +912,25 @@ module Google
         end
       end
       
+      # Response for the orders.batchGet API.
+      class BatchGetOrdersResponse
+        include Google::Apis::Core::Hashable
+      
+        # Details for the requested order IDs.
+        # Corresponds to the JSON property `orders`
+        # @return [Array<Google::Apis::AndroidpublisherV3::Order>]
+        attr_accessor :orders
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @orders = args[:orders] if args.key?(:orders)
+        end
+      end
+      
       # Request message for BatchGetSubscriptionOffers endpoint.
       class BatchGetSubscriptionOffersRequest
         include Google::Apis::Core::Hashable
@@ -1226,6 +1245,39 @@ module Google
         end
       end
       
+      # Address information for the customer, for use in tax computation.
+      class BuyerAddress
+        include Google::Apis::Core::Hashable
+      
+        # Two letter country code based on ISO-3166-1 Alpha-2 (UN country codes).
+        # Corresponds to the JSON property `buyerCountry`
+        # @return [String]
+        attr_accessor :buyer_country
+      
+        # Postal code of an address. When Google is the Merchant of Record for the order,
+        # this information is not included.
+        # Corresponds to the JSON property `buyerPostcode`
+        # @return [String]
+        attr_accessor :buyer_postcode
+      
+        # Top-level administrative subdivision of the buyer address country. When Google
+        # is the Merchant of Record for the order, this information is not included.
+        # Corresponds to the JSON property `buyerState`
+        # @return [String]
+        attr_accessor :buyer_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @buyer_country = args[:buyer_country] if args.key?(:buyer_country)
+          @buyer_postcode = args[:buyer_postcode] if args.key?(:buyer_postcode)
+          @buyer_state = args[:buyer_state] if args.key?(:buyer_state)
+        end
+      end
+      
       # Request message for CancelAppRecovery.
       class CancelAppRecoveryRequest
         include Google::Apis::Core::Hashable
@@ -1313,6 +1365,25 @@ module Google
           @replacement_cancellation = args[:replacement_cancellation] if args.key?(:replacement_cancellation)
           @system_initiated_cancellation = args[:system_initiated_cancellation] if args.key?(:system_initiated_cancellation)
           @user_initiated_cancellation = args[:user_initiated_cancellation] if args.key?(:user_initiated_cancellation)
+        end
+      end
+      
+      # Details of when the order was canceled.
+      class CancellationEvent
+        include Google::Apis::Core::Hashable
+      
+        # The time when the order was canceled.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_time = args[:event_time] if args.key?(:event_time)
         end
       end
       
@@ -3442,6 +3513,69 @@ module Google
         end
       end
       
+      # Details of a line item.
+      class LineItem
+        include Google::Apis::Core::Hashable
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `listingPrice`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :listing_price
+      
+        # Details of a one-time purchase.
+        # Corresponds to the JSON property `oneTimePurchaseDetails`
+        # @return [Google::Apis::AndroidpublisherV3::OneTimePurchaseDetails]
+        attr_accessor :one_time_purchase_details
+      
+        # Details of a paid app purchase.
+        # Corresponds to the JSON property `paidAppDetails`
+        # @return [Google::Apis::AndroidpublisherV3::PaidAppDetails]
+        attr_accessor :paid_app_details
+      
+        # The purchased product ID or in-app SKU (for example, 'monthly001' or 'com.some.
+        # thing.inapp1').
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # Developer-specified name of the product. Displayed in buyer's locale. Example:
+        # coins, monthly subscription, etc.
+        # Corresponds to the JSON property `productTitle`
+        # @return [String]
+        attr_accessor :product_title
+      
+        # Details of a subscription purchase.
+        # Corresponds to the JSON property `subscriptionDetails`
+        # @return [Google::Apis::AndroidpublisherV3::SubscriptionDetails]
+        attr_accessor :subscription_details
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `tax`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :tax
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `total`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :total
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @listing_price = args[:listing_price] if args.key?(:listing_price)
+          @one_time_purchase_details = args[:one_time_purchase_details] if args.key?(:one_time_purchase_details)
+          @paid_app_details = args[:paid_app_details] if args.key?(:paid_app_details)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @product_title = args[:product_title] if args.key?(:product_title)
+          @subscription_details = args[:subscription_details] if args.key?(:subscription_details)
+          @tax = args[:tax] if args.key?(:tax)
+          @total = args[:total] if args.key?(:total)
+        end
+      end
+      
       # Response message for ListAppRecoveries. -- api-linter: core::0158::response-
       # next-page-token-field=disabled
       class ListAppRecoveriesResponse
@@ -4005,6 +4139,197 @@ module Google
         end
       end
       
+      # Details of a one-time purchase.
+      class OneTimePurchaseDetails
+        include Google::Apis::Core::Hashable
+      
+        # The offer ID of the one-time purchase offer.
+        # Corresponds to the JSON property `offerId`
+        # @return [String]
+        attr_accessor :offer_id
+      
+        # The number of items purchased (for multi-quantity item purchases).
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @offer_id = args[:offer_id] if args.key?(:offer_id)
+          @quantity = args[:quantity] if args.key?(:quantity)
+        end
+      end
+      
+      # The Order resource encapsulates comprehensive information about a transaction
+      # made on Google Play. It includes a variety of attributes that provide details
+      # about the order itself, the products purchased, and the history of events
+      # related to the order. The Orders APIs provide real-time access to your order
+      # data within the Google Play ecosystem. You can retrieve detailed information
+      # and metadata for both one-time and recurring orders, including transaction
+      # details like charges, taxes, and refunds, as well as metadata such as pricing
+      # phases for subscriptions. The Orders APIs let you automate tasks related to
+      # order management, reducing the need for manual checks via the Play Developer
+      # Console. The following are some of the use cases for this API: + Real-time
+      # order data retrieval - Get order details and metadata immediately after a
+      # purchase using an order ID. + Order update synchronization - Periodically sync
+      # order updates to maintain an up-to-date record of order information. Note: +
+      # The Orders API calls count towards your Play Developer API quota, which
+      # defaults to 200K daily, and may be insufficient to sync extensive order
+      # histories. + A maximum of 1000 orders can be retrieved per call. Using larger
+      # page sizes is recommended to minimize quota usage. Check your quota in the
+      # Cloud Console and request more if required.
+      class Order
+        include Google::Apis::Core::Hashable
+      
+        # Address information for the customer, for use in tax computation.
+        # Corresponds to the JSON property `buyerAddress`
+        # @return [Google::Apis::AndroidpublisherV3::BuyerAddress]
+        attr_accessor :buyer_address
+      
+        # The time when the order was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `developerRevenueInBuyerCurrency`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :developer_revenue_in_buyer_currency
+      
+        # The time of the last event that occurred on the order.
+        # Corresponds to the JSON property `lastEventTime`
+        # @return [String]
+        attr_accessor :last_event_time
+      
+        # The individual line items making up this order.
+        # Corresponds to the JSON property `lineItems`
+        # @return [Array<Google::Apis::AndroidpublisherV3::LineItem>]
+        attr_accessor :line_items
+      
+        # Detailed information about the order at creation time.
+        # Corresponds to the JSON property `orderDetails`
+        # @return [Google::Apis::AndroidpublisherV3::OrderDetails]
+        attr_accessor :order_details
+      
+        # Details about events which modified the order.
+        # Corresponds to the JSON property `orderHistory`
+        # @return [Google::Apis::AndroidpublisherV3::OrderHistory]
+        attr_accessor :order_history
+      
+        # The order ID.
+        # Corresponds to the JSON property `orderId`
+        # @return [String]
+        attr_accessor :order_id
+      
+        # Details relating to any Play Points applied to an order.
+        # Corresponds to the JSON property `pointsDetails`
+        # @return [Google::Apis::AndroidpublisherV3::PointsDetails]
+        attr_accessor :points_details
+      
+        # The token provided to the user's device when the subscription or item was
+        # purchased.
+        # Corresponds to the JSON property `purchaseToken`
+        # @return [String]
+        attr_accessor :purchase_token
+      
+        # The state of the order.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `tax`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :tax
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `total`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :total
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @buyer_address = args[:buyer_address] if args.key?(:buyer_address)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @developer_revenue_in_buyer_currency = args[:developer_revenue_in_buyer_currency] if args.key?(:developer_revenue_in_buyer_currency)
+          @last_event_time = args[:last_event_time] if args.key?(:last_event_time)
+          @line_items = args[:line_items] if args.key?(:line_items)
+          @order_details = args[:order_details] if args.key?(:order_details)
+          @order_history = args[:order_history] if args.key?(:order_history)
+          @order_id = args[:order_id] if args.key?(:order_id)
+          @points_details = args[:points_details] if args.key?(:points_details)
+          @purchase_token = args[:purchase_token] if args.key?(:purchase_token)
+          @state = args[:state] if args.key?(:state)
+          @tax = args[:tax] if args.key?(:tax)
+          @total = args[:total] if args.key?(:total)
+        end
+      end
+      
+      # Detailed information about the order at creation time.
+      class OrderDetails
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether the listed price was tax inclusive or not.
+        # Corresponds to the JSON property `taxInclusive`
+        # @return [Boolean]
+        attr_accessor :tax_inclusive
+        alias_method :tax_inclusive?, :tax_inclusive
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tax_inclusive = args[:tax_inclusive] if args.key?(:tax_inclusive)
+        end
+      end
+      
+      # Details about events which modified the order.
+      class OrderHistory
+        include Google::Apis::Core::Hashable
+      
+        # Details of when the order was canceled.
+        # Corresponds to the JSON property `cancellationEvent`
+        # @return [Google::Apis::AndroidpublisherV3::CancellationEvent]
+        attr_accessor :cancellation_event
+      
+        # Details of the partial refund events for this order.
+        # Corresponds to the JSON property `partialRefundEvents`
+        # @return [Array<Google::Apis::AndroidpublisherV3::PartialRefundEvent>]
+        attr_accessor :partial_refund_events
+      
+        # Details of when the order was processed.
+        # Corresponds to the JSON property `processedEvent`
+        # @return [Google::Apis::AndroidpublisherV3::ProcessedEvent]
+        attr_accessor :processed_event
+      
+        # Details of when the order was fully refunded.
+        # Corresponds to the JSON property `refundEvent`
+        # @return [Google::Apis::AndroidpublisherV3::RefundEvent]
+        attr_accessor :refund_event
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cancellation_event = args[:cancellation_event] if args.key?(:cancellation_event)
+          @partial_refund_events = args[:partial_refund_events] if args.key?(:partial_refund_events)
+          @processed_event = args[:processed_event] if args.key?(:processed_event)
+          @refund_event = args[:refund_event] if args.key?(:refund_event)
+        end
+      end
+      
       # Details of a recurring external transaction product which doesn't belong to
       # any other more specific category.
       class OtherRecurringProduct
@@ -4195,6 +4520,19 @@ module Google
         end
       end
       
+      # Details of a paid app purchase.
+      class PaidAppDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A partial refund of a transaction.
       class PartialRefund
         include Google::Apis::Core::Hashable
@@ -4219,6 +4557,43 @@ module Google
         def update!(**args)
           @refund_id = args[:refund_id] if args.key?(:refund_id)
           @refund_pre_tax_amount = args[:refund_pre_tax_amount] if args.key?(:refund_pre_tax_amount)
+        end
+      end
+      
+      # Details of the partial refund events for this order.
+      class PartialRefundEvent
+        include Google::Apis::Core::Hashable
+      
+        # The time when the partial refund was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The time when the partial refund was processed.
+        # Corresponds to the JSON property `processTime`
+        # @return [String]
+        attr_accessor :process_time
+      
+        # Details for a partial or full refund.
+        # Corresponds to the JSON property `refundDetails`
+        # @return [Google::Apis::AndroidpublisherV3::RefundDetails]
+        attr_accessor :refund_details
+      
+        # The state of the partial refund.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @process_time = args[:process_time] if args.key?(:process_time)
+          @refund_details = args[:refund_details] if args.key?(:refund_details)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -4253,6 +4628,48 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Details relating to any Play Points applied to an order.
+      class PointsDetails
+        include Google::Apis::Core::Hashable
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `pointsCouponValue`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :points_coupon_value
+      
+        # The percentage rate which the Play Points promotion reduces the cost by. E.g.
+        # for a 100 points for $2 coupon, this is 500,000. Since $2 has an estimate of
+        # 200 points, but the actual Points required, 100, is 50% of this, and 50% in
+        # micros is 500,000. Between 0 and 1,000,000.
+        # Corresponds to the JSON property `pointsDiscountRateMicros`
+        # @return [Fixnum]
+        attr_accessor :points_discount_rate_micros
+      
+        # ID unique to the play points offer in use for this order.
+        # Corresponds to the JSON property `pointsOfferId`
+        # @return [String]
+        attr_accessor :points_offer_id
+      
+        # The number of Play Points applied in this order. E.g. for a 100 points for $2
+        # coupon, this is 100. For coupon stacked with base offer, this is the total
+        # points spent across both.
+        # Corresponds to the JSON property `pointsSpent`
+        # @return [Fixnum]
+        attr_accessor :points_spent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @points_coupon_value = args[:points_coupon_value] if args.key?(:points_coupon_value)
+          @points_discount_rate_micros = args[:points_discount_rate_micros] if args.key?(:points_discount_rate_micros)
+          @points_offer_id = args[:points_offer_id] if args.key?(:points_offer_id)
+          @points_spent = args[:points_spent] if args.key?(:points_spent)
         end
       end
       
@@ -4328,6 +4745,25 @@ module Google
         def update!(**args)
           @currency = args[:currency] if args.key?(:currency)
           @price_micros = args[:price_micros] if args.key?(:price_micros)
+        end
+      end
+      
+      # Details of when the order was processed.
+      class ProcessedEvent
+        include Google::Apis::Core::Hashable
+      
+        # The time when the order was processed.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_time = args[:event_time] if args.key?(:event_time)
         end
       end
       
@@ -4521,6 +4957,62 @@ module Google
           @initial_external_transaction_id = args[:initial_external_transaction_id] if args.key?(:initial_external_transaction_id)
           @migrated_transaction_program = args[:migrated_transaction_program] if args.key?(:migrated_transaction_program)
           @other_recurring_product = args[:other_recurring_product] if args.key?(:other_recurring_product)
+        end
+      end
+      
+      # Details for a partial or full refund.
+      class RefundDetails
+        include Google::Apis::Core::Hashable
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `tax`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :tax
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `total`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :total
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tax = args[:tax] if args.key?(:tax)
+          @total = args[:total] if args.key?(:total)
+        end
+      end
+      
+      # Details of when the order was fully refunded.
+      class RefundEvent
+        include Google::Apis::Core::Hashable
+      
+        # The time when the order was fully refunded.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        # Details for a partial or full refund.
+        # Corresponds to the JSON property `refundDetails`
+        # @return [Google::Apis::AndroidpublisherV3::RefundDetails]
+        attr_accessor :refund_details
+      
+        # The reason the order was refunded.
+        # Corresponds to the JSON property `refundReason`
+        # @return [String]
+        attr_accessor :refund_reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_time = args[:event_time] if args.key?(:event_time)
+          @refund_details = args[:refund_details] if args.key?(:refund_details)
+          @refund_reason = args[:refund_reason] if args.key?(:refund_reason)
         end
       end
       
@@ -4790,9 +5282,10 @@ module Google
         # specified according to the information published in [this article](https://
         # support.google.com/googleplay/android-developer/answer/10532353). Each time
         # the supported locations substantially change, the version will be incremented.
-        # Using this field will ensure that creating and updating the resource with an
-        # older region's version and set of regional prices and currencies will succeed
-        # even though a new version is available. The latest version is 2022/02.
+        # The latest supported version is available in this article. Using this field
+        # will ensure that creating and updating the resource with an older region's
+        # version and set of regional prices and currencies will succeed even though a
+        # new version is available.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -5061,6 +5554,12 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::RevocationContextFullRefund]
         attr_accessor :full_refund
       
+        # Used to determine what specific item to revoke in a subscription with multiple
+        # items.
+        # Corresponds to the JSON property `itemBasedRefund`
+        # @return [Google::Apis::AndroidpublisherV3::RevocationContextItemBasedRefund]
+        attr_accessor :item_based_refund
+      
         # Used to determine if the refund type in the RevocationContext is a prorated
         # refund.
         # Corresponds to the JSON property `proratedRefund`
@@ -5074,6 +5573,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @full_refund = args[:full_refund] if args.key?(:full_refund)
+          @item_based_refund = args[:item_based_refund] if args.key?(:item_based_refund)
           @prorated_refund = args[:prorated_refund] if args.key?(:prorated_refund)
         end
       end
@@ -5088,6 +5588,27 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Used to determine what specific item to revoke in a subscription with multiple
+      # items.
+      class RevocationContextItemBasedRefund
+        include Google::Apis::Core::Hashable
+      
+        # Required. If the subscription is a subscription bundle, the product id of the
+        # subscription to revoke.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product_id = args[:product_id] if args.key?(:product_id)
         end
       end
       
@@ -5536,6 +6057,54 @@ module Google
         def update!(**args)
           @desired_expiry_time_millis = args[:desired_expiry_time_millis] if args.key?(:desired_expiry_time_millis)
           @expected_expiry_time_millis = args[:expected_expiry_time_millis] if args.key?(:expected_expiry_time_millis)
+        end
+      end
+      
+      # Details of a subscription purchase.
+      class SubscriptionDetails
+        include Google::Apis::Core::Hashable
+      
+        # The base plan ID of the subscription.
+        # Corresponds to the JSON property `basePlanId`
+        # @return [String]
+        attr_accessor :base_plan_id
+      
+        # The offer ID for the current subscription offer.
+        # Corresponds to the JSON property `offerId`
+        # @return [String]
+        attr_accessor :offer_id
+      
+        # The pricing phase for the billing period funded by this order.
+        # Corresponds to the JSON property `offerPhase`
+        # @return [String]
+        attr_accessor :offer_phase
+      
+        # The end of the billing period funded by this order. This is a snapshot of the
+        # billing/service period end time at the moment the order was processed, and
+        # should be used only for accounting. To get the current end time of the
+        # subscription service period, use purchases.subscriptionsv2.get.
+        # Corresponds to the JSON property `servicePeriodEndTime`
+        # @return [String]
+        attr_accessor :service_period_end_time
+      
+        # The start of the billing period funded by this order. This is a snapshot of
+        # the billing/service period start time at the moment the order was processed,
+        # and should be used only for accounting.
+        # Corresponds to the JSON property `servicePeriodStartTime`
+        # @return [String]
+        attr_accessor :service_period_start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_plan_id = args[:base_plan_id] if args.key?(:base_plan_id)
+          @offer_id = args[:offer_id] if args.key?(:offer_id)
+          @offer_phase = args[:offer_phase] if args.key?(:offer_phase)
+          @service_period_end_time = args[:service_period_end_time] if args.key?(:service_period_end_time)
+          @service_period_start_time = args[:service_period_start_time] if args.key?(:service_period_start_time)
         end
       end
       
@@ -6128,11 +6697,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The order id of the latest order associated with the purchase of the
-        # subscription. For autoRenewing subscription, this is the order id of signup
-        # order if it is not renewed yet, or the last recurring order id (success,
-        # pending, or declined order). For prepaid subscription, this is the order id
-        # associated with the queried purchase token.
+        # Deprecated: Use line_items.latest_successful_order_id instead. The order id of
+        # the latest order associated with the purchase of the subscription. For
+        # autoRenewing subscription, this is the order id of signup order if it is not
+        # renewed yet, or the last recurring order id (success, pending, or declined
+        # order). For prepaid subscription, this is the order id associated with the
+        # queried purchase token.
         # Corresponds to the JSON property `latestOrderId`
         # @return [String]
         attr_accessor :latest_order_id

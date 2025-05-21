@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchGetOrdersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchGetSubscriptionOffersRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -280,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BuyerAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelAppRecoveryRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -299,6 +311,12 @@ module Google
       end
       
       class CanceledStateContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CancellationEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -682,6 +700,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LineItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListAppRecoveriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -802,6 +826,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OneTimePurchaseDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Order
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderHistory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OtherRecurringProduct
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -844,7 +892,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PaidAppDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PartialRefund
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PartialRefundEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -857,6 +917,12 @@ module Google
       end
       
       class PendingCancellation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PointsDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -880,6 +946,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProcessedEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProductPurchase
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -893,6 +965,18 @@ module Google
       end
       
       class RecurringExternalTransaction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RefundDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RefundEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1024,6 +1108,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RevocationContextItemBasedRefund
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RevocationContextProratedRefund
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1121,6 +1211,12 @@ module Google
       end
       
       class SubscriptionDeferralInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubscriptionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1718,6 +1814,14 @@ module Google
         end
       end
       
+      class BatchGetOrdersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :orders, as: 'orders', class: Google::Apis::AndroidpublisherV3::Order, decorator: Google::Apis::AndroidpublisherV3::Order::Representation
+      
+        end
+      end
+      
       class BatchGetSubscriptionOffersRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1840,6 +1944,15 @@ module Google
         end
       end
       
+      class BuyerAddress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :buyer_country, as: 'buyerCountry'
+          property :buyer_postcode, as: 'buyerPostcode'
+          property :buyer_state, as: 'buyerState'
+        end
+      end
+      
       class CancelAppRecoveryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1871,6 +1984,13 @@ module Google
       
           property :user_initiated_cancellation, as: 'userInitiatedCancellation', class: Google::Apis::AndroidpublisherV3::UserInitiatedCancellation, decorator: Google::Apis::AndroidpublisherV3::UserInitiatedCancellation::Representation
       
+        end
+      end
+      
+      class CancellationEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_time, as: 'eventTime'
         end
       end
       
@@ -2505,6 +2625,26 @@ module Google
         end
       end
       
+      class LineItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :listing_price, as: 'listingPrice', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+          property :one_time_purchase_details, as: 'oneTimePurchaseDetails', class: Google::Apis::AndroidpublisherV3::OneTimePurchaseDetails, decorator: Google::Apis::AndroidpublisherV3::OneTimePurchaseDetails::Representation
+      
+          property :paid_app_details, as: 'paidAppDetails', class: Google::Apis::AndroidpublisherV3::PaidAppDetails, decorator: Google::Apis::AndroidpublisherV3::PaidAppDetails::Representation
+      
+          property :product_id, as: 'productId'
+          property :product_title, as: 'productTitle'
+          property :subscription_details, as: 'subscriptionDetails', class: Google::Apis::AndroidpublisherV3::SubscriptionDetails, decorator: Google::Apis::AndroidpublisherV3::SubscriptionDetails::Representation
+      
+          property :tax, as: 'tax', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+          property :total, as: 'total', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+        end
+      end
+      
       class ListAppRecoveriesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2687,6 +2827,62 @@ module Google
         end
       end
       
+      class OneTimePurchaseDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :offer_id, as: 'offerId'
+          property :quantity, as: 'quantity'
+        end
+      end
+      
+      class Order
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :buyer_address, as: 'buyerAddress', class: Google::Apis::AndroidpublisherV3::BuyerAddress, decorator: Google::Apis::AndroidpublisherV3::BuyerAddress::Representation
+      
+          property :create_time, as: 'createTime'
+          property :developer_revenue_in_buyer_currency, as: 'developerRevenueInBuyerCurrency', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+          property :last_event_time, as: 'lastEventTime'
+          collection :line_items, as: 'lineItems', class: Google::Apis::AndroidpublisherV3::LineItem, decorator: Google::Apis::AndroidpublisherV3::LineItem::Representation
+      
+          property :order_details, as: 'orderDetails', class: Google::Apis::AndroidpublisherV3::OrderDetails, decorator: Google::Apis::AndroidpublisherV3::OrderDetails::Representation
+      
+          property :order_history, as: 'orderHistory', class: Google::Apis::AndroidpublisherV3::OrderHistory, decorator: Google::Apis::AndroidpublisherV3::OrderHistory::Representation
+      
+          property :order_id, as: 'orderId'
+          property :points_details, as: 'pointsDetails', class: Google::Apis::AndroidpublisherV3::PointsDetails, decorator: Google::Apis::AndroidpublisherV3::PointsDetails::Representation
+      
+          property :purchase_token, as: 'purchaseToken'
+          property :state, as: 'state'
+          property :tax, as: 'tax', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+          property :total, as: 'total', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+        end
+      end
+      
+      class OrderDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tax_inclusive, as: 'taxInclusive'
+        end
+      end
+      
+      class OrderHistory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cancellation_event, as: 'cancellationEvent', class: Google::Apis::AndroidpublisherV3::CancellationEvent, decorator: Google::Apis::AndroidpublisherV3::CancellationEvent::Representation
+      
+          collection :partial_refund_events, as: 'partialRefundEvents', class: Google::Apis::AndroidpublisherV3::PartialRefundEvent, decorator: Google::Apis::AndroidpublisherV3::PartialRefundEvent::Representation
+      
+          property :processed_event, as: 'processedEvent', class: Google::Apis::AndroidpublisherV3::ProcessedEvent, decorator: Google::Apis::AndroidpublisherV3::ProcessedEvent::Representation
+      
+          property :refund_event, as: 'refundEvent', class: Google::Apis::AndroidpublisherV3::RefundEvent, decorator: Google::Apis::AndroidpublisherV3::RefundEvent::Representation
+      
+        end
+      end
+      
       class OtherRecurringProduct
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2749,12 +2945,29 @@ module Google
         end
       end
       
+      class PaidAppDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class PartialRefund
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :refund_id, as: 'refundId'
           property :refund_pre_tax_amount, as: 'refundPreTaxAmount', class: Google::Apis::AndroidpublisherV3::Price, decorator: Google::Apis::AndroidpublisherV3::Price::Representation
       
+        end
+      end
+      
+      class PartialRefundEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :process_time, as: 'processTime'
+          property :refund_details, as: 'refundDetails', class: Google::Apis::AndroidpublisherV3::RefundDetails, decorator: Google::Apis::AndroidpublisherV3::RefundDetails::Representation
+      
+          property :state, as: 'state'
         end
       end
       
@@ -2768,6 +2981,17 @@ module Google
       class PendingCancellation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class PointsDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :points_coupon_value, as: 'pointsCouponValue', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+          property :points_discount_rate_micros, :numeric_string => true, as: 'pointsDiscountRateMicros'
+          property :points_offer_id, as: 'pointsOfferId'
+          property :points_spent, :numeric_string => true, as: 'pointsSpent'
         end
       end
       
@@ -2791,6 +3015,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :currency, as: 'currency'
           property :price_micros, as: 'priceMicros'
+        end
+      end
+      
+      class ProcessedEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_time, as: 'eventTime'
         end
       end
       
@@ -2832,6 +3063,26 @@ module Google
           property :migrated_transaction_program, as: 'migratedTransactionProgram'
           property :other_recurring_product, as: 'otherRecurringProduct', class: Google::Apis::AndroidpublisherV3::OtherRecurringProduct, decorator: Google::Apis::AndroidpublisherV3::OtherRecurringProduct::Representation
       
+        end
+      end
+      
+      class RefundDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tax, as: 'tax', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+          property :total, as: 'total', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+        end
+      end
+      
+      class RefundEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_time, as: 'eventTime'
+          property :refund_details, as: 'refundDetails', class: Google::Apis::AndroidpublisherV3::RefundDetails, decorator: Google::Apis::AndroidpublisherV3::RefundDetails::Representation
+      
+          property :refund_reason, as: 'refundReason'
         end
       end
       
@@ -3004,6 +3255,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :full_refund, as: 'fullRefund', class: Google::Apis::AndroidpublisherV3::RevocationContextFullRefund, decorator: Google::Apis::AndroidpublisherV3::RevocationContextFullRefund::Representation
       
+          property :item_based_refund, as: 'itemBasedRefund', class: Google::Apis::AndroidpublisherV3::RevocationContextItemBasedRefund, decorator: Google::Apis::AndroidpublisherV3::RevocationContextItemBasedRefund::Representation
+      
           property :prorated_refund, as: 'proratedRefund', class: Google::Apis::AndroidpublisherV3::RevocationContextProratedRefund, decorator: Google::Apis::AndroidpublisherV3::RevocationContextProratedRefund::Representation
       
         end
@@ -3012,6 +3265,13 @@ module Google
       class RevocationContextFullRefund
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RevocationContextItemBasedRefund
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :product_id, as: 'productId'
         end
       end
       
@@ -3160,6 +3420,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :desired_expiry_time_millis, :numeric_string => true, as: 'desiredExpiryTimeMillis'
           property :expected_expiry_time_millis, :numeric_string => true, as: 'expectedExpiryTimeMillis'
+        end
+      end
+      
+      class SubscriptionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_plan_id, as: 'basePlanId'
+          property :offer_id, as: 'offerId'
+          property :offer_phase, as: 'offerPhase'
+          property :service_period_end_time, as: 'servicePeriodEndTime'
+          property :service_period_start_time, as: 'servicePeriodStartTime'
         end
       end
       
