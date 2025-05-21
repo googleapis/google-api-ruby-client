@@ -1144,6 +1144,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FirewallParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FirewallPoliciesListAssociationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4974,6 +4980,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RouteParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -9141,6 +9153,8 @@ module Google
       
           property :name, as: 'name'
           property :network, as: 'network'
+          property :params, as: 'params', class: Google::Apis::ComputeV1::FirewallParams, decorator: Google::Apis::ComputeV1::FirewallParams::Representation
+      
           property :priority, as: 'priority'
           property :self_link, as: 'selfLink'
           collection :source_ranges, as: 'sourceRanges'
@@ -9204,6 +9218,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable, as: 'enable'
           property :metadata, as: 'metadata'
+        end
+      end
+      
+      class FirewallParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -16292,6 +16313,8 @@ module Google
           property :next_hop_origin, as: 'nextHopOrigin'
           property :next_hop_peering, as: 'nextHopPeering'
           property :next_hop_vpn_tunnel, as: 'nextHopVpnTunnel'
+          property :params, as: 'params', class: Google::Apis::ComputeV1::RouteParams, decorator: Google::Apis::ComputeV1::RouteParams::Representation
+      
           property :priority, as: 'priority'
           property :route_status, as: 'routeStatus'
           property :route_type, as: 'routeType'
@@ -16357,6 +16380,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class RouteParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
