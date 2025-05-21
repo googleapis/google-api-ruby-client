@@ -3740,7 +3740,8 @@ module Google
         # be set for Internal Passthrough Network Load Balancers when the haPolicy is
         # enabled, and for External Passthrough Network Load Balancers when the haPolicy
         # fastIpMove is enabled. This field can only be specified when the load
-        # balancing scheme is set to INTERNAL.
+        # balancing scheme is set to INTERNAL, or when the load balancing scheme is set
+        # to EXTERNAL and haPolicy fastIpMove is enabled.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -9170,6 +9171,11 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Additional firewall parameters.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeV1::FirewallParams]
+        attr_accessor :params
+      
         # Priority for this rule. This is an integer between `0` and `65535`, both
         # inclusive. The default value is `1000`. Relative priorities determine which
         # rule takes effect if multiple rules apply. Lower values indicate higher
@@ -9262,6 +9268,7 @@ module Google
           @log_config = args[:log_config] if args.key?(:log_config)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @params = args[:params] if args.key?(:params)
           @priority = args[:priority] if args.key?(:priority)
           @self_link = args[:self_link] if args.key?(:self_link)
           @source_ranges = args[:source_ranges] if args.key?(:source_ranges)
@@ -9477,6 +9484,32 @@ module Google
         def update!(**args)
           @enable = args[:enable] if args.key?(:enable)
           @metadata = args[:metadata] if args.key?(:metadata)
+        end
+      end
+      
+      # Additional firewall parameters.
+      class FirewallParams
+        include Google::Apis::Core::Hashable
+      
+        # Tag keys/values directly bound to this resource. Tag keys and values have the
+        # same definition as resource manager tags. The field is allowed for INSERT only.
+        # The keys/values to set on the resource should be specified in either ID ` : `
+        # or Namespaced format ` : `. For example the following are valid inputs: * `"
+        # tagKeys/333" : "tagValues/444", "tagKeys/123" : "tagValues/456"` * `"123/
+        # environment" : "production", "345/abc" : "xyz"` Note: * Invalid combinations
+        # of ID & namespaced format is not supported. For instance: `"123/environment" :
+        # "tagValues/444"` is invalid.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
@@ -37721,6 +37754,11 @@ module Google
         # @return [String]
         attr_accessor :next_hop_vpn_tunnel
       
+        # Additional route parameters.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeV1::RouteParams]
+        attr_accessor :params
+      
         # The priority of this route. Priority is used to break ties in cases where
         # there is more than one matching route of equal prefix length. In cases where
         # multiple routes have equal prefix length, the one with the lowest-numbered
@@ -37785,6 +37823,7 @@ module Google
           @next_hop_origin = args[:next_hop_origin] if args.key?(:next_hop_origin)
           @next_hop_peering = args[:next_hop_peering] if args.key?(:next_hop_peering)
           @next_hop_vpn_tunnel = args[:next_hop_vpn_tunnel] if args.key?(:next_hop_vpn_tunnel)
+          @params = args[:params] if args.key?(:params)
           @priority = args[:priority] if args.key?(:priority)
           @route_status = args[:route_status] if args.key?(:route_status)
           @route_type = args[:route_type] if args.key?(:route_type)
@@ -38003,6 +38042,32 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Additional route parameters.
+      class RouteParams
+        include Google::Apis::Core::Hashable
+      
+        # Tag keys/values directly bound to this resource. Tag keys and values have the
+        # same definition as resource manager tags. The field is allowed for INSERT only.
+        # The keys/values to set on the resource should be specified in either ID ` : `
+        # or Namespaced format ` : `. For example the following are valid inputs: * `"
+        # tagKeys/333" : "tagValues/444", "tagKeys/123" : "tagValues/456"` * `"123/
+        # environment" : "production", "345/abc" : "xyz"` Note: * Invalid combinations
+        # of ID & namespaced format is not supported. For instance: `"123/environment" :
+        # "tagValues/444"` is invalid.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
