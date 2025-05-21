@@ -142,6 +142,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchingConfigProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchingDescriptorProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchingSettingsProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Billing
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -980,6 +998,39 @@ module Google
         end
       end
       
+      class BatchingConfigProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :batch_descriptor, as: 'batchDescriptor', class: Google::Apis::ServiceusageV1::BatchingDescriptorProto, decorator: Google::Apis::ServiceusageV1::BatchingDescriptorProto::Representation
+      
+          property :thresholds, as: 'thresholds', class: Google::Apis::ServiceusageV1::BatchingSettingsProto, decorator: Google::Apis::ServiceusageV1::BatchingSettingsProto::Representation
+      
+        end
+      end
+      
+      class BatchingDescriptorProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :batched_field, as: 'batchedField'
+          collection :discriminator_fields, as: 'discriminatorFields'
+          property :subresponse_field, as: 'subresponseField'
+        end
+      end
+      
+      class BatchingSettingsProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delay_threshold, as: 'delayThreshold'
+          property :element_count_limit, as: 'elementCountLimit'
+          property :element_count_threshold, as: 'elementCountThreshold'
+          property :flow_control_byte_limit, as: 'flowControlByteLimit'
+          property :flow_control_element_limit, as: 'flowControlElementLimit'
+          property :flow_control_limit_exceeded_behavior, as: 'flowControlLimitExceededBehavior'
+          property :request_byte_limit, as: 'requestByteLimit'
+          property :request_byte_threshold, :numeric_string => true, as: 'requestByteThreshold'
+        end
+      end
+      
       class Billing
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1714,6 +1765,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :auto_populated_fields, as: 'autoPopulatedFields'
+          property :batching, as: 'batching', class: Google::Apis::ServiceusageV1::BatchingConfigProto, decorator: Google::Apis::ServiceusageV1::BatchingConfigProto::Representation
+      
           property :long_running, as: 'longRunning', class: Google::Apis::ServiceusageV1::LongRunning, decorator: Google::Apis::ServiceusageV1::LongRunning::Representation
       
           property :selector, as: 'selector'
