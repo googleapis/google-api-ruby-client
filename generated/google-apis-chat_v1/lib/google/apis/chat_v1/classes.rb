@@ -3212,16 +3212,6 @@ module Google
         # @return [String]
         attr_accessor :bottom_text
       
-        # A [Google Material Icon](https://fonts.google.com/icons), which includes over
-        # 2500+ options. For example, to display a [checkbox icon](https://fonts.google.
-        # com/icons?selected=Material%20Symbols%20Outlined%3Acheck_box%3AFILL%400%3Bwght%
-        # 40400%3BGRAD%400%3Bopsz%4048) with customized weight and grade, write the
-        # following: ``` ` "name": "check_box", "fill": true, "weight": 300, "grade": -
-        # 25 ` ``` [Google Chat apps](https://developers.google.com/workspace/chat):
-        # Corresponds to the JSON property `materialIcon`
-        # @return [Google::Apis::ChatV1::GoogleAppsCardV1MaterialIcon]
-        attr_accessor :material_icon
-      
         # Whether the item is selected by default. If the selection input only accepts
         # one value (such as for radio buttons or a dropdown menu), only set this field
         # for one item.
@@ -3254,7 +3244,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bottom_text = args[:bottom_text] if args.key?(:bottom_text)
-          @material_icon = args[:material_icon] if args.key?(:material_icon)
           @selected = args[:selected] if args.key?(:selected)
           @start_icon_uri = args[:start_icon_uri] if args.key?(:start_icon_uri)
           @text = args[:text] if args.key?(:text)
