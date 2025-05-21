@@ -1,5 +1,9 @@
 # Release history for google-apis-serviceusage_v1
 
+### v0.68.0 (2025-05-21)
+
+* Regenerated from discovery document revision 20250515
+
 ### v0.67.0 (2025-05-18)
 
 * Regenerated from discovery document revision 20250511
