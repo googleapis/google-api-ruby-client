@@ -1796,6 +1796,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :banded_range_id, as: 'bandedRangeId'
+          property :banded_range_reference, as: 'bandedRangeReference'
           property :column_properties, as: 'columnProperties', class: Google::Apis::SheetsV4::BandingProperties, decorator: Google::Apis::SheetsV4::BandingProperties::Representation
       
           property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
