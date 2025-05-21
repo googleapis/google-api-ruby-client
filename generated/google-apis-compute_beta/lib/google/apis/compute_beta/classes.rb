@@ -3961,7 +3961,8 @@ module Google
         # be set for Internal Passthrough Network Load Balancers when the haPolicy is
         # enabled, and for External Passthrough Network Load Balancers when the haPolicy
         # fastIpMove is enabled. This field can only be specified when the load
-        # balancing scheme is set to INTERNAL.
+        # balancing scheme is set to INTERNAL, or when the load balancing scheme is set
+        # to EXTERNAL and haPolicy fastIpMove is enabled.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -11052,6 +11053,12 @@ module Google
         # @return [String]
         attr_accessor :dest_network_scope
       
+        # Network type of the traffic destination. Allowed values are: - UNSPECIFIED -
+        # INTERNET - NON_INTERNET
+        # Corresponds to the JSON property `destNetworkType`
+        # @return [String]
+        attr_accessor :dest_network_type
+      
         # Region codes whose IP addresses will be used to match for destination of
         # traffic. Should be specified as 2 letter country code defined as per ISO 3166
         # alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is
@@ -11093,6 +11100,12 @@ module Google
         # @return [String]
         attr_accessor :src_network_scope
       
+        # Network type of the traffic source. Allowed values are: - UNSPECIFIED -
+        # INTERNET - INTRA_VPC - NON_INTERNET - VPC_NETWORKS
+        # Corresponds to the JSON property `srcNetworkType`
+        # @return [String]
+        attr_accessor :src_network_type
+      
         # Networks of the traffic source. It can be either a full or partial url.
         # Corresponds to the JSON property `srcNetworks`
         # @return [Array<String>]
@@ -11129,6 +11142,7 @@ module Google
           @dest_fqdns = args[:dest_fqdns] if args.key?(:dest_fqdns)
           @dest_ip_ranges = args[:dest_ip_ranges] if args.key?(:dest_ip_ranges)
           @dest_network_scope = args[:dest_network_scope] if args.key?(:dest_network_scope)
+          @dest_network_type = args[:dest_network_type] if args.key?(:dest_network_type)
           @dest_region_codes = args[:dest_region_codes] if args.key?(:dest_region_codes)
           @dest_threat_intelligences = args[:dest_threat_intelligences] if args.key?(:dest_threat_intelligences)
           @layer4_configs = args[:layer4_configs] if args.key?(:layer4_configs)
@@ -11136,6 +11150,7 @@ module Google
           @src_fqdns = args[:src_fqdns] if args.key?(:src_fqdns)
           @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
           @src_network_scope = args[:src_network_scope] if args.key?(:src_network_scope)
+          @src_network_type = args[:src_network_type] if args.key?(:src_network_type)
           @src_networks = args[:src_networks] if args.key?(:src_networks)
           @src_region_codes = args[:src_region_codes] if args.key?(:src_region_codes)
           @src_secure_tags = args[:src_secure_tags] if args.key?(:src_secure_tags)
@@ -17951,6 +17966,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :target_size
       
+        # The policy that specifies how the MIG creates its VMs to achieve the target
+        # size.
+        # Corresponds to the JSON property `targetSizePolicy`
+        # @return [Google::Apis::ComputeBeta::InstanceGroupManagerTargetSizePolicy]
+        attr_accessor :target_size_policy
+      
         # The target number of stopped instances for this managed instance group. This
         # number changes when you: - Stop instance using the stopInstances method or
         # start instances using the startInstances method. - Manually change the
@@ -18026,6 +18047,7 @@ module Google
           @status = args[:status] if args.key?(:status)
           @target_pools = args[:target_pools] if args.key?(:target_pools)
           @target_size = args[:target_size] if args.key?(:target_size)
+          @target_size_policy = args[:target_size_policy] if args.key?(:target_size_policy)
           @target_stopped_size = args[:target_stopped_size] if args.key?(:target_stopped_size)
           @target_suspended_size = args[:target_suspended_size] if args.key?(:target_suspended_size)
           @update_policy = args[:update_policy] if args.key?(:update_policy)
@@ -19173,6 +19195,12 @@ module Google
         # @return [String]
         attr_accessor :autoscaler
       
+        # Bulk instance operation is the creation of VMs in a MIG when the
+        # targetSizePolicy.mode is set to BULK.
+        # Corresponds to the JSON property `bulkInstanceOperation`
+        # @return [Google::Apis::ComputeBeta::InstanceGroupManagerStatusBulkInstanceOperation]
+        attr_accessor :bulk_instance_operation
+      
         # [Output Only] A bit indicating whether the managed instance group is in a
         # stable state. A stable state means that: none of the instances in the managed
         # instance group is currently undergoing any type of change (for example,
@@ -19203,6 +19231,7 @@ module Google
         def update!(**args)
           @all_instances_config = args[:all_instances_config] if args.key?(:all_instances_config)
           @autoscaler = args[:autoscaler] if args.key?(:autoscaler)
+          @bulk_instance_operation = args[:bulk_instance_operation] if args.key?(:bulk_instance_operation)
           @is_stable = args[:is_stable] if args.key?(:is_stable)
           @stateful = args[:stateful] if args.key?(:stateful)
           @version_target = args[:version_target] if args.key?(:version_target)
@@ -19234,6 +19263,168 @@ module Google
         def update!(**args)
           @current_revision = args[:current_revision] if args.key?(:current_revision)
           @effective = args[:effective] if args.key?(:effective)
+        end
+      end
+      
+      # Bulk instance operation is the creation of VMs in a MIG when the
+      # targetSizePolicy.mode is set to BULK.
+      class InstanceGroupManagerStatusBulkInstanceOperation
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Informs whether bulk instance operation is in progress.
+        # Corresponds to the JSON property `inProgress`
+        # @return [Boolean]
+        attr_accessor :in_progress
+        alias_method :in_progress?, :in_progress
+      
+        # [Output Only] Information from the last progress check of bulk instance
+        # operation.
+        # Corresponds to the JSON property `lastProgressCheck`
+        # @return [Google::Apis::ComputeBeta::InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck]
+        attr_accessor :last_progress_check
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @in_progress = args[:in_progress] if args.key?(:in_progress)
+          @last_progress_check = args[:last_progress_check] if args.key?(:last_progress_check)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Errors encountered during bulk instance operation.
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ComputeBeta::InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck::Error]
+        attr_accessor :error
+      
+        # [Output Only] Timestamp of the last progress check of bulk instance operation.
+        # Timestamp is in RFC3339 text format.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+        end
+        
+        # [Output Only] Errors encountered during bulk instance operation.
+        class Error
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] The array of errors encountered while processing this operation.
+          # Corresponds to the JSON property `errors`
+          # @return [Array<Google::Apis::ComputeBeta::InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck::Error::Error>]
+          attr_accessor :errors
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @errors = args[:errors] if args.key?(:errors)
+          end
+          
+          # 
+          class Error
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] The error type identifier for this error.
+            # Corresponds to the JSON property `code`
+            # @return [String]
+            attr_accessor :code
+          
+            # [Output Only] An optional list of messages that contain the error details.
+            # There is a set of defined message types to use for providing details.The
+            # syntax depends on the error code. For example, QuotaExceededInfo will have
+            # details when the error code is QUOTA_EXCEEDED.
+            # Corresponds to the JSON property `errorDetails`
+            # @return [Array<Google::Apis::ComputeBeta::InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck::Error::Error::ErrorDetail>]
+            attr_accessor :error_details
+          
+            # [Output Only] Indicates the field in the request that caused the error. This
+            # property is optional.
+            # Corresponds to the JSON property `location`
+            # @return [String]
+            attr_accessor :location
+          
+            # [Output Only] An optional, human-readable error message.
+            # Corresponds to the JSON property `message`
+            # @return [String]
+            attr_accessor :message
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @code = args[:code] if args.key?(:code)
+              @error_details = args[:error_details] if args.key?(:error_details)
+              @location = args[:location] if args.key?(:location)
+              @message = args[:message] if args.key?(:message)
+            end
+            
+            # 
+            class ErrorDetail
+              include Google::Apis::Core::Hashable
+            
+              # Describes the cause of the error with structured details. Example of an error
+              # when contacting the "pubsub.googleapis.com" API when it is not enabled: ` "
+              # reason": "API_DISABLED" "domain": "googleapis.com" "metadata": ` "resource": "
+              # projects/123", "service": "pubsub.googleapis.com" ` ` This response indicates
+              # that the pubsub.googleapis.com API is not enabled. Example of an error that is
+              # returned when attempting to create a Spanner instance in a region that is out
+              # of stock: ` "reason": "STOCKOUT" "domain": "spanner.googleapis.com", "metadata"
+              # : ` "availableRegions": "us-central1,us-east2" ` `
+              # Corresponds to the JSON property `errorInfo`
+              # @return [Google::Apis::ComputeBeta::ErrorInfo]
+              attr_accessor :error_info
+            
+              # Provides links to documentation or for performing an out of band action. For
+              # example, if a quota check failed with an error indicating the calling project
+              # hasn't enabled the accessed service, this can contain a URL pointing directly
+              # to the right place in the developer console to flip the bit.
+              # Corresponds to the JSON property `help`
+              # @return [Google::Apis::ComputeBeta::Help]
+              attr_accessor :help
+            
+              # Provides a localized error message that is safe to return to the user which
+              # can be attached to an RPC error.
+              # Corresponds to the JSON property `localizedMessage`
+              # @return [Google::Apis::ComputeBeta::LocalizedMessage]
+              attr_accessor :localized_message
+            
+              # Additional details for quota exceeded error for resource quota.
+              # Corresponds to the JSON property `quotaInfo`
+              # @return [Google::Apis::ComputeBeta::QuotaExceededInfo]
+              attr_accessor :quota_info
+            
+              def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
+                @error_info = args[:error_info] if args.key?(:error_info)
+                @help = args[:help] if args.key?(:help)
+                @localized_message = args[:localized_message] if args.key?(:localized_message)
+                @quota_info = args[:quota_info] if args.key?(:quota_info)
+              end
+            end
+          end
         end
       end
       
@@ -19322,6 +19513,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @is_reached = args[:is_reached] if args.key?(:is_reached)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerTargetSizePolicy
+        include Google::Apis::Core::Hashable
+      
+        # The mode of target size policy based on which the MIG creates its VMs
+        # individually or all at once.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
         end
       end
       
@@ -30959,6 +31170,12 @@ module Google
         # @return [String]
         attr_accessor :fingerprint
       
+        # Indicate whether igmp query is enabled on the network interface or not. If
+        # enabled, also indicates the version of IGMP supported.
+        # Corresponds to the JSON property `igmpQuery`
+        # @return [String]
+        attr_accessor :igmp_query
+      
         # The prefix length of the primary internal IPv6 range.
         # Corresponds to the JSON property `internalIpv6PrefixLength`
         # @return [Fixnum]
@@ -31078,6 +31295,7 @@ module Google
           @access_configs = args[:access_configs] if args.key?(:access_configs)
           @alias_ip_ranges = args[:alias_ip_ranges] if args.key?(:alias_ip_ranges)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @igmp_query = args[:igmp_query] if args.key?(:igmp_query)
           @internal_ipv6_prefix_length = args[:internal_ipv6_prefix_length] if args.key?(:internal_ipv6_prefix_length)
           @ipv6_access_configs = args[:ipv6_access_configs] if args.key?(:ipv6_access_configs)
           @ipv6_access_type = args[:ipv6_access_type] if args.key?(:ipv6_access_type)

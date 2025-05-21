@@ -2284,6 +2284,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerStatusBulkInstanceOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Error
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Error
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+            class ErrorDetail
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerStatusStateful
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2297,6 +2327,12 @@ module Google
       end
       
       class InstanceGroupManagerStatusVersionTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerTargetSizePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -10431,6 +10467,7 @@ module Google
           collection :dest_fqdns, as: 'destFqdns'
           collection :dest_ip_ranges, as: 'destIpRanges'
           property :dest_network_scope, as: 'destNetworkScope'
+          property :dest_network_type, as: 'destNetworkType'
           collection :dest_region_codes, as: 'destRegionCodes'
           collection :dest_threat_intelligences, as: 'destThreatIntelligences'
           collection :layer4_configs, as: 'layer4Configs', class: Google::Apis::ComputeBeta::FirewallPolicyRuleMatcherLayer4Config, decorator: Google::Apis::ComputeBeta::FirewallPolicyRuleMatcherLayer4Config::Representation
@@ -10439,6 +10476,7 @@ module Google
           collection :src_fqdns, as: 'srcFqdns'
           collection :src_ip_ranges, as: 'srcIpRanges'
           property :src_network_scope, as: 'srcNetworkScope'
+          property :src_network_type, as: 'srcNetworkType'
           collection :src_networks, as: 'srcNetworks'
           collection :src_region_codes, as: 'srcRegionCodes'
           collection :src_secure_tags, as: 'srcSecureTags', class: Google::Apis::ComputeBeta::FirewallPolicyRuleSecureTag, decorator: Google::Apis::ComputeBeta::FirewallPolicyRuleSecureTag::Representation
@@ -12008,6 +12046,8 @@ module Google
       
           collection :target_pools, as: 'targetPools'
           property :target_size, as: 'targetSize'
+          property :target_size_policy, as: 'targetSizePolicy', class: Google::Apis::ComputeBeta::InstanceGroupManagerTargetSizePolicy, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerTargetSizePolicy::Representation
+      
           property :target_stopped_size, as: 'targetStoppedSize'
           property :target_suspended_size, as: 'targetSuspendedSize'
           property :update_policy, as: 'updatePolicy', class: Google::Apis::ComputeBeta::InstanceGroupManagerUpdatePolicy, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerUpdatePolicy::Representation
@@ -12321,6 +12361,8 @@ module Google
           property :all_instances_config, as: 'allInstancesConfig', class: Google::Apis::ComputeBeta::InstanceGroupManagerStatusAllInstancesConfig, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerStatusAllInstancesConfig::Representation
       
           property :autoscaler, as: 'autoscaler'
+          property :bulk_instance_operation, as: 'bulkInstanceOperation', class: Google::Apis::ComputeBeta::InstanceGroupManagerStatusBulkInstanceOperation, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerStatusBulkInstanceOperation::Representation
+      
           property :is_stable, as: 'isStable'
           property :stateful, as: 'stateful', class: Google::Apis::ComputeBeta::InstanceGroupManagerStatusStateful, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerStatusStateful::Representation
       
@@ -12334,6 +12376,57 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :current_revision, as: 'currentRevision'
           property :effective, as: 'effective'
+        end
+      end
+      
+      class InstanceGroupManagerStatusBulkInstanceOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :in_progress, as: 'inProgress'
+          property :last_progress_check, as: 'lastProgressCheck', class: Google::Apis::ComputeBeta::InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck::Representation
+      
+        end
+      end
+      
+      class InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::ComputeBeta::InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck::Error, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck::Error::Representation
+      
+          property :timestamp, as: 'timestamp'
+        end
+        
+        class Error
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :errors, as: 'errors', class: Google::Apis::ComputeBeta::InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck::Error::Error, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck::Error::Error::Representation
+        
+          end
+          
+          class Error
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :code, as: 'code'
+              collection :error_details, as: 'errorDetails', class: Google::Apis::ComputeBeta::InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck::Error::Error::ErrorDetail, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck::Error::Error::ErrorDetail::Representation
+          
+              property :location, as: 'location'
+              property :message, as: 'message'
+            end
+            
+            class ErrorDetail
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :error_info, as: 'errorInfo', class: Google::Apis::ComputeBeta::ErrorInfo, decorator: Google::Apis::ComputeBeta::ErrorInfo::Representation
+            
+                property :help, as: 'help', class: Google::Apis::ComputeBeta::Help, decorator: Google::Apis::ComputeBeta::Help::Representation
+            
+                property :localized_message, as: 'localizedMessage', class: Google::Apis::ComputeBeta::LocalizedMessage, decorator: Google::Apis::ComputeBeta::LocalizedMessage::Representation
+            
+                property :quota_info, as: 'quotaInfo', class: Google::Apis::ComputeBeta::QuotaExceededInfo, decorator: Google::Apis::ComputeBeta::QuotaExceededInfo::Representation
+            
+              end
+            end
+          end
         end
       end
       
@@ -12358,6 +12451,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_reached, as: 'isReached'
+        end
+      end
+      
+      class InstanceGroupManagerTargetSizePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
         end
       end
       
@@ -15367,6 +15467,7 @@ module Google
           collection :alias_ip_ranges, as: 'aliasIpRanges', class: Google::Apis::ComputeBeta::AliasIpRange, decorator: Google::Apis::ComputeBeta::AliasIpRange::Representation
       
           property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :igmp_query, as: 'igmpQuery'
           property :internal_ipv6_prefix_length, as: 'internalIpv6PrefixLength'
           collection :ipv6_access_configs, as: 'ipv6AccessConfigs', class: Google::Apis::ComputeBeta::AccessConfig, decorator: Google::Apis::ComputeBeta::AccessConfig::Representation
       
