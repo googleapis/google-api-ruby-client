@@ -1059,6 +1059,13 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::AddonsConfig]
         attr_accessor :addons_config
       
+        # The list of user specified Kubernetes feature gates. Each string represents
+        # the activation status of a feature gate (e.g. "featureX=true" or "featureX=
+        # false")
+        # Corresponds to the JSON property `alphaClusterFeatureGates`
+        # @return [Array<String>]
+        attr_accessor :alpha_cluster_feature_gates
+      
         # Configuration for returning group information from authenticators.
         # Corresponds to the JSON property `authenticatorGroupsConfig`
         # @return [Google::Apis::ContainerV1beta1::AuthenticatorGroupsConfig]
@@ -1603,6 +1610,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @addons_config = args[:addons_config] if args.key?(:addons_config)
+          @alpha_cluster_feature_gates = args[:alpha_cluster_feature_gates] if args.key?(:alpha_cluster_feature_gates)
           @authenticator_groups_config = args[:authenticator_groups_config] if args.key?(:authenticator_groups_config)
           @autopilot = args[:autopilot] if args.key?(:autopilot)
           @autoscaling = args[:autoscaling] if args.key?(:autoscaling)
