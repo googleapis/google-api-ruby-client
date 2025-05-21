@@ -820,6 +820,72 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CapacityAdviceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CapacityAdviceRequestDistributionPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CapacityAdviceRequestDistributionPolicyZoneConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CapacityAdviceRequestInstanceFlexibilityPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CapacityAdviceRequestInstanceProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CapacityAdviceRequestInstancePropertiesScheduling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CapacityAdviceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CapacityAdviceResponseRecommendation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CapacityAdviceResponseRecommendationScores
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CapacityAdviceResponseRecommendationShard
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ChannelCredentials
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -10526,6 +10592,100 @@ module Google
           property :call_credential_type, as: 'callCredentialType'
           property :from_plugin, as: 'fromPlugin', class: Google::Apis::ComputeAlpha::MetadataCredentialsFromPlugin, decorator: Google::Apis::ComputeAlpha::MetadataCredentialsFromPlugin::Representation
       
+        end
+      end
+      
+      class CapacityAdviceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :distribution_policy, as: 'distributionPolicy', class: Google::Apis::ComputeAlpha::CapacityAdviceRequestDistributionPolicy, decorator: Google::Apis::ComputeAlpha::CapacityAdviceRequestDistributionPolicy::Representation
+      
+          property :instance_flexibility_policy, as: 'instanceFlexibilityPolicy', class: Google::Apis::ComputeAlpha::CapacityAdviceRequestInstanceFlexibilityPolicy, decorator: Google::Apis::ComputeAlpha::CapacityAdviceRequestInstanceFlexibilityPolicy::Representation
+      
+          property :instance_properties, as: 'instanceProperties', class: Google::Apis::ComputeAlpha::CapacityAdviceRequestInstanceProperties, decorator: Google::Apis::ComputeAlpha::CapacityAdviceRequestInstanceProperties::Representation
+      
+        end
+      end
+      
+      class CapacityAdviceRequestDistributionPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_shape, as: 'targetShape'
+          collection :zones, as: 'zones', class: Google::Apis::ComputeAlpha::CapacityAdviceRequestDistributionPolicyZoneConfiguration, decorator: Google::Apis::ComputeAlpha::CapacityAdviceRequestDistributionPolicyZoneConfiguration::Representation
+      
+        end
+      end
+      
+      class CapacityAdviceRequestDistributionPolicyZoneConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class CapacityAdviceRequestInstanceFlexibilityPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :instance_selections, as: 'instanceSelections', class: Google::Apis::ComputeAlpha::CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection, decorator: Google::Apis::ComputeAlpha::CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection::Representation
+      
+        end
+      end
+      
+      class CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :machine_types, as: 'machineTypes'
+        end
+      end
+      
+      class CapacityAdviceRequestInstanceProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scheduling, as: 'scheduling', class: Google::Apis::ComputeAlpha::CapacityAdviceRequestInstancePropertiesScheduling, decorator: Google::Apis::ComputeAlpha::CapacityAdviceRequestInstancePropertiesScheduling::Representation
+      
+        end
+      end
+      
+      class CapacityAdviceRequestInstancePropertiesScheduling
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :provisioning_model, as: 'provisioningModel'
+        end
+      end
+      
+      class CapacityAdviceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :recommendations, as: 'recommendations', class: Google::Apis::ComputeAlpha::CapacityAdviceResponseRecommendation, decorator: Google::Apis::ComputeAlpha::CapacityAdviceResponseRecommendation::Representation
+      
+        end
+      end
+      
+      class CapacityAdviceResponseRecommendation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scores, as: 'scores', class: Google::Apis::ComputeAlpha::CapacityAdviceResponseRecommendationScores, decorator: Google::Apis::ComputeAlpha::CapacityAdviceResponseRecommendationScores::Representation
+      
+          collection :shards, as: 'shards', class: Google::Apis::ComputeAlpha::CapacityAdviceResponseRecommendationShard, decorator: Google::Apis::ComputeAlpha::CapacityAdviceResponseRecommendationShard::Representation
+      
+        end
+      end
+      
+      class CapacityAdviceResponseRecommendationScores
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :obtainability, as: 'obtainability'
+          property :spot_preemption, as: 'spotPreemption'
+        end
+      end
+      
+      class CapacityAdviceResponseRecommendationShard
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_count, as: 'instanceCount'
+          property :machine_type, as: 'machineType'
+          property :provisioning_model, as: 'provisioningModel'
+          property :zone, as: 'zone'
         end
       end
       

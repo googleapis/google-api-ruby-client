@@ -4149,7 +4149,8 @@ module Google
         # be set for Internal Passthrough Network Load Balancers when the haPolicy is
         # enabled, and for External Passthrough Network Load Balancers when the haPolicy
         # fastIpMove is enabled. This field can only be specified when the load
-        # balancing scheme is set to INTERNAL.
+        # balancing scheme is set to INTERNAL, or when the load balancing scheme is set
+        # to EXTERNAL and haPolicy fastIpMove is enabled.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -6756,6 +6757,273 @@ module Google
         def update!(**args)
           @call_credential_type = args[:call_credential_type] if args.key?(:call_credential_type)
           @from_plugin = args[:from_plugin] if args.key?(:from_plugin)
+        end
+      end
+      
+      # A request to provide Assistant Scores. These scores determine VM obtainability
+      # and preemption likelihood.
+      class CapacityAdviceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Policy specifying the distribution of instances across zones within the
+        # requested region.
+        # Corresponds to the JSON property `distributionPolicy`
+        # @return [Google::Apis::ComputeAlpha::CapacityAdviceRequestDistributionPolicy]
+        attr_accessor :distribution_policy
+      
+        # Specification of alternative, flexible instance subsets.
+        # Corresponds to the JSON property `instanceFlexibilityPolicy`
+        # @return [Google::Apis::ComputeAlpha::CapacityAdviceRequestInstanceFlexibilityPolicy]
+        attr_accessor :instance_flexibility_policy
+      
+        # Instance provisining properties.
+        # Corresponds to the JSON property `instanceProperties`
+        # @return [Google::Apis::ComputeAlpha::CapacityAdviceRequestInstanceProperties]
+        attr_accessor :instance_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @distribution_policy = args[:distribution_policy] if args.key?(:distribution_policy)
+          @instance_flexibility_policy = args[:instance_flexibility_policy] if args.key?(:instance_flexibility_policy)
+          @instance_properties = args[:instance_properties] if args.key?(:instance_properties)
+        end
+      end
+      
+      # 
+      class CapacityAdviceRequestDistributionPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The distribution shape to which the group converges.
+        # Corresponds to the JSON property `targetShape`
+        # @return [String]
+        attr_accessor :target_shape
+      
+        # Zones where Capacity Advisor looks for capacity.
+        # Corresponds to the JSON property `zones`
+        # @return [Array<Google::Apis::ComputeAlpha::CapacityAdviceRequestDistributionPolicyZoneConfiguration>]
+        attr_accessor :zones
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_shape = args[:target_shape] if args.key?(:target_shape)
+          @zones = args[:zones] if args.key?(:zones)
+        end
+      end
+      
+      # 
+      class CapacityAdviceRequestDistributionPolicyZoneConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # The URL of the zone.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # Specification of alternative, flexible instance subsets.
+      class CapacityAdviceRequestInstanceFlexibilityPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Named instance selections configure properties. The key is an arbitrary,
+        # unique RFC1035 string that identifies the instance selection.
+        # Corresponds to the JSON property `instanceSelections`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection>]
+        attr_accessor :instance_selections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_selections = args[:instance_selections] if args.key?(:instance_selections)
+        end
+      end
+      
+      # Machine specification.
+      class CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection
+        include Google::Apis::Core::Hashable
+      
+        # Full machine-type names, e.g. "n1-standard-16".
+        # Corresponds to the JSON property `machineTypes`
+        # @return [Array<String>]
+        attr_accessor :machine_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @machine_types = args[:machine_types] if args.key?(:machine_types)
+        end
+      end
+      
+      # Instance provisining properties.
+      class CapacityAdviceRequestInstanceProperties
+        include Google::Apis::Core::Hashable
+      
+        # Defines the instance scheduling options.
+        # Corresponds to the JSON property `scheduling`
+        # @return [Google::Apis::ComputeAlpha::CapacityAdviceRequestInstancePropertiesScheduling]
+        attr_accessor :scheduling
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scheduling = args[:scheduling] if args.key?(:scheduling)
+        end
+      end
+      
+      # Defines the instance scheduling options.
+      class CapacityAdviceRequestInstancePropertiesScheduling
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the provisioning model of the instance.
+        # Corresponds to the JSON property `provisioningModel`
+        # @return [String]
+        attr_accessor :provisioning_model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
+        end
+      end
+      
+      # A response contains multiple scoring recommendations.
+      class CapacityAdviceResponse
+        include Google::Apis::Core::Hashable
+      
+        # Initially the API will provide one recommendation which balances the
+        # individual scores according to Google's preference.
+        # Corresponds to the JSON property `recommendations`
+        # @return [Array<Google::Apis::ComputeAlpha::CapacityAdviceResponseRecommendation>]
+        attr_accessor :recommendations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @recommendations = args[:recommendations] if args.key?(:recommendations)
+        end
+      end
+      
+      # 
+      class CapacityAdviceResponseRecommendation
+        include Google::Apis::Core::Hashable
+      
+        # The Scores message groups information about a shard of capacity.
+        # Corresponds to the JSON property `scores`
+        # @return [Google::Apis::ComputeAlpha::CapacityAdviceResponseRecommendationScores]
+        attr_accessor :scores
+      
+        # 
+        # Corresponds to the JSON property `shards`
+        # @return [Array<Google::Apis::ComputeAlpha::CapacityAdviceResponseRecommendationShard>]
+        attr_accessor :shards
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scores = args[:scores] if args.key?(:scores)
+          @shards = args[:shards] if args.key?(:shards)
+        end
+      end
+      
+      # The Scores message groups information about a shard of capacity.
+      class CapacityAdviceResponseRecommendationScores
+        include Google::Apis::Core::Hashable
+      
+        # The obtainability score indicates the likelihood of successfully obtaining (
+        # provisioning) the requested number of VMs. The score range is 0.0 through 1.0.
+        # Higher is better.
+        # Corresponds to the JSON property `obtainability`
+        # @return [Float]
+        attr_accessor :obtainability
+      
+        # The preemption score indicates the likelihood that your Spot VMs is preempted.
+        # For more information about the preemption process, see Preemption of Spot VMs.
+        # The score range is 0.0 through 1.0. Higher is better.
+        # Corresponds to the JSON property `spotPreemption`
+        # @return [Float]
+        attr_accessor :spot_preemption
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @obtainability = args[:obtainability] if args.key?(:obtainability)
+          @spot_preemption = args[:spot_preemption] if args.key?(:spot_preemption)
+        end
+      end
+      
+      # Shards represent blocks of uniform capacity in recommendations. Each shard is
+      # for a single zone, single instance selection, and a single machine shape. Each
+      # shard defines a size expressed as the number of VMs.
+      class CapacityAdviceResponseRecommendationShard
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `instanceCount`
+        # @return [Fixnum]
+        attr_accessor :instance_count
+      
+        # The machine type corresponds to the instance selection in the request.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        # Provisioning model of the recommended capacity.
+        # Corresponds to the JSON property `provisioningModel`
+        # @return [String]
+        attr_accessor :provisioning_model
+      
+        # The zone name for this shard.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_count = args[:instance_count] if args.key?(:instance_count)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
+          @zone = args[:zone] if args.key?(:zone)
         end
       end
       
@@ -20211,7 +20479,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :target_size
       
-        # Configures how target size of MIG is achieved.
+        # The policy that specifies how the MIG creates its VMs to achieve the target
+        # size.
         # Corresponds to the JSON property `targetSizePolicy`
         # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerTargetSizePolicy]
         attr_accessor :target_size_policy
@@ -21578,7 +21847,8 @@ module Google
         # @return [String]
         attr_accessor :autoscaler
       
-        # [Output Only] Status of bulk instance operation.
+        # Bulk instance operation is the creation of VMs in a MIG when the
+        # targetSizePolicy.mode is set to BULK.
         # Corresponds to the JSON property `bulkInstanceOperation`
         # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerStatusBulkInstanceOperation]
         attr_accessor :bulk_instance_operation
@@ -21648,7 +21918,8 @@ module Google
         end
       end
       
-      # 
+      # Bulk instance operation is the creation of VMs in a MIG when the
+      # targetSizePolicy.mode is set to BULK.
       class InstanceGroupManagerStatusBulkInstanceOperation
         include Google::Apis::Core::Hashable
       
@@ -21658,7 +21929,8 @@ module Google
         attr_accessor :in_progress
         alias_method :in_progress?, :in_progress
       
-        # [Output Only] Information from last progress check of bulk instance operation.
+        # [Output Only] Information from the last progress check of bulk instance
+        # operation.
         # Corresponds to the JSON property `lastProgressCheck`
         # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck]
         attr_accessor :last_progress_check
@@ -21678,7 +21950,7 @@ module Google
       class InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Contains errors encountered during bulk instance operation.
+        # [Output Only] Errors encountered during bulk instance operation.
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck::Error]
         attr_accessor :error
@@ -21699,7 +21971,7 @@ module Google
           @timestamp = args[:timestamp] if args.key?(:timestamp)
         end
         
-        # [Output Only] Contains errors encountered during bulk instance operation.
+        # [Output Only] Errors encountered during bulk instance operation.
         class Error
           include Google::Apis::Core::Hashable
         
@@ -21900,7 +22172,8 @@ module Google
       class InstanceGroupManagerTargetSizePolicy
         include Google::Apis::Core::Hashable
       
-        # Mode in which operations on size are processed.
+        # The mode of target size policy based on which the MIG creates its VMs
+        # individually or all at once.
         # Corresponds to the JSON property `mode`
         # @return [String]
         attr_accessor :mode
