@@ -1,5 +1,11 @@
 # Release History
 
+### 0.18.0 (2025-05-22)
+
+#### Features
+
+* Restart & delete resumable upload ([#21896](https://github.com/googleapis/google-api-ruby-client/issues/21896)) 
+
 ### 0.17.0 (2025-04-30)
 
 #### Features
