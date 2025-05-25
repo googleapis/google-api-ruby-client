@@ -313,7 +313,7 @@ module Google
       class SignSshPublicKeyRequest
         include Google::Apis::Core::Hashable
       
-        # The SSH public key to sign.
+        # Required. The SSH public key to sign.
         # Corresponds to the JSON property `sshPublicKey`
         # @return [String]
         attr_accessor :ssh_public_key
