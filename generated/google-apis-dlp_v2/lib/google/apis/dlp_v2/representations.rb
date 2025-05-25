@@ -2745,7 +2745,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_profile_resource_name, as: 'dataProfileResourceName'
+          property :data_source_type, as: 'dataSourceType', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DataSourceType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DataSourceType::Representation
+      
           property :finding_id, as: 'findingId'
+          property :full_resource_name, as: 'fullResourceName'
           property :infotype, as: 'infotype', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType::Representation
       
           property :location, as: 'location', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DataProfileFindingLocation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DataProfileFindingLocation::Representation

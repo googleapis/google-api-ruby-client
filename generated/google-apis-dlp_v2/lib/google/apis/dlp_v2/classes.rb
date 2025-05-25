@@ -2551,10 +2551,21 @@ module Google
         # @return [String]
         attr_accessor :data_profile_resource_name
       
+        # Message used to identify the type of resource being profiled.
+        # Corresponds to the JSON property `dataSourceType`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DataSourceType]
+        attr_accessor :data_source_type
+      
         # A unique identifier for the finding.
         # Corresponds to the JSON property `findingId`
         # @return [String]
         attr_accessor :finding_id
+      
+        # The [full resource name](https://cloud.google.com/apis/design/resource_names#
+        # full_resource_name) of the resource profiled for this finding.
+        # Corresponds to the JSON property `fullResourceName`
+        # @return [String]
+        attr_accessor :full_resource_name
       
         # Type of information detected by the API.
         # Corresponds to the JSON property `infotype`
@@ -2595,7 +2606,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_profile_resource_name = args[:data_profile_resource_name] if args.key?(:data_profile_resource_name)
+          @data_source_type = args[:data_source_type] if args.key?(:data_source_type)
           @finding_id = args[:finding_id] if args.key?(:finding_id)
+          @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
           @infotype = args[:infotype] if args.key?(:infotype)
           @location = args[:location] if args.key?(:location)
           @quote = args[:quote] if args.key?(:quote)
