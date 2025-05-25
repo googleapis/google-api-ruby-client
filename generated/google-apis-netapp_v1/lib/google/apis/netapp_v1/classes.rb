@@ -768,42 +768,42 @@ module Google
       class HybridPeeringDetails
         include Google::Apis::Core::Hashable
       
-        # Optional. Copy-paste-able commands to be used on user's ONTAP to accept
+        # Output only. Copy-paste-able commands to be used on user's ONTAP to accept
         # peering requests.
         # Corresponds to the JSON property `command`
         # @return [String]
         attr_accessor :command
       
-        # Optional. Expiration time for the peering command to be executed on user's
+        # Output only. Expiration time for the peering command to be executed on user's
         # ONTAP.
         # Corresponds to the JSON property `commandExpiryTime`
         # @return [String]
         attr_accessor :command_expiry_time
       
-        # Optional. Temporary passphrase generated to accept cluster peering command.
+        # Output only. Temporary passphrase generated to accept cluster peering command.
         # Corresponds to the JSON property `passphrase`
         # @return [String]
         attr_accessor :passphrase
       
-        # Optional. Name of the user's local source cluster to be peered with the
+        # Output only. Name of the user's local source cluster to be peered with the
         # destination cluster.
         # Corresponds to the JSON property `peerClusterName`
         # @return [String]
         attr_accessor :peer_cluster_name
       
-        # Optional. Name of the user's local source vserver svm to be peered with the
+        # Output only. Name of the user's local source vserver svm to be peered with the
         # destination vserver svm.
         # Corresponds to the JSON property `peerSvmName`
         # @return [String]
         attr_accessor :peer_svm_name
       
-        # Optional. Name of the user's local source volume to be peered with the
+        # Output only. Name of the user's local source volume to be peered with the
         # destination volume.
         # Corresponds to the JSON property `peerVolumeName`
         # @return [String]
         attr_accessor :peer_volume_name
       
-        # Optional. IP address of the subnet.
+        # Output only. IP address of the subnet.
         # Corresponds to the JSON property `subnetIp`
         # @return [String]
         attr_accessor :subnet_ip
