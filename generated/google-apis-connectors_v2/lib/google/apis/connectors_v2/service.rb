@@ -570,6 +570,8 @@ module Google
         #   Page token value if available from a previous request.
         # @param [Array<String>, String] sort_by
         #   List of 'sort_by' columns to use when returning the results.
+        # @param [Array<String>, String] sort_order
+        #   List of 'sort_order' columns to use when returning the results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -587,7 +589,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_connection_entity_type_entities(parent, conditions: nil, page_size: nil, page_token: nil, sort_by: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_connection_entity_type_entities(parent, conditions: nil, page_size: nil, page_token: nil, sort_by: nil, sort_order: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/entities', options)
           command.response_representation = Google::Apis::ConnectorsV2::ListEntitiesResponse::Representation
           command.response_class = Google::Apis::ConnectorsV2::ListEntitiesResponse
@@ -596,6 +598,7 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['sortBy'] = sort_by unless sort_by.nil?
+          command.query['sortOrder'] = sort_order unless sort_order.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
