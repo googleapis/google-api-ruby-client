@@ -5498,6 +5498,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :exclude_html_ids
       
+        # Optional. Contains the required structure types to extract from the document.
+        # Supported values: * `shareholder-structure`
+        # Corresponds to the JSON property `structuredContentTypes`
+        # @return [Array<String>]
+        attr_accessor :structured_content_types
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5509,6 +5515,7 @@ module Google
           @exclude_html_classes = args[:exclude_html_classes] if args.key?(:exclude_html_classes)
           @exclude_html_elements = args[:exclude_html_elements] if args.key?(:exclude_html_elements)
           @exclude_html_ids = args[:exclude_html_ids] if args.key?(:exclude_html_ids)
+          @structured_content_types = args[:structured_content_types] if args.key?(:structured_content_types)
         end
       end
       
@@ -5660,6 +5667,15 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Optional. Feature config for the engine to opt in or opt out of features.
+        # Supported keys: * `*`: all features, if it's present, all other feature state
+        # settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-
+        # gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-
+        # org-chart` * `bi-directional-audio` * `feedback`
+        # Corresponds to the JSON property `features`
+        # @return [Hash<String,String>]
+        attr_accessor :features
+      
         # Optional. The industry vertical that the engine registers. The restriction of
         # the Engine industry vertical is based on DataStore: Vertical on Engine has to
         # match vertical of the DataStore linked to the engine.
@@ -5709,6 +5725,7 @@ module Google
           @data_store_ids = args[:data_store_ids] if args.key?(:data_store_ids)
           @disable_analytics = args[:disable_analytics] if args.key?(:disable_analytics)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @features = args[:features] if args.key?(:features)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
           @media_recommendation_engine_config = args[:media_recommendation_engine_config] if args.key?(:media_recommendation_engine_config)
           @name = args[:name] if args.key?(:name)
@@ -11631,15 +11648,6 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Optional. The full resource name of the User, in the format of `projects/`
-        # project`/locations/`location`/userStores/`user_store`/users/`user_id``. This
-        # field must be a UTF-8 encoded string with a length limit of 2048 characters.
-        # If the user field is empty, it's indicating the user has not logged in yet and
-        # no User entity is created.
-        # Corresponds to the JSON property `user`
-        # @return [String]
-        attr_accessor :user
-      
         # Required. Immutable. The user principal of the User, could be email address or
         # other prinical identifier. This field is immutable. Admin assign licenses
         # based on the user principal.
@@ -11664,7 +11672,6 @@ module Google
           @license_assignment_state = args[:license_assignment_state] if args.key?(:license_assignment_state)
           @license_config = args[:license_config] if args.key?(:license_config)
           @update_time = args[:update_time] if args.key?(:update_time)
-          @user = args[:user] if args.key?(:user)
           @user_principal = args[:user_principal] if args.key?(:user_principal)
           @user_profile = args[:user_profile] if args.key?(:user_profile)
         end
@@ -13048,7 +13055,7 @@ module Google
         attr_accessor :errors
       
         # The number of documents extracted from connector source, ready to be ingested
-        # to UCS.
+        # to VAIS.
         # Corresponds to the JSON property `extractedRecordCount`
         # @return [Fixnum]
         attr_accessor :extracted_record_count
@@ -13062,6 +13069,12 @@ module Google
         # Corresponds to the JSON property `progress`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRunProgress]
         attr_accessor :progress
+      
+        # The number of documents scheduled to be crawled/extracted from connector
+        # source. This only applies to third party connectors.
+        # Corresponds to the JSON property `scheduledRecordCount`
+        # @return [Fixnum]
+        attr_accessor :scheduled_record_count
       
         # The number of requests sent to 3p API.
         # Corresponds to the JSON property `sourceApiRequestCount`
@@ -13102,6 +13115,7 @@ module Google
           @extracted_record_count = args[:extracted_record_count] if args.key?(:extracted_record_count)
           @indexed_record_count = args[:indexed_record_count] if args.key?(:indexed_record_count)
           @progress = args[:progress] if args.key?(:progress)
+          @scheduled_record_count = args[:scheduled_record_count] if args.key?(:scheduled_record_count)
           @source_api_request_count = args[:source_api_request_count] if args.key?(:source_api_request_count)
           @state = args[:state] if args.key?(:state)
           @state_update_time = args[:state_update_time] if args.key?(:state_update_time)
@@ -14852,6 +14866,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :exclude_html_ids
       
+        # Optional. Contains the required structure types to extract from the document.
+        # Supported values: * `shareholder-structure`
+        # Corresponds to the JSON property `structuredContentTypes`
+        # @return [Array<String>]
+        attr_accessor :structured_content_types
+      
         def initialize(**args)
            update!(**args)
         end
@@ -14863,6 +14883,7 @@ module Google
           @exclude_html_classes = args[:exclude_html_classes] if args.key?(:exclude_html_classes)
           @exclude_html_elements = args[:exclude_html_elements] if args.key?(:exclude_html_elements)
           @exclude_html_ids = args[:exclude_html_ids] if args.key?(:exclude_html_ids)
+          @structured_content_types = args[:structured_content_types] if args.key?(:structured_content_types)
         end
       end
       
@@ -14982,6 +15003,15 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Optional. Feature config for the engine to opt in or opt out of features.
+        # Supported keys: * `*`: all features, if it's present, all other feature state
+        # settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-
+        # gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-
+        # org-chart` * `bi-directional-audio` * `feedback`
+        # Corresponds to the JSON property `features`
+        # @return [Hash<String,String>]
+        attr_accessor :features
+      
         # Optional. The industry vertical that the engine registers. The restriction of
         # the Engine industry vertical is based on DataStore: Vertical on Engine has to
         # match vertical of the DataStore linked to the engine.
@@ -15041,6 +15071,7 @@ module Google
           @data_store_ids = args[:data_store_ids] if args.key?(:data_store_ids)
           @disable_analytics = args[:disable_analytics] if args.key?(:disable_analytics)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @features = args[:features] if args.key?(:features)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
           @media_recommendation_engine_config = args[:media_recommendation_engine_config] if args.key?(:media_recommendation_engine_config)
           @name = args[:name] if args.key?(:name)
@@ -15350,6 +15381,12 @@ module Google
         # @return [String]
         attr_accessor :data_state
       
+        # Output only. The timestamp when the latest successful training finished. Only
+        # applicable on Media Recommendation engines.
+        # Corresponds to the JSON property `lastTrainTime`
+        # @return [String]
+        attr_accessor :last_train_time
+      
         # Output only. The timestamp when the latest successful tune finished. Only
         # applicable on Media Recommendation engines.
         # Corresponds to the JSON property `lastTuneTime`
@@ -15378,6 +15415,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_state = args[:data_state] if args.key?(:data_state)
+          @last_train_time = args[:last_train_time] if args.key?(:last_train_time)
           @last_tune_time = args[:last_tune_time] if args.key?(:last_tune_time)
           @serving_state = args[:serving_state] if args.key?(:serving_state)
           @tuning_operation = args[:tuning_operation] if args.key?(:tuning_operation)
@@ -19456,15 +19494,6 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Optional. The full resource name of the User, in the format of `projects/`
-        # project`/locations/`location`/userStores/`user_store`/users/`user_id``. This
-        # field must be a UTF-8 encoded string with a length limit of 2048 characters.
-        # If the user field is empty, it's indicating the user has not logged in yet and
-        # no User entity is created.
-        # Corresponds to the JSON property `user`
-        # @return [String]
-        attr_accessor :user
-      
         # Required. Immutable. The user principal of the User, could be email address or
         # other prinical identifier. This field is immutable. Admin assign licenses
         # based on the user principal.
@@ -19489,7 +19518,6 @@ module Google
           @license_assignment_state = args[:license_assignment_state] if args.key?(:license_assignment_state)
           @license_config = args[:license_config] if args.key?(:license_config)
           @update_time = args[:update_time] if args.key?(:update_time)
-          @user = args[:user] if args.key?(:user)
           @user_principal = args[:user_principal] if args.key?(:user_principal)
           @user_profile = args[:user_profile] if args.key?(:user_profile)
         end
@@ -20912,6 +20940,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :exclude_html_ids
       
+        # Optional. Contains the required structure types to extract from the document.
+        # Supported values: * `shareholder-structure`
+        # Corresponds to the JSON property `structuredContentTypes`
+        # @return [Array<String>]
+        attr_accessor :structured_content_types
+      
         def initialize(**args)
            update!(**args)
         end
@@ -20923,6 +20957,7 @@ module Google
           @exclude_html_classes = args[:exclude_html_classes] if args.key?(:exclude_html_classes)
           @exclude_html_elements = args[:exclude_html_elements] if args.key?(:exclude_html_elements)
           @exclude_html_ids = args[:exclude_html_ids] if args.key?(:exclude_html_ids)
+          @structured_content_types = args[:structured_content_types] if args.key?(:structured_content_types)
         end
       end
       
@@ -21042,6 +21077,15 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Optional. Feature config for the engine to opt in or opt out of features.
+        # Supported keys: * `*`: all features, if it's present, all other feature state
+        # settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-
+        # gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-
+        # org-chart` * `bi-directional-audio` * `feedback`
+        # Corresponds to the JSON property `features`
+        # @return [Hash<String,String>]
+        attr_accessor :features
+      
         # Optional. The industry vertical that the engine registers. The restriction of
         # the Engine industry vertical is based on DataStore: Vertical on Engine has to
         # match vertical of the DataStore linked to the engine.
@@ -21091,6 +21135,7 @@ module Google
           @data_store_ids = args[:data_store_ids] if args.key?(:data_store_ids)
           @disable_analytics = args[:disable_analytics] if args.key?(:disable_analytics)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @features = args[:features] if args.key?(:features)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
           @media_recommendation_engine_config = args[:media_recommendation_engine_config] if args.key?(:media_recommendation_engine_config)
           @name = args[:name] if args.key?(:name)
