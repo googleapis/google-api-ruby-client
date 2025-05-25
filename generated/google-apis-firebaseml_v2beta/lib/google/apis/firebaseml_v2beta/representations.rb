@@ -28,6 +28,54 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1ApiAuth
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ApiAuthApiKeyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1AuthConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1AuthConfigApiKeyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1AuthConfigGoogleServiceAccountConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1AuthConfigHttpBasicAuthConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1AuthConfigOauthConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1AuthConfigOidcConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1Blob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -89,6 +137,24 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1ExecutableCode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ExternalApi
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ExternalApiElasticSearchParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ExternalApiSimpleSearchParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -388,6 +454,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1VertexAiSearchDataStoreSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1VertexRagStore
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -430,6 +502,79 @@ module Google
           property :day, as: 'day'
           property :month, as: 'month'
           property :year, as: 'year'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ApiAuth
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_key_config, as: 'apiKeyConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ApiAuthApiKeyConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ApiAuthApiKeyConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ApiAuthApiKeyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_key_secret_version, as: 'apiKeySecretVersion'
+          property :api_key_string, as: 'apiKeyString'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1AuthConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_key_config, as: 'apiKeyConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AuthConfigApiKeyConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AuthConfigApiKeyConfig::Representation
+      
+          property :auth_type, as: 'authType'
+          property :google_service_account_config, as: 'googleServiceAccountConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AuthConfigGoogleServiceAccountConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AuthConfigGoogleServiceAccountConfig::Representation
+      
+          property :http_basic_auth_config, as: 'httpBasicAuthConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AuthConfigHttpBasicAuthConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AuthConfigHttpBasicAuthConfig::Representation
+      
+          property :oauth_config, as: 'oauthConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AuthConfigOauthConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AuthConfigOauthConfig::Representation
+      
+          property :oidc_config, as: 'oidcConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AuthConfigOidcConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AuthConfigOidcConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1AuthConfigApiKeyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_key_secret, as: 'apiKeySecret'
+          property :api_key_string, as: 'apiKeyString'
+          property :http_element_location, as: 'httpElementLocation'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1AuthConfigGoogleServiceAccountConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_account, as: 'serviceAccount'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1AuthConfigHttpBasicAuthConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :credential_secret, as: 'credentialSecret'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1AuthConfigOauthConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_token, as: 'accessToken'
+          property :service_account, as: 'serviceAccount'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1AuthConfigOidcConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id_token, as: 'idToken'
+          property :service_account, as: 'serviceAccount'
         end
       end
       
@@ -548,6 +693,37 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1ExternalApi
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_auth, as: 'apiAuth', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ApiAuth, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ApiAuth::Representation
+      
+          property :api_spec, as: 'apiSpec'
+          property :auth_config, as: 'authConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AuthConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AuthConfig::Representation
+      
+          property :elastic_search_params, as: 'elasticSearchParams', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ExternalApiElasticSearchParams, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ExternalApiElasticSearchParams::Representation
+      
+          property :endpoint, as: 'endpoint'
+          property :simple_search_params, as: 'simpleSearchParams', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ExternalApiSimpleSearchParams, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ExternalApiSimpleSearchParams::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ExternalApiElasticSearchParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :index, as: 'index'
+          property :num_hits, as: 'numHits'
+          property :search_template, as: 'searchTemplate'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ExternalApiSimpleSearchParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1FileData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -581,8 +757,10 @@ module Google
           property :name, as: 'name'
           property :parameters, as: 'parameters', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema::Representation
       
+          property :parameters_json_schema, as: 'parametersJsonSchema'
           property :response, as: 'response', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema::Representation
       
+          property :response_json_schema, as: 'responseJsonSchema'
         end
       end
       
@@ -666,6 +844,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio_timestamp, as: 'audioTimestamp'
           property :candidate_count, as: 'candidateCount'
+          property :enable_affective_dialog, as: 'enableAffectiveDialog'
           property :frequency_penalty, as: 'frequencyPenalty'
           property :logprobs, as: 'logprobs'
           property :max_output_tokens, as: 'maxOutputTokens'
@@ -673,6 +852,7 @@ module Google
           property :model_config, as: 'modelConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfigModelConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfigModelConfig::Representation
       
           property :presence_penalty, as: 'presencePenalty'
+          property :response_json_schema, as: 'responseJsonSchema'
           property :response_logprobs, as: 'responseLogprobs'
           property :response_mime_type, as: 'responseMimeType'
           collection :response_modalities, as: 'responseModalities'
@@ -933,6 +1113,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disable_attribution, as: 'disableAttribution'
+          property :external_api, as: 'externalApi', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ExternalApi, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ExternalApi::Representation
+      
           property :vertex_ai_search, as: 'vertexAiSearch', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VertexAiSearch, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VertexAiSearch::Representation
       
           property :vertex_rag_store, as: 'vertexRagStore', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VertexRagStore, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VertexRagStore::Representation
@@ -1082,10 +1264,20 @@ module Google
       class GoogleCloudAiplatformV1beta1VertexAiSearch
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_store_specs, as: 'dataStoreSpecs', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VertexAiSearchDataStoreSpec, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VertexAiSearchDataStoreSpec::Representation
+      
           property :datastore, as: 'datastore'
           property :engine, as: 'engine'
           property :filter, as: 'filter'
           property :max_results, as: 'maxResults'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1VertexAiSearchDataStoreSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_store, as: 'dataStore'
+          property :filter, as: 'filter'
         end
       end
       
