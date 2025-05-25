@@ -1277,7 +1277,8 @@ module Google
         # deletes tags not included in the input tag list. `ReconcileTags` returns a
         # long-running operation resource that can be queried with Operations.
         # GetOperation to return ReconcileTagsMetadata and a ReconcileTagsResponse
-        # message.
+        # message. Note: SearchCatalog might return stale search results for up to 24
+        # hours after the `ReconcileTags` operation completes.
         # @param [String] parent
         #   Required. Name of Entry to be tagged.
         # @param [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ReconcileTagsRequest] google_cloud_datacatalog_v1_reconcile_tags_request_object
