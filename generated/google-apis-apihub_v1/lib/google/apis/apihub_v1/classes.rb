@@ -1467,9 +1467,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. A URI to the runtime resource. This URI can be used to manage the
-        # resource. For example, if the runtime resource is of type APIGEE_PROXY, then
-        # this field will contain the URI to the management UI of the proxy.
+        # Required. A uri that uniquely identfies the deployment within a particular
+        # gateway. For example, if the runtime resource is of type APIGEE_PROXY, then
+        # this field will be a combination of org, proxy name and environment.
         # Corresponds to the JSON property `resourceUri`
         # @return [String]
         attr_accessor :resource_uri
