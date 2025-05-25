@@ -544,6 +544,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1DataScanCatalogPublishingStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1DataScanEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1853,6 +1859,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connection, as: 'connection'
           property :location, as: 'location'
+          property :project, as: 'project'
           property :table_type, as: 'tableType'
         end
       end
@@ -2032,6 +2039,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :column, as: 'column'
+          collection :dimensions, as: 'dimensions', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityDimensionResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityDimensionResult::Representation
+      
+          property :passed, as: 'passed'
           property :score, as: 'score'
         end
       end
@@ -2056,6 +2066,8 @@ module Google
       class GoogleCloudDataplexV1DataQualityResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :catalog_publishing_status, as: 'catalogPublishingStatus', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanCatalogPublishingStatus, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanCatalogPublishingStatus::Representation
+      
           collection :columns, as: 'columns', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityColumnResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityColumnResult::Representation
       
           collection :dimensions, as: 'dimensions', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityDimensionResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityDimensionResult::Representation
@@ -2224,6 +2236,7 @@ module Google
       class GoogleCloudDataplexV1DataQualitySpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :catalog_publishing_enabled, as: 'catalogPublishingEnabled'
           property :post_scan_actions, as: 'postScanActions', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActions, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActions::Representation
       
           property :row_filter, as: 'rowFilter'
@@ -2323,9 +2336,18 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1DataScanCatalogPublishingStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
+        end
+      end
+      
       class GoogleCloudDataplexV1DataScanEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :catalog_publishing_status, as: 'catalogPublishingStatus', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanCatalogPublishingStatus, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanCatalogPublishingStatus::Representation
+      
           property :create_time, as: 'createTime'
           property :data_profile, as: 'dataProfile', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataProfileResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataProfileResult::Representation
       

@@ -3617,13 +3617,13 @@ module Google
         # Creates a new Glossary resource.
         # @param [String] parent
         #   Required. The parent resource where this Glossary will be created. Format:
-        #   projects/`projectId`/locations/`locationId` where locationId refers to a GCP
-        #   region.
+        #   projects/`project_id_or_number`/locations/`location_id` where location_id
+        #   refers to a GCP region.
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1Glossary] google_cloud_dataplex_v1_glossary_object
         # @param [String] glossary_id
         #   Required. Glossary ID: Glossary identifier.
         # @param [Boolean] validate_only
-        #   Optional. Validates the request without actually creating the glossary.
+        #   Optional. Validates the request without actually creating the Glossary.
         #   Default: false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3656,11 +3656,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a Glossary resource. All the categories and terms within the glossary
-        # must be deleted before a glossary can be deleted.
+        # Deletes a Glossary resource. All the categories and terms within the Glossary
+        # must be deleted before the Glossary can be deleted.
         # @param [String] name
-        #   Required. The name of the Glossary to delete. Format: projects/`project`/
-        #   locations/`location`/glossary/`glossary`
+        #   Required. The name of the Glossary to delete. Format: projects/`
+        #   project_id_or_number`/locations/`location_id`/glossaries/`glossary_id`
         # @param [String] etag
         #   Optional. The etag of the Glossary. If this is provided, it must match the
         #   server's etag. If the etag is provided and does not match the server-computed
@@ -3693,10 +3693,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a specified Glossary resource.
+        # Gets a Glossary resource.
         # @param [String] name
-        #   Required. The name of the Glossary to retrieve. Format: projects/`project`/
-        #   locations/`location`/glossaries/`glossary`
+        #   Required. The name of the Glossary to retrieve. Format: projects/`
+        #   project_id_or_number`/locations/`location_id`/glossaries/`glossary_id`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3771,18 +3771,20 @@ module Google
         
         # Lists Glossary resources in a project and location.
         # @param [String] parent
-        #   Required. The parent, which has this collection of glossaries. Format:
-        #   projects/`project`/locations/`location` Location is the GCP region.
+        #   Required. The parent, which has this collection of Glossaries. Format:
+        #   projects/`project_id_or_number`/locations/`location_id` where location_id
+        #   refers to a GCP region.
         # @param [String] filter
-        #   Optional. Filter expression that filters glossaries listed in the response.
-        #   Initially, no filter is supported.
+        #   Optional. Filter expression that filters Glossaries listed in the response.
+        #   Filters on proto fields of Glossary are supported. Examples of using a filter
+        #   are: - display_name="my-glossary" - categoryCount=1 - termCount=0
         # @param [String] order_by
-        #   Optional. Order by expression that orders glossaries listed in the response.
+        #   Optional. Order by expression that orders Glossaries listed in the response.
         #   Order by fields are: name or create_time for the result. If not specified, the
         #   ordering is undefined.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of glossaries to return. The service may return
-        #   fewer than this value. If unspecified, at most 50 glossaries will be returned.
+        #   Optional. The maximum number of Glossaries to return. The service may return
+        #   fewer than this value. If unspecified, at most 50 Glossaries will be returned.
         #   The maximum value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
         #   Optional. A page token, received from a previous ListGlossaries call. Provide
@@ -3822,12 +3824,12 @@ module Google
         # Updates a Glossary resource.
         # @param [String] name
         #   Output only. Identifier. The resource name of the Glossary. Format: projects/`
-        #   projectId`/locations/`locationId`/glossaries/`glossaryId`
+        #   project_id_or_number`/locations/`location_id`/glossaries/`glossary_id`
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1Glossary] google_cloud_dataplex_v1_glossary_object
         # @param [String] update_mask
         #   Required. The list of fields to update.
         # @param [Boolean] validate_only
-        #   Optional. Validates the request without actually updating the glossary.
+        #   Optional. Validates the request without actually updating the Glossary.
         #   Default: false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3936,15 +3938,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # GlossaryCategory APIs are CCFE passthrough APIs. Creates a new
-        # GlossaryCategory resource.
+        # Creates a new GlossaryCategory resource.
         # @param [String] parent
         #   Required. The parent resource where this GlossaryCategory will be created.
-        #   Format: projects/`projectId`/locations/`locationId`/glossaries/`glossaryId`
-        #   where locationId refers to a GCP region.
+        #   Format: projects/`project_id_or_number`/locations/`location_id`/glossaries/`
+        #   glossary_id` where locationId refers to a GCP region.
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryCategory] google_cloud_dataplex_v1_glossary_category_object
         # @param [String] category_id
-        #   Required. Category ID: GlossaryCategory identifier.
+        #   Required. GlossaryCategory identifier.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3975,13 +3976,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a GlossaryCategory resource. All the categories and terms nested
-        # directly under the category will be moved one level up to the parent in the
-        # hierarchy.
+        # Deletes a GlossaryCategory resource. All the GlossaryCategories and
+        # GlossaryTerms nested directly under the specified GlossaryCategory will be
+        # moved one level up to the parent in the hierarchy.
         # @param [String] name
         #   Required. The name of the GlossaryCategory to delete. Format: projects/`
-        #   project`/locations/`location`/glossary/`glossary`/categories/`
-        #   glossary_category`
+        #   project_id_or_number`/locations/`location_id`/glossaries/`glossary_id`/
+        #   categories/`category_id`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4009,11 +4010,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a specified GlossaryCategory resource.
+        # Gets a GlossaryCategory resource.
         # @param [String] name
         #   Required. The name of the GlossaryCategory to retrieve. Format: projects/`
-        #   project`/locations/`location`/glossaries/`glossary`/categories/`
-        #   glossary_category`
+        #   project_id_or_number`/locations/`location_id`/glossaries/`glossary_id`/
+        #   categories/`category_id`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4086,25 +4087,28 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists GlossaryCategory resources in a glossary.
+        # Lists GlossaryCategory resources in a Glossary.
         # @param [String] parent
-        #   Required. The parent, which has this collection of categories. Format:
-        #   projects/`project`/locations/`location`/glossaries/`glossary` Location is the
-        #   GCP region.
+        #   Required. The parent, which has this collection of GlossaryCategories. Format:
+        #   projects/`project_id_or_number`/locations/`location_id`/glossaries/`
+        #   glossary_id` Location is the GCP region.
         # @param [String] filter
-        #   Optional. Filter expression that filters categories listed in the response.
-        #   Filters supported: List GlossaryCategories based on immediate parent in the
-        #   resource hierarchy. This will only return the GlossaryCategories nested
-        #   directly under the parent and no other subsequent nested categories will be
-        #   returned.
+        #   Optional. Filter expression that filters GlossaryCategories listed in the
+        #   response. Filters are supported on the following fields: -
+        #   immediate_parentExamples of using a filter are: - immediate_parent="projects/`
+        #   project_id_or_number`/locations/`location_id`/glossaries/`glossary_id`" -
+        #   immediate_parent="projects/`project_id_or_number`/locations/`location_id`/
+        #   glossaries/`glossary_id`/categories/`category_id`"This will only return the
+        #   GlossaryCategories that are directly nested under the specified parent.
         # @param [String] order_by
-        #   Optional. Order by expression that orders categories listed in the response.
-        #   Order by fields are: name or create_time for the result. If not specified, the
-        #   ordering is undefined.
+        #   Optional. Order by expression that orders GlossaryCategories listed in the
+        #   response. Order by fields are: name or create_time for the result. If not
+        #   specified, the ordering is undefined.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of categories to return. The service may return
-        #   fewer than this value. If unspecified, at most 50 categories will be returned.
-        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
+        #   Optional. The maximum number of GlossaryCategories to return. The service may
+        #   return fewer than this value. If unspecified, at most 50 GlossaryCategories
+        #   will be returned. The maximum value is 1000; values above 1000 will be coerced
+        #   to 1000.
         # @param [String] page_token
         #   Optional. A page token, received from a previous ListGlossaryCategories call.
         #   Provide this to retrieve the subsequent page. When paginating, all other
@@ -4144,8 +4148,8 @@ module Google
         # Updates a GlossaryCategory resource.
         # @param [String] name
         #   Output only. Identifier. The resource name of the GlossaryCategory. Format:
-        #   projects/`projectId`/locations/`locationId`/glossaries/`glossaryId`/categories/
-        #   `categoryId`
+        #   projects/`project_id_or_number`/locations/`location_id`/glossaries/`
+        #   glossary_id`/categories/`category_id`
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryCategory] google_cloud_dataplex_v1_glossary_category_object
         # @param [String] update_mask
         #   Required. The list of fields to update.
@@ -4255,15 +4259,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # GlossaryTerm APIs are CCFE passthrough APIs. Creates a new GlossaryTerm
-        # resource.
+        # Creates a new GlossaryTerm resource.
         # @param [String] parent
-        #   Required. The parent resource where this GlossaryTerm will be created. Format:
-        #   projects/`projectId`/locations/`locationId`/glossaries/`glossaryId` where
-        #   locationId refers to a GCP region.
+        #   Required. The parent resource where the GlossaryTerm will be created. Format:
+        #   projects/`project_id_or_number`/locations/`location_id`/glossaries/`
+        #   glossary_id` where location_id refers to a GCP region.
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryTerm] google_cloud_dataplex_v1_glossary_term_object
         # @param [String] term_id
-        #   Required. Term ID: GlossaryTerm identifier.
+        #   Required. GlossaryTerm identifier.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4296,8 +4299,9 @@ module Google
         
         # Deletes a GlossaryTerm resource.
         # @param [String] name
-        #   Required. The name of the GlossaryTerm to delete. Format: projects/`project`/
-        #   locations/`location`/glossary/`glossary`/terms/`glossary_term`
+        #   Required. The name of the GlossaryTerm to delete. Format: projects/`
+        #   project_id_or_number`/locations/`location_id`/glossaries/`glossary_id`/terms/`
+        #   term_id`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4325,10 +4329,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a specified GlossaryTerm resource.
+        # Gets a GlossaryTerm resource.
         # @param [String] name
-        #   Required. The name of the GlossaryTerm to retrieve. Format: projects/`project`/
-        #   locations/`location`/glossaries/`glossary`/terms/`glossary_term`
+        #   Required. The name of the GlossaryTerm to retrieve. Format: projects/`
+        #   project_id_or_number`/locations/`location_id`/glossaries/`glossary_id`/terms/`
+        #   term_id`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4401,23 +4406,27 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists GlossaryTerm resources in a glossary.
+        # Lists GlossaryTerm resources in a Glossary.
         # @param [String] parent
-        #   Required. The parent, which has this collection of terms. Format: projects/`
-        #   project`/locations/`location`/glossaries/`glossary` Location is the GCP region.
+        #   Required. The parent, which has this collection of GlossaryTerms. Format:
+        #   projects/`project_id_or_number`/locations/`location_id`/glossaries/`
+        #   glossary_id` where location_id refers to a GCP region.
         # @param [String] filter
-        #   Optional. Filter expression that filters terms listed in the response. Filters
-        #   supported: List GlossaryTerms based on immediate parent in the resource
-        #   hierarchy. This will only return the terms nested directly under the parent
-        #   and no other subsequent nested terms will be returned.
+        #   Optional. Filter expression that filters GlossaryTerms listed in the response.
+        #   Filters are supported on the following fields: - immediate_parentExamples of
+        #   using a filter are: - immediate_parent="projects/`project_id_or_number`/
+        #   locations/`location_id`/glossaries/`glossary_id`" - immediate_parent="projects/
+        #   `project_id_or_number`/locations/`location_id`/glossaries/`glossary_id`/
+        #   categories/`category_id`"This will only return the GlossaryTerms that are
+        #   directly nested under the specified parent.
         # @param [String] order_by
-        #   Optional. Order by expression that orders terms listed in the response. Order
-        #   by fields are: name or create_time for the result. If not specified, the
-        #   ordering is undefined.
+        #   Optional. Order by expression that orders GlossaryTerms listed in the response.
+        #   Order by fields are: name or create_time for the result. If not specified,
+        #   the ordering is undefined.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of terms to return. The service may return fewer
-        #   than this value. If unspecified, at most 50 terms will be returned. The
-        #   maximum value is 1000; values above 1000 will be coerced to 1000.
+        #   Optional. The maximum number of GlossaryTerms to return. The service may
+        #   return fewer than this value. If unspecified, at most 50 GlossaryTerms will be
+        #   returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
         #   Optional. A page token, received from a previous ListGlossaryTerms call.
         #   Provide this to retrieve the subsequent page. When paginating, all other
@@ -4457,8 +4466,8 @@ module Google
         # Updates a GlossaryTerm resource.
         # @param [String] name
         #   Output only. Identifier. The resource name of the GlossaryTerm. Format:
-        #   projects/`projectId`/locations/`locationId`/glossaries/`glossaryId`/terms/`
-        #   termId`
+        #   projects/`project_id_or_number`/locations/`location_id`/glossaries/`
+        #   glossary_id`/terms/`term_id`
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryTerm] google_cloud_dataplex_v1_glossary_term_object
         # @param [String] update_mask
         #   Required. The list of fields to update.
