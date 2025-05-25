@@ -5570,6 +5570,14 @@ module Google
         # @return [String]
         attr_accessor :client_key
       
+        # Optional. SSL flags used for establishing SSL connection to the source
+        # database. Only source specific flags are supported. An object containing a
+        # list of "key": "value" pairs. Example: ` "server_certificate_hostname": "
+        # server.com"`.
+        # Corresponds to the JSON property `sslFlags`
+        # @return [Hash<String,String>]
+        attr_accessor :ssl_flags
+      
         # Optional. The ssl config type according to 'client_key', 'client_certificate'
         # and 'ca_certificate'.
         # Corresponds to the JSON property `type`
@@ -5585,6 +5593,7 @@ module Google
           @ca_certificate = args[:ca_certificate] if args.key?(:ca_certificate)
           @client_certificate = args[:client_certificate] if args.key?(:client_certificate)
           @client_key = args[:client_key] if args.key?(:client_key)
+          @ssl_flags = args[:ssl_flags] if args.key?(:ssl_flags)
           @type = args[:type] if args.key?(:type)
         end
       end

@@ -2361,6 +2361,7 @@ module Google
           property :ca_certificate, as: 'caCertificate'
           property :client_certificate, as: 'clientCertificate'
           property :client_key, as: 'clientKey'
+          hash :ssl_flags, as: 'sslFlags'
           property :type, as: 'type'
         end
       end
