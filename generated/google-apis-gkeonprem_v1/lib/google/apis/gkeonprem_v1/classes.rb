@@ -2335,6 +2335,11 @@ module Google
         # @return [String]
         attr_accessor :local_name
       
+        # Optional. The namespace of the cluster.
+        # Corresponds to the JSON property `localNamespace`
+        # @return [String]
+        attr_accessor :local_namespace
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2344,6 +2349,7 @@ module Google
           @admin_cluster_membership = args[:admin_cluster_membership] if args.key?(:admin_cluster_membership)
           @bare_metal_cluster_id = args[:bare_metal_cluster_id] if args.key?(:bare_metal_cluster_id)
           @local_name = args[:local_name] if args.key?(:local_name)
+          @local_namespace = args[:local_namespace] if args.key?(:local_namespace)
         end
       end
       
@@ -3892,6 +3898,12 @@ module Google
         # @return [Google::Apis::GkeonpremV1::VmwareAdminPreparedSecretsConfig]
         attr_accessor :prepared_secrets
       
+        # VmwareAdminPrivateRegistryConfig represents configuration for admin cluster
+        # registry.
+        # Corresponds to the JSON property `privateRegistryConfig`
+        # @return [Google::Apis::GkeonpremV1::VmwareAdminPrivateRegistryConfig]
+        attr_accessor :private_registry_config
+      
         # Output only. If set, there are currently changes in flight to the VMware admin
         # cluster.
         # Corresponds to the JSON property `reconciling`
@@ -3958,6 +3970,7 @@ module Google
           @on_prem_version = args[:on_prem_version] if args.key?(:on_prem_version)
           @platform_config = args[:platform_config] if args.key?(:platform_config)
           @prepared_secrets = args[:prepared_secrets] if args.key?(:prepared_secrets)
+          @private_registry_config = args[:private_registry_config] if args.key?(:private_registry_config)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @state = args[:state] if args.key?(:state)
           @status = args[:status] if args.key?(:status)
@@ -4264,6 +4277,35 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # VmwareAdminPrivateRegistryConfig represents configuration for admin cluster
+      # registry.
+      class VmwareAdminPrivateRegistryConfig
+        include Google::Apis::Core::Hashable
+      
+        # The registry address.
+        # Corresponds to the JSON property `address`
+        # @return [String]
+        attr_accessor :address
+      
+        # When the container runtime pulls an image from private registry, the registry
+        # must prove its identity by presenting a certificate. The registry's
+        # certificate is signed by a certificate authority (CA). The container runtime
+        # uses the CA's certificate to validate the registry's certificate.
+        # Corresponds to the JSON property `caCert`
+        # @return [String]
+        attr_accessor :ca_cert
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address = args[:address] if args.key?(:address)
+          @ca_cert = args[:ca_cert] if args.key?(:ca_cert)
         end
       end
       
