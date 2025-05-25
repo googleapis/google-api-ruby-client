@@ -56,9 +56,9 @@ module Google
         # @param [String] name
         #   Required. The unique ID for the user in format `users/`user``.
         # @param [String] project_id
-        #   The project ID of the Google Cloud Platform project.
+        #   Required. The project ID of the Google Cloud Platform project.
         # @param [String] system_id
-        #   A system ID for filtering the results of the request.
+        #   Optional. A system ID for filtering the results of the request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -268,7 +268,7 @@ module Google
         #   in format `users/`user`/sshPublicKeys/`fingerprint``.
         # @param [Google::Apis::OsloginV1::SshPublicKey] ssh_public_key_object
         # @param [String] update_mask
-        #   Mask to control which fields get updated. Updates all if not present.
+        #   Optional. Mask to control which fields get updated. Updates all if not present.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
