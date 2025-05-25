@@ -7075,6 +7075,13 @@ module Google
         attr_accessor :enable_internal_ip
         alias_method :enable_internal_ip?, :enable_internal_ip
       
+        # Optional. Indicates if the Cloud Companion APIs will be used in the tenant
+        # project, i.e. if customer can use the managed AI features for free.
+        # Corresponds to the JSON property `enableManagedAiFeatures`
+        # @return [Boolean]
+        attr_accessor :enable_managed_ai_features
+        alias_method :enable_managed_ai_features?, :enable_managed_ai_features
+      
         # Optional. True if variable masking feature should be turned on for this region
         # Corresponds to the JSON property `enableVariableMasking`
         # @return [Boolean]
@@ -7127,6 +7134,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @enable_http_call = args[:enable_http_call] if args.key?(:enable_http_call)
           @enable_internal_ip = args[:enable_internal_ip] if args.key?(:enable_internal_ip)
+          @enable_managed_ai_features = args[:enable_managed_ai_features] if args.key?(:enable_managed_ai_features)
           @enable_variable_masking = args[:enable_variable_masking] if args.key?(:enable_variable_masking)
           @id = args[:id] if args.key?(:id)
           @is_gmek = args[:is_gmek] if args.key?(:is_gmek)
@@ -10121,6 +10129,38 @@ module Google
         end
       end
       
+      # Request for PostProvisioning rpc call.
+      class GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Indicate which workflows to create
+        # Corresponds to the JSON property `workflows`
+        # @return [Array<String>]
+        attr_accessor :workflows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @workflows = args[:workflows] if args.key?(:workflows)
+        end
+      end
+      
+      # Response for PostProvisioning rpc call.
+      class GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request for the Provision rpc
       class GoogleCloudIntegrationsV1alphaProvisionClientRequest
         include Google::Apis::Core::Hashable
@@ -10142,6 +10182,15 @@ module Google
         # @return [Boolean]
         attr_accessor :enable_http_call
         alias_method :enable_http_call?, :enable_http_call
+      
+        # Optional. Indicates if the client should be allowed to use managed AI features,
+        # i.e. using Cloud Companion APIs of the tenant project. This will allow the
+        # customers to use features like Troubleshooting, OpenAPI spec enrichment, etc.
+        # for free.
+        # Corresponds to the JSON property `enableManagedAiFeatures`
+        # @return [Boolean]
+        attr_accessor :enable_managed_ai_features
+        alias_method :enable_managed_ai_features?, :enable_managed_ai_features
       
         # Optional. Deprecated. Indicates provision with GMEK or CMEK. This field is
         # deprecated and the provision would always be GMEK if cloud_kms_config is not
@@ -10172,6 +10221,7 @@ module Google
           @cloud_kms_config = args[:cloud_kms_config] if args.key?(:cloud_kms_config)
           @create_sample_workflows = args[:create_sample_workflows] if args.key?(:create_sample_workflows)
           @enable_http_call = args[:enable_http_call] if args.key?(:enable_http_call)
+          @enable_managed_ai_features = args[:enable_managed_ai_features] if args.key?(:enable_managed_ai_features)
           @provision_gmek = args[:provision_gmek] if args.key?(:provision_gmek)
           @run_as_service_account = args[:run_as_service_account] if args.key?(:run_as_service_account)
           @skip_cp_provision = args[:skip_cp_provision] if args.key?(:skip_cp_provision)
