@@ -278,6 +278,7 @@ module Google
       class FailoverReservationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :failover_mode, as: 'failoverMode'
         end
       end
       
@@ -343,6 +344,7 @@ module Google
       
           property :last_error_time, as: 'lastErrorTime'
           property :last_replication_time, as: 'lastReplicationTime'
+          property :soft_failover_start_time, as: 'softFailoverStartTime'
         end
       end
       
