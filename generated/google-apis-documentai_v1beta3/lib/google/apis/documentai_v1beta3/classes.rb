@@ -5267,10 +5267,10 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Grounding config of the entity type.
-        # Corresponds to the JSON property `groundingConfig`
+        # Specifies how the entity's value is obtained.
+        # Corresponds to the JSON property `method`
         # @return [String]
-        attr_accessor :grounding_config
+        attr_accessor :method_prop
       
         # The name of the property. Follows the same guidelines as the EntityType name.
         # Corresponds to the JSON property `name`
@@ -5302,7 +5302,7 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
-          @grounding_config = args[:grounding_config] if args.key?(:grounding_config)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
           @name = args[:name] if args.key?(:name)
           @occurrence_type = args[:occurrence_type] if args.key?(:occurrence_type)
           @property_metadata = args[:property_metadata] if args.key?(:property_metadata)

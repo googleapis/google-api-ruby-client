@@ -3343,7 +3343,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :display_name, as: 'displayName'
-          property :grounding_config, as: 'groundingConfig'
+          property :method_prop, as: 'method'
           property :name, as: 'name'
           property :occurrence_type, as: 'occurrenceType'
           property :property_metadata, as: 'propertyMetadata', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3PropertyMetadata, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3PropertyMetadata::Representation
