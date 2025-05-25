@@ -22,6 +22,25 @@ module Google
   module Apis
     module SafebrowsingV5
       
+      # The response containing multiple hash lists.
+      class GoogleSecuritySafebrowsingV5BatchGetHashListsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The hash lists in the same order given in the request.
+        # Corresponds to the JSON property `hashLists`
+        # @return [Array<Google::Apis::SafebrowsingV5::GoogleSecuritySafebrowsingV5HashList>]
+        attr_accessor :hash_lists
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hash_lists = args[:hash_lists] if args.key?(:hash_lists)
+        end
+      end
+      
       # The full hash identified with one or more matches.
       class GoogleSecuritySafebrowsingV5FullHash
         include Google::Apis::Core::Hashable
@@ -83,6 +102,409 @@ module Google
         def update!(**args)
           @attributes = args[:attributes] if args.key?(:attributes)
           @threat_type = args[:threat_type] if args.key?(:threat_type)
+        end
+      end
+      
+      # A list of hashes identified by its name.
+      class GoogleSecuritySafebrowsingV5HashList
+        include Google::Apis::Core::Hashable
+      
+        # Same as `RiceDeltaEncoded32Bit` except this encodes 64-bit numbers.
+        # Corresponds to the JSON property `additionsEightBytes`
+        # @return [Google::Apis::SafebrowsingV5::GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit]
+        attr_accessor :additions_eight_bytes
+      
+        # The Rice-Golomb encoded data. Used for either hashes or removal indices. It is
+        # guaranteed that every hash or index here has the same length, and this length
+        # is exactly 32 bits. Generally speaking, if we sort all the entries
+        # lexicographically, we will find that the higher order bits tend not to change
+        # as frequently as lower order bits. This means that if we also take the
+        # adjacent difference between entries, the higher order bits have a high
+        # probability of being zero. This exploits this high probability of zero by
+        # essentially choosing a certain number of bits; all bits more significant than
+        # this are likely to be zero so we use unary encoding. See the `rice_parameter`
+        # field. Historical note: the Rice-delta encoding was first used in V4 of this
+        # API. In V5, two significant improvements were made: firstly, the Rice-delta
+        # encoding is now available with hash prefixes longer than 4 bytes; secondly,
+        # the encoded data are now treated as big-endian so as to avoid a costly sorting
+        # step.
+        # Corresponds to the JSON property `additionsFourBytes`
+        # @return [Google::Apis::SafebrowsingV5::GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit]
+        attr_accessor :additions_four_bytes
+      
+        # Same as `RiceDeltaEncoded32Bit` except this encodes 128-bit numbers.
+        # Corresponds to the JSON property `additionsSixteenBytes`
+        # @return [Google::Apis::SafebrowsingV5::GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit]
+        attr_accessor :additions_sixteen_bytes
+      
+        # Same as `RiceDeltaEncoded32Bit` except this encodes 256-bit numbers.
+        # Corresponds to the JSON property `additionsThirtyTwoBytes`
+        # @return [Google::Apis::SafebrowsingV5::GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit]
+        attr_accessor :additions_thirty_two_bytes
+      
+        # The Rice-Golomb encoded data. Used for either hashes or removal indices. It is
+        # guaranteed that every hash or index here has the same length, and this length
+        # is exactly 32 bits. Generally speaking, if we sort all the entries
+        # lexicographically, we will find that the higher order bits tend not to change
+        # as frequently as lower order bits. This means that if we also take the
+        # adjacent difference between entries, the higher order bits have a high
+        # probability of being zero. This exploits this high probability of zero by
+        # essentially choosing a certain number of bits; all bits more significant than
+        # this are likely to be zero so we use unary encoding. See the `rice_parameter`
+        # field. Historical note: the Rice-delta encoding was first used in V4 of this
+        # API. In V5, two significant improvements were made: firstly, the Rice-delta
+        # encoding is now available with hash prefixes longer than 4 bytes; secondly,
+        # the encoded data are now treated as big-endian so as to avoid a costly sorting
+        # step.
+        # Corresponds to the JSON property `compressedRemovals`
+        # @return [Google::Apis::SafebrowsingV5::GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit]
+        attr_accessor :compressed_removals
+      
+        # Metadata about a particular hash list.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::SafebrowsingV5::GoogleSecuritySafebrowsingV5HashListMetadata]
+        attr_accessor :metadata
+      
+        # Clients should wait at least this long to get the hash list again. If omitted
+        # or zero, clients SHOULD fetch immediately because it indicates that the server
+        # has an additional update to be sent to the client, but could not due to the
+        # client-specified constraints.
+        # Corresponds to the JSON property `minimumWaitDuration`
+        # @return [String]
+        attr_accessor :minimum_wait_duration
+      
+        # The name of the hash list. Note that the Global Cache is also just a hash list
+        # and can be referred to here.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # When true, this is a partial diff containing additions and removals based on
+        # what the client already has. When false, this is the complete hash list. When
+        # false, the client MUST delete any locally stored version for this hash list.
+        # This means that either the version possessed by the client is seriously out-of-
+        # date or the client data is believed to be corrupt. The `compressed_removals`
+        # field will be empty. When true, the client MUST apply an incremental update by
+        # applying removals and then additions.
+        # Corresponds to the JSON property `partialUpdate`
+        # @return [Boolean]
+        attr_accessor :partial_update
+        alias_method :partial_update?, :partial_update
+      
+        # The sorted list of all hashes, hashed again with SHA256. This is the checksum
+        # for the sorted list of all hashes present in the database after applying the
+        # provided update. In the case that no updates were provided, the server will
+        # omit this field to indicate that the client should use the existing checksum.
+        # Corresponds to the JSON property `sha256Checksum`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :sha256_checksum
+      
+        # The version of the hash list. The client MUST NOT manipulate those bytes.
+        # Corresponds to the JSON property `version`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additions_eight_bytes = args[:additions_eight_bytes] if args.key?(:additions_eight_bytes)
+          @additions_four_bytes = args[:additions_four_bytes] if args.key?(:additions_four_bytes)
+          @additions_sixteen_bytes = args[:additions_sixteen_bytes] if args.key?(:additions_sixteen_bytes)
+          @additions_thirty_two_bytes = args[:additions_thirty_two_bytes] if args.key?(:additions_thirty_two_bytes)
+          @compressed_removals = args[:compressed_removals] if args.key?(:compressed_removals)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @minimum_wait_duration = args[:minimum_wait_duration] if args.key?(:minimum_wait_duration)
+          @name = args[:name] if args.key?(:name)
+          @partial_update = args[:partial_update] if args.key?(:partial_update)
+          @sha256_checksum = args[:sha256_checksum] if args.key?(:sha256_checksum)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Metadata about a particular hash list.
+      class GoogleSecuritySafebrowsingV5HashListMetadata
+        include Google::Apis::Core::Hashable
+      
+        # A human-readable description about this list. Written in English.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The supported hash length for this hash list. Each hash list will support
+        # exactly one length. If a different hash length is introduced for the same set
+        # of threat types or safe types, it will be introduced as a separate list with a
+        # distinct name and respective hash length set.
+        # Corresponds to the JSON property `hashLength`
+        # @return [String]
+        attr_accessor :hash_length
+      
+        # Unordered list. If not empty, this specifies that the hash list represents a
+        # list of likely safe hashes, and this enumerates the ways they are considered
+        # likely safe. This field is mutually exclusive with the threat_types field.
+        # Corresponds to the JSON property `likelySafeTypes`
+        # @return [Array<String>]
+        attr_accessor :likely_safe_types
+      
+        # Unordered list. If not empty, this specifies that the hash list is a kind of
+        # threat list, and this enumerates the kind of threats associated with hashes or
+        # hash prefixes in this hash list. May be empty if the entry does not represent
+        # a threat, i.e. in the case that it represents a likely safe type.
+        # Corresponds to the JSON property `threatTypes`
+        # @return [Array<String>]
+        attr_accessor :threat_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @hash_length = args[:hash_length] if args.key?(:hash_length)
+          @likely_safe_types = args[:likely_safe_types] if args.key?(:likely_safe_types)
+          @threat_types = args[:threat_types] if args.key?(:threat_types)
+        end
+      end
+      
+      # The response containing metadata about hash lists.
+      class GoogleSecuritySafebrowsingV5ListHashListsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The hash lists in an arbitrary order. Only metadata about the hash lists will
+        # be included, not the contents.
+        # Corresponds to the JSON property `hashLists`
+        # @return [Array<Google::Apis::SafebrowsingV5::GoogleSecuritySafebrowsingV5HashList>]
+        attr_accessor :hash_lists
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hash_lists = args[:hash_lists] if args.key?(:hash_lists)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Same as `RiceDeltaEncoded32Bit` except this encodes 128-bit numbers.
+      class GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit
+        include Google::Apis::Core::Hashable
+      
+        # The encoded deltas that are encoded using the Golomb-Rice coder.
+        # Corresponds to the JSON property `encodedData`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :encoded_data
+      
+        # The number of entries that are delta encoded in the encoded data. If only a
+        # single integer was encoded, this will be zero and the single value will be
+        # stored in `first_value`.
+        # Corresponds to the JSON property `entriesCount`
+        # @return [Fixnum]
+        attr_accessor :entries_count
+      
+        # The upper 64 bits of the first entry in the encoded data (hashes). If the
+        # field is empty, the upper 64 bits are all zero.
+        # Corresponds to the JSON property `firstValueHi`
+        # @return [Fixnum]
+        attr_accessor :first_value_hi
+      
+        # The lower 64 bits of the first entry in the encoded data (hashes). If the
+        # field is empty, the lower 64 bits are all zero.
+        # Corresponds to the JSON property `firstValueLo`
+        # @return [Fixnum]
+        attr_accessor :first_value_lo
+      
+        # The Golomb-Rice parameter. This parameter is guaranteed to be between 99 and
+        # 126, inclusive.
+        # Corresponds to the JSON property `riceParameter`
+        # @return [Fixnum]
+        attr_accessor :rice_parameter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encoded_data = args[:encoded_data] if args.key?(:encoded_data)
+          @entries_count = args[:entries_count] if args.key?(:entries_count)
+          @first_value_hi = args[:first_value_hi] if args.key?(:first_value_hi)
+          @first_value_lo = args[:first_value_lo] if args.key?(:first_value_lo)
+          @rice_parameter = args[:rice_parameter] if args.key?(:rice_parameter)
+        end
+      end
+      
+      # Same as `RiceDeltaEncoded32Bit` except this encodes 256-bit numbers.
+      class GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit
+        include Google::Apis::Core::Hashable
+      
+        # The encoded deltas that are encoded using the Golomb-Rice coder.
+        # Corresponds to the JSON property `encodedData`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :encoded_data
+      
+        # The number of entries that are delta encoded in the encoded data. If only a
+        # single integer was encoded, this will be zero and the single value will be
+        # stored in `first_value`.
+        # Corresponds to the JSON property `entriesCount`
+        # @return [Fixnum]
+        attr_accessor :entries_count
+      
+        # The first 64 bits of the first entry in the encoded data (hashes). If the
+        # field is empty, the first 64 bits are all zero.
+        # Corresponds to the JSON property `firstValueFirstPart`
+        # @return [Fixnum]
+        attr_accessor :first_value_first_part
+      
+        # The last 64 bits of the first entry in the encoded data (hashes). If the field
+        # is empty, the last 64 bits are all zero.
+        # Corresponds to the JSON property `firstValueFourthPart`
+        # @return [Fixnum]
+        attr_accessor :first_value_fourth_part
+      
+        # The 65 through 128th bits of the first entry in the encoded data (hashes). If
+        # the field is empty, the 65 through 128th bits are all zero.
+        # Corresponds to the JSON property `firstValueSecondPart`
+        # @return [Fixnum]
+        attr_accessor :first_value_second_part
+      
+        # The 129 through 192th bits of the first entry in the encoded data (hashes). If
+        # the field is empty, the 129 through 192th bits are all zero.
+        # Corresponds to the JSON property `firstValueThirdPart`
+        # @return [Fixnum]
+        attr_accessor :first_value_third_part
+      
+        # The Golomb-Rice parameter. This parameter is guaranteed to be between 227 and
+        # 254, inclusive.
+        # Corresponds to the JSON property `riceParameter`
+        # @return [Fixnum]
+        attr_accessor :rice_parameter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encoded_data = args[:encoded_data] if args.key?(:encoded_data)
+          @entries_count = args[:entries_count] if args.key?(:entries_count)
+          @first_value_first_part = args[:first_value_first_part] if args.key?(:first_value_first_part)
+          @first_value_fourth_part = args[:first_value_fourth_part] if args.key?(:first_value_fourth_part)
+          @first_value_second_part = args[:first_value_second_part] if args.key?(:first_value_second_part)
+          @first_value_third_part = args[:first_value_third_part] if args.key?(:first_value_third_part)
+          @rice_parameter = args[:rice_parameter] if args.key?(:rice_parameter)
+        end
+      end
+      
+      # The Rice-Golomb encoded data. Used for either hashes or removal indices. It is
+      # guaranteed that every hash or index here has the same length, and this length
+      # is exactly 32 bits. Generally speaking, if we sort all the entries
+      # lexicographically, we will find that the higher order bits tend not to change
+      # as frequently as lower order bits. This means that if we also take the
+      # adjacent difference between entries, the higher order bits have a high
+      # probability of being zero. This exploits this high probability of zero by
+      # essentially choosing a certain number of bits; all bits more significant than
+      # this are likely to be zero so we use unary encoding. See the `rice_parameter`
+      # field. Historical note: the Rice-delta encoding was first used in V4 of this
+      # API. In V5, two significant improvements were made: firstly, the Rice-delta
+      # encoding is now available with hash prefixes longer than 4 bytes; secondly,
+      # the encoded data are now treated as big-endian so as to avoid a costly sorting
+      # step.
+      class GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit
+        include Google::Apis::Core::Hashable
+      
+        # The encoded deltas that are encoded using the Golomb-Rice coder.
+        # Corresponds to the JSON property `encodedData`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :encoded_data
+      
+        # The number of entries that are delta encoded in the encoded data. If only a
+        # single integer was encoded, this will be zero and the single value will be
+        # stored in `first_value`.
+        # Corresponds to the JSON property `entriesCount`
+        # @return [Fixnum]
+        attr_accessor :entries_count
+      
+        # The first entry in the encoded data (hashes or indices), or, if only a single
+        # hash prefix or index was encoded, that entry's value. If the field is empty,
+        # the entry is zero.
+        # Corresponds to the JSON property `firstValue`
+        # @return [Fixnum]
+        attr_accessor :first_value
+      
+        # The Golomb-Rice parameter. This parameter is guaranteed to be between 3 and 30,
+        # inclusive.
+        # Corresponds to the JSON property `riceParameter`
+        # @return [Fixnum]
+        attr_accessor :rice_parameter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encoded_data = args[:encoded_data] if args.key?(:encoded_data)
+          @entries_count = args[:entries_count] if args.key?(:entries_count)
+          @first_value = args[:first_value] if args.key?(:first_value)
+          @rice_parameter = args[:rice_parameter] if args.key?(:rice_parameter)
+        end
+      end
+      
+      # Same as `RiceDeltaEncoded32Bit` except this encodes 64-bit numbers.
+      class GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit
+        include Google::Apis::Core::Hashable
+      
+        # The encoded deltas that are encoded using the Golomb-Rice coder.
+        # Corresponds to the JSON property `encodedData`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :encoded_data
+      
+        # The number of entries that are delta encoded in the encoded data. If only a
+        # single integer was encoded, this will be zero and the single value will be
+        # stored in `first_value`.
+        # Corresponds to the JSON property `entriesCount`
+        # @return [Fixnum]
+        attr_accessor :entries_count
+      
+        # The first entry in the encoded data (hashes), or, if only a single hash prefix
+        # was encoded, that entry's value. If the field is empty, the entry is zero.
+        # Corresponds to the JSON property `firstValue`
+        # @return [Fixnum]
+        attr_accessor :first_value
+      
+        # The Golomb-Rice parameter. This parameter is guaranteed to be between 35 and
+        # 62, inclusive.
+        # Corresponds to the JSON property `riceParameter`
+        # @return [Fixnum]
+        attr_accessor :rice_parameter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encoded_data = args[:encoded_data] if args.key?(:encoded_data)
+          @entries_count = args[:entries_count] if args.key?(:entries_count)
+          @first_value = args[:first_value] if args.key?(:first_value)
+          @rice_parameter = args[:rice_parameter] if args.key?(:rice_parameter)
         end
       end
       
