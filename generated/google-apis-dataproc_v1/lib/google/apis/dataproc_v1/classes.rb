@@ -96,44 +96,6 @@ module Google
         end
       end
       
-      # Details of a native build info for a Spark Application
-      class AccessSessionSparkApplicationNativeBuildInfoResponse
-        include Google::Apis::Core::Hashable
-      
-        # Native SQL Execution Data
-        # Corresponds to the JSON property `executionData`
-        # @return [Google::Apis::DataprocV1::NativeBuildInfoUiData]
-        attr_accessor :execution_data
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @execution_data = args[:execution_data] if args.key?(:execution_data)
-        end
-      end
-      
-      # Details of a native query for a Spark Application
-      class AccessSessionSparkApplicationNativeSqlQueryResponse
-        include Google::Apis::Core::Hashable
-      
-        # Native SQL Execution Data
-        # Corresponds to the JSON property `executionData`
-        # @return [Google::Apis::DataprocV1::NativeSqlExecutionUiData]
-        attr_accessor :execution_data
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @execution_data = args[:execution_data] if args.key?(:execution_data)
-        end
-      end
-      
       # A summary of Spark Application
       class AccessSessionSparkApplicationResponse
         include Google::Apis::Core::Hashable
@@ -266,44 +228,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @job_data = args[:job_data] if args.key?(:job_data)
-        end
-      end
-      
-      # Details of Native Build Info for a Spark Application
-      class AccessSparkApplicationNativeBuildInfoResponse
-        include Google::Apis::Core::Hashable
-      
-        # Native Build Info Data
-        # Corresponds to the JSON property `buildInfo`
-        # @return [Google::Apis::DataprocV1::NativeBuildInfoUiData]
-        attr_accessor :build_info
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @build_info = args[:build_info] if args.key?(:build_info)
-        end
-      end
-      
-      # Details of a query for a Spark Application
-      class AccessSparkApplicationNativeSqlQueryResponse
-        include Google::Apis::Core::Hashable
-      
-        # Native SQL Execution Data
-        # Corresponds to the JSON property `executionData`
-        # @return [Google::Apis::DataprocV1::NativeSqlExecutionUiData]
-        attr_accessor :execution_data
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @execution_data = args[:execution_data] if args.key?(:execution_data)
         end
       end
       
@@ -794,6 +718,12 @@ module Google
         # @return [Google::Apis::DataprocV1::BasicAutoscalingAlgorithm]
         attr_accessor :basic_algorithm
       
+        # Optional. The type of the clusters for which this autoscaling policy is to be
+        # configured.
+        # Corresponds to the JSON property `clusterType`
+        # @return [String]
+        attr_accessor :cluster_type
+      
         # Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (
         # 0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or
         # hyphen. Must consist of between 3 and 50 characters.
@@ -841,6 +771,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @basic_algorithm = args[:basic_algorithm] if args.key?(:basic_algorithm)
+          @cluster_type = args[:cluster_type] if args.key?(:cluster_type)
           @id = args[:id] if args.key?(:id)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
@@ -1439,6 +1370,11 @@ module Google
         # @return [Array<Google::Apis::DataprocV1::AuxiliaryNodeGroup>]
         attr_accessor :auxiliary_node_groups
       
+        # Optional. The type of the cluster.
+        # Corresponds to the JSON property `clusterType`
+        # @return [String]
+        attr_accessor :cluster_type
+      
         # Optional. A Cloud Storage bucket used to stage job dependencies, config files,
         # and job driver console output. If you do not specify a staging bucket, Cloud
         # Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your
@@ -1549,6 +1485,7 @@ module Google
         def update!(**args)
           @autoscaling_config = args[:autoscaling_config] if args.key?(:autoscaling_config)
           @auxiliary_node_groups = args[:auxiliary_node_groups] if args.key?(:auxiliary_node_groups)
+          @cluster_type = args[:cluster_type] if args.key?(:cluster_type)
           @config_bucket = args[:config_bucket] if args.key?(:config_bucket)
           @dataproc_metric_config = args[:dataproc_metric_config] if args.key?(:dataproc_metric_config)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
@@ -2056,7 +1993,8 @@ module Google
         end
       end
       
-      # Specifies the config of disk options for a group of VM instances.
+      # Specifies the config of boot disk and attached disk options for a group of VM
+      # instances.
       class DiskConfig
         include Google::Apis::Core::Hashable
       
@@ -3813,7 +3751,8 @@ module Google
         # @return [Array<Google::Apis::DataprocV1::AcceleratorConfig>]
         attr_accessor :accelerators
       
-        # Specifies the config of disk options for a group of VM instances.
+        # Specifies the config of boot disk and attached disk options for a group of VM
+        # instances.
         # Corresponds to the JSON property `diskConfig`
         # @return [Google::Apis::DataprocV1::DiskConfig]
         attr_accessor :disk_config
@@ -4866,6 +4805,22 @@ module Google
         # @return [String]
         attr_accessor :auto_delete_ttl
       
+        # Optional. The time when cluster will be auto-stopped (see JSON representation
+        # of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json))
+        # .
+        # Corresponds to the JSON property `autoStopTime`
+        # @return [String]
+        attr_accessor :auto_stop_time
+      
+        # Optional. The lifetime duration of the cluster. The cluster will be auto-
+        # stopped at the end of this period, calculated from the time of submission of
+        # the create or update cluster request. Minimum value is 10 minutes; maximum
+        # value is 14 days (see JSON representation of Duration (https://developers.
+        # google.com/protocol-buffers/docs/proto3#json)).
+        # Corresponds to the JSON property `autoStopTtl`
+        # @return [String]
+        attr_accessor :auto_stop_ttl
+      
         # Optional. The duration to keep the cluster alive while idling (when no jobs
         # are running). Passing this threshold will cause the cluster to be deleted.
         # Minimum value is 5 minutes; maximum value is 14 days (see JSON representation
@@ -4881,6 +4836,14 @@ module Google
         # @return [String]
         attr_accessor :idle_start_time
       
+        # Optional. The duration to keep the cluster started while idling (when no jobs
+        # are running). Passing this threshold will cause the cluster to be stopped.
+        # Minimum value is 5 minutes; maximum value is 14 days (see JSON representation
+        # of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        # Corresponds to the JSON property `idleStopTtl`
+        # @return [String]
+        attr_accessor :idle_stop_ttl
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4889,8 +4852,11 @@ module Google
         def update!(**args)
           @auto_delete_time = args[:auto_delete_time] if args.key?(:auto_delete_time)
           @auto_delete_ttl = args[:auto_delete_ttl] if args.key?(:auto_delete_ttl)
+          @auto_stop_time = args[:auto_stop_time] if args.key?(:auto_stop_time)
+          @auto_stop_ttl = args[:auto_stop_ttl] if args.key?(:auto_stop_ttl)
           @idle_delete_ttl = args[:idle_delete_ttl] if args.key?(:idle_delete_ttl)
           @idle_start_time = args[:idle_start_time] if args.key?(:idle_start_time)
+          @idle_stop_ttl = args[:idle_stop_ttl] if args.key?(:idle_stop_ttl)
         end
       end
       
@@ -6196,6 +6162,25 @@ module Google
         end
       end
       
+      # Properties of the workload organized by origin.
+      class PropertiesInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Properties set by autotuning engine.
+        # Corresponds to the JSON property `autotuningProperties`
+        # @return [Hash<String,Google::Apis::DataprocV1::ValueInfo>]
+        attr_accessor :autotuning_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @autotuning_properties = args[:autotuning_properties] if args.key?(:autotuning_properties)
+        end
+      end
+      
       # Defines how Dataproc should create VMs with a mixture of provisioning models.
       class ProvisioningModelMix
         include Google::Apis::Core::Hashable
@@ -7155,6 +7140,11 @@ module Google
         # @return [String]
         attr_accessor :output_uri
       
+        # Properties of the workload organized by origin.
+        # Corresponds to the JSON property `propertiesInfo`
+        # @return [Google::Apis::DataprocV1::PropertiesInfo]
+        attr_accessor :properties_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7166,6 +7156,7 @@ module Google
           @diagnostic_output_uri = args[:diagnostic_output_uri] if args.key?(:diagnostic_output_uri)
           @endpoints = args[:endpoints] if args.key?(:endpoints)
           @output_uri = args[:output_uri] if args.key?(:output_uri)
+          @properties_info = args[:properties_info] if args.key?(:properties_info)
         end
       end
       
@@ -7247,33 +7238,6 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @spark_application_jobs = args[:spark_application_jobs] if args.key?(:spark_application_jobs)
-        end
-      end
-      
-      # List of all Native queries for a Spark Application.
-      class SearchSessionSparkApplicationNativeSqlQueriesResponse
-        include Google::Apis::Core::Hashable
-      
-        # This token is included in the response if there are more results to fetch. To
-        # fetch additional results, provide this value as the page_token in a subsequent
-        # SearchSessionSparkApplicationSqlQueriesRequest.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # Output only. Native SQL Execution Data
-        # Corresponds to the JSON property `sparkApplicationNativeSqlQueries`
-        # @return [Array<Google::Apis::DataprocV1::NativeSqlExecutionUiData>]
-        attr_accessor :spark_application_native_sql_queries
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @spark_application_native_sql_queries = args[:spark_application_native_sql_queries] if args.key?(:spark_application_native_sql_queries)
         end
       end
       
@@ -7490,33 +7454,6 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @spark_application_jobs = args[:spark_application_jobs] if args.key?(:spark_application_jobs)
-        end
-      end
-      
-      # List of all Native SQL queries details for a Spark Application.
-      class SearchSparkApplicationNativeSqlQueriesResponse
-        include Google::Apis::Core::Hashable
-      
-        # This token is included in the response if there are more results to fetch. To
-        # fetch additional results, provide this value as the page_token in a subsequent
-        # SearchSparkApplicationNativeSqlQueriesRequest.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # Output only. Native SQL Execution Data
-        # Corresponds to the JSON property `sparkApplicationNativeSqlQueries`
-        # @return [Array<Google::Apis::DataprocV1::NativeSqlExecutionUiData>]
-        attr_accessor :spark_application_native_sql_queries
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @spark_application_native_sql_queries = args[:spark_application_native_sql_queries] if args.key?(:spark_application_native_sql_queries)
         end
       end
       
@@ -11550,6 +11487,37 @@ module Google
           @shuffle_storage_gb = args[:shuffle_storage_gb] if args.key?(:shuffle_storage_gb)
           @shuffle_storage_gb_premium = args[:shuffle_storage_gb_premium] if args.key?(:shuffle_storage_gb_premium)
           @snapshot_time = args[:snapshot_time] if args.key?(:snapshot_time)
+        end
+      end
+      
+      # Annotatated property value.
+      class ValueInfo
+        include Google::Apis::Core::Hashable
+      
+        # Annotation, comment or explanation why the property was set.
+        # Corresponds to the JSON property `annotation`
+        # @return [String]
+        attr_accessor :annotation
+      
+        # Optional. Value which was replaced by the corresponding component.
+        # Corresponds to the JSON property `overriddenValue`
+        # @return [String]
+        attr_accessor :overridden_value
+      
+        # Property value.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotation = args[:annotation] if args.key?(:annotation)
+          @overridden_value = args[:overridden_value] if args.key?(:overridden_value)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
