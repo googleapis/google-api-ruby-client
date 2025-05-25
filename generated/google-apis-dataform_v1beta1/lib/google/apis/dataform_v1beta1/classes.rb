@@ -2042,6 +2042,14 @@ module Google
       class NotebookRuntimeOptions
         include Google::Apis::Core::Hashable
       
+        # Optional. The resource name of the [Colab runtime template] (https://cloud.
+        # google.com/colab/docs/runtimes), from which a runtime is created for notebook
+        # executions. If not specified, a runtime is created with Colab's default
+        # specifications.
+        # Corresponds to the JSON property `aiPlatformNotebookRuntimeTemplate`
+        # @return [String]
+        attr_accessor :ai_platform_notebook_runtime_template
+      
         # Optional. The Google Cloud Storage location to upload the result to. Format: `
         # gs://bucket-name`.
         # Corresponds to the JSON property `gcsOutputBucket`
@@ -2054,6 +2062,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ai_platform_notebook_runtime_template = args[:ai_platform_notebook_runtime_template] if args.key?(:ai_platform_notebook_runtime_template)
           @gcs_output_bucket = args[:gcs_output_bucket] if args.key?(:gcs_output_bucket)
         end
       end
