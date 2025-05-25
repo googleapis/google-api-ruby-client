@@ -1073,6 +1073,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :available_maintenance_versions, as: 'availableMaintenanceVersions'
           property :backend_type, as: 'backendType'
+          property :clear_network, as: 'clearNetwork'
           property :connection_name, as: 'connectionName'
           property :create_time, as: 'createTime'
           property :current_disk_size, :numeric_string => true, as: 'currentDiskSize'
