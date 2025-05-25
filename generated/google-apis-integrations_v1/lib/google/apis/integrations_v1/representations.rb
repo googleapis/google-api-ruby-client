@@ -1528,6 +1528,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIntegrationsV1alphaProvisionClientRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3817,6 +3829,7 @@ module Google
           property :description, as: 'description'
           property :enable_http_call, as: 'enableHttpCall'
           property :enable_internal_ip, as: 'enableInternalIp'
+          property :enable_managed_ai_features, as: 'enableManagedAiFeatures'
           property :enable_variable_masking, as: 'enableVariableMasking'
           property :id, as: 'id'
           property :is_gmek, as: 'isGmek'
@@ -4696,6 +4709,19 @@ module Google
         end
       end
       
+      class GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :workflows, as: 'workflows'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudIntegrationsV1alphaProvisionClientRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4703,6 +4729,7 @@ module Google
       
           property :create_sample_workflows, as: 'createSampleWorkflows'
           property :enable_http_call, as: 'enableHttpCall'
+          property :enable_managed_ai_features, as: 'enableManagedAiFeatures'
           property :provision_gmek, as: 'provisionGmek'
           property :run_as_service_account, as: 'runAsServiceAccount'
           property :skip_cp_provision, as: 'skipCpProvision'
