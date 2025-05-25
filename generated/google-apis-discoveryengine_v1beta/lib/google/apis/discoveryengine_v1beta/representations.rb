@@ -4747,6 +4747,7 @@ module Google
           collection :exclude_html_classes, as: 'excludeHtmlClasses'
           collection :exclude_html_elements, as: 'excludeHtmlElements'
           collection :exclude_html_ids, as: 'excludeHtmlIds'
+          collection :structured_content_types, as: 'structuredContentTypes'
         end
       end
       
@@ -4785,6 +4786,7 @@ module Google
           collection :data_store_ids, as: 'dataStoreIds'
           property :disable_analytics, as: 'disableAnalytics'
           property :display_name, as: 'displayName'
+          hash :features, as: 'features'
           property :industry_vertical, as: 'industryVertical'
           property :media_recommendation_engine_config, as: 'mediaRecommendationEngineConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig::Representation
       
@@ -5725,6 +5727,7 @@ module Google
           property :indexed_record_count, :numeric_string => true, as: 'indexedRecordCount'
           property :progress, as: 'progress', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRunProgress, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRunProgress::Representation
       
+          property :scheduled_record_count, :numeric_string => true, as: 'scheduledRecordCount'
           property :source_api_request_count, :numeric_string => true, as: 'sourceApiRequestCount'
           property :state, as: 'state'
           property :state_update_time, as: 'stateUpdateTime'
@@ -6198,6 +6201,7 @@ module Google
           collection :exclude_html_classes, as: 'excludeHtmlClasses'
           collection :exclude_html_elements, as: 'excludeHtmlElements'
           collection :exclude_html_ids, as: 'excludeHtmlIds'
+          collection :structured_content_types, as: 'structuredContentTypes'
         end
       end
       
@@ -6236,6 +6240,7 @@ module Google
           collection :data_store_ids, as: 'dataStoreIds'
           property :disable_analytics, as: 'disableAnalytics'
           property :display_name, as: 'displayName'
+          hash :features, as: 'features'
           property :industry_vertical, as: 'industryVertical'
           property :media_recommendation_engine_config, as: 'mediaRecommendationEngineConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig::Representation
       
@@ -6334,6 +6339,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_state, as: 'dataState'
+          property :last_train_time, as: 'lastTrainTime'
           property :last_tune_time, as: 'lastTuneTime'
           property :serving_state, as: 'servingState'
           property :tuning_operation, as: 'tuningOperation'
@@ -7403,7 +7409,6 @@ module Google
           property :license_assignment_state, as: 'licenseAssignmentState'
           property :license_config, as: 'licenseConfig'
           property :update_time, as: 'updateTime'
-          property :user, as: 'user'
           property :user_principal, as: 'userPrincipal'
           property :user_profile, as: 'userProfile'
         end
@@ -8900,6 +8905,7 @@ module Google
           collection :exclude_html_classes, as: 'excludeHtmlClasses'
           collection :exclude_html_elements, as: 'excludeHtmlElements'
           collection :exclude_html_ids, as: 'excludeHtmlIds'
+          collection :structured_content_types, as: 'structuredContentTypes'
         end
       end
       
@@ -8958,6 +8964,7 @@ module Google
           collection :data_store_ids, as: 'dataStoreIds'
           property :disable_analytics, as: 'disableAnalytics'
           property :display_name, as: 'displayName'
+          hash :features, as: 'features'
           property :industry_vertical, as: 'industryVertical'
           property :media_recommendation_engine_config, as: 'mediaRecommendationEngineConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig::Representation
       
@@ -11053,7 +11060,6 @@ module Google
           property :license_assignment_state, as: 'licenseAssignmentState'
           property :license_config, as: 'licenseConfig'
           property :update_time, as: 'updateTime'
-          property :user, as: 'user'
           property :user_principal, as: 'userPrincipal'
           property :user_profile, as: 'userProfile'
         end
