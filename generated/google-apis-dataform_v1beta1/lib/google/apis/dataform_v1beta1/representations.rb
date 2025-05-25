@@ -1294,6 +1294,7 @@ module Google
       class NotebookRuntimeOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ai_platform_notebook_runtime_template, as: 'aiPlatformNotebookRuntimeTemplate'
           property :gcs_output_bucket, as: 'gcsOutputBucket'
         end
       end
