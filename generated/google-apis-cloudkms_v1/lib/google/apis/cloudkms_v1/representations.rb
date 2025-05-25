@@ -190,7 +190,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class KeyAccessJustificationsEnrollmentConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class KeyAccessJustificationsPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class KeyAccessJustificationsPolicyConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -358,6 +370,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShowEffectiveKeyAccessJustificationsPolicyConfigResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -455,6 +479,7 @@ module Google
       class AutokeyConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
           property :key_project, as: 'keyProject'
           property :name, as: 'name'
           property :state, as: 'state'
@@ -697,10 +722,27 @@ module Google
         end
       end
       
+      class KeyAccessJustificationsEnrollmentConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audit_logging, as: 'auditLogging'
+          property :policy_enforcement, as: 'policyEnforcement'
+        end
+      end
+      
       class KeyAccessJustificationsPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_access_reasons, as: 'allowedAccessReasons'
+        end
+      end
+      
+      class KeyAccessJustificationsPolicyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_key_access_justification_policy, as: 'defaultKeyAccessJustificationPolicy', class: Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicy, decorator: Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicy::Representation
+      
+          property :name, as: 'name'
         end
       end
       
@@ -980,6 +1022,26 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key_project, as: 'keyProject'
+        end
+      end
+      
+      class ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_config, as: 'externalConfig', class: Google::Apis::CloudkmsV1::KeyAccessJustificationsEnrollmentConfig, decorator: Google::Apis::CloudkmsV1::KeyAccessJustificationsEnrollmentConfig::Representation
+      
+          property :hardware_config, as: 'hardwareConfig', class: Google::Apis::CloudkmsV1::KeyAccessJustificationsEnrollmentConfig, decorator: Google::Apis::CloudkmsV1::KeyAccessJustificationsEnrollmentConfig::Representation
+      
+          property :software_config, as: 'softwareConfig', class: Google::Apis::CloudkmsV1::KeyAccessJustificationsEnrollmentConfig, decorator: Google::Apis::CloudkmsV1::KeyAccessJustificationsEnrollmentConfig::Representation
+      
+        end
+      end
+      
+      class ShowEffectiveKeyAccessJustificationsPolicyConfigResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :effective_kaj_policy, as: 'effectiveKajPolicy', class: Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig, decorator: Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig::Representation
+      
         end
       end
       
