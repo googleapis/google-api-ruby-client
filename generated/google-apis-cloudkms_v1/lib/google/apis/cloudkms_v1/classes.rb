@@ -323,6 +323,14 @@ module Google
       class AutokeyConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. A checksum computed by the server based on the value of other fields.
+        # This may be sent on update requests to ensure that the client has an up-to-
+        # date value before proceeding. The request will be rejected with an ABORTED
+        # error on a mismatched etag.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # Optional. Name of the key project, e.g. `projects/`PROJECT_ID`` or `projects/`
         # PROJECT_NUMBER``, where Cloud KMS Autokey will provision a new CryptoKey when
         # a KeyHandle is created. On UpdateAutokeyConfig, the caller will require `
@@ -352,6 +360,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
           @key_project = args[:key_project] if args.key?(:key_project)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
@@ -1575,6 +1584,34 @@ module Google
         end
       end
       
+      # The configuration of a protection level for a project's Key Access
+      # Justifications enrollment.
+      class KeyAccessJustificationsEnrollmentConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether the project has KAJ logging enabled.
+        # Corresponds to the JSON property `auditLogging`
+        # @return [Boolean]
+        attr_accessor :audit_logging
+        alias_method :audit_logging?, :audit_logging
+      
+        # Whether the project is enrolled in KAJ policy enforcement.
+        # Corresponds to the JSON property `policyEnforcement`
+        # @return [Boolean]
+        attr_accessor :policy_enforcement
+        alias_method :policy_enforcement?, :policy_enforcement
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audit_logging = args[:audit_logging] if args.key?(:audit_logging)
+          @policy_enforcement = args[:policy_enforcement] if args.key?(:policy_enforcement)
+        end
+      end
+      
       # A KeyAccessJustificationsPolicy specifies zero or more allowed AccessReason
       # values for encrypt, decrypt, and sign operations on a CryptoKey.
       class KeyAccessJustificationsPolicy
@@ -1594,6 +1631,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allowed_access_reasons = args[:allowed_access_reasons] if args.key?(:allowed_access_reasons)
+        end
+      end
+      
+      # A singleton configuration for Key Access Justifications policies.
+      class KeyAccessJustificationsPolicyConfig
+        include Google::Apis::Core::Hashable
+      
+        # A KeyAccessJustificationsPolicy specifies zero or more allowed AccessReason
+        # values for encrypt, decrypt, and sign operations on a CryptoKey.
+        # Corresponds to the JSON property `defaultKeyAccessJustificationPolicy`
+        # @return [Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicy]
+        attr_accessor :default_key_access_justification_policy
+      
+        # Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in
+        # the format of "`organizations|folders|projects`/*/kajPolicyConfig".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_key_access_justification_policy = args[:default_key_access_justification_policy] if args.key?(:default_key_access_justification_policy)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -2959,6 +3023,61 @@ module Google
         # Update properties of this object
         def update!(**args)
           @key_project = args[:key_project] if args.key?(:key_project)
+        end
+      end
+      
+      # Response message for KeyAccessJustificationsConfig.
+      # ShowEffectiveKeyAccessJustificationsEnrollmentConfig
+      class ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse
+        include Google::Apis::Core::Hashable
+      
+        # The configuration of a protection level for a project's Key Access
+        # Justifications enrollment.
+        # Corresponds to the JSON property `externalConfig`
+        # @return [Google::Apis::CloudkmsV1::KeyAccessJustificationsEnrollmentConfig]
+        attr_accessor :external_config
+      
+        # The configuration of a protection level for a project's Key Access
+        # Justifications enrollment.
+        # Corresponds to the JSON property `hardwareConfig`
+        # @return [Google::Apis::CloudkmsV1::KeyAccessJustificationsEnrollmentConfig]
+        attr_accessor :hardware_config
+      
+        # The configuration of a protection level for a project's Key Access
+        # Justifications enrollment.
+        # Corresponds to the JSON property `softwareConfig`
+        # @return [Google::Apis::CloudkmsV1::KeyAccessJustificationsEnrollmentConfig]
+        attr_accessor :software_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_config = args[:external_config] if args.key?(:external_config)
+          @hardware_config = args[:hardware_config] if args.key?(:hardware_config)
+          @software_config = args[:software_config] if args.key?(:software_config)
+        end
+      end
+      
+      # Response message for KeyAccessJustificationsConfig.
+      # ShowEffectiveKeyAccessJustificationsPolicyConfig.
+      class ShowEffectiveKeyAccessJustificationsPolicyConfigResponse
+        include Google::Apis::Core::Hashable
+      
+        # A singleton configuration for Key Access Justifications policies.
+        # Corresponds to the JSON property `effectiveKajPolicy`
+        # @return [Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig]
+        attr_accessor :effective_kaj_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_kaj_policy = args[:effective_kaj_policy] if args.key?(:effective_kaj_policy)
         end
       end
       
