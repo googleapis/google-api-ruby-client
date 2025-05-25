@@ -972,15 +972,15 @@ module Google
         attr_accessor :key_algorithm
       
         # Optional. Lifetime of the workload certificates issued by the CA pool. Must be
-        # between 10 hours and 30 days. If not specified, this will be defaulted to 24
+        # between 24 hours and 30 days. If not specified, this will be defaulted to 24
         # hours.
         # Corresponds to the JSON property `lifetime`
         # @return [String]
         attr_accessor :lifetime
       
-        # Optional. Rotation window percentage indicating when certificate rotation
-        # should be initiated based on remaining lifetime. Must be between 10 and 80. If
-        # not specified, this will be defaulted to 50.
+        # Optional. Rotation window percentage, the percentage of remaining lifetime
+        # after which certificate rotation is initiated. Must be between 50 and 80. If
+        # no value is specified, rotation window percentage is defaulted to 50.
         # Corresponds to the JSON property `rotationWindowPercentage`
         # @return [Fixnum]
         attr_accessor :rotation_window_percentage
@@ -2954,7 +2954,7 @@ module Google
       end
       
       # Trust store that contains trust anchors and optional intermediate CAs used in
-      # PKI to build trust chain and verify a client's identity.
+      # PKI to build a trust chain(trust hierarchy) and verify a client's identity.
       class TrustStore
         include Google::Apis::Core::Hashable
       
@@ -3856,7 +3856,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Trust store that contains trust anchors and optional intermediate CAs used in
-        # PKI to build trust chain and verify a client's identity.
+        # PKI to build a trust chain(trust hierarchy) and verify a client's identity.
         # Corresponds to the JSON property `trustStore`
         # @return [Google::Apis::IamV1::TrustStore]
         attr_accessor :trust_store
