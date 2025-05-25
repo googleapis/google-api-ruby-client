@@ -1765,6 +1765,13 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # Optional. The project of the BigQuery dataset to publish BigLake external or
+        # non-BigLake external tables to. If not specified, the project of the Cloud
+        # Storage bucket will be used. The format is "projects/`project_id_or_number`".
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
         # Optional. Determines whether to publish discovered tables as BigLake external
         # tables or non-BigLake external tables.
         # Corresponds to the JSON property `tableType`
@@ -1779,6 +1786,7 @@ module Google
         def update!(**args)
           @connection = args[:connection] if args.key?(:connection)
           @location = args[:location] if args.key?(:location)
+          @project = args[:project] if args.key?(:project)
           @table_type = args[:table_type] if args.key?(:table_type)
         end
       end
@@ -2394,6 +2402,17 @@ module Google
         # @return [String]
         attr_accessor :column
       
+        # Output only. The dimension-level results for this column.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityDimensionResult>]
+        attr_accessor :dimensions
+      
+        # Output only. Whether the column passed or failed.
+        # Corresponds to the JSON property `passed`
+        # @return [Boolean]
+        attr_accessor :passed
+        alias_method :passed?, :passed
+      
         # Output only. The column-level data quality score for this data scan job if and
         # only if the 'column' field is set.The score ranges between between 0, 100 (up
         # to two decimal points).
@@ -2408,6 +2427,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @column = args[:column] if args.key?(:column)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @passed = args[:passed] if args.key?(:passed)
           @score = args[:score] if args.key?(:score)
         end
       end
@@ -2473,6 +2494,11 @@ module Google
       class GoogleCloudDataplexV1DataQualityResult
         include Google::Apis::Core::Hashable
       
+        # The status of publishing the data scan result to Catalog.
+        # Corresponds to the JSON property `catalogPublishingStatus`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanCatalogPublishingStatus]
+        attr_accessor :catalog_publishing_status
+      
         # Output only. A list of results at the column level.A column will have a
         # corresponding DataQualityColumnResult if and only if there is at least one
         # rule with the 'column' field set to it.
@@ -2525,6 +2551,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @catalog_publishing_status = args[:catalog_publishing_status] if args.key?(:catalog_publishing_status)
           @columns = args[:columns] if args.key?(:columns)
           @dimensions = args[:dimensions] if args.key?(:dimensions)
           @passed = args[:passed] if args.key?(:passed)
@@ -3119,6 +3146,13 @@ module Google
       class GoogleCloudDataplexV1DataQualitySpec
         include Google::Apis::Core::Hashable
       
+        # Optional. If set, the latest DataScan job result will be published to Dataplex
+        # Catalog.
+        # Corresponds to the JSON property `catalogPublishingEnabled`
+        # @return [Boolean]
+        attr_accessor :catalog_publishing_enabled
+        alias_method :catalog_publishing_enabled?, :catalog_publishing_enabled
+      
         # The configuration of post scan actions of DataQualityScan.
         # Corresponds to the JSON property `postScanActions`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActions]
@@ -3152,6 +3186,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @catalog_publishing_enabled = args[:catalog_publishing_enabled] if args.key?(:catalog_publishing_enabled)
           @post_scan_actions = args[:post_scan_actions] if args.key?(:post_scan_actions)
           @row_filter = args[:row_filter] if args.key?(:row_filter)
           @rules = args[:rules] if args.key?(:rules)
@@ -3451,10 +3486,34 @@ module Google
         end
       end
       
+      # The status of publishing the data scan result to Catalog.
+      class GoogleCloudDataplexV1DataScanCatalogPublishingStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Execution state for catalog publishing.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # These messages contain information about the execution of a datascan. The
       # monitored resource is 'DataScan'
       class GoogleCloudDataplexV1DataScanEvent
         include Google::Apis::Core::Hashable
+      
+        # The status of publishing the data scan result to Catalog.
+        # Corresponds to the JSON property `catalogPublishingStatus`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanCatalogPublishingStatus]
+        attr_accessor :catalog_publishing_status
       
         # The time when the data scan job was created.
         # Corresponds to the JSON property `createTime`
@@ -3542,6 +3601,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @catalog_publishing_status = args[:catalog_publishing_status] if args.key?(:catalog_publishing_status)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_profile = args[:data_profile] if args.key?(:data_profile)
           @data_profile_configs = args[:data_profile_configs] if args.key?(:data_profile_configs)
@@ -5319,29 +5379,29 @@ module Google
         end
       end
       
-      # A Glossary represents a collection of categories and terms defined by the user.
-      # Glossary is a top level resource and is the GCP parent resource of all the
-      # categories and terms within it.
+      # A Glossary represents a collection of GlossaryCategories and GlossaryTerms
+      # defined by the user. Glossary is a top level resource and is the GCP parent
+      # resource of all the GlossaryCategories and GlossaryTerms within it.
       class GoogleCloudDataplexV1Glossary
         include Google::Apis::Core::Hashable
       
-        # Output only. The number of categories in the glossary.
+        # Output only. The number of GlossaryCategories in the Glossary.
         # Corresponds to the JSON property `categoryCount`
         # @return [Fixnum]
         attr_accessor :category_count
       
-        # Output only. The time at which the glossary was created.
+        # Output only. The time at which the Glossary was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. The user-mutable description of the glossary.
+        # Optional. The user-mutable description of the Glossary.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Optional. User friendly display name of the glossary. This is user-mutable.
-        # This will be same as the glossaryId, if not specified.
+        # Optional. User friendly display name of the Glossary. This is user-mutable.
+        # This will be same as the GlossaryId, if not specified.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -5360,12 +5420,12 @@ module Google
         attr_accessor :labels
       
         # Output only. Identifier. The resource name of the Glossary. Format: projects/`
-        # projectId`/locations/`locationId`/glossaries/`glossaryId`
+        # project_id_or_number`/locations/`location_id`/glossaries/`glossary_id`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. The number of terms in the glossary.
+        # Output only. The number of GlossaryTerms in the Glossary.
         # Corresponds to the JSON property `termCount`
         # @return [Fixnum]
         attr_accessor :term_count
@@ -5376,7 +5436,7 @@ module Google
         # @return [String]
         attr_accessor :uid
       
-        # Output only. The time at which the glossary was last updated.
+        # Output only. The time at which the Glossary was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -5400,8 +5460,8 @@ module Google
         end
       end
       
-      # A GlossaryCategory represents a collection of categories and terms within a
-      # Glossary that are related to each other.
+      # A GlossaryCategory represents a collection of GlossaryCategories and
+      # GlossaryTerms within a Glossary that are related to each other.
       class GoogleCloudDataplexV1GlossaryCategory
         include Google::Apis::Core::Hashable
       
@@ -5416,7 +5476,7 @@ module Google
         attr_accessor :description
       
         # Optional. User friendly display name of the GlossaryCategory. This is user-
-        # mutable. This will be same as the categoryId, if not specified.
+        # mutable. This will be same as the GlossaryCategoryId, if not specified.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -5427,17 +5487,17 @@ module Google
         attr_accessor :labels
       
         # Output only. Identifier. The resource name of the GlossaryCategory. Format:
-        # projects/`projectId`/locations/`locationId`/glossaries/`glossaryId`/categories/
-        # `categoryId`
+        # projects/`project_id_or_number`/locations/`location_id`/glossaries/`
+        # glossary_id`/categories/`category_id`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # Required. The immediate parent of the GlossaryCategory in the resource-
-        # hierarchy. It can either be a Glossary or a Category. Format: projects/`
-        # projectId`/locations/`locationId`/glossaries/`glossaryId` OR projects/`
-        # projectId`/locations/`locationId`/glossaries/`glossaryId`/categories/`
-        # categoryId`
+        # hierarchy. It can either be a Glossary or a GlossaryCategory. Format: projects/
+        # `project_id_or_number`/locations/`location_id`/glossaries/`glossary_id` OR
+        # projects/`project_id_or_number`/locations/`location_id`/glossaries/`
+        # glossary_id`/categories/`category_id`
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -5471,8 +5531,8 @@ module Google
         end
       end
       
-      # GlossaryTerms are the core of glossary. A GlossaryTerm holds a rich text
-      # description that can be attached to entries or specific columns to enrich them.
+      # GlossaryTerms are the core of Glossary. A GlossaryTerm holds a rich text
+      # description that can be attached to Entries or specific columns to enrich them.
       class GoogleCloudDataplexV1GlossaryTerm
         include Google::Apis::Core::Hashable
       
@@ -5487,7 +5547,7 @@ module Google
         attr_accessor :description
       
         # Optional. User friendly display name of the GlossaryTerm. This is user-mutable.
-        # This will be same as the termId, if not specified.
+        # This will be same as the GlossaryTermId, if not specified.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -5498,16 +5558,17 @@ module Google
         attr_accessor :labels
       
         # Output only. Identifier. The resource name of the GlossaryTerm. Format:
-        # projects/`projectId`/locations/`locationId`/glossaries/`glossaryId`/terms/`
-        # termId`
+        # projects/`project_id_or_number`/locations/`location_id`/glossaries/`
+        # glossary_id`/terms/`term_id`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # Required. The immediate parent of the GlossaryTerm in the resource-hierarchy.
-        # It can either be a Glossary or a Category. Format: projects/`projectId`/
-        # locations/`locationId`/glossaries/`glossaryId` OR projects/`projectId`/
-        # locations/`locationId`/glossaries/`glossaryId`/categories/`categoryId`
+        # It can either be a Glossary or a GlossaryCategory. Format: projects/`
+        # project_id_or_number`/locations/`location_id`/glossaries/`glossary_id` OR
+        # projects/`project_id_or_number`/locations/`location_id`/glossaries/`
+        # glossary_id`/categories/`category_id`
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -6414,7 +6475,7 @@ module Google
       class GoogleCloudDataplexV1ListGlossariesResponse
         include Google::Apis::Core::Hashable
       
-        # Lists the glossaries in the specified parent.
+        # Lists the Glossaries in the specified parent.
         # Corresponds to the JSON property `glossaries`
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1Glossary>]
         attr_accessor :glossaries
@@ -6446,7 +6507,7 @@ module Google
       class GoogleCloudDataplexV1ListGlossaryCategoriesResponse
         include Google::Apis::Core::Hashable
       
-        # Lists the glossaryCategories in the specified parent.
+        # Lists the GlossaryCategories in the specified parent.
         # Corresponds to the JSON property `categories`
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryCategory>]
         attr_accessor :categories
@@ -6484,7 +6545,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Lists the terms in the specified parent.
+        # Lists the GlossaryTerms in the specified parent.
         # Corresponds to the JSON property `terms`
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryTerm>]
         attr_accessor :terms
