@@ -39,7 +39,7 @@ module Google
         # The email address of the actor. If not provided, it is inferred from the
         # credentials supplied during case creation. When a name is provided, an email
         # must also be provided. If the user is a Google Support agent, this is
-        # obfuscated. This field is deprecated. Use **username** field instead.
+        # obfuscated. This field is deprecated. Use `username` instead.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
@@ -101,7 +101,7 @@ module Google
         # @return [String]
         attr_accessor :mime_type
       
-        # Output only. The resource name of the attachment.
+        # Output only. Identifier. The resource name of the attachment.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -238,7 +238,7 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
-        # The resource name for the case.
+        # Identifier. The resource name for the case.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
