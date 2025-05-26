@@ -41,8 +41,7 @@ module Google
       :quota_project,
       :query,
       :add_invocation_id_header,
-      :upload_chunk_size,
-      :add_idempotency_token_header
+      :upload_chunk_size
     )
 
     # General client options

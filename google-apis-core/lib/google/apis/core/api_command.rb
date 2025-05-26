@@ -69,7 +69,7 @@ module Google
         def prepare!
           set_api_client_header
           set_user_project_header
-          set_idempotency_token_header if options.add_idempotency_token_header
+          set_idempotency_token_header 
           if options&.api_format_version
             header['X-Goog-Api-Format-Version'] = options.api_format_version.to_s
           end

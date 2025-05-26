@@ -98,7 +98,6 @@ RSpec.describe Google::Apis::Core::ApiCommand do
     end
 
     it "should set the X-Goog-Gcs-Idempotency-Token header" do
-      command.options.add_idempotency_token_header = true
       command.prepare!
       expect(command.header['X-Goog-Gcs-Idempotency-Token']).not_to be_nil
       expect(command.header['X-Goog-Gcs-Idempotency-Token']).to eql invocation_id
@@ -269,10 +268,8 @@ EOF
     end
 
     it 'should keep same idempotency_token across retries' do
-      command.options.add_idempotency_token_header = true
       result = command.execute(client)
       idempotency_token_header = command.header['X-Goog-Gcs-Idempotency-Token']
-      expect(command.header['X-Goog-Gcs-Idempotency-Token']).to eq(idempotency_token_header)
       expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
         .with { |req| req.headers['X-Goog-Gcs-Idempotency-Token'] == idempotency_token_header })
         .to have_been_made.times(2)
