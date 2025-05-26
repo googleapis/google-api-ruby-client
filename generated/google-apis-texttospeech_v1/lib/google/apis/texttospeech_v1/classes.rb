@@ -426,6 +426,12 @@ module Google
         # @return [Google::Apis::TexttospeechV1::CustomPronunciations]
         attr_accessor :custom_pronunciations
       
+        # Markup for HD voices specifically. This field may not be used with any other
+        # voices.
+        # Corresponds to the JSON property `markup`
+        # @return [String]
+        attr_accessor :markup
+      
         # A collection of turns for multi-speaker synthesis.
         # Corresponds to the JSON property `multiSpeakerMarkup`
         # @return [Google::Apis::TexttospeechV1::MultiSpeakerMarkup]
@@ -451,6 +457,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @custom_pronunciations = args[:custom_pronunciations] if args.key?(:custom_pronunciations)
+          @markup = args[:markup] if args.key?(:markup)
           @multi_speaker_markup = args[:multi_speaker_markup] if args.key?(:multi_speaker_markup)
           @ssml = args[:ssml] if args.key?(:ssml)
           @text = args[:text] if args.key?(:text)

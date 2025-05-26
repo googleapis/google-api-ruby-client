@@ -421,7 +421,7 @@ module Google
       class GoogleCloudDataplexV1AspectType
         include Google::Apis::Core::Hashable
       
-        # Autorization for an AspectType.
+        # Authorization for an AspectType.
         # Corresponds to the JSON property `authorization`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1AspectTypeAuthorization]
         attr_accessor :authorization
@@ -501,7 +501,7 @@ module Google
         end
       end
       
-      # Autorization for an AspectType.
+      # Authorization for an AspectType.
       class GoogleCloudDataplexV1AspectTypeAuthorization
         include Google::Apis::Core::Hashable
       
@@ -1601,7 +1601,7 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing]
         attr_accessor :bigquery_publishing
       
-        # Statistics of the DataDiscoveryScan.
+        # Describes result statistics of a data scan discovery job.
         # Corresponds to the JSON property `scanStatistics`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoveryResultScanStatistics]
         attr_accessor :scan_statistics
@@ -1642,7 +1642,7 @@ module Google
         end
       end
       
-      # Statistics of the DataDiscoveryScan.
+      # Describes result statistics of a data scan discovery job.
       class GoogleCloudDataplexV1DataDiscoveryResultScanStatistics
         include Google::Apis::Core::Hashable
       
@@ -1765,6 +1765,13 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # Optional. The project of the BigQuery dataset to publish BigLake external or
+        # non-BigLake external tables to. If not specified, the project of the Cloud
+        # Storage bucket will be used. The format is "projects/`project_id_or_number`".
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
         # Optional. Determines whether to publish discovered tables as BigLake external
         # tables or non-BigLake external tables.
         # Corresponds to the JSON property `tableType`
@@ -1779,6 +1786,7 @@ module Google
         def update!(**args)
           @connection = args[:connection] if args.key?(:connection)
           @location = args[:location] if args.key?(:location)
+          @project = args[:project] if args.key?(:project)
           @table_type = args[:table_type] if args.key?(:table_type)
         end
       end
@@ -2394,6 +2402,17 @@ module Google
         # @return [String]
         attr_accessor :column
       
+        # Output only. The dimension-level results for this column.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityDimensionResult>]
+        attr_accessor :dimensions
+      
+        # Output only. Whether the column passed or failed.
+        # Corresponds to the JSON property `passed`
+        # @return [Boolean]
+        attr_accessor :passed
+        alias_method :passed?, :passed
+      
         # Output only. The column-level data quality score for this data scan job if and
         # only if the 'column' field is set.The score ranges between between 0, 100 (up
         # to two decimal points).
@@ -2408,6 +2427,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @column = args[:column] if args.key?(:column)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @passed = args[:passed] if args.key?(:passed)
           @score = args[:score] if args.key?(:score)
         end
       end
@@ -2473,6 +2494,11 @@ module Google
       class GoogleCloudDataplexV1DataQualityResult
         include Google::Apis::Core::Hashable
       
+        # The status of publishing the data scan result to Catalog.
+        # Corresponds to the JSON property `catalogPublishingStatus`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanCatalogPublishingStatus]
+        attr_accessor :catalog_publishing_status
+      
         # Output only. A list of results at the column level.A column will have a
         # corresponding DataQualityColumnResult if and only if there is at least one
         # rule with the 'column' field set to it.
@@ -2525,6 +2551,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @catalog_publishing_status = args[:catalog_publishing_status] if args.key?(:catalog_publishing_status)
           @columns = args[:columns] if args.key?(:columns)
           @dimensions = args[:dimensions] if args.key?(:dimensions)
           @passed = args[:passed] if args.key?(:passed)
@@ -3119,6 +3146,13 @@ module Google
       class GoogleCloudDataplexV1DataQualitySpec
         include Google::Apis::Core::Hashable
       
+        # Optional. If set, the latest DataScan job result will be published to Dataplex
+        # Catalog.
+        # Corresponds to the JSON property `catalogPublishingEnabled`
+        # @return [Boolean]
+        attr_accessor :catalog_publishing_enabled
+        alias_method :catalog_publishing_enabled?, :catalog_publishing_enabled
+      
         # The configuration of post scan actions of DataQualityScan.
         # Corresponds to the JSON property `postScanActions`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActions]
@@ -3152,6 +3186,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @catalog_publishing_enabled = args[:catalog_publishing_enabled] if args.key?(:catalog_publishing_enabled)
           @post_scan_actions = args[:post_scan_actions] if args.key?(:post_scan_actions)
           @row_filter = args[:row_filter] if args.key?(:row_filter)
           @rules = args[:rules] if args.key?(:rules)
@@ -3451,10 +3486,34 @@ module Google
         end
       end
       
+      # The status of publishing the data scan result to Catalog.
+      class GoogleCloudDataplexV1DataScanCatalogPublishingStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Execution state for catalog publishing.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # These messages contain information about the execution of a datascan. The
       # monitored resource is 'DataScan'
       class GoogleCloudDataplexV1DataScanEvent
         include Google::Apis::Core::Hashable
+      
+        # The status of publishing the data scan result to Catalog.
+        # Corresponds to the JSON property `catalogPublishingStatus`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanCatalogPublishingStatus]
+        attr_accessor :catalog_publishing_status
       
         # The time when the data scan job was created.
         # Corresponds to the JSON property `createTime`
@@ -3542,6 +3601,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @catalog_publishing_status = args[:catalog_publishing_status] if args.key?(:catalog_publishing_status)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_profile = args[:data_profile] if args.key?(:data_profile)
           @data_profile_configs = args[:data_profile_configs] if args.key?(:data_profile_configs)
@@ -4235,6 +4295,92 @@ module Google
         end
       end
       
+      # A Resource designed to manage encryption configurations for customers to
+      # support Customer Managed Encryption Keys (CMEK).
+      class GoogleCloudDataplexV1EncryptionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the Encryption configuration was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The state of encryption of the databases.
+        # Corresponds to the JSON property `encryptionState`
+        # @return [String]
+        attr_accessor :encryption_state
+      
+        # Etag of the EncryptionConfig. This is a strong etag.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Details of the failure if anything related to Cmek db fails.
+        # Corresponds to the JSON property `failureDetails`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1EncryptionConfigFailureDetails]
+        attr_accessor :failure_details
+      
+        # Optional. If a key is chosen, it means that the customer is using CMEK. If a
+        # key is not chosen, it means that the customer is using Google managed
+        # encryption.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Identifier. The resource name of the EncryptionConfig. Format: organizations/`
+        # organization`/locations/`location`/encryptionConfigs/`encryption_config`
+        # Global location is not supported.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The time when the Encryption configuration was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @encryption_state = args[:encryption_state] if args.key?(:encryption_state)
+          @etag = args[:etag] if args.key?(:etag)
+          @failure_details = args[:failure_details] if args.key?(:failure_details)
+          @key = args[:key] if args.key?(:key)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Details of the failure if anything related to Cmek db fails.
+      class GoogleCloudDataplexV1EncryptionConfigFailureDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The error code for the failure.
+        # Corresponds to the JSON property `errorCode`
+        # @return [String]
+        attr_accessor :error_code
+      
+        # Output only. The error message will be shown to the user. Set only if the
+        # error code is REQUIRE_USER_ACTION.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @error_message = args[:error_message] if args.key?(:error_message)
+        end
+      end
+      
       # Represents tables and fileset metadata contained within a zone.
       class GoogleCloudDataplexV1Entity
         include Google::Apis::Core::Hashable
@@ -4570,6 +4716,88 @@ module Google
           @transfer_status = args[:transfer_status] if args.key?(:transfer_status)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # EntryLink represents a link between two Entries.
+      class GoogleCloudDataplexV1EntryLink
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the Entry Link was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. Immutable. Relative resource name of the Entry Link Type used to
+        # create this Entry Link, of the form: `projects/`project_id_or_number`/
+        # locations/`location_id`/entryLinkTypes/`entry_link_type_id`.
+        # Corresponds to the JSON property `entryLinkType`
+        # @return [String]
+        attr_accessor :entry_link_type
+      
+        # Required. Specifies the Entries referenced in the Entry Link. There should be
+        # exactly two entry references.
+        # Corresponds to the JSON property `entryReferences`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLinkEntryReference>]
+        attr_accessor :entry_references
+      
+        # Output only. Immutable. Identifier. The relative resource name of the Entry
+        # Link, of the form: projects/`project_id_or_number`/locations/`location_id`/
+        # entryGroups/`entry_group_id`/entryLinks/`entry_link_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The time when the Entry Link was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @entry_link_type = args[:entry_link_type] if args.key?(:entry_link_type)
+          @entry_references = args[:entry_references] if args.key?(:entry_references)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Reference to the Entry that is linked through the Entry Link.
+      class GoogleCloudDataplexV1EntryLinkEntryReference
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The relative resource name of the referenced Entry, of
+        # the form: projects/`project_id_or_number`/locations/`location_id`/entryGroups/`
+        # entry_group_id`/entries/`entry_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Immutable. The path in the Entry that is referenced in the Entry Link. Empty
+        # path denotes that the Entry itself is referenced in the Entry Link.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Required. Immutable. The reference type of the Entry.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @path = args[:path] if args.key?(:path)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -5148,6 +5376,228 @@ module Google
         # Update properties of this object
         def update!(**args)
           @rule = args[:rule] if args.key?(:rule)
+        end
+      end
+      
+      # A Glossary represents a collection of GlossaryCategories and GlossaryTerms
+      # defined by the user. Glossary is a top level resource and is the GCP parent
+      # resource of all the GlossaryCategories and GlossaryTerms within it.
+      class GoogleCloudDataplexV1Glossary
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The number of GlossaryCategories in the Glossary.
+        # Corresponds to the JSON property `categoryCount`
+        # @return [Fixnum]
+        attr_accessor :category_count
+      
+        # Output only. The time at which the Glossary was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The user-mutable description of the Glossary.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. User friendly display name of the Glossary. This is user-mutable.
+        # This will be same as the GlossaryId, if not specified.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. Needed for resource freshness validation. This checksum is computed
+        # by the server based on the value of other fields, and may be sent on update
+        # and delete requests to ensure the client has an up-to-date value before
+        # proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. User-defined labels for the Glossary.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. Identifier. The resource name of the Glossary. Format: projects/`
+        # project_id_or_number`/locations/`location_id`/glossaries/`glossary_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The number of GlossaryTerms in the Glossary.
+        # Corresponds to the JSON property `termCount`
+        # @return [Fixnum]
+        attr_accessor :term_count
+      
+        # Output only. System generated unique id for the Glossary. This ID will be
+        # different if the Glossary is deleted and re-created with the same name.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The time at which the Glossary was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category_count = args[:category_count] if args.key?(:category_count)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @term_count = args[:term_count] if args.key?(:term_count)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A GlossaryCategory represents a collection of GlossaryCategories and
+      # GlossaryTerms within a Glossary that are related to each other.
+      class GoogleCloudDataplexV1GlossaryCategory
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which the GlossaryCategory was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The user-mutable description of the GlossaryCategory.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. User friendly display name of the GlossaryCategory. This is user-
+        # mutable. This will be same as the GlossaryCategoryId, if not specified.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. User-defined labels for the GlossaryCategory.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. Identifier. The resource name of the GlossaryCategory. Format:
+        # projects/`project_id_or_number`/locations/`location_id`/glossaries/`
+        # glossary_id`/categories/`category_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The immediate parent of the GlossaryCategory in the resource-
+        # hierarchy. It can either be a Glossary or a GlossaryCategory. Format: projects/
+        # `project_id_or_number`/locations/`location_id`/glossaries/`glossary_id` OR
+        # projects/`project_id_or_number`/locations/`location_id`/glossaries/`
+        # glossary_id`/categories/`category_id`
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # Output only. System generated unique id for the GlossaryCategory. This ID will
+        # be different if the GlossaryCategory is deleted and re-created with the same
+        # name.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The time at which the GlossaryCategory was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @parent = args[:parent] if args.key?(:parent)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # GlossaryTerms are the core of Glossary. A GlossaryTerm holds a rich text
+      # description that can be attached to Entries or specific columns to enrich them.
+      class GoogleCloudDataplexV1GlossaryTerm
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which the GlossaryTerm was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The user-mutable description of the GlossaryTerm.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. User friendly display name of the GlossaryTerm. This is user-mutable.
+        # This will be same as the GlossaryTermId, if not specified.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. User-defined labels for the GlossaryTerm.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. Identifier. The resource name of the GlossaryTerm. Format:
+        # projects/`project_id_or_number`/locations/`location_id`/glossaries/`
+        # glossary_id`/terms/`term_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The immediate parent of the GlossaryTerm in the resource-hierarchy.
+        # It can either be a Glossary or a GlossaryCategory. Format: projects/`
+        # project_id_or_number`/locations/`location_id`/glossaries/`glossary_id` OR
+        # projects/`project_id_or_number`/locations/`location_id`/glossaries/`
+        # glossary_id`/categories/`category_id`
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # Output only. System generated unique id for the GlossaryTerm. This ID will be
+        # different if the GlossaryTerm is deleted and re-created with the same name.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The time at which the GlossaryTerm was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @parent = args[:parent] if args.key?(:parent)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -5847,6 +6297,38 @@ module Google
         end
       end
       
+      # List EncryptionConfigs Response
+      class GoogleCloudDataplexV1ListEncryptionConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of EncryptionConfigs under the given parent location.
+        # Corresponds to the JSON property `encryptionConfigs`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1EncryptionConfig>]
+        attr_accessor :encryption_configs
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachableLocations`
+        # @return [Array<String>]
+        attr_accessor :unreachable_locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption_configs = args[:encryption_configs] if args.key?(:encryption_configs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable_locations = args[:unreachable_locations] if args.key?(:unreachable_locations)
+        end
+      end
+      
       # List metadata entities response.
       class GoogleCloudDataplexV1ListEntitiesResponse
         include Google::Apis::Core::Hashable
@@ -5986,6 +6468,102 @@ module Google
         def update!(**args)
           @environments = args[:environments] if args.key?(:environments)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # List Glossaries Response
+      class GoogleCloudDataplexV1ListGlossariesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Lists the Glossaries in the specified parent.
+        # Corresponds to the JSON property `glossaries`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1Glossary>]
+        attr_accessor :glossaries
+      
+        # A token, which can be sent as page_token to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that the service couldn't reach.
+        # Corresponds to the JSON property `unreachableLocations`
+        # @return [Array<String>]
+        attr_accessor :unreachable_locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @glossaries = args[:glossaries] if args.key?(:glossaries)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable_locations = args[:unreachable_locations] if args.key?(:unreachable_locations)
+        end
+      end
+      
+      # List GlossaryCategories Response
+      class GoogleCloudDataplexV1ListGlossaryCategoriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Lists the GlossaryCategories in the specified parent.
+        # Corresponds to the JSON property `categories`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryCategory>]
+        attr_accessor :categories
+      
+        # A token, which can be sent as page_token to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that the service couldn't reach.
+        # Corresponds to the JSON property `unreachableLocations`
+        # @return [Array<String>]
+        attr_accessor :unreachable_locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @categories = args[:categories] if args.key?(:categories)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable_locations = args[:unreachable_locations] if args.key?(:unreachable_locations)
+        end
+      end
+      
+      # List GlossaryTerms Response
+      class GoogleCloudDataplexV1ListGlossaryTermsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as page_token to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Lists the GlossaryTerms in the specified parent.
+        # Corresponds to the JSON property `terms`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryTerm>]
+        attr_accessor :terms
+      
+        # Locations that the service couldn't reach.
+        # Corresponds to the JSON property `unreachableLocations`
+        # @return [Array<String>]
+        attr_accessor :unreachable_locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @terms = args[:terms] if args.key?(:terms)
+          @unreachable_locations = args[:unreachable_locations] if args.key?(:unreachable_locations)
         end
       end
       
@@ -6198,13 +6776,14 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Export Job Results. The result is based on the snapshot at the time when the
-        # job is created.
+        # Summary results from a metadata export job. The results are a snapshot of the
+        # metadata at the time when the job was created. The exported entries are saved
+        # to a Cloud Storage bucket.
         # Corresponds to the JSON property `exportResult`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobExportJobResult]
         attr_accessor :export_result
       
-        # Export job specification.
+        # Job specification for a metadata export job.
         # Corresponds to the JSON property `exportSpec`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobExportJobSpec]
         attr_accessor :export_spec
@@ -6278,17 +6857,18 @@ module Google
         end
       end
       
-      # Export Job Results. The result is based on the snapshot at the time when the
-      # job is created.
+      # Summary results from a metadata export job. The results are a snapshot of the
+      # metadata at the time when the job was created. The exported entries are saved
+      # to a Cloud Storage bucket.
       class GoogleCloudDataplexV1MetadataJobExportJobResult
         include Google::Apis::Core::Hashable
       
-        # Output only. The error message if the export job failed.
+        # Output only. The error message if the metadata export job failed.
         # Corresponds to the JSON property `errorMessage`
         # @return [String]
         attr_accessor :error_message
       
-        # Output only. The number of entries that have been exported.
+        # Output only. The number of entries that were exported.
         # Corresponds to the JSON property `exportedEntries`
         # @return [Fixnum]
         attr_accessor :exported_entries
@@ -6304,19 +6884,22 @@ module Google
         end
       end
       
-      # Export job specification.
+      # Job specification for a metadata export job.
       class GoogleCloudDataplexV1MetadataJobExportJobSpec
         include Google::Apis::Core::Hashable
       
-        # Required. The root path of the exported metadata. Must be in the format: "gs://
-        # " Or specify a customized prefix after the bucket: "gs://///.../". The length
-        # limit of the customized prefix is 128 characters. The bucket must be in the
-        # same VPC-SC perimeter with the job.
+        # Required. The root path of the Cloud Storage bucket to export the metadata to,
+        # in the format gs://`bucket`/. You can optionally specify a custom prefix after
+        # the bucket name, in the format gs://`bucket`/`prefix`/. The maximum length of
+        # the custom prefix is 128 characters. Dataplex constructs the object path for
+        # the exported files by using the bucket name and prefix that you provide,
+        # followed by a system-generated path.The bucket must be in the same VPC Service
+        # Controls perimeter as the job.
         # Corresponds to the JSON property `outputPath`
         # @return [String]
         attr_accessor :output_path
       
-        # Scope of the export job.
+        # The scope of the export job.
         # Corresponds to the JSON property `scope`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope]
         attr_accessor :scope
@@ -6332,49 +6915,54 @@ module Google
         end
       end
       
-      # Scope of the export job.
+      # The scope of the export job.
       class GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope
         include Google::Apis::Core::Hashable
       
-        # The aspect types that are in scope for the export job. Optional. If specified,
-        # only aspects of the specified types will be affected by the job. Must follow
-        # the format: "projects//locations//aspectTypes/"
+        # The aspect types that are in scope for the export job, specified as relative
+        # resource names in the format projects/`project_id_or_number`/locations/`
+        # location`/aspectTypes/`aspect_type_id`. Only aspects that belong to the
+        # specified aspect types are affected by the job.
         # Corresponds to the JSON property `aspectTypes`
         # @return [Array<String>]
         attr_accessor :aspect_types
       
-        # The entry groups that are in scope for the export job. Optional. If specified,
-        # only entries in the specified entry groups will be exported by the job. Must
-        # be in the VPC-SC perimeter of the job. The location of the entry groups must
-        # be the same as the job. Either projects or entry_groups can be specified when
-        # organization_level_export is set to false. Must follow the format: "projects//
-        # locations//entryGroups/"
+        # The entry groups whose metadata you want to export, in the format projects/`
+        # project_id_or_number`/locations/`location_id`/entryGroups/`entry_group_id`.
+        # Only the entries in the specified entry groups are exported.The entry groups
+        # must be in the same location and the same VPC Service Controls perimeter as
+        # the job.If you set the job scope to be a list of entry groups, then set the
+        # organization-level export flag to false and don't provide a list of projects.
         # Corresponds to the JSON property `entryGroups`
         # @return [Array<String>]
         attr_accessor :entry_groups
       
-        # If specified, only entries of the specified types will be affected by the job.
-        # Must follow the format: "projects//locations//entryTypes/"
+        # The entry types that are in scope for the export job, specified as relative
+        # resource names in the format projects/`project_id_or_number`/locations/`
+        # location`/entryTypes/`entry_type_id`. Only entries that belong to the
+        # specified entry types are affected by the job.
         # Corresponds to the JSON property `entryTypes`
         # @return [Array<String>]
         attr_accessor :entry_types
       
-        # Indicating if it is an organization level export job. - When set to true,
-        # exports all entries from entry groups and projects sharing the same
-        # organization id of the Metadata Job. Only projects and entry groups in the VPC-
-        # SC perimeter will be exported. The projects and entry groups are ignored. -
-        # When set to false, one of the projects or entry groups must be specified. -
-        # Default to false.
+        # Whether the metadata export job is an organization-level export job. If true,
+        # the job exports the entries from the same organization and VPC Service
+        # Controls perimeter as the job. The project that the job belongs to determines
+        # the VPC Service Controls perimeter. If you set the job scope to be at the
+        # organization level, then don't provide a list of projects or entry groups. If
+        # false, you must specify a list of projects or a list of entry groups whose
+        # entries you want to export.The default is false.
         # Corresponds to the JSON property `organizationLevel`
         # @return [Boolean]
         attr_accessor :organization_level
         alias_method :organization_level?, :organization_level
       
-        # The projects that are in the scope of the export job. Can either be project
-        # numbers or project IDs. If specified, only the entries from the specified
-        # projects will be exported. The projects must be in the same organization and
-        # in the VPC-SC perimeter. Either projects or entry_groups can be specified when
-        # organization_level_export is set to false. Must follow the format: "projects/"
+        # The projects whose metadata you want to export, in the format projects/`
+        # project_id_or_number`. Only the entries from the specified projects are
+        # exported.The projects must be in the same organization and VPC Service
+        # Controls perimeter as the job.If you set the job scope to be a list of
+        # projects, then set the organization-level export flag to false and don't
+        # provide a list of entry groups.
         # Corresponds to the JSON property `projects`
         # @return [Array<String>]
         attr_accessor :projects
@@ -6484,15 +7072,15 @@ module Google
         # Optional. The URI of a Cloud Storage bucket or folder (beginning with gs://
         # and ending with /) that contains the metadata import files for this job.A
         # metadata import file defines the values to set for each of the entries and
-        # aspects in a metadata job. For more information about how to create a metadata
-        # import file and the file requirements, see Metadata import file (https://cloud.
-        # google.com/dataplex/docs/import-metadata#metadata-import-file).You can provide
-        # multiple metadata import files in the same metadata job. The bucket or folder
-        # must contain at least one metadata import file, in JSON Lines format (either .
-        # json or .jsonl file extension).In FULL entry sync mode, don't save the
-        # metadata import file in a folder named SOURCE_STORAGE_URI/deletions/.Caution:
-        # If the metadata import file contains no data, all entries and aspects that
-        # belong to the job's scope are deleted.
+        # aspects in a metadata import job. For more information about how to create a
+        # metadata import file and the file requirements, see Metadata import file (
+        # https://cloud.google.com/dataplex/docs/import-metadata#metadata-import-file).
+        # You can provide multiple metadata import files in the same metadata job. The
+        # bucket or folder must contain at least one metadata import file, in JSON Lines
+        # format (either .json or .jsonl file extension).In FULL entry sync mode, don't
+        # save the metadata import file in a folder named SOURCE_STORAGE_URI/deletions/.
+        # Caution: If the metadata import file contains no data, all entries and aspects
+        # that belong to the job's scope are deleted.
         # Corresponds to the JSON property `sourceStorageUri`
         # @return [String]
         attr_accessor :source_storage_uri

@@ -164,7 +164,7 @@ module Google
         attr_accessor :kind
       
         # Content of the configuration. The underlying schema should be defined by
-        # Aspect owners as protobuf message under `apiserving/configaspects/proto`.
+        # Aspect owners as protobuf message under `google/api/configaspects/proto`.
         # Corresponds to the JSON property `spec`
         # @return [Hash<String,Object>]
         attr_accessor :spec
@@ -538,6 +538,140 @@ module Google
           @path_translation = args[:path_translation] if args.key?(:path_translation)
           @protocol = args[:protocol] if args.key?(:protocol)
           @selector = args[:selector] if args.key?(:selector)
+        end
+      end
+      
+      # `BatchingConfigProto` defines the batching configuration for an API method.
+      class BatchingConfigProto
+        include Google::Apis::Core::Hashable
+      
+        # `BatchingDescriptorProto` specifies the fields of the request message to be
+        # used for batching, and, optionally, the fields of the response message to be
+        # used for demultiplexing.
+        # Corresponds to the JSON property `batchDescriptor`
+        # @return [Google::Apis::ServiceconsumermanagementV1::BatchingDescriptorProto]
+        attr_accessor :batch_descriptor
+      
+        # `BatchingSettingsProto` specifies a set of batching thresholds, each of which
+        # acts as a trigger to send a batch of messages as a request. At least one
+        # threshold must be positive nonzero.
+        # Corresponds to the JSON property `thresholds`
+        # @return [Google::Apis::ServiceconsumermanagementV1::BatchingSettingsProto]
+        attr_accessor :thresholds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @batch_descriptor = args[:batch_descriptor] if args.key?(:batch_descriptor)
+          @thresholds = args[:thresholds] if args.key?(:thresholds)
+        end
+      end
+      
+      # `BatchingDescriptorProto` specifies the fields of the request message to be
+      # used for batching, and, optionally, the fields of the response message to be
+      # used for demultiplexing.
+      class BatchingDescriptorProto
+        include Google::Apis::Core::Hashable
+      
+        # The repeated field in the request message to be aggregated by batching.
+        # Corresponds to the JSON property `batchedField`
+        # @return [String]
+        attr_accessor :batched_field
+      
+        # A list of the fields in the request message. Two requests will be batched
+        # together only if the values of every field specified in `
+        # request_discriminator_fields` is equal between the two requests.
+        # Corresponds to the JSON property `discriminatorFields`
+        # @return [Array<String>]
+        attr_accessor :discriminator_fields
+      
+        # Optional. When present, indicates the field in the response message to be used
+        # to demultiplex the response into multiple response messages, in correspondence
+        # with the multiple request messages originally batched together.
+        # Corresponds to the JSON property `subresponseField`
+        # @return [String]
+        attr_accessor :subresponse_field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @batched_field = args[:batched_field] if args.key?(:batched_field)
+          @discriminator_fields = args[:discriminator_fields] if args.key?(:discriminator_fields)
+          @subresponse_field = args[:subresponse_field] if args.key?(:subresponse_field)
+        end
+      end
+      
+      # `BatchingSettingsProto` specifies a set of batching thresholds, each of which
+      # acts as a trigger to send a batch of messages as a request. At least one
+      # threshold must be positive nonzero.
+      class BatchingSettingsProto
+        include Google::Apis::Core::Hashable
+      
+        # The duration after which a batch should be sent, starting from the addition of
+        # the first message to that batch.
+        # Corresponds to the JSON property `delayThreshold`
+        # @return [String]
+        attr_accessor :delay_threshold
+      
+        # The maximum number of elements collected in a batch that could be accepted by
+        # server.
+        # Corresponds to the JSON property `elementCountLimit`
+        # @return [Fixnum]
+        attr_accessor :element_count_limit
+      
+        # The number of elements of a field collected into a batch which, if exceeded,
+        # causes the batch to be sent.
+        # Corresponds to the JSON property `elementCountThreshold`
+        # @return [Fixnum]
+        attr_accessor :element_count_threshold
+      
+        # The maximum size of data allowed by flow control.
+        # Corresponds to the JSON property `flowControlByteLimit`
+        # @return [Fixnum]
+        attr_accessor :flow_control_byte_limit
+      
+        # The maximum number of elements allowed by flow control.
+        # Corresponds to the JSON property `flowControlElementLimit`
+        # @return [Fixnum]
+        attr_accessor :flow_control_element_limit
+      
+        # The behavior to take when the flow control limit is exceeded.
+        # Corresponds to the JSON property `flowControlLimitExceededBehavior`
+        # @return [String]
+        attr_accessor :flow_control_limit_exceeded_behavior
+      
+        # The maximum size of the request that could be accepted by server.
+        # Corresponds to the JSON property `requestByteLimit`
+        # @return [Fixnum]
+        attr_accessor :request_byte_limit
+      
+        # The aggregated size of the batched field which, if exceeded, causes the batch
+        # to be sent. This size is computed by aggregating the sizes of the request
+        # field to be batched, not of the entire request message.
+        # Corresponds to the JSON property `requestByteThreshold`
+        # @return [Fixnum]
+        attr_accessor :request_byte_threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delay_threshold = args[:delay_threshold] if args.key?(:delay_threshold)
+          @element_count_limit = args[:element_count_limit] if args.key?(:element_count_limit)
+          @element_count_threshold = args[:element_count_threshold] if args.key?(:element_count_threshold)
+          @flow_control_byte_limit = args[:flow_control_byte_limit] if args.key?(:flow_control_byte_limit)
+          @flow_control_element_limit = args[:flow_control_element_limit] if args.key?(:flow_control_element_limit)
+          @flow_control_limit_exceeded_behavior = args[:flow_control_limit_exceeded_behavior] if args.key?(:flow_control_limit_exceeded_behavior)
+          @request_byte_limit = args[:request_byte_limit] if args.key?(:request_byte_limit)
+          @request_byte_threshold = args[:request_byte_threshold] if args.key?(:request_byte_threshold)
         end
       end
       
@@ -2218,6 +2352,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :auto_populated_fields
       
+        # `BatchingConfigProto` defines the batching configuration for an API method.
+        # Corresponds to the JSON property `batching`
+        # @return [Google::Apis::ServiceconsumermanagementV1::BatchingConfigProto]
+        attr_accessor :batching
+      
         # Describes settings to use when generating API methods that use the long-
         # running operation pattern. All default values below are from those used in the
         # client library generators (e.g. [Java](https://github.com/googleapis/gapic-
@@ -2242,6 +2381,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_populated_fields = args[:auto_populated_fields] if args.key?(:auto_populated_fields)
+          @batching = args[:batching] if args.key?(:batching)
           @long_running = args[:long_running] if args.key?(:long_running)
           @selector = args[:selector] if args.key?(:selector)
         end

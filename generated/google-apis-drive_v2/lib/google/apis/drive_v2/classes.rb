@@ -4661,7 +4661,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. The email address of the user.
+        # Output only. The email address of the user. This may not be present in certain
+        # contexts if the user has not made their email address visible to the requester.
         # Corresponds to the JSON property `emailAddress`
         # @return [String]
         attr_accessor :email_address
@@ -4673,12 +4674,13 @@ module Google
         attr_accessor :is_authenticated_user
         alias_method :is_authenticated_user?, :is_authenticated_user
       
-        # Output only. This is always `drive#user`.
+        # Output only. Identifies what kind of resource this is. Value: the fixed string
+        # `drive#user`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Output only. The user's ID as visible in the permissions collection.
+        # Output only. The user's ID as visible in Permission resources.
         # Corresponds to the JSON property `permissionId`
         # @return [String]
         attr_accessor :permission_id
@@ -4706,7 +4708,7 @@ module Google
         class Picture
           include Google::Apis::Core::Hashable
         
-          # Output Only. A URL that points to a profile picture of this user.
+          # Output only. A URL that points to a profile picture of this user.
           # Corresponds to the JSON property `url`
           # @return [String]
           attr_accessor :url

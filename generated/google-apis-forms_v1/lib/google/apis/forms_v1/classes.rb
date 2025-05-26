@@ -549,7 +549,7 @@ module Google
       
         # Output only. The form URI to share with responders. This opens a page that
         # allows the user to submit responses but not edit the questions. For forms that
-        # have `publish_settings` value set, this will be the published form URI.
+        # have publish_settings value set, this is the published form URI.
         # Corresponds to the JSON property `responderUri`
         # @return [String]
         attr_accessor :responder_uri
@@ -563,8 +563,8 @@ module Google
         # a changed ID (for the same form and user) usually means the form *content* has
         # been updated; however, a changed ID can also be due to internal factors such
         # as ID format changes. Form content excludes form metadata, including: *
-        # sharing settings (who has access to the form) * `publish_settings` (if the
-        # form supports publishing and if it is published)
+        # sharing settings (who has access to the form) * publish_settings (if the form
+        # supports publishing and if it is published)
         # Corresponds to the JSON property `revisionId`
         # @return [String]
         attr_accessor :revision_id
@@ -850,8 +850,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Output only. The title of the document which is visible in Drive. If `Info.
-        # title` is empty, `document_title` may appear in its place in the Google Forms
+        # Output only. The title of the document which is visible in Drive. If Info.
+        # title is empty, `document_title` may appear in its place in the Google Forms
         # UI and be visible to responders. `document_title` can be set on create, but
         # cannot be modified by a batchUpdate request. Please use the [Google Drive API](
         # https://developers.google.com/drive/api/v3/reference/files/update) if you need
@@ -1526,11 +1526,11 @@ module Google
         end
       end
       
-      # The response of a `SetPublishSettings` request.
+      # The response of a SetPublishSettings request.
       class SetPublishSettingsResponse
         include Google::Apis::Core::Hashable
       
-        # Required. The ID of the Form. This is same as the `Form.form_id` field.
+        # Required. The ID of the Form. This is same as the Form.form_id field.
         # Corresponds to the JSON property `formId`
         # @return [String]
         attr_accessor :form_id

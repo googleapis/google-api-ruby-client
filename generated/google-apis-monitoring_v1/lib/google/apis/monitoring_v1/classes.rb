@@ -1273,6 +1273,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. Set if the project has been tombstoned by the user.
+        # Corresponds to the JSON property `isTombstoned`
+        # @return [Boolean]
+        attr_accessor :is_tombstoned
+        alias_method :is_tombstoned?, :is_tombstoned
+      
         # Immutable. The resource name of the MonitoredProject. On input, the resource
         # name includes the scoping project ID and monitored project ID. On output, it
         # contains the equivalent project numbers. Example: locations/global/
@@ -1289,6 +1295,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @is_tombstoned = args[:is_tombstoned] if args.key?(:is_tombstoned)
           @name = args[:name] if args.key?(:name)
         end
       end

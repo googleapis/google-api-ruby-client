@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FederatedIdentityConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GcsData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -320,6 +326,8 @@ module Google
       
           property :container, as: 'container'
           property :credentials_secret, as: 'credentialsSecret'
+          property :federated_identity_config, as: 'federatedIdentityConfig', class: Google::Apis::StoragetransferV1::FederatedIdentityConfig, decorator: Google::Apis::StoragetransferV1::FederatedIdentityConfig::Representation
+      
           property :path, as: 'path'
           property :storage_account, as: 'storageAccount'
         end
@@ -384,6 +392,14 @@ module Google
           property :event_stream_expiration_time, as: 'eventStreamExpirationTime'
           property :event_stream_start_time, as: 'eventStreamStartTime'
           property :name, as: 'name'
+        end
+      end
+      
+      class FederatedIdentityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :tenant_id, as: 'tenantId'
         end
       end
       
@@ -633,6 +649,7 @@ module Google
       
           property :schedule, as: 'schedule', class: Google::Apis::StoragetransferV1::Schedule, decorator: Google::Apis::StoragetransferV1::Schedule::Representation
       
+          property :service_account, as: 'serviceAccount'
           property :status, as: 'status'
           property :transfer_spec, as: 'transferSpec', class: Google::Apis::StoragetransferV1::TransferSpec, decorator: Google::Apis::StoragetransferV1::TransferSpec::Representation
       

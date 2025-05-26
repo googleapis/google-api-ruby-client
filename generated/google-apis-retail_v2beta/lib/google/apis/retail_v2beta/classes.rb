@@ -1756,7 +1756,12 @@ module Google
       class GoogleCloudRetailV2alphaMerchantCenterAccountLinkMerchantCenterFeedFilter
         include Google::Apis::Core::Hashable
       
-        # Merchant Center primary feed ID.
+        # AFM data source ID.
+        # Corresponds to the JSON property `dataSourceId`
+        # @return [Fixnum]
+        attr_accessor :data_source_id
+      
+        # Merchant Center primary feed ID. Deprecated: use data_source_id instead.
         # Corresponds to the JSON property `primaryFeedId`
         # @return [Fixnum]
         attr_accessor :primary_feed_id
@@ -1773,6 +1778,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_source_id = args[:data_source_id] if args.key?(:data_source_id)
           @primary_feed_id = args[:primary_feed_id] if args.key?(:primary_feed_id)
           @primary_feed_name = args[:primary_feed_name] if args.key?(:primary_feed_name)
         end
@@ -3928,6 +3934,25 @@ module Google
         end
       end
       
+      # A message with a list of double values.
+      class GoogleCloudRetailV2betaDoubleList
+        include Google::Apis::Core::Hashable
+      
+        # The list of double values.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Float>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
       # Metadata for active A/B testing experiment.
       class GoogleCloudRetailV2betaExperimentInfo
         include Google::Apis::Core::Hashable
@@ -4996,19 +5021,6 @@ module Google
         # @return [Hash<String,Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCustomAttribute>]
         attr_accessor :attributes
       
-        # Optional. The availability of the Product at this place_id. Default to
-        # Availability.IN_STOCK. For primary products with variants set the availability
-        # of the primary as Availability.OUT_OF_STOCK and set the true availability at
-        # the variant level. This way the primary product will be considered "in stock"
-        # as long as it has at least one variant in stock. For primary products with no
-        # variants set the true availability at the primary level. Corresponding
-        # properties: Google Merchant Center property [availability](https://support.
-        # google.com/merchants/answer/6324448). Schema.org property [Offer.availability](
-        # https://schema.org/availability).
-        # Corresponds to the JSON property `availability`
-        # @return [String]
-        attr_accessor :availability
-      
         # Optional. Supported fulfillment types. Valid fulfillment type values include
         # commonly used types (such as pickup in store and same day delivery), and
         # custom types. Customers have to map custom types to their display names before
@@ -5038,7 +5050,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @attributes = args[:attributes] if args.key?(:attributes)
-          @availability = args[:availability] if args.key?(:availability)
           @fulfillment_types = args[:fulfillment_types] if args.key?(:fulfillment_types)
           @place_id = args[:place_id] if args.key?(:place_id)
           @price_info = args[:price_info] if args.key?(:price_info)
@@ -5049,7 +5060,12 @@ module Google
       class GoogleCloudRetailV2betaMerchantCenterFeedFilter
         include Google::Apis::Core::Hashable
       
-        # Merchant Center primary feed ID.
+        # AFM data source ID.
+        # Corresponds to the JSON property `dataSourceId`
+        # @return [Fixnum]
+        attr_accessor :data_source_id
+      
+        # Merchant Center primary feed ID. Deprecated: use data_source_id instead.
         # Corresponds to the JSON property `primaryFeedId`
         # @return [Fixnum]
         attr_accessor :primary_feed_id
@@ -5066,6 +5082,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_source_id = args[:data_source_id] if args.key?(:data_source_id)
           @primary_feed_id = args[:primary_feed_id] if args.key?(:primary_feed_id)
           @primary_feed_name = args[:primary_feed_name] if args.key?(:primary_feed_name)
         end
@@ -8535,6 +8552,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :matching_variant_fields
       
+        # Google provided available scores.
+        # Corresponds to the JSON property `modelScores`
+        # @return [Hash<String,Google::Apis::RetailV2beta::GoogleCloudRetailV2betaDoubleList>]
+        attr_accessor :model_scores
+      
         # Specifies previous events related to this product for this user based on
         # UserEvent with same SearchRequest.visitor_id or UserInfo.user_id. This is set
         # only when SearchRequest.PersonalizationSpec.mode is SearchRequest.
@@ -8576,6 +8598,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @matching_variant_count = args[:matching_variant_count] if args.key?(:matching_variant_count)
           @matching_variant_fields = args[:matching_variant_fields] if args.key?(:matching_variant_fields)
+          @model_scores = args[:model_scores] if args.key?(:model_scores)
           @personal_labels = args[:personal_labels] if args.key?(:personal_labels)
           @product = args[:product] if args.key?(:product)
           @variant_rollup_values = args[:variant_rollup_values] if args.key?(:variant_rollup_values)

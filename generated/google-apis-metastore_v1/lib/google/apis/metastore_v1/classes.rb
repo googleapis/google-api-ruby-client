@@ -1500,6 +1500,27 @@ module Google
         end
       end
       
+      # This is proto2's version of MessageSet.DEPRECATED: DO NOT USE FOR NEW FIELDS.
+      # If you are using editions or proto2, please make your own extendable messages
+      # for your use case. If you are using proto3, please use Any instead.MessageSet
+      # was the implementation of extensions for proto1. When proto2 was introduced,
+      # extensions were implemented as a first-class feature. This schema for
+      # MessageSet was meant to be a "bridge" solution to migrate MessageSet-bearing
+      # messages from proto1 to proto2.This schema has been open-sourced only to
+      # facilitate the migration of Google products with MessageSet-bearing messages
+      # to open-source environments.
+      class MessageSet
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The details of a metadata export operation.
       class MetadataExport
         include Google::Apis::Core::Hashable
@@ -2569,6 +2590,64 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Wire-format for a Status object
+      class StatusProto
+        include Google::Apis::Core::Hashable
+      
+        # copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional
+        # int32 canonical_code = 6;
+        # Corresponds to the JSON property `canonicalCode`
+        # @return [Fixnum]
+        attr_accessor :canonical_code
+      
+        # Numeric code drawn from the space specified below. Often, this is the
+        # canonical error space, and code is drawn from google3/util/task/codes.proto
+        # copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional
+        # int32 code = 1;
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # Detail message copybara:strip_begin(b/383363683) copybara:
+        # strip_end_and_replace optional string message = 3;
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # This is proto2's version of MessageSet.DEPRECATED: DO NOT USE FOR NEW FIELDS.
+        # If you are using editions or proto2, please make your own extendable messages
+        # for your use case. If you are using proto3, please use Any instead.MessageSet
+        # was the implementation of extensions for proto1. When proto2 was introduced,
+        # extensions were implemented as a first-class feature. This schema for
+        # MessageSet was meant to be a "bridge" solution to migrate MessageSet-bearing
+        # messages from proto1 to proto2.This schema has been open-sourced only to
+        # facilitate the migration of Google products with MessageSet-bearing messages
+        # to open-source environments.
+        # Corresponds to the JSON property `messageSet`
+        # @return [Google::Apis::MetastoreV1::MessageSet]
+        attr_accessor :message_set
+      
+        # copybara:strip_begin(b/383363683) Space to which this status belongs copybara:
+        # strip_end_and_replace optional string space = 2; // Space to which this status
+        # belongs
+        # Corresponds to the JSON property `space`
+        # @return [String]
+        attr_accessor :space
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @canonical_code = args[:canonical_code] if args.key?(:canonical_code)
+          @code = args[:code] if args.key?(:code)
+          @message = args[:message] if args.key?(:message)
+          @message_set = args[:message_set] if args.key?(:message_set)
+          @space = args[:space] if args.key?(:space)
         end
       end
       

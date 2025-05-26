@@ -3220,9 +3220,7 @@ module Google
         attr_accessor :selected
         alias_method :selected?, :selected
       
-        # For multiselect menus, the URL for the icon displayed next to the item's `text`
-        # field. Supports PNG and JPEG files. Must be an `HTTPS` URL. For example, `
-        # https://developers.google.com/workspace/chat/images/quickstart-app-avatar.png`.
+        # 
         # Corresponds to the JSON property `startIconUri`
         # @return [String]
         attr_accessor :start_icon_uri

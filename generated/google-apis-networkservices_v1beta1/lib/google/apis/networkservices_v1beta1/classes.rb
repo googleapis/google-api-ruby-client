@@ -450,7 +450,7 @@ module Google
         attr_accessor :supported_events
       
         # Optional. Specifies the timeout for each individual message on the stream. The
-        # timeout must be between `10`-`1000` milliseconds. Required for callout
+        # timeout must be between `10`-`10000` milliseconds. Required for callout
         # extensions. This field is not supported for plugin extensions. Setting it
         # results in a validation error.
         # Corresponds to the JSON property `timeout`
@@ -3449,6 +3449,11 @@ module Google
         # @return [Google::Apis::NetworkservicesV1beta1::ServiceLbPolicyFailoverConfig]
         attr_accessor :failover_config
       
+        # Configuration to provide isolation support for the associated Backend Service.
+        # Corresponds to the JSON property `isolationConfig`
+        # @return [Google::Apis::NetworkservicesV1beta1::ServiceLbPolicyIsolationConfig]
+        attr_accessor :isolation_config
+      
         # Optional. Set of label tags associated with the ServiceLbPolicy resource.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -3481,6 +3486,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @failover_config = args[:failover_config] if args.key?(:failover_config)
+          @isolation_config = args[:isolation_config] if args.key?(:isolation_config)
           @labels = args[:labels] if args.key?(:labels)
           @load_balancing_algorithm = args[:load_balancing_algorithm] if args.key?(:load_balancing_algorithm)
           @name = args[:name] if args.key?(:name)
@@ -3534,6 +3540,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @failover_health_threshold = args[:failover_health_threshold] if args.key?(:failover_health_threshold)
+        end
+      end
+      
+      # Configuration to provide isolation support for the associated Backend Service.
+      class ServiceLbPolicyIsolationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The isolation granularity of the load balancer.
+        # Corresponds to the JSON property `isolationGranularity`
+        # @return [String]
+        attr_accessor :isolation_granularity
+      
+        # Optional. The isolation mode of the load balancer.
+        # Corresponds to the JSON property `isolationMode`
+        # @return [String]
+        attr_accessor :isolation_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @isolation_granularity = args[:isolation_granularity] if args.key?(:isolation_granularity)
+          @isolation_mode = args[:isolation_mode] if args.key?(:isolation_mode)
         end
       end
       

@@ -892,6 +892,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RbacRoleBindingActuationFeatureSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RbacRoleBindingActuationFeatureState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RbacRoleBindingLifecycleState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1215,6 +1227,8 @@ module Google
       
           property :multiclusteringress, as: 'multiclusteringress', class: Google::Apis::GkehubV1beta::MultiClusterIngressFeatureSpec, decorator: Google::Apis::GkehubV1beta::MultiClusterIngressFeatureSpec::Representation
       
+          property :rbacrolebindingactuation, as: 'rbacrolebindingactuation', class: Google::Apis::GkehubV1beta::RbacRoleBindingActuationFeatureSpec, decorator: Google::Apis::GkehubV1beta::RbacRoleBindingActuationFeatureSpec::Representation
+      
         end
       end
       
@@ -1226,6 +1240,8 @@ module Google
           property :clusterupgrade, as: 'clusterupgrade', class: Google::Apis::GkehubV1beta::ClusterUpgradeFleetState, decorator: Google::Apis::GkehubV1beta::ClusterUpgradeFleetState::Representation
       
           property :fleetobservability, as: 'fleetobservability', class: Google::Apis::GkehubV1beta::FleetObservabilityFeatureState, decorator: Google::Apis::GkehubV1beta::FleetObservabilityFeatureState::Representation
+      
+          property :rbacrolebindingactuation, as: 'rbacrolebindingactuation', class: Google::Apis::GkehubV1beta::RbacRoleBindingActuationFeatureState, decorator: Google::Apis::GkehubV1beta::RbacRoleBindingActuationFeatureState::Representation
       
           property :state, as: 'state', class: Google::Apis::GkehubV1beta::FeatureState, decorator: Google::Apis::GkehubV1beta::FeatureState::Representation
       
@@ -2539,6 +2555,19 @@ module Google
         end
       end
       
+      class RbacRoleBindingActuationFeatureSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_custom_roles, as: 'allowedCustomRoles'
+        end
+      end
+      
+      class RbacRoleBindingActuationFeatureState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class RbacRoleBindingLifecycleState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2566,6 +2595,7 @@ module Google
       class Role
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_role, as: 'customRole'
           property :predefined_role, as: 'predefinedRole'
         end
       end

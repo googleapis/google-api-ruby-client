@@ -79,11 +79,11 @@ Gem names for modern clients are often of the form `google-cloud-<service_name>`
 
 **For most users, we recommend the modern client, if one is available.** Compared with simple clients, modern clients are generally much easier to use and more Ruby-like, support more advanced features such as streaming and long-running operations, and often provide much better performance. You may consider using a simple client instead, if a modern client is not yet available for the service you want to use, or if you are not able to use gRPC on your infrastructure.
 
-The [product documentation](https://developers.google.com/classroom/) may provide guidance regarding the preferred client library to use.
+The [product documentation](https://developers.google.com/workspace/classroom/) may provide guidance regarding the preferred client library to use.
 
 ## Supported Ruby versions
 
-This library is supported on Ruby 2.7+.
+This library is supported on Ruby 3.1+.
 
 Google provides official support for Ruby versions that are actively supported by Ruby Core -- that is, Ruby versions that are either in normal maintenance or in security maintenance, and not end of life. Older versions of Ruby _may_ still work, but are unsupported and not recommended. See https://www.ruby-lang.org/en/downloads/branches/ for details about the Ruby support schedule.
 

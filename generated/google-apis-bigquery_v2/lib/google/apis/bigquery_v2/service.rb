@@ -258,6 +258,9 @@ module Google
         #   value is used for dataset with conditional bindings, request will be rejected.
         #   This field will be mapped to IAM Policy version (https://cloud.google.com/iam/
         #   docs/policies#versions) and will be used to set policy in IAM.
+        # @param [String] update_mode
+        #   Optional. Specifies the fields of dataset that update/patch operation is
+        #   targeting By default, both metadata and ACL fields are updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -275,7 +278,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_dataset(project_id, dataset_id, dataset_object = nil, access_policy_version: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_dataset(project_id, dataset_id, dataset_object = nil, access_policy_version: nil, update_mode: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'projects/{+projectId}/datasets/{+datasetId}', options)
           command.request_representation = Google::Apis::BigqueryV2::Dataset::Representation
           command.request_object = dataset_object
@@ -284,6 +287,7 @@ module Google
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
           command.query['accessPolicyVersion'] = access_policy_version unless access_policy_version.nil?
+          command.query['updateMode'] = update_mode unless update_mode.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -349,6 +353,9 @@ module Google
         #   value is used for dataset with conditional bindings, request will be rejected.
         #   This field will be mapped to IAM Policy version (https://cloud.google.com/iam/
         #   docs/policies#versions) and will be used to set policy in IAM.
+        # @param [String] update_mode
+        #   Optional. Specifies the fields of dataset that update/patch operation is
+        #   targeting By default, both metadata and ACL fields are updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -366,7 +373,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_dataset(project_id, dataset_id, dataset_object = nil, access_policy_version: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_dataset(project_id, dataset_id, dataset_object = nil, access_policy_version: nil, update_mode: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'projects/{+projectId}/datasets/{+datasetId}', options)
           command.request_representation = Google::Apis::BigqueryV2::Dataset::Representation
           command.request_object = dataset_object
@@ -375,6 +382,7 @@ module Google
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
           command.query['accessPolicyVersion'] = access_policy_version unless access_policy_version.nil?
+          command.query['updateMode'] = update_mode unless update_mode.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

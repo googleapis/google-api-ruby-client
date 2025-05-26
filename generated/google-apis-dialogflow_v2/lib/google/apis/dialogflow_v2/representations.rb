@@ -544,6 +544,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3ToolCall
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ToolCallResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ToolCallResultError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3TransitionRoute
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1535,6 +1553,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2CreateConversationModelOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2CustomPronunciationParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4175,6 +4199,8 @@ module Google
           property :language_code, as: 'languageCode'
           property :text, as: 'text', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3TextInput, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3TextInput::Representation
       
+          property :tool_call_result, as: 'toolCallResult', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3ToolCallResult, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3ToolCallResult::Representation
+      
         end
       end
       
@@ -4201,6 +4227,8 @@ module Google
           property :telephony_transfer_call, as: 'telephonyTransferCall', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall::Representation
       
           property :text, as: 'text', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3ResponseMessageText, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3ResponseMessageText::Representation
+      
+          property :tool_call, as: 'toolCall', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3ToolCall, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3ToolCall::Representation
       
         end
       end
@@ -4388,6 +4416,33 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ToolCall
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          hash :input_parameters, as: 'inputParameters'
+          property :tool, as: 'tool'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ToolCallResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :error, as: 'error', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3ToolCallResultError, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3ToolCallResultError::Representation
+      
+          hash :output_parameters, as: 'outputParameters'
+          property :tool, as: 'tool'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ToolCallResultError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
         end
       end
       
@@ -6143,6 +6198,15 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2CustomPronunciationParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :phonetic_encoding, as: 'phoneticEncoding'
+          property :phrase, as: 'phrase'
+          property :pronunciation, as: 'pronunciation'
+        end
+      end
+      
       class GoogleCloudDialogflowV2DeleteConversationDatasetOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6478,6 +6542,7 @@ module Google
           property :generator, as: 'generator', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Generator, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Generator::Representation
       
           property :generator_name, as: 'generatorName'
+          property :security_settings, as: 'securitySettings'
           collection :trigger_events, as: 'triggerEvents'
         end
       end
@@ -8127,6 +8192,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :effects_profile_id, as: 'effectsProfileId'
           property :pitch, as: 'pitch'
+          collection :pronunciations, as: 'pronunciations', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2CustomPronunciationParams, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2CustomPronunciationParams::Representation
+      
           property :speaking_rate, as: 'speakingRate'
           property :voice, as: 'voice', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2VoiceSelectionParams, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2VoiceSelectionParams::Representation
       

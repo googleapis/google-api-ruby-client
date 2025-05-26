@@ -1004,6 +1004,11 @@ module Google
         # @return [String]
         attr_accessor :cpe
       
+        # Files that make up the resource described by the occurrence.
+        # Corresponds to the JSON property `files`
+        # @return [Array<Google::Apis::OndemandscanningV1beta1::File>]
+        attr_accessor :files
+      
         # The last time this resource was scanned.
         # Corresponds to the JSON property `lastScanTime`
         # @return [String]
@@ -1027,6 +1032,7 @@ module Google
           @archive_time = args[:archive_time] if args.key?(:archive_time)
           @continuous_analysis = args[:continuous_analysis] if args.key?(:continuous_analysis)
           @cpe = args[:cpe] if args.key?(:cpe)
+          @files = args[:files] if args.key?(:files)
           @last_scan_time = args[:last_scan_time] if args.key?(:last_scan_time)
           @sbom_status = args[:sbom_status] if args.key?(:sbom_status)
         end
@@ -1104,6 +1110,31 @@ module Google
         def update!(**args)
           @keyid = args[:keyid] if args.key?(:keyid)
           @sig = args[:sig] if args.key?(:sig)
+        end
+      end
+      
+      # 
+      class File
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `digest`
+        # @return [Hash<String,String>]
+        attr_accessor :digest
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @digest = args[:digest] if args.key?(:digest)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -1317,6 +1348,12 @@ module Google
         # @return [Array<Google::Apis::OndemandscanningV1beta1::GrafeasV1BaseImage>]
         attr_accessor :base_images
       
+        # The layer chain ID (sha256 hash) of the layer in the container image. https://
+        # github.com/opencontainers/image-spec/blob/main/config.md#layer-chainid
+        # Corresponds to the JSON property `chainId`
+        # @return [String]
+        attr_accessor :chain_id
+      
         # The layer build command that was used to build the layer. This may not be
         # found in all layers depending on how the container image is built.
         # Corresponds to the JSON property `command`
@@ -1340,6 +1377,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @base_images = args[:base_images] if args.key?(:base_images)
+          @chain_id = args[:chain_id] if args.key?(:chain_id)
           @command = args[:command] if args.key?(:command)
           @diff_id = args[:diff_id] if args.key?(:diff_id)
           @index = args[:index] if args.key?(:index)
@@ -1868,6 +1906,12 @@ module Google
         # @return [Array<Google::Apis::OndemandscanningV1beta1::BaseImage>]
         attr_accessor :base_images
       
+        # The layer chain ID (sha256 hash) of the layer in the container image. https://
+        # github.com/opencontainers/image-spec/blob/main/config.md#layer-chainid
+        # Corresponds to the JSON property `chainId`
+        # @return [String]
+        attr_accessor :chain_id
+      
         # The layer build command that was used to build the layer. This may not be
         # found in all layers depending on how the container image is built.
         # Corresponds to the JSON property `command`
@@ -1891,6 +1935,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @base_images = args[:base_images] if args.key?(:base_images)
+          @chain_id = args[:chain_id] if args.key?(:chain_id)
           @command = args[:command] if args.key?(:command)
           @diff_id = args[:diff_id] if args.key?(:diff_id)
           @index = args[:index] if args.key?(:index)
@@ -2255,6 +2300,11 @@ module Google
         # @return [Google::Apis::OndemandscanningV1beta1::SbomReferenceOccurrence]
         attr_accessor :sbom_reference
       
+        # The occurrence provides details of a secret.
+        # Corresponds to the JSON property `secret`
+        # @return [Google::Apis::OndemandscanningV1beta1::SecretOccurrence]
+        attr_accessor :secret
+      
         # Output only. The time this occurrence was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -2296,6 +2346,7 @@ module Google
           @remediation = args[:remediation] if args.key?(:remediation)
           @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
           @sbom_reference = args[:sbom_reference] if args.key?(:sbom_reference)
+          @secret = args[:secret] if args.key?(:secret)
           @update_time = args[:update_time] if args.key?(:update_time)
           @upgrade = args[:upgrade] if args.key?(:upgrade)
           @vulnerability = args[:vulnerability] if args.key?(:vulnerability)
@@ -3092,6 +3143,87 @@ module Google
           @location = args[:location] if args.key?(:location)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
           @referrer_id = args[:referrer_id] if args.key?(:referrer_id)
+        end
+      end
+      
+      # The location of the secret.
+      class SecretLocation
+        include Google::Apis::Core::Hashable
+      
+        # Indicates the location at which a package was found.
+        # Corresponds to the JSON property `fileLocation`
+        # @return [Google::Apis::OndemandscanningV1beta1::GrafeasV1FileLocation]
+        attr_accessor :file_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_location = args[:file_location] if args.key?(:file_location)
+        end
+      end
+      
+      # The occurrence provides details of a secret.
+      class SecretOccurrence
+        include Google::Apis::Core::Hashable
+      
+        # Required. Type of secret.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Optional. Locations where the secret is detected.
+        # Corresponds to the JSON property `locations`
+        # @return [Array<Google::Apis::OndemandscanningV1beta1::SecretLocation>]
+        attr_accessor :locations
+      
+        # Optional. Status of the secret.
+        # Corresponds to the JSON property `statuses`
+        # @return [Array<Google::Apis::OndemandscanningV1beta1::SecretStatus>]
+        attr_accessor :statuses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @locations = args[:locations] if args.key?(:locations)
+          @statuses = args[:statuses] if args.key?(:statuses)
+        end
+      end
+      
+      # The status of the secret with a timestamp.
+      class SecretStatus
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional message about the status code.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Optional. The status of the secret.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Optional. The time the secret status was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @status = args[:status] if args.key?(:status)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       

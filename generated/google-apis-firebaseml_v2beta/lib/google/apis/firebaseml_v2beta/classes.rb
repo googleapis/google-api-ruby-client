@@ -63,6 +63,257 @@ module Google
         end
       end
       
+      # The generic reusable api auth config. Deprecated. Please use AuthConfig (
+      # google/cloud/aiplatform/master/auth.proto) instead.
+      class GoogleCloudAiplatformV1beta1ApiAuth
+        include Google::Apis::Core::Hashable
+      
+        # The API secret.
+        # Corresponds to the JSON property `apiKeyConfig`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ApiAuthApiKeyConfig]
+        attr_accessor :api_key_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_key_config = args[:api_key_config] if args.key?(:api_key_config)
+        end
+      end
+      
+      # The API secret.
+      class GoogleCloudAiplatformV1beta1ApiAuthApiKeyConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The SecretManager secret version resource name storing API key. e.g.
+        # projects/`project`/secrets/`secret`/versions/`version`
+        # Corresponds to the JSON property `apiKeySecretVersion`
+        # @return [String]
+        attr_accessor :api_key_secret_version
+      
+        # The API key string. Either this or `api_key_secret_version` must be set.
+        # Corresponds to the JSON property `apiKeyString`
+        # @return [String]
+        attr_accessor :api_key_string
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_key_secret_version = args[:api_key_secret_version] if args.key?(:api_key_secret_version)
+          @api_key_string = args[:api_key_string] if args.key?(:api_key_string)
+        end
+      end
+      
+      # Auth configuration to run the extension.
+      class GoogleCloudAiplatformV1beta1AuthConfig
+        include Google::Apis::Core::Hashable
+      
+        # Config for authentication with API key.
+        # Corresponds to the JSON property `apiKeyConfig`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AuthConfigApiKeyConfig]
+        attr_accessor :api_key_config
+      
+        # Type of auth scheme.
+        # Corresponds to the JSON property `authType`
+        # @return [String]
+        attr_accessor :auth_type
+      
+        # Config for Google Service Account Authentication.
+        # Corresponds to the JSON property `googleServiceAccountConfig`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AuthConfigGoogleServiceAccountConfig]
+        attr_accessor :google_service_account_config
+      
+        # Config for HTTP Basic Authentication.
+        # Corresponds to the JSON property `httpBasicAuthConfig`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AuthConfigHttpBasicAuthConfig]
+        attr_accessor :http_basic_auth_config
+      
+        # Config for user oauth.
+        # Corresponds to the JSON property `oauthConfig`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AuthConfigOauthConfig]
+        attr_accessor :oauth_config
+      
+        # Config for user OIDC auth.
+        # Corresponds to the JSON property `oidcConfig`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AuthConfigOidcConfig]
+        attr_accessor :oidc_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_key_config = args[:api_key_config] if args.key?(:api_key_config)
+          @auth_type = args[:auth_type] if args.key?(:auth_type)
+          @google_service_account_config = args[:google_service_account_config] if args.key?(:google_service_account_config)
+          @http_basic_auth_config = args[:http_basic_auth_config] if args.key?(:http_basic_auth_config)
+          @oauth_config = args[:oauth_config] if args.key?(:oauth_config)
+          @oidc_config = args[:oidc_config] if args.key?(:oidc_config)
+        end
+      end
+      
+      # Config for authentication with API key.
+      class GoogleCloudAiplatformV1beta1AuthConfigApiKeyConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the SecretManager secret version resource storing the
+        # API key. Format: `projects/`project`/secrets/`secrete`/versions/`version`` -
+        # If both `api_key_secret` and `api_key_string` are specified, this field takes
+        # precedence over `api_key_string`. - If specified, the `secretmanager.versions.
+        # access` permission should be granted to Vertex AI Extension Service Agent (
+        # https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents)
+        # on the specified resource.
+        # Corresponds to the JSON property `apiKeySecret`
+        # @return [String]
+        attr_accessor :api_key_secret
+      
+        # Optional. The API key to be used in the request directly.
+        # Corresponds to the JSON property `apiKeyString`
+        # @return [String]
+        attr_accessor :api_key_string
+      
+        # Optional. The location of the API key.
+        # Corresponds to the JSON property `httpElementLocation`
+        # @return [String]
+        attr_accessor :http_element_location
+      
+        # Optional. The parameter name of the API key. E.g. If the API request is "https:
+        # //example.com/act?api_key=", "api_key" would be the parameter name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_key_secret = args[:api_key_secret] if args.key?(:api_key_secret)
+          @api_key_string = args[:api_key_string] if args.key?(:api_key_string)
+          @http_element_location = args[:http_element_location] if args.key?(:http_element_location)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Config for Google Service Account Authentication.
+      class GoogleCloudAiplatformV1beta1AuthConfigGoogleServiceAccountConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The service account that the extension execution service runs as. -
+        # If the service account is specified, the `iam.serviceAccounts.getAccessToken`
+        # permission should be granted to Vertex AI Extension Service Agent (https://
+        # cloud.google.com/vertex-ai/docs/general/access-control#service-agents) on the
+        # specified service account. - If not specified, the Vertex AI Extension Service
+        # Agent will be used to execute the Extension.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_account = args[:service_account] if args.key?(:service_account)
+        end
+      end
+      
+      # Config for HTTP Basic Authentication.
+      class GoogleCloudAiplatformV1beta1AuthConfigHttpBasicAuthConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the SecretManager secret version resource storing the
+        # base64 encoded credentials. Format: `projects/`project`/secrets/`secrete`/
+        # versions/`version`` - If specified, the `secretmanager.versions.access`
+        # permission should be granted to Vertex AI Extension Service Agent (https://
+        # cloud.google.com/vertex-ai/docs/general/access-control#service-agents) on the
+        # specified resource.
+        # Corresponds to the JSON property `credentialSecret`
+        # @return [String]
+        attr_accessor :credential_secret
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @credential_secret = args[:credential_secret] if args.key?(:credential_secret)
+        end
+      end
+      
+      # Config for user oauth.
+      class GoogleCloudAiplatformV1beta1AuthConfigOauthConfig
+        include Google::Apis::Core::Hashable
+      
+        # Access token for extension endpoint. Only used to propagate token from [[
+        # ExecuteExtensionRequest.runtime_auth_config]] at request time.
+        # Corresponds to the JSON property `accessToken`
+        # @return [String]
+        attr_accessor :access_token
+      
+        # The service account used to generate access tokens for executing the Extension.
+        # - If the service account is specified, the `iam.serviceAccounts.
+        # getAccessToken` permission should be granted to Vertex AI Extension Service
+        # Agent (https://cloud.google.com/vertex-ai/docs/general/access-control#service-
+        # agents) on the provided service account.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_token = args[:access_token] if args.key?(:access_token)
+          @service_account = args[:service_account] if args.key?(:service_account)
+        end
+      end
+      
+      # Config for user OIDC auth.
+      class GoogleCloudAiplatformV1beta1AuthConfigOidcConfig
+        include Google::Apis::Core::Hashable
+      
+        # OpenID Connect formatted ID token for extension endpoint. Only used to
+        # propagate token from [[ExecuteExtensionRequest.runtime_auth_config]] at
+        # request time.
+        # Corresponds to the JSON property `idToken`
+        # @return [String]
+        attr_accessor :id_token
+      
+        # The service account used to generate an OpenID Connect (OIDC)-compatible JWT
+        # token signed by the Google OIDC Provider (accounts.google.com) for extension
+        # endpoint (https://cloud.google.com/iam/docs/create-short-lived-credentials-
+        # direct#sa-credentials-oidc). - The audience for the token will be set to the
+        # URL in the server url defined in the OpenApi spec. - If the service account is
+        # provided, the service account should grant `iam.serviceAccounts.getOpenIdToken`
+        # permission to Vertex AI Extension Service Agent (https://cloud.google.com/
+        # vertex-ai/docs/general/access-control#service-agents).
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id_token = args[:id_token] if args.key?(:id_token)
+          @service_account = args[:service_account] if args.key?(:service_account)
+        end
+      end
+      
       # Content blob.
       class GoogleCloudAiplatformV1beta1Blob
         include Google::Apis::Core::Hashable
@@ -245,8 +496,9 @@ module Google
         end
       end
       
-      # Result of executing the [ExecutableCode]. Always follows a `part` containing
-      # the [ExecutableCode].
+      # Result of executing the [ExecutableCode]. Only generated when using the [
+      # CodeExecution] tool, and always follows a `part` containing the [
+      # ExecutableCode].
       class GoogleCloudAiplatformV1beta1CodeExecutionResult
         include Google::Apis::Core::Hashable
       
@@ -433,8 +685,9 @@ module Google
       end
       
       # Code generated by the model that is meant to be executed, and the result
-      # returned to the model. Generated when using the [FunctionDeclaration] tool and
-      # [FunctionCallingConfig] mode is set to [Mode.CODE].
+      # returned to the model. Generated when using the [CodeExecution] tool, in which
+      # the code will be automatically executed, and a corresponding [
+      # CodeExecutionResult] will also be generated.
       class GoogleCloudAiplatformV1beta1ExecutableCode
         include Google::Apis::Core::Hashable
       
@@ -456,6 +709,104 @@ module Google
         def update!(**args)
           @code = args[:code] if args.key?(:code)
           @language = args[:language] if args.key?(:language)
+        end
+      end
+      
+      # Retrieve from data source powered by external API for grounding. The external
+      # API is not owned by Google, but need to follow the pre-defined API spec.
+      class GoogleCloudAiplatformV1beta1ExternalApi
+        include Google::Apis::Core::Hashable
+      
+        # The generic reusable api auth config. Deprecated. Please use AuthConfig (
+        # google/cloud/aiplatform/master/auth.proto) instead.
+        # Corresponds to the JSON property `apiAuth`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ApiAuth]
+        attr_accessor :api_auth
+      
+        # The API spec that the external API implements.
+        # Corresponds to the JSON property `apiSpec`
+        # @return [String]
+        attr_accessor :api_spec
+      
+        # Auth configuration to run the extension.
+        # Corresponds to the JSON property `authConfig`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AuthConfig]
+        attr_accessor :auth_config
+      
+        # The search parameters to use for the ELASTIC_SEARCH spec.
+        # Corresponds to the JSON property `elasticSearchParams`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ExternalApiElasticSearchParams]
+        attr_accessor :elastic_search_params
+      
+        # The endpoint of the external API. The system will call the API at this
+        # endpoint to retrieve the data for grounding. Example: https://acme.com:443/
+        # search
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        # The search parameters to use for SIMPLE_SEARCH spec.
+        # Corresponds to the JSON property `simpleSearchParams`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ExternalApiSimpleSearchParams]
+        attr_accessor :simple_search_params
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_auth = args[:api_auth] if args.key?(:api_auth)
+          @api_spec = args[:api_spec] if args.key?(:api_spec)
+          @auth_config = args[:auth_config] if args.key?(:auth_config)
+          @elastic_search_params = args[:elastic_search_params] if args.key?(:elastic_search_params)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @simple_search_params = args[:simple_search_params] if args.key?(:simple_search_params)
+        end
+      end
+      
+      # The search parameters to use for the ELASTIC_SEARCH spec.
+      class GoogleCloudAiplatformV1beta1ExternalApiElasticSearchParams
+        include Google::Apis::Core::Hashable
+      
+        # The ElasticSearch index to use.
+        # Corresponds to the JSON property `index`
+        # @return [String]
+        attr_accessor :index
+      
+        # Optional. Number of hits (chunks) to request. When specified, it is passed to
+        # Elasticsearch as the `num_hits` param.
+        # Corresponds to the JSON property `numHits`
+        # @return [Fixnum]
+        attr_accessor :num_hits
+      
+        # The ElasticSearch search template to use.
+        # Corresponds to the JSON property `searchTemplate`
+        # @return [String]
+        attr_accessor :search_template
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @index = args[:index] if args.key?(:index)
+          @num_hits = args[:num_hits] if args.key?(:num_hits)
+          @search_template = args[:search_template] if args.key?(:search_template)
+        end
+      end
+      
+      # The search parameters to use for SIMPLE_SEARCH spec.
+      class GoogleCloudAiplatformV1beta1ExternalApiSimpleSearchParams
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -583,12 +934,29 @@ module Google
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema]
         attr_accessor :parameters
       
+        # Optional. Describes the parameters to the function in JSON Schema format. The
+        # schema must describe an object where the properties are the parameters to the
+        # function. For example: ``` ` "type": "object", "properties": ` "name": ` "type"
+        # : "string" `, "age": ` "type": "integer" ` `, "additionalProperties": false, "
+        # required": ["name", "age"], "propertyOrdering": ["name", "age"] ` ``` This
+        # field is mutually exclusive with `parameters`.
+        # Corresponds to the JSON property `parametersJsonSchema`
+        # @return [Object]
+        attr_accessor :parameters_json_schema
+      
         # Schema is used to define the format of input/output data. Represents a select
         # subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#
         # schema-object). More fields may be added in the future as needed.
         # Corresponds to the JSON property `response`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema]
         attr_accessor :response
+      
+        # Optional. Describes the output from this function in JSON Schema format. The
+        # value specified by the schema is the response value of the function. This
+        # field is mutually exclusive with `response`.
+        # Corresponds to the JSON property `responseJsonSchema`
+        # @return [Object]
+        attr_accessor :response_json_schema
       
         def initialize(**args)
            update!(**args)
@@ -599,7 +967,9 @@ module Google
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
           @parameters = args[:parameters] if args.key?(:parameters)
+          @parameters_json_schema = args[:parameters_json_schema] if args.key?(:parameters_json_schema)
           @response = args[:response] if args.key?(:response)
+          @response_json_schema = args[:response_json_schema] if args.key?(:response_json_schema)
         end
       end
       
@@ -902,6 +1272,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :candidate_count
       
+        # Optional. If enabled, the model will detect emotions and adapt its responses
+        # accordingly.
+        # Corresponds to the JSON property `enableAffectiveDialog`
+        # @return [Boolean]
+        attr_accessor :enable_affective_dialog
+        alias_method :enable_affective_dialog?, :enable_affective_dialog
+      
         # Optional. Frequency penalties.
         # Corresponds to the JSON property `frequencyPenalty`
         # @return [Float]
@@ -931,6 +1308,23 @@ module Google
         # Corresponds to the JSON property `presencePenalty`
         # @return [Float]
         attr_accessor :presence_penalty
+      
+        # Optional. Output schema of the generated response. This is an alternative to `
+        # response_schema` that accepts [JSON Schema](https://json-schema.org/). If set,
+        # `response_schema` must be omitted, but `response_mime_type` is required. While
+        # the full JSON Schema may be sent, not all features are supported. Specifically,
+        # only the following properties are supported: - `$id` - `$defs` - `$ref` - `$
+        # anchor` - `type` - `format` - `title` - `description` - `enum` (for strings
+        # and numbers) - `items` - `prefixItems` - `minItems` - `maxItems` - `minimum` -
+        # `maximum` - `anyOf` - `oneOf` (interpreted the same as `anyOf`) - `properties`
+        # - `additionalProperties` - `required` The non-standard `propertyOrdering`
+        # property may also be set. Cyclic references are unrolled to a limited degree
+        # and, as such, may only be used within non-required properties. (Nullable
+        # properties are not sufficient.) If `$ref` is set on a sub-schema, no other
+        # properties, except for than those starting as a `$`, may be set.
+        # Corresponds to the JSON property `responseJsonSchema`
+        # @return [Object]
+        attr_accessor :response_json_schema
       
         # Optional. If true, export the logprobs results in response.
         # Corresponds to the JSON property `responseLogprobs`
@@ -1007,12 +1401,14 @@ module Google
         def update!(**args)
           @audio_timestamp = args[:audio_timestamp] if args.key?(:audio_timestamp)
           @candidate_count = args[:candidate_count] if args.key?(:candidate_count)
+          @enable_affective_dialog = args[:enable_affective_dialog] if args.key?(:enable_affective_dialog)
           @frequency_penalty = args[:frequency_penalty] if args.key?(:frequency_penalty)
           @logprobs = args[:logprobs] if args.key?(:logprobs)
           @max_output_tokens = args[:max_output_tokens] if args.key?(:max_output_tokens)
           @media_resolution = args[:media_resolution] if args.key?(:media_resolution)
           @model_config = args[:model_config] if args.key?(:model_config)
           @presence_penalty = args[:presence_penalty] if args.key?(:presence_penalty)
+          @response_json_schema = args[:response_json_schema] if args.key?(:response_json_schema)
           @response_logprobs = args[:response_logprobs] if args.key?(:response_logprobs)
           @response_mime_type = args[:response_mime_type] if args.key?(:response_mime_type)
           @response_modalities = args[:response_modalities] if args.key?(:response_modalities)
@@ -1118,6 +1514,13 @@ module Google
       class GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Indicates whether to include thoughts in the response. If true,
+        # thoughts are returned only when available.
+        # Corresponds to the JSON property `includeThoughts`
+        # @return [Boolean]
+        attr_accessor :include_thoughts
+        alias_method :include_thoughts?, :include_thoughts
+      
         # Optional. Indicates the thinking budget in tokens. This is only applied when
         # enable_thinking is true.
         # Corresponds to the JSON property `thinkingBudget`
@@ -1130,6 +1533,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @include_thoughts = args[:include_thoughts] if args.key?(:include_thoughts)
           @thinking_budget = args[:thinking_budget] if args.key?(:thinking_budget)
         end
       end
@@ -1440,15 +1844,17 @@ module Google
       class GoogleCloudAiplatformV1beta1Part
         include Google::Apis::Core::Hashable
       
-        # Result of executing the [ExecutableCode]. Always follows a `part` containing
-        # the [ExecutableCode].
+        # Result of executing the [ExecutableCode]. Only generated when using the [
+        # CodeExecution] tool, and always follows a `part` containing the [
+        # ExecutableCode].
         # Corresponds to the JSON property `codeExecutionResult`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1CodeExecutionResult]
         attr_accessor :code_execution_result
       
         # Code generated by the model that is meant to be executed, and the result
-        # returned to the model. Generated when using the [FunctionDeclaration] tool and
-        # [FunctionCallingConfig] mode is set to [Mode.CODE].
+        # returned to the model. Generated when using the [CodeExecution] tool, in which
+        # the code will be automatically executed, and a corresponding [
+        # CodeExecutionResult] will also be generated.
         # Corresponds to the JSON property `executableCode`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ExecutableCode]
         attr_accessor :executable_code
@@ -1750,6 +2156,12 @@ module Google
         attr_accessor :disable_attribution
         alias_method :disable_attribution?, :disable_attribution
       
+        # Retrieve from data source powered by external API for grounding. The external
+        # API is not owned by Google, but need to follow the pre-defined API spec.
+        # Corresponds to the JSON property `externalApi`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ExternalApi]
+        attr_accessor :external_api
+      
         # Retrieve from Vertex AI Search datastore or engine for grounding. datastore
         # and engine are mutually exclusive. See https://cloud.google.com/products/agent-
         # builder
@@ -1769,6 +2181,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disable_attribution = args[:disable_attribution] if args.key?(:disable_attribution)
+          @external_api = args[:external_api] if args.key?(:external_api)
           @vertex_ai_search = args[:vertex_ai_search] if args.key?(:vertex_ai_search)
           @vertex_rag_store = args[:vertex_rag_store] if args.key?(:vertex_rag_store)
         end
@@ -1914,6 +2327,12 @@ module Google
       class GoogleCloudAiplatformV1beta1Schema
         include Google::Apis::Core::Hashable
       
+        # Optional. Can either be a boolean or an object; controls the presence of
+        # additional properties.
+        # Corresponds to the JSON property `additionalProperties`
+        # @return [Object]
+        attr_accessor :additional_properties
+      
         # Optional. The value should be validated against any (one or more) of the
         # subschemas in the list.
         # Corresponds to the JSON property `anyOf`
@@ -1924,6 +2343,12 @@ module Google
         # Corresponds to the JSON property `default`
         # @return [Object]
         attr_accessor :default
+      
+        # Optional. A map of definitions for use by `ref` Only allowed at the root of
+        # the schema.
+        # Corresponds to the JSON property `defs`
+        # @return [Hash<String,Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema>]
+        attr_accessor :defs
       
         # Optional. The description of the data.
         # Corresponds to the JSON property `description`
@@ -2022,6 +2447,17 @@ module Google
         # @return [Array<String>]
         attr_accessor :property_ordering
       
+        # Optional. Allows indirect references between schema nodes. The value should be
+        # a valid reference to a child of the root `defs`. For example, the following
+        # schema defines a reference to a schema node named "Pet": type: object
+        # properties: pet: ref: #/defs/Pet defs: Pet: type: object properties: name:
+        # type: string The value of the "pet" property is a reference to the schema node
+        # named "Pet". See details in https://json-schema.org/understanding-json-schema/
+        # structuring
+        # Corresponds to the JSON property `ref`
+        # @return [String]
+        attr_accessor :ref
+      
         # Optional. Required properties of Type.OBJECT.
         # Corresponds to the JSON property `required`
         # @return [Array<String>]
@@ -2043,8 +2479,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_properties = args[:additional_properties] if args.key?(:additional_properties)
           @any_of = args[:any_of] if args.key?(:any_of)
           @default = args[:default] if args.key?(:default)
+          @defs = args[:defs] if args.key?(:defs)
           @description = args[:description] if args.key?(:description)
           @enum = args[:enum] if args.key?(:enum)
           @example = args[:example] if args.key?(:example)
@@ -2062,6 +2500,7 @@ module Google
           @pattern = args[:pattern] if args.key?(:pattern)
           @properties = args[:properties] if args.key?(:properties)
           @property_ordering = args[:property_ordering] if args.key?(:property_ordering)
+          @ref = args[:ref] if args.key?(:ref)
           @required = args[:required] if args.key?(:required)
           @title = args[:title] if args.key?(:title)
           @type = args[:type] if args.key?(:type)
@@ -2281,6 +2720,13 @@ module Google
       class GoogleCloudAiplatformV1beta1VertexAiSearch
         include Google::Apis::Core::Hashable
       
+        # Specifications that define the specific DataStores to be searched, along with
+        # configurations for those data stores. This is only considered for Engines with
+        # multiple data stores. It should only be set if engine is used.
+        # Corresponds to the JSON property `dataStoreSpecs`
+        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VertexAiSearchDataStoreSpec>]
+        attr_accessor :data_store_specs
+      
         # Optional. Fully-qualified Vertex AI Search data store resource ID. Format: `
         # projects/`project`/locations/`location`/collections/`collection`/dataStores/`
         # dataStore``
@@ -2295,14 +2741,59 @@ module Google
         # @return [String]
         attr_accessor :engine
       
+        # Optional. Filter strings to be passed to the search API.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Optional. Number of search results to return per query. The default value is
+        # 10. The maximumm allowed value is 10.
+        # Corresponds to the JSON property `maxResults`
+        # @return [Fixnum]
+        attr_accessor :max_results
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @data_store_specs = args[:data_store_specs] if args.key?(:data_store_specs)
           @datastore = args[:datastore] if args.key?(:datastore)
           @engine = args[:engine] if args.key?(:engine)
+          @filter = args[:filter] if args.key?(:filter)
+          @max_results = args[:max_results] if args.key?(:max_results)
+        end
+      end
+      
+      # Define data stores within engine to filter on in a search call and
+      # configurations for those data stores. For more information, see https://cloud.
+      # google.com/generative-ai-app-builder/docs/reference/rpc/google.cloud.
+      # discoveryengine.v1#datastorespec
+      class GoogleCloudAiplatformV1beta1VertexAiSearchDataStoreSpec
+        include Google::Apis::Core::Hashable
+      
+        # Full resource name of DataStore, such as Format: `projects/`project`/locations/
+        # `location`/collections/`collection`/dataStores/`dataStore``
+        # Corresponds to the JSON property `dataStore`
+        # @return [String]
+        attr_accessor :data_store
+      
+        # Optional. Filter specification to filter documents in the data store specified
+        # by data_store field. For more information on filtering, see [Filtering](https:/
+        # /cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata)
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_store = args[:data_store] if args.key?(:data_store)
+          @filter = args[:filter] if args.key?(:filter)
         end
       end
       

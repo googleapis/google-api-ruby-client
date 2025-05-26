@@ -1,5 +1,10 @@
 # Release history for google-apis-sts_v1
 
+### v0.41.0 (2025-05-04)
+
+* Regenerated from discovery document revision 20250331
+* Regenerated using generator version 0.17.0
+
 ### v0.40.0 (2024-11-17)
 
 * Regenerated from discovery document revision 20241106

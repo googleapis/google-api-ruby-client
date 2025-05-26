@@ -151,7 +151,7 @@ module Google
 
         # HTTP client
         # @return [HTTPClient]
-        attr_accessor :client
+        attr_writer :client
 
         # General settings
         # @return [Google::Apis::ClientOptions]
@@ -348,6 +348,36 @@ module Google
                   "Universe domain is #{universe_domain} but credentials are in #{auth_universe_domain}"
           end
           true
+        end
+
+        # Restarts An interrupted Resumable upload
+        # @param [String] bucket
+        #   Name of the bucket where the upload is being performed.
+        # @param [IO, String] upload_source
+        #   IO stream or filename containing content to upload
+        # @param [IO, String] upload_id
+        #   unique id generated for an ongoing upload
+
+        def restart_resumable_upload(bucket, upload_source, upload_id, options: nil)
+          command = make_storage_upload_command(:put, 'b/{bucket}/o', options)
+          command.upload_source = upload_source
+          command.upload_id = upload_id
+          command.params['bucket'] = bucket unless bucket.nil?
+          execute_or_queue_command(command)
+        end
+
+        # Deletes An interrupted Resumable upload
+        # @param [String] bucket
+        #   Name of the bucket where the upload is being performed.
+        # @param [IO, String] upload_id
+        #   unique id generated for an ongoing upload
+
+        def delete_resumable_upload(bucket, upload_id, options: nil)
+          command = make_storage_upload_command(:delete, 'b/{bucket}/o', options)
+          command.upload_id = upload_id
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.delete_upload = options[:delete_upload] unless options[:delete_upload].nil?
+          execute_or_queue_command(command)
         end
 
         protected

@@ -1879,6 +1879,8 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :dataset_reference, as: 'datasetReference', class: Google::Apis::BigqueryV2::DatasetReference, decorator: Google::Apis::BigqueryV2::DatasetReference::Representation
         
+            property :external_dataset_reference, as: 'externalDatasetReference', class: Google::Apis::BigqueryV2::ExternalDatasetReference, decorator: Google::Apis::BigqueryV2::ExternalDatasetReference::Representation
+        
             property :friendly_name, as: 'friendlyName'
             property :id, as: 'id'
             property :kind, as: 'kind'
@@ -3281,6 +3283,7 @@ module Google
           property :elapsed_ms, :numeric_string => true, as: 'elapsedMs'
           property :estimated_runnable_units, :numeric_string => true, as: 'estimatedRunnableUnits'
           property :pending_units, :numeric_string => true, as: 'pendingUnits'
+          property :shuffle_ram_usage_ratio, as: 'shuffleRamUsageRatio'
           property :total_slot_ms, :numeric_string => true, as: 'totalSlotMs'
         end
       end

@@ -2783,6 +2783,13 @@ module Google
       class GoogleCloudDocumentaiV1beta3Document
         include Google::Apis::Core::Hashable
       
+        # Optional. The blob assets in this document. This is used to store the content
+        # of the inline blobs in this document, e.g. image bytes, such that it can be
+        # referenced by other fields in the document via asset id.
+        # Corresponds to the JSON property `blobAssets`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentBlobAsset>]
+        attr_accessor :blob_assets
+      
         # Represents the chunks that the document is divided into.
         # Corresponds to the JSON property `chunkedDocument`
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentChunkedDocument]
@@ -2881,6 +2888,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @blob_assets = args[:blob_assets] if args.key?(:blob_assets)
           @chunked_document = args[:chunked_document] if args.key?(:chunked_document)
           @content = args[:content] if args.key?(:content)
           @docid = args[:docid] if args.key?(:docid)
@@ -2896,6 +2904,60 @@ module Google
           @text_changes = args[:text_changes] if args.key?(:text_changes)
           @text_styles = args[:text_styles] if args.key?(:text_styles)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Represents the annotation of a block or a chunk.
+      class GoogleCloudDocumentaiV1beta3DocumentAnnotations
+        include Google::Apis::Core::Hashable
+      
+        # The description of the content with this annotation.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+        end
+      end
+      
+      # Represents a blob asset. It's used to store the content of the inline blob in
+      # this document, e.g. image bytes, such that it can be referenced by other
+      # fields in the document via asset id.
+      class GoogleCloudDocumentaiV1beta3DocumentBlobAsset
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The id of the blob asset.
+        # Corresponds to the JSON property `assetId`
+        # @return [String]
+        attr_accessor :asset_id
+      
+        # Optional. The content of the blob asset, e.g. image bytes.
+        # Corresponds to the JSON property `content`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :content
+      
+        # The mime type of the blob asset. An IANA published [media type (MIME type)](
+        # https://www.iana.org/assignments/media-types/media-types.xhtml).
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset_id = args[:asset_id] if args.key?(:asset_id)
+          @content = args[:content] if args.key?(:content)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
         end
       end
       
@@ -2921,6 +2983,11 @@ module Google
       # Represents a chunk.
       class GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunk
         include Google::Apis::Core::Hashable
+      
+        # Chunk fields inside this chunk.
+        # Corresponds to the JSON property `chunkFields`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkField>]
+        attr_accessor :chunk_fields
       
         # ID of the chunk.
         # Corresponds to the JSON property `chunkId`
@@ -2958,12 +3025,39 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @chunk_fields = args[:chunk_fields] if args.key?(:chunk_fields)
           @chunk_id = args[:chunk_id] if args.key?(:chunk_id)
           @content = args[:content] if args.key?(:content)
           @page_footers = args[:page_footers] if args.key?(:page_footers)
           @page_headers = args[:page_headers] if args.key?(:page_headers)
           @page_span = args[:page_span] if args.key?(:page_span)
           @source_block_ids = args[:source_block_ids] if args.key?(:source_block_ids)
+        end
+      end
+      
+      # The chunk field in the chunk. A chunk field could be one of the various types (
+      # e.g. image, table) supported.
+      class GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkField
+        include Google::Apis::Core::Hashable
+      
+        # The image chunk field in the chunk.
+        # Corresponds to the JSON property `imageChunkField`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkImageChunkField]
+        attr_accessor :image_chunk_field
+      
+        # The table chunk field in the chunk.
+        # Corresponds to the JSON property `tableChunkField`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkTableChunkField]
+        attr_accessor :table_chunk_field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_chunk_field = args[:image_chunk_field] if args.key?(:image_chunk_field)
+          @table_chunk_field = args[:table_chunk_field] if args.key?(:table_chunk_field)
         end
       end
       
@@ -3042,6 +3136,65 @@ module Google
         end
       end
       
+      # The image chunk field in the chunk.
+      class GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkImageChunkField
+        include Google::Apis::Core::Hashable
+      
+        # Represents the annotation of a block or a chunk.
+        # Corresponds to the JSON property `annotations`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentAnnotations]
+        attr_accessor :annotations
+      
+        # Optional. Asset id of the inline image. If set, find the image content in the
+        # blob_assets field.
+        # Corresponds to the JSON property `blobAssetId`
+        # @return [String]
+        attr_accessor :blob_asset_id
+      
+        # Optional. Data uri of the image. It is composed of four parts: a prefix (data:)
+        # , a MIME type indicating the type of data, an optional base64 token if non-
+        # textual, and the data itself: data:,
+        # Corresponds to the JSON property `dataUri`
+        # @return [String]
+        attr_accessor :data_uri
+      
+        # Optional. Google Cloud Storage uri of the image.
+        # Corresponds to the JSON property `gcsUri`
+        # @return [String]
+        attr_accessor :gcs_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @blob_asset_id = args[:blob_asset_id] if args.key?(:blob_asset_id)
+          @data_uri = args[:data_uri] if args.key?(:data_uri)
+          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+        end
+      end
+      
+      # The table chunk field in the chunk.
+      class GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkTableChunkField
+        include Google::Apis::Core::Hashable
+      
+        # Represents the annotation of a block or a chunk.
+        # Corresponds to the JSON property `annotations`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentAnnotations]
+        attr_accessor :annotations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+        end
+      end
+      
       # Represents the parsed layout of a document as a collection of blocks that the
       # document is divided into.
       class GoogleCloudDocumentaiV1beta3DocumentDocumentLayout
@@ -3077,6 +3230,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BoundingPoly]
         attr_accessor :bounding_box
       
+        # Represents an image type block.
+        # Corresponds to the JSON property `imageBlock`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutImageBlock]
+        attr_accessor :image_block
+      
         # Represents a list type block.
         # Corresponds to the JSON property `listBlock`
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock]
@@ -3105,10 +3263,64 @@ module Google
         def update!(**args)
           @block_id = args[:block_id] if args.key?(:block_id)
           @bounding_box = args[:bounding_box] if args.key?(:bounding_box)
+          @image_block = args[:image_block] if args.key?(:image_block)
           @list_block = args[:list_block] if args.key?(:list_block)
           @page_span = args[:page_span] if args.key?(:page_span)
           @table_block = args[:table_block] if args.key?(:table_block)
           @text_block = args[:text_block] if args.key?(:text_block)
+        end
+      end
+      
+      # Represents an image type block.
+      class GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutImageBlock
+        include Google::Apis::Core::Hashable
+      
+        # Represents the annotation of a block or a chunk.
+        # Corresponds to the JSON property `annotations`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentAnnotations]
+        attr_accessor :annotations
+      
+        # Optional. Asset id of the inline image. If set, find the image content in the
+        # blob_assets field.
+        # Corresponds to the JSON property `blobAssetId`
+        # @return [String]
+        attr_accessor :blob_asset_id
+      
+        # Optional. Data uri of the image. It is composed of four parts: a prefix (data:)
+        # , a MIME type indicating the type of data, an optional base64 token if non-
+        # textual, and the data itself: data:,
+        # Corresponds to the JSON property `dataUri`
+        # @return [String]
+        attr_accessor :data_uri
+      
+        # Optional. Google Cloud Storage uri of the image.
+        # Corresponds to the JSON property `gcsUri`
+        # @return [String]
+        attr_accessor :gcs_uri
+      
+        # Text extracted from the image using OCR or alt text describing the image.
+        # Corresponds to the JSON property `imageText`
+        # @return [String]
+        attr_accessor :image_text
+      
+        # Mime type of the image. An IANA published [media type (MIME type)] (https://
+        # www.iana.org/assignments/media-types/media-types.xhtml).
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @blob_asset_id = args[:blob_asset_id] if args.key?(:blob_asset_id)
+          @data_uri = args[:data_uri] if args.key?(:data_uri)
+          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+          @image_text = args[:image_text] if args.key?(:image_text)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
         end
       end
       
@@ -3187,6 +3399,11 @@ module Google
       class GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock
         include Google::Apis::Core::Hashable
       
+        # Represents the annotation of a block or a chunk.
+        # Corresponds to the JSON property `annotations`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentAnnotations]
+        attr_accessor :annotations
+      
         # Body rows containing main table content.
         # Corresponds to the JSON property `bodyRows`
         # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow>]
@@ -3208,6 +3425,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
           @body_rows = args[:body_rows] if args.key?(:body_rows)
           @caption = args[:caption] if args.key?(:caption)
           @header_rows = args[:header_rows] if args.key?(:header_rows)
@@ -3455,6 +3673,12 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleTypeMoney]
         attr_accessor :money_value
       
+        # 
+        # Corresponds to the JSON property `signatureValue`
+        # @return [Boolean]
+        attr_accessor :signature_value
+        alias_method :signature_value?, :signature_value
+      
         # Optional. An optional field to store a normalized string. For some entity
         # types, one of respective `structured_value` fields may also be populated. Also
         # not all the types of `structured_value` will be normalized. For example, some
@@ -3480,6 +3704,7 @@ module Google
           @float_value = args[:float_value] if args.key?(:float_value)
           @integer_value = args[:integer_value] if args.key?(:integer_value)
           @money_value = args[:money_value] if args.key?(:money_value)
+          @signature_value = args[:signature_value] if args.key?(:signature_value)
           @text = args[:text] if args.key?(:text)
         end
       end
@@ -5042,6 +5267,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Specifies how the entity's value is obtained.
+        # Corresponds to the JSON property `method`
+        # @return [String]
+        attr_accessor :method_prop
+      
         # The name of the property. Follows the same guidelines as the EntityType name.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -5072,6 +5302,7 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
           @name = args[:name] if args.key?(:name)
           @occurrence_type = args[:occurrence_type] if args.key?(:occurrence_type)
           @property_metadata = args[:property_metadata] if args.key?(:property_metadata)
@@ -6715,11 +6946,29 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessOptionsLayoutConfigChunkingConfig]
         attr_accessor :chunking_config
       
+        # Optional. Whether to include image annotations in layout parser response.
+        # Corresponds to the JSON property `enableImageAnnotation`
+        # @return [Boolean]
+        attr_accessor :enable_image_annotation
+        alias_method :enable_image_annotation?, :enable_image_annotation
+      
+        # Optional. Whether to extract images in layout parser response.
+        # Corresponds to the JSON property `enableImageExtraction`
+        # @return [Boolean]
+        attr_accessor :enable_image_extraction
+        alias_method :enable_image_extraction?, :enable_image_extraction
+      
         # Optional. Whether to refine PDF layout using LLM.
         # Corresponds to the JSON property `enableLlmLayoutParsing`
         # @return [Boolean]
         attr_accessor :enable_llm_layout_parsing
         alias_method :enable_llm_layout_parsing?, :enable_llm_layout_parsing
+      
+        # Optional. Whether to include table annotations in layout parser response.
+        # Corresponds to the JSON property `enableTableAnnotation`
+        # @return [Boolean]
+        attr_accessor :enable_table_annotation
+        alias_method :enable_table_annotation?, :enable_table_annotation
       
         # Optional. Whether to include bounding boxes in layout parser processor
         # response.
@@ -6741,7 +6990,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @chunking_config = args[:chunking_config] if args.key?(:chunking_config)
+          @enable_image_annotation = args[:enable_image_annotation] if args.key?(:enable_image_annotation)
+          @enable_image_extraction = args[:enable_image_extraction] if args.key?(:enable_image_extraction)
           @enable_llm_layout_parsing = args[:enable_llm_layout_parsing] if args.key?(:enable_llm_layout_parsing)
+          @enable_table_annotation = args[:enable_table_annotation] if args.key?(:enable_table_annotation)
           @return_bounding_boxes = args[:return_bounding_boxes] if args.key?(:return_bounding_boxes)
           @return_images = args[:return_images] if args.key?(:return_images)
         end

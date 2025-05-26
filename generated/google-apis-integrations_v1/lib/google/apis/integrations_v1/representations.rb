@@ -952,6 +952,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIntegrationsV1alphaAgentFlow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIntegrationsV1alphaApiTriggerResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1234,6 +1240,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIntegrationsV1alphaGenerateAgentFlowRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaGenerateAgentFlowResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaGenerateAndUpdateAgentFlowRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaGenerateAndUpdateAgentFlowResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1349,6 +1379,12 @@ module Google
       end
       
       class GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaListAgentFlowsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1487,6 +1523,18 @@ module Google
       end
       
       class GoogleCloudIntegrationsV1alphaProjectProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3372,11 +3420,14 @@ module Google
           collection :destination_configs, as: 'destinationConfigs', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1DestinationConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1DestinationConfig::Representation
       
           property :envoy_image_location, as: 'envoyImageLocation'
+          property :eua_oauth_auth_config, as: 'euaOauthAuthConfig', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AuthConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AuthConfig::Representation
+      
           property :eventing_config, as: 'eventingConfig', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingConfig::Representation
       
           property :eventing_enablement_type, as: 'eventingEnablementType'
           property :eventing_runtime_data, as: 'eventingRuntimeData', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingRuntimeData, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingRuntimeData::Representation
       
+          property :fallback_on_admin_credentials, as: 'fallbackOnAdminCredentials'
           property :host, as: 'host'
           property :image_location, as: 'imageLocation'
           property :is_trusted_tester, as: 'isTrustedTester'
@@ -3636,6 +3687,20 @@ module Google
         end
       end
       
+      class GoogleCloudIntegrationsV1alphaAgentFlow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :creator, as: 'creator'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :flow_config, as: 'flowConfig'
+          property :name, as: 'name'
+          property :no_code_agent, as: 'noCodeAgent'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleCloudIntegrationsV1alphaApiTriggerResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3764,6 +3829,7 @@ module Google
           property :description, as: 'description'
           property :enable_http_call, as: 'enableHttpCall'
           property :enable_internal_ip, as: 'enableInternalIp'
+          property :enable_managed_ai_features, as: 'enableManagedAiFeatures'
           property :enable_variable_masking, as: 'enableVariableMasking'
           property :id, as: 'id'
           property :is_gmek, as: 'isGmek'
@@ -3849,6 +3915,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :function_name, as: 'functionName'
           property :function_region, as: 'functionRegion'
+          property :gcf_api_version, as: 'gcfApiVersion'
           property :project_id, as: 'projectId'
         end
       end
@@ -4137,6 +4204,40 @@ module Google
         end
       end
       
+      class GoogleCloudIntegrationsV1alphaGenerateAgentFlowRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creator, as: 'creator'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :intent, as: 'intent'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaGenerateAgentFlowResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_flow, as: 'agentFlow', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow::Representation
+      
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaGenerateAndUpdateAgentFlowRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :intent, as: 'intent'
+          property :updater, as: 'updater'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaGenerateAndUpdateAgentFlowResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_flow, as: 'agentFlow', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow::Representation
+      
+        end
+      end
+      
       class GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4355,6 +4456,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :script_id, as: 'scriptId'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaListAgentFlowsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :agent_flows, as: 'agentFlows', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -4599,6 +4709,19 @@ module Google
         end
       end
       
+      class GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :workflows, as: 'workflows'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudIntegrationsV1alphaProvisionClientRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4606,6 +4729,7 @@ module Google
       
           property :create_sample_workflows, as: 'createSampleWorkflows'
           property :enable_http_call, as: 'enableHttpCall'
+          property :enable_managed_ai_features, as: 'enableManagedAiFeatures'
           property :provision_gmek, as: 'provisionGmek'
           property :run_as_service_account, as: 'runAsServiceAccount'
           property :skip_cp_provision, as: 'skipCpProvision'

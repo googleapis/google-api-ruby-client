@@ -1564,6 +1564,7 @@ module Google
           property :attribute_condition, as: 'attributeCondition'
           hash :attribute_mapping, as: 'attributeMapping'
           property :description, as: 'description'
+          property :detailed_audit_logging, as: 'detailedAuditLogging'
           property :disabled, as: 'disabled'
           property :display_name, as: 'displayName'
           property :expire_time, as: 'expireTime'

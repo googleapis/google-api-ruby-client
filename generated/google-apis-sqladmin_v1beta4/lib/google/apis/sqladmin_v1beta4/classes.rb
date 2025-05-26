@@ -181,7 +181,7 @@ module Google
         end
       end
       
-      # A backup resource.
+      # A backup resource. Next ID: 30
       class Backup
         include Google::Apis::Core::Hashable
       
@@ -203,7 +203,8 @@ module Google
         # @return [String]
         attr_accessor :backup_run
       
-        # Output only. The database version of the instance of when this backup was made.
+        # Output only. The database version of the instance of at the time this backup
+        # was made.
         # Corresponds to the JSON property `databaseVersion`
         # @return [String]
         attr_accessor :database_version
@@ -358,6 +359,11 @@ module Google
         # @return [Google::Apis::SqladminV1beta4::BackupRetentionSettings]
         attr_accessor :backup_retention_settings
       
+        # Output only. Backup tier that manages the backups for the instance.
+        # Corresponds to the JSON property `backupTier`
+        # @return [String]
+        attr_accessor :backup_tier
+      
         # (MySQL only) Whether binary log is enabled. If backup configuration is
         # disabled, binarylog must be disabled as well.
         # Corresponds to the JSON property `binaryLogEnabled`
@@ -418,6 +424,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backup_retention_settings = args[:backup_retention_settings] if args.key?(:backup_retention_settings)
+          @backup_tier = args[:backup_tier] if args.key?(:backup_tier)
           @binary_log_enabled = args[:binary_log_enabled] if args.key?(:binary_log_enabled)
           @enabled = args[:enabled] if args.key?(:enabled)
           @kind = args[:kind] if args.key?(:kind)
@@ -523,7 +530,7 @@ module Google
         # @return [String]
         attr_accessor :backup_kind
       
-        # Output only. The instance database version when this backup was made.
+        # Output only. The instance database version at the time this backup was made.
         # Corresponds to the JSON property `databaseVersion`
         # @return [String]
         attr_accessor :database_version
@@ -792,27 +799,27 @@ module Google
         end
       end
       
-      # Details of a single node of a read pool.
+      # Details of a single read pool node of a read pool.
       class ConnectPoolNodeConfig
         include Google::Apis::Core::Hashable
       
-        # Output only. The DNS name of the node.
+        # Output only. The DNS name of the read pool node.
         # Corresponds to the JSON property `dnsName`
         # @return [String]
         attr_accessor :dns_name
       
-        # Output only. The list of DNS names used by this instance.
+        # Output only. The list of DNS names used by this read pool node.
         # Corresponds to the JSON property `dnsNames`
         # @return [Array<Google::Apis::SqladminV1beta4::DnsNameMapping>]
         attr_accessor :dns_names
       
         # Output only. Mappings containing IP addresses that can be used to connect to
-        # the node.
+        # the read pool node.
         # Corresponds to the JSON property `ipAddresses`
         # @return [Array<Google::Apis::SqladminV1beta4::IpMapping>]
         attr_accessor :ip_addresses
       
-        # Output only. The name of the node. Doesn't include the project ID.
+        # Output only. The name of the read pool node. Doesn't include the project ID.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -878,12 +885,13 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The number of nodes in a read pool.
+        # The number of read pool nodes in a read pool.
         # Corresponds to the JSON property `nodeCount`
         # @return [Fixnum]
         attr_accessor :node_count
       
-        # Output only. Entries containing information about each node of the read pool.
+        # Output only. Entries containing information about each read pool node of the
+        # read pool.
         # Corresponds to the JSON property `nodes`
         # @return [Array<Google::Apis::SqladminV1beta4::ConnectPoolNodeConfig>]
         attr_accessor :nodes
@@ -936,46 +944,16 @@ module Google
       class ConnectionPoolConfig
         include Google::Apis::Core::Hashable
       
-        # Client idle timeout.
-        # Corresponds to the JSON property `clientConnectionIdleTimeout`
-        # @return [String]
-        attr_accessor :client_connection_idle_timeout
-      
-        # Managed connection pool size.
-        # Corresponds to the JSON property `connPoolSize`
-        # @return [Fixnum]
-        attr_accessor :conn_pool_size
-      
         # Whether managed connection pooling is enabled.
         # Corresponds to the JSON property `connectionPoolingEnabled`
         # @return [Boolean]
         attr_accessor :connection_pooling_enabled
         alias_method :connection_pooling_enabled?, :connection_pooling_enabled
       
-        # Optional. List of connection pool configuration flags
+        # Optional. List of connection pool configuration flags.
         # Corresponds to the JSON property `flags`
         # @return [Array<Google::Apis::SqladminV1beta4::ConnectionPoolFlags>]
         attr_accessor :flags
-      
-        # Maximum number of client connections in connection pool.
-        # Corresponds to the JSON property `maxClientConnections`
-        # @return [Fixnum]
-        attr_accessor :max_client_connections
-      
-        # The managed connection pool mode for the instance.
-        # Corresponds to the JSON property `poolMode`
-        # @return [String]
-        attr_accessor :pool_mode
-      
-        # Query wait timeout.
-        # Corresponds to the JSON property `queryWaitTimeout`
-        # @return [String]
-        attr_accessor :query_wait_timeout
-      
-        # Server idle timeout.
-        # Corresponds to the JSON property `serverConnectionIdleTimeout`
-        # @return [String]
-        attr_accessor :server_connection_idle_timeout
       
         def initialize(**args)
            update!(**args)
@@ -983,14 +961,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @client_connection_idle_timeout = args[:client_connection_idle_timeout] if args.key?(:client_connection_idle_timeout)
-          @conn_pool_size = args[:conn_pool_size] if args.key?(:conn_pool_size)
           @connection_pooling_enabled = args[:connection_pooling_enabled] if args.key?(:connection_pooling_enabled)
           @flags = args[:flags] if args.key?(:flags)
-          @max_client_connections = args[:max_client_connections] if args.key?(:max_client_connections)
-          @pool_mode = args[:pool_mode] if args.key?(:pool_mode)
-          @query_wait_timeout = args[:query_wait_timeout] if args.key?(:query_wait_timeout)
-          @server_connection_idle_timeout = args[:server_connection_idle_timeout] if args.key?(:server_connection_idle_timeout)
         end
       end
       
@@ -1155,6 +1127,12 @@ module Google
         # @return [String]
         attr_accessor :backend_type
       
+        # Clears private network settings when the instance is restored.
+        # Corresponds to the JSON property `clearNetwork`
+        # @return [Boolean]
+        attr_accessor :clear_network
+        alias_method :clear_network?, :clear_network
+      
         # Connection name of the Cloud SQL instance used in connection strings.
         # Corresponds to the JSON property `connectionName`
         # @return [String]
@@ -1280,12 +1258,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The number of nodes in a read pool.
+        # The number of read pool nodes in a read pool.
         # Corresponds to the JSON property `nodeCount`
         # @return [Fixnum]
         attr_accessor :node_count
       
-        # Output only. Entries containing information about each node of the read pool.
+        # Output only. Entries containing information about each read pool node of the
+        # read pool.
         # Corresponds to the JSON property `nodes`
         # @return [Array<Google::Apis::SqladminV1beta4::PoolNodeConfig>]
         attr_accessor :nodes
@@ -1445,6 +1424,7 @@ module Google
         def update!(**args)
           @available_maintenance_versions = args[:available_maintenance_versions] if args.key?(:available_maintenance_versions)
           @backend_type = args[:backend_type] if args.key?(:backend_type)
+          @clear_network = args[:clear_network] if args.key?(:clear_network)
           @connection_name = args[:connection_name] if args.key?(:connection_name)
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_disk_size = args[:current_disk_size] if args.key?(:current_disk_size)
@@ -1882,7 +1862,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Option for export offload.
+        # Whether to perform a serverless export.
         # Corresponds to the JSON property `offload`
         # @return [Boolean]
         attr_accessor :offload
@@ -2116,8 +2096,8 @@ module Google
           class PostgresExportOptions
             include Google::Apis::Core::Hashable
           
-            # Optional. Use this option to include DROP SQL statements. These statements are
-            # used to delete database objects before running the import operation.
+            # Optional. Use this option to include DROP <object> SQL statements. Use these
+            # statements to delete database objects before running the import operation.
             # Corresponds to the JSON property `clean`
             # @return [Boolean]
             attr_accessor :clean
@@ -2831,8 +2811,8 @@ module Google
         attr_accessor :query_plans_per_minute
       
         # Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-
-        # 4500 bytes. Query length more than this field value will be truncated to this
-        # value. When unset, query length will be the default value. Changing query
+        # 4500 bytes. Query lengths greater than this field value will be truncated to
+        # this value. When unset, query length will be the default value. Changing query
         # length will restart the database.
         # Corresponds to the JSON property `queryStringLength`
         # @return [Fixnum]
@@ -3169,6 +3149,14 @@ module Google
         # @return [String]
         attr_accessor :backup
       
+        # The name of the backup that's used to restore a Cloud SQL instance: Format: "
+        # projects/`project-id`/locations/`location`/backupVaults/`backupvault`/
+        # dataSources/`datasource`/backups/`backup-uid`". Only one of
+        # restore_backup_context, backup, backupdr_backup can be passed to the input.
+        # Corresponds to the JSON property `backupdrBackup`
+        # @return [String]
+        attr_accessor :backupdr_backup
+      
         # Database instance restore from backup context. Backup context contains source
         # instance id and project id.
         # Corresponds to the JSON property `restoreBackupContext`
@@ -3187,6 +3175,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backup = args[:backup] if args.key?(:backup)
+          @backupdr_backup = args[:backupdr_backup] if args.key?(:backupdr_backup)
           @restore_backup_context = args[:restore_backup_context] if args.key?(:restore_backup_context)
           @restore_instance_settings = args[:restore_instance_settings] if args.key?(:restore_instance_settings)
         end
@@ -4118,38 +4107,107 @@ module Google
         end
       end
       
-      # Details of a single node of a read pool.
+      # Context to perform a point-in-time restore of an instance managed by Google
+      # Cloud Backup and Disaster Recovery.
+      class PointInTimeRestoreContext
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the allocated IP range for the internal IP Cloud SQL
+        # instance. For example: "google-managed-services-default". If you set this,
+        # then Cloud SQL creates the IP address for the cloned instance in the allocated
+        # range. This range must comply with [RFC 1035](https://tools.ietf.org/html/
+        # rfc1035) standards. Specifically, the name must be 1-63 characters long and
+        # match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?. Reserved for future
+        # use. http://go/speckle-subnet-picker-clone
+        # Corresponds to the JSON property `allocatedIpRange`
+        # @return [String]
+        attr_accessor :allocated_ip_range
+      
+        # The Google Cloud Backup and Disaster Recovery Datasource URI. Format: projects/
+        # `project`/locations/`region`/backupVaults/`backupvault`/dataSources/`
+        # datasource`.
+        # Corresponds to the JSON property `datasource`
+        # @return [String]
+        attr_accessor :datasource
+      
+        # Required. The date and time to which you want to restore the instance.
+        # Corresponds to the JSON property `pointInTime`
+        # @return [String]
+        attr_accessor :point_in_time
+      
+        # Optional. Point-in-time recovery of a regional instance in the specified zones.
+        # If not specified, clone to the same secondary zone as the source instance.
+        # This value cannot be the same as the preferred_zone field.
+        # Corresponds to the JSON property `preferredSecondaryZone`
+        # @return [String]
+        attr_accessor :preferred_secondary_zone
+      
+        # Optional. Point-in-time recovery of an instance to the specified zone. If no
+        # zone is specified, then clone to the same primary zone as the source instance.
+        # Corresponds to the JSON property `preferredZone`
+        # @return [String]
+        attr_accessor :preferred_zone
+      
+        # Optional. The resource link for the VPC network from which the Cloud SQL
+        # instance is accessible for private IP. For example, `/projects/myProject/
+        # global/networks/default`.
+        # Corresponds to the JSON property `privateNetwork`
+        # @return [String]
+        attr_accessor :private_network
+      
+        # Target instance name.
+        # Corresponds to the JSON property `targetInstance`
+        # @return [String]
+        attr_accessor :target_instance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allocated_ip_range = args[:allocated_ip_range] if args.key?(:allocated_ip_range)
+          @datasource = args[:datasource] if args.key?(:datasource)
+          @point_in_time = args[:point_in_time] if args.key?(:point_in_time)
+          @preferred_secondary_zone = args[:preferred_secondary_zone] if args.key?(:preferred_secondary_zone)
+          @preferred_zone = args[:preferred_zone] if args.key?(:preferred_zone)
+          @private_network = args[:private_network] if args.key?(:private_network)
+          @target_instance = args[:target_instance] if args.key?(:target_instance)
+        end
+      end
+      
+      # Details of a single read pool node of a read pool.
       class PoolNodeConfig
         include Google::Apis::Core::Hashable
       
-        # Output only. The DNS name of the node.
+        # Output only. The DNS name of the read pool node.
         # Corresponds to the JSON property `dnsName`
         # @return [String]
         attr_accessor :dns_name
       
-        # Output only. The list of DNS names used by this node.
+        # Output only. The list of DNS names used by this read pool node.
         # Corresponds to the JSON property `dnsNames`
         # @return [Array<Google::Apis::SqladminV1beta4::DnsNameMapping>]
         attr_accessor :dns_names
       
-        # Output only. The serving zone of the node.
+        # Output only. The zone of the read pool node.
         # Corresponds to the JSON property `gceZone`
         # @return [String]
         attr_accessor :gce_zone
       
         # Output only. Mappings containing IP addresses that can be used to connect to
-        # the node.
+        # the read pool node.
         # Corresponds to the JSON property `ipAddresses`
         # @return [Array<Google::Apis::SqladminV1beta4::IpMapping>]
         attr_accessor :ip_addresses
       
-        # Output only. The name of the node, to be used for retrieving metrics and logs
-        # for the node.
+        # Output only. The name of the read pool node, to be used for retrieving metrics
+        # and logs.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. The current state of the node.
+        # Output only. The current state of the read pool node.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -4174,10 +4232,10 @@ module Google
       class PscAutoConnectionConfig
         include Google::Apis::Core::Hashable
       
-        # The consumer network of this consumer endpoint. This must be a resource path
-        # that includes both the host project and the network name. For example, `
-        # projects/project1/global/networks/network1`. The consumer host project of this
-        # network might be different from the consumer service project.
+        # Optional. The consumer network of this consumer endpoint. This must be a
+        # resource path that includes both the host project and the network name. For
+        # example, `projects/project1/global/networks/network1`. The consumer host
+        # project of this network might be different from the consumer service project.
         # Corresponds to the JSON property `consumerNetwork`
         # @return [String]
         attr_accessor :consumer_network
@@ -4187,8 +4245,9 @@ module Google
         # @return [String]
         attr_accessor :consumer_network_status
       
-        # This is the project ID of consumer service project of this consumer endpoint.
-        # Optional. This is only applicable if consumer_network is a shared vpc network.
+        # Optional. This is the project ID of consumer service project of this consumer
+        # endpoint. Optional. This is only applicable if consumer_network is a shared
+        # vpc network.
         # Corresponds to the JSON property `consumerProject`
         # @return [String]
         attr_accessor :consumer_project
@@ -4229,6 +4288,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_consumer_projects
       
+        # Optional. The network attachment of the consumer network that the Private
+        # Service Connect enabled Cloud SQL instance is authorized to connect via PSC
+        # interface. format: projects/PROJECT/regions/REGION/networkAttachments/ID
+        # Corresponds to the JSON property `networkAttachmentUri`
+        # @return [String]
+        attr_accessor :network_attachment_uri
+      
         # Optional. The list of settings for requested Private Service Connect consumer
         # endpoints that can be used to connect to this Cloud SQL instance.
         # Corresponds to the JSON property `pscAutoConnections`
@@ -4248,6 +4314,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allowed_consumer_projects = args[:allowed_consumer_projects] if args.key?(:allowed_consumer_projects)
+          @network_attachment_uri = args[:network_attachment_uri] if args.key?(:network_attachment_uri)
           @psc_auto_connections = args[:psc_auto_connections] if args.key?(:psc_auto_connections)
           @psc_enabled = args[:psc_enabled] if args.key?(:psc_enabled)
         end
@@ -4620,8 +4687,8 @@ module Google
       
         # Optional. When this parameter is set to true, Cloud SQL instances can connect
         # to Vertex AI to pass requests for real-time predictions and insights to the AI.
-        # The default value is false. This applies only to Cloud SQL for PostgreSQL
-        # instances.
+        # The default value is false. This applies only to Cloud SQL for MySQL and
+        # Cloud SQL for PostgreSQL instances.
         # Corresponds to the JSON property `enableGoogleMlIntegration`
         # @return [Boolean]
         attr_accessor :enable_google_ml_integration
@@ -4668,7 +4735,7 @@ module Google
         attr_accessor :pricing_plan
       
         # Optional. Configuration value for recreation of replica after certain
-        # replication lag
+        # replication lag.
         # Corresponds to the JSON property `replicationLagMaxSeconds`
         # @return [Fixnum]
         attr_accessor :replication_lag_max_seconds

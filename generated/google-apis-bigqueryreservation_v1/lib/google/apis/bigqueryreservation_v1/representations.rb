@@ -28,6 +28,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuditConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuditLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Autoscale
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -40,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Binding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CapacityCommitment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -47,6 +65,12 @@ module Google
       end
       
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -88,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReplicationStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,6 +137,12 @@ module Google
       end
       
       class SearchAssignmentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -136,6 +172,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TestIamPermissionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Assignment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -144,6 +192,23 @@ module Google
           property :job_type, as: 'jobType'
           property :name, as: 'name'
           property :state, as: 'state'
+        end
+      end
+      
+      class AuditConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::BigqueryreservationV1::AuditLogConfig, decorator: Google::Apis::BigqueryreservationV1::AuditLogConfig::Representation
+      
+          property :service, as: 'service'
+        end
+      end
+      
+      class AuditLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exempted_members, as: 'exemptedMembers'
+          property :log_type, as: 'logType'
         end
       end
       
@@ -163,6 +228,16 @@ module Google
       
           property :size, :numeric_string => true, as: 'size'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class Binding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition', class: Google::Apis::BigqueryreservationV1::Expr, decorator: Google::Apis::BigqueryreservationV1::Expr::Representation
+      
+          collection :members, as: 'members'
+          property :role, as: 'role'
         end
       end
       
@@ -190,9 +265,20 @@ module Google
         end
       end
       
+      class Expr
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :expression, as: 'expression'
+          property :location, as: 'location'
+          property :title, as: 'title'
+        end
+      end
+      
       class FailoverReservationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :failover_mode, as: 'failoverMode'
         end
       end
       
@@ -239,6 +325,18 @@ module Google
         end
       end
       
+      class Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::BigqueryreservationV1::AuditConfig, decorator: Google::Apis::BigqueryreservationV1::AuditConfig::Representation
+      
+          collection :bindings, as: 'bindings', class: Google::Apis::BigqueryreservationV1::Binding, decorator: Google::Apis::BigqueryreservationV1::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :version, as: 'version'
+        end
+      end
+      
       class ReplicationStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -246,6 +344,7 @@ module Google
       
           property :last_error_time, as: 'lastErrorTime'
           property :last_replication_time, as: 'lastReplicationTime'
+          property :soft_failover_start_time, as: 'softFailoverStartTime'
         end
       end
       
@@ -291,6 +390,15 @@ module Google
         end
       end
       
+      class SetIamPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy', class: Google::Apis::BigqueryreservationV1::Policy, decorator: Google::Apis::BigqueryreservationV1::Policy::Representation
+      
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
       class SplitCapacityCommitmentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -323,6 +431,20 @@ module Google
           property :dataset_id, as: 'datasetId'
           property :project_id, as: 'projectId'
           property :table_id, as: 'tableId'
+        end
+      end
+      
+      class TestIamPermissionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class TestIamPermissionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
         end
       end
     end

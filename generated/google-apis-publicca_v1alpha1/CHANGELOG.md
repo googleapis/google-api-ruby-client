@@ -1,5 +1,9 @@
 # Release history for google-apis-publicca_v1alpha1
 
+### v0.5.0 (2025-05-04)
+
+* Regenerated using generator version 0.17.0
+
 ### v0.4.0 (2024-05-19)
 
 * Regenerated using generator version 0.15.0

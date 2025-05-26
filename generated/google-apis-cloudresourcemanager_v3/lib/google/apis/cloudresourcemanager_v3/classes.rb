@@ -194,6 +194,35 @@ module Google
         end
       end
       
+      # Representation of a Capability.
+      class Capability
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Identifier. The resource name of the capability. Must be in the
+        # following form: * `folders/`folder_id`/capabilities/`capability_name`` For
+        # example, `folders/123/capabilities/app-management` Following are the allowed `
+        # capability_name` values: * `app-management`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The configured value of the capability at the given parent resource.
+        # Corresponds to the JSON property `value`
+        # @return [Boolean]
+        attr_accessor :value
+        alias_method :value?, :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Metadata describing a long running folder operation
       class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation
         include Google::Apis::Core::Hashable
@@ -592,6 +621,12 @@ module Google
       class Folder
         include Google::Apis::Core::Hashable
       
+        # Output only. Optional capabilities configured for this folder (via
+        # UpdateCapability API). Example: `folders/123/capabilities/app-management`.
+        # Corresponds to the JSON property `configuredCapabilities`
+        # @return [Array<String>]
+        attr_accessor :configured_capabilities
+      
         # Output only. Timestamp when the folder was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -619,8 +654,14 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Output only. The resource name of the folder. Its format is `folders/`
-        # folder_id``, for example: "folders/1234".
+        # Output only. Management Project associated with this folder (if app-management
+        # capability is enabled). Example: `projects/google-mp-123` OUTPUT ONLY.
+        # Corresponds to the JSON property `managementProject`
+        # @return [String]
+        attr_accessor :management_project
+      
+        # Identifier. The resource name of the folder. Its format is `folders/`folder_id`
+        # `, for example: "folders/1234".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -656,10 +697,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @configured_capabilities = args[:configured_capabilities] if args.key?(:configured_capabilities)
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
+          @management_project = args[:management_project] if args.key?(:management_project)
           @name = args[:name] if args.key?(:name)
           @parent = args[:parent] if args.key?(:parent)
           @state = args[:state] if args.key?(:state)

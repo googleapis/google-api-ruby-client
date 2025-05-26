@@ -35,7 +35,7 @@ RSpec.describe Google::Apis::Core::BatchCommand do
 
   let(:post_with_io_command) do
     command = Google::Apis::Core::HttpCommand.new(:post, 'https://www.googleapis.com/zoo/animals/3')
-    command.body = StringIO.new('Goodbye!')
+    command.body = StringIO.new(+'Goodbye!')
     command.header['Content-Type'] = 'text/plain'
     command
   end

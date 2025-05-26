@@ -298,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MongodbSslConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MostRecentStartPosition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1220,6 +1226,8 @@ module Google
           property :secret_manager_stored_password, as: 'secretManagerStoredPassword'
           property :srv_connection_format, as: 'srvConnectionFormat', class: Google::Apis::DatastreamV1::SrvConnectionFormat, decorator: Google::Apis::DatastreamV1::SrvConnectionFormat::Representation
       
+          property :ssl_config, as: 'sslConfig', class: Google::Apis::DatastreamV1::MongodbSslConfig, decorator: Google::Apis::DatastreamV1::MongodbSslConfig::Representation
+      
           property :standard_connection_format, as: 'standardConnectionFormat', class: Google::Apis::DatastreamV1::StandardConnectionFormat, decorator: Google::Apis::DatastreamV1::StandardConnectionFormat::Representation
       
           property :username, as: 'username'
@@ -1233,6 +1241,20 @@ module Google
       
           property :include_objects, as: 'includeObjects', class: Google::Apis::DatastreamV1::MongodbCluster, decorator: Google::Apis::DatastreamV1::MongodbCluster::Representation
       
+          property :max_concurrent_backfill_tasks, as: 'maxConcurrentBackfillTasks'
+        end
+      end
+      
+      class MongodbSslConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ca_certificate, as: 'caCertificate'
+          property :ca_certificate_set, as: 'caCertificateSet'
+          property :client_certificate, as: 'clientCertificate'
+          property :client_certificate_set, as: 'clientCertificateSet'
+          property :client_key, as: 'clientKey'
+          property :client_key_set, as: 'clientKeySet'
+          property :secret_manager_stored_client_key, as: 'secretManagerStoredClientKey'
         end
       end
       
@@ -1893,6 +1915,7 @@ module Google
       class StandardConnectionFormat
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :direct_connection, as: 'directConnection'
         end
       end
       

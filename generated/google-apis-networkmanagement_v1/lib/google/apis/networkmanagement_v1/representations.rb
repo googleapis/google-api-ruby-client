@@ -535,6 +535,7 @@ module Google
       class DeliverInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :google_service_type, as: 'googleServiceType'
           property :ip_address, as: 'ipAddress'
           property :psc_google_api_target, as: 'pscGoogleApiTarget'
           property :resource_uri, as: 'resourceUri'
@@ -701,6 +702,7 @@ module Google
           collection :network_tags, as: 'networkTags'
           property :network_uri, as: 'networkUri'
           property :psc_network_attachment_uri, as: 'pscNetworkAttachmentUri'
+          property :running, as: 'running'
           property :service_account, as: 'serviceAccount'
           property :uri, as: 'uri'
         end

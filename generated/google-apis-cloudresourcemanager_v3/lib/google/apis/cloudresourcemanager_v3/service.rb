@@ -357,8 +357,8 @@ module Google
         # name constraint then a `PreconditionFailure` explaining this violation will be
         # returned in the Status.details field.
         # @param [String] name
-        #   Output only. The resource name of the folder. Its format is `folders/`
-        #   folder_id``, for example: "folders/1234".
+        #   Identifier. The resource name of the folder. Its format is `folders/`folder_id`
+        #   `, for example: "folders/1234".
         # @param [Google::Apis::CloudresourcemanagerV3::Folder] folder_object
         # @param [String] update_mask
         #   Required. Fields to be updated. Only the `display_name` can be updated.
@@ -560,6 +560,76 @@ module Google
           command.response_representation = Google::Apis::CloudresourcemanagerV3::Operation::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV3::Operation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the Capability identified by the supplied resource name.
+        # @param [String] name
+        #   Required. The name of the capability to get. For example, `folders/123/
+        #   capabilities/app-management`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::Capability] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::Capability]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_folder_capability(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::Capability::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::Capability
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the Capability.
+        # @param [String] name
+        #   Immutable. Identifier. The resource name of the capability. Must be in the
+        #   following form: * `folders/`folder_id`/capabilities/`capability_name`` For
+        #   example, `folders/123/capabilities/app-management` Following are the allowed `
+        #   capability_name` values: * `app-management`
+        # @param [Google::Apis::CloudresourcemanagerV3::Capability] capability_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update. Only [Capability.value] can be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_folder_capability(name, capability_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v3/{+name}', options)
+          command.request_representation = Google::Apis::CloudresourcemanagerV3::Capability::Representation
+          command.request_object = capability_object
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::Operation::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

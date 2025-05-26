@@ -286,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RestartWebServerRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SaveSnapshotRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -840,6 +846,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :scheduled_snapshots_config, as: 'scheduledSnapshotsConfig', class: Google::Apis::ComposerV1::ScheduledSnapshotsConfig, decorator: Google::Apis::ComposerV1::ScheduledSnapshotsConfig::Representation
       
+        end
+      end
+      
+      class RestartWebServerRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

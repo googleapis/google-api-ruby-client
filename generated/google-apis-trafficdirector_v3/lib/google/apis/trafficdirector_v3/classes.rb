@@ -38,7 +38,7 @@ module Google
         # @return [Google::Apis::TrafficdirectorV3::Pipe]
         attr_accessor :pipe
       
-        # [#next-free-field: 7]
+        # [#next-free-field: 8]
         # Corresponds to the JSON property `socketAddress`
         # @return [Google::Apis::TrafficdirectorV3::SocketAddress]
         attr_accessor :socket_address
@@ -1367,7 +1367,7 @@ module Google
         end
       end
       
-      # [#next-free-field: 7]
+      # [#next-free-field: 8]
       class SocketAddress
         include Google::Apis::Core::Hashable
       
@@ -1399,6 +1399,13 @@ module Google
         # @return [String]
         attr_accessor :named_port
       
+        # The Linux network namespace to bind the socket to. If this is set, Envoy will
+        # create the socket in the specified network namespace. Only supported on Linux.
+        # [#not-implemented-hide:]
+        # Corresponds to the JSON property `networkNamespaceFilepath`
+        # @return [String]
+        attr_accessor :network_namespace_filepath
+      
         # 
         # Corresponds to the JSON property `portValue`
         # @return [Fixnum]
@@ -1427,6 +1434,7 @@ module Google
           @address = args[:address] if args.key?(:address)
           @ipv4_compat = args[:ipv4_compat] if args.key?(:ipv4_compat)
           @named_port = args[:named_port] if args.key?(:named_port)
+          @network_namespace_filepath = args[:network_namespace_filepath] if args.key?(:network_namespace_filepath)
           @port_value = args[:port_value] if args.key?(:port_value)
           @protocol = args[:protocol] if args.key?(:protocol)
           @resolver_name = args[:resolver_name] if args.key?(:resolver_name)

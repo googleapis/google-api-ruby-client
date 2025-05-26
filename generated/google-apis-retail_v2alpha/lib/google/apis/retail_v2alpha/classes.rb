@@ -3004,14 +3004,6 @@ module Google
         # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponseRefinedSearch>]
         attr_accessor :refined_search
       
-        # This field is deprecated. Please find the refinded_query from search response
-        # when using CONVERSATIONAL_FILTER_ONLY mode in ConversationalSearchResponse.
-        # refined_search instead. The rephrased query based on the user's query and the
-        # conversation history. It can be used to fetch the relevant search results.
-        # Corresponds to the JSON property `rephrasedQuery`
-        # @return [String]
-        attr_accessor :rephrased_query
-      
         def initialize(**args)
            update!(**args)
         end
@@ -3021,7 +3013,6 @@ module Google
           @conversation_id = args[:conversation_id] if args.key?(:conversation_id)
           @conversational_filtering_result = args[:conversational_filtering_result] if args.key?(:conversational_filtering_result)
           @refined_search = args[:refined_search] if args.key?(:refined_search)
-          @rephrased_query = args[:rephrased_query] if args.key?(:rephrased_query)
         end
       end
       
@@ -3240,6 +3231,25 @@ module Google
           @numbers = args[:numbers] if args.key?(:numbers)
           @searchable = args[:searchable] if args.key?(:searchable)
           @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # A message with a list of double values.
+      class GoogleCloudRetailV2alphaDoubleList
+        include Google::Apis::Core::Hashable
+      
+        # The list of double values.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Float>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
@@ -4454,7 +4464,11 @@ module Google
         # variants set the true availability at the primary level. Corresponding
         # properties: Google Merchant Center property [availability](https://support.
         # google.com/merchants/answer/6324448). Schema.org property [Offer.availability](
-        # https://schema.org/availability).
+        # https://schema.org/availability). This field is currently only used by the
+        # Recommendations API. For Search, please make use of fulfillment_types or
+        # custom attributes for similar behaviour. See [here]( https://cloud.google.com/
+        # retail/docs/local-inventory-updates#local-inventory-update-methods) for more
+        # details.
         # Corresponds to the JSON property `availability`
         # @return [String]
         attr_accessor :availability
@@ -4686,7 +4700,12 @@ module Google
       class GoogleCloudRetailV2alphaMerchantCenterAccountLinkMerchantCenterFeedFilter
         include Google::Apis::Core::Hashable
       
-        # Merchant Center primary feed ID.
+        # AFM data source ID.
+        # Corresponds to the JSON property `dataSourceId`
+        # @return [Fixnum]
+        attr_accessor :data_source_id
+      
+        # Merchant Center primary feed ID. Deprecated: use data_source_id instead.
         # Corresponds to the JSON property `primaryFeedId`
         # @return [Fixnum]
         attr_accessor :primary_feed_id
@@ -4703,6 +4722,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_source_id = args[:data_source_id] if args.key?(:data_source_id)
           @primary_feed_id = args[:primary_feed_id] if args.key?(:primary_feed_id)
           @primary_feed_name = args[:primary_feed_name] if args.key?(:primary_feed_name)
         end
@@ -4712,7 +4732,12 @@ module Google
       class GoogleCloudRetailV2alphaMerchantCenterFeedFilter
         include Google::Apis::Core::Hashable
       
-        # Merchant Center primary feed ID.
+        # AFM data source ID.
+        # Corresponds to the JSON property `dataSourceId`
+        # @return [Fixnum]
+        attr_accessor :data_source_id
+      
+        # Merchant Center primary feed ID. Deprecated: use data_source_id instead.
         # Corresponds to the JSON property `primaryFeedId`
         # @return [Fixnum]
         attr_accessor :primary_feed_id
@@ -4729,6 +4754,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_source_id = args[:data_source_id] if args.key?(:data_source_id)
           @primary_feed_id = args[:primary_feed_id] if args.key?(:primary_feed_id)
           @primary_feed_name = args[:primary_feed_name] if args.key?(:primary_feed_name)
         end
@@ -8340,6 +8366,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :matching_variant_fields
       
+        # Google provided available scores.
+        # Corresponds to the JSON property `modelScores`
+        # @return [Hash<String,Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaDoubleList>]
+        attr_accessor :model_scores
+      
         # Specifies previous events related to this product for this user based on
         # UserEvent with same SearchRequest.visitor_id or UserInfo.user_id. This is set
         # only when SearchRequest.PersonalizationSpec.mode is SearchRequest.
@@ -8381,6 +8412,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @matching_variant_count = args[:matching_variant_count] if args.key?(:matching_variant_count)
           @matching_variant_fields = args[:matching_variant_fields] if args.key?(:matching_variant_fields)
+          @model_scores = args[:model_scores] if args.key?(:model_scores)
           @personal_labels = args[:personal_labels] if args.key?(:personal_labels)
           @product = args[:product] if args.key?(:product)
           @variant_rollup_values = args[:variant_rollup_values] if args.key?(:variant_rollup_values)

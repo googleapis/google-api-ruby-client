@@ -1382,10 +1382,10 @@ module Google
         
         # Updates a DataStore
         # @param [String] name
-        #   Immutable. The full resource name of the data store. Format: `projects/`
-        #   project`/locations/`location`/collections/`collection_id`/dataStores/`
-        #   data_store_id``. This field must be a UTF-8 encoded string with a length limit
-        #   of 1024 characters.
+        #   Immutable. Identifier. The full resource name of the data store. Format: `
+        #   projects/`project`/locations/`location`/collections/`collection_id`/dataStores/
+        #   `data_store_id``. This field must be a UTF-8 encoded string with a length
+        #   limit of 1024 characters.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataStore] google_cloud_discoveryengine_v1alpha_data_store_object
         # @param [String] update_mask
         #   Indicates which fields in the provided DataStore to update. If an unsupported
@@ -4691,11 +4691,11 @@ module Google
         
         # Updates an Engine
         # @param [String] name
-        #   Immutable. The fully qualified resource name of the engine. This field must be
-        #   a UTF-8 encoded string with a length limit of 1024 characters. Format: `
-        #   projects/`project`/locations/`location`/collections/`collection`/engines/`
-        #   engine`` engine should be 1-63 characters, and valid characters are /a-z0-9*/.
-        #   Otherwise, an INVALID_ARGUMENT error is returned.
+        #   Immutable. Identifier. The fully qualified resource name of the engine. This
+        #   field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        #   Format: `projects/`project`/locations/`location`/collections/`collection`/
+        #   engines/`engine`` engine should be 1-63 characters, and valid characters are /
+        #   a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngine] google_cloud_discoveryengine_v1alpha_engine_object
         # @param [String] update_mask
         #   Indicates which fields in the provided Engine to update. If an unsupported or
@@ -6361,10 +6361,10 @@ module Google
         
         # Updates a DataStore
         # @param [String] name
-        #   Immutable. The full resource name of the data store. Format: `projects/`
-        #   project`/locations/`location`/collections/`collection_id`/dataStores/`
-        #   data_store_id``. This field must be a UTF-8 encoded string with a length limit
-        #   of 1024 characters.
+        #   Immutable. Identifier. The full resource name of the data store. Format: `
+        #   projects/`project`/locations/`location`/collections/`collection_id`/dataStores/
+        #   `data_store_id``. This field must be a UTF-8 encoded string with a length
+        #   limit of 1024 characters.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataStore] google_cloud_discoveryengine_v1alpha_data_store_object
         # @param [String] update_mask
         #   Indicates which fields in the provided DataStore to update. If an unsupported
@@ -9657,6 +9657,44 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Uploads a file for Notebook LM to use. Creates a Source.
+        # @param [String] parent
+        #   Required. The parent resource where the sources will be created. Format:
+        #   projects/`project`/locations/`location`/notebooks/`notebook`
+        # @param [String] source_id
+        #   The source id of the associated file. If not set, a source id will be
+        #   generated and a new tentative source will be created.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUploadSourceFileRequest] google_cloud_notebooklm_v1alpha_upload_source_file_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUploadSourceFileResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUploadSourceFileResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def upload_project_location_notebook_source_file(parent, source_id, google_cloud_notebooklm_v1alpha_upload_source_file_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/sources/{sourceId}:uploadFile', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUploadSourceFileRequest::Representation
+          command.request_object = google_cloud_notebooklm_v1alpha_upload_source_file_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUploadSourceFileResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUploadSourceFileResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.params['sourceId'] = source_id unless source_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the latest state of a long-running operation. Clients can use this method
         # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
@@ -10426,6 +10464,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates the User License. This method is used for batch assign/unassign
+        # licenses to users.
+        # @param [String] parent
+        #   Required. The parent UserStore resource name, format: `projects/`project`/
+        #   locations/`location`/userStores/`user_store_id``.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesRequest] google_cloud_discoveryengine_v1alpha_batch_update_user_licenses_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_project_location_user_store_update_user_licenses(parent, google_cloud_discoveryengine_v1alpha_batch_update_user_licenses_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}:batchUpdateUserLicenses', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_batch_update_user_licenses_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the latest state of a long-running operation. Clients can use this method
         # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
@@ -10489,6 +10562,58 @@ module Google
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningListOperationsResponse
           command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the User Licenses.
+        # @param [String] parent
+        #   Required. The parent UserStore resource name, format: `projects/`project`/
+        #   locations/`location`/userStores/`user_store_id``.
+        # @param [String] filter
+        #   Optional. Filter for the list request. Supported fields: * `
+        #   license_assignment_state` Examples: * `license_assignment_state = ASSIGNED` to
+        #   list assigned user licenses. * `license_assignment_state = NO_LICENSE` to list
+        #   not licensed users. * `license_assignment_state = NO_LICENSE_ATTEMPTED_LOGIN`
+        #   to list users who attempted login but no license assigned. * `
+        #   license_assignment_state != NO_LICENSE_ATTEMPTED_LOGIN` to filter out users
+        #   who attempted login but no license assigned.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, defaults to 10. The maximum value is 50; values above 50 will
+        #   be coerced to 50. If this field is negative, an INVALID_ARGUMENT error is
+        #   returned.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListUserLicenses` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListUserLicenses` must match the call that provided
+        #   the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListUserLicensesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListUserLicensesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_user_store_user_licenses(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/userLicenses', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListUserLicensesResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListUserLicensesResponse
+          command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?

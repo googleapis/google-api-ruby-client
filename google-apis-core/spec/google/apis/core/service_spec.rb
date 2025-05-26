@@ -225,6 +225,95 @@ RSpec.describe Google::Apis::Core::BaseService do
     include_examples 'with options'
   end
 
+  context 'when making restart resumable upload' do
+    let(:bucket_name) { 'test_bucket' }
+    let(:file) { StringIO.new('Hello world' * 3) }
+
+    let(:upload_id) { 'foo' }
+    let(:command) do
+      service.send(
+        :restart_resumable_upload,
+        bucket_name, file, upload_id,
+        options: { upload_chunk_size: 11}
+      )
+    end
+    let(:upload_url) { "https://www.googleapis.com/upload/b/#{bucket_name}/o?uploadType=resumable&upload_id=#{upload_id}"}
+    context 'should complete the upload' do
+      before(:example) do
+        stub_request(:put, upload_url)
+          .with(
+            headers: {
+              'Content-Length' => '0',
+              'Content-Range' => 'bytes */33'
+            }
+          )
+          .to_return(
+            status: [308, 'Resume Incomplete'],
+            headers: { 'Range' => 'bytes=0-21' }
+          )
+      end
+
+      before(:example) do
+        stub_request(:put, upload_url)
+          .with(headers: { 'Content-Range' => 'bytes 22-32/33' })
+          .to_return(body: %(OK))
+      end
+
+      it 'should send request to upload url multiple times' do
+        command
+        expect(a_request(:put, upload_url)).to have_been_made.twice
+      end
+    end
+    context 'not restart resumable upload if upload is completed' do
+      before(:example) do
+        stub_request(:put, upload_url)
+          .with(
+            headers: {
+              'Content-Length' => '0',
+              'Content-Range' => 'bytes */33'
+            }
+          )
+          .to_return(status: 200, headers: { 'Range' => 'bytes=0-32' })
+      end
+
+      before(:example) do
+        stub_request(:put, upload_url)
+          .with(headers: { 'Content-Range' => 'bytes */33' })
+          .to_return(status: 200)
+      end
+
+      it 'should not restart a upload' do
+        command
+        expect(a_request(:put, upload_url)).to have_been_made
+      end
+    end
+  end
+
+  context 'delete resumable upload with upload_id' do
+    let(:bucket_name) { 'test_bucket' }
+    let(:upload_id) { 'foo' }
+    let(:command) do
+      service.send(
+        :delete_resumable_upload,
+        bucket_name, upload_id,
+        options: { upload_chunk_size: 11, delete_upload: true }
+      )
+    end
+
+    let(:upload_url) { "https://www.googleapis.com/upload/b/#{bucket_name}/o?uploadType=resumable&upload_id=#{upload_id}" }
+    before(:example) do
+      stub_request(:delete, upload_url)
+        .with(headers: { 'Content-Length' => '0' })
+        .to_return(status: [499])
+    end
+
+    it 'should cancel a resumable upload' do
+      command
+      expect(a_request(:delete, upload_url)).to have_been_made
+      expect(command).to be_truthy
+    end
+  end
+
   context 'with batch' do
     before(:example) do
       response = <<EOF.gsub(/\n/, "\r\n")
@@ -305,7 +394,7 @@ EOF
       expect do |b|
         service.batch_upload do |service|
           command = service.send(:make_upload_command, :post, 'zoo/animals', {})
-          command.upload_source = StringIO.new('test')
+          command.upload_source = StringIO.new(+'test')
           command.upload_content_type = 'text/plain'
           service.send(:execute_or_queue_command, command, &b)
         end
@@ -316,7 +405,7 @@ EOF
       expect do |b|
         service.batch_upload do |service|
           command = service.send(:make_upload_command, :post, 'zoo/animals', {})
-          command.upload_source = StringIO.new('test')
+          command.upload_source = StringIO.new(+'test')
           command.upload_content_type = 'text/plain'
           expect(command).to be_an_instance_of(Google::Apis::Core::MultipartUploadCommand)
           service.send(:execute_or_queue_command, command, &b)
@@ -328,7 +417,7 @@ EOF
       Google::Apis::RequestOptions.default.authorization = 'a token'
       service.batch_upload do |service|
         command = service.send(:make_upload_command, :post, 'zoo/animals', {})
-        command.upload_source = StringIO.new('test')
+        command.upload_source = StringIO.new(+'test')
         command.upload_content_type = 'text/plain'
         service.send(:execute_or_queue_command, command)
       end

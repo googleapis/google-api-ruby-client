@@ -1894,8 +1894,7 @@ module Google
         # @return [String]
         attr_accessor :directions_uri
       
-        # A link to show photos of this place. This link is currently not supported on
-        # Google Maps Mobile and only works on the web version of Google Maps.
+        # A link to show reviews of this place on Google Maps.
         # Corresponds to the JSON property `photosUri`
         # @return [String]
         attr_accessor :photos_uri
@@ -1905,14 +1904,12 @@ module Google
         # @return [String]
         attr_accessor :place_uri
       
-        # A link to show reviews of this place. This link is currently not supported on
-        # Google Maps Mobile and only works on the web version of Google Maps.
+        # A link to show reviews of this place on Google Maps.
         # Corresponds to the JSON property `reviewsUri`
         # @return [String]
         attr_accessor :reviews_uri
       
-        # A link to write a review for this place. This link is currently not supported
-        # on Google Maps Mobile and only works on the web version of Google Maps.
+        # A link to write a review for this place on Google Maps.
         # Corresponds to the JSON property `writeAReviewUri`
         # @return [String]
         attr_accessor :write_a_review_uri
@@ -2296,6 +2293,11 @@ module Google
         # @return [String]
         attr_accessor :flag_content_uri
       
+        # A link to show reviews of this place on Google Maps.
+        # Corresponds to the JSON property `reviewsUri`
+        # @return [String]
+        attr_accessor :reviews_uri
+      
         # Localized variant of a text in a particular language.
         # Corresponds to the JSON property `text`
         # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
@@ -2309,6 +2311,7 @@ module Google
         def update!(**args)
           @disclosure_text = args[:disclosure_text] if args.key?(:disclosure_text)
           @flag_content_uri = args[:flag_content_uri] if args.key?(:flag_content_uri)
+          @reviews_uri = args[:reviews_uri] if args.key?(:reviews_uri)
           @text = args[:text] if args.key?(:text)
         end
       end

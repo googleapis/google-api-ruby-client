@@ -322,6 +322,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetWorkerStacktracesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetWorkerStacktracesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Histogram
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -712,6 +724,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Sdk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SdkBug
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -875,6 +893,12 @@ module Google
       end
       
       class SplitInt64
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Stack
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1579,6 +1603,7 @@ module Google
           property :shuffle_mode, as: 'shuffleMode'
           property :streaming_mode, as: 'streamingMode'
           property :temp_storage_prefix, as: 'tempStoragePrefix'
+          property :use_public_ips, as: 'usePublicIps'
           property :use_streaming_engine_resource_based_billing, as: 'useStreamingEngineResourceBasedBilling'
           hash :user_agent, as: 'userAgent'
           hash :version, as: 'version'
@@ -1728,6 +1753,21 @@ module Google
           property :status, as: 'status', class: Google::Apis::DataflowV1b3::Status, decorator: Google::Apis::DataflowV1b3::Status::Representation
       
           property :template_type, as: 'templateType'
+        end
+      end
+      
+      class GetWorkerStacktracesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :worker_id, as: 'workerId'
+        end
+      end
+      
+      class GetWorkerStacktracesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :sdks, as: 'sdks', class: Google::Apis::DataflowV1b3::Sdk, decorator: Google::Apis::DataflowV1b3::Sdk::Representation
+      
         end
       end
       
@@ -2095,6 +2135,7 @@ module Google
       class MetricUpdate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bounded_trie, as: 'boundedTrie'
           property :cumulative, as: 'cumulative'
           property :distribution, as: 'distribution'
           property :gauge, as: 'gauge'
@@ -2452,6 +2493,15 @@ module Google
         end
       end
       
+      class Sdk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sdk_id, as: 'sdkId'
+          collection :stacks, as: 'stacks', class: Google::Apis::DataflowV1b3::Stack, decorator: Google::Apis::DataflowV1b3::Stack::Representation
+      
+        end
+      end
+      
       class SdkBug
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2726,6 +2776,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :high_bits, as: 'highBits'
           property :low_bits, as: 'lowBits'
+        end
+      end
+      
+      class Stack
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stack_content, as: 'stackContent'
+          property :thread_count, as: 'threadCount'
+          property :thread_name, as: 'threadName'
+          property :thread_state, as: 'threadState'
+          property :timestamp, as: 'timestamp'
         end
       end
       

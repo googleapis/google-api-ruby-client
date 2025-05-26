@@ -3253,6 +3253,840 @@ module Google
         # @param [String] parent
         #   Required. The parent resource where this deployment group will be created.
         #   Format: projects/`project`/locations/`location`
+        # @param [Google::Apis::NetworksecurityV1::InterceptDeploymentGroup] intercept_deployment_group_object
+        # @param [String] intercept_deployment_group_id
+        #   Required. The ID to use for the new deployment group, which will become the
+        #   final component of the deployment group's resource name.
+        # @param [String] request_id
+        #   Optional. A unique identifier for this request. Must be a UUID4. This request
+        #   is only idempotent if a `request_id` is provided. See https://google.aip.dev/
+        #   155 for more details.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_intercept_deployment_group(parent, intercept_deployment_group_object = nil, intercept_deployment_group_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/interceptDeploymentGroups', options)
+          command.request_representation = Google::Apis::NetworksecurityV1::InterceptDeploymentGroup::Representation
+          command.request_object = intercept_deployment_group_object
+          command.response_representation = Google::Apis::NetworksecurityV1::Operation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['interceptDeploymentGroupId'] = intercept_deployment_group_id unless intercept_deployment_group_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a deployment group. See https://google.aip.dev/135.
+        # @param [String] name
+        #   Required. The deployment group to delete.
+        # @param [String] request_id
+        #   Optional. A unique identifier for this request. Must be a UUID4. This request
+        #   is only idempotent if a `request_id` is provided. See https://google.aip.dev/
+        #   155 for more details.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_intercept_deployment_group(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworksecurityV1::Operation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a specific deployment group. See https://google.aip.dev/131.
+        # @param [String] name
+        #   Required. The name of the deployment group to retrieve. Format: projects/`
+        #   project`/locations/`location`/interceptDeploymentGroups/`
+        #   intercept_deployment_group`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1::InterceptDeploymentGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1::InterceptDeploymentGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_intercept_deployment_group(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworksecurityV1::InterceptDeploymentGroup::Representation
+          command.response_class = Google::Apis::NetworksecurityV1::InterceptDeploymentGroup
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists deployment groups in a given project and location. See https://google.
+        # aip.dev/132.
+        # @param [String] parent
+        #   Required. The parent, which owns this collection of deployment groups. Example:
+        #   `projects/123456789/locations/global`. See https://google.aip.dev/132 for
+        #   more details.
+        # @param [String] filter
+        #   Optional. Filter expression. See https://google.aip.dev/160#filtering for more
+        #   details.
+        # @param [String] order_by
+        #   Optional. Sort expression. See https://google.aip.dev/132#ordering for more
+        #   details.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, server will pick an appropriate default. See https://google.
+        #   aip.dev/158 for more details.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `
+        #   ListInterceptDeploymentGroups` call. Provide this to retrieve the subsequent
+        #   page. When paginating, all other parameters provided to `
+        #   ListInterceptDeploymentGroups` must match the call that provided the page
+        #   token. See https://google.aip.dev/158 for more details.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1::ListInterceptDeploymentGroupsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1::ListInterceptDeploymentGroupsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_intercept_deployment_groups(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/interceptDeploymentGroups', options)
+          command.response_representation = Google::Apis::NetworksecurityV1::ListInterceptDeploymentGroupsResponse::Representation
+          command.response_class = Google::Apis::NetworksecurityV1::ListInterceptDeploymentGroupsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a deployment group. See https://google.aip.dev/134.
+        # @param [String] name
+        #   Immutable. Identifier. The resource name of this deployment group, for example:
+        #   `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`. See
+        #   https://google.aip.dev/122 for more details.
+        # @param [Google::Apis::NetworksecurityV1::InterceptDeploymentGroup] intercept_deployment_group_object
+        # @param [String] request_id
+        #   Optional. A unique identifier for this request. Must be a UUID4. This request
+        #   is only idempotent if a `request_id` is provided. See https://google.aip.dev/
+        #   155 for more details.
+        # @param [String] update_mask
+        #   Optional. The list of fields to update. Fields are specified relative to the
+        #   deployment group (e.g. `description`; *not* `intercept_deployment_group.
+        #   description`). See https://google.aip.dev/161 for more details.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_intercept_deployment_group(name, intercept_deployment_group_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::NetworksecurityV1::InterceptDeploymentGroup::Representation
+          command.request_object = intercept_deployment_group_object
+          command.response_representation = Google::Apis::NetworksecurityV1::Operation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a deployment in a given project and location. See https://google.aip.
+        # dev/133.
+        # @param [String] parent
+        #   Required. The parent resource where this deployment will be created. Format:
+        #   projects/`project`/locations/`location`
+        # @param [Google::Apis::NetworksecurityV1::InterceptDeployment] intercept_deployment_object
+        # @param [String] intercept_deployment_id
+        #   Required. The ID to use for the new deployment, which will become the final
+        #   component of the deployment's resource name.
+        # @param [String] request_id
+        #   Optional. A unique identifier for this request. Must be a UUID4. This request
+        #   is only idempotent if a `request_id` is provided. See https://google.aip.dev/
+        #   155 for more details.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_intercept_deployment(parent, intercept_deployment_object = nil, intercept_deployment_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/interceptDeployments', options)
+          command.request_representation = Google::Apis::NetworksecurityV1::InterceptDeployment::Representation
+          command.request_object = intercept_deployment_object
+          command.response_representation = Google::Apis::NetworksecurityV1::Operation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['interceptDeploymentId'] = intercept_deployment_id unless intercept_deployment_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a deployment. See https://google.aip.dev/135.
+        # @param [String] name
+        #   Required. Name of the resource
+        # @param [String] request_id
+        #   Optional. A unique identifier for this request. Must be a UUID4. This request
+        #   is only idempotent if a `request_id` is provided. See https://google.aip.dev/
+        #   155 for more details.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_intercept_deployment(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworksecurityV1::Operation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a specific deployment. See https://google.aip.dev/131.
+        # @param [String] name
+        #   Required. The name of the deployment to retrieve. Format: projects/`project`/
+        #   locations/`location`/interceptDeployments/`intercept_deployment`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1::InterceptDeployment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1::InterceptDeployment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_intercept_deployment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworksecurityV1::InterceptDeployment::Representation
+          command.response_class = Google::Apis::NetworksecurityV1::InterceptDeployment
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists deployments in a given project and location. See https://google.aip.dev/
+        # 132.
+        # @param [String] parent
+        #   Required. The parent, which owns this collection of deployments. Example: `
+        #   projects/123456789/locations/us-central1-a`. See https://google.aip.dev/132
+        #   for more details.
+        # @param [String] filter
+        #   Optional. Filter expression. See https://google.aip.dev/160#filtering for more
+        #   details.
+        # @param [String] order_by
+        #   Optional. Sort expression. See https://google.aip.dev/132#ordering for more
+        #   details.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, server will pick an appropriate default. See https://google.
+        #   aip.dev/158 for more details.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListInterceptDeployments`
+        #   call. Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListInterceptDeployments` must match the call that
+        #   provided the page token. See https://google.aip.dev/158 for more details.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1::ListInterceptDeploymentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1::ListInterceptDeploymentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_intercept_deployments(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/interceptDeployments', options)
+          command.response_representation = Google::Apis::NetworksecurityV1::ListInterceptDeploymentsResponse::Representation
+          command.response_class = Google::Apis::NetworksecurityV1::ListInterceptDeploymentsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a deployment. See https://google.aip.dev/134.
+        # @param [String] name
+        #   Immutable. Identifier. The resource name of this deployment, for example: `
+        #   projects/123456789/locations/us-central1-a/interceptDeployments/my-dep`. See
+        #   https://google.aip.dev/122 for more details.
+        # @param [Google::Apis::NetworksecurityV1::InterceptDeployment] intercept_deployment_object
+        # @param [String] request_id
+        #   Optional. A unique identifier for this request. Must be a UUID4. This request
+        #   is only idempotent if a `request_id` is provided. See https://google.aip.dev/
+        #   155 for more details.
+        # @param [String] update_mask
+        #   Optional. The list of fields to update. Fields are specified relative to the
+        #   deployment (e.g. `description`; *not* `intercept_deployment.description`). See
+        #   https://google.aip.dev/161 for more details.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_intercept_deployment(name, intercept_deployment_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::NetworksecurityV1::InterceptDeployment::Representation
+          command.request_object = intercept_deployment_object
+          command.response_representation = Google::Apis::NetworksecurityV1::Operation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an association in a given project and location. See https://google.aip.
+        # dev/133.
+        # @param [String] parent
+        #   Required. The parent resource where this association will be created. Format:
+        #   projects/`project`/locations/`location`
+        # @param [Google::Apis::NetworksecurityV1::InterceptEndpointGroupAssociation] intercept_endpoint_group_association_object
+        # @param [String] intercept_endpoint_group_association_id
+        #   Optional. The ID to use for the new association, which will become the final
+        #   component of the endpoint group's resource name. If not provided, the server
+        #   will generate a unique ID.
+        # @param [String] request_id
+        #   Optional. A unique identifier for this request. Must be a UUID4. This request
+        #   is only idempotent if a `request_id` is provided. See https://google.aip.dev/
+        #   155 for more details.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_intercept_endpoint_group_association(parent, intercept_endpoint_group_association_object = nil, intercept_endpoint_group_association_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/interceptEndpointGroupAssociations', options)
+          command.request_representation = Google::Apis::NetworksecurityV1::InterceptEndpointGroupAssociation::Representation
+          command.request_object = intercept_endpoint_group_association_object
+          command.response_representation = Google::Apis::NetworksecurityV1::Operation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['interceptEndpointGroupAssociationId'] = intercept_endpoint_group_association_id unless intercept_endpoint_group_association_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an association. See https://google.aip.dev/135.
+        # @param [String] name
+        #   Required. The association to delete.
+        # @param [String] request_id
+        #   Optional. A unique identifier for this request. Must be a UUID4. This request
+        #   is only idempotent if a `request_id` is provided. See https://google.aip.dev/
+        #   155 for more details.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_intercept_endpoint_group_association(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworksecurityV1::Operation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a specific association. See https://google.aip.dev/131.
+        # @param [String] name
+        #   Required. The name of the association to retrieve. Format: projects/`project`/
+        #   locations/`location`/interceptEndpointGroupAssociations/`
+        #   intercept_endpoint_group_association`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1::InterceptEndpointGroupAssociation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1::InterceptEndpointGroupAssociation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_intercept_endpoint_group_association(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworksecurityV1::InterceptEndpointGroupAssociation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1::InterceptEndpointGroupAssociation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists associations in a given project and location. See https://google.aip.dev/
+        # 132.
+        # @param [String] parent
+        #   Required. The parent, which owns this collection of associations. Example: `
+        #   projects/123456789/locations/global`. See https://google.aip.dev/132 for more
+        #   details.
+        # @param [String] filter
+        #   Optional. Filter expression. See https://google.aip.dev/160#filtering for more
+        #   details.
+        # @param [String] order_by
+        #   Optional. Sort expression. See https://google.aip.dev/132#ordering for more
+        #   details.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, server will pick an appropriate default. See https://google.
+        #   aip.dev/158 for more details.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListInterceptEndpointGroups`
+        #   call. Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListInterceptEndpointGroups` must match the call that
+        #   provided the page token. See https://google.aip.dev/158 for more details.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1::ListInterceptEndpointGroupAssociationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1::ListInterceptEndpointGroupAssociationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_intercept_endpoint_group_associations(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/interceptEndpointGroupAssociations', options)
+          command.response_representation = Google::Apis::NetworksecurityV1::ListInterceptEndpointGroupAssociationsResponse::Representation
+          command.response_class = Google::Apis::NetworksecurityV1::ListInterceptEndpointGroupAssociationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an association. See https://google.aip.dev/134.
+        # @param [String] name
+        #   Immutable. Identifier. The resource name of this endpoint group association,
+        #   for example: `projects/123456789/locations/global/
+        #   interceptEndpointGroupAssociations/my-eg-association`. See https://google.aip.
+        #   dev/122 for more details.
+        # @param [Google::Apis::NetworksecurityV1::InterceptEndpointGroupAssociation] intercept_endpoint_group_association_object
+        # @param [String] request_id
+        #   Optional. A unique identifier for this request. Must be a UUID4. This request
+        #   is only idempotent if a `request_id` is provided. See https://google.aip.dev/
+        #   155 for more details.
+        # @param [String] update_mask
+        #   Optional. The list of fields to update. Fields are specified relative to the
+        #   association (e.g. `description`; *not* `intercept_endpoint_group_association.
+        #   description`). See https://google.aip.dev/161 for more details.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_intercept_endpoint_group_association(name, intercept_endpoint_group_association_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::NetworksecurityV1::InterceptEndpointGroupAssociation::Representation
+          command.request_object = intercept_endpoint_group_association_object
+          command.response_representation = Google::Apis::NetworksecurityV1::Operation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an endpoint group in a given project and location. See https://google.
+        # aip.dev/133.
+        # @param [String] parent
+        #   Required. The parent resource where this endpoint group will be created.
+        #   Format: projects/`project`/locations/`location`
+        # @param [Google::Apis::NetworksecurityV1::InterceptEndpointGroup] intercept_endpoint_group_object
+        # @param [String] intercept_endpoint_group_id
+        #   Required. The ID to use for the endpoint group, which will become the final
+        #   component of the endpoint group's resource name.
+        # @param [String] request_id
+        #   Optional. A unique identifier for this request. Must be a UUID4. This request
+        #   is only idempotent if a `request_id` is provided. See https://google.aip.dev/
+        #   155 for more details.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_intercept_endpoint_group(parent, intercept_endpoint_group_object = nil, intercept_endpoint_group_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/interceptEndpointGroups', options)
+          command.request_representation = Google::Apis::NetworksecurityV1::InterceptEndpointGroup::Representation
+          command.request_object = intercept_endpoint_group_object
+          command.response_representation = Google::Apis::NetworksecurityV1::Operation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['interceptEndpointGroupId'] = intercept_endpoint_group_id unless intercept_endpoint_group_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an endpoint group. See https://google.aip.dev/135.
+        # @param [String] name
+        #   Required. The endpoint group to delete.
+        # @param [String] request_id
+        #   Optional. A unique identifier for this request. Must be a UUID4. This request
+        #   is only idempotent if a `request_id` is provided. See https://google.aip.dev/
+        #   155 for more details.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_intercept_endpoint_group(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworksecurityV1::Operation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a specific endpoint group. See https://google.aip.dev/131.
+        # @param [String] name
+        #   Required. The name of the endpoint group to retrieve. Format: projects/`
+        #   project`/locations/`location`/interceptEndpointGroups/`
+        #   intercept_endpoint_group`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1::InterceptEndpointGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1::InterceptEndpointGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_intercept_endpoint_group(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworksecurityV1::InterceptEndpointGroup::Representation
+          command.response_class = Google::Apis::NetworksecurityV1::InterceptEndpointGroup
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists endpoint groups in a given project and location. See https://google.aip.
+        # dev/132.
+        # @param [String] parent
+        #   Required. The parent, which owns this collection of endpoint groups. Example: `
+        #   projects/123456789/locations/global`. See https://google.aip.dev/132 for more
+        #   details.
+        # @param [String] filter
+        #   Optional. Filter expression. See https://google.aip.dev/160#filtering for more
+        #   details.
+        # @param [String] order_by
+        #   Optional. Sort expression. See https://google.aip.dev/132#ordering for more
+        #   details.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, server will pick an appropriate default. See https://google.
+        #   aip.dev/158 for more details.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListInterceptEndpointGroups`
+        #   call. Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListInterceptEndpointGroups` must match the call that
+        #   provided the page token. See https://google.aip.dev/158 for more details.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1::ListInterceptEndpointGroupsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1::ListInterceptEndpointGroupsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_intercept_endpoint_groups(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/interceptEndpointGroups', options)
+          command.response_representation = Google::Apis::NetworksecurityV1::ListInterceptEndpointGroupsResponse::Representation
+          command.response_class = Google::Apis::NetworksecurityV1::ListInterceptEndpointGroupsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an endpoint group. See https://google.aip.dev/134.
+        # @param [String] name
+        #   Immutable. Identifier. The resource name of this endpoint group, for example: `
+        #   projects/123456789/locations/global/interceptEndpointGroups/my-eg`. See https:/
+        #   /google.aip.dev/122 for more details.
+        # @param [Google::Apis::NetworksecurityV1::InterceptEndpointGroup] intercept_endpoint_group_object
+        # @param [String] request_id
+        #   Optional. A unique identifier for this request. Must be a UUID4. This request
+        #   is only idempotent if a `request_id` is provided. See https://google.aip.dev/
+        #   155 for more details.
+        # @param [String] update_mask
+        #   Optional. The list of fields to update. Fields are specified relative to the
+        #   endpoint group (e.g. `description`; *not* `intercept_endpoint_group.
+        #   description`). See https://google.aip.dev/161 for more details.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_intercept_endpoint_group(name, intercept_endpoint_group_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::NetworksecurityV1::InterceptEndpointGroup::Representation
+          command.request_object = intercept_endpoint_group_object
+          command.response_representation = Google::Apis::NetworksecurityV1::Operation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a deployment group in a given project and location. See https://google.
+        # aip.dev/133.
+        # @param [String] parent
+        #   Required. The parent resource where this deployment group will be created.
+        #   Format: projects/`project`/locations/`location`
         # @param [Google::Apis::NetworksecurityV1::MirroringDeploymentGroup] mirroring_deployment_group_object
         # @param [String] mirroring_deployment_group_id
         #   Required. The ID to use for the new deployment group, which will become the

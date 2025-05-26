@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AnonymousAuthenticationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuthenticatorGroupsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -418,6 +424,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HighScaleCheckpointingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HorizontalPodAutoscaling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -587,6 +599,12 @@ module Google
       end
       
       class MaxPodsConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MemoryManager
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1078,6 +1096,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TopologyManager
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateClusterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1244,6 +1268,8 @@ module Google
       
           property :gke_backup_agent_config, as: 'gkeBackupAgentConfig', class: Google::Apis::ContainerV1::GkeBackupAgentConfig, decorator: Google::Apis::ContainerV1::GkeBackupAgentConfig::Representation
       
+          property :high_scale_checkpointing_config, as: 'highScaleCheckpointingConfig', class: Google::Apis::ContainerV1::HighScaleCheckpointingConfig, decorator: Google::Apis::ContainerV1::HighScaleCheckpointingConfig::Representation
+      
           property :horizontal_pod_autoscaling, as: 'horizontalPodAutoscaling', class: Google::Apis::ContainerV1::HorizontalPodAutoscaling, decorator: Google::Apis::ContainerV1::HorizontalPodAutoscaling::Representation
       
           property :http_load_balancing, as: 'httpLoadBalancing', class: Google::Apis::ContainerV1::HttpLoadBalancing, decorator: Google::Apis::ContainerV1::HttpLoadBalancing::Representation
@@ -1274,7 +1300,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_nested_virtualization, as: 'enableNestedVirtualization'
+          property :performance_monitoring_unit, as: 'performanceMonitoringUnit'
           property :threads_per_core, :numeric_string => true, as: 'threadsPerCore'
+        end
+      end
+      
+      class AnonymousAuthenticationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1448,6 +1481,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :addons_config, as: 'addonsConfig', class: Google::Apis::ContainerV1::AddonsConfig, decorator: Google::Apis::ContainerV1::AddonsConfig::Representation
       
+          collection :alpha_cluster_feature_gates, as: 'alphaClusterFeatureGates'
+          property :anonymous_authentication_config, as: 'anonymousAuthenticationConfig', class: Google::Apis::ContainerV1::AnonymousAuthenticationConfig, decorator: Google::Apis::ContainerV1::AnonymousAuthenticationConfig::Representation
+      
           property :authenticator_groups_config, as: 'authenticatorGroupsConfig', class: Google::Apis::ContainerV1::AuthenticatorGroupsConfig, decorator: Google::Apis::ContainerV1::AuthenticatorGroupsConfig::Representation
       
           property :autopilot, as: 'autopilot', class: Google::Apis::ContainerV1::Autopilot, decorator: Google::Apis::ContainerV1::Autopilot::Representation
@@ -1594,6 +1630,8 @@ module Google
           property :additional_pod_ranges_config, as: 'additionalPodRangesConfig', class: Google::Apis::ContainerV1::AdditionalPodRangesConfig, decorator: Google::Apis::ContainerV1::AdditionalPodRangesConfig::Representation
       
           property :desired_addons_config, as: 'desiredAddonsConfig', class: Google::Apis::ContainerV1::AddonsConfig, decorator: Google::Apis::ContainerV1::AddonsConfig::Representation
+      
+          property :desired_anonymous_authentication_config, as: 'desiredAnonymousAuthenticationConfig', class: Google::Apis::ContainerV1::AnonymousAuthenticationConfig, decorator: Google::Apis::ContainerV1::AnonymousAuthenticationConfig::Representation
       
           property :desired_authenticator_groups_config, as: 'desiredAuthenticatorGroupsConfig', class: Google::Apis::ContainerV1::AuthenticatorGroupsConfig, decorator: Google::Apis::ContainerV1::AuthenticatorGroupsConfig::Representation
       
@@ -2019,6 +2057,13 @@ module Google
         end
       end
       
+      class HighScaleCheckpointingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class HorizontalPodAutoscaling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2291,6 +2336,13 @@ module Google
         end
       end
       
+      class MemoryManager
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy'
+        end
+      end
+      
       class MeshCertificates
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2493,7 +2545,11 @@ module Google
           property :image_maximum_gc_age, as: 'imageMaximumGcAge'
           property :image_minimum_gc_age, as: 'imageMinimumGcAge'
           property :insecure_kubelet_readonly_port_enabled, as: 'insecureKubeletReadonlyPortEnabled'
+          property :memory_manager, as: 'memoryManager', class: Google::Apis::ContainerV1::MemoryManager, decorator: Google::Apis::ContainerV1::MemoryManager::Representation
+      
           property :pod_pids_limit, :numeric_string => true, as: 'podPidsLimit'
+          property :topology_manager, as: 'topologyManager', class: Google::Apis::ContainerV1::TopologyManager, decorator: Google::Apis::ContainerV1::TopologyManager::Representation
+      
         end
       end
       
@@ -3200,6 +3256,14 @@ module Google
           property :maintenance_exclusion_options, as: 'maintenanceExclusionOptions', class: Google::Apis::ContainerV1::MaintenanceExclusionOptions, decorator: Google::Apis::ContainerV1::MaintenanceExclusionOptions::Representation
       
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class TopologyManager
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy'
+          property :scope, as: 'scope'
         end
       end
       

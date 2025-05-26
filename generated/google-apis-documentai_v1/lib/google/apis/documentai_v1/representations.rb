@@ -2349,6 +2349,7 @@ module Google
           property :integer_value, as: 'integerValue'
           property :money_value, as: 'moneyValue', class: Google::Apis::DocumentaiV1::GoogleTypeMoney, decorator: Google::Apis::DocumentaiV1::GoogleTypeMoney::Representation
       
+          property :signature_value, as: 'signatureValue'
           property :text, as: 'text'
         end
       end
@@ -2759,6 +2760,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+          property :method_prop, as: 'method'
           property :name, as: 'name'
           property :occurrence_type, as: 'occurrenceType'
           property :value_type, as: 'valueType'

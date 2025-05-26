@@ -59,11 +59,8 @@ module Google
       
         # Optional. When true, the node is only accessible via Private Service Connect;
         # no public endpoints are exposed. Otherwise, the node is only accessible via
-        # public endpoints. Warning: Private Service Connect enabled nodes may require a
-        # manual migration effort to remain compatible with future versions of the
-        # product. If this feature is enabled, you will be notified of these changes
-        # along with any required action to avoid disruption. See https://cloud.google.
-        # com/vpc/docs/private-service-connect.
+        # public endpoints. Warning: These nodes are deprecated, please use public
+        # endpoints instead.
         # Corresponds to the JSON property `privateServiceConnectEnabled`
         # @return [Boolean]
         attr_accessor :private_service_connect_enabled

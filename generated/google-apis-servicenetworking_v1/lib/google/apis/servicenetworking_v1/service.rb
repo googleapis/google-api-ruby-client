@@ -469,16 +469,17 @@ module Google
         # List the private connections that are configured in a service consumer's VPC
         # network.
         # @param [String] parent
-        #   The service that is managing peering connectivity for a service producer's
-        #   organization. For Google services that support this functionality, this value
-        #   is `services/servicenetworking.googleapis.com`. If you specify `services/-` as
-        #   the parameter value, all configured peering services are listed.
+        #   Required. The service that is managing peering connectivity for a service
+        #   producer's organization. For Google services that support this functionality,
+        #   this value is `services/servicenetworking.googleapis.com`. If you specify `
+        #   services/-` as the parameter value, all configured peering services are listed.
         # @param [String] network
-        #   The name of service consumer's VPC network that's connected with service
-        #   producer network through a private connection. The network name must be in the
-        #   following format: `projects/`project`/global/networks/`network``. `project` is
-        #   a project number, such as in `12345` that includes the VPC service consumer's
-        #   VPC network. `network` is the name of the service consumer's VPC network.
+        #   Required. The name of service consumer's VPC network that's connected with
+        #   service producer network through a private connection. The network name must
+        #   be in the following format: `projects/`project`/global/networks/`network``. `
+        #   project` is a project number, such as in `12345` that includes the VPC service
+        #   consumer's VPC network. `network` is the name of the service consumer's VPC
+        #   network.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

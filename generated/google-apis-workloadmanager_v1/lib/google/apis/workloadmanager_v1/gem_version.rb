@@ -16,13 +16,13 @@ module Google
   module Apis
     module WorkloadmanagerV1
       # Version of the google-apis-workloadmanager_v1 gem
-      GEM_VERSION = "0.34.0"
+      GEM_VERSION = "0.35.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.16.0"
+      GENERATOR_VERSION = "0.17.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20250326"
+      REVISION = "20250416"
     end
   end
 end

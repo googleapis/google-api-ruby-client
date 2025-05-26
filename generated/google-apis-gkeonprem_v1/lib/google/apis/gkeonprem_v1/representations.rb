@@ -736,6 +736,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VmwareAdminPrivateRegistryConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VmwareAdminSeesawConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1215,6 +1221,7 @@ module Google
           property :load_balancer, as: 'loadBalancer', class: Google::Apis::GkeonpremV1::BareMetalLoadBalancerConfig, decorator: Google::Apis::GkeonpremV1::BareMetalLoadBalancerConfig::Representation
       
           property :local_name, as: 'localName'
+          property :local_namespace, as: 'localNamespace'
           property :maintenance_config, as: 'maintenanceConfig', class: Google::Apis::GkeonpremV1::BareMetalMaintenanceConfig, decorator: Google::Apis::GkeonpremV1::BareMetalMaintenanceConfig::Representation
       
           property :maintenance_status, as: 'maintenanceStatus', class: Google::Apis::GkeonpremV1::BareMetalMaintenanceStatus, decorator: Google::Apis::GkeonpremV1::BareMetalMaintenanceStatus::Representation
@@ -1615,6 +1622,7 @@ module Google
           property :admin_cluster_membership, as: 'adminClusterMembership'
           property :bare_metal_cluster_id, as: 'bareMetalClusterId'
           property :local_name, as: 'localName'
+          property :local_namespace, as: 'localNamespace'
         end
       end
       
@@ -2035,6 +2043,8 @@ module Google
       
           property :prepared_secrets, as: 'preparedSecrets', class: Google::Apis::GkeonpremV1::VmwareAdminPreparedSecretsConfig, decorator: Google::Apis::GkeonpremV1::VmwareAdminPreparedSecretsConfig::Representation
       
+          property :private_registry_config, as: 'privateRegistryConfig', class: Google::Apis::GkeonpremV1::VmwareAdminPrivateRegistryConfig, decorator: Google::Apis::GkeonpremV1::VmwareAdminPrivateRegistryConfig::Representation
+      
           property :reconciling, as: 'reconciling'
           property :state, as: 'state'
           property :status, as: 'status', class: Google::Apis::GkeonpremV1::ResourceStatus, decorator: Google::Apis::GkeonpremV1::ResourceStatus::Representation
@@ -2129,6 +2139,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+        end
+      end
+      
+      class VmwareAdminPrivateRegistryConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address'
+          property :ca_cert, as: 'caCert'
         end
       end
       

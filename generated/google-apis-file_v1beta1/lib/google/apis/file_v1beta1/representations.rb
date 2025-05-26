@@ -250,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PscConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReplicaConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -412,6 +418,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :consumer_defined_name, as: 'consumerDefinedName'
+          property :consumer_project_number, as: 'consumerProjectNumber'
           property :create_time, as: 'createTime'
           property :instance_type, as: 'instanceType'
           hash :labels, as: 'labels'
@@ -674,6 +681,8 @@ module Google
           collection :ip_addresses, as: 'ipAddresses'
           collection :modes, as: 'modes'
           property :network, as: 'network'
+          property :psc_config, as: 'pscConfig', class: Google::Apis::FileV1beta1::PscConfig, decorator: Google::Apis::FileV1beta1::PscConfig::Representation
+      
           property :reserved_ip_range, as: 'reservedIpRange'
         end
       end
@@ -685,6 +694,7 @@ module Google
           property :anon_gid, :numeric_string => true, as: 'anonGid'
           property :anon_uid, :numeric_string => true, as: 'anonUid'
           collection :ip_ranges, as: 'ipRanges'
+          property :network, as: 'network'
           collection :security_flavors, as: 'securityFlavors'
           property :squash_mode, as: 'squashMode'
         end
@@ -740,6 +750,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :peer_instance, as: 'peerInstance'
+        end
+      end
+      
+      class PscConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :endpoint_project, as: 'endpointProject'
         end
       end
       

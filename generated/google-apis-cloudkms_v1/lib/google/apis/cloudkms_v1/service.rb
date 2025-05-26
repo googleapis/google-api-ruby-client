@@ -83,6 +83,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the KeyAccessJustificationsPolicyConfig for a given organization/folder/
+        # projects.
+        # @param [String] name
+        #   Required. The name of the KeyAccessJustificationsPolicyConfig to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_folder_kaj_policy_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig::Representation
+          command.response_class = Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates the AutokeyConfig for a folder. The caller must have both `cloudkms.
         # autokeyConfigs.update` permission on the parent folder and `cloudkms.
         # cryptoKeys.setIamPolicy` permission on the provided key project. A KeyHandle
@@ -124,6 +155,144 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates the KeyAccessJustificationsPolicyConfig for a given organization/
+        # folder/projects.
+        # @param [String] name
+        #   Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in
+        #   the format of "`organizations|folders|projects`/*/kajPolicyConfig".
+        # @param [Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig] key_access_justifications_policy_config_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_folder_kaj_policy_config(name, key_access_justifications_policy_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig::Representation
+          command.request_object = key_access_justifications_policy_config_object
+          command.response_representation = Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig::Representation
+          command.response_class = Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the KeyAccessJustificationsPolicyConfig for a given organization/folder/
+        # projects.
+        # @param [String] name
+        #   Required. The name of the KeyAccessJustificationsPolicyConfig to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_kaj_policy_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig::Representation
+          command.response_class = Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the KeyAccessJustificationsPolicyConfig for a given organization/
+        # folder/projects.
+        # @param [String] name
+        #   Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in
+        #   the format of "`organizations|folders|projects`/*/kajPolicyConfig".
+        # @param [Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig] key_access_justifications_policy_config_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_organization_kaj_policy_config(name, key_access_justifications_policy_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig::Representation
+          command.request_object = key_access_justifications_policy_config_object
+          command.response_representation = Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig::Representation
+          command.response_class = Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the KeyAccessJustificationsPolicyConfig for a given organization/folder/
+        # projects.
+        # @param [String] name
+        #   Required. The name of the KeyAccessJustificationsPolicyConfig to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_kaj_policy_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig::Representation
+          command.response_class = Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns the effective Cloud KMS Autokey configuration for a given project.
         # @param [String] parent
         #   Required. Name of the resource project to the show effective Cloud KMS Autokey
@@ -151,6 +320,108 @@ module Google
           command.response_representation = Google::Apis::CloudkmsV1::ShowEffectiveAutokeyConfigResponse::Representation
           command.response_class = Google::Apis::CloudkmsV1::ShowEffectiveAutokeyConfigResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the KeyAccessJustificationsEnrollmentConfig of the resource closest to
+        # the given project in hierarchy.
+        # @param [String] project
+        #   Required. The number or id of the project to get the effective
+        #   KeyAccessJustificationsEnrollmentConfig for.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def show_project_effective_key_access_justifications_enrollment_config(project, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+project}:showEffectiveKeyAccessJustificationsEnrollmentConfig', options)
+          command.response_representation = Google::Apis::CloudkmsV1::ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse::Representation
+          command.response_class = Google::Apis::CloudkmsV1::ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse
+          command.params['project'] = project unless project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the KeyAccessJustificationsPolicyConfig of the resource closest to the
+        # given project in hierarchy.
+        # @param [String] project
+        #   Required. The number or id of the project to get the effective
+        #   KeyAccessJustificationsPolicyConfig. In the format of "projects/`|`"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::ShowEffectiveKeyAccessJustificationsPolicyConfigResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::ShowEffectiveKeyAccessJustificationsPolicyConfigResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def show_project_effective_key_access_justifications_policy_config(project, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+project}:showEffectiveKeyAccessJustificationsPolicyConfig', options)
+          command.response_representation = Google::Apis::CloudkmsV1::ShowEffectiveKeyAccessJustificationsPolicyConfigResponse::Representation
+          command.response_class = Google::Apis::CloudkmsV1::ShowEffectiveKeyAccessJustificationsPolicyConfigResponse
+          command.params['project'] = project unless project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the KeyAccessJustificationsPolicyConfig for a given organization/
+        # folder/projects.
+        # @param [String] name
+        #   Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in
+        #   the format of "`organizations|folders|projects`/*/kajPolicyConfig".
+        # @param [Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig] key_access_justifications_policy_config_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_kaj_policy_config(name, key_access_justifications_policy_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig::Representation
+          command.request_object = key_access_justifications_policy_config_object
+          command.response_representation = Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig::Representation
+          command.response_class = Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -254,6 +525,9 @@ module Google
         # Lists information about the supported locations for this service.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
+        # @param [Array<String>, String] extra_location_types
+        #   Optional. A list of extra location types that should be used as conditions for
+        #   controlling the visibility of the locations.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -281,11 +555,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_locations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_locations(name, extra_location_types: nil, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/locations', options)
           command.response_representation = Google::Apis::CloudkmsV1::ListLocationsResponse::Representation
           command.response_class = Google::Apis::CloudkmsV1::ListLocationsResponse
           command.params['name'] = name unless name.nil?
+          command.query['extraLocationTypes'] = extra_location_types unless extra_location_types.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?

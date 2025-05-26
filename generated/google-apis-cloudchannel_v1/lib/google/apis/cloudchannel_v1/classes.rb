@@ -249,9 +249,9 @@ module Google
         # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1Parameter>]
         attr_accessor :parameters
       
-        # Optional. Price reference ID for the offer. Optional field only for offers
-        # that require additional price information. Used to guarantee that the pricing
-        # is consistent between quoting the offer and placing the order.
+        # Optional. Price reference ID for the offer. Only for offers that require
+        # additional price information. Used to guarantee that the pricing is consistent
+        # between quoting the offer and placing the order.
         # Corresponds to the JSON property `priceReferenceId`
         # @return [String]
         attr_accessor :price_reference_id
@@ -870,6 +870,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. Indicate if a customer is attesting about the correctness of
+        # provided information. Only required if creating a GCP Entitlement.
+        # Corresponds to the JSON property `customerAttestationState`
+        # @return [String]
+        attr_accessor :customer_attestation_state
+      
         # Required. The customer's primary domain. Must match the primary contact email'
         # s domain.
         # Corresponds to the JSON property `domain`
@@ -930,6 +936,7 @@ module Google
           @cloud_identity_info = args[:cloud_identity_info] if args.key?(:cloud_identity_info)
           @correlation_id = args[:correlation_id] if args.key?(:correlation_id)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @customer_attestation_state = args[:customer_attestation_state] if args.key?(:customer_attestation_state)
           @domain = args[:domain] if args.key?(:domain)
           @language_code = args[:language_code] if args.key?(:language_code)
           @name = args[:name] if args.key?(:name)
@@ -1189,9 +1196,9 @@ module Google
         # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1Parameter>]
         attr_accessor :parameters
       
-        # Optional. Price reference ID for the offer. Optional field only for offers
-        # that require additional price information. Used to guarantee that the pricing
-        # is consistent between quoting the offer and placing the order.
+        # Optional. Price reference ID for the offer. Only for offers that require
+        # additional price information. Used to guarantee that the pricing is consistent
+        # between quoting the offer and placing the order.
         # Corresponds to the JSON property `priceReferenceId`
         # @return [String]
         attr_accessor :price_reference_id
@@ -1669,7 +1676,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # The list of Offers requested.
+        # The list of Offers requested. The pricing information for each Offer only
+        # includes the base price. Effective prices and discounts aren't populated.
         # Corresponds to the JSON property `offers`
         # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1Offer>]
         attr_accessor :offers
@@ -2662,9 +2670,9 @@ module Google
         # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Offer]
         attr_accessor :offer
       
-        # Optional. Price reference ID for the offer. Optional field only for offers
-        # that require additional price information. Used to guarantee that the pricing
-        # is consistent between quoting the offer and placing the order.
+        # Optional. Price reference ID for the offer. Only for offers that require
+        # additional price information. Used to guarantee that the pricing is consistent
+        # between quoting the offer and placing the order.
         # Corresponds to the JSON property `priceReferenceId`
         # @return [String]
         attr_accessor :price_reference_id
@@ -3577,9 +3585,9 @@ module Google
         # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Offer]
         attr_accessor :offer
       
-        # Optional. Price reference ID for the offer. Optional field only for offers
-        # that require additional price information. Used to guarantee that the pricing
-        # is consistent between quoting the offer and placing the order.
+        # Optional. Price reference ID for the offer. Only for offers that require
+        # additional price information. Used to guarantee that the pricing is consistent
+        # between quoting the offer and placing the order.
         # Corresponds to the JSON property `priceReferenceId`
         # @return [String]
         attr_accessor :price_reference_id
@@ -4080,9 +4088,9 @@ module Google
         # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1Parameter>]
         attr_accessor :parameters
       
-        # Optional. Price reference ID for the offer. Optional field only for offers
-        # that require additional price information. Used to guarantee that the pricing
-        # is consistent between quoting the offer and placing the order.
+        # Optional. Price reference ID for the offer. Only for offers that require
+        # additional price information. Used to guarantee that the pricing is consistent
+        # between quoting the offer and placing the order.
         # Corresponds to the JSON property `priceReferenceId`
         # @return [String]
         attr_accessor :price_reference_id

@@ -616,6 +616,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2alphaDoubleList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2alphaEnrollSolutionMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2570,7 +2576,6 @@ module Google
       
           collection :refined_search, as: 'refinedSearch', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponseRefinedSearch, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponseRefinedSearch::Representation
       
-          property :rephrased_query, as: 'rephrasedQuery'
         end
       end
       
@@ -2638,6 +2643,13 @@ module Google
           collection :numbers, as: 'numbers'
           property :searchable, as: 'searchable'
           collection :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaDoubleList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values'
         end
       end
       
@@ -3052,6 +3064,7 @@ module Google
       class GoogleCloudRetailV2alphaMerchantCenterAccountLinkMerchantCenterFeedFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source_id, :numeric_string => true, as: 'dataSourceId'
           property :primary_feed_id, :numeric_string => true, as: 'primaryFeedId'
           property :primary_feed_name, as: 'primaryFeedName'
         end
@@ -3060,6 +3073,7 @@ module Google
       class GoogleCloudRetailV2alphaMerchantCenterFeedFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source_id, :numeric_string => true, as: 'dataSourceId'
           property :primary_feed_id, :numeric_string => true, as: 'primaryFeedId'
           property :primary_feed_name, as: 'primaryFeedName'
         end
@@ -3926,6 +3940,8 @@ module Google
           property :id, as: 'id'
           property :matching_variant_count, as: 'matchingVariantCount'
           hash :matching_variant_fields, as: 'matchingVariantFields'
+          hash :model_scores, as: 'modelScores', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaDoubleList, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaDoubleList::Representation
+      
           collection :personal_labels, as: 'personalLabels'
           property :product, as: 'product', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProduct, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProduct::Representation
       

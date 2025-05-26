@@ -1385,7 +1385,10 @@ module Google
       class MongodbProfile
         include Google::Apis::Core::Hashable
       
-        # Required. List of host addresses for a MongoDB cluster.
+        # Required. List of host addresses for a MongoDB cluster. For SRV connection
+        # format, this list must contain exactly one DNS host without a port. For
+        # Standard connection format, this list must contain all the required hosts in
+        # the cluster with their respective ports.
         # Corresponds to the JSON property `hostAddresses`
         # @return [Array<Google::Apis::DatastreamV1::HostAddress>]
         attr_accessor :host_addresses
@@ -1397,7 +1400,8 @@ module Google
         attr_accessor :password
       
         # Optional. Name of the replica set. Only needed for self hosted replica set
-        # type MongoDB cluster.
+        # type MongoDB cluster. For SRV connection format, this field must be empty. For
+        # Standard connection format, this field must be specified.
         # Corresponds to the JSON property `replicaSet`
         # @return [String]
         attr_accessor :replica_set
@@ -1412,6 +1416,11 @@ module Google
         # Corresponds to the JSON property `srvConnectionFormat`
         # @return [Google::Apis::DatastreamV1::SrvConnectionFormat]
         attr_accessor :srv_connection_format
+      
+        # MongoDB SSL configuration information.
+        # Corresponds to the JSON property `sslConfig`
+        # @return [Google::Apis::DatastreamV1::MongodbSslConfig]
+        attr_accessor :ssl_config
       
         # Standard connection format.
         # Corresponds to the JSON property `standardConnectionFormat`
@@ -1434,6 +1443,7 @@ module Google
           @replica_set = args[:replica_set] if args.key?(:replica_set)
           @secret_manager_stored_password = args[:secret_manager_stored_password] if args.key?(:secret_manager_stored_password)
           @srv_connection_format = args[:srv_connection_format] if args.key?(:srv_connection_format)
+          @ssl_config = args[:ssl_config] if args.key?(:ssl_config)
           @standard_connection_format = args[:standard_connection_format] if args.key?(:standard_connection_format)
           @username = args[:username] if args.key?(:username)
         end
@@ -1453,6 +1463,13 @@ module Google
         # @return [Google::Apis::DatastreamV1::MongodbCluster]
         attr_accessor :include_objects
       
+        # Optional. Maximum number of concurrent backfill tasks. The number should be
+        # non-negative and less than or equal to 50. If not set (or set to 0), the
+        # system's default value is used
+        # Corresponds to the JSON property `maxConcurrentBackfillTasks`
+        # @return [Fixnum]
+        attr_accessor :max_concurrent_backfill_tasks
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1461,6 +1478,73 @@ module Google
         def update!(**args)
           @exclude_objects = args[:exclude_objects] if args.key?(:exclude_objects)
           @include_objects = args[:include_objects] if args.key?(:include_objects)
+          @max_concurrent_backfill_tasks = args[:max_concurrent_backfill_tasks] if args.key?(:max_concurrent_backfill_tasks)
+        end
+      end
+      
+      # MongoDB SSL configuration information.
+      class MongodbSslConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Input only. PEM-encoded certificate of the CA that signed the source
+        # database server's certificate.
+        # Corresponds to the JSON property `caCertificate`
+        # @return [String]
+        attr_accessor :ca_certificate
+      
+        # Output only. Indicates whether the ca_certificate field is set.
+        # Corresponds to the JSON property `caCertificateSet`
+        # @return [Boolean]
+        attr_accessor :ca_certificate_set
+        alias_method :ca_certificate_set?, :ca_certificate_set
+      
+        # Optional. Input only. PEM-encoded certificate that will be used by the replica
+        # to authenticate against the source database server. If this field is used then
+        # the 'client_key' and the 'ca_certificate' fields are mandatory.
+        # Corresponds to the JSON property `clientCertificate`
+        # @return [String]
+        attr_accessor :client_certificate
+      
+        # Output only. Indicates whether the client_certificate field is set.
+        # Corresponds to the JSON property `clientCertificateSet`
+        # @return [Boolean]
+        attr_accessor :client_certificate_set
+        alias_method :client_certificate_set?, :client_certificate_set
+      
+        # Optional. Input only. PEM-encoded private key associated with the Client
+        # Certificate. If this field is used then the 'client_certificate' and the '
+        # ca_certificate' fields are mandatory.
+        # Corresponds to the JSON property `clientKey`
+        # @return [String]
+        attr_accessor :client_key
+      
+        # Output only. Indicates whether the client_key field is set.
+        # Corresponds to the JSON property `clientKeySet`
+        # @return [Boolean]
+        attr_accessor :client_key_set
+        alias_method :client_key_set?, :client_key_set
+      
+        # Optional. Input only. A reference to a Secret Manager resource name storing
+        # the PEM-encoded private key associated with the Client Certificate. If this
+        # field is used then the 'client_certificate' and the 'ca_certificate' fields
+        # are mandatory. Mutually exclusive with the `client_key` field.
+        # Corresponds to the JSON property `secretManagerStoredClientKey`
+        # @return [String]
+        attr_accessor :secret_manager_stored_client_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ca_certificate = args[:ca_certificate] if args.key?(:ca_certificate)
+          @ca_certificate_set = args[:ca_certificate_set] if args.key?(:ca_certificate_set)
+          @client_certificate = args[:client_certificate] if args.key?(:client_certificate)
+          @client_certificate_set = args[:client_certificate_set] if args.key?(:client_certificate_set)
+          @client_key = args[:client_key] if args.key?(:client_key)
+          @client_key_set = args[:client_key_set] if args.key?(:client_key_set)
+          @secret_manager_stored_client_key = args[:secret_manager_stored_client_key] if args.key?(:secret_manager_stored_client_key)
         end
       end
       
@@ -2839,8 +2923,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. Fully qualified name of the Network Attachment that Datastream will
-        # connect to. Format: `projects/``project``/regions/``region``/
-        # networkAttachments/``name```
+        # connect to. Format: `projects/`project`/regions/`region`/networkAttachments/`
+        # name``
         # Corresponds to the JSON property `networkAttachment`
         # @return [String]
         attr_accessor :network_attachment
@@ -3661,12 +3745,20 @@ module Google
       class StandardConnectionFormat
         include Google::Apis::Core::Hashable
       
+        # Optional. Specifies whether the client connects directly to the host[:port] in
+        # the connection URI.
+        # Corresponds to the JSON property `directConnection`
+        # @return [Boolean]
+        attr_accessor :direct_connection
+        alias_method :direct_connection?, :direct_connection
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @direct_connection = args[:direct_connection] if args.key?(:direct_connection)
         end
       end
       

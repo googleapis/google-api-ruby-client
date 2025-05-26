@@ -1705,13 +1705,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. For future use.
+        # Output only. Whether the dataset satisfies zone isolation.
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
         attr_accessor :satisfies_pzi
         alias_method :satisfies_pzi?, :satisfies_pzi
       
-        # Output only. For future use.
+        # Output only. Whether the dataset satisfies zone separation.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
         attr_accessor :satisfies_pzs
@@ -6968,10 +6968,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The FHIR resource type to search, such as Patient or Observation.
-        # For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/
-        # implement/standards/fhir/DSTU2/resourcelist.html), [STU3](https://hl7.org/
-        # implement/standards/fhir/STU3/resourcelist.html), [R4](https://hl7.org/
-        # implement/standards/fhir/R4/resourcelist.html)).
+        # For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/fhir/
+        # DSTU2/resourcelist.html), [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
+        # [R4](https://hl7.org/fhir/R4/resourcelist.html)).
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type

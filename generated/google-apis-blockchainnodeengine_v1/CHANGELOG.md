@@ -1,5 +1,13 @@
 # Release history for google-apis-blockchainnodeengine_v1
 
+### v0.15.0 (2025-05-04)
+
+* Regenerated using generator version 0.17.0
+
+### v0.14.0 (2025-04-27)
+
+* Regenerated from discovery document revision 20250416
+
 ### v0.13.0 (2025-04-06)
 
 * Regenerated from discovery document revision 20250326

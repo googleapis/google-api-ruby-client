@@ -1014,6 +1014,7 @@ module Google
           property :disclosure_text, as: 'disclosureText', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
       
           property :flag_content_uri, as: 'flagContentUri'
+          property :reviews_uri, as: 'reviewsUri'
           property :text, as: 'text', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
       
         end

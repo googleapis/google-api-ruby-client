@@ -467,6 +467,19 @@ module Google
         end
       end
       
+      # The message to appeal an assessment.
+      class GoogleCloudContactcenterinsightsV1AppealAssessmentRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Agent Assist Article Suggestion data.
       class GoogleCloudContactcenterinsightsV1ArticleSuggestionData
         include Google::Apis::Core::Hashable
@@ -518,6 +531,201 @@ module Google
           @source = args[:source] if args.key?(:source)
           @title = args[:title] if args.key?(:title)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # The assessment resource.
+      class GoogleCloudContactcenterinsightsV1Assessment
+        include Google::Apis::Core::Hashable
+      
+        # Information about an agent involved in the conversation.
+        # Corresponds to the JSON property `agentInfo`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo]
+        attr_accessor :agent_info
+      
+        # Output only. The time at which the assessment was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Identifier. The resource name of the assessment. Format: projects/`project`/
+        # locations/`location`/conversations/`conversation`/assessments/`assessment`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The state of the assessment.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The time at which the assessment was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_info = args[:agent_info] if args.key?(:agent_info)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The CCAI Insights project wide assessment rule. This assessment rule will be
+      # applied to all conversations from the previous sampling cycle that match the
+      # sample rule defined in the assessment rule. One project can have multiple
+      # assessment rules.
+      class GoogleCloudContactcenterinsightsV1AssessmentRule
+        include Google::Apis::Core::Hashable
+      
+        # If true, apply this rule to conversations. Otherwise, this rule is inactive.
+        # Corresponds to the JSON property `active`
+        # @return [Boolean]
+        attr_accessor :active
+        alias_method :active?, :active
+      
+        # Output only. The time at which this assessment rule was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Display Name of the assessment rule.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. The resource name of the assessment rule. Format: projects/`
+        # project`/locations/`location`/assessmentRules/`assessment_rule`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Message for sampling conversations.
+        # Corresponds to the JSON property `sampleRule`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SampleRule]
+        attr_accessor :sample_rule
+      
+        # Message for schedule info.
+        # Corresponds to the JSON property `scheduleInfo`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ScheduleInfo]
+        attr_accessor :schedule_info
+      
+        # Output only. The most recent time at which this assessment rule was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active = args[:active] if args.key?(:active)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @sample_rule = args[:sample_rule] if args.key?(:sample_rule)
+          @schedule_info = args[:schedule_info] if args.key?(:schedule_info)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # An AuthorizedView represents a view of accessible Insights resources (for
+      # example, Conversation and Scorecard). Who have read access to the
+      # AuthorizedView resource will have access to these Insight resources as well.
+      class GoogleCloudContactcenterinsightsV1AuthorizedView
+        include Google::Apis::Core::Hashable
+      
+        # A filter to reduce conversation results to a specific subset. The
+        # AuthorizedView's assigned permission (read/write) could be applied to the
+        # subset of conversations. If conversation_filter is empty, there is no
+        # restriction on the conversations that the AuthorizedView can access. Having *
+        # authorizedViews.get* access to the AuthorizedView means having the same read/
+        # write access to the Conversations (as well as metadata/annotations liked to
+        # the conversation) that this AuthorizedView has.
+        # Corresponds to the JSON property `conversationFilter`
+        # @return [String]
+        attr_accessor :conversation_filter
+      
+        # Output only. The time at which the authorized view was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Display Name. Limit 64 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. The resource name of the AuthorizedView. Format: projects/`project`
+        # /locations/`location`/authorizedViewSets/`authorized_view_set`/authorizedViews/
+        # `authorized_view`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The most recent time at which the authorized view was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_filter = args[:conversation_filter] if args.key?(:conversation_filter)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # An AuthorizedViewSet contains a set of AuthorizedView resources.
+      class GoogleCloudContactcenterinsightsV1AuthorizedViewSet
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Display Name. Limit 64 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. The resource name of the AuthorizedViewSet. Format: projects/`
+        # project`/locations/`location`/authorizedViewSets/`authorized_view_set`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Update time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -1144,6 +1352,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @current_stats = args[:current_stats] if args.key?(:current_stats)
+        end
+      end
+      
+      # The request for calculating conversation statistics.
+      class GoogleCloudContactcenterinsightsV1CalculateStatsRequest
+        include Google::Apis::Core::Hashable
+      
+        # A filter to reduce results to a specific subset. This field is useful for
+        # getting statistics about conversations with specific properties.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
         end
       end
       
@@ -2100,6 +2328,64 @@ module Google
         end
       end
       
+      # Dataset resource represents a collection of conversations that may be bounded (
+      # Static Dataset, e.g. golden dataset for training), or unbounded (Dynamic
+      # Dataset, e.g. live traffic, or agent training traffic)
+      class GoogleCloudContactcenterinsightsV1Dataset
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Dataset create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Dataset description.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Display name for the dataaset
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Immutable. Identifier. Resource name of the dataset. Format: projects/`project`
+        # /locations/`location`/datasets/`dataset`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Option TTL for the dataset.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        # Dataset usage type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. Dataset update time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @ttl = args[:ttl] if args.key?(:ttl)
+          @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Metadata for deleting an issue model.
       class GoogleCloudContactcenterinsightsV1DeleteIssueModelMetadata
         include Google::Apis::Core::Hashable
@@ -2959,6 +3245,20 @@ module Google
           @name = args[:name] if args.key?(:name)
           @qa_answer_label = args[:qa_answer_label] if args.key?(:qa_answer_label)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The message to finalize an assessment. Finalizing makes an assessment and its
+      # notes immutable.
+      class GoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -3878,6 +4178,110 @@ module Google
         end
       end
       
+      # The response of listing assessment rules.
+      class GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The assessment rules that match the request.
+        # Corresponds to the JSON property `assessmentRules`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AssessmentRule>]
+        attr_accessor :assessment_rules
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assessment_rules = args[:assessment_rules] if args.key?(:assessment_rules)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response of listing assessments.
+      class GoogleCloudContactcenterinsightsV1ListAssessmentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The assessments that match the request.
+        # Corresponds to the JSON property `assessments`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Assessment>]
+        attr_accessor :assessments
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assessments = args[:assessments] if args.key?(:assessments)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response from a ListAuthorizedViewSet request.
+      class GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The AuthorizedViewSets under the parent.
+        # Corresponds to the JSON property `authorizedViewSets`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AuthorizedViewSet>]
+        attr_accessor :authorized_view_sets
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorized_view_sets = args[:authorized_view_sets] if args.key?(:authorized_view_sets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response from a ListAuthorizedViews request.
+      class GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The AuthorizedViews under the parent.
+        # Corresponds to the JSON property `authorizedViews`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AuthorizedView>]
+        attr_accessor :authorized_views
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorized_views = args[:authorized_views] if args.key?(:authorized_views)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response of listing conversations.
       class GoogleCloudContactcenterinsightsV1ListConversationsResponse
         include Google::Apis::Core::Hashable
@@ -3965,6 +4369,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @issues = args[:issues] if args.key?(:issues)
+        end
+      end
+      
+      # The response of listing notes.
+      class GoogleCloudContactcenterinsightsV1ListNotesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The notes that match the request.
+        # Corresponds to the JSON property `notes`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Note>]
+        attr_accessor :notes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @notes = args[:notes] if args.key?(:notes)
         end
       end
       
@@ -4095,6 +4525,120 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @views = args[:views] if args.key?(:views)
+        end
+      end
+      
+      # The conversation assessment note resource.
+      class GoogleCloudContactcenterinsightsV1Note
+        include Google::Apis::Core::Hashable
+      
+        # A note about the entire parent assessment.
+        # Corresponds to the JSON property `assessmentNote`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1NoteAssessmentNote]
+        attr_accessor :assessment_note
+      
+        # The note content.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # A note about a conversation turn.
+        # Corresponds to the JSON property `conversationTurnNote`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1NoteConversationTurnNote]
+        attr_accessor :conversation_turn_note
+      
+        # Output only. The time at which the note was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Identifier. The resource name of the note. Format: projects/`project`/
+        # locations/`location`/conversations/`conversation`/assessments/`assessment`/
+        # notes/`note`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Information about a user.
+        # Corresponds to the JSON property `noteCreator`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1UserInfo]
+        attr_accessor :note_creator
+      
+        # A note about a QA question.
+        # Corresponds to the JSON property `qaQuestionNote`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1NoteQaQuestionNote]
+        attr_accessor :qa_question_note
+      
+        # Output only. The time at which the note was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assessment_note = args[:assessment_note] if args.key?(:assessment_note)
+          @content = args[:content] if args.key?(:content)
+          @conversation_turn_note = args[:conversation_turn_note] if args.key?(:conversation_turn_note)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @note_creator = args[:note_creator] if args.key?(:note_creator)
+          @qa_question_note = args[:qa_question_note] if args.key?(:qa_question_note)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A note about the entire parent assessment.
+      class GoogleCloudContactcenterinsightsV1NoteAssessmentNote
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A note about a conversation turn.
+      class GoogleCloudContactcenterinsightsV1NoteConversationTurnNote
+        include Google::Apis::Core::Hashable
+      
+        # The conversation turn index that the note is associated with.
+        # Corresponds to the JSON property `turnIndex`
+        # @return [Fixnum]
+        attr_accessor :turn_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @turn_index = args[:turn_index] if args.key?(:turn_index)
+        end
+      end
+      
+      # A note about a QA question.
+      class GoogleCloudContactcenterinsightsV1NoteQaQuestionNote
+        include Google::Apis::Core::Hashable
+      
+        # The question resource that the note is associated with.
+        # Corresponds to the JSON property `qaQuestion`
+        # @return [String]
+        attr_accessor :qa_question
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @qa_question = args[:qa_question] if args.key?(:qa_question)
         end
       end
       
@@ -4286,6 +4830,21 @@ module Google
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
           @version_tag = args[:version_tag] if args.key?(:version_tag)
+        end
+      end
+      
+      # The message to publish an assessment. Draft and appealed assessments can be
+      # published. Publishing simply changes the state of the assessment to published,
+      # allowing the console and authorized views to filter on the state.
+      class GoogleCloudContactcenterinsightsV1PublishAssessmentRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -4483,8 +5042,13 @@ module Google
         # @return [String]
         attr_accessor :question_body
       
-        # User-defined list of arbitrary tags for the question. Used for grouping/
-        # organization and for weighting the score of each question.
+        # Questions are tagged for categorization and scoring. Tags can either be: -
+        # Default Tags: These are predefined categories. They are identified by their
+        # string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER"). - Custom Tags:
+        # These are user-defined categories. They are identified by their full resource
+        # name (e.g., projects/`project`/locations/`location`/qaQuestionTags/`
+        # qa_question_tag`). Both default and custom tags are used to group questions
+        # and to influence the scoring of each question.
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
         attr_accessor :tags
@@ -5374,6 +5938,233 @@ module Google
         end
       end
       
+      # The metadata for an SampleConversations operation.
+      class GoogleCloudContactcenterinsightsV1SampleConversationsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Partial errors during sample conversations operation that might
+        # cause the operation output to be incomplete.
+        # Corresponds to the JSON property `partialErrors`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
+        attr_accessor :partial_errors
+      
+        # The request to sample conversations to a dataset.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SampleConversationsRequest]
+        attr_accessor :request
+      
+        # Statistics for SampleConversations operation.
+        # Corresponds to the JSON property `sampleConversationsStats`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SampleConversationsMetadataSampleConversationsStats]
+        attr_accessor :sample_conversations_stats
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
+          @request = args[:request] if args.key?(:request)
+          @sample_conversations_stats = args[:sample_conversations_stats] if args.key?(:sample_conversations_stats)
+        end
+      end
+      
+      # Statistics for SampleConversations operation.
+      class GoogleCloudContactcenterinsightsV1SampleConversationsMetadataSampleConversationsStats
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The number of objects which were unable to be sampled due to
+        # errors. The errors are populated in the partial_errors field.
+        # Corresponds to the JSON property `failedSampleCount`
+        # @return [Fixnum]
+        attr_accessor :failed_sample_count
+      
+        # Output only. The number of new conversations added during this sample
+        # operation.
+        # Corresponds to the JSON property `successfulSampleCount`
+        # @return [Fixnum]
+        attr_accessor :successful_sample_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failed_sample_count = args[:failed_sample_count] if args.key?(:failed_sample_count)
+          @successful_sample_count = args[:successful_sample_count] if args.key?(:successful_sample_count)
+        end
+      end
+      
+      # The request to sample conversations to a dataset.
+      class GoogleCloudContactcenterinsightsV1SampleConversationsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Dataset resource represents a collection of conversations that may be bounded (
+        # Static Dataset, e.g. golden dataset for training), or unbounded (Dynamic
+        # Dataset, e.g. live traffic, or agent training traffic)
+        # Corresponds to the JSON property `destinationDataset`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Dataset]
+        attr_accessor :destination_dataset
+      
+        # Required. The parent resource of the dataset.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # Message for sampling conversations.
+        # Corresponds to the JSON property `sampleRule`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SampleRule]
+        attr_accessor :sample_rule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_dataset = args[:destination_dataset] if args.key?(:destination_dataset)
+          @parent = args[:parent] if args.key?(:parent)
+          @sample_rule = args[:sample_rule] if args.key?(:sample_rule)
+        end
+      end
+      
+      # The response to an SampleConversations operation.
+      class GoogleCloudContactcenterinsightsV1SampleConversationsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Message for sampling conversations.
+      class GoogleCloudContactcenterinsightsV1SampleRule
+        include Google::Apis::Core::Hashable
+      
+        # To specify the filter for the conversions that should apply this sample rule.
+        # An empty filter means this sample rule applies to all conversations.
+        # Corresponds to the JSON property `conversationFilter`
+        # @return [String]
+        attr_accessor :conversation_filter
+      
+        # Optional. Group by dimension to sample the conversation. If no dimension is
+        # provided, the sampling will be applied to the project level. Current supported
+        # dimensions is 'quality_metadata.agent_info.agent_id'.
+        # Corresponds to the JSON property `dimension`
+        # @return [String]
+        attr_accessor :dimension
+      
+        # Percentage of conversations that we should sample based on the dimension
+        # between [0, 100].
+        # Corresponds to the JSON property `samplePercentage`
+        # @return [Float]
+        attr_accessor :sample_percentage
+      
+        # Number of the conversations that we should sample based on the dimension.
+        # Corresponds to the JSON property `sampleRow`
+        # @return [Fixnum]
+        attr_accessor :sample_row
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_filter = args[:conversation_filter] if args.key?(:conversation_filter)
+          @dimension = args[:dimension] if args.key?(:dimension)
+          @sample_percentage = args[:sample_percentage] if args.key?(:sample_percentage)
+          @sample_row = args[:sample_row] if args.key?(:sample_row)
+        end
+      end
+      
+      # Message for schedule info.
+      class GoogleCloudContactcenterinsightsV1ScheduleInfo
+        include Google::Apis::Core::Hashable
+      
+        # End time of the schedule. If not specified, will keep scheduling new pipelines
+        # for execution util the schedule is no longer active or deleted.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The groc expression. Format: `every number [synchronized]` Time units can be:
+        # minutes, hours Synchronized is optional and indicates that the schedule should
+        # be synchronized to the start of the interval: every 5 minutes synchronized
+        # means 00:00, 00:05 ... Otherwise the start time is random within the interval.
+        # Example: `every 5 minutes` could be 00:02, 00:07, 00:12, ...
+        # Corresponds to the JSON property `schedule`
+        # @return [String]
+        attr_accessor :schedule
+      
+        # Start time of the schedule. If not specified, will start as soon as the
+        # schedule is created.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The timezone to use for the groc expression. If not specified, defaults to UTC.
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @schedule = args[:schedule] if args.key?(:schedule)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
+        end
+      end
+      
+      # The response from a ListAuthorizedViews request.
+      class GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The AuthorizedViews under the parent.
+        # Corresponds to the JSON property `authorizedViews`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AuthorizedView>]
+        attr_accessor :authorized_views
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorized_views = args[:authorized_views] if args.key?(:authorized_views)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The data for a sentiment annotation.
       class GoogleCloudContactcenterinsightsV1SentimentData
         include Google::Apis::Core::Hashable
@@ -5857,6 +6648,25 @@ module Google
           @parent = args[:parent] if args.key?(:parent)
           @redaction_config = args[:redaction_config] if args.key?(:redaction_config)
           @speech_config = args[:speech_config] if args.key?(:speech_config)
+        end
+      end
+      
+      # Information about a user.
+      class GoogleCloudContactcenterinsightsV1UserInfo
+        include Google::Apis::Core::Hashable
+      
+        # The user's username.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @username = args[:username] if args.key?(:username)
         end
       end
       
@@ -7440,6 +8250,64 @@ module Google
         def update!(**args)
           @issue = args[:issue] if args.key?(:issue)
           @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
+      # Dataset resource represents a collection of conversations that may be bounded (
+      # Static Dataset, e.g. golden dataset for training), or unbounded (Dynamic
+      # Dataset, e.g. live traffic, or agent training traffic)
+      class GoogleCloudContactcenterinsightsV1alpha1Dataset
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Dataset create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Dataset description.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Display name for the dataaset
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Immutable. Identifier. Resource name of the dataset. Format: projects/`project`
+        # /locations/`location`/datasets/`dataset`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Option TTL for the dataset.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        # Dataset usage type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. Dataset update time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @ttl = args[:ttl] if args.key?(:ttl)
+          @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -9932,6 +10800,164 @@ module Google
           @generator_name = args[:generator_name] if args.key?(:generator_name)
           @query = args[:query] if args.key?(:query)
           @query_source = args[:query_source] if args.key?(:query_source)
+        end
+      end
+      
+      # The metadata for an SampleConversations operation.
+      class GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Partial errors during sample conversations operation that might
+        # cause the operation output to be incomplete.
+        # Corresponds to the JSON property `partialErrors`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
+        attr_accessor :partial_errors
+      
+        # The request to sample conversations to a dataset.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SampleConversationsRequest]
+        attr_accessor :request
+      
+        # Statistics for SampleConversations operation.
+        # Corresponds to the JSON property `sampleConversationsStats`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadataSampleConversationsStats]
+        attr_accessor :sample_conversations_stats
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
+          @request = args[:request] if args.key?(:request)
+          @sample_conversations_stats = args[:sample_conversations_stats] if args.key?(:sample_conversations_stats)
+        end
+      end
+      
+      # Statistics for SampleConversations operation.
+      class GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadataSampleConversationsStats
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The number of objects which were unable to be sampled due to
+        # errors. The errors are populated in the partial_errors field.
+        # Corresponds to the JSON property `failedSampleCount`
+        # @return [Fixnum]
+        attr_accessor :failed_sample_count
+      
+        # Output only. The number of new conversations added during this sample
+        # operation.
+        # Corresponds to the JSON property `successfulSampleCount`
+        # @return [Fixnum]
+        attr_accessor :successful_sample_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failed_sample_count = args[:failed_sample_count] if args.key?(:failed_sample_count)
+          @successful_sample_count = args[:successful_sample_count] if args.key?(:successful_sample_count)
+        end
+      end
+      
+      # The request to sample conversations to a dataset.
+      class GoogleCloudContactcenterinsightsV1alpha1SampleConversationsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Dataset resource represents a collection of conversations that may be bounded (
+        # Static Dataset, e.g. golden dataset for training), or unbounded (Dynamic
+        # Dataset, e.g. live traffic, or agent training traffic)
+        # Corresponds to the JSON property `destinationDataset`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1Dataset]
+        attr_accessor :destination_dataset
+      
+        # Required. The parent resource of the dataset.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # Message for sampling conversations.
+        # Corresponds to the JSON property `sampleRule`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SampleRule]
+        attr_accessor :sample_rule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_dataset = args[:destination_dataset] if args.key?(:destination_dataset)
+          @parent = args[:parent] if args.key?(:parent)
+          @sample_rule = args[:sample_rule] if args.key?(:sample_rule)
+        end
+      end
+      
+      # The response to an SampleConversations operation.
+      class GoogleCloudContactcenterinsightsV1alpha1SampleConversationsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Message for sampling conversations.
+      class GoogleCloudContactcenterinsightsV1alpha1SampleRule
+        include Google::Apis::Core::Hashable
+      
+        # To specify the filter for the conversions that should apply this sample rule.
+        # An empty filter means this sample rule applies to all conversations.
+        # Corresponds to the JSON property `conversationFilter`
+        # @return [String]
+        attr_accessor :conversation_filter
+      
+        # Optional. Group by dimension to sample the conversation. If no dimension is
+        # provided, the sampling will be applied to the project level. Current supported
+        # dimensions is 'quality_metadata.agent_info.agent_id'.
+        # Corresponds to the JSON property `dimension`
+        # @return [String]
+        attr_accessor :dimension
+      
+        # Percentage of conversations that we should sample based on the dimension
+        # between [0, 100].
+        # Corresponds to the JSON property `samplePercentage`
+        # @return [Float]
+        attr_accessor :sample_percentage
+      
+        # Number of the conversations that we should sample based on the dimension.
+        # Corresponds to the JSON property `sampleRow`
+        # @return [Fixnum]
+        attr_accessor :sample_row
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_filter = args[:conversation_filter] if args.key?(:conversation_filter)
+          @dimension = args[:dimension] if args.key?(:dimension)
+          @sample_percentage = args[:sample_percentage] if args.key?(:sample_percentage)
+          @sample_row = args[:sample_row] if args.key?(:sample_row)
         end
       end
       

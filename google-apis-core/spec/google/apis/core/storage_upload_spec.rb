@@ -71,13 +71,13 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
   end
 
   context('with StringIO input') do
-    let(:file) { StringIO.new("Hello world") }
+    let(:file) { StringIO.new(+"Hello world") }
     include_examples 'should upload'
     include_examples 'should upload content'
   end
 
   context('with empty StringIO input') do
-    let(:file) { StringIO.new("") }
+    let(:file) { StringIO.new(+"") }
     include_examples 'should upload'
   end
 
@@ -103,7 +103,7 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
   end
 
   context('with files larger than 100 MB') do
-    let(:file) { StringIO.new("Hello world" * 2 )}
+    let(:file) { StringIO.new(+"Hello world" * 2 )}
     before(:example) do
       stub_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')
         .to_return(headers: { 'Location' => 'https://www.googleapis.com/zoo/animals' }, body: %(OK))
@@ -119,7 +119,7 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
       stub_request(:put, 'https://www.googleapis.com/zoo/animals')
         .with(headers: { 'Content-Range' => 'bytes 11-21/22' })
         .to_return(body: %(OK))
-    end    
+    end
 
     it 'should make requests multiple times' do
       command.options.upload_chunk_size = 11
@@ -129,8 +129,116 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
     end
   end
 
+  context('restart resumable upload with upload_url') do
+    let(:file) { StringIO.new('Hello world' * 3) }
+    let(:upload_id) { 'TestId' }
+    let(:upload_url) { "https://www.googleapis.com/zoo/animals?uploadType=resumable&upload_id=#{upload_id}" }
+
+    before(:example) do
+      stub_request(:put, upload_url)
+        .with(
+          headers: {
+            'Content-Length' => '0',
+            'Content-Range' => 'bytes */33'
+          }
+        )
+        .to_return(
+          status: [308, 'Resume Incomplete'],
+          headers: { 'Range' => 'bytes=0-21' }
+        )
+    end
+
+    before(:example) do
+      stub_request(:put, upload_url)
+        .with(headers: { 'Content-Range' => 'bytes 22-32/33' })
+        .to_return(body: %(OK))
+    end
+
+    it 'should restart a resumable upload' do
+      command.options.upload_chunk_size = 11
+      command.upload_id = upload_id
+      command.execute(client)
+      expect(a_request(:put, upload_url)
+        .with(body: 'Hello world')).to have_been_made
+    end
+  end
+
+  context('should not restart resumable upload if upload is completed') do
+    let(:file) { StringIO.new('Hello world' * 3) }
+    let(:upload_id) { 'TestId' }
+    let(:upload_url) { "https://www.googleapis.com/zoo/animals?uploadType=resumable&upload_id=#{upload_id}" }
+
+    before(:example) do
+      stub_request(:put, upload_url)
+        .with(
+          headers: {
+            'Content-Length' => '0',
+            'Content-Range' => 'bytes */33'
+          }
+        )
+        .to_return(status: 200, headers: { 'Range' => 'bytes=0-32' })
+    end
+
+    before(:example) do
+      stub_request(:put, upload_url)
+        .with(headers: { 'Content-Range' => 'bytes */33' })
+        .to_return(status: 200)
+    end
+
+    it 'should not restart a upload' do
+      command.options.upload_chunk_size = 11
+      command.upload_id = upload_id
+
+      command.execute(client)
+      expect(a_request(:put, upload_url)
+        .with(body: 'Hello world')).to have_not_been_made
+    end
+  end
+
+  context('delete resumable upload with upload_id') do
+    let(:file) { StringIO.new('Hello world' * 3) }
+    let(:upload_id) { 'TestId' }
+    let(:upload_url) { "https://www.googleapis.com/zoo/animals?uploadType=resumable&upload_id=#{upload_id}" }
+
+
+    before(:example) do
+      stub_request(:delete, upload_url)
+        .with(headers: { 'Content-Length' => '0' })
+        .to_return(status: [499])
+    end
+
+    before(:example) do
+      stub_request(:put, upload_url)
+        .with(
+          headers: {
+            'Content-Length' => '0',
+            'Content-Range' => 'bytes */33'
+          }
+        )
+        .to_return(status: [499])
+    end
+
+    it 'should cancel a resumable upload' do
+      command.options.upload_chunk_size = 11
+      command.upload_id = upload_id
+      command.delete_upload = true
+      command.execute(client)
+      expect(a_request(:delete, upload_url)).to have_been_made
+      expect(command).to be_truthy
+    end
+
+    it 'should not call resumable upload when upload is cancelled' do
+      command.options.upload_chunk_size = 11
+      command.upload_id = upload_id
+      command.delete_upload = true
+      command.execute(client)
+      expect(a_request(:put, upload_url)
+        .with(body: 'Hello world')).to have_not_been_made
+    end
+  end
+
   context('with chunking disabled') do
-    let!(:file) { StringIO.new("Hello world")}
+    let!(:file) { StringIO.new(+"Hello world")}
     include_examples 'should upload'
 
     it 'should upload content in one request' do

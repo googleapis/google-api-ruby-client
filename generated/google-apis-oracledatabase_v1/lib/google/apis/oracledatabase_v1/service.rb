@@ -560,8 +560,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Initiates a switchover of specified autonomous deatabase to the associated
-        # peer database.
+        # Initiates a switchover of specified autonomous database to the associated peer
+        # database.
         # @param [String] name
         #   Required. The name of the Autonomous Database in the following format:
         #   projects/`project`/locations/`location`/autonomousDatabases/`
@@ -1006,7 +1006,7 @@ module Google
         # Lists the database nodes of a VM Cluster.
         # @param [String] parent
         #   Required. The parent value for database node in the following format: projects/
-        #   `project`/locations/`location`/cloudVmClusters/`cloudVmCluster`.
+        #   `project`/locations/`location`/cloudVmClusters/`cloudVmCluster`. .
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return. If unspecified, at most 50 db
         #   nodes will be returned. The maximum value is 1000; values above 1000 will be
@@ -1124,6 +1124,9 @@ module Google
         # @param [String] parent
         #   Required. The parent value for Grid Infrastructure Version in the following
         #   format: Format: projects/`project`/locations/`location`.
+        # @param [String] filter
+        #   Optional. An expression for filtering the results of the request. Only the
+        #   shape and gi_version fields are supported in this format: `shape="`shape`"`.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return. If unspecified, a maximum of
         #   50 Oracle Grid Infrastructure (GI) versions will be returned. The maximum
@@ -1147,11 +1150,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_gi_versions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_gi_versions(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/giVersions', options)
           command.response_representation = Google::Apis::OracledatabaseV1::ListGiVersionsResponse::Representation
           command.response_class = Google::Apis::OracledatabaseV1::ListGiVersionsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?

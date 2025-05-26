@@ -27,16 +27,9 @@ module Google
       class GooglePrivacyDlpV2Action
         include Google::Apis::Core::Hashable
       
-        # Create a de-identified copy of the requested table or files. A
-        # TransformationDetail will be created for each transformation. If any rows in
-        # BigQuery are skipped during de-identification (transformation errors or row
-        # size exceeds BigQuery insert API limits) they are placed in the failure output
-        # table. If the original row exceeds the BigQuery insert API limit it will be
-        # truncated when written to the failure output table. The failure output table
-        # can be set in the action.deidentify.output.big_query_output.
-        # deidentified_failure_output_table field, if no table is set, a table will be
-        # automatically created in the same project and dataset as the original table.
-        # Compatible with: Inspect
+        # Create a de-identified copy of a storage bucket. Only compatible with Cloud
+        # Storage buckets. A TransformationDetail will be created for each
+        # transformation. Compatible with: Inspection of Cloud Storage
         # Corresponds to the JSON property `deidentify`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Deidentify]
         attr_accessor :deidentify
@@ -2558,10 +2551,21 @@ module Google
         # @return [String]
         attr_accessor :data_profile_resource_name
       
+        # Message used to identify the type of resource being profiled.
+        # Corresponds to the JSON property `dataSourceType`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DataSourceType]
+        attr_accessor :data_source_type
+      
         # A unique identifier for the finding.
         # Corresponds to the JSON property `findingId`
         # @return [String]
         attr_accessor :finding_id
+      
+        # The [full resource name](https://cloud.google.com/apis/design/resource_names#
+        # full_resource_name) of the resource profiled for this finding.
+        # Corresponds to the JSON property `fullResourceName`
+        # @return [String]
+        attr_accessor :full_resource_name
       
         # Type of information detected by the API.
         # Corresponds to the JSON property `infotype`
@@ -2602,7 +2606,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_profile_resource_name = args[:data_profile_resource_name] if args.key?(:data_profile_resource_name)
+          @data_source_type = args[:data_source_type] if args.key?(:data_source_type)
           @finding_id = args[:finding_id] if args.key?(:finding_id)
+          @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
           @infotype = args[:infotype] if args.key?(:infotype)
           @location = args[:location] if args.key?(:location)
           @quote = args[:quote] if args.key?(:quote)
@@ -3101,16 +3107,9 @@ module Google
         end
       end
       
-      # Create a de-identified copy of the requested table or files. A
-      # TransformationDetail will be created for each transformation. If any rows in
-      # BigQuery are skipped during de-identification (transformation errors or row
-      # size exceeds BigQuery insert API limits) they are placed in the failure output
-      # table. If the original row exceeds the BigQuery insert API limit it will be
-      # truncated when written to the failure output table. The failure output table
-      # can be set in the action.deidentify.output.big_query_output.
-      # deidentified_failure_output_table field, if no table is set, a table will be
-      # automatically created in the same project and dataset as the original table.
-      # Compatible with: Inspect
+      # Create a de-identified copy of a storage bucket. Only compatible with Cloud
+      # Storage buckets. A TransformationDetail will be created for each
+      # transformation. Compatible with: Inspection of Cloud Storage
       class GooglePrivacyDlpV2Deidentify
         include Google::Apis::Core::Hashable
       
@@ -5028,8 +5027,8 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreInfoTypeSummary>]
         attr_accessor :file_store_info_type_summaries
       
-        # The file store does not have any files. If the profiling failed, this will be
-        # false.
+        # The file store does not have any files. If the profiling operation failed,
+        # this is false.
         # Corresponds to the JSON property `fileStoreIsEmpty`
         # @return [Boolean]
         attr_accessor :file_store_is_empty

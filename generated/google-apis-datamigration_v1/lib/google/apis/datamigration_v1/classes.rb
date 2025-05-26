@@ -1163,6 +1163,11 @@ module Google
         # @return [Google::Apis::DatamigrationV1::DatabaseEngineInfo]
         attr_accessor :destination
       
+        # Optional. The provider for the destination database.
+        # Corresponds to the JSON property `destinationProvider`
+        # @return [String]
+        attr_accessor :destination_provider
+      
         # Optional. The display name for the workspace.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -1205,6 +1210,11 @@ module Google
         # @return [Google::Apis::DatamigrationV1::DatabaseEngineInfo]
         attr_accessor :source
       
+        # Optional. The provider for the source database.
+        # Corresponds to the JSON property `sourceProvider`
+        # @return [String]
+        attr_accessor :source_provider
+      
         # Output only. The timestamp when the workspace resource was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -1218,6 +1228,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @destination = args[:destination] if args.key?(:destination)
+          @destination_provider = args[:destination_provider] if args.key?(:destination_provider)
           @display_name = args[:display_name] if args.key?(:display_name)
           @global_settings = args[:global_settings] if args.key?(:global_settings)
           @has_uncommitted_changes = args[:has_uncommitted_changes] if args.key?(:has_uncommitted_changes)
@@ -1225,6 +1236,7 @@ module Google
           @latest_commit_time = args[:latest_commit_time] if args.key?(:latest_commit_time)
           @name = args[:name] if args.key?(:name)
           @source = args[:source] if args.key?(:source)
+          @source_provider = args[:source_provider] if args.key?(:source_provider)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -5014,6 +5026,18 @@ module Google
         # @return [String]
         attr_accessor :database
       
+        # Optional. The schema name. This will be required only if the object uses a
+        # schema name as part of its unique identifier.
+        # Corresponds to the JSON property `schema`
+        # @return [String]
+        attr_accessor :schema
+      
+        # Optional. The table name. This will be required only if the object is a level
+        # below database or schema.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
         # Required. The type of the migration job object.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -5026,6 +5050,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @database = args[:database] if args.key?(:database)
+          @schema = args[:schema] if args.key?(:schema)
+          @table = args[:table] if args.key?(:table)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -5544,6 +5570,14 @@ module Google
         # @return [String]
         attr_accessor :client_key
       
+        # Optional. SSL flags used for establishing SSL connection to the source
+        # database. Only source specific flags are supported. An object containing a
+        # list of "key": "value" pairs. Example: ` "server_certificate_hostname": "
+        # server.com"`.
+        # Corresponds to the JSON property `sslFlags`
+        # @return [Hash<String,String>]
+        attr_accessor :ssl_flags
+      
         # Optional. The ssl config type according to 'client_key', 'client_certificate'
         # and 'ca_certificate'.
         # Corresponds to the JSON property `type`
@@ -5559,6 +5593,7 @@ module Google
           @ca_certificate = args[:ca_certificate] if args.key?(:ca_certificate)
           @client_certificate = args[:client_certificate] if args.key?(:client_certificate)
           @client_key = args[:client_key] if args.key?(:client_key)
+          @ssl_flags = args[:ssl_flags] if args.key?(:ssl_flags)
           @type = args[:type] if args.key?(:type)
         end
       end

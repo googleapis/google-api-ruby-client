@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1Bot
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1ChallengeMetrics
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,6 +179,12 @@ module Google
       end
       
       class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -541,6 +553,14 @@ module Google
         end
       end
       
+      class GoogleCloudRecaptchaenterpriseV1Bot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bot_type, as: 'botType'
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1ChallengeMetrics
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -677,6 +697,8 @@ module Google
       
           property :card_testing_verdict, as: 'cardTestingVerdict', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict::Representation
       
+          collection :risk_reasons, as: 'riskReasons', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason::Representation
+      
           property :stolen_instrument_verdict, as: 'stolenInstrumentVerdict', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict::Representation
       
           property :transaction_risk, as: 'transactionRisk'
@@ -694,6 +716,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :risk, as: 'risk'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reason, as: 'reason'
         end
       end
       
@@ -908,6 +937,8 @@ module Google
           collection :extended_verdict_reasons, as: 'extendedVerdictReasons'
           collection :reasons, as: 'reasons'
           property :score, as: 'score'
+          collection :verified_bots, as: 'verifiedBots', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Bot, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Bot::Representation
+      
         end
       end
       

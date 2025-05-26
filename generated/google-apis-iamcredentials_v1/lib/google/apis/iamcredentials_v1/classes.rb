@@ -125,6 +125,15 @@ module Google
         attr_accessor :include_email
         alias_method :include_email?, :include_email
       
+        # Include the organization number of the service account in the token. If set to
+        # `true`, the token will contain a `google.organization_number` claim. The value
+        # of the claim will be `null` if the service account isn't associated with an
+        # organization.
+        # Corresponds to the JSON property `organizationNumberIncluded`
+        # @return [Boolean]
+        attr_accessor :organization_number_included
+        alias_method :organization_number_included?, :organization_number_included
+      
         def initialize(**args)
            update!(**args)
         end
@@ -134,6 +143,7 @@ module Google
           @audience = args[:audience] if args.key?(:audience)
           @delegates = args[:delegates] if args.key?(:delegates)
           @include_email = args[:include_email] if args.key?(:include_email)
+          @organization_number_included = args[:organization_number_included] if args.key?(:organization_number_included)
         end
       end
       
@@ -141,7 +151,14 @@ module Google
       class GenerateIdTokenResponse
         include Google::Apis::Core::Hashable
       
-        # The OpenId Connect ID token.
+        # The OpenId Connect ID token. The token is a JSON Web Token (JWT) that contains
+        # a payload with claims. See the [JSON Web Token spec](https://tools.ietf.org/
+        # html/rfc7519) for more information. Here is an example of a decoded JWT
+        # payload: ``` ` "iss": "https://accounts.google.com", "iat": 1496953245, "exp":
+        # 1496953245, "aud": "https://www.example.com", "sub": "107517467455664443765", "
+        # azp": "107517467455664443765", "email": "my-iam-account@my-project.iam.
+        # gserviceaccount.com", "email_verified": true, "google": ` "organization_number"
+        # : 123456 ` ` ```
         # Corresponds to the JSON property `token`
         # @return [String]
         attr_accessor :token
@@ -321,6 +338,58 @@ module Google
         def update!(**args)
           @key_id = args[:key_id] if args.key?(:key_id)
           @signed_jwt = args[:signed_jwt] if args.key?(:signed_jwt)
+        end
+      end
+      
+      # Represents a list of allowed locations for given workforce pool.
+      class WorkforcePoolAllowedLocations
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The hex encoded bitmap of the trust boundary locations
+        # Corresponds to the JSON property `encodedLocations`
+        # @return [String]
+        attr_accessor :encoded_locations
+      
+        # Output only. The human readable trust boundary locations. For example, ["us-
+        # central1", "europe-west1"]
+        # Corresponds to the JSON property `locations`
+        # @return [Array<String>]
+        attr_accessor :locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encoded_locations = args[:encoded_locations] if args.key?(:encoded_locations)
+          @locations = args[:locations] if args.key?(:locations)
+        end
+      end
+      
+      # Represents a list of allowed locations for given workload identity pool.
+      class WorkloadIdentityPoolAllowedLocations
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The hex encoded bitmap of the trust boundary locations
+        # Corresponds to the JSON property `encodedLocations`
+        # @return [String]
+        attr_accessor :encoded_locations
+      
+        # Output only. The human readable trust boundary locations. For example, ["us-
+        # central1", "europe-west1"]
+        # Corresponds to the JSON property `locations`
+        # @return [Array<String>]
+        attr_accessor :locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encoded_locations = args[:encoded_locations] if args.key?(:encoded_locations)
+          @locations = args[:locations] if args.key?(:locations)
         end
       end
     end

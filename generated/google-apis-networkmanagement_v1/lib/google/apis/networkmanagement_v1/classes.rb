@@ -580,6 +580,11 @@ module Google
       class DeliverInfo
         include Google::Apis::Core::Hashable
       
+        # Recognized type of a Google Service the packet is delivered to (if applicable).
+        # Corresponds to the JSON property `googleServiceType`
+        # @return [String]
+        attr_accessor :google_service_type
+      
         # IP address of the target (if applicable).
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
@@ -611,6 +616,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @google_service_type = args[:google_service_type] if args.key?(:google_service_type)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @psc_google_api_target = args[:psc_google_api_target] if args.key?(:psc_google_api_target)
           @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
@@ -1309,6 +1315,12 @@ module Google
         # @return [String]
         attr_accessor :psc_network_attachment_uri
       
+        # Indicates whether the Compute Engine instance is running.
+        # Corresponds to the JSON property `running`
+        # @return [Boolean]
+        attr_accessor :running
+        alias_method :running?, :running
+      
         # Service account authorized for the instance.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
@@ -1332,6 +1344,7 @@ module Google
           @network_tags = args[:network_tags] if args.key?(:network_tags)
           @network_uri = args[:network_uri] if args.key?(:network_uri)
           @psc_network_attachment_uri = args[:psc_network_attachment_uri] if args.key?(:psc_network_attachment_uri)
+          @running = args[:running] if args.key?(:running)
           @service_account = args[:service_account] if args.key?(:service_account)
           @uri = args[:uri] if args.key?(:uri)
         end
@@ -1802,8 +1815,7 @@ module Google
         end
       end
       
-      # For display only. Metadata associated with a Compute Engine network. Next ID:
-      # 7
+      # For display only. Metadata associated with a Compute Engine network.
       class NetworkInfo
         include Google::Apis::Core::Hashable
       
@@ -2855,8 +2867,7 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1::NatInfo]
         attr_accessor :nat
       
-        # For display only. Metadata associated with a Compute Engine network. Next ID:
-        # 7
+        # For display only. Metadata associated with a Compute Engine network.
         # Corresponds to the JSON property `network`
         # @return [Google::Apis::NetworkmanagementV1::NetworkInfo]
         attr_accessor :network

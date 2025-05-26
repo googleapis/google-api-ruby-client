@@ -362,7 +362,7 @@ module Google
         # patch( name="projects/some-project/cases/43112854", body=` "displayName": "
         # This is Now a New Title", "priority": "P2", `, ) print(request.execute()) ```
         # @param [String] name
-        #   The resource name for the case.
+        #   Identifier. The resource name for the case.
         # @param [Google::Apis::CloudsupportV2beta::Case] case_object
         # @param [String] update_mask
         #   A list of attributes of the case that should be updated. Supported values are `

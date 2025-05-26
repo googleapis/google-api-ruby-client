@@ -796,6 +796,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2betaDoubleList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2betaExperimentInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2148,6 +2154,7 @@ module Google
       class GoogleCloudRetailV2alphaMerchantCenterAccountLinkMerchantCenterFeedFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source_id, :numeric_string => true, as: 'dataSourceId'
           property :primary_feed_id, :numeric_string => true, as: 'primaryFeedId'
           property :primary_feed_name, as: 'primaryFeedName'
         end
@@ -2731,6 +2738,13 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2betaDoubleList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values'
+        end
+      end
+      
       class GoogleCloudRetailV2betaExperimentInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3039,7 +3053,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :attributes, as: 'attributes', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCustomAttribute, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCustomAttribute::Representation
       
-          property :availability, as: 'availability'
           collection :fulfillment_types, as: 'fulfillmentTypes'
           property :place_id, as: 'placeId'
           property :price_info, as: 'priceInfo', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaPriceInfo, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaPriceInfo::Representation
@@ -3050,6 +3063,7 @@ module Google
       class GoogleCloudRetailV2betaMerchantCenterFeedFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source_id, :numeric_string => true, as: 'dataSourceId'
           property :primary_feed_id, :numeric_string => true, as: 'primaryFeedId'
           property :primary_feed_name, as: 'primaryFeedName'
         end
@@ -3877,6 +3891,8 @@ module Google
           property :id, as: 'id'
           property :matching_variant_count, as: 'matchingVariantCount'
           hash :matching_variant_fields, as: 'matchingVariantFields'
+          hash :model_scores, as: 'modelScores', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaDoubleList, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaDoubleList::Representation
+      
           collection :personal_labels, as: 'personalLabels'
           property :product, as: 'product', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProduct, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProduct::Representation
       

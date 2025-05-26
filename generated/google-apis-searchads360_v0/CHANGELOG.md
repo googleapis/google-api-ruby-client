@@ -1,5 +1,9 @@
 # Release history for google-apis-searchads360_v0
 
+### v0.21.0 (2025-05-04)
+
+* Regenerated using generator version 0.17.0
+
 ### v0.20.0 (2025-04-20)
 
 * Regenerated from discovery document revision 20250407

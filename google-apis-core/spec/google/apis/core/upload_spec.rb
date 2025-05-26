@@ -52,7 +52,7 @@ RSpec.describe Google::Apis::Core::RawUploadCommand do
   end
 
   context('with StringIO input') do
-    let(:file) { StringIO.new("Hello world") }
+    let(:file) { StringIO.new(+"Hello world") }
     include_examples 'should upload'
   end
 
@@ -98,7 +98,7 @@ RSpec.describe Google::Apis::Core::MultipartUploadCommand do
 
   let(:command) do
     command = Google::Apis::Core::MultipartUploadCommand.new(:post, 'https://www.googleapis.com/zoo/animals')
-    command.upload_source = StringIO.new('Hello world')
+    command.upload_source = StringIO.new(+'Hello world')
     command.upload_content_type = 'text/plain'
     command.body = 'metadata'
     command
@@ -142,7 +142,7 @@ RSpec.describe Google::Apis::Core::ResumableUploadCommand do
 
   let(:command) do
     command = Google::Apis::Core::ResumableUploadCommand.new(:post, 'https://www.googleapis.com/zoo/animals')
-    command.upload_source = StringIO.new('Hello world')
+    command.upload_source = StringIO.new(+'Hello world')
     command.upload_content_type = 'text/plain'
     command
   end

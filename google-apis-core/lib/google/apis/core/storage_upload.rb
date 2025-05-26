@@ -49,6 +49,14 @@ module Google
         # @return [Integer]
         attr_accessor :upload_chunk_size
 
+        # Unique upload_id of a resumable upload
+        # @return [String]
+        attr_accessor :upload_id
+
+        # Boolean Value to specify is a resumable upload is to be deleted or not
+        # @return [Boolean]
+        attr_accessor :delete_upload
+
         # Ensure the content is readable and wrapped in an IO instance.
         #
         # @return [void]
@@ -61,7 +69,6 @@ module Google
           # asserting that it already has a body. Form encoding is never used
           # by upload requests.
           self.body = '' unless self.body
-
           super
           if streamable?(upload_source)
             self.upload_io = upload_source
@@ -73,6 +80,8 @@ module Google
               self.upload_content_type = type&.content_type
             end
             @close_io_on_finish = true
+          elsif !upload_id.nil? && delete_upload
+            @close_io_on_finish = false
           else
             fail Google::Apis::ClientError, 'Invalid upload source'
           end
@@ -80,7 +89,7 @@ module Google
 
         # Close IO stream when command done. Only closes the stream if it was opened by the command.
         def release!
-          upload_io.close if @close_io_on_finish
+          upload_io.close if @close_io_on_finish && !upload_io.nil?
         end
 
         # Execute the command, retrying as necessary
@@ -96,8 +105,16 @@ module Google
           prepare!
           opencensus_begin_span
           @upload_chunk_size = options.upload_chunk_size
+          if upload_id.nil?
+            res = do_retry :initiate_resumable_upload, client
+          elsif delete_upload && !upload_id.nil?
+            construct_resumable_upload_url upload_id
+            res = do_retry :cancel_resumable_upload, client
+          else
+            construct_resumable_upload_url upload_id
+            res = do_retry :reinitiate_resumable_upload, client
+          end
 
-          do_retry :initiate_resumable_upload, client
           while @upload_incomplete
             res = do_retry :send_upload_command, client
           end
@@ -131,6 +148,22 @@ module Google
           error(e, rethrow: true)
         end
 
+        # Reinitiating resumable upload
+        def reinitiate_resumable_upload(client)
+          logger.debug { sprintf('Restarting resumable upload command to %s', url) }
+          check_resumable_upload client
+          upload_io.pos = @offset
+        end
+
+        # Making resumable upload url from upload_id
+        def construct_resumable_upload_url(upload_id)
+          query_params = query.dup
+          query_params['uploadType'] = RESUMABLE
+          query_params['upload_id'] = upload_id
+          resumable_upload_params = query_params.map { |key, value| "#{key}=#{value}" }.join('&')
+          @upload_url = "#{url}&#{resumable_upload_params}"
+        end
+
         # Send the actual content
         #
         # @param [HTTPClient] client
@@ -160,6 +193,9 @@ module Google
           @offset += current_chunk_size if @upload_incomplete
           success(result)
         rescue => e
+          logger.warn {
+            "error occured please use uploadId-#{response.headers['X-GUploader-UploadID']} to resume your upload"
+          } unless response.nil?
           upload_io.pos = @offset
           error(e, rethrow: true)
         end
@@ -180,6 +216,59 @@ module Google
         def process_response(status, header, body)
           @upload_url = header[LOCATION_HEADER].first unless header[LOCATION_HEADER].empty?
           super(status, header, body)
+        end
+
+        def check_resumable_upload(client)
+          # Setting up request header
+          request_header = header.dup
+          request_header[CONTENT_RANGE_HEADER] = "bytes */#{upload_io.size}"
+          request_header[CONTENT_LENGTH_HEADER] = '0'
+          # Initiating call
+          response = client.put(@upload_url, header: request_header, follow_redirect: true)
+          handle_resumable_upload_http_response_codes(response)
+        end
+
+        # Cancel resumable upload
+        def cancel_resumable_upload(client)
+          # Setting up request header
+          request_header = header.dup
+          request_header[CONTENT_LENGTH_HEADER] = '0'
+          # Initiating call
+          response = client.delete(@upload_url, header: request_header, follow_redirect: true)
+          handle_resumable_upload_http_response_codes(response)
+
+          if !@upload_incomplete && (400..499).include?(response.code.to_i)
+            @close_io_on_finish = true
+            true # method returns true if upload is successfully cancelled
+          else
+            logger.debug { sprintf("Failed to cancel upload session. Response: #{response.code} - #{response.body}") }
+          end
+  
+        end
+
+        def handle_resumable_upload_http_response_codes(response)
+          code = response.code.to_i
+
+          case code
+          when 308
+            if response.headers['Range']
+              range = response.headers['Range']
+              @offset = range.split('-').last.to_i + 1
+              logger.debug { sprintf("Upload is incomplete. Bytes uploaded so far: #{range}") }
+            else
+              logger.debug { sprintf('No bytes uploaded yet.') }
+            end
+            @upload_incomplete = true
+          when 400..499
+            # Upload is canceled
+            @upload_incomplete = false
+          when 200, 201
+            # Upload is complete.
+            @upload_incomplete = false
+          else
+            logger.debug { sprintf("Unexpected response: #{response.code} - #{response.body}") }
+            @upload_incomplete = true
+          end
         end
 
         def streamable?(upload_source)

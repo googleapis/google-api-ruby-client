@@ -210,7 +210,7 @@ module Google
         # the same results as calling `ListsAccounts` with the following filter: `
         # relationship(providerId=`parent` AND service(type="ACCOUNT_AGGREGATION"))`
         # @param [String] provider
-        #   Required. The aggregation service provider. Format: `providers/`providerId``
+        #   Required. The aggregation service provider. Format: `accounts/`accountId``
         # @param [Fixnum] page_size
         #   Optional. The maximum number of accounts to return. The service may return
         #   fewer than this value. If unspecified, at most 250 accounts are returned. The
@@ -651,10 +651,11 @@ module Google
         # merchant is exempted from claiming, which also exempts from verification) and
         # return a successful response. If ownership can no longer be verified, it will
         # return an error, but it won't clear the claim. In case of failure, a canonical
-        # error message will be returned: * PERMISSION_DENIED: user doesn't have the
-        # necessary permissions on this MC account; * FAILED_PRECONDITION: - The account
-        # is not a Merchant Center account; - MC account doesn't have a homepage; -
-        # claiming failed (in this case the error message will contain more details).
+        # error message is returned: * PERMISSION_DENIED: User doesn't have the
+        # necessary permissions on this Merchant Center account. * FAILED_PRECONDITION: -
+        # The account is not a Merchant Center account. - Merchant Center account doesn'
+        # t have a homepage. - Claiming failed (in this case the error message contains
+        # more details).
         # @param [String] name
         #   Required. The name of the homepage to claim. Format: `accounts/`account`/
         #   homepage`
@@ -791,7 +792,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all account issues of a Merchant Center account.
+        # Lists all account issues of a Merchant Center account. When called on a multi-
+        # client account, this method only returns issues belonging to that account, not
+        # its sub-accounts. To retrieve issues for sub-accounts, you must first call the
+        # accounts.listSubaccounts method to obtain a list of sub-accounts, and then
+        # call `accounts.issues.list` for each sub-account individually.
         # @param [String] parent
         #   Required. The parent, which owns this collection of issues. Format: `accounts/`
         #   account``
@@ -1240,6 +1245,286 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieve an account relationship.
+        # @param [String] name
+        #   Required. The resource name of the account relationship to get. Format: `
+        #   accounts/`account`/relationships/`relationship``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::AccountRelationship] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::AccountRelationship]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_relationship(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'accounts/v1beta/{+name}', options)
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::AccountRelationship::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::AccountRelationship
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List account relationships for the specified account.
+        # @param [String] parent
+        #   Required. The parent account of the account relationship to filter by. Format:
+        #   `accounts/`account``
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of elements to return in the response. Use for
+        #   paging. If no `page_size` is specified, `100` is used as the default value.
+        #   The maximum allowed value is `1000`.
+        # @param [String] page_token
+        #   Optional. The token returned by the previous `list` request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::ListAccountRelationshipsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::ListAccountRelationshipsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_relationships(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'accounts/v1beta/{+parent}/relationships', options)
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::ListAccountRelationshipsResponse::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::ListAccountRelationshipsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the account relationship. Executing this method requires admin access.
+        # @param [String] name
+        #   Identifier. The resource name of the account relationship. Format: `accounts/`
+        #   account`/relationships/`relationship``
+        # @param [Google::Apis::MerchantapiAccountsV1beta::AccountRelationship] account_relationship_object
+        # @param [String] update_mask
+        #   Optional. List of fields being updated. The following fields are supported (in
+        #   both `snake_case` and `lowerCamelCase`): - `account_id_alias`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::AccountRelationship] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::AccountRelationship]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_account_relationship(name, account_relationship_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'accounts/v1beta/{+name}', options)
+          command.request_representation = Google::Apis::MerchantapiAccountsV1beta::AccountRelationship::Representation
+          command.request_object = account_relationship_object
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::AccountRelationship::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::AccountRelationship
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Approve an account service proposal.
+        # @param [String] name
+        #   Required. The resource name of the account service to approve. Format: `
+        #   accounts/`account`/services/`service``
+        # @param [Google::Apis::MerchantapiAccountsV1beta::ApproveAccountServiceRequest] approve_account_service_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::AccountService] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::AccountService]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def approve_account_service(name, approve_account_service_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'accounts/v1beta/{+name}:approve', options)
+          command.request_representation = Google::Apis::MerchantapiAccountsV1beta::ApproveAccountServiceRequest::Representation
+          command.request_object = approve_account_service_request_object
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::AccountService::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::AccountService
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieve an account service.
+        # @param [String] name
+        #   Required. The resource name of the account service to get. Format: `accounts/`
+        #   account`/services/`service``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::AccountService] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::AccountService]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_service(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'accounts/v1beta/{+name}', options)
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::AccountService::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::AccountService
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List account services for the specified accounts. Supports filtering.
+        # @param [String] parent
+        #   Required. The parent account of the account service to filter by. Format: `
+        #   accounts/`account``
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of elements to return in the response. Use for
+        #   paging. If no `page_size` is specified, `100` is used as the default value.
+        #   The maximum allowed value is `1000`.
+        # @param [String] page_token
+        #   Optional. The token returned by the previous `list` request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::ListAccountServicesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::ListAccountServicesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_services(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'accounts/v1beta/{+parent}/services', options)
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::ListAccountServicesResponse::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::ListAccountServicesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Propose an account service.
+        # @param [String] parent
+        #   Required. The resource name of the parent account for the service. Format: `
+        #   accounts/`account``
+        # @param [Google::Apis::MerchantapiAccountsV1beta::ProposeAccountServiceRequest] propose_account_service_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::AccountService] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::AccountService]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def propose_account_service(parent, propose_account_service_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'accounts/v1beta/{+parent}/services:propose', options)
+          command.request_representation = Google::Apis::MerchantapiAccountsV1beta::ProposeAccountServiceRequest::Representation
+          command.request_object = propose_account_service_request_object
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::AccountService::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::AccountService
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Reject an account service (both proposed and approve services can be rejected).
+        # @param [String] name
+        #   Required. The resource name of the account service to reject. Format: `
+        #   accounts/`account`/services/`service``
+        # @param [Google::Apis::MerchantapiAccountsV1beta::RejectAccountServiceRequest] reject_account_service_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def reject_account_service(name, reject_account_service_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'accounts/v1beta/{+name}:reject', options)
+          command.request_representation = Google::Apis::MerchantapiAccountsV1beta::RejectAccountServiceRequest::Representation
+          command.request_object = reject_account_service_request_object
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::Empty::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieve shipping setting information.
         # @param [String] name
         #   Required. The name of the shipping setting to retrieve. Format: `accounts/`
@@ -1575,18 +1860,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::Empty] parsed result object
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::AcceptTermsOfServiceResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MerchantapiAccountsV1beta::Empty]
+        # @return [Google::Apis::MerchantapiAccountsV1beta::AcceptTermsOfServiceResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def accept_terms_of_service(name, account: nil, region_code: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'accounts/v1beta/{+name}:accept', options)
-          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::Empty::Representation
-          command.response_class = Google::Apis::MerchantapiAccountsV1beta::Empty
+          command = make_simple_command(:post, 'accounts/v1beta/{+name}:accept', options)
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::AcceptTermsOfServiceResponse::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::AcceptTermsOfServiceResponse
           command.params['name'] = name unless name.nil?
           command.query['account'] = account unless account.nil?
           command.query['regionCode'] = region_code unless region_code.nil?

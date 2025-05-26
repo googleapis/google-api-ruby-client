@@ -359,8 +359,8 @@ module Google
         # Read-only field containing the current number of users that are assigned a
         # license for the product defined in `skuId`. This field's value is equivalent
         # to the numerical count of users returned by the Enterprise License Manager API
-        # method: [`listForProductAndSku`](/admin-sdk/licensing/v1/reference/
-        # licenseAssignments/listForProductAndSku).
+        # method: [`listForProductAndSku`](https://developers.google.com/workspace/admin/
+        # licensing/v1/reference/licenseAssignments/listForProductAndSku).
         # Corresponds to the JSON property `licensedNumberOfSeats`
         # @return [Fixnum]
         attr_accessor :licensed_number_of_seats

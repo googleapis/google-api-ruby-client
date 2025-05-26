@@ -131,6 +131,11 @@ module Google
         # @return [String]
         attr_accessor :redirect_uri
       
+        # Scopes the connection will request when the user performs the auth code flow.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -140,6 +145,7 @@ module Google
           @auth_code = args[:auth_code] if args.key?(:auth_code)
           @pkce_verifier = args[:pkce_verifier] if args.key?(:pkce_verifier)
           @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
+          @scopes = args[:scopes] if args.key?(:scopes)
         end
       end
       
@@ -674,6 +680,17 @@ module Google
         # @return [String]
         attr_accessor :consumer_defined_name
       
+        # Optional. The consumer_project_number associated with this Apigee instance.
+        # This field is added specifically to support Apigee integration with SLM
+        # Rollout and UMM. It represents the numerical project ID of the GCP project
+        # that consumes this Apigee instance. It is used for SLM rollout notifications
+        # and UMM integration, enabling proper mapping to customer projects and log
+        # delivery for Apigee instances. This field complements consumer_project_id and
+        # may be used for specific Apigee scenarios where the numerical ID is required.
+        # Corresponds to the JSON property `consumerProjectNumber`
+        # @return [String]
+        attr_accessor :consumer_project_number
+      
         # Output only. Timestamp when the resource was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -790,6 +807,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @consumer_defined_name = args[:consumer_defined_name] if args.key?(:consumer_defined_name)
+          @consumer_project_number = args[:consumer_project_number] if args.key?(:consumer_project_number)
           @create_time = args[:create_time] if args.key?(:create_time)
           @instance_type = args[:instance_type] if args.key?(:instance_type)
           @labels = args[:labels] if args.key?(:labels)

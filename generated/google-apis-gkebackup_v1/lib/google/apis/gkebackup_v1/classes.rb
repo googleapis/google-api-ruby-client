@@ -342,8 +342,7 @@ module Google
         attr_accessor :description
       
         # Required. Immutable. The project where Backups are allowed to be stored. The
-        # format is `projects/`project``. Currently, `project` can only be the project
-        # number. Support for project IDs will be added in the future.
+        # format is `projects/`projectId`` or `projects/`projectNumber``.
         # Corresponds to the JSON property `destinationProject`
         # @return [String]
         attr_accessor :destination_project
@@ -471,9 +470,72 @@ module Google
         end
       end
       
+      # BackupConfigDetails defines the configuration of Backups created via this
+      # BackupPlan.
+      class BackupConfigDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. If True, include all namespaced resources
+        # Corresponds to the JSON property `allNamespaces`
+        # @return [Boolean]
+        attr_accessor :all_namespaces
+        alias_method :all_namespaces?, :all_namespaces
+      
+        # Defined a customer managed encryption key that will be used to encrypt Backup
+        # artifacts.
+        # Corresponds to the JSON property `encryptionKey`
+        # @return [Google::Apis::GkebackupV1::EncryptionKey]
+        attr_accessor :encryption_key
+      
+        # Output only. This flag specifies whether Kubernetes Secret resources should be
+        # included when they fall into the scope of Backups. Default: False
+        # Corresponds to the JSON property `includeSecrets`
+        # @return [Boolean]
+        attr_accessor :include_secrets
+        alias_method :include_secrets?, :include_secrets
+      
+        # Output only. This flag specifies whether volume data should be backed up when
+        # PVCs are included in the scope of a Backup. Default: False
+        # Corresponds to the JSON property `includeVolumeData`
+        # @return [Boolean]
+        attr_accessor :include_volume_data
+        alias_method :include_volume_data?, :include_volume_data
+      
+        # A list of namespaced Kubernetes resources.
+        # Corresponds to the JSON property `selectedApplications`
+        # @return [Google::Apis::GkebackupV1::NamespacedNames]
+        attr_accessor :selected_applications
+      
+        # A list of Kubernetes Namespaces.
+        # Corresponds to the JSON property `selectedNamespaces`
+        # @return [Google::Apis::GkebackupV1::Namespaces]
+        attr_accessor :selected_namespaces
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @all_namespaces = args[:all_namespaces] if args.key?(:all_namespaces)
+          @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
+          @include_secrets = args[:include_secrets] if args.key?(:include_secrets)
+          @include_volume_data = args[:include_volume_data] if args.key?(:include_volume_data)
+          @selected_applications = args[:selected_applications] if args.key?(:selected_applications)
+          @selected_namespaces = args[:selected_namespaces] if args.key?(:selected_namespaces)
+        end
+      end
+      
       # Defines the configuration and scheduling for a "line" of Backups.
       class BackupPlan
         include Google::Apis::Core::Hashable
+      
+        # Output only. The fully qualified name of the BackupChannel to be used to
+        # create a backup. This field is set only if the cluster being backed up is in a
+        # different project. `projects/*/locations/*/backupChannels/*`
+        # Corresponds to the JSON property `backupChannel`
+        # @return [String]
+        attr_accessor :backup_channel
       
         # BackupConfig defines the configuration of Backups created via this BackupPlan.
         # Corresponds to the JSON property `backupConfig`
@@ -598,6 +660,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @backup_channel = args[:backup_channel] if args.key?(:backup_channel)
           @backup_config = args[:backup_config] if args.key?(:backup_config)
           @backup_schedule = args[:backup_schedule] if args.key?(:backup_schedule)
           @cluster = args[:cluster] if args.key?(:cluster)
@@ -699,6 +762,12 @@ module Google
       class BackupPlanDetails
         include Google::Apis::Core::Hashable
       
+        # BackupConfigDetails defines the configuration of Backups created via this
+        # BackupPlan.
+        # Corresponds to the JSON property `backupConfigDetails`
+        # @return [Google::Apis::GkebackupV1::BackupConfigDetails]
+        attr_accessor :backup_config_details
+      
         # Output only. The fully qualified name of the last successful Backup created
         # under this BackupPlan. `projects/*/locations/*/backupPlans/*/backups/*`
         # Corresponds to the JSON property `lastSuccessfulBackup`
@@ -723,6 +792,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :protected_pod_count
       
+        # RetentionPolicyDetails defines a Backup retention policy for a BackupPlan.
+        # Corresponds to the JSON property `retentionPolicyDetails`
+        # @return [Google::Apis::GkebackupV1::RetentionPolicyDetails]
+        attr_accessor :retention_policy_details
+      
         # Output only. A number that represents the current risk level of this
         # BackupPlan from RPO perspective with 1 being no risk and 5 being highest risk.
         # Corresponds to the JSON property `rpoRiskLevel`
@@ -740,10 +814,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @backup_config_details = args[:backup_config_details] if args.key?(:backup_config_details)
           @last_successful_backup = args[:last_successful_backup] if args.key?(:last_successful_backup)
           @last_successful_backup_time = args[:last_successful_backup_time] if args.key?(:last_successful_backup_time)
           @next_scheduled_backup_time = args[:next_scheduled_backup_time] if args.key?(:next_scheduled_backup_time)
           @protected_pod_count = args[:protected_pod_count] if args.key?(:protected_pod_count)
+          @retention_policy_details = args[:retention_policy_details] if args.key?(:retention_policy_details)
           @rpo_risk_level = args[:rpo_risk_level] if args.key?(:rpo_risk_level)
           @state = args[:state] if args.key?(:state)
         end
@@ -2146,7 +2222,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # User specified descriptive string for this Restore.
+        # Optional. User specified descriptive string for this Restore.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -2282,8 +2358,7 @@ module Google
         attr_accessor :description
       
         # Required. Immutable. The project into which the backups will be restored. The
-        # format is `projects/`project``. Currently, `project` can only be the project
-        # number. Support for project IDs will be added in the future.
+        # format is `projects/`projectId`` or `projects/`projectNumber``.
         # Corresponds to the JSON property `destinationProject`
         # @return [String]
         attr_accessor :destination_project
@@ -2544,6 +2619,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The fully qualified name of the RestoreChannel to be used to
+        # create a RestorePlan. This field is set only if the `backup_plan` is in a
+        # different project than the RestorePlan. Format: `projects/*/locations/*/
+        # restoreChannels/*`
+        # Corresponds to the JSON property `restoreChannel`
+        # @return [String]
+        attr_accessor :restore_channel
+      
         # Configuration of a restore.
         # Corresponds to the JSON property `restoreConfig`
         # @return [Google::Apis::GkebackupV1::RestoreConfig]
@@ -2586,6 +2669,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @restore_channel = args[:restore_channel] if args.key?(:restore_channel)
           @restore_config = args[:restore_config] if args.key?(:restore_config)
           @state = args[:state] if args.key?(:state)
           @state_reason = args[:state_reason] if args.key?(:state_reason)
@@ -2709,6 +2793,41 @@ module Google
           @backup_delete_lock_days = args[:backup_delete_lock_days] if args.key?(:backup_delete_lock_days)
           @backup_retain_days = args[:backup_retain_days] if args.key?(:backup_retain_days)
           @locked = args[:locked] if args.key?(:locked)
+        end
+      end
+      
+      # RetentionPolicyDetails defines a Backup retention policy for a BackupPlan.
+      class RetentionPolicyDetails
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Minimum age for Backups created via this BackupPlan (in days). This
+        # field MUST be an integer value between 0-90 (inclusive). A Backup created
+        # under this BackupPlan will NOT be deletable until it reaches Backup's (
+        # create_time + backup_delete_lock_days). Updating this field of a BackupPlan
+        # does NOT affect existing Backups under it. Backups created AFTER a successful
+        # update will inherit the new value. Default: 0 (no delete blocking)
+        # Corresponds to the JSON property `backupDeleteLockDays`
+        # @return [Fixnum]
+        attr_accessor :backup_delete_lock_days
+      
+        # Optional. The default maximum age of a Backup created via this BackupPlan.
+        # This field MUST be an integer value >= 0 and <= 365. If specified, a Backup
+        # created under this BackupPlan will be automatically deleted after its age
+        # reaches (create_time + backup_retain_days). If not specified, Backups created
+        # under this BackupPlan will NOT be subject to automatic deletion. Default: 0 (
+        # no automatic deletion)
+        # Corresponds to the JSON property `backupRetainDays`
+        # @return [Fixnum]
+        attr_accessor :backup_retain_days
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_delete_lock_days = args[:backup_delete_lock_days] if args.key?(:backup_delete_lock_days)
+          @backup_retain_days = args[:backup_retain_days] if args.key?(:backup_retain_days)
         end
       end
       

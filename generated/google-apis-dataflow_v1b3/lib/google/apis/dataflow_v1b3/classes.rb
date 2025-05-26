@@ -1537,6 +1537,12 @@ module Google
         # @return [String]
         attr_accessor :temp_storage_prefix
       
+        # Optional. True when any worker pool that uses public IPs is present.
+        # Corresponds to the JSON property `usePublicIps`
+        # @return [Boolean]
+        attr_accessor :use_public_ips
+        alias_method :use_public_ips?, :use_public_ips
+      
         # Output only. Whether the job uses the Streaming Engine resource-based billing
         # model.
         # Corresponds to the JSON property `useStreamingEngineResourceBasedBilling`
@@ -1597,6 +1603,7 @@ module Google
           @shuffle_mode = args[:shuffle_mode] if args.key?(:shuffle_mode)
           @streaming_mode = args[:streaming_mode] if args.key?(:streaming_mode)
           @temp_storage_prefix = args[:temp_storage_prefix] if args.key?(:temp_storage_prefix)
+          @use_public_ips = args[:use_public_ips] if args.key?(:use_public_ips)
           @use_streaming_engine_resource_based_billing = args[:use_streaming_engine_resource_based_billing] if args.key?(:use_streaming_engine_resource_based_billing)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
           @version = args[:version] if args.key?(:version)
@@ -2150,6 +2157,45 @@ module Google
           @runtime_metadata = args[:runtime_metadata] if args.key?(:runtime_metadata)
           @status = args[:status] if args.key?(:status)
           @template_type = args[:template_type] if args.key?(:template_type)
+        end
+      end
+      
+      # Request to get worker stacktraces from debug capture.
+      class GetWorkerStacktracesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The worker for which to get stacktraces. The returned stacktraces will be for
+        # the SDK harness running on this worker.
+        # Corresponds to the JSON property `workerId`
+        # @return [String]
+        attr_accessor :worker_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @worker_id = args[:worker_id] if args.key?(:worker_id)
+        end
+      end
+      
+      # Response to get worker stacktraces from debug capture.
+      class GetWorkerStacktracesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Repeated as unified worker may have multiple SDK processes.
+        # Corresponds to the JSON property `sdks`
+        # @return [Array<Google::Apis::DataflowV1b3::Sdk>]
+        attr_accessor :sdks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sdks = args[:sdks] if args.key?(:sdks)
         end
       end
       
@@ -3480,6 +3526,14 @@ module Google
       class MetricUpdate
         include Google::Apis::Core::Hashable
       
+        # Worker-computed aggregate value for the "Trie" aggregation kind. The only
+        # possible value type is a BoundedTrieNode. Introduced this field to avoid
+        # breaking older SDKs when Dataflow service starts to populate the `bounded_trie`
+        # field.
+        # Corresponds to the JSON property `boundedTrie`
+        # @return [Object]
+        attr_accessor :bounded_trie
+      
         # True if this metric is reported as the total cumulative aggregate value
         # accumulated since the worker started working on this WorkItem. By default this
         # is false, indicating that this metric is reported as a delta that is not
@@ -3566,6 +3620,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bounded_trie = args[:bounded_trie] if args.key?(:bounded_trie)
           @cumulative = args[:cumulative] if args.key?(:cumulative)
           @distribution = args[:distribution] if args.key?(:distribution)
           @gauge = args[:gauge] if args.key?(:gauge)
@@ -4840,6 +4895,31 @@ module Google
         end
       end
       
+      # A structured representation of an SDK.
+      class Sdk
+        include Google::Apis::Core::Hashable
+      
+        # The SDK harness id.
+        # Corresponds to the JSON property `sdkId`
+        # @return [String]
+        attr_accessor :sdk_id
+      
+        # The stacktraces for the processes running on the SDK harness.
+        # Corresponds to the JSON property `stacks`
+        # @return [Array<Google::Apis::DataflowV1b3::Stack>]
+        attr_accessor :stacks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sdk_id = args[:sdk_id] if args.key?(:sdk_id)
+          @stacks = args[:stacks] if args.key?(:stacks)
+        end
+      end
+      
       # A bug found in the Dataflow SDK.
       class SdkBug
         include Google::Apis::Core::Hashable
@@ -5790,6 +5870,51 @@ module Google
         def update!(**args)
           @high_bits = args[:high_bits] if args.key?(:high_bits)
           @low_bits = args[:low_bits] if args.key?(:low_bits)
+        end
+      end
+      
+      # A structuredstacktrace for a process running on the worker.
+      class Stack
+        include Google::Apis::Core::Hashable
+      
+        # The raw stack trace.
+        # Corresponds to the JSON property `stackContent`
+        # @return [String]
+        attr_accessor :stack_content
+      
+        # With java thread dumps we may get collapsed stacks e.g., N threads in stack "".
+        # Instead of having to copy over the same stack trace N times, this int field
+        # captures this.
+        # Corresponds to the JSON property `threadCount`
+        # @return [Fixnum]
+        attr_accessor :thread_count
+      
+        # Thread name. For example, "CommitThread-0,10,main"
+        # Corresponds to the JSON property `threadName`
+        # @return [String]
+        attr_accessor :thread_name
+      
+        # The state of the thread. For example, "WAITING".
+        # Corresponds to the JSON property `threadState`
+        # @return [String]
+        attr_accessor :thread_state
+      
+        # Timestamp at which the stack was captured.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stack_content = args[:stack_content] if args.key?(:stack_content)
+          @thread_count = args[:thread_count] if args.key?(:thread_count)
+          @thread_name = args[:thread_name] if args.key?(:thread_name)
+          @thread_state = args[:thread_state] if args.key?(:thread_state)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
         end
       end
       

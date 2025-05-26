@@ -613,10 +613,12 @@ module Google
           property :additional_storage_count, as: 'additionalStorageCount'
           property :available_storage_size_gb, as: 'availableStorageSizeGb'
           property :compute_count, as: 'computeCount'
+          property :compute_model, as: 'computeModel'
           property :cpu_count, as: 'cpuCount'
           collection :customer_contacts, as: 'customerContacts', class: Google::Apis::OracledatabaseV1::CustomerContact, decorator: Google::Apis::OracledatabaseV1::CustomerContact::Representation
       
           property :data_storage_size_tb, as: 'dataStorageSizeTb'
+          property :database_server_type, as: 'databaseServerType'
           property :db_node_storage_size_gb, as: 'dbNodeStorageSizeGb'
           property :db_server_version, as: 'dbServerVersion'
           property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::OracledatabaseV1::MaintenanceWindow, decorator: Google::Apis::OracledatabaseV1::MaintenanceWindow::Representation
@@ -636,6 +638,7 @@ module Google
           property :shape, as: 'shape'
           property :state, as: 'state'
           property :storage_count, as: 'storageCount'
+          property :storage_server_type, as: 'storageServerType'
           property :storage_server_version, as: 'storageServerVersion'
           property :total_storage_size_gb, as: 'totalStorageSizeGb'
         end
@@ -663,6 +666,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_name, as: 'clusterName'
           property :compartment_id, as: 'compartmentId'
+          property :compute_model, as: 'computeModel'
           property :cpu_core_count, as: 'cpuCoreCount'
           property :data_storage_size_tb, as: 'dataStorageSizeTb'
           property :db_node_storage_size_gb, as: 'dbNodeStorageSizeGb'

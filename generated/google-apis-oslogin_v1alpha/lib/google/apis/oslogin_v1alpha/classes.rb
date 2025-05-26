@@ -42,8 +42,8 @@ module Google
       class GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyRequest
         include Google::Apis::Core::Hashable
       
-        # The App Engine instance to sign the SSH public key for. Expected format:
-        # services/`service`/versions/`version`/instances/`instance`
+        # The App Engine instance to sign the SSH public key for. Expected format: apps/`
+        # app`/services/`service`/versions/`version`/instances/`instance`
         # Corresponds to the JSON property `appEngineInstance`
         # @return [String]
         attr_accessor :app_engine_instance
@@ -313,7 +313,7 @@ module Google
       class SignSshPublicKeyRequest
         include Google::Apis::Core::Hashable
       
-        # The SSH public key to sign.
+        # Required. The SSH public key to sign.
         # Corresponds to the JSON property `sshPublicKey`
         # @return [String]
         attr_accessor :ssh_public_key

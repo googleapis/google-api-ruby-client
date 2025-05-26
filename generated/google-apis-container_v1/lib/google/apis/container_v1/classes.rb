@@ -202,6 +202,11 @@ module Google
         # @return [Google::Apis::ContainerV1::GkeBackupAgentConfig]
         attr_accessor :gke_backup_agent_config
       
+        # Configuration for the High Scale Checkpointing.
+        # Corresponds to the JSON property `highScaleCheckpointingConfig`
+        # @return [Google::Apis::ContainerV1::HighScaleCheckpointingConfig]
+        attr_accessor :high_scale_checkpointing_config
+      
         # Configuration options for the horizontal pod autoscaling feature, which
         # increases or decreases the number of replica pods a replication controller has
         # based on the resource usage of the existing pods.
@@ -255,6 +260,7 @@ module Google
           @gcp_filestore_csi_driver_config = args[:gcp_filestore_csi_driver_config] if args.key?(:gcp_filestore_csi_driver_config)
           @gcs_fuse_csi_driver_config = args[:gcs_fuse_csi_driver_config] if args.key?(:gcs_fuse_csi_driver_config)
           @gke_backup_agent_config = args[:gke_backup_agent_config] if args.key?(:gke_backup_agent_config)
+          @high_scale_checkpointing_config = args[:high_scale_checkpointing_config] if args.key?(:high_scale_checkpointing_config)
           @horizontal_pod_autoscaling = args[:horizontal_pod_autoscaling] if args.key?(:horizontal_pod_autoscaling)
           @http_load_balancing = args[:http_load_balancing] if args.key?(:http_load_balancing)
           @kubernetes_dashboard = args[:kubernetes_dashboard] if args.key?(:kubernetes_dashboard)
@@ -309,6 +315,12 @@ module Google
         attr_accessor :enable_nested_virtualization
         alias_method :enable_nested_virtualization?, :enable_nested_virtualization
       
+        # Type of Performance Monitoring Unit (PMU) requested on node pool instances. If
+        # unset, PMU will not be available to the node.
+        # Corresponds to the JSON property `performanceMonitoringUnit`
+        # @return [String]
+        attr_accessor :performance_monitoring_unit
+      
         # The number of threads per physical core. To disable simultaneous
         # multithreading (SMT) set this to 1. If unset, the maximum number of threads
         # supported per core by the underlying processor is assumed.
@@ -323,7 +335,22 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable_nested_virtualization = args[:enable_nested_virtualization] if args.key?(:enable_nested_virtualization)
+          @performance_monitoring_unit = args[:performance_monitoring_unit] if args.key?(:performance_monitoring_unit)
           @threads_per_core = args[:threads_per_core] if args.key?(:threads_per_core)
+        end
+      end
+      
+      # AnonymousAuthenticationConfig defines the settings needed to limit endpoints
+      # that allow anonymous authentication.
+      class AnonymousAuthenticationConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -954,6 +981,19 @@ module Google
         # @return [Google::Apis::ContainerV1::AddonsConfig]
         attr_accessor :addons_config
       
+        # The list of user specified Kubernetes feature gates. Each string represents
+        # the activation status of a feature gate (e.g. "featureX=true" or "featureX=
+        # false")
+        # Corresponds to the JSON property `alphaClusterFeatureGates`
+        # @return [Array<String>]
+        attr_accessor :alpha_cluster_feature_gates
+      
+        # AnonymousAuthenticationConfig defines the settings needed to limit endpoints
+        # that allow anonymous authentication.
+        # Corresponds to the JSON property `anonymousAuthenticationConfig`
+        # @return [Google::Apis::ContainerV1::AnonymousAuthenticationConfig]
+        attr_accessor :anonymous_authentication_config
+      
         # Configuration for returning group information from authenticators.
         # Corresponds to the JSON property `authenticatorGroupsConfig`
         # @return [Google::Apis::ContainerV1::AuthenticatorGroupsConfig]
@@ -1442,6 +1482,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @addons_config = args[:addons_config] if args.key?(:addons_config)
+          @alpha_cluster_feature_gates = args[:alpha_cluster_feature_gates] if args.key?(:alpha_cluster_feature_gates)
+          @anonymous_authentication_config = args[:anonymous_authentication_config] if args.key?(:anonymous_authentication_config)
           @authenticator_groups_config = args[:authenticator_groups_config] if args.key?(:authenticator_groups_config)
           @autopilot = args[:autopilot] if args.key?(:autopilot)
           @autoscaling = args[:autoscaling] if args.key?(:autoscaling)
@@ -1604,6 +1646,12 @@ module Google
         # Corresponds to the JSON property `desiredAddonsConfig`
         # @return [Google::Apis::ContainerV1::AddonsConfig]
         attr_accessor :desired_addons_config
+      
+        # AnonymousAuthenticationConfig defines the settings needed to limit endpoints
+        # that allow anonymous authentication.
+        # Corresponds to the JSON property `desiredAnonymousAuthenticationConfig`
+        # @return [Google::Apis::ContainerV1::AnonymousAuthenticationConfig]
+        attr_accessor :desired_anonymous_authentication_config
       
         # Configuration for returning group information from authenticators.
         # Corresponds to the JSON property `desiredAuthenticatorGroupsConfig`
@@ -2013,6 +2061,7 @@ module Google
         def update!(**args)
           @additional_pod_ranges_config = args[:additional_pod_ranges_config] if args.key?(:additional_pod_ranges_config)
           @desired_addons_config = args[:desired_addons_config] if args.key?(:desired_addons_config)
+          @desired_anonymous_authentication_config = args[:desired_anonymous_authentication_config] if args.key?(:desired_anonymous_authentication_config)
           @desired_authenticator_groups_config = args[:desired_authenticator_groups_config] if args.key?(:desired_authenticator_groups_config)
           @desired_autopilot_workload_policy_config = args[:desired_autopilot_workload_policy_config] if args.key?(:desired_autopilot_workload_policy_config)
           @desired_binary_authorization = args[:desired_binary_authorization] if args.key?(:desired_binary_authorization)
@@ -3098,6 +3147,26 @@ module Google
         end
       end
       
+      # Configuration for the High Scale Checkpointing.
+      class HighScaleCheckpointingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether the High Scale Checkpointing is enabled for this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # Configuration options for the horizontal pod autoscaling feature, which
       # increases or decreases the number of replica pods a replication controller has
       # based on the resource usage of the existing pods.
@@ -4105,6 +4174,29 @@ module Google
         end
       end
       
+      # The option enables the Kubernetes NUMA-aware Memory Manager feature. Detailed
+      # description about the feature can be found [here](https://kubernetes.io/docs/
+      # tasks/administer-cluster/memory-manager/).
+      class MemoryManager
+        include Google::Apis::Core::Hashable
+      
+        # Controls the memory management policy on the Node. See https://kubernetes.io/
+        # docs/tasks/administer-cluster/memory-manager/#policies The following values
+        # are allowed. * "none" * "static" The default value is 'none' if unspecified.
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
       # Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
       class MeshCertificates
         include Google::Apis::Core::Hashable
@@ -4983,6 +5075,13 @@ module Google
         attr_accessor :insecure_kubelet_readonly_port_enabled
         alias_method :insecure_kubelet_readonly_port_enabled?, :insecure_kubelet_readonly_port_enabled
       
+        # The option enables the Kubernetes NUMA-aware Memory Manager feature. Detailed
+        # description about the feature can be found [here](https://kubernetes.io/docs/
+        # tasks/administer-cluster/memory-manager/).
+        # Corresponds to the JSON property `memoryManager`
+        # @return [Google::Apis::ContainerV1::MemoryManager]
+        attr_accessor :memory_manager
+      
         # Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-
         # limiting/#pod-pid-limits Controls the maximum number of processes allowed to
         # run in a pod. The value must be greater than or equal to 1024 and less than
@@ -4990,6 +5089,12 @@ module Google
         # Corresponds to the JSON property `podPidsLimit`
         # @return [Fixnum]
         attr_accessor :pod_pids_limit
+      
+        # TopologyManager defines the configuration options for Topology Manager feature.
+        # See https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/
+        # Corresponds to the JSON property `topologyManager`
+        # @return [Google::Apis::ContainerV1::TopologyManager]
+        attr_accessor :topology_manager
       
         def initialize(**args)
            update!(**args)
@@ -5008,7 +5113,9 @@ module Google
           @image_maximum_gc_age = args[:image_maximum_gc_age] if args.key?(:image_maximum_gc_age)
           @image_minimum_gc_age = args[:image_minimum_gc_age] if args.key?(:image_minimum_gc_age)
           @insecure_kubelet_readonly_port_enabled = args[:insecure_kubelet_readonly_port_enabled] if args.key?(:insecure_kubelet_readonly_port_enabled)
+          @memory_manager = args[:memory_manager] if args.key?(:memory_manager)
           @pod_pids_limit = args[:pod_pids_limit] if args.key?(:pod_pids_limit)
+          @topology_manager = args[:topology_manager] if args.key?(:topology_manager)
         end
       end
       
@@ -7764,6 +7871,48 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @maintenance_exclusion_options = args[:maintenance_exclusion_options] if args.key?(:maintenance_exclusion_options)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # TopologyManager defines the configuration options for Topology Manager feature.
+      # See https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/
+      class TopologyManager
+        include Google::Apis::Core::Hashable
+      
+        # Configures the strategy for resource alignment. Allowed values are: * none:
+        # the default policy, and does not perform any topology alignment. * restricted:
+        # the topology manager stores the preferred NUMA node affinity for the container,
+        # and will reject the pod if the affinity if not preferred. * best-effort: the
+        # topology manager stores the preferred NUMA node affinity for the container. If
+        # the affinity is not preferred, the topology manager will admit the pod to the
+        # node anyway. * single-numa-node: the topology manager determines if the single
+        # NUMA node affinity is possible. If it is, Topology Manager will store this and
+        # the Hint Providers can then use this information when making the resource
+        # allocation decision. If, however, this is not possible then the Topology
+        # Manager will reject the pod from the node. This will result in a pod in a
+        # Terminated state with a pod admission failure. The default policy value is '
+        # none' if unspecified. Details about each strategy can be found [here](https://
+        # kubernetes.io/docs/tasks/administer-cluster/topology-manager/#topology-manager-
+        # policies).
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        # The Topology Manager aligns resources in following scopes: * container * pod
+        # The default scope is 'container' if unspecified. See https://kubernetes.io/
+        # docs/tasks/administer-cluster/topology-manager/#topology-manager-scopes
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
+          @scope = args[:scope] if args.key?(:scope)
         end
       end
       

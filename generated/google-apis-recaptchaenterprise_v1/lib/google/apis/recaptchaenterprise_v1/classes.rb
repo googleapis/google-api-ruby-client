@@ -363,6 +363,32 @@ module Google
         end
       end
       
+      # Bot information and metadata.
+      class GoogleCloudRecaptchaenterpriseV1Bot
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Enumerated field representing the type of bot.
+        # Corresponds to the JSON property `botType`
+        # @return [String]
+        attr_accessor :bot_type
+      
+        # Optional. Enumerated string value that indicates the identity of the bot,
+        # formatted in kebab-case.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bot_type = args[:bot_type] if args.key?(:bot_type)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Metrics related to challenges.
       class GoogleCloudRecaptchaenterpriseV1ChallengeMetrics
         include Google::Apis::Core::Hashable
@@ -850,6 +876,12 @@ module Google
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict]
         attr_accessor :card_testing_verdict
       
+        # Output only. Reasons why the transaction is probably fraudulent and received a
+        # high transaction risk score.
+        # Corresponds to the JSON property `riskReasons`
+        # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason>]
+        attr_accessor :risk_reasons
+      
         # Information about stolen instrument fraud, where the user is not the
         # legitimate owner of the instrument being used for the purchase.
         # Corresponds to the JSON property `stolenInstrumentVerdict`
@@ -871,6 +903,7 @@ module Google
         def update!(**args)
           @behavioral_trust_verdict = args[:behavioral_trust_verdict] if args.key?(:behavioral_trust_verdict)
           @card_testing_verdict = args[:card_testing_verdict] if args.key?(:card_testing_verdict)
+          @risk_reasons = args[:risk_reasons] if args.key?(:risk_reasons)
           @stolen_instrument_verdict = args[:stolen_instrument_verdict] if args.key?(:stolen_instrument_verdict)
           @transaction_risk = args[:transaction_risk] if args.key?(:transaction_risk)
         end
@@ -914,6 +947,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @risk = args[:risk] if args.key?(:risk)
+        end
+      end
+      
+      # Risk reasons applicable to the Fraud Prevention assessment.
+      class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Risk reasons applicable to the Fraud Prevention assessment.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reason = args[:reason] if args.key?(:reason)
         end
       end
       
@@ -1583,6 +1635,12 @@ module Google
         # @return [Float]
         attr_accessor :score
       
+        # Output only. Bots with identities that have been verified by reCAPTCHA and
+        # detected in the event.
+        # Corresponds to the JSON property `verifiedBots`
+        # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Bot>]
+        attr_accessor :verified_bots
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1593,6 +1651,7 @@ module Google
           @extended_verdict_reasons = args[:extended_verdict_reasons] if args.key?(:extended_verdict_reasons)
           @reasons = args[:reasons] if args.key?(:reasons)
           @score = args[:score] if args.key?(:score)
+          @verified_bots = args[:verified_bots] if args.key?(:verified_bots)
         end
       end
       

@@ -550,6 +550,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PointInTimeRestoreContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PoolNodeConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -878,6 +884,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup_retention_settings, as: 'backupRetentionSettings', class: Google::Apis::SqladminV1::BackupRetentionSettings, decorator: Google::Apis::SqladminV1::BackupRetentionSettings::Representation
       
+          property :backup_tier, as: 'backupTier'
           property :binary_log_enabled, as: 'binaryLogEnabled'
           property :enabled, as: 'enabled'
           property :kind, as: 'kind'
@@ -1016,15 +1023,9 @@ module Google
       class ConnectionPoolConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :client_connection_idle_timeout, as: 'clientConnectionIdleTimeout'
-          property :conn_pool_size, as: 'connPoolSize'
           property :connection_pooling_enabled, as: 'connectionPoolingEnabled'
           collection :flags, as: 'flags', class: Google::Apis::SqladminV1::ConnectionPoolFlags, decorator: Google::Apis::SqladminV1::ConnectionPoolFlags::Representation
       
-          property :max_client_connections, as: 'maxClientConnections'
-          property :pool_mode, as: 'poolMode'
-          property :query_wait_timeout, as: 'queryWaitTimeout'
-          property :server_connection_idle_timeout, as: 'serverConnectionIdleTimeout'
         end
       end
       
@@ -1072,6 +1073,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :available_maintenance_versions, as: 'availableMaintenanceVersions'
           property :backend_type, as: 'backendType'
+          property :clear_network, as: 'clearNetwork'
           property :connection_name, as: 'connectionName'
           property :create_time, as: 'createTime'
           property :current_disk_size, :numeric_string => true, as: 'currentDiskSize'
@@ -1597,6 +1599,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup, as: 'backup'
+          property :backupdr_backup, as: 'backupdrBackup'
           property :restore_backup_context, as: 'restoreBackupContext', class: Google::Apis::SqladminV1::RestoreBackupContext, decorator: Google::Apis::SqladminV1::RestoreBackupContext::Representation
       
           property :restore_instance_settings, as: 'restoreInstanceSettings', class: Google::Apis::SqladminV1::DatabaseInstance, decorator: Google::Apis::SqladminV1::DatabaseInstance::Representation
@@ -1840,6 +1843,19 @@ module Google
         end
       end
       
+      class PointInTimeRestoreContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocated_ip_range, as: 'allocatedIpRange'
+          property :datasource, as: 'datasource'
+          property :point_in_time, as: 'pointInTime'
+          property :preferred_secondary_zone, as: 'preferredSecondaryZone'
+          property :preferred_zone, as: 'preferredZone'
+          property :private_network, as: 'privateNetwork'
+          property :target_instance, as: 'targetInstance'
+        end
+      end
+      
       class PoolNodeConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1869,6 +1885,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_consumer_projects, as: 'allowedConsumerProjects'
+          property :network_attachment_uri, as: 'networkAttachmentUri'
           collection :psc_auto_connections, as: 'pscAutoConnections', class: Google::Apis::SqladminV1::PscAutoConnectionConfig, decorator: Google::Apis::SqladminV1::PscAutoConnectionConfig::Representation
       
           property :psc_enabled, as: 'pscEnabled'

@@ -324,6 +324,7 @@ module Google
           property :auth_code, as: 'authCode'
           property :pkce_verifier, as: 'pkceVerifier'
           property :redirect_uri, as: 'redirectUri'
+          collection :scopes, as: 'scopes'
         end
       end
       
@@ -478,6 +479,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :consumer_defined_name, as: 'consumerDefinedName'
+          property :consumer_project_number, as: 'consumerProjectNumber'
           property :create_time, as: 'createTime'
           property :instance_type, as: 'instanceType'
           hash :labels, as: 'labels'

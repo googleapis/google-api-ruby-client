@@ -111,11 +111,11 @@ module Google
         end
       end
       
-      # Details of Adloox brand safety settings.
+      # Details of Scope3 (previously known as Adloox) brand safety settings.
       class Adloox
         include Google::Apis::Core::Hashable
       
-        # Adloox categories to exclude.
+        # Scope3 categories to exclude.
         # Corresponds to the JSON property `excludedAdlooxCategories`
         # @return [Array<String>]
         attr_accessor :excluded_adloox_categories
@@ -3312,13 +3312,10 @@ module Google
       
         # The Floodlight activity configs used to track conversions. The number of
         # conversions counted is the sum of all of the conversions counted by all of the
-        # Floodlight activity IDs specified in this field. *Warning*: Starting **April 1,
-        # 2025**, this field will no longer be writable while a custom bidding
-        # algorithm is assigned to the line item. If you set this field and assign a
-        # custom bidding algorithm in the same request, the floodlight activities must
-        # match the ones used by the custom bidding algorithm. [Read more about this
-        # announced change](/display-video/api/deprecations#features.
-        # custom_bidding_floodlight).
+        # Floodlight activity IDs specified in this field. This field can't be updated
+        # if a custom bidding algorithm is assigned to the line item. If you set this
+        # field and assign a custom bidding algorithm in the same request, the
+        # floodlight activities must match the ones used by the custom bidding algorithm.
         # Corresponds to the JSON property `floodlightActivityConfigs`
         # @return [Array<Google::Apis::DisplayvideoV2::TrackingFloodlightActivityConfig>]
         attr_accessor :floodlight_activity_configs
@@ -8350,11 +8347,9 @@ module Google
       
         # The ID of the Custom Bidding Algorithm used by this strategy. Only applicable
         # when performance_goal_type is set to `
-        # BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. *Warning*: Starting **
-        # April 1, 2025**, assigning a custom bidding algorithm that uses floodlight
-        # activities not identified in floodlightActivityConfigs will return an error. [
-        # Read more about this announced change](/display-video/api/deprecations#
-        # features.custom_bidding_floodlight).
+        # BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. Assigning a custom
+        # bidding algorithm that uses floodlight activities not identified in
+        # floodlightActivityConfigs will return an error.
         # Corresponds to the JSON property `customBiddingAlgorithmId`
         # @return [Fixnum]
         attr_accessor :custom_bidding_algorithm_id
@@ -9355,11 +9350,9 @@ module Google
       
         # The ID of the Custom Bidding Algorithm used by this strategy. Only applicable
         # when performance_goal_type is set to `
-        # BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. *Warning*: Starting **
-        # April 1, 2025**, assigning a custom bidding algorithm that uses floodlight
-        # activities not identified in floodlightActivityConfigs will return an error. [
-        # Read more about this announced change](/display-video/api/deprecations#
-        # features.custom_bidding_floodlight).
+        # BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. Assigning a custom
+        # bidding algorithm that uses floodlight activities not identified in
+        # floodlightActivityConfigs will return an error.
         # Corresponds to the JSON property `customBiddingAlgorithmId`
         # @return [Fixnum]
         attr_accessor :custom_bidding_algorithm_id
@@ -10015,8 +10008,7 @@ module Google
         end
       end
       
-      # Type for the response returned by [SdfDownloadTaskService.
-      # CreateSdfDownloadTask].
+      # Type for the response returned by SdfDownloadTaskService.CreateSdfDownloadTask.
       class SdfDownloadTask
         include Google::Apis::Core::Hashable
       
@@ -10038,8 +10030,7 @@ module Google
         end
       end
       
-      # Type for the metadata returned by [SdfDownloadTaskService.
-      # CreateSdfDownloadTask].
+      # Type for the metadata returned by SdfDownloadTaskService.CreateSdfDownloadTask.
       class SdfDownloadTaskMetadata
         include Google::Apis::Core::Hashable
       
@@ -10774,7 +10765,7 @@ module Google
       class ThirdPartyVerifierAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Details of Adloox brand safety settings.
+        # Details of Scope3 (previously known as Adloox) brand safety settings.
         # Corresponds to the JSON property `adloox`
         # @return [Google::Apis::DisplayvideoV2::Adloox]
         attr_accessor :adloox

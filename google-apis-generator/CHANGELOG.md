@@ -1,5 +1,17 @@
 # Release History
 
+### 0.18.0 (2025-05-22)
+
+#### Features
+
+* Generate toys file for each client ([#23217](https://github.com/googleapis/google-api-ruby-client/issues/23217)) 
+
+### 0.17.0 (2025-04-30)
+
+#### Features
+
+* ruby 3.1 minimum, 3.4 default ([#22594](https://github.com/googleapis/google-api-ruby-client/issues/22594)) 
+
 ### 0.16.0 (2025-01-10)
 
 #### Bug Fixes

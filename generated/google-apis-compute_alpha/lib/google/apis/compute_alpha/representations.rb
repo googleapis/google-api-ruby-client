@@ -820,6 +820,72 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CapacityAdviceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CapacityAdviceRequestDistributionPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CapacityAdviceRequestDistributionPolicyZoneConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CapacityAdviceRequestInstanceFlexibilityPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CapacityAdviceRequestInstanceProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CapacityAdviceRequestInstancePropertiesScheduling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CapacityAdviceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CapacityAdviceResponseRecommendation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CapacityAdviceResponseRecommendationScores
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CapacityAdviceResponseRecommendationShard
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ChannelCredentials
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2441,6 +2507,12 @@ module Google
       end
       
       class InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerInstanceLifecyclePolicyOnRepair
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -10523,6 +10595,100 @@ module Google
         end
       end
       
+      class CapacityAdviceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :distribution_policy, as: 'distributionPolicy', class: Google::Apis::ComputeAlpha::CapacityAdviceRequestDistributionPolicy, decorator: Google::Apis::ComputeAlpha::CapacityAdviceRequestDistributionPolicy::Representation
+      
+          property :instance_flexibility_policy, as: 'instanceFlexibilityPolicy', class: Google::Apis::ComputeAlpha::CapacityAdviceRequestInstanceFlexibilityPolicy, decorator: Google::Apis::ComputeAlpha::CapacityAdviceRequestInstanceFlexibilityPolicy::Representation
+      
+          property :instance_properties, as: 'instanceProperties', class: Google::Apis::ComputeAlpha::CapacityAdviceRequestInstanceProperties, decorator: Google::Apis::ComputeAlpha::CapacityAdviceRequestInstanceProperties::Representation
+      
+        end
+      end
+      
+      class CapacityAdviceRequestDistributionPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_shape, as: 'targetShape'
+          collection :zones, as: 'zones', class: Google::Apis::ComputeAlpha::CapacityAdviceRequestDistributionPolicyZoneConfiguration, decorator: Google::Apis::ComputeAlpha::CapacityAdviceRequestDistributionPolicyZoneConfiguration::Representation
+      
+        end
+      end
+      
+      class CapacityAdviceRequestDistributionPolicyZoneConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class CapacityAdviceRequestInstanceFlexibilityPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :instance_selections, as: 'instanceSelections', class: Google::Apis::ComputeAlpha::CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection, decorator: Google::Apis::ComputeAlpha::CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection::Representation
+      
+        end
+      end
+      
+      class CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :machine_types, as: 'machineTypes'
+        end
+      end
+      
+      class CapacityAdviceRequestInstanceProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scheduling, as: 'scheduling', class: Google::Apis::ComputeAlpha::CapacityAdviceRequestInstancePropertiesScheduling, decorator: Google::Apis::ComputeAlpha::CapacityAdviceRequestInstancePropertiesScheduling::Representation
+      
+        end
+      end
+      
+      class CapacityAdviceRequestInstancePropertiesScheduling
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :provisioning_model, as: 'provisioningModel'
+        end
+      end
+      
+      class CapacityAdviceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :recommendations, as: 'recommendations', class: Google::Apis::ComputeAlpha::CapacityAdviceResponseRecommendation, decorator: Google::Apis::ComputeAlpha::CapacityAdviceResponseRecommendation::Representation
+      
+        end
+      end
+      
+      class CapacityAdviceResponseRecommendation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scores, as: 'scores', class: Google::Apis::ComputeAlpha::CapacityAdviceResponseRecommendationScores, decorator: Google::Apis::ComputeAlpha::CapacityAdviceResponseRecommendationScores::Representation
+      
+          collection :shards, as: 'shards', class: Google::Apis::ComputeAlpha::CapacityAdviceResponseRecommendationShard, decorator: Google::Apis::ComputeAlpha::CapacityAdviceResponseRecommendationShard::Representation
+      
+        end
+      end
+      
+      class CapacityAdviceResponseRecommendationScores
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :obtainability, as: 'obtainability'
+          property :spot_preemption, as: 'spotPreemption'
+        end
+      end
+      
+      class CapacityAdviceResponseRecommendationShard
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_count, as: 'instanceCount'
+          property :machine_type, as: 'machineType'
+          property :provisioning_model, as: 'provisioningModel'
+          property :zone, as: 'zone'
+        end
+      end
+      
       class ChannelCredentials
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -11794,6 +11960,7 @@ module Google
           collection :dest_fqdns, as: 'destFqdns'
           collection :dest_ip_ranges, as: 'destIpRanges'
           property :dest_network_scope, as: 'destNetworkScope'
+          property :dest_network_type, as: 'destNetworkType'
           collection :dest_region_codes, as: 'destRegionCodes'
           collection :dest_threat_intelligences, as: 'destThreatIntelligences'
           collection :layer4_configs, as: 'layer4Configs', class: Google::Apis::ComputeAlpha::FirewallPolicyRuleMatcherLayer4Config, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRuleMatcherLayer4Config::Representation
@@ -11802,6 +11969,7 @@ module Google
           collection :src_fqdns, as: 'srcFqdns'
           collection :src_ip_ranges, as: 'srcIpRanges'
           property :src_network_scope, as: 'srcNetworkScope'
+          property :src_network_type, as: 'srcNetworkType'
           collection :src_networks, as: 'srcNetworks'
           collection :src_region_codes, as: 'srcRegionCodes'
           collection :src_secure_tags, as: 'srcSecureTags', class: Google::Apis::ComputeAlpha::FirewallPolicyRuleSecureTag, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRuleSecureTag::Representation
@@ -12402,9 +12570,13 @@ module Google
       class GroupMaintenanceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_maintenance_ongoing_count, as: 'instanceMaintenanceOngoingCount'
+          property :instance_maintenance_pending_count, as: 'instanceMaintenancePendingCount'
           property :maintenance_ongoing_count, as: 'maintenanceOngoingCount'
           property :maintenance_pending_count, as: 'maintenancePendingCount'
           property :scheduling_type, as: 'schedulingType'
+          property :subblock_infra_maintenance_ongoing_count, as: 'subblockInfraMaintenanceOngoingCount'
+          property :subblock_infra_maintenance_pending_count, as: 'subblockInfraMaintenancePendingCount'
           property :upcoming_group_maintenance, as: 'upcomingGroupMaintenance', class: Google::Apis::ComputeAlpha::UpcomingMaintenance, decorator: Google::Apis::ComputeAlpha::UpcomingMaintenance::Representation
       
         end
@@ -13775,6 +13947,8 @@ module Google
           property :metadata_based_readiness_signal, as: 'metadataBasedReadinessSignal', class: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal::Representation
       
           property :on_failed_health_check, as: 'onFailedHealthCheck'
+          property :on_repair, as: 'onRepair', class: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceLifecyclePolicyOnRepair, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceLifecyclePolicyOnRepair::Representation
+      
         end
       end
       
@@ -13782,6 +13956,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :timeout_sec, as: 'timeoutSec'
+        end
+      end
+      
+      class InstanceGroupManagerInstanceLifecyclePolicyOnRepair
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_changing_zone, as: 'allowChangingZone'
         end
       end
       
@@ -15996,6 +16177,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :expected_rtt_ms, :numeric_string => true, as: 'expectedRttMs'
+          property :l2_forwarding_enabled, as: 'l2ForwardingEnabled'
           property :location_presence, as: 'locationPresence'
           property :region, as: 'region'
         end
@@ -20333,6 +20515,7 @@ module Google
           property :kind, as: 'kind'
           collection :linked_commitments, as: 'linkedCommitments'
           property :name, as: 'name'
+          property :protection_tier, as: 'protectionTier'
           property :reservation_mode, as: 'reservationMode'
           property :reservation_sharing_policy, as: 'reservationSharingPolicy', class: Google::Apis::ComputeAlpha::AllocationReservationSharingPolicy, decorator: Google::Apis::ComputeAlpha::AllocationReservationSharingPolicy::Representation
       
@@ -20340,6 +20523,7 @@ module Google
           property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeAlpha::AllocationResourceStatus, decorator: Google::Apis::ComputeAlpha::AllocationResourceStatus::Representation
       
           property :satisfies_pzs, as: 'satisfiesPzs'
+          property :scheduling_type, as: 'schedulingType'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :share_settings, as: 'shareSettings', class: Google::Apis::ComputeAlpha::ShareSettings, decorator: Google::Apis::ComputeAlpha::ShareSettings::Representation
@@ -20507,6 +20691,8 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :physical_topology, as: 'physicalTopology', class: Google::Apis::ComputeAlpha::ReservationSubBlockPhysicalTopology, decorator: Google::Apis::ComputeAlpha::ReservationSubBlockPhysicalTopology::Representation
+      
+          property :reservation_sub_block_maintenance, as: 'reservationSubBlockMaintenance', class: Google::Apis::ComputeAlpha::GroupMaintenanceInfo, decorator: Google::Apis::ComputeAlpha::GroupMaintenanceInfo::Representation
       
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
@@ -20980,7 +21166,13 @@ module Google
       class ResourceStatusEffectiveInstanceMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :block_project_ssh_keys_metadata_value, as: 'blockProjectSshKeysMetadataValue'
+          property :enable_guest_attributes_metadata_value, as: 'enableGuestAttributesMetadataValue'
+          property :enable_os_inventory_metadata_value, as: 'enableOsInventoryMetadataValue'
+          property :enable_osconfig_metadata_value, as: 'enableOsconfigMetadataValue'
           property :enable_oslogin_metadata_value, as: 'enableOsloginMetadataValue'
+          property :serial_port_enable_metadata_value, as: 'serialPortEnableMetadataValue'
+          property :serial_port_logging_enable_metadata_value, as: 'serialPortLoggingEnableMetadataValue'
           property :vm_dns_setting_metadata_value, as: 'vmDnsSettingMetadataValue'
         end
       end
@@ -22048,6 +22240,8 @@ module Google
       class SecurityPolicyDdosProtectionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ddos_adaptive_protection, as: 'ddosAdaptiveProtection'
+          property :ddos_impacted_baseline_threshold, as: 'ddosImpactedBaselineThreshold'
           property :ddos_protection, as: 'ddosProtection'
         end
       end
@@ -23645,6 +23839,8 @@ module Google
           property :self_link_with_id, as: 'selfLinkWithId'
           property :stack_type, as: 'stackType'
           property :state, as: 'state'
+          collection :system_reserved_external_ipv6_ranges, as: 'systemReservedExternalIpv6Ranges'
+          collection :system_reserved_internal_ipv6_ranges, as: 'systemReservedInternalIpv6Ranges'
           property :utilization_details, as: 'utilizationDetails', class: Google::Apis::ComputeAlpha::SubnetworkUtilizationDetails, decorator: Google::Apis::ComputeAlpha::SubnetworkUtilizationDetails::Representation
       
           collection :vlans, as: 'vlans'

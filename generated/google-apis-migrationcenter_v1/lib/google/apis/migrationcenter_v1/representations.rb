@@ -178,6 +178,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CascadeLogicalDBsRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CascadingRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ComputeEngineMigrationTarget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1124,6 +1136,7 @@ module Google
           collection :aggregations, as: 'aggregations', class: Google::Apis::MigrationcenterV1::Aggregation, decorator: Google::Apis::MigrationcenterV1::Aggregation::Representation
       
           property :filter, as: 'filter'
+          property :show_hidden, as: 'showHidden'
         end
       end
       
@@ -1238,6 +1251,9 @@ module Google
       
           property :database_details, as: 'databaseDetails', class: Google::Apis::MigrationcenterV1::DatabaseDetails, decorator: Google::Apis::MigrationcenterV1::DatabaseDetails::Representation
       
+          property :hidden, as: 'hidden'
+          property :hide_reason, as: 'hideReason'
+          property :hide_time, as: 'hideTime'
           property :insight_list, as: 'insightList', class: Google::Apis::MigrationcenterV1::InsightList, decorator: Google::Apis::MigrationcenterV1::InsightList::Representation
       
           hash :labels, as: 'labels'
@@ -1315,6 +1331,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_missing, as: 'allowMissing'
+          collection :cascading_rules, as: 'cascadingRules', class: Google::Apis::MigrationcenterV1::CascadingRule, decorator: Google::Apis::MigrationcenterV1::CascadingRule::Representation
+      
           collection :names, as: 'names'
         end
       end
@@ -1351,6 +1369,20 @@ module Google
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CascadeLogicalDBsRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CascadingRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cascade_logical_dbs, as: 'cascadeLogicalDbs', class: Google::Apis::MigrationcenterV1::CascadeLogicalDBsRule, decorator: Google::Apis::MigrationcenterV1::CascadeLogicalDBsRule::Representation
+      
         end
       end
       

@@ -2537,12 +2537,12 @@ module Google
       class DiscoveryClientDiscoveryClientRecommendedVersion
         include Google::Apis::Core::Hashable
       
-        # The URI of the discovery client version.
+        # Output only. The URI of the discovery client version.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
       
-        # The version of the discovery client.
+        # Output only. The version of the discovery client.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version

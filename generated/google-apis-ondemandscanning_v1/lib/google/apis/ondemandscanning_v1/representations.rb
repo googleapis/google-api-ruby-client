@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class File
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FileHashes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -497,6 +503,24 @@ module Google
       end
       
       class SbomReferenceIntotoPredicate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecretLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecretOccurrence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecretStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -882,6 +906,8 @@ module Google
           property :archive_time, as: 'archiveTime'
           property :continuous_analysis, as: 'continuousAnalysis'
           property :cpe, as: 'cpe'
+          collection :files, as: 'files', class: Google::Apis::OndemandscanningV1::File, decorator: Google::Apis::OndemandscanningV1::File::Representation
+      
           property :last_scan_time, as: 'lastScanTime'
           property :sbom_status, as: 'sbomStatus', class: Google::Apis::OndemandscanningV1::SbomStatus, decorator: Google::Apis::OndemandscanningV1::SbomStatus::Representation
       
@@ -909,6 +935,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :keyid, as: 'keyid'
           property :sig, :base64 => true, as: 'sig'
+        end
+      end
+      
+      class File
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :digest, as: 'digest'
+          property :name, as: 'name'
         end
       end
       
@@ -980,6 +1014,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :base_images, as: 'baseImages', class: Google::Apis::OndemandscanningV1::GrafeasV1BaseImage, decorator: Google::Apis::OndemandscanningV1::GrafeasV1BaseImage::Representation
       
+          property :chain_id, as: 'chainId'
           property :command, as: 'command'
           property :diff_id, as: 'diffId'
           property :index, as: 'index'
@@ -1146,6 +1181,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :base_images, as: 'baseImages', class: Google::Apis::OndemandscanningV1::BaseImage, decorator: Google::Apis::OndemandscanningV1::BaseImage::Representation
       
+          property :chain_id, as: 'chainId'
           property :command, as: 'command'
           property :diff_id, as: 'diffId'
           property :index, as: 'index'
@@ -1255,6 +1291,8 @@ module Google
           property :remediation, as: 'remediation'
           property :resource_uri, as: 'resourceUri'
           property :sbom_reference, as: 'sbomReference', class: Google::Apis::OndemandscanningV1::SbomReferenceOccurrence, decorator: Google::Apis::OndemandscanningV1::SbomReferenceOccurrence::Representation
+      
+          property :secret, as: 'secret', class: Google::Apis::OndemandscanningV1::SecretOccurrence, decorator: Google::Apis::OndemandscanningV1::SecretOccurrence::Representation
       
           property :update_time, as: 'updateTime'
           property :upgrade, as: 'upgrade', class: Google::Apis::OndemandscanningV1::UpgradeOccurrence, decorator: Google::Apis::OndemandscanningV1::UpgradeOccurrence::Representation
@@ -1470,6 +1508,34 @@ module Google
           property :location, as: 'location'
           property :mime_type, as: 'mimeType'
           property :referrer_id, as: 'referrerId'
+        end
+      end
+      
+      class SecretLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_location, as: 'fileLocation', class: Google::Apis::OndemandscanningV1::GrafeasV1FileLocation, decorator: Google::Apis::OndemandscanningV1::GrafeasV1FileLocation::Representation
+      
+        end
+      end
+      
+      class SecretOccurrence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :locations, as: 'locations', class: Google::Apis::OndemandscanningV1::SecretLocation, decorator: Google::Apis::OndemandscanningV1::SecretLocation::Representation
+      
+          collection :statuses, as: 'statuses', class: Google::Apis::OndemandscanningV1::SecretStatus, decorator: Google::Apis::OndemandscanningV1::SecretStatus::Representation
+      
+        end
+      end
+      
+      class SecretStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :status, as: 'status'
+          property :update_time, as: 'updateTime'
         end
       end
       

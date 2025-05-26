@@ -2711,9 +2711,10 @@ module Google
         #   specified according to the information published in [this article](https://
         #   support.google.com/googleplay/android-developer/answer/10532353). Each time
         #   the supported locations substantially change, the version will be incremented.
-        #   Using this field will ensure that creating and updating the resource with an
-        #   older region's version and set of regional prices and currencies will succeed
-        #   even though a new version is available. The latest version is 2022/02.
+        #   The latest supported version is available in this article. Using this field
+        #   will ensure that creating and updating the resource with an older region's
+        #   version and set of regional prices and currencies will succeed even though a
+        #   new version is available.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2878,9 +2879,10 @@ module Google
         #   specified according to the information published in [this article](https://
         #   support.google.com/googleplay/android-developer/answer/10532353). Each time
         #   the supported locations substantially change, the version will be incremented.
-        #   Using this field will ensure that creating and updating the resource with an
-        #   older region's version and set of regional prices and currencies will succeed
-        #   even though a new version is available. The latest version is 2022/02.
+        #   The latest supported version is available in this article. Using this field
+        #   will ensure that creating and updating the resource with an older region's
+        #   version and set of regional prices and currencies will succeed even though a
+        #   new version is available.
         # @param [String] update_mask
         #   Required. The list of fields to be updated.
         # @param [String] fields
@@ -3359,9 +3361,10 @@ module Google
         #   specified according to the information published in [this article](https://
         #   support.google.com/googleplay/android-developer/answer/10532353). Each time
         #   the supported locations substantially change, the version will be incremented.
-        #   Using this field will ensure that creating and updating the resource with an
-        #   older region's version and set of regional prices and currencies will succeed
-        #   even though a new version is available. The latest version is 2022/02.
+        #   The latest supported version is available in this article. Using this field
+        #   will ensure that creating and updating the resource with an older region's
+        #   version and set of regional prices and currencies will succeed even though a
+        #   new version is available.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3593,9 +3596,10 @@ module Google
         #   specified according to the information published in [this article](https://
         #   support.google.com/googleplay/android-developer/answer/10532353). Each time
         #   the supported locations substantially change, the version will be incremented.
-        #   Using this field will ensure that creating and updating the resource with an
-        #   older region's version and set of regional prices and currencies will succeed
-        #   even though a new version is available. The latest version is 2022/02.
+        #   The latest supported version is available in this article. Using this field
+        #   will ensure that creating and updating the resource with an older region's
+        #   version and set of regional prices and currencies will succeed even though a
+        #   new version is available.
         # @param [String] update_mask
         #   Required. The list of fields to be updated.
         # @param [String] fields
@@ -3629,6 +3633,78 @@ module Google
           command.query['latencyTolerance'] = latency_tolerance unless latency_tolerance.nil?
           command.query['regionsVersion.version'] = regions_version_version unless regions_version_version.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get order details for a list of orders.
+        # @param [String] package_name
+        #   Required. The package name of the application for which this subscription or
+        #   in-app item was purchased (for example, 'com.some.thing').
+        # @param [Array<String>, String] order_ids
+        #   Required. The list of order IDs to retrieve order details for. There must be
+        #   between 1 and 1000 (inclusive) order IDs per request. If any order ID is not
+        #   found or does not match the provided package, the entire request will fail
+        #   with an error. The order IDs must be distinct.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::BatchGetOrdersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::BatchGetOrdersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batchget_order(package_name, order_ids: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'androidpublisher/v3/applications/{packageName}/orders:batchGet', options)
+          command.response_representation = Google::Apis::AndroidpublisherV3::BatchGetOrdersResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::BatchGetOrdersResponse
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.query['orderIds'] = order_ids unless order_ids.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get order details for a single order.
+        # @param [String] package_name
+        #   Required. The package name of the application for which this subscription or
+        #   in-app item was purchased (for example, 'com.some.thing').
+        # @param [String] order_id
+        #   Required. The order ID provided to the user when the subscription or in-app
+        #   order was purchased.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::Order] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::Order]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_order(package_name, order_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'androidpublisher/v3/applications/{packageName}/orders/{orderId}', options)
+          command.response_representation = Google::Apis::AndroidpublisherV3::Order::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::Order
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['orderId'] = order_id unless order_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3898,8 +3974,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Checks whether a user's subscription purchase is valid and returns its expiry
-        # time.
+        # Deprecated: Use purchases.subscriptionsv2.get instead. Checks whether a user's
+        # subscription purchase is valid and returns its expiry time.
         # @param [String] package_name
         #   The package name of the application for which this subscription was purchased (
         #   for example, 'com.some.thing').
@@ -3936,8 +4012,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Refunds a user's subscription purchase, but the subscription remains valid
-        # until its expiration time and it will continue to recur.
+        # Deprecated: Use orders.refund instead. Refunds a user's subscription purchase,
+        # but the subscription remains valid until its expiration time and it will
+        # continue to recur.
         # @param [String] package_name
         #   The package name of the application for which this subscription was purchased (
         #   for example, 'com.some.thing').
@@ -3972,8 +4049,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Refunds and immediately revokes a user's subscription purchase. Access to the
-        # subscription will be terminated immediately and it will stop recurring.
+        # Deprecated: Use purchases.subscriptionsv2.revoke instead. Refunds and
+        # immediately revokes a user's subscription purchase. Access to the subscription
+        # will be terminated immediately and it will stop recurring.
         # @param [String] package_name
         #   The package name of the application for which this subscription was purchased (
         #   for example, 'com.some.thing').

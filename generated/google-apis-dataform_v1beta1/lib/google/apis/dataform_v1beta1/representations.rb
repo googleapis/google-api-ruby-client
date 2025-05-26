@@ -22,6 +22,36 @@ module Google
   module Apis
     module DataformV1beta1
       
+      class ActionErrorTable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ActionIncrementalLoadMode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ActionLoadConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ActionSimpleLoadMode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ActionSqlDefinition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Assertion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -142,6 +172,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataPreparation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataPreparationAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Declaration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,6 +209,12 @@ module Google
       end
       
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ErrorTable
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -221,6 +269,12 @@ module Google
       end
       
       class GitRemoteSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IncrementalLoadMode
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -293,6 +347,12 @@ module Google
       end
       
       class ListWorkspacesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LoadConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -526,6 +586,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SimpleLoadMode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlDefinition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SshAuthenticationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -610,6 +682,53 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ActionErrorTable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retention_days, as: 'retentionDays'
+          property :target, as: 'target', class: Google::Apis::DataformV1beta1::Target, decorator: Google::Apis::DataformV1beta1::Target::Representation
+      
+        end
+      end
+      
+      class ActionIncrementalLoadMode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, as: 'column'
+        end
+      end
+      
+      class ActionLoadConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :append, as: 'append', class: Google::Apis::DataformV1beta1::ActionSimpleLoadMode, decorator: Google::Apis::DataformV1beta1::ActionSimpleLoadMode::Representation
+      
+          property :maximum, as: 'maximum', class: Google::Apis::DataformV1beta1::ActionIncrementalLoadMode, decorator: Google::Apis::DataformV1beta1::ActionIncrementalLoadMode::Representation
+      
+          property :replace, as: 'replace', class: Google::Apis::DataformV1beta1::ActionSimpleLoadMode, decorator: Google::Apis::DataformV1beta1::ActionSimpleLoadMode::Representation
+      
+          property :unique, as: 'unique', class: Google::Apis::DataformV1beta1::ActionIncrementalLoadMode, decorator: Google::Apis::DataformV1beta1::ActionIncrementalLoadMode::Representation
+      
+        end
+      end
+      
+      class ActionSimpleLoadMode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ActionSqlDefinition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_table, as: 'errorTable', class: Google::Apis::DataformV1beta1::ActionErrorTable, decorator: Google::Apis::DataformV1beta1::ActionErrorTable::Representation
+      
+          property :load_config, as: 'loadConfig', class: Google::Apis::DataformV1beta1::ActionLoadConfig, decorator: Google::Apis::DataformV1beta1::ActionLoadConfig::Representation
+      
+          property :query, as: 'query'
+        end
+      end
+      
       class Assertion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -659,6 +778,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :assertion_schema, as: 'assertionSchema'
+          property :builtin_assertion_name_prefix, as: 'builtinAssertionNamePrefix'
           property :database_suffix, as: 'databaseSuffix'
           property :default_database, as: 'defaultDatabase'
           property :default_location, as: 'defaultLocation'
@@ -780,6 +900,8 @@ module Google
       
           property :canonical_target, as: 'canonicalTarget', class: Google::Apis::DataformV1beta1::Target, decorator: Google::Apis::DataformV1beta1::Target::Representation
       
+          property :data_preparation, as: 'dataPreparation', class: Google::Apis::DataformV1beta1::DataPreparation, decorator: Google::Apis::DataformV1beta1::DataPreparation::Representation
+      
           property :declaration, as: 'declaration', class: Google::Apis::DataformV1beta1::Declaration, decorator: Google::Apis::DataformV1beta1::Declaration::Representation
       
           property :file_path, as: 'filePath'
@@ -817,6 +939,30 @@ module Google
         end
       end
       
+      class DataPreparation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contents_sql, as: 'contentsSql', class: Google::Apis::DataformV1beta1::SqlDefinition, decorator: Google::Apis::DataformV1beta1::SqlDefinition::Representation
+      
+          property :contents_yaml, as: 'contentsYaml'
+          collection :dependency_targets, as: 'dependencyTargets', class: Google::Apis::DataformV1beta1::Target, decorator: Google::Apis::DataformV1beta1::Target::Representation
+      
+          property :disabled, as: 'disabled'
+          collection :tags, as: 'tags'
+        end
+      end
+      
+      class DataPreparationAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contents_sql, as: 'contentsSql', class: Google::Apis::DataformV1beta1::ActionSqlDefinition, decorator: Google::Apis::DataformV1beta1::ActionSqlDefinition::Representation
+      
+          property :contents_yaml, as: 'contentsYaml'
+          property :generated_sql, as: 'generatedSql'
+          property :job_id, as: 'jobId'
+        end
+      end
+      
       class Declaration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -849,6 +995,15 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ErrorTable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retention_days, as: 'retentionDays'
+          property :target, as: 'target', class: Google::Apis::DataformV1beta1::Target, decorator: Google::Apis::DataformV1beta1::Target::Representation
+      
         end
       end
       
@@ -927,6 +1082,13 @@ module Google
       
           property :token_status, as: 'tokenStatus'
           property :url, as: 'url'
+        end
+      end
+      
+      class IncrementalLoadMode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, as: 'column'
         end
       end
       
@@ -1044,6 +1206,20 @@ module Google
         end
       end
       
+      class LoadConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :append, as: 'append', class: Google::Apis::DataformV1beta1::SimpleLoadMode, decorator: Google::Apis::DataformV1beta1::SimpleLoadMode::Representation
+      
+          property :maximum, as: 'maximum', class: Google::Apis::DataformV1beta1::IncrementalLoadMode, decorator: Google::Apis::DataformV1beta1::IncrementalLoadMode::Representation
+      
+          property :replace, as: 'replace', class: Google::Apis::DataformV1beta1::SimpleLoadMode, decorator: Google::Apis::DataformV1beta1::SimpleLoadMode::Representation
+      
+          property :unique, as: 'unique', class: Google::Apis::DataformV1beta1::IncrementalLoadMode, decorator: Google::Apis::DataformV1beta1::IncrementalLoadMode::Representation
+      
+        end
+      end
+      
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1118,6 +1294,7 @@ module Google
       class NotebookRuntimeOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ai_platform_notebook_runtime_template, as: 'aiPlatformNotebookRuntimeTemplate'
           property :gcs_output_bucket, as: 'gcsOutputBucket'
         end
       end
@@ -1395,6 +1572,23 @@ module Google
         end
       end
       
+      class SimpleLoadMode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SqlDefinition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_table, as: 'errorTable', class: Google::Apis::DataformV1beta1::ErrorTable, decorator: Google::Apis::DataformV1beta1::ErrorTable::Representation
+      
+          property :load, as: 'load', class: Google::Apis::DataformV1beta1::LoadConfig, decorator: Google::Apis::DataformV1beta1::LoadConfig::Representation
+      
+          property :query, as: 'query'
+        end
+      end
+      
       class SshAuthenticationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1448,6 +1642,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :cron_schedule, as: 'cronSchedule'
+          property :disabled, as: 'disabled'
           property :internal_metadata, as: 'internalMetadata'
           property :invocation_config, as: 'invocationConfig', class: Google::Apis::DataformV1beta1::InvocationConfig, decorator: Google::Apis::DataformV1beta1::InvocationConfig::Representation
       
@@ -1484,6 +1679,8 @@ module Google
           property :bigquery_action, as: 'bigqueryAction', class: Google::Apis::DataformV1beta1::BigQueryAction, decorator: Google::Apis::DataformV1beta1::BigQueryAction::Representation
       
           property :canonical_target, as: 'canonicalTarget', class: Google::Apis::DataformV1beta1::Target, decorator: Google::Apis::DataformV1beta1::Target::Representation
+      
+          property :data_preparation_action, as: 'dataPreparationAction', class: Google::Apis::DataformV1beta1::DataPreparationAction, decorator: Google::Apis::DataformV1beta1::DataPreparationAction::Representation
       
           property :failure_reason, as: 'failureReason'
           property :internal_metadata, as: 'internalMetadata'

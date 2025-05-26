@@ -22,6 +22,37 @@ module Google
   module Apis
     module MerchantapiAccountsV1beta
       
+      # Response message for the `AcceptTermsOfService` method.
+      class AcceptTermsOfServiceResponse
+        include Google::Apis::Core::Hashable
+      
+        # This resource represents the agreement state for a given account and terms of
+        # service kind. The state is as follows: * If the merchant has accepted a terms
+        # of service, `accepted` will be populated, otherwise it will be empty * If the
+        # merchant must sign a terms of service, `required` will be populated, otherwise
+        # it will be empty. Note that both `required` and `accepted` can be present. In
+        # this case the `accepted` terms of services will have an expiration date set in
+        # the `valid_until` field. The `required` terms of services need to be accepted
+        # before `valid_until` in order for the account to continue having a valid
+        # agreement. When accepting new terms of services we expect 3Ps to display the
+        # text associated with the given terms of service agreement (the url to the file
+        # containing the text is added in the Required message below as `tos_file_uri`).
+        # The actual acceptance of the terms of service is done by calling accept on the
+        # `TermsOfService` resource.
+        # Corresponds to the JSON property `termsOfServiceAgreementState`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::TermsOfServiceAgreementState]
+        attr_accessor :terms_of_service_agreement_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @terms_of_service_agreement_state = args[:terms_of_service_agreement_state] if args.key?(:terms_of_service_agreement_state)
+        end
+      end
+      
       # Describes the accepted terms of service.
       class Accepted
         include Google::Apis::Core::Hashable
@@ -32,8 +63,7 @@ module Google
         # @return [String]
         attr_accessor :accepted_by
       
-        # The accepted [termsOfService](google.shopping.merchant.accounts.v1main.
-        # TermsOfService).
+        # The accepted termsOfService.
         # Corresponds to the JSON property `termsOfService`
         # @return [String]
         attr_accessor :terms_of_service
@@ -196,6 +226,168 @@ module Google
         end
       end
       
+      # `AccountManagement` payload.
+      class AccountManagement
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The `AccountRelationship` message defines a formal connection between a
+      # merchant's account and a service provider's account. This relationship enables
+      # the provider to offer specific services to the merchant, such as product
+      # management or campaign management. It specifies the access rights and
+      # permissions to the merchant's data relevant to those services. Establishing an
+      # account relationship involves linking the merchant's account with a provider's
+      # account. The provider could be another Google account (like Google Ads or
+      # Google My Business) or a third-party platform (such as Shopify or WooCommerce).
+      class AccountRelationship
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An optional alias you can assign to this account relationship. This
+        # alias acts as a convenient identifier for your own reference and management.
+        # It must be unique among all your account relationships with the same provider.
+        # For example, you might use `account_id_alias` to assign a friendly name to
+        # this relationship for easier identification in your systems.
+        # Corresponds to the JSON property `accountIdAlias`
+        # @return [String]
+        attr_accessor :account_id_alias
+      
+        # Identifier. The resource name of the account relationship. Format: `accounts/`
+        # account`/relationships/`relationship``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Immutable. The provider of the service. Either the reference to an account
+        # such as `providers/123` or a well-known service provider (one of `providers/
+        # GOOGLE_ADS` or `providers/GOOGLE_BUSINESS_PROFILE`).
+        # Corresponds to the JSON property `provider`
+        # @return [String]
+        attr_accessor :provider
+      
+        # Output only. The human-readable display name of the provider account.
+        # Corresponds to the JSON property `providerDisplayName`
+        # @return [String]
+        attr_accessor :provider_display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_id_alias = args[:account_id_alias] if args.key?(:account_id_alias)
+          @name = args[:name] if args.key?(:name)
+          @provider = args[:provider] if args.key?(:provider)
+          @provider_display_name = args[:provider_display_name] if args.key?(:provider_display_name)
+        end
+      end
+      
+      # The `AccountService` message represents a specific service that a provider
+      # account offers to a merchant account. `AccountService` defines the permissions
+      # and capabilities granted to the provider, allowing for operations such as
+      # product management or campaign management. The lifecycle of an `AccountService`
+      # involves a proposal phase, where one party suggests the service, and an
+      # approval phase, where the other party accepts or rejects it. This handshake
+      # mechanism ensures mutual consent before any access is granted. This mechanism
+      # safeguards both parties by ensuring that access rights are granted
+      # appropriately and that both the merchant and provider are aware of the
+      # services enabled. In scenarios where a user is an admin of both accounts, the
+      # approval can happen automatically. The mutability of a service is also managed
+      # through `AccountService`. Some services might be immutable, for example, if
+      # they were established through other systems or APIs, and you cannot alter them
+      # through this API.
+      class AccountService
+        include Google::Apis::Core::Hashable
+      
+        # `AccountAggregation` payload.
+        # Corresponds to the JSON property `accountAggregation`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::AccountAggregation]
+        attr_accessor :account_aggregation
+      
+        # `AccountManagement` payload.
+        # Corresponds to the JSON property `accountManagement`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::AccountManagement]
+        attr_accessor :account_management
+      
+        # `CampaignManagement` payload.
+        # Corresponds to the JSON property `campaignsManagement`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::CampaignsManagement]
+        attr_accessor :campaigns_management
+      
+        # Immutable. An optional, immutable identifier that Google uses to refer to this
+        # account when communicating with the provider. This should be the unique
+        # account ID within the provider's system (for example, your shop ID in Shopify).
+        # If you have multiple accounts with the same provider - for instance,
+        # different accounts for various regions — the `external_account_id`
+        # differentiates between them, ensuring accurate linking and integration between
+        # Google and the provider.
+        # Corresponds to the JSON property `externalAccountId`
+        # @return [String]
+        attr_accessor :external_account_id
+      
+        # The current status of establishing of the service. (for example, pending
+        # approval or approved).
+        # Corresponds to the JSON property `handshake`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::Handshake]
+        attr_accessor :handshake
+      
+        # Output only. Whether the service is mutable (e.g. through Approve / Reject
+        # RPCs). A service that was created through another system or API might be
+        # immutable.
+        # Corresponds to the JSON property `mutability`
+        # @return [String]
+        attr_accessor :mutability
+      
+        # Identifier. The resource name of the account service. Format: `accounts/`
+        # account`/services/`service``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # `ProductsManagement` payload.
+        # Corresponds to the JSON property `productsManagement`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::ProductsManagement]
+        attr_accessor :products_management
+      
+        # Output only. The provider of the service. Either the reference to an account
+        # such as `providers/123` or a well-known service provider (one of `providers/
+        # GOOGLE_ADS` or `providers/GOOGLE_BUSINESS_PROFILE`).
+        # Corresponds to the JSON property `provider`
+        # @return [String]
+        attr_accessor :provider
+      
+        # Output only. The human-readable display name of the provider account.
+        # Corresponds to the JSON property `providerDisplayName`
+        # @return [String]
+        attr_accessor :provider_display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_aggregation = args[:account_aggregation] if args.key?(:account_aggregation)
+          @account_management = args[:account_management] if args.key?(:account_management)
+          @campaigns_management = args[:campaigns_management] if args.key?(:campaigns_management)
+          @external_account_id = args[:external_account_id] if args.key?(:external_account_id)
+          @handshake = args[:handshake] if args.key?(:handshake)
+          @mutability = args[:mutability] if args.key?(:mutability)
+          @name = args[:name] if args.key?(:name)
+          @products_management = args[:products_management] if args.key?(:products_management)
+          @provider = args[:provider] if args.key?(:provider)
+          @provider_display_name = args[:provider_display_name] if args.key?(:provider_display_name)
+        end
+      end
+      
       # Additional instructions to add account services during creation of the account.
       class AddAccountService
         include Google::Apis::Core::Hashable
@@ -294,6 +486,19 @@ module Google
           @postal_code = args[:postal_code] if args.key?(:postal_code)
           @region_code = args[:region_code] if args.key?(:region_code)
           @street_address = args[:street_address] if args.key?(:street_address)
+        end
+      end
+      
+      # Request to approve an account service.
+      class ApproveAccountServiceRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -669,6 +874,19 @@ module Google
         end
       end
       
+      # `CampaignManagement` payload.
+      class CampaignsManagement
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A list of carrier rates that can be referred to by `main_table` or `
       # single_value`. Supported carrier services are defined in https://support.
       # google.com/merchants/answer/12577710?ref_topic=12570808&sjid=
@@ -729,8 +947,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. When set to `true`, this option removes any existing claim on the
-        # requested website and replaces it with a claim from the account that makes the
-        # request.
+        # requested website from any other account to the account making the request,
+        # effectively replacing the previous claim.
         # Corresponds to the JSON property `overwrite`
         # @return [Boolean]
         attr_accessor :overwrite
@@ -1188,6 +1406,33 @@ module Google
         end
       end
       
+      # The current status of establishing of the service. (for example, pending
+      # approval or approved).
+      class Handshake
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The most recent account to modify the account service's `
+        # approval_status`.
+        # Corresponds to the JSON property `actor`
+        # @return [String]
+        attr_accessor :actor
+      
+        # Output only. The approval state of this handshake.
+        # Corresponds to the JSON property `approvalState`
+        # @return [String]
+        attr_accessor :approval_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actor = args[:actor] if args.key?(:actor)
+          @approval_state = args[:approval_state] if args.key?(:approval_state)
+        end
+      end
+      
       # A non-empty list of row or column headers for a table. Exactly one of `prices`,
       # `weights`, `num_items`, `postal_code_group_names`, or `location` must be set.
       class Headers
@@ -1452,6 +1697,58 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account_issues = args[:account_issues] if args.key?(:account_issues)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response after trying to list account relationships.
+      class ListAccountRelationshipsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The account relationships that match your filter.
+        # Corresponds to the JSON property `accountRelationships`
+        # @return [Array<Google::Apis::MerchantapiAccountsV1beta::AccountRelationship>]
+        attr_accessor :account_relationships
+      
+        # A page token. You can send the `page_token` to get the next page. Only
+        # included in the `list` response if there are more pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_relationships = args[:account_relationships] if args.key?(:account_relationships)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response after trying to list account services.
+      class ListAccountServicesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The account services that match your filter.
+        # Corresponds to the JSON property `accountServices`
+        # @return [Array<Google::Apis::MerchantapiAccountsV1beta::AccountService>]
+        attr_accessor :account_services
+      
+        # A page token. You can send the `page_token` to get the next page. Only
+        # included in the `list` response if there are more pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_services = args[:account_services] if args.key?(:account_services)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -1737,15 +2034,15 @@ module Google
       class OnlineReturnPolicy
         include Google::Apis::Core::Hashable
       
-        # This field specifies if merchant only accepts defective products for returns,
-        # and this field is required.
+        # Optional. This field specifies if merchant only accepts defective products for
+        # returns.
         # Corresponds to the JSON property `acceptDefectiveOnly`
         # @return [Boolean]
         attr_accessor :accept_defective_only
         alias_method :accept_defective_only?, :accept_defective_only
       
-        # This field specifies if merchant allows customers to exchange products, this
-        # field is required.
+        # Optional. This field specifies if merchant allows customers to exchange
+        # products.
         # Corresponds to the JSON property `acceptExchange`
         # @return [Boolean]
         attr_accessor :accept_exchange
@@ -1785,8 +2082,8 @@ module Google
         # @return [Google::Apis::MerchantapiAccountsV1beta::Policy]
         attr_accessor :policy
       
-        # The field specifies the number of days it takes for merchants to process
-        # refunds, field is optional.
+        # Optional. The field specifies the number of days it takes for merchants to
+        # process refunds.
         # Corresponds to the JSON property `processRefundDays`
         # @return [Fixnum]
         attr_accessor :process_refund_days
@@ -1796,8 +2093,7 @@ module Google
         # @return [Google::Apis::MerchantapiAccountsV1beta::RestockingFee]
         attr_accessor :restocking_fee
       
-        # The field specifies the return label source. This field is required when
-        # return method is BY_MAIL.
+        # Optional. The field specifies the return label source.
         # Corresponds to the JSON property `returnLabelSource`
         # @return [String]
         attr_accessor :return_label_source
@@ -2289,14 +2585,26 @@ module Google
         end
       end
       
+      # `ProductsManagement` payload.
+      class ProductsManagement
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Defines participation in a given program for the specified account. Programs
       # provide a mechanism for adding functionality to merchant accounts. A typical
       # example of this is the [Free product listings](https://support.google.com/
-      # merchants/topic/9240261?ref_topic=7257954,7259405,&sjid=796648681813264022-EU)
-      # program, which enables products from a merchant's store to be shown across
-      # Google for free. The following list is the available set of program resource
-      # IDs accessible through the API: * `free-listings` * `shopping-ads` * `youtube-
-      # shopping-checkout`
+      # merchants/answer/13889434) program, which enables products from a merchant's
+      # store to be shown across Google for free. The following list is the available
+      # set of program resource IDs accessible through the API: * `free-listings` * `
+      # shopping-ads` * `youtube-shopping-checkout`
       class Program
         include Google::Apis::Core::Hashable
       
@@ -2342,6 +2650,46 @@ module Google
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @unmet_requirements = args[:unmet_requirements] if args.key?(:unmet_requirements)
+        end
+      end
+      
+      # Request to propose an account service.
+      class ProposeAccountServiceRequest
+        include Google::Apis::Core::Hashable
+      
+        # The `AccountService` message represents a specific service that a provider
+        # account offers to a merchant account. `AccountService` defines the permissions
+        # and capabilities granted to the provider, allowing for operations such as
+        # product management or campaign management. The lifecycle of an `AccountService`
+        # involves a proposal phase, where one party suggests the service, and an
+        # approval phase, where the other party accepts or rejects it. This handshake
+        # mechanism ensures mutual consent before any access is granted. This mechanism
+        # safeguards both parties by ensuring that access rights are granted
+        # appropriately and that both the merchant and provider are aware of the
+        # services enabled. In scenarios where a user is an admin of both accounts, the
+        # approval can happen automatically. The mutability of a service is also managed
+        # through `AccountService`. Some services might be immutable, for example, if
+        # they were established through other systems or APIs, and you cannot alter them
+        # through this API.
+        # Corresponds to the JSON property `accountService`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::AccountService]
+        attr_accessor :account_service
+      
+        # Required. The provider of the service. Either the reference to an account such
+        # as `providers/123` or a well-known service provider (one of `providers/
+        # GOOGLE_ADS` or `providers/GOOGLE_BUSINESS_PROFILE`).
+        # Corresponds to the JSON property `provider`
+        # @return [String]
+        attr_accessor :provider
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_service = args[:account_service] if args.key?(:account_service)
+          @provider = args[:provider] if args.key?(:provider)
         end
       end
       
@@ -2462,6 +2810,19 @@ module Google
           @postal_code_area = args[:postal_code_area] if args.key?(:postal_code_area)
           @regional_inventory_eligible = args[:regional_inventory_eligible] if args.key?(:regional_inventory_eligible)
           @shipping_eligible = args[:shipping_eligible] if args.key?(:shipping_eligible)
+        end
+      end
+      
+      # Request to reject an account service.
+      class RejectAccountServiceRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -3008,7 +3369,7 @@ module Google
       # before `valid_until` in order for the account to continue having a valid
       # agreement. When accepting new terms of services we expect 3Ps to display the
       # text associated with the given terms of service agreement (the url to the file
-      # containing the text is added in the Required message below as `tos_file_uri`.
+      # containing the text is added in the Required message below as `tos_file_uri`).
       # The actual acceptance of the terms of service is done by calling accept on the
       # `TermsOfService` resource.
       class TermsOfServiceAgreementState
@@ -3336,7 +3697,8 @@ module Google
         # @return [String]
         attr_accessor :carrier_service
       
-        # Required. Warehouse name. This should match warehouse
+        # Required. Warehouse name. This should match [warehouse](/merchant/api/
+        # reference/rest/accounts_v1beta/accounts.shippingSettings#warehouse)
         # Corresponds to the JSON property `warehouse`
         # @return [String]
         attr_accessor :warehouse

@@ -248,6 +248,20 @@ module Google
         # @return [String]
         attr_accessor :credentials_secret
       
+        # Identities of a user registered Azure application that enables identity
+        # federation to trust tokens issued by the user's Google service account. For
+        # more information about Azure application and identity federation, see [
+        # Register an application with the Microsoft identity platform] (https://learn.
+        # microsoft.com/en-us/entra/identity-platform/quickstart-register-app) Azure
+        # RBAC roles then need be assigned to the Azure application to authorize access
+        # to the user's Azure data source. For more information about Azure RBAC roles
+        # for blobs, see [Manage Access Rights with RBAC] (https://learn.microsoft.com/
+        # en-us/rest/api/storageservices/authorize-with-azure-active-directory#manage-
+        # access-rights-with-rbac)
+        # Corresponds to the JSON property `federatedIdentityConfig`
+        # @return [Google::Apis::StoragetransferV1::FederatedIdentityConfig]
+        attr_accessor :federated_identity_config
+      
         # Root path to transfer objects. Must be an empty string or full path name that
         # ends with a '/'. This field is treated as an object prefix. As such, it should
         # generally not begin with a '/'.
@@ -269,6 +283,7 @@ module Google
           @azure_credentials = args[:azure_credentials] if args.key?(:azure_credentials)
           @container = args[:container] if args.key?(:container)
           @credentials_secret = args[:credentials_secret] if args.key?(:credentials_secret)
+          @federated_identity_config = args[:federated_identity_config] if args.key?(:federated_identity_config)
           @path = args[:path] if args.key?(:path)
           @storage_account = args[:storage_account] if args.key?(:storage_account)
         end
@@ -484,6 +499,41 @@ module Google
         end
       end
       
+      # Identities of a user registered Azure application that enables identity
+      # federation to trust tokens issued by the user's Google service account. For
+      # more information about Azure application and identity federation, see [
+      # Register an application with the Microsoft identity platform] (https://learn.
+      # microsoft.com/en-us/entra/identity-platform/quickstart-register-app) Azure
+      # RBAC roles then need be assigned to the Azure application to authorize access
+      # to the user's Azure data source. For more information about Azure RBAC roles
+      # for blobs, see [Manage Access Rights with RBAC] (https://learn.microsoft.com/
+      # en-us/rest/api/storageservices/authorize-with-azure-active-directory#manage-
+      # access-rights-with-rbac)
+      class FederatedIdentityConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Client (application) ID of the application with federated
+        # credentials.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Required. Tenant (directory) ID of the application with federated credentials.
+        # Corresponds to the JSON property `tenantId`
+        # @return [String]
+        attr_accessor :tenant_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @tenant_id = args[:tenant_id] if args.key?(:tenant_id)
+        end
+      end
+      
       # In a GcsData resource, an object's name is the Cloud Storage object's name and
       # its "last modification time" refers to the object's `updated` property of
       # Cloud Storage objects, which changes when the content or the metadata of the
@@ -600,8 +650,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The URL that points to the file that stores the object list entries.
-        # This file must allow public access. Currently, only URLs with HTTP and HTTPS
-        # schemes are supported.
+        # This file must allow public access. The URL is either an HTTP/HTTPS address (e.
+        # g. `https://example.com/urllist.tsv`) or a Cloud Storage path (e.g. `gs://my-
+        # bucket/urllist.tsv`).
         # Corresponds to the JSON property `listUrl`
         # @return [String]
         attr_accessor :list_url
@@ -863,7 +914,12 @@ module Google
       # refers to the time of the last change to the object's content or metadata —
       # specifically, this is the `updated` property of Cloud Storage objects, the `
       # LastModified` field of S3 objects, and the `Last-Modified` header of Azure
-      # blobs. Transfers with a PosixFilesystem source or destination don't support `
+      # blobs. For S3 objects, the `LastModified` value is the time the object begins
+      # uploading. If the object meets your "last modification time" criteria, but has
+      # not finished uploading, the object is not transferred. See [Transfer from
+      # Amazon S3 to Cloud Storage](https://cloud.google.com/storage-transfer/docs/
+      # create-transfers/agentless/s3#transfer_options) for more information.
+      # Transfers with a PosixFilesystem source or destination don't support `
       # ObjectConditions`.
       class ObjectConditions
         include Google::Apis::Core::Hashable
@@ -1084,7 +1140,12 @@ module Google
         # refers to the time of the last change to the object's content or metadata —
         # specifically, this is the `updated` property of Cloud Storage objects, the `
         # LastModified` field of S3 objects, and the `Last-Modified` header of Azure
-        # blobs. Transfers with a PosixFilesystem source or destination don't support `
+        # blobs. For S3 objects, the `LastModified` value is the time the object begins
+        # uploading. If the object meets your "last modification time" criteria, but has
+        # not finished uploading, the object is not transferred. See [Transfer from
+        # Amazon S3 to Cloud Storage](https://cloud.google.com/storage-transfer/docs/
+        # create-transfers/agentless/s3#transfer_options) for more information.
+        # Transfers with a PosixFilesystem source or destination don't support `
         # ObjectConditions`.
         # Corresponds to the JSON property `objectConditions`
         # @return [Google::Apis::StoragetransferV1::ObjectConditions]
@@ -1576,6 +1637,20 @@ module Google
         # @return [Google::Apis::StoragetransferV1::Schedule]
         attr_accessor :schedule
       
+        # Optional. The service account to be used to access resources in the consumer
+        # project in the transfer job. We accept `email` or `uniqueId` for the service
+        # account. Service account format is projects/-/serviceAccounts/`
+        # ACCOUNT_EMAIL_OR_UNIQUEID` See https://cloud.google.com/iam/docs/reference/
+        # credentials/rest/v1/projects.serviceAccounts/generateAccessToken#path-
+        # parameters for details. Caller requires the following IAM permission on the
+        # specified service account: `iam.serviceAccounts.actAs`. project-PROJECT_NUMBER@
+        # storage-transfer-service.iam.gserviceaccount.com requires the following IAM
+        # permission on the specified service account: `iam.serviceAccounts.
+        # getAccessToken`
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
         # Status of the job. This value MUST be specified for `CreateTransferJobRequests`
         # . **Note:** The effect of the new job status takes place during a subsequent
         # job run. For example, if you change the job status from ENABLED to DISABLED,
@@ -1608,6 +1683,7 @@ module Google
           @project_id = args[:project_id] if args.key?(:project_id)
           @replication_spec = args[:replication_spec] if args.key?(:replication_spec)
           @schedule = args[:schedule] if args.key?(:schedule)
+          @service_account = args[:service_account] if args.key?(:service_account)
           @status = args[:status] if args.key?(:status)
           @transfer_spec = args[:transfer_spec] if args.key?(:transfer_spec)
         end
@@ -1864,7 +1940,12 @@ module Google
         # refers to the time of the last change to the object's content or metadata —
         # specifically, this is the `updated` property of Cloud Storage objects, the `
         # LastModified` field of S3 objects, and the `Last-Modified` header of Azure
-        # blobs. Transfers with a PosixFilesystem source or destination don't support `
+        # blobs. For S3 objects, the `LastModified` value is the time the object begins
+        # uploading. If the object meets your "last modification time" criteria, but has
+        # not finished uploading, the object is not transferred. See [Transfer from
+        # Amazon S3 to Cloud Storage](https://cloud.google.com/storage-transfer/docs/
+        # create-transfers/agentless/s3#transfer_options) for more information.
+        # Transfers with a PosixFilesystem source or destination don't support `
         # ObjectConditions`.
         # Corresponds to the JSON property `objectConditions`
         # @return [Google::Apis::StoragetransferV1::ObjectConditions]

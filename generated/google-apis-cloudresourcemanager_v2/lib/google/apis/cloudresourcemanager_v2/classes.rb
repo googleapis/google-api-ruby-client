@@ -513,6 +513,12 @@ module Google
       class Folder
         include Google::Apis::Core::Hashable
       
+        # Output only. Optional capabilities configured for this folder (via
+        # UpdateCapability API). Example: `folders/123/capabilities/app-management`.
+        # Corresponds to the JSON property `configuredCapabilities`
+        # @return [Array<String>]
+        attr_accessor :configured_capabilities
+      
         # Output only. Timestamp when the Folder was created. Assigned by the server.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -533,6 +539,12 @@ module Google
         # Corresponds to the JSON property `lifecycleState`
         # @return [String]
         attr_accessor :lifecycle_state
+      
+        # Output only. Management Project associated with this folder (if app-management
+        # capability is enabled). Example: `projects/google-mp-123` OUTPUT ONLY.
+        # Corresponds to the JSON property `managementProject`
+        # @return [String]
+        attr_accessor :management_project
       
         # Output only. The resource name of the Folder. Its format is `folders/`
         # folder_id``, for example: "folders/1234".
@@ -560,9 +572,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @configured_capabilities = args[:configured_capabilities] if args.key?(:configured_capabilities)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
+          @management_project = args[:management_project] if args.key?(:management_project)
           @name = args[:name] if args.key?(:name)
           @parent = args[:parent] if args.key?(:parent)
           @tags = args[:tags] if args.key?(:tags)

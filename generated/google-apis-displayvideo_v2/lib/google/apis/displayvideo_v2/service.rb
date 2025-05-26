@@ -244,10 +244,10 @@ module Google
         #   Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/
         #   filters) guide for more information.
         # @param [String] order_by
-        #   Field by which to sort the list. Acceptable values are: * `displayName` (
-        #   default) * `entityStatus` * `updateTime` The default sorting order is
-        #   ascending. To specify descending order for a field, a suffix "desc" should be
-        #   added to the field name. For example, `displayName desc`.
+        #   Field by which to sort the list. Acceptable values are: * `advertiserId` (
+        #   default) * `displayName` * `entityStatus` * `updateTime` The default sorting
+        #   order is ascending. To specify descending order for a field, a suffix "desc"
+        #   should be added to the field name. For example, `displayName desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `200`. If unspecified will
         #   default to `100`.
@@ -3396,7 +3396,8 @@ module Google
         #   targeting types: * `TARGETING_TYPE_CHANNEL` * `
         #   TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `
         #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` *
-        #   `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD`
+        #   `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD` * `
+        #   TARGETING_TYPE_CONTENT_THEME_EXCLUSION`
         # @param [String] assigned_targeting_option_id
         #   Required. An identifier unique to the targeting type in this advertiser that
         #   identifies the assigned targeting option being requested.
@@ -3437,7 +3438,8 @@ module Google
         #   targeting types: * `TARGETING_TYPE_CHANNEL` * `
         #   TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `
         #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` *
-        #   `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD`
+        #   `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD` * `
+        #   TARGETING_TYPE_CONTENT_THEME_EXCLUSION`
         # @param [String] filter
         #   Allows filtering by assigned targeting option fields. Supported syntax: *
         #   Filter expressions are made up of one or more restrictions. * Restrictions can
@@ -4099,10 +4101,8 @@ module Google
         end
         
         # Updates an existing custom bidding algorithm. Returns the updated custom
-        # bidding algorithm if successful. *Warning*: Starting **April 1, 2025**,
-        # requests updating custom bidding algorithms that are assigned to line items
-        # will return an error. [Read more about this announced change](/display-video/
-        # api/deprecations#features.custom_bidding_floodlight).
+        # bidding algorithm if successful. Requests updating a custom bidding algorithm
+        # assigned to a line item will return an error.
         # @param [Fixnum] custom_bidding_algorithm_id
         #   Output only. The unique ID of the custom bidding algorithm. Assigned by the
         #   system.
@@ -4180,10 +4180,8 @@ module Google
         end
         
         # Creates a new custom bidding script. Returns the newly created script if
-        # successful. *Warning*: Starting **April 1, 2025**, requests updating custom
-        # bidding algorithms that are assigned to line items will return an error. [Read
-        # more about this announced change](/display-video/api/deprecations#features.
-        # custom_bidding_floodlight).
+        # successful. Requests creating a custom bidding script under an algorithm
+        # assigned to a line item will return an error.
         # @param [Fixnum] custom_bidding_algorithm_id
         #   Required. The ID of the custom bidding algorithm that owns the script.
         # @param [Google::Apis::DisplayvideoV2::CustomBiddingScript] custom_bidding_script_object
@@ -6294,8 +6292,8 @@ module Google
         # SdfDownloadTaskMetadata. If the request is successful, the response type of
         # the operation is SdfDownloadTask. The response will not include the download
         # files, which must be retrieved with media.download. The state of operation can
-        # be retrieved with sdfdownloadtask.operations.get. Any errors can be found in
-        # the error.message. Note that error.details is expected to be empty.
+        # be retrieved with `sdfdownloadtasks.operations.get`. Any errors can be found
+        # in the error.message. Note that error.details is expected to be empty.
         # @param [Google::Apis::DisplayvideoV2::CreateSdfDownloadTaskRequest] create_sdf_download_task_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

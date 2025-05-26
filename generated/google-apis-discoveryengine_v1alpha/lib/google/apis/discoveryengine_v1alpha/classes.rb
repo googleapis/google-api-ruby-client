@@ -1665,6 +1665,87 @@ module Google
         end
       end
       
+      # The specification for answer generation.
+      class GoogleCloudDiscoveryengineV1AnswerGenerationSpec
+        include Google::Apis::Core::Hashable
+      
+        # The specification for user defined classifier.
+        # Corresponds to the JSON property `userDefinedClassifierSpec`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1AnswerGenerationSpecUserDefinedClassifierSpec]
+        attr_accessor :user_defined_classifier_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @user_defined_classifier_spec = args[:user_defined_classifier_spec] if args.key?(:user_defined_classifier_spec)
+        end
+      end
+      
+      # The specification for user defined classifier.
+      class GoogleCloudDiscoveryengineV1AnswerGenerationSpecUserDefinedClassifierSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether or not to enable and include user defined classifier.
+        # Corresponds to the JSON property `enableUserDefinedClassifier`
+        # @return [Boolean]
+        attr_accessor :enable_user_defined_classifier
+        alias_method :enable_user_defined_classifier?, :enable_user_defined_classifier
+      
+        # Optional. The model id to be used for the user defined classifier.
+        # Corresponds to the JSON property `modelId`
+        # @return [String]
+        attr_accessor :model_id
+      
+        # Optional. The preamble to be used for the user defined classifier.
+        # Corresponds to the JSON property `preamble`
+        # @return [String]
+        attr_accessor :preamble
+      
+        # Optional. The seed value to be used for the user defined classifier.
+        # Corresponds to the JSON property `seed`
+        # @return [Fixnum]
+        attr_accessor :seed
+      
+        # Optional. The task marker to be used for the user defined classifier.
+        # Corresponds to the JSON property `taskMarker`
+        # @return [String]
+        attr_accessor :task_marker
+      
+        # Optional. The temperature value to be used for the user defined classifier.
+        # Corresponds to the JSON property `temperature`
+        # @return [Float]
+        attr_accessor :temperature
+      
+        # Optional. The top-k value to be used for the user defined classifier.
+        # Corresponds to the JSON property `topK`
+        # @return [Fixnum]
+        attr_accessor :top_k
+      
+        # Optional. The top-p value to be used for the user defined classifier.
+        # Corresponds to the JSON property `topP`
+        # @return [Float]
+        attr_accessor :top_p
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_user_defined_classifier = args[:enable_user_defined_classifier] if args.key?(:enable_user_defined_classifier)
+          @model_id = args[:model_id] if args.key?(:model_id)
+          @preamble = args[:preamble] if args.key?(:preamble)
+          @seed = args[:seed] if args.key?(:seed)
+          @task_marker = args[:task_marker] if args.key?(:task_marker)
+          @temperature = args[:temperature] if args.key?(:temperature)
+          @top_k = args[:top_k] if args.key?(:top_k)
+          @top_p = args[:top_p] if args.key?(:top_p)
+        end
+      end
+      
       # Metadata related to the progress of the SiteSearchEngineService.
       # BatchCreateTargetSites operation. This will be returned by the google.
       # longrunning.Operation.metadata field.
@@ -2420,10 +2501,10 @@ module Google
         # @return [String]
         attr_accessor :kms_key_name
       
-        # Immutable. The full resource name of the data store. Format: `projects/`
-        # project`/locations/`location`/collections/`collection_id`/dataStores/`
-        # data_store_id``. This field must be a UTF-8 encoded string with a length limit
-        # of 1024 characters.
+        # Immutable. Identifier. The full resource name of the data store. Format: `
+        # projects/`project`/locations/`location`/collections/`collection_id`/dataStores/
+        # `data_store_id``. This field must be a UTF-8 encoded string with a length
+        # limit of 1024 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2532,7 +2613,8 @@ module Google
       class GoogleCloudDiscoveryengineV1DataStoreServingConfigDataStore
         include Google::Apis::Core::Hashable
       
-        # If set true, the DataStore will not be available for serving search requests.
+        # Optional. If set true, the DataStore will not be available for serving search
+        # requests.
         # Corresponds to the JSON property `disabledForServing`
         # @return [Boolean]
         attr_accessor :disabled_for_serving
@@ -2940,6 +3022,27 @@ module Google
         attr_accessor :enable_table_annotation
         alias_method :enable_table_annotation?, :enable_table_annotation
       
+        # Optional. List of HTML classes to exclude from the parsed content.
+        # Corresponds to the JSON property `excludeHtmlClasses`
+        # @return [Array<String>]
+        attr_accessor :exclude_html_classes
+      
+        # Optional. List of HTML elements to exclude from the parsed content.
+        # Corresponds to the JSON property `excludeHtmlElements`
+        # @return [Array<String>]
+        attr_accessor :exclude_html_elements
+      
+        # Optional. List of HTML ids to exclude from the parsed content.
+        # Corresponds to the JSON property `excludeHtmlIds`
+        # @return [Array<String>]
+        attr_accessor :exclude_html_ids
+      
+        # Optional. Contains the required structure types to extract from the document.
+        # Supported values: * `shareholder-structure`
+        # Corresponds to the JSON property `structuredContentTypes`
+        # @return [Array<String>]
+        attr_accessor :structured_content_types
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2948,6 +3051,10 @@ module Google
         def update!(**args)
           @enable_image_annotation = args[:enable_image_annotation] if args.key?(:enable_image_annotation)
           @enable_table_annotation = args[:enable_table_annotation] if args.key?(:enable_table_annotation)
+          @exclude_html_classes = args[:exclude_html_classes] if args.key?(:exclude_html_classes)
+          @exclude_html_elements = args[:exclude_html_elements] if args.key?(:exclude_html_elements)
+          @exclude_html_ids = args[:exclude_html_ids] if args.key?(:exclude_html_ids)
+          @structured_content_types = args[:structured_content_types] if args.key?(:structured_content_types)
         end
       end
       
@@ -3045,12 +3152,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and
-        # SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at
-        # most one data store. If solution_type is SOLUTION_TYPE_CHAT, multiple
-        # DataStores in the same Collection can be associated here. Note that when used
-        # in CreateEngineRequest, one DataStore id must be provided as the system will
-        # use it for necessary initializations.
+        # Optional. The data stores associated with this engine. For
+        # SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type of engines, they
+        # can only associate with at most one data store. If solution_type is
+        # SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be
+        # associated here. Note that when used in CreateEngineRequest, one DataStore id
+        # must be provided as the system will use it for necessary initializations.
         # Corresponds to the JSON property `dataStoreIds`
         # @return [Array<String>]
         attr_accessor :data_store_ids
@@ -3067,18 +3174,32 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The industry vertical that the engine registers. The restriction of the Engine
-        # industry vertical is based on DataStore: Vertical on Engine has to match
-        # vertical of the DataStore linked to the engine.
+        # Optional. Feature config for the engine to opt in or opt out of features.
+        # Supported keys: * `*`: all features, if it's present, all other feature state
+        # settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-
+        # gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-
+        # org-chart` * `bi-directional-audio` * `feedback`
+        # Corresponds to the JSON property `features`
+        # @return [Hash<String,String>]
+        attr_accessor :features
+      
+        # Optional. The industry vertical that the engine registers. The restriction of
+        # the Engine industry vertical is based on DataStore: Vertical on Engine has to
+        # match vertical of the DataStore linked to the engine.
         # Corresponds to the JSON property `industryVertical`
         # @return [String]
         attr_accessor :industry_vertical
       
-        # Immutable. The fully qualified resource name of the engine. This field must be
-        # a UTF-8 encoded string with a length limit of 1024 characters. Format: `
-        # projects/`project`/locations/`location`/collections/`collection`/engines/`
-        # engine`` engine should be 1-63 characters, and valid characters are /a-z0-9*/.
-        # Otherwise, an INVALID_ARGUMENT error is returned.
+        # Additional config specs for a Media Recommendation engine.
+        # Corresponds to the JSON property `mediaRecommendationEngineConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig]
+        attr_accessor :media_recommendation_engine_config
+      
+        # Immutable. Identifier. The fully qualified resource name of the engine. This
+        # field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        # Format: `projects/`project`/locations/`location`/collections/`collection`/
+        # engines/`engine`` engine should be 1-63 characters, and valid characters are /
+        # a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3111,7 +3232,9 @@ module Google
           @data_store_ids = args[:data_store_ids] if args.key?(:data_store_ids)
           @disable_analytics = args[:disable_analytics] if args.key?(:disable_analytics)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @features = args[:features] if args.key?(:features)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
+          @media_recommendation_engine_config = args[:media_recommendation_engine_config] if args.key?(:media_recommendation_engine_config)
           @name = args[:name] if args.key?(:name)
           @search_engine_config = args[:search_engine_config] if args.key?(:search_engine_config)
           @solution_type = args[:solution_type] if args.key?(:solution_type)
@@ -3250,6 +3373,157 @@ module Google
         # Update properties of this object
         def update!(**args)
           @company_name = args[:company_name] if args.key?(:company_name)
+        end
+      end
+      
+      # Additional config specs for a Media Recommendation engine.
+      class GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig
+        include Google::Apis::Core::Hashable
+      
+        # More feature configs of the selected engine type.
+        # Corresponds to the JSON property `engineFeaturesConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigEngineFeaturesConfig]
+        attr_accessor :engine_features_config
+      
+        # The optimization objective. e.g., `cvr`. This field together with
+        # optimization_objective describe engine metadata to use to control engine
+        # training and serving. Currently supported values: `ctr`, `cvr`. If not
+        # specified, we choose default based on engine type. Default depends on type of
+        # recommendation: `recommended-for-you` => `ctr` `others-you-may-like` => `ctr`
+        # Corresponds to the JSON property `optimizationObjective`
+        # @return [String]
+        attr_accessor :optimization_objective
+      
+        # Custom threshold for `cvr` optimization_objective.
+        # Corresponds to the JSON property `optimizationObjectiveConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigOptimizationObjectiveConfig]
+        attr_accessor :optimization_objective_config
+      
+        # The training state that the engine is in (e.g. `TRAINING` or `PAUSED`). Since
+        # part of the cost of running the service is frequency of training - this can be
+        # used to determine when to train engine in order to control cost. If not
+        # specified: the default value for `CreateEngine` method is `TRAINING`. The
+        # default value for `UpdateEngine` method is to keep the state the same as
+        # before.
+        # Corresponds to the JSON property `trainingState`
+        # @return [String]
+        attr_accessor :training_state
+      
+        # Required. The type of engine. e.g., `recommended-for-you`. This field together
+        # with optimization_objective describe engine metadata to use to control engine
+        # training and serving. Currently supported values: `recommended-for-you`, `
+        # others-you-may-like`, `more-like-this`, `most-popular-items`.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @engine_features_config = args[:engine_features_config] if args.key?(:engine_features_config)
+          @optimization_objective = args[:optimization_objective] if args.key?(:optimization_objective)
+          @optimization_objective_config = args[:optimization_objective_config] if args.key?(:optimization_objective_config)
+          @training_state = args[:training_state] if args.key?(:training_state)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # More feature configs of the selected engine type.
+      class GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigEngineFeaturesConfig
+        include Google::Apis::Core::Hashable
+      
+        # Feature configurations that are required for creating a Most Popular engine.
+        # Corresponds to the JSON property `mostPopularConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigMostPopularFeatureConfig]
+        attr_accessor :most_popular_config
+      
+        # Additional feature configurations for creating a `recommended-for-you` engine.
+        # Corresponds to the JSON property `recommendedForYouConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig]
+        attr_accessor :recommended_for_you_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @most_popular_config = args[:most_popular_config] if args.key?(:most_popular_config)
+          @recommended_for_you_config = args[:recommended_for_you_config] if args.key?(:recommended_for_you_config)
+        end
+      end
+      
+      # Feature configurations that are required for creating a Most Popular engine.
+      class GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigMostPopularFeatureConfig
+        include Google::Apis::Core::Hashable
+      
+        # The time window of which the engine is queried at training and prediction time.
+        # Positive integers only. The value translates to the last X days of events.
+        # Currently required for the `most-popular-items` engine.
+        # Corresponds to the JSON property `timeWindowDays`
+        # @return [Fixnum]
+        attr_accessor :time_window_days
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @time_window_days = args[:time_window_days] if args.key?(:time_window_days)
+        end
+      end
+      
+      # Custom threshold for `cvr` optimization_objective.
+      class GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigOptimizationObjectiveConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the field to target. Currently supported values: `watch-
+        # percentage`, `watch-time`.
+        # Corresponds to the JSON property `targetField`
+        # @return [String]
+        attr_accessor :target_field
+      
+        # Required. The threshold to be applied to the target (e.g., 0.5).
+        # Corresponds to the JSON property `targetFieldValueFloat`
+        # @return [Float]
+        attr_accessor :target_field_value_float
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_field = args[:target_field] if args.key?(:target_field)
+          @target_field_value_float = args[:target_field_value_float] if args.key?(:target_field_value_float)
+        end
+      end
+      
+      # Additional feature configurations for creating a `recommended-for-you` engine.
+      class GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig
+        include Google::Apis::Core::Hashable
+      
+        # The type of event with which the engine is queried at prediction time. If set
+        # to `generic`, only `view-item`, `media-play`,and `media-complete` will be used
+        # as `context-event` in engine training. If set to `view-home-page`, `view-home-
+        # page` will also be used as `context-events` in addition to `view-item`, `media-
+        # play`, and `media-complete`. Currently supported for the `recommended-for-you`
+        # engine. Currently supported values: `view-home-page`, `generic`.
+        # Corresponds to the JSON property `contextEventType`
+        # @return [String]
+        attr_accessor :context_event_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_event_type = args[:context_event_type] if args.key?(:context_event_type)
         end
       end
       
@@ -4375,6 +4649,11 @@ module Google
       class GoogleCloudDiscoveryengineV1ServingConfig
         include Google::Apis::Core::Hashable
       
+        # The specification for answer generation.
+        # Corresponds to the JSON property `answerGenerationSpec`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1AnswerGenerationSpec]
+        attr_accessor :answer_generation_spec
+      
         # Boost controls to use in serving path. All triggered boost controls will be
         # applied. Boost controls must be in the same data store as the serving config.
         # Maximum of 20 boost controls.
@@ -4531,6 +4810,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @answer_generation_spec = args[:answer_generation_spec] if args.key?(:answer_generation_spec)
           @boost_control_ids = args[:boost_control_ids] if args.key?(:boost_control_ids)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -5111,6 +5391,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequestBoostSpec]
         attr_accessor :boost_spec
       
+        # Optional. Experiment ids for this request.
+        # Corresponds to the JSON property `experimentIds`
+        # @return [Array<String>]
+        attr_accessor :experiment_ids
+      
         # Indicates if tail suggestions should be returned if there are no suggestions
         # that match the full query. Even if set to true, if there are suggestions that
         # match the full query, those are returned and no tail suggestions are returned.
@@ -5178,6 +5463,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @boost_spec = args[:boost_spec] if args.key?(:boost_spec)
+          @experiment_ids = args[:experiment_ids] if args.key?(:experiment_ids)
           @include_tail_suggestions = args[:include_tail_suggestions] if args.key?(:include_tail_suggestions)
           @query = args[:query] if args.key?(:query)
           @query_model = args[:query_model] if args.key?(:query_model)
@@ -5844,6 +6130,87 @@ module Google
         # Update properties of this object
         def update!(**args)
           @reference_id = args[:reference_id] if args.key?(:reference_id)
+        end
+      end
+      
+      # The specification for answer generation.
+      class GoogleCloudDiscoveryengineV1alphaAnswerGenerationSpec
+        include Google::Apis::Core::Hashable
+      
+        # The specification for user defined classifier.
+        # Corresponds to the JSON property `userDefinedClassifierSpec`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerGenerationSpecUserDefinedClassifierSpec]
+        attr_accessor :user_defined_classifier_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @user_defined_classifier_spec = args[:user_defined_classifier_spec] if args.key?(:user_defined_classifier_spec)
+        end
+      end
+      
+      # The specification for user defined classifier.
+      class GoogleCloudDiscoveryengineV1alphaAnswerGenerationSpecUserDefinedClassifierSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether or not to enable and include user defined classifier.
+        # Corresponds to the JSON property `enableUserDefinedClassifier`
+        # @return [Boolean]
+        attr_accessor :enable_user_defined_classifier
+        alias_method :enable_user_defined_classifier?, :enable_user_defined_classifier
+      
+        # Optional. The model id to be used for the user defined classifier.
+        # Corresponds to the JSON property `modelId`
+        # @return [String]
+        attr_accessor :model_id
+      
+        # Optional. The preamble to be used for the user defined classifier.
+        # Corresponds to the JSON property `preamble`
+        # @return [String]
+        attr_accessor :preamble
+      
+        # Optional. The seed value to be used for the user defined classifier.
+        # Corresponds to the JSON property `seed`
+        # @return [Fixnum]
+        attr_accessor :seed
+      
+        # Optional. The task marker to be used for the user defined classifier.
+        # Corresponds to the JSON property `taskMarker`
+        # @return [String]
+        attr_accessor :task_marker
+      
+        # Optional. The temperature value to be used for the user defined classifier.
+        # Corresponds to the JSON property `temperature`
+        # @return [Float]
+        attr_accessor :temperature
+      
+        # Optional. The top-k value to be used for the user defined classifier.
+        # Corresponds to the JSON property `topK`
+        # @return [Fixnum]
+        attr_accessor :top_k
+      
+        # Optional. The top-p value to be used for the user defined classifier.
+        # Corresponds to the JSON property `topP`
+        # @return [Float]
+        attr_accessor :top_p
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_user_defined_classifier = args[:enable_user_defined_classifier] if args.key?(:enable_user_defined_classifier)
+          @model_id = args[:model_id] if args.key?(:model_id)
+          @preamble = args[:preamble] if args.key?(:preamble)
+          @seed = args[:seed] if args.key?(:seed)
+          @task_marker = args[:task_marker] if args.key?(:task_marker)
+          @temperature = args[:temperature] if args.key?(:temperature)
+          @top_k = args[:top_k] if args.key?(:top_k)
+          @top_p = args[:top_p] if args.key?(:top_p)
         end
       end
       
@@ -7496,6 +7863,131 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the UserLicenseService.
+      # BatchUpdateUserLicenses operation. This will be returned by the google.
+      # longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Count of user licenses that failed to be updated.
+        # Corresponds to the JSON property `failureCount`
+        # @return [Fixnum]
+        attr_accessor :failure_count
+      
+        # Count of user licenses successfully updated.
+        # Corresponds to the JSON property `successCount`
+        # @return [Fixnum]
+        attr_accessor :success_count
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @failure_count = args[:failure_count] if args.key?(:failure_count)
+          @success_count = args[:success_count] if args.key?(:success_count)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Request message for UserLicenseService.BatchUpdateUserLicenses method.
+      class GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, if user licenses removed associated license config, the
+        # user license will be deleted. By default which is false, the user license will
+        # be updated to unassigned state.
+        # Corresponds to the JSON property `deleteUnassignedUserLicenses`
+        # @return [Boolean]
+        attr_accessor :delete_unassigned_user_licenses
+        alias_method :delete_unassigned_user_licenses?, :delete_unassigned_user_licenses
+      
+        # Cloud Storage location for input content.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGcsSource]
+        attr_accessor :gcs_source
+      
+        # The inline source for the input config for BatchUpdateUserLicenses method.
+        # Corresponds to the JSON property `inlineSource`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesRequestInlineSource]
+        attr_accessor :inline_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delete_unassigned_user_licenses = args[:delete_unassigned_user_licenses] if args.key?(:delete_unassigned_user_licenses)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+          @inline_source = args[:inline_source] if args.key?(:inline_source)
+        end
+      end
+      
+      # The inline source for the input config for BatchUpdateUserLicenses method.
+      class GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesRequestInlineSource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The list of fields to update.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        # Required. A list of user licenses to update. Each user license must have a
+        # valid UserLicense.user_principal.
+        # Corresponds to the JSON property `userLicenses`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaUserLicense>]
+        attr_accessor :user_licenses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+          @user_licenses = args[:user_licenses] if args.key?(:user_licenses)
+        end
+      end
+      
+      # Response message for UserLicenseService.BatchUpdateUserLicenses method.
+      class GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        # UserLicenses successfully updated.
+        # Corresponds to the JSON property `userLicenses`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaUserLicense>]
+        attr_accessor :user_licenses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
+          @user_licenses = args[:user_licenses] if args.key?(:user_licenses)
+        end
+      end
+      
       # Request message for SiteSearchEngineService.BatchVerifyTargetSites method.
       class GoogleCloudDiscoveryengineV1alphaBatchVerifyTargetSitesRequest
         include Google::Apis::Core::Hashable
@@ -7882,6 +8374,13 @@ module Google
         attr_accessor :grounding_check_required
         alias_method :grounding_check_required?, :grounding_check_required
       
+        # Confidence score for the claim in the answer candidate, in the range of [0, 1].
+        # This is set only when `CheckGroundingRequest.grounding_spec.
+        # enable_claim_level_score` is true.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
         # Position indicating the start of the claim in the answer candidate, measured
         # in bytes. Note that this is not measured in characters and, therefore, must be
         # rendered in the user interface keeping in mind that some characters may take
@@ -7903,6 +8402,7 @@ module Google
           @claim_text = args[:claim_text] if args.key?(:claim_text)
           @end_pos = args[:end_pos] if args.key?(:end_pos)
           @grounding_check_required = args[:grounding_check_required] if args.key?(:grounding_check_required)
+          @score = args[:score] if args.key?(:score)
           @start_pos = args[:start_pos] if args.key?(:start_pos)
         end
       end
@@ -7920,6 +8420,12 @@ module Google
         # @return [Float]
         attr_accessor :citation_threshold
       
+        # The control flag that enables claim-level grounding score in the response.
+        # Corresponds to the JSON property `enableClaimLevelScore`
+        # @return [Boolean]
+        attr_accessor :enable_claim_level_score
+        alias_method :enable_claim_level_score?, :enable_claim_level_score
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7927,6 +8433,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @citation_threshold = args[:citation_threshold] if args.key?(:citation_threshold)
+          @enable_claim_level_score = args[:enable_claim_level_score] if args.key?(:enable_claim_level_score)
         end
       end
       
@@ -8082,6 +8589,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :annotation_contents
       
+        # Output only. The annotation metadata includes structured content in the
+        # current chunk.
+        # Corresponds to the JSON property `annotationMetadata`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunkAnnotationMetadata>]
+        attr_accessor :annotation_metadata
+      
         # Metadata of the current chunk. This field is only populated on SearchService.
         # Search API.
         # Corresponds to the JSON property `chunkMetadata`
@@ -8144,6 +8657,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotation_contents = args[:annotation_contents] if args.key?(:annotation_contents)
+          @annotation_metadata = args[:annotation_metadata] if args.key?(:annotation_metadata)
           @chunk_metadata = args[:chunk_metadata] if args.key?(:chunk_metadata)
           @content = args[:content] if args.key?(:content)
           @data_urls = args[:data_urls] if args.key?(:data_urls)
@@ -8153,6 +8667,32 @@ module Google
           @name = args[:name] if args.key?(:name)
           @page_span = args[:page_span] if args.key?(:page_span)
           @relevance_score = args[:relevance_score] if args.key?(:relevance_score)
+        end
+      end
+      
+      # The annotation metadata includes structured content in the current chunk.
+      class GoogleCloudDiscoveryengineV1alphaChunkAnnotationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Image id is provided if the structured content is based on an
+        # image.
+        # Corresponds to the JSON property `imageId`
+        # @return [String]
+        attr_accessor :image_id
+      
+        # The structured content information.
+        # Corresponds to the JSON property `structuredContent`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunkStructuredContent]
+        attr_accessor :structured_content
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_id = args[:image_id] if args.key?(:image_id)
+          @structured_content = args[:structured_content] if args.key?(:structured_content)
         end
       end
       
@@ -8241,6 +8781,31 @@ module Google
         def update!(**args)
           @page_end = args[:page_end] if args.key?(:page_end)
           @page_start = args[:page_start] if args.key?(:page_start)
+        end
+      end
+      
+      # The structured content information.
+      class GoogleCloudDiscoveryengineV1alphaChunkStructuredContent
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The content of the structured content.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # Output only. The structure type of the structured content.
+        # Corresponds to the JSON property `structureType`
+        # @return [String]
+        attr_accessor :structure_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @structure_type = args[:structure_type] if args.key?(:structure_type)
         end
       end
       
@@ -8747,7 +9312,7 @@ module Google
         attr_accessor :errors
       
         # The number of documents extracted from connector source, ready to be ingested
-        # to UCS.
+        # to VAIS.
         # Corresponds to the JSON property `extractedRecordCount`
         # @return [Fixnum]
         attr_accessor :extracted_record_count
@@ -8761,6 +9326,12 @@ module Google
         # Corresponds to the JSON property `progress`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRunProgress]
         attr_accessor :progress
+      
+        # The number of documents scheduled to be crawled/extracted from connector
+        # source. This only applies to third party connectors.
+        # Corresponds to the JSON property `scheduledRecordCount`
+        # @return [Fixnum]
+        attr_accessor :scheduled_record_count
       
         # The number of requests sent to 3p API.
         # Corresponds to the JSON property `sourceApiRequestCount`
@@ -8801,6 +9372,7 @@ module Google
           @extracted_record_count = args[:extracted_record_count] if args.key?(:extracted_record_count)
           @indexed_record_count = args[:indexed_record_count] if args.key?(:indexed_record_count)
           @progress = args[:progress] if args.key?(:progress)
+          @scheduled_record_count = args[:scheduled_record_count] if args.key?(:scheduled_record_count)
           @source_api_request_count = args[:source_api_request_count] if args.key?(:source_api_request_count)
           @state = args[:state] if args.key?(:state)
           @state_update_time = args[:state_update_time] if args.key?(:state_update_time)
@@ -9723,6 +10295,13 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaDataConnector
         include Google::Apis::Core::Hashable
       
+        # Optional. Whether the connector will be created with an ACL config. Currently
+        # this field only affects Cloud Storage and BigQuery connectors.
+        # Corresponds to the JSON property `aclEnabled`
+        # @return [Boolean]
+        attr_accessor :acl_enabled
+        alias_method :acl_enabled?, :acl_enabled
+      
         # Informations to support actions on the connector.
         # Corresponds to the JSON property `actionConfig`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaActionConfig]
@@ -9733,8 +10312,10 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAlertPolicyConfig>]
         attr_accessor :alert_policy_configs
       
-        # Indicates whether the connector is disabled for auto run. It can be used to
-        # pause periodical and real time sync.
+        # Optional. Indicates whether the connector is disabled for auto run. It can be
+        # used to pause periodical and real time sync. Update: with the introduction of
+        # incremental_sync_disabled, auto_run_disabled is used to pause/disable only
+        # full syncs
         # Corresponds to the JSON property `autoRunDisabled`
         # @return [Boolean]
         attr_accessor :auto_run_disabled
@@ -9751,12 +10332,24 @@ module Google
         # @return [Array<String>]
         attr_accessor :blocking_reasons
       
+        # Optional. The modes enabled for this connector. Default state is
+        # CONNECTOR_MODE_UNSPECIFIED.
+        # Corresponds to the JSON property `connectorModes`
+        # @return [Array<String>]
+        attr_accessor :connector_modes
+      
         # Output only. The type of connector. Each source can only map to one type. For
         # example, salesforce, confluence and jira have THIRD_PARTY connector type. It
-        # is notmutable once set by system.
+        # is not mutable once set by system.
         # Corresponds to the JSON property `connectorType`
         # @return [String]
         attr_accessor :connector_type
+      
+        # Optional. Whether the END USER AUTHENTICATION connector is created in SaaS.
+        # Corresponds to the JSON property `createEuaSaas`
+        # @return [Boolean]
+        attr_accessor :create_eua_saas
+        alias_method :create_eua_saas?, :create_eua_saas
       
         # Output only. Timestamp the DataConnector was created at.
         # Corresponds to the JSON property `createTime`
@@ -9773,6 +10366,11 @@ module Google
         # Corresponds to the JSON property `destinationConfigs`
         # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDestinationConfig>]
         attr_accessor :destination_configs
+      
+        # Any params and credentials used specifically for EUA connectors.
+        # Corresponds to the JSON property `endUserConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataConnectorEndUserConfig]
+        attr_accessor :end_user_config
       
         # List of entities from the connected data source to ingest.
         # Corresponds to the JSON property `entities`
@@ -9796,6 +10394,20 @@ module Google
         # Corresponds to the JSON property `identityScheduleConfig`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaIdentityScheduleConfig]
         attr_accessor :identity_schedule_config
+      
+        # Optional. The refresh interval specifically for incremental data syncs. If
+        # unset, incremental syncs will use the default from env, set to 3hrs. The
+        # minimum is 30 minutes and maximum is 7 days.
+        # Corresponds to the JSON property `incrementalRefreshInterval`
+        # @return [String]
+        attr_accessor :incremental_refresh_interval
+      
+        # Optional. Indicates whether incremental syncs are paused for this connector.
+        # This is independent of auto_run_disabled.
+        # Corresponds to the JSON property `incrementalSyncDisabled`
+        # @return [Boolean]
+        attr_accessor :incremental_sync_disabled
+        alias_method :incremental_sync_disabled?, :incremental_sync_disabled
       
         # Input only. The KMS key to be used to protect the DataStores managed by this
         # connector. Must be set for requests that need to comply with CMEK Org Policy
@@ -9927,19 +10539,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @acl_enabled = args[:acl_enabled] if args.key?(:acl_enabled)
           @action_config = args[:action_config] if args.key?(:action_config)
           @alert_policy_configs = args[:alert_policy_configs] if args.key?(:alert_policy_configs)
           @auto_run_disabled = args[:auto_run_disabled] if args.key?(:auto_run_disabled)
           @bap_config = args[:bap_config] if args.key?(:bap_config)
           @blocking_reasons = args[:blocking_reasons] if args.key?(:blocking_reasons)
+          @connector_modes = args[:connector_modes] if args.key?(:connector_modes)
           @connector_type = args[:connector_type] if args.key?(:connector_type)
+          @create_eua_saas = args[:create_eua_saas] if args.key?(:create_eua_saas)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_source = args[:data_source] if args.key?(:data_source)
           @destination_configs = args[:destination_configs] if args.key?(:destination_configs)
+          @end_user_config = args[:end_user_config] if args.key?(:end_user_config)
           @entities = args[:entities] if args.key?(:entities)
           @errors = args[:errors] if args.key?(:errors)
           @identity_refresh_interval = args[:identity_refresh_interval] if args.key?(:identity_refresh_interval)
           @identity_schedule_config = args[:identity_schedule_config] if args.key?(:identity_schedule_config)
+          @incremental_refresh_interval = args[:incremental_refresh_interval] if args.key?(:incremental_refresh_interval)
+          @incremental_sync_disabled = args[:incremental_sync_disabled] if args.key?(:incremental_sync_disabled)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @last_sync_time = args[:last_sync_time] if args.key?(:last_sync_time)
           @latest_pause_time = args[:latest_pause_time] if args.key?(:latest_pause_time)
@@ -9955,6 +10573,31 @@ module Google
           @static_ip_enabled = args[:static_ip_enabled] if args.key?(:static_ip_enabled)
           @sync_mode = args[:sync_mode] if args.key?(:sync_mode)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Any params and credentials used specifically for EUA connectors.
+      class GoogleCloudDiscoveryengineV1alphaDataConnectorEndUserConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Any additional parameters needed for EUA.
+        # Corresponds to the JSON property `additionalParams`
+        # @return [Hash<String,Object>]
+        attr_accessor :additional_params
+      
+        # Optional. Any authentication parameters specific to EUA connectors.
+        # Corresponds to the JSON property `authParams`
+        # @return [Hash<String,Object>]
+        attr_accessor :auth_params
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_params = args[:additional_params] if args.key?(:additional_params)
+          @auth_params = args[:auth_params] if args.key?(:auth_params)
         end
       end
       
@@ -10149,10 +10792,10 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaLanguageInfo]
         attr_accessor :language_info
       
-        # Immutable. The full resource name of the data store. Format: `projects/`
-        # project`/locations/`location`/collections/`collection_id`/dataStores/`
-        # data_store_id``. This field must be a UTF-8 encoded string with a length limit
-        # of 1024 characters.
+        # Immutable. Identifier. The full resource name of the data store. Format: `
+        # projects/`project`/locations/`location`/collections/`collection_id`/dataStores/
+        # `data_store_id``. This field must be a UTF-8 encoded string with a length
+        # limit of 1024 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -10269,7 +10912,8 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaDataStoreServingConfigDataStore
         include Google::Apis::Core::Hashable
       
-        # If set true, the DataStore will not be available for serving search requests.
+        # Optional. If set true, the DataStore will not be available for serving search
+        # requests.
         # Corresponds to the JSON property `disabledForServing`
         # @return [Boolean]
         attr_accessor :disabled_for_serving
@@ -10827,15 +11471,15 @@ module Google
       
         # The MIME type of the content. Supported types: * `application/pdf` (PDF, only
         # native PDFs are supported for now) * `text/html` (HTML) * `text/plain` (TXT) *
-        # `text/xml` (XML) * `application/json` (JSON) * `application/vnd.openxmlformats-
-        # officedocument.wordprocessingml.document` (DOCX) * `application/vnd.
-        # openxmlformats-officedocument.presentationml.presentation` (PPTX) * `
-        # application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` (XLSX) * `
-        # application/vnd.ms-excel.sheet.macroenabled.12` (XLSM) The following types are
-        # supported only if layout parser is enabled in the data store: * `image/bmp` (
-        # BMP) * `image/gif` (GIF) * `image/jpeg` (JPEG) * `image/png` (PNG) * `image/
-        # tiff` (TIFF) See https://www.iana.org/assignments/media-types/media-types.
-        # xhtml.
+        # `application/xml` or `text/xml` (XML) * `application/json` (JSON) * `
+        # application/vnd.openxmlformats-officedocument.wordprocessingml.document` (DOCX)
+        # * `application/vnd.openxmlformats-officedocument.presentationml.presentation`
+        # (PPTX) * `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` (
+        # XLSX) * `application/vnd.ms-excel.sheet.macroenabled.12` (XLSM) The following
+        # types are supported only if layout parser is enabled in the data store: * `
+        # image/bmp` (BMP) * `image/gif` (GIF) * `image/jpeg` (JPEG) * `image/png` (PNG)
+        # * `image/tiff` (TIFF) See https://www.iana.org/assignments/media-types/media-
+        # types.xhtml.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -11127,6 +11771,27 @@ module Google
         attr_accessor :enable_table_annotation
         alias_method :enable_table_annotation?, :enable_table_annotation
       
+        # Optional. List of HTML classes to exclude from the parsed content.
+        # Corresponds to the JSON property `excludeHtmlClasses`
+        # @return [Array<String>]
+        attr_accessor :exclude_html_classes
+      
+        # Optional. List of HTML elements to exclude from the parsed content.
+        # Corresponds to the JSON property `excludeHtmlElements`
+        # @return [Array<String>]
+        attr_accessor :exclude_html_elements
+      
+        # Optional. List of HTML ids to exclude from the parsed content.
+        # Corresponds to the JSON property `excludeHtmlIds`
+        # @return [Array<String>]
+        attr_accessor :exclude_html_ids
+      
+        # Optional. Contains the required structure types to extract from the document.
+        # Supported values: * `shareholder-structure`
+        # Corresponds to the JSON property `structuredContentTypes`
+        # @return [Array<String>]
+        attr_accessor :structured_content_types
+      
         def initialize(**args)
            update!(**args)
         end
@@ -11135,6 +11800,10 @@ module Google
         def update!(**args)
           @enable_image_annotation = args[:enable_image_annotation] if args.key?(:enable_image_annotation)
           @enable_table_annotation = args[:enable_table_annotation] if args.key?(:enable_table_annotation)
+          @exclude_html_classes = args[:exclude_html_classes] if args.key?(:exclude_html_classes)
+          @exclude_html_elements = args[:exclude_html_elements] if args.key?(:exclude_html_elements)
+          @exclude_html_ids = args[:exclude_html_ids] if args.key?(:exclude_html_ids)
+          @structured_content_types = args[:structured_content_types] if args.key?(:structured_content_types)
         end
       end
       
@@ -11283,12 +11952,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and
-        # SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at
-        # most one data store. If solution_type is SOLUTION_TYPE_CHAT, multiple
-        # DataStores in the same Collection can be associated here. Note that when used
-        # in CreateEngineRequest, one DataStore id must be provided as the system will
-        # use it for necessary initializations.
+        # Optional. The data stores associated with this engine. For
+        # SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type of engines, they
+        # can only associate with at most one data store. If solution_type is
+        # SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be
+        # associated here. Note that when used in CreateEngineRequest, one DataStore id
+        # must be provided as the system will use it for necessary initializations.
         # Corresponds to the JSON property `dataStoreIds`
         # @return [Array<String>]
         attr_accessor :data_store_ids
@@ -11305,9 +11974,18 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The industry vertical that the engine registers. The restriction of the Engine
-        # industry vertical is based on DataStore: Vertical on Engine has to match
-        # vertical of the DataStore linked to the engine.
+        # Optional. Feature config for the engine to opt in or opt out of features.
+        # Supported keys: * `*`: all features, if it's present, all other feature state
+        # settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-
+        # gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-
+        # org-chart` * `bi-directional-audio` * `feedback`
+        # Corresponds to the JSON property `features`
+        # @return [Hash<String,String>]
+        attr_accessor :features
+      
+        # Optional. The industry vertical that the engine registers. The restriction of
+        # the Engine industry vertical is based on DataStore: Vertical on Engine has to
+        # match vertical of the DataStore linked to the engine.
         # Corresponds to the JSON property `industryVertical`
         # @return [String]
         attr_accessor :industry_vertical
@@ -11317,11 +11995,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig]
         attr_accessor :media_recommendation_engine_config
       
-        # Immutable. The fully qualified resource name of the engine. This field must be
-        # a UTF-8 encoded string with a length limit of 1024 characters. Format: `
-        # projects/`project`/locations/`location`/collections/`collection`/engines/`
-        # engine`` engine should be 1-63 characters, and valid characters are /a-z0-9*/.
-        # Otherwise, an INVALID_ARGUMENT error is returned.
+        # Immutable. Identifier. The fully qualified resource name of the engine. This
+        # field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        # Format: `projects/`project`/locations/`location`/collections/`collection`/
+        # engines/`engine`` engine should be 1-63 characters, and valid characters are /
+        # a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -11364,6 +12042,7 @@ module Google
           @data_store_ids = args[:data_store_ids] if args.key?(:data_store_ids)
           @disable_analytics = args[:disable_analytics] if args.key?(:disable_analytics)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @features = args[:features] if args.key?(:features)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
           @media_recommendation_engine_config = args[:media_recommendation_engine_config] if args.key?(:media_recommendation_engine_config)
           @name = args[:name] if args.key?(:name)
@@ -11513,6 +12192,11 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig
         include Google::Apis::Core::Hashable
       
+        # More feature configs of the selected engine type.
+        # Corresponds to the JSON property `engineFeaturesConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigEngineFeaturesConfig]
+        attr_accessor :engine_features_config
+      
         # The optimization objective. e.g., `cvr`. This field together with
         # optimization_objective describe engine metadata to use to control engine
         # training and serving. Currently supported values: `ctr`, `cvr`. If not
@@ -11551,10 +12235,57 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @engine_features_config = args[:engine_features_config] if args.key?(:engine_features_config)
           @optimization_objective = args[:optimization_objective] if args.key?(:optimization_objective)
           @optimization_objective_config = args[:optimization_objective_config] if args.key?(:optimization_objective_config)
           @training_state = args[:training_state] if args.key?(:training_state)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # More feature configs of the selected engine type.
+      class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigEngineFeaturesConfig
+        include Google::Apis::Core::Hashable
+      
+        # Feature configurations that are required for creating a Most Popular engine.
+        # Corresponds to the JSON property `mostPopularConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigMostPopularFeatureConfig]
+        attr_accessor :most_popular_config
+      
+        # Additional feature configurations for creating a `recommended-for-you` engine.
+        # Corresponds to the JSON property `recommendedForYouConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig]
+        attr_accessor :recommended_for_you_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @most_popular_config = args[:most_popular_config] if args.key?(:most_popular_config)
+          @recommended_for_you_config = args[:recommended_for_you_config] if args.key?(:recommended_for_you_config)
+        end
+      end
+      
+      # Feature configurations that are required for creating a Most Popular engine.
+      class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigMostPopularFeatureConfig
+        include Google::Apis::Core::Hashable
+      
+        # The time window of which the engine is queried at training and prediction time.
+        # Positive integers only. The value translates to the last X days of events.
+        # Currently required for the `most-popular-items` engine.
+        # Corresponds to the JSON property `timeWindowDays`
+        # @return [Fixnum]
+        attr_accessor :time_window_days
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @time_window_days = args[:time_window_days] if args.key?(:time_window_days)
         end
       end
       
@@ -11584,6 +12315,30 @@ module Google
         end
       end
       
+      # Additional feature configurations for creating a `recommended-for-you` engine.
+      class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig
+        include Google::Apis::Core::Hashable
+      
+        # The type of event with which the engine is queried at prediction time. If set
+        # to `generic`, only `view-item`, `media-play`,and `media-complete` will be used
+        # as `context-event` in engine training. If set to `view-home-page`, `view-home-
+        # page` will also be used as `context-events` in addition to `view-item`, `media-
+        # play`, and `media-complete`. Currently supported for the `recommended-for-you`
+        # engine. Currently supported values: `view-home-page`, `generic`.
+        # Corresponds to the JSON property `contextEventType`
+        # @return [String]
+        attr_accessor :context_event_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_event_type = args[:context_event_type] if args.key?(:context_event_type)
+        end
+      end
+      
       # Additional information of a recommendation engine.
       class GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadata
         include Google::Apis::Core::Hashable
@@ -11596,6 +12351,12 @@ module Google
         # Corresponds to the JSON property `dataState`
         # @return [String]
         attr_accessor :data_state
+      
+        # Output only. The timestamp when the latest successful training finished. Only
+        # applicable on Media Recommendation engines.
+        # Corresponds to the JSON property `lastTrainTime`
+        # @return [String]
+        attr_accessor :last_train_time
       
         # Output only. The timestamp when the latest successful tune finished. Only
         # applicable on Media Recommendation engines.
@@ -11625,6 +12386,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_state = args[:data_state] if args.key?(:data_state)
+          @last_train_time = args[:last_train_time] if args.key?(:last_train_time)
           @last_tune_time = args[:last_tune_time] if args.key?(:last_tune_time)
           @serving_state = args[:serving_state] if args.key?(:serving_state)
           @tuning_operation = args[:tuning_operation] if args.key?(:tuning_operation)
@@ -11949,6 +12711,11 @@ module Google
         # @return [String]
         attr_accessor :chunk_text
       
+        # The domain of the source.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
         # The index of this chunk. Currently, only used for the streaming mode.
         # Corresponds to the JSON property `index`
         # @return [Fixnum]
@@ -11966,6 +12733,16 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :source_metadata
       
+        # The title of the source.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # The URI of the source.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
         def initialize(**args)
            update!(**args)
         end
@@ -11973,9 +12750,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @chunk_text = args[:chunk_text] if args.key?(:chunk_text)
+          @domain = args[:domain] if args.key?(:domain)
           @index = args[:index] if args.key?(:index)
           @source = args[:source] if args.key?(:source)
           @source_metadata = args[:source_metadata] if args.key?(:source_metadata)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -12342,6 +13122,11 @@ module Google
         # @return [String]
         attr_accessor :app
       
+        # The authorization uri for the data connector.
+        # Corresponds to the JSON property `authorizationUri`
+        # @return [String]
+        attr_accessor :authorization_uri
+      
         # The client id of the associated Connector.
         # Corresponds to the JSON property `clientId`
         # @return [String]
@@ -12369,6 +13154,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @app = args[:app] if args.key?(:app)
+          @authorization_uri = args[:authorization_uri] if args.key?(:authorization_uri)
           @client_id = args[:client_id] if args.key?(:client_id)
           @instance = args[:instance] if args.key?(:instance)
           @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
@@ -14166,6 +14952,32 @@ module Google
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @target_sites = args[:target_sites] if args.key?(:target_sites)
           @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
+      # Response message for UserLicenseService.ListUserLicenses.
+      class GoogleCloudDiscoveryengineV1alphaListUserLicensesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # All the customer's UserLicenses.
+        # Corresponds to the JSON property `userLicenses`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaUserLicense>]
+        attr_accessor :user_licenses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @user_licenses = args[:user_licenses] if args.key?(:user_licenses)
         end
       end
       
@@ -17367,6 +18179,14 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpec]
         attr_accessor :boost_spec
       
+        # Optional. Custom search operators which if specified will be used to filter
+        # results from workspace data stores. For more information on custom search
+        # operators, see [SearchOperators](https://support.google.com/cloudsearch/answer/
+        # 6172299).
+        # Corresponds to the JSON property `customSearchOperators`
+        # @return [String]
+        attr_accessor :custom_search_operators
+      
         # Required. Full resource name of DataStore, such as `projects/`project`/
         # locations/`location`/collections/`collection_id`/dataStores/`data_store_id``.
         # Corresponds to the JSON property `dataStore`
@@ -17387,6 +18207,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @boost_spec = args[:boost_spec] if args.key?(:boost_spec)
+          @custom_search_operators = args[:custom_search_operators] if args.key?(:custom_search_operators)
           @data_store = args[:data_store] if args.key?(:data_store)
           @filter = args[:filter] if args.key?(:filter)
         end
@@ -18099,12 +18920,6 @@ module Google
         # @return [String]
         attr_accessor :rewritten_query
       
-        # The SQL request that was generated from the natural language query
-        # understanding phase.
-        # Corresponds to the JSON property `sqlRequest`
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoSqlRequest]
-        attr_accessor :sql_request
-      
         # The filters that were extracted from the input query represented in a
         # structured form.
         # Corresponds to the JSON property `structuredExtractedFilter`
@@ -18120,28 +18935,7 @@ module Google
           @classified_intents = args[:classified_intents] if args.key?(:classified_intents)
           @extracted_filters = args[:extracted_filters] if args.key?(:extracted_filters)
           @rewritten_query = args[:rewritten_query] if args.key?(:rewritten_query)
-          @sql_request = args[:sql_request] if args.key?(:sql_request)
           @structured_extracted_filter = args[:structured_extracted_filter] if args.key?(:structured_extracted_filter)
-        end
-      end
-      
-      # The SQL request that was generated from the natural language query
-      # understanding phase.
-      class GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoSqlRequest
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The SQL query in text format.
-        # Corresponds to the JSON property `sqlQuery`
-        # @return [String]
-        attr_accessor :sql_query
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @sql_query = args[:sql_query] if args.key?(:sql_query)
         end
       end
       
@@ -18785,6 +19579,11 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaServingConfig
         include Google::Apis::Core::Hashable
       
+        # The specification for answer generation.
+        # Corresponds to the JSON property `answerGenerationSpec`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerGenerationSpec]
+        attr_accessor :answer_generation_spec
+      
         # Boost controls to use in serving path. All triggered boost controls will be
         # applied. Boost controls must be in the same data store as the serving config.
         # Maximum of 20 boost controls.
@@ -18961,6 +19760,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @answer_generation_spec = args[:answer_generation_spec] if args.key?(:answer_generation_spec)
           @boost_control_ids = args[:boost_control_ids] if args.key?(:boost_control_ids)
           @create_time = args[:create_time] if args.key?(:create_time)
           @custom_fine_tuning_spec = args[:custom_fine_tuning_spec] if args.key?(:custom_fine_tuning_spec)
@@ -20463,6 +21263,69 @@ module Google
         end
       end
       
+      # User License information assigned by the admin.
+      class GoogleCloudDiscoveryengineV1alphaUserLicense
+        include Google::Apis::Core::Hashable
+      
+        # Output only. User created timestamp.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. User last logged in time. If the user has not logged in yet, this
+        # field will be empty.
+        # Corresponds to the JSON property `lastLoginTime`
+        # @return [String]
+        attr_accessor :last_login_time
+      
+        # Output only. License assignment state of the user. If the user is assigned
+        # with a license config, the user loggin will be assigned with the license; If
+        # the user's license assignment state is unassigned or unspecified, no license
+        # config will be associated to the user;
+        # Corresponds to the JSON property `licenseAssignmentState`
+        # @return [String]
+        attr_accessor :license_assignment_state
+      
+        # Optional. The full resource name of the Subscription(LicenseConfig) assigned
+        # to the user.
+        # Corresponds to the JSON property `licenseConfig`
+        # @return [String]
+        attr_accessor :license_config
+      
+        # Output only. User update timestamp.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Required. Immutable. The user principal of the User, could be email address or
+        # other prinical identifier. This field is immutable. Admin assign licenses
+        # based on the user principal.
+        # Corresponds to the JSON property `userPrincipal`
+        # @return [String]
+        attr_accessor :user_principal
+      
+        # Optional. The user profile. We user user full name(First name + Last name) as
+        # user profile.
+        # Corresponds to the JSON property `userProfile`
+        # @return [String]
+        attr_accessor :user_profile
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @last_login_time = args[:last_login_time] if args.key?(:last_login_time)
+          @license_assignment_state = args[:license_assignment_state] if args.key?(:license_assignment_state)
+          @license_config = args[:license_config] if args.key?(:license_config)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @user_principal = args[:user_principal] if args.key?(:user_principal)
+          @user_profile = args[:user_profile] if args.key?(:user_profile)
+        end
+      end
+      
       # WidgetConfig captures configs at the Widget level.
       class GoogleCloudDiscoveryengineV1alphaWidgetConfig
         include Google::Apis::Core::Hashable
@@ -20555,6 +21418,12 @@ module Google
         # @return [Boolean]
         attr_accessor :enable_conversational_search
         alias_method :enable_conversational_search?, :enable_conversational_search
+      
+        # Optional. Output only. Whether to enable private knowledge graph.
+        # Corresponds to the JSON property `enablePrivateKnowledgeGraph`
+        # @return [Boolean]
+        attr_accessor :enable_private_knowledge_graph
+        alias_method :enable_private_knowledge_graph?, :enable_private_knowledge_graph
       
         # Turn on or off collecting the search result quality feedback from end users.
         # Corresponds to the JSON property `enableQualityFeedback`
@@ -20699,6 +21568,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @enable_autocomplete = args[:enable_autocomplete] if args.key?(:enable_autocomplete)
           @enable_conversational_search = args[:enable_conversational_search] if args.key?(:enable_conversational_search)
+          @enable_private_knowledge_graph = args[:enable_private_knowledge_graph] if args.key?(:enable_private_knowledge_graph)
           @enable_quality_feedback = args[:enable_quality_feedback] if args.key?(:enable_quality_feedback)
           @enable_result_score = args[:enable_result_score] if args.key?(:enable_result_score)
           @enable_safe_search = args[:enable_safe_search] if args.key?(:enable_safe_search)
@@ -20773,11 +21643,17 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaWidgetConfigAssistantSettings
         include Google::Apis::Core::Hashable
       
-        # Whether or not the Google search grounding toggle is shown.
+        # Whether or not the Google search grounding toggle is shown. Deprecated. Use
+        # web_grounding_type instead.
         # Corresponds to the JSON property `googleSearchGroundingEnabled`
         # @return [Boolean]
         attr_accessor :google_search_grounding_enabled
         alias_method :google_search_grounding_enabled?, :google_search_grounding_enabled
+      
+        # Optional. The type of web grounding to use.
+        # Corresponds to the JSON property `webGroundingType`
+        # @return [String]
+        attr_accessor :web_grounding_type
       
         def initialize(**args)
            update!(**args)
@@ -20786,6 +21662,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @google_search_grounding_enabled = args[:google_search_grounding_enabled] if args.key?(:google_search_grounding_enabled)
+          @web_grounding_type = args[:web_grounding_type] if args.key?(:web_grounding_type)
         end
       end
       
@@ -21151,6 +22028,12 @@ module Google
         attr_accessor :enable_autocomplete
         alias_method :enable_autocomplete?, :enable_autocomplete
       
+        # Optional. If set to true, the widget will enable people search.
+        # Corresponds to the JSON property `enablePeopleSearch`
+        # @return [Boolean]
+        attr_accessor :enable_people_search
+        alias_method :enable_people_search?, :enable_people_search
+      
         # Turn on or off collecting the search result quality feedback from end users.
         # Corresponds to the JSON property `enableQualityFeedback`
         # @return [Boolean]
@@ -21175,6 +22058,14 @@ module Google
         # @return [Boolean]
         attr_accessor :enable_visual_content_summary
         alias_method :enable_visual_content_summary?, :enable_visual_content_summary
+      
+        # Output only. Feature config for the engine to opt in or opt out of features.
+        # Supported keys: * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery`
+        # * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-
+        # chart` * `bi-directional-audio` * `feedback`
+        # Corresponds to the JSON property `features`
+        # @return [Hash<String,String>]
+        attr_accessor :features
       
         # Describes configuration for generative answer.
         # Corresponds to the JSON property `generativeAnswerConfig`
@@ -21202,10 +22093,12 @@ module Google
           @default_search_request_order_by = args[:default_search_request_order_by] if args.key?(:default_search_request_order_by)
           @disable_user_events_collection = args[:disable_user_events_collection] if args.key?(:disable_user_events_collection)
           @enable_autocomplete = args[:enable_autocomplete] if args.key?(:enable_autocomplete)
+          @enable_people_search = args[:enable_people_search] if args.key?(:enable_people_search)
           @enable_quality_feedback = args[:enable_quality_feedback] if args.key?(:enable_quality_feedback)
           @enable_safe_search = args[:enable_safe_search] if args.key?(:enable_safe_search)
           @enable_search_as_you_type = args[:enable_search_as_you_type] if args.key?(:enable_search_as_you_type)
           @enable_visual_content_summary = args[:enable_visual_content_summary] if args.key?(:enable_visual_content_summary)
+          @features = args[:features] if args.key?(:features)
           @generative_answer_config = args[:generative_answer_config] if args.key?(:generative_answer_config)
           @interaction_type = args[:interaction_type] if args.key?(:interaction_type)
           @result_description_type = args[:result_description_type] if args.key?(:result_description_type)
@@ -22160,10 +23053,10 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaLanguageInfo]
         attr_accessor :language_info
       
-        # Immutable. The full resource name of the data store. Format: `projects/`
-        # project`/locations/`location`/collections/`collection_id`/dataStores/`
-        # data_store_id``. This field must be a UTF-8 encoded string with a length limit
-        # of 1024 characters.
+        # Immutable. Identifier. The full resource name of the data store. Format: `
+        # projects/`project`/locations/`location`/collections/`collection_id`/dataStores/
+        # `data_store_id``. This field must be a UTF-8 encoded string with a length
+        # limit of 1024 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -22279,7 +23172,8 @@ module Google
       class GoogleCloudDiscoveryengineV1betaDataStoreServingConfigDataStore
         include Google::Apis::Core::Hashable
       
-        # If set true, the DataStore will not be available for serving search requests.
+        # Optional. If set true, the DataStore will not be available for serving search
+        # requests.
         # Corresponds to the JSON property `disabledForServing`
         # @return [Boolean]
         attr_accessor :disabled_for_serving
@@ -22698,6 +23592,27 @@ module Google
         attr_accessor :enable_table_annotation
         alias_method :enable_table_annotation?, :enable_table_annotation
       
+        # Optional. List of HTML classes to exclude from the parsed content.
+        # Corresponds to the JSON property `excludeHtmlClasses`
+        # @return [Array<String>]
+        attr_accessor :exclude_html_classes
+      
+        # Optional. List of HTML elements to exclude from the parsed content.
+        # Corresponds to the JSON property `excludeHtmlElements`
+        # @return [Array<String>]
+        attr_accessor :exclude_html_elements
+      
+        # Optional. List of HTML ids to exclude from the parsed content.
+        # Corresponds to the JSON property `excludeHtmlIds`
+        # @return [Array<String>]
+        attr_accessor :exclude_html_ids
+      
+        # Optional. Contains the required structure types to extract from the document.
+        # Supported values: * `shareholder-structure`
+        # Corresponds to the JSON property `structuredContentTypes`
+        # @return [Array<String>]
+        attr_accessor :structured_content_types
+      
         def initialize(**args)
            update!(**args)
         end
@@ -22706,6 +23621,10 @@ module Google
         def update!(**args)
           @enable_image_annotation = args[:enable_image_annotation] if args.key?(:enable_image_annotation)
           @enable_table_annotation = args[:enable_table_annotation] if args.key?(:enable_table_annotation)
+          @exclude_html_classes = args[:exclude_html_classes] if args.key?(:exclude_html_classes)
+          @exclude_html_elements = args[:exclude_html_elements] if args.key?(:exclude_html_elements)
+          @exclude_html_ids = args[:exclude_html_ids] if args.key?(:exclude_html_ids)
+          @structured_content_types = args[:structured_content_types] if args.key?(:structured_content_types)
         end
       end
       
@@ -22803,12 +23722,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and
-        # SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at
-        # most one data store. If solution_type is SOLUTION_TYPE_CHAT, multiple
-        # DataStores in the same Collection can be associated here. Note that when used
-        # in CreateEngineRequest, one DataStore id must be provided as the system will
-        # use it for necessary initializations.
+        # Optional. The data stores associated with this engine. For
+        # SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type of engines, they
+        # can only associate with at most one data store. If solution_type is
+        # SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be
+        # associated here. Note that when used in CreateEngineRequest, one DataStore id
+        # must be provided as the system will use it for necessary initializations.
         # Corresponds to the JSON property `dataStoreIds`
         # @return [Array<String>]
         attr_accessor :data_store_ids
@@ -22825,18 +23744,32 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The industry vertical that the engine registers. The restriction of the Engine
-        # industry vertical is based on DataStore: Vertical on Engine has to match
-        # vertical of the DataStore linked to the engine.
+        # Optional. Feature config for the engine to opt in or opt out of features.
+        # Supported keys: * `*`: all features, if it's present, all other feature state
+        # settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-
+        # gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-
+        # org-chart` * `bi-directional-audio` * `feedback`
+        # Corresponds to the JSON property `features`
+        # @return [Hash<String,String>]
+        attr_accessor :features
+      
+        # Optional. The industry vertical that the engine registers. The restriction of
+        # the Engine industry vertical is based on DataStore: Vertical on Engine has to
+        # match vertical of the DataStore linked to the engine.
         # Corresponds to the JSON property `industryVertical`
         # @return [String]
         attr_accessor :industry_vertical
       
-        # Immutable. The fully qualified resource name of the engine. This field must be
-        # a UTF-8 encoded string with a length limit of 1024 characters. Format: `
-        # projects/`project`/locations/`location`/collections/`collection`/engines/`
-        # engine`` engine should be 1-63 characters, and valid characters are /a-z0-9*/.
-        # Otherwise, an INVALID_ARGUMENT error is returned.
+        # Additional config specs for a Media Recommendation engine.
+        # Corresponds to the JSON property `mediaRecommendationEngineConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig]
+        attr_accessor :media_recommendation_engine_config
+      
+        # Immutable. Identifier. The fully qualified resource name of the engine. This
+        # field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        # Format: `projects/`project`/locations/`location`/collections/`collection`/
+        # engines/`engine`` engine should be 1-63 characters, and valid characters are /
+        # a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -22869,7 +23802,9 @@ module Google
           @data_store_ids = args[:data_store_ids] if args.key?(:data_store_ids)
           @disable_analytics = args[:disable_analytics] if args.key?(:disable_analytics)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @features = args[:features] if args.key?(:features)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
+          @media_recommendation_engine_config = args[:media_recommendation_engine_config] if args.key?(:media_recommendation_engine_config)
           @name = args[:name] if args.key?(:name)
           @search_engine_config = args[:search_engine_config] if args.key?(:search_engine_config)
           @solution_type = args[:solution_type] if args.key?(:solution_type)
@@ -23008,6 +23943,157 @@ module Google
         # Update properties of this object
         def update!(**args)
           @company_name = args[:company_name] if args.key?(:company_name)
+        end
+      end
+      
+      # Additional config specs for a Media Recommendation engine.
+      class GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig
+        include Google::Apis::Core::Hashable
+      
+        # More feature configs of the selected engine type.
+        # Corresponds to the JSON property `engineFeaturesConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigEngineFeaturesConfig]
+        attr_accessor :engine_features_config
+      
+        # The optimization objective. e.g., `cvr`. This field together with
+        # optimization_objective describe engine metadata to use to control engine
+        # training and serving. Currently supported values: `ctr`, `cvr`. If not
+        # specified, we choose default based on engine type. Default depends on type of
+        # recommendation: `recommended-for-you` => `ctr` `others-you-may-like` => `ctr`
+        # Corresponds to the JSON property `optimizationObjective`
+        # @return [String]
+        attr_accessor :optimization_objective
+      
+        # Custom threshold for `cvr` optimization_objective.
+        # Corresponds to the JSON property `optimizationObjectiveConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig]
+        attr_accessor :optimization_objective_config
+      
+        # The training state that the engine is in (e.g. `TRAINING` or `PAUSED`). Since
+        # part of the cost of running the service is frequency of training - this can be
+        # used to determine when to train engine in order to control cost. If not
+        # specified: the default value for `CreateEngine` method is `TRAINING`. The
+        # default value for `UpdateEngine` method is to keep the state the same as
+        # before.
+        # Corresponds to the JSON property `trainingState`
+        # @return [String]
+        attr_accessor :training_state
+      
+        # Required. The type of engine. e.g., `recommended-for-you`. This field together
+        # with optimization_objective describe engine metadata to use to control engine
+        # training and serving. Currently supported values: `recommended-for-you`, `
+        # others-you-may-like`, `more-like-this`, `most-popular-items`.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @engine_features_config = args[:engine_features_config] if args.key?(:engine_features_config)
+          @optimization_objective = args[:optimization_objective] if args.key?(:optimization_objective)
+          @optimization_objective_config = args[:optimization_objective_config] if args.key?(:optimization_objective_config)
+          @training_state = args[:training_state] if args.key?(:training_state)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # More feature configs of the selected engine type.
+      class GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigEngineFeaturesConfig
+        include Google::Apis::Core::Hashable
+      
+        # Feature configurations that are required for creating a Most Popular engine.
+        # Corresponds to the JSON property `mostPopularConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigMostPopularFeatureConfig]
+        attr_accessor :most_popular_config
+      
+        # Additional feature configurations for creating a `recommended-for-you` engine.
+        # Corresponds to the JSON property `recommendedForYouConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig]
+        attr_accessor :recommended_for_you_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @most_popular_config = args[:most_popular_config] if args.key?(:most_popular_config)
+          @recommended_for_you_config = args[:recommended_for_you_config] if args.key?(:recommended_for_you_config)
+        end
+      end
+      
+      # Feature configurations that are required for creating a Most Popular engine.
+      class GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigMostPopularFeatureConfig
+        include Google::Apis::Core::Hashable
+      
+        # The time window of which the engine is queried at training and prediction time.
+        # Positive integers only. The value translates to the last X days of events.
+        # Currently required for the `most-popular-items` engine.
+        # Corresponds to the JSON property `timeWindowDays`
+        # @return [Fixnum]
+        attr_accessor :time_window_days
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @time_window_days = args[:time_window_days] if args.key?(:time_window_days)
+        end
+      end
+      
+      # Custom threshold for `cvr` optimization_objective.
+      class GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the field to target. Currently supported values: `watch-
+        # percentage`, `watch-time`.
+        # Corresponds to the JSON property `targetField`
+        # @return [String]
+        attr_accessor :target_field
+      
+        # Required. The threshold to be applied to the target (e.g., 0.5).
+        # Corresponds to the JSON property `targetFieldValueFloat`
+        # @return [Float]
+        attr_accessor :target_field_value_float
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_field = args[:target_field] if args.key?(:target_field)
+          @target_field_value_float = args[:target_field_value_float] if args.key?(:target_field_value_float)
+        end
+      end
+      
+      # Additional feature configurations for creating a `recommended-for-you` engine.
+      class GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig
+        include Google::Apis::Core::Hashable
+      
+        # The type of event with which the engine is queried at prediction time. If set
+        # to `generic`, only `view-item`, `media-play`,and `media-complete` will be used
+        # as `context-event` in engine training. If set to `view-home-page`, `view-home-
+        # page` will also be used as `context-events` in addition to `view-item`, `media-
+        # play`, and `media-complete`. Currently supported for the `recommended-for-you`
+        # engine. Currently supported values: `view-home-page`, `generic`.
+        # Corresponds to the JSON property `contextEventType`
+        # @return [String]
+        attr_accessor :context_event_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_event_type = args[:context_event_type] if args.key?(:context_event_type)
         end
       end
       
@@ -25114,6 +26200,14 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec]
         attr_accessor :boost_spec
       
+        # Optional. Custom search operators which if specified will be used to filter
+        # results from workspace data stores. For more information on custom search
+        # operators, see [SearchOperators](https://support.google.com/cloudsearch/answer/
+        # 6172299).
+        # Corresponds to the JSON property `customSearchOperators`
+        # @return [String]
+        attr_accessor :custom_search_operators
+      
         # Required. Full resource name of DataStore, such as `projects/`project`/
         # locations/`location`/collections/`collection_id`/dataStores/`data_store_id``.
         # Corresponds to the JSON property `dataStore`
@@ -25134,6 +26228,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @boost_spec = args[:boost_spec] if args.key?(:boost_spec)
+          @custom_search_operators = args[:custom_search_operators] if args.key?(:custom_search_operators)
           @data_store = args[:data_store] if args.key?(:data_store)
           @filter = args[:filter] if args.key?(:filter)
         end
@@ -26092,6 +27187,12 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::ApiservingMediaRequestInfo]
         attr_accessor :media_request_info
       
+        # The source id of the associated file. If not set, a source id will be
+        # generated and a new tentative source will be created.
+        # Corresponds to the JSON property `sourceId`
+        # @return [String]
+        attr_accessor :source_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -26100,6 +27201,7 @@ module Google
         def update!(**args)
           @blob = args[:blob] if args.key?(:blob)
           @media_request_info = args[:media_request_info] if args.key?(:media_request_info)
+          @source_id = args[:source_id] if args.key?(:source_id)
         end
       end
       

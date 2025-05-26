@@ -755,12 +755,20 @@ module Google
       class GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters
         include Google::Apis::Core::Hashable
       
-        # Optional. The filter used to request specific records from IdP. In case of
-        # attributes type as AZURE_AD_GROUPS_MAIL, it represents the filter used to
-        # request specific groups for users from IdP. By default, all of the groups
-        # associated with the user are fetched. The groups should be mail enabled and
-        # security enabled. See https://learn.microsoft.com/en-us/graph/search-query-
-        # parameter for more details.
+        # Optional. The filter used to request specific records from the IdP. By default,
+        # all of the groups that are associated with a user are fetched. For Microsoft
+        # Entra ID, you can add `$search` query parameters using [Keyword Query Language]
+        # (https://learn.microsoft.com/en-us/sharepoint/dev/general-development/keyword-
+        # query-language-kql-syntax-reference). To learn more about `$search` querying
+        # in Microsoft Entra ID, see [Use the `$search` query parameter] (https://learn.
+        # microsoft.com/en-us/graph/search-query-parameter). Additionally, Workforce
+        # Identity Federation automatically adds the following [`$filter` query
+        # parameters] (https://learn.microsoft.com/en-us/graph/filter-query-parameter),
+        # based on the value of `attributes_type`. Values passed to `filter` are
+        # converted to `$search` query parameters. Additional `$filter` query parameters
+        # cannot be added using this field. * `AZURE_AD_GROUPS_MAIL`: `mailEnabled` and `
+        # securityEnabled` filters are applied. * `AZURE_AD_GROUPS_ID`: `securityEnabled`
+        # filter is applied.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -944,34 +952,35 @@ module Google
       class InlineCertificateIssuanceConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. A required mapping of a cloud region to the CA pool resource located
-        # in that region used for certificate issuance, adhering to these constraints: *
-        # Key format: A supported cloud region name equivalent to the location
-        # identifier in the corresponding map entry's value. * Value format: A valid CA
-        # pool resource path format like: "projects/`project`/locations/`location`/
-        # caPools/`ca_pool`" * Region Matching: Workloads are ONLY issued certificates
-        # from CA pools within the same region. Also the CA pool region (in value) must
-        # match the workload's region (key).
+        # Optional. A required mapping of a Google Cloud region to the CA pool resource
+        # located in that region. The CA pool is used for certificate issuance, adhering
+        # to the following constraints: * Key format: A supported cloud region name
+        # equivalent to the location identifier in the corresponding map entry's value. *
+        # Value format: A valid CA pool resource path format like: "projects/`project`/
+        # locations/`location`/caPools/`ca_pool`" * Region Matching: Workloads are ONLY
+        # issued certificates from CA pools within the same region. Also the CA pool
+        # region (in value) must match the workload's region (key).
         # Corresponds to the JSON property `caPools`
         # @return [Hash<String,String>]
         attr_accessor :ca_pools
       
         # Optional. Key algorithm to use when generating the key pair. This key pair
-        # will be used to create the certificate. If unspecified, this will default to
+        # will be used to create the certificate. If not specified, this will default to
         # ECDSA_P256.
         # Corresponds to the JSON property `keyAlgorithm`
         # @return [String]
         attr_accessor :key_algorithm
       
         # Optional. Lifetime of the workload certificates issued by the CA pool. Must be
-        # between 10 hours - 30 days. If unspecified, this will be defaulted to 24 hours.
+        # between 24 hours and 30 days. If not specified, this will be defaulted to 24
+        # hours.
         # Corresponds to the JSON property `lifetime`
         # @return [String]
         attr_accessor :lifetime
       
-        # Optional. Rotation window percentage indicating when certificate rotation
-        # should be initiated based on remaining lifetime. Must be between 10 - 80. If
-        # unspecified, this will be defaulted to 50.
+        # Optional. Rotation window percentage, the percentage of remaining lifetime
+        # after which certificate rotation is initiated. Must be between 50 and 80. If
+        # no value is specified, rotation window percentage is defaulted to 50.
         # Corresponds to the JSON property `rotationWindowPercentage`
         # @return [Fixnum]
         attr_accessor :rotation_window_percentage
@@ -998,12 +1007,12 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Maps specific trust domains (e.g., "example.com") to their
-        # corresponding TrustStore objects, which contain the trusted root certificates
-        # for that domain. There can be a maximum of 10 trust domain entries in this map.
-        # Note that a trust domain automatically trusts itself and don't need to be
-        # specified here. If however, this WorkloadIdentityPool's trust domain contains
-        # any trust anchors in the additional_trust_bundles map, those trust anchors
-        # will be *appended to* the Trust Bundle automatically derived from your
+        # corresponding TrustStore, which contain the trusted root certificates for that
+        # domain. There can be a maximum of 10 trust domain entries in this map. Note
+        # that a trust domain automatically trusts itself and don't need to be specified
+        # here. If however, this WorkloadIdentityPool's trust domain contains any trust
+        # anchors in the additional_trust_bundles map, those trust anchors will be *
+        # appended to* the trust bundle automatically derived from your
         # InlineCertificateIssuanceConfig's ca_pools.
         # Corresponds to the JSON property `additionalTrustBundles`
         # @return [Hash<String,Google::Apis::IamV1::TrustStore>]
@@ -1717,10 +1726,10 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_audiences
       
-        # Required. The OIDC issuer URL. Must be an HTTPS endpoint. Used per OpenID
-        # Connect Discovery 1.0 spec to locate the provider's public keys (via `jwks_uri`
-        # ) for verifying tokens like the OIDC ID token. These public key types must be '
-        # EC' or 'RSA'.
+        # Required. The OIDC issuer URL. Must be an HTTPS endpoint. Per OpenID Connect
+        # Discovery 1.0 spec, the OIDC issuer URL is used to locate the provider's
+        # public keys (via `jwks_uri`) for verifying tokens like the OIDC ID token.
+        # These public key types must be 'EC' or 'RSA'.
         # Corresponds to the JSON property `issuerUri`
         # @return [String]
         attr_accessor :issuer_uri
@@ -2173,9 +2182,9 @@ module Google
       class QueryGrantableRolesRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The full resource name to query from the list of grantable roles.
-        # The name follows the Google Cloud Platform resource format. For example, a
-        # Cloud Platform project with id `my-project` will be named `//
+        # Required. Required. The full resource name to query from the list of grantable
+        # roles. The name follows the Google Cloud Platform resource format. For example,
+        # a Cloud Platform project with id `my-project` will be named `//
         # cloudresourcemanager.googleapis.com/projects/my-project`.
         # Corresponds to the JSON property `fullResourceName`
         # @return [String]
@@ -2945,20 +2954,20 @@ module Google
       end
       
       # Trust store that contains trust anchors and optional intermediate CAs used in
-      # PKI to build trust chain and verify client's identity.
+      # PKI to build a trust chain(trust hierarchy) and verify a client's identity.
       class TrustStore
         include Google::Apis::Core::Hashable
       
         # Optional. Set of intermediate CA certificates used for building the trust
-        # chain to trust anchor. IMPORTANT: * Intermediate CAs are only supported when
-        # configuring x509 federation.
+        # chain to the trust anchor. Important: Intermediate CAs are only supported for
+        # X.509 federation.
         # Corresponds to the JSON property `intermediateCas`
         # @return [Array<Google::Apis::IamV1::IntermediateCa>]
         attr_accessor :intermediate_cas
       
-        # Required. List of Trust Anchors to be used while performing validation against
-        # a given TrustStore. The incoming end entity's certificate must be chained up
-        # to one of the trust anchors here.
+        # Required. List of trust anchors to be used while performing validation against
+        # a given TrustStore. The incoming end entity's certificate must be in the trust
+        # chain of one of the trust anchors here.
         # Corresponds to the JSON property `trustAnchors`
         # @return [Array<Google::Apis::IamV1::TrustAnchor>]
         attr_accessor :trust_anchors
@@ -3338,6 +3347,14 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. If true, populates additional debug information in Cloud Audit Logs
+        # for this provider. Logged attribute mappings and values can be found in `sts.
+        # googleapis.com` data access logs. Default value is false.
+        # Corresponds to the JSON property `detailedAuditLogging`
+        # @return [Boolean]
+        attr_accessor :detailed_audit_logging
+        alias_method :detailed_audit_logging?, :detailed_audit_logging
+      
         # Optional. Disables the workforce pool provider. You cannot use a disabled
         # provider to exchange tokens. However, existing tokens still grant access.
         # Corresponds to the JSON property `disabled`
@@ -3396,6 +3413,7 @@ module Google
           @attribute_condition = args[:attribute_condition] if args.key?(:attribute_condition)
           @attribute_mapping = args[:attribute_mapping] if args.key?(:attribute_mapping)
           @description = args[:description] if args.key?(:description)
+          @detailed_audit_logging = args[:detailed_audit_logging] if args.key?(:detailed_audit_logging)
           @disabled = args[:disabled] if args.key?(:disabled)
           @display_name = args[:display_name] if args.key?(:display_name)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
@@ -3838,7 +3856,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Trust store that contains trust anchors and optional intermediate CAs used in
-        # PKI to build trust chain and verify client's identity.
+        # PKI to build a trust chain(trust hierarchy) and verify a client's identity.
         # Corresponds to the JSON property `trustStore`
         # @return [Google::Apis::IamV1::TrustStore]
         attr_accessor :trust_store

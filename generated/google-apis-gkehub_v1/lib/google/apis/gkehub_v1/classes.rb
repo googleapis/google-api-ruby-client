@@ -735,6 +735,12 @@ module Google
         # @return [Google::Apis::GkehubV1::MultiClusterIngressFeatureSpec]
         attr_accessor :multiclusteringress
       
+        # **RBAC RoleBinding Actuation**: The Hub-wide input for the
+        # RBACRoleBindingActuation feature.
+        # Corresponds to the JSON property `rbacrolebindingactuation`
+        # @return [Google::Apis::GkehubV1::RbacRoleBindingActuationFeatureSpec]
+        attr_accessor :rbacrolebindingactuation
+      
         def initialize(**args)
            update!(**args)
         end
@@ -746,6 +752,7 @@ module Google
           @dataplanev2 = args[:dataplanev2] if args.key?(:dataplanev2)
           @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)
           @multiclusteringress = args[:multiclusteringress] if args.key?(:multiclusteringress)
+          @rbacrolebindingactuation = args[:rbacrolebindingactuation] if args.key?(:rbacrolebindingactuation)
         end
       end
       
@@ -768,6 +775,12 @@ module Google
         # @return [Google::Apis::GkehubV1::FleetObservabilityFeatureState]
         attr_accessor :fleetobservability
       
+        # **RBAC RoleBinding Actuation**: An empty state left as an example Hub-wide
+        # Feature state.
+        # Corresponds to the JSON property `rbacrolebindingactuation`
+        # @return [Google::Apis::GkehubV1::RbacRoleBindingActuationFeatureState]
+        attr_accessor :rbacrolebindingactuation
+      
         # FeatureState describes the high-level state of a Feature. It may be used to
         # describe a Feature's state at the environ-level, or per-membershop, depending
         # on the context.
@@ -784,6 +797,7 @@ module Google
           @appdevexperience = args[:appdevexperience] if args.key?(:appdevexperience)
           @clusterupgrade = args[:clusterupgrade] if args.key?(:clusterupgrade)
           @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)
+          @rbacrolebindingactuation = args[:rbacrolebindingactuation] if args.key?(:rbacrolebindingactuation)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -3952,7 +3966,9 @@ module Google
         # @return [String]
         attr_accessor :external_id
       
-        # Optional. Labels for this membership.
+        # Optional. Labels for this membership. These labels are not leveraged by multi-
+        # cluster features, instead, we prefer cluster labels, which can be set on GKE
+        # cluster or other cluster types.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -5312,6 +5328,42 @@ module Google
         end
       end
       
+      # **RBAC RoleBinding Actuation**: The Hub-wide input for the
+      # RBACRoleBindingActuation feature.
+      class RbacRoleBindingActuationFeatureSpec
+        include Google::Apis::Core::Hashable
+      
+        # The list of allowed custom roles (ClusterRoles). If a ClusterRole is not part
+        # of this list, it cannot be used in a Scope RBACRoleBinding. If a ClusterRole
+        # in this list is in use, it cannot be removed from the list.
+        # Corresponds to the JSON property `allowedCustomRoles`
+        # @return [Array<String>]
+        attr_accessor :allowed_custom_roles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_custom_roles = args[:allowed_custom_roles] if args.key?(:allowed_custom_roles)
+        end
+      end
+      
+      # **RBAC RoleBinding Actuation**: An empty state left as an example Hub-wide
+      # Feature state.
+      class RbacRoleBindingActuationFeatureState
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # RBACRoleBindingLifecycleState describes the state of a RbacRoleBinding
       # resource.
       class RbacRoleBindingLifecycleState
@@ -5403,6 +5455,11 @@ module Google
       class Role
         include Google::Apis::Core::Hashable
       
+        # Optional. custom_role is the name of a custom KubernetesClusterRole to use.
+        # Corresponds to the JSON property `customRole`
+        # @return [String]
+        attr_accessor :custom_role
+      
         # predefined_role is the Kubernetes default role to use
         # Corresponds to the JSON property `predefinedRole`
         # @return [String]
@@ -5414,6 +5471,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_role = args[:custom_role] if args.key?(:custom_role)
           @predefined_role = args[:predefined_role] if args.key?(:predefined_role)
         end
       end
@@ -5565,8 +5623,7 @@ module Google
         end
       end
       
-      # Condition being reported. TODO b/395151419: Remove this message once the
-      # membership-level conditions field uses the common Condition message.
+      # Condition being reported.
       class ServiceMeshCondition
         include Google::Apis::Core::Hashable
       
@@ -5698,8 +5755,7 @@ module Google
       class ServiceMeshMembershipState
         include Google::Apis::Core::Hashable
       
-        # Output only. List of conditions reported for this membership. TODO b/395151419:
-        # Use the common Condition message.
+        # Output only. List of conditions reported for this membership.
         # Corresponds to the JSON property `conditions`
         # @return [Array<Google::Apis::GkehubV1::ServiceMeshCondition>]
         attr_accessor :conditions

@@ -51,6 +51,106 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Create an EncryptionConfig.
+        # @param [String] parent
+        #   Required. The location at which the EncryptionConfig is to be created.
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1EncryptionConfig] google_cloud_dataplex_v1_encryption_config_object
+        # @param [String] encryption_config_id
+        #   Required. The ID of the EncryptionConfig to create. Currently, only a value of
+        #   "default" is supported.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_location_encryption_config(parent, google_cloud_dataplex_v1_encryption_config_object = nil, encryption_config_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/encryptionConfigs', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1EncryptionConfig::Representation
+          command.request_object = google_cloud_dataplex_v1_encryption_config_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['encryptionConfigId'] = encryption_config_id unless encryption_config_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete an EncryptionConfig.
+        # @param [String] name
+        #   Required. The name of the EncryptionConfig to delete.
+        # @param [String] etag
+        #   Optional. Etag of the EncryptionConfig. This is a strong etag.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_location_encryption_config(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get an EncryptionConfig.
+        # @param [String] name
+        #   Required. The name of the EncryptionConfig to fetch.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1EncryptionConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1EncryptionConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location_encryption_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1EncryptionConfig::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1EncryptionConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -91,6 +191,102 @@ module Google
           command.response_class = Google::Apis::DataplexV1::GoogleIamV1Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List EncryptionConfigs.
+        # @param [String] parent
+        #   Required. The location for which the EncryptionConfig is to be listed.
+        # @param [String] filter
+        #   Optional. Filter the EncryptionConfigs to be returned. Using bare literals: (
+        #   These values will be matched anywhere it may appear in the object's field
+        #   values) * filter=some_value Using fields: (These values will be matched only
+        #   in the specified field) * filter=some_field=some_value Supported fields: *
+        #   name, key, create_time, update_time, encryption_state Example: * filter=name=
+        #   organizations/123/locations/us-central1/encryptionConfigs/test-config
+        #   conjunctions: (AND, OR, NOT) * filter=name=organizations/123/locations/us-
+        #   central1/encryptionConfigs/test-config AND mode=CMEK logical operators: (>, <,
+        #   >=, <=, !=, =, :), * filter=create_time>2024-05-01T00:00:00.000Z
+        # @param [String] order_by
+        #   Optional. Order by fields for the result.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of EncryptionConfigs to return. The service may
+        #   return fewer than this value. If unspecified, at most 10 EncryptionConfigs
+        #   will be returned. The maximum value is 1000; values above 1000 will be coerced
+        #   to 1000.
+        # @param [String] page_token
+        #   Optional. Page token received from a previous ListEncryptionConfigs call.
+        #   Provide this to retrieve the subsequent page. When paginating, the parameters -
+        #   filter and order_by provided to ListEncryptionConfigs must match the call
+        #   that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListEncryptionConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListEncryptionConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_encryption_configs(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/encryptionConfigs', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListEncryptionConfigsResponse::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListEncryptionConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update an EncryptionConfig.
+        # @param [String] name
+        #   Identifier. The resource name of the EncryptionConfig. Format: organizations/`
+        #   organization`/locations/`location`/encryptionConfigs/`encryption_config`
+        #   Global location is not supported.
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1EncryptionConfig] google_cloud_dataplex_v1_encryption_config_object
+        # @param [String] update_mask
+        #   Optional. Mask of fields to update. The service treats an omitted field mask
+        #   as an implied field mask equivalent to all fields that are populated (have a
+        #   non-empty value).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_location_encryption_config(name, google_cloud_dataplex_v1_encryption_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1EncryptionConfig::Representation
+          command.request_object = google_cloud_dataplex_v1_encryption_config_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -442,7 +638,7 @@ module Google
         # Searches for Entries matching the given query and scope.
         # @param [String] name
         #   Required. The project to which the request should be attributed in the
-        #   following form: projects/`project`/locations/`location`.
+        #   following form: projects/`project`/locations/global.
         # @param [String] order_by
         #   Optional. Specifies the ordering of results. Supported values are: relevance (
         #   default) last_modified_timestamp last_modified_timestamp asc
@@ -461,6 +657,8 @@ module Google
         #   Optional. The scope under which the search should be operating. It must either
         #   be organizations/ or projects/. If it is unspecified, it defaults to the
         #   organization where the project provided in name is located.
+        # @param [Boolean] semantic_search
+        #   Optional. Internal only.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -478,7 +676,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_project_location_entries(name, order_by: nil, page_size: nil, page_token: nil, query: nil, scope: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def search_project_location_entries(name, order_by: nil, page_size: nil, page_token: nil, query: nil, scope: nil, semantic_search: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+name}:searchEntries', options)
           command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1SearchEntriesResponse::Representation
           command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1SearchEntriesResponse
@@ -488,6 +686,7 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['query'] = query unless query.nil?
           command.query['scope'] = scope unless scope.nil?
+          command.query['semanticSearch'] = semantic_search unless semantic_search.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2869,6 +3068,109 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates an Entry Link.
+        # @param [String] parent
+        #   Required. The resource name of the parent Entry Group: projects/`
+        #   project_id_or_number`/locations/`location_id`/entryGroups/`entry_group_id`.
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLink] google_cloud_dataplex_v1_entry_link_object
+        # @param [String] entry_link_id
+        #   Required. Entry Link identifier * Must contain only lowercase letters, numbers
+        #   and hyphens. * Must start with a letter. * Must be between 1-63 characters. *
+        #   Must end with a number or a letter. * Must be unique within the EntryGroup.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLink] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLink]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_entry_group_entry_link(parent, google_cloud_dataplex_v1_entry_link_object = nil, entry_link_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/entryLinks', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLink::Representation
+          command.request_object = google_cloud_dataplex_v1_entry_link_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLink::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLink
+          command.params['parent'] = parent unless parent.nil?
+          command.query['entryLinkId'] = entry_link_id unless entry_link_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an Entry Link.
+        # @param [String] name
+        #   Required. The resource name of the Entry Link: projects/`project_id_or_number`/
+        #   locations/`location_id`/entryGroups/`entry_group_id`/entryLinks/`entry_link_id`
+        #   .
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLink] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLink]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_entry_group_entry_link(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLink::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLink
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an Entry Link.
+        # @param [String] name
+        #   Required. The resource name of the Entry Link: projects/`project_id_or_number`/
+        #   locations/`location_id`/entryGroups/`entry_group_id`/entryLinks/`entry_link_id`
+        #   .
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLink] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLink]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_entry_group_entry_link(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLink::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLink
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -3312,6 +3614,116 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new Glossary resource.
+        # @param [String] parent
+        #   Required. The parent resource where this Glossary will be created. Format:
+        #   projects/`project_id_or_number`/locations/`location_id` where location_id
+        #   refers to a GCP region.
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1Glossary] google_cloud_dataplex_v1_glossary_object
+        # @param [String] glossary_id
+        #   Required. Glossary ID: Glossary identifier.
+        # @param [Boolean] validate_only
+        #   Optional. Validates the request without actually creating the Glossary.
+        #   Default: false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_glossary(parent, google_cloud_dataplex_v1_glossary_object = nil, glossary_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/glossaries', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1Glossary::Representation
+          command.request_object = google_cloud_dataplex_v1_glossary_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['glossaryId'] = glossary_id unless glossary_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a Glossary resource. All the categories and terms within the Glossary
+        # must be deleted before the Glossary can be deleted.
+        # @param [String] name
+        #   Required. The name of the Glossary to delete. Format: projects/`
+        #   project_id_or_number`/locations/`location_id`/glossaries/`glossary_id`
+        # @param [String] etag
+        #   Optional. The etag of the Glossary. If this is provided, it must match the
+        #   server's etag. If the etag is provided and does not match the server-computed
+        #   etag, the request must fail with a ABORTED error code.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_glossary(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a Glossary resource.
+        # @param [String] name
+        #   Required. The name of the Glossary to retrieve. Format: projects/`
+        #   project_id_or_number`/locations/`location_id`/glossaries/`glossary_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1Glossary] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1Glossary]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_glossary(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1Glossary::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1Glossary
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -3352,6 +3764,99 @@ module Google
           command.response_class = Google::Apis::DataplexV1::GoogleIamV1Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Glossary resources in a project and location.
+        # @param [String] parent
+        #   Required. The parent, which has this collection of Glossaries. Format:
+        #   projects/`project_id_or_number`/locations/`location_id` where location_id
+        #   refers to a GCP region.
+        # @param [String] filter
+        #   Optional. Filter expression that filters Glossaries listed in the response.
+        #   Filters on proto fields of Glossary are supported. Examples of using a filter
+        #   are: - display_name="my-glossary" - categoryCount=1 - termCount=0
+        # @param [String] order_by
+        #   Optional. Order by expression that orders Glossaries listed in the response.
+        #   Order by fields are: name or create_time for the result. If not specified, the
+        #   ordering is undefined.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of Glossaries to return. The service may return
+        #   fewer than this value. If unspecified, at most 50 Glossaries will be returned.
+        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous ListGlossaries call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to ListGlossaries must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListGlossariesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListGlossariesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_glossaries(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/glossaries', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListGlossariesResponse::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListGlossariesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a Glossary resource.
+        # @param [String] name
+        #   Output only. Identifier. The resource name of the Glossary. Format: projects/`
+        #   project_id_or_number`/locations/`location_id`/glossaries/`glossary_id`
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1Glossary] google_cloud_dataplex_v1_glossary_object
+        # @param [String] update_mask
+        #   Required. The list of fields to update.
+        # @param [Boolean] validate_only
+        #   Optional. Validates the request without actually updating the Glossary.
+        #   Default: false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_glossary(name, google_cloud_dataplex_v1_glossary_object = nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1Glossary::Representation
+          command.request_object = google_cloud_dataplex_v1_glossary_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3433,6 +3938,110 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new GlossaryCategory resource.
+        # @param [String] parent
+        #   Required. The parent resource where this GlossaryCategory will be created.
+        #   Format: projects/`project_id_or_number`/locations/`location_id`/glossaries/`
+        #   glossary_id` where locationId refers to a GCP region.
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryCategory] google_cloud_dataplex_v1_glossary_category_object
+        # @param [String] category_id
+        #   Required. GlossaryCategory identifier.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryCategory] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryCategory]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_glossary_category(parent, google_cloud_dataplex_v1_glossary_category_object = nil, category_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/categories', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryCategory::Representation
+          command.request_object = google_cloud_dataplex_v1_glossary_category_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryCategory::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryCategory
+          command.params['parent'] = parent unless parent.nil?
+          command.query['categoryId'] = category_id unless category_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a GlossaryCategory resource. All the GlossaryCategories and
+        # GlossaryTerms nested directly under the specified GlossaryCategory will be
+        # moved one level up to the parent in the hierarchy.
+        # @param [String] name
+        #   Required. The name of the GlossaryCategory to delete. Format: projects/`
+        #   project_id_or_number`/locations/`location_id`/glossaries/`glossary_id`/
+        #   categories/`category_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_glossary_category(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::Empty::Representation
+          command.response_class = Google::Apis::DataplexV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a GlossaryCategory resource.
+        # @param [String] name
+        #   Required. The name of the GlossaryCategory to retrieve. Format: projects/`
+        #   project_id_or_number`/locations/`location_id`/glossaries/`glossary_id`/
+        #   categories/`category_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryCategory] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryCategory]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_glossary_category(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryCategory::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryCategory
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -3473,6 +4082,102 @@ module Google
           command.response_class = Google::Apis::DataplexV1::GoogleIamV1Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists GlossaryCategory resources in a Glossary.
+        # @param [String] parent
+        #   Required. The parent, which has this collection of GlossaryCategories. Format:
+        #   projects/`project_id_or_number`/locations/`location_id`/glossaries/`
+        #   glossary_id` Location is the GCP region.
+        # @param [String] filter
+        #   Optional. Filter expression that filters GlossaryCategories listed in the
+        #   response. Filters are supported on the following fields: -
+        #   immediate_parentExamples of using a filter are: - immediate_parent="projects/`
+        #   project_id_or_number`/locations/`location_id`/glossaries/`glossary_id`" -
+        #   immediate_parent="projects/`project_id_or_number`/locations/`location_id`/
+        #   glossaries/`glossary_id`/categories/`category_id`"This will only return the
+        #   GlossaryCategories that are directly nested under the specified parent.
+        # @param [String] order_by
+        #   Optional. Order by expression that orders GlossaryCategories listed in the
+        #   response. Order by fields are: name or create_time for the result. If not
+        #   specified, the ordering is undefined.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of GlossaryCategories to return. The service may
+        #   return fewer than this value. If unspecified, at most 50 GlossaryCategories
+        #   will be returned. The maximum value is 1000; values above 1000 will be coerced
+        #   to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous ListGlossaryCategories call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to ListGlossaryCategories must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListGlossaryCategoriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListGlossaryCategoriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_glossary_categories(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/categories', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListGlossaryCategoriesResponse::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListGlossaryCategoriesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a GlossaryCategory resource.
+        # @param [String] name
+        #   Output only. Identifier. The resource name of the GlossaryCategory. Format:
+        #   projects/`project_id_or_number`/locations/`location_id`/glossaries/`
+        #   glossary_id`/categories/`category_id`
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryCategory] google_cloud_dataplex_v1_glossary_category_object
+        # @param [String] update_mask
+        #   Required. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryCategory] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryCategory]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_glossary_category(name, google_cloud_dataplex_v1_glossary_category_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryCategory::Representation
+          command.request_object = google_cloud_dataplex_v1_glossary_category_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryCategory::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryCategory
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3554,6 +4259,108 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new GlossaryTerm resource.
+        # @param [String] parent
+        #   Required. The parent resource where the GlossaryTerm will be created. Format:
+        #   projects/`project_id_or_number`/locations/`location_id`/glossaries/`
+        #   glossary_id` where location_id refers to a GCP region.
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryTerm] google_cloud_dataplex_v1_glossary_term_object
+        # @param [String] term_id
+        #   Required. GlossaryTerm identifier.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryTerm] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryTerm]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_glossary_term(parent, google_cloud_dataplex_v1_glossary_term_object = nil, term_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/terms', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryTerm::Representation
+          command.request_object = google_cloud_dataplex_v1_glossary_term_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryTerm::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryTerm
+          command.params['parent'] = parent unless parent.nil?
+          command.query['termId'] = term_id unless term_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a GlossaryTerm resource.
+        # @param [String] name
+        #   Required. The name of the GlossaryTerm to delete. Format: projects/`
+        #   project_id_or_number`/locations/`location_id`/glossaries/`glossary_id`/terms/`
+        #   term_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_glossary_term(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::Empty::Representation
+          command.response_class = Google::Apis::DataplexV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a GlossaryTerm resource.
+        # @param [String] name
+        #   Required. The name of the GlossaryTerm to retrieve. Format: projects/`
+        #   project_id_or_number`/locations/`location_id`/glossaries/`glossary_id`/terms/`
+        #   term_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryTerm] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryTerm]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_glossary_term(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryTerm::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryTerm
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -3594,6 +4401,101 @@ module Google
           command.response_class = Google::Apis::DataplexV1::GoogleIamV1Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists GlossaryTerm resources in a Glossary.
+        # @param [String] parent
+        #   Required. The parent, which has this collection of GlossaryTerms. Format:
+        #   projects/`project_id_or_number`/locations/`location_id`/glossaries/`
+        #   glossary_id` where location_id refers to a GCP region.
+        # @param [String] filter
+        #   Optional. Filter expression that filters GlossaryTerms listed in the response.
+        #   Filters are supported on the following fields: - immediate_parentExamples of
+        #   using a filter are: - immediate_parent="projects/`project_id_or_number`/
+        #   locations/`location_id`/glossaries/`glossary_id`" - immediate_parent="projects/
+        #   `project_id_or_number`/locations/`location_id`/glossaries/`glossary_id`/
+        #   categories/`category_id`"This will only return the GlossaryTerms that are
+        #   directly nested under the specified parent.
+        # @param [String] order_by
+        #   Optional. Order by expression that orders GlossaryTerms listed in the response.
+        #   Order by fields are: name or create_time for the result. If not specified,
+        #   the ordering is undefined.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of GlossaryTerms to return. The service may
+        #   return fewer than this value. If unspecified, at most 50 GlossaryTerms will be
+        #   returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous ListGlossaryTerms call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to ListGlossaryTerms must match the call that provided the
+        #   page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListGlossaryTermsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListGlossaryTermsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_glossary_terms(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/terms', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListGlossaryTermsResponse::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListGlossaryTermsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a GlossaryTerm resource.
+        # @param [String] name
+        #   Output only. Identifier. The resource name of the GlossaryTerm. Format:
+        #   projects/`project_id_or_number`/locations/`location_id`/glossaries/`
+        #   glossary_id`/terms/`term_id`
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryTerm] google_cloud_dataplex_v1_glossary_term_object
+        # @param [String] update_mask
+        #   Required. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryTerm] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryTerm]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_glossary_term(name, google_cloud_dataplex_v1_glossary_term_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryTerm::Representation
+          command.request_object = google_cloud_dataplex_v1_glossary_term_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryTerm::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryTerm
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

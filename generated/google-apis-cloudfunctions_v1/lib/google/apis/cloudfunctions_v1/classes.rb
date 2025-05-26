@@ -316,12 +316,13 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Docker Registry to use for this deployment. Deprecated: Container Registry
-        # option will no longer be available after March 2025: https://cloud.google.com/
-        # artifact-registry/docs/transition/transition-from-gcr Please use Artifact
-        # Registry instead, which is the default choice. If unspecified, it defaults to `
-        # ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field
-        # should either be left unspecified or set to `ARTIFACT_REGISTRY`.
+        # Docker Registry to use for this deployment. Deprecated: as of March 2025, `
+        # CONTAINER_REGISTRY` option is no longer available in response to Container
+        # Registry's deprecation: https://cloud.google.com/artifact-registry/docs/
+        # transition/transition-from-gcr Please use Artifact Registry instead, which is
+        # the default choice. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `
+        # docker_repository` field is specified, this field should either be left
+        # unspecified or set to `ARTIFACT_REGISTRY`.
         # Corresponds to the JSON property `dockerRegistry`
         # @return [String]
         attr_accessor :docker_registry
@@ -433,6 +434,18 @@ module Google
         # @return [String]
         attr_accessor :runtime
       
+        # Output only.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Secret environment variables configuration.
         # Corresponds to the JSON property `secretEnvironmentVariables`
         # @return [Array<Google::Apis::CloudfunctionsV1::SecretEnvVar>]
@@ -543,6 +556,8 @@ module Google
           @network = args[:network] if args.key?(:network)
           @on_deploy_update_policy = args[:on_deploy_update_policy] if args.key?(:on_deploy_update_policy)
           @runtime = args[:runtime] if args.key?(:runtime)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @secret_environment_variables = args[:secret_environment_variables] if args.key?(:secret_environment_variables)
           @secret_volumes = args[:secret_volumes] if args.key?(:secret_volumes)
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)

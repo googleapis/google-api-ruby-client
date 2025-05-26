@@ -257,7 +257,7 @@ module Google
         # inserting, updating, or deleting a CSS Product input, it may take several
         # minutes before the processed Css Product can be retrieved.
         # @param [String] name
-        #   The name of the CSS Product input. Format: `accounts/`account`/
+        #   Identifier. The name of the CSS Product input. Format: `accounts/`account`/
         #   cssProductInputs/`css_product_input``, where the last section `
         #   css_product_input` consists of 3 parts: contentLanguage~feedLabel~offerId.
         #   Example: accounts/123/cssProductInputs/de~DE~rawProvidedId123
@@ -485,7 +485,8 @@ module Google
         
         # Updates a label.
         # @param [String] name
-        #   The resource name of the label. Format: accounts/`account`/labels/`label`
+        #   Identifier. The resource name of the label. Format: accounts/`account`/labels/`
+        #   label`
         # @param [Google::Apis::CssV1::AccountLabel] account_label_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

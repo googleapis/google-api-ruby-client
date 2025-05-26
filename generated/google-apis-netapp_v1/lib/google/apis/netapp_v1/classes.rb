@@ -212,6 +212,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Output only. The time until which the backup is not deletable.
+        # Corresponds to the JSON property `enforcedRetentionEndTime`
+        # @return [String]
+        attr_accessor :enforced_retention_end_time
+      
         # Resource labels to represent user provided metadata.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -278,6 +283,7 @@ module Google
           @chain_storage_bytes = args[:chain_storage_bytes] if args.key?(:chain_storage_bytes)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @enforced_retention_end_time = args[:enforced_retention_end_time] if args.key?(:enforced_retention_end_time)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
@@ -411,6 +417,61 @@ module Google
         end
       end
       
+      # Retention policy for backups in the backup vault
+      class BackupRetentionPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Required. Minimum retention duration in days for backups in the backup vault.
+        # Corresponds to the JSON property `backupMinimumEnforcedRetentionDays`
+        # @return [Fixnum]
+        attr_accessor :backup_minimum_enforced_retention_days
+      
+        # Optional. Indicates if the daily backups are immutable. Atleast one of
+        # daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and
+        # manual_backup_immutable must be true.
+        # Corresponds to the JSON property `dailyBackupImmutable`
+        # @return [Boolean]
+        attr_accessor :daily_backup_immutable
+        alias_method :daily_backup_immutable?, :daily_backup_immutable
+      
+        # Optional. Indicates if the manual backups are immutable. Atleast one of
+        # daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and
+        # manual_backup_immutable must be true.
+        # Corresponds to the JSON property `manualBackupImmutable`
+        # @return [Boolean]
+        attr_accessor :manual_backup_immutable
+        alias_method :manual_backup_immutable?, :manual_backup_immutable
+      
+        # Optional. Indicates if the monthly backups are immutable. Atleast one of
+        # daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and
+        # manual_backup_immutable must be true.
+        # Corresponds to the JSON property `monthlyBackupImmutable`
+        # @return [Boolean]
+        attr_accessor :monthly_backup_immutable
+        alias_method :monthly_backup_immutable?, :monthly_backup_immutable
+      
+        # Optional. Indicates if the weekly backups are immutable. Atleast one of
+        # daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and
+        # manual_backup_immutable must be true.
+        # Corresponds to the JSON property `weeklyBackupImmutable`
+        # @return [Boolean]
+        attr_accessor :weekly_backup_immutable
+        alias_method :weekly_backup_immutable?, :weekly_backup_immutable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_minimum_enforced_retention_days = args[:backup_minimum_enforced_retention_days] if args.key?(:backup_minimum_enforced_retention_days)
+          @daily_backup_immutable = args[:daily_backup_immutable] if args.key?(:daily_backup_immutable)
+          @manual_backup_immutable = args[:manual_backup_immutable] if args.key?(:manual_backup_immutable)
+          @monthly_backup_immutable = args[:monthly_backup_immutable] if args.key?(:monthly_backup_immutable)
+          @weekly_backup_immutable = args[:weekly_backup_immutable] if args.key?(:weekly_backup_immutable)
+        end
+      end
+      
       # A NetApp BackupVault.
       class BackupVault
         include Google::Apis::Core::Hashable
@@ -420,6 +481,11 @@ module Google
         # Corresponds to the JSON property `backupRegion`
         # @return [String]
         attr_accessor :backup_region
+      
+        # Retention policy for backups in the backup vault
+        # Corresponds to the JSON property `backupRetentionPolicy`
+        # @return [Google::Apis::NetappV1::BackupRetentionPolicy]
+        attr_accessor :backup_retention_policy
       
         # Optional. Type of backup vault to be created. Default is IN_REGION.
         # Corresponds to the JSON property `backupVaultType`
@@ -477,6 +543,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backup_region = args[:backup_region] if args.key?(:backup_region)
+          @backup_retention_policy = args[:backup_retention_policy] if args.key?(:backup_retention_policy)
           @backup_vault_type = args[:backup_vault_type] if args.key?(:backup_vault_type)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
@@ -701,42 +768,42 @@ module Google
       class HybridPeeringDetails
         include Google::Apis::Core::Hashable
       
-        # Optional. Copy-paste-able commands to be used on user's ONTAP to accept
+        # Output only. Copy-paste-able commands to be used on user's ONTAP to accept
         # peering requests.
         # Corresponds to the JSON property `command`
         # @return [String]
         attr_accessor :command
       
-        # Optional. Expiration time for the peering command to be executed on user's
+        # Output only. Expiration time for the peering command to be executed on user's
         # ONTAP.
         # Corresponds to the JSON property `commandExpiryTime`
         # @return [String]
         attr_accessor :command_expiry_time
       
-        # Optional. Temporary passphrase generated to accept cluster peering command.
+        # Output only. Temporary passphrase generated to accept cluster peering command.
         # Corresponds to the JSON property `passphrase`
         # @return [String]
         attr_accessor :passphrase
       
-        # Optional. Name of the user's local source cluster to be peered with the
+        # Output only. Name of the user's local source cluster to be peered with the
         # destination cluster.
         # Corresponds to the JSON property `peerClusterName`
         # @return [String]
         attr_accessor :peer_cluster_name
       
-        # Optional. Name of the user's local source vserver svm to be peered with the
+        # Output only. Name of the user's local source vserver svm to be peered with the
         # destination vserver svm.
         # Corresponds to the JSON property `peerSvmName`
         # @return [String]
         attr_accessor :peer_svm_name
       
-        # Optional. Name of the user's local source volume to be peered with the
+        # Output only. Name of the user's local source volume to be peered with the
         # destination volume.
         # Corresponds to the JSON property `peerVolumeName`
         # @return [String]
         attr_accessor :peer_volume_name
       
-        # Optional. IP address of the subnet.
+        # Output only. IP address of the subnet.
         # Corresponds to the JSON property `subnetIp`
         # @return [String]
         attr_accessor :subnet_ip
@@ -2098,6 +2165,13 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. True if using Independent Scaling of capacity and performance (
+        # Hyperdisk) By default set to false
+        # Corresponds to the JSON property `customPerformanceEnabled`
+        # @return [Boolean]
+        attr_accessor :custom_performance_enabled
+        alias_method :custom_performance_enabled?, :custom_performance_enabled
+      
         # Optional. Description of the storage pool
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -2180,6 +2254,17 @@ module Google
         # @return [String]
         attr_accessor :state_details
       
+        # Optional. Custom Performance Total IOPS of the pool If not provided, it will
+        # be calculated based on the total_throughput_mibps
+        # Corresponds to the JSON property `totalIops`
+        # @return [Fixnum]
+        attr_accessor :total_iops
+      
+        # Optional. Custom Performance Total Throughput of the pool (in MiB/s)
+        # Corresponds to the JSON property `totalThroughputMibps`
+        # @return [Fixnum]
+        attr_accessor :total_throughput_mibps
+      
         # Output only. Allocated size of all volumes in GIB in the storage pool
         # Corresponds to the JSON property `volumeCapacityGib`
         # @return [Fixnum]
@@ -2205,6 +2290,7 @@ module Google
           @allow_auto_tiering = args[:allow_auto_tiering] if args.key?(:allow_auto_tiering)
           @capacity_gib = args[:capacity_gib] if args.key?(:capacity_gib)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_performance_enabled = args[:custom_performance_enabled] if args.key?(:custom_performance_enabled)
           @description = args[:description] if args.key?(:description)
           @encryption_type = args[:encryption_type] if args.key?(:encryption_type)
           @global_access_allowed = args[:global_access_allowed] if args.key?(:global_access_allowed)
@@ -2220,6 +2306,8 @@ module Google
           @service_level = args[:service_level] if args.key?(:service_level)
           @state = args[:state] if args.key?(:state)
           @state_details = args[:state_details] if args.key?(:state_details)
+          @total_iops = args[:total_iops] if args.key?(:total_iops)
+          @total_throughput_mibps = args[:total_throughput_mibps] if args.key?(:total_throughput_mibps)
           @volume_capacity_gib = args[:volume_capacity_gib] if args.key?(:volume_capacity_gib)
           @volume_count = args[:volume_count] if args.key?(:volume_count)
           @zone = args[:zone] if args.key?(:zone)
@@ -2315,7 +2403,7 @@ module Google
         # @return [String]
         attr_accessor :total_transfer_duration
       
-        # Cumulative bytes trasferred so far for the replication relatinonship.
+        # Cumulative bytes transferred so far for the replication relationship.
         # Corresponds to the JSON property `transferBytes`
         # @return [Fixnum]
         attr_accessor :transfer_bytes

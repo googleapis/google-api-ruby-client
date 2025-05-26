@@ -22,6 +22,12 @@ module Google
   module Apis
     module MerchantapiAccountsV1beta
       
+      class AcceptTermsOfServiceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Accepted
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -46,6 +52,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccountManagement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccountRelationship
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccountService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AddAccountService
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -59,6 +83,12 @@ module Google
       end
       
       class Address
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApproveAccountServiceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -107,6 +137,12 @@ module Google
       end
       
       class BusinessInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CampaignsManagement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -202,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Handshake
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Headers
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -245,6 +287,18 @@ module Google
       end
       
       class ListAccountIssuesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAccountRelationshipsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAccountServicesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -370,7 +424,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProductsManagement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Program
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProposeAccountServiceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -383,6 +449,12 @@ module Google
       end
       
       class Region
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RejectAccountServiceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -538,6 +610,14 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AcceptTermsOfServiceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :terms_of_service_agreement_state, as: 'termsOfServiceAgreementState', class: Google::Apis::MerchantapiAccountsV1beta::TermsOfServiceAgreementState, decorator: Google::Apis::MerchantapiAccountsV1beta::TermsOfServiceAgreementState::Representation
+      
+        end
+      end
+      
       class Accepted
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -581,6 +661,43 @@ module Google
         end
       end
       
+      class AccountManagement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AccountRelationship
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id_alias, as: 'accountIdAlias'
+          property :name, as: 'name'
+          property :provider, as: 'provider'
+          property :provider_display_name, as: 'providerDisplayName'
+        end
+      end
+      
+      class AccountService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_aggregation, as: 'accountAggregation', class: Google::Apis::MerchantapiAccountsV1beta::AccountAggregation, decorator: Google::Apis::MerchantapiAccountsV1beta::AccountAggregation::Representation
+      
+          property :account_management, as: 'accountManagement', class: Google::Apis::MerchantapiAccountsV1beta::AccountManagement, decorator: Google::Apis::MerchantapiAccountsV1beta::AccountManagement::Representation
+      
+          property :campaigns_management, as: 'campaignsManagement', class: Google::Apis::MerchantapiAccountsV1beta::CampaignsManagement, decorator: Google::Apis::MerchantapiAccountsV1beta::CampaignsManagement::Representation
+      
+          property :external_account_id, as: 'externalAccountId'
+          property :handshake, as: 'handshake', class: Google::Apis::MerchantapiAccountsV1beta::Handshake, decorator: Google::Apis::MerchantapiAccountsV1beta::Handshake::Representation
+      
+          property :mutability, as: 'mutability'
+          property :name, as: 'name'
+          property :products_management, as: 'productsManagement', class: Google::Apis::MerchantapiAccountsV1beta::ProductsManagement, decorator: Google::Apis::MerchantapiAccountsV1beta::ProductsManagement::Representation
+      
+          property :provider, as: 'provider'
+          property :provider_display_name, as: 'providerDisplayName'
+        end
+      end
+      
       class AddAccountService
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -607,6 +724,12 @@ module Google
           property :postal_code, as: 'postalCode'
           property :region_code, as: 'regionCode'
           property :street_address, as: 'streetAddress'
+        end
+      end
+      
+      class ApproveAccountServiceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -697,6 +820,12 @@ module Google
           property :phone, as: 'phone', class: Google::Apis::MerchantapiAccountsV1beta::PhoneNumber, decorator: Google::Apis::MerchantapiAccountsV1beta::PhoneNumber::Representation
       
           property :phone_verification_state, as: 'phoneVerificationState'
+        end
+      end
+      
+      class CampaignsManagement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -843,6 +972,14 @@ module Google
         end
       end
       
+      class Handshake
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :actor, as: 'actor'
+          property :approval_state, as: 'approvalState'
+        end
+      end
+      
       class Headers
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -911,6 +1048,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :account_issues, as: 'accountIssues', class: Google::Apis::MerchantapiAccountsV1beta::AccountIssue, decorator: Google::Apis::MerchantapiAccountsV1beta::AccountIssue::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListAccountRelationshipsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :account_relationships, as: 'accountRelationships', class: Google::Apis::MerchantapiAccountsV1beta::AccountRelationship, decorator: Google::Apis::MerchantapiAccountsV1beta::AccountRelationship::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListAccountServicesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :account_services, as: 'accountServices', class: Google::Apis::MerchantapiAccountsV1beta::AccountService, decorator: Google::Apis::MerchantapiAccountsV1beta::AccountService::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -1120,6 +1275,12 @@ module Google
         end
       end
       
+      class ProductsManagement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Program
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1129,6 +1290,15 @@ module Google
           property :state, as: 'state'
           collection :unmet_requirements, as: 'unmetRequirements', class: Google::Apis::MerchantapiAccountsV1beta::Requirement, decorator: Google::Apis::MerchantapiAccountsV1beta::Requirement::Representation
       
+        end
+      end
+      
+      class ProposeAccountServiceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_service, as: 'accountService', class: Google::Apis::MerchantapiAccountsV1beta::AccountService, decorator: Google::Apis::MerchantapiAccountsV1beta::AccountService::Representation
+      
+          property :provider, as: 'provider'
         end
       end
       
@@ -1159,6 +1329,12 @@ module Google
       
           property :regional_inventory_eligible, as: 'regionalInventoryEligible'
           property :shipping_eligible, as: 'shippingEligible'
+        end
+      end
+      
+      class RejectAccountServiceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
