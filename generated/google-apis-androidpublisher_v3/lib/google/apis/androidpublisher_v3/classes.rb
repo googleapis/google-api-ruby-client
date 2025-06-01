@@ -3020,7 +3020,7 @@ module Google
         # @return [String]
         attr_accessor :subscription_period
       
-        # Details about taxation, Google Play policy and legal compliance for
+        # Details about taxation, Google Play policy, and legal compliance for
         # subscription products.
         # Corresponds to the JSON property `subscriptionTaxesAndComplianceSettings`
         # @return [Google::Apis::AndroidpublisherV3::SubscriptionTaxAndComplianceSettings]
@@ -5278,14 +5278,13 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. A string representing the version of available regions being used
-        # for the specified resource. Regional prices for the resource have to be
-        # specified according to the information published in [this article](https://
-        # support.google.com/googleplay/android-developer/answer/10532353). Each time
-        # the supported locations substantially change, the version will be incremented.
-        # The latest supported version is available in this article. Using this field
-        # will ensure that creating and updating the resource with an older region's
-        # version and set of regional prices and currencies will succeed even though a
-        # new version is available.
+        # for the specified resource. Regional prices and latest supported version for
+        # the resource have to be specified according to the information published in [
+        # this article](https://support.google.com/googleplay/android-developer/answer/
+        # 10532353). Each time the supported locations substantially change, the version
+        # will be incremented. Using this field will ensure that creating and updating
+        # the resource with an older region's version and set of regional prices and
+        # currencies will succeed even though a new version is available.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -5596,8 +5595,8 @@ module Google
       class RevocationContextItemBasedRefund
         include Google::Apis::Core::Hashable
       
-        # Required. If the subscription is a subscription bundle, the product id of the
-        # subscription to revoke.
+        # Required. If the subscription is a subscription with add-ons, the product id
+        # of the subscription item to revoke.
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
@@ -5980,7 +5979,7 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::RestrictedPaymentCountries]
         attr_accessor :restricted_payment_countries
       
-        # Details about taxation, Google Play policy and legal compliance for
+        # Details about taxation, Google Play policy, and legal compliance for
         # subscription products.
         # Corresponds to the JSON property `taxAndComplianceSettings`
         # @return [Google::Apis::AndroidpublisherV3::SubscriptionTaxAndComplianceSettings]
@@ -6635,6 +6634,13 @@ module Google
         # @return [String]
         attr_accessor :expiry_time
       
+        # The order id of the latest successful order associated with this item. Not
+        # present if the item is not owned by the user yet (e.g. the item being deferred
+        # replaced to).
+        # Corresponds to the JSON property `latestSuccessfulOrderId`
+        # @return [String]
+        attr_accessor :latest_successful_order_id
+      
         # Offer details information related to a purchase line item.
         # Corresponds to the JSON property `offerDetails`
         # @return [Google::Apis::AndroidpublisherV3::OfferDetails]
@@ -6664,6 +6670,7 @@ module Google
           @auto_renewing_plan = args[:auto_renewing_plan] if args.key?(:auto_renewing_plan)
           @deferred_item_replacement = args[:deferred_item_replacement] if args.key?(:deferred_item_replacement)
           @expiry_time = args[:expiry_time] if args.key?(:expiry_time)
+          @latest_successful_order_id = args[:latest_successful_order_id] if args.key?(:latest_successful_order_id)
           @offer_details = args[:offer_details] if args.key?(:offer_details)
           @prepaid_plan = args[:prepaid_plan] if args.key?(:prepaid_plan)
           @product_id = args[:product_id] if args.key?(:product_id)
@@ -6834,7 +6841,7 @@ module Google
         end
       end
       
-      # Details about taxation, Google Play policy and legal compliance for
+      # Details about taxation, Google Play policy, and legal compliance for
       # subscription products.
       class SubscriptionTaxAndComplianceSettings
         include Google::Apis::Core::Hashable
