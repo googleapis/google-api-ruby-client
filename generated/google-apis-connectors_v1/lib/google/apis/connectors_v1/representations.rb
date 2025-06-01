@@ -754,12 +754,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PriorityEntityType
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Provider
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1356,8 +1350,6 @@ module Google
           hash :labels, as: 'labels'
           property :launch_stage, as: 'launchStage'
           property :name, as: 'name'
-          collection :priority_entity_types, as: 'priorityEntityTypes', class: Google::Apis::ConnectorsV1::PriorityEntityType, decorator: Google::Apis::ConnectorsV1::PriorityEntityType::Representation
-      
           property :release_version, as: 'releaseVersion'
           property :role_grant, as: 'roleGrant', class: Google::Apis::ConnectorsV1::RoleGrant, decorator: Google::Apis::ConnectorsV1::RoleGrant::Representation
       
@@ -2533,16 +2525,6 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
-        end
-      end
-      
-      class PriorityEntityType
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :id, as: 'id'
-          property :order, as: 'order'
-          property :priority, as: 'priority'
         end
       end
       

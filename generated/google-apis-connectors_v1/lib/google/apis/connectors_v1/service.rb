@@ -501,7 +501,7 @@ module Google
         #   update the connection details: * `description` * `labels` * `connector_version`
         #   * `config_variables` * `auth_config` * `destination_configs` * `node_config` *
         #   `log_config` * `ssl_config` * `eventing_enablement_type` * `eventing_config` *
-        #   `auth_override_enabled`
+        #   `auth_override_enabled` * `async_operations_enabled`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1539,7 +1539,8 @@ module Google
         # @param [Google::Apis::ConnectorsV1::EndpointAttachment] endpoint_attachment_object
         # @param [String] endpoint_attachment_id
         #   Required. Identifier to assign to the EndpointAttachment. Must be unique
-        #   within scope of the parent resource.
+        #   within scope of the parent resource. The regex is: `^[a-z]([a-z0-9-]`0,61`[a-
+        #   z0-9])?$`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2714,9 +2715,6 @@ module Google
         #   Required. Resource name of the form: `projects/*/locations/*/providers/*/
         #   connectors/*/versions/*` Only global location is supported for
         #   ConnectorVersion resource.
-        # @param [String] schema_view
-        #   Optional. Enum to control whether schema enrichment related fields should be
-        #   included in the response.
         # @param [String] view
         #   Specifies which fields of the ConnectorVersion are returned in the response.
         #   Defaults to `CUSTOMER` view.
@@ -2737,12 +2735,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_provider_connector_version(name, schema_view: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_provider_connector_version(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ConnectorsV1::ConnectorVersion::Representation
           command.response_class = Google::Apis::ConnectorsV1::ConnectorVersion
           command.params['name'] = name unless name.nil?
-          command.query['schemaView'] = schema_view unless schema_view.nil?
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2751,16 +2748,10 @@ module Google
         
         # Lists Connector Versions in a given project and location.
         # @param [String] parent
-        #   Required. Parent resource of the connectors, of the form: `projects/*/
-        #   locations/*/providers/*/connectors/*` Only global location is supported for
-        #   ConnectorVersion resource.
         # @param [Fixnum] page_size
         #   Page size.
         # @param [String] page_token
         #   Page token.
-        # @param [String] schema_view
-        #   Optional. Enum to control whether schema enrichment related fields should be
-        #   included in the response.
         # @param [String] view
         #   Specifies which fields of the ConnectorVersion are returned in the response.
         #   Defaults to `BASIC` view.
@@ -2781,14 +2772,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_provider_connector_versions(parent, page_size: nil, page_token: nil, schema_view: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_provider_connector_versions(parent, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/versions', options)
           command.response_representation = Google::Apis::ConnectorsV1::ListConnectorVersionsResponse::Representation
           command.response_class = Google::Apis::ConnectorsV1::ListConnectorVersionsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['schemaView'] = schema_view unless schema_view.nil?
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

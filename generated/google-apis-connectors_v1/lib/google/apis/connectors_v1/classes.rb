@@ -1384,11 +1384,6 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. The priority entity types for the connector version.
-        # Corresponds to the JSON property `priorityEntityTypes`
-        # @return [Array<Google::Apis::ConnectorsV1::PriorityEntityType>]
-        attr_accessor :priority_entity_types
-      
         # Output only. ReleaseVersion of the connector, for example: "1.0.1-alpha".
         # Corresponds to the JSON property `releaseVersion`
         # @return [String]
@@ -1463,7 +1458,6 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @name = args[:name] if args.key?(:name)
-          @priority_entity_types = args[:priority_entity_types] if args.key?(:priority_entity_types)
           @release_version = args[:release_version] if args.key?(:release_version)
           @role_grant = args[:role_grant] if args.key?(:role_grant)
           @role_grants = args[:role_grants] if args.key?(:role_grants)
@@ -5758,44 +5752,6 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
-        end
-      end
-      
-      # PriorityEntityType represents an entity type with its associated priority and
-      # order.
-      class PriorityEntityType
-        include Google::Apis::Core::Hashable
-      
-        # The description of the entity type.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # The entity type.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # The order of the entity type within its priority group.
-        # Corresponds to the JSON property `order`
-        # @return [Fixnum]
-        attr_accessor :order
-      
-        # The priority of the entity type, such as P0, P1, etc.
-        # Corresponds to the JSON property `priority`
-        # @return [String]
-        attr_accessor :priority
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @id = args[:id] if args.key?(:id)
-          @order = args[:order] if args.key?(:order)
-          @priority = args[:priority] if args.key?(:priority)
         end
       end
       
