@@ -636,6 +636,7 @@ module Google
           property :client_side_encrypted_option, as: 'clientSideEncryptedOption'
           property :include_shared_drives, as: 'includeSharedDrives'
           property :include_team_drives, as: 'includeTeamDrives'
+          property :shared_drives_option, as: 'sharedDrivesOption'
           property :version_date, as: 'versionDate'
         end
       end

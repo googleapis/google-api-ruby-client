@@ -619,6 +619,13 @@ module Google
         attr_accessor :include_team_drives
         alias_method :include_team_drives?, :include_team_drives
       
+        # Optional. Options to include or exclude documents in shared drives. We
+        # recommend using this field over include_shared_drives. This field overrides
+        # include_shared_drives and include_team_drives when set.
+        # Corresponds to the JSON property `sharedDrivesOption`
+        # @return [String]
+        attr_accessor :shared_drives_option
+      
         # Search the current version of the Drive file, but export the contents of the
         # last version saved before 12:00 AM UTC on the specified date. Enter the date
         # in UTC.
@@ -635,6 +642,7 @@ module Google
           @client_side_encrypted_option = args[:client_side_encrypted_option] if args.key?(:client_side_encrypted_option)
           @include_shared_drives = args[:include_shared_drives] if args.key?(:include_shared_drives)
           @include_team_drives = args[:include_team_drives] if args.key?(:include_team_drives)
+          @shared_drives_option = args[:shared_drives_option] if args.key?(:shared_drives_option)
           @version_date = args[:version_date] if args.key?(:version_date)
         end
       end
