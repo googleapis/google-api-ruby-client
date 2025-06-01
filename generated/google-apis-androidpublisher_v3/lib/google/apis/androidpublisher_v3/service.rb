@@ -2707,14 +2707,13 @@ module Google
         #   resource.
         # @param [String] regions_version_version
         #   Required. A string representing the version of available regions being used
-        #   for the specified resource. Regional prices for the resource have to be
-        #   specified according to the information published in [this article](https://
-        #   support.google.com/googleplay/android-developer/answer/10532353). Each time
-        #   the supported locations substantially change, the version will be incremented.
-        #   The latest supported version is available in this article. Using this field
-        #   will ensure that creating and updating the resource with an older region's
-        #   version and set of regional prices and currencies will succeed even though a
-        #   new version is available.
+        #   for the specified resource. Regional prices and latest supported version for
+        #   the resource have to be specified according to the information published in [
+        #   this article](https://support.google.com/googleplay/android-developer/answer/
+        #   10532353). Each time the supported locations substantially change, the version
+        #   will be incremented. Using this field will ensure that creating and updating
+        #   the resource with an older region's version and set of regional prices and
+        #   currencies will succeed even though a new version is available.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2875,14 +2874,13 @@ module Google
         #   Defaults to latency-sensitive.
         # @param [String] regions_version_version
         #   Required. A string representing the version of available regions being used
-        #   for the specified resource. Regional prices for the resource have to be
-        #   specified according to the information published in [this article](https://
-        #   support.google.com/googleplay/android-developer/answer/10532353). Each time
-        #   the supported locations substantially change, the version will be incremented.
-        #   The latest supported version is available in this article. Using this field
-        #   will ensure that creating and updating the resource with an older region's
-        #   version and set of regional prices and currencies will succeed even though a
-        #   new version is available.
+        #   for the specified resource. Regional prices and latest supported version for
+        #   the resource have to be specified according to the information published in [
+        #   this article](https://support.google.com/googleplay/android-developer/answer/
+        #   10532353). Each time the supported locations substantially change, the version
+        #   will be incremented. Using this field will ensure that creating and updating
+        #   the resource with an older region's version and set of regional prices and
+        #   currencies will succeed even though a new version is available.
         # @param [String] update_mask
         #   Required. The list of fields to be updated.
         # @param [String] fields
@@ -3357,14 +3355,13 @@ module Google
         #   see the documentation of the offer_id field on the SubscriptionOffer resource.
         # @param [String] regions_version_version
         #   Required. A string representing the version of available regions being used
-        #   for the specified resource. Regional prices for the resource have to be
-        #   specified according to the information published in [this article](https://
-        #   support.google.com/googleplay/android-developer/answer/10532353). Each time
-        #   the supported locations substantially change, the version will be incremented.
-        #   The latest supported version is available in this article. Using this field
-        #   will ensure that creating and updating the resource with an older region's
-        #   version and set of regional prices and currencies will succeed even though a
-        #   new version is available.
+        #   for the specified resource. Regional prices and latest supported version for
+        #   the resource have to be specified according to the information published in [
+        #   this article](https://support.google.com/googleplay/android-developer/answer/
+        #   10532353). Each time the supported locations substantially change, the version
+        #   will be incremented. Using this field will ensure that creating and updating
+        #   the resource with an older region's version and set of regional prices and
+        #   currencies will succeed even though a new version is available.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3592,14 +3589,13 @@ module Google
         #   Defaults to latency-sensitive.
         # @param [String] regions_version_version
         #   Required. A string representing the version of available regions being used
-        #   for the specified resource. Regional prices for the resource have to be
-        #   specified according to the information published in [this article](https://
-        #   support.google.com/googleplay/android-developer/answer/10532353). Each time
-        #   the supported locations substantially change, the version will be incremented.
-        #   The latest supported version is available in this article. Using this field
-        #   will ensure that creating and updating the resource with an older region's
-        #   version and set of regional prices and currencies will succeed even though a
-        #   new version is available.
+        #   for the specified resource. Regional prices and latest supported version for
+        #   the resource have to be specified according to the information published in [
+        #   this article](https://support.google.com/googleplay/android-developer/answer/
+        #   10532353). Each time the supported locations substantially change, the version
+        #   will be incremented. Using this field will ensure that creating and updating
+        #   the resource with an older region's version and set of regional prices and
+        #   currencies will succeed even though a new version is available.
         # @param [String] update_mask
         #   Required. The list of fields to be updated.
         # @param [String] fields
@@ -3865,7 +3861,9 @@ module Google
         #   The package name of the application for which this subscription was purchased (
         #   for example, 'com.some.thing').
         # @param [String] subscription_id
-        #   The purchased subscription ID (for example, 'monthly001').
+        #   Note: Since May 21, 2025, subscription_id is not required, and not recommended
+        #   for subscription with add-ons. The purchased subscription ID (for example, '
+        #   monthly001').
         # @param [String] token
         #   The token provided to the user's device when the subscription was purchased.
         # @param [Google::Apis::AndroidpublisherV3::SubscriptionPurchasesAcknowledgeRequest] subscription_purchases_acknowledge_request_object
@@ -3904,7 +3902,9 @@ module Google
         #   The package name of the application for which this subscription was purchased (
         #   for example, 'com.some.thing').
         # @param [String] subscription_id
-        #   The purchased subscription ID (for example, 'monthly001').
+        #   Note: Since May 21, 2025, subscription_id is not required, and not recommended
+        #   for subscription with add-ons. The purchased subscription ID (for example, '
+        #   monthly001').
         # @param [String] token
         #   The token provided to the user's device when the subscription was purchased.
         # @param [String] fields
