@@ -503,6 +503,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :expected_next_state, as: 'expectedNextState'
           hash :labels, as: 'labels'
+          collection :locations, as: 'locations'
           property :name, as: 'name'
           property :next_state_of_tags, as: 'nextStateOfTags', class: Google::Apis::IapV1::NextStateOfTags, decorator: Google::Apis::IapV1::NextStateOfTags::Representation
       

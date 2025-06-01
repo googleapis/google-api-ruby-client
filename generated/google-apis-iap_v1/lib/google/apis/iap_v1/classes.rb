@@ -70,13 +70,14 @@ module Google
         # @return [Google::Apis::IapV1::AllowedDomainsSettings]
         attr_accessor :allowed_domains_settings
       
-        # Allows customers to configure HTTP request paths that'll allow HTTP OPTIONS
+        # Allows customers to configure HTTP request paths that'll allow HTTP `OPTIONS`
         # call to bypass authentication and authorization.
         # Corresponds to the JSON property `corsSettings`
         # @return [Google::Apis::IapV1::CorsSettings]
         attr_accessor :cors_settings
       
-        # Allows customers to configure tenant_id for GCIP instance per-app.
+        # Allows customers to configure tenant IDs for a Cloud Identity Platform (GCIP)
+        # instance for each application.
         # Corresponds to the JSON property `gcipSettings`
         # @return [Google::Apis::IapV1::GcipSettings]
         attr_accessor :gcip_settings
@@ -393,13 +394,14 @@ module Google
         end
       end
       
-      # Allows customers to configure HTTP request paths that'll allow HTTP OPTIONS
+      # Allows customers to configure HTTP request paths that'll allow HTTP `OPTIONS`
       # call to bypass authentication and authorization.
       class CorsSettings
         include Google::Apis::Core::Hashable
       
-        # Configuration to allow HTTP OPTIONS calls to skip authorization. If undefined,
-        # IAP will not apply any special logic to OPTIONS requests.
+        # Configuration to allow HTTP `OPTIONS` calls to skip authentication and
+        # authorization. If undefined, IAP will not apply any special logic to `OPTIONS`
+        # requests.
         # Corresponds to the JSON property `allowHttpOptions`
         # @return [Boolean]
         attr_accessor :allow_http_options
@@ -508,7 +510,8 @@ module Google
         end
       end
       
-      # Allows customers to configure tenant_id for GCIP instance per-app.
+      # Allows customers to configure tenant IDs for a Cloud Identity Platform (GCIP)
+      # instance for each application.
       class GcipSettings
         include Google::Apis::Core::Hashable
       
@@ -519,11 +522,11 @@ module Google
         # @return [String]
         attr_accessor :login_page_uri
       
-        # Optional. GCIP tenant ids that are linked to the IAP resource. tenant_ids
+        # Optional. GCIP tenant IDs that are linked to the IAP resource. `tenant_ids`
         # could be a string beginning with a number character to indicate authenticating
-        # with GCIP tenant flow, or in the format of _ to indicate authenticating with
-        # GCIP agent flow. If agent flow is used, tenant_ids should only contain one
-        # single element, while for tenant flow, tenant_ids can contain multiple
+        # with GCIP tenant flow, or in the format of `_` to indicate authenticating with
+        # GCIP agent flow. If agent flow is used, `tenant_ids` should only contain one
+        # single element, while for tenant flow, `tenant_ids` can contain multiple
         # elements.
         # Corresponds to the JSON property `tenantIds`
         # @return [Array<String>]
@@ -1072,6 +1075,18 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # The locations of the resource. This field is used to determine whether the
+        # request is compliant with Trust Boundaries. Usage: - If unset or empty, the
+        # location of authorization is used as the target location. - For global
+        # resources: use a single value of "global". - For regional/multi-regional
+        # resources: use name of the GCP region(s) where the resource exists (e.g., ["us-
+        # east1", "us-west1"]). For multi-regional resources specify the name of each
+        # GCP region in the resource's multi-region. NOTE: Only GCP cloud region names
+        # are supported - go/cloud-region-names.
+        # Corresponds to the JSON property `locations`
+        # @return [Array<String>]
+        attr_accessor :locations
+      
         # The **relative** name of the resource, which is the URI path of the resource
         # without the leading "/". See https://cloud.google.com/iam/docs/conditions-
         # resource-attributes#resource-name for examples used by other GCP Services.
@@ -1127,6 +1142,7 @@ module Google
         def update!(**args)
           @expected_next_state = args[:expected_next_state] if args.key?(:expected_next_state)
           @labels = args[:labels] if args.key?(:labels)
+          @locations = args[:locations] if args.key?(:locations)
           @name = args[:name] if args.key?(:name)
           @next_state_of_tags = args[:next_state_of_tags] if args.key?(:next_state_of_tags)
           @service = args[:service] if args.key?(:service)
