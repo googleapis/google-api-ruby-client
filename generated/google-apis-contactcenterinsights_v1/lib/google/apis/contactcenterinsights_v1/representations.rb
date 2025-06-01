@@ -2450,6 +2450,7 @@ module Google
       
           property :gcs_source, as: 'gcsSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GcsSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GcsSource::Representation
       
+          property :metadata_uri, as: 'metadataUri'
         end
       end
       
@@ -4182,6 +4183,7 @@ module Google
       
           property :gcs_source, as: 'gcsSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GcsSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GcsSource::Representation
       
+          property :metadata_uri, as: 'metadataUri'
         end
       end
       

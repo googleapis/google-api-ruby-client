@@ -1772,6 +1772,12 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GcsSource]
         attr_accessor :gcs_source
       
+        # Cloud Storage URI that points to a file that contains the conversation
+        # metadata.
+        # Corresponds to the JSON property `metadataUri`
+        # @return [String]
+        attr_accessor :metadata_uri
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1780,6 +1786,7 @@ module Google
         def update!(**args)
           @dialogflow_source = args[:dialogflow_source] if args.key?(:dialogflow_source)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+          @metadata_uri = args[:metadata_uri] if args.key?(:metadata_uri)
         end
       end
       
@@ -7697,6 +7704,12 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GcsSource]
         attr_accessor :gcs_source
       
+        # Cloud Storage URI that points to a file that contains the conversation
+        # metadata.
+        # Corresponds to the JSON property `metadataUri`
+        # @return [String]
+        attr_accessor :metadata_uri
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7705,6 +7718,7 @@ module Google
         def update!(**args)
           @dialogflow_source = args[:dialogflow_source] if args.key?(:dialogflow_source)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+          @metadata_uri = args[:metadata_uri] if args.key?(:metadata_uri)
         end
       end
       
