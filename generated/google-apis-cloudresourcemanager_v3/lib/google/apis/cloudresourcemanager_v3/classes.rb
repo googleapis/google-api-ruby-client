@@ -546,6 +546,44 @@ module Google
         end
       end
       
+      # Represents a collection of effective tag bindings for a GCP resource.
+      class EffectiveTagBindingCollection
+        include Google::Apis::Core::Hashable
+      
+        # Tag keys/values effectively bound to this resource, specified in namespaced
+        # format. For example: "123/environment": "production"
+        # Corresponds to the JSON property `effectiveTags`
+        # @return [Hash<String,String>]
+        attr_accessor :effective_tags
+      
+        # The full resource name of the resource the TagBindings are bound to. E.g. `//
+        # cloudresourcemanager.googleapis.com/projects/123`
+        # Corresponds to the JSON property `fullResourceName`
+        # @return [String]
+        attr_accessor :full_resource_name
+      
+        # Identifier. The name of the EffectiveTagBindingCollection, following the
+        # convention: `locations/`location`/effectiveTagBindingCollections/`encoded-full-
+        # resource-name`` where the encoded-full-resource-name is the UTF-8 encoded name
+        # of the GCP resource the TagBindings are bound to. E.g. "locations/global/
+        # effectiveTagBindingCollections/%2f%2fcloudresourcemanager.googleapis.com%
+        # 2fprojects%2f123"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_tags = args[:effective_tags] if args.key?(:effective_tags)
+          @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -1776,6 +1814,50 @@ module Google
         end
       end
       
+      # Represents a collection of tags directly bound to a GCP resource.
+      class TagBindingCollection
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A checksum based on the current bindings which can be passed to
+        # prevent race conditions. This field is always set in server responses.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # The full resource name of the resource the TagBindings are bound to. E.g. `//
+        # cloudresourcemanager.googleapis.com/projects/123`
+        # Corresponds to the JSON property `fullResourceName`
+        # @return [String]
+        attr_accessor :full_resource_name
+      
+        # Identifier. The name of the TagBindingCollection, following the convention: `
+        # locations/`location`/tagBindingCollections/`encoded-full-resource-name`` where
+        # the encoded-full-resource-name is the UTF-8 encoded name of the GCP resource
+        # the TagBindings are bound to. "locations/global/tagBindingCollections/%2f%
+        # 2fcloudresourcemanager.googleapis.com%2fprojects%2f123"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Tag keys/values directly bound to this resource, specified in namespaced
+        # format. For example: "123/environment": "production"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
+          @name = args[:name] if args.key?(:name)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
       # A TagHold represents the use of a TagValue that is not captured by TagBindings.
       # If a TagValue has any TagHolds, deletion will be blocked. This resource is
       # intended to be created in the same cloud location as the `holder`.
@@ -1888,8 +1970,8 @@ module Google
       
         # Required. Immutable. The user friendly name for a TagKey. The short name
         # should be unique for TagKeys within the same tag namespace. The short name
-        # must be 1-63 characters, beginning and ending with an alphanumeric character ([
-        # a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics
+        # must be 1-256 characters, beginning and ending with an alphanumeric character (
+        # [a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics
         # between.
         # Corresponds to the JSON property `shortName`
         # @return [String]
@@ -1962,7 +2044,7 @@ module Google
       
         # Required. Immutable. User-assigned short name for TagValue. The short name
         # should be unique for TagValues within the same parent TagKey. The short name
-        # must be 63 characters or less, beginning and ending with an alphanumeric
+        # must be 256 characters or less, beginning and ending with an alphanumeric
         # character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and
         # alphanumerics between.
         # Corresponds to the JSON property `shortName`

@@ -776,6 +776,116 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns effective tag bindings on a GCP resource.
+        # @param [String] name
+        #   Required. The full name of the EffectiveTagBindingCollection in format: `
+        #   locations/`location`/effectiveTagBindingCollections/`encoded-full-resource-
+        #   name`` where the encoded-full-resource-name is the UTF-8 encoded name of the
+        #   resource the TagBindings are bound to. E.g. "locations/global/
+        #   effectiveTagBindingCollections/%2f%2fcloudresourcemanager.googleapis.com%
+        #   2fprojects%2f123"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::EffectiveTagBindingCollection] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::EffectiveTagBindingCollection]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_location_effective_tag_binding_collection(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::EffectiveTagBindingCollection::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::EffectiveTagBindingCollection
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns tag bindings directly attached to a GCP resource.
+        # @param [String] name
+        #   Required. The full name of the TagBindingCollection in format: `locations/`
+        #   location`/tagBindingCollections/`encoded-full-resource-name`` where the enoded-
+        #   full-resource-name is the UTF-8 encoded name of the resource the TagBindings
+        #   are bound to. E.g. "locations/global/tagBindingCollections/%2f%
+        #   2fcloudresourcemanager.googleapis.com%2fprojects%2f123"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::TagBindingCollection] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::TagBindingCollection]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_location_tag_binding_collection(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::TagBindingCollection::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::TagBindingCollection
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates tag bindings directly attached to a GCP resource. Update_mask can be
+        # kept empty or "*".
+        # @param [String] name
+        #   Identifier. The name of the TagBindingCollection, following the convention: `
+        #   locations/`location`/tagBindingCollections/`encoded-full-resource-name`` where
+        #   the encoded-full-resource-name is the UTF-8 encoded name of the GCP resource
+        #   the TagBindings are bound to. "locations/global/tagBindingCollections/%2f%
+        #   2fcloudresourcemanager.googleapis.com%2fprojects%2f123"
+        # @param [Google::Apis::CloudresourcemanagerV3::TagBindingCollection] tag_binding_collection_object
+        # @param [String] update_mask
+        #   Optional. An update mask to selectively update fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_location_tag_binding_collection(name, tag_binding_collection_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v3/{+name}', options)
+          command.request_representation = Google::Apis::CloudresourcemanagerV3::TagBindingCollection::Representation
+          command.request_object = tag_binding_collection_object
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::Operation::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the latest state of a long-running operation. Clients can use this method
         # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
