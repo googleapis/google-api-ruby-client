@@ -636,6 +636,7 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :security_policy, as: 'securityPolicy'
           property :server_tls_policy, as: 'serverTlsPolicy'
           property :traffic_port_selector, as: 'trafficPortSelector', class: Google::Apis::NetworkservicesV1beta1::TrafficPortSelector, decorator: Google::Apis::NetworkservicesV1beta1::TrafficPortSelector::Representation
       
