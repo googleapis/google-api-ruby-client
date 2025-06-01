@@ -2147,6 +2147,51 @@ module Google
         end
       end
       
+      # Expiration holds information about the expiration of a MigratingVm.
+      class Expiration
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp of when this resource is considered expired.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only. Describes whether the expiration can be extended.
+        # Corresponds to the JSON property `extendable`
+        # @return [Boolean]
+        attr_accessor :extendable
+        alias_method :extendable?, :extendable
+      
+        # Output only. The number of times expiration was extended.
+        # Corresponds to the JSON property `extensionCount`
+        # @return [Fixnum]
+        attr_accessor :extension_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @extendable = args[:extendable] if args.key?(:extendable)
+          @extension_count = args[:extension_count] if args.key?(:extension_count)
+        end
+      end
+      
+      # Request message for 'ExtendMigrationRequest' request.
+      class ExtendMigrationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Response message for fetchInventory.
       class FetchInventoryResponse
         include Google::Apis::Core::Hashable
@@ -3240,6 +3285,11 @@ module Google
         # @return [Google::Apis::VmmigrationV1alpha1::Status]
         attr_accessor :error
       
+        # Expiration holds information about the expiration of a MigratingVm.
+        # Corresponds to the JSON property `expiration`
+        # @return [Google::Apis::VmmigrationV1alpha1::Expiration]
+        attr_accessor :expiration
+      
         # Output only. The group this migrating vm is included in, if any. The group is
         # represented by the full path of the appropriate Group resource.
         # Corresponds to the JSON property `group`
@@ -3338,6 +3388,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @error = args[:error] if args.key?(:error)
+          @expiration = args[:expiration] if args.key?(:expiration)
           @group = args[:group] if args.key?(:group)
           @labels = args[:labels] if args.key?(:labels)
           @last_replication_cycle = args[:last_replication_cycle] if args.key?(:last_replication_cycle)

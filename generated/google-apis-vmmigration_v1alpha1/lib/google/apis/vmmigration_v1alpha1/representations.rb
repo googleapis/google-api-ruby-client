@@ -298,6 +298,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Expiration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExtendMigrationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FetchInventoryResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1300,6 +1312,21 @@ module Google
         end
       end
       
+      class Expiration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expire_time, as: 'expireTime'
+          property :extendable, as: 'extendable'
+          property :extension_count, as: 'extensionCount'
+        end
+      end
+      
+      class ExtendMigrationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class FetchInventoryResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1630,6 +1657,8 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :error, as: 'error', class: Google::Apis::VmmigrationV1alpha1::Status, decorator: Google::Apis::VmmigrationV1alpha1::Status::Representation
+      
+          property :expiration, as: 'expiration', class: Google::Apis::VmmigrationV1alpha1::Expiration, decorator: Google::Apis::VmmigrationV1alpha1::Expiration::Representation
       
           property :group, as: 'group'
           hash :labels, as: 'labels'
