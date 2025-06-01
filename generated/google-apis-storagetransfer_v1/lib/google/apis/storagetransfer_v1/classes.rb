@@ -248,16 +248,13 @@ module Google
         # @return [String]
         attr_accessor :credentials_secret
       
-        # Identities of a user registered Azure application that enables identity
-        # federation to trust tokens issued by the user's Google service account. For
-        # more information about Azure application and identity federation, see [
-        # Register an application with the Microsoft identity platform] (https://learn.
-        # microsoft.com/en-us/entra/identity-platform/quickstart-register-app) Azure
-        # RBAC roles then need be assigned to the Azure application to authorize access
-        # to the user's Azure data source. For more information about Azure RBAC roles
-        # for blobs, see [Manage Access Rights with RBAC] (https://learn.microsoft.com/
-        # en-us/rest/api/storageservices/authorize-with-azure-active-directory#manage-
-        # access-rights-with-rbac)
+        # The identity of an Azure application through which Storage Transfer Service
+        # can authenticate requests using Azure workload identity federation. Storage
+        # Transfer Service can issue requests to Azure Storage through registered Azure
+        # applications, eliminating the need to pass credentials to Storage Transfer
+        # Service directly. To configure federated identity, see [Configure access to
+        # Microsoft Azure Storage](https://cloud.google.com/storage-transfer/docs/source-
+        # microsoft-azure#option_3_authenticate_using_federated_identity).
         # Corresponds to the JSON property `federatedIdentityConfig`
         # @return [Google::Apis::StoragetransferV1::FederatedIdentityConfig]
         attr_accessor :federated_identity_config
@@ -499,26 +496,24 @@ module Google
         end
       end
       
-      # Identities of a user registered Azure application that enables identity
-      # federation to trust tokens issued by the user's Google service account. For
-      # more information about Azure application and identity federation, see [
-      # Register an application with the Microsoft identity platform] (https://learn.
-      # microsoft.com/en-us/entra/identity-platform/quickstart-register-app) Azure
-      # RBAC roles then need be assigned to the Azure application to authorize access
-      # to the user's Azure data source. For more information about Azure RBAC roles
-      # for blobs, see [Manage Access Rights with RBAC] (https://learn.microsoft.com/
-      # en-us/rest/api/storageservices/authorize-with-azure-active-directory#manage-
-      # access-rights-with-rbac)
+      # The identity of an Azure application through which Storage Transfer Service
+      # can authenticate requests using Azure workload identity federation. Storage
+      # Transfer Service can issue requests to Azure Storage through registered Azure
+      # applications, eliminating the need to pass credentials to Storage Transfer
+      # Service directly. To configure federated identity, see [Configure access to
+      # Microsoft Azure Storage](https://cloud.google.com/storage-transfer/docs/source-
+      # microsoft-azure#option_3_authenticate_using_federated_identity).
       class FederatedIdentityConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Client (application) ID of the application with federated
+        # Required. The client (application) ID of the application with federated
         # credentials.
         # Corresponds to the JSON property `clientId`
         # @return [String]
         attr_accessor :client_id
       
-        # Required. Tenant (directory) ID of the application with federated credentials.
+        # Required. The tenant (directory) ID of the application with federated
+        # credentials.
         # Corresponds to the JSON property `tenantId`
         # @return [String]
         attr_accessor :tenant_id
@@ -1637,16 +1632,15 @@ module Google
         # @return [Google::Apis::StoragetransferV1::Schedule]
         attr_accessor :schedule
       
-        # Optional. The service account to be used to access resources in the consumer
-        # project in the transfer job. We accept `email` or `uniqueId` for the service
-        # account. Service account format is projects/-/serviceAccounts/`
-        # ACCOUNT_EMAIL_OR_UNIQUEID` See https://cloud.google.com/iam/docs/reference/
-        # credentials/rest/v1/projects.serviceAccounts/generateAccessToken#path-
-        # parameters for details. Caller requires the following IAM permission on the
-        # specified service account: `iam.serviceAccounts.actAs`. project-PROJECT_NUMBER@
-        # storage-transfer-service.iam.gserviceaccount.com requires the following IAM
-        # permission on the specified service account: `iam.serviceAccounts.
-        # getAccessToken`
+        # Optional. The user-managed service account to which to delegate service agent
+        # permissions. You can grant Cloud Storage bucket permissions to this service
+        # account instead of to the Transfer Service service agent. Format is `projects/-
+        # /serviceAccounts/ACCOUNT_EMAIL_OR_UNIQUEID` Either the service account email (`
+        # SERVICE_ACCOUNT_NAME@PROJECT_ID.iam.gserviceaccount.com`) or the unique ID (`
+        # 123456789012345678901`) are accepted in the string. The `-` wildcard character
+        # is required; replacing it with a project ID is invalid. See https://cloud.
+        # google.com//storage-transfer/docs/delegate-service-agent-permissions for
+        # required permissions.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
