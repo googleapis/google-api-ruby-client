@@ -740,8 +740,6 @@ module Google
       class AuthzPolicyAuthzRuleFromRequestSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :principals, as: 'principals', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch::Representation
-      
           collection :resources, as: 'resources', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleRequestResource, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleRequestResource::Representation
       
         end
