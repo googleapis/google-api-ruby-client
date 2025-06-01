@@ -472,6 +472,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListSacAttachmentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSacRealmsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSecurityProfileGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -593,6 +605,36 @@ module Google
       end
       
       class Rule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SacAttachment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SacAttachmentSacAttachmentSymantecOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SacRealm
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SacRealmPairingKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SacRealmSacRealmSymantecOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -752,8 +794,6 @@ module Google
       class AuthzPolicyAuthzRuleFromRequestSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :principals, as: 'principals', class: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleStringMatch, decorator: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleStringMatch::Representation
-      
           collection :resources, as: 'resources', class: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleRequestResource, decorator: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleRequestResource::Representation
       
         end
@@ -1426,6 +1466,26 @@ module Google
         end
       end
       
+      class ListSacAttachmentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :sac_attachments, as: 'sacAttachments', class: Google::Apis::NetworksecurityV1beta1::SacAttachment, decorator: Google::Apis::NetworksecurityV1beta1::SacAttachment::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListSacRealmsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :sac_realms, as: 'sacRealms', class: Google::Apis::NetworksecurityV1beta1::SacRealm, decorator: Google::Apis::NetworksecurityV1beta1::SacRealm::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListSecurityProfileGroupsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1655,6 +1715,64 @@ module Google
       
           collection :sources, as: 'sources', class: Google::Apis::NetworksecurityV1beta1::Source, decorator: Google::Apis::NetworksecurityV1beta1::Source::Representation
       
+        end
+      end
+      
+      class SacAttachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :country, as: 'country'
+          property :create_time, as: 'createTime'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :ncc_gateway, as: 'nccGateway'
+          property :sac_realm, as: 'sacRealm'
+          property :state, as: 'state'
+          property :symantec_options, as: 'symantecOptions', class: Google::Apis::NetworksecurityV1beta1::SacAttachmentSacAttachmentSymantecOptions, decorator: Google::Apis::NetworksecurityV1beta1::SacAttachmentSacAttachmentSymantecOptions::Representation
+      
+          property :time_zone, as: 'timeZone'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class SacAttachmentSacAttachmentSymantecOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :symantec_location_name, as: 'symantecLocationName'
+          property :symantec_site, as: 'symantecSite'
+        end
+      end
+      
+      class SacRealm
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :pairing_key, as: 'pairingKey', class: Google::Apis::NetworksecurityV1beta1::SacRealmPairingKey, decorator: Google::Apis::NetworksecurityV1beta1::SacRealmPairingKey::Representation
+      
+          property :security_service, as: 'securityService'
+          property :state, as: 'state'
+          property :symantec_options, as: 'symantecOptions', class: Google::Apis::NetworksecurityV1beta1::SacRealmSacRealmSymantecOptions, decorator: Google::Apis::NetworksecurityV1beta1::SacRealmSacRealmSymantecOptions::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class SacRealmPairingKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expire_time, as: 'expireTime'
+          property :key, as: 'key'
+        end
+      end
+      
+      class SacRealmSacRealmSymantecOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :available_symantec_sites, as: 'availableSymantecSites'
+          property :secret_path, as: 'secretPath'
+          property :symantec_connection_state, as: 'symantecConnectionState'
         end
       end
       
