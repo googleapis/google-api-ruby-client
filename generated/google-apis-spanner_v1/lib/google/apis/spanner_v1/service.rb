@@ -1734,10 +1734,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds split points to specified tables, indexes of a database.
+        # Adds split points to specified tables and indexes of a database.
         # @param [String] database
-        #   Required. The database on whose tables/indexes split points are to be added.
-        #   Values are of the form `projects//instances//databases/`.
+        #   Required. The database on whose tables or indexes the split points are to be
+        #   added. Values are of the form `projects//instances//databases/`.
         # @param [Google::Apis::SpannerV1::AddSplitPointsRequest] add_split_points_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
