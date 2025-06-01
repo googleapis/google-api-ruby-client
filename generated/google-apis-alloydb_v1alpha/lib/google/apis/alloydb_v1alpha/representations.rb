@@ -817,6 +817,7 @@ module Google
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :secondary_config, as: 'secondaryConfig', class: Google::Apis::AlloydbV1alpha::SecondaryConfig, decorator: Google::Apis::AlloydbV1alpha::SecondaryConfig::Representation
       
+          property :service_account_email, as: 'serviceAccountEmail'
           property :ssl_config, as: 'sslConfig', class: Google::Apis::AlloydbV1alpha::SslConfig, decorator: Google::Apis::AlloydbV1alpha::SslConfig::Representation
       
           property :state, as: 'state'
