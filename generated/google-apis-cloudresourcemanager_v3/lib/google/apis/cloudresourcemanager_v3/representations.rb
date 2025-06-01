@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EffectiveTagBindingCollection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -311,6 +317,12 @@ module Google
       end
       
       class TagBinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TagBindingCollection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -535,6 +547,15 @@ module Google
           property :tag_key, as: 'tagKey'
           property :tag_key_parent_name, as: 'tagKeyParentName'
           property :tag_value, as: 'tagValue'
+        end
+      end
+      
+      class EffectiveTagBindingCollection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :effective_tags, as: 'effectiveTags'
+          property :full_resource_name, as: 'fullResourceName'
+          property :name, as: 'name'
         end
       end
       
@@ -832,6 +853,16 @@ module Google
           property :parent, as: 'parent'
           property :tag_value, as: 'tagValue'
           property :tag_value_namespaced_name, as: 'tagValueNamespacedName'
+        end
+      end
+      
+      class TagBindingCollection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :full_resource_name, as: 'fullResourceName'
+          property :name, as: 'name'
+          hash :tags, as: 'tags'
         end
       end
       
