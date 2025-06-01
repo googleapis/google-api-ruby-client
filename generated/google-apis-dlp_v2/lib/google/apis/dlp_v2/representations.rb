@@ -1462,6 +1462,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2PublishToDataplexCatalog
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2PublishToPubSub
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2707,6 +2713,8 @@ module Google
           property :pub_sub_notification, as: 'pubSubNotification', class: Google::Apis::DlpV2::GooglePrivacyDlpV2PubSubNotification, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2PubSubNotification::Representation
       
           property :publish_to_chronicle, as: 'publishToChronicle', class: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToChronicle, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToChronicle::Representation
+      
+          property :publish_to_dataplex_catalog, as: 'publishToDataplexCatalog', class: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToDataplexCatalog, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToDataplexCatalog::Representation
       
           property :publish_to_scc, as: 'publishToScc', class: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToSecurityCommandCenter, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToSecurityCommandCenter::Representation
       
@@ -4528,6 +4536,13 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2PublishToDataplexCatalog
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :lower_data_risk_to_low, as: 'lowerDataRiskToLow'
+        end
+      end
+      
       class GooglePrivacyDlpV2PublishToPubSub
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5048,6 +5063,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dataset_id, as: 'datasetId'
+          property :project_id, as: 'projectId'
           property :table_id, as: 'tableId'
         end
       end
