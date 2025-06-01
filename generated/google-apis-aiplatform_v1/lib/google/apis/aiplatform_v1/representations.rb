@@ -670,6 +670,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1ColabImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1CometInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7900,6 +7906,14 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1ColabImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :release_name, as: 'releaseName'
+        end
+      end
+      
       class GoogleCloudAiplatformV1CometInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10396,6 +10410,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio_timestamp, as: 'audioTimestamp'
           property :candidate_count, as: 'candidateCount'
+          property :enable_affective_dialog, as: 'enableAffectiveDialog'
           property :frequency_penalty, as: 'frequencyPenalty'
           property :logprobs, as: 'logprobs'
           property :max_output_tokens, as: 'maxOutputTokens'
@@ -12639,6 +12654,8 @@ module Google
       class GoogleCloudAiplatformV1NotebookSoftwareConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :colab_image, as: 'colabImage', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ColabImage, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ColabImage::Representation
+      
           collection :env, as: 'env', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EnvVar, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EnvVar::Representation
       
           property :post_startup_script_config, as: 'postStartupScriptConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PostStartupScriptConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PostStartupScriptConfig::Representation
@@ -12657,6 +12674,8 @@ module Google
       class GoogleCloudAiplatformV1PscAutomationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :forwarding_rule, as: 'forwardingRule'
+          property :ip_address, as: 'ipAddress'
           property :network, as: 'network'
           property :project_id, as: 'projectId'
         end
