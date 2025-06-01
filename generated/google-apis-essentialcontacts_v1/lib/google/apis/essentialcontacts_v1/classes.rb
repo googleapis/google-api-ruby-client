@@ -82,8 +82,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :notification_category_subscriptions
       
-        # The last time the validation_state was updated, either manually or
-        # automatically. A contact is considered stale if its validation state was
+        # Output only. The last time the validation_state was updated, either manually
+        # or automatically. A contact is considered stale if its validation state was
         # updated more than 1 year ago.
         # Corresponds to the JSON property `validateTime`
         # @return [String]
