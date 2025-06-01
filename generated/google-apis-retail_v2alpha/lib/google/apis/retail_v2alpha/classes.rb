@@ -3088,7 +3088,9 @@ module Google
         end
       end
       
-      # Suggested answers to the follow-up question.
+      # Suggested answers to the follow-up question. If it's numerical attribute, only
+      # ProductAttributeInterval will be set. If it's textual attribute, only
+      # productAttributeValue will be set.
       class GoogleCloudRetailV2alphaConversationalSearchResponseFollowupQuestionSuggestedAnswer
         include Google::Apis::Core::Hashable
       
@@ -7467,6 +7469,15 @@ module Google
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestTileNavigationSpec]
         attr_accessor :tile_navigation_spec
       
+        # Optional. The user attributes that could be used for personalization of search
+        # results. * Populate at most 100 key-value pairs per query. * Only supports
+        # string keys and repeated string values. * Duplcate keys are not allowed within
+        # a single query. Example: user_attributes: [ ` key: "pets" value ` values: "dog"
+        # values: "cat" ` `, ` key: "state" value ` values: "CA" ` ` ]
+        # Corresponds to the JSON property `userAttributes`
+        # @return [Hash<String,Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaStringList>]
+        attr_accessor :user_attributes
+      
         # Information of an end user.
         # Corresponds to the JSON property `userInfo`
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaUserInfo]
@@ -7542,6 +7553,7 @@ module Google
           @search_mode = args[:search_mode] if args.key?(:search_mode)
           @spell_correction_spec = args[:spell_correction_spec] if args.key?(:spell_correction_spec)
           @tile_navigation_spec = args[:tile_navigation_spec] if args.key?(:tile_navigation_spec)
+          @user_attributes = args[:user_attributes] if args.key?(:user_attributes)
           @user_info = args[:user_info] if args.key?(:user_info)
           @variant_rollup_keys = args[:variant_rollup_keys] if args.key?(:variant_rollup_keys)
           @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
@@ -8746,6 +8758,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A list of string values.
+      class GoogleCloudRetailV2alphaStringList
+        include Google::Apis::Core::Hashable
+      
+        # String values.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
