@@ -717,6 +717,12 @@ module Google
         class IpFilter
           include Google::Apis::Core::Hashable
         
+          # Whether to allow cross-org VPCs in the bucket's IP filter configuration.
+          # Corresponds to the JSON property `allowCrossOrgVpcs`
+          # @return [Boolean]
+          attr_accessor :allow_cross_org_vpcs
+          alias_method :allow_cross_org_vpcs?, :allow_cross_org_vpcs
+        
           # The mode of the IP filter. Valid values are 'Enabled' and 'Disabled'.
           # Corresponds to the JSON property `mode`
           # @return [String]
@@ -739,6 +745,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
+            @allow_cross_org_vpcs = args[:allow_cross_org_vpcs] if args.key?(:allow_cross_org_vpcs)
             @mode = args[:mode] if args.key?(:mode)
             @public_network_source = args[:public_network_source] if args.key?(:public_network_source)
             @vpc_network_sources = args[:vpc_network_sources] if args.key?(:vpc_network_sources)
