@@ -2856,9 +2856,8 @@ module Google
       class GitSourceRepository
         include Google::Apis::Core::Hashable
       
-        # The Developer Connect Git repository link or the url that matches a repository
-        # link in the current project, formatted as `projects/*/locations/*/connections/*
-        # /gitRepositoryLink/*`
+        # The Developer Connect Git repository link formatted as `projects/*/locations/*/
+        # connections/*/gitRepositoryLink/*`
         # Corresponds to the JSON property `developerConnect`
         # @return [String]
         attr_accessor :developer_connect
