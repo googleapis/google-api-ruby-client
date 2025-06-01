@@ -55,6 +55,32 @@ module Google
         end
       end
       
+      # Parameters associated with the ADD_ESIM command to add an eSIM profile to the
+      # device.
+      class AddEsimParams
+        include Google::Apis::Core::Hashable
+      
+        # Required. The activation code for the eSIM profile.
+        # Corresponds to the JSON property `activationCode`
+        # @return [String]
+        attr_accessor :activation_code
+      
+        # Required. The activation state of the eSIM profile once it is downloaded.
+        # Corresponds to the JSON property `activationState`
+        # @return [String]
+        attr_accessor :activation_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @activation_code = args[:activation_code] if args.key?(:activation_code)
+          @activation_state = args[:activation_state] if args.key?(:activation_state)
+        end
+      end
+      
       # Advanced security settings. In most cases, setting these is not needed.
       class AdvancedSecurityOverrides
         include Google::Apis::Core::Hashable
@@ -1344,6 +1370,12 @@ module Google
       class Command
         include Google::Apis::Core::Hashable
       
+        # Parameters associated with the ADD_ESIM command to add an eSIM profile to the
+        # device.
+        # Corresponds to the JSON property `addEsimParams`
+        # @return [Google::Apis::AndroidmanagementV1::AddEsimParams]
+        attr_accessor :add_esim_params
+      
         # Parameters associated with the CLEAR_APP_DATA command to clear the data of
         # specified apps from the device.
         # Corresponds to the JSON property `clearAppsDataParams`
@@ -1379,12 +1411,23 @@ module Google
         # @return [String]
         attr_accessor :error_code
       
+        # Status and error details (if present) of an ADD_ESIM or REMOVE_ESIM command.
+        # Corresponds to the JSON property `esimStatus`
+        # @return [Google::Apis::AndroidmanagementV1::EsimCommandStatus]
+        attr_accessor :esim_status
+      
         # For commands of type RESET_PASSWORD, optionally specifies the new password.
         # Note: The new password must be at least 6 characters long if it is numeric in
         # case of Android 14 devices. Else the command will fail with INVALID_VALUE.
         # Corresponds to the JSON property `newPassword`
         # @return [String]
         attr_accessor :new_password
+      
+        # Parameters associated with the REMOVE_ESIM command to remove an eSIM profile
+        # from the device.
+        # Corresponds to the JSON property `removeEsimParams`
+        # @return [Google::Apis::AndroidmanagementV1::RemoveEsimParams]
+        attr_accessor :remove_esim_params
       
         # Parameters associated with the REQUEST_DEVICE_INFO command to get device
         # related information.
@@ -1443,12 +1486,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @add_esim_params = args[:add_esim_params] if args.key?(:add_esim_params)
           @clear_apps_data_params = args[:clear_apps_data_params] if args.key?(:clear_apps_data_params)
           @clear_apps_data_status = args[:clear_apps_data_status] if args.key?(:clear_apps_data_status)
           @create_time = args[:create_time] if args.key?(:create_time)
           @duration = args[:duration] if args.key?(:duration)
           @error_code = args[:error_code] if args.key?(:error_code)
+          @esim_status = args[:esim_status] if args.key?(:esim_status)
           @new_password = args[:new_password] if args.key?(:new_password)
+          @remove_esim_params = args[:remove_esim_params] if args.key?(:remove_esim_params)
           @request_device_info_params = args[:request_device_info_params] if args.key?(:request_device_info_params)
           @request_device_info_status = args[:request_device_info_status] if args.key?(:request_device_info_status)
           @reset_password_flags = args[:reset_password_flags] if args.key?(:reset_password_flags)
@@ -2687,6 +2733,56 @@ module Google
         end
       end
       
+      # Status and error details (if present) of an ADD_ESIM or REMOVE_ESIM command.
+      class EsimCommandStatus
+        include Google::Apis::Core::Hashable
+      
+        # Details of the eSIM added or removed.
+        # Corresponds to the JSON property `esimInfo`
+        # @return [Google::Apis::AndroidmanagementV1::EsimInfo]
+        attr_accessor :esim_info
+      
+        # Internal error details if present for the ADD_ESIM or REMOVE_ESIM command.
+        # Corresponds to the JSON property `internalErrorDetails`
+        # @return [Google::Apis::AndroidmanagementV1::InternalErrorDetails]
+        attr_accessor :internal_error_details
+      
+        # Output only. Status of an ADD_ESIM or REMOVE_ESIM command.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @esim_info = args[:esim_info] if args.key?(:esim_info)
+          @internal_error_details = args[:internal_error_details] if args.key?(:internal_error_details)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Details of the eSIM added or removed.
+      class EsimInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. ICC ID of the eSIM.
+        # Corresponds to the JSON property `iccId`
+        # @return [String]
+        attr_accessor :icc_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @icc_id = args[:icc_id] if args.key?(:icc_id)
+        end
+      end
+      
       # Information related to the eUICC chip.
       class EuiccChipInfo
         include Google::Apis::Core::Hashable
@@ -3156,6 +3252,49 @@ module Google
           @charging_constraint = args[:charging_constraint] if args.key?(:charging_constraint)
           @device_idle_constraint = args[:device_idle_constraint] if args.key?(:device_idle_constraint)
           @network_type_constraint = args[:network_type_constraint] if args.key?(:network_type_constraint)
+        end
+      end
+      
+      # Internal error details if present for the ADD_ESIM or REMOVE_ESIM command.
+      class InternalErrorDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Integer representation of the error code as specified here (https:
+        # //developer.android.com/reference/android/telephony/euicc/EuiccManager#
+        # EXTRA_EMBEDDED_SUBSCRIPTION_DETAILED_CODE). See also,
+        # OPERATION_SMDX_SUBJECT_REASON_CODE. See error_code_detail for more details.
+        # Corresponds to the JSON property `errorCode`
+        # @return [Fixnum]
+        attr_accessor :error_code
+      
+        # Output only. The error code detail corresponding to the error_code.
+        # Corresponds to the JSON property `errorCodeDetail`
+        # @return [String]
+        attr_accessor :error_code_detail
+      
+        # Output only. Integer representation of the operation code as specified here (
+        # https://developer.android.com/reference/android/telephony/euicc/EuiccManager#
+        # EXTRA_EMBEDDED_SUBSCRIPTION_DETAILED_CODE). See operation_code_detail for more
+        # details.
+        # Corresponds to the JSON property `operationCode`
+        # @return [Fixnum]
+        attr_accessor :operation_code
+      
+        # Output only. The operation code detail corresponding to the operation_code.
+        # Corresponds to the JSON property `operationCodeDetail`
+        # @return [String]
+        attr_accessor :operation_code_detail
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @error_code_detail = args[:error_code_detail] if args.key?(:error_code_detail)
+          @operation_code = args[:operation_code] if args.key?(:operation_code)
+          @operation_code_detail = args[:operation_code_detail] if args.key?(:operation_code_detail)
         end
       end
       
@@ -5362,6 +5501,20 @@ module Google
         attr_accessor :wifi_configs_lockdown_enabled
         alias_method :wifi_configs_lockdown_enabled?, :wifi_configs_lockdown_enabled
       
+        # Optional. Wipe flags to indicate what data is wiped when a device or profile
+        # wipe is triggered due to any reason (for example, non-compliance). This does
+        # not apply to the enterprises.devices.delete method. . This list must not have
+        # duplicates.
+        # Corresponds to the JSON property `wipeDataFlags`
+        # @return [Array<String>]
+        attr_accessor :wipe_data_flags
+      
+        # Controls the work account setup configuration, such as details of whether a
+        # Google authenticated account is required.
+        # Corresponds to the JSON property `workAccountSetupConfig`
+        # @return [Google::Apis::AndroidmanagementV1::WorkAccountSetupConfig]
+        attr_accessor :work_account_setup_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5463,6 +5616,8 @@ module Google
           @vpn_config_disabled = args[:vpn_config_disabled] if args.key?(:vpn_config_disabled)
           @wifi_config_disabled = args[:wifi_config_disabled] if args.key?(:wifi_config_disabled)
           @wifi_configs_lockdown_enabled = args[:wifi_configs_lockdown_enabled] if args.key?(:wifi_configs_lockdown_enabled)
+          @wipe_data_flags = args[:wipe_data_flags] if args.key?(:wipe_data_flags)
+          @work_account_setup_config = args[:work_account_setup_config] if args.key?(:work_account_setup_config)
         end
       end
       
@@ -5796,6 +5951,26 @@ module Google
           @admin_package_name = args[:admin_package_name] if args.key?(:admin_package_name)
           @admin_user_id = args[:admin_user_id] if args.key?(:admin_user_id)
           @target_user_id = args[:target_user_id] if args.key?(:target_user_id)
+        end
+      end
+      
+      # Parameters associated with the REMOVE_ESIM command to remove an eSIM profile
+      # from the device.
+      class RemoveEsimParams
+        include Google::Apis::Core::Hashable
+      
+        # Required. ICC ID of the eSIM profile to be deleted.
+        # Corresponds to the JSON property `iccId`
+        # @return [String]
+        attr_accessor :icc_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @icc_id = args[:icc_id] if args.key?(:icc_id)
         end
       end
       
@@ -6525,10 +6700,26 @@ module Google
       class TelephonyInfo
         include Google::Apis::Core::Hashable
       
+        # Output only. Activation state of the SIM card on the device. This is
+        # applicable for eSIMs only. This is supported on all devices for API level 35
+        # and above. This is always ACTIVATION_STATE_UNSPECIFIED for physical SIMs and
+        # for devices below API level 35.
+        # Corresponds to the JSON property `activationState`
+        # @return [String]
+        attr_accessor :activation_state
+      
         # The carrier name associated with this SIM card.
         # Corresponds to the JSON property `carrierName`
         # @return [String]
         attr_accessor :carrier_name
+      
+        # Output only. The configuration mode of the SIM card on the device. This is
+        # applicable for eSIMs only. This is supported on all devices for API level 35
+        # and above. This is always CONFIG_MODE_UNSPECIFIED for physical SIMs and for
+        # devices below API level 35.
+        # Corresponds to the JSON property `configMode`
+        # @return [String]
+        attr_accessor :config_mode
       
         # Output only. The ICCID associated with this SIM card.
         # Corresponds to the JSON property `iccId`
@@ -6546,7 +6737,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @activation_state = args[:activation_state] if args.key?(:activation_state)
           @carrier_name = args[:carrier_name] if args.key?(:carrier_name)
+          @config_mode = args[:config_mode] if args.key?(:config_mode)
           @icc_id = args[:icc_id] if args.key?(:icc_id)
           @phone_number = args[:phone_number] if args.key?(:phone_number)
         end
@@ -7182,6 +7375,36 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Controls the work account setup configuration, such as details of whether a
+      # Google authenticated account is required.
+      class WorkAccountSetupConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The authentication type of the user on the device.
+        # Corresponds to the JSON property `authenticationType`
+        # @return [String]
+        attr_accessor :authentication_type
+      
+        # Optional. The specific google work account email address to be added. This
+        # field is only relevant if authenticationType is GOOGLE_AUTHENTICATED. This
+        # must be an enterprise account and not a consumer account. Once set and a
+        # Google authenticated account is added to the device, changing this field will
+        # have no effect, and thus recommended to be set only once.
+        # Corresponds to the JSON property `requiredAccountEmail`
+        # @return [String]
+        attr_accessor :required_account_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authentication_type = args[:authentication_type] if args.key?(:authentication_type)
+          @required_account_email = args[:required_account_email] if args.key?(:required_account_email)
         end
       end
     end

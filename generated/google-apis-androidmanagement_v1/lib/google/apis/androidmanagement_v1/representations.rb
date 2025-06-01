@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AddEsimParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdvancedSecurityOverrides
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -322,6 +328,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EsimCommandStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EsimInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EuiccChipInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -389,6 +407,12 @@ module Google
       end
       
       class InstallConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InternalErrorDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -736,6 +760,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RemoveEsimParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RequestDeviceInfoParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -940,6 +970,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkAccountSetupConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdbShellCommandEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -950,6 +986,14 @@ module Google
       class AdbShellInteractiveEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AddEsimParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :activation_code, as: 'activationCode'
+          property :activation_state, as: 'activationState'
         end
       end
       
@@ -1242,6 +1286,8 @@ module Google
       class Command
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :add_esim_params, as: 'addEsimParams', class: Google::Apis::AndroidmanagementV1::AddEsimParams, decorator: Google::Apis::AndroidmanagementV1::AddEsimParams::Representation
+      
           property :clear_apps_data_params, as: 'clearAppsDataParams', class: Google::Apis::AndroidmanagementV1::ClearAppsDataParams, decorator: Google::Apis::AndroidmanagementV1::ClearAppsDataParams::Representation
       
           property :clear_apps_data_status, as: 'clearAppsDataStatus', class: Google::Apis::AndroidmanagementV1::ClearAppsDataStatus, decorator: Google::Apis::AndroidmanagementV1::ClearAppsDataStatus::Representation
@@ -1249,7 +1295,11 @@ module Google
           property :create_time, as: 'createTime'
           property :duration, as: 'duration'
           property :error_code, as: 'errorCode'
+          property :esim_status, as: 'esimStatus', class: Google::Apis::AndroidmanagementV1::EsimCommandStatus, decorator: Google::Apis::AndroidmanagementV1::EsimCommandStatus::Representation
+      
           property :new_password, as: 'newPassword'
+          property :remove_esim_params, as: 'removeEsimParams', class: Google::Apis::AndroidmanagementV1::RemoveEsimParams, decorator: Google::Apis::AndroidmanagementV1::RemoveEsimParams::Representation
+      
           property :request_device_info_params, as: 'requestDeviceInfoParams', class: Google::Apis::AndroidmanagementV1::RequestDeviceInfoParams, decorator: Google::Apis::AndroidmanagementV1::RequestDeviceInfoParams::Representation
       
           property :request_device_info_status, as: 'requestDeviceInfoStatus', class: Google::Apis::AndroidmanagementV1::RequestDeviceInfoStatus, decorator: Google::Apis::AndroidmanagementV1::RequestDeviceInfoStatus::Representation
@@ -1567,6 +1617,24 @@ module Google
         end
       end
       
+      class EsimCommandStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :esim_info, as: 'esimInfo', class: Google::Apis::AndroidmanagementV1::EsimInfo, decorator: Google::Apis::AndroidmanagementV1::EsimInfo::Representation
+      
+          property :internal_error_details, as: 'internalErrorDetails', class: Google::Apis::AndroidmanagementV1::InternalErrorDetails, decorator: Google::Apis::AndroidmanagementV1::InternalErrorDetails::Representation
+      
+          property :status, as: 'status'
+        end
+      end
+      
+      class EsimInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :icc_id, as: 'iccId'
+        end
+      end
+      
       class EuiccChipInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1678,6 +1746,16 @@ module Google
           property :charging_constraint, as: 'chargingConstraint'
           property :device_idle_constraint, as: 'deviceIdleConstraint'
           property :network_type_constraint, as: 'networkTypeConstraint'
+        end
+      end
+      
+      class InternalErrorDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_code, :numeric_string => true, as: 'errorCode'
+          property :error_code_detail, as: 'errorCodeDetail'
+          property :operation_code, :numeric_string => true, as: 'operationCode'
+          property :operation_code_detail, as: 'operationCodeDetail'
         end
       end
       
@@ -2241,6 +2319,9 @@ module Google
           property :vpn_config_disabled, as: 'vpnConfigDisabled'
           property :wifi_config_disabled, as: 'wifiConfigDisabled'
           property :wifi_configs_lockdown_enabled, as: 'wifiConfigsLockdownEnabled'
+          collection :wipe_data_flags, as: 'wipeDataFlags'
+          property :work_account_setup_config, as: 'workAccountSetupConfig', class: Google::Apis::AndroidmanagementV1::WorkAccountSetupConfig, decorator: Google::Apis::AndroidmanagementV1::WorkAccountSetupConfig::Representation
+      
         end
       end
       
@@ -2324,6 +2405,13 @@ module Google
           property :admin_package_name, as: 'adminPackageName'
           property :admin_user_id, as: 'adminUserId'
           property :target_user_id, as: 'targetUserId'
+        end
+      end
+      
+      class RemoveEsimParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :icc_id, as: 'iccId'
         end
       end
       
@@ -2519,7 +2607,9 @@ module Google
       class TelephonyInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :activation_state, as: 'activationState'
           property :carrier_name, as: 'carrierName'
+          property :config_mode, as: 'configMode'
           property :icc_id, as: 'iccId'
           property :phone_number, as: 'phoneNumber'
         end
@@ -2705,6 +2795,14 @@ module Google
       class WipeFailureEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class WorkAccountSetupConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication_type, as: 'authenticationType'
+          property :required_account_email, as: 'requiredAccountEmail'
         end
       end
     end
