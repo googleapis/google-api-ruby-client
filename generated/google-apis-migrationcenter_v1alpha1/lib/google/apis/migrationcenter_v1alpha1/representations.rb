@@ -1396,12 +1396,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class VmwareDiskConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class VmwareEngineMigrationTarget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2200,8 +2194,6 @@ module Google
           property :status, as: 'status'
           property :total_capacity_bytes, :numeric_string => true, as: 'totalCapacityBytes'
           property :total_free_bytes, :numeric_string => true, as: 'totalFreeBytes'
-          property :vmware_config, as: 'vmwareConfig', class: Google::Apis::MigrationcenterV1alpha1::VmwareDiskConfig, decorator: Google::Apis::MigrationcenterV1alpha1::VmwareDiskConfig::Representation
-      
         end
       end
       
@@ -3862,16 +3854,6 @@ module Google
           property :cpu_usage_percentage, as: 'cpuUsagePercentage'
           property :memory_usage_percentage, as: 'memoryUsagePercentage'
           property :storage_multiplier, as: 'storageMultiplier'
-        end
-      end
-      
-      class VmwareDiskConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :backing_type, as: 'backingType'
-          property :rdm_compatibility_mode, as: 'rdmCompatibilityMode'
-          property :shared, as: 'shared'
-          property :vmdk_disk_mode, as: 'vmdkDiskMode'
         end
       end
       
