@@ -249,6 +249,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. A URL referring to a SecurityPolicy resource. SecurityPolicy is used
+        # to enforce rate limiting policy on the inbound traffic at the identified
+        # backends. If this field is not set, rate limiting is disabled for this
+        # endpoint.
+        # Corresponds to the JSON property `securityPolicy`
+        # @return [String]
+        attr_accessor :security_policy
+      
         # Optional. A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used
         # to determine the authentication policy to be applied to terminate the inbound
         # traffic at the identified backends. If this field is not set, authentication
@@ -286,6 +294,7 @@ module Google
           @endpoint_matcher = args[:endpoint_matcher] if args.key?(:endpoint_matcher)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @security_policy = args[:security_policy] if args.key?(:security_policy)
           @server_tls_policy = args[:server_tls_policy] if args.key?(:server_tls_policy)
           @traffic_port_selector = args[:traffic_port_selector] if args.key?(:traffic_port_selector)
           @type = args[:type] if args.key?(:type)
@@ -1752,7 +1761,8 @@ module Google
       # Specifies the policy on how requests are shadowed to a separate mirrored
       # destination service. The proxy does not wait for responses from the shadow
       # service. Prior to sending traffic to the shadow service, the host/authority
-      # header is suffixed with -shadow.
+      # header is suffixed with -shadow. Mirroring is currently not supported for
+      # Cloud Run destinations.
       class HttpRouteRequestMirrorPolicy
         include Google::Apis::Core::Hashable
       
@@ -1871,7 +1881,8 @@ module Google
         # Specifies the policy on how requests are shadowed to a separate mirrored
         # destination service. The proxy does not wait for responses from the shadow
         # service. Prior to sending traffic to the shadow service, the host/authority
-        # header is suffixed with -shadow.
+        # header is suffixed with -shadow. Mirroring is currently not supported for
+        # Cloud Run destinations.
         # Corresponds to the JSON property `requestMirrorPolicy`
         # @return [Google::Apis::NetworkservicesV1beta1::HttpRouteRequestMirrorPolicy]
         attr_accessor :request_mirror_policy
