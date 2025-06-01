@@ -537,7 +537,8 @@ module Google
         # Issues a timed session token for the given user intent. You can use the
         # session token to redirect the user to Google to finish the signup flow. You
         # can re-generate new session token repeatedly for the same request if necessary,
-        # regardless of the previous tokens being expired or not.
+        # regardless of the previous tokens being expired or not. By default, the
+        # session token is valid for 1 hour.
         # @param [String] parent
         #   Required. The parent, the partner that can resell. Format: partners/`partner`
         # @param [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest] google_cloud_payments_reseller_subscription_v1_generate_user_session_request_object
