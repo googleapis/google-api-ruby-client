@@ -1766,7 +1766,7 @@ module Google
         end
       end
       
-      # Details regarding the upgrade of instaces associated with a cluster.
+      # Details regarding the upgrade of instances associated with a cluster.
       class InstanceUpgradeDetails
         include Google::Apis::Core::Hashable
       
