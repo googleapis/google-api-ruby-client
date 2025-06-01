@@ -1438,6 +1438,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2alphaStringList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2alphaTile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3727,6 +3733,8 @@ module Google
       
           property :tile_navigation_spec, as: 'tileNavigationSpec', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestTileNavigationSpec, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestTileNavigationSpec::Representation
       
+          hash :user_attributes, as: 'userAttributes', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaStringList, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaStringList::Representation
+      
           property :user_info, as: 'userInfo', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaUserInfo, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaUserInfo::Representation
       
           collection :variant_rollup_keys, as: 'variantRollupKeys'
@@ -4014,6 +4022,13 @@ module Google
       class GoogleCloudRetailV2alphaSetInventoryResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaStringList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values'
         end
       end
       
