@@ -652,7 +652,8 @@ module Google
         # * create_time * update_time * labels * description
         # @param [String] parent
         #   Required. The parent resource of the VPC Flow Logs configuration to create: `
-        #   projects/`project_id`/locations/global`
+        #   projects/`project_id`/locations/global` `organizations/`organization_id`/
+        #   locations/global`
         # @param [Google::Apis::NetworkmanagementV1::VpcFlowLogsConfig] vpc_flow_logs_config_object
         # @param [String] vpc_flow_logs_config_id
         #   Required. ID of the `VpcFlowLogsConfig`.
@@ -688,8 +689,10 @@ module Google
         
         # Deletes a specific `VpcFlowLogsConfig`.
         # @param [String] name
-        #   Required. `VpcFlowLogsConfig` resource name using the form: `projects/`
-        #   project_id`/locations/global/vpcFlowLogsConfigs/`vpc_flow_logs_config``
+        #   Required. `VpcFlowLogsConfig` resource name using one of the form: `projects/`
+        #   project_id`/locations/global/vpcFlowLogsConfigs/`vpc_flow_logs_config` `
+        #   organizations/`organization_id`/locations/global/vpcFlowLogsConfigs/`
+        #   vpc_flow_logs_config``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -720,7 +723,9 @@ module Google
         # Gets the details of a specific `VpcFlowLogsConfig`.
         # @param [String] name
         #   Required. `VpcFlowLogsConfig` resource name using the form: `projects/`
-        #   project_id`/locations/global/vpcFlowLogsConfigs/`vpc_flow_logs_config``
+        #   project_id`/locations/global/vpcFlowLogsConfigs/`vpc_flow_logs_config`` `
+        #   organizations/`organization_id`/locations/global/vpcFlowLogsConfigs/`
+        #   vpc_flow_logs_config``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -751,7 +756,7 @@ module Google
         # Lists all `VpcFlowLogsConfigs` in a given project.
         # @param [String] parent
         #   Required. The parent resource of the VpcFlowLogsConfig: `projects/`project_id`/
-        #   locations/global`
+        #   locations/global` `organizations/`organization_id`/locations/global`
         # @param [String] filter
         #   Optional. Lists the `VpcFlowLogsConfigs` that match the filter expression. A
         #   filter expression must use the supported [CEL logic operators] (https://cloud.
@@ -801,8 +806,10 @@ module Google
         # fields but different values for the following fields will fail as well: * name
         # * create_time * update_time * labels * description
         # @param [String] name
-        #   Identifier. Unique name of the configuration using the form: `projects/`
-        #   project_id`/locations/global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id``
+        #   Identifier. Unique name of the configuration using one of the forms: `projects/
+        #   `project_id`/locations/global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id`` `
+        #   organizations/`organization_number`/locations/global/vpcFlowLogsConfigs/`
+        #   vpc_flow_logs_config_id``
         # @param [Google::Apis::NetworkmanagementV1::VpcFlowLogsConfig] vpc_flow_logs_config_object
         # @param [String] update_mask
         #   Required. Mask of fields to update. At least one path must be supplied in this
