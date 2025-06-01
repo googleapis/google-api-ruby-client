@@ -1134,7 +1134,10 @@ module Google
         # alloydb.googleapis.com/Instance, spanner.googleapis.com/Instance, spanner.
         # googleapis.com/Database, firestore.googleapis.com/Database, sqladmin.
         # googleapis.com/Instance, bigtableadmin.googleapis.com/Cluster, bigtableadmin.
-        # googleapis.com/Instance REQUIRED Please refer go/condor-common-datamodel
+        # googleapis.com/Instance oracledatabase.googleapis.com/
+        # cloudExadataInfrastructures oracledatabase.googleapis.com/cloudVmClusters
+        # oracledatabase.googleapis.com/autonomousDatabases REQUIRED Please refer go/
+        # condor-common-datamodel
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
