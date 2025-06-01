@@ -375,13 +375,6 @@ module Google
       class AuthzPolicyAuthzRuleFromRequestSource
         include Google::Apis::Core::Hashable
       
-        # Optional. A list of identities derived from the client's certificate. This
-        # field is under development and we don't recommend using it at this time.
-        # Limited to 5 principals.
-        # Corresponds to the JSON property `principals`
-        # @return [Array<Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch>]
-        attr_accessor :principals
-      
         # Optional. A list of resources to match against the resource of the source VM
         # of a request. Limited to 5 resources.
         # Corresponds to the JSON property `resources`
@@ -394,7 +387,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @principals = args[:principals] if args.key?(:principals)
           @resources = args[:resources] if args.key?(:resources)
         end
       end
