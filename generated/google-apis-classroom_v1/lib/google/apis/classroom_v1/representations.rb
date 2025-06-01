@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GeminiGem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GlobalPermission
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -371,6 +377,12 @@ module Google
       end
       
       class Name
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NotebookLmNotebook
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -807,6 +819,15 @@ module Google
         end
       end
       
+      class GeminiGem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :title, as: 'title'
+          property :url, as: 'url'
+        end
+      end
+      
       class GlobalPermission
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1057,7 +1078,11 @@ module Google
       
           property :form, as: 'form', class: Google::Apis::ClassroomV1::Form, decorator: Google::Apis::ClassroomV1::Form::Representation
       
+          property :gem_prop, as: 'gem', class: Google::Apis::ClassroomV1::GeminiGem, decorator: Google::Apis::ClassroomV1::GeminiGem::Representation
+      
           property :link, as: 'link', class: Google::Apis::ClassroomV1::Link, decorator: Google::Apis::ClassroomV1::Link::Representation
+      
+          property :notebook, as: 'notebook', class: Google::Apis::ClassroomV1::NotebookLmNotebook, decorator: Google::Apis::ClassroomV1::NotebookLmNotebook::Representation
       
           property :youtube_video, as: 'youtubeVideo', class: Google::Apis::ClassroomV1::YouTubeVideo, decorator: Google::Apis::ClassroomV1::YouTubeVideo::Representation
       
@@ -1118,6 +1143,15 @@ module Google
           property :family_name, as: 'familyName'
           property :full_name, as: 'fullName'
           property :given_name, as: 'givenName'
+        end
+      end
+      
+      class NotebookLmNotebook
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :title, as: 'title'
+          property :url, as: 'url'
         end
       end
       

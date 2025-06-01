@@ -1268,6 +1268,37 @@ module Google
         end
       end
       
+      # Gemini Gem link.
+      class GeminiGem
+        include Google::Apis::Core::Hashable
+      
+        # Gems resource id.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Title of the Gem. Read-only.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # URL that can be used to access the Gem. Read-only.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @title = args[:title] if args.key?(:title)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
       # Global user permission description.
       class GlobalPermission
         include Google::Apis::Core::Hashable
@@ -2074,7 +2105,7 @@ module Google
       end
       
       # Material attached to course work. When creating attachments, setting the `form`
-      # field is not supported.
+      # , `gem`, or `notebook` field is not supported.
       class Material
         include Google::Apis::Core::Hashable
       
@@ -2088,10 +2119,20 @@ module Google
         # @return [Google::Apis::ClassroomV1::Form]
         attr_accessor :form
       
+        # Gemini Gem link.
+        # Corresponds to the JSON property `gem`
+        # @return [Google::Apis::ClassroomV1::GeminiGem]
+        attr_accessor :gem_prop
+      
         # URL item.
         # Corresponds to the JSON property `link`
         # @return [Google::Apis::ClassroomV1::Link]
         attr_accessor :link
+      
+        # NotebookLM Notebook link.
+        # Corresponds to the JSON property `notebook`
+        # @return [Google::Apis::ClassroomV1::NotebookLmNotebook]
+        attr_accessor :notebook
       
         # YouTube video item.
         # Corresponds to the JSON property `youtubeVideo`
@@ -2106,7 +2147,9 @@ module Google
         def update!(**args)
           @drive_file = args[:drive_file] if args.key?(:drive_file)
           @form = args[:form] if args.key?(:form)
+          @gem_prop = args[:gem_prop] if args.key?(:gem_prop)
           @link = args[:link] if args.key?(:link)
+          @notebook = args[:notebook] if args.key?(:notebook)
           @youtube_video = args[:youtube_video] if args.key?(:youtube_video)
         end
       end
@@ -2279,6 +2322,37 @@ module Google
           @family_name = args[:family_name] if args.key?(:family_name)
           @full_name = args[:full_name] if args.key?(:full_name)
           @given_name = args[:given_name] if args.key?(:given_name)
+        end
+      end
+      
+      # NotebookLM Notebook link.
+      class NotebookLmNotebook
+        include Google::Apis::Core::Hashable
+      
+        # Notebook resource id.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Title of the Notebook. Read-only.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # URL that can be used to access the Notebook. Read-only.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @title = args[:title] if args.key?(:title)
+          @url = args[:url] if args.key?(:url)
         end
       end
       
