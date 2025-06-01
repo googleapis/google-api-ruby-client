@@ -1895,6 +1895,13 @@ module Google
         attr_accessor :thought
         alias_method :thought?, :thought
       
+        # Optional. An opaque signature for the thought so it can be reused in
+        # subsequent requests.
+        # Corresponds to the JSON property `thoughtSignature`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :thought_signature
+      
         # Metadata describes the input video content.
         # Corresponds to the JSON property `videoMetadata`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VideoMetadata]
@@ -1914,6 +1921,7 @@ module Google
           @inline_data = args[:inline_data] if args.key?(:inline_data)
           @text = args[:text] if args.key?(:text)
           @thought = args[:thought] if args.key?(:thought)
+          @thought_signature = args[:thought_signature] if args.key?(:thought_signature)
           @video_metadata = args[:video_metadata] if args.key?(:video_metadata)
         end
       end
@@ -2613,6 +2621,11 @@ module Google
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolCodeExecution]
         attr_accessor :code_execution
       
+        # Tool to support computer use.
+        # Corresponds to the JSON property `computerUse`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolComputerUse]
+        attr_accessor :computer_use
+      
         # Tool to search public web data, powered by Vertex AI Search and Sec4
         # compliance.
         # Corresponds to the JSON property `enterpriseWebSearch`
@@ -2652,6 +2665,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @code_execution = args[:code_execution] if args.key?(:code_execution)
+          @computer_use = args[:computer_use] if args.key?(:computer_use)
           @enterprise_web_search = args[:enterprise_web_search] if args.key?(:enterprise_web_search)
           @function_declarations = args[:function_declarations] if args.key?(:function_declarations)
           @google_search = args[:google_search] if args.key?(:google_search)
@@ -2672,6 +2686,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Tool to support computer use.
+      class GoogleCloudAiplatformV1beta1ToolComputerUse
+        include Google::Apis::Core::Hashable
+      
+        # Required. The environment being operated.
+        # Corresponds to the JSON property `environment`
+        # @return [String]
+        attr_accessor :environment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environment = args[:environment] if args.key?(:environment)
         end
       end
       
@@ -2823,6 +2856,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :similarity_top_k
       
+        # Optional. Currently only supported for Gemini Multimodal Live API. In Gemini
+        # Multimodal Live API, if `store_context` bool is specified, Gemini will
+        # leverage it to automatically memorize the interactions between the client and
+        # Gemini, and retrieve context when needed to augment the response generation
+        # for users' ongoing and future interactions.
+        # Corresponds to the JSON property `storeContext`
+        # @return [Boolean]
+        attr_accessor :store_context
+        alias_method :store_context?, :store_context
+      
         # Optional. Only return results with vector distance smaller than the threshold.
         # Corresponds to the JSON property `vectorDistanceThreshold`
         # @return [Float]
@@ -2838,6 +2881,7 @@ module Google
           @rag_resources = args[:rag_resources] if args.key?(:rag_resources)
           @rag_retrieval_config = args[:rag_retrieval_config] if args.key?(:rag_retrieval_config)
           @similarity_top_k = args[:similarity_top_k] if args.key?(:similarity_top_k)
+          @store_context = args[:store_context] if args.key?(:store_context)
           @vector_distance_threshold = args[:vector_distance_threshold] if args.key?(:vector_distance_threshold)
         end
       end
