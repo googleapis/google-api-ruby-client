@@ -2427,6 +2427,13 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToChronicle]
         attr_accessor :publish_to_chronicle
       
+        # Create Dataplex Catalog aspects for profiled resources with the aspect type
+        # Sensitive Data Protection Profile. To learn more about aspects, see https://
+        # cloud.google.com/sensitive-data-protection/docs/add-aspects.
+        # Corresponds to the JSON property `publishToDataplexCatalog`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToDataplexCatalog]
+        attr_accessor :publish_to_dataplex_catalog
+      
         # If set, a summary finding will be created or updated in Security Command
         # Center for each profile.
         # Corresponds to the JSON property `publishToScc`
@@ -2451,6 +2458,7 @@ module Google
           @export_data = args[:export_data] if args.key?(:export_data)
           @pub_sub_notification = args[:pub_sub_notification] if args.key?(:pub_sub_notification)
           @publish_to_chronicle = args[:publish_to_chronicle] if args.key?(:publish_to_chronicle)
+          @publish_to_dataplex_catalog = args[:publish_to_dataplex_catalog] if args.key?(:publish_to_dataplex_catalog)
           @publish_to_scc = args[:publish_to_scc] if args.key?(:publish_to_scc)
           @tag_resources = args[:tag_resources] if args.key?(:tag_resources)
         end
@@ -8450,6 +8458,32 @@ module Google
         end
       end
       
+      # Create Dataplex Catalog aspects for profiled resources with the aspect type
+      # Sensitive Data Protection Profile. To learn more about aspects, see https://
+      # cloud.google.com/sensitive-data-protection/docs/add-aspects.
+      class GooglePrivacyDlpV2PublishToDataplexCatalog
+        include Google::Apis::Core::Hashable
+      
+        # Whether creating a Dataplex Catalog aspect for a profiled resource should
+        # lower the risk of the profile for that resource. This also lowers the data
+        # risk of resources at the lower levels of the resource hierarchy. For example,
+        # reducing the data risk of a table data profile also reduces the data risk of
+        # the constituent column data profiles.
+        # Corresponds to the JSON property `lowerDataRiskToLow`
+        # @return [Boolean]
+        attr_accessor :lower_data_risk_to_low
+        alias_method :lower_data_risk_to_low?, :lower_data_risk_to_low
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @lower_data_risk_to_low = args[:lower_data_risk_to_low] if args.key?(:lower_data_risk_to_low)
+        end
+      end
+      
       # Publish a message into a given Pub/Sub topic when DlpJob has completed. The
       # message contains a single field, `DlpJobName`, which is equal to the finished
       # job's [`DlpJob.name`](https://cloud.google.com/sensitive-data-protection/docs/
@@ -10094,6 +10128,13 @@ module Google
         # @return [String]
         attr_accessor :dataset_id
       
+        # The Google Cloud project ID of the project containing the table. If omitted,
+        # the project ID is inferred from the parent project. This field is required if
+        # the parent resource is an organization.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
         # Name of the table.
         # Corresponds to the JSON property `tableId`
         # @return [String]
@@ -10106,6 +10147,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @project_id = args[:project_id] if args.key?(:project_id)
           @table_id = args[:table_id] if args.key?(:table_id)
         end
       end
