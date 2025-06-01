@@ -2889,7 +2889,7 @@ module Google
         #   component of the Plugin's resource name. This field is optional. * If provided,
         #   the same will be used. The service will throw an error if the specified id is
         #   already used by another Plugin resource in the API hub instance. * If not
-        #   provided, a system generated id will be used. This value should be 4-500
+        #   provided, a system generated id will be used. This value should be 4-63
         #   characters, overall resource name which will be of format `projects/`project`/
         #   locations/`location`/plugins/`plugin``, its length is limited to 1000
         #   characters and valid characters are /a-z[0-9]-_/.
@@ -3190,7 +3190,7 @@ module Google
         #   provided, the same will be used. The service will throw an error if the
         #   specified id is already used by another plugin instance in the plugin resource.
         #   * If not provided, a system generated id will be used. This value should be 4-
-        #   500 characters, and valid characters are /a-z[0-9]-_/.
+        #   63 characters, and valid characters are /a-z[0-9]-_/.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
