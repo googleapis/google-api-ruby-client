@@ -203,25 +203,6 @@ module Google
         end
       end
       
-      # The response for executing or debugging a function in an Apps Script project.
-      class ExecuteStreamResponse
-        include Google::Apis::Core::Hashable
-      
-        # The result of an execution.
-        # Corresponds to the JSON property `result`
-        # @return [Google::Apis::ScriptV1::ScriptExecutionResult]
-        attr_accessor :result
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @result = args[:result] if args.key?(:result)
-        end
-      end
-      
       # An object that provides information about the nature of an error resulting
       # from an attempted execution of a script function using the Apps Script API. If
       # a run call succeeds but the script function (or Apps Script itself) throws an
@@ -761,25 +742,6 @@ module Google
         end
       end
       
-      # `ListValue` is a wrapper around a repeated field of values.
-      class ListValue
-        include Google::Apis::Core::Hashable
-      
-        # Repeated field of dynamically typed values.
-        # Corresponds to the JSON property `values`
-        # @return [Array<Google::Apis::ScriptV1::Value>]
-        attr_accessor :values
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @values = args[:values] if args.key?(:values)
-        end
-      end
-      
       # Response with the list of the versions for the specified script project.
       class ListVersionsResponse
         include Google::Apis::Core::Hashable
@@ -978,26 +940,6 @@ module Google
         end
       end
       
-      # The result of an execution.
-      class ScriptExecutionResult
-        include Google::Apis::Core::Hashable
-      
-        # `Value` represents a dynamically typed value which is the outcome of an
-        # executed script.
-        # Corresponds to the JSON property `returnValue`
-        # @return [Google::Apis::ScriptV1::Value]
-        attr_accessor :return_value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @return_value = args[:return_value] if args.key?(:return_value)
-        end
-      end
-      
       # A stack trace through the script that shows where the execution failed.
       class ScriptStackTraceElement
         include Google::Apis::Core::Hashable
@@ -1060,26 +1002,6 @@ module Google
         end
       end
       
-      # `Struct` represents a structured data value, consisting of fields which map to
-      # dynamically typed values.
-      class Struct
-        include Google::Apis::Core::Hashable
-      
-        # Unordered map of dynamically typed values.
-        # Corresponds to the JSON property `fields`
-        # @return [Hash<String,Google::Apis::ScriptV1::Value>]
-        attr_accessor :fields
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @fields = args[:fields] if args.key?(:fields)
-        end
-      end
-      
       # Request with deployment information to update an existing deployment.
       class UpdateDeploymentRequest
         include Google::Apis::Core::Hashable
@@ -1096,77 +1018,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @deployment_config = args[:deployment_config] if args.key?(:deployment_config)
-        end
-      end
-      
-      # `Value` represents a dynamically typed value which is the outcome of an
-      # executed script.
-      class Value
-        include Google::Apis::Core::Hashable
-      
-        # Represents a boolean value.
-        # Corresponds to the JSON property `boolValue`
-        # @return [Boolean]
-        attr_accessor :bool_value
-        alias_method :bool_value?, :bool_value
-      
-        # Represents raw byte values.
-        # Corresponds to the JSON property `bytesValue`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :bytes_value
-      
-        # Represents a date in ms since the epoch.
-        # Corresponds to the JSON property `dateValue`
-        # @return [Fixnum]
-        attr_accessor :date_value
-      
-        # `ListValue` is a wrapper around a repeated field of values.
-        # Corresponds to the JSON property `listValue`
-        # @return [Google::Apis::ScriptV1::ListValue]
-        attr_accessor :list_value
-      
-        # Represents a null value.
-        # Corresponds to the JSON property `nullValue`
-        # @return [String]
-        attr_accessor :null_value
-      
-        # Represents a double value.
-        # Corresponds to the JSON property `numberValue`
-        # @return [Float]
-        attr_accessor :number_value
-      
-        # Represents a structured proto value.
-        # Corresponds to the JSON property `protoValue`
-        # @return [Hash<String,Object>]
-        attr_accessor :proto_value
-      
-        # Represents a string value.
-        # Corresponds to the JSON property `stringValue`
-        # @return [String]
-        attr_accessor :string_value
-      
-        # `Struct` represents a structured data value, consisting of fields which map to
-        # dynamically typed values.
-        # Corresponds to the JSON property `structValue`
-        # @return [Google::Apis::ScriptV1::Struct]
-        attr_accessor :struct_value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bool_value = args[:bool_value] if args.key?(:bool_value)
-          @bytes_value = args[:bytes_value] if args.key?(:bytes_value)
-          @date_value = args[:date_value] if args.key?(:date_value)
-          @list_value = args[:list_value] if args.key?(:list_value)
-          @null_value = args[:null_value] if args.key?(:null_value)
-          @number_value = args[:number_value] if args.key?(:number_value)
-          @proto_value = args[:proto_value] if args.key?(:proto_value)
-          @string_value = args[:string_value] if args.key?(:string_value)
-          @struct_value = args[:struct_value] if args.key?(:struct_value)
         end
       end
       
