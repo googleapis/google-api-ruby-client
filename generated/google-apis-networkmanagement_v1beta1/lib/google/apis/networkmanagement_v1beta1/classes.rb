@@ -1050,6 +1050,12 @@ module Google
         # @return [String]
         attr_accessor :policy
       
+        # The priority of the firewall policy that this rule is associated with. This
+        # field is not applicable to VPC firewall rules and implied VPC firewall rules.
+        # Corresponds to the JSON property `policyPriority`
+        # @return [Fixnum]
+        attr_accessor :policy_priority
+      
         # The URI of the firewall policy that this rule is associated with. This field
         # is not applicable to VPC firewall rules and implied VPC firewall rules.
         # Corresponds to the JSON property `policyUri`
@@ -1090,6 +1096,7 @@ module Google
           @firewall_rule_type = args[:firewall_rule_type] if args.key?(:firewall_rule_type)
           @network_uri = args[:network_uri] if args.key?(:network_uri)
           @policy = args[:policy] if args.key?(:policy)
+          @policy_priority = args[:policy_priority] if args.key?(:policy_priority)
           @policy_uri = args[:policy_uri] if args.key?(:policy_uri)
           @priority = args[:priority] if args.key?(:priority)
           @target_service_accounts = args[:target_service_accounts] if args.key?(:target_service_accounts)
@@ -2246,6 +2253,37 @@ module Google
         end
       end
       
+      # Response for the `QueryVpcFlowLogsConfigs` method.
+      class QueryOrgVpcFlowLogsConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Page token to fetch the next set of configurations.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached (when querying all locations with `-`).
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        # List of VPC Flow Log configurations.
+        # Corresponds to the JSON property `vpcFlowLogsConfigs`
+        # @return [Array<Google::Apis::NetworkmanagementV1beta1::VpcFlowLogsConfig>]
+        attr_accessor :vpc_flow_logs_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+          @vpc_flow_logs_configs = args[:vpc_flow_logs_configs] if args.key?(:vpc_flow_logs_configs)
+        end
+      end
+      
       # Results of the configuration analysis from the last run of the test.
       class ReachabilityDetails
         include Google::Apis::Core::Hashable
@@ -3130,6 +3168,13 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. Determines whether to include cross project annotations in the logs.
+        # This field is available only for organization configurations. If not specified
+        # in org configs will be set to CROSS_PROJECT_METADATA_ENABLED.
+        # Corresponds to the JSON property `crossProjectMetadata`
+        # @return [String]
+        attr_accessor :cross_project_metadata
+      
         # Optional. The user-supplied description of the VPC Flow Logs configuration.
         # Maximum of 512 characters.
         # Corresponds to the JSON property `description`
@@ -3180,12 +3225,24 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments
+        # within the network. Format: projects/`project_id`/global/networks/`name`
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
         # Optional. The state of the VPC Flow Log configuration. Default value is
         # ENABLED. When creating a new configuration, it must be enabled. Setting state=
         # DISABLED will pause the log generation for this config.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
+      
+        # Traffic will be logged from VMs within the subnetwork. Format: projects/`
+        # project_id`/regions/`region`/subnetworks/`name`
+        # Corresponds to the JSON property `subnet`
+        # @return [String]
+        attr_accessor :subnet
       
         # Output only. A diagnostic bit - describes the state of the configured target
         # resource for diagnostic purposes.
@@ -3212,6 +3269,7 @@ module Google
         def update!(**args)
           @aggregation_interval = args[:aggregation_interval] if args.key?(:aggregation_interval)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @cross_project_metadata = args[:cross_project_metadata] if args.key?(:cross_project_metadata)
           @description = args[:description] if args.key?(:description)
           @filter_expr = args[:filter_expr] if args.key?(:filter_expr)
           @flow_sampling = args[:flow_sampling] if args.key?(:flow_sampling)
@@ -3220,7 +3278,9 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @metadata_fields = args[:metadata_fields] if args.key?(:metadata_fields)
           @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
           @state = args[:state] if args.key?(:state)
+          @subnet = args[:subnet] if args.key?(:subnet)
           @target_resource_state = args[:target_resource_state] if args.key?(:target_resource_state)
           @update_time = args[:update_time] if args.key?(:update_time)
           @vpn_tunnel = args[:vpn_tunnel] if args.key?(:vpn_tunnel)

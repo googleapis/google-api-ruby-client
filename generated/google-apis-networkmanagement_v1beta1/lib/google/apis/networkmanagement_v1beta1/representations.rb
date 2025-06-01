@@ -286,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QueryOrgVpcFlowLogsConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReachabilityDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -640,6 +646,7 @@ module Google
           property :firewall_rule_type, as: 'firewallRuleType'
           property :network_uri, as: 'networkUri'
           property :policy, as: 'policy'
+          property :policy_priority, as: 'policyPriority'
           property :policy_uri, as: 'policyUri'
           property :priority, as: 'priority'
           collection :target_service_accounts, as: 'targetServiceAccounts'
@@ -919,6 +926,16 @@ module Google
         end
       end
       
+      class QueryOrgVpcFlowLogsConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+          collection :vpc_flow_logs_configs, as: 'vpcFlowLogsConfigs', class: Google::Apis::NetworkmanagementV1beta1::VpcFlowLogsConfig, decorator: Google::Apis::NetworkmanagementV1beta1::VpcFlowLogsConfig::Representation
+      
+        end
+      end
+      
       class ReachabilityDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1151,6 +1168,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aggregation_interval, as: 'aggregationInterval'
           property :create_time, as: 'createTime'
+          property :cross_project_metadata, as: 'crossProjectMetadata'
           property :description, as: 'description'
           property :filter_expr, as: 'filterExpr'
           property :flow_sampling, as: 'flowSampling'
@@ -1159,7 +1177,9 @@ module Google
           property :metadata, as: 'metadata'
           collection :metadata_fields, as: 'metadataFields'
           property :name, as: 'name'
+          property :network, as: 'network'
           property :state, as: 'state'
+          property :subnet, as: 'subnet'
           property :target_resource_state, as: 'targetResourceState'
           property :update_time, as: 'updateTime'
           property :vpn_tunnel, as: 'vpnTunnel'
