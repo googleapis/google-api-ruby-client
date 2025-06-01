@@ -1191,7 +1191,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Submit a provisiong configuration for a given project.
+        # Submit a provisioning configuration for a given project.
         # @param [String] parent
         #   Required. The parent project and location containing the ProvisioningConfig.
         # @param [Google::Apis::BaremetalsolutionV2::SubmitProvisioningConfigRequest] submit_provisioning_config_request_object
