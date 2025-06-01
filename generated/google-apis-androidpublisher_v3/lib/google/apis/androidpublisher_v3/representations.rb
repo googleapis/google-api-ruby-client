@@ -3553,6 +3553,7 @@ module Google
           property :deferred_item_replacement, as: 'deferredItemReplacement', class: Google::Apis::AndroidpublisherV3::DeferredItemReplacement, decorator: Google::Apis::AndroidpublisherV3::DeferredItemReplacement::Representation
       
           property :expiry_time, as: 'expiryTime'
+          property :latest_successful_order_id, as: 'latestSuccessfulOrderId'
           property :offer_details, as: 'offerDetails', class: Google::Apis::AndroidpublisherV3::OfferDetails, decorator: Google::Apis::AndroidpublisherV3::OfferDetails::Representation
       
           property :prepaid_plan, as: 'prepaidPlan', class: Google::Apis::AndroidpublisherV3::PrepaidPlan, decorator: Google::Apis::AndroidpublisherV3::PrepaidPlan::Representation
