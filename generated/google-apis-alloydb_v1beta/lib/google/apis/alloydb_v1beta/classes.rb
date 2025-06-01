@@ -597,6 +597,14 @@ module Google
         # @return [Google::Apis::AlloydbV1beta::SecondaryConfig]
         attr_accessor :secondary_config
       
+        # Output only. AlloyDB per-cluster service agent email. This service account is
+        # created per-cluster per-project, and is different from that of the primary
+        # service agent which is created per-project. The service account naming format
+        # is subject to change.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
         # SSL configuration.
         # Corresponds to the JSON property `sslConfig`
         # @return [Google::Apis::AlloydbV1beta::SslConfig]
@@ -669,6 +677,7 @@ module Google
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @secondary_config = args[:secondary_config] if args.key?(:secondary_config)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
           @ssl_config = args[:ssl_config] if args.key?(:ssl_config)
           @state = args[:state] if args.key?(:state)
           @subscription_type = args[:subscription_type] if args.key?(:subscription_type)
@@ -1921,7 +1930,7 @@ module Google
         end
       end
       
-      # Details regarding the upgrade of instaces associated with a cluster.
+      # Details regarding the upgrade of instances associated with a cluster.
       class InstanceUpgradeDetails
         include Google::Apis::Core::Hashable
       
