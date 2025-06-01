@@ -2602,11 +2602,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_free_bytes
       
-        # VMware disk config details.
-        # Corresponds to the JSON property `vmwareConfig`
-        # @return [Google::Apis::MigrationcenterV1alpha1::VmwareDiskConfig]
-        attr_accessor :vmware_config
-      
         def initialize(**args)
            update!(**args)
         end
@@ -2621,7 +2616,6 @@ module Google
           @status = args[:status] if args.key?(:status)
           @total_capacity_bytes = args[:total_capacity_bytes] if args.key?(:total_capacity_bytes)
           @total_free_bytes = args[:total_free_bytes] if args.key?(:total_free_bytes)
-          @vmware_config = args[:vmware_config] if args.key?(:vmware_config)
         end
       end
       
@@ -8141,44 +8135,6 @@ module Google
           @cpu_usage_percentage = args[:cpu_usage_percentage] if args.key?(:cpu_usage_percentage)
           @memory_usage_percentage = args[:memory_usage_percentage] if args.key?(:memory_usage_percentage)
           @storage_multiplier = args[:storage_multiplier] if args.key?(:storage_multiplier)
-        end
-      end
-      
-      # VMware disk config details.
-      class VmwareDiskConfig
-        include Google::Apis::Core::Hashable
-      
-        # VMDK backing type.
-        # Corresponds to the JSON property `backingType`
-        # @return [String]
-        attr_accessor :backing_type
-      
-        # RDM compatibility mode.
-        # Corresponds to the JSON property `rdmCompatibilityMode`
-        # @return [String]
-        attr_accessor :rdm_compatibility_mode
-      
-        # Is VMDK shared with other VMs.
-        # Corresponds to the JSON property `shared`
-        # @return [Boolean]
-        attr_accessor :shared
-        alias_method :shared?, :shared
-      
-        # VMDK disk mode.
-        # Corresponds to the JSON property `vmdkDiskMode`
-        # @return [String]
-        attr_accessor :vmdk_disk_mode
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @backing_type = args[:backing_type] if args.key?(:backing_type)
-          @rdm_compatibility_mode = args[:rdm_compatibility_mode] if args.key?(:rdm_compatibility_mode)
-          @shared = args[:shared] if args.key?(:shared)
-          @vmdk_disk_mode = args[:vmdk_disk_mode] if args.key?(:vmdk_disk_mode)
         end
       end
       
