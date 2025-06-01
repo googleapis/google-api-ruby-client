@@ -1,5 +1,10 @@
 # Release history for google-apis-trafficdirector_v3
 
+### v0.9.0 (2025-06-01)
+
+* Regenerated from discovery document revision 20250516
+* Regenerated using generator version 0.18.0
+
 ### v0.8.0 (2025-05-04)
 
 * Regenerated from discovery document revision 20250423
