@@ -2232,6 +2232,12 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Output only. Additional metadata that is returned by the backend for the
+        # operation.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
         # Output only. Identifies whether the user has requested cancellation of the
         # operation. Operations that have successfully been cancelled have google.
         # longrunning.Operation.error value with a google.rpc.Status.code of 1,
@@ -2265,6 +2271,7 @@ module Google
           @api_version = args[:api_version] if args.key?(:api_version)
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
           @status_message = args[:status_message] if args.key?(:status_message)
           @target = args[:target] if args.key?(:target)

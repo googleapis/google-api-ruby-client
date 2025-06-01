@@ -1495,6 +1495,7 @@ module Google
           property :api_version, as: 'apiVersion'
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
+          hash :metadata, as: 'metadata'
           property :requested_cancellation, as: 'requestedCancellation'
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
