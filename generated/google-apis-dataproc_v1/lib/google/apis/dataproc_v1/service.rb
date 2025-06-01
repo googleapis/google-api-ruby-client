@@ -2393,6 +2393,8 @@ module Google
         #   Required. The fully qualified name of the session to retrieve in the format "
         #   projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/
         #   sparkApplications/APPLICATION_ID"
+        # @param [Array<Fixnum>, Fixnum] job_ids
+        #   Optional. List of Job IDs to filter by if provided.
         # @param [String] job_status
         #   Optional. List only jobs in the specific state.
         # @param [Fixnum] page_size
@@ -2422,11 +2424,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_project_location_session_spark_application_jobs(name, job_status: nil, page_size: nil, page_token: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def search_project_location_session_spark_application_jobs(name, job_ids: nil, job_status: nil, page_size: nil, page_token: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}:searchJobs', options)
           command.response_representation = Google::Apis::DataprocV1::SearchSessionSparkApplicationJobsResponse::Representation
           command.response_class = Google::Apis::DataprocV1::SearchSessionSparkApplicationJobsResponse
           command.params['name'] = name unless name.nil?
+          command.query['jobIds'] = job_ids unless job_ids.nil?
           command.query['jobStatus'] = job_status unless job_status.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -2444,6 +2447,8 @@ module Google
         # @param [Boolean] details
         #   Optional. Lists/ hides details of Spark plan nodes. True is set to list and
         #   false to hide.
+        # @param [Array<String>, String] operation_ids
+        #   Optional. List of Spark Connect operation IDs to filter by if provided.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of queries to return in each response. The service
         #   may return fewer than this. The default page size is 10; the maximum page size
@@ -2473,12 +2478,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_project_location_session_spark_application_sql_queries(name, details: nil, page_size: nil, page_token: nil, parent: nil, plan_description: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def search_project_location_session_spark_application_sql_queries(name, details: nil, operation_ids: nil, page_size: nil, page_token: nil, parent: nil, plan_description: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}:searchSqlQueries', options)
           command.response_representation = Google::Apis::DataprocV1::SearchSessionSparkApplicationSqlQueriesResponse::Representation
           command.response_class = Google::Apis::DataprocV1::SearchSessionSparkApplicationSqlQueriesResponse
           command.params['name'] = name unless name.nil?
           command.query['details'] = details unless details.nil?
+          command.query['operationIds'] = operation_ids unless operation_ids.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['parent'] = parent unless parent.nil?
@@ -2615,6 +2621,8 @@ module Google
         #   subsequent page.
         # @param [String] parent
         #   Required. Parent (Session) resource reference.
+        # @param [Array<Fixnum>, Fixnum] stage_ids
+        #   Optional. List of Stage IDs to filter by if provided.
         # @param [String] stage_status
         #   Optional. List only stages in the given state.
         # @param [String] summary_metrics_mask
@@ -2639,7 +2647,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_project_location_session_spark_application_stages(name, page_size: nil, page_token: nil, parent: nil, stage_status: nil, summary_metrics_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def search_project_location_session_spark_application_stages(name, page_size: nil, page_token: nil, parent: nil, stage_ids: nil, stage_status: nil, summary_metrics_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}:searchStages', options)
           command.response_representation = Google::Apis::DataprocV1::SearchSessionSparkApplicationStagesResponse::Representation
           command.response_class = Google::Apis::DataprocV1::SearchSessionSparkApplicationStagesResponse
@@ -2647,6 +2655,7 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['parent'] = parent unless parent.nil?
+          command.query['stageIds'] = stage_ids unless stage_ids.nil?
           command.query['stageStatus'] = stage_status unless stage_status.nil?
           command.query['summaryMetricsMask'] = summary_metrics_mask unless summary_metrics_mask.nil?
           command.query['fields'] = fields unless fields.nil?

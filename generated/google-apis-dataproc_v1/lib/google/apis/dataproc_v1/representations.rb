@@ -2791,11 +2791,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_delete_time, as: 'autoDeleteTime'
           property :auto_delete_ttl, as: 'autoDeleteTtl'
-          property :auto_stop_time, as: 'autoStopTime'
-          property :auto_stop_ttl, as: 'autoStopTtl'
           property :idle_delete_ttl, as: 'idleDeleteTtl'
           property :idle_start_time, as: 'idleStartTime'
-          property :idle_stop_ttl, as: 'idleStopTtl'
         end
       end
       
