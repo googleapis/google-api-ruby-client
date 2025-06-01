@@ -1044,6 +1044,12 @@ module Google
         # @return [String]
         attr_accessor :policy
       
+        # The priority of the firewall policy that this rule is associated with. This
+        # field is not applicable to VPC firewall rules and implied VPC firewall rules.
+        # Corresponds to the JSON property `policyPriority`
+        # @return [Fixnum]
+        attr_accessor :policy_priority
+      
         # The URI of the firewall policy that this rule is associated with. This field
         # is not applicable to VPC firewall rules and implied VPC firewall rules.
         # Corresponds to the JSON property `policyUri`
@@ -1084,6 +1090,7 @@ module Google
           @firewall_rule_type = args[:firewall_rule_type] if args.key?(:firewall_rule_type)
           @network_uri = args[:network_uri] if args.key?(:network_uri)
           @policy = args[:policy] if args.key?(:policy)
+          @policy_priority = args[:policy_priority] if args.key?(:policy_priority)
           @policy_uri = args[:policy_uri] if args.key?(:policy_uri)
           @priority = args[:priority] if args.key?(:priority)
           @target_service_accounts = args[:target_service_accounts] if args.key?(:target_service_accounts)
@@ -3166,8 +3173,10 @@ module Google
         # @return [Array<String>]
         attr_accessor :metadata_fields
       
-        # Identifier. Unique name of the configuration using the form: `projects/`
-        # project_id`/locations/global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id``
+        # Identifier. Unique name of the configuration using one of the forms: `projects/
+        # `project_id`/locations/global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id`` `
+        # organizations/`organization_number`/locations/global/vpcFlowLogsConfigs/`
+        # vpc_flow_logs_config_id``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
