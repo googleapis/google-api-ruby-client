@@ -742,6 +742,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1ColabImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1CometInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2645,6 +2651,42 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1ImportFeatureValuesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ImportIndexRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ImportIndexRequestConnectorConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ImportIndexRequestConnectorConfigBigQuerySourceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ImportIndexRequestConnectorConfigDatapointFieldMapping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ImportIndexRequestConnectorConfigDatapointFieldMappingNumericRestrict
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ImportIndexRequestConnectorConfigDatapointFieldMappingRestrict
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -9121,6 +9163,14 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1ColabImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :release_name, as: 'releaseName'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1CometInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12230,6 +12280,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio_timestamp, as: 'audioTimestamp'
           property :candidate_count, as: 'candidateCount'
+          property :enable_affective_dialog, as: 'enableAffectiveDialog'
           property :frequency_penalty, as: 'frequencyPenalty'
           property :logprobs, as: 'logprobs'
           property :max_output_tokens, as: 'maxOutputTokens'
@@ -12552,6 +12603,63 @@ module Google
           property :imported_feature_value_count, :numeric_string => true, as: 'importedFeatureValueCount'
           property :invalid_row_count, :numeric_string => true, as: 'invalidRowCount'
           property :timestamp_outside_retention_rows_count, :numeric_string => true, as: 'timestampOutsideRetentionRowsCount'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ImportIndexRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config, as: 'config', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ImportIndexRequestConnectorConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ImportIndexRequestConnectorConfig::Representation
+      
+          property :is_complete_overwrite, as: 'isCompleteOverwrite'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ImportIndexRequestConnectorConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :big_query_source_config, as: 'bigQuerySourceConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ImportIndexRequestConnectorConfigBigQuerySourceConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ImportIndexRequestConnectorConfigBigQuerySourceConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ImportIndexRequestConnectorConfigBigQuerySourceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :datapoint_field_mapping, as: 'datapointFieldMapping', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ImportIndexRequestConnectorConfigDatapointFieldMapping, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ImportIndexRequestConnectorConfigDatapointFieldMapping::Representation
+      
+          property :table_path, as: 'tablePath'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ImportIndexRequestConnectorConfigDatapointFieldMapping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :embedding_column, as: 'embeddingColumn'
+          property :id_column, as: 'idColumn'
+          collection :metadata_columns, as: 'metadataColumns'
+          collection :numeric_restricts, as: 'numericRestricts', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ImportIndexRequestConnectorConfigDatapointFieldMappingNumericRestrict, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ImportIndexRequestConnectorConfigDatapointFieldMappingNumericRestrict::Representation
+      
+          collection :restricts, as: 'restricts', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ImportIndexRequestConnectorConfigDatapointFieldMappingRestrict, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ImportIndexRequestConnectorConfigDatapointFieldMappingRestrict::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ImportIndexRequestConnectorConfigDatapointFieldMappingNumericRestrict
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :namespace, as: 'namespace'
+          property :value_column, as: 'valueColumn'
+          property :value_type, as: 'valueType'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ImportIndexRequestConnectorConfigDatapointFieldMappingRestrict
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allow_column, as: 'allowColumn'
+          collection :deny_column, as: 'denyColumn'
+          property :namespace, as: 'namespace'
         end
       end
       
@@ -14952,6 +15060,8 @@ module Google
       class GoogleCloudAiplatformV1beta1NotebookSoftwareConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :colab_image, as: 'colabImage', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ColabImage, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ColabImage::Representation
+      
           collection :env, as: 'env', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EnvVar, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EnvVar::Representation
       
           property :post_startup_script_config, as: 'postStartupScriptConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PostStartupScriptConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PostStartupScriptConfig::Representation
@@ -14970,6 +15080,8 @@ module Google
       class GoogleCloudAiplatformV1beta1PscAutomationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :forwarding_rule, as: 'forwardingRule'
+          property :ip_address, as: 'ipAddress'
           property :network, as: 'network'
           property :project_id, as: 'projectId'
         end
