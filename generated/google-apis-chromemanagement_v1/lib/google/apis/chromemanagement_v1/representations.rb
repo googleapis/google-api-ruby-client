@@ -520,6 +520,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1TelemetryOsCrashEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1TelemetryUsbPeripheralsEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1579,6 +1585,8 @@ module Google
           property :name, as: 'name'
           property :network_state_change_event, as: 'networkStateChangeEvent', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent::Representation
       
+          property :os_crash_event, as: 'osCrashEvent', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryOsCrashEvent, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryOsCrashEvent::Representation
+      
           property :report_time, as: 'reportTime'
           property :usb_peripherals_event, as: 'usbPeripheralsEvent', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryUsbPeripheralsEvent, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryUsbPeripheralsEvent::Representation
       
@@ -1643,6 +1651,15 @@ module Google
       
           property :user_email, as: 'userEmail'
           property :user_org_unit_id, as: 'userOrgUnitId'
+        end
+      end
+      
+      class GoogleChromeManagementV1TelemetryOsCrashEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :crash_id, as: 'crashId'
+          property :crash_type, as: 'crashType'
+          property :session_type, as: 'sessionType'
         end
       end
       

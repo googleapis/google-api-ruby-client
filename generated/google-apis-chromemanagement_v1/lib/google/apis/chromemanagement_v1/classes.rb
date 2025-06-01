@@ -3438,6 +3438,11 @@ module Google
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent]
         attr_accessor :network_state_change_event
       
+        # OS crash data.
+        # Corresponds to the JSON property `osCrashEvent`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryOsCrashEvent]
+        attr_accessor :os_crash_event
+      
         # Timestamp that represents when the event was reported.
         # Corresponds to the JSON property `reportTime`
         # @return [String]
@@ -3483,6 +3488,7 @@ module Google
           @https_latency_change_event = args[:https_latency_change_event] if args.key?(:https_latency_change_event)
           @name = args[:name] if args.key?(:name)
           @network_state_change_event = args[:network_state_change_event] if args.key?(:network_state_change_event)
+          @os_crash_event = args[:os_crash_event] if args.key?(:os_crash_event)
           @report_time = args[:report_time] if args.key?(:report_time)
           @usb_peripherals_event = args[:usb_peripherals_event] if args.key?(:usb_peripherals_event)
           @user = args[:user] if args.key?(:user)
@@ -3672,6 +3678,37 @@ module Google
           @telemetry_event_notification_filter = args[:telemetry_event_notification_filter] if args.key?(:telemetry_event_notification_filter)
           @user_email = args[:user_email] if args.key?(:user_email)
           @user_org_unit_id = args[:user_org_unit_id] if args.key?(:user_org_unit_id)
+        end
+      end
+      
+      # OS crash data.
+      class GoogleChromeManagementV1TelemetryOsCrashEvent
+        include Google::Apis::Core::Hashable
+      
+        # Crash id.
+        # Corresponds to the JSON property `crashId`
+        # @return [String]
+        attr_accessor :crash_id
+      
+        # Crash type.
+        # Corresponds to the JSON property `crashType`
+        # @return [String]
+        attr_accessor :crash_type
+      
+        # Session type.
+        # Corresponds to the JSON property `sessionType`
+        # @return [String]
+        attr_accessor :session_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @crash_id = args[:crash_id] if args.key?(:crash_id)
+          @crash_type = args[:crash_type] if args.key?(:crash_type)
+          @session_type = args[:session_type] if args.key?(:session_type)
         end
       end
       
