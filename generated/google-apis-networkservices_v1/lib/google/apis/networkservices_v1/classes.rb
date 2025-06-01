@@ -2008,7 +2008,8 @@ module Google
       # Specifies the policy on how requests are shadowed to a separate mirrored
       # destination service. The proxy does not wait for responses from the shadow
       # service. Prior to sending traffic to the shadow service, the host/authority
-      # header is suffixed with -shadow.
+      # header is suffixed with -shadow. Mirroring is currently not supported for
+      # Cloud Run destinations.
       class HttpRouteRequestMirrorPolicy
         include Google::Apis::Core::Hashable
       
@@ -2127,7 +2128,8 @@ module Google
         # Specifies the policy on how requests are shadowed to a separate mirrored
         # destination service. The proxy does not wait for responses from the shadow
         # service. Prior to sending traffic to the shadow service, the host/authority
-        # header is suffixed with -shadow.
+        # header is suffixed with -shadow. Mirroring is currently not supported for
+        # Cloud Run destinations.
         # Corresponds to the JSON property `requestMirrorPolicy`
         # @return [Google::Apis::NetworkservicesV1::HttpRouteRequestMirrorPolicy]
         attr_accessor :request_mirror_policy
