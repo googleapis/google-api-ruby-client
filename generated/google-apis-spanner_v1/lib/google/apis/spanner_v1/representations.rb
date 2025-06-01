@@ -286,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DatabaseMoveConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DatabaseRole
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -449,6 +455,12 @@ module Google
       end
       
       class InstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceEncryptionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1465,6 +1477,15 @@ module Google
         end
       end
       
+      class DatabaseMoveConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_id, as: 'databaseId'
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::SpannerV1::InstanceEncryptionConfig, decorator: Google::Apis::SpannerV1::InstanceEncryptionConfig::Representation
+      
+        end
+      end
+      
       class DatabaseRole
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1754,6 +1775,14 @@ module Google
         end
       end
       
+      class InstanceEncryptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
+          collection :kms_key_names, as: 'kmsKeyNames'
+        end
+      end
+      
       class InstanceOperationProgress
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2029,6 +2058,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :target_config, as: 'targetConfig'
+          collection :target_database_move_configs, as: 'targetDatabaseMoveConfigs', class: Google::Apis::SpannerV1::DatabaseMoveConfig, decorator: Google::Apis::SpannerV1::DatabaseMoveConfig::Representation
+      
         end
       end
       
