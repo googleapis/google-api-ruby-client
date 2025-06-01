@@ -436,6 +436,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1ToolComputerUse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1ToolConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1027,6 +1033,7 @@ module Google
       
           property :text, as: 'text'
           property :thought, as: 'thought'
+          property :thought_signature, :base64 => true, as: 'thoughtSignature'
           property :video_metadata, as: 'videoMetadata', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VideoMetadata, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VideoMetadata::Representation
       
         end
@@ -1226,6 +1233,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code_execution, as: 'codeExecution', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolCodeExecution, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolCodeExecution::Representation
       
+          property :computer_use, as: 'computerUse', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolComputerUse, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolComputerUse::Representation
+      
           property :enterprise_web_search, as: 'enterpriseWebSearch', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1EnterpriseWebSearch, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1EnterpriseWebSearch::Representation
       
           collection :function_declarations, as: 'functionDeclarations', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionDeclaration, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionDeclaration::Representation
@@ -1242,6 +1251,13 @@ module Google
       class GoogleCloudAiplatformV1beta1ToolCodeExecution
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ToolComputerUse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :environment, as: 'environment'
         end
       end
       
@@ -1290,6 +1306,7 @@ module Google
           property :rag_retrieval_config, as: 'ragRetrievalConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1RagRetrievalConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1RagRetrievalConfig::Representation
       
           property :similarity_top_k, as: 'similarityTopK'
+          property :store_context, as: 'storeContext'
           property :vector_distance_threshold, as: 'vectorDistanceThreshold'
         end
       end
