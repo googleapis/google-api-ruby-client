@@ -82,11 +82,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified account regardless of its type: standalone, MCA or sub-
-        # account. Deleting an MCA leads to the deletion of all of its sub-accounts.
-        # Executing this method requires admin access. The deletion succeeds only if the
-        # account does not provide services to any other account and has no processed
-        # offers. You can use the `force` parameter to override this.
+        # Deletes the specified account regardless of its type: standalone, advanced
+        # account or sub-account. Deleting an advanced account leads to the deletion of
+        # all of its sub-accounts. Executing this method requires admin access. The
+        # deletion succeeds only if the account does not provide services to any other
+        # account and has no processed offers. You can use the `force` parameter to
+        # override this.
         # @param [String] name
         #   Required. The name of the account to delete. Format: `accounts/`account``
         # @param [Boolean] force
@@ -154,15 +155,15 @@ module Google
         
         # Lists accounts accessible to the calling user and matching the constraints of
         # the request such as page size or filters. This is not just listing the sub-
-        # accounts of an MCA, but all accounts the calling user has access to including
-        # other MCAs, linked accounts, standalone accounts and so on. If no filter is
-        # provided, then it returns all the accounts the user has access to. This method
-        # is eventually consistent, meaning changes such as creating, updating an
-        # account or a change of relationships between accounts may not show up in the
-        # results immediately. Instead, these changes propagate over a short period,
-        # after which the updated information can match the associated predicates. That
-        # means, that searching by account name might not return a recently changed
-        # account even though it satisfies the predicate.
+        # accounts of an advanced account, but all accounts the calling user has access
+        # to including other advanced accounts, linked accounts, standalone accounts and
+        # so on. If no filter is provided, then it returns all the accounts the user has
+        # access to. This method is eventually consistent, meaning changes such as
+        # creating, updating an account or a change of relationships between accounts
+        # may not show up in the results immediately. Instead, these changes propagate
+        # over a short period, after which the updated information can match the
+        # associated predicates. That means, that searching by account name might not
+        # return a recently changed account even though it satisfies the predicate.
         # @param [String] filter
         #   Optional. Returns only accounts that match the [filter](https://developers.
         #   google.com/merchant/api/guides/accounts/filter). For more details, see the [
@@ -248,8 +249,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an account regardless of its type: standalone, MCA or sub-account.
-        # Executing this method requires admin access.
+        # Updates an account regardless of its type: standalone, advanced account or sub-
+        # account. Executing this method requires admin access.
         # @param [String] name
         #   Identifier. The resource name of the account. Format: `accounts/`account``
         # @param [Google::Apis::MerchantapiAccountsV1beta::Account] account_object
@@ -430,7 +431,7 @@ module Google
         # Retrieves the business identity of an account.
         # @param [String] name
         #   Required. The resource name of the business identity. Format: `accounts/`
-        #   account`/businessIdentity`
+        #   account`/businessIdentity`. For example, `accounts/123456/businessIdentity`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -501,7 +502,7 @@ module Google
         # Retrieves the business info of an account.
         # @param [String] name
         #   Required. The resource name of the business info. Format: `accounts/`account`/
-        #   businessInfo`
+        #   businessInfo`. For example, `accounts/123456/businessInfo`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -603,12 +604,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the email preferences for a Merchant Center account user. MCA users
-        # should specify the MCA account rather than a sub-account of the MCA.
-        # Preferences which are not explicitly selected in the update mask will not be
-        # updated. It is invalid for updates to specify an UNCONFIRMED opt-in status
-        # value. Use the name=accounts/*/users/me/emailPreferences alias to update
-        # preferences for the authenticated user.
+        # Updates the email preferences for a Merchant Center account user. Advanced
+        # account users should specify the advanced account rather than a sub-account of
+        # the advanced account. Preferences which are not explicitly selected in the
+        # update mask will not be updated. It is invalid for updates to specify an
+        # UNCONFIRMED opt-in status value. Use the name=accounts/*/users/me/
+        # emailPreferences alias to update preferences for the authenticated user.
         # @param [String] name
         #   Identifier. The name of the EmailPreferences. The endpoint is only supported
         #   for the authenticated user.
@@ -646,9 +647,87 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Link the specified merchant to a GBP account for all countries.
+        # @param [String] parent
+        #   Required. The name of the parent resource to which the GBP account is linked.
+        #   Format: `accounts/`account``.
+        # @param [Google::Apis::MerchantapiAccountsV1beta::LinkGbpAccountRequest] link_gbp_account_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::LinkGbpAccountResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::LinkGbpAccountResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def link_gbp_account(parent, link_gbp_account_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'accounts/v1beta/{+parent}/gbpAccounts:linkGbpAccount', options)
+          command.request_representation = Google::Apis::MerchantapiAccountsV1beta::LinkGbpAccountRequest::Representation
+          command.request_object = link_gbp_account_request_object
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::LinkGbpAccountResponse::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::LinkGbpAccountResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List the GBP accounts for a given merchant.
+        # @param [String] parent
+        #   Required. The name of the parent resource under which the GBP accounts are
+        #   listed. Format: `accounts/`account``.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of `GbpAccount` resources to return. The service
+        #   returns fewer than this value if the number of gbp accounts is less that than
+        #   the `pageSize`. The default value is 50. The maximum value is 1000; If a value
+        #   higher than the maximum is specified, then the `pageSize` will default to the
+        #   maximum.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListGbpAccounts` call.
+        #   Provide the page token to retrieve the subsequent page. When paginating, all
+        #   other parameters provided to `ListGbpAccounts` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::ListGbpAccountsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::ListGbpAccountsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_gbp_accounts(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'accounts/v1beta/{+parent}/gbpAccounts', options)
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::ListGbpAccountsResponse::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::ListGbpAccountsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Claims a store's homepage. Executing this method requires admin access. If the
         # homepage is already claimed, this will recheck the verification (unless the
-        # merchant is exempted from claiming, which also exempts from verification) and
+        # business is exempted from claiming, which also exempts from verification) and
         # return a successful response. If ownership can no longer be verified, it will
         # return an error, but it won't clear the claim. In case of failure, a canonical
         # error message is returned: * PERMISSION_DENIED: User doesn't have the
@@ -848,7 +927,334 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an existing return policy for a given merchant.
+        # Create the omnichannel settings for a given merchant.
+        # @param [String] parent
+        #   Required. The parent resource where this omnichannel setting will be created.
+        #   Format: `accounts/`account``
+        # @param [Google::Apis::MerchantapiAccountsV1beta::OmnichannelSetting] omnichannel_setting_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::OmnichannelSetting] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::OmnichannelSetting]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_account_omnichannel_setting(parent, omnichannel_setting_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'accounts/v1beta/{+parent}/omnichannelSettings', options)
+          command.request_representation = Google::Apis::MerchantapiAccountsV1beta::OmnichannelSetting::Representation
+          command.request_object = omnichannel_setting_object
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::OmnichannelSetting::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::OmnichannelSetting
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the omnichannel settings for a given merchant.
+        # @param [String] name
+        #   Required. The name of the omnichannel setting to retrieve. Format: `accounts/`
+        #   account`/omnichannelSettings/`omnichannel_setting``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::OmnichannelSetting] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::OmnichannelSetting]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_omnichannel_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'accounts/v1beta/{+name}', options)
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::OmnichannelSetting::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::OmnichannelSetting
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List all the omnichannel settings for a given merchant.
+        # @param [String] parent
+        #   Required. The parent, which owns this collection of omnichannel settings.
+        #   Format: `accounts/`account``
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of omnichannel settings to return. The service
+        #   may return fewer than this value. If unspecified, at most 50 omnichannel
+        #   settings will be returned. The maximum value is 1000; values above 1000 will
+        #   be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListOmnichannelSettings`
+        #   call. Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListOmnichannelSettings` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::ListOmnichannelSettingsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::ListOmnichannelSettingsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_omnichannel_settings(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'accounts/v1beta/{+parent}/omnichannelSettings', options)
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::ListOmnichannelSettingsResponse::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::ListOmnichannelSettingsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update the omnichannel setting for a given merchant in a given country.
+        # @param [String] name
+        #   Identifier. The resource name of the omnichannel setting. Format: `accounts/`
+        #   account`/omnichannelSettings/`omnichannel_setting``
+        # @param [Google::Apis::MerchantapiAccountsV1beta::OmnichannelSetting] omnichannel_setting_object
+        # @param [String] update_mask
+        #   Required. The list of fields to be updated. The following fields are supported
+        #   in snake_case only: - `lsf_type` - `in_stock` - `pickup` - `odo` - `about` - `
+        #   inventory_verification` Full replacement with wildcard `*`is supported, while
+        #   empty/implied update mask is not.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::OmnichannelSetting] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::OmnichannelSetting]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_account_omnichannel_setting(name, omnichannel_setting_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'accounts/v1beta/{+name}', options)
+          command.request_representation = Google::Apis::MerchantapiAccountsV1beta::OmnichannelSetting::Representation
+          command.request_object = omnichannel_setting_object
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::OmnichannelSetting::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::OmnichannelSetting
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Requests inventory verification for a given merchant in a given country.
+        # @param [String] name
+        #   Required. The name of the omnichannel setting to request inventory
+        #   verification. Format: `accounts/`account`/omnichannelSettings/`
+        #   omnichannel_setting``
+        # @param [Google::Apis::MerchantapiAccountsV1beta::RequestInventoryVerificationRequest] request_inventory_verification_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::RequestInventoryVerificationResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::RequestInventoryVerificationResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def request_omnichannel_setting_inventory_verification(name, request_inventory_verification_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'accounts/v1beta/{+name}:requestInventoryVerification', options)
+          command.request_representation = Google::Apis::MerchantapiAccountsV1beta::RequestInventoryVerificationRequest::Representation
+          command.request_object = request_inventory_verification_request_object
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::RequestInventoryVerificationResponse::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::RequestInventoryVerificationResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Find the LFP provider candidates in a given country.
+        # @param [String] parent
+        #   Required. The name of the parent resource under which the LFP providers are
+        #   found. Format: `accounts/`account`/omnichannelSettings/`omnichannel_setting``.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of `LfpProvider` resources to return. The service
+        #   returns fewer than this value if the number of lfp providers is less that than
+        #   the `pageSize`. The default value is 50. The maximum value is 1000; If a value
+        #   higher than the maximum is specified, then the `pageSize` will default to the
+        #   maximum.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `FindLfpProviders` call.
+        #   Provide the page token to retrieve the subsequent page. When paginating, all
+        #   other parameters provided to `FindLfpProviders` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::FindLfpProvidersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::FindLfpProvidersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def find_account_omnichannel_setting_lfp_provider(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'accounts/v1beta/{+parent}/lfpProviders:find', options)
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::FindLfpProvidersResponse::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::FindLfpProvidersResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Link the specified merchant to a LFP provider for the specified country.
+        # @param [String] name
+        #   Required. The name of the LFP provider resource to link. Format: `accounts/`
+        #   account`/omnichannelSettings/`omnichannel_setting`/lfpProviders/`lfp_provider``
+        #   . The `lfp_provider` is the LFP provider ID.
+        # @param [Google::Apis::MerchantapiAccountsV1beta::LinkLfpProviderRequest] link_lfp_provider_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::LinkLfpProviderResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::LinkLfpProviderResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def link_lfp_provider(name, link_lfp_provider_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'accounts/v1beta/{+name}:linkLfpProvider', options)
+          command.request_representation = Google::Apis::MerchantapiAccountsV1beta::LinkLfpProviderRequest::Representation
+          command.request_object = link_lfp_provider_request_object
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::LinkLfpProviderResponse::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::LinkLfpProviderResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new return policy for a given business.
+        # @param [String] parent
+        #   Required. The Merchant Center account for which the return policy will be
+        #   created. Format: `accounts/`account``
+        # @param [Google::Apis::MerchantapiAccountsV1beta::OnlineReturnPolicy] online_return_policy_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::OnlineReturnPolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::OnlineReturnPolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_account_online_return_policy(parent, online_return_policy_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'accounts/v1beta/{+parent}/onlineReturnPolicies', options)
+          command.request_representation = Google::Apis::MerchantapiAccountsV1beta::OnlineReturnPolicy::Representation
+          command.request_object = online_return_policy_object
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::OnlineReturnPolicy::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::OnlineReturnPolicy
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an existing return policy.
+        # @param [String] name
+        #   Required. The name of the return policy to delete. Format: `accounts/`account`/
+        #   onlineReturnPolicies/`return_policy``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_account_online_return_policy(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'accounts/v1beta/{+name}', options)
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::Empty::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an existing return policy for a given business.
         # @param [String] name
         #   Required. The name of the return policy to retrieve. Format: `accounts/`
         #   account`/onlineReturnPolicies/`return_policy``
@@ -879,14 +1285,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all existing return policies for a given merchant.
+        # Lists all existing return policies for a given business.
         # @param [String] parent
-        #   Required. The merchant account for which to list return policies. Format: `
-        #   accounts/`account``
+        #   Required. The Merchant Center account for which to list return policies.
+        #   Format: `accounts/`account``
         # @param [Fixnum] page_size
         #   Optional. The maximum number of `OnlineReturnPolicy` resources to return. The
         #   service returns fewer than this value if the number of return policies for the
-        #   given merchant is less that than the `pageSize`. The default value is 10. The
+        #   given business is less that than the `pageSize`. The default value is 10. The
         #   maximum value is 100; If a value higher than the maximum is specified, then
         #   the `pageSize` will default to the maximum
         # @param [String] page_token
@@ -924,11 +1330,52 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Disable participation in the specified program for the account. Executing this
-        # method requires admin access.
+        # Updates an existing return policy for a given business.
+        # @param [String] name
+        #   Identifier. The name of the `OnlineReturnPolicy` resource. Format: `accounts/`
+        #   account`/onlineReturnPolicies/`return_policy``
+        # @param [Google::Apis::MerchantapiAccountsV1beta::OnlineReturnPolicy] online_return_policy_object
+        # @param [String] update_mask
+        #   Optional. List of fields being updated. The following fields are supported (in
+        #   both `snake_case` and `lowerCamelCase`): - `accept_defective_only` - `
+        #   accept_exchange` - `item_conditions` - `policy` - `process_refund_days` - `
+        #   restocking_fee` - `return_methods` - `return_policy_uri` - `
+        #   return_shipping_fee`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::OnlineReturnPolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::OnlineReturnPolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_account_online_return_policy(name, online_return_policy_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'accounts/v1beta/{+name}', options)
+          command.request_representation = Google::Apis::MerchantapiAccountsV1beta::OnlineReturnPolicy::Representation
+          command.request_object = online_return_policy_object
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::OnlineReturnPolicy::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::OnlineReturnPolicy
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Disable participation in the specified program for the account.
         # @param [String] name
         #   Required. The name of the program for which to disable participation for the
-        #   given account. Format: `accounts/`account`/programs/`program``
+        #   given account. Format: `accounts/`account`/programs/`program``. For example, `
+        #   accounts/123456/programs/free-listings`.
         # @param [Google::Apis::MerchantapiAccountsV1beta::DisableProgramRequest] disable_program_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -959,11 +1406,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Enable participation in the specified program for the account. Executing this
-        # method requires admin access.
+        # Enable participation in the specified program for the account.
         # @param [String] name
         #   Required. The name of the program for which to enable participation for the
-        #   given account. Format: `accounts/`account`/programs/`program``
+        #   given account. Format: `accounts/`account`/programs/`program``. For example, `
+        #   accounts/123456/programs/free-listings`.
         # @param [Google::Apis::MerchantapiAccountsV1beta::EnableProgramRequest] enable_program_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -997,7 +1444,7 @@ module Google
         # Retrieves the specified program for the account.
         # @param [String] name
         #   Required. The name of the program to retrieve. Format: `accounts/`account`/
-        #   programs/`program``
+        #   programs/`program``. For example, `accounts/123456/programs/free-listings`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1248,7 +1695,8 @@ module Google
         # Retrieve an account relationship.
         # @param [String] name
         #   Required. The resource name of the account relationship to get. Format: `
-        #   accounts/`account`/relationships/`relationship``
+        #   accounts/`account`/relationships/`relationship``. For example, `accounts/
+        #   123456/relationships/567890`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1318,7 +1766,8 @@ module Google
         # Updates the account relationship. Executing this method requires admin access.
         # @param [String] name
         #   Identifier. The resource name of the account relationship. Format: `accounts/`
-        #   account`/relationships/`relationship``
+        #   account`/relationships/`relationship``. For example, `accounts/123456/
+        #   relationships/567890`.
         # @param [Google::Apis::MerchantapiAccountsV1beta::AccountRelationship] account_relationship_object
         # @param [String] update_mask
         #   Optional. List of fields being updated. The following fields are supported (in
@@ -1556,7 +2005,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Replace the shipping setting of a merchant with the request shipping setting.
+        # Replace the shipping setting of a business with the request shipping setting.
         # Executing this method requires admin access.
         # @param [String] parent
         #   Required. The account for which this shipping setting will be inserted. If you

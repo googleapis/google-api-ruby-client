@@ -22,23 +22,57 @@ module Google
   module Apis
     module MerchantapiAccountsV1beta
       
+      # Collection of information related to the about page ([impressum](https://
+      # support.google.com/merchants/answer/14675634?hl=en&ref_topic=15145634&sjid=
+      # 6892280366904591178-NC)).
+      class About
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The state of the URI.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Required. The about page URI.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Response message for the `AcceptTermsOfService` method.
       class AcceptTermsOfServiceResponse
         include Google::Apis::Core::Hashable
       
         # This resource represents the agreement state for a given account and terms of
-        # service kind. The state is as follows: * If the merchant has accepted a terms
+        # service kind. The state is as follows: * If the business has accepted a terms
         # of service, `accepted` will be populated, otherwise it will be empty * If the
-        # merchant must sign a terms of service, `required` will be populated, otherwise
+        # business must sign a terms of service, `required` will be populated, otherwise
         # it will be empty. Note that both `required` and `accepted` can be present. In
         # this case the `accepted` terms of services will have an expiration date set in
         # the `valid_until` field. The `required` terms of services need to be accepted
         # before `valid_until` in order for the account to continue having a valid
-        # agreement. When accepting new terms of services we expect 3Ps to display the
-        # text associated with the given terms of service agreement (the url to the file
-        # containing the text is added in the Required message below as `tos_file_uri`).
-        # The actual acceptance of the terms of service is done by calling accept on the
-        # `TermsOfService` resource.
+        # agreement. When accepting new terms of services we expect third-party
+        # providers to display the text associated with the given terms of service
+        # agreement (the url to the file containing the text is added in the Required
+        # message below as `tos_file_uri`). The actual acceptance of the terms of
+        # service is done by calling accept on the `TermsOfService` resource. `
+        # valid_until` field. The `required` terms of services need to be accepted
+        # before `valid_until` in order for the account to continue having a valid
+        # agreement. When accepting new terms of services, we expect third-party
+        # providers to display the text associated with the given terms of service
+        # agreement (the url to the file containing the text is added in the Required
+        # message below as `tos_file_uri`. The actual acceptance of the terms of service
+        # is done by calling accept on the `TermsOfService` resource.
         # Corresponds to the JSON property `termsOfServiceAgreementState`
         # @return [Google::Apis::MerchantapiAccountsV1beta::TermsOfServiceAgreementState]
         attr_accessor :terms_of_service_agreement_state
@@ -53,12 +87,13 @@ module Google
         end
       end
       
-      # Describes the accepted terms of service.
+      # Describes the [accepted terms of service](/merchant/api/guides/accounts/create-
+      # and-configure#accept_the_merchant_center_terms_of_service).
       class Accepted
         include Google::Apis::Core::Hashable
       
         # The account where the acceptance was recorded. This can be the account itself
-        # or, in the case of subaccounts, the MCA account.
+        # or, in the case of subaccounts, the advanced account.
         # Corresponds to the JSON property `acceptedBy`
         # @return [String]
         attr_accessor :accepted_by
@@ -92,13 +127,13 @@ module Google
         end
       end
       
-      # The `Account` message represents a merchant's account within Shopping Ads. It'
+      # The `Account` message represents a business's account within Shopping Ads. It'
       # s the primary entity for managing product data, settings, and interactions
       # with Google's services and external providers. Accounts can operate as
-      # standalone entities or be part of a multi-client account (MCA) structure. In
-      # an MCA setup the parent account manages multiple sub-accounts. Establishing an
-      # account involves configuring attributes like the account name, time zone, and
-      # language preferences. The `Account` message is the parent entity for many
+      # standalone entities or be part of a advanced account structure. In an advanced
+      # account setup the parent account manages multiple sub-accounts. Establishing
+      # an account involves configuring attributes like the account name, time zone,
+      # and language preferences. The `Account` message is the parent entity for many
       # other resources, for example, `AccountRelationship`, `Homepage`, `BusinessInfo`
       # and so on.
       class Account
@@ -174,8 +209,10 @@ module Google
         end
       end
       
-      # An [`AccountIssue`](https://support.google.com/merchants/answer/12153802?sjid=
-      # 17798438912526418908-EU#account).
+      # Issues with your Merchant Center account that can impact all your products.
+      # For more information, see [Account-level issues in Merchant Center](https://
+      # support.google.com/merchants/answer/12153802?sjid=17798438912526418908-EU#
+      # account).
       class AccountIssue
         include Google::Apis::Core::Hashable
       
@@ -196,7 +233,8 @@ module Google
         attr_accessor :impacted_destinations
       
         # Identifier. The resource name of the account issue. Format: `accounts/`account`
-        # /issues/`id``
+        # /issues/`id``. For example, `accounts/123456/issues/misrepresentation-of-self-
+        # or-products-unacceptable-business-practice-policy`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -241,9 +279,9 @@ module Google
       
       # The `AccountRelationship` message defines a formal connection between a
       # merchant's account and a service provider's account. This relationship enables
-      # the provider to offer specific services to the merchant, such as product
+      # the provider to offer specific services to the business, such as product
       # management or campaign management. It specifies the access rights and
-      # permissions to the merchant's data relevant to those services. Establishing an
+      # permissions to the business's data relevant to those services. Establishing an
       # account relationship involves linking the merchant's account with a provider's
       # account. The provider could be another Google account (like Google Ads or
       # Google My Business) or a third-party platform (such as Shopify or WooCommerce).
@@ -260,7 +298,8 @@ module Google
         attr_accessor :account_id_alias
       
         # Identifier. The resource name of the account relationship. Format: `accounts/`
-        # account`/relationships/`relationship``
+        # account`/relationships/`relationship``. For example, `accounts/123456/
+        # relationships/567890`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -291,14 +330,14 @@ module Google
       end
       
       # The `AccountService` message represents a specific service that a provider
-      # account offers to a merchant account. `AccountService` defines the permissions
-      # and capabilities granted to the provider, allowing for operations such as
-      # product management or campaign management. The lifecycle of an `AccountService`
-      # involves a proposal phase, where one party suggests the service, and an
-      # approval phase, where the other party accepts or rejects it. This handshake
-      # mechanism ensures mutual consent before any access is granted. This mechanism
-      # safeguards both parties by ensuring that access rights are granted
-      # appropriately and that both the merchant and provider are aware of the
+      # account offers to a Merchant Center account. `AccountService` defines the
+      # permissions and capabilities granted to the provider, allowing for operations
+      # such as product management or campaign management. The lifecycle of an `
+      # AccountService` involves a proposal phase, where one party suggests the
+      # service, and an approval phase, where the other party accepts or rejects it.
+      # This handshake mechanism ensures mutual consent before any access is granted.
+      # This mechanism safeguards both parties by ensuring that access rights are
+      # granted appropriately and that both the business and provider are aware of the
       # services enabled. In scenarios where a user is an admin of both accounts, the
       # approval can happen automatically. The mutability of a service is also managed
       # through `AccountService`. Some services might be immutable, for example, if
@@ -338,6 +377,11 @@ module Google
         # Corresponds to the JSON property `handshake`
         # @return [Google::Apis::MerchantapiAccountsV1beta::Handshake]
         attr_accessor :handshake
+      
+        # `LocalListingManagement` payload.
+        # Corresponds to the JSON property `localListingManagement`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::LocalListingManagement]
+        attr_accessor :local_listing_management
       
         # Output only. Whether the service is mutable (e.g. through Approve / Reject
         # RPCs). A service that was created through another system or API might be
@@ -380,6 +424,7 @@ module Google
           @campaigns_management = args[:campaigns_management] if args.key?(:campaigns_management)
           @external_account_id = args[:external_account_id] if args.key?(:external_account_id)
           @handshake = args[:handshake] if args.key?(:handshake)
+          @local_listing_management = args[:local_listing_management] if args.key?(:local_listing_management)
           @mutability = args[:mutability] if args.key?(:mutability)
           @name = args[:name] if args.key?(:name)
           @products_management = args[:products_management] if args.key?(:products_management)
@@ -507,8 +552,8 @@ module Google
       class AutofeedSettings
         include Google::Apis::Core::Hashable
       
-        # Output only. Determines whether merchant is eligible for being enrolled into
-        # an autofeed.
+        # Output only. Determines whether the business is eligible for being enrolled
+        # into an autofeed.
         # Corresponds to the JSON property `eligible`
         # @return [Boolean]
         attr_accessor :eligible
@@ -608,14 +653,15 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Not available for MCAs [accounts](https://support.google.com/merchants/answer/
-        # 188487). By turning on [automatic shipping improvements](https://support.
-        # google.com/merchants/answer/10027038), you are allowing Google to improve the
-        # accuracy of your delivery times shown to shoppers using Google. More accurate
-        # delivery times, especially when faster, typically lead to better conversion
-        # rates. Google will improve your estimated delivery times based on various
-        # factors: * Delivery address of an order * Current handling time and shipping
-        # time settings * Estimated weekdays or business days * Parcel tracking data
+        # Not available for [advanced accounts](https://support.google.com/merchants/
+        # answer/188487). By turning on [automatic shipping improvements](https://
+        # support.google.com/merchants/answer/10027038), you are allowing Google to
+        # improve the accuracy of your delivery times shown to shoppers using Google.
+        # More accurate delivery times, especially when faster, typically lead to better
+        # conversion rates. Google will improve your estimated delivery times based on
+        # various factors: * Delivery address of an order * Current handling time and
+        # shipping time settings * Estimated weekdays or business days * Parcel tracking
+        # data
         # Corresponds to the JSON property `shippingImprovements`
         # @return [Google::Apis::MerchantapiAccountsV1beta::AutomaticShippingImprovements]
         attr_accessor :shipping_improvements
@@ -696,14 +742,15 @@ module Google
         end
       end
       
-      # Not available for MCAs [accounts](https://support.google.com/merchants/answer/
-      # 188487). By turning on [automatic shipping improvements](https://support.
-      # google.com/merchants/answer/10027038), you are allowing Google to improve the
-      # accuracy of your delivery times shown to shoppers using Google. More accurate
-      # delivery times, especially when faster, typically lead to better conversion
-      # rates. Google will improve your estimated delivery times based on various
-      # factors: * Delivery address of an order * Current handling time and shipping
-      # time settings * Estimated weekdays or business days * Parcel tracking data
+      # Not available for [advanced accounts](https://support.google.com/merchants/
+      # answer/188487). By turning on [automatic shipping improvements](https://
+      # support.google.com/merchants/answer/10027038), you are allowing Google to
+      # improve the accuracy of your delivery times shown to shoppers using Google.
+      # More accurate delivery times, especially when faster, typically lead to better
+      # conversion rates. Google will improve your estimated delivery times based on
+      # various factors: * Delivery address of an order * Current handling time and
+      # shipping time settings * Estimated weekdays or business days * Parcel tracking
+      # data
       class AutomaticShippingImprovements
         include Google::Apis::Core::Hashable
       
@@ -799,9 +846,9 @@ module Google
         end
       end
       
-      # The `BusinessInfo` message contains essential information about a merchant's
-      # business. This message captures key business details such as physical address,
-      # customer service contacts, and region-specific identifiers.
+      # The `BusinessInfo` message contains essential information about a business.
+      # This message captures key business details such as physical address, customer
+      # service contacts, and region-specific identifiers.
       class BusinessInfo
         include Google::Apis::Core::Hashable
       
@@ -968,13 +1015,13 @@ module Google
       class CreateAndConfigureAccountRequest
         include Google::Apis::Core::Hashable
       
-        # The `Account` message represents a merchant's account within Shopping Ads. It'
+        # The `Account` message represents a business's account within Shopping Ads. It'
         # s the primary entity for managing product data, settings, and interactions
         # with Google's services and external providers. Accounts can operate as
-        # standalone entities or be part of a multi-client account (MCA) structure. In
-        # an MCA setup the parent account manages multiple sub-accounts. Establishing an
-        # account involves configuring attributes like the account name, time zone, and
-        # language preferences. The `Account` message is the parent entity for many
+        # standalone entities or be part of a advanced account structure. In an advanced
+        # account setup the parent account manages multiple sub-accounts. Establishing
+        # an account involves configuring attributes like the account name, time zone,
+        # and language preferences. The `Account` message is the parent entity for many
         # other resources, for example, `AccountRelationship`, `Homepage`, `BusinessInfo`
         # and so on.
         # Corresponds to the JSON property `account`
@@ -984,9 +1031,10 @@ module Google
         # Required. An account service between the account to be created and the
         # provider account is initialized as part of the creation. At least one such
         # service needs to be provided. Currently exactly one of these needs to be `
-        # account_aggregation`, which means you can only create sub accounts, not
-        # standalone account through this method. Additional `account_management` or `
-        # product_management` services may be provided.
+        # account_aggregation` and `accounts.createAndConfigure` method can be used to
+        # create a sub-account under an existing advanced account through this method.
+        # Additional `account_management` or `product_management` services may be
+        # provided.
         # Corresponds to the JSON property `service`
         # @return [Array<Google::Apis::MerchantapiAccountsV1beta::AddAccountService>]
         attr_accessor :service
@@ -1102,7 +1150,7 @@ module Google
         # @return [Google::Apis::MerchantapiAccountsV1beta::LocalCutoffTime]
         attr_accessor :local_cutoff_time
       
-        # Merchants can opt-out of showing n+1 day local delivery when they have a
+        # Businesses can opt-out of showing n+1 day local delivery when they have a
         # shipping service configured to n day local delivery. For example, if the
         # shipping service defines same-day delivery, and it's past the cut-off, setting
         # this field to `true` results in the calculated shipping service rate returning
@@ -1385,6 +1433,77 @@ module Google
         end
       end
       
+      # Response message for the FindLfpProviders method.
+      class FindLfpProvidersResponse
+        include Google::Apis::Core::Hashable
+      
+        # The LFP providers from the specified merchant in the specified country.
+        # Corresponds to the JSON property `lfpProviders`
+        # @return [Array<Google::Apis::MerchantapiAccountsV1beta::LfpProvider>]
+        attr_accessor :lfp_providers
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @lfp_providers = args[:lfp_providers] if args.key?(:lfp_providers)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Collection of information related to a Google Business Profile (GBP) account.
+      class GbpAccount
+        include Google::Apis::Core::Hashable
+      
+        # The id of the GBP account.
+        # Corresponds to the JSON property `gbpAccountId`
+        # @return [String]
+        attr_accessor :gbp_account_id
+      
+        # The name of the Business Profile. For personal accounts: Email id of the owner.
+        # For Business accounts: Name of the Business Account.
+        # Corresponds to the JSON property `gbpAccountName`
+        # @return [String]
+        attr_accessor :gbp_account_name
+      
+        # Number of listings under this account.
+        # Corresponds to the JSON property `listingCount`
+        # @return [Fixnum]
+        attr_accessor :listing_count
+      
+        # Identifier. The resource name of the GBP account. Format: `accounts/`account`/
+        # gbpAccount/`gbp_account``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The type of the Business Profile.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gbp_account_id = args[:gbp_account_id] if args.key?(:gbp_account_id)
+          @gbp_account_name = args[:gbp_account_name] if args.key?(:gbp_account_name)
+          @listing_count = args[:listing_count] if args.key?(:listing_count)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # A list of geotargets that defines the region area.
       class GeoTargetArea
         include Google::Apis::Core::Hashable
@@ -1496,10 +1615,10 @@ module Google
         end
       end
       
-      # The `Homepage` message represents a merchant's store homepage within the
-      # system. A merchant's homepage is the primary domain where customers interact
+      # The `Homepage` message represents a business's store homepage within the
+      # system. A business's homepage is the primary domain where customers interact
       # with their store. The homepage can be claimed and verified as a proof of
-      # ownership and allows the merchant to unlock features that require a verified
+      # ownership and allows the business to unlock features that require a verified
       # website. For more information, see [Understanding online store URL
       # verification](//support.google.com/merchants/answer/176793).
       class Homepage
@@ -1624,6 +1743,74 @@ module Google
         end
       end
       
+      # Collection of information related to InStock.
+      class InStock
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The state of the in-stock serving.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Optional. Product landing page URI. It is only used for the review of MHLSF in-
+        # stock serving. This URI domain should match with the business's homepage.
+        # Required to be empty if the lsf_type is GHLSF, and required when the lsf_type
+        # is MHLSF_FULL or MHLSF_BASIC.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Collection of information related to [inventory verification](https://support.
+      # google.com/merchants/answer/14684499?hl=en&ref_topic=15145634&sjid=
+      # 6892280366904591178-NC).
+      class InventoryVerification
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the contact for the inventory verification process.
+        # Corresponds to the JSON property `contact`
+        # @return [String]
+        attr_accessor :contact
+      
+        # Required. The email address of the contact for the inventory verification
+        # process.
+        # Corresponds to the JSON property `contactEmail`
+        # @return [String]
+        attr_accessor :contact_email
+      
+        # Output only. The state of the contact verification.
+        # Corresponds to the JSON property `contactState`
+        # @return [String]
+        attr_accessor :contact_state
+      
+        # Output only. The state of the inventory verification process.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contact = args[:contact] if args.key?(:contact)
+          @contact_email = args[:contact_email] if args.key?(:contact_email)
+          @contact_state = args[:contact_state] if args.key?(:contact_state)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Settings for the Automatic Item Updates.
       class ItemUpdatesAccountLevelSettings
         include Google::Apis::Core::Hashable
@@ -1672,6 +1859,153 @@ module Google
           @allow_condition_updates = args[:allow_condition_updates] if args.key?(:allow_condition_updates)
           @allow_price_updates = args[:allow_price_updates] if args.key?(:allow_price_updates)
           @allow_strict_availability_updates = args[:allow_strict_availability_updates] if args.key?(:allow_strict_availability_updates)
+        end
+      end
+      
+      # Collection of information related to the LFP link.
+      class LfpLink
+        include Google::Apis::Core::Hashable
+      
+        # Required. The account ID by which this merchant is known to the LFP provider.
+        # Corresponds to the JSON property `externalAccountId`
+        # @return [String]
+        attr_accessor :external_account_id
+      
+        # Required. The resource name of the LFP provider. Format: `lfpProviders/`
+        # lfp_provider``
+        # Corresponds to the JSON property `lfpProvider`
+        # @return [String]
+        attr_accessor :lfp_provider
+      
+        # Output only. The state of the LFP link.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_account_id = args[:external_account_id] if args.key?(:external_account_id)
+          @lfp_provider = args[:lfp_provider] if args.key?(:lfp_provider)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Collection of information related to a Local Feed Partnership (LFP) provider.
+      class LfpProvider
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the LFP provider.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. The resource name of the LFP provider. Format: `accounts/`account`/
+        # omnichannelSettings/`omnichannel_setting`/lfpProviders/`lfp_provider``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Region code defined by [CLDR](https://cldr.unicode.org/).
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @region_code = args[:region_code] if args.key?(:region_code)
+        end
+      end
+      
+      # Request message for the LinkGbpAccount method.
+      class LinkGbpAccountRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The email address of the Business Profile account.
+        # Corresponds to the JSON property `gbpEmail`
+        # @return [String]
+        attr_accessor :gbp_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gbp_email = args[:gbp_email] if args.key?(:gbp_email)
+        end
+      end
+      
+      # Response message for the LinkGbpAccount method.
+      class LinkGbpAccountResponse
+        include Google::Apis::Core::Hashable
+      
+        # A generic empty message that you can re-use to avoid defining duplicated empty
+        # messages in your APIs. A typical example is to use it as the request or the
+        # response type of an API method. For instance: service Foo ` rpc Bar(google.
+        # protobuf.Empty) returns (google.protobuf.Empty); `
+        # Corresponds to the JSON property `response`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::Empty]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # Request message for the LinkLfpProvider method.
+      class LinkLfpProviderRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The external account ID by which this merchant is known to the LFP
+        # provider.
+        # Corresponds to the JSON property `externalAccountId`
+        # @return [String]
+        attr_accessor :external_account_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_account_id = args[:external_account_id] if args.key?(:external_account_id)
+        end
+      end
+      
+      # Response message for the LinkLfpProvider method.
+      class LinkLfpProviderResponse
+        include Google::Apis::Core::Hashable
+      
+        # A generic empty message that you can re-use to avoid defining duplicated empty
+        # messages in your APIs. A typical example is to use it as the request or the
+        # response type of an API method. For instance: service Foo ` rpc Bar(google.
+        # protobuf.Empty) returns (google.protobuf.Empty); `
+        # Corresponds to the JSON property `response`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::Empty]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @response = args[:response] if args.key?(:response)
         end
       end
       
@@ -1779,6 +2113,58 @@ module Google
         end
       end
       
+      # Response message for the ListGbpAccounts method.
+      class ListGbpAccountsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The GBP accounts from the specified merchant in the specified country.
+        # Corresponds to the JSON property `gbpAccounts`
+        # @return [Array<Google::Apis::MerchantapiAccountsV1beta::GbpAccount>]
+        attr_accessor :gbp_accounts
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gbp_accounts = args[:gbp_accounts] if args.key?(:gbp_accounts)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for the ListOmnichannelSettings method.
+      class ListOmnichannelSettingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The omnichannel settings from the specified merchant.
+        # Corresponds to the JSON property `omnichannelSettings`
+        # @return [Array<Google::Apis::MerchantapiAccountsV1beta::OmnichannelSetting>]
+        attr_accessor :omnichannel_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @omnichannel_settings = args[:omnichannel_settings] if args.key?(:omnichannel_settings)
+        end
+      end
+      
       # Response message for the `ListOnlineReturnPolicies` method.
       class ListOnlineReturnPoliciesResponse
         include Google::Apis::Core::Hashable
@@ -1841,7 +2227,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # The regions from the specified merchant.
+        # The regions from the specified business.
         # Corresponds to the JSON property `regions`
         # @return [Array<Google::Apis::MerchantapiAccountsV1beta::Region>]
         attr_accessor :regions
@@ -1934,6 +2320,19 @@ module Google
         end
       end
       
+      # `LocalListingManagement` payload.
+      class LocalListingManagement
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A list of location ID sets. Must be non-empty. Can only be set if all other
       # fields are not set.
       class LocationIdSet
@@ -1957,7 +2356,7 @@ module Google
       end
       
       # [Loyalty program](https://support.google.com/merchants/answer/12922446)
-      # provided by a merchant.
+      # provided by a business.
       class LoyaltyProgram
         include Google::Apis::Core::Hashable
       
@@ -1984,7 +2383,7 @@ module Google
         end
       end
       
-      # Subset of a merchants loyalty program.
+      # Subset of a business's loyalty program.
       class LoyaltyProgramTiers
         include Google::Apis::Core::Hashable
       
@@ -2028,20 +2427,122 @@ module Google
         end
       end
       
+      # Collection of information related to the omnichannel settings of a merchant.
+      class OmnichannelSetting
+        include Google::Apis::Core::Hashable
+      
+        # Collection of information related to the about page ([impressum](https://
+        # support.google.com/merchants/answer/14675634?hl=en&ref_topic=15145634&sjid=
+        # 6892280366904591178-NC)).
+        # Corresponds to the JSON property `about`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::About]
+        attr_accessor :about
+      
+        # Collection of information related to InStock.
+        # Corresponds to the JSON property `inStock`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::InStock]
+        attr_accessor :in_stock
+      
+        # Collection of information related to [inventory verification](https://support.
+        # google.com/merchants/answer/14684499?hl=en&ref_topic=15145634&sjid=
+        # 6892280366904591178-NC).
+        # Corresponds to the JSON property `inventoryVerification`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::InventoryVerification]
+        attr_accessor :inventory_verification
+      
+        # Collection of information related to the LFP link.
+        # Corresponds to the JSON property `lfpLink`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::LfpLink]
+        attr_accessor :lfp_link
+      
+        # Required. The Local Store Front type for this country.
+        # Corresponds to the JSON property `lsfType`
+        # @return [String]
+        attr_accessor :lsf_type
+      
+        # Identifier. The resource name of the omnichannel setting. Format: `accounts/`
+        # account`/omnichannelSettings/`omnichannel_setting``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Collection of information related to the on display to order ([ODO](https://
+        # support.google.com/merchants/answer/14615056?hl=en&ref_topic=15145747&sjid=
+        # 6892280366904591178-NC)).
+        # Corresponds to the JSON property `odo`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::OnDisplayToOrder]
+        attr_accessor :odo
+      
+        # Collection of information related to Pickup.
+        # Corresponds to the JSON property `pickup`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::Pickup]
+        attr_accessor :pickup
+      
+        # Required. Immutable. Region code defined by [CLDR](https://cldr.unicode.org/).
+        # Must be provided in the Create method, and is immutable.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @about = args[:about] if args.key?(:about)
+          @in_stock = args[:in_stock] if args.key?(:in_stock)
+          @inventory_verification = args[:inventory_verification] if args.key?(:inventory_verification)
+          @lfp_link = args[:lfp_link] if args.key?(:lfp_link)
+          @lsf_type = args[:lsf_type] if args.key?(:lsf_type)
+          @name = args[:name] if args.key?(:name)
+          @odo = args[:odo] if args.key?(:odo)
+          @pickup = args[:pickup] if args.key?(:pickup)
+          @region_code = args[:region_code] if args.key?(:region_code)
+        end
+      end
+      
+      # Collection of information related to the on display to order ([ODO](https://
+      # support.google.com/merchants/answer/14615056?hl=en&ref_topic=15145747&sjid=
+      # 6892280366904591178-NC)).
+      class OnDisplayToOrder
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The state of the URI.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Required. The on display to order (ODO) policy URI.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # [Online return policy](https://support.google.com/merchants/answer/10220642)
       # object. This is currently used to represent return policies for ads and free
       # listings programs.
       class OnlineReturnPolicy
         include Google::Apis::Core::Hashable
       
-        # Optional. This field specifies if merchant only accepts defective products for
+        # Optional. This field specifies if business only accepts defective products for
         # returns.
         # Corresponds to the JSON property `acceptDefectiveOnly`
         # @return [Boolean]
         attr_accessor :accept_defective_only
         alias_method :accept_defective_only?, :accept_defective_only
       
-        # Optional. This field specifies if merchant allows customers to exchange
+        # Optional. This field specifies if business allows customers to exchange
         # products.
         # Corresponds to the JSON property `acceptExchange`
         # @return [Boolean]
@@ -2082,7 +2583,7 @@ module Google
         # @return [Google::Apis::MerchantapiAccountsV1beta::Policy]
         attr_accessor :policy
       
-        # Optional. The field specifies the number of days it takes for merchants to
+        # Optional. The field specifies the number of days it takes for business to
         # process refunds.
         # Corresponds to the JSON property `processRefundDays`
         # @return [Fixnum]
@@ -2212,6 +2713,32 @@ module Google
           @e164_number = args[:e164_number] if args.key?(:e164_number)
           @extension = args[:extension] if args.key?(:extension)
           @short_code = args[:short_code] if args.key?(:short_code)
+        end
+      end
+      
+      # Collection of information related to Pickup.
+      class Pickup
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The state of the pickup serving.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Required. Pickup product page URI. It is only used for the review of pickup
+        # serving. This URI domain should match with the business's homepage.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -2599,12 +3126,12 @@ module Google
       end
       
       # Defines participation in a given program for the specified account. Programs
-      # provide a mechanism for adding functionality to merchant accounts. A typical
-      # example of this is the [Free product listings](https://support.google.com/
-      # merchants/answer/13889434) program, which enables products from a merchant's
-      # store to be shown across Google for free. The following list is the available
-      # set of program resource IDs accessible through the API: * `free-listings` * `
-      # shopping-ads` * `youtube-shopping-checkout`
+      # provide a mechanism for adding functionality to a Merchant Center accounts. A
+      # typical example of this is the [Free product listings](https://support.google.
+      # com/merchants/answer/13889434) program, which enables products from a business'
+      # s store to be shown across Google for free. The following list is the
+      # available set of program resource IDs accessible through the API: * `free-
+      # listings` * `shopping-ads` * `youtube-shopping-checkout`
       class Program
         include Google::Apis::Core::Hashable
       
@@ -2658,14 +3185,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The `AccountService` message represents a specific service that a provider
-        # account offers to a merchant account. `AccountService` defines the permissions
-        # and capabilities granted to the provider, allowing for operations such as
-        # product management or campaign management. The lifecycle of an `AccountService`
-        # involves a proposal phase, where one party suggests the service, and an
-        # approval phase, where the other party accepts or rejects it. This handshake
-        # mechanism ensures mutual consent before any access is granted. This mechanism
-        # safeguards both parties by ensuring that access rights are granted
-        # appropriately and that both the merchant and provider are aware of the
+        # account offers to a Merchant Center account. `AccountService` defines the
+        # permissions and capabilities granted to the provider, allowing for operations
+        # such as product management or campaign management. The lifecycle of an `
+        # AccountService` involves a proposal phase, where one party suggests the
+        # service, and an approval phase, where the other party accepts or rejects it.
+        # This handshake mechanism ensures mutual consent before any access is granted.
+        # This mechanism safeguards both parties by ensuring that access rights are
+        # granted appropriately and that both the business and provider are aware of the
         # services enabled. In scenarios where a user is an admin of both accounts, the
         # approval can happen automatically. The mutability of a service is also managed
         # through `AccountService`. Some services might be immutable, for example, if
@@ -2823,6 +3350,38 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Request message for the RequestInventoryVerification method.
+      class RequestInventoryVerificationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for the RequestInventoryVerification method.
+      class RequestInventoryVerificationResponse
+        include Google::Apis::Core::Hashable
+      
+        # Collection of information related to the omnichannel settings of a merchant.
+        # Corresponds to the JSON property `omnichannelSetting`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::OmnichannelSetting]
+        attr_accessor :omnichannel_setting
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @omnichannel_setting = args[:omnichannel_setting] if args.key?(:omnichannel_setting)
         end
       end
       
@@ -3077,7 +3636,7 @@ module Google
         # @return [String]
         attr_accessor :service_name
       
-        # Type of locations this service ships orders to.
+        # Optional. Type of locations this service ships orders to.
         # Corresponds to the JSON property `shipmentType`
         # @return [String]
         attr_accessor :shipment_type
@@ -3108,8 +3667,10 @@ module Google
         end
       end
       
-      # The merchant account's [shipping settings](https://support.google.com/
-      # merchants/answer/6069284).
+      # The Merchant Center account's [shipping settings](https://support.google.com/
+      # merchants/answer/6069284). The `ShippingSettings` resource lets you retrieve
+      # and update the shipping settings of your advanced account and all its
+      # associated sub-accounts.
       class ShippingSettings
         include Google::Apis::Core::Hashable
       
@@ -3128,7 +3689,7 @@ module Google
         attr_accessor :etag
       
         # Identifier. The resource name of the shipping settings. Format: `accounts/`
-        # account`/shippingSettings`
+        # account`/shippingSettings`. For example, `accounts/123456/shippingSettings`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3241,7 +3802,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :store_codes
       
-        # Indicates whether all stores, or selected stores, listed by this merchant
+        # Indicates whether all stores, or selected stores, listed by this business
         # provide local delivery.
         # Corresponds to the JSON property `storeServiceType`
         # @return [String]
@@ -3360,22 +3921,30 @@ module Google
       end
       
       # This resource represents the agreement state for a given account and terms of
-      # service kind. The state is as follows: * If the merchant has accepted a terms
+      # service kind. The state is as follows: * If the business has accepted a terms
       # of service, `accepted` will be populated, otherwise it will be empty * If the
-      # merchant must sign a terms of service, `required` will be populated, otherwise
+      # business must sign a terms of service, `required` will be populated, otherwise
       # it will be empty. Note that both `required` and `accepted` can be present. In
       # this case the `accepted` terms of services will have an expiration date set in
       # the `valid_until` field. The `required` terms of services need to be accepted
       # before `valid_until` in order for the account to continue having a valid
-      # agreement. When accepting new terms of services we expect 3Ps to display the
-      # text associated with the given terms of service agreement (the url to the file
-      # containing the text is added in the Required message below as `tos_file_uri`).
-      # The actual acceptance of the terms of service is done by calling accept on the
-      # `TermsOfService` resource.
+      # agreement. When accepting new terms of services we expect third-party
+      # providers to display the text associated with the given terms of service
+      # agreement (the url to the file containing the text is added in the Required
+      # message below as `tos_file_uri`). The actual acceptance of the terms of
+      # service is done by calling accept on the `TermsOfService` resource. `
+      # valid_until` field. The `required` terms of services need to be accepted
+      # before `valid_until` in order for the account to continue having a valid
+      # agreement. When accepting new terms of services, we expect third-party
+      # providers to display the text associated with the given terms of service
+      # agreement (the url to the file containing the text is added in the Required
+      # message below as `tos_file_uri`. The actual acceptance of the terms of service
+      # is done by calling accept on the `TermsOfService` resource.
       class TermsOfServiceAgreementState
         include Google::Apis::Core::Hashable
       
-        # Describes the accepted terms of service.
+        # Describes the [accepted terms of service](/merchant/api/guides/accounts/create-
+        # and-configure#accept_the_merchant_center_terms_of_service).
         # Corresponds to the JSON property `accepted`
         # @return [Google::Apis::MerchantapiAccountsV1beta::Accepted]
         attr_accessor :accepted
@@ -3383,7 +3952,7 @@ module Google
         # Identifier. The resource name of the terms of service version. Format: `
         # accounts/`account`/termsOfServiceAgreementState/`identifier`` The identifier
         # format is: ``TermsOfServiceKind`-`country`` For example, an identifier could
-        # be: `MERCHANT_CENTER-US`
+        # be: `MERCHANT_CENTER-EU` or `MERCHANT_CENTER-US`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
