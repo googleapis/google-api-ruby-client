@@ -1838,6 +1838,7 @@ module Google
           property :events_listener_ingress_endpoint, as: 'eventsListenerIngressEndpoint'
           property :listener_auth_config, as: 'listenerAuthConfig', class: Google::Apis::ConnectorsV1::AuthConfig, decorator: Google::Apis::ConnectorsV1::AuthConfig::Representation
       
+          collection :private_connectivity_allowlisted_projects, as: 'privateConnectivityAllowlistedProjects'
           property :private_connectivity_enabled, as: 'privateConnectivityEnabled'
           property :proxy_destination_config, as: 'proxyDestinationConfig', class: Google::Apis::ConnectorsV1::DestinationConfig, decorator: Google::Apis::ConnectorsV1::DestinationConfig::Representation
       
