@@ -89,7 +89,8 @@ module Google
         # Gets the LFP state of a merchant
         # @param [String] name
         #   Required. The name of the state to retrieve. Format: `accounts/`account`/
-        #   lfpMerchantStates/`target_merchant``
+        #   lfpMerchantStates/`target_merchant``. For example, `accounts/123456/
+        #   lfpMerchantStates/567890`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
