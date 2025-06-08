@@ -1364,8 +1364,8 @@ module Google
         attr_accessor :license_type
       
         # The type of machines to consider when calculating virtual machine migration
-        # insights and recommendations for GCE. Not all machine types are available in
-        # all zones and regions.
+        # insights and recommendations for Compute Engine. Not all machine types are
+        # available in all zones and regions.
         # Corresponds to the JSON property `machinePreferences`
         # @return [Google::Apis::MigrationcenterV1alpha1::MachinePreferences]
         attr_accessor :machine_preferences
@@ -4566,8 +4566,8 @@ module Google
       end
       
       # The type of machines to consider when calculating virtual machine migration
-      # insights and recommendations for GCE. Not all machine types are available in
-      # all zones and regions.
+      # insights and recommendations for Compute Engine. Not all machine types are
+      # available in all zones and regions.
       class MachinePreferences
         include Google::Apis::Core::Hashable
       
@@ -8168,8 +8168,8 @@ module Google
         # @return [Float]
         attr_accessor :cpu_overcommit_ratio
       
-        # Optional. Discount percentage for the license type offered to you by Broadcom.
-        # Must be between 0 and 100. Only valid when service_type is set to
+        # Optional. Discount percentage for the license offered to you by Broadcom. Must
+        # be between 0 and 100. Only valid when service_type is set to
         # SERVICE_TYPE_PORTABLE_LICENSE.
         # Corresponds to the JSON property `licenseDiscountPercentage`
         # @return [Float]
@@ -8187,7 +8187,7 @@ module Google
         # @return [Float]
         attr_accessor :memory_overcommit_ratio
       
-        # Optional. VMWare Service Type (Fully Licensed or Portable License).
+        # Optional. GCVE service type (fully licensed or portable license).
         # Corresponds to the JSON property `serviceType`
         # @return [String]
         attr_accessor :service_type
