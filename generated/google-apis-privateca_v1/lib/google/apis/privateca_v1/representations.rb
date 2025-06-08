@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AttributeTypeAndValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -328,6 +334,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RelativeDistinguishedName
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RevocationDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -461,6 +473,16 @@ module Google
       
           property :rsa, as: 'rsa', class: Google::Apis::PrivatecaV1::RsaKeyType, decorator: Google::Apis::PrivatecaV1::RsaKeyType::Representation
       
+        end
+      end
+      
+      class AttributeTypeAndValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_id_prop, as: 'objectId', class: Google::Apis::PrivatecaV1::ObjectIdProp, decorator: Google::Apis::PrivatecaV1::ObjectIdProp::Representation
+      
+          property :type, as: 'type'
+          property :value, as: 'value'
         end
       end
       
@@ -986,6 +1008,14 @@ module Google
         end
       end
       
+      class RelativeDistinguishedName
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attributes, as: 'attributes', class: Google::Apis::PrivatecaV1::AttributeTypeAndValue, decorator: Google::Apis::PrivatecaV1::AttributeTypeAndValue::Representation
+      
+        end
+      end
+      
       class RevocationDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1047,6 +1077,8 @@ module Google
           property :organizational_unit, as: 'organizationalUnit'
           property :postal_code, as: 'postalCode'
           property :province, as: 'province'
+          collection :rdn_sequence, as: 'rdnSequence', class: Google::Apis::PrivatecaV1::RelativeDistinguishedName, decorator: Google::Apis::PrivatecaV1::RelativeDistinguishedName::Representation
+      
           property :street_address, as: 'streetAddress'
         end
       end

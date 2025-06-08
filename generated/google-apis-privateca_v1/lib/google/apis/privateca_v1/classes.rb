@@ -120,6 +120,39 @@ module Google
         end
       end
       
+      # AttributeTypeAndValue specifies an attribute type and value. It can use either
+      # a OID or enum value to specify the attribute type.
+      class AttributeTypeAndValue
+        include Google::Apis::Core::Hashable
+      
+        # An ObjectId specifies an object identifier (OID). These provide context and
+        # describe types in ASN.1 messages.
+        # Corresponds to the JSON property `objectId`
+        # @return [Google::Apis::PrivatecaV1::ObjectIdProp]
+        attr_accessor :object_id_prop
+      
+        # The attribute type of the attribute and value pair.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The value for the attribute type.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+          @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -2292,6 +2325,26 @@ module Google
         end
       end
       
+      # RelativeDistinguishedName specifies a relative distinguished name which will
+      # be used to build a distinguished name.
+      class RelativeDistinguishedName
+        include Google::Apis::Core::Hashable
+      
+        # Attributes describes the attribute value assertions in the RDN.
+        # Corresponds to the JSON property `attributes`
+        # @return [Array<Google::Apis::PrivatecaV1::AttributeTypeAndValue>]
+        attr_accessor :attributes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+        end
+      end
+      
       # Describes fields that are relavent to the revocation of a Certificate.
       class RevocationDetails
         include Google::Apis::Core::Hashable
@@ -2544,6 +2597,11 @@ module Google
         # @return [String]
         attr_accessor :province
       
+        # This field can be used in place of the named subject fields.
+        # Corresponds to the JSON property `rdnSequence`
+        # @return [Array<Google::Apis::PrivatecaV1::RelativeDistinguishedName>]
+        attr_accessor :rdn_sequence
+      
         # The street address of the subject.
         # Corresponds to the JSON property `streetAddress`
         # @return [String]
@@ -2562,6 +2620,7 @@ module Google
           @organizational_unit = args[:organizational_unit] if args.key?(:organizational_unit)
           @postal_code = args[:postal_code] if args.key?(:postal_code)
           @province = args[:province] if args.key?(:province)
+          @rdn_sequence = args[:rdn_sequence] if args.key?(:rdn_sequence)
           @street_address = args[:street_address] if args.key?(:street_address)
         end
       end
