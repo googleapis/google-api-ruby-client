@@ -14290,12 +14290,29 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Schema]
         attr_accessor :parameters
       
+        # Optional. Describes the parameters to the function in JSON Schema format. The
+        # schema must describe an object where the properties are the parameters to the
+        # function. For example: ``` ` "type": "object", "properties": ` "name": ` "type"
+        # : "string" `, "age": ` "type": "integer" ` `, "additionalProperties": false, "
+        # required": ["name", "age"], "propertyOrdering": ["name", "age"] ` ``` This
+        # field is mutually exclusive with `parameters`.
+        # Corresponds to the JSON property `parametersJsonSchema`
+        # @return [Object]
+        attr_accessor :parameters_json_schema
+      
         # Schema is used to define the format of input/output data. Represents a select
         # subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#
         # schema-object). More fields may be added in the future as needed.
         # Corresponds to the JSON property `response`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Schema]
         attr_accessor :response
+      
+        # Optional. Describes the output from this function in JSON Schema format. The
+        # value specified by the schema is the response value of the function. This
+        # field is mutually exclusive with `response`.
+        # Corresponds to the JSON property `responseJsonSchema`
+        # @return [Object]
+        attr_accessor :response_json_schema
       
         def initialize(**args)
            update!(**args)
@@ -14306,7 +14323,9 @@ module Google
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
           @parameters = args[:parameters] if args.key?(:parameters)
+          @parameters_json_schema = args[:parameters_json_schema] if args.key?(:parameters_json_schema)
           @response = args[:response] if args.key?(:response)
+          @response_json_schema = args[:response_json_schema] if args.key?(:response_json_schema)
         end
       end
       
@@ -14995,6 +15014,23 @@ module Google
         # @return [Float]
         attr_accessor :presence_penalty
       
+        # Optional. Output schema of the generated response. This is an alternative to `
+        # response_schema` that accepts [JSON Schema](https://json-schema.org/). If set,
+        # `response_schema` must be omitted, but `response_mime_type` is required. While
+        # the full JSON Schema may be sent, not all features are supported. Specifically,
+        # only the following properties are supported: - `$id` - `$defs` - `$ref` - `$
+        # anchor` - `type` - `format` - `title` - `description` - `enum` (for strings
+        # and numbers) - `items` - `prefixItems` - `minItems` - `maxItems` - `minimum` -
+        # `maximum` - `anyOf` - `oneOf` (interpreted the same as `anyOf`) - `properties`
+        # - `additionalProperties` - `required` The non-standard `propertyOrdering`
+        # property may also be set. Cyclic references are unrolled to a limited degree
+        # and, as such, may only be used within non-required properties. (Nullable
+        # properties are not sufficient.) If `$ref` is set on a sub-schema, no other
+        # properties, except for than those starting as a `$`, may be set.
+        # Corresponds to the JSON property `responseJsonSchema`
+        # @return [Object]
+        attr_accessor :response_json_schema
+      
         # Optional. If true, export the logprobs results in response.
         # Corresponds to the JSON property `responseLogprobs`
         # @return [Boolean]
@@ -15077,6 +15113,7 @@ module Google
           @media_resolution = args[:media_resolution] if args.key?(:media_resolution)
           @model_config = args[:model_config] if args.key?(:model_config)
           @presence_penalty = args[:presence_penalty] if args.key?(:presence_penalty)
+          @response_json_schema = args[:response_json_schema] if args.key?(:response_json_schema)
           @response_logprobs = args[:response_logprobs] if args.key?(:response_logprobs)
           @response_mime_type = args[:response_mime_type] if args.key?(:response_mime_type)
           @response_modalities = args[:response_modalities] if args.key?(:response_modalities)
@@ -28699,6 +28736,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CorpusStatus]
         attr_accessor :corpus_status
       
+        # The config for the corpus type of the RagCorpus.
+        # Corresponds to the JSON property `corpusTypeConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagCorpusCorpusTypeConfig]
+        attr_accessor :corpus_type_config
+      
         # Output only. Timestamp when this RagCorpus was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -28763,6 +28805,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @corpus_status = args[:corpus_status] if args.key?(:corpus_status)
+          @corpus_type_config = args[:corpus_type_config] if args.key?(:corpus_type_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -28774,6 +28817,63 @@ module Google
           @update_time = args[:update_time] if args.key?(:update_time)
           @vector_db_config = args[:vector_db_config] if args.key?(:vector_db_config)
           @vertex_ai_search_config = args[:vertex_ai_search_config] if args.key?(:vertex_ai_search_config)
+        end
+      end
+      
+      # The config for the corpus type of the RagCorpus.
+      class GoogleCloudAiplatformV1beta1RagCorpusCorpusTypeConfig
+        include Google::Apis::Core::Hashable
+      
+        # Config for the document corpus.
+        # Corresponds to the JSON property `documentCorpus`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagCorpusCorpusTypeConfigDocumentCorpus]
+        attr_accessor :document_corpus
+      
+        # Config for the memory corpus.
+        # Corresponds to the JSON property `memoryCorpus`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagCorpusCorpusTypeConfigMemoryCorpus]
+        attr_accessor :memory_corpus
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_corpus = args[:document_corpus] if args.key?(:document_corpus)
+          @memory_corpus = args[:memory_corpus] if args.key?(:memory_corpus)
+        end
+      end
+      
+      # Config for the document corpus.
+      class GoogleCloudAiplatformV1beta1RagCorpusCorpusTypeConfigDocumentCorpus
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Config for the memory corpus.
+      class GoogleCloudAiplatformV1beta1RagCorpusCorpusTypeConfigMemoryCorpus
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the LLM parsing for RagFiles.
+        # Corresponds to the JSON property `llmParser`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileParsingConfigLlmParser]
+        attr_accessor :llm_parser
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @llm_parser = args[:llm_parser] if args.key?(:llm_parser)
         end
       end
       
@@ -46088,6 +46188,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :similarity_top_k
       
+        # Optional. Currently only supported for Gemini Multimodal Live API. In Gemini
+        # Multimodal Live API, if `store_context` bool is specified, Gemini will
+        # leverage it to automatically memorize the interactions between the client and
+        # Gemini, and retrieve context when needed to augment the response generation
+        # for users' ongoing and future interactions.
+        # Corresponds to the JSON property `storeContext`
+        # @return [Boolean]
+        attr_accessor :store_context
+        alias_method :store_context?, :store_context
+      
         # Optional. Only return results with vector distance smaller than the threshold.
         # Corresponds to the JSON property `vectorDistanceThreshold`
         # @return [Float]
@@ -46103,6 +46213,7 @@ module Google
           @rag_resources = args[:rag_resources] if args.key?(:rag_resources)
           @rag_retrieval_config = args[:rag_retrieval_config] if args.key?(:rag_retrieval_config)
           @similarity_top_k = args[:similarity_top_k] if args.key?(:similarity_top_k)
+          @store_context = args[:store_context] if args.key?(:store_context)
           @vector_distance_threshold = args[:vector_distance_threshold] if args.key?(:vector_distance_threshold)
         end
       end

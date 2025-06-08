@@ -4708,6 +4708,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1RagCorpusCorpusTypeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagCorpusCorpusTypeConfigDocumentCorpus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagCorpusCorpusTypeConfigMemoryCorpus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1RagEmbeddingModelConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -12090,8 +12108,10 @@ module Google
           property :name, as: 'name'
           property :parameters, as: 'parameters', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Schema, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Schema::Representation
       
+          property :parameters_json_schema, as: 'parametersJsonSchema'
           property :response, as: 'response', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Schema, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Schema::Representation
       
+          property :response_json_schema, as: 'responseJsonSchema'
         end
       end
       
@@ -12288,6 +12308,7 @@ module Google
           property :model_config, as: 'modelConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerationConfigModelConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerationConfigModelConfig::Representation
       
           property :presence_penalty, as: 'presencePenalty'
+          property :response_json_schema, as: 'responseJsonSchema'
           property :response_logprobs, as: 'responseLogprobs'
           property :response_mime_type, as: 'responseMimeType'
           collection :response_modalities, as: 'responseModalities'
@@ -16218,6 +16239,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :corpus_status, as: 'corpusStatus', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CorpusStatus, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CorpusStatus::Representation
       
+          property :corpus_type_config, as: 'corpusTypeConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagCorpusCorpusTypeConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagCorpusCorpusTypeConfig::Representation
+      
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
@@ -16233,6 +16256,30 @@ module Google
           property :vector_db_config, as: 'vectorDbConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagVectorDbConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagVectorDbConfig::Representation
       
           property :vertex_ai_search_config, as: 'vertexAiSearchConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1VertexAiSearchConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1VertexAiSearchConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagCorpusCorpusTypeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_corpus, as: 'documentCorpus', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagCorpusCorpusTypeConfigDocumentCorpus, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagCorpusCorpusTypeConfigDocumentCorpus::Representation
+      
+          property :memory_corpus, as: 'memoryCorpus', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagCorpusCorpusTypeConfigMemoryCorpus, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagCorpusCorpusTypeConfigMemoryCorpus::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagCorpusCorpusTypeConfigDocumentCorpus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagCorpusCorpusTypeConfigMemoryCorpus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :llm_parser, as: 'llmParser', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileParsingConfigLlmParser, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileParsingConfigLlmParser::Representation
       
         end
       end
@@ -21267,6 +21314,7 @@ module Google
           property :rag_retrieval_config, as: 'ragRetrievalConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagRetrievalConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagRetrievalConfig::Representation
       
           property :similarity_top_k, as: 'similarityTopK'
+          property :store_context, as: 'storeContext'
           property :vector_distance_threshold, as: 'vectorDistanceThreshold'
         end
       end
