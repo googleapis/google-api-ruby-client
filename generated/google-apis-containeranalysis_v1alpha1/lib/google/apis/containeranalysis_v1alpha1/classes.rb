@@ -2364,9 +2364,8 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGitSourceRepository
         include Google::Apis::Core::Hashable
       
-        # The Developer Connect Git repository link or the url that matches a repository
-        # link in the current project, formatted as `projects/*/locations/*/connections/*
-        # /gitRepositoryLink/*`
+        # The Developer Connect Git repository link formatted as `projects/*/locations/*/
+        # connections/*/gitRepositoryLink/*`
         # Corresponds to the JSON property `developerConnect`
         # @return [String]
         attr_accessor :developer_connect
@@ -3566,6 +3565,11 @@ module Google
         # @return [String]
         attr_accessor :cpe
       
+        # Optional. Files that make up the resource described by the occurrence.
+        # Corresponds to the JSON property `files`
+        # @return [Array<Google::Apis::ContaineranalysisV1alpha1::File>]
+        attr_accessor :files
+      
         # The last time this resource was scanned.
         # Corresponds to the JSON property `lastScanTime`
         # @return [String]
@@ -3600,6 +3604,7 @@ module Google
           @archive_time = args[:archive_time] if args.key?(:archive_time)
           @continuous_analysis = args[:continuous_analysis] if args.key?(:continuous_analysis)
           @cpe = args[:cpe] if args.key?(:cpe)
+          @files = args[:files] if args.key?(:files)
           @last_scan_time = args[:last_scan_time] if args.key?(:last_scan_time)
           @operation = args[:operation] if args.key?(:operation)
           @sbom_status = args[:sbom_status] if args.key?(:sbom_status)
@@ -3959,6 +3964,31 @@ module Google
           @comment = args[:comment] if args.key?(:comment)
           @locator = args[:locator] if args.key?(:locator)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A file as part of a resource.
+      class File
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The digest(s) of the file.
+        # Corresponds to the JSON property `digest`
+        # @return [Hash<String,String>]
+        attr_accessor :digest
+      
+        # Optional. The name of the file.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @digest = args[:digest] if args.key?(:digest)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
