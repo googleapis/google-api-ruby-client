@@ -356,13 +356,21 @@ module Google
         # @return [Google::Apis::CloudschedulerV1beta1::PubsubTarget]
         attr_accessor :pubsub_target
       
-        # Settings that determine the retry behavior. By default, if a job does not
-        # complete successfully (meaning that an acknowledgement is not received from
-        # the handler, then it will be retried with exponential backoff according to the
-        # settings in RetryConfig.
+        # Settings that determine the retry behavior. For more information, see [Retry
+        # jobs](https://cloud.google.com/scheduler/docs/configuring/retry-jobs). By
+        # default, if a job does not complete successfully (meaning that an
+        # acknowledgement is not received from the handler, then it will be retried with
+        # exponential backoff according to the settings in RetryConfig.
         # Corresponds to the JSON property `retryConfig`
         # @return [Google::Apis::CloudschedulerV1beta1::RetryConfig]
         attr_accessor :retry_config
+      
+        # Output only. Whether or not this Job satisfies the requirements of physical
+        # zone separation
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
       
         # Required, except when used with UpdateJob. Describes the schedule on which the
         # job will be executed. The schedule can be either of the following types: * [
@@ -436,6 +444,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @pubsub_target = args[:pubsub_target] if args.key?(:pubsub_target)
           @retry_config = args[:retry_config] if args.key?(:retry_config)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @schedule = args[:schedule] if args.key?(:schedule)
           @schedule_time = args[:schedule_time] if args.key?(:schedule_time)
           @state = args[:state] if args.key?(:state)
@@ -797,10 +806,11 @@ module Google
         end
       end
       
-      # Settings that determine the retry behavior. By default, if a job does not
-      # complete successfully (meaning that an acknowledgement is not received from
-      # the handler, then it will be retried with exponential backoff according to the
-      # settings in RetryConfig.
+      # Settings that determine the retry behavior. For more information, see [Retry
+      # jobs](https://cloud.google.com/scheduler/docs/configuring/retry-jobs). By
+      # default, if a job does not complete successfully (meaning that an
+      # acknowledgement is not received from the handler, then it will be retried with
+      # exponential backoff according to the settings in RetryConfig.
       class RetryConfig
         include Google::Apis::Core::Hashable
       
@@ -813,21 +823,18 @@ module Google
         # The time between retries will double `max_doublings` times. A job's retry
         # interval starts at min_backoff_duration, then doubles `max_doublings` times,
         # then increases linearly, and finally retries at intervals of
-        # max_backoff_duration up to retry_count times. For example, if
-        # min_backoff_duration is 10s, max_backoff_duration is 300s, and `max_doublings`
-        # is 3, then the job will first be retried in 10s. The retry interval will
-        # double three times, and then increase linearly by 2^3 * 10s. Finally, the job
-        # will retry at intervals of max_backoff_duration until the job has been
-        # attempted retry_count times. Thus, the requests will retry at 10s, 20s, 40s,
-        # 80s, 160s, 240s, 300s, 300s, .... The default value of this field is 5.
+        # max_backoff_duration up to retry_count times. For examples, see [Retry jobs](
+        # https://cloud.google.com/scheduler/docs/configuring/retry-jobs#max-doublings).
+        # The default value of this field is 5.
         # Corresponds to the JSON property `maxDoublings`
         # @return [Fixnum]
         attr_accessor :max_doublings
       
-        # The time limit for retrying a failed job, measured from time when an execution
-        # was first attempted. If specified with retry_count, the job will be retried
-        # until both limits are reached. The default value for max_retry_duration is
-        # zero, which means retry duration is unlimited.
+        # The time limit for retrying a failed job, measured from the time when an
+        # execution was first attempted. If specified with retry_count, the job will be
+        # retried until both limits are reached. The default value for
+        # max_retry_duration is zero, which means retry duration is unlimited. However,
+        # if retry_count is also 0, a job attempt won't be retried if it fails.
         # Corresponds to the JSON property `maxRetryDuration`
         # @return [String]
         attr_accessor :max_retry_duration
@@ -840,14 +847,15 @@ module Google
       
         # The number of attempts that the system will make to run a job using the
         # exponential backoff procedure described by max_doublings. The default value of
-        # retry_count is zero. If retry_count is 0, a job attempt will not be retried if
-        # it fails. Instead the Cloud Scheduler system will wait for the next scheduled
-        # execution time. Setting retry_count to 0 does not prevent failed jobs from
-        # running according to schedule after the failure. If retry_count is set to a
-        # non-zero number then Cloud Scheduler will retry failed attempts, using
-        # exponential backoff, retry_count times, or until the next scheduled execution
-        # time, whichever comes first. Values greater than 5 and negative values are not
-        # allowed.
+        # retry_count is zero. If retry_count is 0 (and if max_retry_duration is also 0),
+        # a job attempt won't be retried if it fails. Instead, Cloud Scheduler system
+        # will wait for the next scheduled execution time. Setting retry_count to 0
+        # doesn't prevent failed jobs from running according to schedule after the
+        # failure. If retry_count is set to a non-zero number, Cloud Scheduler will
+        # retry the failed job, using exponential backoff, for retry_count times until
+        # the job succeeds or the number of retries is exhausted. Note that the next
+        # scheduled execution time might be skipped if the retries continue through that
+        # time. Values greater than 5 and negative values are not allowed.
         # Corresponds to the JSON property `retryCount`
         # @return [Fixnum]
         attr_accessor :retry_count
