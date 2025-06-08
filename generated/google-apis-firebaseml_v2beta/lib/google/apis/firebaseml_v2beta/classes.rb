@@ -403,6 +403,11 @@ module Google
         # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SafetyRating>]
         attr_accessor :safety_ratings
       
+        # Metadata related to url context retrieval tool.
+        # Corresponds to the JSON property `urlContextMetadata`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1UrlContextMetadata]
+        attr_accessor :url_context_metadata
+      
         def initialize(**args)
            update!(**args)
         end
@@ -418,6 +423,7 @@ module Google
           @index = args[:index] if args.key?(:index)
           @logprobs_result = args[:logprobs_result] if args.key?(:logprobs_result)
           @safety_ratings = args[:safety_ratings] if args.key?(:safety_ratings)
+          @url_context_metadata = args[:url_context_metadata] if args.key?(:url_context_metadata)
         end
       end
       
@@ -1705,7 +1711,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Confidence score of the support references. Ranges from 0 to 1. 1 is the most
-        # confident. This list must have the same size as the grounding_chunk_indices.
+        # confident. For Gemini 2.0 and before, this list must have the same size as the
+        # grounding_chunk_indices. For Gemini 2.5 and after, this list will be empty and
+        # should be ignored.
         # Corresponds to the JSON property `confidenceScores`
         # @return [Array<Float>]
         attr_accessor :confidence_scores
@@ -1889,7 +1897,7 @@ module Google
         # @return [String]
         attr_accessor :text
       
-        # Output only. Indicates if the part is thought from the model.
+        # Optional. Indicates if the part is thought from the model.
         # Corresponds to the JSON property `thought`
         # @return [Boolean]
         attr_accessor :thought
@@ -2658,6 +2666,11 @@ module Google
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Retrieval]
         attr_accessor :retrieval
       
+        # Tool to support URL context.
+        # Corresponds to the JSON property `urlContext`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1UrlContext]
+        attr_accessor :url_context
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2671,6 +2684,7 @@ module Google
           @google_search = args[:google_search] if args.key?(:google_search)
           @google_search_retrieval = args[:google_search_retrieval] if args.key?(:google_search_retrieval)
           @retrieval = args[:retrieval] if args.key?(:retrieval)
+          @url_context = args[:url_context] if args.key?(:url_context)
         end
       end
       
@@ -2744,6 +2758,63 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Tool to support URL context.
+      class GoogleCloudAiplatformV1beta1UrlContext
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata related to url context retrieval tool.
+      class GoogleCloudAiplatformV1beta1UrlContextMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of url context.
+        # Corresponds to the JSON property `urlMetadata`
+        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1UrlMetadata>]
+        attr_accessor :url_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @url_metadata = args[:url_metadata] if args.key?(:url_metadata)
+        end
+      end
+      
+      # Context of the a single url retrieval.
+      class GoogleCloudAiplatformV1beta1UrlMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Retrieved url by the tool.
+        # Corresponds to the JSON property `retrievedUrl`
+        # @return [String]
+        attr_accessor :retrieved_url
+      
+        # Status of the url retrieval.
+        # Corresponds to the JSON property `urlRetrievalStatus`
+        # @return [String]
+        attr_accessor :url_retrieval_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @retrieved_url = args[:retrieved_url] if args.key?(:retrieved_url)
+          @url_retrieval_status = args[:url_retrieval_status] if args.key?(:url_retrieval_status)
         end
       end
       

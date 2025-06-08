@@ -454,6 +454,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1UrlContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1UrlContextMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1UrlMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1VertexAiSearch
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -609,6 +627,8 @@ module Google
           property :logprobs_result, as: 'logprobsResult', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1LogprobsResult, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1LogprobsResult::Representation
       
           collection :safety_ratings, as: 'safetyRatings', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SafetyRating, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SafetyRating::Representation
+      
+          property :url_context_metadata, as: 'urlContextMetadata', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1UrlContextMetadata, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1UrlContextMetadata::Representation
       
         end
       end
@@ -1245,6 +1265,8 @@ module Google
       
           property :retrieval, as: 'retrieval', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Retrieval, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Retrieval::Representation
       
+          property :url_context, as: 'urlContext', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1UrlContext, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1UrlContext::Representation
+      
         end
       end
       
@@ -1274,6 +1296,28 @@ module Google
       class GoogleCloudAiplatformV1beta1ToolGoogleSearch
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1UrlContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1UrlContextMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :url_metadata, as: 'urlMetadata', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1UrlMetadata, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1UrlMetadata::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1UrlMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retrieved_url, as: 'retrievedUrl'
+          property :url_retrieval_status, as: 'urlRetrievalStatus'
         end
       end
       
