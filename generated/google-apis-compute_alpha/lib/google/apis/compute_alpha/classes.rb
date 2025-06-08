@@ -3265,6 +3265,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] URL of the region where the regional backend bucket resides.
+        # This field is not applicable to global backend buckets. You must specify this
+        # field as part of the HTTP request URL. It is not settable as a field in the
+        # request body.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -3298,6 +3306,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
           @name = args[:name] if args.key?(:name)
+          @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @used_by = args[:used_by] if args.key?(:used_by)
@@ -4955,7 +4964,7 @@ module Google
         # backend service must set the network field, and all NEGs must belong to that
         # network. However, individual NEGs can belong to different subnetworks of that
         # network. - The maximum number of network endpoints across all backends of a
-        # backend service with fastIPMove is 64. - The maximum number of backend
+        # backend service with fastIPMove is 32. - The maximum number of backend
         # services with fastIPMove that can have the same network endpoint attached to
         # one of its backends is 64. - The maximum number of backend services with
         # fastIPMove in a VPC in a region is 64. - The network endpoints that are
@@ -6343,6 +6352,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :count
       
+        # A flexible specification of machine types for instances to create.
+        # Corresponds to the JSON property `instanceFlexibilityPolicy`
+        # @return [Google::Apis::ComputeAlpha::InstanceFlexibilityPolicy]
+        attr_accessor :instance_flexibility_policy
+      
         # The instance properties defining the VM instances to be created. Required if
         # sourceInstanceTemplate is not provided.
         # Corresponds to the JSON property `instanceProperties`
@@ -6402,6 +6416,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @count = args[:count] if args.key?(:count)
+          @instance_flexibility_policy = args[:instance_flexibility_policy] if args.key?(:instance_flexibility_policy)
           @instance_properties = args[:instance_properties] if args.key?(:instance_properties)
           @location_policy = args[:location_policy] if args.key?(:location_policy)
           @min_count = args[:min_count] if args.key?(:min_count)
@@ -9292,6 +9307,37 @@ module Google
         # @return [String]
         attr_accessor :source_instant_snapshot_id
       
+        # The machine image to create the disk from. You can provide this as a partial
+        # or full URL to the resource. For example, the following are valid values: -
+        # https://www.googleapis.com/compute/v1/projects/project /global/machineImages/
+        # machineImage - projects/project/global/machineImages/machineImage - global/
+        # machineImages/machineImage
+        # Corresponds to the JSON property `sourceMachineImage`
+        # @return [String]
+        attr_accessor :source_machine_image
+      
+        # Input only. The device name of a disk within a given machine image. The
+        # source_machine_image must be specified.
+        # Corresponds to the JSON property `sourceMachineImageDiskDeviceName`
+        # @return [String]
+        attr_accessor :source_machine_image_disk_device_name
+      
+        # The customer-supplied encryption key of the source machine image. Required if
+        # the source machine image is protected by a customer-supplied encryption key.
+        # Corresponds to the JSON property `sourceMachineImageEncryptionKey`
+        # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
+        attr_accessor :source_machine_image_encryption_key
+      
+        # [Output Only] The unique ID of the machine image used to create this disk.
+        # This value identifies the exact machine image that was used to create this
+        # persistent disk. For example, if you created the persistent disk from a
+        # machine image that was later deleted and recreated under the same name, the
+        # source machine image ID would identify the exact version of the machine image
+        # that was used.
+        # Corresponds to the JSON property `sourceMachineImageId`
+        # @return [String]
+        attr_accessor :source_machine_image_id
+      
         # The source snapshot used to create this disk. You can provide this as a
         # partial or full URL to the resource. For example, the following are valid
         # values: - https://www.googleapis.com/compute/v1/projects/project /global/
@@ -9428,6 +9474,10 @@ module Google
           @source_image_id = args[:source_image_id] if args.key?(:source_image_id)
           @source_instant_snapshot = args[:source_instant_snapshot] if args.key?(:source_instant_snapshot)
           @source_instant_snapshot_id = args[:source_instant_snapshot_id] if args.key?(:source_instant_snapshot_id)
+          @source_machine_image = args[:source_machine_image] if args.key?(:source_machine_image)
+          @source_machine_image_disk_device_name = args[:source_machine_image_disk_device_name] if args.key?(:source_machine_image_disk_device_name)
+          @source_machine_image_encryption_key = args[:source_machine_image_encryption_key] if args.key?(:source_machine_image_encryption_key)
+          @source_machine_image_id = args[:source_machine_image_id] if args.key?(:source_machine_image_id)
           @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
           @source_snapshot_encryption_key = args[:source_snapshot_encryption_key] if args.key?(:source_snapshot_encryption_key)
           @source_snapshot_id = args[:source_snapshot_id] if args.key?(:source_snapshot_id)
@@ -17803,7 +17853,8 @@ module Google
       
         # If false, headerValue is appended to any values that already exist for the
         # header. If true, headerValue is set for the header, discarding any values that
-        # were set for that header. The default value is false.
+        # were set for that header. The default value is true, unless a variable is
+        # present in headerValue, in which case the default value is false. .
         # Corresponds to the JSON property `replace`
         # @return [Boolean]
         attr_accessor :replace
@@ -18894,6 +18945,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Additional image params.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeAlpha::ImageParams]
+        attr_accessor :params
+      
         # The parameters of the raw disk image.
         # Corresponds to the JSON property `rawDisk`
         # @return [Google::Apis::ComputeAlpha::Image::RawDisk]
@@ -19054,6 +19110,7 @@ module Google
           @licenses = args[:licenses] if args.key?(:licenses)
           @locked = args[:locked] if args.key?(:locked)
           @name = args[:name] if args.key?(:name)
+          @params = args[:params] if args.key?(:params)
           @raw_disk = args[:raw_disk] if args.key?(:raw_disk)
           @rollout_override = args[:rollout_override] if args.key?(:rollout_override)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
@@ -19250,6 +19307,28 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Additional image params.
+      class ImageParams
+        include Google::Apis::Core::Hashable
+      
+        # Resource manager tags to be bound to the image. Tag keys and values have the
+        # same definition as resource manager tags. Keys must be in the format `tagKeys/`
+        # tag_key_id``, and values are in the format `tagValues/456`. The field is
+        # ignored (both PUT & PATCH) when empty.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
@@ -19902,6 +19981,61 @@ module Google
           @local_ssd_gb = args[:local_ssd_gb] if args.key?(:local_ssd_gb)
           @memory_mb = args[:memory_mb] if args.key?(:memory_mb)
           @min_node_cpus = args[:min_node_cpus] if args.key?(:min_node_cpus)
+        end
+      end
+      
+      # A flexible specification of machine types for instances to create.
+      class InstanceFlexibilityPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Specification of alternative, flexible instance subsets. One of them will be
+        # selected to create the instances based on various criteria, like: - ranks, -
+        # location policy, - current capacity, - available reservations (you can specify
+        # affinity in InstanceProperties), - SWAN/GOOSE limitations. Key is an arbitrary,
+        # unique RFC1035 string that identifies the instance selection.
+        # Corresponds to the JSON property `instanceSelections`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::InstanceFlexibilityPolicyInstanceSelection>]
+        attr_accessor :instance_selections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_selections = args[:instance_selections] if args.key?(:instance_selections)
+        end
+      end
+      
+      # Specification of machine type to use. Every position inside this message is an
+      # alternative. The count specified in the shape flexibility must not exceed the
+      # number of entries in per_instance_properties or the capacity of the
+      # name_pattern, if used.
+      class InstanceFlexibilityPolicyInstanceSelection
+        include Google::Apis::Core::Hashable
+      
+        # Alternative machine types to use for instances that are created from these
+        # properties. This field only accepts a machine type names, for example `n2-
+        # standard-4` and not URLs or partial URLs.
+        # Corresponds to the JSON property `machineTypes`
+        # @return [Array<String>]
+        attr_accessor :machine_types
+      
+        # Rank when prioritizing the shape flexibilities. The instance selections with
+        # rank are considered first, in the ascending order of the rank. If not set,
+        # defaults to 0.
+        # Corresponds to the JSON property `rank`
+        # @return [Fixnum]
+        attr_accessor :rank
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @machine_types = args[:machine_types] if args.key?(:machine_types)
+          @rank = args[:rank] if args.key?(:rank)
         end
       end
       
@@ -21101,7 +21235,7 @@ module Google
       class InstanceGroupManagerInstanceLifecyclePolicyOnRepair
         include Google::Apis::Core::Hashable
       
-        # Specifies whether the MIG can change a VM's zone during repair.
+        # Specifies whether the MIG can change a VM's zone during a repair.
         # Corresponds to the JSON property `allowChangingZone`
         # @return [String]
         attr_accessor :allow_changing_zone
@@ -23665,6 +23799,14 @@ module Google
       class InstanceParams
         include Google::Apis::Core::Hashable
       
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `requestValidForDuration`
+        # @return [Google::Apis::ComputeAlpha::Duration]
+        attr_accessor :request_valid_for_duration
+      
         # Resource manager tags to be bound to the instance. Tag keys and values have
         # the same definition as resource manager tags. Keys must be in the format `
         # tagKeys/`tag_key_id``, and values are in the format `tagValues/456`. The field
@@ -23679,6 +23821,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @request_valid_for_duration = args[:request_valid_for_duration] if args.key?(:request_valid_for_duration)
           @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
@@ -36581,6 +36724,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] Type of the network profile.
+        # Corresponds to the JSON property `profileType`
+        # @return [Google::Apis::ComputeAlpha::NetworkProfileProfileType]
+        attr_accessor :profile_type
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -36604,6 +36752,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
+          @profile_type = args[:profile_type] if args.key?(:profile_type)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
         end
@@ -36815,6 +36964,43 @@ module Google
           @subnetwork_purposes = args[:subnetwork_purposes] if args.key?(:subnetwork_purposes)
           @subnetwork_stack_types = args[:subnetwork_stack_types] if args.key?(:subnetwork_stack_types)
           @unicast = args[:unicast] if args.key?(:unicast)
+        end
+      end
+      
+      # 
+      class NetworkProfileProfileType
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `networkType`
+        # @return [String]
+        attr_accessor :network_type
+      
+        # 
+        # Corresponds to the JSON property `rdmaSubtype`
+        # @return [String]
+        attr_accessor :rdma_subtype
+      
+        # 
+        # Corresponds to the JSON property `ullSubtype`
+        # @return [String]
+        attr_accessor :ull_subtype
+      
+        # 
+        # Corresponds to the JSON property `vpcSubtype`
+        # @return [String]
+        attr_accessor :vpc_subtype
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_type = args[:network_type] if args.key?(:network_type)
+          @rdma_subtype = args[:rdma_subtype] if args.key?(:rdma_subtype)
+          @ull_subtype = args[:ull_subtype] if args.key?(:ull_subtype)
+          @vpc_subtype = args[:vpc_subtype] if args.key?(:vpc_subtype)
         end
       end
       
@@ -42471,6 +42657,11 @@ module Google
         # @return [String]
         attr_accessor :ip_cidr_range
       
+        # The internet access type for IPv6 Public Advertised Prefixes.
+        # Corresponds to the JSON property `ipv6AccessType`
+        # @return [String]
+        attr_accessor :ipv6_access_type
+      
         # [Output Only] Type of the resource. Always compute#publicAdvertisedPrefix for
         # public advertised prefixes.
         # Corresponds to the JSON property `kind`
@@ -42542,6 +42733,7 @@ module Google
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @ipv6_access_type = args[:ipv6_access_type] if args.key?(:ipv6_access_type)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @pdp_scope = args[:pdp_scope] if args.key?(:pdp_scope)
@@ -42771,6 +42963,12 @@ module Google
         # @return [String]
         attr_accessor :ip_cidr_range
       
+        # [Output Only] The internet access type for IPv6 Public Delegated Prefixes.
+        # Inherited from parent prefix.
+        # Corresponds to the JSON property `ipv6AccessType`
+        # @return [String]
+        attr_accessor :ipv6_access_type
+      
         # If true, the prefix will be live migrated.
         # Corresponds to the JSON property `isLiveMigration`
         # @return [Boolean]
@@ -42851,6 +43049,7 @@ module Google
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @ipv6_access_type = args[:ipv6_access_type] if args.key?(:ipv6_access_type)
           @is_live_migration = args[:is_live_migration] if args.key?(:is_live_migration)
           @kind = args[:kind] if args.key?(:kind)
           @mode = args[:mode] if args.key?(:mode)
@@ -43133,6 +43332,12 @@ module Google
         # @return [String]
         attr_accessor :ip_cidr_range
       
+        # [Output Only] The internet access type for IPv6 Public Delegated Sub Prefixes.
+        # Inherited from parent prefix.
+        # Corresponds to the JSON property `ipv6AccessType`
+        # @return [String]
+        attr_accessor :ipv6_access_type
+      
         # Whether the sub prefix is delegated to create Address resources in the
         # delegatee project.
         # Corresponds to the JSON property `isAddress`
@@ -43171,6 +43376,7 @@ module Google
           @delegatee_project = args[:delegatee_project] if args.key?(:delegatee_project)
           @description = args[:description] if args.key?(:description)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @ipv6_access_type = args[:ipv6_access_type] if args.key?(:ipv6_access_type)
           @is_address = args[:is_address] if args.key?(:is_address)
           @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
@@ -44008,6 +44214,770 @@ module Google
           @name = args[:name] if args.key?(:name)
           @permissions = args[:permissions] if args.key?(:permissions)
           @principals = args[:principals] if args.key?(:principals)
+        end
+      end
+      
+      # Represents a RecoverableSnapshot resource. A RecoverableSnapshot represents a
+      # snapshot in recycle bin.
+      class RecoverableSnapshot
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # Optional. An optional description of this resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] Type of the resource. Always compute#recoverableSnapshot for
+        # RecoverableSnapshot resources.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Identifier. Name of the recoverable snapshot generated on the deletion of the
+        # snapshot. The name will be 1-63 characters long, and comply with RFC1035.
+        # Specifically, the name will be 1-63 characters long and match the regular
+        # expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character will
+        # be a lowercase letter, and all following characters can be a dash, lowercase
+        # letter, or digit, except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output Only] The original snapshot resource.
+        # Corresponds to the JSON property `originalResource`
+        # @return [Google::Apis::ComputeAlpha::RecoverableSnapshotOriginalSnapshot]
+        attr_accessor :original_resource
+      
+        # [Output Only] Purge timestamp of recoverable snapshot in RFC3339 text format.
+        # Corresponds to the JSON property `purgeTimestamp`
+        # @return [String]
+        attr_accessor :purge_timestamp
+      
+        # Output only. [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Server-defined URL for this resource's resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        # [Output Only] Status of the recoverable snapshot.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @original_resource = args[:original_resource] if args.key?(:original_resource)
+          @purge_timestamp = args[:purge_timestamp] if args.key?(:purge_timestamp)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class RecoverableSnapshotAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of RecoverableSnapshotsScopedList resources.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::RecoverableSnapshotsScopedList>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#
+        # recoverableSnapshotAggregatedList for aggregated lists of recoverablesnapshots.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources. end_interface:
+        # MixerListResponseWithEtagBuilder
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::RecoverableSnapshotAggregatedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::RecoverableSnapshotAggregatedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class RecoverableSnapshotList
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of RecoverableSnapshots resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeAlpha::RecoverableSnapshot>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#recoverableSnapshotList for
+        # lists of recoverablesnapshots.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources. end_interface:
+        # MixerListResponseWithEtagBuilder
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::RecoverableSnapshotList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::RecoverableSnapshotList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class RecoverableSnapshotOriginalSnapshot
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The architecture of the snapshot. Valid values are ARM64 or
+        # X86_64.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
+        # [Output Only] Set to true if snapshots are automatically created by applying
+        # resource policy on the target disk.
+        # Corresponds to the JSON property `autoCreated`
+        # @return [Boolean]
+        attr_accessor :auto_created
+        alias_method :auto_created?, :auto_created
+      
+        # ResourceKey of the resource policy or flow which created this auto snapshot
+        # Corresponds to the JSON property `autoCreatedBy`
+        # @return [String]
+        attr_accessor :auto_created_by
+      
+        # Creates the new snapshot in the snapshot chain labeled with the specified name.
+        # The chain name must be 1-63 characters long and comply with RFC1035. This is
+        # an uncommon option only for advanced service owners who needs to create
+        # separate snapshot chains, for example, for chargeback tracking. When you
+        # describe your snapshot resource, this field is visible only if it has a non-
+        # empty value.
+        # Corresponds to the JSON property `chainName`
+        # @return [String]
+        attr_accessor :chain_name
+      
+        # [Output Only] Size in bytes of the snapshot at creation time.
+        # Corresponds to the JSON property `creationSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :creation_size_bytes
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # [Output Only] Purge timestamp of recoverable snapshot in RFC3339 text format.
+        # Corresponds to the JSON property `deletionTimestamp`
+        # @return [String]
+        attr_accessor :deletion_timestamp
+      
+        # An optional description of this resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] Size of the source disk, specified in GB.
+        # Corresponds to the JSON property `diskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :disk_size_gb
+      
+        # [Output Only] Number of bytes downloaded to restore a snapshot to a disk.
+        # Corresponds to the JSON property `downloadBytes`
+        # @return [Fixnum]
+        attr_accessor :download_bytes
+      
+        # Whether this snapshot is created from a confidential compute mode disk. [
+        # Output Only]: This field is not set by user, but from source disk.
+        # Corresponds to the JSON property `enableConfidentialCompute`
+        # @return [Boolean]
+        attr_accessor :enable_confidential_compute
+        alias_method :enable_confidential_compute?, :enable_confidential_compute
+      
+        # Indicates the created snapshot is a full snapshot.
+        # Corresponds to the JSON property `full`
+        # @return [Boolean]
+        attr_accessor :full
+        alias_method :full?, :full
+      
+        # [Output Only] A list of features to enable on the guest operating system.
+        # Applicable only for bootable images. Read Enabling guest operating system
+        # features to see a list of available options.
+        # Corresponds to the JSON property `guestOsFeatures`
+        # @return [Array<Google::Apis::ComputeAlpha::GuestOsFeature>]
+        attr_accessor :guest_os_features
+      
+        # [Output Only] The unique identifier for the original snapshot. This identifier
+        # is defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # A fingerprint for the labels being applied to this snapshot, which is
+        # essentially a hash of the labels set used for optimistic locking. The
+        # fingerprint is initially generated by Compute Engine and changes after every
+        # request to modify or update labels. You must always provide an up-to-date
+        # fingerprint hash in order to update or change labels, otherwise the request
+        # will fail with error 412 conditionNotMet. To see the latest fingerprint, make
+        # a get() request to retrieve a snapshot.
+        # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :label_fingerprint
+      
+        # Labels to apply to this snapshot. These can be later modified by the setLabels
+        # method. Label values may be empty.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # [Output Only] Integer license codes indicating which licenses are attached to
+        # this snapshot.
+        # Corresponds to the JSON property `licenseCodes`
+        # @return [Array<Fixnum>]
+        attr_accessor :license_codes
+      
+        # [Output Only] A list of public visible licenses that apply to this snapshot.
+        # Corresponds to the JSON property `licenses`
+        # @return [Array<String>]
+        attr_accessor :licenses
+      
+        # Number of days the snapshot should be retained before being deleted
+        # automatically.
+        # Corresponds to the JSON property `maxRetentionDays`
+        # @return [Fixnum]
+        attr_accessor :max_retention_days
+      
+        # Name of the original snapshot provided by the client. The name must be 1-63
+        # characters long, and comply with RFC1035. Specifically, the name must be 1-63
+        # characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`
+        # which means the first character must be a lowercase letter, and all following
+        # characters must be a dash, lowercase letter, or digit, except the last
+        # character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] URL of the region where the snapshot resides. Only applicable
+        # for regional snapshots.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Server-defined URL for this resource's resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        # Encrypts the snapshot using a customer-supplied encryption key. After you
+        # encrypt a snapshot using a customer-supplied key, you must provide the same
+        # key if you use the snapshot later. For example, you must provide the
+        # encryption key when you create a disk from the encrypted snapshot in a future
+        # request. Customer-supplied encryption keys do not protect access to metadata
+        # of the snapshot. If you do not provide an encryption key when creating the
+        # snapshot, then the snapshot will be encrypted using an automatically generated
+        # key and you do not need to provide a key to use the snapshot later.
+        # Corresponds to the JSON property `snapshotEncryptionKey`
+        # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
+        attr_accessor :snapshot_encryption_key
+      
+        # [Output Only] The unique ID of the snapshot group that this snapshot belongs
+        # to.
+        # Corresponds to the JSON property `snapshotGroupId`
+        # @return [String]
+        attr_accessor :snapshot_group_id
+      
+        # [Output only] The snapshot group that this snapshot belongs to.
+        # Corresponds to the JSON property `snapshotGroupName`
+        # @return [String]
+        attr_accessor :snapshot_group_name
+      
+        # Indicates the type of the snapshot.
+        # Corresponds to the JSON property `snapshotType`
+        # @return [String]
+        attr_accessor :snapshot_type
+      
+        # The source disk used to create this snapshot.
+        # Corresponds to the JSON property `sourceDisk`
+        # @return [String]
+        attr_accessor :source_disk
+      
+        # The customer-supplied encryption key of the source disk. Required if the
+        # source disk is protected by a customer-supplied encryption key.
+        # Corresponds to the JSON property `sourceDiskEncryptionKey`
+        # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
+        attr_accessor :source_disk_encryption_key
+      
+        # The source disk whose recovery checkpoint will be used to create this snapshot.
+        # Corresponds to the JSON property `sourceDiskForRecoveryCheckpoint`
+        # @return [String]
+        attr_accessor :source_disk_for_recovery_checkpoint
+      
+        # [Output Only] The ID value of the disk used to create this snapshot
+        # Corresponds to the JSON property `sourceDiskId`
+        # @return [String]
+        attr_accessor :source_disk_id
+      
+        # The source instant snapshot used to create this snapshot.
+        # Corresponds to the JSON property `sourceInstantSnapshot`
+        # @return [String]
+        attr_accessor :source_instant_snapshot
+      
+        # Customer provided encryption key when creating Snapshot from Instant Snapshot.
+        # Corresponds to the JSON property `sourceInstantSnapshotEncryptionKey`
+        # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
+        attr_accessor :source_instant_snapshot_encryption_key
+      
+        # [Output Only] The unique ID of the instant snapshot used to create this
+        # snapshot. This value identifies the exact instant snapshot that was used to
+        # create this persistent disk. For example, if you created the persistent disk
+        # from an instant snapshot that was later deleted and recreated under the same
+        # name, the source instant snapshot ID would identify the exact instant snapshot
+        # that was used.
+        # Corresponds to the JSON property `sourceInstantSnapshotId`
+        # @return [String]
+        attr_accessor :source_instant_snapshot_id
+      
+        # [Output Only] URL of the resource policy which created this scheduled snapshot.
+        # Corresponds to the JSON property `sourceSnapshotSchedulePolicy`
+        # @return [String]
+        attr_accessor :source_snapshot_schedule_policy
+      
+        # [Output Only] ID of the resource policy which created this scheduled snapshot.
+        # Corresponds to the JSON property `sourceSnapshotSchedulePolicyId`
+        # @return [String]
+        attr_accessor :source_snapshot_schedule_policy_id
+      
+        # [Output Only] A size of the storage used by the snapshot.
+        # Corresponds to the JSON property `storageBytes`
+        # @return [Fixnum]
+        attr_accessor :storage_bytes
+      
+        # [Output Only] An indicator whether storageBytes is in a stable state or it is
+        # being adjusted as a result of shared storage reallocation. This status can
+        # either be UPDATING, meaning the size of the snapshot is being updated, or
+        # UP_TO_DATE, meaning the size of the snapshot is up-to-date.
+        # Corresponds to the JSON property `storageBytesStatus`
+        # @return [String]
+        attr_accessor :storage_bytes_status
+      
+        # Cloud Storage bucket storage location of the snapshot (regional or multi-
+        # regional).
+        # Corresponds to the JSON property `storageLocations`
+        # @return [Array<String>]
+        attr_accessor :storage_locations
+      
+        # [Output Only] A list of user provided licenses represented by a list of URLs
+        # to the license resource.
+        # Corresponds to the JSON property `userLicenses`
+        # @return [Array<String>]
+        attr_accessor :user_licenses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
+          @auto_created = args[:auto_created] if args.key?(:auto_created)
+          @auto_created_by = args[:auto_created_by] if args.key?(:auto_created_by)
+          @chain_name = args[:chain_name] if args.key?(:chain_name)
+          @creation_size_bytes = args[:creation_size_bytes] if args.key?(:creation_size_bytes)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @deletion_timestamp = args[:deletion_timestamp] if args.key?(:deletion_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @download_bytes = args[:download_bytes] if args.key?(:download_bytes)
+          @enable_confidential_compute = args[:enable_confidential_compute] if args.key?(:enable_confidential_compute)
+          @full = args[:full] if args.key?(:full)
+          @guest_os_features = args[:guest_os_features] if args.key?(:guest_os_features)
+          @id = args[:id] if args.key?(:id)
+          @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
+          @labels = args[:labels] if args.key?(:labels)
+          @license_codes = args[:license_codes] if args.key?(:license_codes)
+          @licenses = args[:licenses] if args.key?(:licenses)
+          @max_retention_days = args[:max_retention_days] if args.key?(:max_retention_days)
+          @name = args[:name] if args.key?(:name)
+          @region = args[:region] if args.key?(:region)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @snapshot_encryption_key = args[:snapshot_encryption_key] if args.key?(:snapshot_encryption_key)
+          @snapshot_group_id = args[:snapshot_group_id] if args.key?(:snapshot_group_id)
+          @snapshot_group_name = args[:snapshot_group_name] if args.key?(:snapshot_group_name)
+          @snapshot_type = args[:snapshot_type] if args.key?(:snapshot_type)
+          @source_disk = args[:source_disk] if args.key?(:source_disk)
+          @source_disk_encryption_key = args[:source_disk_encryption_key] if args.key?(:source_disk_encryption_key)
+          @source_disk_for_recovery_checkpoint = args[:source_disk_for_recovery_checkpoint] if args.key?(:source_disk_for_recovery_checkpoint)
+          @source_disk_id = args[:source_disk_id] if args.key?(:source_disk_id)
+          @source_instant_snapshot = args[:source_instant_snapshot] if args.key?(:source_instant_snapshot)
+          @source_instant_snapshot_encryption_key = args[:source_instant_snapshot_encryption_key] if args.key?(:source_instant_snapshot_encryption_key)
+          @source_instant_snapshot_id = args[:source_instant_snapshot_id] if args.key?(:source_instant_snapshot_id)
+          @source_snapshot_schedule_policy = args[:source_snapshot_schedule_policy] if args.key?(:source_snapshot_schedule_policy)
+          @source_snapshot_schedule_policy_id = args[:source_snapshot_schedule_policy_id] if args.key?(:source_snapshot_schedule_policy_id)
+          @storage_bytes = args[:storage_bytes] if args.key?(:storage_bytes)
+          @storage_bytes_status = args[:storage_bytes_status] if args.key?(:storage_bytes_status)
+          @storage_locations = args[:storage_locations] if args.key?(:storage_locations)
+          @user_licenses = args[:user_licenses] if args.key?(:user_licenses)
+        end
+      end
+      
+      # 
+      class RecoverableSnapshotsScopedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] A list of recoverablesnapshots contained in this scope.
+        # Corresponds to the JSON property `recoverablesnapshots`
+        # @return [Array<Google::Apis::ComputeAlpha::RecoverableSnapshot>]
+        attr_accessor :recoverablesnapshots
+      
+        # [Output Only] Informational warning which replaces the list of
+        # recoverablesnapshots when the list is empty.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::RecoverableSnapshotsScopedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @recoverablesnapshots = args[:recoverablesnapshots] if args.key?(:recoverablesnapshots)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning which replaces the list of
+        # recoverablesnapshots when the list is empty.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::RecoverableSnapshotsScopedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
@@ -46422,7 +47392,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Indicates if this group of VMs have emergent maintenance enabled.
+        # Indicates whether Compute Engine allows unplanned maintenance for your VMs;
+        # for example, to fix hardware errors.
         # Corresponds to the JSON property `enableEmergentMaintenance`
         # @return [Boolean]
         attr_accessor :enable_emergent_maintenance
@@ -48647,6 +49618,18 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::ResourceStatusAcceleratorStatus>]
         attr_accessor :accelerator_status
       
+        # [Output Only] The full resource name of the reservation that this instance is
+        # consuming from.
+        # Corresponds to the JSON property `consumedReservation`
+        # @return [String]
+        attr_accessor :consumed_reservation
+      
+        # [Output Only] The full resource name of the reservation block that this
+        # instance is consuming from.
+        # Corresponds to the JSON property `consumedReservationBlock`
+        # @return [String]
+        attr_accessor :consumed_reservation_block
+      
         # Effective values of predefined metadata keys for an instance.
         # Corresponds to the JSON property `effectiveInstanceMetadata`
         # @return [Google::Apis::ComputeAlpha::ResourceStatusEffectiveInstanceMetadata]
@@ -48699,6 +49682,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accelerator_status = args[:accelerator_status] if args.key?(:accelerator_status)
+          @consumed_reservation = args[:consumed_reservation] if args.key?(:consumed_reservation)
+          @consumed_reservation_block = args[:consumed_reservation_block] if args.key?(:consumed_reservation_block)
           @effective_instance_metadata = args[:effective_instance_metadata] if args.key?(:effective_instance_metadata)
           @last_instance_termination_details = args[:last_instance_termination_details] if args.key?(:last_instance_termination_details)
           @physical_host = args[:physical_host] if args.key?(:physical_host)
@@ -49869,6 +50854,11 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Additional router parameters.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeAlpha::RouterParams]
+        attr_accessor :params
+      
         # [Output Only] URI of the region where the router resides. You must specify
         # this field as part of the HTTP request URL. It is not settable as a field in
         # the request body.
@@ -49905,6 +50895,7 @@ module Google
           @nats = args[:nats] if args.key?(:nats)
           @ncc_gateway = args[:ncc_gateway] if args.key?(:ncc_gateway)
           @network = args[:network] if args.key?(:network)
+          @params = args[:params] if args.key?(:params)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
@@ -51053,6 +52044,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Additional router parameters.
+      class RouterParams
+        include Google::Apis::Core::Hashable
+      
+        # Tag keys/values directly bound to this resource. Tag keys and values have the
+        # same definition as resource manager tags. The field is allowed for INSERT only.
+        # The keys/values to set on the resource should be specified in either ID ` : `
+        # or Namespaced format ` : `. For example the following are valid inputs: * `"
+        # tagKeys/333" : "tagValues/444", "tagKeys/123" : "tagValues/456"` * `"123/
+        # environment" : "production", "345/abc" : "xyz"` Note: * Invalid combinations
+        # of ID & namespaced format is not supported. For instance: `"123/environment" :
+        # "tagValues/444"` is invalid. * Inconsistent format is not supported. For
+        # instance: `"tagKeys/333" : "tagValues/444", "123/env" : "prod"` is invalid.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
@@ -52369,6 +53387,13 @@ module Google
         # @return [Google::Apis::ComputeAlpha::Duration]
         attr_accessor :shutdown_timeout
       
+        # Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off
+        # and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+        # Corresponds to the JSON property `skipGuestOsShutdown`
+        # @return [Boolean]
+        attr_accessor :skip_guest_os_shutdown
+        alias_method :skip_guest_os_shutdown?, :skip_guest_os_shutdown
+      
         # Specifies the timestamp, when the instance will be terminated, in RFC3339 text
         # format. If specified, the instance termination action will be performed at the
         # termination time.
@@ -52408,6 +53433,7 @@ module Google
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
           @shutdown_timeout = args[:shutdown_timeout] if args.key?(:shutdown_timeout)
+          @skip_guest_os_shutdown = args[:skip_guest_os_shutdown] if args.key?(:skip_guest_os_shutdown)
           @termination_time = args[:termination_time] if args.key?(:termination_time)
           @windows_license_optimization_mode = args[:windows_license_optimization_mode] if args.key?(:windows_license_optimization_mode)
         end
@@ -55940,6 +56966,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Additional snapshot params.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeAlpha::SnapshotParams]
+        attr_accessor :params
+      
         # [Output Only] URL of the region where the snapshot resides. Only applicable
         # for regional snapshots.
         # Corresponds to the JSON property `region`
@@ -56115,6 +57146,7 @@ module Google
           @location_hint = args[:location_hint] if args.key?(:location_hint)
           @max_retention_days = args[:max_retention_days] if args.key?(:max_retention_days)
           @name = args[:name] if args.key?(:name)
+          @params = args[:params] if args.key?(:params)
           @region = args[:region] if args.key?(:region)
           @resource_status = args[:resource_status] if args.key?(:resource_status)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
@@ -56562,6 +57594,28 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Additional snapshot params.
+      class SnapshotParams
+        include Google::Apis::Core::Hashable
+      
+        # Resource manager tags to be bound to the snapshot. Tag keys and values have
+        # the same definition as resource manager tags. Keys must be in the format `
+        # tagKeys/`tag_key_id``, and values are in the format `tagValues/456`. The field
+        # is ignored (both PUT & PATCH) when empty.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
@@ -67554,6 +68608,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] Indicates whether there are wire changes yet to be processed.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -67611,6 +68671,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @service_level = args[:service_level] if args.key?(:service_level)
