@@ -2145,6 +2145,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Delete schema mode for a subject.
+        # @param [String] name
+        #   Required. The resource name of subject to delete the mode for. The format is *
+        #   projects/`project`/locations/`location`/schemaRegistries/`schema_registry`/
+        #   mode/`subject` * projects/`project`/locations/`location`/schemaRegistries/`
+        #   schema_registry`/contexts/`context`/mode/`subject`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::SchemaMode] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::SchemaMode]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_schema_registry_context_mode(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::SchemaMode::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::SchemaMode
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Get mode at global level or for a subject.
         # @param [String] name
         #   Required. The resource name of the mode. The format is * projects/`project`/
@@ -2752,6 +2785,39 @@ module Google
           command.response_representation = Google::Apis::ManagedkafkaV1::HttpBody::Representation
           command.response_class = Google::Apis::ManagedkafkaV1::HttpBody
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete schema mode for a subject.
+        # @param [String] name
+        #   Required. The resource name of subject to delete the mode for. The format is *
+        #   projects/`project`/locations/`location`/schemaRegistries/`schema_registry`/
+        #   mode/`subject` * projects/`project`/locations/`location`/schemaRegistries/`
+        #   schema_registry`/contexts/`context`/mode/`subject`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::SchemaMode] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::SchemaMode]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_schema_registry_mode(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::SchemaMode::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::SchemaMode
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
