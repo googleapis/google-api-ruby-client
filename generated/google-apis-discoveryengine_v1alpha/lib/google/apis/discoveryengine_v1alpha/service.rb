@@ -490,7 +490,7 @@ module Google
         # @param [String] name
         #   Required. The name of the CmekConfig of the form `projects/`project`/locations/
         #   `location`/cmekConfig` or `projects/`project`/locations/`location`/cmekConfigs/
-        #   `cmekConfig``.
+        #   `cmek_config``.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCmekConfig] google_cloud_discoveryengine_v1alpha_cmek_config_object
         # @param [Boolean] set_default
         #   Set the following CmekConfig as the default to be used for child resources if
@@ -628,7 +628,7 @@ module Google
         # @param [String] name
         #   Required. The name of the CmekConfig of the form `projects/`project`/locations/
         #   `location`/cmekConfig` or `projects/`project`/locations/`location`/cmekConfigs/
-        #   `cmekConfig``.
+        #   `cmek_config``.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCmekConfig] google_cloud_discoveryengine_v1alpha_cmek_config_object
         # @param [Boolean] set_default
         #   Set the following CmekConfig as the default to be used for child resources if
