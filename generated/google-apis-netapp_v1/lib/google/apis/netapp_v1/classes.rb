@@ -426,7 +426,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :backup_minimum_enforced_retention_days
       
-        # Optional. Indicates if the daily backups are immutable. Atleast one of
+        # Optional. Indicates if the daily backups are immutable. At least one of
         # daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and
         # manual_backup_immutable must be true.
         # Corresponds to the JSON property `dailyBackupImmutable`
@@ -434,7 +434,7 @@ module Google
         attr_accessor :daily_backup_immutable
         alias_method :daily_backup_immutable?, :daily_backup_immutable
       
-        # Optional. Indicates if the manual backups are immutable. Atleast one of
+        # Optional. Indicates if the manual backups are immutable. At least one of
         # daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and
         # manual_backup_immutable must be true.
         # Corresponds to the JSON property `manualBackupImmutable`
@@ -442,7 +442,7 @@ module Google
         attr_accessor :manual_backup_immutable
         alias_method :manual_backup_immutable?, :manual_backup_immutable
       
-        # Optional. Indicates if the monthly backups are immutable. Atleast one of
+        # Optional. Indicates if the monthly backups are immutable. At least one of
         # daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and
         # manual_backup_immutable must be true.
         # Corresponds to the JSON property `monthlyBackupImmutable`
@@ -450,7 +450,7 @@ module Google
         attr_accessor :monthly_backup_immutable
         alias_method :monthly_backup_immutable?, :monthly_backup_immutable
       
-        # Optional. Indicates if the weekly backups are immutable. Atleast one of
+        # Optional. Indicates if the weekly backups are immutable. At least one of
         # daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and
         # manual_backup_immutable must be true.
         # Corresponds to the JSON property `weeklyBackupImmutable`
@@ -1374,6 +1374,12 @@ module Google
       class LocationMetadata
         include Google::Apis::Core::Hashable
       
+        # Output only. Indicates if the location has VCP support.
+        # Corresponds to the JSON property `hasVcp`
+        # @return [Boolean]
+        attr_accessor :has_vcp
+        alias_method :has_vcp?, :has_vcp
+      
         # Output only. Supported flex performance in a location.
         # Corresponds to the JSON property `supportedFlexPerformance`
         # @return [Array<String>]
@@ -1390,6 +1396,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @has_vcp = args[:has_vcp] if args.key?(:has_vcp)
           @supported_flex_performance = args[:supported_flex_performance] if args.key?(:supported_flex_performance)
           @supported_service_levels = args[:supported_service_levels] if args.key?(:supported_service_levels)
         end
@@ -2254,13 +2261,13 @@ module Google
         # @return [String]
         attr_accessor :state_details
       
-        # Optional. Custom Performance Total IOPS of the pool If not provided, it will
+        # Optional. Custom Performance Total IOPS of the pool if not provided, it will
         # be calculated based on the total_throughput_mibps
         # Corresponds to the JSON property `totalIops`
         # @return [Fixnum]
         attr_accessor :total_iops
       
-        # Optional. Custom Performance Total Throughput of the pool (in MiB/s)
+        # Optional. Custom Performance Total Throughput of the pool (in MiBps)
         # Corresponds to the JSON property `totalThroughputMibps`
         # @return [Fixnum]
         attr_accessor :total_throughput_mibps
