@@ -98,6 +98,9 @@ module Google
       # Move a copy of your Starred places list on Maps
       AUTH_DATAPORTABILITY_MAPS_STARRED_PLACES = 'https://www.googleapis.com/auth/dataportability.maps.starred_places'
 
+      # Move a copy of your vehicle profile on Maps
+      AUTH_DATAPORTABILITY_MAPS_VEHICLE_PROFILE = 'https://www.googleapis.com/auth/dataportability.maps.vehicle_profile'
+
       # Move a copy of your Maps activity
       AUTH_DATAPORTABILITY_MYACTIVITY_MAPS = 'https://www.googleapis.com/auth/dataportability.myactivity.maps'
 
