@@ -854,6 +854,7 @@ module Google
           property :max_prepared_statements, as: 'maxPreparedStatements'
           property :min_pool_size, as: 'minPoolSize'
           property :pool_mode, as: 'poolMode'
+          property :pooler_count, as: 'poolerCount'
           property :query_wait_timeout, as: 'queryWaitTimeout'
           property :server_idle_timeout, as: 'serverIdleTimeout'
           collection :stats_users, as: 'statsUsers'
@@ -1263,6 +1264,7 @@ module Google
           property :query_plans_per_minute, as: 'queryPlansPerMinute'
           property :record_application_tags, as: 'recordApplicationTags'
           property :track_active_queries, as: 'trackActiveQueries'
+          property :track_client_address, as: 'trackClientAddress'
           property :track_wait_event_types, as: 'trackWaitEventTypes'
           property :track_wait_events, as: 'trackWaitEvents'
         end
