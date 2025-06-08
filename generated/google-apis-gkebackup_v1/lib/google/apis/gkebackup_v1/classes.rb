@@ -247,6 +247,11 @@ module Google
         # @return [Google::Apis::GkebackupV1::NamespacedNames]
         attr_accessor :selected_applications
       
+        # A list of Kubernetes labels.
+        # Corresponds to the JSON property `selectedNamespaceLabels`
+        # @return [Google::Apis::GkebackupV1::ResourceLabels]
+        attr_accessor :selected_namespace_labels
+      
         # A list of Kubernetes Namespaces.
         # Corresponds to the JSON property `selectedNamespaces`
         # @return [Google::Apis::GkebackupV1::Namespaces]
@@ -315,6 +320,7 @@ module Google
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @selected_applications = args[:selected_applications] if args.key?(:selected_applications)
+          @selected_namespace_labels = args[:selected_namespace_labels] if args.key?(:selected_namespace_labels)
           @selected_namespaces = args[:selected_namespaces] if args.key?(:selected_namespaces)
           @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
           @state = args[:state] if args.key?(:state)
@@ -449,6 +455,11 @@ module Google
         # @return [Google::Apis::GkebackupV1::NamespacedNames]
         attr_accessor :selected_applications
       
+        # A list of Kubernetes labels.
+        # Corresponds to the JSON property `selectedNamespaceLabels`
+        # @return [Google::Apis::GkebackupV1::ResourceLabels]
+        attr_accessor :selected_namespace_labels
+      
         # A list of Kubernetes Namespaces.
         # Corresponds to the JSON property `selectedNamespaces`
         # @return [Google::Apis::GkebackupV1::Namespaces]
@@ -466,6 +477,7 @@ module Google
           @include_volume_data = args[:include_volume_data] if args.key?(:include_volume_data)
           @permissive_mode = args[:permissive_mode] if args.key?(:permissive_mode)
           @selected_applications = args[:selected_applications] if args.key?(:selected_applications)
+          @selected_namespace_labels = args[:selected_namespace_labels] if args.key?(:selected_namespace_labels)
           @selected_namespaces = args[:selected_namespaces] if args.key?(:selected_namespaces)
         end
       end
@@ -1489,6 +1501,31 @@ module Google
         end
       end
       
+      # A single Kubernetes label-value pair.
+      class Label
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The key/name of the label.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Optional. The value of the label.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Response message for ListBackupChannels.
       class ListBackupChannelsResponse
         include Google::Apis::Core::Hashable
@@ -2136,6 +2173,25 @@ module Google
           @group_kinds = args[:group_kinds] if args.key?(:group_kinds)
           @json_path = args[:json_path] if args.key?(:json_path)
           @namespaces = args[:namespaces] if args.key?(:namespaces)
+        end
+      end
+      
+      # A list of Kubernetes labels.
+      class ResourceLabels
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of Kubernetes label-value pairs.
+        # Corresponds to the JSON property `resourceLabels`
+        # @return [Array<Google::Apis::GkebackupV1::Label>]
+        attr_accessor :resource_labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
         end
       end
       
