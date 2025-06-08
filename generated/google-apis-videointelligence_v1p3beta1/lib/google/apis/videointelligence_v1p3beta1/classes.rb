@@ -215,6 +215,36 @@ module Google
         end
       end
       
+      # Status of exporting annotation response to user specified `output_uri`.
+      class GoogleCloudVideointelligenceV1ExportToOutputUriStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. State of the `output_uri` export.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
       # Deprecated. No effect.
       class GoogleCloudVideointelligenceV1FaceAnnotation
         include Google::Apis::Core::Hashable
@@ -898,6 +928,11 @@ module Google
       class GoogleCloudVideointelligenceV1VideoAnnotationProgress
         include Google::Apis::Core::Hashable
       
+        # Status of exporting annotation response to user specified `output_uri`.
+        # Corresponds to the JSON property `exportStatus`
+        # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1ExportToOutputUriStatus]
+        attr_accessor :export_status
+      
         # Specifies which feature is being tracked if the request contains more than one
         # feature.
         # Corresponds to the JSON property `feature`
@@ -936,6 +971,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @export_status = args[:export_status] if args.key?(:export_status)
           @feature = args[:feature] if args.key?(:feature)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
@@ -1356,6 +1392,36 @@ module Google
         def update!(**args)
           @pornography_likelihood = args[:pornography_likelihood] if args.key?(:pornography_likelihood)
           @time_offset = args[:time_offset] if args.key?(:time_offset)
+        end
+      end
+      
+      # Status of exporting annotation response to user specified `output_uri`.
+      class GoogleCloudVideointelligenceV1beta2ExportToOutputUriStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. State of the `output_uri` export.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -2042,6 +2108,11 @@ module Google
       class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress
         include Google::Apis::Core::Hashable
       
+        # Status of exporting annotation response to user specified `output_uri`.
+        # Corresponds to the JSON property `exportStatus`
+        # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1beta2ExportToOutputUriStatus]
+        attr_accessor :export_status
+      
         # Specifies which feature is being tracked if the request contains more than one
         # feature.
         # Corresponds to the JSON property `feature`
@@ -2080,6 +2151,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @export_status = args[:export_status] if args.key?(:export_status)
           @feature = args[:feature] if args.key?(:feature)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
@@ -2500,6 +2572,36 @@ module Google
         def update!(**args)
           @pornography_likelihood = args[:pornography_likelihood] if args.key?(:pornography_likelihood)
           @time_offset = args[:time_offset] if args.key?(:time_offset)
+        end
+      end
+      
+      # Status of exporting annotation response to user specified `output_uri`.
+      class GoogleCloudVideointelligenceV1p1beta1ExportToOutputUriStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. State of the `output_uri` export.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -3186,6 +3288,11 @@ module Google
       class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress
         include Google::Apis::Core::Hashable
       
+        # Status of exporting annotation response to user specified `output_uri`.
+        # Corresponds to the JSON property `exportStatus`
+        # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p1beta1ExportToOutputUriStatus]
+        attr_accessor :export_status
+      
         # Specifies which feature is being tracked if the request contains more than one
         # feature.
         # Corresponds to the JSON property `feature`
@@ -3224,6 +3331,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @export_status = args[:export_status] if args.key?(:export_status)
           @feature = args[:feature] if args.key?(:feature)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
@@ -3644,6 +3752,36 @@ module Google
         def update!(**args)
           @pornography_likelihood = args[:pornography_likelihood] if args.key?(:pornography_likelihood)
           @time_offset = args[:time_offset] if args.key?(:time_offset)
+        end
+      end
+      
+      # Status of exporting annotation response to user specified `output_uri`.
+      class GoogleCloudVideointelligenceV1p2beta1ExportToOutputUriStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. State of the `output_uri` export.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -4330,6 +4468,11 @@ module Google
       class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress
         include Google::Apis::Core::Hashable
       
+        # Status of exporting annotation response to user specified `output_uri`.
+        # Corresponds to the JSON property `exportStatus`
+        # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p2beta1ExportToOutputUriStatus]
+        attr_accessor :export_status
+      
         # Specifies which feature is being tracked if the request contains more than one
         # feature.
         # Corresponds to the JSON property `feature`
@@ -4368,6 +4511,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @export_status = args[:export_status] if args.key?(:export_status)
           @feature = args[:feature] if args.key?(:feature)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
@@ -4961,6 +5105,36 @@ module Google
         def update!(**args)
           @pornography_likelihood = args[:pornography_likelihood] if args.key?(:pornography_likelihood)
           @time_offset = args[:time_offset] if args.key?(:time_offset)
+        end
+      end
+      
+      # Status of exporting annotation response to user specified `output_uri`.
+      class GoogleCloudVideointelligenceV1p3beta1ExportToOutputUriStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. State of the `output_uri` export.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -6078,6 +6252,11 @@ module Google
       class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress
         include Google::Apis::Core::Hashable
       
+        # Status of exporting annotation response to user specified `output_uri`.
+        # Corresponds to the JSON property `exportStatus`
+        # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1ExportToOutputUriStatus]
+        attr_accessor :export_status
+      
         # Specifies which feature is being tracked if the request contains more than one
         # feature.
         # Corresponds to the JSON property `feature`
@@ -6116,6 +6295,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @export_status = args[:export_status] if args.key?(:export_status)
           @feature = args[:feature] if args.key?(:feature)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
