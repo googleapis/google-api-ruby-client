@@ -574,7 +574,7 @@ module Google
         attr_accessor :record_fields
       
         # Required. The datatype of this field. The following values are supported:
-        # Primitive types: string integer boolean double datetime. Must be of the format
+        # Primitive types: string int bool double datetime. Must be of the format
         # RFC3339 UTC "Zulu" (Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.
         # 045123456Z").Complex types: enum array map record
         # Corresponds to the JSON property `type`
@@ -5689,6 +5689,11 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry]
         attr_accessor :entry
       
+        # EntryLink represents a link between two Entries.
+        # Corresponds to the JSON property `entryLink`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLink]
+        attr_accessor :entry_link
+      
         # The fields to update, in paths that are relative to the Entry resource.
         # Separate each field with a comma.In FULL entry sync mode, Dataplex includes
         # the paths of all of the fields for an entry that can be modified, including
@@ -5714,6 +5719,7 @@ module Google
         def update!(**args)
           @aspect_keys = args[:aspect_keys] if args.key?(:aspect_keys)
           @entry = args[:entry] if args.key?(:entry)
+          @entry_link = args[:entry_link] if args.key?(:entry_link)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
@@ -6990,10 +6996,20 @@ module Google
         # @return [Fixnum]
         attr_accessor :created_entries
       
+        # Output only. The total number of entry links that were successfully created.
+        # Corresponds to the JSON property `createdEntryLinks`
+        # @return [Fixnum]
+        attr_accessor :created_entry_links
+      
         # Output only. The total number of entries that were deleted.
         # Corresponds to the JSON property `deletedEntries`
         # @return [Fixnum]
         attr_accessor :deleted_entries
+      
+        # Output only. The total number of entry links that were successfully deleted.
+        # Corresponds to the JSON property `deletedEntryLinks`
+        # @return [Fixnum]
+        attr_accessor :deleted_entry_links
       
         # Output only. The total number of entries that were recreated.
         # Corresponds to the JSON property `recreatedEntries`
@@ -7004,6 +7020,11 @@ module Google
         # Corresponds to the JSON property `unchangedEntries`
         # @return [Fixnum]
         attr_accessor :unchanged_entries
+      
+        # Output only. The total number of entry links that were left unchanged.
+        # Corresponds to the JSON property `unchangedEntryLinks`
+        # @return [Fixnum]
+        attr_accessor :unchanged_entry_links
       
         # Output only. The time when the status was updated.
         # Corresponds to the JSON property `updateTime`
@@ -7022,9 +7043,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @created_entries = args[:created_entries] if args.key?(:created_entries)
+          @created_entry_links = args[:created_entry_links] if args.key?(:created_entry_links)
           @deleted_entries = args[:deleted_entries] if args.key?(:deleted_entries)
+          @deleted_entry_links = args[:deleted_entry_links] if args.key?(:deleted_entry_links)
           @recreated_entries = args[:recreated_entries] if args.key?(:recreated_entries)
           @unchanged_entries = args[:unchanged_entries] if args.key?(:unchanged_entries)
+          @unchanged_entry_links = args[:unchanged_entry_links] if args.key?(:unchanged_entry_links)
           @update_time = args[:update_time] if args.key?(:update_time)
           @updated_entries = args[:updated_entries] if args.key?(:updated_entries)
         end
@@ -7125,6 +7149,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :entry_groups
       
+        # Optional. The entry link types that are in scope for the import job, specified
+        # as relative resource names in the format projects/`project_number_or_id`/
+        # locations/`location_id`/entryLinkTypes/`entry_link_type_id`. The job modifies
+        # only the entryLinks that belong to these entry link types.If the metadata
+        # import file attempts to create or delete an entry link whose entry link type
+        # isn't included in this list, the import job will skip those entry links.
+        # Corresponds to the JSON property `entryLinkTypes`
+        # @return [Array<String>]
+        attr_accessor :entry_link_types
+      
         # Required. The entry types that are in scope for the import job, specified as
         # relative resource names in the format projects/`project_number_or_id`/
         # locations/`location_id`/entryTypes/`entry_type_id`. The job modifies only the
@@ -7137,6 +7171,27 @@ module Google
         # @return [Array<String>]
         attr_accessor :entry_types
       
+        # Optional. The glossaries that are in scope for the import job, specified as
+        # relative resource names in the format projects/`project_number_or_id`/
+        # locations/`location_id`/glossaries/`glossary_id`.While importing Business
+        # Glossary entries, the user must provide glossaries. While importing entries,
+        # the user does not have to provide glossaries. If the metadata import file
+        # attempts to modify Business Glossary entries whose glossary isn't included in
+        # this list, the import job will skip those entries.The location of a glossary
+        # must either match the location of the job, or the glossary must be global.
+        # Corresponds to the JSON property `glossaries`
+        # @return [Array<String>]
+        attr_accessor :glossaries
+      
+        # Optional. Defines the scope of entries that can be referenced in the entry
+        # links.Currently, projects are supported as valid scopes. Format: projects/`
+        # project_number_or_id`If the metadata import file attempts to create an entry
+        # link which references an entry that is not in the scope, the import job will
+        # skip that entry link.
+        # Corresponds to the JSON property `referencedEntryScopes`
+        # @return [Array<String>]
+        attr_accessor :referenced_entry_scopes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7145,7 +7200,10 @@ module Google
         def update!(**args)
           @aspect_types = args[:aspect_types] if args.key?(:aspect_types)
           @entry_groups = args[:entry_groups] if args.key?(:entry_groups)
+          @entry_link_types = args[:entry_link_types] if args.key?(:entry_link_types)
           @entry_types = args[:entry_types] if args.key?(:entry_types)
+          @glossaries = args[:glossaries] if args.key?(:glossaries)
+          @referenced_entry_scopes = args[:referenced_entry_scopes] if args.key?(:referenced_entry_scopes)
         end
       end
       

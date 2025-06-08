@@ -2901,6 +2901,8 @@ module Google
           collection :aspect_keys, as: 'aspectKeys'
           property :entry, as: 'entry', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry::Representation
       
+          property :entry_link, as: 'entryLink', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLink, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLink::Representation
+      
           property :update_mask, as: 'updateMask'
         end
       end
@@ -3271,9 +3273,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :created_entries, :numeric_string => true, as: 'createdEntries'
+          property :created_entry_links, :numeric_string => true, as: 'createdEntryLinks'
           property :deleted_entries, :numeric_string => true, as: 'deletedEntries'
+          property :deleted_entry_links, :numeric_string => true, as: 'deletedEntryLinks'
           property :recreated_entries, :numeric_string => true, as: 'recreatedEntries'
           property :unchanged_entries, :numeric_string => true, as: 'unchangedEntries'
+          property :unchanged_entry_links, :numeric_string => true, as: 'unchangedEntryLinks'
           property :update_time, as: 'updateTime'
           property :updated_entries, :numeric_string => true, as: 'updatedEntries'
         end
@@ -3297,7 +3302,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :aspect_types, as: 'aspectTypes'
           collection :entry_groups, as: 'entryGroups'
+          collection :entry_link_types, as: 'entryLinkTypes'
           collection :entry_types, as: 'entryTypes'
+          collection :glossaries, as: 'glossaries'
+          collection :referenced_entry_scopes, as: 'referencedEntryScopes'
         end
       end
       
