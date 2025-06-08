@@ -305,8 +305,8 @@ module Google
         # @return [String]
         attr_accessor :purpose
       
-        # Required. The name of a [region](/compute/docs/regions-zones) for the subnet,
-        # such `europe-west1`.
+        # Required. The name of a [region](https://cloud.google.com/compute/docs/regions-
+        # zones) for the subnet, such `europe-west1`.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -356,8 +356,8 @@ module Google
         alias_method :skip_requested_address_validation?, :skip_requested_address_validation
       
         # Required. A name for the new subnet. For information about the naming
-        # requirements, see [subnetwork](/compute/docs/reference/rest/v1/subnetworks) in
-        # the Compute API documentation.
+        # requirements, see [subnetwork](https://cloud.google.com/compute/docs/reference/
+        # rest/v1/subnetworks) in the Compute API documentation.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -1131,17 +1131,17 @@ module Google
       class CloudSqlConfig
         include Google::Apis::Core::Hashable
       
-        # Peering service used for peering with the Cloud SQL project.
+        # Required. Peering service used for peering with the Cloud SQL project.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
       
-        # The name of the umbrella network in the Cloud SQL umbrella project.
+        # Required. The name of the umbrella network in the Cloud SQL umbrella project.
         # Corresponds to the JSON property `umbrellaNetwork`
         # @return [String]
         attr_accessor :umbrella_network
       
-        # The project number of the Cloud SQL umbrella project.
+        # Required. The project number of the Cloud SQL umbrella project.
         # Corresponds to the JSON property `umbrellaProject`
         # @return [Fixnum]
         attr_accessor :umbrella_project
@@ -1197,11 +1197,11 @@ module Google
       class Connection
         include Google::Apis::Core::Hashable
       
-        # The name of service consumer's VPC network that's connected with service
-        # producer network, in the following format: `projects/`project`/global/networks/
-        # `network``. ``project`` is a project number, such as in `12345` that includes
-        # the VPC service consumer's VPC network. ``network`` is the name of the service
-        # consumer's VPC network.
+        # Required. The name of service consumer's VPC network that's connected with
+        # service producer network, in the following format: `projects/`project`/global/
+        # networks/`network``. ``project`` is a project number, such as in `12345` that
+        # includes the VPC service consumer's VPC network. ``network`` is the name of
+        # the service consumer's VPC network.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -3861,9 +3861,10 @@ module Google
         # @return [String]
         attr_accessor :dns_suffix
       
-        # User assigned name for this resource. Must be unique within the consumer
-        # network. The name must be 1-63 characters long, must begin with a letter, end
-        # with a letter or digit, and only contain lowercase letters, digits or dashes.
+        # Required. User assigned name for this resource. Must be unique within the
+        # consumer network. The name must be 1-63 characters long, must begin with a
+        # letter, end with a letter or digit, and only contain lowercase letters, digits
+        # or dashes.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4486,10 +4487,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :ip_prefix_length
       
-        # Network name in the consumer project. This network must have been already
-        # peered with a shared VPC network using CreateConnection method. Must be in a
-        # form 'projects/`project`/global/networks/`network`'. `project` is a project
-        # number, as in '12345' `network` is network name.
+        # Required. Network name in the consumer project. This network must have been
+        # already peered with a shared VPC network using CreateConnection method. Must
+        # be in a form 'projects/`project`/global/networks/`network`'. `project` is a
+        # project number, as in '12345' `network` is network name.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
