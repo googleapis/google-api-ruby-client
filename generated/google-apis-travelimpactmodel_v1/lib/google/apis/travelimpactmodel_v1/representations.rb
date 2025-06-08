@@ -34,6 +34,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ComputeTypicalFlightEmissionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ComputeTypicalFlightEmissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Date
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -58,7 +70,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Market
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ModelVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TypicalFlightEmissions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -78,6 +102,24 @@ module Google
           collection :flight_emissions, as: 'flightEmissions', class: Google::Apis::TravelimpactmodelV1::FlightWithEmissions, decorator: Google::Apis::TravelimpactmodelV1::FlightWithEmissions::Representation
       
           property :model_version, as: 'modelVersion', class: Google::Apis::TravelimpactmodelV1::ModelVersion, decorator: Google::Apis::TravelimpactmodelV1::ModelVersion::Representation
+      
+        end
+      end
+      
+      class ComputeTypicalFlightEmissionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :markets, as: 'markets', class: Google::Apis::TravelimpactmodelV1::Market, decorator: Google::Apis::TravelimpactmodelV1::Market::Representation
+      
+        end
+      end
+      
+      class ComputeTypicalFlightEmissionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :model_version, as: 'modelVersion', class: Google::Apis::TravelimpactmodelV1::ModelVersion, decorator: Google::Apis::TravelimpactmodelV1::ModelVersion::Representation
+      
+          collection :typical_flight_emissions, as: 'typicalFlightEmissions', class: Google::Apis::TravelimpactmodelV1::TypicalFlightEmissions, decorator: Google::Apis::TravelimpactmodelV1::TypicalFlightEmissions::Representation
       
         end
       end
@@ -123,6 +165,14 @@ module Google
         end
       end
       
+      class Market
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination, as: 'destination'
+          property :origin, as: 'origin'
+        end
+      end
+      
       class ModelVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -130,6 +180,16 @@ module Google
           property :major, as: 'major'
           property :minor, as: 'minor'
           property :patch, as: 'patch'
+        end
+      end
+      
+      class TypicalFlightEmissions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :emissions_grams_per_pax, as: 'emissionsGramsPerPax', class: Google::Apis::TravelimpactmodelV1::EmissionsGramsPerPax, decorator: Google::Apis::TravelimpactmodelV1::EmissionsGramsPerPax::Representation
+      
+          property :market, as: 'market', class: Google::Apis::TravelimpactmodelV1::Market, decorator: Google::Apis::TravelimpactmodelV1::Market::Representation
+      
         end
       end
     end
