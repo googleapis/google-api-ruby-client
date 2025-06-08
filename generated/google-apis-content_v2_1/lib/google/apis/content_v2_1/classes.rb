@@ -1354,6 +1354,12 @@ module Google
         attr_accessor :payments_manager
         alias_method :payments_manager?, :payments_manager
       
+        # Optional. Whether user has standard read-only access.
+        # Corresponds to the JSON property `readOnly`
+        # @return [Boolean]
+        attr_accessor :read_only
+        alias_method :read_only?, :read_only
+      
         # Whether user is a reporting manager. This role is equivalent to the
         # Performance and insights role in Merchant Center.
         # Corresponds to the JSON property `reportingManager`
@@ -1372,6 +1378,7 @@ module Google
           @order_manager = args[:order_manager] if args.key?(:order_manager)
           @payments_analyst = args[:payments_analyst] if args.key?(:payments_analyst)
           @payments_manager = args[:payments_manager] if args.key?(:payments_manager)
+          @read_only = args[:read_only] if args.key?(:read_only)
           @reporting_manager = args[:reporting_manager] if args.key?(:reporting_manager)
         end
       end

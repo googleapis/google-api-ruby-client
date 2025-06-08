@@ -2338,6 +2338,7 @@ module Google
           property :order_manager, as: 'orderManager'
           property :payments_analyst, as: 'paymentsAnalyst'
           property :payments_manager, as: 'paymentsManager'
+          property :read_only, as: 'readOnly'
           property :reporting_manager, as: 'reportingManager'
         end
       end
