@@ -427,7 +427,20 @@ module Google
         # @param [String] request_id
         #   Optional. Idempotent request UUID.
         # @param [String] update_mask
-        #   Required. Mask used to update an instance
+        #   Required. Mask used to update an instance. Updatable fields: * `labels` * `
+        #   gce_setup.min_cpu_platform` * `gce_setup.metadata` * `gce_setup.machine_type` *
+        #   `gce_setup.accelerator_configs` * `gce_setup.accelerator_configs.type` * `
+        #   gce_setup.accelerator_configs.core_count` * `gce_setup.gpu_driver_config` * `
+        #   gce_setup.gpu_driver_config.enable_gpu_driver` * `gce_setup.gpu_driver_config.
+        #   custom_gpu_driver_path` * `gce_setup.shielded_instance_config` * `gce_setup.
+        #   shielded_instance_config.enable_secure_boot` * `gce_setup.
+        #   shielded_instance_config.enable_vtpm` * `gce_setup.shielded_instance_config.
+        #   enable_integrity_monitoring` * `gce_setup.reservation_affinity` * `gce_setup.
+        #   reservation_affinity.consume_reservation_type` * `gce_setup.
+        #   reservation_affinity.key` * `gce_setup.reservation_affinity.values` * `
+        #   gce_setup.tags` * `gce_setup.container_image` * `gce_setup.container_image.
+        #   repository` * `gce_setup.container_image.tag` * `gce_setup.disable_public_ip` *
+        #   `disable_proxy_access`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
