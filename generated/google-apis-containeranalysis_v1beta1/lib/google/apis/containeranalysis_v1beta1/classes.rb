@@ -2312,9 +2312,8 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGitSourceRepository
         include Google::Apis::Core::Hashable
       
-        # The Developer Connect Git repository link or the url that matches a repository
-        # link in the current project, formatted as `projects/*/locations/*/connections/*
-        # /gitRepositoryLink/*`
+        # The Developer Connect Git repository link formatted as `projects/*/locations/*/
+        # connections/*/gitRepositoryLink/*`
         # Corresponds to the JSON property `developerConnect`
         # @return [String]
         attr_accessor :developer_connect
@@ -3427,6 +3426,11 @@ module Google
         # @return [String]
         attr_accessor :continuous_analysis
       
+        # Files that make up the resource described by the occurrence.
+        # Corresponds to the JSON property `files`
+        # @return [Array<Google::Apis::ContaineranalysisV1beta1::File>]
+        attr_accessor :files
+      
         # The last time continuous analysis was done for this resource. Deprecated, do
         # not use.
         # Corresponds to the JSON property `lastAnalysisTime`
@@ -3454,6 +3458,7 @@ module Google
           @analysis_status = args[:analysis_status] if args.key?(:analysis_status)
           @analysis_status_error = args[:analysis_status_error] if args.key?(:analysis_status_error)
           @continuous_analysis = args[:continuous_analysis] if args.key?(:continuous_analysis)
+          @files = args[:files] if args.key?(:files)
           @last_analysis_time = args[:last_analysis_time] if args.key?(:last_analysis_time)
           @last_scan_time = args[:last_scan_time] if args.key?(:last_scan_time)
           @sbom_status = args[:sbom_status] if args.key?(:sbom_status)
@@ -3861,6 +3866,31 @@ module Google
           @comment = args[:comment] if args.key?(:comment)
           @locator = args[:locator] if args.key?(:locator)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class File
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `digest`
+        # @return [Hash<String,String>]
+        attr_accessor :digest
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @digest = args[:digest] if args.key?(:digest)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
