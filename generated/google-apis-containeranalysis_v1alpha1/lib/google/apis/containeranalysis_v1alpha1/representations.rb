@@ -532,6 +532,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class File
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FileHashes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2029,6 +2035,8 @@ module Google
           property :archive_time, as: 'archiveTime'
           property :continuous_analysis, as: 'continuousAnalysis'
           property :cpe, as: 'cpe'
+          collection :files, as: 'files', class: Google::Apis::ContaineranalysisV1alpha1::File, decorator: Google::Apis::ContaineranalysisV1alpha1::File::Representation
+      
           property :last_scan_time, as: 'lastScanTime'
           property :operation, as: 'operation', class: Google::Apis::ContaineranalysisV1alpha1::Operation, decorator: Google::Apis::ContaineranalysisV1alpha1::Operation::Representation
       
@@ -2123,6 +2131,14 @@ module Google
           property :comment, as: 'comment'
           property :locator, as: 'locator'
           property :type, as: 'type'
+        end
+      end
+      
+      class File
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :digest, as: 'digest'
+          property :name, as: 'name'
         end
       end
       
