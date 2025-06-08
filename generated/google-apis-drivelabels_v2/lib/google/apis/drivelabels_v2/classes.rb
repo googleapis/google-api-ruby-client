@@ -2192,6 +2192,11 @@ module Google
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2LabelDisplayHints]
         attr_accessor :display_hints
       
+        # Describes the Workspace apps in which the Label can be used.
+        # Corresponds to the JSON property `enabledAppSettings`
+        # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2LabelEnabledAppSettings]
+        attr_accessor :enabled_app_settings
+      
         # List of fields in descending priority order.
         # Corresponds to the JSON property `fields`
         # @return [Array<Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2Field>]
@@ -2295,6 +2300,7 @@ module Google
           @disable_time = args[:disable_time] if args.key?(:disable_time)
           @disabler = args[:disabler] if args.key?(:disabler)
           @display_hints = args[:display_hints] if args.key?(:display_hints)
+          @enabled_app_settings = args[:enabled_app_settings] if args.key?(:enabled_app_settings)
           @fields = args[:fields] if args.key?(:fields)
           @id = args[:id] if args.key?(:id)
           @label_type = args[:label_type] if args.key?(:label_type)
@@ -2404,6 +2410,44 @@ module Google
           @hidden_in_search = args[:hidden_in_search] if args.key?(:hidden_in_search)
           @priority = args[:priority] if args.key?(:priority)
           @shown_in_apply = args[:shown_in_apply] if args.key?(:shown_in_apply)
+        end
+      end
+      
+      # Describes the Workspace apps in which the Label can be used.
+      class GoogleAppsDriveLabelsV2LabelEnabledAppSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The list of Apps where the Label can be used.
+        # Corresponds to the JSON property `enabledApps`
+        # @return [Array<Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp>]
+        attr_accessor :enabled_apps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled_apps = args[:enabled_apps] if args.key?(:enabled_apps)
+        end
+      end
+      
+      # An App where the Label can be used.
+      class GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the App.
+        # Corresponds to the JSON property `app`
+        # @return [String]
+        attr_accessor :app
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app = args[:app] if args.key?(:app)
         end
       end
       
@@ -3030,6 +3074,49 @@ module Google
         # Update properties of this object
         def update!(**args)
           @copy_mode = args[:copy_mode] if args.key?(:copy_mode)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @use_admin_access = args[:use_admin_access] if args.key?(:use_admin_access)
+          @view = args[:view] if args.key?(:view)
+        end
+      end
+      
+      # Request to update the `EnabledAppSettings` of the given Label. This change is
+      # not revisioned, does not require publishing, and takes effect immediately. \
+      class GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Describes the Workspace apps in which the Label can be used.
+        # Corresponds to the JSON property `enabledAppSettings`
+        # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2LabelEnabledAppSettings]
+        attr_accessor :enabled_app_settings
+      
+        # Optional. The BCP-47 language code to use for evaluating localized field
+        # labels. When not specified, values in the default configured language will be
+        # used.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Optional. Set to `true` in order to use the user's admin credentials. The
+        # server will verify the user is an admin for the Label before allowing access.
+        # Corresponds to the JSON property `useAdminAccess`
+        # @return [Boolean]
+        attr_accessor :use_admin_access
+        alias_method :use_admin_access?, :use_admin_access
+      
+        # Optional. When specified, only certain fields belonging to the indicated view
+        # will be returned.
+        # Corresponds to the JSON property `view`
+        # @return [String]
+        attr_accessor :view
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled_app_settings = args[:enabled_app_settings] if args.key?(:enabled_app_settings)
           @language_code = args[:language_code] if args.key?(:language_code)
           @use_admin_access = args[:use_admin_access] if args.key?(:use_admin_access)
           @view = args[:view] if args.key?(:view)
