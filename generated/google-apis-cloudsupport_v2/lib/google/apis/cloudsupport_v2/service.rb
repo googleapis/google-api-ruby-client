@@ -599,17 +599,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Download a file attached to a case. Note: HTTP requests must append "?alt=
-        # media" to the URL. EXAMPLES: cURL: ```shell name="projects/some-project/cases/
-        # 43594844/attachments/0674M00000WijAnZAJ" curl \ --header "Authorization:
-        # Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.
-        # com/v2/$name:download?alt=media" ``` Python: ```python import googleapiclient.
-        # discovery api_version = "v2" supportApiService = googleapiclient.discovery.
-        # build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"
-        # https://cloudsupport.googleapis.com/$discovery/rest?version=`api_version`", )
-        # request = supportApiService.media().download( name="projects/some-project/
-        # cases/43595344/attachments/0684M00000Pw6pHQAR" ) request.uri = request.uri.
-        # split("?")[0] + "?alt=media" print(request.execute()) ```
+        # Download a file attached to a case. When this endpoint is called, no "response
+        # body" will be returned. Instead, the attachment's blob will be returned. Note:
+        # HTTP requests must append "?alt=media" to the URL. EXAMPLES: cURL: ```shell
+        # name="projects/some-project/cases/43594844/attachments/0674M00000WijAnZAJ"
+        # curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ "
+        # https://cloudsupport.googleapis.com/v2/$name:download?alt=media" ``` Python: ``
+        # `python import googleapiclient.discovery api_version = "v2" supportApiService =
+        # googleapiclient.discovery.build( serviceName="cloudsupport", version=
+        # api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$
+        # discovery/rest?version=`api_version`", ) request = supportApiService.media().
+        # download( name="projects/some-project/cases/43595344/attachments/
+        # 0684M00000Pw6pHQAR" ) request.uri = request.uri.split("?")[0] + "?alt=media"
+        # print(request.execute()) ```
         # @param [String] name
         #   The name of the file attachment to download.
         # @param [String] fields
