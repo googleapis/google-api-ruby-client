@@ -902,17 +902,17 @@ module Google
       class CloudSqlConfig
         include Google::Apis::Core::Hashable
       
-        # Peering service used for peering with the Cloud SQL project.
+        # Required. Peering service used for peering with the Cloud SQL project.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
       
-        # The name of the umbrella network in the Cloud SQL umbrella project.
+        # Required. The name of the umbrella network in the Cloud SQL umbrella project.
         # Corresponds to the JSON property `umbrellaNetwork`
         # @return [String]
         attr_accessor :umbrella_network
       
-        # The project number of the Cloud SQL umbrella project.
+        # Required. The project number of the Cloud SQL umbrella project.
         # Corresponds to the JSON property `umbrellaProject`
         # @return [Fixnum]
         attr_accessor :umbrella_project
@@ -968,11 +968,11 @@ module Google
       class Connection
         include Google::Apis::Core::Hashable
       
-        # The name of service consumer's VPC network that's connected with service
-        # producer network, in the following format: `projects/`project`/global/networks/
-        # `network``. ``project`` is a project number, such as in `12345` that includes
-        # the VPC service consumer's VPC network. ``network`` is the name of the service
-        # consumer's VPC network.
+        # Required. The name of service consumer's VPC network that's connected with
+        # service producer network, in the following format: `projects/`project`/global/
+        # networks/`network``. ``project`` is a project number, such as in `12345` that
+        # includes the VPC service consumer's VPC network. ``network`` is the name of
+        # the service consumer's VPC network.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -3396,9 +3396,10 @@ module Google
         # @return [String]
         attr_accessor :dns_suffix
       
-        # User assigned name for this resource. Must be unique within the consumer
-        # network. The name must be 1-63 characters long, must begin with a letter, end
-        # with a letter or digit, and only contain lowercase letters, digits or dashes.
+        # Required. User assigned name for this resource. Must be unique within the
+        # consumer network. The name must be 1-63 characters long, must begin with a
+        # letter, end with a letter or digit, and only contain lowercase letters, digits
+        # or dashes.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
