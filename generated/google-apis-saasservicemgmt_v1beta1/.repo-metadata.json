@@ -1,0 +1,7 @@
+{
+    "api_id": "saasservicemgmt:v1beta1",
+    "name_pretty": "SaaS Runtime API",
+    "distribution_name": "google-apis-saasservicemgmt_v1beta1",
+    "language": "ruby",
+    "library_type": "REST"
+}
