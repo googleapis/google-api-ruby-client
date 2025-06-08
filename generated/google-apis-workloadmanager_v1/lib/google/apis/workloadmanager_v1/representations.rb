@@ -28,6 +28,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AgentStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentStatusConfigValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentStatusIamPermission
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentStatusReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentStatusServiceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackupProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -118,19 +148,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Instance
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class InstanceProperties
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Layer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -316,6 +334,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SapDiscoveryResourceInstancePropertiesKernelVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SapDiscoveryResourceInstancePropertiesKernelVersionVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SapDiscoveryWorkloadProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -450,6 +480,67 @@ module Google
         end
       end
       
+      class AgentStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_name, as: 'agentName'
+          property :available_version, as: 'availableVersion'
+          property :cloud_api_access_full_scopes_granted, as: 'cloudApiAccessFullScopesGranted'
+          property :configuration_error_message, as: 'configurationErrorMessage'
+          property :configuration_file_path, as: 'configurationFilePath'
+          property :configuration_valid, as: 'configurationValid'
+          property :installed_version, as: 'installedVersion'
+          property :kernel_version, as: 'kernelVersion', class: Google::Apis::WorkloadmanagerV1::SapDiscoveryResourceInstancePropertiesKernelVersion, decorator: Google::Apis::WorkloadmanagerV1::SapDiscoveryResourceInstancePropertiesKernelVersion::Representation
+      
+          collection :references, as: 'references', class: Google::Apis::WorkloadmanagerV1::AgentStatusReference, decorator: Google::Apis::WorkloadmanagerV1::AgentStatusReference::Representation
+      
+          collection :services, as: 'services', class: Google::Apis::WorkloadmanagerV1::AgentStatusServiceStatus, decorator: Google::Apis::WorkloadmanagerV1::AgentStatusServiceStatus::Representation
+      
+          property :systemd_service_enabled, as: 'systemdServiceEnabled'
+          property :systemd_service_running, as: 'systemdServiceRunning'
+        end
+      end
+      
+      class AgentStatusConfigValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_default, as: 'isDefault'
+          property :name, as: 'name'
+          property :value, as: 'value'
+        end
+      end
+      
+      class AgentStatusIamPermission
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :granted, as: 'granted'
+          property :name, as: 'name'
+        end
+      end
+      
+      class AgentStatusReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :url, as: 'url'
+        end
+      end
+      
+      class AgentStatusServiceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :config_values, as: 'configValues', class: Google::Apis::WorkloadmanagerV1::AgentStatusConfigValue, decorator: Google::Apis::WorkloadmanagerV1::AgentStatusConfigValue::Representation
+      
+          property :error_message, as: 'errorMessage'
+          property :fully_functional, as: 'fullyFunctional'
+          collection :iam_permissions, as: 'iamPermissions', class: Google::Apis::WorkloadmanagerV1::AgentStatusIamPermission, decorator: Google::Apis::WorkloadmanagerV1::AgentStatusIamPermission::Representation
+      
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :unspecified_state_message, as: 'unspecifiedStateMessage'
+        end
+      end
+      
       class BackupProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -502,6 +593,8 @@ module Google
           property :is_required, as: 'isRequired'
           property :state, as: 'state'
           collection :sub_component_healthes, as: 'subComponentHealthes', class: Google::Apis::WorkloadmanagerV1::ComponentHealth, decorator: Google::Apis::WorkloadmanagerV1::ComponentHealth::Representation
+      
+          collection :sub_components_health, as: 'subComponentsHealth', class: Google::Apis::WorkloadmanagerV1::ComponentHealth, decorator: Google::Apis::WorkloadmanagerV1::ComponentHealth::Representation
       
         end
       end
@@ -614,6 +707,8 @@ module Google
       class Insight
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_status, as: 'agentStatus', class: Google::Apis::WorkloadmanagerV1::AgentStatus, decorator: Google::Apis::WorkloadmanagerV1::AgentStatus::Representation
+      
           property :instance_id, as: 'instanceId'
           property :sap_discovery, as: 'sapDiscovery', class: Google::Apis::WorkloadmanagerV1::SapDiscovery, decorator: Google::Apis::WorkloadmanagerV1::SapDiscovery::Representation
       
@@ -627,38 +722,17 @@ module Google
         end
       end
       
-      class Instance
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :region, as: 'region'
-          property :status, as: 'status'
-        end
-      end
-      
       class InstanceProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance_number, as: 'instanceNumber'
           property :machine_type, as: 'machineType'
-          property :role, as: 'role'
           collection :roles, as: 'roles'
           property :sap_instance_properties, as: 'sapInstanceProperties', class: Google::Apis::WorkloadmanagerV1::SapInstanceProperties, decorator: Google::Apis::WorkloadmanagerV1::SapInstanceProperties::Representation
       
           property :status, as: 'status'
           property :upcoming_maintenance_event, as: 'upcomingMaintenanceEvent', class: Google::Apis::WorkloadmanagerV1::UpcomingMaintenanceEvent, decorator: Google::Apis::WorkloadmanagerV1::UpcomingMaintenanceEvent::Representation
       
-        end
-      end
-      
-      class Layer
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :application_type, as: 'applicationType'
-          property :database_type, as: 'databaseType'
-          collection :instances, as: 'instances', class: Google::Apis::WorkloadmanagerV1::Instance, decorator: Google::Apis::WorkloadmanagerV1::Instance::Representation
-      
-          property :sid, as: 'sid'
         end
       end
       
@@ -974,6 +1048,8 @@ module Google
           property :instance_number, :numeric_string => true, as: 'instanceNumber'
           property :instance_role, as: 'instanceRole'
           property :is_dr_site, as: 'isDrSite'
+          property :os_kernel_version, as: 'osKernelVersion', class: Google::Apis::WorkloadmanagerV1::SapDiscoveryResourceInstancePropertiesKernelVersion, decorator: Google::Apis::WorkloadmanagerV1::SapDiscoveryResourceInstancePropertiesKernelVersion::Representation
+      
           property :virtual_hostname, as: 'virtualHostname'
         end
       end
@@ -992,6 +1068,28 @@ module Google
           collection :disk_names, as: 'diskNames'
           property :mount_point, as: 'mountPoint'
           property :name, as: 'name'
+        end
+      end
+      
+      class SapDiscoveryResourceInstancePropertiesKernelVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :distro_kernel, as: 'distroKernel', class: Google::Apis::WorkloadmanagerV1::SapDiscoveryResourceInstancePropertiesKernelVersionVersion, decorator: Google::Apis::WorkloadmanagerV1::SapDiscoveryResourceInstancePropertiesKernelVersionVersion::Representation
+      
+          property :os_kernel, as: 'osKernel', class: Google::Apis::WorkloadmanagerV1::SapDiscoveryResourceInstancePropertiesKernelVersionVersion, decorator: Google::Apis::WorkloadmanagerV1::SapDiscoveryResourceInstancePropertiesKernelVersionVersion::Representation
+      
+          property :raw_string, as: 'rawString'
+        end
+      end
+      
+      class SapDiscoveryResourceInstancePropertiesKernelVersionVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :build, as: 'build'
+          property :major, as: 'major'
+          property :minor, as: 'minor'
+          property :patch, as: 'patch'
+          property :remainder, as: 'remainder'
         end
       end
       
@@ -1159,18 +1257,11 @@ module Google
       class WorkloadProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :application, as: 'application', class: Google::Apis::WorkloadmanagerV1::Layer, decorator: Google::Apis::WorkloadmanagerV1::Layer::Representation
-      
-          property :ascs, as: 'ascs', class: Google::Apis::WorkloadmanagerV1::Layer, decorator: Google::Apis::WorkloadmanagerV1::Layer::Representation
-      
-          property :database, as: 'database', class: Google::Apis::WorkloadmanagerV1::Layer, decorator: Google::Apis::WorkloadmanagerV1::Layer::Representation
-      
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :refreshed_time, as: 'refreshedTime'
           property :sap_workload, as: 'sapWorkload', class: Google::Apis::WorkloadmanagerV1::SapWorkload, decorator: Google::Apis::WorkloadmanagerV1::SapWorkload::Representation
       
-          property :state, as: 'state'
           property :workload_type, as: 'workloadType'
         end
       end
@@ -1180,6 +1271,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :check_time, as: 'checkTime'
           collection :component_healthes, as: 'componentHealthes', class: Google::Apis::WorkloadmanagerV1::ComponentHealth, decorator: Google::Apis::WorkloadmanagerV1::ComponentHealth::Representation
+      
+          collection :components_health, as: 'componentsHealth', class: Google::Apis::WorkloadmanagerV1::ComponentHealth, decorator: Google::Apis::WorkloadmanagerV1::ComponentHealth::Representation
       
           property :state, as: 'state'
         end
