@@ -2513,9 +2513,8 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGitSourceRepository
         include Google::Apis::Core::Hashable
       
-        # The Developer Connect Git repository link or the url that matches a repository
-        # link in the current project, formatted as `projects/*/locations/*/connections/*
-        # /gitRepositoryLink/*`
+        # The Developer Connect Git repository link formatted as `projects/*/locations/*/
+        # connections/*/gitRepositoryLink/*`
         # Corresponds to the JSON property `developerConnect`
         # @return [String]
         attr_accessor :developer_connect
@@ -3686,6 +3685,11 @@ module Google
         # @return [String]
         attr_accessor :cpe
       
+        # Files that make up the resource described by the occurrence.
+        # Corresponds to the JSON property `files`
+        # @return [Array<Google::Apis::ContaineranalysisV1::File>]
+        attr_accessor :files
+      
         # The last time this resource was scanned.
         # Corresponds to the JSON property `lastScanTime`
         # @return [String]
@@ -3709,6 +3713,7 @@ module Google
           @archive_time = args[:archive_time] if args.key?(:archive_time)
           @continuous_analysis = args[:continuous_analysis] if args.key?(:continuous_analysis)
           @cpe = args[:cpe] if args.key?(:cpe)
+          @files = args[:files] if args.key?(:files)
           @last_scan_time = args[:last_scan_time] if args.key?(:last_scan_time)
           @sbom_status = args[:sbom_status] if args.key?(:sbom_status)
         end
@@ -3933,6 +3938,31 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # 
+      class File
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `digest`
+        # @return [Hash<String,String>]
+        attr_accessor :digest
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @digest = args[:digest] if args.key?(:digest)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
