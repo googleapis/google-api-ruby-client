@@ -466,6 +466,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -473,6 +479,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequestInlineSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3118,6 +3130,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaCmekConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3881,6 +3905,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaUserInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaUserLicense
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4702,12 +4732,20 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :failure_count, :numeric_string => true, as: 'failureCount'
+          property :success_count, :numeric_string => true, as: 'successCount'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :delete_unassigned_user_licenses, as: 'deleteUnassignedUserLicenses'
-          property :gcs_source, as: 'gcsSource', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1GcsSource, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1GcsSource::Representation
-      
           property :inline_source, as: 'inlineSource', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequestInlineSource, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequestInlineSource::Representation
       
         end
@@ -4717,6 +4755,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :update_mask, as: 'updateMask'
+          collection :user_licenses, as: 'userLicenses', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1UserLicense, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1UserLicense::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :error_samples, as: 'errorSamples', class: Google::Apis::DiscoveryengineV1::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1::GoogleRpcStatus::Representation
+      
           collection :user_licenses, as: 'userLicenses', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1UserLicense, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1UserLicense::Representation
       
         end
@@ -6849,6 +6897,7 @@ module Google
       
           property :query, as: 'query', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Query, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Query::Representation
       
+          hash :query_configs, as: 'queryConfigs'
         end
       end
       
@@ -8978,6 +9027,7 @@ module Google
       
           property :query, as: 'query', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaQuery, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaQuery::Representation
       
+          hash :query_configs, as: 'queryConfigs'
         end
       end
       
@@ -9202,6 +9252,26 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :target_sites, as: 'targetSites', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaTargetSite, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaTargetSite::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :failure_count, :numeric_string => true, as: 'failureCount'
+          property :success_count, :numeric_string => true, as: 'successCount'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :error_samples, as: 'errorSamples', class: Google::Apis::DiscoveryengineV1::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1::GoogleRpcStatus::Representation
+      
+          collection :user_licenses, as: 'userLicenses', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaUserLicense, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaUserLicense::Representation
       
         end
       end
@@ -10484,6 +10554,19 @@ module Google
           property :time_zone, as: 'timeZone'
           property :user_agent, as: 'userAgent'
           property :user_id, as: 'userId'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaUserLicense
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :last_login_time, as: 'lastLoginTime'
+          property :license_assignment_state, as: 'licenseAssignmentState'
+          property :license_config, as: 'licenseConfig'
+          property :update_time, as: 'updateTime'
+          property :user_principal, as: 'userPrincipal'
+          property :user_profile, as: 'userProfile'
         end
       end
       
