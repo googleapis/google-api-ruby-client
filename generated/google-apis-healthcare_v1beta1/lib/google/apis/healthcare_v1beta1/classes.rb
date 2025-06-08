@@ -257,144 +257,6 @@ module Google
         end
       end
       
-      # An annotation record.
-      class Annotation
-        include Google::Apis::Core::Hashable
-      
-        # AnnotationSource holds the source information of the annotation.
-        # Corresponds to the JSON property `annotationSource`
-        # @return [Google::Apis::HealthcareV1beta1::AnnotationSource]
-        attr_accessor :annotation_source
-      
-        # Additional information for this annotation record, such as annotator and
-        # verifier information or study campaign.
-        # Corresponds to the JSON property `customData`
-        # @return [Hash<String,String>]
-        attr_accessor :custom_data
-      
-        # Image annotation.
-        # Corresponds to the JSON property `imageAnnotation`
-        # @return [Google::Apis::HealthcareV1beta1::ImageAnnotation]
-        attr_accessor :image_annotation
-      
-        # Identifier. Resource name of the Annotation, of the form `projects/`project_id`
-        # /locations/`location_id`/datasets/`dataset_id`/annotationStores/`
-        # annotation_store_id`/annotations/`annotation_id``.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Resource level annotation.
-        # Corresponds to the JSON property `resourceAnnotation`
-        # @return [Google::Apis::HealthcareV1beta1::ResourceAnnotation]
-        attr_accessor :resource_annotation
-      
-        # A TextAnnotation specifies a text range that includes sensitive information.
-        # Corresponds to the JSON property `textAnnotation`
-        # @return [Google::Apis::HealthcareV1beta1::SensitiveTextAnnotation]
-        attr_accessor :text_annotation
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @annotation_source = args[:annotation_source] if args.key?(:annotation_source)
-          @custom_data = args[:custom_data] if args.key?(:custom_data)
-          @image_annotation = args[:image_annotation] if args.key?(:image_annotation)
-          @name = args[:name] if args.key?(:name)
-          @resource_annotation = args[:resource_annotation] if args.key?(:resource_annotation)
-          @text_annotation = args[:text_annotation] if args.key?(:text_annotation)
-        end
-      end
-      
-      # Specifies how to store annotations during de-identification operation.
-      class AnnotationConfig
-        include Google::Apis::Core::Hashable
-      
-        # The name of the annotation store, in the form `projects/`project_id`/locations/
-        # `location_id`/datasets/`dataset_id`/annotationStores/`annotation_store_id``). *
-        # The destination annotation store must be in the same project as the source
-        # data. De-identifying data across multiple projects is not supported. * The
-        # destination annotation store must exist when using DeidentifyDicomStore or
-        # DeidentifyFhirStore. DeidentifyDataset automatically creates the destination
-        # annotation store.
-        # Corresponds to the JSON property `annotationStoreName`
-        # @return [String]
-        attr_accessor :annotation_store_name
-      
-        # If set to true, the sensitive texts are included in SensitiveTextAnnotation of
-        # Annotation.
-        # Corresponds to the JSON property `storeQuote`
-        # @return [Boolean]
-        attr_accessor :store_quote
-        alias_method :store_quote?, :store_quote
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @annotation_store_name = args[:annotation_store_name] if args.key?(:annotation_store_name)
-          @store_quote = args[:store_quote] if args.key?(:store_quote)
-        end
-      end
-      
-      # AnnotationSource holds the source information of the annotation.
-      class AnnotationSource
-        include Google::Apis::Core::Hashable
-      
-        # Cloud Healthcare API resource.
-        # Corresponds to the JSON property `cloudHealthcareSource`
-        # @return [Google::Apis::HealthcareV1beta1::CloudHealthcareSource]
-        attr_accessor :cloud_healthcare_source
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cloud_healthcare_source = args[:cloud_healthcare_source] if args.key?(:cloud_healthcare_source)
-        end
-      end
-      
-      # An Annotation store that can store annotation resources such as labels and
-      # tags for text, image and audio.
-      class AnnotationStore
-        include Google::Apis::Core::Hashable
-      
-        # Optional. User-supplied key-value pairs used to organize Annotation stores.
-        # Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-        # maximum 128 bytes, and must conform to the following PCRE regular expression: \
-        # p`Ll`\p`Lo``0,62` Label values must be between 1 and 63 characters long, have
-        # a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE
-        # regular expression: [\p`Ll`\p`Lo`\p`N`_-]`0,63` No more than 64 labels can be
-        # associated with a given store.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # Identifier. Resource name of the Annotation store, of the form `projects/`
-        # project_id`/locations/`location_id`/datasets/`dataset_id`/annotationStores/`
-        # annotation_store_id``.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @labels = args[:labels] if args.key?(:labels)
-          @name = args[:name] if args.key?(:name)
-        end
-      end
-      
       # Contains the error details of the unsupported admin Consent resources for when
       # the ApplyAdminConsents method fails to apply one or more Consent resources.
       class ApplyAdminConsentsErrorDetail
@@ -940,31 +802,6 @@ module Google
         end
       end
       
-      # A bounding polygon for the detected image annotation.
-      class BoundingPoly
-        include Google::Apis::Core::Hashable
-      
-        # A description of this polygon.
-        # Corresponds to the JSON property `label`
-        # @return [String]
-        attr_accessor :label
-      
-        # List of the vertices of this polygon.
-        # Corresponds to the JSON property `vertices`
-        # @return [Array<Google::Apis::HealthcareV1beta1::Vertex>]
-        attr_accessor :vertices
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @label = args[:label] if args.key?(:label)
-          @vertices = args[:vertices] if args.key?(:vertices)
-        end
-      end
-      
       # The configuration for exporting to Cloud Storage using the bulk export API.
       class BulkExportGcsDestination
         include Google::Apis::Core::Hashable
@@ -1151,25 +988,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # Cloud Healthcare API resource.
-      class CloudHealthcareSource
-        include Google::Apis::Core::Hashable
-      
-        # Full path of a Cloud Healthcare API resource.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -1825,11 +1643,6 @@ module Google
       class DeidentifyConfig
         include Google::Apis::Core::Hashable
       
-        # Specifies how to store annotations during de-identification operation.
-        # Corresponds to the JSON property `annotation`
-        # @return [Google::Apis::HealthcareV1beta1::AnnotationConfig]
-        attr_accessor :annotation
-      
         # Specifies the parameters needed for de-identification of DICOM stores.
         # Corresponds to the JSON property `dicom`
         # @return [Google::Apis::HealthcareV1beta1::DicomConfig]
@@ -1882,7 +1695,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @annotation = args[:annotation] if args.key?(:annotation)
           @dicom = args[:dicom] if args.key?(:dicom)
           @dicom_tag_config = args[:dicom_tag_config] if args.key?(:dicom_tag_config)
           @fhir = args[:fhir] if args.key?(:fhir)
@@ -2085,25 +1897,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # Contains multiple sensitive information findings for each resource slice.
-      class Detail
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `findings`
-        # @return [Array<Google::Apis::HealthcareV1beta1::Finding>]
-        attr_accessor :findings
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @findings = args[:findings] if args.key?(:findings)
         end
       end
       
@@ -2498,75 +2291,6 @@ module Google
         end
       end
       
-      # Request to evaluate an Annotation store against a ground truth [Annotation
-      # store].
-      class EvaluateAnnotationStoreRequest
-        include Google::Apis::Core::Hashable
-      
-        # The BigQuery table for export.
-        # Corresponds to the JSON property `bigqueryDestination`
-        # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1AnnotationBigQueryDestination]
-        attr_accessor :bigquery_destination
-      
-        # Optional. InfoType mapping for `eval_store`. Different resources can map to
-        # the same infoType. For example, `PERSON_NAME`, `PERSON`, `NAME`, and `HUMAN`
-        # are different. To map all of these into a single infoType (such as `
-        # PERSON_NAME`), specify the following mapping: ``` info_type_mapping["PERSON"] =
-        # "PERSON_NAME" info_type_mapping["NAME"] = "PERSON_NAME" info_type_mapping["
-        # HUMAN"] = "PERSON_NAME" ``` Unmentioned infoTypes, such as `DATE`, are treated
-        # as identity mapping. For example: ``` info_type_mapping["DATE"] = "DATE" ```
-        # InfoTypes are case-insensitive.
-        # Corresponds to the JSON property `evalInfoTypeMapping`
-        # @return [Hash<String,String>]
-        attr_accessor :eval_info_type_mapping
-      
-        # Optional. Similar to `eval_info_type_mapping`, infoType mapping for `
-        # golden_store`.
-        # Corresponds to the JSON property `goldenInfoTypeMapping`
-        # @return [Hash<String,String>]
-        attr_accessor :golden_info_type_mapping
-      
-        # Required. The Annotation store to use as ground truth, in the format of `
-        # projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        # annotationStores/`annotation_store_id``.
-        # Corresponds to the JSON property `goldenStore`
-        # @return [String]
-        attr_accessor :golden_store
-      
-        # Specifies how to use infoTypes for evaluation. For example, a user might only
-        # want to evaluate `PERSON`, `LOCATION`, and `AGE`.
-        # Corresponds to the JSON property `infoTypeConfig`
-        # @return [Google::Apis::HealthcareV1beta1::InfoTypeConfig]
-        attr_accessor :info_type_config
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
-          @eval_info_type_mapping = args[:eval_info_type_mapping] if args.key?(:eval_info_type_mapping)
-          @golden_info_type_mapping = args[:golden_info_type_mapping] if args.key?(:golden_info_type_mapping)
-          @golden_store = args[:golden_store] if args.key?(:golden_store)
-          @info_type_config = args[:info_type_config] if args.key?(:info_type_config)
-        end
-      end
-      
-      # Response for successful Annotation store evaluation operations. This structure
-      # is included in the response upon operation completion.
-      class EvaluateAnnotationStoreResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Evaluate a user's Consents for all matching User data mappings. Note: User
       # data mappings are indexed asynchronously, causing slight delays between the
       # time mappings are created or updated and when they are included in
@@ -2785,46 +2509,6 @@ module Google
         def update!(**args)
           @consent_scopes = args[:consent_scopes] if args.key?(:consent_scopes)
           @warning = args[:warning] if args.key?(:warning)
-        end
-      end
-      
-      # Request to export Annotations. The export operation is not atomic. If a
-      # failure occurs, any annotations already exported are not removed.
-      class ExportAnnotationsRequest
-        include Google::Apis::Core::Hashable
-      
-        # The BigQuery table for export.
-        # Corresponds to the JSON property `bigqueryDestination`
-        # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1AnnotationBigQueryDestination]
-        attr_accessor :bigquery_destination
-      
-        # The Cloud Storage location for export.
-        # Corresponds to the JSON property `gcsDestination`
-        # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1AnnotationGcsDestination]
-        attr_accessor :gcs_destination
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
-          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
-        end
-      end
-      
-      # Response for successful annotation export operations. This structure is
-      # included in response upon operation completion.
-      class ExportAnnotationsResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -3338,7 +3022,7 @@ module Google
         # complex data types will not be parsed. New stores will have this value set to
         # ENABLED after a notification period. Warning: turning on this flag causes
         # processing existing resources to fail if they contain references to non-
-        # existent resources.
+        # existent resources. Cannot be disabled in R5.
         # Corresponds to the JSON property `complexDataTypeReferenceParsing`
         # @return [String]
         attr_accessor :complex_data_type_reference_parsing
@@ -3635,65 +3319,6 @@ module Google
         end
       end
       
-      # List of infoTypes to be filtered.
-      class FilterList
-        include Google::Apis::Core::Hashable
-      
-        # These infoTypes are based on after the `eval_info_type_mapping` and `
-        # golden_info_type_mapping`.
-        # Corresponds to the JSON property `infoTypes`
-        # @return [Array<String>]
-        attr_accessor :info_types
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @info_types = args[:info_types] if args.key?(:info_types)
-        end
-      end
-      
-      # 
-      class Finding
-        include Google::Apis::Core::Hashable
-      
-        # Zero-based ending index of the found text, exclusively.
-        # Corresponds to the JSON property `end`
-        # @return [Fixnum]
-        attr_accessor :end
-      
-        # The type of information stored in this text range. For example, HumanName,
-        # BirthDate, or Address.
-        # Corresponds to the JSON property `infoType`
-        # @return [String]
-        attr_accessor :info_type
-      
-        # The snippet of the sensitive text. This field is only populated during
-        # deidentification if `store_quote` is set to true in DeidentifyConfig.
-        # Corresponds to the JSON property `quote`
-        # @return [String]
-        attr_accessor :quote
-      
-        # Zero-based starting index of the found text, inclusively.
-        # Corresponds to the JSON property `start`
-        # @return [Fixnum]
-        attr_accessor :start
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @end = args[:end] if args.key?(:end)
-          @info_type = args[:info_type] if args.key?(:info_type)
-          @quote = args[:quote] if args.key?(:quote)
-          @start = args[:start] if args.key?(:start)
-        end
-      end
-      
       # The Cloud Storage output destination. The Cloud Healthcare Service Agent
       # requires the `roles/storage.objectAdmin` Cloud IAM roles on the Cloud Storage
       # location.
@@ -3745,101 +3370,6 @@ module Google
         # .ndjson` imports all files with `.ndjson` extensions in `my-directory/` and
         # its sub-directories. * `?` to match 1 character Files matching the wildcard
         # are expected to contain content only, no metadata.
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @uri = args[:uri] if args.key?(:uri)
-        end
-      end
-      
-      # The BigQuery table for export.
-      class GoogleCloudHealthcareV1beta1AnnotationBigQueryDestination
-        include Google::Apis::Core::Hashable
-      
-        # Use `write_disposition` instead. If `write_disposition` is specified, this
-        # parameter is ignored. force=false is equivalent to write_disposition=
-        # WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
-        # Corresponds to the JSON property `force`
-        # @return [Boolean]
-        attr_accessor :force
-        alias_method :force?, :force
-      
-        # Specifies the schema format to export.
-        # Corresponds to the JSON property `schemaType`
-        # @return [String]
-        attr_accessor :schema_type
-      
-        # BigQuery URI to a table, up to 2000 characters long, must be of the form bq://
-        # projectId.bqDatasetId.tableId.
-        # Corresponds to the JSON property `tableUri`
-        # @return [String]
-        attr_accessor :table_uri
-      
-        # Determines if existing data in the destination dataset is overwritten,
-        # appended to, or not written if the tables contain data. If a write_disposition
-        # is specified, the `force` parameter is ignored.
-        # Corresponds to the JSON property `writeDisposition`
-        # @return [String]
-        attr_accessor :write_disposition
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @force = args[:force] if args.key?(:force)
-          @schema_type = args[:schema_type] if args.key?(:schema_type)
-          @table_uri = args[:table_uri] if args.key?(:table_uri)
-          @write_disposition = args[:write_disposition] if args.key?(:write_disposition)
-        end
-      end
-      
-      # The Cloud Storage location for export.
-      class GoogleCloudHealthcareV1beta1AnnotationGcsDestination
-        include Google::Apis::Core::Hashable
-      
-        # The Cloud Storage destination to export to. URI for a Cloud Storage directory
-        # where the server writes result files, in the format `gs://`bucket-id`/`path/to/
-        # destination/dir``. If there is no trailing slash, the service appends one when
-        # composing the object path. The user is responsible for creating the Cloud
-        # Storage bucket referenced in `uri_prefix`.
-        # Corresponds to the JSON property `uriPrefix`
-        # @return [String]
-        attr_accessor :uri_prefix
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @uri_prefix = args[:uri_prefix] if args.key?(:uri_prefix)
-        end
-      end
-      
-      # Specifies the configuration for importing data from Cloud Storage.
-      class GoogleCloudHealthcareV1beta1AnnotationGcsSource
-        include Google::Apis::Core::Hashable
-      
-        # Points to a Cloud Storage URI containing file(s) with content only. The URI
-        # must be in the following format: `gs://`bucket_id`/`object_id``. The URI can
-        # include wildcards in `object_id` and thus identify multiple files. Supported
-        # wildcards: '*' to match 0 or more non-separator characters '**' to match 0 or
-        # more characters (including separators). Must be used at the end of a path and
-        # with no other wildcards in the path. Can also be used with a file extension (
-        # such as .dcm), which imports all files with the extension in the specified
-        # directory and its sub-directories. For example, `gs://my-bucket/my-directory/**
-        # .json` imports all files with .json extensions in `my-directory/` and its sub-
-        # directories. '?' to match 1 character All other URI formats are invalid. Files
-        # matching the wildcard are expected to contain content only, no metadata.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -4747,32 +4277,6 @@ module Google
         end
       end
       
-      # Image annotation.
-      class ImageAnnotation
-        include Google::Apis::Core::Hashable
-      
-        # The list of polygons outlining the sensitive regions in the image.
-        # Corresponds to the JSON property `boundingPolys`
-        # @return [Array<Google::Apis::HealthcareV1beta1::BoundingPoly>]
-        attr_accessor :bounding_polys
-      
-        # 0-based index of the image frame. For example, an image frame in a DICOM
-        # instance.
-        # Corresponds to the JSON property `frameIndex`
-        # @return [Fixnum]
-        attr_accessor :frame_index
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bounding_polys = args[:bounding_polys] if args.key?(:bounding_polys)
-          @frame_index = args[:frame_index] if args.key?(:frame_index)
-        end
-      end
-      
       # Specifies how to handle de-identification of image pixels.
       class ImageConfig
         include Google::Apis::Core::Hashable
@@ -4806,42 +4310,6 @@ module Google
           @additional_info_types = args[:additional_info_types] if args.key?(:additional_info_types)
           @exclude_info_types = args[:exclude_info_types] if args.key?(:exclude_info_types)
           @text_redaction_mode = args[:text_redaction_mode] if args.key?(:text_redaction_mode)
-        end
-      end
-      
-      # Request to import Annotations. The Annotations to be imported must have client-
-      # supplied resource names which indicate the annotation resource. The import
-      # operation is not atomic. If a failure occurs, any annotations already imported
-      # are not removed.
-      class ImportAnnotationsRequest
-        include Google::Apis::Core::Hashable
-      
-        # Specifies the configuration for importing data from Cloud Storage.
-        # Corresponds to the JSON property `gcsSource`
-        # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1AnnotationGcsSource]
-        attr_accessor :gcs_source
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
-        end
-      end
-      
-      # Final response of importing Annotations in successful case. This structure is
-      # included in the response. It is only included when the operation finishes.
-      class ImportAnnotationsResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -4977,47 +4445,6 @@ module Google
         def update!(**args)
           @content_structure = args[:content_structure] if args.key?(:content_structure)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
-        end
-      end
-      
-      # Specifies how to use infoTypes for evaluation. For example, a user might only
-      # want to evaluate `PERSON`, `LOCATION`, and `AGE`.
-      class InfoTypeConfig
-        include Google::Apis::Core::Hashable
-      
-        # List of infoTypes to be filtered.
-        # Corresponds to the JSON property `evaluateList`
-        # @return [Google::Apis::HealthcareV1beta1::FilterList]
-        attr_accessor :evaluate_list
-      
-        # List of infoTypes to be filtered.
-        # Corresponds to the JSON property `ignoreList`
-        # @return [Google::Apis::HealthcareV1beta1::FilterList]
-        attr_accessor :ignore_list
-      
-        # If `TRUE`, infoTypes described by `filter` are used for evaluation. Otherwise,
-        # infoTypes are not considered for evaluation. For example: * Annotated text: "
-        # Toronto is a location" * Finding 1: ``"infoType": "PERSON", "quote": "Toronto",
-        # "start": 0, "end": 7`` * Finding 2: ``"infoType": "CITY", "quote": "Toronto",
-        # "start": 0, "end": 7`` * Finding 3: ```` * Ground truth: ``"infoType": "
-        # LOCATION", "quote": "Toronto", "start": 0, "end": 7`` When `strict_matching`
-        # is `TRUE`: * Finding 1: 1 false positive * Finding 2: 1 false positive *
-        # Finding 3: 1 false negative When `strict_matching` is `FALSE`: * Finding 1: 1
-        # true positive * Finding 2: 1 true positive * Finding 3: 1 false negative
-        # Corresponds to the JSON property `strictMatching`
-        # @return [Boolean]
-        attr_accessor :strict_matching
-        alias_method :strict_matching?, :strict_matching
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @evaluate_list = args[:evaluate_list] if args.key?(:evaluate_list)
-          @ignore_list = args[:ignore_list] if args.key?(:ignore_list)
-          @strict_matching = args[:strict_matching] if args.key?(:strict_matching)
         end
       end
       
@@ -5219,60 +4646,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @entity_id = args[:entity_id] if args.key?(:entity_id)
-        end
-      end
-      
-      # Lists the Annotation stores in the given dataset.
-      class ListAnnotationStoresResponse
-        include Google::Apis::Core::Hashable
-      
-        # The returned Annotation stores. Won't be more Annotation stores than the value
-        # of page_size in the request.
-        # Corresponds to the JSON property `annotationStores`
-        # @return [Array<Google::Apis::HealthcareV1beta1::AnnotationStore>]
-        attr_accessor :annotation_stores
-      
-        # Token to retrieve the next page of results or empty if there are no more
-        # results in the list.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @annotation_stores = args[:annotation_stores] if args.key?(:annotation_stores)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # Lists the Annotations in the specified Annotation store.
-      class ListAnnotationsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The returned Annotations. Won't be more values than the value of page_size in
-        # the request. See `AnnotationView` in the request for populated fields.
-        # Corresponds to the JSON property `annotations`
-        # @return [Array<Google::Apis::HealthcareV1beta1::Annotation>]
-        attr_accessor :annotations
-      
-        # Token to retrieve the next page of results or empty if there are no more
-        # results in the list.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @annotations = args[:annotations] if args.key?(:annotations)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -6411,25 +5784,6 @@ module Google
         end
       end
       
-      # Resource level annotation.
-      class ResourceAnnotation
-        include Google::Apis::Core::Hashable
-      
-        # A description of the annotation record.
-        # Corresponds to the JSON property `label`
-        # @return [String]
-        attr_accessor :label
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @label = args[:label] if args.key?(:label)
-        end
-      end
-      
       # A list of FHIR resources.
       class Resources
         include Google::Apis::Core::Hashable
@@ -6970,7 +6324,8 @@ module Google
         # Optional. The FHIR resource type to search, such as Patient or Observation.
         # For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/fhir/
         # DSTU2/resourcelist.html), [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
-        # [R4](https://hl7.org/fhir/R4/resourcelist.html)).
+        # [R4](https://hl7.org/fhir/R4/resourcelist.html), [R5](https://hl7.org/fhir/R5/
+        # resourcelist.html)).
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
@@ -7022,27 +6377,6 @@ module Google
           @fields = args[:fields] if args.key?(:fields)
           @segment_id = args[:segment_id] if args.key?(:segment_id)
           @set_id = args[:set_id] if args.key?(:set_id)
-        end
-      end
-      
-      # A TextAnnotation specifies a text range that includes sensitive information.
-      class SensitiveTextAnnotation
-        include Google::Apis::Core::Hashable
-      
-        # Maps from a resource slice. For example, FHIR resource field path to a set of
-        # sensitive text findings. For example, Appointment.Narrative text1 --> `
-        # findings_1, findings_2, findings_3`
-        # Corresponds to the JSON property `details`
-        # @return [Hash<String,Google::Apis::HealthcareV1beta1::Detail>]
-        attr_accessor :details
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @details = args[:details] if args.key?(:details)
         end
       end
       
@@ -7754,31 +7088,6 @@ module Google
         def update!(**args)
           @msh_field = args[:msh_field] if args.key?(:msh_field)
           @value = args[:value] if args.key?(:value)
-        end
-      end
-      
-      # A 2D coordinate in an image. The origin is the top-left.
-      class Vertex
-        include Google::Apis::Core::Hashable
-      
-        # X coordinate.
-        # Corresponds to the JSON property `x`
-        # @return [Float]
-        attr_accessor :x
-      
-        # Y coordinate.
-        # Corresponds to the JSON property `y`
-        # @return [Float]
-        attr_accessor :y
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @x = args[:x] if args.key?(:x)
-          @y = args[:y] if args.key?(:y)
         end
       end
     end
