@@ -1928,6 +1928,11 @@ module Google
         # @return [Google::Apis::LoggingV2::AppHub]
         attr_accessor :apphub
       
+        # Metadata associated with App Hub.
+        # Corresponds to the JSON property `apphubDestination`
+        # @return [Google::Apis::LoggingV2::AppHub]
+        attr_accessor :apphub_destination
+      
         # Output only. The Error Reporting (https://cloud.google.com/error-reporting)
         # error groups associated with this LogEntry. Error Reporting sets the values
         # for this field during error group creation.For more information, see View
@@ -2124,6 +2129,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @apphub = args[:apphub] if args.key?(:apphub)
+          @apphub_destination = args[:apphub_destination] if args.key?(:apphub_destination)
           @error_groups = args[:error_groups] if args.key?(:error_groups)
           @http_request = args[:http_request] if args.key?(:http_request)
           @insert_id = args[:insert_id] if args.key?(:insert_id)
@@ -2289,7 +2295,7 @@ module Google
         # @return [String]
         attr_accessor :filter
       
-        # Output only. A client-assigned identifier, such as "load-balancer-exclusion".
+        # Optional. A client-assigned identifier, such as "load-balancer-exclusion".
         # Identifiers are limited to 100 characters and can include only letters, digits,
         # underscores, hyphens, and periods. First character has to be alphanumeric.
         # Corresponds to the JSON property `name`
@@ -2600,8 +2606,8 @@ module Google
         alias_method :disabled?, :disabled
       
         # Optional. Log entries that match any of these exclusion filters will not be
-        # exported.If a log entry is matched by both filter and one of exclusion_filters
-        # it will not be exported.
+        # exported.If a log entry is matched by both filter and one of exclusions it
+        # will not be exported.
         # Corresponds to the JSON property `exclusions`
         # @return [Array<Google::Apis::LoggingV2::LogExclusion>]
         attr_accessor :exclusions
@@ -2643,8 +2649,8 @@ module Google
         attr_accessor :intercept_children
         alias_method :intercept_children?, :intercept_children
       
-        # Output only. The client-assigned sink identifier, unique within the project.
-        # For example: "my-syslog-errors-to-pubsub".Sink identifiers are limited to 100
+        # Optional. The client-assigned sink identifier, unique within the project.For
+        # example: "my-syslog-errors-to-pubsub".Sink identifiers are limited to 100
         # characters and can include only the following characters: upper and lower-case
         # alphanumeric characters, underscores, hyphens, periods.First character has to
         # be alphanumeric.
@@ -3352,7 +3358,7 @@ module Google
         # @return [Google::Apis::LoggingV2::LoggingQuery]
         attr_accessor :logging_query
       
-        # Output only. Resource name of the recent query.In the format: "projects/[
+        # Optional. Resource name of the recent query.In the format: "projects/[
         # PROJECT_ID]/locations/[LOCATION_ID]/recentQueries/[QUERY_ID]" For a list of
         # supported locations, see Supported Regions (https://cloud.google.com/logging/
         # docs/region-support)The QUERY_ID is a system generated alphanumeric ID.
