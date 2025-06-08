@@ -442,6 +442,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Treemap
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TreemapDataSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Type
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1175,6 +1187,27 @@ module Google
         end
       end
       
+      class Treemap
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_sets, as: 'dataSets', class: Google::Apis::MonitoringV1::TreemapDataSet, decorator: Google::Apis::MonitoringV1::TreemapDataSet::Representation
+      
+          collection :treemap_hierarchy, as: 'treemapHierarchy'
+        end
+      end
+      
+      class TreemapDataSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :breakdowns, as: 'breakdowns', class: Google::Apis::MonitoringV1::Breakdown, decorator: Google::Apis::MonitoringV1::Breakdown::Representation
+      
+          collection :measures, as: 'measures', class: Google::Apis::MonitoringV1::Measure, decorator: Google::Apis::MonitoringV1::Measure::Representation
+      
+          property :time_series_query, as: 'timeSeriesQuery', class: Google::Apis::MonitoringV1::TimeSeriesQuery, decorator: Google::Apis::MonitoringV1::TimeSeriesQuery::Representation
+      
+        end
+      end
+      
       class Type
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1228,6 +1261,8 @@ module Google
           property :time_series_table, as: 'timeSeriesTable', class: Google::Apis::MonitoringV1::TimeSeriesTable, decorator: Google::Apis::MonitoringV1::TimeSeriesTable::Representation
       
           property :title, as: 'title'
+          property :treemap, as: 'treemap', class: Google::Apis::MonitoringV1::Treemap, decorator: Google::Apis::MonitoringV1::Treemap::Representation
+      
           property :visibility_condition, as: 'visibilityCondition', class: Google::Apis::MonitoringV1::VisibilityCondition, decorator: Google::Apis::MonitoringV1::VisibilityCondition::Representation
       
           property :xy_chart, as: 'xyChart', class: Google::Apis::MonitoringV1::XyChart, decorator: Google::Apis::MonitoringV1::XyChart::Representation
