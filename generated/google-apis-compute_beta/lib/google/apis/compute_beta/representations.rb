@@ -2164,6 +2164,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerInstanceLifecyclePolicyOnRepair
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -5368,6 +5374,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReservationSubBlock
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationSubBlockPhysicalTopology
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationSubBlocksGetResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationSubBlocksListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReservationsBlocksPerformMaintenanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5771,6 +5813,12 @@ module Google
       end
       
       class RouterNatSubnetworkToNat64
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RouterParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7750,6 +7798,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VpnTunnelCipherSuite
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VpnTunnelList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -7764,6 +7818,18 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnTunnelPhase1Algorithms
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnTunnelPhase2Algorithms
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -10384,6 +10450,7 @@ module Google
           collection :packet_mirroring_rules, as: 'packetMirroringRules', class: Google::Apis::ComputeBeta::FirewallPolicyRule, decorator: Google::Apis::ComputeBeta::FirewallPolicyRule::Representation
       
           property :parent, as: 'parent'
+          property :policy_type, as: 'policyType'
           property :region, as: 'region'
           property :rule_tuple_count, as: 'ruleTupleCount'
           collection :rules, as: 'rules', class: Google::Apis::ComputeBeta::FirewallPolicyRule, decorator: Google::Apis::ComputeBeta::FirewallPolicyRule::Representation
@@ -10558,6 +10625,7 @@ module Google
           property :psc_connection_status, as: 'pscConnectionStatus'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           collection :service_directory_registrations, as: 'serviceDirectoryRegistrations', class: Google::Apis::ComputeBeta::ForwardingRuleServiceDirectoryRegistration, decorator: Google::Apis::ComputeBeta::ForwardingRuleServiceDirectoryRegistration::Representation
       
           property :service_label, as: 'serviceLabel'
@@ -12158,6 +12226,15 @@ module Google
           property :default_action_on_failure, as: 'defaultActionOnFailure'
           property :force_update_on_repair, as: 'forceUpdateOnRepair'
           property :on_failed_health_check, as: 'onFailedHealthCheck'
+          property :on_repair, as: 'onRepair', class: Google::Apis::ComputeBeta::InstanceGroupManagerInstanceLifecyclePolicyOnRepair, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerInstanceLifecyclePolicyOnRepair::Representation
+      
+        end
+      end
+      
+      class InstanceGroupManagerInstanceLifecyclePolicyOnRepair
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_changing_zone, as: 'allowChangingZone'
         end
       end
       
@@ -17874,6 +17951,8 @@ module Google
       
           property :reservation_maintenance, as: 'reservationMaintenance', class: Google::Apis::ComputeBeta::GroupMaintenanceInfo, decorator: Google::Apis::ComputeBeta::GroupMaintenanceInfo::Representation
       
+          property :reservation_sub_block_count, as: 'reservationSubBlockCount'
+          property :reservation_sub_block_in_use_count, as: 'reservationSubBlockInUseCount'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :status, as: 'status'
@@ -17947,6 +18026,73 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
             collection :data, as: 'data', class: Google::Apis::ComputeBeta::ReservationList::Warning::Datum, decorator: Google::Apis::ComputeBeta::ReservationList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class ReservationSubBlock
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, as: 'count'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :id, :numeric_string => true, as: 'id'
+          property :in_use_count, as: 'inUseCount'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :physical_topology, as: 'physicalTopology', class: Google::Apis::ComputeBeta::ReservationSubBlockPhysicalTopology, decorator: Google::Apis::ComputeBeta::ReservationSubBlockPhysicalTopology::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :status, as: 'status'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class ReservationSubBlockPhysicalTopology
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :block, as: 'block'
+          property :cluster, as: 'cluster'
+          property :sub_block, as: 'subBlock'
+        end
+      end
+      
+      class ReservationSubBlocksGetResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource, as: 'resource', class: Google::Apis::ComputeBeta::ReservationSubBlock, decorator: Google::Apis::ComputeBeta::ReservationSubBlock::Representation
+      
+        end
+      end
+      
+      class ReservationSubBlocksListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::ReservationSubBlock, decorator: Google::Apis::ComputeBeta::ReservationSubBlock::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::ReservationSubBlocksListResponse::Warning, decorator: Google::Apis::ComputeBeta::ReservationSubBlocksListResponse::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::ReservationSubBlocksListResponse::Warning::Datum, decorator: Google::Apis::ComputeBeta::ReservationSubBlocksListResponse::Warning::Datum::Representation
         
             property :message, as: 'message'
           end
@@ -18486,6 +18632,8 @@ module Google
       
           property :ncc_gateway, as: 'nccGateway'
           property :network, as: 'network'
+          property :params, as: 'params', class: Google::Apis::ComputeBeta::RouterParams, decorator: Google::Apis::ComputeBeta::RouterParams::Representation
+      
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
         end
@@ -18724,6 +18872,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+        end
+      end
+      
+      class RouterParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -18999,6 +19154,7 @@ module Google
       
           property :preemptible, as: 'preemptible'
           property :provisioning_model, as: 'provisioningModel'
+          property :skip_guest_os_shutdown, as: 'skipGuestOsShutdown'
           property :termination_time, as: 'terminationTime'
         end
       end
@@ -22312,6 +22468,8 @@ module Google
       class VpnTunnel
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cipher_suite, as: 'cipherSuite', class: Google::Apis::ComputeBeta::VpnTunnelCipherSuite, decorator: Google::Apis::ComputeBeta::VpnTunnelCipherSuite::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :detailed_status, as: 'detailedStatus'
@@ -22372,6 +22530,16 @@ module Google
         end
       end
       
+      class VpnTunnelCipherSuite
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :phase1, as: 'phase1', class: Google::Apis::ComputeBeta::VpnTunnelPhase1Algorithms, decorator: Google::Apis::ComputeBeta::VpnTunnelPhase1Algorithms::Representation
+      
+          property :phase2, as: 'phase2', class: Google::Apis::ComputeBeta::VpnTunnelPhase2Algorithms, decorator: Google::Apis::ComputeBeta::VpnTunnelPhase2Algorithms::Representation
+      
+        end
+      end
+      
       class VpnTunnelList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -22401,6 +22569,25 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class VpnTunnelPhase1Algorithms
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dh, as: 'dh'
+          collection :encryption, as: 'encryption'
+          collection :integrity, as: 'integrity'
+          collection :prf, as: 'prf'
+        end
+      end
+      
+      class VpnTunnelPhase2Algorithms
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :encryption, as: 'encryption'
+          collection :integrity, as: 'integrity'
+          collection :pfs, as: 'pfs'
         end
       end
       
@@ -22491,6 +22678,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :reconciling, as: 'reconciling'
           property :self_link, as: 'selfLink'
           property :topology, as: 'topology', class: Google::Apis::ComputeBeta::WireGroupTopology, decorator: Google::Apis::ComputeBeta::WireGroupTopology::Representation
       
