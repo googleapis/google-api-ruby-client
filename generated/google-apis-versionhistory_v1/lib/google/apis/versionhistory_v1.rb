@@ -23,7 +23,7 @@ module Google
     #
     # Version History API - Prod
     #
-    # @see https://developers.chrome.com/versionhistory
+    # @see https://developer.chrome.com/docs/web-platform/versionhistory/guide
     module VersionhistoryV1
       # Version of the versionhistory.googleapis.com API this client connects to.
       # This is NOT the gem version.
