@@ -5122,6 +5122,11 @@ module Google
         # @return [String]
         attr_accessor :protected_artifact_location_id
       
+        # Configuration for PSC-I.
+        # Corresponds to the JSON property `pscInterfaceConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscInterfaceConfig]
+        attr_accessor :psc_interface_config
+      
         # Optional. A list of names for the reserved ip ranges under the VPC network
         # that can be used for this job. If set, we will deploy the job within the
         # provided ip ranges. Otherwise, the job will be deployed to any ip ranges under
@@ -5172,6 +5177,7 @@ module Google
           @network = args[:network] if args.key?(:network)
           @persistent_resource_id = args[:persistent_resource_id] if args.key?(:persistent_resource_id)
           @protected_artifact_location_id = args[:protected_artifact_location_id] if args.key?(:protected_artifact_location_id)
+          @psc_interface_config = args[:psc_interface_config] if args.key?(:psc_interface_config)
           @reserved_ip_ranges = args[:reserved_ip_ranges] if args.key?(:reserved_ip_ranges)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @service_account = args[:service_account] if args.key?(:service_account)
@@ -12047,12 +12053,29 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema]
         attr_accessor :parameters
       
+        # Optional. Describes the parameters to the function in JSON Schema format. The
+        # schema must describe an object where the properties are the parameters to the
+        # function. For example: ``` ` "type": "object", "properties": ` "name": ` "type"
+        # : "string" `, "age": ` "type": "integer" ` `, "additionalProperties": false, "
+        # required": ["name", "age"], "propertyOrdering": ["name", "age"] ` ``` This
+        # field is mutually exclusive with `parameters`.
+        # Corresponds to the JSON property `parametersJsonSchema`
+        # @return [Object]
+        attr_accessor :parameters_json_schema
+      
         # Schema is used to define the format of input/output data. Represents a select
         # subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#
         # schema-object). More fields may be added in the future as needed.
         # Corresponds to the JSON property `response`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema]
         attr_accessor :response
+      
+        # Optional. Describes the output from this function in JSON Schema format. The
+        # value specified by the schema is the response value of the function. This
+        # field is mutually exclusive with `response`.
+        # Corresponds to the JSON property `responseJsonSchema`
+        # @return [Object]
+        attr_accessor :response_json_schema
       
         def initialize(**args)
            update!(**args)
@@ -12063,7 +12086,9 @@ module Google
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
           @parameters = args[:parameters] if args.key?(:parameters)
+          @parameters_json_schema = args[:parameters_json_schema] if args.key?(:parameters_json_schema)
           @response = args[:response] if args.key?(:response)
+          @response_json_schema = args[:response_json_schema] if args.key?(:response_json_schema)
         end
       end
       
@@ -12542,6 +12567,23 @@ module Google
         # @return [Float]
         attr_accessor :presence_penalty
       
+        # Optional. Output schema of the generated response. This is an alternative to `
+        # response_schema` that accepts [JSON Schema](https://json-schema.org/). If set,
+        # `response_schema` must be omitted, but `response_mime_type` is required. While
+        # the full JSON Schema may be sent, not all features are supported. Specifically,
+        # only the following properties are supported: - `$id` - `$defs` - `$ref` - `$
+        # anchor` - `type` - `format` - `title` - `description` - `enum` (for strings
+        # and numbers) - `items` - `prefixItems` - `minItems` - `maxItems` - `minimum` -
+        # `maximum` - `anyOf` - `oneOf` (interpreted the same as `anyOf`) - `properties`
+        # - `additionalProperties` - `required` The non-standard `propertyOrdering`
+        # property may also be set. Cyclic references are unrolled to a limited degree
+        # and, as such, may only be used within non-required properties. (Nullable
+        # properties are not sufficient.) If `$ref` is set on a sub-schema, no other
+        # properties, except for than those starting as a `$`, may be set.
+        # Corresponds to the JSON property `responseJsonSchema`
+        # @return [Object]
+        attr_accessor :response_json_schema
+      
         # Optional. If true, export the logprobs results in response.
         # Corresponds to the JSON property `responseLogprobs`
         # @return [Boolean]
@@ -12623,6 +12665,7 @@ module Google
           @max_output_tokens = args[:max_output_tokens] if args.key?(:max_output_tokens)
           @media_resolution = args[:media_resolution] if args.key?(:media_resolution)
           @presence_penalty = args[:presence_penalty] if args.key?(:presence_penalty)
+          @response_json_schema = args[:response_json_schema] if args.key?(:response_json_schema)
           @response_logprobs = args[:response_logprobs] if args.key?(:response_logprobs)
           @response_mime_type = args[:response_mime_type] if args.key?(:response_mime_type)
           @response_modalities = args[:response_modalities] if args.key?(:response_modalities)
@@ -21198,6 +21241,11 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Configuration for PSC-I.
+        # Corresponds to the JSON property `pscInterfaceConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscInterfaceConfig]
+        attr_accessor :psc_interface_config
+      
         # Optional. A list of names for the reserved IP ranges under the VPC network
         # that can be used for this persistent resource. If set, we will deploy the
         # persistent resource within the provided IP ranges. Otherwise, the persistent
@@ -21265,6 +21313,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @psc_interface_config = args[:psc_interface_config] if args.key?(:psc_interface_config)
           @reserved_ip_ranges = args[:reserved_ip_ranges] if args.key?(:reserved_ip_ranges)
           @resource_pools = args[:resource_pools] if args.key?(:resource_pools)
           @resource_runtime = args[:resource_runtime] if args.key?(:resource_runtime)
@@ -21359,6 +21408,11 @@ module Google
         attr_accessor :preflight_validations
         alias_method :preflight_validations?, :preflight_validations
       
+        # Configuration for PSC-I.
+        # Corresponds to the JSON property `pscInterfaceConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscInterfaceConfig]
+        attr_accessor :psc_interface_config
+      
         # A list of names for the reserved ip ranges under the VPC network that can be
         # used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job'
         # s workload within the provided ip ranges. Otherwise, the job will be deployed
@@ -21434,6 +21488,7 @@ module Google
           @network = args[:network] if args.key?(:network)
           @pipeline_spec = args[:pipeline_spec] if args.key?(:pipeline_spec)
           @preflight_validations = args[:preflight_validations] if args.key?(:preflight_validations)
+          @psc_interface_config = args[:psc_interface_config] if args.key?(:psc_interface_config)
           @reserved_ip_ranges = args[:reserved_ip_ranges] if args.key?(:reserved_ip_ranges)
           @runtime_config = args[:runtime_config] if args.key?(:runtime_config)
           @schedule_name = args[:schedule_name] if args.key?(:schedule_name)
@@ -22612,6 +22667,30 @@ module Google
           @match_address = args[:match_address] if args.key?(:match_address)
           @network = args[:network] if args.key?(:network)
           @project_id = args[:project_id] if args.key?(:project_id)
+        end
+      end
+      
+      # Configuration for PSC-I.
+      class GoogleCloudAiplatformV1PscInterfaceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the Compute Engine [network attachment](https://cloud.
+        # google.com/vpc/docs/about-network-attachments) to attach to the resource
+        # within the region and user project. To specify this field, you must have
+        # already [created a network attachment] (https://cloud.google.com/vpc/docs/
+        # create-manage-network-attachments#create-network-attachments). This field is
+        # only used for resources using PSC-I.
+        # Corresponds to the JSON property `networkAttachment`
+        # @return [String]
+        attr_accessor :network_attachment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
         end
       end
       

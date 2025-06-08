@@ -3622,6 +3622,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1PscInterfaceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1PublisherModel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8403,6 +8409,8 @@ module Google
           property :network, as: 'network'
           property :persistent_resource_id, as: 'persistentResourceId'
           property :protected_artifact_location_id, as: 'protectedArtifactLocationId'
+          property :psc_interface_config, as: 'pscInterfaceConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscInterfaceConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscInterfaceConfig::Representation
+      
           collection :reserved_ip_ranges, as: 'reservedIpRanges'
           property :scheduling, as: 'scheduling', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Scheduling, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Scheduling::Representation
       
@@ -10277,8 +10285,10 @@ module Google
           property :name, as: 'name'
           property :parameters, as: 'parameters', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema::Representation
       
+          property :parameters_json_schema, as: 'parametersJsonSchema'
           property :response, as: 'response', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema::Representation
       
+          property :response_json_schema, as: 'responseJsonSchema'
         end
       end
       
@@ -10416,6 +10426,7 @@ module Google
           property :max_output_tokens, as: 'maxOutputTokens'
           property :media_resolution, as: 'mediaResolution'
           property :presence_penalty, as: 'presencePenalty'
+          property :response_json_schema, as: 'responseJsonSchema'
           property :response_logprobs, as: 'responseLogprobs'
           property :response_mime_type, as: 'responseMimeType'
           collection :response_modalities, as: 'responseModalities'
@@ -12852,6 +12863,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :psc_interface_config, as: 'pscInterfaceConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscInterfaceConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscInterfaceConfig::Representation
+      
           collection :reserved_ip_ranges, as: 'reservedIpRanges'
           collection :resource_pools, as: 'resourcePools', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ResourcePool, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ResourcePool::Representation
       
@@ -12884,6 +12897,8 @@ module Google
           property :network, as: 'network'
           hash :pipeline_spec, as: 'pipelineSpec'
           property :preflight_validations, as: 'preflightValidations'
+          property :psc_interface_config, as: 'pscInterfaceConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscInterfaceConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscInterfaceConfig::Representation
+      
           collection :reserved_ip_ranges, as: 'reservedIpRanges'
           property :runtime_config, as: 'runtimeConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PipelineJobRuntimeConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PipelineJobRuntimeConfig::Representation
       
@@ -13219,6 +13234,13 @@ module Google
           property :match_address, as: 'matchAddress'
           property :network, as: 'network'
           property :project_id, as: 'projectId'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1PscInterfaceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_attachment, as: 'networkAttachment'
         end
       end
       
