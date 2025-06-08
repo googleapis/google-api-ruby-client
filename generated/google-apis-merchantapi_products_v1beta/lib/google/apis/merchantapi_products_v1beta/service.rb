@@ -61,7 +61,8 @@ module Google
         #   name is `accounts/123/productInputs/online~en~US~sku123`.
         # @param [String] data_source
         #   Required. The primary or supplemental data source from which the product input
-        #   should be deleted. Format: `accounts/`account`/dataSources/`datasource``.
+        #   should be deleted. Format: `accounts/`account`/dataSources/`datasource``. For
+        #   example, `accounts/123456/dataSources/104628`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -102,7 +103,8 @@ module Google
         #   Required. The primary or supplemental product data source name. If the product
         #   already exists and data source provided is different, then the product will be
         #   moved to a new data source. Only API data sources are supported. Format: `
-        #   accounts/`account`/dataSources/`datasource``.
+        #   accounts/`account`/dataSources/`datasource``. For example, `accounts/123456/
+        #   dataSources/104628`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -145,7 +147,8 @@ module Google
         # @param [String] data_source
         #   Required. The primary or supplemental product data source where `data_source`
         #   name identifies the product input to be updated. Only API data sources are
-        #   supported. Format: `accounts/`account`/dataSources/`datasource``.
+        #   supported. Format: `accounts/`account`/dataSources/`datasource``. For example,
+        #   `accounts/123456/dataSources/104628`.
         # @param [String] update_mask
         #   Optional. The list of product attributes to be updated. If the update mask is
         #   omitted, then it is treated as implied field mask equivalent to all fields
@@ -231,8 +234,8 @@ module Google
         #   account``
         # @param [Fixnum] page_size
         #   The maximum number of products to return. The service may return fewer than
-        #   this value. The maximum value is 250; values above 250 will be coerced to 250.
-        #   If unspecified, the maximum number of products will be returned.
+        #   this value. The maximum value is 1000; values above 1000 will be coerced to
+        #   1000. If unspecified, the maximum number of products will be returned.
         # @param [String] page_token
         #   A page token, received from a previous `ListProducts` call. Provide this to
         #   retrieve the subsequent page. When paginating, all other parameters provided
