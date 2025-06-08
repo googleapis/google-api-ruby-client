@@ -58,30 +58,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Annotation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AnnotationConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AnnotationSource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AnnotationStore
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ApplyAdminConsentsErrorDetail
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -172,12 +148,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class BoundingPoly
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class BulkExportGcsDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -227,12 +197,6 @@ module Google
       end
       
       class CleanTextTag
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudHealthcareSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -388,12 +352,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Detail
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class DicomConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -454,18 +412,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class EvaluateAnnotationStoreRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class EvaluateAnnotationStoreResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class EvaluateUserConsentsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -491,18 +437,6 @@ module Google
       end
       
       class ExplainDataAccessResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ExportAnnotationsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ExportAnnotationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -616,18 +550,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FilterList
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Finding
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GcsDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -635,24 +557,6 @@ module Google
       end
       
       class GcsSource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudHealthcareV1beta1AnnotationBigQueryDestination
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudHealthcareV1beta1AnnotationGcsDestination
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudHealthcareV1beta1AnnotationGcsSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -814,25 +718,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ImageAnnotation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ImageConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ImportAnnotationsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ImportAnnotationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -869,12 +755,6 @@ module Google
       end
       
       class ImportResourcesRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class InfoTypeConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -923,18 +803,6 @@ module Google
       end
       
       class LinkedEntity
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListAnnotationStoresResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListAnnotationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1156,12 +1024,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ResourceAnnotation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Resources
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1265,12 +1127,6 @@ module Google
       end
       
       class Segment
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SensitiveTextAnnotation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1402,12 +1258,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Vertex
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AccessDeterminationLogConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1473,46 +1323,6 @@ module Google
           property :fhir_bundle, as: 'fhirBundle'
           collection :relationships, as: 'relationships', class: Google::Apis::HealthcareV1beta1::EntityMentionRelationship, decorator: Google::Apis::HealthcareV1beta1::EntityMentionRelationship::Representation
       
-        end
-      end
-      
-      class Annotation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :annotation_source, as: 'annotationSource', class: Google::Apis::HealthcareV1beta1::AnnotationSource, decorator: Google::Apis::HealthcareV1beta1::AnnotationSource::Representation
-      
-          hash :custom_data, as: 'customData'
-          property :image_annotation, as: 'imageAnnotation', class: Google::Apis::HealthcareV1beta1::ImageAnnotation, decorator: Google::Apis::HealthcareV1beta1::ImageAnnotation::Representation
-      
-          property :name, as: 'name'
-          property :resource_annotation, as: 'resourceAnnotation', class: Google::Apis::HealthcareV1beta1::ResourceAnnotation, decorator: Google::Apis::HealthcareV1beta1::ResourceAnnotation::Representation
-      
-          property :text_annotation, as: 'textAnnotation', class: Google::Apis::HealthcareV1beta1::SensitiveTextAnnotation, decorator: Google::Apis::HealthcareV1beta1::SensitiveTextAnnotation::Representation
-      
-        end
-      end
-      
-      class AnnotationConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :annotation_store_name, as: 'annotationStoreName'
-          property :store_quote, as: 'storeQuote'
-        end
-      end
-      
-      class AnnotationSource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cloud_healthcare_source, as: 'cloudHealthcareSource', class: Google::Apis::HealthcareV1beta1::CloudHealthcareSource, decorator: Google::Apis::HealthcareV1beta1::CloudHealthcareSource::Representation
-      
-        end
-      end
-      
-      class AnnotationStore
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :labels, as: 'labels'
-          property :name, as: 'name'
         end
       end
       
@@ -1647,15 +1457,6 @@ module Google
         end
       end
       
-      class BoundingPoly
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :label, as: 'label'
-          collection :vertices, as: 'vertices', class: Google::Apis::HealthcareV1beta1::Vertex, decorator: Google::Apis::HealthcareV1beta1::Vertex::Representation
-      
-        end
-      end
-      
       class BulkExportGcsDestination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1717,13 +1518,6 @@ module Google
       class CleanTextTag
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class CloudHealthcareSource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
         end
       end
       
@@ -1900,8 +1694,6 @@ module Google
       class DeidentifyConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :annotation, as: 'annotation', class: Google::Apis::HealthcareV1beta1::AnnotationConfig, decorator: Google::Apis::HealthcareV1beta1::AnnotationConfig::Representation
-      
           property :dicom, as: 'dicom', class: Google::Apis::HealthcareV1beta1::DicomConfig, decorator: Google::Apis::HealthcareV1beta1::DicomConfig::Representation
       
           property :dicom_tag_config, as: 'dicomTagConfig', class: Google::Apis::HealthcareV1beta1::DicomTagConfig, decorator: Google::Apis::HealthcareV1beta1::DicomTagConfig::Representation
@@ -1972,14 +1764,6 @@ module Google
       class DeleteTag
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class Detail
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :findings, as: 'findings', class: Google::Apis::HealthcareV1beta1::Finding, decorator: Google::Apis::HealthcareV1beta1::Finding::Representation
-      
         end
       end
       
@@ -2089,25 +1873,6 @@ module Google
         end
       end
       
-      class EvaluateAnnotationStoreRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :bigquery_destination, as: 'bigqueryDestination', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1AnnotationBigQueryDestination, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1AnnotationBigQueryDestination::Representation
-      
-          hash :eval_info_type_mapping, as: 'evalInfoTypeMapping'
-          hash :golden_info_type_mapping, as: 'goldenInfoTypeMapping'
-          property :golden_store, as: 'goldenStore'
-          property :info_type_config, as: 'infoTypeConfig', class: Google::Apis::HealthcareV1beta1::InfoTypeConfig, decorator: Google::Apis::HealthcareV1beta1::InfoTypeConfig::Representation
-      
-        end
-      end
-      
-      class EvaluateAnnotationStoreResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
       class EvaluateUserConsentsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2164,22 +1929,6 @@ module Google
           collection :consent_scopes, as: 'consentScopes', class: Google::Apis::HealthcareV1beta1::ExplainDataAccessConsentScope, decorator: Google::Apis::HealthcareV1beta1::ExplainDataAccessConsentScope::Representation
       
           property :warning, as: 'warning'
-        end
-      end
-      
-      class ExportAnnotationsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :bigquery_destination, as: 'bigqueryDestination', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1AnnotationBigQueryDestination, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1AnnotationBigQueryDestination::Representation
-      
-          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1AnnotationGcsDestination, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1AnnotationGcsDestination::Representation
-      
-        end
-      end
-      
-      class ExportAnnotationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -2371,23 +2120,6 @@ module Google
         end
       end
       
-      class FilterList
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :info_types, as: 'infoTypes'
-        end
-      end
-      
-      class Finding
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end, :numeric_string => true, as: 'end'
-          property :info_type, as: 'infoType'
-          property :quote, as: 'quote'
-          property :start, :numeric_string => true, as: 'start'
-        end
-      end
-      
       class GcsDestination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2398,30 +2130,6 @@ module Google
       end
       
       class GcsSource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :uri, as: 'uri'
-        end
-      end
-      
-      class GoogleCloudHealthcareV1beta1AnnotationBigQueryDestination
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :force, as: 'force'
-          property :schema_type, as: 'schemaType'
-          property :table_uri, as: 'tableUri'
-          property :write_disposition, as: 'writeDisposition'
-        end
-      end
-      
-      class GoogleCloudHealthcareV1beta1AnnotationGcsDestination
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :uri_prefix, as: 'uriPrefix'
-        end
-      end
-      
-      class GoogleCloudHealthcareV1beta1AnnotationGcsSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :uri, as: 'uri'
@@ -2666,35 +2374,12 @@ module Google
         end
       end
       
-      class ImageAnnotation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :bounding_polys, as: 'boundingPolys', class: Google::Apis::HealthcareV1beta1::BoundingPoly, decorator: Google::Apis::HealthcareV1beta1::BoundingPoly::Representation
-      
-          property :frame_index, as: 'frameIndex'
-        end
-      end
-      
       class ImageConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_info_types, as: 'additionalInfoTypes'
           collection :exclude_info_types, as: 'excludeInfoTypes'
           property :text_redaction_mode, as: 'textRedactionMode'
-        end
-      end
-      
-      class ImportAnnotationsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :gcs_source, as: 'gcsSource', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1AnnotationGcsSource, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1AnnotationGcsSource::Representation
-      
-        end
-      end
-      
-      class ImportAnnotationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -2744,17 +2429,6 @@ module Google
           property :content_structure, as: 'contentStructure'
           property :gcs_source, as: 'gcsSource', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsSource, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsSource::Representation
       
-        end
-      end
-      
-      class InfoTypeConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :evaluate_list, as: 'evaluateList', class: Google::Apis::HealthcareV1beta1::FilterList, decorator: Google::Apis::HealthcareV1beta1::FilterList::Representation
-      
-          property :ignore_list, as: 'ignoreList', class: Google::Apis::HealthcareV1beta1::FilterList, decorator: Google::Apis::HealthcareV1beta1::FilterList::Representation
-      
-          property :strict_matching, as: 'strictMatching'
         end
       end
       
@@ -2822,24 +2496,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :entity_id, as: 'entityId'
-        end
-      end
-      
-      class ListAnnotationStoresResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :annotation_stores, as: 'annotationStores', class: Google::Apis::HealthcareV1beta1::AnnotationStore, decorator: Google::Apis::HealthcareV1beta1::AnnotationStore::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class ListAnnotationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :annotations, as: 'annotations', class: Google::Apis::HealthcareV1beta1::Annotation, decorator: Google::Apis::HealthcareV1beta1::Annotation::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -3164,13 +2820,6 @@ module Google
         end
       end
       
-      class ResourceAnnotation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :label, as: 'label'
-        end
-      end
-      
       class Resources
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3334,14 +2983,6 @@ module Google
           hash :fields, as: 'fields'
           property :segment_id, as: 'segmentId'
           property :set_id, as: 'setId'
-        end
-      end
-      
-      class SensitiveTextAnnotation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :details, as: 'details', class: Google::Apis::HealthcareV1beta1::Detail, decorator: Google::Apis::HealthcareV1beta1::Detail::Representation
-      
         end
       end
       
@@ -3536,14 +3177,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :msh_field, as: 'mshField'
           property :value, as: 'value'
-        end
-      end
-      
-      class Vertex
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :x, as: 'x'
-          property :y, as: 'y'
         end
       end
     end
