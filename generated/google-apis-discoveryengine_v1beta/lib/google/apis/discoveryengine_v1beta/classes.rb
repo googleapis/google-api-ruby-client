@@ -914,6 +914,71 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the UserLicenseService.
+      # BatchUpdateUserLicenses operation. This will be returned by the google.
+      # longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Count of user licenses that failed to be updated.
+        # Corresponds to the JSON property `failureCount`
+        # @return [Fixnum]
+        attr_accessor :failure_count
+      
+        # Count of user licenses successfully updated.
+        # Corresponds to the JSON property `successCount`
+        # @return [Fixnum]
+        attr_accessor :success_count
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @failure_count = args[:failure_count] if args.key?(:failure_count)
+          @success_count = args[:success_count] if args.key?(:success_count)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response message for UserLicenseService.BatchUpdateUserLicenses method.
+      class GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        # UserLicenses successfully updated.
+        # Corresponds to the JSON property `userLicenses`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1UserLicense>]
+        attr_accessor :user_licenses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
+          @user_licenses = args[:user_licenses] if args.key?(:user_licenses)
+        end
+      end
+      
       # Configurations used to enable CMEK data encryption with Cloud KMS keys.
       class GoogleCloudDiscoveryengineV1CmekConfig
         include Google::Apis::Core::Hashable
@@ -943,7 +1008,7 @@ module Google
       
         # Required. The name of the CmekConfig of the form `projects/`project`/locations/
         # `location`/cmekConfig` or `projects/`project`/locations/`location`/cmekConfigs/
-        # `cmekConfig``.
+        # `cmek_config``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4394,6 +4459,69 @@ module Google
         end
       end
       
+      # User License information assigned by the admin.
+      class GoogleCloudDiscoveryengineV1UserLicense
+        include Google::Apis::Core::Hashable
+      
+        # Output only. User created timestamp.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. User last logged in time. If the user has not logged in yet, this
+        # field will be empty.
+        # Corresponds to the JSON property `lastLoginTime`
+        # @return [String]
+        attr_accessor :last_login_time
+      
+        # Output only. License assignment state of the user. If the user is assigned
+        # with a license config, the user loggin will be assigned with the license; If
+        # the user's license assignment state is unassigned or unspecified, no license
+        # config will be associated to the user;
+        # Corresponds to the JSON property `licenseAssignmentState`
+        # @return [String]
+        attr_accessor :license_assignment_state
+      
+        # Optional. The full resource name of the Subscription(LicenseConfig) assigned
+        # to the user.
+        # Corresponds to the JSON property `licenseConfig`
+        # @return [String]
+        attr_accessor :license_config
+      
+        # Output only. User update timestamp.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Required. Immutable. The user principal of the User, could be email address or
+        # other prinical identifier. This field is immutable. Admin assign licenses
+        # based on the user principal.
+        # Corresponds to the JSON property `userPrincipal`
+        # @return [String]
+        attr_accessor :user_principal
+      
+        # Optional. The user profile. We user user full name(First name + Last name) as
+        # user profile.
+        # Corresponds to the JSON property `userProfile`
+        # @return [String]
+        attr_accessor :user_profile
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @last_login_time = args[:last_login_time] if args.key?(:last_login_time)
+          @license_assignment_state = args[:license_assignment_state] if args.key?(:license_assignment_state)
+          @license_config = args[:license_config] if args.key?(:license_config)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @user_principal = args[:user_principal] if args.key?(:user_principal)
+          @user_profile = args[:user_profile] if args.key?(:user_profile)
+        end
+      end
+      
       # Config to store data store type configuration for workspace data
       class GoogleCloudDiscoveryengineV1WorkspaceConfig
         include Google::Apis::Core::Hashable
@@ -5499,7 +5627,7 @@ module Google
       
         # Required. The name of the CmekConfig of the form `projects/`project`/locations/
         # `location`/cmekConfig` or `projects/`project`/locations/`location`/cmekConfigs/
-        # `cmekConfig``.
+        # `cmek_config``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -6500,13 +6628,13 @@ module Google
       
         # Optional. The refresh interval specifically for incremental data syncs. If
         # unset, incremental syncs will use the default from env, set to 3hrs. The
-        # minimum is 30 minutes and maximum is 7 days.
+        # minimum is 30 minutes and maximum is 7 days. Applicable to only 3P connectors.
         # Corresponds to the JSON property `incrementalRefreshInterval`
         # @return [String]
         attr_accessor :incremental_refresh_interval
       
         # Optional. Indicates whether incremental syncs are paused for this connector.
-        # This is independent of auto_run_disabled.
+        # This is independent of auto_run_disabled. Applicable to only 3P connectors.
         # Corresponds to the JSON property `incrementalSyncDisabled`
         # @return [Boolean]
         attr_accessor :incremental_sync_disabled
@@ -8324,7 +8452,7 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaEvaluationEvaluationSpecQuerySetSpec
         include Google::Apis::Core::Hashable
       
-        # Required. The full resource name of the SampleQuerySet used for the evaluation,
+        # Optional. The full resource name of the SampleQuerySet used for the evaluation,
         # in the format of `projects/`project`/locations/`location`/sampleQuerySets/`
         # sampleQuerySet``.
         # Corresponds to the JSON property `sampleQuerySet`
@@ -11562,6 +11690,19 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaQuery]
         attr_accessor :query
       
+        # Optional. Represents metadata related to the query config, for example LLM
+        # model and version used, model parameters (temperature, grounding parameters,
+        # etc.). We don't want to import directly the [AnswerGenerationSpec] structure
+        # as this will serve a more general purpose and a wider set of customers. This
+        # information is used in particular when rendering alternative answers to the
+        # same prompt, providing visual information about how each answer was generated.
+        # The prefix "google." will be reserved for the key, and 1P services (Answer,
+        # Assistant, etc.) should always store their information with "google..". 3P
+        # services can use anything not starting with "google."
+        # Corresponds to the JSON property `queryConfigs`
+        # @return [Hash<String,String>]
+        attr_accessor :query_configs
+      
         def initialize(**args)
            update!(**args)
         end
@@ -11571,6 +11712,7 @@ module Google
           @answer = args[:answer] if args.key?(:answer)
           @detailed_answer = args[:detailed_answer] if args.key?(:detailed_answer)
           @query = args[:query] if args.key?(:query)
+          @query_configs = args[:query_configs] if args.key?(:query_configs)
         end
       end
       
@@ -14687,6 +14829,46 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the UserLicenseService.
+      # BatchUpdateUserLicenses operation. This will be returned by the google.
+      # longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Count of user licenses that failed to be updated.
+        # Corresponds to the JSON property `failureCount`
+        # @return [Fixnum]
+        attr_accessor :failure_count
+      
+        # Count of user licenses successfully updated.
+        # Corresponds to the JSON property `successCount`
+        # @return [Fixnum]
+        attr_accessor :success_count
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @failure_count = args[:failure_count] if args.key?(:failure_count)
+          @success_count = args[:success_count] if args.key?(:success_count)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Request message for UserLicenseService.BatchUpdateUserLicenses method.
       class GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesRequest
         include Google::Apis::Core::Hashable
@@ -14698,11 +14880,6 @@ module Google
         # @return [Boolean]
         attr_accessor :delete_unassigned_user_licenses
         alias_method :delete_unassigned_user_licenses?, :delete_unassigned_user_licenses
-      
-        # Cloud Storage location for input content.
-        # Corresponds to the JSON property `gcsSource`
-        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaGcsSource]
-        attr_accessor :gcs_source
       
         # The inline source for the input config for BatchUpdateUserLicenses method.
         # Corresponds to the JSON property `inlineSource`
@@ -14716,7 +14893,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @delete_unassigned_user_licenses = args[:delete_unassigned_user_licenses] if args.key?(:delete_unassigned_user_licenses)
-          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
           @inline_source = args[:inline_source] if args.key?(:inline_source)
         end
       end
@@ -14743,6 +14919,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
+          @user_licenses = args[:user_licenses] if args.key?(:user_licenses)
+        end
+      end
+      
+      # Response message for UserLicenseService.BatchUpdateUserLicenses method.
+      class GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        # UserLicenses successfully updated.
+        # Corresponds to the JSON property `userLicenses`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaUserLicense>]
+        attr_accessor :user_licenses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
           @user_licenses = args[:user_licenses] if args.key?(:user_licenses)
         end
       end
@@ -15514,7 +15715,7 @@ module Google
       
         # Required. The name of the CmekConfig of the form `projects/`project`/locations/
         # `location`/cmekConfig` or `projects/`project`/locations/`location`/cmekConfigs/
-        # `cmekConfig``.
+        # `cmek_config``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -18258,7 +18459,7 @@ module Google
       class GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpecQuerySetSpec
         include Google::Apis::Core::Hashable
       
-        # Required. The full resource name of the SampleQuerySet used for the evaluation,
+        # Optional. The full resource name of the SampleQuerySet used for the evaluation,
         # in the format of `projects/`project`/locations/`location`/sampleQuerySets/`
         # sampleQuerySet``.
         # Corresponds to the JSON property `sampleQuerySet`
@@ -24436,6 +24637,19 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaQuery]
         attr_accessor :query
       
+        # Optional. Represents metadata related to the query config, for example LLM
+        # model and version used, model parameters (temperature, grounding parameters,
+        # etc.). We don't want to import directly the [AnswerGenerationSpec] structure
+        # as this will serve a more general purpose and a wider set of customers. This
+        # information is used in particular when rendering alternative answers to the
+        # same prompt, providing visual information about how each answer was generated.
+        # The prefix "google." will be reserved for the key, and 1P services (Answer,
+        # Assistant, etc.) should always store their information with "google..". 3P
+        # services can use anything not starting with "google."
+        # Corresponds to the JSON property `queryConfigs`
+        # @return [Hash<String,String>]
+        attr_accessor :query_configs
+      
         def initialize(**args)
            update!(**args)
         end
@@ -24445,6 +24659,7 @@ module Google
           @answer = args[:answer] if args.key?(:answer)
           @detailed_answer = args[:detailed_answer] if args.key?(:detailed_answer)
           @query = args[:query] if args.key?(:query)
+          @query_configs = args[:query_configs] if args.key?(:query_configs)
         end
       end
       
