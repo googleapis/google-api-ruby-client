@@ -273,7 +273,8 @@ module Google
         attr_accessor :linked_gbps
       
         # Identifier. The name of the `LfpMerchantState` resource. Format: `accounts/`
-        # account`/lfpMerchantStates/`target_merchant``
+        # account`/lfpMerchantStates/`target_merchant``. For example, `accounts/123456/
+        # lfpMerchantStates/567890`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
