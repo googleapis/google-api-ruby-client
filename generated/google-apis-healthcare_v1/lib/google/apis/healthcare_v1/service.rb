@@ -179,7 +179,8 @@ module Google
         # logging).
         # @param [String] source_dataset
         #   Required. Source dataset resource name. For example, `projects/`project_id`/
-        #   locations/`location_id`/datasets/`dataset_id``.
+        #   locations/`location_id`/datasets/`dataset_id``. R5 FHIR stores are not
+        #   supported and will be skipped.
         # @param [Google::Apis::HealthcareV1::DeidentifyDatasetRequest] deidentify_dataset_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3574,7 +3575,7 @@ module Google
         # instead of an Operation. No resources will be reindexed and the `
         # consent_config.enforced_admin_consents` field will be unchanged. To enforce a
         # consent check for data access, `consent_config.access_enforced` must be set to
-        # true for the FhirStore.
+        # true for the FhirStore. FHIR Consent is not supported in DSTU2 or R5.
         # @param [String] name
         #   Required. The name of the FHIR store to enforce, in the format `projects/`
         #   project_id`/locations/`location_id`/datasets/`dataset_id`/fhirStores/`
@@ -3620,7 +3621,7 @@ module Google
         # was reindexed. Errors are logged to Cloud Logging (see [Viewing error logs in
         # Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). To
         # enforce consent check for data access, `consent_config.access_enforced` must
-        # be set to true for the FhirStore.
+        # be set to true for the FhirStore. FHIR Consent is not supported in DSTU2 or R5.
         # @param [String] name
         #   Required. The name of the FHIR store to enforce, in the format `projects/`
         #   project_id`/locations/`location_id`/datasets/`dataset_id`/fhirStores/`
@@ -3788,7 +3789,8 @@ module Google
         # how-tos/logging)).
         # @param [String] source_store
         #   Required. Source FHIR store resource name. For example, `projects/`project_id`/
-        #   locations/`location_id`/datasets/`dataset_id`/fhirStores/`fhir_store_id``.
+        #   locations/`location_id`/datasets/`dataset_id`/fhirStores/`fhir_store_id``. R5
+        #   stores are not supported.
         # @param [Google::Apis::HealthcareV1::DeidentifyFhirStoreRequest] deidentify_fhir_store_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3850,7 +3852,7 @@ module Google
         end
         
         # Explains all the permitted/denied actor, purpose and environment for a given
-        # resource.
+        # resource. FHIR Consent is not supported in DSTU2 or R5.
         # @param [String] name
         #   Required. The name of the FHIR store to enforce, in the format `projects/`
         #   project_id`/locations/`location_id`/datasets/`dataset_id`/fhirStores/`
@@ -4349,24 +4351,24 @@ module Google
         # zip archives, pdf files, documents). When a non-FHIR content type is used in
         # the request, a Binary resource will be generated, and the uploaded data will
         # be stored in the `content` field (`DSTU2` and `STU3`), or the `data` field (`
-        # R4`). The Binary resource's `contentType` will be filled in using the value of
-        # the `Content-Type` header, and the `securityContext` field (not present in `
-        # DSTU2`) will be populated from the `X-Security-Context` header if it exists.
-        # At this time `securityContext` has no special behavior in the Cloud Healthcare
-        # API. Note: the limit on data ingested through this method is 1 GB. For best
-        # performance, use a non-FHIR data type instead of wrapping the data in a Binary
-        # resource. Some of the Healthcare API features, such as [exporting to BigQuery](
-        # https://cloud.google.com/healthcare-api/docs/how-tos/fhir-export-bigquery) or [
-        # Pub/Sub notifications](https://cloud.google.com/healthcare-api/docs/fhir-
-        # pubsub#behavior_when_a_fhir_resource_is_too_large_or_traffic_is_high) with
-        # full resource content, do not support Binary resources that are larger than 10
-        # MB. In these cases the resource's `data` field will be omitted. Instead, the "
-        # http://hl7.org/fhir/StructureDefinition/data-absent-reason" extension will be
-        # present to indicate that including the data is `unsupported`. On success, an
-        # empty `201 Created` response is returned. The newly created resource's ID and
-        # version are returned in the Location header. Using `Prefer: representation=
-        # resource` is not allowed for this method. The definition of the Binary REST
-        # API can be found at https://hl7.org/fhir/binary.html#rest.
+        # R4` and `R5`). The Binary resource's `contentType` will be filled in using the
+        # value of the `Content-Type` header, and the `securityContext` field (not
+        # present in `DSTU2`) will be populated from the `X-Security-Context` header if
+        # it exists. At this time `securityContext` has no special behavior in the Cloud
+        # Healthcare API. Note: the limit on data ingested through this method is 1 GB.
+        # For best performance, use a non-FHIR data type instead of wrapping the data in
+        # a Binary resource. Some of the Healthcare API features, such as [exporting to
+        # BigQuery](https://cloud.google.com/healthcare-api/docs/how-tos/fhir-export-
+        # bigquery) or [Pub/Sub notifications](https://cloud.google.com/healthcare-api/
+        # docs/fhir-pubsub#behavior_when_a_fhir_resource_is_too_large_or_traffic_is_high)
+        # with full resource content, do not support Binary resources that are larger
+        # than 10 MB. In these cases the resource's `data` field will be omitted.
+        # Instead, the "http://hl7.org/fhir/StructureDefinition/data-absent-reason"
+        # extension will be present to indicate that including the data is `unsupported`.
+        # On success, an empty `201 Created` response is returned. The newly created
+        # resource's ID and version are returned in the Location header. Using `Prefer:
+        # representation=resource` is not allowed for this method. The definition of the
+        # Binary REST API can be found at https://hl7.org/fhir/binary.html#rest.
         # @param [String] parent
         #   Required. The name of the FHIR store this resource belongs to.
         # @param [Google::Apis::HealthcareV1::HttpBody] http_body_object
@@ -4450,16 +4452,16 @@ module Google
         # the same way as non-FHIR data. When a non-FHIR content type is used in the
         # request, a Binary resource will be generated using the ID from the resource
         # path, and the uploaded data will be stored in the `content` field (`DSTU2` and
-        # `STU3`), or the `data` field (`R4`). The Binary resource's `contentType` will
-        # be filled in using the value of the `Content-Type` header, and the `
-        # securityContext` field (not present in `DSTU2`) will be populated from the `X-
-        # Security-Context` header if it exists. At this time `securityContext` has no
-        # special behavior in the Cloud Healthcare API. Note: the limit on data ingested
-        # through this method is 2 GB. For best performance, use a non-FHIR data type
-        # instead of wrapping the data in a Binary resource. Some of the Healthcare API
-        # features, such as [exporting to BigQuery](https://cloud.google.com/healthcare-
-        # api/docs/how-tos/fhir-export-bigquery) or [Pub/Sub notifications](https://
-        # cloud.google.com/healthcare-api/docs/fhir-pubsub#
+        # `STU3`), or the `data` field (`R4` and `R5`). The Binary resource's `
+        # contentType` will be filled in using the value of the `Content-Type` header,
+        # and the `securityContext` field (not present in `DSTU2`) will be populated
+        # from the `X-Security-Context` header if it exists. At this time `
+        # securityContext` has no special behavior in the Cloud Healthcare API. Note:
+        # the limit on data ingested through this method is 2 GB. For best performance,
+        # use a non-FHIR data type instead of wrapping the data in a Binary resource.
+        # Some of the Healthcare API features, such as [exporting to BigQuery](https://
+        # cloud.google.com/healthcare-api/docs/how-tos/fhir-export-bigquery) or [Pub/Sub
+        # notifications](https://cloud.google.com/healthcare-api/docs/fhir-pubsub#
         # behavior_when_a_fhir_resource_is_too_large_or_traffic_is_high) with full
         # resource content, do not support Binary resources that are larger than 10 MB.
         # In these cases the resource's `data` field will be omitted. Instead, the "http:
@@ -4627,18 +4629,20 @@ module Google
         # the FHIR extended operation Patient-everything ([DSTU2](https://hl7.org/fhir/
         # DSTU2/patient-operations.html#everything), [STU3](https://hl7.org/fhir/STU3/
         # patient-operations.html#everything), [R4](https://hl7.org/fhir/R4/patient-
-        # operation-everything.html)). On success, the response body contains a JSON-
-        # encoded representation of a `Bundle` resource of type `searchset`, containing
-        # the results of the operation. Errors generated by the FHIR store contain a
-        # JSON-encoded `OperationOutcome` resource describing the reason for the error.
-        # If the request cannot be mapped to a valid API method on a FHIR store, a
-        # generic GCP error might be returned instead. The resources in scope for the
-        # response are: * The patient resource itself. * All the resources directly
-        # referenced by the patient resource. * Resources directly referencing the
-        # patient resource that meet the inclusion criteria. The inclusion criteria are
-        # based on the membership rules in the patient compartment definition ([DSTU2](
-        # http://hl7.org/fhir/DSTU2/compartment-patient.html), [STU3](http://www.hl7.org/
-        # fhir/stu3/compartmentdefinition-patient.html), [R4](http://hl7.org/fhir/R4/
+        # operation-everything.html), [R5](https://hl7.org/fhir/R5/patient-operation-
+        # everything.html)). On success, the response body contains a JSON-encoded
+        # representation of a `Bundle` resource of type `searchset`, containing the
+        # results of the operation. Errors generated by the FHIR store contain a JSON-
+        # encoded `OperationOutcome` resource describing the reason for the error. If
+        # the request cannot be mapped to a valid API method on a FHIR store, a generic
+        # GCP error might be returned instead. The resources in scope for the response
+        # are: * The patient resource itself. * All the resources directly referenced by
+        # the patient resource. * Resources directly referencing the patient resource
+        # that meet the inclusion criteria. The inclusion criteria are based on the
+        # membership rules in the patient compartment definition ([DSTU2](http://hl7.org/
+        # fhir/DSTU2/compartment-patient.html), [STU3](http://www.hl7.org/fhir/stu3/
+        # compartmentdefinition-patient.html), [R4](http://hl7.org/fhir/R4/
+        # compartmentdefinition-patient.html), [R5](http://hl7.org/fhir/R5/
         # compartmentdefinition-patient.html)), which details the eligible resource
         # types and referencing search parameters. For samples that show how to call `
         # Patient-everything`, see [Getting all patient compartment resources](https://
@@ -4746,26 +4750,26 @@ module Google
         # Validates an input FHIR resource's conformance to its profiles and the
         # profiles configured on the FHIR store. Implements the FHIR extended operation $
         # validate ([DSTU2](https://hl7.org/fhir/DSTU2/resource-operations.html#validate)
-        # , [STU3](https://hl7.org/fhir/STU3/resource-operations.html#validate), or [R4](
-        # https://hl7.org/fhir/R4/resource-operation-validate.html)). The request body
-        # must contain a JSON-encoded FHIR resource, and the request headers must
-        # contain `Content-Type: application/fhir+json`. The `Parameters` input syntax
-        # is not supported. The `profile` query parameter can be used to request that
-        # the resource only be validated against a specific profile. If a profile with
-        # the given URL cannot be found in the FHIR store then an error is returned.
-        # Errors generated by validation contain a JSON-encoded `OperationOutcome`
-        # resource describing the reason for the error. If the request cannot be mapped
-        # to a valid API method on a FHIR store, a generic GCP error might be returned
-        # instead.
+        # , [STU3](https://hl7.org/fhir/STU3/resource-operations.html#validate), [R4](
+        # https://hl7.org/fhir/R4/resource-operation-validate.html). or [R5](https://hl7.
+        # org/fhir/R5/resource-operation-validate.html)). The request body must contain
+        # a JSON-encoded FHIR resource, and the request headers must contain `Content-
+        # Type: application/fhir+json`. The `Parameters` input syntax is not supported.
+        # The `profile` query parameter can be used to request that the resource only be
+        # validated against a specific profile. If a profile with the given URL cannot
+        # be found in the FHIR store then an error is returned. Errors generated by
+        # validation contain a JSON-encoded `OperationOutcome` resource describing the
+        # reason for the error. If the request cannot be mapped to a valid API method on
+        # a FHIR store, a generic GCP error might be returned instead.
         # @param [String] parent
         #   Required. The name of the FHIR store that holds the profiles being used for
         #   validation.
         # @param [String] type
         #   Required. The FHIR resource type of the resource being validated. For a
         #   complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/fhir/DSTU2/
-        #   resourcelist.html), [STU3](https://hl7.org/fhir/STU3/resourcelist.html), or [
-        #   R4](https://hl7.org/fhir/R4/resourcelist.html)). Must match the resource type
-        #   in the provided content.
+        #   resourcelist.html), [STU3](https://hl7.org/fhir/STU3/resourcelist.html), [R4](
+        #   https://hl7.org/fhir/R4/resourcelist.html), or [R5](https://hl7.org/fhir/R5/
+        #   resourcelist.html)). Must match the resource type in the provided content.
         # @param [Google::Apis::HealthcareV1::HttpBody] http_body_object
         # @param [String] profile
         #   Optional. The canonical URL of a profile that this resource should be
@@ -4876,14 +4880,15 @@ module Google
         
         # Gets the FHIR capability statement ([STU3](https://hl7.org/fhir/STU3/
         # capabilitystatement.html), [R4](https://hl7.org/fhir/R4/capabilitystatement.
-        # html)), or the [conformance statement](https://hl7.org/fhir/DSTU2/conformance.
-        # html) in the DSTU2 case for the store, which contains a description of
-        # functionality supported by the server. Implements the FHIR standard
-        # capabilities interaction ([STU3](https://hl7.org/fhir/STU3/http.html#
-        # capabilities), [R4](https://hl7.org/fhir/R4/http.html#capabilities)), or the [
-        # conformance interaction](https://hl7.org/fhir/DSTU2/http.html#conformance) in
-        # the DSTU2 case. On success, the response body contains a JSON-encoded
-        # representation of a `CapabilityStatement` resource.
+        # html), [R5](https://hl7.org/fhir/R5/capabilitystatement.html)), or the [
+        # conformance statement](https://hl7.org/fhir/DSTU2/conformance.html) in the
+        # DSTU2 case for the store, which contains a description of functionality
+        # supported by the server. Implements the FHIR standard capabilities interaction
+        # ([STU3](https://hl7.org/fhir/STU3/http.html#capabilities), [R4](https://hl7.
+        # org/fhir/R4/http.html#capabilities), [R5](https://hl7.org/fhir/R5/http.html#
+        # capabilities)), or the [conformance interaction](https://hl7.org/fhir/DSTU2/
+        # http.html#conformance) in the DSTU2 case. On success, the response body
+        # contains a JSON-encoded representation of a `CapabilityStatement` resource.
         # @param [String] name
         #   Required. Name of the FHIR store to retrieve the capabilities for.
         # @param [String] fields
@@ -4931,7 +4936,8 @@ module Google
         #   Required. The FHIR resource type to delete, such as Patient or Observation.
         #   For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/fhir/
         #   DSTU2/resourcelist.html), [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
-        #   [R4](https://hl7.org/fhir/R4/resourcelist.html)).
+        #   [R4](https://hl7.org/fhir/R4/resourcelist.html), [R5](https://hl7.org/fhir/R5/
+        #   resourcelist.html)).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4985,7 +4991,8 @@ module Google
         #   Required. The FHIR resource type to update, such as Patient or Observation.
         #   For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/fhir/
         #   DSTU2/resourcelist.html), [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
-        #   [R4](https://hl7.org/fhir/R4/resourcelist.html)).
+        #   [R4](https://hl7.org/fhir/R4/resourcelist.html), [R5](https://hl7.org/fhir/R5/
+        #   resourcelist.html)).
         # @param [Google::Apis::HealthcareV1::HttpBody] http_body_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5049,8 +5056,8 @@ module Google
         #   Required. The FHIR resource type to update, such as Patient or Observation.
         #   For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/fhir/
         #   DSTU2/resourcelist.html), [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
-        #   [R4](https://hl7.org/fhir/R4/resourcelist.html)). Must match the resource type
-        #   in the provided content.
+        #   [R4](https://hl7.org/fhir/R4/resourcelist.html), [R5](https://hl7.org/fhir/R5/
+        #   resourcelist.html)). Must match the resource type in the provided content.
         # @param [Google::Apis::HealthcareV1::HttpBody] http_body_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5084,34 +5091,36 @@ module Google
         
         # Creates a FHIR resource. Implements the FHIR standard create interaction ([
         # DSTU2](https://hl7.org/fhir/DSTU2/http.html#create), [STU3](https://hl7.org/
-        # fhir/STU3/http.html#create), [R4](https://hl7.org/fhir/R4/http.html#create)),
-        # which creates a new resource with a server-assigned resource ID. Also supports
-        # the FHIR standard conditional create interaction ([DSTU2](https://hl7.org/fhir/
-        # DSTU2/http.html#ccreate), [STU3](https://hl7.org/fhir/STU3/http.html#ccreate),
-        # [R4](https://hl7.org/fhir/R4/http.html#ccreate)), specified by supplying an `
-        # If-None-Exist` header containing a FHIR search query, limited to searching by
-        # resource identifier. If no resources match this search query, the server
-        # processes the create operation as normal. When using conditional create, the
-        # search term for identifier should be in the pattern `identifier=system|value`
-        # or `identifier=value` - similar to the `search` method on resources with a
-        # specific identifier. The request body must contain a JSON-encoded FHIR
-        # resource, and the request headers must contain `Content-Type: application/fhir+
-        # json`. On success, the response body contains a JSON-encoded representation of
-        # the resource as it was created on the server, including the server-assigned
-        # resource ID and version ID. Errors generated by the FHIR store contain a JSON-
-        # encoded `OperationOutcome` resource describing the reason for the error. If
-        # the request cannot be mapped to a valid API method on a FHIR store, a generic
-        # GCP error might be returned instead. For samples that show how to call `create`
-        # , see [Creating a FHIR resource](https://cloud.google.com/healthcare/docs/how-
-        # tos/fhir-resources#creating_a_fhir_resource).
+        # fhir/STU3/http.html#create), [R4](https://hl7.org/fhir/R4/http.html#create), [
+        # R5](https://hl7.org/fhir/R5/http.html#create)), which creates a new resource
+        # with a server-assigned resource ID. Also supports the FHIR standard
+        # conditional create interaction ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#
+        # ccreate), [STU3](https://hl7.org/fhir/STU3/http.html#ccreate), [R4](https://
+        # hl7.org/fhir/R4/http.html#ccreate), [R5](https://hl7.org/fhir/R5/http.html#
+        # ccreate)), specified by supplying an `If-None-Exist` header containing a FHIR
+        # search query, limited to searching by resource identifier. If no resources
+        # match this search query, the server processes the create operation as normal.
+        # When using conditional create, the search term for identifier should be in the
+        # pattern `identifier=system|value` or `identifier=value` - similar to the `
+        # search` method on resources with a specific identifier. The request body must
+        # contain a JSON-encoded FHIR resource, and the request headers must contain `
+        # Content-Type: application/fhir+json`. On success, the response body contains a
+        # JSON-encoded representation of the resource as it was created on the server,
+        # including the server-assigned resource ID and version ID. Errors generated by
+        # the FHIR store contain a JSON-encoded `OperationOutcome` resource describing
+        # the reason for the error. If the request cannot be mapped to a valid API
+        # method on a FHIR store, a generic GCP error might be returned instead. For
+        # samples that show how to call `create`, see [Creating a FHIR resource](https://
+        # cloud.google.com/healthcare/docs/how-tos/fhir-resources#
+        # creating_a_fhir_resource).
         # @param [String] parent
         #   Required. The name of the FHIR store this resource belongs to.
         # @param [String] type
         #   Required. The FHIR resource type to create, such as Patient or Observation.
         #   For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/fhir/
         #   DSTU2/resourcelist.html), [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
-        #   [R4](https://hl7.org/fhir/R4/resourcelist.html)). Must match the resource type
-        #   in the provided content.
+        #   [R4](https://hl7.org/fhir/R4/resourcelist.html), [R5](https://hl7.org/fhir/R5/
+        #   resourcelist.html)). Must match the resource type in the provided content.
         # @param [Google::Apis::HealthcareV1::HttpBody] http_body_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5145,13 +5154,14 @@ module Google
         
         # Deletes a FHIR resource. Implements the FHIR standard delete interaction ([
         # DSTU2](https://hl7.org/fhir/DSTU2/http.html#delete), [STU3](https://hl7.org/
-        # fhir/STU3/http.html#delete), [R4](https://hl7.org/fhir/R4/http.html#delete)).
-        # Note: Unless resource versioning is disabled by setting the
-        # disable_resource_versioning flag on the FHIR store, the deleted resources will
-        # be moved to a history repository that can still be retrieved through vread and
-        # related methods, unless they are removed by the purge method. For samples that
-        # show how to call `delete`, see [Deleting a FHIR resource](https://cloud.google.
-        # com/healthcare/docs/how-tos/fhir-resources#deleting_a_fhir_resource).
+        # fhir/STU3/http.html#delete), [R4](https://hl7.org/fhir/R4/http.html#delete), [
+        # R5](https://hl7.org/fhir/R5/http.html#delete)). Note: Unless resource
+        # versioning is disabled by setting the disable_resource_versioning flag on the
+        # FHIR store, the deleted resources will be moved to a history repository that
+        # can still be retrieved through vread and related methods, unless they are
+        # removed by the purge method. For samples that show how to call `delete`, see [
+        # Deleting a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/
+        # fhir-resources#deleting_a_fhir_resource).
         # @param [String] name
         #   Required. The name of the resource to delete.
         # @param [String] fields
@@ -5184,30 +5194,32 @@ module Google
         # Executes all the requests in the given Bundle. Implements the FHIR standard
         # batch/transaction interaction ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#
         # transaction), [STU3](https://hl7.org/fhir/STU3/http.html#transaction), [R4](
-        # https://hl7.org/fhir/R4/http.html#transaction)). Supports all interactions
-        # within a bundle, except search. This method accepts Bundles of type `batch`
-        # and `transaction`, processing them according to the batch processing rules ([
-        # DSTU2](https://hl7.org/fhir/DSTU2/http.html#2.1.0.16.1), [STU3](https://hl7.
-        # org/fhir/STU3/http.html#2.21.0.17.1), [R4](https://hl7.org/fhir/R4/http.html#
-        # brules)) and transaction processing rules ([DSTU2](https://hl7.org/fhir/DSTU2/
-        # http.html#2.1.0.16.2), [STU3](https://hl7.org/fhir/STU3/http.html#2.21.0.17.2),
-        # [R4](https://hl7.org/fhir/R4/http.html#trules)). The request body must
-        # contain a JSON-encoded FHIR `Bundle` resource, and the request headers must
-        # contain `Content-Type: application/fhir+json`. For a batch bundle or a
-        # successful transaction, the response body contains a JSON-encoded
-        # representation of a `Bundle` resource of type `batch-response` or `transaction-
-        # response` containing one entry for each entry in the request, with the outcome
-        # of processing the entry. In the case of an error for a transaction bundle, the
-        # response body contains a JSON-encoded `OperationOutcome` resource describing
-        # the reason for the error. If the request cannot be mapped to a valid API
-        # method on a FHIR store, a generic GCP error might be returned instead. This
-        # method checks permissions for each request in the bundle. The `executeBundle`
-        # permission is required to call this method, but you must also grant sufficient
-        # permissions to execute the individual requests in the bundle. For example, if
-        # the bundle contains a request to create a FHIR resource, the caller must also
-        # have been granted the `healthcare.fhirResources.create` permission. You can
-        # use audit logs to view the permissions for `executeBundle` and each request in
-        # the bundle. For more information, see [Viewing Cloud Audit logs](https://cloud.
+        # https://hl7.org/fhir/R4/http.html#transaction), [R5](https://hl7.org/fhir/R5/
+        # http.html#transaction)). Supports all interactions within a bundle, except
+        # search. This method accepts Bundles of type `batch` and `transaction`,
+        # processing them according to the batch processing rules ([DSTU2](https://hl7.
+        # org/fhir/DSTU2/http.html#2.1.0.16.1), [STU3](https://hl7.org/fhir/STU3/http.
+        # html#2.21.0.17.1), [R4](https://hl7.org/fhir/R4/http.html#brules), [R5](https:/
+        # /hl7.org/fhir/R5/http.html#brules)) and transaction processing rules ([DSTU2](
+        # https://hl7.org/fhir/DSTU2/http.html#2.1.0.16.2), [STU3](https://hl7.org/fhir/
+        # STU3/http.html#2.21.0.17.2), [R4](https://hl7.org/fhir/R4/http.html#trules), [
+        # R5](https://hl7.org/fhir/R5/http.html#trules)). The request body must contain
+        # a JSON-encoded FHIR `Bundle` resource, and the request headers must contain `
+        # Content-Type: application/fhir+json`. For a batch bundle or a successful
+        # transaction, the response body contains a JSON-encoded representation of a `
+        # Bundle` resource of type `batch-response` or `transaction-response` containing
+        # one entry for each entry in the request, with the outcome of processing the
+        # entry. In the case of an error for a transaction bundle, the response body
+        # contains a JSON-encoded `OperationOutcome` resource describing the reason for
+        # the error. If the request cannot be mapped to a valid API method on a FHIR
+        # store, a generic GCP error might be returned instead. This method checks
+        # permissions for each request in the bundle. The `executeBundle` permission is
+        # required to call this method, but you must also grant sufficient permissions
+        # to execute the individual requests in the bundle. For example, if the bundle
+        # contains a request to create a FHIR resource, the caller must also have been
+        # granted the `healthcare.fhirResources.create` permission. You can use audit
+        # logs to view the permissions for `executeBundle` and each request in the
+        # bundle. For more information, see [Viewing Cloud Audit logs](https://cloud.
         # google.com/healthcare-api/docs/how-tos/audit-logging). For samples that show
         # how to call `executeBundle`, see [Managing FHIR resources using FHIR bundles](
         # https://cloud.google.com/healthcare/docs/how-tos/fhir-bundles).
@@ -5247,12 +5259,13 @@ module Google
         # deleted versions) from the FHIR store. Implements the per-resource form of the
         # FHIR standard history interaction ([DSTU2](https://hl7.org/fhir/DSTU2/http.
         # html#history), [STU3](https://hl7.org/fhir/STU3/http.html#history), [R4](https:
-        # //hl7.org/fhir/R4/http.html#history)). On success, the response body contains
-        # a JSON-encoded representation of a `Bundle` resource of type `history`,
-        # containing the version history sorted from most recent to oldest versions.
-        # Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome`
-        # resource describing the reason for the error. If the request cannot be mapped
-        # to a valid API method on a FHIR store, a generic GCP error might be returned
+        # //hl7.org/fhir/R4/http.html#history), [R5](https://hl7.org/fhir/R5/http.html#
+        # history)). On success, the response body contains a JSON-encoded
+        # representation of a `Bundle` resource of type `history`, containing the
+        # version history sorted from most recent to oldest versions. Errors generated
+        # by the FHIR store contain a JSON-encoded `OperationOutcome` resource
+        # describing the reason for the error. If the request cannot be mapped to a
+        # valid API method on a FHIR store, a generic GCP error might be returned
         # instead. For samples that show how to call `history`, see [Listing FHIR
         # resource versions](https://cloud.google.com/healthcare/docs/how-tos/fhir-
         # resources#listing_fhir_resource_versions).
@@ -5312,17 +5325,18 @@ module Google
         # Updates part of an existing resource by applying the operations specified in a
         # [JSON Patch](http://jsonpatch.com/) document. Implements the FHIR standard
         # patch interaction ([STU3](https://hl7.org/fhir/STU3/http.html#patch), [R4](
-        # https://hl7.org/fhir/R4/http.html#patch)). DSTU2 doesn't define a patch method,
-        # but the server supports it in the same way it supports STU3. The request body
-        # must contain a JSON Patch document, and the request headers must contain `
-        # Content-Type: application/json-patch+json`. On success, the response body
-        # contains a JSON-encoded representation of the updated resource, including the
-        # server-assigned version ID. Errors generated by the FHIR store contain a JSON-
-        # encoded `OperationOutcome` resource describing the reason for the error. If
-        # the request cannot be mapped to a valid API method on a FHIR store, a generic
-        # GCP error might be returned instead. For samples that show how to call `patch`,
-        # see [Patching a FHIR resource](https://cloud.google.com/healthcare/docs/how-
-        # tos/fhir-resources#patching_a_fhir_resource).
+        # https://hl7.org/fhir/R4/http.html#patch), [R5](https://hl7.org/fhir/R5/http.
+        # html#patch)). DSTU2 doesn't define a patch method, but the server supports it
+        # in the same way it supports STU3. The request body must contain a JSON Patch
+        # document, and the request headers must contain `Content-Type: application/json-
+        # patch+json`. On success, the response body contains a JSON-encoded
+        # representation of the updated resource, including the server-assigned version
+        # ID. Errors generated by the FHIR store contain a JSON-encoded `
+        # OperationOutcome` resource describing the reason for the error. If the request
+        # cannot be mapped to a valid API method on a FHIR store, a generic GCP error
+        # might be returned instead. For samples that show how to call `patch`, see [
+        # Patching a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/
+        # fhir-resources#patching_a_fhir_resource).
         # @param [String] name
         #   Required. The name of the resource to update.
         # @param [Google::Apis::HealthcareV1::HttpBody] http_body_object
@@ -5358,17 +5372,19 @@ module Google
         # Gets the contents of a FHIR resource. Implements the FHIR standard read
         # interaction ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#read), [STU3](https:/
         # /hl7.org/fhir/STU3/http.html#read), [R4](https://hl7.org/fhir/R4/http.html#
-        # read)). Also supports the FHIR standard conditional read interaction ([DSTU2](
-        # https://hl7.org/fhir/DSTU2/http.html#cread), [STU3](https://hl7.org/fhir/STU3/
-        # http.html#cread), [R4](https://hl7.org/fhir/R4/http.html#cread)) specified by
-        # supplying an `If-Modified-Since` header with a date/time value or an `If-None-
-        # Match` header with an ETag value. On success, the response body contains a
-        # JSON-encoded representation of the resource. Errors generated by the FHIR
-        # store contain a JSON-encoded `OperationOutcome` resource describing the reason
-        # for the error. If the request cannot be mapped to a valid API method on a FHIR
-        # store, a generic GCP error might be returned instead. For samples that show
-        # how to call `read`, see [Getting a FHIR resource](https://cloud.google.com/
-        # healthcare/docs/how-tos/fhir-resources#getting_a_fhir_resource).
+        # read), [R5](https://hl7.org/fhir/R5/http.html#read)). Also supports the FHIR
+        # standard conditional read interaction ([DSTU2](https://hl7.org/fhir/DSTU2/http.
+        # html#cread), [STU3](https://hl7.org/fhir/STU3/http.html#cread), [R4](https://
+        # hl7.org/fhir/R4/http.html#cread), [R5](https://hl7.org/fhir/R5/http.html#cread)
+        # ) specified by supplying an `If-Modified-Since` header with a date/time value
+        # or an `If-None-Match` header with an ETag value. On success, the response body
+        # contains a JSON-encoded representation of the resource. Errors generated by
+        # the FHIR store contain a JSON-encoded `OperationOutcome` resource describing
+        # the reason for the error. If the request cannot be mapped to a valid API
+        # method on a FHIR store, a generic GCP error might be returned instead. For
+        # samples that show how to call `read`, see [Getting a FHIR resource](https://
+        # cloud.google.com/healthcare/docs/how-tos/fhir-resources#
+        # getting_a_fhir_resource).
         # @param [String] name
         #   Required. The name of the resource to retrieve.
         # @param [String] fields
@@ -5401,63 +5417,65 @@ module Google
         # Searches for resources in the given FHIR store according to criteria specified
         # as query parameters. Implements the FHIR standard search interaction ([DSTU2](
         # https://hl7.org/fhir/DSTU2/http.html#search), [STU3](https://hl7.org/fhir/STU3/
-        # http.html#search), [R4](https://hl7.org/fhir/R4/http.html#search)) using the
-        # search semantics described in the FHIR Search specification ([DSTU2](https://
-        # hl7.org/fhir/DSTU2/search.html), [STU3](https://hl7.org/fhir/STU3/search.html),
-        # [R4](https://hl7.org/fhir/R4/search.html)). Supports four methods of search
-        # defined by the specification: * `GET [base]?[parameters]` to search across all
-        # resources. * `GET [base]/[type]?[parameters]` to search resources of a
-        # specified type. * `POST [base]/_search?[parameters]` as an alternate form
-        # having the same semantics as the `GET` method across all resources. * `POST [
-        # base]/[type]/_search?[parameters]` as an alternate form having the same
-        # semantics as the `GET` method for the specified type. The `GET` and `POST`
-        # methods do not support compartment searches. The `POST` method does not
-        # support `application/x-www-form-urlencoded` search parameters. On success, the
-        # response body contains a JSON-encoded representation of a `Bundle` resource of
-        # type `searchset`, containing the results of the search. Errors generated by
-        # the FHIR store contain a JSON-encoded `OperationOutcome` resource describing
-        # the reason for the error. If the request cannot be mapped to a valid API
-        # method on a FHIR store, a generic GCP error might be returned instead. The
-        # server's capability statement, retrieved through capabilities, indicates what
-        # search parameters are supported on each FHIR resource. A list of all search
-        # parameters defined by the specification can be found in the FHIR Search
-        # Parameter Registry ([STU3](https://hl7.org/fhir/STU3/searchparameter-registry.
-        # html), [R4](https://hl7.org/fhir/R4/searchparameter-registry.html)). FHIR
-        # search parameters for DSTU2 can be found on each resource's definition page.
+        # http.html#search), [R4](https://hl7.org/fhir/R4/http.html#search), [R5](https:/
+        # /hl7.org/fhir/R5/http.html#search)) using the search semantics described in
+        # the FHIR Search specification ([DSTU2](https://hl7.org/fhir/DSTU2/search.html),
+        # [STU3](https://hl7.org/fhir/STU3/search.html), [R4](https://hl7.org/fhir/R4/
+        # search.html), [R5](https://hl7.org/fhir/R5/search.html)). Supports four
+        # methods of search defined by the specification: * `GET [base]?[parameters]` to
+        # search across all resources. * `GET [base]/[type]?[parameters]` to search
+        # resources of a specified type. * `POST [base]/_search?[parameters]` as an
+        # alternate form having the same semantics as the `GET` method across all
+        # resources. * `POST [base]/[type]/_search?[parameters]` as an alternate form
+        # having the same semantics as the `GET` method for the specified type. The `GET`
+        # and `POST` methods do not support compartment searches. The `POST` method
+        # does not support `application/x-www-form-urlencoded` search parameters. On
+        # success, the response body contains a JSON-encoded representation of a `Bundle`
+        # resource of type `searchset`, containing the results of the search. Errors
+        # generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource
+        # describing the reason for the error. If the request cannot be mapped to a
+        # valid API method on a FHIR store, a generic GCP error might be returned
+        # instead. The server's capability statement, retrieved through capabilities,
+        # indicates what search parameters are supported on each FHIR resource. A list
+        # of all search parameters defined by the specification can be found in the FHIR
+        # Search Parameter Registry ([STU3](https://hl7.org/fhir/STU3/searchparameter-
+        # registry.html), [R4](https://hl7.org/fhir/R4/searchparameter-registry.html), [
+        # R5](https://hl7.org/fhir/R5/searchparameter-registry.html)). FHIR search
+        # parameters for DSTU2 can be found on each resource's definition page.
         # Supported search modifiers: `:missing`, `:exact`, `:contains`, `:text`, `:in`,
         # `:not-in`, `:above`, `:below`, `:[type]`, `:not`, and `recurse` (DSTU2 and
-        # STU3) or `:iterate` (R4). Supported search result parameters: `_sort`, `_count`
-        # , `_include`, `_revinclude`, `_summary=text`, `_summary=data`, and `_elements`.
-        # The maximum number of search results returned defaults to 100, which can be
-        # overridden by the `_count` parameter up to a maximum limit of 1000. The server
-        # might return fewer resources than requested to prevent excessively large
-        # responses. If there are additional results, the returned `Bundle` contains a
-        # link of `relation` "next", which has a `_page_token` parameter for an opaque
-        # pagination token that can be used to retrieve the next page. Resources with a
-        # total size larger than 5MB or a field count larger than 50,000 might not be
-        # fully searchable as the server might trim its generated search index in those
-        # cases. Note: FHIR resources are indexed asynchronously, so there might be a
-        # slight delay between the time a resource is created or changed, and the time
-        # when the change reflects in search results. The only exception is resource
-        # identifier data, which is indexed synchronously as a special index. As a
-        # result, searching using resource identifier is not subject to indexing delay.
-        # To use the special synchronous index, the search term for identifier should be
-        # in the pattern `identifier=[system]|[value]` or `identifier=[value]`, and any
-        # of the following search result parameters can be used: * `_count` * `_include`
-        # * `_revinclude` * `_summary` * `_elements` If your query contains any other
-        # search parameters, the standard asynchronous index will be used instead. Note
-        # that searching against the special index is optimized for resolving a small
-        # number of matches. The search isn't optimized if your identifier search
-        # criteria matches a large number (i.e. more than 2,000) of resources. For a
-        # search query that will match a large number of resources, you can avoiding
-        # using the special synchronous index by including an additional `_sort`
-        # parameter in your query. Use `_sort=-_lastUpdated` if you want to keep the
-        # default sorting order. Note: The special synchronous identifier index are
-        # currently disabled for DocumentReference and DocumentManifest searches. For
-        # samples and detailed information, see [Searching for FHIR resources](https://
-        # cloud.google.com/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR
-        # search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-
-        # advanced-search).
+        # STU3) or `:iterate` (R4 and R5). Supported search result parameters: `_sort`, `
+        # _count`, `_include`, `_revinclude`, `_summary=text`, `_summary=data`, and `
+        # _elements`. The maximum number of search results returned defaults to 100,
+        # which can be overridden by the `_count` parameter up to a maximum limit of
+        # 1000. The server might return fewer resources than requested to prevent
+        # excessively large responses. If there are additional results, the returned `
+        # Bundle` contains a link of `relation` "next", which has a `_page_token`
+        # parameter for an opaque pagination token that can be used to retrieve the next
+        # page. Resources with a total size larger than 5MB or a field count larger than
+        # 50,000 might not be fully searchable as the server might trim its generated
+        # search index in those cases. Note: FHIR resources are indexed asynchronously,
+        # so there might be a slight delay between the time a resource is created or
+        # changed, and the time when the change reflects in search results. The only
+        # exception is resource identifier data, which is indexed synchronously as a
+        # special index. As a result, searching using resource identifier is not subject
+        # to indexing delay. To use the special synchronous index, the search term for
+        # identifier should be in the pattern `identifier=[system]|[value]` or `
+        # identifier=[value]`, and any of the following search result parameters can be
+        # used: * `_count` * `_include` * `_revinclude` * `_summary` * `_elements` If
+        # your query contains any other search parameters, the standard asynchronous
+        # index will be used instead. Note that searching against the special index is
+        # optimized for resolving a small number of matches. The search isn't optimized
+        # if your identifier search criteria matches a large number (i.e. more than 2,
+        # 000) of resources. For a search query that will match a large number of
+        # resources, you can avoiding using the special synchronous index by including
+        # an additional `_sort` parameter in your query. Use `_sort=-_lastUpdated` if
+        # you want to keep the default sorting order. Note: The special synchronous
+        # identifier index are currently disabled for DocumentReference and
+        # DocumentManifest searches. For samples and detailed information, see [
+        # Searching for FHIR resources](https://cloud.google.com/healthcare/docs/how-tos/
+        # fhir-search) and [Advanced FHIR search features](https://cloud.google.com/
+        # healthcare/docs/how-tos/fhir-advanced-search).
         # @param [String] parent
         #   Required. Name of the FHIR store to retrieve resources from.
         # @param [Google::Apis::HealthcareV1::SearchResourcesRequest] search_resources_request_object
@@ -5493,70 +5511,73 @@ module Google
         # Searches for resources in the given FHIR store according to criteria specified
         # as query parameters. Implements the FHIR standard search interaction ([DSTU2](
         # https://hl7.org/fhir/DSTU2/http.html#search), [STU3](https://hl7.org/fhir/STU3/
-        # http.html#search), [R4](https://hl7.org/fhir/R4/http.html#search)) using the
-        # search semantics described in the FHIR Search specification ([DSTU2](https://
-        # hl7.org/fhir/DSTU2/search.html), [STU3](https://hl7.org/fhir/STU3/search.html),
-        # [R4](https://hl7.org/fhir/R4/search.html)). Supports four methods of search
-        # defined by the specification: * `GET [base]?[parameters]` to search across all
-        # resources. * `GET [base]/[type]?[parameters]` to search resources of a
-        # specified type. * `POST [base]/_search?[parameters]` as an alternate form
-        # having the same semantics as the `GET` method across all resources. * `POST [
-        # base]/[type]/_search?[parameters]` as an alternate form having the same
-        # semantics as the `GET` method for the specified type. The `GET` and `POST`
-        # methods do not support compartment searches. The `POST` method does not
-        # support `application/x-www-form-urlencoded` search parameters. On success, the
-        # response body contains a JSON-encoded representation of a `Bundle` resource of
-        # type `searchset`, containing the results of the search. Errors generated by
-        # the FHIR store contain a JSON-encoded `OperationOutcome` resource describing
-        # the reason for the error. If the request cannot be mapped to a valid API
-        # method on a FHIR store, a generic GCP error might be returned instead. The
-        # server's capability statement, retrieved through capabilities, indicates what
-        # search parameters are supported on each FHIR resource. A list of all search
-        # parameters defined by the specification can be found in the FHIR Search
-        # Parameter Registry ([STU3](https://hl7.org/fhir/STU3/searchparameter-registry.
-        # html), [R4](https://hl7.org/fhir/R4/searchparameter-registry.html)). FHIR
-        # search parameters for DSTU2 can be found on each resource's definition page.
+        # http.html#search), [R4](https://hl7.org/fhir/R4/http.html#search), [R5](https:/
+        # /hl7.org/fhir/R5/http.html#search)) using the search semantics described in
+        # the FHIR Search specification ([DSTU2](https://hl7.org/fhir/DSTU2/search.html),
+        # [STU3](https://hl7.org/fhir/STU3/search.html), [R4](https://hl7.org/fhir/R4/
+        # search.html), [R5](https://hl7.org/fhir/R5/search.html)). Supports four
+        # methods of search defined by the specification: * `GET [base]?[parameters]` to
+        # search across all resources. * `GET [base]/[type]?[parameters]` to search
+        # resources of a specified type. * `POST [base]/_search?[parameters]` as an
+        # alternate form having the same semantics as the `GET` method across all
+        # resources. * `POST [base]/[type]/_search?[parameters]` as an alternate form
+        # having the same semantics as the `GET` method for the specified type. The `GET`
+        # and `POST` methods do not support compartment searches. The `POST` method
+        # does not support `application/x-www-form-urlencoded` search parameters. On
+        # success, the response body contains a JSON-encoded representation of a `Bundle`
+        # resource of type `searchset`, containing the results of the search. Errors
+        # generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource
+        # describing the reason for the error. If the request cannot be mapped to a
+        # valid API method on a FHIR store, a generic GCP error might be returned
+        # instead. The server's capability statement, retrieved through capabilities,
+        # indicates what search parameters are supported on each FHIR resource. A list
+        # of all search parameters defined by the specification can be found in the FHIR
+        # Search Parameter Registry ([STU3](https://hl7.org/fhir/STU3/searchparameter-
+        # registry.html), [R4](https://hl7.org/fhir/R4/searchparameter-registry.html), [
+        # R5](https://hl7.org/fhir/R5/searchparameter-registry.html)). FHIR search
+        # parameters for DSTU2 can be found on each resource's definition page.
         # Supported search modifiers: `:missing`, `:exact`, `:contains`, `:text`, `:in`,
         # `:not-in`, `:above`, `:below`, `:[type]`, `:not`, and `recurse` (DSTU2 and
-        # STU3) or `:iterate` (R4). Supported search result parameters: `_sort`, `_count`
-        # , `_include`, `_revinclude`, `_summary=text`, `_summary=data`, and `_elements`.
-        # The maximum number of search results returned defaults to 100, which can be
-        # overridden by the `_count` parameter up to a maximum limit of 1000. The server
-        # might return fewer resources than requested to prevent excessively large
-        # responses. If there are additional results, the returned `Bundle` contains a
-        # link of `relation` "next", which has a `_page_token` parameter for an opaque
-        # pagination token that can be used to retrieve the next page. Resources with a
-        # total size larger than 5MB or a field count larger than 50,000 might not be
-        # fully searchable as the server might trim its generated search index in those
-        # cases. Note: FHIR resources are indexed asynchronously, so there might be a
-        # slight delay between the time a resource is created or changed, and the time
-        # when the change reflects in search results. The only exception is resource
-        # identifier data, which is indexed synchronously as a special index. As a
-        # result, searching using resource identifier is not subject to indexing delay.
-        # To use the special synchronous index, the search term for identifier should be
-        # in the pattern `identifier=[system]|[value]` or `identifier=[value]`, and any
-        # of the following search result parameters can be used: * `_count` * `_include`
-        # * `_revinclude` * `_summary` * `_elements` If your query contains any other
-        # search parameters, the standard asynchronous index will be used instead. Note
-        # that searching against the special index is optimized for resolving a small
-        # number of matches. The search isn't optimized if your identifier search
-        # criteria matches a large number (i.e. more than 2,000) of resources. For a
-        # search query that will match a large number of resources, you can avoiding
-        # using the special synchronous index by including an additional `_sort`
-        # parameter in your query. Use `_sort=-_lastUpdated` if you want to keep the
-        # default sorting order. Note: The special synchronous identifier index are
-        # currently disabled for DocumentReference and DocumentManifest searches. For
-        # samples and detailed information, see [Searching for FHIR resources](https://
-        # cloud.google.com/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR
-        # search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-
-        # advanced-search).
+        # STU3) or `:iterate` (R4 and R5). Supported search result parameters: `_sort`, `
+        # _count`, `_include`, `_revinclude`, `_summary=text`, `_summary=data`, and `
+        # _elements`. The maximum number of search results returned defaults to 100,
+        # which can be overridden by the `_count` parameter up to a maximum limit of
+        # 1000. The server might return fewer resources than requested to prevent
+        # excessively large responses. If there are additional results, the returned `
+        # Bundle` contains a link of `relation` "next", which has a `_page_token`
+        # parameter for an opaque pagination token that can be used to retrieve the next
+        # page. Resources with a total size larger than 5MB or a field count larger than
+        # 50,000 might not be fully searchable as the server might trim its generated
+        # search index in those cases. Note: FHIR resources are indexed asynchronously,
+        # so there might be a slight delay between the time a resource is created or
+        # changed, and the time when the change reflects in search results. The only
+        # exception is resource identifier data, which is indexed synchronously as a
+        # special index. As a result, searching using resource identifier is not subject
+        # to indexing delay. To use the special synchronous index, the search term for
+        # identifier should be in the pattern `identifier=[system]|[value]` or `
+        # identifier=[value]`, and any of the following search result parameters can be
+        # used: * `_count` * `_include` * `_revinclude` * `_summary` * `_elements` If
+        # your query contains any other search parameters, the standard asynchronous
+        # index will be used instead. Note that searching against the special index is
+        # optimized for resolving a small number of matches. The search isn't optimized
+        # if your identifier search criteria matches a large number (i.e. more than 2,
+        # 000) of resources. For a search query that will match a large number of
+        # resources, you can avoiding using the special synchronous index by including
+        # an additional `_sort` parameter in your query. Use `_sort=-_lastUpdated` if
+        # you want to keep the default sorting order. Note: The special synchronous
+        # identifier index are currently disabled for DocumentReference and
+        # DocumentManifest searches. For samples and detailed information, see [
+        # Searching for FHIR resources](https://cloud.google.com/healthcare/docs/how-tos/
+        # fhir-search) and [Advanced FHIR search features](https://cloud.google.com/
+        # healthcare/docs/how-tos/fhir-advanced-search).
         # @param [String] parent
         #   Required. Name of the FHIR store to retrieve resources from.
         # @param [String] resource_type
         #   Optional. The FHIR resource type to search, such as Patient or Observation.
         #   For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/fhir/
         #   DSTU2/resourcelist.html), [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
-        #   [R4](https://hl7.org/fhir/R4/resourcelist.html)).
+        #   [R4](https://hl7.org/fhir/R4/resourcelist.html)), [R5](https://hl7.org/fhir/R5/
+        #   resourcelist.html)).
         # @param [Google::Apis::HealthcareV1::SearchResourcesRequest] search_resources_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5591,23 +5612,25 @@ module Google
         # Updates the entire contents of a resource. Implements the FHIR standard update
         # interaction ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#update), [STU3](
         # https://hl7.org/fhir/STU3/http.html#update), [R4](https://hl7.org/fhir/R4/http.
-        # html#update)). If the specified resource does not exist and the FHIR store has
-        # enable_update_create set, creates the resource with the client-specified ID.
-        # It is strongly advised not to include or encode any sensitive data such as
-        # patient identifiers in client-specified resource IDs. Those IDs are part of
-        # the FHIR resource path recorded in Cloud Audit Logs and Pub/Sub notifications.
-        # Those IDs can also be contained in reference fields within other resources.
-        # The request body must contain a JSON-encoded FHIR resource, and the request
-        # headers must contain `Content-Type: application/fhir+json`. The resource must
-        # contain an `id` element having an identical value to the ID in the REST path
-        # of the request. On success, the response body contains a JSON-encoded
-        # representation of the updated resource, including the server-assigned version
-        # ID. Errors generated by the FHIR store contain a JSON-encoded `
-        # OperationOutcome` resource describing the reason for the error. If the request
-        # cannot be mapped to a valid API method on a FHIR store, a generic GCP error
-        # might be returned instead. For samples that show how to call `update`, see [
-        # Updating a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/
-        # fhir-resources#updating_a_fhir_resource).
+        # html#update), [R5](https://hl7.org/fhir/R5/http.html#update)). If the
+        # specified resource does not exist and the FHIR store has enable_update_create
+        # set, creates the resource with the client-specified ID. It is strongly advised
+        # not to include or encode any sensitive data such as patient identifiers in
+        # client-specified resource IDs. Those IDs are part of the FHIR resource path
+        # recorded in Cloud Audit Logs and Pub/Sub notifications. Those IDs can also be
+        # contained in reference fields within other resources. The request body must
+        # contain a JSON-encoded FHIR resource, and the request headers must contain `
+        # Content-Type: application/fhir+json`. The resource must contain an `id`
+        # element having an identical value to the ID in the REST path of the request.
+        # On success, the response body contains a JSON-encoded representation of the
+        # updated resource, including the server-assigned version ID. Errors generated
+        # by the FHIR store contain a JSON-encoded `OperationOutcome` resource
+        # describing the reason for the error. If the request cannot be mapped to a
+        # valid API method on a FHIR store, a generic GCP error might be returned
+        # instead. In R5, the conditional update interaction If-None-Match is supported,
+        # including the wildcard behaviour. For samples that show how to call `update`,
+        # see [Updating a FHIR resource](https://cloud.google.com/healthcare/docs/how-
+        # tos/fhir-resources#updating_a_fhir_resource).
         # @param [String] name
         #   Required. The name of the resource to update.
         # @param [Google::Apis::HealthcareV1::HttpBody] http_body_object
@@ -5643,14 +5666,15 @@ module Google
         # Gets the contents of a version (current or historical) of a FHIR resource by
         # version ID. Implements the FHIR standard vread interaction ([DSTU2](https://
         # hl7.org/fhir/DSTU2/http.html#vread), [STU3](https://hl7.org/fhir/STU3/http.
-        # html#vread), [R4](https://hl7.org/fhir/R4/http.html#vread)). On success, the
-        # response body contains a JSON-encoded representation of the resource. Errors
-        # generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource
-        # describing the reason for the error. If the request cannot be mapped to a
-        # valid API method on a FHIR store, a generic GCP error might be returned
-        # instead. For samples that show how to call `vread`, see [Retrieving a FHIR
-        # resource version](https://cloud.google.com/healthcare/docs/how-tos/fhir-
-        # resources#retrieving_a_fhir_resource_version).
+        # html#vread), [R4](https://hl7.org/fhir/R4/http.html#vread), [R5](https://hl7.
+        # org/fhir/R5/http.html#vread)). On success, the response body contains a JSON-
+        # encoded representation of the resource. Errors generated by the FHIR store
+        # contain a JSON-encoded `OperationOutcome` resource describing the reason for
+        # the error. If the request cannot be mapped to a valid API method on a FHIR
+        # store, a generic GCP error might be returned instead. For samples that show
+        # how to call `vread`, see [Retrieving a FHIR resource version](https://cloud.
+        # google.com/healthcare/docs/how-tos/fhir-resources#
+        # retrieving_a_fhir_resource_version).
         # @param [String] name
         #   Required. The name of the resource version to retrieve.
         # @param [String] fields
