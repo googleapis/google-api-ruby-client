@@ -380,13 +380,18 @@ module Google
         # /www.googleapis.com/auth/chat.spaces.create` - `https://www.googleapis.com/
         # auth/chat.spaces` - `https://www.googleapis.com/auth/chat.import` (import mode
         # spaces only) When authenticating as an app, the `space.customer` field must be
-        # set in the request. Space membership upon creation depends on whether the
-        # space is created in `Import mode`: * **Import mode:** No members are created. *
-        # **All other modes:** The calling user is added as a member. This is: * The
-        # app itself when using app authentication. * The human user when using user
-        # authentication. If you receive the error message `ALREADY_EXISTS` when
-        # creating a space, try a different `displayName`. An existing space within the
-        # Google Workspace organization might already use this display name.
+        # set in the request. When authenticating as an app, the Chat app is added as a
+        # member of the space. However, unlike human authentication, the Chat app is not
+        # added as a space manager. By default, the Chat app can be removed from the
+        # space by all space members. To allow only space managers to remove the app
+        # from a space, set `space.permission_settings.manage_apps` to `managers_allowed`
+        # . Space membership upon creation depends on whether the space is created in `
+        # Import mode`: * **Import mode:** No members are created. * **All other modes:**
+        # The calling user is added as a member. This is: * The app itself when using
+        # app authentication. * The human user when using user authentication. If you
+        # receive the error message `ALREADY_EXISTS` when creating a space, try a
+        # different `displayName`. An existing space within the Google Workspace
+        # organization might already use this display name.
         # @param [Google::Apis::ChatV1::Space] space_object
         # @param [String] request_id
         #   Optional. A unique identifier for this request. A random UUID is recommended.
@@ -544,7 +549,12 @@ module Google
         # authentication grants administrator privileges when an administrator account
         # authenticates, `use_admin_access` is `true`, and one of the following
         # authorization scopes is used: - `https://www.googleapis.com/auth/chat.admin.
-        # spaces.readonly` - `https://www.googleapis.com/auth/chat.admin.spaces`
+        # spaces.readonly` - `https://www.googleapis.com/auth/chat.admin.spaces` App
+        # authentication has the following limitations: - `space.access_settings` is
+        # only populated when using the `chat.app.spaces` scope. - `space.
+        # predefind_permission_settings` and `space.permission_settings` are only
+        # populated when using the `chat.app.spaces` scope, and only for spaces the app
+        # created.
         # @param [String] name
         #   Required. Resource name of the space, in the form `spaces/`space``. Format: `
         #   spaces/`space``
@@ -661,7 +671,10 @@ module Google
         # spaces only) - User authentication grants administrator privileges when an
         # administrator account authenticates, `use_admin_access` is `true`, and the
         # following authorization scopes is used: - `https://www.googleapis.com/auth/
-        # chat.admin.spaces`
+        # chat.admin.spaces` App authentication has the following limitations: - To
+        # update either `space.predefined_permission_settings` or `space.
+        # permission_settings`, the app must be the space creator. - Updating the `space.
+        # access_settings.audience` is not supported for app authentication.
         # @param [String] name
         #   Identifier. Resource name of the space. Format: `spaces/`space`` Where ``space`
         #   ` represents the system-assigned ID for the space. You can obtain the space ID
@@ -942,12 +955,15 @@ module Google
         # User authentication grants administrator privileges when an administrator
         # account authenticates, `use_admin_access` is `true`, and the following
         # authorization scope is used: - `https://www.googleapis.com/auth/chat.admin.
-        # memberships` For example usage, see: - [Invite or add a user to a space](https:
-        # //developers.google.com/workspace/chat/create-members#create-user-membership).
-        # - [Invite or add a Google Group to a space](https://developers.google.com/
-        # workspace/chat/create-members#create-group-membership). - [Add the Chat app to
-        # a space](https://developers.google.com/workspace/chat/create-members#create-
-        # membership-calling-api).
+        # memberships` App authentication is not supported for the following use cases: -
+        # Inviting users external to the Workspace organization that owns the space. -
+        # Adding a Google Group to a space. - Adding a Chat app to a space. For example
+        # usage, see: - [Invite or add a user to a space](https://developers.google.com/
+        # workspace/chat/create-members#create-user-membership). - [Invite or add a
+        # Google Group to a space](https://developers.google.com/workspace/chat/create-
+        # members#create-group-membership). - [Add the Chat app to a space](https://
+        # developers.google.com/workspace/chat/create-members#create-membership-calling-
+        # api).
         # @param [String] parent
         #   Required. The resource name of the space for which to create the membership.
         #   Format: spaces/`space`
@@ -1007,10 +1023,12 @@ module Google
         # only) - User authentication grants administrator privileges when an
         # administrator account authenticates, `use_admin_access` is `true`, and the
         # following authorization scope is used: - `https://www.googleapis.com/auth/chat.
-        # admin.memberships` To delete memberships for space managers, the requester
-        # must be a space manager. If you're using [app authentication](https://
-        # developers.google.com/workspace/chat/authenticate-authorize-chat-app) the
-        # application must be the space creator.
+        # admin.memberships` App authentication is not supported for the following use
+        # cases: - Removing a Google Group from a space. - Removing a Chat app from a
+        # space. To delete memberships for space managers, the requester must be a space
+        # manager. If you're using [app authentication](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-app) the Chat app must be the space
+        # creator.
         # @param [String] name
         #   Required. Resource name of the membership to delete. Chat apps can delete
         #   human users' or their own memberships. Chat apps can't delete other apps'
