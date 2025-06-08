@@ -243,9 +243,9 @@ module Google
         
         # Disables VPC service controls for a connection.
         # @param [String] parent
-        #   The service that is managing peering connectivity for a service producer's
-        #   organization. For Google services that support this functionality, this value
-        #   is `services/servicenetworking.googleapis.com`.
+        #   Required. The service that is managing peering connectivity for a service
+        #   producer's organization. For Google services that support this functionality,
+        #   this value is `services/servicenetworking.googleapis.com`.
         # @param [Google::Apis::ServicenetworkingV1::DisableVpcServiceControlsRequest] disable_vpc_service_controls_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -278,9 +278,9 @@ module Google
         
         # Enables VPC service controls for a connection.
         # @param [String] parent
-        #   The service that is managing peering connectivity for a service producer's
-        #   organization. For Google services that support this functionality, this value
-        #   is `services/servicenetworking.googleapis.com`.
+        #   Required. The service that is managing peering connectivity for a service
+        #   producer's organization. For Google services that support this functionality,
+        #   this value is `services/servicenetworking.googleapis.com`.
         # @param [Google::Apis::ServicenetworkingV1::EnableVpcServiceControlsRequest] enable_vpc_service_controls_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -395,9 +395,9 @@ module Google
         # services in the service producer's organization, so it only needs to be
         # invoked once.
         # @param [String] parent
-        #   The service that is managing peering connectivity for a service producer's
-        #   organization. For Google services that support this functionality, this value
-        #   is `services/servicenetworking.googleapis.com`.
+        #   Required. The service that is managing peering connectivity for a service
+        #   producer's organization. For Google services that support this functionality,
+        #   this value is `services/servicenetworking.googleapis.com`.
         # @param [Google::Apis::ServicenetworkingV1::Connection] connection_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -510,7 +510,7 @@ module Google
         
         # Updates the allocated ranges that are assigned to a connection.
         # @param [String] name
-        #   The private service connection that connects to a service producer
+        #   Required. The private service connection that connects to a service producer
         #   organization. The name includes both the private service name and the VPC
         #   network peering name in the format of `services/`peering_service_name`/
         #   connections/`vpc_peering_name``. For Google services that support this
