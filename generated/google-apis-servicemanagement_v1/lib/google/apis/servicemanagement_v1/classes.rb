@@ -4043,6 +4043,11 @@ module Google
         # @return [Google::Apis::ServicemanagementV1::TrafficPercentStrategy]
         attr_accessor :traffic_percent_strategy
       
+        # The TPC universe which the rollout will be rolled out to.
+        # Corresponds to the JSON property `universe`
+        # @return [String]
+        attr_accessor :universe
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4056,6 +4061,7 @@ module Google
           @service_name = args[:service_name] if args.key?(:service_name)
           @status = args[:status] if args.key?(:status)
           @traffic_percent_strategy = args[:traffic_percent_strategy] if args.key?(:traffic_percent_strategy)
+          @universe = args[:universe] if args.key?(:universe)
         end
       end
       

@@ -1596,6 +1596,7 @@ module Google
           property :status, as: 'status'
           property :traffic_percent_strategy, as: 'trafficPercentStrategy', class: Google::Apis::ServicemanagementV1::TrafficPercentStrategy, decorator: Google::Apis::ServicemanagementV1::TrafficPercentStrategy::Representation
       
+          property :universe, as: 'universe'
         end
       end
       
