@@ -22,6 +22,12 @@ module Google
   module Apis
     module MerchantapiAccountsV1beta
       
+      class About
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AcceptTermsOfServiceResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -232,6 +238,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FindLfpProvidersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GbpAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GeoTargetArea
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -280,7 +298,55 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InStock
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InventoryVerification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ItemUpdatesAccountLevelSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LfpLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LfpProvider
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LinkGbpAccountRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LinkGbpAccountResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LinkLfpProviderRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LinkLfpProviderResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -305,6 +371,18 @@ module Google
       end
       
       class ListAccountsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListGbpAccountsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListOmnichannelSettingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -346,6 +424,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LocalListingManagement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LocationIdSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -370,6 +454,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OmnichannelSetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OnDisplayToOrder
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OnlineReturnPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -377,6 +473,12 @@ module Google
       end
       
       class PhoneNumber
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Pickup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -455,6 +557,18 @@ module Google
       end
       
       class RejectAccountServiceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RequestInventoryVerificationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RequestInventoryVerificationResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -610,6 +724,14 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class About
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class AcceptTermsOfServiceResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -688,6 +810,8 @@ module Google
       
           property :external_account_id, as: 'externalAccountId'
           property :handshake, as: 'handshake', class: Google::Apis::MerchantapiAccountsV1beta::Handshake, decorator: Google::Apis::MerchantapiAccountsV1beta::Handshake::Representation
+      
+          property :local_listing_management, as: 'localListingManagement', class: Google::Apis::MerchantapiAccountsV1beta::LocalListingManagement, decorator: Google::Apis::MerchantapiAccountsV1beta::LocalListingManagement::Representation
       
           property :mutability, as: 'mutability'
           property :name, as: 'name'
@@ -965,6 +1089,26 @@ module Google
         end
       end
       
+      class FindLfpProvidersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :lfp_providers, as: 'lfpProviders', class: Google::Apis::MerchantapiAccountsV1beta::LfpProvider, decorator: Google::Apis::MerchantapiAccountsV1beta::LfpProvider::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GbpAccount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gbp_account_id, as: 'gbpAccountId'
+          property :gbp_account_name, as: 'gbpAccountName'
+          property :listing_count, :numeric_string => true, as: 'listingCount'
+          property :name, as: 'name'
+          property :type, as: 'type'
+        end
+      end
+      
       class GeoTargetArea
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1034,6 +1178,24 @@ module Google
         end
       end
       
+      class InStock
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class InventoryVerification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contact, as: 'contact'
+          property :contact_email, as: 'contactEmail'
+          property :contact_state, as: 'contactState'
+          property :state, as: 'state'
+        end
+      end
+      
       class ItemUpdatesAccountLevelSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1041,6 +1203,54 @@ module Google
           property :allow_condition_updates, as: 'allowConditionUpdates'
           property :allow_price_updates, as: 'allowPriceUpdates'
           property :allow_strict_availability_updates, as: 'allowStrictAvailabilityUpdates'
+        end
+      end
+      
+      class LfpLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_account_id, as: 'externalAccountId'
+          property :lfp_provider, as: 'lfpProvider'
+          property :state, as: 'state'
+        end
+      end
+      
+      class LfpProvider
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :region_code, as: 'regionCode'
+        end
+      end
+      
+      class LinkGbpAccountRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gbp_email, as: 'gbpEmail'
+        end
+      end
+      
+      class LinkGbpAccountResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :response, as: 'response', class: Google::Apis::MerchantapiAccountsV1beta::Empty, decorator: Google::Apis::MerchantapiAccountsV1beta::Empty::Representation
+      
+        end
+      end
+      
+      class LinkLfpProviderRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_account_id, as: 'externalAccountId'
+        end
+      end
+      
+      class LinkLfpProviderResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :response, as: 'response', class: Google::Apis::MerchantapiAccountsV1beta::Empty, decorator: Google::Apis::MerchantapiAccountsV1beta::Empty::Representation
+      
         end
       end
       
@@ -1077,6 +1287,24 @@ module Google
           collection :accounts, as: 'accounts', class: Google::Apis::MerchantapiAccountsV1beta::Account, decorator: Google::Apis::MerchantapiAccountsV1beta::Account::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListGbpAccountsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :gbp_accounts, as: 'gbpAccounts', class: Google::Apis::MerchantapiAccountsV1beta::GbpAccount, decorator: Google::Apis::MerchantapiAccountsV1beta::GbpAccount::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListOmnichannelSettingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :omnichannel_settings, as: 'omnichannelSettings', class: Google::Apis::MerchantapiAccountsV1beta::OmnichannelSetting, decorator: Google::Apis::MerchantapiAccountsV1beta::OmnichannelSetting::Representation
+      
         end
       end
       
@@ -1133,6 +1361,12 @@ module Google
         end
       end
       
+      class LocalListingManagement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class LocationIdSet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1161,6 +1395,35 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :store_code_set_with_movs, as: 'storeCodeSetWithMovs', class: Google::Apis::MerchantapiAccountsV1beta::StoreCodeSetWithMov, decorator: Google::Apis::MerchantapiAccountsV1beta::StoreCodeSetWithMov::Representation
       
+        end
+      end
+      
+      class OmnichannelSetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :about, as: 'about', class: Google::Apis::MerchantapiAccountsV1beta::About, decorator: Google::Apis::MerchantapiAccountsV1beta::About::Representation
+      
+          property :in_stock, as: 'inStock', class: Google::Apis::MerchantapiAccountsV1beta::InStock, decorator: Google::Apis::MerchantapiAccountsV1beta::InStock::Representation
+      
+          property :inventory_verification, as: 'inventoryVerification', class: Google::Apis::MerchantapiAccountsV1beta::InventoryVerification, decorator: Google::Apis::MerchantapiAccountsV1beta::InventoryVerification::Representation
+      
+          property :lfp_link, as: 'lfpLink', class: Google::Apis::MerchantapiAccountsV1beta::LfpLink, decorator: Google::Apis::MerchantapiAccountsV1beta::LfpLink::Representation
+      
+          property :lsf_type, as: 'lsfType'
+          property :name, as: 'name'
+          property :odo, as: 'odo', class: Google::Apis::MerchantapiAccountsV1beta::OnDisplayToOrder, decorator: Google::Apis::MerchantapiAccountsV1beta::OnDisplayToOrder::Representation
+      
+          property :pickup, as: 'pickup', class: Google::Apis::MerchantapiAccountsV1beta::Pickup, decorator: Google::Apis::MerchantapiAccountsV1beta::Pickup::Representation
+      
+          property :region_code, as: 'regionCode'
+        end
+      end
+      
+      class OnDisplayToOrder
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
+          property :uri, as: 'uri'
         end
       end
       
@@ -1196,6 +1459,14 @@ module Google
           property :extension, as: 'extension'
           property :short_code, as: 'shortCode', class: Google::Apis::MerchantapiAccountsV1beta::ShortCode, decorator: Google::Apis::MerchantapiAccountsV1beta::ShortCode::Representation
       
+        end
+      end
+      
+      class Pickup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
+          property :uri, as: 'uri'
         end
       end
       
@@ -1335,6 +1606,20 @@ module Google
       class RejectAccountServiceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RequestInventoryVerificationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RequestInventoryVerificationResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :omnichannel_setting, as: 'omnichannelSetting', class: Google::Apis::MerchantapiAccountsV1beta::OmnichannelSetting, decorator: Google::Apis::MerchantapiAccountsV1beta::OmnichannelSetting::Representation
+      
         end
       end
       
