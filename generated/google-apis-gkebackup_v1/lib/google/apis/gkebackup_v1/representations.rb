@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Label
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListBackupChannelsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -281,6 +287,12 @@ module Google
       end
       
       class ResourceFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceLabels
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -464,6 +476,8 @@ module Google
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :selected_applications, as: 'selectedApplications', class: Google::Apis::GkebackupV1::NamespacedNames, decorator: Google::Apis::GkebackupV1::NamespacedNames::Representation
       
+          property :selected_namespace_labels, as: 'selectedNamespaceLabels', class: Google::Apis::GkebackupV1::ResourceLabels, decorator: Google::Apis::GkebackupV1::ResourceLabels::Representation
+      
           property :selected_namespaces, as: 'selectedNamespaces', class: Google::Apis::GkebackupV1::Namespaces, decorator: Google::Apis::GkebackupV1::Namespaces::Representation
       
           property :size_bytes, :numeric_string => true, as: 'sizeBytes'
@@ -500,6 +514,8 @@ module Google
           property :include_volume_data, as: 'includeVolumeData'
           property :permissive_mode, as: 'permissiveMode'
           property :selected_applications, as: 'selectedApplications', class: Google::Apis::GkebackupV1::NamespacedNames, decorator: Google::Apis::GkebackupV1::NamespacedNames::Representation
+      
+          property :selected_namespace_labels, as: 'selectedNamespaceLabels', class: Google::Apis::GkebackupV1::ResourceLabels, decorator: Google::Apis::GkebackupV1::ResourceLabels::Representation
       
           property :selected_namespaces, as: 'selectedNamespaces', class: Google::Apis::GkebackupV1::Namespaces, decorator: Google::Apis::GkebackupV1::Namespaces::Representation
       
@@ -737,6 +753,14 @@ module Google
         end
       end
       
+      class Label
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
+        end
+      end
+      
       class ListBackupChannelsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -910,6 +934,14 @@ module Google
       
           property :json_path, as: 'jsonPath'
           collection :namespaces, as: 'namespaces'
+        end
+      end
+      
+      class ResourceLabels
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_labels, as: 'resourceLabels', class: Google::Apis::GkebackupV1::Label, decorator: Google::Apis::GkebackupV1::Label::Representation
+      
         end
       end
       
