@@ -22,6 +22,42 @@ module Google
   module Apis
     module PolicysimulatorV1
       
+      class GoogleCloudOrgpolicyV2AlternatePolicySpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudOrgpolicyV2CustomConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudOrgpolicyV2Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudOrgpolicyV2PolicySpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudOrgpolicyV2PolicySpecPolicyRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudPolicysimulatorV1AccessStateDiff
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -58,7 +94,55 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsPreviewsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudPolicysimulatorV1ListReplayResultsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPolicysimulatorV1OrgPolicyOverlay
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPolicysimulatorV1OrgPolicyViolation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCounts
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -95,6 +179,12 @@ module Google
       end
       
       class GoogleCloudPolicysimulatorV1ReplayResultsSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPolicysimulatorV1ResourceContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -152,6 +242,77 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudOrgpolicyV2AlternatePolicySpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :launch, as: 'launch'
+          property :spec, as: 'spec', class: Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2PolicySpec, decorator: Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2PolicySpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudOrgpolicyV2CustomConstraint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_type, as: 'actionType'
+          property :condition, as: 'condition'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          collection :method_types, as: 'methodTypes'
+          property :name, as: 'name'
+          collection :resource_types, as: 'resourceTypes'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudOrgpolicyV2Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alternate, as: 'alternate', class: Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2AlternatePolicySpec, decorator: Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2AlternatePolicySpec::Representation
+      
+          property :dry_run_spec, as: 'dryRunSpec', class: Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2PolicySpec, decorator: Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2PolicySpec::Representation
+      
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :spec, as: 'spec', class: Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2PolicySpec, decorator: Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2PolicySpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudOrgpolicyV2PolicySpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :inherit_from_parent, as: 'inheritFromParent'
+          property :reset, as: 'reset'
+          collection :rules, as: 'rules', class: Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2PolicySpecPolicyRule, decorator: Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2PolicySpecPolicyRule::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudOrgpolicyV2PolicySpecPolicyRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_all, as: 'allowAll'
+          property :condition, as: 'condition', class: Google::Apis::PolicysimulatorV1::GoogleTypeExpr, decorator: Google::Apis::PolicysimulatorV1::GoogleTypeExpr::Representation
+      
+          property :deny_all, as: 'denyAll'
+          property :enforce, as: 'enforce'
+          hash :parameters, as: 'parameters'
+          property :values, as: 'values', class: Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues, decorator: Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues::Representation
+      
+        end
+      end
+      
+      class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_values, as: 'allowedValues'
+          collection :denied_values, as: 'deniedValues'
+        end
       end
       
       class GoogleCloudPolicysimulatorV1AccessStateDiff
@@ -221,12 +382,97 @@ module Google
         end
       end
       
+      class GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsPreviewsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :org_policy_violations_previews, as: 'orgPolicyViolationsPreviews', class: Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview, decorator: Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview::Representation
+      
+        end
+      end
+      
+      class GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :org_policy_violations, as: 'orgPolicyViolations', class: Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1OrgPolicyViolation, decorator: Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1OrgPolicyViolation::Representation
+      
+        end
+      end
+      
       class GoogleCloudPolicysimulatorV1ListReplayResultsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :replay_results, as: 'replayResults', class: Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1ReplayResult, decorator: Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1ReplayResult::Representation
       
+        end
+      end
+      
+      class GoogleCloudPolicysimulatorV1OrgPolicyOverlay
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :custom_constraints, as: 'customConstraints', class: Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay, decorator: Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay::Representation
+      
+          collection :policies, as: 'policies', class: Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay, decorator: Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay::Representation
+      
+        end
+      end
+      
+      class GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_constraint, as: 'customConstraint', class: Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2CustomConstraint, decorator: Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2CustomConstraint::Representation
+      
+          property :custom_constraint_parent, as: 'customConstraintParent'
+        end
+      end
+      
+      class GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy', class: Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2Policy, decorator: Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2Policy::Representation
+      
+          property :policy_parent, as: 'policyParent'
+        end
+      end
+      
+      class GoogleCloudPolicysimulatorV1OrgPolicyViolation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_constraint, as: 'customConstraint', class: Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2CustomConstraint, decorator: Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2CustomConstraint::Representation
+      
+          property :error, as: 'error', class: Google::Apis::PolicysimulatorV1::GoogleRpcStatus, decorator: Google::Apis::PolicysimulatorV1::GoogleRpcStatus::Representation
+      
+          property :name, as: 'name'
+          property :resource, as: 'resource', class: Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1ResourceContext, decorator: Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1ResourceContext::Representation
+      
+        end
+      end
+      
+      class GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          collection :custom_constraints, as: 'customConstraints'
+          property :name, as: 'name'
+          property :overlay, as: 'overlay', class: Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1OrgPolicyOverlay, decorator: Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1OrgPolicyOverlay::Representation
+      
+          property :resource_counts, as: 'resourceCounts', class: Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCounts, decorator: Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCounts::Representation
+      
+          property :state, as: 'state'
+          property :violations_count, as: 'violationsCount'
+        end
+      end
+      
+      class GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCounts
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compliant, as: 'compliant'
+          property :errors, as: 'errors'
+          property :noncompliant, as: 'noncompliant'
+          property :scanned, as: 'scanned'
+          property :unenforced, as: 'unenforced'
         end
       end
       
@@ -293,6 +539,15 @@ module Google
           property :oldest_date, as: 'oldestDate', class: Google::Apis::PolicysimulatorV1::GoogleTypeDate, decorator: Google::Apis::PolicysimulatorV1::GoogleTypeDate::Representation
       
           property :unchanged_count, as: 'unchangedCount'
+        end
+      end
+      
+      class GoogleCloudPolicysimulatorV1ResourceContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ancestors, as: 'ancestors'
+          property :asset_type, as: 'assetType'
+          property :resource, as: 'resource'
         end
       end
       
