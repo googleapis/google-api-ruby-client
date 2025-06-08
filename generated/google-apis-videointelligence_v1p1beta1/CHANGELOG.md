@@ -1,5 +1,10 @@
 # Release history for google-apis-videointelligence_v1p1beta1
 
+### v0.22.0 (2025-06-08)
+
+* Regenerated from discovery document revision 20250521
+* Regenerated using generator version 0.18.0
+
 ### v0.21.0 (2025-05-11)
 
 * Regenerated using generator version 0.17.0
