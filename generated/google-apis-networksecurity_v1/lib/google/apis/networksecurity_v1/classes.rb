@@ -375,6 +375,12 @@ module Google
       class AuthzPolicyAuthzRuleFromRequestSource
         include Google::Apis::Core::Hashable
       
+        # Optional. A list of IPs or CIDRs to match against the source IP of a request.
+        # Limited to 5 ip_blocks.
+        # Corresponds to the JSON property `ipBlocks`
+        # @return [Array<Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleIpBlock>]
+        attr_accessor :ip_blocks
+      
         # Optional. A list of resources to match against the resource of the source VM
         # of a request. Limited to 5 resources.
         # Corresponds to the JSON property `resources`
@@ -387,6 +393,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ip_blocks = args[:ip_blocks] if args.key?(:ip_blocks)
           @resources = args[:resources] if args.key?(:resources)
         end
       end
@@ -413,6 +420,31 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Represents a range of IP Addresses.
+      class AuthzPolicyAuthzRuleIpBlock
+        include Google::Apis::Core::Hashable
+      
+        # Required. The length of the address range.
+        # Corresponds to the JSON property `length`
+        # @return [Fixnum]
+        attr_accessor :length
+      
+        # Required. The address prefix.
+        # Corresponds to the JSON property `prefix`
+        # @return [String]
+        attr_accessor :prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @length = args[:length] if args.key?(:length)
+          @prefix = args[:prefix] if args.key?(:prefix)
         end
       end
       
