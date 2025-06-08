@@ -188,6 +188,7 @@ module Google
       
           property :retry_config, as: 'retryConfig', class: Google::Apis::CloudschedulerV1beta1::RetryConfig, decorator: Google::Apis::CloudschedulerV1beta1::RetryConfig::Representation
       
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :schedule, as: 'schedule'
           property :schedule_time, as: 'scheduleTime'
           property :state, as: 'state'
