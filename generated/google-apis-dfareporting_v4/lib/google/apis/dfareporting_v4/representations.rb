@@ -2240,6 +2240,7 @@ module Google
           property :non_personalized_ad, as: 'nonPersonalizedAd'
           property :ordinal, as: 'ordinal'
           property :quantity, :numeric_string => true, as: 'quantity'
+          property :session_attributes_encoded, :base64 => true, as: 'sessionAttributesEncoded'
           property :timestamp_micros, :numeric_string => true, as: 'timestampMicros'
           property :treatment_for_underage, as: 'treatmentForUnderage'
           collection :user_identifiers, as: 'userIdentifiers', class: Google::Apis::DfareportingV4::UserIdentifier, decorator: Google::Apis::DfareportingV4::UserIdentifier::Representation

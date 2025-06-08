@@ -2085,8 +2085,10 @@ module Google
         end
       end
       
-      # Contains additional information about cart data. This field may only be used
-      # when calling batchinsert; it is not supported by batchupdate.
+      # *Beta:* This feature is currently in beta. Contains additional information
+      # about cart data. This field may only be used when calling batchinsert; it is
+      # not supported by batchupdate. Cart data reporting is only supported in SA360. [
+      # Learn more](https://support.google.com/sa360/topic/13425788)
       class CartData
         include Google::Apis::Core::Hashable
       
@@ -2766,8 +2768,10 @@ module Google
         # @return [String]
         attr_accessor :ad_user_data_consent
       
-        # Contains additional information about cart data. This field may only be used
-        # when calling batchinsert; it is not supported by batchupdate.
+        # *Beta:* This feature is currently in beta. Contains additional information
+        # about cart data. This field may only be used when calling batchinsert; it is
+        # not supported by batchupdate. Cart data reporting is only supported in SA360. [
+        # Learn more](https://support.google.com/sa360/topic/13425788)
         # Corresponds to the JSON property `cartData`
         # @return [Google::Apis::DfareportingV4::CartData]
         attr_accessor :cart_data
@@ -2887,6 +2891,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :quantity
       
+        # Session attributes for the conversion, encoded as based64 bytes. This field
+        # may only be used when calling batchinsert; it is not supported by batchupdate.
+        # Corresponds to the JSON property `sessionAttributesEncoded`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :session_attributes_encoded
+      
         # The timestamp of conversion, in Unix epoch micros. This is a required field.
         # Corresponds to the JSON property `timestampMicros`
         # @return [Fixnum]
@@ -2936,6 +2947,7 @@ module Google
           @non_personalized_ad = args[:non_personalized_ad] if args.key?(:non_personalized_ad)
           @ordinal = args[:ordinal] if args.key?(:ordinal)
           @quantity = args[:quantity] if args.key?(:quantity)
+          @session_attributes_encoded = args[:session_attributes_encoded] if args.key?(:session_attributes_encoded)
           @timestamp_micros = args[:timestamp_micros] if args.key?(:timestamp_micros)
           @treatment_for_underage = args[:treatment_for_underage] if args.key?(:treatment_for_underage)
           @user_identifiers = args[:user_identifiers] if args.key?(:user_identifiers)
@@ -5056,8 +5068,9 @@ module Google
         end
       end
       
-      # A custom floodlight variable. This field may only be used when calling
-      # batchinsert; it is not supported by batchupdate.
+      # A custom floodlight variable. Can be used in both batchinsert and batchupdate.
+      # Adding this in batchupdate will update or append the variable to the existing
+      # list.
       class CustomFloodlightVariable
         include Google::Apis::Core::Hashable
       
