@@ -882,6 +882,11 @@ module Google
         # @return [String]
         attr_accessor :pool_mode
       
+        # Output only. The number of running poolers per instance.
+        # Corresponds to the JSON property `poolerCount`
+        # @return [Fixnum]
+        attr_accessor :pooler_count
+      
         # Optional. Deprecated. Use 'flags' instead. The maximum number of seconds
         # queries are allowed to spend waiting for execution. If the query is not
         # assigned to a server during that time, the client is disconnected. 0 disables.
@@ -916,6 +921,7 @@ module Google
           @max_prepared_statements = args[:max_prepared_statements] if args.key?(:max_prepared_statements)
           @min_pool_size = args[:min_pool_size] if args.key?(:min_pool_size)
           @pool_mode = args[:pool_mode] if args.key?(:pool_mode)
+          @pooler_count = args[:pooler_count] if args.key?(:pooler_count)
           @query_wait_timeout = args[:query_wait_timeout] if args.key?(:query_wait_timeout)
           @server_idle_timeout = args[:server_idle_timeout] if args.key?(:server_idle_timeout)
           @stats_users = args[:stats_users] if args.key?(:stats_users)
@@ -2453,6 +2459,12 @@ module Google
         attr_accessor :track_active_queries
         alias_method :track_active_queries?, :track_active_queries
       
+        # Track client address for an instance. If not set, default value is "off".
+        # Corresponds to the JSON property `trackClientAddress`
+        # @return [Boolean]
+        attr_accessor :track_client_address
+        alias_method :track_client_address?, :track_client_address
+      
         # Output only. Track wait event types during query execution for an instance.
         # This flag is turned "on" by default but tracking is enabled only after
         # observability enabled flag is also turned on. This is read-only flag and only
@@ -2483,6 +2495,7 @@ module Google
           @query_plans_per_minute = args[:query_plans_per_minute] if args.key?(:query_plans_per_minute)
           @record_application_tags = args[:record_application_tags] if args.key?(:record_application_tags)
           @track_active_queries = args[:track_active_queries] if args.key?(:track_active_queries)
+          @track_client_address = args[:track_client_address] if args.key?(:track_client_address)
           @track_wait_event_types = args[:track_wait_event_types] if args.key?(:track_wait_event_types)
           @track_wait_events = args[:track_wait_events] if args.key?(:track_wait_events)
         end
@@ -3721,7 +3734,10 @@ module Google
         # alloydb.googleapis.com/Instance, spanner.googleapis.com/Instance, spanner.
         # googleapis.com/Database, firestore.googleapis.com/Database, sqladmin.
         # googleapis.com/Instance, bigtableadmin.googleapis.com/Cluster, bigtableadmin.
-        # googleapis.com/Instance REQUIRED Please refer go/condor-common-datamodel
+        # googleapis.com/Instance oracledatabase.googleapis.com/
+        # cloudExadataInfrastructures oracledatabase.googleapis.com/cloudVmClusters
+        # oracledatabase.googleapis.com/autonomousDatabases REQUIRED Please refer go/
+        # condor-common-datamodel
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
