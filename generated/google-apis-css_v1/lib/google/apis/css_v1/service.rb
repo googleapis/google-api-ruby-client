@@ -305,7 +305,8 @@ module Google
         # inserting, updating, or deleting a product input, it may take several minutes
         # before the updated final product can be retrieved.
         # @param [String] name
-        #   Required. The name of the CSS product to retrieve.
+        #   Required. The name of the CSS product to retrieve. Format: `accounts/`account`/
+        #   cssProducts/`css_product``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
