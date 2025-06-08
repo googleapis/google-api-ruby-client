@@ -51,7 +51,7 @@ module Google
         attr_accessor :flight_emissions
       
         # Travel Impact Model version. For more information about the model versioning
-        # see https://github.com/google/travel-impact-model/#versioning.
+        # see [GitHub](https://github.com/google/travel-impact-model/#versioning).
         # Corresponds to the JSON property `modelVersion`
         # @return [Google::Apis::TravelimpactmodelV1::ModelVersion]
         attr_accessor :model_version
@@ -64,6 +64,52 @@ module Google
         def update!(**args)
           @flight_emissions = args[:flight_emissions] if args.key?(:flight_emissions)
           @model_version = args[:model_version] if args.key?(:model_version)
+        end
+      end
+      
+      # A list of pair of airports (markets) to request the typical emissions for.
+      class ComputeTypicalFlightEmissionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Request the typical flight emissions estimates for this market pair.
+        # A maximum of 1000 markets can be requested.
+        # Corresponds to the JSON property `markets`
+        # @return [Array<Google::Apis::TravelimpactmodelV1::Market>]
+        attr_accessor :markets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @markets = args[:markets] if args.key?(:markets)
+        end
+      end
+      
+      # The response includes the emissions but also the model version.
+      class ComputeTypicalFlightEmissionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Travel Impact Model version. For more information about the model versioning
+        # see [GitHub](https://github.com/google/travel-impact-model/#versioning).
+        # Corresponds to the JSON property `modelVersion`
+        # @return [Google::Apis::TravelimpactmodelV1::ModelVersion]
+        attr_accessor :model_version
+      
+        # Market's Typical Flight Emissions requested.
+        # Corresponds to the JSON property `typicalFlightEmissions`
+        # @return [Array<Google::Apis::TravelimpactmodelV1::TypicalFlightEmissions>]
+        attr_accessor :typical_flight_emissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @model_version = args[:model_version] if args.key?(:model_version)
+          @typical_flight_emissions = args[:typical_flight_emissions] if args.key?(:typical_flight_emissions)
         end
       end
       
@@ -230,8 +276,33 @@ module Google
         end
       end
       
+      # A pair of airports.
+      class Market
+        include Google::Apis::Core::Hashable
+      
+        # Required. IATA airport code for flight destination, e.g. "JFK".
+        # Corresponds to the JSON property `destination`
+        # @return [String]
+        attr_accessor :destination
+      
+        # Required. IATA airport code for flight origin, e.g. "LHR".
+        # Corresponds to the JSON property `origin`
+        # @return [String]
+        attr_accessor :origin
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination = args[:destination] if args.key?(:destination)
+          @origin = args[:origin] if args.key?(:origin)
+        end
+      end
+      
       # Travel Impact Model version. For more information about the model versioning
-      # see https://github.com/google/travel-impact-model/#versioning.
+      # see [GitHub](https://github.com/google/travel-impact-model/#versioning).
       class ModelVersion
         include Google::Apis::Core::Hashable
       
@@ -244,8 +315,8 @@ module Google
         # Major versions: Major changes to methodology (e.g. adding new data sources to
         # the model that lead to major output changes). Such changes will be infrequent
         # and announced well in advance. Might involve API version changes, which will
-        # respect guidelines in https://cloud.google.com/endpoints/docs/openapi/
-        # versioning-an-api#backwards-incompatible
+        # respect [Google Cloud API guidelines](https://cloud.google.com/endpoints/docs/
+        # openapi/versioning-an-api#backwards-incompatible)
         # Corresponds to the JSON property `major`
         # @return [Fixnum]
         attr_accessor :major
@@ -272,6 +343,31 @@ module Google
           @major = args[:major] if args.key?(:major)
           @minor = args[:minor] if args.key?(:minor)
           @patch = args[:patch] if args.key?(:patch)
+        end
+      end
+      
+      # Typical flight emission estimates for a certain market
+      class TypicalFlightEmissions
+        include Google::Apis::Core::Hashable
+      
+        # Grouped emissions per seating class results.
+        # Corresponds to the JSON property `emissionsGramsPerPax`
+        # @return [Google::Apis::TravelimpactmodelV1::EmissionsGramsPerPax]
+        attr_accessor :emissions_grams_per_pax
+      
+        # A pair of airports.
+        # Corresponds to the JSON property `market`
+        # @return [Google::Apis::TravelimpactmodelV1::Market]
+        attr_accessor :market
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @emissions_grams_per_pax = args[:emissions_grams_per_pax] if args.key?(:emissions_grams_per_pax)
+          @market = args[:market] if args.key?(:market)
         end
       end
     end
