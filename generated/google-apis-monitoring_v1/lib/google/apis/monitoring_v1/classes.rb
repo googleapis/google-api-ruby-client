@@ -2805,6 +2805,71 @@ module Google
         end
       end
       
+      # A widget that displays hierarchical data as a treemap.
+      class Treemap
+        include Google::Apis::Core::Hashable
+      
+        # Required. The collection of datasets used to construct and populate the
+        # treemap. For the rendered treemap rectangles: Color is determined by the
+        # aggregated value for each grouping. Size is proportional to the count of time
+        # series aggregated within that rectangle's segment.
+        # Corresponds to the JSON property `dataSets`
+        # @return [Array<Google::Apis::MonitoringV1::TreemapDataSet>]
+        attr_accessor :data_sets
+      
+        # Required. Ordered labels representing the hierarchical treemap structure.
+        # Corresponds to the JSON property `treemapHierarchy`
+        # @return [Array<String>]
+        attr_accessor :treemap_hierarchy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_sets = args[:data_sets] if args.key?(:data_sets)
+          @treemap_hierarchy = args[:treemap_hierarchy] if args.key?(:treemap_hierarchy)
+        end
+      end
+      
+      # The data represented by the treemap. Needs to include the data itself, plus
+      # rules on how to organize it hierarchically.
+      class TreemapDataSet
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The collection of breakdowns to be applied to the dataset. A
+        # breakdown is a way to slice the data. For example, you can break down the data
+        # by region.
+        # Corresponds to the JSON property `breakdowns`
+        # @return [Array<Google::Apis::MonitoringV1::Breakdown>]
+        attr_accessor :breakdowns
+      
+        # Optional. A collection of measures. A measure is a measured value of a
+        # property in your data. For example, rainfall in inches, number of units sold,
+        # revenue gained, etc.
+        # Corresponds to the JSON property `measures`
+        # @return [Array<Google::Apis::MonitoringV1::Measure>]
+        attr_accessor :measures
+      
+        # TimeSeriesQuery collects the set of supported methods for querying time series
+        # data from the Stackdriver metrics API.
+        # Corresponds to the JSON property `timeSeriesQuery`
+        # @return [Google::Apis::MonitoringV1::TimeSeriesQuery]
+        attr_accessor :time_series_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @breakdowns = args[:breakdowns] if args.key?(:breakdowns)
+          @measures = args[:measures] if args.key?(:measures)
+          @time_series_query = args[:time_series_query] if args.key?(:time_series_query)
+        end
+      end
+      
       # A protocol buffer message type.
       class Type
         include Google::Apis::Core::Hashable
@@ -2964,6 +3029,11 @@ module Google
         # @return [String]
         attr_accessor :title
       
+        # A widget that displays hierarchical data as a treemap.
+        # Corresponds to the JSON property `treemap`
+        # @return [Google::Apis::MonitoringV1::Treemap]
+        attr_accessor :treemap
+      
         # Condition that determines whether the widget should be displayed.
         # Corresponds to the JSON property `visibilityCondition`
         # @return [Google::Apis::MonitoringV1::VisibilityCondition]
@@ -2994,6 +3064,7 @@ module Google
           @text = args[:text] if args.key?(:text)
           @time_series_table = args[:time_series_table] if args.key?(:time_series_table)
           @title = args[:title] if args.key?(:title)
+          @treemap = args[:treemap] if args.key?(:treemap)
           @visibility_condition = args[:visibility_condition] if args.key?(:visibility_condition)
           @xy_chart = args[:xy_chart] if args.key?(:xy_chart)
         end
