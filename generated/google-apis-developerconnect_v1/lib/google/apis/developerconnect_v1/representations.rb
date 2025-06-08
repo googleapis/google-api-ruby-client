@@ -28,6 +28,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppHubWorkload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ArtifactConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BitbucketCloudConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -124,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GkeWorkload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GitHubConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -160,7 +178,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleArtifactAnalysis
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleArtifactRegistry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HttpBody
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InsightsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -197,6 +233,12 @@ module Google
       end
       
       class ListGitRepositoryLinksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListInsightsConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -280,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RuntimeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceDirectoryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -316,6 +364,26 @@ module Google
           property :provider_oauth_config, as: 'providerOauthConfig', class: Google::Apis::DeveloperconnectV1::ProviderOAuthConfig, decorator: Google::Apis::DeveloperconnectV1::ProviderOAuthConfig::Representation
       
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class AppHubWorkload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :criticality, as: 'criticality'
+          property :environment, as: 'environment'
+          property :workload, as: 'workload'
+        end
+      end
+      
+      class ArtifactConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :google_artifact_analysis, as: 'googleArtifactAnalysis', class: Google::Apis::DeveloperconnectV1::GoogleArtifactAnalysis, decorator: Google::Apis::DeveloperconnectV1::GoogleArtifactAnalysis::Representation
+      
+          property :google_artifact_registry, as: 'googleArtifactRegistry', class: Google::Apis::DeveloperconnectV1::GoogleArtifactRegistry, decorator: Google::Apis::DeveloperconnectV1::GoogleArtifactRegistry::Representation
+      
+          property :uri, as: 'uri'
         end
       end
       
@@ -480,6 +548,14 @@ module Google
         end
       end
       
+      class GkeWorkload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster, as: 'cluster'
+          property :deployment, as: 'deployment'
+        end
+      end
+      
       class GitHubConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -560,12 +636,47 @@ module Google
         end
       end
       
+      class GoogleArtifactAnalysis
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_id, as: 'projectId'
+        end
+      end
+      
+      class GoogleArtifactRegistry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
+          property :project_id, as: 'projectId'
+        end
+      end
+      
       class HttpBody
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content_type, as: 'contentType'
           property :data, :base64 => true, as: 'data'
           collection :extensions, as: 'extensions'
+        end
+      end
+      
+      class InsightsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :app_hub_application, as: 'appHubApplication'
+          collection :artifact_configs, as: 'artifactConfigs', class: Google::Apis::DeveloperconnectV1::ArtifactConfig, decorator: Google::Apis::DeveloperconnectV1::ArtifactConfig::Representation
+      
+          property :create_time, as: 'createTime'
+          collection :errors, as: 'errors', class: Google::Apis::DeveloperconnectV1::Status, decorator: Google::Apis::DeveloperconnectV1::Status::Representation
+      
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :reconciling, as: 'reconciling'
+          collection :runtime_configs, as: 'runtimeConfigs', class: Google::Apis::DeveloperconnectV1::RuntimeConfig, decorator: Google::Apis::DeveloperconnectV1::RuntimeConfig::Representation
+      
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -618,6 +729,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :git_repository_links, as: 'gitRepositoryLinks', class: Google::Apis::DeveloperconnectV1::GitRepositoryLink, decorator: Google::Apis::DeveloperconnectV1::GitRepositoryLink::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListInsightsConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :insights_configs, as: 'insightsConfigs', class: Google::Apis::DeveloperconnectV1::InsightsConfig, decorator: Google::Apis::DeveloperconnectV1::InsightsConfig::Representation
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
@@ -741,6 +862,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :scopes, as: 'scopes'
           property :system_provider_id, as: 'systemProviderId'
+        end
+      end
+      
+      class RuntimeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_hub_workload, as: 'appHubWorkload', class: Google::Apis::DeveloperconnectV1::AppHubWorkload, decorator: Google::Apis::DeveloperconnectV1::AppHubWorkload::Representation
+      
+          property :gke_workload, as: 'gkeWorkload', class: Google::Apis::DeveloperconnectV1::GkeWorkload, decorator: Google::Apis::DeveloperconnectV1::GkeWorkload::Representation
+      
+          property :state, as: 'state'
+          property :uri, as: 'uri'
         end
       end
       
