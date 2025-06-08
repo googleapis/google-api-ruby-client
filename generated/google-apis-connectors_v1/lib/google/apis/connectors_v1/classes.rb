@@ -819,7 +819,7 @@ module Google
         # @return [Google::Apis::ConnectorsV1::AuthConfig]
         attr_accessor :eua_oauth_auth_config
       
-        # Eventing Configuration of a connection next: 18
+        # Eventing Configuration of a connection next: 19
         # Corresponds to the JSON property `eventingConfig`
         # @return [Google::Apis::ConnectorsV1::EventingConfig]
         attr_accessor :eventing_config
@@ -3129,7 +3129,7 @@ module Google
         end
       end
       
-      # Eventing Configuration of a connection next: 18
+      # Eventing Configuration of a connection next: 19
       class EventingConfig
         include Google::Apis::Core::Hashable
       
@@ -3170,6 +3170,12 @@ module Google
         # @return [Google::Apis::ConnectorsV1::AuthConfig]
         attr_accessor :listener_auth_config
       
+        # Optional. List of projects to be allowlisted for the service attachment
+        # created in the tenant project for eventing ingress.
+        # Corresponds to the JSON property `privateConnectivityAllowlistedProjects`
+        # @return [Array<String>]
+        attr_accessor :private_connectivity_allowlisted_projects
+      
         # Optional. Private Connectivity Enabled.
         # Corresponds to the JSON property `privateConnectivityEnabled`
         # @return [Boolean]
@@ -3204,6 +3210,7 @@ module Google
           @enrichment_enabled = args[:enrichment_enabled] if args.key?(:enrichment_enabled)
           @events_listener_ingress_endpoint = args[:events_listener_ingress_endpoint] if args.key?(:events_listener_ingress_endpoint)
           @listener_auth_config = args[:listener_auth_config] if args.key?(:listener_auth_config)
+          @private_connectivity_allowlisted_projects = args[:private_connectivity_allowlisted_projects] if args.key?(:private_connectivity_allowlisted_projects)
           @private_connectivity_enabled = args[:private_connectivity_enabled] if args.key?(:private_connectivity_enabled)
           @proxy_destination_config = args[:proxy_destination_config] if args.key?(:proxy_destination_config)
           @registration_destination_config = args[:registration_destination_config] if args.key?(:registration_destination_config)
