@@ -2589,7 +2589,7 @@ module Google
         # references in complex data types will not be parsed. New stores will have this
         # value set to ENABLED after a notification period. Warning: turning on this
         # flag causes processing existing resources to fail if they contain references
-        # to non-existent resources.
+        # to non-existent resources. Cannot be disabled in R5.
         # Corresponds to the JSON property `complexDataTypeReferenceParsing`
         # @return [String]
         attr_accessor :complex_data_type_reference_parsing
@@ -5406,7 +5406,8 @@ module Google
         # Optional. The FHIR resource type to search, such as Patient or Observation.
         # For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/fhir/
         # DSTU2/resourcelist.html), [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
-        # [R4](https://hl7.org/fhir/R4/resourcelist.html)).
+        # [R4](https://hl7.org/fhir/R4/resourcelist.html)), [R5](https://hl7.org/fhir/R5/
+        # resourcelist.html)).
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
