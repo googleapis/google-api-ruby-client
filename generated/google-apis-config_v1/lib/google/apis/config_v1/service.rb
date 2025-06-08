@@ -532,8 +532,8 @@ module Google
         
         # Updates a Deployment.
         # @param [String] name
-        #   Resource name of the deployment. Format: `projects/`project`/locations/`
-        #   location`/deployments/`deployment``
+        #   Identifier. Resource name of the deployment. Format: `projects/`project`/
+        #   locations/`location`/deployments/`deployment``
         # @param [Google::Apis::ConfigV1::Deployment] deployment_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique

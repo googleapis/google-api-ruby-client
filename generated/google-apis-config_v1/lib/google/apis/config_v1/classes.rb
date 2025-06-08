@@ -325,7 +325,7 @@ module Google
         attr_accessor :import_existing_resources
         alias_method :import_existing_resources?, :import_existing_resources
       
-        # User-defined metadata for the deployment.
+        # Optional. User-defined metadata for the deployment.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -341,8 +341,8 @@ module Google
         # @return [String]
         attr_accessor :lock_state
       
-        # Resource name of the deployment. Format: `projects/`project`/locations/`
-        # location`/deployments/`deployment``
+        # Identifier. Resource name of the deployment. Format: `projects/`project`/
+        # locations/`location`/deployments/`deployment``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
