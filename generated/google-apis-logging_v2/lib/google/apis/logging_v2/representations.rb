@@ -1014,6 +1014,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :apphub, as: 'apphub', class: Google::Apis::LoggingV2::AppHub, decorator: Google::Apis::LoggingV2::AppHub::Representation
       
+          property :apphub_destination, as: 'apphubDestination', class: Google::Apis::LoggingV2::AppHub, decorator: Google::Apis::LoggingV2::AppHub::Representation
+      
           collection :error_groups, as: 'errorGroups', class: Google::Apis::LoggingV2::LogErrorGroup, decorator: Google::Apis::LoggingV2::LogErrorGroup::Representation
       
           property :http_request, as: 'httpRequest', class: Google::Apis::LoggingV2::HttpRequest, decorator: Google::Apis::LoggingV2::HttpRequest::Representation
