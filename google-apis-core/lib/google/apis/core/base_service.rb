@@ -371,6 +371,7 @@ module Google
         #   Name of the bucket where the upload is being performed.
         # @param [IO, String] upload_id
         #   unique id generated for an ongoing upload
+        
 
         def delete_resumable_upload(bucket, upload_id, options: nil)
           command = make_storage_upload_command(:delete, 'b/{bucket}/o', options)
