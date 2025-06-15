@@ -25239,11 +25239,18 @@ module Google
         # @return [String]
         attr_accessor :text
       
-        # Output only. Indicates if the part is thought from the model.
+        # Optional. Indicates if the part is thought from the model.
         # Corresponds to the JSON property `thought`
         # @return [Boolean]
         attr_accessor :thought
         alias_method :thought?, :thought
+      
+        # Optional. An opaque signature for the thought so it can be reused in
+        # subsequent requests.
+        # Corresponds to the JSON property `thoughtSignature`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :thought_signature
       
         # Metadata describes the input video content.
         # Corresponds to the JSON property `videoMetadata`
@@ -25264,6 +25271,7 @@ module Google
           @inline_data = args[:inline_data] if args.key?(:inline_data)
           @text = args[:text] if args.key?(:text)
           @thought = args[:thought] if args.key?(:thought)
+          @thought_signature = args[:thought_signature] if args.key?(:thought_signature)
           @video_metadata = args[:video_metadata] if args.key?(:video_metadata)
         end
       end
@@ -43287,6 +43295,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolCodeExecution]
         attr_accessor :code_execution
       
+        # Tool to support computer use.
+        # Corresponds to the JSON property `computerUse`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolComputerUse]
+        attr_accessor :computer_use
+      
         # Tool to search public web data, powered by Vertex AI Search and Sec4
         # compliance.
         # Corresponds to the JSON property `enterpriseWebSearch`
@@ -43319,6 +43332,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Retrieval]
         attr_accessor :retrieval
       
+        # Tool to support URL context.
+        # Corresponds to the JSON property `urlContext`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1UrlContext]
+        attr_accessor :url_context
+      
         def initialize(**args)
            update!(**args)
         end
@@ -43326,11 +43344,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @code_execution = args[:code_execution] if args.key?(:code_execution)
+          @computer_use = args[:computer_use] if args.key?(:computer_use)
           @enterprise_web_search = args[:enterprise_web_search] if args.key?(:enterprise_web_search)
           @function_declarations = args[:function_declarations] if args.key?(:function_declarations)
           @google_search = args[:google_search] if args.key?(:google_search)
           @google_search_retrieval = args[:google_search_retrieval] if args.key?(:google_search_retrieval)
           @retrieval = args[:retrieval] if args.key?(:retrieval)
+          @url_context = args[:url_context] if args.key?(:url_context)
         end
       end
       
@@ -43472,6 +43492,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Tool to support computer use.
+      class GoogleCloudAiplatformV1beta1ToolComputerUse
+        include Google::Apis::Core::Hashable
+      
+        # Required. The environment being operated.
+        # Corresponds to the JSON property `environment`
+        # @return [String]
+        attr_accessor :environment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environment = args[:environment] if args.key?(:environment)
         end
       end
       
@@ -45091,6 +45130,18 @@ module Google
         # @return [String]
         attr_accessor :pipeline_job
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # The service account that the tuningJob workload runs as. If not specified, the
         # Vertex AI Secure Fine-Tuned Service Agent in the project will be used. See
         # https://cloud.google.com/iam/docs/service-agents#vertex-ai-secure-fine-tuning-
@@ -45156,6 +45207,8 @@ module Google
           @name = args[:name] if args.key?(:name)
           @partner_model_tuning_spec = args[:partner_model_tuning_spec] if args.key?(:partner_model_tuning_spec)
           @pipeline_job = args[:pipeline_job] if args.key?(:pipeline_job)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @service_account = args[:service_account] if args.key?(:service_account)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
@@ -45985,6 +46038,19 @@ module Google
         def update!(**args)
           @example = args[:example] if args.key?(:example)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Tool to support URL context.
+      class GoogleCloudAiplatformV1beta1UrlContext
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
