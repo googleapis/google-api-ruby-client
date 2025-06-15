@@ -2505,9 +2505,8 @@ module Google
       class GoogleDevtoolsCloudbuildV1GitSourceRepository
         include Google::Apis::Core::Hashable
       
-        # The Developer Connect Git repository link or the url that matches a repository
-        # link in the current project, formatted as `projects/*/locations/*/connections/*
-        # /gitRepositoryLink/*`
+        # The Developer Connect Git repository link formatted as `projects/*/locations/*/
+        # connections/*/gitRepositoryLink/*`
         # Corresponds to the JSON property `developerConnect`
         # @return [String]
         attr_accessor :developer_connect
@@ -5864,7 +5863,8 @@ module Google
       
         # Optional. The exit code of this attempt. This may be unset if the container
         # was unable to exit cleanly with a code due to some other failure. See status
-        # field for possible failure details.
+        # field for possible failure details. At most one of exit_code or term_signal
+        # will be set.
         # Corresponds to the JSON property `exitCode`
         # @return [Fixnum]
         attr_accessor :exit_code
@@ -5879,6 +5879,13 @@ module Google
         # @return [Google::Apis::RunV1::GoogleRpcStatus]
         attr_accessor :status
       
+        # Optional. Termination signal of the container. This is set to non-zero if the
+        # container is terminated by the system. At most one of exit_code or term_signal
+        # will be set.
+        # Corresponds to the JSON property `termSignal`
+        # @return [Fixnum]
+        attr_accessor :term_signal
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5887,6 +5894,7 @@ module Google
         def update!(**args)
           @exit_code = args[:exit_code] if args.key?(:exit_code)
           @status = args[:status] if args.key?(:status)
+          @term_signal = args[:term_signal] if args.key?(:term_signal)
         end
       end
       
