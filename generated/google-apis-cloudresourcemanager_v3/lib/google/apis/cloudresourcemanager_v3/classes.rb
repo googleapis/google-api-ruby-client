@@ -1459,6 +1459,14 @@ module Google
       class Project
         include Google::Apis::Core::Hashable
       
+        # Output only. If this project is a Management Project, list of capabilities
+        # configured on the parent folder. Note, presence of any capability implies that
+        # this is a Management Project. Example: `folders/123/capabilities/app-
+        # management`. OUTPUT ONLY.
+        # Corresponds to the JSON property `configuredCapabilities`
+        # @return [Array<String>]
+        attr_accessor :configured_capabilities
+      
         # Output only. Creation time.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -1539,6 +1547,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @configured_capabilities = args[:configured_capabilities] if args.key?(:configured_capabilities)
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
