@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdditionalIpRangesConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdditionalNodeNetworkConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +77,12 @@ module Google
       end
       
       class AuthenticatorGroupsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutoIpamConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -310,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DesiredAdditionalIpRangesConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DesiredEnterpriseConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -413,6 +431,12 @@ module Google
       end
       
       class GetOpenIdConfigResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GkeAutoUpgradeConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1223,6 +1247,14 @@ module Google
         end
       end
       
+      class AdditionalIpRangesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :pod_ipv4_range_names, as: 'podIpv4RangeNames'
+          property :subnetwork, as: 'subnetwork'
+        end
+      end
+      
       class AdditionalNodeNetworkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1308,6 +1340,7 @@ module Google
       class AnonymousAuthenticationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
         end
       end
       
@@ -1316,6 +1349,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
           property :security_group, as: 'securityGroup'
+        end
+      end
+      
+      class AutoIpamConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1523,6 +1562,8 @@ module Google
           property :expire_time, as: 'expireTime'
           property :fleet, as: 'fleet', class: Google::Apis::ContainerV1::Fleet, decorator: Google::Apis::ContainerV1::Fleet::Representation
       
+          property :gke_auto_upgrade_config, as: 'gkeAutoUpgradeConfig', class: Google::Apis::ContainerV1::GkeAutoUpgradeConfig, decorator: Google::Apis::ContainerV1::GkeAutoUpgradeConfig::Representation
+      
           property :id, as: 'id'
           property :identity_service_config, as: 'identityServiceConfig', class: Google::Apis::ContainerV1::IdentityServiceConfig, decorator: Google::Apis::ContainerV1::IdentityServiceConfig::Representation
       
@@ -1629,11 +1670,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :additional_pod_ranges_config, as: 'additionalPodRangesConfig', class: Google::Apis::ContainerV1::AdditionalPodRangesConfig, decorator: Google::Apis::ContainerV1::AdditionalPodRangesConfig::Representation
       
+          property :desired_additional_ip_ranges_config, as: 'desiredAdditionalIpRangesConfig', class: Google::Apis::ContainerV1::DesiredAdditionalIpRangesConfig, decorator: Google::Apis::ContainerV1::DesiredAdditionalIpRangesConfig::Representation
+      
           property :desired_addons_config, as: 'desiredAddonsConfig', class: Google::Apis::ContainerV1::AddonsConfig, decorator: Google::Apis::ContainerV1::AddonsConfig::Representation
       
           property :desired_anonymous_authentication_config, as: 'desiredAnonymousAuthenticationConfig', class: Google::Apis::ContainerV1::AnonymousAuthenticationConfig, decorator: Google::Apis::ContainerV1::AnonymousAuthenticationConfig::Representation
       
           property :desired_authenticator_groups_config, as: 'desiredAuthenticatorGroupsConfig', class: Google::Apis::ContainerV1::AuthenticatorGroupsConfig, decorator: Google::Apis::ContainerV1::AuthenticatorGroupsConfig::Representation
+      
+          property :desired_auto_ipam_config, as: 'desiredAutoIpamConfig', class: Google::Apis::ContainerV1::AutoIpamConfig, decorator: Google::Apis::ContainerV1::AutoIpamConfig::Representation
       
           property :desired_autopilot_workload_policy_config, as: 'desiredAutopilotWorkloadPolicyConfig', class: Google::Apis::ContainerV1::WorkloadPolicyConfig, decorator: Google::Apis::ContainerV1::WorkloadPolicyConfig::Representation
       
@@ -1734,6 +1779,8 @@ module Google
           property :desired_shielded_nodes, as: 'desiredShieldedNodes', class: Google::Apis::ContainerV1::ShieldedNodes, decorator: Google::Apis::ContainerV1::ShieldedNodes::Representation
       
           property :desired_stack_type, as: 'desiredStackType'
+          property :desired_user_managed_keys_config, as: 'desiredUserManagedKeysConfig', class: Google::Apis::ContainerV1::UserManagedKeysConfig, decorator: Google::Apis::ContainerV1::UserManagedKeysConfig::Representation
+      
           property :desired_vertical_pod_autoscaling, as: 'desiredVerticalPodAutoscaling', class: Google::Apis::ContainerV1::VerticalPodAutoscaling, decorator: Google::Apis::ContainerV1::VerticalPodAutoscaling::Representation
       
           property :desired_workload_identity_config, as: 'desiredWorkloadIdentityConfig', class: Google::Apis::ContainerV1::WorkloadIdentityConfig, decorator: Google::Apis::ContainerV1::WorkloadIdentityConfig::Representation
@@ -1741,6 +1788,8 @@ module Google
           property :enable_k8s_beta_apis, as: 'enableK8sBetaApis', class: Google::Apis::ContainerV1::K8sBetaApiConfig, decorator: Google::Apis::ContainerV1::K8sBetaApiConfig::Representation
       
           property :etag, as: 'etag'
+          property :gke_auto_upgrade_config, as: 'gkeAutoUpgradeConfig', class: Google::Apis::ContainerV1::GkeAutoUpgradeConfig, decorator: Google::Apis::ContainerV1::GkeAutoUpgradeConfig::Representation
+      
           property :removed_additional_pod_ranges_config, as: 'removedAdditionalPodRangesConfig', class: Google::Apis::ContainerV1::AdditionalPodRangesConfig, decorator: Google::Apis::ContainerV1::AdditionalPodRangesConfig::Representation
       
           property :user_managed_keys_config, as: 'userManagedKeysConfig', class: Google::Apis::ContainerV1::UserManagedKeysConfig, decorator: Google::Apis::ContainerV1::UserManagedKeysConfig::Representation
@@ -1909,6 +1958,14 @@ module Google
         end
       end
       
+      class DesiredAdditionalIpRangesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_ip_ranges_configs, as: 'additionalIpRangesConfigs', class: Google::Apis::ContainerV1::AdditionalIpRangesConfig, decorator: Google::Apis::ContainerV1::AdditionalIpRangesConfig::Representation
+      
+        end
+      end
+      
       class DesiredEnterpriseConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2050,6 +2107,13 @@ module Google
         end
       end
       
+      class GkeAutoUpgradeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :patch_mode, as: 'patchMode'
+        end
+      end
+      
       class GkeBackupAgentConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2105,7 +2169,11 @@ module Google
       class IpAllocationPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_ip_ranges_configs, as: 'additionalIpRangesConfigs', class: Google::Apis::ContainerV1::AdditionalIpRangesConfig, decorator: Google::Apis::ContainerV1::AdditionalIpRangesConfig::Representation
+      
           property :additional_pod_ranges_config, as: 'additionalPodRangesConfig', class: Google::Apis::ContainerV1::AdditionalPodRangesConfig, decorator: Google::Apis::ContainerV1::AdditionalPodRangesConfig::Representation
+      
+          property :auto_ipam_config, as: 'autoIpamConfig', class: Google::Apis::ContainerV1::AutoIpamConfig, decorator: Google::Apis::ContainerV1::AutoIpamConfig::Representation
       
           property :cluster_ipv4_cidr, as: 'clusterIpv4Cidr'
           property :cluster_ipv4_cidr_block, as: 'clusterIpv4CidrBlock'
