@@ -2841,7 +2841,7 @@ module Google
         end
       end
       
-      # Information about a BeyoncCorp SecurityGateway resource.
+      # Information about a BeyondCorp SecurityGateway resource.
       class GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway
         include Google::Apis::Core::Hashable
       
