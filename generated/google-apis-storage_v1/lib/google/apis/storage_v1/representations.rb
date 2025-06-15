@@ -616,6 +616,7 @@ module Google
         class IpFilter
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
+            property :allow_all_service_agent_access, as: 'allowAllServiceAgentAccess'
             property :allow_cross_org_vpcs, as: 'allowCrossOrgVpcs'
             property :mode, as: 'mode'
             property :public_network_source, as: 'publicNetworkSource', class: Google::Apis::StorageV1::Bucket::IpFilter::PublicNetworkSource, decorator: Google::Apis::StorageV1::Bucket::IpFilter::PublicNetworkSource::Representation
