@@ -1296,7 +1296,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def query_project_location_vpc_flow_logs_config_org_vpc_flow_logs_configs(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1beta1/{+parent}:queryOrgVpcFlowLogsConfigs', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/vpcFlowLogsConfigs:queryOrgVpcFlowLogsConfigs', options)
           command.response_representation = Google::Apis::NetworkmanagementV1beta1::QueryOrgVpcFlowLogsConfigsResponse::Representation
           command.response_class = Google::Apis::NetworkmanagementV1beta1::QueryOrgVpcFlowLogsConfigsResponse
           command.params['parent'] = parent unless parent.nil?
