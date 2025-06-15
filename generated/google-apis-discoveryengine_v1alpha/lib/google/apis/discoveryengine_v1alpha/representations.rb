@@ -8538,6 +8538,7 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaPrincipal
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_entity_id, as: 'externalEntityId'
           property :group_id, as: 'groupId'
           property :user_id, as: 'userId'
         end
@@ -9141,6 +9142,7 @@ module Google
       
           property :spell_correction_spec, as: 'spellCorrectionSpec', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestSpellCorrectionSpec, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestSpellCorrectionSpec::Representation
       
+          property :use_latest_data, as: 'useLatestData'
           property :user_info, as: 'userInfo', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaUserInfo, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaUserInfo::Representation
       
           hash :user_labels, as: 'userLabels'
@@ -9758,7 +9760,6 @@ module Google
       
           property :query, as: 'query', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaQuery, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaQuery::Representation
       
-          hash :query_configs, as: 'queryConfigs'
         end
       end
       
