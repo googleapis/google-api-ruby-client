@@ -833,6 +833,7 @@ module Google
           property :description, as: 'description'
           property :event_time, as: 'eventTime'
           property :external_uri, as: 'externalUri'
+          property :location, as: 'location'
           property :name, as: 'name'
           property :provider, as: 'provider'
           property :resource_container, as: 'resourceContainer'

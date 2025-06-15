@@ -949,7 +949,7 @@ module Google
       end
       
       # DatabaseResourceFeed is the top level proto to be used to ingest different
-      # database resource level events into Condor platform.
+      # database resource level events into Condor platform. Next ID: 8
       class DatabaseResourceFeed
         include Google::Apis::Core::Hashable
       
@@ -1040,6 +1040,11 @@ module Google
         # @return [String]
         attr_accessor :external_uri
       
+        # This is used to identify the location of the resource. Example: "us-central1"
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         # Required. The name of the signal, ex: PUBLIC_SQL_INSTANCE,
         # SQL_LOG_ERROR_VERBOSITY etc.
         # Corresponds to the JSON property `name`
@@ -1103,6 +1108,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @event_time = args[:event_time] if args.key?(:event_time)
           @external_uri = args[:external_uri] if args.key?(:external_uri)
+          @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @provider = args[:provider] if args.key?(:provider)
           @resource_container = args[:resource_container] if args.key?(:resource_container)
@@ -1129,15 +1135,15 @@ module Google
         # @return [String]
         attr_accessor :provider_description
       
-        # Required. The type of resource this ID is identifying. Ex redis.googleapis.com/
-        # Instance, redis.googleapis.com/Cluster, alloydb.googleapis.com/Cluster,
-        # alloydb.googleapis.com/Instance, spanner.googleapis.com/Instance, spanner.
-        # googleapis.com/Database, firestore.googleapis.com/Database, sqladmin.
-        # googleapis.com/Instance, bigtableadmin.googleapis.com/Cluster, bigtableadmin.
-        # googleapis.com/Instance oracledatabase.googleapis.com/
+        # Required. The type of resource this ID is identifying. Ex go/keep-sorted start
+        # alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance, bigtableadmin.
+        # googleapis.com/Cluster, bigtableadmin.googleapis.com/Instance compute.
+        # googleapis.com/Instance firestore.googleapis.com/Database, redis.googleapis.
+        # com/Instance, redis.googleapis.com/Cluster, oracledatabase.googleapis.com/
         # cloudExadataInfrastructures oracledatabase.googleapis.com/cloudVmClusters
-        # oracledatabase.googleapis.com/autonomousDatabases REQUIRED Please refer go/
-        # condor-common-datamodel
+        # oracledatabase.googleapis.com/autonomousDatabases spanner.googleapis.com/
+        # Instance, spanner.googleapis.com/Database, sqladmin.googleapis.com/Instance,
+        # go/keep-sorted end REQUIRED Please refer go/condor-common-datamodel
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
@@ -3058,7 +3064,7 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # Output only. The port number of the exposed discovery endpoint.
+        # Output only. port will only be set for Primary/Reader or Discovery endpoint.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
