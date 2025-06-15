@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AndroidxCrawlerOutputRectangle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirebaseAppdistroV1Release
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,6 +137,12 @@ module Google
       end
       
       class GoogleFirebaseAppdistroV1alphaDeviceInteraction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -312,6 +324,16 @@ module Google
         end
       end
       
+      class AndroidxCrawlerOutputRectangle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bottom, as: 'bottom'
+          property :left, as: 'left'
+          property :right, as: 'right'
+          property :top, as: 'top'
+        end
+      end
+      
       class GoogleFirebaseAppdistroV1Release
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -481,6 +503,8 @@ module Google
       class GoogleFirebaseAppdistroV1alphaDeviceInteraction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enter_text, as: 'enterText', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText::Representation
+      
           property :key_code, as: 'keyCode'
           property :screenshot, as: 'screenshot', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaScreenshot, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaScreenshot::Representation
       
@@ -491,6 +515,15 @@ module Google
           property :text_input, as: 'textInput'
           property :wait, as: 'wait', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionWait, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionWait::Representation
       
+        end
+      end
+      
+      class GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :element_bounds, as: 'elementBounds', class: Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputRectangle, decorator: Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputRectangle::Representation
+      
+          property :text, as: 'text'
         end
       end
       

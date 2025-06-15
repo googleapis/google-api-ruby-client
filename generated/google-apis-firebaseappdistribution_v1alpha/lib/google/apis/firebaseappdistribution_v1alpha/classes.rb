@@ -47,6 +47,43 @@ module Google
         end
       end
       
+      # Rectangle for describing bounding boxes
+      class AndroidxCrawlerOutputRectangle
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `bottom`
+        # @return [Fixnum]
+        attr_accessor :bottom
+      
+        # 
+        # Corresponds to the JSON property `left`
+        # @return [Fixnum]
+        attr_accessor :left
+      
+        # 
+        # Corresponds to the JSON property `right`
+        # @return [Fixnum]
+        attr_accessor :right
+      
+        # 
+        # Corresponds to the JSON property `top`
+        # @return [Fixnum]
+        attr_accessor :top
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bottom = args[:bottom] if args.key?(:bottom)
+          @left = args[:left] if args.key?(:left)
+          @right = args[:right] if args.key?(:right)
+          @top = args[:top] if args.key?(:top)
+        end
+      end
+      
       # A release of a Firebase app.
       class GoogleFirebaseAppdistroV1Release
         include Google::Apis::Core::Hashable
@@ -593,6 +630,12 @@ module Google
       class GoogleFirebaseAppdistroV1alphaDeviceInteraction
         include Google::Apis::Core::Hashable
       
+        # A text entry action, that enters text into a particular text field, clearing
+        # any existing text in the field.
+        # Corresponds to the JSON property `enterText`
+        # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText]
+        attr_accessor :enter_text
+      
         # Output only. Key code for a key event action.
         # Corresponds to the JSON property `keyCode`
         # @return [String]
@@ -613,7 +656,10 @@ module Google
         # @return [Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputPoint]
         attr_accessor :tap_prop
       
-        # Output only. Text entered for a text entry action.
+        # Output only. A text input action, that types some text into whatever field is
+        # currently focused, if any. Unlike `enter_text` this action requires that the
+        # field be brought into focus first, for example by emitting a tap action before
+        # this one.
         # Corresponds to the JSON property `textInput`
         # @return [String]
         attr_accessor :text_input
@@ -629,12 +675,39 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enter_text = args[:enter_text] if args.key?(:enter_text)
           @key_code = args[:key_code] if args.key?(:key_code)
           @screenshot = args[:screenshot] if args.key?(:screenshot)
           @swipe = args[:swipe] if args.key?(:swipe)
           @tap_prop = args[:tap_prop] if args.key?(:tap_prop)
           @text_input = args[:text_input] if args.key?(:text_input)
           @wait = args[:wait] if args.key?(:wait)
+        end
+      end
+      
+      # A text entry action, that enters text into a particular text field, clearing
+      # any existing text in the field.
+      class GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText
+        include Google::Apis::Core::Hashable
+      
+        # Rectangle for describing bounding boxes
+        # Corresponds to the JSON property `elementBounds`
+        # @return [Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputRectangle]
+        attr_accessor :element_bounds
+      
+        # Output only. The text to enter.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @element_bounds = args[:element_bounds] if args.key?(:element_bounds)
+          @text = args[:text] if args.key?(:text)
         end
       end
       
