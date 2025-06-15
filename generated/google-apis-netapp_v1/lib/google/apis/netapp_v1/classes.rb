@@ -2184,6 +2184,15 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. Flag indicating that the hot-tier threshold will be auto-increased
+        # by 10% of the hot-tier when it hits 100%. Default is true. The increment will
+        # kick in only if the new size after increment is still less than or equal to
+        # storage pool size.
+        # Corresponds to the JSON property `enableHotTierAutoResize`
+        # @return [Boolean]
+        attr_accessor :enable_hot_tier_auto_resize
+        alias_method :enable_hot_tier_auto_resize?, :enable_hot_tier_auto_resize
+      
         # Output only. Specifies the current pool encryption key source.
         # Corresponds to the JSON property `encryptionType`
         # @return [String]
@@ -2195,6 +2204,14 @@ module Google
         # @return [Boolean]
         attr_accessor :global_access_allowed
         alias_method :global_access_allowed?, :global_access_allowed
+      
+        # Optional. Total hot tier capacity for the Storage Pool. It is applicable only
+        # to Flex service level. It should be less than the minimum storage pool size
+        # and cannot be more than the current storage pool size. It cannot be decreased
+        # once set.
+        # Corresponds to the JSON property `hotTierSizeGib`
+        # @return [Fixnum]
+        attr_accessor :hot_tier_size_gib
       
         # Optional. Specifies the KMS config to be used for volume encryption.
         # Corresponds to the JSON property `kmsConfig`
@@ -2299,8 +2316,10 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @custom_performance_enabled = args[:custom_performance_enabled] if args.key?(:custom_performance_enabled)
           @description = args[:description] if args.key?(:description)
+          @enable_hot_tier_auto_resize = args[:enable_hot_tier_auto_resize] if args.key?(:enable_hot_tier_auto_resize)
           @encryption_type = args[:encryption_type] if args.key?(:encryption_type)
           @global_access_allowed = args[:global_access_allowed] if args.key?(:global_access_allowed)
+          @hot_tier_size_gib = args[:hot_tier_size_gib] if args.key?(:hot_tier_size_gib)
           @kms_config = args[:kms_config] if args.key?(:kms_config)
           @labels = args[:labels] if args.key?(:labels)
           @ldap_enabled = args[:ldap_enabled] if args.key?(:ldap_enabled)
@@ -2358,6 +2377,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :cooling_threshold_days
       
+        # Optional. Flag indicating that the hot tier bypass mode is enabled. Default is
+        # false. This is only applicable to Flex service level.
+        # Corresponds to the JSON property `hotTierBypassModeEnabled`
+        # @return [Boolean]
+        attr_accessor :hot_tier_bypass_mode_enabled
+        alias_method :hot_tier_bypass_mode_enabled?, :hot_tier_bypass_mode_enabled
+      
         # Optional. Flag indicating if the volume has tiering policy enable/pause.
         # Default is PAUSED.
         # Corresponds to the JSON property `tierAction`
@@ -2371,6 +2397,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cooling_threshold_days = args[:cooling_threshold_days] if args.key?(:cooling_threshold_days)
+          @hot_tier_bypass_mode_enabled = args[:hot_tier_bypass_mode_enabled] if args.key?(:hot_tier_bypass_mode_enabled)
           @tier_action = args[:tier_action] if args.key?(:tier_action)
         end
       end

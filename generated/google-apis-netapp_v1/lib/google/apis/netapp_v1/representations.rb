@@ -891,8 +891,10 @@ module Google
           property :create_time, as: 'createTime'
           property :custom_performance_enabled, as: 'customPerformanceEnabled'
           property :description, as: 'description'
+          property :enable_hot_tier_auto_resize, as: 'enableHotTierAutoResize'
           property :encryption_type, as: 'encryptionType'
           property :global_access_allowed, as: 'globalAccessAllowed'
+          property :hot_tier_size_gib, :numeric_string => true, as: 'hotTierSizeGib'
           property :kms_config, as: 'kmsConfig'
           hash :labels, as: 'labels'
           property :ldap_enabled, as: 'ldapEnabled'
@@ -929,6 +931,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cooling_threshold_days, as: 'coolingThresholdDays'
+          property :hot_tier_bypass_mode_enabled, as: 'hotTierBypassModeEnabled'
           property :tier_action, as: 'tierAction'
         end
       end
