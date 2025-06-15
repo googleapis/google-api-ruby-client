@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GatewayConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GceConfidentialInstanceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -395,6 +401,13 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class GatewayConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :http2_enabled, as: 'http2Enabled'
         end
       end
       
@@ -746,6 +759,8 @@ module Google
           property :domain_config, as: 'domainConfig', class: Google::Apis::WorkstationsV1::DomainConfig, decorator: Google::Apis::WorkstationsV1::DomainConfig::Representation
       
           property :etag, as: 'etag'
+          property :gateway_config, as: 'gatewayConfig', class: Google::Apis::WorkstationsV1::GatewayConfig, decorator: Google::Apis::WorkstationsV1::GatewayConfig::Representation
+      
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
