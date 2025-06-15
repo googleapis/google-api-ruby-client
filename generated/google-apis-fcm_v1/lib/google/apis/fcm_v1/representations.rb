@@ -113,6 +113,7 @@ module Google
       
           property :priority, as: 'priority'
           property :restricted_package_name, as: 'restrictedPackageName'
+          property :restricted_satellite_ok, as: 'restrictedSatelliteOk'
           property :ttl, as: 'ttl'
         end
       end
