@@ -1370,6 +1370,11 @@ module Google
         # @return [Array<Google::Apis::DataprocV1::AuxiliaryNodeGroup>]
         attr_accessor :auxiliary_node_groups
       
+        # Optional. The tier of the cluster.
+        # Corresponds to the JSON property `clusterTier`
+        # @return [String]
+        attr_accessor :cluster_tier
+      
         # Optional. The type of the cluster.
         # Corresponds to the JSON property `clusterType`
         # @return [String]
@@ -1485,6 +1490,7 @@ module Google
         def update!(**args)
           @autoscaling_config = args[:autoscaling_config] if args.key?(:autoscaling_config)
           @auxiliary_node_groups = args[:auxiliary_node_groups] if args.key?(:auxiliary_node_groups)
+          @cluster_tier = args[:cluster_tier] if args.key?(:cluster_tier)
           @cluster_type = args[:cluster_type] if args.key?(:cluster_type)
           @config_bucket = args[:config_bucket] if args.key?(:config_bucket)
           @dataproc_metric_config = args[:dataproc_metric_config] if args.key?(:dataproc_metric_config)
