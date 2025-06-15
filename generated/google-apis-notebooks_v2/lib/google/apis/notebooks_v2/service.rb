@@ -297,10 +297,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets general backend configurations that might also affect the frontend.
-        # Location is required by CCFE. Although we could bypass it to send location-
-        # less request directly to the backend job, we would need CPE (go/cloud-cpe).
-        # Having the location might also be useful depending on the query.
+        # Returns various configuration parameters.
         # @param [String] name
         #   Required. Format: `projects/`project_id`/locations/`location``
         # @param [String] fields
