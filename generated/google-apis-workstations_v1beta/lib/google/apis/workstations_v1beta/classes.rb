@@ -505,6 +505,27 @@ module Google
         end
       end
       
+      # Configuration options for Cluster HTTP Gateway.
+      class GatewayConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether HTTP/2 is enabled for this workstation cluster. Defaults to
+        # false.
+        # Corresponds to the JSON property `http2Enabled`
+        # @return [Boolean]
+        attr_accessor :http2_enabled
+        alias_method :http2_enabled?, :http2_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @http2_enabled = args[:http2_enabled] if args.key?(:http2_enabled)
+        end
+      end
+      
       # A set of Compute Engine Confidential VM instance options.
       class GceConfidentialInstanceConfig
         include Google::Apis::Core::Hashable
@@ -1987,6 +2008,11 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Configuration options for Cluster HTTP Gateway.
+        # Corresponds to the JSON property `gatewayConfig`
+        # @return [Google::Apis::WorkstationsV1beta::GatewayConfig]
+        attr_accessor :gateway_config
+      
         # Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources)
         # that are applied to the workstation cluster and that are also propagated to
         # the underlying Compute Engine resources.
@@ -2068,6 +2094,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @domain_config = args[:domain_config] if args.key?(:domain_config)
           @etag = args[:etag] if args.key?(:etag)
+          @gateway_config = args[:gateway_config] if args.key?(:gateway_config)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
