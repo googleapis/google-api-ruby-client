@@ -122,6 +122,38 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets a Platform Child Site for a specified Platform Child Account and site.
+        # @param [String] name
+        #   Required. The name of the platform child site to retrieve. Format: accounts/`
+        #   account`/platforms/`platform`/childAccounts/`child_account`/sites/`
+        #   platform_child_site`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdsenseplatformV1alpha::PlatformChildSite] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdsenseplatformV1alpha::PlatformChildSite]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_platform_child_account_site(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::AdsenseplatformV1alpha::PlatformChildSite::Representation
+          command.response_class = Google::Apis::AdsenseplatformV1alpha::PlatformChildSite
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists Platform Child Sites for a specified Platform Child Account.
         # @param [String] parent
         #   Required. The name of the child account under the given platform which owns
@@ -198,6 +230,37 @@ module Google
           command.response_class = Google::Apis::AdsenseplatformV1alpha::PlatformChildSite
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a Platform Group for a specified Platform and group.
+        # @param [String] name
+        #   Required. The name of the platform group to retrieve. Format: accounts/`
+        #   account`/platforms/`platform`/groups/`group`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdsenseplatformV1alpha::PlatformGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdsenseplatformV1alpha::PlatformGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_platform_group(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::AdsenseplatformV1alpha::PlatformGroup::Representation
+          command.response_class = Google::Apis::AdsenseplatformV1alpha::PlatformGroup
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
