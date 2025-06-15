@@ -2826,6 +2826,21 @@ module Google
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaUserInfo]
         attr_accessor :user_info
       
+        # Optional. The user labels applied to a resource must meet the following
+        # requirements: * Each resource can have multiple labels, up to a maximum of 64.
+        # * Each label must be a key-value pair. * Keys have a minimum length of 1
+        # character and a maximum length of 63 characters and cannot be empty. Values
+        # can be empty and have a maximum length of 63 characters. * Keys and values can
+        # contain only lowercase letters, numeric characters, underscores, and dashes.
+        # All characters must use UTF-8 encoding, and international characters are
+        # allowed. * The key portion of a label must be unique. However, you can use the
+        # same key with multiple resources. * Keys must start with a lowercase letter or
+        # international character. See [Google Cloud Document](https://cloud.google.com/
+        # resource-manager/docs/creating-managing-labels#requirements) for more details.
+        # Corresponds to the JSON property `userLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :user_labels
+      
         # Required. A unique identifier for tracking visitors. For example, this could
         # be implemented with an HTTP cookie, which should be able to uniquely identify
         # a visitor on a single device. This unique identifier should not change if the
@@ -2849,6 +2864,7 @@ module Google
           @query = args[:query] if args.key?(:query)
           @search_params = args[:search_params] if args.key?(:search_params)
           @user_info = args[:user_info] if args.key?(:user_info)
+          @user_labels = args[:user_labels] if args.key?(:user_labels)
           @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
@@ -7328,6 +7344,11 @@ module Google
         # @return [String]
         attr_accessor :entity
       
+        # Optional. An ID for the experiment group this search belongs to.
+        # Corresponds to the JSON property `experimentId`
+        # @return [String]
+        attr_accessor :experiment_id
+      
         # Facet specifications for faceted search. If empty, no facets are returned. A
         # maximum of 200 values are allowed. Otherwise, an INVALID_ARGUMENT error is
         # returned.
@@ -7535,6 +7556,7 @@ module Google
           @conversational_search_spec = args[:conversational_search_spec] if args.key?(:conversational_search_spec)
           @dynamic_facet_spec = args[:dynamic_facet_spec] if args.key?(:dynamic_facet_spec)
           @entity = args[:entity] if args.key?(:entity)
+          @experiment_id = args[:experiment_id] if args.key?(:experiment_id)
           @facet_specs = args[:facet_specs] if args.key?(:facet_specs)
           @filter = args[:filter] if args.key?(:filter)
           @labels = args[:labels] if args.key?(:labels)
