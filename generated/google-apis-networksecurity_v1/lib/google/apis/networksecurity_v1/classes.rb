@@ -749,6 +749,93 @@ module Google
         end
       end
       
+      # BackendAuthenticationConfig message groups the TrustConfig together with other
+      # settings that control how the load balancer authenticates, and expresses its
+      # identity to, the backend: * `trustConfig` is the attached TrustConfig. * `
+      # wellKnownRoots` indicates whether the load balance should trust backend server
+      # certificates that are issued by public certificate authorities, in addition to
+      # certificates trusted by the TrustConfig. * `clientCertificate` is a client
+      # certificate that the load balancer uses to express its identity to the backend,
+      # if the connection to the backend uses mTLS. You can attach the
+      # BackendAuthenticationConfig to the load balancer’s BackendService directly
+      # determining how that BackendService negotiates TLS.
+      class BackendAuthenticationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A reference to a certificatemanager.googleapis.com.Certificate
+        # resource. This is a relative resource path following the form "projects/`
+        # project`/locations/`location`/certificates/`certificate`". Used by a
+        # BackendService to negotiate mTLS when the backend connection uses TLS and the
+        # backend requests a client certificate. Must have a CLIENT_AUTH scope.
+        # Corresponds to the JSON property `clientCertificate`
+        # @return [String]
+        attr_accessor :client_certificate
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Free-text description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. Etag of the resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Set of label tags associated with the resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. Name of the BackendAuthenticationConfig resource. It matches the
+        # pattern `projects/*/locations/`location`/backendAuthenticationConfigs/`
+        # backend_authentication_config``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. A reference to a TrustConfig resource from the certificatemanager.
+        # googleapis.com namespace. This is a relative resource path following the form "
+        # projects/`project`/locations/`location`/trustConfigs/`trust_config`". A
+        # BackendService uses the chain of trust represented by this TrustConfig, if
+        # specified, to validate the server certificates presented by the backend.
+        # Required unless wellKnownRoots is set to PUBLIC_ROOTS.
+        # Corresponds to the JSON property `trustConfig`
+        # @return [String]
+        attr_accessor :trust_config
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Well known roots to use for server certificate validation.
+        # Corresponds to the JSON property `wellKnownRoots`
+        # @return [String]
+        attr_accessor :well_known_roots
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_certificate = args[:client_certificate] if args.key?(:client_certificate)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @trust_config = args[:trust_config] if args.key?(:trust_config)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @well_known_roots = args[:well_known_roots] if args.key?(:well_known_roots)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -2477,6 +2564,39 @@ module Google
         # Update properties of this object
         def update!(**args)
           @authz_policies = args[:authz_policies] if args.key?(:authz_policies)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response returned by the ListBackendAuthenticationConfigs method.
+      class ListBackendAuthenticationConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of BackendAuthenticationConfig resources.
+        # Corresponds to the JSON property `backendAuthenticationConfigs`
+        # @return [Array<Google::Apis::NetworksecurityV1::BackendAuthenticationConfig>]
+        attr_accessor :backend_authentication_configs
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backend_authentication_configs = args[:backend_authentication_configs] if args.key?(:backend_authentication_configs)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
