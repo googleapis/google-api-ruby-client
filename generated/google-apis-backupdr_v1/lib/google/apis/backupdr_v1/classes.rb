@@ -1083,6 +1083,19 @@ module Google
         # @return [String]
         attr_accessor :resource_type
       
+        # Output only. The user friendly revision ID of the `BackupPlanRevision`.
+        # Example: v0, v1, v2, etc.
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        # Output only. The resource id of the `BackupPlanRevision`. Format: `projects/`
+        # project`/locations/`location`/backupPlans/`backup_plan`/revisions/`revision_id`
+        # `
+        # Corresponds to the JSON property `revisionName`
+        # @return [String]
+        attr_accessor :revision_name
+      
         # Output only. The `State` for the `BackupPlan`.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -1113,6 +1126,8 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+          @revision_name = args[:revision_name] if args.key?(:revision_name)
           @state = args[:state] if args.key?(:state)
           @supported_resource_types = args[:supported_resource_types] if args.key?(:supported_resource_types)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -1129,6 +1144,19 @@ module Google
         # Corresponds to the JSON property `backupPlan`
         # @return [String]
         attr_accessor :backup_plan
+      
+        # Output only. The user friendly revision ID of the `BackupPlanRevision`.
+        # Example: v0, v1, v2, etc.
+        # Corresponds to the JSON property `backupPlanRevisionId`
+        # @return [String]
+        attr_accessor :backup_plan_revision_id
+      
+        # Output only. The resource id of the `BackupPlanRevision`. Format: `projects/`
+        # project`/locations/`location`/backupPlans/`backup_plan`/revisions/`revision_id`
+        # `
+        # Corresponds to the JSON property `backupPlanRevisionName`
+        # @return [String]
+        attr_accessor :backup_plan_revision_name
       
         # Output only. The time when the instance was created.
         # Corresponds to the JSON property `createTime`
@@ -1181,6 +1209,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backup_plan = args[:backup_plan] if args.key?(:backup_plan)
+          @backup_plan_revision_id = args[:backup_plan_revision_id] if args.key?(:backup_plan_revision_id)
+          @backup_plan_revision_name = args[:backup_plan_revision_name] if args.key?(:backup_plan_revision_name)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_source = args[:data_source] if args.key?(:data_source)
           @name = args[:name] if args.key?(:name)
@@ -1189,6 +1219,55 @@ module Google
           @rules_config_info = args[:rules_config_info] if args.key?(:rules_config_info)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # `BackupPlanRevision` represents a snapshot of a `BackupPlan` at a point in
+      # time.
+      class BackupPlanRevision
+        include Google::Apis::Core::Hashable
+      
+        # A `BackupPlan` specifies some common fields, such as `description` as well as
+        # one or more `BackupRule` messages. Each `BackupRule` has a retention policy
+        # and defines a schedule by which the system is to perform backup workloads.
+        # Corresponds to the JSON property `backupPlanSnapshot`
+        # @return [Google::Apis::BackupdrV1::BackupPlan]
+        attr_accessor :backup_plan_snapshot
+      
+        # Output only. The timestamp that the revision was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Identifier. The resource name of the `BackupPlanRevision`. Format:
+        # `projects/`project`/locations/`location`/backupPlans/`backup_plan`/revisions/`
+        # revision``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The user friendly revision ID of the `BackupPlanRevision`.
+        # Example: v0, v1, v2, etc.
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        # Output only. Resource State
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_plan_snapshot = args[:backup_plan_snapshot] if args.key?(:backup_plan_snapshot)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -2692,6 +2771,19 @@ module Google
         # @return [String]
         attr_accessor :backup_plan
       
+        # The user friendly id of the backup plan revision which triggered this backup
+        # in case of scheduled backup or used for on demand backup.
+        # Corresponds to the JSON property `backupPlanRevisionId`
+        # @return [String]
+        attr_accessor :backup_plan_revision_id
+      
+        # Resource name of the backup plan revision which triggered this backup in case
+        # of scheduled backup or used for on demand backup. Format: projects/`project`/
+        # locations/`location`/backupPlans/`backupPlanId`/revisions/`revisionId`
+        # Corresponds to the JSON property `backupPlanRevisionName`
+        # @return [String]
+        attr_accessor :backup_plan_revision_name
+      
         # The rule id of the backup plan which triggered this backup in case of
         # scheduled backup or used for
         # Corresponds to the JSON property `backupPlanRuleId`
@@ -2705,6 +2797,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backup_plan = args[:backup_plan] if args.key?(:backup_plan)
+          @backup_plan_revision_id = args[:backup_plan_revision_id] if args.key?(:backup_plan_revision_id)
+          @backup_plan_revision_name = args[:backup_plan_revision_name] if args.key?(:backup_plan_revision_name)
           @backup_plan_rule_id = args[:backup_plan_rule_id] if args.key?(:backup_plan_rule_id)
         end
       end
@@ -2730,6 +2824,16 @@ module Google
         # @return [String]
         attr_accessor :backup_plan_description
       
+        # The user friendly id of the backup plan revision. E.g. v0, v1 etc.
+        # Corresponds to the JSON property `backupPlanRevisionId`
+        # @return [String]
+        attr_accessor :backup_plan_revision_id
+      
+        # The name of the backup plan revision.
+        # Corresponds to the JSON property `backupPlanRevisionName`
+        # @return [String]
+        attr_accessor :backup_plan_revision_name
+      
         # The names of the backup plan rules which point to this backupvault
         # Corresponds to the JSON property `backupPlanRules`
         # @return [Array<String>]
@@ -2744,6 +2848,8 @@ module Google
           @backup_plan = args[:backup_plan] if args.key?(:backup_plan)
           @backup_plan_association = args[:backup_plan_association] if args.key?(:backup_plan_association)
           @backup_plan_description = args[:backup_plan_description] if args.key?(:backup_plan_description)
+          @backup_plan_revision_id = args[:backup_plan_revision_id] if args.key?(:backup_plan_revision_id)
+          @backup_plan_revision_name = args[:backup_plan_revision_name] if args.key?(:backup_plan_revision_name)
           @backup_plan_rules = args[:backup_plan_rules] if args.key?(:backup_plan_rules)
         end
       end
@@ -2976,6 +3082,43 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backup_plan_associations = args[:backup_plan_associations] if args.key?(:backup_plan_associations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # The response message for getting a list of `BackupPlanRevision`.
+      class ListBackupPlanRevisionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of `BackupPlanRevisions` in the project for the specified location.
+        # If the ``location`` value in the request is "-", the response contains a list
+        # of resources from all locations. In case any location is unreachable, the
+        # response will only return backup plans in reachable locations and the '
+        # unreachable' field will be populated with a list of unreachable locations.
+        # Corresponds to the JSON property `backupPlanRevisions`
+        # @return [Array<Google::Apis::BackupdrV1::BackupPlanRevision>]
+        attr_accessor :backup_plan_revisions
+      
+        # A token which may be sent as page_token in a subsequent `
+        # ListBackupPlanRevisions` call to retrieve the next page of results. If this
+        # field is omitted or empty, then there are no more results to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_plan_revisions = args[:backup_plan_revisions] if args.key?(:backup_plan_revisions)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end

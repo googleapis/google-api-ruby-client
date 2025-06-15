@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackupPlanRevision
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackupRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -365,6 +371,12 @@ module Google
       end
       
       class ListBackupPlanAssociationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListBackupPlanRevisionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -886,6 +898,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :resource_type, as: 'resourceType'
+          property :revision_id, as: 'revisionId'
+          property :revision_name, as: 'revisionName'
           property :state, as: 'state'
           collection :supported_resource_types, as: 'supportedResourceTypes'
           property :update_time, as: 'updateTime'
@@ -896,6 +910,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup_plan, as: 'backupPlan'
+          property :backup_plan_revision_id, as: 'backupPlanRevisionId'
+          property :backup_plan_revision_name, as: 'backupPlanRevisionName'
           property :create_time, as: 'createTime'
           property :data_source, as: 'dataSource'
           property :name, as: 'name'
@@ -905,6 +921,18 @@ module Google
       
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class BackupPlanRevision
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_plan_snapshot, as: 'backupPlanSnapshot', class: Google::Apis::BackupdrV1::BackupPlan, decorator: Google::Apis::BackupdrV1::BackupPlan::Representation
+      
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+          property :revision_id, as: 'revisionId'
+          property :state, as: 'state'
         end
       end
       
@@ -1255,6 +1283,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup_plan, as: 'backupPlan'
+          property :backup_plan_revision_id, as: 'backupPlanRevisionId'
+          property :backup_plan_revision_name, as: 'backupPlanRevisionName'
           property :backup_plan_rule_id, as: 'backupPlanRuleId'
         end
       end
@@ -1265,6 +1295,8 @@ module Google
           property :backup_plan, as: 'backupPlan'
           property :backup_plan_association, as: 'backupPlanAssociation'
           property :backup_plan_description, as: 'backupPlanDescription'
+          property :backup_plan_revision_id, as: 'backupPlanRevisionId'
+          property :backup_plan_revision_name, as: 'backupPlanRevisionName'
           collection :backup_plan_rules, as: 'backupPlanRules'
         end
       end
@@ -1329,6 +1361,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :backup_plan_associations, as: 'backupPlanAssociations', class: Google::Apis::BackupdrV1::BackupPlanAssociation, decorator: Google::Apis::BackupdrV1::BackupPlanAssociation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListBackupPlanRevisionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backup_plan_revisions, as: 'backupPlanRevisions', class: Google::Apis::BackupdrV1::BackupPlanRevision, decorator: Google::Apis::BackupdrV1::BackupPlanRevision::Representation
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
