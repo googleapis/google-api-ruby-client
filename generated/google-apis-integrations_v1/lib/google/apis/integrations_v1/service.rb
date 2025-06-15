@@ -5115,6 +5115,8 @@ module Google
         # templates and return a list of templates based on the user filter.
         # @param [String] parent
         #   Required. The client, which owns this collection of Templates.
+        # @param [Boolean] enable_natural_language_query_understanding
+        #   Optional. Whether to enable natural language query understanding.
         # @param [String] filter
         #   Optional. Standard filter field to filter templates. client_id filter won't be
         #   supported and will restrict to templates belonging to the current client only.
@@ -5127,6 +5129,8 @@ module Google
         #   The maximum value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
         #   Optional. The token returned in the previous response.
+        # @param [String] query
+        #   Optional. The search query that will be passed to Vertex search service.
         # @param [String] read_mask
         #   Optional. The mask which specifies fields that need to be returned in the
         #   template's response.
@@ -5147,15 +5151,17 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_project_location_templates(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def search_project_location_templates(parent, enable_natural_language_query_understanding: nil, filter: nil, order_by: nil, page_size: nil, page_token: nil, query: nil, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/templates:search', options)
           command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaSearchTemplatesResponse::Representation
           command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaSearchTemplatesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['enableNaturalLanguageQueryUnderstanding'] = enable_natural_language_query_understanding unless enable_natural_language_query_understanding.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['query'] = query unless query.nil?
           command.query['readMask'] = read_mask unless read_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
