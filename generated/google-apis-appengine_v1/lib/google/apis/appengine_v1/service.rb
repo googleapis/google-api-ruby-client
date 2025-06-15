@@ -1644,6 +1644,223 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Uploads the specified SSL certificate.
+        # @param [String] projects_id
+        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        # @param [String] locations_id
+        #   Part of `parent`. See documentation of `projectsId`.
+        # @param [String] applications_id
+        #   Part of `parent`. See documentation of `projectsId`.
+        # @param [Google::Apis::AppengineV1::AuthorizedCertificate] authorized_certificate_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::AuthorizedCertificate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::AuthorizedCertificate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_application_authorized_certificate(projects_id, locations_id, applications_id, authorized_certificate_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates', options)
+          command.request_representation = Google::Apis::AppengineV1::AuthorizedCertificate::Representation
+          command.request_object = authorized_certificate_object
+          command.response_representation = Google::Apis::AppengineV1::AuthorizedCertificate::Representation
+          command.response_class = Google::Apis::AppengineV1::AuthorizedCertificate
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['applicationsId'] = applications_id unless applications_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified SSL certificate.
+        # @param [String] projects_id
+        #   Part of `name`. Name of the resource to delete. Example: apps/myapp/
+        #   authorizedCertificates/12345.
+        # @param [String] locations_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] applications_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] authorized_certificates_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_application_authorized_certificate(projects_id, locations_id, applications_id, authorized_certificates_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}', options)
+          command.response_representation = Google::Apis::AppengineV1::Empty::Representation
+          command.response_class = Google::Apis::AppengineV1::Empty
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['applicationsId'] = applications_id unless applications_id.nil?
+          command.params['authorizedCertificatesId'] = authorized_certificates_id unless authorized_certificates_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the specified SSL certificate.
+        # @param [String] projects_id
+        #   Part of `name`. Name of the resource requested. Example: apps/myapp/
+        #   authorizedCertificates/12345.
+        # @param [String] locations_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] applications_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] authorized_certificates_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] view
+        #   Controls the set of fields returned in the GET response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::AuthorizedCertificate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::AuthorizedCertificate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_application_authorized_certificate(projects_id, locations_id, applications_id, authorized_certificates_id, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}', options)
+          command.response_representation = Google::Apis::AppengineV1::AuthorizedCertificate::Representation
+          command.response_class = Google::Apis::AppengineV1::AuthorizedCertificate
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['applicationsId'] = applications_id unless applications_id.nil?
+          command.params['authorizedCertificatesId'] = authorized_certificates_id unless authorized_certificates_id.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all SSL certificates the user is authorized to administer.
+        # @param [String] projects_id
+        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        # @param [String] locations_id
+        #   Part of `parent`. See documentation of `projectsId`.
+        # @param [String] applications_id
+        #   Part of `parent`. See documentation of `projectsId`.
+        # @param [Fixnum] page_size
+        #   Maximum results to return per page.
+        # @param [String] page_token
+        #   Continuation token for fetching the next page of results.
+        # @param [String] view
+        #   Controls the set of fields returned in the LIST response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::ListAuthorizedCertificatesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::ListAuthorizedCertificatesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_application_authorized_certificates(projects_id, locations_id, applications_id, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates', options)
+          command.response_representation = Google::Apis::AppengineV1::ListAuthorizedCertificatesResponse::Representation
+          command.response_class = Google::Apis::AppengineV1::ListAuthorizedCertificatesResponse
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['applicationsId'] = applications_id unless applications_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified SSL certificate. To renew a certificate and maintain its
+        # existing domain mappings, update certificate_data with a new certificate. The
+        # new certificate must be applicable to the same domains as the original
+        # certificate. The certificate display_name may also be updated.
+        # @param [String] projects_id
+        #   Part of `name`. Name of the resource to update. Example: apps/myapp/
+        #   authorizedCertificates/12345.
+        # @param [String] locations_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] applications_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] authorized_certificates_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [Google::Apis::AppengineV1::AuthorizedCertificate] authorized_certificate_object
+        # @param [String] update_mask
+        #   Standard field mask for the set of fields to be updated. Updates are only
+        #   supported on the certificate_raw_data and display_name fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::AuthorizedCertificate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::AuthorizedCertificate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_application_authorized_certificate(projects_id, locations_id, applications_id, authorized_certificates_id, authorized_certificate_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}', options)
+          command.request_representation = Google::Apis::AppengineV1::AuthorizedCertificate::Representation
+          command.request_object = authorized_certificate_object
+          command.response_representation = Google::Apis::AppengineV1::AuthorizedCertificate::Representation
+          command.response_class = Google::Apis::AppengineV1::AuthorizedCertificate
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['applicationsId'] = applications_id unless applications_id.nil?
+          command.params['authorizedCertificatesId'] = authorized_certificates_id unless authorized_certificates_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists all domains the user is authorized to administer.
         # @param [String] projects_id
         #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
