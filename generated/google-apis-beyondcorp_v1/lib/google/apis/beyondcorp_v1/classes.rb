@@ -1853,7 +1853,7 @@ module Google
         end
       end
       
-      # Information about a BeyoncCorp SecurityGateway resource.
+      # Information about a BeyondCorp SecurityGateway resource.
       class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway
         include Google::Apis::Core::Hashable
       
