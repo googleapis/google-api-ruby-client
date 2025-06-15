@@ -1265,7 +1265,11 @@ module Google
         # @return [String]
         attr_accessor :data_source
       
-        # Output only. The feed label for the product.
+        # Output only. The feed label lets you categorize and identify your products.
+        # The maximum allowed characters is 20 and the supported characters are`A-Z`, `0-
+        # 9`, hyphen and underscore. The feed label must not include any spaces. For
+        # more information, see [Using feed labels](//support.google.com/merchants/
+        # answer/14994087)
         # Corresponds to the JSON property `feedLabel`
         # @return [String]
         attr_accessor :feed_label
