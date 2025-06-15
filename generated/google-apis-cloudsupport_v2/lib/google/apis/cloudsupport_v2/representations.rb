@@ -172,12 +172,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class WorkflowOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Actor
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -469,15 +463,6 @@ module Google
           collection :cases, as: 'cases', class: Google::Apis::CloudsupportV2::Case, decorator: Google::Apis::CloudsupportV2::Case::Representation
       
           property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class WorkflowOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :namespace, as: 'namespace'
-          property :operation_action, as: 'operationAction'
-          property :workflow_operation_type, as: 'workflowOperationType'
         end
       end
     end
