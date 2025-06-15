@@ -7187,6 +7187,7 @@ module Google
       
           property :llm_model_settings, as: 'llmModelSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1LlmModelSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1LlmModelSettings::Representation
       
+          property :parameter_scope, as: 'parameterScope'
           hash :parameters, as: 'parameters'
           hash :payload, as: 'payload'
           property :populate_data_store_connection_signals, as: 'populateDataStoreConnectionSignals'

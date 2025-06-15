@@ -11998,6 +11998,14 @@ module Google
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1LlmModelSettings]
         attr_accessor :llm_model_settings
       
+        # Scope for the parameters. If not specified, parameters will be treated as
+        # session parameters. Parameters with custom scope will not be put into session
+        # parameters. You can reference the parameters with custom scope in the agent
+        # with the following format: $parameter-scope.params.parameter-id.
+        # Corresponds to the JSON property `parameterScope`
+        # @return [String]
+        attr_accessor :parameter_scope
+      
         # Additional parameters to be put into session parameters. To remove a parameter
         # from the session, clients should explicitly set the parameter value to null.
         # You can reference the session parameters in the agent with the following
@@ -12085,6 +12093,7 @@ module Google
           @flow_versions = args[:flow_versions] if args.key?(:flow_versions)
           @geo_location = args[:geo_location] if args.key?(:geo_location)
           @llm_model_settings = args[:llm_model_settings] if args.key?(:llm_model_settings)
+          @parameter_scope = args[:parameter_scope] if args.key?(:parameter_scope)
           @parameters = args[:parameters] if args.key?(:parameters)
           @payload = args[:payload] if args.key?(:payload)
           @populate_data_store_connection_signals = args[:populate_data_store_connection_signals] if args.key?(:populate_data_store_connection_signals)
@@ -19617,7 +19626,7 @@ module Google
       class GoogleCloudDialogflowV2ToolCall
         include Google::Apis::Core::Hashable
       
-        # Required. The name of the tool's action associated with this call.
+        # Optional. The name of the tool's action associated with this call.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -19632,7 +19641,7 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :input_parameters
       
-        # Required. The tool associated with this call. Format: `projects//locations//
+        # Optional. The tool associated with this call. Format: `projects//locations//
         # tools/`.
         # Corresponds to the JSON property `tool`
         # @return [String]
@@ -19655,7 +19664,7 @@ module Google
       class GoogleCloudDialogflowV2ToolCallResult
         include Google::Apis::Core::Hashable
       
-        # Required. The name of the tool's action associated with this call.
+        # Optional. The name of the tool's action associated with this call.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -19682,7 +19691,7 @@ module Google
         # @return [String]
         attr_accessor :raw_content
       
-        # Required. The tool associated with this call. Format: `projects//locations//
+        # Optional. The tool associated with this call. Format: `projects//locations//
         # tools/`.
         # Corresponds to the JSON property `tool`
         # @return [String]
@@ -23901,7 +23910,7 @@ module Google
       class GoogleCloudDialogflowV2beta1ToolCall
         include Google::Apis::Core::Hashable
       
-        # Required. The name of the tool's action associated with this call.
+        # Optional. The name of the tool's action associated with this call.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -23916,7 +23925,7 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :input_parameters
       
-        # Required. The tool associated with this call. Format: `projects//locations//
+        # Optional. The tool associated with this call. Format: `projects//locations//
         # tools/`.
         # Corresponds to the JSON property `tool`
         # @return [String]
@@ -23939,7 +23948,7 @@ module Google
       class GoogleCloudDialogflowV2beta1ToolCallResult
         include Google::Apis::Core::Hashable
       
-        # Required. The name of the tool's action associated with this call.
+        # Optional. The name of the tool's action associated with this call.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -23966,7 +23975,7 @@ module Google
         # @return [String]
         attr_accessor :raw_content
       
-        # Required. The tool associated with this call. Format: `projects//locations//
+        # Optional. The tool associated with this call. Format: `projects//locations//
         # tools/`.
         # Corresponds to the JSON property `tool`
         # @return [String]
