@@ -1170,6 +1170,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :blocked, as: 'blocked'
           property :category, as: 'category'
+          property :overwritten_threshold, as: 'overwrittenThreshold'
           property :probability, as: 'probability'
           property :probability_score, as: 'probabilityScore'
           property :severity, as: 'severity'

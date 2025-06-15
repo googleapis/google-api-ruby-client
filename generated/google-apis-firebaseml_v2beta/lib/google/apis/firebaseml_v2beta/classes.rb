@@ -326,7 +326,8 @@ module Google
       
         # Optional. Display name of the blob. Used to provide a label or filename to
         # distinguish blobs. This field is only returned in PromptMessage for prompt
-        # management. It is not currently used in the Gemini GenerateContent calls.
+        # management. It is currently used in the Gemini GenerateContent calls only when
+        # server side tools (code_execution, google_search, and url_context) are enabled.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -822,8 +823,9 @@ module Google
       
         # Optional. Display name of the file data. Used to provide a label or filename
         # to distinguish file datas. This field is only returned in PromptMessage for
-        # prompt management. It is not currently used in the Gemini GenerateContent
-        # calls.
+        # prompt management. It is currently used in the Gemini GenerateContent calls
+        # only when server side tools (code_execution, google_search, and url_context)
+        # are enabled.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -2270,6 +2272,13 @@ module Google
         # @return [String]
         attr_accessor :category
       
+        # Output only. The overwritten threshold for the safety category of Gemini 2.0
+        # image out. If minors are detected in the output image, the threshold of each
+        # safety category will be overwritten if user sets a lower threshold.
+        # Corresponds to the JSON property `overwrittenThreshold`
+        # @return [String]
+        attr_accessor :overwritten_threshold
+      
         # Output only. Harm probability levels in the content.
         # Corresponds to the JSON property `probability`
         # @return [String]
@@ -2298,6 +2307,7 @@ module Google
         def update!(**args)
           @blocked = args[:blocked] if args.key?(:blocked)
           @category = args[:category] if args.key?(:category)
+          @overwritten_threshold = args[:overwritten_threshold] if args.key?(:overwritten_threshold)
           @probability = args[:probability] if args.key?(:probability)
           @probability_score = args[:probability_score] if args.key?(:probability_score)
           @severity = args[:severity] if args.key?(:severity)
