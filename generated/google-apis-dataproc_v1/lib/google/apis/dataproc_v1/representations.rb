@@ -1972,6 +1972,7 @@ module Google
       
           collection :auxiliary_node_groups, as: 'auxiliaryNodeGroups', class: Google::Apis::DataprocV1::AuxiliaryNodeGroup, decorator: Google::Apis::DataprocV1::AuxiliaryNodeGroup::Representation
       
+          property :cluster_tier, as: 'clusterTier'
           property :cluster_type, as: 'clusterType'
           property :config_bucket, as: 'configBucket'
           property :dataproc_metric_config, as: 'dataprocMetricConfig', class: Google::Apis::DataprocV1::DataprocMetricConfig, decorator: Google::Apis::DataprocV1::DataprocMetricConfig::Representation
