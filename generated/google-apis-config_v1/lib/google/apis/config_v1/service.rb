@@ -1258,6 +1258,180 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Get a ResourceChange for a given preview.
+        # @param [String] name
+        #   Required. The name of the resource change to retrieve. Format: 'projects/`
+        #   project_id`/locations/`location`/previews/`preview`/resourceChanges/`
+        #   resource_change`'.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConfigV1::ResourceChange] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConfigV1::ResourceChange]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_preview_resource_change(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ConfigV1::ResourceChange::Representation
+          command.response_class = Google::Apis::ConfigV1::ResourceChange
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists ResourceChanges for a given preview.
+        # @param [String] parent
+        #   Required. The parent in whose context the ResourceChanges are listed. The
+        #   parent value is in the format: 'projects/`project_id`/locations/`location`/
+        #   previews/`preview`'.
+        # @param [String] filter
+        #   Optional. Lists the resource changes that match the filter expression. A
+        #   filter expression filters the resource changes listed in the response. The
+        #   expression must be of the form '`field` `operator` `value`' where operators: '<
+        #   ', '>', '<=', '>=', '!=', '=', ':' are supported (colon ':' represents a HAS
+        #   operator which is roughly synonymous with equality). `field` can refer to a
+        #   proto or JSON field, or a synthetic field. Field names can be camelCase or
+        #   snake_case. Examples: - Filter by name: name = "projects/foo/locations/us-
+        #   central1/previews/dep/resourceChanges/baz
+        # @param [String] order_by
+        #   Optional. Field to use to sort the list.
+        # @param [Fixnum] page_size
+        #   Optional. When requesting a page of resource changes, 'page_size' specifies
+        #   number of resource changes to return. If unspecified, at most 500 will be
+        #   returned. The maximum value is 1000.
+        # @param [String] page_token
+        #   Optional. Token returned by previous call to 'ListResourceChanges' which
+        #   specifies the position in the list from where to continue listing the resource
+        #   changes.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConfigV1::ListResourceChangesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConfigV1::ListResourceChangesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_preview_resource_changes(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/resourceChanges', options)
+          command.response_representation = Google::Apis::ConfigV1::ListResourceChangesResponse::Representation
+          command.response_class = Google::Apis::ConfigV1::ListResourceChangesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a ResourceDrift for a given preview.
+        # @param [String] name
+        #   Required. The name of the resource drift to retrieve. Format: 'projects/`
+        #   project_id`/locations/`location`/previews/`preview`/resourceDrifts/`
+        #   resource_drift`'.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConfigV1::ResourceDrift] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConfigV1::ResourceDrift]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_preview_resource_drift(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ConfigV1::ResourceDrift::Representation
+          command.response_class = Google::Apis::ConfigV1::ResourceDrift
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List ResourceDrifts for a given preview.
+        # @param [String] parent
+        #   Required. The parent in whose context the ResourceDrifts are listed. The
+        #   parent value is in the format: 'projects/`project_id`/locations/`location`/
+        #   previews/`preview`'.
+        # @param [String] filter
+        #   Optional. Lists the resource drifts that match the filter expression. A filter
+        #   expression filters the resource drifts listed in the response. The expression
+        #   must be of the form '`field` `operator` `value`' where operators: '<', '>', '<=
+        #   ', '>=', '!=', '=', ':' are supported (colon ':' represents a HAS operator
+        #   which is roughly synonymous with equality). `field` can refer to a proto or
+        #   JSON field, or a synthetic field. Field names can be camelCase or snake_case.
+        #   Examples: - Filter by name: name = "projects/foo/locations/us-central1/
+        #   previews/dep/resourceDrifts/baz
+        # @param [String] order_by
+        #   Optional. Field to use to sort the list.
+        # @param [Fixnum] page_size
+        #   Optional. When requesting a page of resource drifts, 'page_size' specifies
+        #   number of resource drifts to return. If unspecified, at most 500 will be
+        #   returned. The maximum value is 1000.
+        # @param [String] page_token
+        #   Optional. Token returned by previous call to 'ListResourceDrifts' which
+        #   specifies the position in the list from where to continue listing the resource
+        #   drifts.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConfigV1::ListResourceDriftsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConfigV1::ListResourceDriftsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_preview_resource_drifts(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/resourceDrifts', options)
+          command.response_representation = Google::Apis::ConfigV1::ListResourceDriftsResponse::Representation
+          command.response_class = Google::Apis::ConfigV1::ListResourceDriftsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets details about a TerraformVersion.
         # @param [String] name
         #   Required. The name of the TerraformVersion. Format: 'projects/`project_id`/
