@@ -1057,11 +1057,17 @@ module Google
         # @return [String]
         attr_accessor :connection_status
       
-        # Required. Fully qualified domain name that will be used in the private DNS
+        # Optional. Fully qualified domain name that will be used in the private DNS
         # record created for the service attachment.
         # Corresponds to the JSON property `localFqdn`
         # @return [String]
         attr_accessor :local_fqdn
+      
+        # Optional. List of fully qualified domain names that will be used in the
+        # private DNS record created for the service attachment.
+        # Corresponds to the JSON property `localFqdns`
+        # @return [Array<String>]
+        attr_accessor :local_fqdns
       
         # Required. URI of the service attachment to connect to. Format: projects/`
         # project`/regions/`region`/serviceAttachments/`service_attachment`
@@ -1077,6 +1083,7 @@ module Google
         def update!(**args)
           @connection_status = args[:connection_status] if args.key?(:connection_status)
           @local_fqdn = args[:local_fqdn] if args.key?(:local_fqdn)
+          @local_fqdns = args[:local_fqdns] if args.key?(:local_fqdns)
           @target_service_attachment_uri = args[:target_service_attachment_uri] if args.key?(:target_service_attachment_uri)
         end
       end

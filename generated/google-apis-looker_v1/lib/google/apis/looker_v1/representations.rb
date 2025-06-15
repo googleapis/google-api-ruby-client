@@ -495,6 +495,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connection_status, as: 'connectionStatus'
           property :local_fqdn, as: 'localFqdn'
+          collection :local_fqdns, as: 'localFqdns'
           property :target_service_attachment_uri, as: 'targetServiceAttachmentUri'
         end
       end
