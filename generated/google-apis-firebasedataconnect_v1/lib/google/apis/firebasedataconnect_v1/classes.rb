@@ -358,11 +358,29 @@ module Google
       class GraphqlErrorExtensions
         include Google::Apis::Core::Hashable
       
+        # Maps to canonical gRPC codes. If not specified, it represents `Code.INTERNAL`.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # More detailed error message to assist debugging. In the backend, only include
+        # it in admin authenticated API like ExecuteGraphql. In the emulator, always
+        # include it to assist debugging.
+        # Corresponds to the JSON property `debugDetails`
+        # @return [String]
+        attr_accessor :debug_details
+      
         # The source file name where the error occurred. Included only for `UpdateSchema`
         # and `UpdateConnector`, it corresponds to `File.path` of the provided `Source`.
         # Corresponds to the JSON property `file`
         # @return [String]
         attr_accessor :file
+      
+        # Distinguish which schema or connector the error originates from. It should be
+        # set on errors from control plane APIs (e.g. `UpdateSchema`, `UpdateConnector`).
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
       
         def initialize(**args)
            update!(**args)
@@ -370,7 +388,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @debug_details = args[:debug_details] if args.key?(:debug_details)
           @file = args[:file] if args.key?(:file)
+          @resource = args[:resource] if args.key?(:resource)
         end
       end
       

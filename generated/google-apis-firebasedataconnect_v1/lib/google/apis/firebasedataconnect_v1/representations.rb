@@ -303,7 +303,10 @@ module Google
       class GraphqlErrorExtensions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :debug_details, as: 'debugDetails'
           property :file, as: 'file'
+          property :resource, as: 'resource'
         end
       end
       
