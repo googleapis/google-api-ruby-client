@@ -844,6 +844,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaMatchingCondition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1013,6 +1019,12 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSubpropertySyncConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1628,6 +1640,8 @@ module Google
           property :search_ads360_link, as: 'searchAds360Link', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSearchAds360Link, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSearchAds360Link::Representation
       
           property :skadnetwork_conversion_value_schema, as: 'skadnetworkConversionValueSchema', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema::Representation
+      
+          property :subproperty_sync_config, as: 'subpropertySyncConfig', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertySyncConfig, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertySyncConfig::Representation
       
         end
       end
@@ -2406,6 +2420,15 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :subproperty_sync_configs, as: 'subpropertySyncConfigs', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertySyncConfig, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertySyncConfig::Representation
+      
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaMatchingCondition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2498,6 +2521,7 @@ module Google
       class GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_dimension_and_metric_synchronization_mode, as: 'customDimensionAndMetricSynchronizationMode'
           property :subproperty, as: 'subproperty', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty::Representation
       
           property :subproperty_event_filter, as: 'subpropertyEventFilter', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter::Representation
@@ -2713,6 +2737,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :filter_expressions, as: 'filterExpressions', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression::Representation
       
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSubpropertySyncConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :apply_to_property, as: 'applyToProperty'
+          property :custom_dimension_and_metric_sync_mode, as: 'customDimensionAndMetricSyncMode'
+          property :name, as: 'name'
         end
       end
       
