@@ -9879,7 +9879,7 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaQuery
         include Google::Apis::Core::Hashable
       
-        # Unique Id for the query.
+        # Output only. Unique Id for the query.
         # Corresponds to the JSON property `queryId`
         # @return [String]
         attr_accessor :query_id
@@ -10442,34 +10442,52 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSearchRequestQueryExpansionSpec]
         attr_accessor :query_expansion_spec
       
-        # The ranking expression controls the customized ranking on retrieval documents.
-        # This overrides ServingConfig.ranking_expression. The syntax and supported
-        # features depend on the ranking_expression_backend value. If
-        # ranking_expression_backend is not provided, it defaults to BYOE. === BYOE ===
-        # If ranking_expression_backend is not provided or set to `BYOE`, it should be a
-        # single function or multiple functions that are joined by "+". *
+        # Optional. The ranking expression controls the customized ranking on retrieval
+        # documents. This overrides ServingConfig.ranking_expression. The syntax and
+        # supported features depend on the `ranking_expression_backend` value. If `
+        # ranking_expression_backend` is not provided, it defaults to `RANK_BY_EMBEDDING`
+        # . If ranking_expression_backend is not provided or set to `RANK_BY_EMBEDDING`,
+        # it should be a single function or multiple functions that are joined by "+". *
         # ranking_expression = function, ` " + ", function `; Supported functions: *
         # double * relevance_score * double * dotProduct(embedding_field_path) Function
         # variables: * `relevance_score`: pre-defined keywords, used for measure
         # relevance between query and document. * `embedding_field_path`: the document
         # embedding field used with query embedding vector. * `dotProduct`: embedding
-        # function between embedding_field_path and query embedding vector. Example
+        # function between `embedding_field_path` and query embedding vector. Example
         # ranking expression: If document has an embedding field doc_embedding, the
         # ranking expression could be `0.5 * relevance_score + 0.3 * dotProduct(
-        # doc_embedding)`. === CLEARBOX === If ranking_expression_backend is set to `
-        # CLEARBOX`, the following expression types (and combinations of those chained
-        # using + or * operators) are supported: * double * signal * log(signal) * exp(
-        # signal) * rr(signal, double > 0) -- reciprocal rank transformation with second
-        # argument being a denominator constant. * is_nan(signal) -- returns 0 if signal
-        # is NaN, 1 otherwise. * fill_nan(signal1, signal2 | double) -- if signal1 is
-        # NaN, returns signal2 | double, else returns signal1. Examples: * 0.2 *
-        # gecko_score + 0.8 * log(bm25_score) * 0.2 * exp(fill_nan(gecko_score, 0)) + 0.
-        # 3 * is_nan(bm25_score) * 0.2 * rr(gecko_score, 16) + 0.8 * rr(bm25_score, 32)
-        # The following signals are supported: * gecko_score -- semantic similarity
-        # adjustment * bm25_score -- keyword match adjustment * jetstream_score --
-        # semantic relevance adjustment * pctr_rank -- predicted conversion rate
-        # adjustment as a rank * freshness_rank -- freshness adjustment as a rank *
-        # base_rank -- the default rank of the result
+        # doc_embedding)`. If ranking_expression_backend is set to `RANK_BY_FORMULA`,
+        # the following expression types (and combinations of those chained using + or *
+        # operators) are supported: * `double` * `signal` * `log(signal)` * `exp(signal)`
+        # * `rr(signal, double > 0)` -- reciprocal rank transformation with second
+        # argument being a denominator constant. * `is_nan(signal)` -- returns 0 if
+        # signal is NaN, 1 otherwise. * `fill_nan(signal1, signal2 | double)` -- if
+        # signal1 is NaN, returns signal2 | double, else returns signal1. Here are a few
+        # examples of ranking formulas that use the supported ranking expression types: -
+        # `0.2 * semantic_similarity_score + 0.8 * log(keyword_similarity_score)` --
+        # mostly rank by the logarithm of `keyword_similarity_score` with slight `
+        # semantic_smilarity_score` adjustment. - `0.2 * exp(fill_nan(
+        # semantic_similarity_score, 0)) + 0.3 * is_nan(keyword_similarity_score)` --
+        # rank by the exponent of `semantic_similarity_score` filling the value with 0
+        # if it's NaN, also add constant 0.3 adjustment to the final score if `
+        # semantic_similarity_score` is NaN. - `0.2 * rr(semantic_similarity_score, 16) +
+        # 0.8 * rr(keyword_similarity_score, 16)` -- mostly rank by the reciprocal rank
+        # of `keyword_similarity_score` with slight adjustment of reciprocal rank of `
+        # semantic_smilarity_score`. The following signals are supported: * `
+        # semantic_similarity_score`: semantic similarity adjustment that is calculated
+        # using the embeddings generated by a proprietary Google model. This score
+        # determines how semantically similar a search query is to a document. * `
+        # keyword_similarity_score`: keyword match adjustment uses the Best Match 25 (
+        # BM25) ranking function. This score is calculated using a probabilistic model
+        # to estimate the probability that a document is relevant to a given query. * `
+        # relevance_score`: semantic relevance adjustment that uses a proprietary Google
+        # model to determine the meaning and intent behind a user's query in context
+        # with the content in the documents. * `pctr_rank`: predicted conversion rate
+        # adjustment as a rank use predicted Click-through rate (pCTR) to gauge the
+        # relevance and attractiveness of a search result from a user's perspective. A
+        # higher pCTR suggests that the result is more likely to satisfy the user's
+        # query and intent, making it a valuable signal for ranking. * `freshness_rank`:
+        # freshness adjustment as a rank * `base_rank`: the default rank of the result
         # Corresponds to the JSON property `rankingExpression`
         # @return [String]
         attr_accessor :ranking_expression
@@ -10554,6 +10572,15 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSearchRequestSpellCorrectionSpec]
         attr_accessor :spell_correction_spec
       
+        # Uses the Engine, ServingConfig and Control freshly read from the database.
+        # Note: this skips config cache and introduces dependency on databases, which
+        # could significantly increase the API latency. It should only be used for
+        # testing, but not serving end users.
+        # Corresponds to the JSON property `useLatestData`
+        # @return [Boolean]
+        attr_accessor :use_latest_data
+        alias_method :use_latest_data?, :use_latest_data
+      
         # Information of an end user.
         # Corresponds to the JSON property `userInfo`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaUserInfo]
@@ -10625,6 +10652,7 @@ module Google
           @session = args[:session] if args.key?(:session)
           @session_spec = args[:session_spec] if args.key?(:session_spec)
           @spell_correction_spec = args[:spell_correction_spec] if args.key?(:spell_correction_spec)
+          @use_latest_data = args[:use_latest_data] if args.key?(:use_latest_data)
           @user_info = args[:user_info] if args.key?(:user_info)
           @user_labels = args[:user_labels] if args.key?(:user_labels)
           @user_pseudo_id = args[:user_pseudo_id] if args.key?(:user_pseudo_id)
@@ -11674,8 +11702,8 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaSessionTurn
         include Google::Apis::Core::Hashable
       
-        # The resource name of the answer to the user query. Only set if the answer
-        # generation (/answer API call) happened in this turn.
+        # Optional. The resource name of the answer to the user query. Only set if the
+        # answer generation (/answer API call) happened in this turn.
         # Corresponds to the JSON property `answer`
         # @return [String]
         attr_accessor :answer
@@ -11690,19 +11718,6 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaQuery]
         attr_accessor :query
       
-        # Optional. Represents metadata related to the query config, for example LLM
-        # model and version used, model parameters (temperature, grounding parameters,
-        # etc.). We don't want to import directly the [AnswerGenerationSpec] structure
-        # as this will serve a more general purpose and a wider set of customers. This
-        # information is used in particular when rendering alternative answers to the
-        # same prompt, providing visual information about how each answer was generated.
-        # The prefix "google." will be reserved for the key, and 1P services (Answer,
-        # Assistant, etc.) should always store their information with "google..". 3P
-        # services can use anything not starting with "google."
-        # Corresponds to the JSON property `queryConfigs`
-        # @return [Hash<String,String>]
-        attr_accessor :query_configs
-      
         def initialize(**args)
            update!(**args)
         end
@@ -11712,7 +11727,6 @@ module Google
           @answer = args[:answer] if args.key?(:answer)
           @detailed_answer = args[:detailed_answer] if args.key?(:detailed_answer)
           @query = args[:query] if args.key?(:query)
-          @query_configs = args[:query_configs] if args.key?(:query_configs)
         end
       end
       
@@ -20519,6 +20533,12 @@ module Google
       class GoogleCloudDiscoveryengineV1betaPrincipal
         include Google::Apis::Core::Hashable
       
+        # For 3P application identities which are not present in the customer identity
+        # provider.
+        # Corresponds to the JSON property `externalEntityId`
+        # @return [String]
+        attr_accessor :external_entity_id
+      
         # Group identifier. For Google Workspace user account, group_id should be the
         # google workspace group email. For non-google identity provider user account,
         # group_id is the mapped group identifier configured during the workforcepool
@@ -20541,6 +20561,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @external_entity_id = args[:external_entity_id] if args.key?(:external_entity_id)
           @group_id = args[:group_id] if args.key?(:group_id)
           @user_id = args[:user_id] if args.key?(:user_id)
         end
@@ -21108,7 +21129,7 @@ module Google
       class GoogleCloudDiscoveryengineV1betaQuery
         include Google::Apis::Core::Hashable
       
-        # Unique Id for the query.
+        # Output only. Unique Id for the query.
         # Corresponds to the JSON property `queryId`
         # @return [String]
         attr_accessor :query_id
@@ -22161,34 +22182,52 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestQueryExpansionSpec]
         attr_accessor :query_expansion_spec
       
-        # The ranking expression controls the customized ranking on retrieval documents.
-        # This overrides ServingConfig.ranking_expression. The syntax and supported
-        # features depend on the ranking_expression_backend value. If
-        # ranking_expression_backend is not provided, it defaults to BYOE. === BYOE ===
-        # If ranking_expression_backend is not provided or set to `BYOE`, it should be a
-        # single function or multiple functions that are joined by "+". *
+        # Optional. The ranking expression controls the customized ranking on retrieval
+        # documents. This overrides ServingConfig.ranking_expression. The syntax and
+        # supported features depend on the `ranking_expression_backend` value. If `
+        # ranking_expression_backend` is not provided, it defaults to `RANK_BY_EMBEDDING`
+        # . If ranking_expression_backend is not provided or set to `RANK_BY_EMBEDDING`,
+        # it should be a single function or multiple functions that are joined by "+". *
         # ranking_expression = function, ` " + ", function `; Supported functions: *
         # double * relevance_score * double * dotProduct(embedding_field_path) Function
         # variables: * `relevance_score`: pre-defined keywords, used for measure
         # relevance between query and document. * `embedding_field_path`: the document
         # embedding field used with query embedding vector. * `dotProduct`: embedding
-        # function between embedding_field_path and query embedding vector. Example
+        # function between `embedding_field_path` and query embedding vector. Example
         # ranking expression: If document has an embedding field doc_embedding, the
         # ranking expression could be `0.5 * relevance_score + 0.3 * dotProduct(
-        # doc_embedding)`. === CLEARBOX === If ranking_expression_backend is set to `
-        # CLEARBOX`, the following expression types (and combinations of those chained
-        # using + or * operators) are supported: * double * signal * log(signal) * exp(
-        # signal) * rr(signal, double > 0) -- reciprocal rank transformation with second
-        # argument being a denominator constant. * is_nan(signal) -- returns 0 if signal
-        # is NaN, 1 otherwise. * fill_nan(signal1, signal2 | double) -- if signal1 is
-        # NaN, returns signal2 | double, else returns signal1. Examples: * 0.2 *
-        # gecko_score + 0.8 * log(bm25_score) * 0.2 * exp(fill_nan(gecko_score, 0)) + 0.
-        # 3 * is_nan(bm25_score) * 0.2 * rr(gecko_score, 16) + 0.8 * rr(bm25_score, 32)
-        # The following signals are supported: * gecko_score -- semantic similarity
-        # adjustment * bm25_score -- keyword match adjustment * jetstream_score --
-        # semantic relevance adjustment * pctr_rank -- predicted conversion rate
-        # adjustment as a rank * freshness_rank -- freshness adjustment as a rank *
-        # base_rank -- the default rank of the result
+        # doc_embedding)`. If ranking_expression_backend is set to `RANK_BY_FORMULA`,
+        # the following expression types (and combinations of those chained using + or *
+        # operators) are supported: * `double` * `signal` * `log(signal)` * `exp(signal)`
+        # * `rr(signal, double > 0)` -- reciprocal rank transformation with second
+        # argument being a denominator constant. * `is_nan(signal)` -- returns 0 if
+        # signal is NaN, 1 otherwise. * `fill_nan(signal1, signal2 | double)` -- if
+        # signal1 is NaN, returns signal2 | double, else returns signal1. Here are a few
+        # examples of ranking formulas that use the supported ranking expression types: -
+        # `0.2 * semantic_similarity_score + 0.8 * log(keyword_similarity_score)` --
+        # mostly rank by the logarithm of `keyword_similarity_score` with slight `
+        # semantic_smilarity_score` adjustment. - `0.2 * exp(fill_nan(
+        # semantic_similarity_score, 0)) + 0.3 * is_nan(keyword_similarity_score)` --
+        # rank by the exponent of `semantic_similarity_score` filling the value with 0
+        # if it's NaN, also add constant 0.3 adjustment to the final score if `
+        # semantic_similarity_score` is NaN. - `0.2 * rr(semantic_similarity_score, 16) +
+        # 0.8 * rr(keyword_similarity_score, 16)` -- mostly rank by the reciprocal rank
+        # of `keyword_similarity_score` with slight adjustment of reciprocal rank of `
+        # semantic_smilarity_score`. The following signals are supported: * `
+        # semantic_similarity_score`: semantic similarity adjustment that is calculated
+        # using the embeddings generated by a proprietary Google model. This score
+        # determines how semantically similar a search query is to a document. * `
+        # keyword_similarity_score`: keyword match adjustment uses the Best Match 25 (
+        # BM25) ranking function. This score is calculated using a probabilistic model
+        # to estimate the probability that a document is relevant to a given query. * `
+        # relevance_score`: semantic relevance adjustment that uses a proprietary Google
+        # model to determine the meaning and intent behind a user's query in context
+        # with the content in the documents. * `pctr_rank`: predicted conversion rate
+        # adjustment as a rank use predicted Click-through rate (pCTR) to gauge the
+        # relevance and attractiveness of a search result from a user's perspective. A
+        # higher pCTR suggests that the result is more likely to satisfy the user's
+        # query and intent, making it a valuable signal for ranking. * `freshness_rank`:
+        # freshness adjustment as a rank * `base_rank`: the default rank of the result
         # Corresponds to the JSON property `rankingExpression`
         # @return [String]
         attr_accessor :ranking_expression
@@ -24621,8 +24660,8 @@ module Google
       class GoogleCloudDiscoveryengineV1betaSessionTurn
         include Google::Apis::Core::Hashable
       
-        # The resource name of the answer to the user query. Only set if the answer
-        # generation (/answer API call) happened in this turn.
+        # Optional. The resource name of the answer to the user query. Only set if the
+        # answer generation (/answer API call) happened in this turn.
         # Corresponds to the JSON property `answer`
         # @return [String]
         attr_accessor :answer
@@ -24637,19 +24676,6 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaQuery]
         attr_accessor :query
       
-        # Optional. Represents metadata related to the query config, for example LLM
-        # model and version used, model parameters (temperature, grounding parameters,
-        # etc.). We don't want to import directly the [AnswerGenerationSpec] structure
-        # as this will serve a more general purpose and a wider set of customers. This
-        # information is used in particular when rendering alternative answers to the
-        # same prompt, providing visual information about how each answer was generated.
-        # The prefix "google." will be reserved for the key, and 1P services (Answer,
-        # Assistant, etc.) should always store their information with "google..". 3P
-        # services can use anything not starting with "google."
-        # Corresponds to the JSON property `queryConfigs`
-        # @return [Hash<String,String>]
-        attr_accessor :query_configs
-      
         def initialize(**args)
            update!(**args)
         end
@@ -24659,7 +24685,6 @@ module Google
           @answer = args[:answer] if args.key?(:answer)
           @detailed_answer = args[:detailed_answer] if args.key?(:detailed_answer)
           @query = args[:query] if args.key?(:query)
-          @query_configs = args[:query_configs] if args.key?(:query_configs)
         end
       end
       
