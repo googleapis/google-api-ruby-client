@@ -3224,7 +3224,8 @@ module Google
       
         # Output only. The exit code of this attempt. This may be unset if the container
         # was unable to exit cleanly with a code due to some other failure. See status
-        # field for possible failure details.
+        # field for possible failure details. At most one of exit_code or term_signal
+        # will be set.
         # Corresponds to the JSON property `exitCode`
         # @return [Fixnum]
         attr_accessor :exit_code
@@ -3239,6 +3240,13 @@ module Google
         # @return [Google::Apis::RunV2::GoogleRpcStatus]
         attr_accessor :status
       
+        # Output only. Termination signal of the container. This is set to non-zero if
+        # the container is terminated by the system. At most one of exit_code or
+        # term_signal will be set.
+        # Corresponds to the JSON property `termSignal`
+        # @return [Fixnum]
+        attr_accessor :term_signal
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3247,6 +3255,7 @@ module Google
         def update!(**args)
           @exit_code = args[:exit_code] if args.key?(:exit_code)
           @status = args[:status] if args.key?(:status)
+          @term_signal = args[:term_signal] if args.key?(:term_signal)
         end
       end
       
@@ -3914,12 +3923,6 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2ServiceMesh]
         attr_accessor :service_mesh
       
-        # Optional. Enable session affinity.
-        # Corresponds to the JSON property `sessionAffinity`
-        # @return [Boolean]
-        attr_accessor :session_affinity
-        alias_method :session_affinity?, :session_affinity
-      
         # Optional. A list of Volumes to make available to containers.
         # Corresponds to the JSON property `volumes`
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Volume>]
@@ -3947,7 +3950,6 @@ module Google
           @revision = args[:revision] if args.key?(:revision)
           @service_account = args[:service_account] if args.key?(:service_account)
           @service_mesh = args[:service_mesh] if args.key?(:service_mesh)
-          @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
           @volumes = args[:volumes] if args.key?(:volumes)
           @vpc_access = args[:vpc_access] if args.key?(:vpc_access)
         end
@@ -5033,9 +5035,8 @@ module Google
       class GoogleDevtoolsCloudbuildV1GitSourceRepository
         include Google::Apis::Core::Hashable
       
-        # The Developer Connect Git repository link or the url that matches a repository
-        # link in the current project, formatted as `projects/*/locations/*/connections/*
-        # /gitRepositoryLink/*`
+        # The Developer Connect Git repository link formatted as `projects/*/locations/*/
+        # connections/*/gitRepositoryLink/*`
         # Corresponds to the JSON property `developerConnect`
         # @return [String]
         attr_accessor :developer_connect
