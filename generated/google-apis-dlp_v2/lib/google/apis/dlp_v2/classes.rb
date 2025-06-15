@@ -3840,7 +3840,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStorageResourceReference]
         attr_accessor :cloud_storage_resource_reference
       
-        # Match file stores (e.g. buckets) using regex filters.
+        # Match file stores (e.g. buckets) using filters.
         # Corresponds to the JSON property `collection`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreCollection]
         attr_accessor :collection
@@ -4970,7 +4970,7 @@ module Google
         end
       end
       
-      # Match file stores (e.g. buckets) using regex filters.
+      # Match file stores (e.g. buckets) using filters.
       class GooglePrivacyDlpV2FileStoreCollection
         include Google::Apis::Core::Hashable
       
