@@ -363,6 +363,12 @@ module Google
       class CloudRunRevisionEndpoint
         include Google::Apis::Core::Hashable
       
+        # Output only. The URI of the Cloud Run service that the revision belongs to.
+        # The format is: projects/`project`/locations/`location`/services/`service`
+        # Corresponds to the JSON property `serviceUri`
+        # @return [String]
+        attr_accessor :service_uri
+      
         # A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.
         # com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is:
         # projects/`project`/locations/`location`/revisions/`revision`
@@ -376,6 +382,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @service_uri = args[:service_uri] if args.key?(:service_uri)
           @uri = args[:uri] if args.key?(:uri)
         end
       end
@@ -1322,7 +1329,8 @@ module Google
         # @return [String]
         attr_accessor :psc_network_attachment_uri
       
-        # Indicates whether the Compute Engine instance is running.
+        # Indicates whether the Compute Engine instance is running. Deprecated: use the `
+        # status` field instead.
         # Corresponds to the JSON property `running`
         # @return [Boolean]
         attr_accessor :running
@@ -1332,6 +1340,11 @@ module Google
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
+      
+        # The status of the instance.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
       
         # URI of a Compute Engine instance.
         # Corresponds to the JSON property `uri`
@@ -1353,6 +1366,7 @@ module Google
           @psc_network_attachment_uri = args[:psc_network_attachment_uri] if args.key?(:psc_network_attachment_uri)
           @running = args[:running] if args.key?(:running)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @status = args[:status] if args.key?(:status)
           @uri = args[:uri] if args.key?(:uri)
         end
       end
