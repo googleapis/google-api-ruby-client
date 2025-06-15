@@ -1368,16 +1368,17 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlacePlusCode]
         attr_accessor :plus_code
       
-        # Represents a postal address (for example, for postal delivery or payments
-        # addresses). Given a postal address, a postal service can deliver items to a
-        # premise, P.O. box or similar. It is not intended to model geographical
-        # locations (roads, towns, mountains). In typical usage, an address would be
-        # created by user input or from importing existing data, depending on the type
-        # of process. Advice on address input or editing: - Use an internationalization-
-        # ready address widget such as https://github.com/google/libaddressinput. -
-        # Users should not be presented with UI elements for input or editing of fields
-        # outside countries where that field is used. For more guidance on how to use
-        # this schema, see: https://support.google.com/business/answer/6397478.
+        # Represents a postal address, such as for postal delivery or payments addresses.
+        # With a postal address, a postal service can deliver items to a premise, P.O.
+        # box, or similar. A postal address is not intended to model geographical
+        # locations like roads, towns, or mountains. In typical usage, an address would
+        # be created by user input or from importing existing data, depending on the
+        # type of process. Advice on address input or editing: - Use an
+        # internationalization-ready address widget such as https://github.com/google/
+        # libaddressinput. - Users should not be presented with UI elements for input or
+        # editing of fields outside countries where that field is used. For more
+        # guidance on how to use this schema, see: https://support.google.com/business/
+        # answer/6397478.
         # Corresponds to the JSON property `postalAddress`
         # @return [Google::Apis::PlacesV1::GoogleTypePostalAddress]
         attr_accessor :postal_address
@@ -1992,10 +1993,9 @@ module Google
         attr_accessor :open_now
         alias_method :open_now?, :open_now
       
-        # The periods that this place is open during the week. The periods are in
-        # chronological order, starting with Sunday in the place-local timezone. An
-        # empty (but not absent) value indicates a place that is never open, e.g.
-        # because it is closed temporarily for renovations.
+        # NOTE: The ordering of the `periods` array is independent of the ordering of
+        # the `weekday_descriptions` array. Do not assume they will begin on the same
+        # day.
         # Corresponds to the JSON property `periods`
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHoursPeriod>]
         attr_accessor :periods
@@ -2014,8 +2014,12 @@ module Google
         attr_accessor :special_days
       
         # Localized strings describing the opening hours of this place, one string for
-        # each day of the week. Will be empty if the hours are unknown or could not be
-        # converted to localized text. Example: "Sun: 18:00–06:00"
+        # each day of the week. NOTE: The order of the days and the start of the week is
+        # determined by the locale (language and region). The ordering of the `periods`
+        # array is independent of the ordering of the `weekday_descriptions` array. Do
+        # not assume they will begin on the same day. Will be empty if the hours are
+        # unknown or could not be converted to localized text. Example: "Sun: 18:00–06:
+        # 00"
         # Corresponds to the JSON property `weekdayDescriptions`
         # @return [Array<String>]
         attr_accessor :weekday_descriptions
@@ -3310,16 +3314,17 @@ module Google
         end
       end
       
-      # Represents a postal address (for example, for postal delivery or payments
-      # addresses). Given a postal address, a postal service can deliver items to a
-      # premise, P.O. box or similar. It is not intended to model geographical
-      # locations (roads, towns, mountains). In typical usage, an address would be
-      # created by user input or from importing existing data, depending on the type
-      # of process. Advice on address input or editing: - Use an internationalization-
-      # ready address widget such as https://github.com/google/libaddressinput. -
-      # Users should not be presented with UI elements for input or editing of fields
-      # outside countries where that field is used. For more guidance on how to use
-      # this schema, see: https://support.google.com/business/answer/6397478.
+      # Represents a postal address, such as for postal delivery or payments addresses.
+      # With a postal address, a postal service can deliver items to a premise, P.O.
+      # box, or similar. A postal address is not intended to model geographical
+      # locations like roads, towns, or mountains. In typical usage, an address would
+      # be created by user input or from importing existing data, depending on the
+      # type of process. Advice on address input or editing: - Use an
+      # internationalization-ready address widget such as https://github.com/google/
+      # libaddressinput. - Users should not be presented with UI elements for input or
+      # editing of fields outside countries where that field is used. For more
+      # guidance on how to use this schema, see: https://support.google.com/business/
+      # answer/6397478.
       class GoogleTypePostalAddress
         include Google::Apis::Core::Hashable
       
