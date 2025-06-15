@@ -1512,6 +1512,7 @@ module Google
           property :exit_code, as: 'exitCode'
           property :status, as: 'status', class: Google::Apis::RunV2::GoogleRpcStatus, decorator: Google::Apis::RunV2::GoogleRpcStatus::Representation
       
+          property :term_signal, as: 'termSignal'
         end
       end
       
@@ -1657,7 +1658,6 @@ module Google
           property :service_account, as: 'serviceAccount'
           property :service_mesh, as: 'serviceMesh', class: Google::Apis::RunV2::GoogleCloudRunV2ServiceMesh, decorator: Google::Apis::RunV2::GoogleCloudRunV2ServiceMesh::Representation
       
-          property :session_affinity, as: 'sessionAffinity'
           collection :volumes, as: 'volumes', class: Google::Apis::RunV2::GoogleCloudRunV2Volume, decorator: Google::Apis::RunV2::GoogleCloudRunV2Volume::Representation
       
           property :vpc_access, as: 'vpcAccess', class: Google::Apis::RunV2::GoogleCloudRunV2VpcAccess, decorator: Google::Apis::RunV2::GoogleCloudRunV2VpcAccess::Representation
