@@ -17092,7 +17092,7 @@ module Google
       class GoogleCloudDialogflowV2ToolCall
         include Google::Apis::Core::Hashable
       
-        # Required. The name of the tool's action associated with this call.
+        # Optional. The name of the tool's action associated with this call.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -17107,7 +17107,7 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :input_parameters
       
-        # Required. The tool associated with this call. Format: `projects//locations//
+        # Optional. The tool associated with this call. Format: `projects//locations//
         # tools/`.
         # Corresponds to the JSON property `tool`
         # @return [String]
@@ -17130,7 +17130,7 @@ module Google
       class GoogleCloudDialogflowV2ToolCallResult
         include Google::Apis::Core::Hashable
       
-        # Required. The name of the tool's action associated with this call.
+        # Optional. The name of the tool's action associated with this call.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -17157,7 +17157,7 @@ module Google
         # @return [String]
         attr_accessor :raw_content
       
-        # Required. The tool associated with this call. Format: `projects//locations//
+        # Optional. The tool associated with this call. Format: `projects//locations//
         # tools/`.
         # Corresponds to the JSON property `tool`
         # @return [String]
@@ -21543,7 +21543,7 @@ module Google
       class GoogleCloudDialogflowV2beta1ToolCall
         include Google::Apis::Core::Hashable
       
-        # Required. The name of the tool's action associated with this call.
+        # Optional. The name of the tool's action associated with this call.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -21558,7 +21558,7 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :input_parameters
       
-        # Required. The tool associated with this call. Format: `projects//locations//
+        # Optional. The tool associated with this call. Format: `projects//locations//
         # tools/`.
         # Corresponds to the JSON property `tool`
         # @return [String]
@@ -21581,7 +21581,7 @@ module Google
       class GoogleCloudDialogflowV2beta1ToolCallResult
         include Google::Apis::Core::Hashable
       
-        # Required. The name of the tool's action associated with this call.
+        # Optional. The name of the tool's action associated with this call.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -21608,7 +21608,7 @@ module Google
         # @return [String]
         attr_accessor :raw_content
       
-        # Required. The tool associated with this call. Format: `projects//locations//
+        # Optional. The tool associated with this call. Format: `projects//locations//
         # tools/`.
         # Corresponds to the JSON property `tool`
         # @return [String]
