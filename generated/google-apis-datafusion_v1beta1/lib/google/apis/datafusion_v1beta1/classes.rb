@@ -237,9 +237,9 @@ module Google
       class CryptoKeyConfig
         include Google::Apis::Core::Hashable
       
-        # The name of the key which is used to encrypt/decrypt customer data. For key in
-        # Cloud KMS, the key should be in the format of `projects/*/locations/*/keyRings/
-        # */cryptoKeys/*`.
+        # Optional. The name of the key which is used to encrypt/decrypt customer data.
+        # For key in Cloud KMS, the key should be in the format of `projects/*/locations/
+        # */keyRings/*/cryptoKeys/*`.
         # Corresponds to the JSON property `keyReference`
         # @return [String]
         attr_accessor :key_reference
@@ -269,8 +269,8 @@ module Google
         # @return [String]
         attr_accessor :domain
       
-        # Required. The resource name of the dns peering zone. Format: projects/`project`
-        # /locations/`location`/instances/`instance`/dnsPeerings/`dns_peering`
+        # Identifier. The resource name of the dns peering zone. Format: projects/`
+        # project`/locations/`location`/instances/`instance`/dnsPeerings/`dns_peering`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -490,14 +490,14 @@ module Google
         attr_accessor :dataplex_data_lineage_integration_enabled
         alias_method :dataplex_data_lineage_integration_enabled?, :dataplex_data_lineage_integration_enabled
       
-        # User-managed service account to set on Dataproc when Cloud Data Fusion creates
-        # Dataproc to run data processing pipelines. This allows users to have fine-
-        # grained access control on Dataproc's accesses to cloud resources.
+        # Optional. User-managed service account to set on Dataproc when Cloud Data
+        # Fusion creates Dataproc to run data processing pipelines. This allows users to
+        # have fine-grained access control on Dataproc's accesses to cloud resources.
         # Corresponds to the JSON property `dataprocServiceAccount`
         # @return [String]
         attr_accessor :dataproc_service_account
       
-        # A description of this instance.
+        # Optional. A description of this instance.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -508,30 +508,30 @@ module Google
         # @return [Array<String>]
         attr_accessor :disabled_reason
       
-        # Display name for an instance.
+        # Optional. Display name for an instance.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Option to enable granular role-based access control.
+        # Optional. Option to enable granular role-based access control.
         # Corresponds to the JSON property `enableRbac`
         # @return [Boolean]
         attr_accessor :enable_rbac
         alias_method :enable_rbac?, :enable_rbac
       
-        # Option to enable Dataproc Stackdriver Logging.
+        # Optional. Option to enable Dataproc Stackdriver Logging.
         # Corresponds to the JSON property `enableStackdriverLogging`
         # @return [Boolean]
         attr_accessor :enable_stackdriver_logging
         alias_method :enable_stackdriver_logging?, :enable_stackdriver_logging
       
-        # Option to enable Stackdriver Monitoring.
+        # Optional. Option to enable Stackdriver Monitoring.
         # Corresponds to the JSON property `enableStackdriverMonitoring`
         # @return [Boolean]
         attr_accessor :enable_stackdriver_monitoring
         alias_method :enable_stackdriver_monitoring?, :enable_stackdriver_monitoring
       
-        # Option to enable zone separation.
+        # Output only. Option to enable zone separation.
         # Corresponds to the JSON property `enableZoneSeparation`
         # @return [Boolean]
         attr_accessor :enable_zone_separation
@@ -586,8 +586,8 @@ module Google
         # @return [Google::Apis::DatafusionV1beta1::NetworkConfig]
         attr_accessor :network_config
       
-        # Map of additional options used to configure the behavior of Data Fusion
-        # instance.
+        # Optional. Map of additional options used to configure the behavior of Data
+        # Fusion instance.
         # Corresponds to the JSON property `options`
         # @return [Hash<String,String>]
         attr_accessor :options
@@ -602,9 +602,9 @@ module Google
         # @return [String]
         attr_accessor :patch_revision
       
-        # Specifies whether the Data Fusion instance should be private. If set to true,
-        # all Data Fusion nodes will have private IP addresses and will not be able to
-        # access the public internet.
+        # Optional. Specifies whether the Data Fusion instance should be private. If set
+        # to true, all Data Fusion nodes will have private IP addresses and will not be
+        # able to access the public internet.
         # Corresponds to the JSON property `privateInstance`
         # @return [Boolean]
         attr_accessor :private_instance
@@ -666,7 +666,7 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Current version of Data Fusion.
+        # Optional. Current version of Data Fusion.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -677,8 +677,8 @@ module Google
         # @return [String]
         attr_accessor :workforce_identity_service_endpoint
       
-        # Name of the zone in which the Data Fusion instance will be created. Only
-        # DEVELOPER instances use this field.
+        # Optional. Name of the zone in which the Data Fusion instance will be created.
+        # Only DEVELOPER instances use this field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
