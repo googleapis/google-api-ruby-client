@@ -47,9 +47,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :data
       
-        # If set to true, messages will be allowed to be delivered to the app while the
-        # device is in direct boot mode. See [Support Direct Boot mode](https://
-        # developer.android.com/training/articles/direct-boot).
+        # Optional. If set to true, messages will be allowed to be delivered to the app
+        # while the device is in direct boot mode. See [Support Direct Boot mode](https:/
+        # /developer.android.com/training/articles/direct-boot).
         # Corresponds to the JSON property `directBootOk`
         # @return [Boolean]
         attr_accessor :direct_boot_ok
@@ -76,6 +76,17 @@ module Google
         # Corresponds to the JSON property `restrictedPackageName`
         # @return [String]
         attr_accessor :restricted_package_name
+      
+        # Optional. If set to true, messages will be allowed to be delivered to the app
+        # while the device is connected over a restricted satellite network. This should
+        # only be enabled for messages that can be handled over a restricted satellite
+        # network and only for apps that are allowed to work over a restricted satellite
+        # network. Note that the ability of the app to connect to a restricted satellite
+        # network is dependent on the carrier's settings and the device model.
+        # Corresponds to the JSON property `restrictedSatelliteOk`
+        # @return [Boolean]
+        attr_accessor :restricted_satellite_ok
+        alias_method :restricted_satellite_ok?, :restricted_satellite_ok
       
         # How long (in seconds) the message should be kept in FCM storage if the device
         # is offline. The maximum time to live supported is 4 weeks, and the default
@@ -105,6 +116,7 @@ module Google
           @notification = args[:notification] if args.key?(:notification)
           @priority = args[:priority] if args.key?(:priority)
           @restricted_package_name = args[:restricted_package_name] if args.key?(:restricted_package_name)
+          @restricted_satellite_ok = args[:restricted_satellite_ok] if args.key?(:restricted_satellite_ok)
           @ttl = args[:ttl] if args.key?(:ttl)
         end
       end
