@@ -717,6 +717,13 @@ module Google
         class IpFilter
           include Google::Apis::Core::Hashable
         
+          # Whether to allow all service agents to access the bucket regardless of the IP
+          # filter configuration.
+          # Corresponds to the JSON property `allowAllServiceAgentAccess`
+          # @return [Boolean]
+          attr_accessor :allow_all_service_agent_access
+          alias_method :allow_all_service_agent_access?, :allow_all_service_agent_access
+        
           # Whether to allow cross-org VPCs in the bucket's IP filter configuration.
           # Corresponds to the JSON property `allowCrossOrgVpcs`
           # @return [Boolean]
@@ -745,6 +752,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
+            @allow_all_service_agent_access = args[:allow_all_service_agent_access] if args.key?(:allow_all_service_agent_access)
             @allow_cross_org_vpcs = args[:allow_cross_org_vpcs] if args.key?(:allow_cross_org_vpcs)
             @mode = args[:mode] if args.key?(:mode)
             @public_network_source = args[:public_network_source] if args.key?(:public_network_source)
