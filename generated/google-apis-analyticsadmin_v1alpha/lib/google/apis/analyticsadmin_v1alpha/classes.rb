@@ -1919,6 +1919,13 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema]
         attr_accessor :skadnetwork_conversion_value_schema
       
+        # Subproperty synchronization configuration controls how ordinary property
+        # configurations are synchronized to subproperties. This resource is provisioned
+        # automatically for each subproperty.
+        # Corresponds to the JSON property `subpropertySyncConfig`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertySyncConfig]
+        attr_accessor :subproperty_sync_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1952,6 +1959,7 @@ module Google
           @reporting_data_annotation = args[:reporting_data_annotation] if args.key?(:reporting_data_annotation)
           @search_ads360_link = args[:search_ads360_link] if args.key?(:search_ads360_link)
           @skadnetwork_conversion_value_schema = args[:skadnetwork_conversion_value_schema] if args.key?(:skadnetwork_conversion_value_schema)
+          @subproperty_sync_config = args[:subproperty_sync_config] if args.key?(:subproperty_sync_config)
         end
       end
       
@@ -4713,6 +4721,32 @@ module Google
         end
       end
       
+      # Response message for ListSubpropertySyncConfigs RPC.
+      class GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of Subproperty Sync Configs.
+        # Corresponds to the JSON property `subpropertySyncConfigs`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertySyncConfig>]
+        attr_accessor :subproperty_sync_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @subproperty_sync_configs = args[:subproperty_sync_configs] if args.key?(:subproperty_sync_configs)
+        end
+      end
+      
       # Defines a condition for when an Event Edit or Event Creation rule applies to
       # an event.
       class GoogleAnalyticsAdminV1alphaMatchingCondition
@@ -5079,6 +5113,12 @@ module Google
       class GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The subproperty feature synchronization mode for Custom Dimensions
+        # and Metrics
+        # Corresponds to the JSON property `customDimensionAndMetricSynchronizationMode`
+        # @return [String]
+        attr_accessor :custom_dimension_and_metric_synchronization_mode
+      
         # A resource message representing a Google Analytics property.
         # Corresponds to the JSON property `subproperty`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty]
@@ -5095,6 +5135,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_dimension_and_metric_synchronization_mode = args[:custom_dimension_and_metric_synchronization_mode] if args.key?(:custom_dimension_and_metric_synchronization_mode)
           @subproperty = args[:subproperty] if args.key?(:subproperty)
           @subproperty_event_filter = args[:subproperty_event_filter] if args.key?(:subproperty_event_filter)
         end
@@ -5895,6 +5936,47 @@ module Google
         # Update properties of this object
         def update!(**args)
           @filter_expressions = args[:filter_expressions] if args.key?(:filter_expressions)
+        end
+      end
+      
+      # Subproperty synchronization configuration controls how ordinary property
+      # configurations are synchronized to subproperties. This resource is provisioned
+      # automatically for each subproperty.
+      class GoogleAnalyticsAdminV1alphaSubpropertySyncConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Immutable. Resource name of the Subproperty that these settings
+        # apply to.
+        # Corresponds to the JSON property `applyToProperty`
+        # @return [String]
+        attr_accessor :apply_to_property
+      
+        # Required. Specifies the Custom Dimension / Metric synchronization mode for the
+        # Subproperty. If set to ALL, Custom Dimension / Metric synchronization will be
+        # immediately enabled. Local configuration of Custom Dimensions / Metrics will
+        # not be allowed on the Subproperty so long as the synchronization mode is set
+        # to ALL. If set to NONE, Custom Dimensions / Metric synchronization is disabled.
+        # Custom Dimensions / Metrics must be configured explicitly on the Subproperty.
+        # Corresponds to the JSON property `customDimensionAndMetricSyncMode`
+        # @return [String]
+        attr_accessor :custom_dimension_and_metric_sync_mode
+      
+        # Output only. Identifier. Format: properties/`ordinary_property_id`/
+        # subpropertySyncConfigs/`subproperty_id` Example: properties/1234/
+        # subpropertySyncConfigs/5678
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apply_to_property = args[:apply_to_property] if args.key?(:apply_to_property)
+          @custom_dimension_and_metric_sync_mode = args[:custom_dimension_and_metric_sync_mode] if args.key?(:custom_dimension_and_metric_sync_mode)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
