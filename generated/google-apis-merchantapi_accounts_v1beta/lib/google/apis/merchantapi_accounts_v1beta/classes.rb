@@ -92,13 +92,13 @@ module Google
       class Accepted
         include Google::Apis::Core::Hashable
       
-        # The account where the acceptance was recorded. This can be the account itself
-        # or, in the case of subaccounts, the advanced account.
+        # Required. The account where the acceptance was recorded. This can be the
+        # account itself or, in the case of subaccounts, the advanced account.
         # Corresponds to the JSON property `acceptedBy`
         # @return [String]
         attr_accessor :accepted_by
       
-        # The accepted termsOfService.
+        # Required. The accepted termsOfService.
         # Corresponds to the JSON property `termsOfService`
         # @return [String]
         attr_accessor :terms_of_service
@@ -2672,7 +2672,7 @@ module Google
         # phone number that uses a relaxed ITU E.164 format consisting of the country
         # calling code (1 to 3 digits) and the subscriber number, with no additional
         # spaces or formatting. For example: - correct: "+15552220123" - incorrect: "+1 (
-        # 555) 222-01234 x123". The ITU E.164 format limits the latter to 12 digits, but
+        # 555) 222-01234 x123" The ITU E.164 format limits the latter to 12 digits, but
         # in practice not all countries respect that, so we relax that restriction here.
         # National-only numbers are not allowed. References: - https://www.itu.int/rec/T-
         # REC-E.164-201011-I - https://en.wikipedia.org/wiki/E.164. - https://en.
@@ -3389,12 +3389,12 @@ module Google
       class Required
         include Google::Apis::Core::Hashable
       
-        # The `TermsOfService` that need to be accepted.
+        # Required. The `TermsOfService` that need to be accepted.
         # Corresponds to the JSON property `termsOfService`
         # @return [String]
         attr_accessor :terms_of_service
       
-        # Full URL to the terms of service file. This field is the same as `
+        # Required. Full URL to the terms of service file. This field is the same as `
         # TermsOfService.file_uri`, it is added here for convenience only.
         # Corresponds to the JSON property `tosFileUri`
         # @return [String]
@@ -3674,16 +3674,17 @@ module Google
       class ShippingSettings
         include Google::Apis::Core::Hashable
       
-        # Required. This field is used for avoid async issue. Make sure shipping setting
-        # data didn't change between get call and insert call. The user should do
-        # following steps： 1. Set etag field as empty string for initial shipping
-        # setting creation. 2. After initial creation, call get method to obtain an etag
-        # and current shipping setting data before call insert. 3. Modify to wanted
-        # shipping setting information. 4. Call insert method with the wanted shipping
-        # setting information with the etag obtained from step 2. 5. If shipping setting
-        # data changed between step 2 and step 4. Insert request will fail because the
-        # etag changes every time the shipping setting data changes. User should repeate
-        # step 2-4 with the new etag.
+        # Required. This field helps avoid async issues. It ensures that the shipping
+        # setting data doesn't change between the `get` call and the `insert` call. The
+        # user should follow these steps: 1. Set the etag field as an empty string for
+        # the initial shipping setting creation. 2. After the initial creation, call the
+        # `get` method to obtain an etag and the current shipping setting data before
+        # calling `insert`. 3. Modify the shipping setting information. 4. Call the `
+        # insert` method with the shipping setting information and the etag obtained in
+        # step 2. 5. If the shipping setting data changes between step 2 and step 4, the
+        # insert request will fail because the etag changes every time the shipping
+        # setting data changes. In this case, the user should repeat steps 2-4 with the
+        # new etag.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -3957,8 +3958,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Region code as defined by https://cldr.unicode.org/. This is the country the
-        # current state applies to.
+        # Required. Region code as defined by https://cldr.unicode.org/. This is the
+        # country the current state applies to.
         # Corresponds to the JSON property `regionCode`
         # @return [String]
         attr_accessor :region_code
@@ -3968,7 +3969,7 @@ module Google
         # @return [Google::Apis::MerchantapiAccountsV1beta::Required]
         attr_accessor :required
       
-        # Terms of Service kind associated with the particular version.
+        # Required. Terms of Service kind associated with the particular version.
         # Corresponds to the JSON property `termsOfServiceKind`
         # @return [String]
         attr_accessor :terms_of_service_kind

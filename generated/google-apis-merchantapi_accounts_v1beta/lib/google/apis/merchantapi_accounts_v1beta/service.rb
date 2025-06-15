@@ -153,17 +153,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists accounts accessible to the calling user and matching the constraints of
-        # the request such as page size or filters. This is not just listing the sub-
-        # accounts of an advanced account, but all accounts the calling user has access
-        # to including other advanced accounts, linked accounts, standalone accounts and
-        # so on. If no filter is provided, then it returns all the accounts the user has
-        # access to. This method is eventually consistent, meaning changes such as
-        # creating, updating an account or a change of relationships between accounts
-        # may not show up in the results immediately. Instead, these changes propagate
-        # over a short period, after which the updated information can match the
-        # associated predicates. That means, that searching by account name might not
-        # return a recently changed account even though it satisfies the predicate.
+        # Note: For the `accounts.list` method, quota and limits usage are charged for
+        # each user, and not for the Merchant Center ID or the advanced account ID. To
+        # list several sub-accounts, you should use the `accounts.listSubaccounts`
+        # method, which is more suitable for advanced accounts use case.
         # @param [String] filter
         #   Optional. Returns only accounts that match the [filter](https://developers.
         #   google.com/merchant/api/guides/accounts/filter). For more details, see the [
@@ -647,7 +640,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Link the specified merchant to a GBP account for all countries.
+        # Link the specified merchant to a GBP account for all countries. To run this
+        # method, you must have admin access to the Merchant Center account. If you don'
+        # t have admin access, the request fails with the error message `User is not an
+        # administrator of account `ACCOUNT_ID``.
         # @param [String] parent
         #   Required. The name of the parent resource to which the GBP account is linked.
         #   Format: `accounts/`account``.
@@ -2075,6 +2071,8 @@ module Google
         end
         
         # Retrieves the state of the agreement for the application terms of service.
+        # Application terms of service covers permissions related to the usage of data
+        # provided through Merchant Center, CSS Center, Manufacturer Center, and more.
         # @param [String] parent
         #   Required. The account for which to get a TermsOfServiceAgreementState Format: `
         #   accounts/`account``
