@@ -2610,6 +2610,17 @@ module Google
       class CellData
         include Google::Apis::Core::Hashable
       
+        # Optional. Runs of chips applied to subsections of the cell. Properties of a
+        # run start at a specific index in the text and continue until the next run.
+        # When reading, all chipped and non-chipped runs are included. Non-chipped runs
+        # will have an empty chip_run.chip. When writing, only runs with chips are
+        # included. Runs containing chips are of length 1 and are represented in the
+        # user-entered text by an “@” placeholder symbol. New runs will overwrite any
+        # prior runs. Writing a new user_entered_value will erase previous runs.
+        # Corresponds to the JSON property `chipRuns`
+        # @return [Array<Google::Apis::SheetsV4::ChipRun>]
+        attr_accessor :chip_runs
+      
         # A data source formula.
         # Corresponds to the JSON property `dataSourceFormula`
         # @return [Google::Apis::SheetsV4::DataSourceFormula]
@@ -2689,6 +2700,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @chip_runs = args[:chip_runs] if args.key?(:chip_runs)
           @data_source_formula = args[:data_source_formula] if args.key?(:data_source_formula)
           @data_source_table = args[:data_source_table] if args.key?(:data_source_table)
           @data_validation = args[:data_validation] if args.key?(:data_validation)
@@ -3275,6 +3287,61 @@ module Google
           @title_text_position = args[:title_text_position] if args.key?(:title_text_position)
           @treemap_chart = args[:treemap_chart] if args.key?(:treemap_chart)
           @waterfall_chart = args[:waterfall_chart] if args.key?(:waterfall_chart)
+        end
+      end
+      
+      # The Smart Chip.
+      class Chip
+        include Google::Apis::Core::Hashable
+      
+        # Properties specific to a linked person.
+        # Corresponds to the JSON property `personProperties`
+        # @return [Google::Apis::SheetsV4::PersonProperties]
+        attr_accessor :person_properties
+      
+        # Properties of a link to a Google resource (such as a file in Drive, a YouTube
+        # video, a Maps address, or a Calendar event). Only Drive files can be written
+        # as chips. All other rich link types are read only. URIs cannot exceed 2000
+        # bytes when writing. NOTE: Writing Drive file chips requires at least one of
+        # the `drive.file`, `drive.readonly`, or `drive` OAuth scopes.
+        # Corresponds to the JSON property `richLinkProperties`
+        # @return [Google::Apis::SheetsV4::RichLinkProperties]
+        attr_accessor :rich_link_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @person_properties = args[:person_properties] if args.key?(:person_properties)
+          @rich_link_properties = args[:rich_link_properties] if args.key?(:rich_link_properties)
+        end
+      end
+      
+      # The run of a chip. The chip continues until the start index of the next run.
+      class ChipRun
+        include Google::Apis::Core::Hashable
+      
+        # The Smart Chip.
+        # Corresponds to the JSON property `chip`
+        # @return [Google::Apis::SheetsV4::Chip]
+        attr_accessor :chip
+      
+        # Required. The zero-based character index where this run starts, in UTF-16 code
+        # units.
+        # Corresponds to the JSON property `startIndex`
+        # @return [Fixnum]
+        attr_accessor :start_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chip = args[:chip] if args.key?(:chip)
+          @start_index = args[:start_index] if args.key?(:start_index)
         end
       end
       
@@ -7270,6 +7337,33 @@ module Google
         end
       end
       
+      # Properties specific to a linked person.
+      class PersonProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The display format of the person chip. If not set, the default
+        # display format is used.
+        # Corresponds to the JSON property `displayFormat`
+        # @return [String]
+        attr_accessor :display_format
+      
+        # Required. The email address linked to this person. This field is always
+        # present.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_format = args[:display_format] if args.key?(:display_format)
+          @email = args[:email] if args.key?(:email)
+        end
+      end
+      
       # A pie chart.
       class PieChartSpec
         include Google::Apis::Core::Hashable
@@ -8774,6 +8868,36 @@ module Google
           @update_data_source = args[:update_data_source] if args.key?(:update_data_source)
           @update_developer_metadata = args[:update_developer_metadata] if args.key?(:update_developer_metadata)
           @update_embedded_object_position = args[:update_embedded_object_position] if args.key?(:update_embedded_object_position)
+        end
+      end
+      
+      # Properties of a link to a Google resource (such as a file in Drive, a YouTube
+      # video, a Maps address, or a Calendar event). Only Drive files can be written
+      # as chips. All other rich link types are read only. URIs cannot exceed 2000
+      # bytes when writing. NOTE: Writing Drive file chips requires at least one of
+      # the `drive.file`, `drive.readonly`, or `drive` OAuth scopes.
+      class RichLinkProperties
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The [MIME type](https://developers.google.com/drive/api/v3/mime-
+        # types) of the link, if there's one (for example, when it's a file in Drive).
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # Required. The URI to the link. This is always present.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
