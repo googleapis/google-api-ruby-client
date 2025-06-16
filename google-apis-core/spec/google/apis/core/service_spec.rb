@@ -297,7 +297,7 @@ RSpec.describe Google::Apis::Core::BaseService do
       service.send(
         :delete_resumable_upload,
         bucket_name, upload_id,
-        options: { upload_chunk_size: 11, delete_upload: true }
+        options: { upload_chunk_size: 11}
       )
     end
 
