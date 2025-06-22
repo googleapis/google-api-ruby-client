@@ -736,6 +736,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TieredStorageConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TieredStorageRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Type
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1869,6 +1881,8 @@ module Google
       
           property :stats, as: 'stats', class: Google::Apis::BigtableadminV2::TableStats, decorator: Google::Apis::BigtableadminV2::TableStats::Representation
       
+          property :tiered_storage_config, as: 'tieredStorageConfig', class: Google::Apis::BigtableadminV2::TieredStorageConfig, decorator: Google::Apis::BigtableadminV2::TieredStorageConfig::Representation
+      
         end
       end
       
@@ -1902,6 +1916,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class TieredStorageConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :infrequent_access, as: 'infrequentAccess', class: Google::Apis::BigtableadminV2::TieredStorageRule, decorator: Google::Apis::BigtableadminV2::TieredStorageRule::Representation
+      
+        end
+      end
+      
+      class TieredStorageRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_if_older_than, as: 'includeIfOlderThan'
         end
       end
       

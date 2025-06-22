@@ -3884,6 +3884,13 @@ module Google
         # @return [Google::Apis::BigtableadminV2::TableStats]
         attr_accessor :stats
       
+        # Config for tiered storage. A valid config must have a valid TieredStorageRule.
+        # Otherwise the whole TieredStorageConfig must be unset. By default all data is
+        # stored in the SSD tier (only SSD instances can configure tiered storage).
+        # Corresponds to the JSON property `tieredStorageConfig`
+        # @return [Google::Apis::BigtableadminV2::TieredStorageConfig]
+        attr_accessor :tiered_storage_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3900,6 +3907,7 @@ module Google
           @restore_info = args[:restore_info] if args.key?(:restore_info)
           @row_key_schema = args[:row_key_schema] if args.key?(:row_key_schema)
           @stats = args[:stats] if args.key?(:stats)
+          @tiered_storage_config = args[:tiered_storage_config] if args.key?(:tiered_storage_config)
         end
       end
       
@@ -4024,6 +4032,47 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Config for tiered storage. A valid config must have a valid TieredStorageRule.
+      # Otherwise the whole TieredStorageConfig must be unset. By default all data is
+      # stored in the SSD tier (only SSD instances can configure tiered storage).
+      class TieredStorageConfig
+        include Google::Apis::Core::Hashable
+      
+        # Rule to specify what data is stored in a storage tier.
+        # Corresponds to the JSON property `infrequentAccess`
+        # @return [Google::Apis::BigtableadminV2::TieredStorageRule]
+        attr_accessor :infrequent_access
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @infrequent_access = args[:infrequent_access] if args.key?(:infrequent_access)
+        end
+      end
+      
+      # Rule to specify what data is stored in a storage tier.
+      class TieredStorageRule
+        include Google::Apis::Core::Hashable
+      
+        # Include cells older than the given age. For the infrequent access tier, this
+        # value must be at least 30 days.
+        # Corresponds to the JSON property `includeIfOlderThan`
+        # @return [String]
+        attr_accessor :include_if_older_than
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @include_if_older_than = args[:include_if_older_than] if args.key?(:include_if_older_than)
         end
       end
       
