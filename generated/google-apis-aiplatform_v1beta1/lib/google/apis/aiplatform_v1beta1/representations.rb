@@ -1396,6 +1396,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1DnsPeeringConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1DoubleArray
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7834,6 +7840,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1UrlContextMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1UrlMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1UserActionReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -9071,6 +9089,8 @@ module Google
           property :logprobs_result, as: 'logprobsResult', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1LogprobsResult, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1LogprobsResult::Representation
       
           collection :safety_ratings, as: 'safetyRatings', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SafetyRating, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SafetyRating::Representation
+      
+          property :url_context_metadata, as: 'urlContextMetadata', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1UrlContextMetadata, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1UrlContextMetadata::Representation
       
         end
       end
@@ -10315,6 +10335,15 @@ module Google
           property :training_dataset_uri, as: 'trainingDatasetUri'
           property :tuned_teacher_model_source, as: 'tunedTeacherModelSource'
           property :validation_dataset_uri, as: 'validationDatasetUri'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1DnsPeeringConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+          property :target_network, as: 'targetNetwork'
+          property :target_project, as: 'targetProject'
         end
       end
       
@@ -13895,6 +13924,7 @@ module Google
       
           property :health_route, as: 'healthRoute'
           property :image_uri, as: 'imageUri'
+          property :invoke_route_prefix, as: 'invokeRoutePrefix'
           property :liveness_probe, as: 'livenessProbe', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Probe, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Probe::Representation
       
           collection :ports, as: 'ports', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Port, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Port::Representation
@@ -15113,10 +15143,12 @@ module Google
       class GoogleCloudAiplatformV1beta1PscAutomationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_message, as: 'errorMessage'
           property :forwarding_rule, as: 'forwardingRule'
           property :ip_address, as: 'ipAddress'
           property :network, as: 'network'
           property :project_id, as: 'projectId'
+          property :state, as: 'state'
         end
       end
       
@@ -15748,6 +15780,8 @@ module Google
       class GoogleCloudAiplatformV1beta1PscInterfaceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dns_peering_configs, as: 'dnsPeeringConfigs', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DnsPeeringConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DnsPeeringConfig::Representation
+      
           property :network_attachment, as: 'networkAttachment'
         end
       end
@@ -15874,6 +15908,7 @@ module Google
           property :resource_description, as: 'resourceDescription'
           property :resource_title, as: 'resourceTitle'
           property :resource_use_case, as: 'resourceUseCase'
+          property :supports_workbench, as: 'supportsWorkbench'
           property :title, as: 'title'
         end
       end
@@ -21289,6 +21324,22 @@ module Google
       class GoogleCloudAiplatformV1beta1UrlContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1UrlContextMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :url_metadata, as: 'urlMetadata', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1UrlMetadata, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1UrlMetadata::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1UrlMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retrieved_url, as: 'retrievedUrl'
+          property :url_retrieval_status, as: 'urlRetrievalStatus'
         end
       end
       
