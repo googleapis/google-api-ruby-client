@@ -228,8 +228,8 @@ module Google
         end
       end
       
-      # The metadata for the address. `metadata` is not guaranteed to be fully
-      # populated for every address sent to the Address Validation API.
+      # The metadata for the post-processed address. `metadata` is not guaranteed to
+      # be fully populated for every address sent to the Address Validation API.
       class GoogleMapsAddressvalidationV1AddressMetadata
         include Google::Apis::Core::Hashable
       
@@ -995,8 +995,8 @@ module Google
         # @return [Google::Apis::AddressvalidationV1::GoogleMapsAddressvalidationV1Geocode]
         attr_accessor :geocode
       
-        # The metadata for the address. `metadata` is not guaranteed to be fully
-        # populated for every address sent to the Address Validation API.
+        # The metadata for the post-processed address. `metadata` is not guaranteed to
+        # be fully populated for every address sent to the Address Validation API.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::AddressvalidationV1::GoogleMapsAddressvalidationV1AddressMetadata]
         attr_accessor :metadata
@@ -1033,10 +1033,10 @@ module Google
       class GoogleMapsAddressvalidationV1Verdict
         include Google::Apis::Core::Hashable
       
-        # The address is considered complete if there are no unresolved tokens, no
-        # unexpected or missing address components. If unset, indicates that the value
-        # is `false`. See `missing_component_types`, `unresolved_tokens` or `unexpected`
-        # fields for more details.
+        # The post-processed address is considered complete if there are no unresolved
+        # tokens, no unexpected or missing address components. If unset, indicates that
+        # the value is `false`. See `missing_component_types`, `unresolved_tokens` or `
+        # unexpected` fields for more details.
         # Corresponds to the JSON property `addressComplete`
         # @return [Boolean]
         attr_accessor :address_complete
@@ -1067,6 +1067,13 @@ module Google
         attr_accessor :has_replaced_components
         alias_method :has_replaced_components?, :has_replaced_components
       
+        # At least one address component was spell-corrected, see [google.maps.
+        # addressvalidation.v1.Address.address_components] for details.
+        # Corresponds to the JSON property `hasSpellCorrectedComponents`
+        # @return [Boolean]
+        attr_accessor :has_spell_corrected_components
+        alias_method :has_spell_corrected_components?, :has_spell_corrected_components
+      
         # At least one address component cannot be categorized or validated, see [google.
         # maps.addressvalidation.v1.Address.address_components] for details.
         # Corresponds to the JSON property `hasUnconfirmedComponents`
@@ -1078,17 +1085,33 @@ module Google
         # input address and does not give any validation signals. For validation signals,
         # refer to `validation_granularity` below. For example, if the input address
         # includes a specific apartment number, then the `input_granularity` here will
-        # be `SUB_PREMISE`. If we cannot match the apartment number in the databases or
-        # the apartment number is invalid, the `validation_granularity` will likely be `
-        # PREMISE` or worse.
+        # be `SUB_PREMISE`. If the address validation service cannot match the apartment
+        # number in the databases or the apartment number is invalid, the `
+        # validation_granularity` will likely be `PREMISE` or more coarse.
         # Corresponds to the JSON property `inputGranularity`
         # @return [String]
         attr_accessor :input_granularity
       
-        # The granularity level that the API can fully **validate** the address to. For
-        # example, an `validation_granularity` of `PREMISE` indicates all address
-        # components at the level of `PREMISE` or more coarse can be validated. Per
-        # address component validation result can be found in [google.maps.
+        # Preview: This feature is in Preview (pre-GA). Pre-GA products and features
+        # might have limited support, and changes to pre-GA products and features might
+        # not be compatible with other pre-GA versions. Pre-GA Offerings are covered by
+        # the [Google Maps Platform Service Specific Terms](https://cloud.google.com/
+        # maps-platform/terms/maps-service-terms). For more information, see the [launch
+        # stage descriptions](https://developers.google.com/maps/launch-stages). Offers
+        # an interpretive summary of the API response, intended to assist in determining
+        # a potential subsequent action to take. This field is derived from other fields
+        # in the API response and should not be considered as a guarantee of address
+        # accuracy or deliverability. See [Build your validation logic](https://
+        # developers.google.com/maps/documentation/address-validation/build-validation-
+        # logic) for more details.
+        # Corresponds to the JSON property `possibleNextAction`
+        # @return [String]
+        attr_accessor :possible_next_action
+      
+        # The level of granularity for the post-processed address that the API can fully
+        # validate. For example, a `validation_granularity` of `PREMISE` indicates all
+        # address components at the level of `PREMISE` or more coarse can be validated.
+        # Per address component validation result can be found in [google.maps.
         # addressvalidation.v1.Address.address_components].
         # Corresponds to the JSON property `validationGranularity`
         # @return [String]
@@ -1104,8 +1127,10 @@ module Google
           @geocode_granularity = args[:geocode_granularity] if args.key?(:geocode_granularity)
           @has_inferred_components = args[:has_inferred_components] if args.key?(:has_inferred_components)
           @has_replaced_components = args[:has_replaced_components] if args.key?(:has_replaced_components)
+          @has_spell_corrected_components = args[:has_spell_corrected_components] if args.key?(:has_spell_corrected_components)
           @has_unconfirmed_components = args[:has_unconfirmed_components] if args.key?(:has_unconfirmed_components)
           @input_granularity = args[:input_granularity] if args.key?(:input_granularity)
+          @possible_next_action = args[:possible_next_action] if args.key?(:possible_next_action)
           @validation_granularity = args[:validation_granularity] if args.key?(:validation_granularity)
         end
       end
