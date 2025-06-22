@@ -1177,7 +1177,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. Immutable. Resource name of workload on which backupplan is applied
+        # Required. Immutable. Resource name of workload on which the backup plan is
+        # applied. The format can either be the resource name (e.g., "projects/my-
+        # project/zones/us-central1-a/instances/my-instance") or the full resource URI (
+        # e.g., "https://www.googleapis.com/compute/v1/projects/my-project/zones/us-
+        # central1-a/instances/my-instance").
         # Corresponds to the JSON property `resource`
         # @return [String]
         attr_accessor :resource
