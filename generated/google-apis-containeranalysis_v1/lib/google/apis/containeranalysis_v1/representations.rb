@@ -2394,6 +2394,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :notes, as: 'notes', class: Google::Apis::ContaineranalysisV1::Note, decorator: Google::Apis::ContaineranalysisV1::Note::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -2403,6 +2404,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :occurrences, as: 'occurrences', class: Google::Apis::ContaineranalysisV1::Occurrence, decorator: Google::Apis::ContaineranalysisV1::Occurrence::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -3080,6 +3082,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :counts, as: 'counts', class: Google::Apis::ContaineranalysisV1::FixableTotalByDigest, decorator: Google::Apis::ContaineranalysisV1::FixableTotalByDigest::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
