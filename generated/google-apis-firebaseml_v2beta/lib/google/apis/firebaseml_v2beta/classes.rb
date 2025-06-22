@@ -1529,8 +1529,7 @@ module Google
         attr_accessor :include_thoughts
         alias_method :include_thoughts?, :include_thoughts
       
-        # Optional. Indicates the thinking budget in tokens. This is only applied when
-        # enable_thinking is true.
+        # Optional. Indicates the thinking budget in tokens.
         # Corresponds to the JSON property `thinkingBudget`
         # @return [Fixnum]
         attr_accessor :thinking_budget
