@@ -7284,6 +7284,7 @@ module Google
       
           property :query, as: 'query', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaQuery, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaQuery::Representation
       
+          hash :query_config, as: 'queryConfig'
         end
       end
       
@@ -10876,6 +10877,7 @@ module Google
       
           property :query, as: 'query', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaQuery, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaQuery::Representation
       
+          hash :query_config, as: 'queryConfig'
         end
       end
       
