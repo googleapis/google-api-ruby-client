@@ -784,6 +784,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2betaConversationalSearchCustomizationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2betaCreateModelMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -947,6 +953,18 @@ module Google
       end
       
       class GoogleCloudRetailV2betaImportUserEventsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaIntentClassificationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaIntentClassificationConfigExample
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2721,6 +2739,16 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2betaConversationalSearchCustomizationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :catalog, as: 'catalog'
+          property :intent_classification_config, as: 'intentClassificationConfig', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaIntentClassificationConfig, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaIntentClassificationConfig::Representation
+      
+          property :retailer_display_name, as: 'retailerDisplayName'
+        end
+      end
+      
       class GoogleCloudRetailV2betaCreateModelMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2982,6 +3010,26 @@ module Google
       
           property :import_summary, as: 'importSummary', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaUserEventImportSummary, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaUserEventImportSummary::Representation
       
+        end
+      end
+      
+      class GoogleCloudRetailV2betaIntentClassificationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :blocklist_keywords, as: 'blocklistKeywords'
+          collection :disabled_intent_types, as: 'disabledIntentTypes'
+          collection :example, as: 'example', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaIntentClassificationConfigExample, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaIntentClassificationConfigExample::Representation
+      
+          property :model_preamble, as: 'modelPreamble'
+        end
+      end
+      
+      class GoogleCloudRetailV2betaIntentClassificationConfigExample
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :intent_type, as: 'intentType'
+          property :query, as: 'query'
+          property :reason, as: 'reason'
         end
       end
       
