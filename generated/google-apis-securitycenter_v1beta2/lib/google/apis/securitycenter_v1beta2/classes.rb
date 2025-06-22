@@ -792,6 +792,26 @@ module Google
         end
       end
       
+      # The destination big query dataset to export findings to.
+      class BigQueryDestination
+        include Google::Apis::Core::Hashable
+      
+        # Required. The relative resource name of the destination dataset, in the form
+        # projects/`projectId`/datasets/`datasetId`.
+        # Corresponds to the JSON property `dataset`
+        # @return [String]
+        attr_accessor :dataset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset = args[:dataset] if args.key?(:dataset)
+        end
+      end
+      
       # Contains details about a chokepoint, which is a resource or resource group
       # where high-risk attack paths converge, based on [attack path simulations] (
       # https://cloud.google.com/security-command-center/docs/attack-exposure-learn#
@@ -1612,7 +1632,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Resource name of dataset, e.g. projects/`project`/locations/`location`/
+        # Resource name of the dataset, e.g. projects/`project`/locations/`location`/
         # datasets/2094040236064505856
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1916,6 +1936,44 @@ module Google
           @sources = args[:sources] if args.key?(:sources)
           @targets = args[:targets] if args.key?(:targets)
           @total_exfiltrated_bytes = args[:total_exfiltrated_bytes] if args.key?(:total_exfiltrated_bytes)
+        end
+      end
+      
+      # The LRO metadata for a ExportFindings request.
+      class ExportFindingsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The destination big query dataset to export findings to.
+        # Corresponds to the JSON property `bigQueryDestination`
+        # @return [Google::Apis::SecuritycenterV1beta2::BigQueryDestination]
+        attr_accessor :big_query_destination
+      
+        # Optional. Timestamp at which export was started
+        # Corresponds to the JSON property `exportStartTime`
+        # @return [String]
+        attr_accessor :export_start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @big_query_destination = args[:big_query_destination] if args.key?(:big_query_destination)
+          @export_start_time = args[:export_start_time] if args.key?(:export_start_time)
+        end
+      end
+      
+      # The response to a ExportFindings request. Contains the LRO information.
+      class ExportFindingsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -5493,13 +5551,13 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Resource name of dataset, e.g. projects/`project`/locations/`location`/
+        # Resource name of the dataset, e.g. projects/`project`/locations/`location`/
         # datasets/2094040236064505856
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Data source, such as BigQuery source URI, e.g. bq://scc-nexus-test.AIPPtest.
+        # Data source, such as a BigQuery source URI, e.g. bq://scc-nexus-test.AIPPtest.
         # gsod
         # Corresponds to the JSON property `source`
         # @return [String]
@@ -7766,12 +7824,12 @@ module Google
       class GoogleCloudSecuritycenterV2Pipeline
         include Google::Apis::Core::Hashable
       
-        # The user defined display name of pipeline, e.g. plants-classification
+        # The user-defined display name of pipeline, e.g. plants-classification
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Resource name of pipeline, e.g. projects/`project`/locations/`location`/
+        # Resource name of the pipeline, e.g. projects/`project`/locations/`location`/
         # trainingPipelines/5253428229225578496
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -9582,7 +9640,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Resource name of pipeline, e.g. projects/`project`/locations/`location`/
+        # Resource name of the pipeline, e.g. projects/`project`/locations/`location`/
         # trainingPipelines/5253428229225578496
         # Corresponds to the JSON property `name`
         # @return [String]
