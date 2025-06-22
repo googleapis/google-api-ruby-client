@@ -5967,7 +5967,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lookup for a single Subproperty Sync Config.
+        # Lookup for a single `SubpropertySyncConfig`.
         # @param [String] name
         #   Required. Resource name of the SubpropertySyncConfig to lookup. Format:
         #   properties/`ordinary_property_id`/subpropertySyncConfigs/`subproperty_id`
@@ -5999,7 +5999,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all Subproperty Sync Configs on a property.
+        # List all `SubpropertySyncConfig` resources for a property.
         # @param [String] parent
         #   Required. Resource name of the property. Format: properties/property_id
         #   Example: properties/123
@@ -6042,7 +6042,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a Subproperty Sync Config.
+        # Updates a `SubpropertySyncConfig`.
         # @param [String] name
         #   Output only. Identifier. Format: properties/`ordinary_property_id`/
         #   subpropertySyncConfigs/`subproperty_id` Example: properties/1234/
