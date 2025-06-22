@@ -709,6 +709,7 @@ module Google
           hash :redis_configs, as: 'redisConfigs'
           property :replica_count, as: 'replicaCount'
           property :shard_count, as: 'shardCount'
+          property :simulate_maintenance_event, as: 'simulateMaintenanceEvent'
           property :size_gb, as: 'sizeGb'
           property :state, as: 'state'
           property :state_info, as: 'stateInfo', class: Google::Apis::RedisV1beta1::StateInfo, decorator: Google::Apis::RedisV1beta1::StateInfo::Representation
@@ -1089,6 +1090,7 @@ module Google
           property :state, as: 'state'
           property :status_message, as: 'statusMessage'
           collection :suspension_reasons, as: 'suspensionReasons'
+          hash :tags, as: 'tags'
           property :tier, as: 'tier'
           property :transit_encryption_mode, as: 'transitEncryptionMode'
         end
