@@ -612,6 +612,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :shard_count
       
+        # Optional. Input only. Simulate a maintenance event.
+        # Corresponds to the JSON property `simulateMaintenanceEvent`
+        # @return [Boolean]
+        attr_accessor :simulate_maintenance_event
+        alias_method :simulate_maintenance_event?, :simulate_maintenance_event
+      
         # Output only. Redis memory size in GB for the entire cluster rounded up to the
         # next integer.
         # Corresponds to the JSON property `sizeGb`
@@ -677,6 +683,7 @@ module Google
           @redis_configs = args[:redis_configs] if args.key?(:redis_configs)
           @replica_count = args[:replica_count] if args.key?(:replica_count)
           @shard_count = args[:shard_count] if args.key?(:shard_count)
+          @simulate_maintenance_event = args[:simulate_maintenance_event] if args.key?(:simulate_maintenance_event)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
           @state = args[:state] if args.key?(:state)
           @state_info = args[:state_info] if args.key?(:state_info)
@@ -1140,8 +1147,8 @@ module Google
         # googleapis.com/Cluster, bigtableadmin.googleapis.com/Instance compute.
         # googleapis.com/Instance firestore.googleapis.com/Database, redis.googleapis.
         # com/Instance, redis.googleapis.com/Cluster, oracledatabase.googleapis.com/
-        # cloudExadataInfrastructures oracledatabase.googleapis.com/cloudVmClusters
-        # oracledatabase.googleapis.com/autonomousDatabases spanner.googleapis.com/
+        # CloudExadataInfrastructure oracledatabase.googleapis.com/CloudVmCluster
+        # oracledatabase.googleapis.com/AutonomousDatabase spanner.googleapis.com/
         # Instance, spanner.googleapis.com/Database, sqladmin.googleapis.com/Instance,
         # go/keep-sorted end REQUIRED Please refer go/condor-common-datamodel
         # Corresponds to the JSON property `resourceType`
@@ -2053,6 +2060,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :suspension_reasons
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: "123/environment": "production", "123/costCenter": "
+        # marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # Required. The service tier of the instance.
         # Corresponds to the JSON property `tier`
         # @return [String]
@@ -2105,6 +2119,7 @@ module Google
           @state = args[:state] if args.key?(:state)
           @status_message = args[:status_message] if args.key?(:status_message)
           @suspension_reasons = args[:suspension_reasons] if args.key?(:suspension_reasons)
+          @tags = args[:tags] if args.key?(:tags)
           @tier = args[:tier] if args.key?(:tier)
           @transit_encryption_mode = args[:transit_encryption_mode] if args.key?(:transit_encryption_mode)
         end
