@@ -1485,7 +1485,7 @@ module Google
         # @return [String]
         attr_accessor :deployment_name
       
-        # Required. The namespace of the deployment resource to be overridden..
+        # Required. The namespace of the deployment resource to be overridden.
         # Corresponds to the JSON property `deploymentNamespace`
         # @return [String]
         attr_accessor :deployment_namespace
@@ -6787,7 +6787,8 @@ module Google
         # @return [Hash<String,Google::Apis::GkehubV1alpha::WorkloadIdentityNamespaceStateDetail>]
         attr_accessor :namespace_state_details
       
-        # Deprecated, will erase after code is changed to use the new field.
+        # Deprecated, this field will be erased after code is changed to use the new
+        # field.
         # Corresponds to the JSON property `namespaceStates`
         # @return [Hash<String,String>]
         attr_accessor :namespace_states
@@ -6826,7 +6827,8 @@ module Google
       class WorkloadIdentityMembershipState
         include Google::Apis::Core::Hashable
       
-        # Deprecated, will erase after code is changed to use the new field.
+        # Deprecated, this field will be erased after code is changed to use the new
+        # field.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
