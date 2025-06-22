@@ -3457,6 +3457,11 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SafetyRating>]
         attr_accessor :safety_ratings
       
+        # Metadata related to url context retrieval tool.
+        # Corresponds to the JSON property `urlContextMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1UrlContextMetadata]
+        attr_accessor :url_context_metadata
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3472,6 +3477,7 @@ module Google
           @index = args[:index] if args.key?(:index)
           @logprobs_result = args[:logprobs_result] if args.key?(:logprobs_result)
           @safety_ratings = args[:safety_ratings] if args.key?(:safety_ratings)
+          @url_context_metadata = args[:url_context_metadata] if args.key?(:url_context_metadata)
         end
       end
       
@@ -7319,12 +7325,12 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Required. The resource name of the Model that this is the deployment of. Note
-        # that the Model may be in a different location than the DeployedModel's
-        # Endpoint. The resource name may contain version id or version alias to specify
-        # the version. Example: `projects/`project`/locations/`location`/models/`model`@
-        # 2` or `projects/`project`/locations/`location`/models/`model`@golden` if no
-        # version is specified, the default version will be deployed.
+        # The resource name of the Model that this is the deployment of. Note that the
+        # Model may be in a different location than the DeployedModel's Endpoint. The
+        # resource name may contain version id or version alias to specify the version.
+        # Example: `projects/`project`/locations/`location`/models/`model`@2` or `
+        # projects/`project`/locations/`location`/models/`model`@golden` if no version
+        # is specified, the default version will be deployed.
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
@@ -7825,6 +7831,43 @@ module Google
           @training_dataset_uri = args[:training_dataset_uri] if args.key?(:training_dataset_uri)
           @tuned_teacher_model_source = args[:tuned_teacher_model_source] if args.key?(:tuned_teacher_model_source)
           @validation_dataset_uri = args[:validation_dataset_uri] if args.key?(:validation_dataset_uri)
+        end
+      end
+      
+      # DNS peering configuration. These configurations are used to create DNS peering
+      # zones in the Vertex tenant project VPC, enabling resolution of records within
+      # the specified domain hosted in the target network's Cloud DNS.
+      class GoogleCloudAiplatformV1beta1DnsPeeringConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The DNS name suffix of the zone being peered to, e.g., "my-internal-
+        # domain.corp.". Must end with a dot.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # Required. The VPC network name in the target_project where the DNS zone
+        # specified by 'domain' is visible.
+        # Corresponds to the JSON property `targetNetwork`
+        # @return [String]
+        attr_accessor :target_network
+      
+        # Required. The project ID hosting the Cloud DNS managed zone that contains the '
+        # domain'. The Vertex AI Service Agent requires the dns.peer role on this
+        # project.
+        # Corresponds to the JSON property `targetProject`
+        # @return [String]
+        attr_accessor :target_project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+          @target_network = args[:target_network] if args.key?(:target_network)
+          @target_project = args[:target_project] if args.key?(:target_project)
         end
       end
       
@@ -15609,7 +15652,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Confidence score of the support references. Ranges from 0 to 1. 1 is the most
-        # confident. This list must have the same size as the grounding_chunk_indices.
+        # confident. For Gemini 2.0 and before, this list must have the same size as the
+        # grounding_chunk_indices. For Gemini 2.5 and after, this list will be empty and
+        # should be ignored.
         # Corresponds to the JSON property `confidenceScores`
         # @return [Array<Float>]
         attr_accessor :confidence_scores
@@ -20423,6 +20468,16 @@ module Google
         # @return [String]
         attr_accessor :image_uri
       
+        # Immutable. Invoke route prefix for the custom container. "/*" is the only
+        # supported value right now. By setting this field, any non-root route on this
+        # model will be accessible with [PredictionService.Invoke] eg: "/invoke/foo/bar".
+        # Only one of `predict_route` or `invoke_route_prefix` can be set, and we
+        # default to using `predict_route` if this field is not set. If this field is
+        # set, the Model can only be deployed to dedicated endpoint.
+        # Corresponds to the JSON property `invokeRoutePrefix`
+        # @return [String]
+        attr_accessor :invoke_route_prefix
+      
         # Probe describes a health check to be performed against a container to
         # determine whether it is alive or ready to receive traffic.
         # Corresponds to the JSON property `livenessProbe`
@@ -20491,6 +20546,7 @@ module Google
           @health_probe = args[:health_probe] if args.key?(:health_probe)
           @health_route = args[:health_route] if args.key?(:health_route)
           @image_uri = args[:image_uri] if args.key?(:image_uri)
+          @invoke_route_prefix = args[:invoke_route_prefix] if args.key?(:invoke_route_prefix)
           @liveness_probe = args[:liveness_probe] if args.key?(:liveness_probe)
           @ports = args[:ports] if args.key?(:ports)
           @predict_route = args[:predict_route] if args.key?(:predict_route)
@@ -24768,14 +24824,17 @@ module Google
       class GoogleCloudAiplatformV1beta1PscAutomationConfig
         include Google::Apis::Core::Hashable
       
-        # Output only. Forwarding rule created by the PSC service automation. Note for
-        # Vector search, use IndexPrivateEndpoint instead.
+        # Output only. Error message if the PSC service automation failed.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # Output only. Forwarding rule created by the PSC service automation.
         # Corresponds to the JSON property `forwardingRule`
         # @return [String]
         attr_accessor :forwarding_rule
       
-        # Output only. IP address rule created by the PSC service automation. Note for
-        # Vector search, use IndexPrivateEndpoint instead.
+        # Output only. IP address rule created by the PSC service automation.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -24794,16 +24853,23 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
+        # Output only. The state of the PSC service automation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @error_message = args[:error_message] if args.key?(:error_message)
           @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @network = args[:network] if args.key?(:network)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -27101,6 +27167,14 @@ module Google
       class GoogleCloudAiplatformV1beta1PscInterfaceConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. DNS peering configurations. When specified, Vertex AI will attempt
+        # to configure DNS peering zones in the tenant project VPC to resolve the
+        # specified domains using the target network's Cloud DNS. The user must grant
+        # the dns.peer role to the Vertex AI Service Agent on the target project.
+        # Corresponds to the JSON property `dnsPeeringConfigs`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DnsPeeringConfig>]
+        attr_accessor :dns_peering_configs
+      
         # Optional. The name of the Compute Engine [network attachment](https://cloud.
         # google.com/vpc/docs/about-network-attachments) to attach to the resource
         # within the region and user project. To specify this field, you must have
@@ -27117,6 +27191,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dns_peering_configs = args[:dns_peering_configs] if args.key?(:dns_peering_configs)
           @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
         end
       end
@@ -27520,6 +27595,12 @@ module Google
         # @return [String]
         attr_accessor :resource_use_case
       
+        # Optional. For notebook resource, whether the notebook supports Workbench.
+        # Corresponds to the JSON property `supportsWorkbench`
+        # @return [Boolean]
+        attr_accessor :supports_workbench
+        alias_method :supports_workbench?, :supports_workbench
+      
         # Required.
         # Corresponds to the JSON property `title`
         # @return [String]
@@ -27535,6 +27616,7 @@ module Google
           @resource_description = args[:resource_description] if args.key?(:resource_description)
           @resource_title = args[:resource_title] if args.key?(:resource_title)
           @resource_use_case = args[:resource_use_case] if args.key?(:resource_use_case)
+          @supports_workbench = args[:supports_workbench] if args.key?(:supports_workbench)
           @title = args[:title] if args.key?(:title)
         end
       end
@@ -46051,6 +46133,50 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Metadata related to url context retrieval tool.
+      class GoogleCloudAiplatformV1beta1UrlContextMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of url context.
+        # Corresponds to the JSON property `urlMetadata`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1UrlMetadata>]
+        attr_accessor :url_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @url_metadata = args[:url_metadata] if args.key?(:url_metadata)
+        end
+      end
+      
+      # Context of the a single url retrieval.
+      class GoogleCloudAiplatformV1beta1UrlMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Retrieved url by the tool.
+        # Corresponds to the JSON property `retrievedUrl`
+        # @return [String]
+        attr_accessor :retrieved_url
+      
+        # Status of the url retrieval.
+        # Corresponds to the JSON property `urlRetrievalStatus`
+        # @return [String]
+        attr_accessor :url_retrieval_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @retrieved_url = args[:retrieved_url] if args.key?(:retrieved_url)
+          @url_retrieval_status = args[:url_retrieval_status] if args.key?(:url_retrieval_status)
         end
       end
       
