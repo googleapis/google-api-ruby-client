@@ -5017,6 +5017,12 @@ module Google
         # @return [Array<Google::Apis::ContaineranalysisV1beta1::Note>]
         attr_accessor :notes
       
+        # Unordered list. Unreachable regions. Populated for requests from the global
+        # region when `return_partial_success` is set. Format: projects//locations/
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5025,6 +5031,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @notes = args[:notes] if args.key?(:notes)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -5043,6 +5050,12 @@ module Google
         # @return [Array<Google::Apis::ContaineranalysisV1beta1::Occurrence>]
         attr_accessor :occurrences
       
+        # Unordered list. Unreachable regions. Populated for requests from the global
+        # region when `return_partial_success` is set. Format: projects//locations/
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5051,6 +5064,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @occurrences = args[:occurrences] if args.key?(:occurrences)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -7227,6 +7241,12 @@ module Google
         # @return [Array<Google::Apis::ContaineranalysisV1beta1::FixableTotalByDigest>]
         attr_accessor :counts
       
+        # Unordered list. Unreachable regions. Populated for requests from the global
+        # region when `return_partial_success` is set. Format: projects//locations/
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7234,6 +7254,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @counts = args[:counts] if args.key?(:counts)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       

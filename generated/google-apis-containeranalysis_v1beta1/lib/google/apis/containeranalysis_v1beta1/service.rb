@@ -238,6 +238,10 @@ module Google
         #   is 1000. If not specified, page size defaults to 20.
         # @param [String] page_token
         #   Token to provide to skip to a particular spot in the list.
+        # @param [Boolean] return_partial_success
+        #   If set, the request will return all reachable Notes and report all unreachable
+        #   regions in the `unreachable` field in the response. Only applicable for
+        #   requests in the global region.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -255,7 +259,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_notes(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_notes(parent, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/notes', options)
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::ListNotesResponse::Representation
           command.response_class = Google::Apis::ContaineranalysisV1beta1::ListNotesResponse
@@ -263,6 +267,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -634,6 +639,10 @@ module Google
         #   form of `projects/[PROJECT_ID]`.
         # @param [String] filter
         #   The filter expression.
+        # @param [Boolean] return_partial_success
+        #   If set, the request will return all reachable occurrence summaries and report
+        #   all unreachable regions in the `unreachable` field in the response. Only
+        #   applicable for requests in the global region.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -651,12 +660,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_occurrence_vulnerability_summary(parent, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_occurrence_vulnerability_summary(parent, filter: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/occurrences:vulnerabilitySummary', options)
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::VulnerabilityOccurrencesSummary::Representation
           command.response_class = Google::Apis::ContaineranalysisV1beta1::VulnerabilityOccurrencesSummary
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -673,6 +683,10 @@ module Google
         #   page size is 1000. If not specified, page size defaults to 20.
         # @param [String] page_token
         #   Token to provide to skip to a particular spot in the list.
+        # @param [Boolean] return_partial_success
+        #   If set, the request will return all reachable Occurrences and report all
+        #   unreachable regions in the `unreachable` field in the response. Only
+        #   applicable for requests in the global region.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -690,7 +704,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_occurrences(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_occurrences(parent, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/occurrences', options)
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::ListOccurrencesResponse::Representation
           command.response_class = Google::Apis::ContaineranalysisV1beta1::ListOccurrencesResponse
@@ -698,6 +712,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1070,6 +1085,10 @@ module Google
         #   is 1000. If not specified, page size defaults to 20.
         # @param [String] page_token
         #   Token to provide to skip to a particular spot in the list.
+        # @param [Boolean] return_partial_success
+        #   If set, the request will return all reachable Notes and report all unreachable
+        #   regions in the `unreachable` field in the response. Only applicable for
+        #   requests in the global region.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1087,7 +1106,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_notes(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_notes(parent, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/notes', options)
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::ListNotesResponse::Representation
           command.response_class = Google::Apis::ContaineranalysisV1beta1::ListNotesResponse
@@ -1095,6 +1114,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1466,6 +1486,10 @@ module Google
         #   form of `projects/[PROJECT_ID]`.
         # @param [String] filter
         #   The filter expression.
+        # @param [Boolean] return_partial_success
+        #   If set, the request will return all reachable occurrence summaries and report
+        #   all unreachable regions in the `unreachable` field in the response. Only
+        #   applicable for requests in the global region.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1483,12 +1507,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_occurrence_vulnerability_summary(parent, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_occurrence_vulnerability_summary(parent, filter: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/occurrences:vulnerabilitySummary', options)
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::VulnerabilityOccurrencesSummary::Representation
           command.response_class = Google::Apis::ContaineranalysisV1beta1::VulnerabilityOccurrencesSummary
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1505,6 +1530,10 @@ module Google
         #   page size is 1000. If not specified, page size defaults to 20.
         # @param [String] page_token
         #   Token to provide to skip to a particular spot in the list.
+        # @param [Boolean] return_partial_success
+        #   If set, the request will return all reachable Occurrences and report all
+        #   unreachable regions in the `unreachable` field in the response. Only
+        #   applicable for requests in the global region.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1522,7 +1551,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_occurrences(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_occurrences(parent, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/occurrences', options)
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::ListOccurrencesResponse::Representation
           command.response_class = Google::Apis::ContaineranalysisV1beta1::ListOccurrencesResponse
@@ -1530,6 +1559,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
