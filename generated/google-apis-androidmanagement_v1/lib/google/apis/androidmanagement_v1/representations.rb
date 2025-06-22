@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApplicationPolicyChange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ApplicationReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -610,6 +616,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ModifyPolicyApplicationsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ModifyPolicyApplicationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -761,6 +779,18 @@ module Google
       end
       
       class RemoveEsimParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemovePolicyApplicationsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemovePolicyApplicationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1176,6 +1206,15 @@ module Google
           property :preferential_network_id, as: 'preferentialNetworkId'
           property :user_control_settings, as: 'userControlSettings'
           property :work_profile_widgets, as: 'workProfileWidgets'
+        end
+      end
+      
+      class ApplicationPolicyChange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application, as: 'application', class: Google::Apis::AndroidmanagementV1::ApplicationPolicy, decorator: Google::Apis::AndroidmanagementV1::ApplicationPolicy::Representation
+      
+          property :update_mask, as: 'updateMask'
         end
       end
       
@@ -2035,6 +2074,22 @@ module Google
         end
       end
       
+      class ModifyPolicyApplicationsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :changes, as: 'changes', class: Google::Apis::AndroidmanagementV1::ApplicationPolicyChange, decorator: Google::Apis::AndroidmanagementV1::ApplicationPolicyChange::Representation
+      
+        end
+      end
+      
+      class ModifyPolicyApplicationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy', class: Google::Apis::AndroidmanagementV1::Policy, decorator: Google::Apis::AndroidmanagementV1::Policy::Representation
+      
+        end
+      end
+      
       class NetworkInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2412,6 +2467,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :icc_id, as: 'iccId'
+        end
+      end
+      
+      class RemovePolicyApplicationsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :package_names, as: 'packageNames'
+        end
+      end
+      
+      class RemovePolicyApplicationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy', class: Google::Apis::AndroidmanagementV1::Policy, decorator: Google::Apis::AndroidmanagementV1::Policy::Representation
+      
         end
       end
       
