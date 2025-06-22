@@ -17638,7 +17638,10 @@ module Google
         # relevance and attractiveness of a search result from a user's perspective. A
         # higher pCTR suggests that the result is more likely to satisfy the user's
         # query and intent, making it a valuable signal for ranking. * `freshness_rank`:
-        # freshness adjustment as a rank * `base_rank`: the default rank of the result
+        # freshness adjustment as a rank * `topicality_rank`: topicality adjustment as a
+        # rank. Uses proprietary Google model to determine the keyword-based overlap
+        # between the query and the document. * `base_rank`: the default rank of the
+        # result
         # Corresponds to the JSON property `rankingExpression`
         # @return [String]
         attr_accessor :ranking_expression
@@ -20110,6 +20113,13 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaQuery]
         attr_accessor :query
       
+        # Optional. Represents metadata related to the query config, for example LLM
+        # model and version used, model parameters (temperature, grounding parameters,
+        # etc.). The prefix "google." is reserved for Google-developed functionality.
+        # Corresponds to the JSON property `queryConfig`
+        # @return [Hash<String,String>]
+        attr_accessor :query_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -20119,6 +20129,7 @@ module Google
           @answer = args[:answer] if args.key?(:answer)
           @detailed_answer = args[:detailed_answer] if args.key?(:detailed_answer)
           @query = args[:query] if args.key?(:query)
+          @query_config = args[:query_config] if args.key?(:query_config)
         end
       end
       
@@ -25753,7 +25764,10 @@ module Google
         # relevance and attractiveness of a search result from a user's perspective. A
         # higher pCTR suggests that the result is more likely to satisfy the user's
         # query and intent, making it a valuable signal for ranking. * `freshness_rank`:
-        # freshness adjustment as a rank * `base_rank`: the default rank of the result
+        # freshness adjustment as a rank * `topicality_rank`: topicality adjustment as a
+        # rank. Uses proprietary Google model to determine the keyword-based overlap
+        # between the query and the document. * `base_rank`: the default rank of the
+        # result
         # Corresponds to the JSON property `rankingExpression`
         # @return [String]
         attr_accessor :ranking_expression

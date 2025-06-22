@@ -9760,6 +9760,7 @@ module Google
       
           property :query, as: 'query', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaQuery, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaQuery::Representation
       
+          hash :query_config, as: 'queryConfig'
         end
       end
       
