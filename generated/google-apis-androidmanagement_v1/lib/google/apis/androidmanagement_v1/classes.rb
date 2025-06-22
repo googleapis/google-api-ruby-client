@@ -963,6 +963,34 @@ module Google
         end
       end
       
+      # A change to be made to a single ApplicationPolicy object.
+      class ApplicationPolicyChange
+        include Google::Apis::Core::Hashable
+      
+        # Policy for an individual app. Note: Application availability on a given device
+        # cannot be changed using this policy if installAppsDisabled is enabled. The
+        # maximum number of applications that you can specify per policy is 3,000.
+        # Corresponds to the JSON property `application`
+        # @return [Google::Apis::AndroidmanagementV1::ApplicationPolicy]
+        attr_accessor :application
+      
+        # The field mask indicating the fields to update. If omitted, all modifiable
+        # fields are updated.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application = args[:application] if args.key?(:application)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
       # Information reported about an installed app.
       class ApplicationReport
         include Google::Apis::Core::Hashable
@@ -4228,6 +4256,47 @@ module Google
         end
       end
       
+      # Request to update or create ApplicationPolicy objects in the given Policy.
+      class ModifyPolicyApplicationsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The changes to be made to the ApplicationPolicy objects. There must
+        # be at least one ApplicationPolicyChange.
+        # Corresponds to the JSON property `changes`
+        # @return [Array<Google::Apis::AndroidmanagementV1::ApplicationPolicyChange>]
+        attr_accessor :changes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @changes = args[:changes] if args.key?(:changes)
+        end
+      end
+      
+      # Response to a request to update or create ApplicationPolicy objects in the
+      # given policy.
+      class ModifyPolicyApplicationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A policy resource represents a group of settings that govern the behavior of a
+        # managed device and the apps installed on it.
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::AndroidmanagementV1::Policy]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
       # Device network info.
       class NetworkInfo
         include Google::Apis::Core::Hashable
@@ -5974,6 +6043,46 @@ module Google
         # Update properties of this object
         def update!(**args)
           @icc_id = args[:icc_id] if args.key?(:icc_id)
+        end
+      end
+      
+      # Request to remove ApplicationPolicy objects in the given policy.
+      class RemovePolicyApplicationsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Package names to be removed. Entries that are not found are ignored.
+        # There must be at least one entry in package_names.
+        # Corresponds to the JSON property `packageNames`
+        # @return [Array<String>]
+        attr_accessor :package_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @package_names = args[:package_names] if args.key?(:package_names)
+        end
+      end
+      
+      # Response to a request to remove ApplicationPolicy objects in the given policy.
+      class RemovePolicyApplicationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A policy resource represents a group of settings that govern the behavior of a
+        # managed device and the apps installed on it.
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::AndroidmanagementV1::Policy]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
         end
       end
       
