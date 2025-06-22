@@ -658,7 +658,8 @@ module Google
         #   be organizations/ or projects/. If it is unspecified, it defaults to the
         #   organization where the project provided in name is located.
         # @param [Boolean] semantic_search
-        #   Optional. Internal only.
+        #   Optional. Specifies whether the search should understand the meaning and
+        #   intent behind the query, rather than just matching keywords.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

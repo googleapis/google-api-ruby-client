@@ -2622,8 +2622,8 @@ module Google
         attr_accessor :description
       
         # Required. The dimension a rule belongs to. Results are also aggregated at the
-        # dimension level. Supported dimensions are "COMPLETENESS", "ACCURACY", "
-        # CONSISTENCY", "VALIDITY", "UNIQUENESS", "FRESHNESS", "VOLUME"
+        # dimension level. Custom dimension name is supported with all uppercase letters
+        # and maximum length of 30 characters.
         # Corresponds to the JSON property `dimension`
         # @return [String]
         attr_accessor :dimension
@@ -3360,7 +3360,8 @@ module Google
       # data profiling (https://cloud.google.com/dataplex/docs/data-profiling-overview)
       # . Data discovery: scans data in Cloud Storage buckets to extract and then
       # catalog metadata. For more information, see Discover and catalog Cloud Storage
-      # data (https://cloud.google.com/bigquery/docs/automatic-discovery).
+      # data (https://cloud.google.com/bigquery/docs/automatic-discovery). LINT.
+      # IfChange
       class GoogleCloudDataplexV1DataScan
         include Google::Apis::Core::Hashable
       
@@ -3975,9 +3976,11 @@ module Google
         attr_accessor :entity
       
         # Immutable. The service-qualified full resource name of the cloud resource for
-        # a DataScan job to scan against. The field could be: BigQuery table of type "
-        # TABLE" for DataProfileScan/DataQualityScan Format: //bigquery.googleapis.com/
-        # projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        # a DataScan job to scan against. The field could eitherbe: Cloud Storage bucket
+        # for DataDiscoveryScan Format: //storage.googleapis.com/projects/PROJECT_ID/
+        # buckets/BUCKET_ID or BigQuery table of type "TABLE" for DataProfileScan/
+        # DataQualityScan Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/
+        # DATASET_ID/tables/TABLE_ID
         # Corresponds to the JSON property `resource`
         # @return [String]
         attr_accessor :resource
