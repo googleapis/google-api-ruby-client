@@ -2774,6 +2774,41 @@ module Google
         end
       end
       
+      # The public proto to represent the conversational search customization config.
+      # It will be converted to the internal proto in the backend.
+      class GoogleCloudRetailV2alphaConversationalSearchCustomizationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Resource name of the catalog. Format: projects/`project`/locations/`
+        # location`/catalogs/`catalog`
+        # Corresponds to the JSON property `catalog`
+        # @return [String]
+        attr_accessor :catalog
+      
+        # The public proto to represent the intent classification config. It will be
+        # converted to the internal proto in the backend.
+        # Corresponds to the JSON property `intentClassificationConfig`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaIntentClassificationConfig]
+        attr_accessor :intent_classification_config
+      
+        # Optional. The retailer's display name that could be used in our LLM answers.
+        # Example - "Google"
+        # Corresponds to the JSON property `retailerDisplayName`
+        # @return [String]
+        attr_accessor :retailer_display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @catalog = args[:catalog] if args.key?(:catalog)
+          @intent_classification_config = args[:intent_classification_config] if args.key?(:intent_classification_config)
+          @retailer_display_name = args[:retailer_display_name] if args.key?(:retailer_display_name)
+        end
+      end
+      
       # Request message for ConversationalSearchService.ConversationalSearch method.
       class GoogleCloudRetailV2alphaConversationalSearchRequest
         include Google::Apis::Core::Hashable
@@ -4203,6 +4238,84 @@ module Google
           @error_samples = args[:error_samples] if args.key?(:error_samples)
           @errors_config = args[:errors_config] if args.key?(:errors_config)
           @import_summary = args[:import_summary] if args.key?(:import_summary)
+        end
+      end
+      
+      # The public proto to represent the intent classification config. It will be
+      # converted to the internal proto in the backend.
+      class GoogleCloudRetailV2alphaIntentClassificationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of keywords that will be used to classify the query to the "
+        # BLOCKLISTED" intent type. The keywords are case insensitive.
+        # Corresponds to the JSON property `blocklistKeywords`
+        # @return [Array<String>]
+        attr_accessor :blocklist_keywords
+      
+        # Optional. A list of intent types that will be disabled for this customer. The
+        # intent types must match one of the predefined intent types defined at https://
+        # cloud.google.com/retail/docs/reference/rpc/google.cloud.retail.v2alpha#
+        # querytype
+        # Corresponds to the JSON property `disabledIntentTypes`
+        # @return [Array<String>]
+        attr_accessor :disabled_intent_types
+      
+        # Optional. A list of examples for intent classification.
+        # Corresponds to the JSON property `example`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaIntentClassificationConfigExample>]
+        attr_accessor :example
+      
+        # Optional. Customers can use the preamble to specify any requirements for
+        # blocklisting intent classification. This preamble will be added to the
+        # blocklisting intent classification model prompt.
+        # Corresponds to the JSON property `modelPreamble`
+        # @return [String]
+        attr_accessor :model_preamble
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blocklist_keywords = args[:blocklist_keywords] if args.key?(:blocklist_keywords)
+          @disabled_intent_types = args[:disabled_intent_types] if args.key?(:disabled_intent_types)
+          @example = args[:example] if args.key?(:example)
+          @model_preamble = args[:model_preamble] if args.key?(:model_preamble)
+        end
+      end
+      
+      # An example for intent classification.
+      class GoogleCloudRetailV2alphaIntentClassificationConfigExample
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The intent_type must match one of the predefined intent types
+        # defined at https://cloud.google.com/retail/docs/reference/rpc/google.cloud.
+        # retail.v2alpha#querytype
+        # Corresponds to the JSON property `intentType`
+        # @return [String]
+        attr_accessor :intent_type
+      
+        # Required. Example query.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        # Optional. The reason for the intent classification. This is used to explain
+        # the intent classification decision.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intent_type = args[:intent_type] if args.key?(:intent_type)
+          @query = args[:query] if args.key?(:query)
+          @reason = args[:reason] if args.key?(:reason)
         end
       end
       
@@ -7986,9 +8099,9 @@ module Google
         # @return [String]
         attr_accessor :condition
       
-        # Whether to pin unexpanded results. If this field is set to true, unexpanded
-        # products are always at the top of the search results, followed by the expanded
-        # results.
+        # Whether to pin unexpanded results. The default value is false. If this field
+        # is set to true, unexpanded products are always at the top of the search
+        # results, followed by the expanded results.
         # Corresponds to the JSON property `pinUnexpandedResults`
         # @return [Boolean]
         attr_accessor :pin_unexpanded_results
@@ -9110,9 +9223,9 @@ module Google
       
         # A unique identifier for tracking a visitor session with a length limit of 128
         # bytes. A session is an aggregation of an end user behavior in a time span. A
-        # general guideline to populate the sesion_id: 1. If user has no activity for 30
-        # min, a new session_id should be assigned. 2. The session_id should be unique
-        # across users, suggest use uuid or add visitor_id as prefix.
+        # general guideline to populate the session_id: 1. If user has no activity for
+        # 30 min, a new session_id should be assigned. 2. The session_id should be
+        # unique across users, suggest use uuid or add visitor_id as prefix.
         # Corresponds to the JSON property `sessionId`
         # @return [String]
         attr_accessor :session_id
