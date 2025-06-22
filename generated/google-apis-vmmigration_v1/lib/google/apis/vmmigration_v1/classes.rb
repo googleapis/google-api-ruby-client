@@ -3107,8 +3107,8 @@ module Google
         attr_accessor :machine_image_parameters_overrides
       
         # Optional. The network interfaces to create with the instance created by the
-        # machine image. Internal and external IP addresses are ignored for machine
-        # image import.
+        # machine image. Internal and external IP addresses, and network tiers are
+        # ignored for machine image import.
         # Corresponds to the JSON property `networkInterfaces`
         # @return [Array<Google::Apis::VmmigrationV1::NetworkInterface>]
         attr_accessor :network_interfaces
