@@ -4731,7 +4731,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # List of Subproperty Sync Configs.
+        # List of `SubpropertySyncConfig` resources.
         # Corresponds to the JSON property `subpropertySyncConfigs`
         # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertySyncConfig>]
         attr_accessor :subproperty_sync_configs
@@ -5945,16 +5945,16 @@ module Google
       class GoogleAnalyticsAdminV1alphaSubpropertySyncConfig
         include Google::Apis::Core::Hashable
       
-        # Output only. Immutable. Resource name of the Subproperty that these settings
+        # Output only. Immutable. Resource name of the subproperty that these settings
         # apply to.
         # Corresponds to the JSON property `applyToProperty`
         # @return [String]
         attr_accessor :apply_to_property
       
         # Required. Specifies the Custom Dimension / Metric synchronization mode for the
-        # Subproperty. If set to ALL, Custom Dimension / Metric synchronization will be
+        # subproperty. If set to ALL, Custom Dimension / Metric synchronization will be
         # immediately enabled. Local configuration of Custom Dimensions / Metrics will
-        # not be allowed on the Subproperty so long as the synchronization mode is set
+        # not be allowed on the subproperty so long as the synchronization mode is set
         # to ALL. If set to NONE, Custom Dimensions / Metric synchronization is disabled.
         # Custom Dimensions / Metrics must be configured explicitly on the Subproperty.
         # Corresponds to the JSON property `customDimensionAndMetricSyncMode`
