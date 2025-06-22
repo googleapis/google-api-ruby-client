@@ -665,8 +665,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. Identifier. Full path name of the GatewayRouteView resource.
-        # Format: projects/`project_number`/locations/`location`/gateways/`gateway_name`/
-        # routeViews/`route_view_name`
+        # Format: projects/`project_number`/locations/`location`/gateways/`gateway`/
+        # routeViews/`route_view`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3122,8 +3122,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. Identifier. Full path name of the MeshRouteView resource. Format:
-        # projects/`project_number`/locations/`location`/meshes/`mesh_name`/routeViews/`
-        # route_view_name`
+        # projects/`project_number`/locations/`location`/meshes/`mesh`/routeViews/`
+        # route_view`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
