@@ -1,5 +1,9 @@
 # Release history for google-apis-dialogflow_v2
 
+### v0.107.0 (2025-06-22)
+
+* Regenerated from discovery document revision 20250617
+
 ### v0.106.0 (2025-06-15)
 
 * Regenerated from discovery document revision 20250612
