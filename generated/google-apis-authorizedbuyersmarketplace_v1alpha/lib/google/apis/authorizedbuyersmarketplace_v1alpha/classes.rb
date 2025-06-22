@@ -519,8 +519,9 @@ module Google
         attr_accessor :create_time
       
         # Immutable. Identifier. The unique identifier for the data segment. Account ID
-        # corresponds to the account ID that created the segment. Format: `buyers/`
-        # accountId`/dataSegments/`curatorDataSegmentId``
+        # corresponds to the account ID that created the segment. v1alpha format: `
+        # buyers/`accountId`/dataSegments/`curatorDataSegmentId`` v1beta format: `
+        # curators/`curatorAccountId`/dataSegments/`curatorDataSegmentId``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

@@ -838,7 +838,8 @@ module Google
         
         # Activates a data segment.
         # @param [String] name
-        #   Required. Name of data segment to activate. Format: `buyers/`accountId`/
+        #   Required. Name of data segment to activate. v1alpha format: `buyers/`accountId`
+        #   /dataSegments/`curatorDataSegmentId`` v1beta format: `curators/`accountId`/
         #   dataSegments/`curatorDataSegmentId``
         # @param [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::ActivateDataSegmentRequest] activate_data_segment_request_object
         # @param [String] fields
@@ -874,8 +875,8 @@ module Google
         # created in the `ACTIVE` state, meaning it will be immediately available for
         # buyers to use in preferred deals, private auction deals, and auction packages.
         # @param [String] parent
-        #   Required. The parent resource where this data segment will be created. Format:
-        #   `buyers/`accountId``
+        #   Required. The parent resource where this data segment will be created. v1alpha
+        #   format: `buyers/`accountId`` v1beta format: `curators/`accountId``
         # @param [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::DataSegment] data_segment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -908,8 +909,9 @@ module Google
         
         # Deactivates a data segment.
         # @param [String] name
-        #   Required. Name of data segment to deactivate. Format: `buyers/`accountId`/
-        #   dataSegments/`curatorDataSegmentId``
+        #   Required. Name of data segment to deactivate. v1alpha format: `buyers/`
+        #   accountId`/dataSegments/`curatorDataSegmentId`` v1beta format: `curators/`
+        #   accountId`/dataSegments/`curatorDataSegmentId``
         # @param [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::DeactivateDataSegmentRequest] deactivate_data_segment_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -942,7 +944,8 @@ module Google
         
         # Gets a data segment given its name.
         # @param [String] name
-        #   Required. Name of data segment to get. Format: `buyers/`accountId`/
+        #   Required. Name of data segment to get. v1alpha format: `buyers/`accountId`/
+        #   dataSegments/`curatorDataSegmentId`` v1beta format: `curators/`accountId`/
         #   dataSegments/`curatorDataSegmentId``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -973,8 +976,8 @@ module Google
         
         # List the data segments owned by a curator.
         # @param [String] parent
-        #   Required. Name of the parent buyer that can access the data segment. Format: `
-        #   buyers/`accountId``
+        #   Required. Name of the parent curator that can access the data segment. v1alpha
+        #   format: `buyers/`accountId`` v1beta format: `curators/`accountId``
         # @param [Fixnum] page_size
         #   Optional. Requested page size. The server may return fewer results than
         #   requested. Max allowed page size is 500. If unspecified, the server will
@@ -1013,8 +1016,9 @@ module Google
         # Updates a data segment.
         # @param [String] name
         #   Immutable. Identifier. The unique identifier for the data segment. Account ID
-        #   corresponds to the account ID that created the segment. Format: `buyers/`
-        #   accountId`/dataSegments/`curatorDataSegmentId``
+        #   corresponds to the account ID that created the segment. v1alpha format: `
+        #   buyers/`accountId`/dataSegments/`curatorDataSegmentId`` v1beta format: `
+        #   curators/`curatorAccountId`/dataSegments/`curatorDataSegmentId``
         # @param [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::DataSegment] data_segment_object
         # @param [String] update_mask
         #   Optional. List of fields to be updated. If empty or unspecified, the service
