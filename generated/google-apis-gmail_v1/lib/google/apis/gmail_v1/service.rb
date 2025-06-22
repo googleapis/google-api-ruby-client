@@ -1492,7 +1492,15 @@ module Google
         # Creates and configures a client-side encryption identity that's authorized to
         # send mail from the user account. Google publishes the S/MIME certificate to a
         # shared domain-wide directory so that people within a Google Workspace
-        # organization can encrypt and send mail to the identity.
+        # organization can encrypt and send mail to the identity. For administrators
+        # managing identities and keypairs for users in their organization, requests
+        # require authorization with a [service account](https://developers.google.com/
+        # identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation
+        # authority](https://developers.google.com/identity/protocols/
+        # OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https:
+        # //www.googleapis.com/auth/gmail.settings.basic` scope. For users managing
+        # their own identities and keypairs, requests require [hardware key encryption](
+        # https://support.google.com/a/answer/14153163) turned on and configured.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1529,7 +1537,15 @@ module Google
         # Deletes a client-side encryption identity. The authenticated user can no
         # longer use the identity to send encrypted messages. You cannot restore the
         # identity after you delete it. Instead, use the CreateCseIdentity method to
-        # create another identity with the same configuration.
+        # create another identity with the same configuration. For administrators
+        # managing identities and keypairs for users in their organization, requests
+        # require authorization with a [service account](https://developers.google.com/
+        # identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation
+        # authority](https://developers.google.com/identity/protocols/
+        # OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https:
+        # //www.googleapis.com/auth/gmail.settings.basic` scope. For users managing
+        # their own identities and keypairs, requests require [hardware key encryption](
+        # https://support.google.com/a/answer/14153163) turned on and configured.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1562,7 +1578,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a client-side encryption identity configuration.
+        # Retrieves a client-side encryption identity configuration. For administrators
+        # managing identities and keypairs for users in their organization, requests
+        # require authorization with a [service account](https://developers.google.com/
+        # identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation
+        # authority](https://developers.google.com/identity/protocols/
+        # OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https:
+        # //www.googleapis.com/auth/gmail.settings.basic` scope. For users managing
+        # their own identities and keypairs, requests require [hardware key encryption](
+        # https://support.google.com/a/answer/14153163) turned on and configured.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1597,7 +1621,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the client-side encrypted identities for an authenticated user.
+        # Lists the client-side encrypted identities for an authenticated user. For
+        # administrators managing identities and keypairs for users in their
+        # organization, requests require authorization with a [service account](https://
+        # developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [
+        # domain-wide delegation authority](https://developers.google.com/identity/
+        # protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with
+        # the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users
+        # managing their own identities and keypairs, requests require [hardware key
+        # encryption](https://support.google.com/a/answer/14153163) turned on and
+        # configured.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1638,7 +1671,16 @@ module Google
         
         # Associates a different key pair with an existing client-side encryption
         # identity. The updated key pair must validate against Google's [S/MIME
-        # certificate profiles](https://support.google.com/a/answer/7300887).
+        # certificate profiles](https://support.google.com/a/answer/7300887). For
+        # administrators managing identities and keypairs for users in their
+        # organization, requests require authorization with a [service account](https://
+        # developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [
+        # domain-wide delegation authority](https://developers.google.com/identity/
+        # protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with
+        # the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users
+        # managing their own identities and keypairs, requests require [hardware key
+        # encryption](https://support.google.com/a/answer/14153163) turned on and
+        # configured.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1676,7 +1718,15 @@ module Google
         end
         
         # Creates and uploads a client-side encryption S/MIME public key certificate
-        # chain and private key metadata for the authenticated user.
+        # chain and private key metadata for the authenticated user. For administrators
+        # managing identities and keypairs for users in their organization, requests
+        # require authorization with a [service account](https://developers.google.com/
+        # identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation
+        # authority](https://developers.google.com/identity/protocols/
+        # OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https:
+        # //www.googleapis.com/auth/gmail.settings.basic` scope. For users managing
+        # their own identities and keypairs, requests require [hardware key encryption](
+        # https://support.google.com/a/answer/14153163) turned on and configured.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1714,7 +1764,15 @@ module Google
         # longer use the key pair to decrypt incoming CSE message texts or sign outgoing
         # CSE mail. To regain access, use the EnableCseKeyPair to turn on the key pair.
         # After 30 days, you can permanently delete the key pair by using the
-        # ObliterateCseKeyPair method.
+        # ObliterateCseKeyPair method. For administrators managing identities and
+        # keypairs for users in their organization, requests require authorization with
+        # a [service account](https://developers.google.com/identity/protocols/
+        # OAuth2ServiceAccount) that has [domain-wide delegation authority](https://
+        # developers.google.com/identity/protocols/OAuth2ServiceAccount#
+        # delegatingauthority) to impersonate users with the `https://www.googleapis.com/
+        # auth/gmail.settings.basic` scope. For users managing their own identities and
+        # keypairs, requests require [hardware key encryption](https://support.google.
+        # com/a/answer/14153163) turned on and configured.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1752,7 +1810,16 @@ module Google
         end
         
         # Turns on a client-side encryption key pair that was turned off. The key pair
-        # becomes active again for any associated client-side encryption identities.
+        # becomes active again for any associated client-side encryption identities. For
+        # administrators managing identities and keypairs for users in their
+        # organization, requests require authorization with a [service account](https://
+        # developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [
+        # domain-wide delegation authority](https://developers.google.com/identity/
+        # protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with
+        # the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users
+        # managing their own identities and keypairs, requests require [hardware key
+        # encryption](https://support.google.com/a/answer/14153163) turned on and
+        # configured.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1789,7 +1856,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an existing client-side encryption key pair.
+        # Retrieves an existing client-side encryption key pair. For administrators
+        # managing identities and keypairs for users in their organization, requests
+        # require authorization with a [service account](https://developers.google.com/
+        # identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation
+        # authority](https://developers.google.com/identity/protocols/
+        # OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https:
+        # //www.googleapis.com/auth/gmail.settings.basic` scope. For users managing
+        # their own identities and keypairs, requests require [hardware key encryption](
+        # https://support.google.com/a/answer/14153163) turned on and configured.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1823,7 +1898,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists client-side encryption key pairs for an authenticated user.
+        # Lists client-side encryption key pairs for an authenticated user. For
+        # administrators managing identities and keypairs for users in their
+        # organization, requests require authorization with a [service account](https://
+        # developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [
+        # domain-wide delegation authority](https://developers.google.com/identity/
+        # protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with
+        # the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users
+        # managing their own identities and keypairs, requests require [hardware key
+        # encryption](https://support.google.com/a/answer/14153163) turned on and
+        # configured.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1867,7 +1951,15 @@ module Google
         # days. To turn off a key pair, use the DisableCseKeyPair method. Gmail can't
         # restore or decrypt any messages that were encrypted by an obliterated key.
         # Authenticated users and Google Workspace administrators lose access to reading
-        # the encrypted messages.
+        # the encrypted messages. For administrators managing identities and keypairs
+        # for users in their organization, requests require authorization with a [
+        # service account](https://developers.google.com/identity/protocols/
+        # OAuth2ServiceAccount) that has [domain-wide delegation authority](https://
+        # developers.google.com/identity/protocols/OAuth2ServiceAccount#
+        # delegatingauthority) to impersonate users with the `https://www.googleapis.com/
+        # auth/gmail.settings.basic` scope. For users managing their own identities and
+        # keypairs, requests require [hardware key encryption](https://support.google.
+        # com/a/answer/14153163) turned on and configured.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.

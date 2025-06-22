@@ -108,6 +108,15 @@ module Google
       # The client-side encryption (CSE) configuration for the email address of an
       # authenticated user. Gmail uses CSE configurations to save drafts of client-
       # side encrypted email messages, and to sign and send encrypted email messages.
+      # For administrators managing identities and keypairs for users in their
+      # organization, requests require authorization with a [service account](https://
+      # developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [
+      # domain-wide delegation authority](https://developers.google.com/identity/
+      # protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with
+      # the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users
+      # managing their own identities and keypairs, requests require [hardware key
+      # encryption](https://support.google.com/a/answer/14153163) turned on and
+      # configured.
       class CseIdentity
         include Google::Apis::Core::Hashable
       
@@ -145,7 +154,15 @@ module Google
       # key pair to complete the following tasks: - Sign outgoing client-side
       # encrypted messages. - Save and reopen drafts of client-side encrypted messages.
       # - Save and reopen sent messages. - Decrypt incoming or archived S/MIME
-      # messages.
+      # messages. For administrators managing identities and keypairs for users in
+      # their organization, requests require authorization with a [service account](
+      # https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that
+      # has [domain-wide delegation authority](https://developers.google.com/identity/
+      # protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with
+      # the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users
+      # managing their own identities and keypairs, requests require [hardware key
+      # encryption](https://support.google.com/a/answer/14153163) turned on and
+      # configured.
       class CseKeyPair
         include Google::Apis::Core::Hashable
       
@@ -210,7 +227,11 @@ module Google
       class CsePrivateKeyMetadata
         include Google::Apis::Core::Hashable
       
-        # Metadata for hardware keys.
+        # Metadata for hardware keys. If [hardware key encryption](https://support.
+        # google.com/a/answer/14153163) is set up for the Google Workspace organization,
+        # users can optionally store their private key on their smart card and use it to
+        # sign and decrypt email messages in Gmail by inserting their smart card into a
+        # reader attached to their Windows device.
         # Corresponds to the JSON property `hardwareKeyMetadata`
         # @return [Google::Apis::GmailV1::HardwareKeyMetadata]
         attr_accessor :hardware_key_metadata
@@ -485,7 +506,11 @@ module Google
         end
       end
       
-      # Metadata for hardware keys.
+      # Metadata for hardware keys. If [hardware key encryption](https://support.
+      # google.com/a/answer/14153163) is set up for the Google Workspace organization,
+      # users can optionally store their private key on their smart card and use it to
+      # sign and decrypt email messages in Gmail by inserting their smart card into a
+      # reader attached to their Windows device.
       class HardwareKeyMetadata
         include Google::Apis::Core::Hashable
       
