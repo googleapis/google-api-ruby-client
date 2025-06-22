@@ -30,6 +30,12 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1'
 
+      # On their own behalf, apps in Google Chat can see, add, update, and remove members from conversations and spaces
+      AUTH_CHAT_APP_MEMBERSHIPS = 'https://www.googleapis.com/auth/chat.app.memberships'
+
+      # On their own behalf, apps in Google Chat can create conversations and spaces and see or update their metadata (including history settings and access settings)
+      AUTH_CHAT_APP_SPACES = 'https://www.googleapis.com/auth/chat.app.spaces'
+
       # Private Service: https://www.googleapis.com/auth/chat.bot
       AUTH_CHAT_BOT = 'https://www.googleapis.com/auth/chat.bot'
 
