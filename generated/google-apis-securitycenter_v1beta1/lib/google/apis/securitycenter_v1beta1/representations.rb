@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BigQueryDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -329,6 +335,18 @@ module Google
       end
       
       class Exfiltration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExportFindingsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExportFindingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1883,6 +1901,13 @@ module Google
         end
       end
       
+      class BigQueryDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset, as: 'dataset'
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2160,6 +2185,21 @@ module Google
           collection :targets, as: 'targets', class: Google::Apis::SecuritycenterV1beta1::ExfilResource, decorator: Google::Apis::SecuritycenterV1beta1::ExfilResource::Representation
       
           property :total_exfiltrated_bytes, :numeric_string => true, as: 'totalExfiltratedBytes'
+        end
+      end
+      
+      class ExportFindingsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :big_query_destination, as: 'bigQueryDestination', class: Google::Apis::SecuritycenterV1beta1::BigQueryDestination, decorator: Google::Apis::SecuritycenterV1beta1::BigQueryDestination::Representation
+      
+          property :export_start_time, as: 'exportStartTime'
+        end
+      end
+      
+      class ExportFindingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
