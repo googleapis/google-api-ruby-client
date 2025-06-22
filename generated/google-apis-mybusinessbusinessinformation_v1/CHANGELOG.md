@@ -1,5 +1,10 @@
 # Release history for google-apis-mybusinessbusinessinformation_v1
 
+### v0.27.0 (2025-06-22)
+
+* Regenerated from discovery document revision 20250618
+* Regenerated using generator version 0.18.0
+
 ### v0.26.0 (2025-05-04)
 
 * Regenerated using generator version 0.17.0
