@@ -1279,12 +1279,6 @@ module Google
         # @return [Google::Apis::SqladminV1beta4::SqlOutOfDiskReport]
         attr_accessor :out_of_disk_report
       
-        # PITR related fields include enablement settings, archiving settings, and the
-        # bucket name.
-        # Corresponds to the JSON property `pitrFields`
-        # @return [Google::Apis::SqladminV1beta4::PitrFields]
-        attr_accessor :pitr_fields
-      
         # Output only. DEPRECATED: please use write_endpoint instead.
         # Corresponds to the JSON property `primaryDnsName`
         # @return [String]
@@ -1457,7 +1451,6 @@ module Google
           @nodes = args[:nodes] if args.key?(:nodes)
           @on_premises_configuration = args[:on_premises_configuration] if args.key?(:on_premises_configuration)
           @out_of_disk_report = args[:out_of_disk_report] if args.key?(:out_of_disk_report)
-          @pitr_fields = args[:pitr_fields] if args.key?(:pitr_fields)
           @primary_dns_name = args[:primary_dns_name] if args.key?(:primary_dns_name)
           @project = args[:project] if args.key?(:project)
           @psc_service_attachment_link = args[:psc_service_attachment_link] if args.key?(:psc_service_attachment_link)
@@ -4007,47 +4000,6 @@ module Google
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # PITR related fields include enablement settings, archiving settings, and the
-      # bucket name.
-      class PitrFields
-        include Google::Apis::Core::Hashable
-      
-        # The enablement setting for PITR for MySQL.
-        # Corresponds to the JSON property `enableBinLog`
-        # @return [Boolean]
-        attr_accessor :enable_bin_log
-        alias_method :enable_bin_log?, :enable_bin_log
-      
-        # The enablement setting for PITR for PostgreSQL.
-        # Corresponds to the JSON property `replicationLogArchivingEnabled`
-        # @return [Boolean]
-        attr_accessor :replication_log_archiving_enabled
-        alias_method :replication_log_archiving_enabled?, :replication_log_archiving_enabled
-      
-        # The enablement setting for PITR for SQL Server.
-        # Corresponds to the JSON property `sqlserverPitrEnabled`
-        # @return [Boolean]
-        attr_accessor :sqlserver_pitr_enabled
-        alias_method :sqlserver_pitr_enabled?, :sqlserver_pitr_enabled
-      
-        # The number of transaction log days to retain for PITR
-        # Corresponds to the JSON property `transactionLogRetentionDays`
-        # @return [Fixnum]
-        attr_accessor :transaction_log_retention_days
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @enable_bin_log = args[:enable_bin_log] if args.key?(:enable_bin_log)
-          @replication_log_archiving_enabled = args[:replication_log_archiving_enabled] if args.key?(:replication_log_archiving_enabled)
-          @sqlserver_pitr_enabled = args[:sqlserver_pitr_enabled] if args.key?(:sqlserver_pitr_enabled)
-          @transaction_log_retention_days = args[:transaction_log_retention_days] if args.key?(:transaction_log_retention_days)
         end
       end
       
