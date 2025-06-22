@@ -2966,7 +2966,7 @@ module Google
         #   Optional. The starting index record for listing the developers. "page_token"
         #   is supported from ver 1.10.0 and above.
         # @param [Fixnum] rows
-        #   Optional. Maximum number of app IDs to return. Defaults to 10000.
+        #   Optional. Maximum number of app IDs to return. Defaults to 1000.
         # @param [String] start_key
         #   Returns the list of apps starting from the specified app ID.
         # @param [String] status
