@@ -1612,6 +1612,11 @@ module Google
         # @return [String]
         attr_accessor :provisioning_model
       
+        # Optional. Name of the reservation in which the node should be provisioned.
+        # Corresponds to the JSON property `reservationName`
+        # @return [String]
+        attr_accessor :reservation_name
+      
         # Whether the node is created under a reservation.
         # Corresponds to the JSON property `reserved`
         # @return [Boolean]
@@ -1637,6 +1642,7 @@ module Google
         def update!(**args)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
+          @reservation_name = args[:reservation_name] if args.key?(:reservation_name)
           @reserved = args[:reserved] if args.key?(:reserved)
           @spot = args[:spot] if args.key?(:spot)
           @termination_timestamp = args[:termination_timestamp] if args.key?(:termination_timestamp)
