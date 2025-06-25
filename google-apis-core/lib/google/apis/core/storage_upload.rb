@@ -94,8 +94,7 @@ module Google
 
         # Execute the command, retrying as necessary
         #
-        # @param [HTTPClient] client
-        #   HTTP client
+        # @param [Faraday::Connection] client Faraday connection
         # @yield [result, err] Result or error if block supplied
         # @return [Object]
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
@@ -138,11 +137,10 @@ module Google
           request_header[CONTENT_TYPE_HEADER] = JSON_CONTENT_TYPE
           request_header[UPLOAD_CONTENT_TYPE_HEADER] = upload_content_type unless upload_content_type.nil?
 
-          response = client.post(url.to_s, query: request_query,
-                         body: body,
-                         header: request_header,
-                         follow_redirect: true)
-          result = process_response(response.status_code, response.header, response.body)
+          response = client.post(url.to_s, body, request_header) do |request|
+            request.params.replace(request_query)
+          end
+          result = process_response(response.status.to_i, response.headers, response.body)
           success(result)
         rescue => e
           error(e, rethrow: true)
@@ -166,8 +164,7 @@ module Google
 
         # Send the actual content
         #
-        # @param [HTTPClient] client
-        #   HTTP client
+        # @param [Faraday::Connection] client Faraday connection
         # @return [HTTP::Message]
         # @raise [Google::Apis::ServerError] Unable to send the request
         def send_upload_command(client)
@@ -178,7 +175,7 @@ module Google
 
           request_header = header.dup
           request_header[CONTENT_RANGE_HEADER] = get_content_range_header current_chunk_size
-          request_header[CONTENT_LENGTH_HEADER] = current_chunk_size
+          request_header[CONTENT_LENGTH_HEADER] = current_chunk_size.to_s
           chunk_body =
             if @upload_chunk_size == 0
               upload_io
@@ -186,10 +183,10 @@ module Google
               StringIO.new(upload_io.read(current_chunk_size))
             end
 
-          response = client.put(@upload_url, body: chunk_body, header: request_header, follow_redirect: true)
+          response = client.put(@upload_url, chunk_body, request_header)
 
-          result = process_response(response.status_code, response.header, response.body)
-          @upload_incomplete = false if response.status_code.eql? OK_STATUS
+          result = process_response(response.status.to_i, response.headers, response.body)
+          @upload_incomplete = false if response.status.to_i.eql? OK_STATUS
           @offset += current_chunk_size if @upload_incomplete
           success(result)
         rescue => e
@@ -214,7 +211,8 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def process_response(status, header, body)
-          @upload_url = header[LOCATION_HEADER].first unless header[LOCATION_HEADER].empty?
+          location_header = Array(header[LOCATION_HEADER])
+          @upload_url = location_header.first unless location_header.empty?
           super(status, header, body)
         end
 
@@ -224,7 +222,7 @@ module Google
           request_header[CONTENT_RANGE_HEADER] = "bytes */#{upload_io.size}"
           request_header[CONTENT_LENGTH_HEADER] = '0'
           # Initiating call
-          response = client.put(@upload_url, header: request_header, follow_redirect: true)
+          response = client.put(@upload_url, "", request_header)
           handle_resumable_upload_http_response_codes(response)
         end
 
@@ -234,25 +232,25 @@ module Google
           request_header = header.dup
           request_header[CONTENT_LENGTH_HEADER] = '0'
           # Initiating call
-          response = client.delete(@upload_url, header: request_header, follow_redirect: true)
+          response = client.delete(@upload_url, nil, request_header)
           handle_resumable_upload_http_response_codes(response)
 
-          if !@upload_incomplete && (400..499).include?(response.code.to_i)
+          if !@upload_incomplete && (400..499).include?(response.status.to_i)
             @close_io_on_finish = true
             true # method returns true if upload is successfully cancelled
           else
-            logger.debug { sprintf("Failed to cancel upload session. Response: #{response.code} - #{response.body}") }
+            logger.debug { sprintf("Failed to cancel upload session. Response: #{response.status} - #{response.body}") }
           end
   
         end
 
         def handle_resumable_upload_http_response_codes(response)
-          code = response.code.to_i
+          code = response.status.to_i
 
           case code
           when 308
             if response.headers['Range']
-              range = response.headers['Range']
+              range = Array(response.headers['Range']).first
               @offset = range.split('-').last.to_i + 1
               logger.debug { sprintf("Upload is incomplete. Bytes uploaded so far: #{range}") }
             else
@@ -266,7 +264,7 @@ module Google
             # Upload is complete.
             @upload_incomplete = false
           else
-            logger.debug { sprintf("Unexpected response: #{response.code} - #{response.body}") }
+            logger.debug { sprintf("Unexpected response: #{response.status} - #{response.body}") }
             @upload_incomplete = true
           end
         end
