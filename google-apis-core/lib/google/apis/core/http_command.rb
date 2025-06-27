@@ -17,6 +17,7 @@ require 'addressable/template'
 require 'google/apis/options'
 require 'google/apis/errors'
 require 'retriable'
+require 'google/apis/core/faraday_integration'
 require 'google/apis/core/logging'
 require 'pp'
 
@@ -59,8 +60,8 @@ module Google
         # @return [symbol]
         attr_accessor :method
 
-        # HTTP Client
-        # @return [HTTPClient]
+        # Faraday connection
+        # @return [Faraday::Connection]
         attr_accessor :connection
 
         # Query params
@@ -96,8 +97,8 @@ module Google
 
         # Execute the command, retrying as necessary
         #
-        # @param [HTTPClient] client
-        #   HTTP client
+        # @param [Faraday::Connection] client
+        #   Faraday connection
         # @yield [result, err] Result or error if block supplied
         # @return [Object]
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
@@ -181,7 +182,7 @@ module Google
             @form_encoded = false
           end
 
-          self.body = '' unless self.body
+          self.body = '' if self.body.nil? && [:post, :put, :patch].include?(method)
         end
 
         # Release any resources used by this command
@@ -205,7 +206,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def process_response(status, header, body)
           check_status(status, header, body)
-          decode_response_body(header['Content-Type'].first, body)
+          decode_response_body(Array(header['Content-Type']).first, body)
         end
 
         # Check the response and raise error if needed
@@ -284,17 +285,10 @@ module Google
         # @raise [StandardError] if no block
         def error(err, rethrow: false, &block)
           logger.debug { sprintf('Error - %s', PP.pp(err, +'')) }
-          if err.is_a?(HTTPClient::BadResponseError)
-            begin
-              res = err.res
-              raise Google::Apis::TransmissionError.new(err) if res.nil?
-              check_status(res.status.to_i, res.header, res.body)
-            rescue Google::Apis::Error => e
-              err = e
-            end
-          elsif err.is_a?(HTTPClient::TimeoutError) ||
+          if err.is_a?(Faraday::FollowRedirects::RedirectLimitReached)
+            err = Google::Apis::RedirectError.new(err)
+          elsif err.is_a?(Faraday::Error) ||
                 err.is_a?(SocketError) ||
-                err.is_a?(HTTPClient::KeepAliveDisconnected) ||
                 err.is_a?(Errno::ECONNREFUSED) ||
                 err.is_a?(Errno::ETIMEDOUT) ||
                 err.is_a?(Errno::ECONNRESET)
@@ -307,8 +301,8 @@ module Google
         # Execute the command once.
         #
         # @private
-        # @param [HTTPClient] client
-        #   HTTP client
+        # @param [Faraday::Connection] client
+        #   Faraday connection
         # @return [Object]
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -320,15 +314,11 @@ module Google
             request_header = header.dup
             apply_request_options(request_header)
 
-            @http_res = client.request(method.to_s.upcase,
-                                       url.to_s,
-                                       query: nil,
-                                       body: body,
-                                       header: request_header,
-                                       follow_redirect: true)
+            @http_res = client.run_request(method, url.to_s, body, request_header)
+
             logger.debug { @http_res.status }
             logger.debug { safe_single_line_representation @http_res }
-            response = process_response(@http_res.status.to_i, @http_res.header, @http_res.body)
+            response = process_response(@http_res.status.to_i, @http_res.headers, @http_res.body)
             success(response)
           rescue => e
             logger.debug { sprintf('Caught error %s', e) }
@@ -410,9 +400,14 @@ module Google
           @opencensus_span.put_attribute "http.host", url.host.to_s
           @opencensus_span.put_attribute "http.method", method.to_s.upcase
           @opencensus_span.put_attribute "http.path", url.path.to_s
-          if body.respond_to? :bytesize
-            @opencensus_span.put_message_event \
-              OpenCensus::Trace::SpanBuilder::SENT, 1, body.bytesize
+          sent_size =
+            if body.respond_to? :bytesize
+              body.bytesize
+            elsif body.nil?
+              0
+            end
+          if sent_size
+            @opencensus_span.put_message_event OpenCensus::Trace::SpanBuilder::SENT, 1, sent_size
           end
 
           formatter = OpenCensus::Trace.config.http_formatter
