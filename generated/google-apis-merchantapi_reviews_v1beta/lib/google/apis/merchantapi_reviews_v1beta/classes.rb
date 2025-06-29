@@ -559,7 +559,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :cons
       
-        # Required. The content of the review.
+        # Optional. The content of the review. If empty, the content might still get
+        # populated from pros and cons.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
