@@ -430,6 +430,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExternalRuntimeOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExternalServiceCost
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -863,6 +869,12 @@ module Google
       end
       
       class ProjectReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PythonOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2147,6 +2159,17 @@ module Google
         end
       end
       
+      class ExternalRuntimeOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :container_cpu, as: 'containerCpu'
+          property :container_memory, as: 'containerMemory'
+          property :max_batching_rows, :numeric_string => true, as: 'maxBatchingRows'
+          property :runtime_connection, as: 'runtimeConnection'
+          property :runtime_version, as: 'runtimeVersion'
+        end
+      end
+      
       class ExternalServiceCost
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3152,6 +3175,14 @@ module Google
         end
       end
       
+      class PythonOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entry_point, as: 'entryPoint'
+          collection :packages, as: 'packages'
+        end
+      end
+      
       class QueryInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3377,9 +3408,13 @@ module Google
           property :description, as: 'description'
           property :determinism_level, as: 'determinismLevel'
           property :etag, as: 'etag'
+          property :external_runtime_options, as: 'externalRuntimeOptions', class: Google::Apis::BigqueryV2::ExternalRuntimeOptions, decorator: Google::Apis::BigqueryV2::ExternalRuntimeOptions::Representation
+      
           collection :imported_libraries, as: 'importedLibraries'
           property :language, as: 'language'
           property :last_modified_time, :numeric_string => true, as: 'lastModifiedTime'
+          property :python_options, as: 'pythonOptions', class: Google::Apis::BigqueryV2::PythonOptions, decorator: Google::Apis::BigqueryV2::PythonOptions::Representation
+      
           property :remote_function_options, as: 'remoteFunctionOptions', class: Google::Apis::BigqueryV2::RemoteFunctionOptions, decorator: Google::Apis::BigqueryV2::RemoteFunctionOptions::Representation
       
           property :return_table_type, as: 'returnTableType', class: Google::Apis::BigqueryV2::StandardSqlTableType, decorator: Google::Apis::BigqueryV2::StandardSqlTableType::Representation
