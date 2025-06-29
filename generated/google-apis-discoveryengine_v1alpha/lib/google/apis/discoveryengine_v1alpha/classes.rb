@@ -3243,7 +3243,7 @@ module Google
         # Supported keys: * `*`: all features, if it's present, all other feature state
         # settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-
         # gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-
-        # org-chart` * `bi-directional-audio` * `feedback`
+        # org-chart` * `bi-directional-audio` * `feedback` * `session-sharing`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -5354,7 +5354,7 @@ module Google
         attr_accessor :last_login_time
       
         # Output only. License assignment state of the user. If the user is assigned
-        # with a license config, the user loggin will be assigned with the license; If
+        # with a license config, the user login will be assigned with the license; If
         # the user's license assignment state is unassigned or unspecified, no license
         # config will be associated to the user;
         # Corresponds to the JSON property `licenseAssignmentState`
@@ -10429,6 +10429,12 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaActionConfig]
         attr_accessor :action_config
       
+        # Output only. State of the action connector. This reflects whether the action
+        # connector is initializing, active or has encountered errors.
+        # Corresponds to the JSON property `actionState`
+        # @return [String]
+        attr_accessor :action_state
+      
         # Optional. The connector level alert config.
         # Corresponds to the JSON property `alertPolicyConfigs`
         # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAlertPolicyConfig>]
@@ -10520,12 +10526,16 @@ module Google
         # Optional. The refresh interval specifically for incremental data syncs. If
         # unset, incremental syncs will use the default from env, set to 3hrs. The
         # minimum is 30 minutes and maximum is 7 days. Applicable to only 3P connectors.
+        # When the refresh interval is set to the same value as the incremental refresh
+        # interval, incremental sync will be disabled.
         # Corresponds to the JSON property `incrementalRefreshInterval`
         # @return [String]
         attr_accessor :incremental_refresh_interval
       
         # Optional. Indicates whether incremental syncs are paused for this connector.
         # This is independent of auto_run_disabled. Applicable to only 3P connectors.
+        # When the refresh interval is set to the same value as the incremental refresh
+        # interval, incremental sync will be disabled, i.e. set to true.
         # Corresponds to the JSON property `incrementalSyncDisabled`
         # @return [Boolean]
         attr_accessor :incremental_sync_disabled
@@ -10624,7 +10634,9 @@ module Google
       
         # Required. The refresh interval for data sync. If duration is set to 0, the
         # data will be synced in real time. The streaming feature is not supported yet.
-        # The minimum is 30 minutes and maximum is 7 days.
+        # The minimum is 30 minutes and maximum is 7 days. When the refresh interval is
+        # set to the same value as the incremental refresh interval, incremental sync
+        # will be disabled.
         # Corresponds to the JSON property `refreshInterval`
         # @return [String]
         attr_accessor :refresh_interval
@@ -10663,6 +10675,7 @@ module Google
         def update!(**args)
           @acl_enabled = args[:acl_enabled] if args.key?(:acl_enabled)
           @action_config = args[:action_config] if args.key?(:action_config)
+          @action_state = args[:action_state] if args.key?(:action_state)
           @alert_policy_configs = args[:alert_policy_configs] if args.key?(:alert_policy_configs)
           @auto_run_disabled = args[:auto_run_disabled] if args.key?(:auto_run_disabled)
           @bap_config = args[:bap_config] if args.key?(:bap_config)
@@ -12100,7 +12113,7 @@ module Google
         # Supported keys: * `*`: all features, if it's present, all other feature state
         # settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-
         # gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-
-        # org-chart` * `bi-directional-audio` * `feedback`
+        # org-chart` * `bi-directional-audio` * `feedback` * `session-sharing`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -21447,7 +21460,7 @@ module Google
         attr_accessor :last_login_time
       
         # Output only. License assignment state of the user. If the user is assigned
-        # with a license config, the user loggin will be assigned with the license; If
+        # with a license config, the user login will be assigned with the license; If
         # the user's license assignment state is unassigned or unspecified, no license
         # config will be associated to the user;
         # Corresponds to the JSON property `licenseAssignmentState`
@@ -22230,7 +22243,7 @@ module Google
         # Output only. Feature config for the engine to opt in or opt out of features.
         # Supported keys: * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery`
         # * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-
-        # chart` * `bi-directional-audio` * `feedback`
+        # chart` * `bi-directional-audio` * `feedback` * `session-sharing`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -23981,7 +23994,7 @@ module Google
         # Supported keys: * `*`: all features, if it's present, all other feature state
         # settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-
         # gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-
-        # org-chart` * `bi-directional-audio` * `feedback`
+        # org-chart` * `bi-directional-audio` * `feedback` * `session-sharing`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -27383,7 +27396,7 @@ module Google
         attr_accessor :last_login_time
       
         # Output only. License assignment state of the user. If the user is assigned
-        # with a license config, the user loggin will be assigned with the license; If
+        # with a license config, the user login will be assigned with the license; If
         # the user's license assignment state is unassigned or unspecified, no license
         # config will be associated to the user;
         # Corresponds to the JSON property `licenseAssignmentState`
