@@ -262,6 +262,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirestoreAdminV1CloneDatabaseMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1CloneDatabaseRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1CmekConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -437,6 +449,12 @@ module Google
       end
       
       class GoogleFirestoreAdminV1LocationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1PitrSnapshot
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1149,6 +1167,32 @@ module Google
         end
       end
       
+      class GoogleFirestoreAdminV1CloneDatabaseMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database'
+          property :end_time, as: 'endTime'
+          property :operation_state, as: 'operationState'
+          property :pitr_snapshot, as: 'pitrSnapshot', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1PitrSnapshot, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1PitrSnapshot::Representation
+      
+          property :progress_percentage, as: 'progressPercentage', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Progress, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Progress::Representation
+      
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class GoogleFirestoreAdminV1CloneDatabaseRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_id, as: 'databaseId'
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1EncryptionConfig, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1EncryptionConfig::Representation
+      
+          property :pitr_snapshot, as: 'pitrSnapshot', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1PitrSnapshot, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1PitrSnapshot::Representation
+      
+          hash :tags, as: 'tags'
+        end
+      end
+      
       class GoogleFirestoreAdminV1CmekConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1450,6 +1494,15 @@ module Google
       class GoogleFirestoreAdminV1LocationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleFirestoreAdminV1PitrSnapshot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database'
+          property :database_uid, :base64 => true, as: 'databaseUid'
+          property :snapshot_time, as: 'snapshotTime'
         end
       end
       
