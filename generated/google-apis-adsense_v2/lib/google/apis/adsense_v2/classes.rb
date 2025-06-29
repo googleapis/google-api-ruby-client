@@ -48,7 +48,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :pending_tasks
       
-        # Output only. Whether this account is premium.
+        # Output only. Whether this account is premium. Premium accounts have access to
+        # additional spam-related metrics.
         # Corresponds to the JSON property `premium`
         # @return [Boolean]
         attr_accessor :premium
