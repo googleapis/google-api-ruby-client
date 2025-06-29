@@ -164,9 +164,9 @@ module Google
         #   paging. If unspecified, at most 10000 platforms will be returned. The maximum
         #   value is 10000; values above 10000 will be coerced to 10000.
         # @param [String] page_token
-        #   Optional. A page token, received from a previous `ListPlatformChildren` call.
+        #   Optional. A page token, received from a previous `ListPlatformChildSites` call.
         #   Provide this to retrieve the subsequent page. When paginating, all other
-        #   parameters provided to `ListPlatformChildren` must match the call that
+        #   parameters provided to `ListPlatformChildSites` must match the call that
         #   provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
