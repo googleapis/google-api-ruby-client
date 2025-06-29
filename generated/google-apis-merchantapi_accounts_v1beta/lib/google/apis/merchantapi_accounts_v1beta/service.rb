@@ -30,7 +30,7 @@ module Google
       #    Merchantapi = Google::Apis::MerchantapiAccountsV1beta # Alias the module
       #    service = Merchantapi::MerchantService.new
       #
-      # @see https://developers.devsite.corp.google.com/merchant/api
+      # @see https://developers.google.com/merchant/api
       class MerchantService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://merchantapi.$UNIVERSE_DOMAIN$/"
 
@@ -167,9 +167,10 @@ module Google
         #   fewer than this value. If unspecified, at most 250 accounts are returned. The
         #   maximum value is 500; values above 500 are coerced to 500.
         # @param [String] page_token
-        #   Optional. A page token, received from a previous `ListAccounts` call. Provide
+        #   Optional. A page token, received from a previous `accounts.list` call. Provide
         #   this to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to `ListAccounts` must match the call that provided the page token.
+        #   provided in the `accounts.list` request must match the call that provided the
+        #   page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -199,8 +200,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all sub-accounts for a given multi client account. This is a convenience
-        # wrapper for the more powerful `ListAccounts` method. This method will produce
+        # List all sub-accounts for a given advanced account. This is a convenience
+        # wrapper for the more powerful `accounts.list` method. This method will produce
         # the same results as calling `ListsAccounts` with the following filter: `
         # relationship(providerId=`parent` AND service(type="ACCOUNT_AGGREGATION"))`
         # @param [String] provider
@@ -210,9 +211,10 @@ module Google
         #   fewer than this value. If unspecified, at most 250 accounts are returned. The
         #   maximum value is 500; values above 500 are coerced to 500.
         # @param [String] page_token
-        #   Optional. A page token, received from a previous `ListAccounts` call. Provide
+        #   Optional. A page token, received from a previous `accounts.list` call. Provide
         #   this to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to `ListAccounts` must match the call that provided the page token.
+        #   provided in the `accounts.list` request must match the call that provided the
+        #   page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
