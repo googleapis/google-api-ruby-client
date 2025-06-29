@@ -13622,6 +13622,16 @@ module Google
       class GroupMaintenanceInfo
         include Google::Apis::Core::Hashable
       
+        # Describes number of instances that have ongoing maintenance.
+        # Corresponds to the JSON property `instanceMaintenanceOngoingCount`
+        # @return [Fixnum]
+        attr_accessor :instance_maintenance_ongoing_count
+      
+        # Describes number of instances that have pending maintenance.
+        # Corresponds to the JSON property `instanceMaintenancePendingCount`
+        # @return [Fixnum]
+        attr_accessor :instance_maintenance_pending_count
+      
         # Progress for ongoing maintenance for this group of VMs/hosts. Describes number
         # of hosts in the block that have ongoing maintenance.
         # Corresponds to the JSON property `maintenanceOngoingCount`
@@ -13639,6 +13649,22 @@ module Google
         # @return [String]
         attr_accessor :scheduling_type
       
+        # Describes number of subblock Infrastructure that has ongoing maintenance. Here,
+        # Subblock Infrastructure Maintenance pertains to upstream hardware contained
+        # in the Subblock that is necessary for a VM Family(e.g. NVLink Domains). Not
+        # all VM Families will support this field.
+        # Corresponds to the JSON property `subblockInfraMaintenanceOngoingCount`
+        # @return [Fixnum]
+        attr_accessor :subblock_infra_maintenance_ongoing_count
+      
+        # Describes number of subblock Infrastructure that has pending maintenance. Here,
+        # Subblock Infrastructure Maintenance pertains to upstream hardware contained
+        # in the Subblock that is necessary for a VM Family (e.g. NVLink Domains). Not
+        # all VM Families will support this field.
+        # Corresponds to the JSON property `subblockInfraMaintenancePendingCount`
+        # @return [Fixnum]
+        attr_accessor :subblock_infra_maintenance_pending_count
+      
         # Upcoming Maintenance notification information.
         # Corresponds to the JSON property `upcomingGroupMaintenance`
         # @return [Google::Apis::ComputeBeta::UpcomingMaintenance]
@@ -13650,9 +13676,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @instance_maintenance_ongoing_count = args[:instance_maintenance_ongoing_count] if args.key?(:instance_maintenance_ongoing_count)
+          @instance_maintenance_pending_count = args[:instance_maintenance_pending_count] if args.key?(:instance_maintenance_pending_count)
           @maintenance_ongoing_count = args[:maintenance_ongoing_count] if args.key?(:maintenance_ongoing_count)
           @maintenance_pending_count = args[:maintenance_pending_count] if args.key?(:maintenance_pending_count)
           @scheduling_type = args[:scheduling_type] if args.key?(:scheduling_type)
+          @subblock_infra_maintenance_ongoing_count = args[:subblock_infra_maintenance_ongoing_count] if args.key?(:subblock_infra_maintenance_ongoing_count)
+          @subblock_infra_maintenance_pending_count = args[:subblock_infra_maintenance_pending_count] if args.key?(:subblock_infra_maintenance_pending_count)
           @upcoming_group_maintenance = args[:upcoming_group_maintenance] if args.key?(:upcoming_group_maintenance)
         end
       end
@@ -40911,6 +40941,11 @@ module Google
         # @return [Google::Apis::ComputeBeta::ReservationSubBlockPhysicalTopology]
         attr_accessor :physical_topology
       
+        # Maintenance Info for ReservationBlocks.
+        # Corresponds to the JSON property `reservationSubBlockMaintenance`
+        # @return [Google::Apis::ComputeBeta::GroupMaintenanceInfo]
+        attr_accessor :reservation_sub_block_maintenance
+      
         # [Output Only] Server-defined fully-qualified URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -40944,6 +40979,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @physical_topology = args[:physical_topology] if args.key?(:physical_topology)
+          @reservation_sub_block_maintenance = args[:reservation_sub_block_maintenance] if args.key?(:reservation_sub_block_maintenance)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @status = args[:status] if args.key?(:status)
