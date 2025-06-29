@@ -154,6 +154,61 @@ module Google
         end
       end
       
+      # Metadata about the EASA Flight Emissions Label.
+      class EasaLabelMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `labelExpiryDate`
+        # @return [Google::Apis::TravelimpactmodelV1::Date]
+        attr_accessor :label_expiry_date
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `labelIssueDate`
+        # @return [Google::Apis::TravelimpactmodelV1::Date]
+        attr_accessor :label_issue_date
+      
+        # Version of the label.
+        # Corresponds to the JSON property `labelVersion`
+        # @return [String]
+        attr_accessor :label_version
+      
+        # Sustainable Aviation Fuel (SAF) emissions discount percentage applied to the
+        # label. It is a percentage as a decimal. The values are in the interval [0,1].
+        # For example, 0.0021 means 0.21%. This discount and reduction in emissions are
+        # reported by the EASA label but they are not included in the CO2e estimates
+        # distributed by this API.
+        # Corresponds to the JSON property `safDiscountPercentage`
+        # @return [Float]
+        attr_accessor :saf_discount_percentage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_expiry_date = args[:label_expiry_date] if args.key?(:label_expiry_date)
+          @label_issue_date = args[:label_issue_date] if args.key?(:label_issue_date)
+          @label_version = args[:label_version] if args.key?(:label_version)
+          @saf_discount_percentage = args[:saf_discount_percentage] if args.key?(:saf_discount_percentage)
+        end
+      end
+      
       # Grouped emissions per seating class results.
       class EmissionsGramsPerPax
         include Google::Apis::Core::Hashable
@@ -254,6 +309,17 @@ module Google
       class FlightWithEmissions
         include Google::Apis::Core::Hashable
       
+        # Optional. The significance of contrails warming impact compared to the total
+        # CO2e emissions impact.
+        # Corresponds to the JSON property `contrailsImpactBucket`
+        # @return [String]
+        attr_accessor :contrails_impact_bucket
+      
+        # Metadata about the EASA Flight Emissions Label.
+        # Corresponds to the JSON property `easaLabelMetadata`
+        # @return [Google::Apis::TravelimpactmodelV1::EasaLabelMetadata]
+        attr_accessor :easa_label_metadata
+      
         # Grouped emissions per seating class results.
         # Corresponds to the JSON property `emissionsGramsPerPax`
         # @return [Google::Apis::TravelimpactmodelV1::EmissionsGramsPerPax]
@@ -265,14 +331,22 @@ module Google
         # @return [Google::Apis::TravelimpactmodelV1::Flight]
         attr_accessor :flight
       
+        # Optional. The source of the emissions data.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @contrails_impact_bucket = args[:contrails_impact_bucket] if args.key?(:contrails_impact_bucket)
+          @easa_label_metadata = args[:easa_label_metadata] if args.key?(:easa_label_metadata)
           @emissions_grams_per_pax = args[:emissions_grams_per_pax] if args.key?(:emissions_grams_per_pax)
           @flight = args[:flight] if args.key?(:flight)
+          @source = args[:source] if args.key?(:source)
         end
       end
       
