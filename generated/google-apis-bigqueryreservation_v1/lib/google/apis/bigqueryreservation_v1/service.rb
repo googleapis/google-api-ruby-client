@@ -22,7 +22,7 @@ module Google
     module BigqueryreservationV1
       # BigQuery Reservation API
       #
-      # A service to modify your BigQuery flat-rate reservations.
+      # A service to modify your BigQuery reservations.
       #
       # @example
       #    require 'google/apis/bigqueryreservation_v1'

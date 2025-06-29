@@ -21,7 +21,7 @@ module Google
   module Apis
     # BigQuery Reservation API
     #
-    # A service to modify your BigQuery flat-rate reservations.
+    # A service to modify your BigQuery reservations.
     #
     # @see https://cloud.google.com/bigquery/
     module BigqueryreservationV1
