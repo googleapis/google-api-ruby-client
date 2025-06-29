@@ -2748,7 +2748,8 @@ module Google
       
         # Optional. Display name of the blob. Used to provide a label or filename to
         # distinguish blobs. This field is only returned in PromptMessage for prompt
-        # management. It is not currently used in the Gemini GenerateContent calls.
+        # management. It is currently used in the Gemini GenerateContent calls only when
+        # server side tools (code_execution, google_search, and url_context) are enabled.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -11730,8 +11731,9 @@ module Google
       
         # Optional. Display name of the file data. Used to provide a label or filename
         # to distinguish file datas. This field is only returned in PromptMessage for
-        # prompt management. It is not currently used in the Gemini GenerateContent
-        # calls.
+        # prompt management. It is currently used in the Gemini GenerateContent calls
+        # only when server side tools (code_execution, google_search, and url_context)
+        # are enabled.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -24523,6 +24525,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Represents a customer-managed encryption key spec that can be applied to a top-
+        # level resource.
+        # Corresponds to the JSON property `encryptionSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EncryptionSpec]
+        attr_accessor :encryption_spec
+      
         # Output only. The resource name of the RagCorpus.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -24553,6 +24561,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
           @vector_db_config = args[:vector_db_config] if args.key?(:vector_db_config)
@@ -24612,6 +24621,32 @@ module Google
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @model = args[:model] if args.key?(:model)
           @model_version_id = args[:model_version_id] if args.key?(:model_version_id)
+        end
+      end
+      
+      # Config for RagEngine.
+      class GoogleCloudAiplatformV1RagEngineConfig
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. The name of the RagEngineConfig. Format: `projects/`project`/
+        # locations/`location`/ragEngineConfig`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Configuration message for RagManagedDb used by RagEngine.
+        # Corresponds to the JSON property `ragManagedDbConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagManagedDbConfig]
+        attr_accessor :rag_managed_db_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @rag_managed_db_config = args[:rag_managed_db_config] if args.key?(:rag_managed_db_config)
         end
       end
       
@@ -24680,6 +24715,12 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Output only. The metadata for metadata search. The user_metadata Needs to be
+        # in JSON format.
+        # Corresponds to the JSON property `userMetadata`
+        # @return [String]
+        attr_accessor :user_metadata
+      
         def initialize(**args)
            update!(**args)
         end
@@ -24698,6 +24739,7 @@ module Google
           @share_point_sources = args[:share_point_sources] if args.key?(:share_point_sources)
           @slack_source = args[:slack_source] if args.key?(:slack_source)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @user_metadata = args[:user_metadata] if args.key?(:user_metadata)
         end
       end
       
@@ -24854,6 +24896,92 @@ module Google
         # Update properties of this object
         def update!(**args)
           @rag_file_chunking_config = args[:rag_file_chunking_config] if args.key?(:rag_file_chunking_config)
+        end
+      end
+      
+      # Configuration message for RagManagedDb used by RagEngine.
+      class GoogleCloudAiplatformV1RagManagedDbConfig
+        include Google::Apis::Core::Hashable
+      
+        # Basic tier is a cost-effective and low compute tier suitable for the following
+        # cases: * Experimenting with RagManagedDb. * Small data size. * Latency
+        # insensitive workload. * Only using RAG Engine with external vector DBs. NOTE:
+        # This is the default tier if not explicitly chosen.
+        # Corresponds to the JSON property `basic`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagManagedDbConfigBasic]
+        attr_accessor :basic
+      
+        # Scaled tier offers production grade performance along with autoscaling
+        # functionality. It is suitable for customers with large amounts of data or
+        # performance sensitive workloads.
+        # Corresponds to the JSON property `scaled`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagManagedDbConfigScaled]
+        attr_accessor :scaled
+      
+        # Disables the RAG Engine service and deletes all your data held within this
+        # service. This will halt the billing of the service. NOTE: Once deleted the
+        # data cannot be recovered. To start using RAG Engine again, you will need to
+        # update the tier by calling the UpdateRagEngineConfig API.
+        # Corresponds to the JSON property `unprovisioned`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagManagedDbConfigUnprovisioned]
+        attr_accessor :unprovisioned
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @basic = args[:basic] if args.key?(:basic)
+          @scaled = args[:scaled] if args.key?(:scaled)
+          @unprovisioned = args[:unprovisioned] if args.key?(:unprovisioned)
+        end
+      end
+      
+      # Basic tier is a cost-effective and low compute tier suitable for the following
+      # cases: * Experimenting with RagManagedDb. * Small data size. * Latency
+      # insensitive workload. * Only using RAG Engine with external vector DBs. NOTE:
+      # This is the default tier if not explicitly chosen.
+      class GoogleCloudAiplatformV1RagManagedDbConfigBasic
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Scaled tier offers production grade performance along with autoscaling
+      # functionality. It is suitable for customers with large amounts of data or
+      # performance sensitive workloads.
+      class GoogleCloudAiplatformV1RagManagedDbConfigScaled
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Disables the RAG Engine service and deletes all your data held within this
+      # service. This will halt the billing of the service. NOTE: Once deleted the
+      # data cannot be recovered. To start using RAG Engine again, you will need to
+      # update the tier by calling the UpdateRagEngineConfig API.
+      class GoogleCloudAiplatformV1RagManagedDbConfigUnprovisioned
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -26685,6 +26813,13 @@ module Google
         # @return [String]
         attr_accessor :category
       
+        # Output only. The overwritten threshold for the safety category of Gemini 2.0
+        # image out. If minors are detected in the output image, the threshold of each
+        # safety category will be overwritten if user sets a lower threshold.
+        # Corresponds to the JSON property `overwrittenThreshold`
+        # @return [String]
+        attr_accessor :overwritten_threshold
+      
         # Output only. Harm probability levels in the content.
         # Corresponds to the JSON property `probability`
         # @return [String]
@@ -26713,6 +26848,7 @@ module Google
         def update!(**args)
           @blocked = args[:blocked] if args.key?(:blocked)
           @category = args[:category] if args.key?(:category)
+          @overwritten_threshold = args[:overwritten_threshold] if args.key?(:overwritten_threshold)
           @probability = args[:probability] if args.key?(:probability)
           @probability_score = args[:probability_score] if args.key?(:probability_score)
           @severity = args[:severity] if args.key?(:severity)
@@ -36397,7 +36533,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :epoch_count
       
-        # Optional. Multiplier for adjusting the default learning rate.
+        # Optional. Multiplier for adjusting the default learning rate. Mutually
+        # exclusive with `learning_rate`.
         # Corresponds to the JSON property `learningRateMultiplier`
         # @return [Float]
         attr_accessor :learning_rate_multiplier
