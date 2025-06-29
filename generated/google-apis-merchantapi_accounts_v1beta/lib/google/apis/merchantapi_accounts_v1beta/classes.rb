@@ -2088,7 +2088,7 @@ module Google
         end
       end
       
-      # Response message for the `ListAccounts` method.
+      # Response message for the `accounts.list` method.
       class ListAccountsResponse
         include Google::Apis::Core::Hashable
       
