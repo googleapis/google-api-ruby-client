@@ -3958,6 +3958,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1RagEngineConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1RagFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3995,6 +4001,30 @@ module Google
       end
       
       class GoogleCloudAiplatformV1RagFileTransformationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1RagManagedDbConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1RagManagedDbConfigBasic
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1RagManagedDbConfigScaled
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1RagManagedDbConfigUnprovisioned
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -13849,6 +13879,8 @@ module Google
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :encryption_spec, as: 'encryptionSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EncryptionSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EncryptionSpec::Representation
+      
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
           property :vector_db_config, as: 'vectorDbConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagVectorDbConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagVectorDbConfig::Representation
@@ -13875,6 +13907,15 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1RagEngineConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :rag_managed_db_config, as: 'ragManagedDbConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagManagedDbConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagManagedDbConfig::Representation
+      
+        end
+      end
+      
       class GoogleCloudAiplatformV1RagFile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -13897,6 +13938,7 @@ module Google
           property :slack_source, as: 'slackSource', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SlackSource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SlackSource::Representation
       
           property :update_time, as: 'updateTime'
+          property :user_metadata, as: 'userMetadata'
         end
       end
       
@@ -13948,6 +13990,36 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :rag_file_chunking_config, as: 'ragFileChunkingConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagFileChunkingConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagFileChunkingConfig::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1RagManagedDbConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :basic, as: 'basic', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagManagedDbConfigBasic, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagManagedDbConfigBasic::Representation
+      
+          property :scaled, as: 'scaled', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagManagedDbConfigScaled, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagManagedDbConfigScaled::Representation
+      
+          property :unprovisioned, as: 'unprovisioned', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagManagedDbConfigUnprovisioned, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagManagedDbConfigUnprovisioned::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1RagManagedDbConfigBasic
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAiplatformV1RagManagedDbConfigScaled
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAiplatformV1RagManagedDbConfigUnprovisioned
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -14563,6 +14635,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :blocked, as: 'blocked'
           property :category, as: 'category'
+          property :overwritten_threshold, as: 'overwrittenThreshold'
           property :probability, as: 'probability'
           property :probability_score, as: 'probabilityScore'
           property :severity, as: 'severity'
