@@ -2537,7 +2537,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :limit
       
-        # Required. ProducerInstanceLocation is used to specify which authorization
+        # Optional. ProducerInstanceLocation is used to specify which authorization
         # mechanism to use to determine which projects the Producer instance can be
         # within.
         # Corresponds to the JSON property `producerInstanceLocation`
