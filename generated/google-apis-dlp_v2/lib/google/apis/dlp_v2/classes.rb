@@ -9325,6 +9325,27 @@ module Google
         end
       end
       
+      # Collection of findings saved to a Cloud Storage bucket. This is used as the
+      # proto schema for textproto files created when specifying a cloud storage path
+      # to save Inspect findings.
+      class GooglePrivacyDlpV2SaveToGcsFindingsOutput
+        include Google::Apis::Core::Hashable
+      
+        # List of findings.
+        # Corresponds to the JSON property `findings`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Finding>]
+        attr_accessor :findings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @findings = args[:findings] if args.key?(:findings)
+        end
+      end
+      
       # Schedule for inspect job triggers.
       class GooglePrivacyDlpV2Schedule
         include Google::Apis::Core::Hashable
