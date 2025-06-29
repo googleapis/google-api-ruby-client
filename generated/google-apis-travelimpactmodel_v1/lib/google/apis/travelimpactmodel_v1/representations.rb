@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EasaLabelMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EmissionsGramsPerPax
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -133,6 +139,18 @@ module Google
         end
       end
       
+      class EasaLabelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label_expiry_date, as: 'labelExpiryDate', class: Google::Apis::TravelimpactmodelV1::Date, decorator: Google::Apis::TravelimpactmodelV1::Date::Representation
+      
+          property :label_issue_date, as: 'labelIssueDate', class: Google::Apis::TravelimpactmodelV1::Date, decorator: Google::Apis::TravelimpactmodelV1::Date::Representation
+      
+          property :label_version, as: 'labelVersion'
+          property :saf_discount_percentage, as: 'safDiscountPercentage'
+        end
+      end
+      
       class EmissionsGramsPerPax
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -158,10 +176,14 @@ module Google
       class FlightWithEmissions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :contrails_impact_bucket, as: 'contrailsImpactBucket'
+          property :easa_label_metadata, as: 'easaLabelMetadata', class: Google::Apis::TravelimpactmodelV1::EasaLabelMetadata, decorator: Google::Apis::TravelimpactmodelV1::EasaLabelMetadata::Representation
+      
           property :emissions_grams_per_pax, as: 'emissionsGramsPerPax', class: Google::Apis::TravelimpactmodelV1::EmissionsGramsPerPax, decorator: Google::Apis::TravelimpactmodelV1::EmissionsGramsPerPax::Representation
       
           property :flight, as: 'flight', class: Google::Apis::TravelimpactmodelV1::Flight, decorator: Google::Apis::TravelimpactmodelV1::Flight::Representation
       
+          property :source, as: 'source'
         end
       end
       
