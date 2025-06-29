@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateSchemaBundleMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateTableRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -562,6 +568,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListSchemaBundlesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListTablesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -646,6 +658,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProtoSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RestoreInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -665,6 +683,12 @@ module Google
       end
       
       class RowAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SchemaBundle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -809,6 +833,12 @@ module Google
       end
       
       class UpdateLogicalViewRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateSchemaBundleMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1149,6 +1179,15 @@ module Google
       
           property :materialized_view_id, as: 'materializedViewId'
           property :parent, as: 'parent'
+        end
+      end
+      
+      class CreateSchemaBundleMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :name, as: 'name'
+          property :start_time, as: 'startTime'
         end
       end
       
@@ -1638,6 +1677,15 @@ module Google
         end
       end
       
+      class ListSchemaBundlesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :schema_bundles, as: 'schemaBundles', class: Google::Apis::BigtableadminV2::SchemaBundle, decorator: Google::Apis::BigtableadminV2::SchemaBundle::Representation
+      
+        end
+      end
+      
       class ListTablesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1779,6 +1827,13 @@ module Google
         end
       end
       
+      class ProtoSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :proto_descriptors, :base64 => true, as: 'protoDescriptors'
+        end
+      end
+      
       class RestoreInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1812,6 +1867,16 @@ module Google
       class RowAffinity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SchemaBundle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :proto_schema, as: 'protoSchema', class: Google::Apis::BigtableadminV2::ProtoSchema, decorator: Google::Apis::BigtableadminV2::ProtoSchema::Representation
+      
         end
       end
       
@@ -2049,6 +2114,15 @@ module Google
           property :logical_view, as: 'logicalView', class: Google::Apis::BigtableadminV2::LogicalView, decorator: Google::Apis::BigtableadminV2::LogicalView::Representation
       
           property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class UpdateSchemaBundleMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :name, as: 'name'
+          property :start_time, as: 'startTime'
         end
       end
       

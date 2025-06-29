@@ -1319,6 +1319,39 @@ module Google
         end
       end
       
+      # The metadata for the Operation returned by CreateSchemaBundle.
+      class CreateSchemaBundleMetadata
+        include Google::Apis::Core::Hashable
+      
+        # If set, the time at which this operation finished or was canceled.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The unique name identifying this schema bundle. Values are of the form `
+        # projects/`project`/instances/`instance`/tables/`table`/schemaBundles/`
+        # schema_bundle``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The time at which this operation started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @name = args[:name] if args.key?(:name)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # Request message for google.bigtable.admin.v2.BigtableTableAdmin.CreateTable
       class CreateTableRequest
         include Google::Apis::Core::Hashable
@@ -2936,6 +2969,32 @@ module Google
         end
       end
       
+      # The response for ListSchemaBundles.
+      class ListSchemaBundlesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The schema bundles from the specified table.
+        # Corresponds to the JSON property `schemaBundles`
+        # @return [Array<Google::Apis::BigtableadminV2::SchemaBundle>]
+        attr_accessor :schema_bundles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @schema_bundles = args[:schema_bundles] if args.key?(:schema_bundles)
+        end
+      end
+      
       # Response message for google.bigtable.admin.v2.BigtableTableAdmin.ListTables
       class ListTablesResponse
         include Google::Apis::Core::Hashable
@@ -3508,6 +3567,34 @@ module Google
         end
       end
       
+      # Represents a protobuf schema.
+      class ProtoSchema
+        include Google::Apis::Core::Hashable
+      
+        # Required. Contains a protobuf-serialized [google.protobuf.FileDescriptorSet](
+        # https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/
+        # descriptor.proto), which could include multiple proto files. To generate it, [
+        # install](https://grpc.io/docs/protoc-installation/) and run `protoc` with `--
+        # include_imports` and `--descriptor_set_out`. For example, to generate for moon/
+        # shot/app.proto, run ``` $protoc --proto_path=/app_path --proto_path=/lib_path \
+        # --include_imports \ --descriptor_set_out=descriptors.pb \ moon/shot/app.proto
+        # ``` For more details, see protobuffer [self description](https://developers.
+        # google.com/protocol-buffers/docs/techniques#self-description).
+        # Corresponds to the JSON property `protoDescriptors`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :proto_descriptors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @proto_descriptors = args[:proto_descriptors] if args.key?(:proto_descriptors)
+        end
+      end
+      
       # Information about a table restore.
       class RestoreInfo
         include Google::Apis::Core::Hashable
@@ -3630,6 +3717,41 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A named collection of related schemas.
+      class SchemaBundle
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The etag for this schema bundle. This may be sent on update and
+        # delete requests to ensure the client has an up-to-date value before proceeding.
+        # The server returns an ABORTED error on a mismatched etag.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Identifier. The unique name identifying this schema bundle. Values are of the
+        # form `projects/`project`/instances/`instance`/tables/`table`/schemaBundles/`
+        # schema_bundle``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Represents a protobuf schema.
+        # Corresponds to the JSON property `protoSchema`
+        # @return [Google::Apis::BigtableadminV2::ProtoSchema]
+        attr_accessor :proto_schema
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @proto_schema = args[:proto_schema] if args.key?(:proto_schema)
         end
       end
       
@@ -4447,6 +4569,39 @@ module Google
         def update!(**args)
           @logical_view = args[:logical_view] if args.key?(:logical_view)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # The metadata for the Operation returned by UpdateSchemaBundle.
+      class UpdateSchemaBundleMetadata
+        include Google::Apis::Core::Hashable
+      
+        # If set, the time at which this operation finished or was canceled.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The unique name identifying this schema bundle. Values are of the form `
+        # projects/`project`/instances/`instance`/tables/`table`/schemaBundles/`
+        # schema_bundle``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The time at which this operation started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @name = args[:name] if args.key?(:name)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
