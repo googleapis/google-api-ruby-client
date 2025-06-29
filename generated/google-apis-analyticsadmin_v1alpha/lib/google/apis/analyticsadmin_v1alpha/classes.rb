@@ -1909,6 +1909,11 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation]
         attr_accessor :reporting_data_annotation
       
+        # A resource containing settings related to reporting identity.
+        # Corresponds to the JSON property `reportingIdentitySettings`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingIdentitySettings]
+        attr_accessor :reporting_identity_settings
+      
         # A link between a Google Analytics property and a Search Ads 360 entity.
         # Corresponds to the JSON property `searchAds360Link`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSearchAds360Link]
@@ -1957,6 +1962,7 @@ module Google
           @measurement_protocol_secret = args[:measurement_protocol_secret] if args.key?(:measurement_protocol_secret)
           @property = args[:property] if args.key?(:property)
           @reporting_data_annotation = args[:reporting_data_annotation] if args.key?(:reporting_data_annotation)
+          @reporting_identity_settings = args[:reporting_identity_settings] if args.key?(:reporting_identity_settings)
           @search_ads360_link = args[:search_ads360_link] if args.key?(:search_ads360_link)
           @skadnetwork_conversion_value_schema = args[:skadnetwork_conversion_value_schema] if args.key?(:skadnetwork_conversion_value_schema)
           @subproperty_sync_config = args[:subproperty_sync_config] if args.key?(:subproperty_sync_config)
@@ -5292,6 +5298,33 @@ module Google
         def update!(**args)
           @end_date = args[:end_date] if args.key?(:end_date)
           @start_date = args[:start_date] if args.key?(:start_date)
+        end
+      end
+      
+      # A resource containing settings related to reporting identity.
+      class GoogleAnalyticsAdminV1alphaReportingIdentitySettings
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Identifier. Resource name for this reporting identity settings
+        # singleton resource. Format: properties/`property_id`/reportingIdentitySettings
+        # Example: "properties/1234/reportingIdentitySettings"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The strategy used for identifying user identities in reports.
+        # Corresponds to the JSON property `reportingIdentity`
+        # @return [String]
+        attr_accessor :reporting_identity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @reporting_identity = args[:reporting_identity] if args.key?(:reporting_identity)
         end
       end
       

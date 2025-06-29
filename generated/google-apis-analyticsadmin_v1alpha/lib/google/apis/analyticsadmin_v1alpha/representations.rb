@@ -934,6 +934,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaReportingIdentitySettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaRollupPropertySourceLink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1636,6 +1642,8 @@ module Google
           property :property, as: 'property', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty::Representation
       
           property :reporting_data_annotation, as: 'reportingDataAnnotation', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation::Representation
+      
+          property :reporting_identity_settings, as: 'reportingIdentitySettings', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingIdentitySettings, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingIdentitySettings::Representation
       
           property :search_ads360_link, as: 'searchAds360Link', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSearchAds360Link, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSearchAds360Link::Representation
       
@@ -2568,6 +2576,14 @@ module Google
       
           property :start_date, as: 'startDate', class: Google::Apis::AnalyticsadminV1alpha::GoogleTypeDate, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleTypeDate::Representation
       
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaReportingIdentitySettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :reporting_identity, as: 'reportingIdentity'
         end
       end
       
