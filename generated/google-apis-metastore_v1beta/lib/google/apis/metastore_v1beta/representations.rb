@@ -753,6 +753,7 @@ module Google
           property :name, as: 'name'
           property :state, as: 'state'
           property :state_message, as: 'stateMessage'
+          hash :tags, as: 'tags'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
           property :version, as: 'version'
@@ -1181,6 +1182,7 @@ module Google
       
           property :state, as: 'state'
           property :state_message, as: 'stateMessage'
+          hash :tags, as: 'tags'
           property :telemetry_config, as: 'telemetryConfig', class: Google::Apis::MetastoreV1beta::TelemetryConfig, decorator: Google::Apis::MetastoreV1beta::TelemetryConfig::Representation
       
           property :tier, as: 'tier'
