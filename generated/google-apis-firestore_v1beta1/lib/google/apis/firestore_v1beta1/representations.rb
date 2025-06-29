@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirestoreAdminV1CloneDatabaseMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1CreateDatabaseMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -245,6 +251,12 @@ module Google
       end
       
       class GoogleFirestoreAdminV1DeleteDatabaseMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1PitrSnapshot
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -890,6 +902,20 @@ module Google
         end
       end
       
+      class GoogleFirestoreAdminV1CloneDatabaseMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database'
+          property :end_time, as: 'endTime'
+          property :operation_state, as: 'operationState'
+          property :pitr_snapshot, as: 'pitrSnapshot', class: Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1PitrSnapshot, decorator: Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1PitrSnapshot::Representation
+      
+          property :progress_percentage, as: 'progressPercentage', class: Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1Progress, decorator: Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1Progress::Representation
+      
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class GoogleFirestoreAdminV1CreateDatabaseMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -899,6 +925,15 @@ module Google
       class GoogleFirestoreAdminV1DeleteDatabaseMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleFirestoreAdminV1PitrSnapshot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database'
+          property :database_uid, :base64 => true, as: 'databaseUid'
+          property :snapshot_time, as: 'snapshotTime'
         end
       end
       
