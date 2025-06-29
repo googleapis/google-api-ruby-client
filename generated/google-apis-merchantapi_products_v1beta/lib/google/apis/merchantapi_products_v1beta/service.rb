@@ -30,7 +30,7 @@ module Google
       #    Merchantapi = Google::Apis::MerchantapiProductsV1beta # Alias the module
       #    service = Merchantapi::MerchantService.new
       #
-      # @see https://developers.devsite.corp.google.com/merchant/api
+      # @see https://developers.google.com/merchant/api
       class MerchantService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://merchantapi.$UNIVERSE_DOMAIN$/"
 
@@ -105,9 +105,10 @@ module Google
         # @param [String] data_source
         #   Required. The primary or supplemental product data source name. If the product
         #   already exists and data source provided is different, then the product will be
-        #   moved to a new data source. Only API data sources are supported. Format: `
-        #   accounts/`account`/dataSources/`datasource``. For example, `accounts/123456/
-        #   dataSources/104628`.
+        #   moved to a new data source. For more information, see [Overview of Data
+        #   sources sub-API](/merchant/api/guides/data-sources/overview). Only API data
+        #   sources are supported. Format: `accounts/`account`/dataSources/`datasource``.
+        #   For example, `accounts/123456/dataSources/104628`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

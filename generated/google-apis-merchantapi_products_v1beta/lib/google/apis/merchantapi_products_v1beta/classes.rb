@@ -330,6 +330,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_handling_time
       
+        # The price represented as a number and currency.
+        # Corresponds to the JSON property `maximumRetailPrice`
+        # @return [Google::Apis::MerchantapiProductsV1beta::Price]
+        attr_accessor :maximum_retail_price
+      
         # The energy efficiency class as defined in EU directive 2010/30/EU.
         # Corresponds to the JSON property `minEnergyEfficiencyClass`
         # @return [String]
@@ -627,6 +632,7 @@ module Google
           @material = args[:material] if args.key?(:material)
           @max_energy_efficiency_class = args[:max_energy_efficiency_class] if args.key?(:max_energy_efficiency_class)
           @max_handling_time = args[:max_handling_time] if args.key?(:max_handling_time)
+          @maximum_retail_price = args[:maximum_retail_price] if args.key?(:maximum_retail_price)
           @min_energy_efficiency_class = args[:min_energy_efficiency_class] if args.key?(:min_energy_efficiency_class)
           @min_handling_time = args[:min_handling_time] if args.key?(:min_handling_time)
           @mobile_link = args[:mobile_link] if args.key?(:mobile_link)

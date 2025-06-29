@@ -281,6 +281,8 @@ module Google
           property :material, as: 'material'
           property :max_energy_efficiency_class, as: 'maxEnergyEfficiencyClass'
           property :max_handling_time, :numeric_string => true, as: 'maxHandlingTime'
+          property :maximum_retail_price, as: 'maximumRetailPrice', class: Google::Apis::MerchantapiProductsV1beta::Price, decorator: Google::Apis::MerchantapiProductsV1beta::Price::Representation
+      
           property :min_energy_efficiency_class, as: 'minEnergyEfficiencyClass'
           property :min_handling_time, :numeric_string => true, as: 'minHandlingTime'
           property :mobile_link, as: 'mobileLink'
