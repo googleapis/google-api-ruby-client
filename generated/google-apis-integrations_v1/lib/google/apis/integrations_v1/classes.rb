@@ -6979,6 +6979,51 @@ module Google
         end
       end
       
+      # Request for the ChangeCustomerConfig rpc
+      class GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # Customer configuration information for the given client
+        # Corresponds to the JSON property `customerConfig`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCustomerConfig]
+        attr_accessor :customer_config
+      
+        # Required. Field mask specifying the fields in the customer config that have
+        # been modified and must be updated. If absent or empty, no fields are updated.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer_config = args[:customer_config] if args.key?(:customer_config)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Response for the ChangeCustomerConfig rpc
+      class GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse
+        include Google::Apis::Core::Hashable
+      
+        # Customer configuration information for the given client
+        # Corresponds to the JSON property `customerConfig`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCustomerConfig]
+        attr_accessor :customer_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer_config = args[:customer_config] if args.key?(:customer_config)
+        end
+      end
+      
       # Contains client certificate information
       class GoogleCloudIntegrationsV1alphaClientCertificate
         include Google::Apis::Core::Hashable
@@ -7064,12 +7109,17 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Customer configuration information for the given client
+        # Corresponds to the JSON property `customerConfig`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCustomerConfig]
+        attr_accessor :customer_config
+      
         # Description of what the client is used for
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Optional. Indicates the client enables making HTTP call.
+        # Optional.
         # Corresponds to the JSON property `enableHttpCall`
         # @return [Boolean]
         attr_accessor :enable_http_call
@@ -7082,14 +7132,13 @@ module Google
         attr_accessor :enable_internal_ip
         alias_method :enable_internal_ip?, :enable_internal_ip
       
-        # Optional. Indicates if the Cloud Companion APIs will be used in the tenant
-        # project, i.e. if customer can use the managed AI features for free.
+        # Optional.
         # Corresponds to the JSON property `enableManagedAiFeatures`
         # @return [Boolean]
         attr_accessor :enable_managed_ai_features
         alias_method :enable_managed_ai_features?, :enable_managed_ai_features
       
-        # Optional. True if variable masking feature should be turned on for this region
+        # Optional.
         # Corresponds to the JSON property `enableVariableMasking`
         # @return [Boolean]
         attr_accessor :enable_variable_masking
@@ -7121,9 +7170,7 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # Default run-as service account email, set up during project provision time,
-        # that will be used to generate auth token to be used in Connector task, Rest
-        # caller task, Cloud function task and Subworkflows.
+        # 
         # Corresponds to the JSON property `runAsServiceAccount`
         # @return [String]
         attr_accessor :run_as_service_account
@@ -7138,6 +7185,7 @@ module Google
           @client_state = args[:client_state] if args.key?(:client_state)
           @cloud_kms_config = args[:cloud_kms_config] if args.key?(:cloud_kms_config)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @customer_config = args[:customer_config] if args.key?(:customer_config)
           @description = args[:description] if args.key?(:description)
           @enable_http_call = args[:enable_http_call] if args.key?(:enable_http_call)
           @enable_internal_ip = args[:enable_internal_ip] if args.key?(:enable_internal_ip)
@@ -7528,6 +7576,56 @@ module Google
           @oidc_token = args[:oidc_token] if args.key?(:oidc_token)
           @service_account_credentials = args[:service_account_credentials] if args.key?(:service_account_credentials)
           @username_and_password = args[:username_and_password] if args.key?(:username_and_password)
+        end
+      end
+      
+      # Customer configuration information for the given client
+      class GoogleCloudIntegrationsV1alphaCustomerConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration information for Client's Cloud KMS information
+        # Corresponds to the JSON property `cloudKmsConfig`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCloudKmsConfig]
+        attr_accessor :cloud_kms_config
+      
+        # Optional. Indicates if the client should be allowed to make HTTP calls. True
+        # if http call feature should be turned on for this region.
+        # Corresponds to the JSON property `enableHttpCall`
+        # @return [Boolean]
+        attr_accessor :enable_http_call
+        alias_method :enable_http_call?, :enable_http_call
+      
+        # Optional. Indicates if the client should be allowed to use managed AI features,
+        # i.e. using Cloud Companion APIs of the tenant project. This will allow the
+        # customers to use features like Troubleshooting, OpenAPI spec enrichment, etc.
+        # for free.
+        # Corresponds to the JSON property `enableManagedAiFeatures`
+        # @return [Boolean]
+        attr_accessor :enable_managed_ai_features
+        alias_method :enable_managed_ai_features?, :enable_managed_ai_features
+      
+        # Optional. True if variable masking feature should be turned on for this region.
+        # Corresponds to the JSON property `enableVariableMasking`
+        # @return [Boolean]
+        attr_accessor :enable_variable_masking
+        alias_method :enable_variable_masking?, :enable_variable_masking
+      
+        # Optional. Run-as service account to be updated for the provisioned client.
+        # Corresponds to the JSON property `runAsServiceAccount`
+        # @return [String]
+        attr_accessor :run_as_service_account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_kms_config = args[:cloud_kms_config] if args.key?(:cloud_kms_config)
+          @enable_http_call = args[:enable_http_call] if args.key?(:enable_http_call)
+          @enable_managed_ai_features = args[:enable_managed_ai_features] if args.key?(:enable_managed_ai_features)
+          @enable_variable_masking = args[:enable_variable_masking] if args.key?(:enable_variable_masking)
+          @run_as_service_account = args[:run_as_service_account] if args.key?(:run_as_service_account)
         end
       end
       

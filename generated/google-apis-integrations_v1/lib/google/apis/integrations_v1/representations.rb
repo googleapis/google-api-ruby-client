@@ -1018,6 +1018,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIntegrationsV1alphaClientCertificate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1091,6 +1103,12 @@ module Google
       end
       
       class GoogleCloudIntegrationsV1alphaCredential
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaCustomerConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3810,6 +3828,23 @@ module Google
         end
       end
       
+      class GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_config, as: 'customerConfig', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCustomerConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCustomerConfig::Representation
+      
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_config, as: 'customerConfig', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCustomerConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCustomerConfig::Representation
+      
+        end
+      end
+      
       class GoogleCloudIntegrationsV1alphaClientCertificate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3827,6 +3862,8 @@ module Google
           property :cloud_kms_config, as: 'cloudKmsConfig', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCloudKmsConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCloudKmsConfig::Representation
       
           property :create_time, as: 'createTime'
+          property :customer_config, as: 'customerConfig', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCustomerConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCustomerConfig::Representation
+      
           property :description, as: 'description'
           property :enable_http_call, as: 'enableHttpCall'
           property :enable_internal_ip, as: 'enableInternalIp'
@@ -3948,6 +3985,18 @@ module Google
       
           property :username_and_password, as: 'usernameAndPassword', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUsernameAndPassword, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUsernameAndPassword::Representation
       
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaCustomerConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_kms_config, as: 'cloudKmsConfig', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCloudKmsConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCloudKmsConfig::Representation
+      
+          property :enable_http_call, as: 'enableHttpCall'
+          property :enable_managed_ai_features, as: 'enableManagedAiFeatures'
+          property :enable_variable_masking, as: 'enableVariableMasking'
+          property :run_as_service_account, as: 'runAsServiceAccount'
         end
       end
       
