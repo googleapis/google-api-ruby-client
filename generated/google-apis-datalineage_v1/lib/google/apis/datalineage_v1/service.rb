@@ -100,9 +100,9 @@ module Google
         #   Required. The name of the project and its location that should own the process,
         #   run, and lineage event.
         # @param [String] request_id
-        #   A unique identifier for this request. Restricted to 36 ASCII characters. A
-        #   random UUID is recommended. This request is idempotent only if a `request_id`
-        #   is provided.
+        #   Optional. A unique identifier for this request. Restricted to 36 ASCII
+        #   characters. A random UUID is recommended. This request is idempotent only if a
+        #   `request_id` is provided.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -318,9 +318,9 @@ module Google
         #   Required. The name of the project and its location that should own the process.
         # @param [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1Process] google_cloud_datacatalog_lineage_v1_process_object
         # @param [String] request_id
-        #   A unique identifier for this request. Restricted to 36 ASCII characters. A
-        #   random UUID is recommended. This request is idempotent only if a `request_id`
-        #   is provided.
+        #   Optional. A unique identifier for this request. Restricted to 36 ASCII
+        #   characters. A random UUID is recommended. This request is idempotent only if a
+        #   `request_id` is provided.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -466,6 +466,10 @@ module Google
         # @param [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1Process] google_cloud_datacatalog_lineage_v1_process_object
         # @param [Boolean] allow_missing
         #   If set to true and the process is not found, the request inserts it.
+        # @param [String] request_id
+        #   Optional. A unique identifier for this request. Restricted to 36 ASCII
+        #   characters. A random UUID is recommended. This request is idempotent only if a
+        #   `request_id` is provided.
         # @param [String] update_mask
         #   The list of fields to update. Currently not used. The whole message is updated.
         # @param [String] fields
@@ -485,7 +489,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_process(name, google_cloud_datacatalog_lineage_v1_process_object = nil, allow_missing: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_process(name, google_cloud_datacatalog_lineage_v1_process_object = nil, allow_missing: nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1Process::Representation
           command.request_object = google_cloud_datacatalog_lineage_v1_process_object
@@ -493,6 +497,7 @@ module Google
           command.response_class = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1Process
           command.params['name'] = name unless name.nil?
           command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -504,9 +509,9 @@ module Google
         #   Required. The name of the process that should own the run.
         # @param [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1Run] google_cloud_datacatalog_lineage_v1_run_object
         # @param [String] request_id
-        #   A unique identifier for this request. Restricted to 36 ASCII characters. A
-        #   random UUID is recommended. This request is idempotent only if a `request_id`
-        #   is provided.
+        #   Optional. A unique identifier for this request. Restricted to 36 ASCII
+        #   characters. A random UUID is recommended. This request is idempotent only if a
+        #   `request_id` is provided.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -689,9 +694,9 @@ module Google
         #   Required. The name of the run that should own the lineage event.
         # @param [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1LineageEvent] google_cloud_datacatalog_lineage_v1_lineage_event_object
         # @param [String] request_id
-        #   A unique identifier for this request. Restricted to 36 ASCII characters. A
-        #   random UUID is recommended. This request is idempotent only if a `request_id`
-        #   is provided.
+        #   Optional. A unique identifier for this request. Restricted to 36 ASCII
+        #   characters. A random UUID is recommended. This request is idempotent only if a
+        #   `request_id` is provided.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
