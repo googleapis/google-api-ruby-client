@@ -21993,6 +21993,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The name of the second voice (non-English) if language detection is
+        # supported.
+        # Corresponds to the JSON property `secondLanguageModel`
+        # @return [String]
+        attr_accessor :second_language_model
+      
         # Optional. The preferred gender of the voice. If not set, the service will
         # choose a voice based on the other parameters such as language_code and name.
         # Note that this is only a preference, not requirement. If a voice of the
@@ -22009,6 +22015,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+          @second_language_model = args[:second_language_model] if args.key?(:second_language_model)
           @ssml_gender = args[:ssml_gender] if args.key?(:ssml_gender)
         end
       end
