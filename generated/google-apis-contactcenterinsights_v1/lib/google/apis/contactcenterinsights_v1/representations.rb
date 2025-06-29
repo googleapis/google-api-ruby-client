@@ -388,6 +388,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1DeployIssueModelMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -790,6 +802,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -910,6 +928,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1QaQuestionTag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -941,6 +965,12 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1QaScorecardRevision
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1QueryInterval
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -995,6 +1025,18 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1133,6 +1175,18 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1403,6 +1457,18 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1750,6 +1816,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1alpha1QaQuestionTag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1alpha1QaScorecardResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1913,6 +1985,18 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2641,6 +2725,23 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1DeployIssueModelMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2990,6 +3091,7 @@ module Google
       class GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_bucket_uri, as: 'audioBucketUri'
           property :bucket_object_type, as: 'bucketObjectType'
           property :bucket_uri, as: 'bucketUri'
           collection :custom_metadata_keys, as: 'customMetadataKeys'
@@ -3256,6 +3358,15 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :qa_question_tags, as: 'qaQuestionTags', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionTag, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionTag::Representation
+      
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3465,6 +3576,17 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1QaQuestionTag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          collection :qa_question_ids, as: 'qaQuestionIds'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3536,6 +3658,14 @@ module Google
           property :snapshot, as: 'snapshot', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaScorecard, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaScorecard::Representation
       
           property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1QueryInterval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
         end
       end
       
@@ -3627,6 +3757,26 @@ module Google
       class GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_performance_source, as: 'agentPerformanceSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource::Representation
+      
+          property :comparison_query_interval, as: 'comparisonQueryInterval', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryInterval, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryInterval::Representation
+      
+          property :filter, as: 'filter'
+          property :query_interval, as: 'queryInterval', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryInterval, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryInterval::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_id, as: 'agentId'
         end
       end
       
@@ -3853,6 +4003,25 @@ module Google
       class GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :qa_question_tag, as: 'qaQuestionTag', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionTag, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionTag::Representation
+      
+          property :update_mask, as: 'updateMask'
         end
       end
       
@@ -4374,6 +4543,23 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4704,6 +4890,7 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_bucket_uri, as: 'audioBucketUri'
           property :bucket_object_type, as: 'bucketObjectType'
           property :bucket_uri, as: 'bucketUri'
           collection :custom_metadata_keys, as: 'customMetadataKeys'
@@ -4915,6 +5102,17 @@ module Google
           property :potential_score, as: 'potentialScore'
           property :score, as: 'score'
           property :str_value, as: 'strValue'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1QaQuestionTag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          collection :qa_question_ids, as: 'qaQuestionIds'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -5202,6 +5400,25 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :qa_question_tag, as: 'qaQuestionTag', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QaQuestionTag, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QaQuestionTag::Representation
+      
+          property :update_mask, as: 'updateMask'
         end
       end
       

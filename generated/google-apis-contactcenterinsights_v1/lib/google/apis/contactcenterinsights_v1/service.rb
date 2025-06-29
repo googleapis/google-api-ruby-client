@@ -294,6 +294,44 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Generates a summary of predefined performance metrics for a set of
+        # conversations. Conversations can be specified by specifying a time window and
+        # an agent id, for now. The summary includes a comparison of metrics computed
+        # for conversations in the previous time period, and also a comparison with
+        # peers in the same time period.
+        # @param [String] parent
+        #   Required. The parent resource of the conversations to derive performance stats
+        #   from. "projects/`project`/locations/`location`"
+        # @param [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest] google_cloud_contactcenterinsights_v1_query_performance_overview_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def query_project_location_performance_overview(parent, google_cloud_contactcenterinsights_v1_query_performance_overview_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}:queryPerformanceOverview', options)
+          command.request_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest::Representation
+          command.request_object = google_cloud_contactcenterinsights_v1_query_performance_overview_request_object
+          command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates project-level settings.
         # @param [String] name
         #   Immutable. The resource name of the settings resource. Format: projects/`
@@ -1096,6 +1134,44 @@ module Google
           command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation
           command.params['location'] = location unless location.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generates a summary of predefined performance metrics for a set of
+        # conversations. Conversations can be specified by specifying a time window and
+        # an agent id, for now. The summary includes a comparison of metrics computed
+        # for conversations in the previous time period, and also a comparison with
+        # peers in the same time period.
+        # @param [String] parent
+        #   Required. The parent resource of the conversations to derive performance stats
+        #   from. "projects/`project`/locations/`location`"
+        # @param [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest] google_cloud_contactcenterinsights_v1_query_performance_overview_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def query_project_location_authorized_view_set_authorized_view_performance_overview(parent, google_cloud_contactcenterinsights_v1_query_performance_overview_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}:queryPerformanceOverview', options)
+          command.request_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest::Representation
+          command.request_object = google_cloud_contactcenterinsights_v1_query_performance_overview_request_object
+          command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -4834,6 +4910,185 @@ module Google
           command.request_object = google_cloud_contactcenterinsights_v1_phrase_matcher_object
           command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1PhraseMatcher::Representation
           command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1PhraseMatcher
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a QaQuestionTag.
+        # @param [String] parent
+        #   Required. The parent resource of the QaQuestionTag.
+        # @param [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionTag] google_cloud_contactcenterinsights_v1_qa_question_tag_object
+        # @param [String] qa_question_tag_id
+        #   Optional. A unique ID for the new QaQuestionTag. This ID will become the final
+        #   component of the QaQuestionTag's resource name. If no ID is specified, a
+        #   server-generated ID will be used. This value should be 4-64 characters and
+        #   must match the regular expression `^[a-z0-9-]`4,64`$`. Valid characters are `a-
+        #   z-`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionTag] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionTag]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_qa_question_tag(parent, google_cloud_contactcenterinsights_v1_qa_question_tag_object = nil, qa_question_tag_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/qaQuestionTags', options)
+          command.request_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionTag::Representation
+          command.request_object = google_cloud_contactcenterinsights_v1_qa_question_tag_object
+          command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionTag::Representation
+          command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionTag
+          command.params['parent'] = parent unless parent.nil?
+          command.query['qaQuestionTagId'] = qa_question_tag_id unless qa_question_tag_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a QaQuestionTag.
+        # @param [String] name
+        #   Required. The name of the QaQuestionTag to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_qa_question_tag(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a QaQuestionTag.
+        # @param [String] name
+        #   Required. The name of the QaQuestionTag to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionTag] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionTag]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_qa_question_tag(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionTag::Representation
+          command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionTag
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the question tags.
+        # @param [String] parent
+        #   Required. The parent resource of the QaQuestionTags.
+        # @param [String] filter
+        #   Optional. A filter to reduce results to a specific subset. Supports
+        #   disjunctions (OR) and conjunctions (AND). Supported fields include the
+        #   following: * `project_id` - id of the project to list tags for * `
+        #   qa_scorecard_revision_id` - id of the scorecard revision to list tags for * `
+        #   qa_question_id - id of the question to list tags for`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_qa_question_tags(parent, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/qaQuestionTags', options)
+          command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse::Representation
+          command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a QaQuestionTag.
+        # @param [String] name
+        #   Identifier. Resource name for the QaQuestionTag Format projects/`project`/
+        #   locations/`location`/qaQuestionTags/`qa_question_tag` In the above format, the
+        #   last segment, i.e., qa_question_tag, is a server-generated ID corresponding to
+        #   the tag resource.
+        # @param [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionTag] google_cloud_contactcenterinsights_v1_qa_question_tag_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to be updated. All possible fields can be updated
+        #   by passing `*`, or a subset of the following updateable fields can be provided:
+        #   * `qa_question_tag_name` - the name of the tag * `qa_question_ids` - the list
+        #   of questions the tag applies to
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_qa_question_tag(name, google_cloud_contactcenterinsights_v1_qa_question_tag_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionTag::Representation
+          command.request_object = google_cloud_contactcenterinsights_v1_qa_question_tag_object
+          command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
