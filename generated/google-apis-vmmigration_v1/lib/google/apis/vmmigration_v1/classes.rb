@@ -1110,6 +1110,17 @@ module Google
         # @return [Google::Apis::VmmigrationV1::ComputeScheduling]
         attr_accessor :compute_scheduling
       
+        # Optional. Additional replica zones of the target regional disks. If this list
+        # is not empty a regional disk will be created. The first supported zone would
+        # be the one stated in the zone field. The rest are taken from this list. Please
+        # refer to the [regional disk creation API](https://cloud.google.com/compute/
+        # docs/regions-zones/global-regional-zonal-resources) for further details about
+        # regional vs zonal disks. If not specified, a zonal disk will be created in the
+        # same zone the VM is created.
+        # Corresponds to the JSON property `diskReplicaZones`
+        # @return [Array<String>]
+        attr_accessor :disk_replica_zones
+      
         # The disk type to use in the VM.
         # Corresponds to the JSON property `diskType`
         # @return [String]
@@ -1213,6 +1224,7 @@ module Google
           @boot_conversion = args[:boot_conversion] if args.key?(:boot_conversion)
           @boot_option = args[:boot_option] if args.key?(:boot_option)
           @compute_scheduling = args[:compute_scheduling] if args.key?(:compute_scheduling)
+          @disk_replica_zones = args[:disk_replica_zones] if args.key?(:disk_replica_zones)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @enable_integrity_monitoring = args[:enable_integrity_monitoring] if args.key?(:enable_integrity_monitoring)
           @enable_vtpm = args[:enable_vtpm] if args.key?(:enable_vtpm)
@@ -1266,6 +1278,17 @@ module Google
         # Corresponds to the JSON property `computeScheduling`
         # @return [Google::Apis::VmmigrationV1::ComputeScheduling]
         attr_accessor :compute_scheduling
+      
+        # Optional. Additional replica zones of the target regional disks. If this list
+        # is not empty a regional disk will be created. The first supported zone would
+        # be the one stated in the zone field. The rest are taken from this list. Please
+        # refer to the [regional disk creation API](https://cloud.google.com/compute/
+        # docs/regions-zones/global-regional-zonal-resources) for further details about
+        # regional vs zonal disks. If not specified, a zonal disk will be created in the
+        # same zone the VM is created.
+        # Corresponds to the JSON property `diskReplicaZones`
+        # @return [Array<String>]
+        attr_accessor :disk_replica_zones
       
         # The disk type to use in the VM.
         # Corresponds to the JSON property `diskType`
@@ -1367,6 +1390,7 @@ module Google
           @boot_conversion = args[:boot_conversion] if args.key?(:boot_conversion)
           @boot_option = args[:boot_option] if args.key?(:boot_option)
           @compute_scheduling = args[:compute_scheduling] if args.key?(:compute_scheduling)
+          @disk_replica_zones = args[:disk_replica_zones] if args.key?(:disk_replica_zones)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @enable_integrity_monitoring = args[:enable_integrity_monitoring] if args.key?(:enable_integrity_monitoring)
           @enable_vtpm = args[:enable_vtpm] if args.key?(:enable_vtpm)
