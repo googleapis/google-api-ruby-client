@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CertificateAuthorityServiceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CheckCompatibilityRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -358,7 +364,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TlsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Topic
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TrustConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -430,6 +448,13 @@ module Google
         end
       end
       
+      class CertificateAuthorityServiceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ca_pool, as: 'caPool'
+        end
+      end
+      
       class CheckCompatibilityRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -464,6 +489,8 @@ module Google
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
+          property :tls_config, as: 'tlsConfig', class: Google::Apis::ManagedkafkaV1::TlsConfig, decorator: Google::Apis::ManagedkafkaV1::TlsConfig::Representation
+      
           property :update_time, as: 'updateTime'
         end
       end
@@ -882,6 +909,15 @@ module Google
         end
       end
       
+      class TlsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ssl_principal_mapping_rules, as: 'sslPrincipalMappingRules'
+          property :trust_config, as: 'trustConfig', class: Google::Apis::ManagedkafkaV1::TrustConfig, decorator: Google::Apis::ManagedkafkaV1::TrustConfig::Representation
+      
+        end
+      end
+      
       class Topic
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -889,6 +925,14 @@ module Google
           property :name, as: 'name'
           property :partition_count, as: 'partitionCount'
           property :replication_factor, as: 'replicationFactor'
+        end
+      end
+      
+      class TrustConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cas_configs, as: 'casConfigs', class: Google::Apis::ManagedkafkaV1::CertificateAuthorityServiceConfig, decorator: Google::Apis::ManagedkafkaV1::CertificateAuthorityServiceConfig::Representation
+      
         end
       end
       
