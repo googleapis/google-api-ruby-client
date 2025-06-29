@@ -225,6 +225,27 @@ module Google
         end
       end
       
+      # A configuration for the Google Certificate Authority Service.
+      class CertificateAuthorityServiceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the CA pool to pull CA certificates from. Structured
+        # like: projects/`project`/locations/`location`/caPools/`ca_pool`. The CA pool
+        # does not need to be in the same project or location as the Kafka cluster.
+        # Corresponds to the JSON property `caPool`
+        # @return [String]
+        attr_accessor :ca_pool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ca_pool = args[:ca_pool] if args.key?(:ca_pool)
+        end
+      end
+      
       # Request for CheckCompatibility.
       class CheckCompatibilityRequest
         include Google::Apis::Core::Hashable
@@ -343,6 +364,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # The TLS configuration for the Kafka cluster.
+        # Corresponds to the JSON property `tlsConfig`
+        # @return [Google::Apis::ManagedkafkaV1::TlsConfig]
+        attr_accessor :tls_config
+      
         # Output only. The time when the cluster was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -363,6 +389,7 @@ module Google
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
+          @tls_config = args[:tls_config] if args.key?(:tls_config)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -1556,18 +1583,18 @@ module Google
       end
       
       # SchemaMode represents the mode of a schema registry or a specific subject.
-      # Four modes are supported: * NONE: This is the default mode for a subject and
-      # essentially means that the subject does not have any mode set. This means the
-      # subject will follow the schema registry's mode. * READONLY: The schema
-      # registry is in read-only mode. * READWRITE: The schema registry is in read-
-      # write mode, which allows limited write operations on the schema. * IMPORT: The
-      # schema registry is in import mode, which allows more editing operations on the
-      # schema for data importing purposes.
+      # Four modes are supported: * NONE: deprecated. This was the default mode for a
+      # subject, but now the default is unset (which means use the global schema
+      # registry setting) * READONLY: The schema registry is in read-only mode. *
+      # READWRITE: The schema registry is in read-write mode, which allows limited
+      # write operations on the schema. * IMPORT: The schema registry is in import
+      # mode, which allows more editing operations on the schema for data importing
+      # purposes.
       class SchemaMode
         include Google::Apis::Core::Hashable
       
         # Required. The mode type of a schema registry (READWRITE by default) or of a
-        # subject (NONE by default, which means use the global schema registry setting).
+        # subject (unset by default, which means use the global schema registry setting).
         # Corresponds to the JSON property `mode`
         # @return [String]
         attr_accessor :mode
@@ -1788,6 +1815,37 @@ module Google
         end
       end
       
+      # The TLS configuration for the Kafka cluster.
+      class TlsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of rules for mapping from SSL principal names to short names.
+        # These are applied in order by Kafka. Refer to the Apache Kafka documentation
+        # for `ssl.principal.mapping.rules` for the precise formatting details and
+        # syntax. Example: "RULE:^CN=(.*?),OU=ServiceUsers.*$/$1@example.com/,DEFAULT"
+        # This is a static Kafka broker configuration. Setting or modifying this field
+        # will trigger a rolling restart of the Kafka brokers to apply the change. An
+        # empty string means no rules are applied (Kafka default).
+        # Corresponds to the JSON property `sslPrincipalMappingRules`
+        # @return [String]
+        attr_accessor :ssl_principal_mapping_rules
+      
+        # Sources of CA certificates to install in the broker's truststore.
+        # Corresponds to the JSON property `trustConfig`
+        # @return [Google::Apis::ManagedkafkaV1::TrustConfig]
+        attr_accessor :trust_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ssl_principal_mapping_rules = args[:ssl_principal_mapping_rules] if args.key?(:ssl_principal_mapping_rules)
+          @trust_config = args[:trust_config] if args.key?(:trust_config)
+        end
+      end
+      
       # A Kafka topic in a given cluster.
       class Topic
         include Google::Apis::Core::Hashable
@@ -1830,6 +1888,26 @@ module Google
           @name = args[:name] if args.key?(:name)
           @partition_count = args[:partition_count] if args.key?(:partition_count)
           @replication_factor = args[:replication_factor] if args.key?(:replication_factor)
+        end
+      end
+      
+      # Sources of CA certificates to install in the broker's truststore.
+      class TrustConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Configuration for the Google Certificate Authority Service. Maximum
+        # 10.
+        # Corresponds to the JSON property `casConfigs`
+        # @return [Array<Google::Apis::ManagedkafkaV1::CertificateAuthorityServiceConfig>]
+        attr_accessor :cas_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cas_configs = args[:cas_configs] if args.key?(:cas_configs)
         end
       end
       
