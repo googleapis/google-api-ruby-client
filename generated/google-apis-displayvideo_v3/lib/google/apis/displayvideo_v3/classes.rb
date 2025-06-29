@@ -2322,7 +2322,7 @@ module Google
         # CreateAssignedTargetingOptionsRequest`. Supported targeting types: * `
         # TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `
         # TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `
-        # TARGETING_TYPE_KEYWORD`
+        # TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_INVENTORY_MODE`
         # Corresponds to the JSON property `createRequests`
         # @return [Array<Google::Apis::DisplayvideoV3::CreateAssignedTargetingOptionsRequest>]
         attr_accessor :create_requests
@@ -2331,7 +2331,7 @@ module Google
         # DeleteAssignedTargetingOptionsRequest`. Supported targeting types: * `
         # TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `
         # TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `
-        # TARGETING_TYPE_KEYWORD`
+        # TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_INVENTORY_MODE`
         # Corresponds to the JSON property `deleteRequests`
         # @return [Array<Google::Apis::DisplayvideoV3::DeleteAssignedTargetingOptionsRequest>]
         attr_accessor :delete_requests
@@ -12163,21 +12163,28 @@ module Google
       
         # Optional. The third-party vendors measuring brand lift. The following third-
         # party vendors are applicable: * `THIRD_PARTY_VENDOR_DYNATA` * `
-        # THIRD_PARTY_VENDOR_KANTAR`
+        # THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_KANTAR_MILLWARD_BROWN` * `
+        # THIRD_PARTY_VENDOR_GOOGLE_INTERNAL` * `THIRD_PARTY_VENDOR_INTAGE` * `
+        # THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_MACROMILL`
         # Corresponds to the JSON property `brandLiftVendorConfigs`
         # @return [Array<Google::Apis::DisplayvideoV3::ThirdPartyVendorConfig>]
         attr_accessor :brand_lift_vendor_configs
       
         # Optional. The third-party vendors measuring brand safety. The following third-
         # party vendors are applicable: * `THIRD_PARTY_VENDOR_ZERF` * `
-        # THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE`
+        # THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE` *
+        # `THIRD_PARTY_VENDOR_GOOGLE_INTERNAL` * `THIRD_PARTY_VENDOR_ZEFR`
         # Corresponds to the JSON property `brandSafetyVendorConfigs`
         # @return [Array<Google::Apis::DisplayvideoV3::ThirdPartyVendorConfig>]
         attr_accessor :brand_safety_vendor_configs
       
         # Optional. The third-party vendors measuring reach. The following third-party
         # vendors are applicable: * `THIRD_PARTY_VENDOR_NIELSEN` * `
-        # THIRD_PARTY_VENDOR_COMSCORE` * `THIRD_PARTY_VENDOR_KANTAR`
+        # THIRD_PARTY_VENDOR_COMSCORE` * `THIRD_PARTY_VENDOR_KANTAR` * `
+        # THIRD_PARTY_VENDOR_GOOGLE_INTERNAL` * `
+        # THIRD_PARTY_VENDOR_KANTAR_MILLWARD_BROWN` * `THIRD_PARTY_VENDOR_VIDEO_RESEARCH`
+        # * `THIRD_PARTY_VENDOR_MEDIA_SCOPE` * `THIRD_PARTY_VENDOR_AUDIENCE_PROJECT` * `
+        # THIRD_PARTY_VENDOR_VIDEO_AMP` * `THIRD_PARTY_VENDOR_ISPOT_TV`
         # Corresponds to the JSON property `reachVendorConfigs`
         # @return [Array<Google::Apis::DisplayvideoV3::ThirdPartyVendorConfig>]
         attr_accessor :reach_vendor_configs
@@ -12186,7 +12193,7 @@ module Google
         # party vendors are applicable: * `THIRD_PARTY_VENDOR_MOAT` * `
         # THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE` *
         # `THIRD_PARTY_VENDOR_COMSCORE` * `THIRD_PARTY_VENDOR_TELEMETRY` * `
-        # THIRD_PARTY_VENDOR_MEETRICS`
+        # THIRD_PARTY_VENDOR_MEETRICS` * `THIRD_PARTY_VENDOR_GOOGLE_INTERNAL`
         # Corresponds to the JSON property `viewabilityVendorConfigs`
         # @return [Array<Google::Apis::DisplayvideoV3::ThirdPartyVendorConfig>]
         attr_accessor :viewability_vendor_configs
@@ -12991,20 +12998,17 @@ module Google
       class YoutubeAndPartnersSettings
         include Google::Apis::Core::Hashable
       
-        # The kind of content on which the YouTube and Partners ads will be shown. *
-        # Warning*: Starting **June 12, 2025**, this setting will no longer be editable.
-        # This field will eventually be removed. [Read more about this announced change](
-        # /display-video/api/deprecations#features.li_yt_content_category)
+        # Output only. The kind of content on which the YouTube and Partners ads will be
+        # shown. *Warning*: This field will be removed in the near future. Use
+        # effective_content_category instead.
         # Corresponds to the JSON property `contentCategory`
         # @return [String]
         attr_accessor :content_category
       
         # Output only. The content category which takes effect when serving the line
         # item. When content category is set in both line item and advertiser, the
-        # stricter one will take effect when serving the line item. *Warning*: Starting *
-        # *June 12, 2025**, this field will only reflect the advertiser level setting
-        # for new line items. [Read more about this announced change](/display-video/api/
-        # deprecations#features.li_yt_content_category)
+        # stricter one will take effect when serving the line item. New line items will
+        # only inherit the advertiser level setting.
         # Corresponds to the JSON property `effectiveContentCategory`
         # @return [String]
         attr_accessor :effective_content_category
