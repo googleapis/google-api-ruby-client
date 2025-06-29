@@ -890,6 +890,7 @@ module Google
           property :name, as: 'name'
           property :retry_policy, as: 'retryPolicy', class: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineRetryPolicy, decorator: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineRetryPolicy::Representation
       
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end

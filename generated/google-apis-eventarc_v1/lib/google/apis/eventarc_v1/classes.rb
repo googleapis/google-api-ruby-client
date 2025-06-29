@@ -2197,6 +2197,13 @@ module Google
         # @return [Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineRetryPolicy]
         attr_accessor :retry_policy
       
+        # Output only. Whether or not this Pipeline satisfies the requirements of
+        # physical zone separation
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. Server-assigned unique identifier for the Pipeline. The value is
         # a UUID4 string and guaranteed to remain unchanged until the resource is
         # deleted.
@@ -2229,6 +2236,7 @@ module Google
           @mediations = args[:mediations] if args.key?(:mediations)
           @name = args[:name] if args.key?(:name)
           @retry_policy = args[:retry_policy] if args.key?(:retry_policy)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
