@@ -1000,6 +1000,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WipeParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WorkAccountSetupConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1354,6 +1360,8 @@ module Google
       
           property :type, as: 'type'
           property :user_name, as: 'userName'
+          property :wipe_params, as: 'wipeParams', class: Google::Apis::AndroidmanagementV1::WipeParams, decorator: Google::Apis::AndroidmanagementV1::WipeParams::Representation
+      
         end
       end
       
@@ -1411,6 +1419,7 @@ module Google
       class CrossProfilePolicies
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cross_profile_app_functions, as: 'crossProfileAppFunctions'
           property :cross_profile_copy_paste, as: 'crossProfileCopyPaste'
           property :cross_profile_data_sharing, as: 'crossProfileDataSharing'
           property :exemptions_to_show_work_contacts_in_personal_profile, as: 'exemptionsToShowWorkContactsInPersonalProfile', class: Google::Apis::AndroidmanagementV1::PackageNameList, decorator: Google::Apis::AndroidmanagementV1::PackageNameList::Representation
@@ -2261,6 +2270,7 @@ module Google
       
           collection :android_device_policy_tracks, as: 'androidDevicePolicyTracks'
           property :app_auto_update_policy, as: 'appAutoUpdatePolicy'
+          property :app_functions, as: 'appFunctions'
           collection :applications, as: 'applications', class: Google::Apis::AndroidmanagementV1::ApplicationPolicy, decorator: Google::Apis::AndroidmanagementV1::ApplicationPolicy::Representation
       
           property :assist_content_policy, as: 'assistContentPolicy'
@@ -2865,6 +2875,15 @@ module Google
       class WipeFailureEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class WipeParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :wipe_data_flags, as: 'wipeDataFlags'
+          property :wipe_reason, as: 'wipeReason', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
+      
         end
       end
       

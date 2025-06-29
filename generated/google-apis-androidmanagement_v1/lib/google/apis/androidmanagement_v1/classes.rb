@@ -219,8 +219,8 @@ module Google
         # some of the APN settings result in non-compliance of INVALID_VALUE , they will
         # be ignored. This can be set on fully managed devices on Android 10 and above.
         # This can also be set on work profiles on Android 13 and above and only with
-        # ApnSetting's with ENTERPRISE APN type. A nonComplianceDetail with API_LEVEL is
-        # reported if the Android version is less than 10. A nonComplianceDetail with
+        # ApnSetting's with ENTERPRISE APN type. A NonComplianceDetail with API_LEVEL is
+        # reported if the Android version is less than 10. A NonComplianceDetail with
         # MANAGEMENT_MODE is reported for work profiles on Android versions less than 13.
         # Corresponds to the JSON property `apnSettings`
         # @return [Array<Google::Apis::AndroidmanagementV1::ApnSetting>]
@@ -268,11 +268,11 @@ module Google
         # Required. Usage categories for the APN. Policy will be rejected if this field
         # is empty or contains APN_TYPE_UNSPECIFIED or duplicates. Multiple APN types
         # can be set on fully managed devices. ENTERPRISE is the only allowed APN type
-        # on work profiles. A nonComplianceDetail with MANAGEMENT_MODE is reported for
+        # on work profiles. A NonComplianceDetail with MANAGEMENT_MODE is reported for
         # any other value on work profiles. APN types that are not supported on the
         # device or management mode will be ignored. If this results in the empty list,
         # the APN setting will be ignored, because apnTypes is a required field. A
-        # nonComplianceDetail with INVALID_VALUE is reported if none of the APN types
+        # NonComplianceDetail with INVALID_VALUE is reported if none of the APN types
         # are supported on the device or management mode.
         # Corresponds to the JSON property `apnTypes`
         # @return [Array<String>]
@@ -315,7 +315,7 @@ module Google
         # Optional. The default MTU (Maximum Transmission Unit) size in bytes of the
         # IPv4 routes brought up by this APN setting. A value of 0 (default) means not
         # set and negative values are rejected. Supported on Android 13 and above. A
-        # nonComplianceDetail with API_LEVEL is reported if the Android version is less
+        # NonComplianceDetail with API_LEVEL is reported if the Android version is less
         # than 13.
         # Corresponds to the JSON property `mtuV4`
         # @return [Fixnum]
@@ -324,7 +324,7 @@ module Google
         # Optional. The MTU (Maximum Transmission Unit) size of the IPv6 mobile
         # interface to which the APN connected. A value of 0 (default) means not set and
         # negative values are rejected. Supported on Android 13 and above. A
-        # nonComplianceDetail with API_LEVEL is reported if the Android version is less
+        # NonComplianceDetail with API_LEVEL is reported if the Android version is less
         # than 13.
         # Corresponds to the JSON property `mtuV6`
         # @return [Fixnum]
@@ -922,7 +922,8 @@ module Google
       
         # Optional. Specifies whether user control is permitted for the app. User
         # control includes user actions like force-stopping and clearing app data.
-        # Supported on Android 11 and above.
+        # Certain types of apps have special treatment, see
+        # USER_CONTROL_SETTINGS_UNSPECIFIED and USER_CONTROL_ALLOWED for more details.
         # Corresponds to the JSON property `userControlSettings`
         # @return [String]
         attr_accessor :user_control_settings
@@ -1508,6 +1509,11 @@ module Google
         # @return [String]
         attr_accessor :user_name
       
+        # Parameters associated with the WIPE command to wipe the device.
+        # Corresponds to the JSON property `wipeParams`
+        # @return [Google::Apis::AndroidmanagementV1::WipeParams]
+        attr_accessor :wipe_params
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1532,6 +1538,7 @@ module Google
           @stop_lost_mode_status = args[:stop_lost_mode_status] if args.key?(:stop_lost_mode_status)
           @type = args[:type] if args.key?(:type)
           @user_name = args[:user_name] if args.key?(:user_name)
+          @wipe_params = args[:wipe_params] if args.key?(:wipe_params)
         end
       end
       
@@ -1739,10 +1746,16 @@ module Google
       end
       
       # Controls the data from the work profile that can be accessed from the personal
-      # profile and vice versa. A nonComplianceDetail with MANAGEMENT_MODE is reported
+      # profile and vice versa. A NonComplianceDetail with MANAGEMENT_MODE is reported
       # if the device does not have a work profile.
       class CrossProfilePolicies
         include Google::Apis::Core::Hashable
+      
+        # Optional. Controls whether personal profile apps can invoke app functions
+        # exposed by apps in the work profile.
+        # Corresponds to the JSON property `crossProfileAppFunctions`
+        # @return [String]
+        attr_accessor :cross_profile_app_functions
       
         # Whether text copied from one profile (personal or work) can be pasted in the
         # other profile.
@@ -1783,6 +1796,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cross_profile_app_functions = args[:cross_profile_app_functions] if args.key?(:cross_profile_app_functions)
           @cross_profile_copy_paste = args[:cross_profile_copy_paste] if args.key?(:cross_profile_copy_paste)
           @cross_profile_data_sharing = args[:cross_profile_data_sharing] if args.key?(:cross_profile_data_sharing)
           @exemptions_to_show_work_contacts_in_personal_profile = args[:exemptions_to_show_work_contacts_in_personal_profile] if args.key?(:exemptions_to_show_work_contacts_in_personal_profile)
@@ -2854,7 +2868,7 @@ module Google
         # signing key certificate fingerprints are always obtained from the Play Store
         # and this field is used to provide additional signing key certificate
         # fingerprints. However, if the application is not available on the Play Store,
-        # this field needs to be set. A nonComplianceDetail with INVALID_VALUE is
+        # this field needs to be set. A NonComplianceDetail with INVALID_VALUE is
         # reported if this field is not set when the application is not available on the
         # Play Store.The signing key certificate fingerprint of the extension app on the
         # device must match one of the signing key certificate fingerprints obtained
@@ -4981,6 +4995,13 @@ module Google
         # @return [String]
         attr_accessor :app_auto_update_policy
       
+        # Optional. Controls whether apps on the device for fully managed devices or in
+        # the work profile for devices with work profiles are allowed to expose app
+        # functions.
+        # Corresponds to the JSON property `appFunctions`
+        # @return [String]
+        attr_accessor :app_functions
+      
         # Policy applied to apps. This can have at most 3,000 elements.
         # Corresponds to the JSON property `applications`
         # @return [Array<Google::Apis::AndroidmanagementV1::ApplicationPolicy>]
@@ -5097,7 +5118,7 @@ module Google
         alias_method :credentials_config_disabled?, :credentials_config_disabled
       
         # Controls the data from the work profile that can be accessed from the personal
-        # profile and vice versa. A nonComplianceDetail with MANAGEMENT_MODE is reported
+        # profile and vice versa. A NonComplianceDetail with MANAGEMENT_MODE is reported
         # if the device does not have a work profile.
         # Corresponds to the JSON property `crossProfilePolicies`
         # @return [Google::Apis::AndroidmanagementV1::CrossProfilePolicies]
@@ -5600,6 +5621,7 @@ module Google
           @always_on_vpn_package = args[:always_on_vpn_package] if args.key?(:always_on_vpn_package)
           @android_device_policy_tracks = args[:android_device_policy_tracks] if args.key?(:android_device_policy_tracks)
           @app_auto_update_policy = args[:app_auto_update_policy] if args.key?(:app_auto_update_policy)
+          @app_functions = args[:app_functions] if args.key?(:app_functions)
           @applications = args[:applications] if args.key?(:applications)
           @assist_content_policy = args[:assist_content_policy] if args.key?(:assist_content_policy)
           @auto_date_and_time_zone = args[:auto_date_and_time_zone] if args.key?(:auto_date_and_time_zone)
@@ -7427,9 +7449,9 @@ module Google
       
         # Optional. List of Wi-Fi SSIDs that should be applied in the policy. This field
         # must be non-empty when WifiSsidPolicyType is set to WIFI_SSID_ALLOWLIST. If
-        # this is set to a non-empty list, then a nonComplianceDetail detail with
+        # this is set to a non-empty list, then a NonComplianceDetail detail with
         # API_LEVEL is reported if the Android version is less than 13 and a
-        # nonComplianceDetail with MANAGEMENT_MODE is reported for non-company-owned
+        # NonComplianceDetail with MANAGEMENT_MODE is reported for non-company-owned
         # devices.
         # Corresponds to the JSON property `wifiSsids`
         # @return [Array<Google::Apis::AndroidmanagementV1::WifiSsid>]
@@ -7487,6 +7509,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Parameters associated with the WIPE command to wipe the device.
+      class WipeParams
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Flags to determine what data to wipe.
+        # Corresponds to the JSON property `wipeDataFlags`
+        # @return [Array<String>]
+        attr_accessor :wipe_data_flags
+      
+        # Provides a user-facing message with locale info. The maximum message length is
+        # 4096 characters.
+        # Corresponds to the JSON property `wipeReason`
+        # @return [Google::Apis::AndroidmanagementV1::UserFacingMessage]
+        attr_accessor :wipe_reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @wipe_data_flags = args[:wipe_data_flags] if args.key?(:wipe_data_flags)
+          @wipe_reason = args[:wipe_reason] if args.key?(:wipe_reason)
         end
       end
       
