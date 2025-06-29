@@ -2899,6 +2899,7 @@ module Google
           property :memory_manager, as: 'memoryManager', class: Google::Apis::ContainerV1beta1::MemoryManager, decorator: Google::Apis::ContainerV1beta1::MemoryManager::Representation
       
           property :pod_pids_limit, :numeric_string => true, as: 'podPidsLimit'
+          property :single_process_oom_kill, as: 'singleProcessOomKill'
           property :topology_manager, as: 'topologyManager', class: Google::Apis::ContainerV1beta1::TopologyManager, decorator: Google::Apis::ContainerV1beta1::TopologyManager::Representation
       
         end
@@ -2937,6 +2938,7 @@ module Google
           property :pod_ipv4_cidr_block, as: 'podIpv4CidrBlock'
           property :pod_ipv4_range_utilization, as: 'podIpv4RangeUtilization'
           property :pod_range, as: 'podRange'
+          property :subnetwork, as: 'subnetwork'
         end
       end
       
@@ -3597,6 +3599,7 @@ module Google
       class SoleTenantConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :min_node_cpus, as: 'minNodeCpus'
           collection :node_affinities, as: 'nodeAffinities', class: Google::Apis::ContainerV1beta1::NodeAffinity, decorator: Google::Apis::ContainerV1beta1::NodeAffinity::Representation
       
         end
