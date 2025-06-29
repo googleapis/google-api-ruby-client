@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRunV2MultiRegionSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2NfsVolumeSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1169,6 +1175,14 @@ module Google
         end
       end
       
+      class GoogleCloudRunV2MultiRegionSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :multi_region_id, as: 'multiRegionId'
+          collection :regions, as: 'regions'
+        end
+      end
+      
       class GoogleCloudRunV2NfsVolumeSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1380,6 +1394,8 @@ module Google
           property :latest_created_revision, as: 'latestCreatedRevision'
           property :latest_ready_revision, as: 'latestReadyRevision'
           property :launch_stage, as: 'launchStage'
+          property :multi_region_settings, as: 'multiRegionSettings', class: Google::Apis::RunV2::GoogleCloudRunV2MultiRegionSettings, decorator: Google::Apis::RunV2::GoogleCloudRunV2MultiRegionSettings::Representation
+      
           property :name, as: 'name'
           property :observed_generation, :numeric_string => true, as: 'observedGeneration'
           property :reconciling, as: 'reconciling'
