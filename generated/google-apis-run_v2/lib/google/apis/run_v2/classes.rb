@@ -1643,6 +1643,31 @@ module Google
         end
       end
       
+      # Settings for multi-region deployment.
+      class GoogleCloudRunV2MultiRegionSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. System-generated unique id for the multi-region Service.
+        # Corresponds to the JSON property `multiRegionId`
+        # @return [String]
+        attr_accessor :multi_region_id
+      
+        # Required. List of regions to deploy to, including primary region.
+        # Corresponds to the JSON property `regions`
+        # @return [Array<String>]
+        attr_accessor :regions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @multi_region_id = args[:multi_region_id] if args.key?(:multi_region_id)
+          @regions = args[:regions] if args.key?(:regions)
+        end
+      end
+      
       # Represents an NFS mount.
       class GoogleCloudRunV2NfsVolumeSource
         include Google::Apis::Core::Hashable
@@ -2610,6 +2635,11 @@ module Google
         # @return [String]
         attr_accessor :launch_stage
       
+        # Settings for multi-region deployment.
+        # Corresponds to the JSON property `multiRegionSettings`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2MultiRegionSettings]
+        attr_accessor :multi_region_settings
+      
         # The fully qualified name of this Service. In CreateServiceRequest, this field
         # is ignored, and instead composed from CreateServiceRequest.parent and
         # CreateServiceRequest.service_id. Format: projects/`project`/locations/`
@@ -2743,6 +2773,7 @@ module Google
           @latest_created_revision = args[:latest_created_revision] if args.key?(:latest_created_revision)
           @latest_ready_revision = args[:latest_ready_revision] if args.key?(:latest_ready_revision)
           @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
+          @multi_region_settings = args[:multi_region_settings] if args.key?(:multi_region_settings)
           @name = args[:name] if args.key?(:name)
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
