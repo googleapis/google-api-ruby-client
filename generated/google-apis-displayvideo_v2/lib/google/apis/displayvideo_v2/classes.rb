@@ -1636,7 +1636,7 @@ module Google
         # CreateAssignedTargetingOptionsRequest`. Supported targeting types: * `
         # TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `
         # TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `
-        # TARGETING_TYPE_KEYWORD`
+        # TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_INVENTORY_MODE`
         # Corresponds to the JSON property `createRequests`
         # @return [Array<Google::Apis::DisplayvideoV2::CreateAssignedTargetingOptionsRequest>]
         attr_accessor :create_requests
@@ -1645,7 +1645,7 @@ module Google
         # DeleteAssignedTargetingOptionsRequest`. Supported targeting types: * `
         # TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `
         # TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `
-        # TARGETING_TYPE_KEYWORD`
+        # TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_INVENTORY_MODE`
         # Corresponds to the JSON property `deleteRequests`
         # @return [Array<Google::Apis::DisplayvideoV2::DeleteAssignedTargetingOptionsRequest>]
         attr_accessor :delete_requests
@@ -11697,20 +11697,17 @@ module Google
         # @return [Google::Apis::DisplayvideoV2::YoutubeAndPartnersBiddingStrategy]
         attr_accessor :bidding_strategy
       
-        # The kind of content on which the YouTube and Partners ads will be shown. *
-        # Warning*: Starting **June 12, 2025**, this setting will no longer be editable.
-        # This field will eventually be removed. [Read more about this announced change](
-        # /display-video/api/deprecations#features.li_yt_content_category)
+        # Output only. The kind of content on which the YouTube and Partners ads will be
+        # shown. *Warning*: This field will be removed in the near future. Use
+        # effective_content_category instead.
         # Corresponds to the JSON property `contentCategory`
         # @return [String]
         attr_accessor :content_category
       
         # Output only. The content category which takes effect when serving the line
         # item. When content category is set in both line item and advertiser, the
-        # stricter one will take effect when serving the line item. *Warning*: Starting *
-        # *June 12, 2025**, this field will only reflect the advertiser level setting
-        # for new line items. [Read more about this announced change](/display-video/api/
-        # deprecations#features.li_yt_content_category)
+        # stricter one will take effect when serving the line item. New line items will
+        # only inherit the advertiser level setting.
         # Corresponds to the JSON property `effectiveContentCategory`
         # @return [String]
         attr_accessor :effective_content_category
