@@ -1,5 +1,9 @@
 # Release history for google-apis-areainsights_v1
 
+### v0.6.0 (2025-06-29)
+
+* Regenerated from discovery document revision 20250622
+
 ### v0.5.0 (2025-05-25)
 
 * Regenerated from discovery document revision 20250521
