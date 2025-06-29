@@ -1654,6 +1654,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2SaveToGcsFindingsOutput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2Schedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4827,6 +4833,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :output_config, as: 'outputConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2OutputStorageConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2OutputStorageConfig::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2SaveToGcsFindingsOutput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :findings, as: 'findings', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Finding, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Finding::Representation
       
         end
       end
