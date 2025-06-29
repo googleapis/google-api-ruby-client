@@ -91,6 +91,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new database by cloning an existing one. The new database must be in
+        # the same cloud region or multi-region location as the existing database. This
+        # behaves similar to FirestoreAdmin.CreateDatabase except instead of creating a
+        # new empty database, a new database is created with the database type, index
+        # configuration, and documents from an existing database. The long-running
+        # operation can be used to track the progress of the clone, with the Operation's
+        # metadata field type being the CloneDatabaseMetadata. The response type is the
+        # Database if the clone was successful. The new database is not readable or
+        # writeable until the LRO has completed.
+        # @param [String] parent
+        #   Required. The project to clone the database in. Format is `projects/`
+        #   project_id``.
+        # @param [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1CloneDatabaseRequest] google_firestore_admin_v1_clone_database_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def clone_project_database(parent, google_firestore_admin_v1_clone_database_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/databases:clone', options)
+          command.request_representation = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1CloneDatabaseRequest::Representation
+          command.request_object = google_firestore_admin_v1_clone_database_request_object
+          command.response_representation = Google::Apis::FirestoreV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::FirestoreV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Create a database.
         # @param [String] parent
         #   Required. A parent name of the form `projects/`project_id``

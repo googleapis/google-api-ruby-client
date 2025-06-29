@@ -1395,6 +1395,109 @@ module Google
         end
       end
       
+      # Metadata for the long-running operation from the CloneDatabase request.
+      class GoogleFirestoreAdminV1CloneDatabaseMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The name of the database being cloned to.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # The time the clone finished, unset for ongoing clones.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The operation state of the clone.
+        # Corresponds to the JSON property `operationState`
+        # @return [String]
+        attr_accessor :operation_state
+      
+        # A consistent snapshot of a database at a specific point in time. A PITR (Point-
+        # in-time recovery) snapshot with previous versions of a database's data is
+        # available for every minute up to the associated database's data retention
+        # period. If the PITR feature is enabled, the retention period is 7 days;
+        # otherwise, it is one hour.
+        # Corresponds to the JSON property `pitrSnapshot`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1PitrSnapshot]
+        attr_accessor :pitr_snapshot
+      
+        # Describes the progress of the operation. Unit of work is generic and must be
+        # interpreted based on where Progress is used.
+        # Corresponds to the JSON property `progressPercentage`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Progress]
+        attr_accessor :progress_percentage
+      
+        # The time the clone was started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database = args[:database] if args.key?(:database)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @operation_state = args[:operation_state] if args.key?(:operation_state)
+          @pitr_snapshot = args[:pitr_snapshot] if args.key?(:pitr_snapshot)
+          @progress_percentage = args[:progress_percentage] if args.key?(:progress_percentage)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # The request message for FirestoreAdmin.CloneDatabase.
+      class GoogleFirestoreAdminV1CloneDatabaseRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The ID to use for the database, which will become the final
+        # component of the database's resource name. This database ID must not be
+        # associated with an existing database. This value should be 4-63 characters.
+        # Valid characters are /a-z-/ with first character a letter and the last a
+        # letter or a number. Must not be UUID-like /[0-9a-f]`8`(-[0-9a-f]`4`)`3`-[0-9a-
+        # f]`12`/. "(default)" database ID is also valid.
+        # Corresponds to the JSON property `databaseId`
+        # @return [String]
+        attr_accessor :database_id
+      
+        # Encryption configuration for a new database being created from another source.
+        # The source could be a Backup .
+        # Corresponds to the JSON property `encryptionConfig`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1EncryptionConfig]
+        attr_accessor :encryption_config
+      
+        # A consistent snapshot of a database at a specific point in time. A PITR (Point-
+        # in-time recovery) snapshot with previous versions of a database's data is
+        # available for every minute up to the associated database's data retention
+        # period. If the PITR feature is enabled, the retention period is 7 days;
+        # otherwise, it is one hour.
+        # Corresponds to the JSON property `pitrSnapshot`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1PitrSnapshot]
+        attr_accessor :pitr_snapshot
+      
+        # Optional. Immutable. Tags to be bound to the cloned database. The tags should
+        # be provided in the format of `tagKeys/`tag_key_id` -> tagValues/`tag_value_id``
+        # .
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_id = args[:database_id] if args.key?(:database_id)
+          @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
+          @pitr_snapshot = args[:pitr_snapshot] if args.key?(:pitr_snapshot)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
       # The CMEK (Customer Managed Encryption Key) configuration for a Firestore
       # database. If not present, the database is secured by the default Google
       # encryption key.
@@ -2534,6 +2637,43 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A consistent snapshot of a database at a specific point in time. A PITR (Point-
+      # in-time recovery) snapshot with previous versions of a database's data is
+      # available for every minute up to the associated database's data retention
+      # period. If the PITR feature is enabled, the retention period is 7 days;
+      # otherwise, it is one hour.
+      class GoogleFirestoreAdminV1PitrSnapshot
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the database that this was a snapshot of. Format: `
+        # projects/`project`/databases/`database``.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Output only. Public UUID of the database the snapshot was associated with.
+        # Corresponds to the JSON property `databaseUid`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :database_uid
+      
+        # Required. Snapshot time of the database.
+        # Corresponds to the JSON property `snapshotTime`
+        # @return [String]
+        attr_accessor :snapshot_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database = args[:database] if args.key?(:database)
+          @database_uid = args[:database_uid] if args.key?(:database_uid)
+          @snapshot_time = args[:snapshot_time] if args.key?(:snapshot_time)
         end
       end
       
