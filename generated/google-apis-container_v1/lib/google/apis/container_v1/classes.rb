@@ -5258,6 +5258,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :pod_pids_limit
       
+        # Optional. Defines whether to enable single process OOM killer. If true, will
+        # prevent the memory.oom.group flag from being set for container cgroups in
+        # cgroups v2. This causes processes in the container to be OOM killed
+        # individually instead of as a group.
+        # Corresponds to the JSON property `singleProcessOomKill`
+        # @return [Boolean]
+        attr_accessor :single_process_oom_kill
+        alias_method :single_process_oom_kill?, :single_process_oom_kill
+      
         # TopologyManager defines the configuration options for Topology Manager feature.
         # See https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/
         # Corresponds to the JSON property `topologyManager`
@@ -5283,6 +5292,7 @@ module Google
           @insecure_kubelet_readonly_port_enabled = args[:insecure_kubelet_readonly_port_enabled] if args.key?(:insecure_kubelet_readonly_port_enabled)
           @memory_manager = args[:memory_manager] if args.key?(:memory_manager)
           @pod_pids_limit = args[:pod_pids_limit] if args.key?(:pod_pids_limit)
+          @single_process_oom_kill = args[:single_process_oom_kill] if args.key?(:single_process_oom_kill)
           @topology_manager = args[:topology_manager] if args.key?(:topology_manager)
         end
       end
@@ -5419,6 +5429,14 @@ module Google
         # @return [String]
         attr_accessor :pod_range
       
+        # Output only. The subnetwork path for the node pool. Format: projects/`project`/
+        # regions/`region`/subnetworks/`subnetwork` If the cluster is associated with
+        # multiple subnetworks, the subnetwork for the node pool is picked based on the
+        # IP utilization during node pool creation and is immutable.
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5434,6 +5452,7 @@ module Google
           @pod_ipv4_cidr_block = args[:pod_ipv4_cidr_block] if args.key?(:pod_ipv4_cidr_block)
           @pod_ipv4_range_utilization = args[:pod_ipv4_range_utilization] if args.key?(:pod_ipv4_range_utilization)
           @pod_range = args[:pod_range] if args.key?(:pod_range)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
         end
       end
       
@@ -7853,6 +7872,13 @@ module Google
       class SoleTenantConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. The minimum number of virtual CPUs this instance will consume when
+        # running on a sole-tenant node. This field can only be set if the node pool is
+        # created in a shared sole-tenant node group.
+        # Corresponds to the JSON property `minNodeCpus`
+        # @return [Fixnum]
+        attr_accessor :min_node_cpus
+      
         # NodeAffinities used to match to a shared sole tenant node group.
         # Corresponds to the JSON property `nodeAffinities`
         # @return [Array<Google::Apis::ContainerV1::NodeAffinity>]
@@ -7864,6 +7890,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @min_node_cpus = args[:min_node_cpus] if args.key?(:min_node_cpus)
           @node_affinities = args[:node_affinities] if args.key?(:node_affinities)
         end
       end
