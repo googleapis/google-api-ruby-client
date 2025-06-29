@@ -11128,9 +11128,13 @@ module Google
       class GroupMaintenanceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_maintenance_ongoing_count, as: 'instanceMaintenanceOngoingCount'
+          property :instance_maintenance_pending_count, as: 'instanceMaintenancePendingCount'
           property :maintenance_ongoing_count, as: 'maintenanceOngoingCount'
           property :maintenance_pending_count, as: 'maintenancePendingCount'
           property :scheduling_type, as: 'schedulingType'
+          property :subblock_infra_maintenance_ongoing_count, as: 'subblockInfraMaintenanceOngoingCount'
+          property :subblock_infra_maintenance_pending_count, as: 'subblockInfraMaintenancePendingCount'
           property :upcoming_group_maintenance, as: 'upcomingGroupMaintenance', class: Google::Apis::ComputeBeta::UpcomingMaintenance, decorator: Google::Apis::ComputeBeta::UpcomingMaintenance::Representation
       
         end
@@ -18050,6 +18054,8 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :physical_topology, as: 'physicalTopology', class: Google::Apis::ComputeBeta::ReservationSubBlockPhysicalTopology, decorator: Google::Apis::ComputeBeta::ReservationSubBlockPhysicalTopology::Representation
+      
+          property :reservation_sub_block_maintenance, as: 'reservationSubBlockMaintenance', class: Google::Apis::ComputeBeta::GroupMaintenanceInfo, decorator: Google::Apis::ComputeBeta::GroupMaintenanceInfo::Representation
       
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
