@@ -1394,11 +1394,13 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PriceRange]
         attr_accessor :price_range
       
-        # The primary type of the given result. This type must one of the Places API
+        # The primary type of the given result. This type must be one of the Places API
         # supported types. For example, "restaurant", "cafe", "airport", etc. A place
         # can only have a single primary type. For the complete list of possible values,
         # see Table A and Table B at https://developers.google.com/maps/documentation/
-        # places/web-service/place-types
+        # places/web-service/place-types. The primary type may be missing if the place's
+        # primary type is not a supported type. When a primary type is present, it is
+        # always one of the types in the `types` field.
         # Corresponds to the JSON property `primaryType`
         # @return [String]
         attr_accessor :primary_type
@@ -1993,9 +1995,16 @@ module Google
         attr_accessor :open_now
         alias_method :open_now?, :open_now
       
-        # NOTE: The ordering of the `periods` array is independent of the ordering of
-        # the `weekday_descriptions` array. Do not assume they will begin on the same
-        # day.
+        # The periods that this place is open during the week. The periods are in
+        # chronological order, in the place-local timezone. An empty (but not absent)
+        # value indicates a place that is never open, e.g. because it is closed
+        # temporarily for renovations. The starting day of `periods` is NOT fixed and
+        # should not be assumed to be Sunday. The API determines the start day based on
+        # a variety of factors. For example, for a 24/7 business, the first period may
+        # begin on the day of the request. For other businesses, it might be the first
+        # day of the week that they are open. NOTE: The ordering of the `periods` array
+        # is independent of the ordering of the `weekday_descriptions` array. Do not
+        # assume they will begin on the same day.
         # Corresponds to the JSON property `periods`
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHoursPeriod>]
         attr_accessor :periods
