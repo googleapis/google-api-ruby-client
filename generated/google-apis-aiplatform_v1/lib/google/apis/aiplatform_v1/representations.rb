@@ -13143,6 +13143,7 @@ module Google
           property :state, as: 'state'
           property :task_id, :numeric_string => true, as: 'taskId'
           property :task_name, as: 'taskName'
+          property :task_unique_name, as: 'taskUniqueName'
         end
       end
       
@@ -13338,6 +13339,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_private_service_connect, as: 'enablePrivateServiceConnect'
           collection :project_allowlist, as: 'projectAllowlist'
+          collection :psc_automation_configs, as: 'pscAutomationConfigs', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscAutomationConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscAutomationConfig::Representation
+      
           property :service_attachment, as: 'serviceAttachment'
         end
       end
