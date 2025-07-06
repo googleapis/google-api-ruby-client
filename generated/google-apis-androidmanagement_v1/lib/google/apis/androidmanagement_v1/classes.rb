@@ -2858,7 +2858,13 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Fully qualified class name of the receiver service class for Android Device
-        # Policy to notify the extension app of any local command status updates.
+        # Policy to notify the extension app of any local command status updates. The
+        # service must be exported in the extension app's AndroidManifest.xml and extend
+        # NotificationReceiverService (https://developers.google.com/android/management/
+        # reference/amapi/com/google/android/managementapi/notification/
+        # NotificationReceiverService) (see Integrate with the AMAPI SDK (https://
+        # developers.google.com/android/management/sdk-integration) guide for more
+        # details).
         # Corresponds to the JSON property `notificationReceiver`
         # @return [String]
         attr_accessor :notification_receiver
