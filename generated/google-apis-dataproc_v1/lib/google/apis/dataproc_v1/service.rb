@@ -2703,6 +2703,8 @@ module Google
         #   Required. The fully qualified name of the session to retrieve in the format "
         #   projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/
         #   sparkApplications/APPLICATION_ID"
+        # @param [Array<Fixnum>, Fixnum] job_ids
+        #   Optional. List of Job IDs to filter by if provided.
         # @param [String] parent
         #   Required. Parent (Session) resource reference.
         # @param [String] fields
@@ -2722,11 +2724,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def summarize_project_location_session_spark_application_jobs(name, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def summarize_project_location_session_spark_application_jobs(name, job_ids: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}:summarizeJobs', options)
           command.response_representation = Google::Apis::DataprocV1::SummarizeSessionSparkApplicationJobsResponse::Representation
           command.response_class = Google::Apis::DataprocV1::SummarizeSessionSparkApplicationJobsResponse
           command.params['name'] = name unless name.nil?
+          command.query['jobIds'] = job_ids unless job_ids.nil?
           command.query['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2781,6 +2784,8 @@ module Google
         #   sparkApplications/APPLICATION_ID"
         # @param [String] parent
         #   Required. Parent (Session) resource reference.
+        # @param [Array<Fixnum>, Fixnum] stage_ids
+        #   Optional. List of Stage IDs to filter by if provided.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2798,12 +2803,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def summarize_project_location_session_spark_application_stages(name, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def summarize_project_location_session_spark_application_stages(name, parent: nil, stage_ids: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}:summarizeStages', options)
           command.response_representation = Google::Apis::DataprocV1::SummarizeSessionSparkApplicationStagesResponse::Representation
           command.response_class = Google::Apis::DataprocV1::SummarizeSessionSparkApplicationStagesResponse
           command.params['name'] = name unless name.nil?
           command.query['parent'] = parent unless parent.nil?
+          command.query['stageIds'] = stage_ids unless stage_ids.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
