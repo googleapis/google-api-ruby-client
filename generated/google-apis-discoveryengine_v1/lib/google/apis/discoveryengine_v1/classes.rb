@@ -13106,7 +13106,7 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRun
         include Google::Apis::Core::Hashable
       
-        # The number of documents deleted.
+        # Optional. The number of documents deleted.
         # Corresponds to the JSON property `deletedRecordCount`
         # @return [Fixnum]
         attr_accessor :deleted_record_count
@@ -13116,8 +13116,7 @@ module Google
         # @return [String]
         attr_accessor :entity_name
       
-        # The total number of documents failed at sync at any stage (extraction,
-        # indexing, etc).
+        # Optional. The total number of documents failed at sync at indexing stage.
         # Corresponds to the JSON property `errorRecordCount`
         # @return [Fixnum]
         attr_accessor :error_record_count
@@ -13128,13 +13127,13 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1::GoogleRpcStatus>]
         attr_accessor :errors
       
-        # The number of documents extracted from connector source, ready to be ingested
-        # to VAIS.
+        # Optional. The number of documents extracted from connector source, ready to be
+        # ingested to VAIS.
         # Corresponds to the JSON property `extractedRecordCount`
         # @return [Fixnum]
         attr_accessor :extracted_record_count
       
-        # The number of documents indexed.
+        # Optional. The number of documents indexed.
         # Corresponds to the JSON property `indexedRecordCount`
         # @return [Fixnum]
         attr_accessor :indexed_record_count
@@ -13144,13 +13143,13 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRunProgress]
         attr_accessor :progress
       
-        # The number of documents scheduled to be crawled/extracted from connector
-        # source. This only applies to third party connectors.
+        # Optional. The number of documents scheduled to be crawled/extracted from
+        # connector source. This only applies to third party connectors.
         # Corresponds to the JSON property `scheduledRecordCount`
         # @return [Fixnum]
         attr_accessor :scheduled_record_count
       
-        # The number of requests sent to 3p API.
+        # Optional. The number of requests sent to 3p API.
         # Corresponds to the JSON property `sourceApiRequestCount`
         # @return [Fixnum]
         attr_accessor :source_api_request_count
@@ -14063,6 +14062,13 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :auth_params
       
+        # Tenant information for a connector source. This includes some of the same
+        # information stored in the Credential message, but is limited to only what is
+        # needed to provide a list of accessible tenants to the user.
+        # Corresponds to the JSON property `tenant`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaTenant]
+        attr_accessor :tenant
+      
         def initialize(**args)
            update!(**args)
         end
@@ -14071,6 +14077,7 @@ module Google
         def update!(**args)
           @additional_params = args[:additional_params] if args.key?(:additional_params)
           @auth_params = args[:auth_params] if args.key?(:auth_params)
+          @tenant = args[:tenant] if args.key?(:tenant)
         end
       end
       
@@ -19296,6 +19303,42 @@ module Google
         # Update properties of this object
         def update!(**args)
           @total_required_quota = args[:total_required_quota] if args.key?(:total_required_quota)
+        end
+      end
+      
+      # Tenant information for a connector source. This includes some of the same
+      # information stored in the Credential message, but is limited to only what is
+      # needed to provide a list of accessible tenants to the user.
+      class GoogleCloudDiscoveryengineV1alphaTenant
+        include Google::Apis::Core::Hashable
+      
+        # Optional display name for the tenant, e.g. "My Slack Team".
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The tenant's instance ID. Examples: Jira ("8594f221-9797-5f78-1fa4-
+        # 485e198d7cd0"), Slack ("T123456").
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The URI of the tenant, if applicable. For example, the URI of a Jira instance
+        # is https://my-jira-instance.atlassian.net, and a Slack tenant does not have a
+        # URI.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
