@@ -13487,8 +13487,8 @@ module Google
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ConversationTelephonyConnectionInfoMimeContent>]
         attr_accessor :extra_mime_contents
       
-        # Optional. SDP of the call. It's initially the SDP answer to the endpoint, but
-        # maybe later updated for the purpose of making the link active, etc.
+        # Optional. SDP of the call. It's initially the SDP answer to the incoming call,
+        # but maybe later updated for the purpose of making the link active, etc.
         # Corresponds to the JSON property `sdp`
         # @return [String]
         attr_accessor :sdp
@@ -15140,7 +15140,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Version of current baseline model. It will be ignored if model is set. Valid
-        # versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default)
+        # versions are: - Article Suggestion baseline model: - 0.9 - 1.0 (default) -
         # Summarization baseline model: - 1.0
         # Corresponds to the JSON property `baselineModelVersion`
         # @return [String]
@@ -21993,12 +21993,6 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. The name of the second voice (non-English) if language detection is
-        # supported.
-        # Corresponds to the JSON property `secondLanguageModel`
-        # @return [String]
-        attr_accessor :second_language_model
-      
         # Optional. The preferred gender of the voice. If not set, the service will
         # choose a voice based on the other parameters such as language_code and name.
         # Note that this is only a preference, not requirement. If a voice of the
@@ -22015,7 +22009,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
-          @second_language_model = args[:second_language_model] if args.key?(:second_language_model)
           @ssml_gender = args[:ssml_gender] if args.key?(:ssml_gender)
         end
       end
