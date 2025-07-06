@@ -3851,6 +3851,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :timeout_sec
       
+        # Configuration for Backend Authenticated TLS and mTLS. May only be specified
+        # when the backend protocol is SSL, HTTPS or HTTP2.
+        # Corresponds to the JSON property `tlsSettings`
+        # @return [Google::Apis::ComputeV1::BackendServiceTlsSettings]
+        attr_accessor :tls_settings
+      
         # [Output Only] List of resources referencing given backend service.
         # Corresponds to the JSON property `usedBy`
         # @return [Array<Google::Apis::ComputeV1::BackendServiceUsedBy>]
@@ -3909,6 +3915,7 @@ module Google
           @strong_session_affinity_cookie = args[:strong_session_affinity_cookie] if args.key?(:strong_session_affinity_cookie)
           @subsetting = args[:subsetting] if args.key?(:subsetting)
           @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
+          @tls_settings = args[:tls_settings] if args.key?(:tls_settings)
           @used_by = args[:used_by] if args.key?(:used_by)
         end
       end
@@ -5024,6 +5031,80 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backend_service = args[:backend_service] if args.key?(:backend_service)
+        end
+      end
+      
+      # 
+      class BackendServiceTlsSettings
+        include Google::Apis::Core::Hashable
+      
+        # Reference to the BackendAuthenticationConfig resource from the networksecurity.
+        # googleapis.com namespace. Can be used in authenticating TLS connections to the
+        # backend, as specified by the authenticationMode field. Can only be specified
+        # if authenticationMode is not NONE.
+        # Corresponds to the JSON property `authenticationConfig`
+        # @return [String]
+        attr_accessor :authentication_config
+      
+        # Server Name Indication - see RFC3546 section 3.1. If set, the load balancer
+        # sends this string as the SNI hostname in the TLS connection to the backend,
+        # and requires that this string match a Subject Alternative Name (SAN) in the
+        # backend's server certificate. With a Regional Internet NEG backend, if the SNI
+        # is specified here, the load balancer uses it regardless of whether the
+        # Regional Internet NEG is specified with FQDN or IP address and port. When both
+        # sni and subjectAltNames[] are specified, the load balancer matches the backend
+        # certificate's SAN only to subjectAltNames[].
+        # Corresponds to the JSON property `sni`
+        # @return [String]
+        attr_accessor :sni
+      
+        # A list of Subject Alternative Names (SANs) that the Load Balancer verifies
+        # during a TLS handshake with the backend. When the server presents its X.509
+        # certificate to the Load Balancer, the Load Balancer inspects the certificate's
+        # SAN field, and requires that at least one SAN match one of the subjectAltNames
+        # in the list. This field is limited to 5 entries. When both sni and
+        # subjectAltNames[] are specified, the load balancer matches the backend
+        # certificate's SAN only to subjectAltNames[].
+        # Corresponds to the JSON property `subjectAltNames`
+        # @return [Array<Google::Apis::ComputeV1::BackendServiceTlsSettingsSubjectAltName>]
+        attr_accessor :subject_alt_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authentication_config = args[:authentication_config] if args.key?(:authentication_config)
+          @sni = args[:sni] if args.key?(:sni)
+          @subject_alt_names = args[:subject_alt_names] if args.key?(:subject_alt_names)
+        end
+      end
+      
+      # A Subject Alternative Name that the load balancer matches against the SAN
+      # field in the TLS certificate provided by the backend, specified as either a
+      # DNS name or a URI, in accordance with RFC 5280 4.2.1.6
+      class BackendServiceTlsSettingsSubjectAltName
+        include Google::Apis::Core::Hashable
+      
+        # The SAN specified as a DNS Name.
+        # Corresponds to the JSON property `dnsName`
+        # @return [String]
+        attr_accessor :dns_name
+      
+        # The SAN specified as a URI.
+        # Corresponds to the JSON property `uniformResourceIdentifier`
+        # @return [String]
+        attr_accessor :uniform_resource_identifier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_name = args[:dns_name] if args.key?(:dns_name)
+          @uniform_resource_identifier = args[:uniform_resource_identifier] if args.key?(:uniform_resource_identifier)
         end
       end
       
@@ -11445,6 +11526,16 @@ module Google
       class GroupMaintenanceInfo
         include Google::Apis::Core::Hashable
       
+        # Describes number of instances that have ongoing maintenance.
+        # Corresponds to the JSON property `instanceMaintenanceOngoingCount`
+        # @return [Fixnum]
+        attr_accessor :instance_maintenance_ongoing_count
+      
+        # Describes number of instances that have pending maintenance.
+        # Corresponds to the JSON property `instanceMaintenancePendingCount`
+        # @return [Fixnum]
+        attr_accessor :instance_maintenance_pending_count
+      
         # Progress for ongoing maintenance for this group of VMs/hosts. Describes number
         # of hosts in the block that have ongoing maintenance.
         # Corresponds to the JSON property `maintenanceOngoingCount`
@@ -11462,6 +11553,22 @@ module Google
         # @return [String]
         attr_accessor :scheduling_type
       
+        # Describes number of subblock Infrastructure that has ongoing maintenance. Here,
+        # Subblock Infrastructure Maintenance pertains to upstream hardware contained
+        # in the Subblock that is necessary for a VM Family(e.g. NVLink Domains). Not
+        # all VM Families will support this field.
+        # Corresponds to the JSON property `subblockInfraMaintenanceOngoingCount`
+        # @return [Fixnum]
+        attr_accessor :subblock_infra_maintenance_ongoing_count
+      
+        # Describes number of subblock Infrastructure that has pending maintenance. Here,
+        # Subblock Infrastructure Maintenance pertains to upstream hardware contained
+        # in the Subblock that is necessary for a VM Family (e.g. NVLink Domains). Not
+        # all VM Families will support this field.
+        # Corresponds to the JSON property `subblockInfraMaintenancePendingCount`
+        # @return [Fixnum]
+        attr_accessor :subblock_infra_maintenance_pending_count
+      
         # Upcoming Maintenance notification information.
         # Corresponds to the JSON property `upcomingGroupMaintenance`
         # @return [Google::Apis::ComputeV1::UpcomingMaintenance]
@@ -11473,9 +11580,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @instance_maintenance_ongoing_count = args[:instance_maintenance_ongoing_count] if args.key?(:instance_maintenance_ongoing_count)
+          @instance_maintenance_pending_count = args[:instance_maintenance_pending_count] if args.key?(:instance_maintenance_pending_count)
           @maintenance_ongoing_count = args[:maintenance_ongoing_count] if args.key?(:maintenance_ongoing_count)
           @maintenance_pending_count = args[:maintenance_pending_count] if args.key?(:maintenance_pending_count)
           @scheduling_type = args[:scheduling_type] if args.key?(:scheduling_type)
+          @subblock_infra_maintenance_ongoing_count = args[:subblock_infra_maintenance_ongoing_count] if args.key?(:subblock_infra_maintenance_ongoing_count)
+          @subblock_infra_maintenance_pending_count = args[:subblock_infra_maintenance_pending_count] if args.key?(:subblock_infra_maintenance_pending_count)
           @upcoming_group_maintenance = args[:upcoming_group_maintenance] if args.key?(:upcoming_group_maintenance)
         end
       end
@@ -36613,6 +36724,11 @@ module Google
         # @return [Google::Apis::ComputeV1::ReservationSubBlockPhysicalTopology]
         attr_accessor :physical_topology
       
+        # Maintenance Info for ReservationBlocks.
+        # Corresponds to the JSON property `reservationSubBlockMaintenance`
+        # @return [Google::Apis::ComputeV1::GroupMaintenanceInfo]
+        attr_accessor :reservation_sub_block_maintenance
+      
         # [Output Only] Server-defined fully-qualified URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -36646,6 +36762,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @physical_topology = args[:physical_topology] if args.key?(:physical_topology)
+          @reservation_sub_block_maintenance = args[:reservation_sub_block_maintenance] if args.key?(:reservation_sub_block_maintenance)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @status = args[:status] if args.key?(:status)
