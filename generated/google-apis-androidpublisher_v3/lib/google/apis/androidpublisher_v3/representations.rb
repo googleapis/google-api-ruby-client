@@ -952,13 +952,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProductLineItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProductOfferDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProductPurchase
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProductPurchaseV2
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProductPurchasesAcknowledgeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PurchaseStateContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1049,6 +1073,12 @@ module Google
       end
       
       class RemoteInAppUpdateDataPerBundle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RentOfferDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1367,6 +1397,12 @@ module Google
       end
       
       class TestPurchase
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestPurchaseContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3025,6 +3061,30 @@ module Google
         end
       end
       
+      class ProductLineItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :product_id, as: 'productId'
+          property :product_offer_details, as: 'productOfferDetails', class: Google::Apis::AndroidpublisherV3::ProductOfferDetails, decorator: Google::Apis::AndroidpublisherV3::ProductOfferDetails::Representation
+      
+        end
+      end
+      
+      class ProductOfferDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumption_state, as: 'consumptionState'
+          property :offer_id, as: 'offerId'
+          collection :offer_tags, as: 'offerTags'
+          property :offer_token, as: 'offerToken'
+          property :purchase_option_id, as: 'purchaseOptionId'
+          property :quantity, as: 'quantity'
+          property :refundable_quantity, as: 'refundableQuantity'
+          property :rent_offer_details, as: 'rentOfferDetails', class: Google::Apis::AndroidpublisherV3::RentOfferDetails, decorator: Google::Apis::AndroidpublisherV3::RentOfferDetails::Representation
+      
+        end
+      end
+      
       class ProductPurchase
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3046,10 +3106,36 @@ module Google
         end
       end
       
+      class ProductPurchaseV2
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :acknowledgement_state, as: 'acknowledgementState'
+          property :kind, as: 'kind'
+          property :obfuscated_external_account_id, as: 'obfuscatedExternalAccountId'
+          property :obfuscated_external_profile_id, as: 'obfuscatedExternalProfileId'
+          property :order_id, as: 'orderId'
+          collection :product_line_item, as: 'productLineItem', class: Google::Apis::AndroidpublisherV3::ProductLineItem, decorator: Google::Apis::AndroidpublisherV3::ProductLineItem::Representation
+      
+          property :purchase_completion_time, as: 'purchaseCompletionTime'
+          property :purchase_state_context, as: 'purchaseStateContext', class: Google::Apis::AndroidpublisherV3::PurchaseStateContext, decorator: Google::Apis::AndroidpublisherV3::PurchaseStateContext::Representation
+      
+          property :region_code, as: 'regionCode'
+          property :test_purchase_context, as: 'testPurchaseContext', class: Google::Apis::AndroidpublisherV3::TestPurchaseContext, decorator: Google::Apis::AndroidpublisherV3::TestPurchaseContext::Representation
+      
+        end
+      end
+      
       class ProductPurchasesAcknowledgeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :developer_payload, as: 'developerPayload'
+        end
+      end
+      
+      class PurchaseStateContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :purchase_state, as: 'purchaseState'
         end
       end
       
@@ -3188,6 +3274,12 @@ module Google
           property :recovered_device_count, :numeric_string => true, as: 'recoveredDeviceCount'
           property :total_device_count, :numeric_string => true, as: 'totalDeviceCount'
           property :version_code, :numeric_string => true, as: 'versionCode'
+        end
+      end
+      
+      class RentOfferDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -3724,6 +3816,13 @@ module Google
       class TestPurchase
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class TestPurchaseContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fop_type, as: 'fopType'
         end
       end
       
