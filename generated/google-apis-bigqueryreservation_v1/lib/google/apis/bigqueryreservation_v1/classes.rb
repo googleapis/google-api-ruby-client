@@ -568,6 +568,32 @@ module Google
         end
       end
       
+      # The response for ReservationService.ListReservationGroups.
+      class ListReservationGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of reservations visible to the user.
+        # Corresponds to the JSON property `reservationGroups`
+        # @return [Array<Google::Apis::BigqueryreservationV1::ReservationGroup>]
+        attr_accessor :reservation_groups
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @reservation_groups = args[:reservation_groups] if args.key?(:reservation_groups)
+        end
+      end
+      
       # The response for ReservationService.ListReservations.
       class ListReservationsResponse
         include Google::Apis::Core::Hashable
@@ -838,8 +864,8 @@ module Google
         alias_method :ignore_idle_slots?, :ignore_idle_slots
       
         # Optional. The labels associated with this reservation. You can use these to
-        # organize and group your reservations. You can set this property when inserting
-        # or updating a reservation.
+        # organize and group your reservations. You can set this property when you
+        # create or update a reservation.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -917,6 +943,14 @@ module Google
         # @return [Google::Apis::BigqueryreservationV1::ReplicationStatus]
         attr_accessor :replication_status
       
+        # Optional. The reservation group that this reservation belongs to. You can set
+        # this property when you create or update a reservation. Reservations do not
+        # need to belong to a reservation group. Format: projects/`project`/locations/`
+        # location`/reservationGroups/`reservation_group` or just `reservation_group`
+        # Corresponds to the JSON property `reservationGroup`
+        # @return [String]
+        attr_accessor :reservation_group
+      
         # Optional. The scaling mode for the reservation. If the field is present but
         # max_slots is not present, requests will be rejected with error code `google.
         # rpc.Code.INVALID_ARGUMENT`.
@@ -971,10 +1005,33 @@ module Google
           @original_primary_location = args[:original_primary_location] if args.key?(:original_primary_location)
           @primary_location = args[:primary_location] if args.key?(:primary_location)
           @replication_status = args[:replication_status] if args.key?(:replication_status)
+          @reservation_group = args[:reservation_group] if args.key?(:reservation_group)
           @scaling_mode = args[:scaling_mode] if args.key?(:scaling_mode)
           @secondary_location = args[:secondary_location] if args.key?(:secondary_location)
           @slot_capacity = args[:slot_capacity] if args.key?(:slot_capacity)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A reservation group is a container for reservations.
+      class ReservationGroup
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. The resource name of the reservation group, e.g., `projects/*/
+        # locations/*/reservationGroups/team1-prod`. The reservation_group_id must only
+        # contain lower case alphanumeric characters or dashes. It must start with a
+        # letter and must not end with a dash. Its maximum length is 64 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
