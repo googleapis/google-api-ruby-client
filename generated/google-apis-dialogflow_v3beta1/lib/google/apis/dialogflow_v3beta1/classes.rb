@@ -6401,6 +6401,11 @@ module Google
         # @return [String]
         attr_accessor :document_uri
       
+        # Metadata associated with the document.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
         # Text included in the prompt.
         # Corresponds to the JSON property `text`
         # @return [String]
@@ -6414,6 +6419,7 @@ module Google
         def update!(**args)
           @document_title = args[:document_title] if args.key?(:document_title)
           @document_uri = args[:document_uri] if args.key?(:document_uri)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @text = args[:text] if args.key?(:text)
         end
       end
@@ -15672,12 +15678,6 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. The name of the second voice (non-English) if language detection is
-        # supported.
-        # Corresponds to the JSON property `secondLanguageModel`
-        # @return [String]
-        attr_accessor :second_language_model
-      
         # Optional. The preferred gender of the voice. If not set, the service will
         # choose a voice based on the other parameters such as language_code and name.
         # Note that this is only a preference, not requirement. If a voice of the
@@ -15694,7 +15694,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
-          @second_language_model = args[:second_language_model] if args.key?(:second_language_model)
           @ssml_gender = args[:ssml_gender] if args.key?(:ssml_gender)
         end
       end

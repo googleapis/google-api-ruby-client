@@ -5686,6 +5686,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :document_title, as: 'documentTitle'
           property :document_uri, as: 'documentUri'
+          hash :metadata, as: 'metadata'
           property :text, as: 'text'
         end
       end
@@ -8222,7 +8223,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
-          property :second_language_model, as: 'secondLanguageModel'
           property :ssml_gender, as: 'ssmlGender'
         end
       end
