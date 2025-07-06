@@ -9558,7 +9558,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
-          property :second_language_model, as: 'secondLanguageModel'
           property :ssml_gender, as: 'ssmlGender'
         end
       end
