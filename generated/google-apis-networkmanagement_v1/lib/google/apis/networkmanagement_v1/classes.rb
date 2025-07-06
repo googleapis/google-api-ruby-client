@@ -3187,10 +3187,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :metadata_fields
       
-        # Identifier. Unique name of the configuration using one of the forms: `projects/
-        # `project_id`/locations/global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id`` `
-        # organizations/`organization_number`/locations/global/vpcFlowLogsConfigs/`
-        # vpc_flow_logs_config_id``
+        # Identifier. Unique name of the configuration. The name can have one of the
+        # following forms: - For project-level configurations: `projects/`project_id`/
+        # locations/global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id`` - For
+        # organization-level configurations: `organizations/`organization_id`/locations/
+        # global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3202,8 +3203,8 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Output only. A diagnostic bit - describes the state of the configured target
-        # resource for diagnostic purposes.
+        # Output only. Describes the state of the configured target resource for
+        # diagnostic purposes.
         # Corresponds to the JSON property `targetResourceState`
         # @return [String]
         attr_accessor :target_resource_state

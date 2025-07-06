@@ -866,15 +866,16 @@ module Google
         
         # Creates a new `VpcFlowLogsConfig`. If a configuration with the exact same
         # settings already exists (even if the ID is different), the creation fails.
-        # Notes: 1. Creating a configuration with state=DISABLED will fail 2. The
-        # following fields are not considered as `settings` for the purpose of the check
+        # Notes: 1. Creating a configuration with `state=DISABLED` will fail 2. The
+        # following fields are not considered as settings for the purpose of the check
         # mentioned above, therefore - creating another configuration with the same
         # fields but different values for the following fields will fail as well: * name
         # * create_time * update_time * labels * description
         # @param [String] parent
-        #   Required. The parent resource of the VPC Flow Logs configuration to create: `
-        #   projects/`project_id`/locations/global` `organizations/`organization_id`/
-        #   locations/global`
+        #   Required. The parent resource of the VpcFlowLogsConfig to create, in one of
+        #   the following formats: - For project-level resources: `projects/`project_id`/
+        #   locations/global` - For organization-level resources: `organizations/`
+        #   organization_id`/locations/global`
         # @param [Google::Apis::NetworkmanagementV1::VpcFlowLogsConfig] vpc_flow_logs_config_object
         # @param [String] vpc_flow_logs_config_id
         #   Required. ID of the `VpcFlowLogsConfig`.
@@ -910,10 +911,11 @@ module Google
         
         # Deletes a specific `VpcFlowLogsConfig`.
         # @param [String] name
-        #   Required. `VpcFlowLogsConfig` resource name using one of the form: `projects/`
-        #   project_id`/locations/global/vpcFlowLogsConfigs/`vpc_flow_logs_config` `
-        #   organizations/`organization_id`/locations/global/vpcFlowLogsConfigs/`
-        #   vpc_flow_logs_config``
+        #   Required. The resource name of the VpcFlowLogsConfig, in one of the following
+        #   formats: - For a project-level resource: `projects/`project_id`/locations/
+        #   global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id`` - For an organization-
+        #   level resource: `organizations/`organization_id`/locations/global/
+        #   vpcFlowLogsConfigs/`vpc_flow_logs_config_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -943,10 +945,11 @@ module Google
         
         # Gets the details of a specific `VpcFlowLogsConfig`.
         # @param [String] name
-        #   Required. `VpcFlowLogsConfig` resource name using the form: `projects/`
-        #   project_id`/locations/global/vpcFlowLogsConfigs/`vpc_flow_logs_config`` `
-        #   organizations/`organization_id`/locations/global/vpcFlowLogsConfigs/`
-        #   vpc_flow_logs_config``
+        #   Required. The resource name of the VpcFlowLogsConfig, in one of the following
+        #   formats: - For project-level resources: `projects/`project_id`/locations/
+        #   global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id`` - For organization-level
+        #   resources: `organizations/`organization_id`/locations/global/
+        #   vpcFlowLogsConfigs/`vpc_flow_logs_config_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -976,8 +979,10 @@ module Google
         
         # Lists all `VpcFlowLogsConfigs` in a given project.
         # @param [String] parent
-        #   Required. The parent resource of the VpcFlowLogsConfig: `projects/`project_id`/
-        #   locations/global` `organizations/`organization_id`/locations/global`
+        #   Required. The parent resource of the VpcFlowLogsConfig, in one of the
+        #   following formats: - For project-level resourcs: `projects/`project_id`/
+        #   locations/global` - For organization-level resources: `organizations/`
+        #   organization_id`/locations/global`
         # @param [String] filter
         #   Optional. Lists the `VpcFlowLogsConfigs` that match the filter expression. A
         #   filter expression must use the supported [CEL logic operators] (https://cloud.
@@ -1021,20 +1026,24 @@ module Google
         
         # Updates an existing `VpcFlowLogsConfig`. If a configuration with the exact
         # same settings already exists (even if the ID is different), the creation fails.
-        # Notes: 1. Updating a configuration with state=DISABLED will fail. 2. The
-        # following fields are not considered as `settings` for the purpose of the check
+        # Notes: 1. Updating a configuration with `state=DISABLED` will fail. 2. The
+        # following fields are not considered as settings for the purpose of the check
         # mentioned above, therefore - updating another configuration with the same
         # fields but different values for the following fields will fail as well: * name
         # * create_time * update_time * labels * description
         # @param [String] name
-        #   Identifier. Unique name of the configuration using one of the forms: `projects/
-        #   `project_id`/locations/global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id`` `
-        #   organizations/`organization_number`/locations/global/vpcFlowLogsConfigs/`
-        #   vpc_flow_logs_config_id``
+        #   Identifier. Unique name of the configuration. The name can have one of the
+        #   following forms: - For project-level configurations: `projects/`project_id`/
+        #   locations/global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id`` - For
+        #   organization-level configurations: `organizations/`organization_id`/locations/
+        #   global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id``
         # @param [Google::Apis::NetworkmanagementV1::VpcFlowLogsConfig] vpc_flow_logs_config_object
         # @param [String] update_mask
         #   Required. Mask of fields to update. At least one path must be supplied in this
-        #   field.
+        #   field. For example, to change the state of the configuration to ENABLED,
+        #   specify `update_mask` = `"state"`, and the `vpc_flow_logs_config` would be: `
+        #   vpc_flow_logs_config = ` name = "projects/my-project/locations/global/
+        #   vpcFlowLogsConfigs/my-config" state = "ENABLED" ``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
