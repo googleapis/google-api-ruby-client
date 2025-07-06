@@ -3591,6 +3591,7 @@ module Google
           property :pid, :numeric_string => true, as: 'pid'
           property :script, as: 'script', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2File, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2File::Representation
       
+          property :user_id, :numeric_string => true, as: 'userId'
         end
       end
       
@@ -4083,6 +4084,7 @@ module Google
           property :pid, :numeric_string => true, as: 'pid'
           property :script, as: 'script', class: Google::Apis::SecuritycenterV1beta2::File, decorator: Google::Apis::SecuritycenterV1beta2::File::Representation
       
+          property :user_id, :numeric_string => true, as: 'userId'
         end
       end
       
