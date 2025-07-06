@@ -4048,7 +4048,7 @@ module Google
         end
       end
       
-      # Represents a Secure Access Connect (SAC) Attachment resource. A Secure Access
+      # Represents a Secure Access Connect (SAC) attachment resource. A Secure Access
       # Connect attachment enables NCC Gateway to process traffic with an SSE product.
       class SacAttachment
         include Google::Apis::Core::Hashable
@@ -4134,7 +4134,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Immutable. Name to be used when creating a location on the customer's behalf
-        # in Symantec's Location API. Not to be confused with GCP locations.
+        # in Symantec's Location API. Not to be confused with Google Cloud locations.
         # Corresponds to the JSON property `symantecLocationName`
         # @return [String]
         attr_accessor :symantec_location_name
@@ -4156,7 +4156,7 @@ module Google
         end
       end
       
-      # Represents a Secure Access Connect (SAC) Realm resource. A Secure Access
+      # Represents a Secure Access Connect (SAC) realm resource. A Secure Access
       # Connect realm establishes a connection between your Google Cloud project and
       # an SSE service.
       class SacRealm
