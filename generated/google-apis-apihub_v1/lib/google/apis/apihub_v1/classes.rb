@@ -1461,6 +1461,11 @@ module Google
         # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues]
         attr_accessor :environment
       
+        # The attribute values associated with resource.
+        # Corresponds to the JSON property `managementUrl`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues]
+        attr_accessor :management_url
+      
         # Identifier. The name of the deployment. Format: `projects/`project`/locations/`
         # location`/deployments/`deployment``
         # Corresponds to the JSON property `name`
@@ -1479,11 +1484,29 @@ module Google
         # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues]
         attr_accessor :slo
       
+        # Optional. The environment at source for the deployment. For example: prod, dev,
+        # staging, etc.
+        # Corresponds to the JSON property `sourceEnvironment`
+        # @return [String]
+        attr_accessor :source_environment
+      
         # Output only. The list of sources and metadata from the sources of the
         # deployment.
         # Corresponds to the JSON property `sourceMetadata`
         # @return [Array<Google::Apis::ApihubV1::GoogleCloudApihubV1SourceMetadata>]
         attr_accessor :source_metadata
+      
+        # Optional. The project to which the deployment belongs. For GCP gateways, this
+        # will refer to the project identifier. For others like Edge/OPDK, this will
+        # refer to the org identifier.
+        # Corresponds to the JSON property `sourceProject`
+        # @return [String]
+        attr_accessor :source_project
+      
+        # The attribute values associated with resource.
+        # Corresponds to the JSON property `sourceUri`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues]
+        attr_accessor :source_uri
       
         # Output only. The time at which the deployment was last updated.
         # Corresponds to the JSON property `updateTime`
@@ -1505,10 +1528,14 @@ module Google
           @documentation = args[:documentation] if args.key?(:documentation)
           @endpoints = args[:endpoints] if args.key?(:endpoints)
           @environment = args[:environment] if args.key?(:environment)
+          @management_url = args[:management_url] if args.key?(:management_url)
           @name = args[:name] if args.key?(:name)
           @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
           @slo = args[:slo] if args.key?(:slo)
+          @source_environment = args[:source_environment] if args.key?(:source_environment)
           @source_metadata = args[:source_metadata] if args.key?(:source_metadata)
+          @source_project = args[:source_project] if args.key?(:source_project)
+          @source_uri = args[:source_uri] if args.key?(:source_uri)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -2734,6 +2761,11 @@ module Google
         # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1Documentation]
         attr_accessor :documentation
       
+        # Optional. The type of the gateway.
+        # Corresponds to the JSON property `gatewayType`
+        # @return [String]
+        attr_accessor :gateway_type
+      
         # The information related to the service implemented by the plugin developer,
         # used to invoke the plugin's functionality.
         # Corresponds to the JSON property `hostingService`
@@ -2787,6 +2819,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @documentation = args[:documentation] if args.key?(:documentation)
+          @gateway_type = args[:gateway_type] if args.key?(:gateway_type)
           @hosting_service = args[:hosting_service] if args.key?(:hosting_service)
           @name = args[:name] if args.key?(:name)
           @ownership_type = args[:ownership_type] if args.key?(:ownership_type)
@@ -2885,6 +2918,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The source project id of the plugin instance. This will be the id of
+        # runtime project in case of gcp based plugins and org id in case of non gcp
+        # based plugins. This is a required field.
+        # Corresponds to the JSON property `sourceProjectId`
+        # @return [String]
+        attr_accessor :source_project_id
+      
         # Output only. The current state of the plugin instance (e.g., enabled, disabled,
         # provisioning).
         # Corresponds to the JSON property `state`
@@ -2909,6 +2949,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @error_message = args[:error_message] if args.key?(:error_message)
           @name = args[:name] if args.key?(:name)
+          @source_project_id = args[:source_project_id] if args.key?(:source_project_id)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -2935,6 +2976,11 @@ module Google
         # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1ExecutionStatus]
         attr_accessor :hub_instance_action
       
+        # The configuration of resources created for a given plugin instance action.
+        # Corresponds to the JSON property `resourceConfig`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1ResourceConfig]
+        attr_accessor :resource_config
+      
         # Optional. The schedule for this plugin instance action. This can only be set
         # if the plugin supports API_HUB_SCHEDULE_TRIGGER mode for this action.
         # Corresponds to the JSON property `scheduleCronExpression`
@@ -2946,6 +2992,12 @@ module Google
         # Corresponds to the JSON property `scheduleTimeZone`
         # @return [String]
         attr_accessor :schedule_time_zone
+      
+        # Optional. The service account used to publish data. Note, the service account
+        # will only be accepted for non GCP plugins like OPDK.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
       
         # Output only. The current state of the plugin action in the plugin instance.
         # Corresponds to the JSON property `state`
@@ -2961,8 +3013,10 @@ module Google
           @action_id = args[:action_id] if args.key?(:action_id)
           @curation_config = args[:curation_config] if args.key?(:curation_config)
           @hub_instance_action = args[:hub_instance_action] if args.key?(:hub_instance_action)
+          @resource_config = args[:resource_config] if args.key?(:resource_config)
           @schedule_cron_expression = args[:schedule_cron_expression] if args.key?(:schedule_cron_expression)
           @schedule_time_zone = args[:schedule_time_zone] if args.key?(:schedule_time_zone)
+          @service_account = args[:service_account] if args.key?(:service_account)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -3067,6 +3121,32 @@ module Google
         def update!(**args)
           @end = args[:end] if args.key?(:end)
           @start = args[:start] if args.key?(:start)
+        end
+      end
+      
+      # The configuration of resources created for a given plugin instance action.
+      class GoogleCloudApihubV1ResourceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The type of the action.
+        # Corresponds to the JSON property `actionType`
+        # @return [String]
+        attr_accessor :action_type
+      
+        # Output only. The pubsub topic to publish the data to. Format is projects/`
+        # project`/topics/`topic`
+        # Corresponds to the JSON property `pubsubTopic`
+        # @return [String]
+        attr_accessor :pubsub_topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_type = args[:action_type] if args.key?(:action_type)
+          @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
         end
       end
       
