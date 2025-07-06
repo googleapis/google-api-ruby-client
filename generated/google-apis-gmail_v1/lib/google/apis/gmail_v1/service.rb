@@ -915,7 +915,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the messages in the user's mailbox.
+        # Lists the messages in the user's mailbox. For example usage, see [List Gmail
+        # messages](https://developers.google.com/workspace/gmail/api/guides/list-
+        # messages).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
