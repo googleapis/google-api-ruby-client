@@ -3274,6 +3274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaTenant
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaTextInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7190,6 +7196,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :additional_params, as: 'additionalParams'
           hash :auth_params, as: 'authParams'
+          property :tenant, as: 'tenant', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaTenant, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaTenant::Representation
+      
         end
       end
       
@@ -9925,6 +9933,15 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaTenant
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :id, as: 'id'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaTextInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10186,6 +10203,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connector_icon_link, as: 'connectorIconLink'
           property :data_source, as: 'dataSource'
+          property :data_source_display_name, as: 'dataSourceDisplayName'
           collection :data_store_components, as: 'dataStoreComponents', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfigDataStoreComponent, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfigDataStoreComponent::Representation
       
           property :display_name, as: 'displayName'
