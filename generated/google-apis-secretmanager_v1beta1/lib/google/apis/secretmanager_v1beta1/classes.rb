@@ -673,6 +673,14 @@ module Google
         # @return [Google::Apis::SecretmanagerV1beta1::Replication]
         attr_accessor :replication
       
+        # Optional. Input only. Immutable. Mapping of Tag keys/values directly bound to
+        # this resource. For example: "123/environment": "production", "123/costCenter":
+        # "marketing" Tags are used to organize and group resources. Tags can be used to
+        # control policy evaluation for the resource.
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         def initialize(**args)
            update!(**args)
         end
@@ -683,6 +691,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @replication = args[:replication] if args.key?(:replication)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
