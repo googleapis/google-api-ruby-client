@@ -4879,6 +4879,11 @@ module Google
         # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaIntentClassificationConfigExample>]
         attr_accessor :example
       
+        # Inline source for intent classifications.
+        # Corresponds to the JSON property `inlineSource`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaIntentClassificationConfigInlineSource]
+        attr_accessor :inline_source
+      
         # Optional. Customers can use the preamble to specify any requirements for
         # blocklisting intent classification. This preamble will be added to the
         # blocklisting intent classification model prompt.
@@ -4895,6 +4900,7 @@ module Google
           @blocklist_keywords = args[:blocklist_keywords] if args.key?(:blocklist_keywords)
           @disabled_intent_types = args[:disabled_intent_types] if args.key?(:disabled_intent_types)
           @example = args[:example] if args.key?(:example)
+          @inline_source = args[:inline_source] if args.key?(:inline_source)
           @model_preamble = args[:model_preamble] if args.key?(:model_preamble)
         end
       end
@@ -4902,6 +4908,12 @@ module Google
       # An example for intent classification.
       class GoogleCloudRetailV2betaIntentClassificationConfigExample
         include Google::Apis::Core::Hashable
+      
+        # Required. Whether the example is classified positively.
+        # Corresponds to the JSON property `classifiedPositive`
+        # @return [Boolean]
+        attr_accessor :classified_positive
+        alias_method :classified_positive?, :classified_positive
       
         # Optional. The intent_type must match one of the predefined intent types
         # defined at https://cloud.google.com/retail/docs/reference/rpc/google.cloud.
@@ -4927,9 +4939,62 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @classified_positive = args[:classified_positive] if args.key?(:classified_positive)
           @intent_type = args[:intent_type] if args.key?(:intent_type)
           @query = args[:query] if args.key?(:query)
           @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # An inline force intent classification configuration.
+      class GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntent
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The intent_type must match one of the predefined intent types
+        # defined at https://cloud.google.com/retail/docs/reference/rpc/google.cloud.
+        # retail.v2alpha#querytype
+        # Corresponds to the JSON property `intentType`
+        # @return [String]
+        attr_accessor :intent_type
+      
+        # Optional. The operation to perform for the query.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # Optional. A example query.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intent_type = args[:intent_type] if args.key?(:intent_type)
+          @operation = args[:operation] if args.key?(:operation)
+          @query = args[:query] if args.key?(:query)
+        end
+      end
+      
+      # Inline source for intent classifications.
+      class GoogleCloudRetailV2betaIntentClassificationConfigInlineSource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of inline force intent classifications.
+        # Corresponds to the JSON property `inlineForceIntents`
+        # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntent>]
+        attr_accessor :inline_force_intents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inline_force_intents = args[:inline_force_intents] if args.key?(:inline_force_intents)
         end
       end
       
@@ -7767,6 +7832,15 @@ module Google
         # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestTileNavigationSpec]
         attr_accessor :tile_navigation_spec
       
+        # Optional. The user attributes that could be used for personalization of search
+        # results. * Populate at most 100 key-value pairs per query. * Only supports
+        # string keys and repeated string values. * Duplcate keys are not allowed within
+        # a single query. Example: user_attributes: [ ` key: "pets" value ` values: "dog"
+        # values: "cat" ` `, ` key: "state" value ` values: "CA" ` ` ]
+        # Corresponds to the JSON property `userAttributes`
+        # @return [Hash<String,Google::Apis::RetailV2beta::GoogleCloudRetailV2betaStringList>]
+        attr_accessor :user_attributes
+      
         # Information of an end user.
         # Corresponds to the JSON property `userInfo`
         # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaUserInfo]
@@ -7841,6 +7915,7 @@ module Google
           @search_mode = args[:search_mode] if args.key?(:search_mode)
           @spell_correction_spec = args[:spell_correction_spec] if args.key?(:spell_correction_spec)
           @tile_navigation_spec = args[:tile_navigation_spec] if args.key?(:tile_navigation_spec)
+          @user_attributes = args[:user_attributes] if args.key?(:user_attributes)
           @user_info = args[:user_info] if args.key?(:user_info)
           @variant_rollup_keys = args[:variant_rollup_keys] if args.key?(:variant_rollup_keys)
           @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
@@ -9045,6 +9120,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A list of string values.
+      class GoogleCloudRetailV2betaStringList
+        include Google::Apis::Core::Hashable
+      
+        # String values.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
