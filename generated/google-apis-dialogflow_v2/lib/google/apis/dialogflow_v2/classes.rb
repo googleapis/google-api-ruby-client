@@ -9696,8 +9696,8 @@ module Google
         # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoMimeContent>]
         attr_accessor :extra_mime_contents
       
-        # Optional. SDP of the call. It's initially the SDP answer to the endpoint, but
-        # maybe later updated for the purpose of making the link active, etc.
+        # Optional. SDP of the call. It's initially the SDP answer to the incoming call,
+        # but maybe later updated for the purpose of making the link active, etc.
         # Corresponds to the JSON property `sdp`
         # @return [String]
         attr_accessor :sdp
@@ -11614,7 +11614,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Version of current baseline model. It will be ignored if model is set. Valid
-        # versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default)
+        # versions are: - Article Suggestion baseline model: - 0.9 - 1.0 (default) -
         # Summarization baseline model: - 1.0
         # Corresponds to the JSON property `baselineModelVersion`
         # @return [String]
