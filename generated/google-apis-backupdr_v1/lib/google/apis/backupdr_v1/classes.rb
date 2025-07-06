@@ -462,6 +462,12 @@ module Google
         # @return [String]
         attr_accessor :backup_type
       
+        # CloudSqlInstanceBackupProperties represents Cloud SQL Instance Backup
+        # properties. .
+        # Corresponds to the JSON property `cloudSqlInstanceBackupProperties`
+        # @return [Google::Apis::BackupdrV1::CloudSqlInstanceBackupProperties]
+        attr_accessor :cloud_sql_instance_backup_properties
+      
         # ComputeInstanceBackupProperties represents Compute Engine instance backup
         # properties.
         # Corresponds to the JSON property `computeInstanceBackupProperties`
@@ -565,6 +571,7 @@ module Google
           @backup_appliance_backup_properties = args[:backup_appliance_backup_properties] if args.key?(:backup_appliance_backup_properties)
           @backup_appliance_locks = args[:backup_appliance_locks] if args.key?(:backup_appliance_locks)
           @backup_type = args[:backup_type] if args.key?(:backup_type)
+          @cloud_sql_instance_backup_properties = args[:cloud_sql_instance_backup_properties] if args.key?(:cloud_sql_instance_backup_properties)
           @compute_instance_backup_properties = args[:compute_instance_backup_properties] if args.key?(:compute_instance_backup_properties)
           @consistency_time = args[:consistency_time] if args.key?(:consistency_time)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -1072,6 +1079,13 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Optional. Required for CloudSQL resource_type Configures how long logs will be
+        # stored. It is defined in “days”. This value should be greater than or equal to
+        # minimum enforced log retention duration of the backup vault.
+        # Corresponds to the JSON property `logRetentionDays`
+        # @return [Fixnum]
+        attr_accessor :log_retention_days
+      
         # Output only. Identifier. The resource name of the `BackupPlan`. Format: `
         # projects/`project`/locations/`location`/backupPlans/`backup_plan``
         # Corresponds to the JSON property `name`
@@ -1124,6 +1138,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
+          @log_retention_days = args[:log_retention_days] if args.key?(:log_retention_days)
           @name = args[:name] if args.key?(:name)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
@@ -1157,6 +1172,11 @@ module Google
         # Corresponds to the JSON property `backupPlanRevisionName`
         # @return [String]
         attr_accessor :backup_plan_revision_name
+      
+        # Cloud SQL instance's BPA properties.
+        # Corresponds to the JSON property `cloudSqlInstanceBackupPlanAssociationProperties`
+        # @return [Google::Apis::BackupdrV1::CloudSqlInstanceBackupPlanAssociationProperties]
+        attr_accessor :cloud_sql_instance_backup_plan_association_properties
       
         # Output only. The time when the instance was created.
         # Corresponds to the JSON property `createTime`
@@ -1215,6 +1235,7 @@ module Google
           @backup_plan = args[:backup_plan] if args.key?(:backup_plan)
           @backup_plan_revision_id = args[:backup_plan_revision_id] if args.key?(:backup_plan_revision_id)
           @backup_plan_revision_name = args[:backup_plan_revision_name] if args.key?(:backup_plan_revision_name)
+          @cloud_sql_instance_backup_plan_association_properties = args[:cloud_sql_instance_backup_plan_association_properties] if args.key?(:cloud_sql_instance_backup_plan_association_properties)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_source = args[:data_source] if args.key?(:data_source)
           @name = args[:name] if args.key?(:name)
@@ -1282,11 +1303,8 @@ module Google
         # Required. Configures the duration for which backup data will be kept. It is
         # defined in “days”. The value should be greater than or equal to minimum
         # enforced retention of the backup vault. Minimum value is 1 and maximum value
-        # is 36159 for custom retention on-demand backup. Minimum value is 1 and maximum
-        # value is 90 for hourly backups. Minimum value is 1 and maximum value is 186
-        # for daily backups. Minimum value is 7 and maximum value is 366 for weekly
-        # backups. Minimum value is 30 and maximum value is 732 for monthly backups.
-        # Minimum value is 365 and maximum value is 36159 for yearly backups.
+        # is 36159 for custom retention on-demand backup. Minimum and maximum values are
+        # workload specific for all other rules.
         # Corresponds to the JSON property `backupRetentionDays`
         # @return [Fixnum]
         attr_accessor :backup_retention_days
@@ -1581,6 +1599,167 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Cloud SQL instance's BPA properties.
+      class CloudSqlInstanceBackupPlanAssociationProperties
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the instance was created.
+        # Corresponds to the JSON property `instanceCreateTime`
+        # @return [String]
+        attr_accessor :instance_create_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_create_time = args[:instance_create_time] if args.key?(:instance_create_time)
+        end
+      end
+      
+      # CloudSqlInstanceBackupProperties represents Cloud SQL Instance Backup
+      # properties. .
+      class CloudSqlInstanceBackupProperties
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The installed database version of the Cloud SQL instance when the
+        # backup was taken.
+        # Corresponds to the JSON property `databaseInstalledVersion`
+        # @return [String]
+        attr_accessor :database_installed_version
+      
+        # Output only. Whether the backup is a final backup.
+        # Corresponds to the JSON property `finalBackup`
+        # @return [Boolean]
+        attr_accessor :final_backup
+        alias_method :final_backup?, :final_backup
+      
+        # Output only. The tier (or machine type) for this instance. Example: `db-custom-
+        # 1-3840`
+        # Corresponds to the JSON property `instanceTier`
+        # @return [String]
+        attr_accessor :instance_tier
+      
+        # Output only. The source instance of the backup. Format: projects/`project`/
+        # instances/`instance`
+        # Corresponds to the JSON property `sourceInstance`
+        # @return [String]
+        attr_accessor :source_instance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_installed_version = args[:database_installed_version] if args.key?(:database_installed_version)
+          @final_backup = args[:final_backup] if args.key?(:final_backup)
+          @instance_tier = args[:instance_tier] if args.key?(:instance_tier)
+          @source_instance = args[:source_instance] if args.key?(:source_instance)
+        end
+      end
+      
+      # CloudSqlInstanceDataSourceProperties represents the properties of a Cloud SQL
+      # resource that are stored in the DataSource. .
+      class CloudSqlInstanceDataSourceProperties
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The installed database version of the Cloud SQL instance.
+        # Corresponds to the JSON property `databaseInstalledVersion`
+        # @return [String]
+        attr_accessor :database_installed_version
+      
+        # Output only. The instance creation timestamp.
+        # Corresponds to the JSON property `instanceCreateTime`
+        # @return [String]
+        attr_accessor :instance_create_time
+      
+        # Output only. The tier (or machine type) for this instance. Example: `db-custom-
+        # 1-3840`
+        # Corresponds to the JSON property `instanceTier`
+        # @return [String]
+        attr_accessor :instance_tier
+      
+        # Output only. Name of the Cloud SQL instance backed up by the datasource.
+        # Format: projects/`project`/instances/`instance`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_installed_version = args[:database_installed_version] if args.key?(:database_installed_version)
+          @instance_create_time = args[:instance_create_time] if args.key?(:instance_create_time)
+          @instance_tier = args[:instance_tier] if args.key?(:instance_tier)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # CloudSqlInstanceDataSourceReferenceProperties represents the properties of a
+      # Cloud SQL resource that are stored in the DataSourceReference. .
+      class CloudSqlInstanceDataSourceReferenceProperties
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The installed database version of the Cloud SQL instance.
+        # Corresponds to the JSON property `databaseInstalledVersion`
+        # @return [String]
+        attr_accessor :database_installed_version
+      
+        # Output only. The instance creation timestamp.
+        # Corresponds to the JSON property `instanceCreateTime`
+        # @return [String]
+        attr_accessor :instance_create_time
+      
+        # Output only. The tier (or machine type) for this instance. Example: `db-custom-
+        # 1-3840`
+        # Corresponds to the JSON property `instanceTier`
+        # @return [String]
+        attr_accessor :instance_tier
+      
+        # Output only. Name of the Cloud SQL instance backed up by the datasource.
+        # Format: projects/`project`/instances/`instance`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_installed_version = args[:database_installed_version] if args.key?(:database_installed_version)
+          @instance_create_time = args[:instance_create_time] if args.key?(:instance_create_time)
+          @instance_tier = args[:instance_tier] if args.key?(:instance_tier)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # CloudSqlInstanceInitializationConfig contains the configuration for
+      # initializing a Cloud SQL instance.
+      class CloudSqlInstanceInitializationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The edition of the Cloud SQL instance.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @edition = args[:edition] if args.key?(:edition)
         end
       end
       
@@ -2170,11 +2349,42 @@ module Google
         end
       end
       
+      # Information of backup configuration on the DataSource.
+      class DataSourceBackupConfigInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The status of the last backup in this DataSource
+        # Corresponds to the JSON property `lastBackupState`
+        # @return [String]
+        attr_accessor :last_backup_state
+      
+        # Output only. Timestamp of the last successful backup to this DataSource.
+        # Corresponds to the JSON property `lastSuccessfulBackupConsistencyTime`
+        # @return [String]
+        attr_accessor :last_successful_backup_consistency_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_backup_state = args[:last_backup_state] if args.key?(:last_backup_state)
+          @last_successful_backup_consistency_time = args[:last_successful_backup_consistency_time] if args.key?(:last_successful_backup_consistency_time)
+        end
+      end
+      
       # DataSourceGcpResource is used for protected resources that are Google Cloud
       # Resources. This name is easeier to understand than GcpResourceDataSource or
       # GcpDataSourceResource
       class DataSourceGcpResource
         include Google::Apis::Core::Hashable
+      
+        # CloudSqlInstanceDataSourceProperties represents the properties of a Cloud SQL
+        # resource that are stored in the DataSource. .
+        # Corresponds to the JSON property `cloudSqlInstanceDatasourceProperties`
+        # @return [Google::Apis::BackupdrV1::CloudSqlInstanceDataSourceProperties]
+        attr_accessor :cloud_sql_instance_datasource_properties
       
         # ComputeInstanceDataSourceProperties represents the properties of a
         # ComputeEngine resource that are stored in the DataSource.
@@ -2210,11 +2420,108 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_sql_instance_datasource_properties = args[:cloud_sql_instance_datasource_properties] if args.key?(:cloud_sql_instance_datasource_properties)
           @compute_instance_datasource_properties = args[:compute_instance_datasource_properties] if args.key?(:compute_instance_datasource_properties)
           @disk_datasource_properties = args[:disk_datasource_properties] if args.key?(:disk_datasource_properties)
           @gcp_resourcename = args[:gcp_resourcename] if args.key?(:gcp_resourcename)
           @location = args[:location] if args.key?(:location)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The GCP resource that the DataSource is associated with.
+      class DataSourceGcpResourceInfo
+        include Google::Apis::Core::Hashable
+      
+        # CloudSqlInstanceDataSourceReferenceProperties represents the properties of a
+        # Cloud SQL resource that are stored in the DataSourceReference. .
+        # Corresponds to the JSON property `cloudSqlInstanceProperties`
+        # @return [Google::Apis::BackupdrV1::CloudSqlInstanceDataSourceReferenceProperties]
+        attr_accessor :cloud_sql_instance_properties
+      
+        # Output only. The resource name of the GCP resource. Ex: projects/`project`/
+        # zones/`zone`/instances/`instance`
+        # Corresponds to the JSON property `gcpResourcename`
+        # @return [String]
+        attr_accessor :gcp_resourcename
+      
+        # Output only. The location of the GCP resource. Ex: //"global"/"unspecified"
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Output only. The type of the GCP resource. Ex: compute.googleapis.com/Instance
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_sql_instance_properties = args[:cloud_sql_instance_properties] if args.key?(:cloud_sql_instance_properties)
+          @gcp_resourcename = args[:gcp_resourcename] if args.key?(:gcp_resourcename)
+          @location = args[:location] if args.key?(:location)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # DataSourceReference is a reference to a DataSource resource.
+      class DataSourceReference
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the DataSourceReference was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The resource name of the DataSource. Format: projects/`project`/
+        # locations/`location`/backupVaults/`backupVault`/dataSources/`dataSource`
+        # Corresponds to the JSON property `dataSource`
+        # @return [String]
+        attr_accessor :data_source
+      
+        # Information of backup configuration on the DataSource.
+        # Corresponds to the JSON property `dataSourceBackupConfigInfo`
+        # @return [Google::Apis::BackupdrV1::DataSourceBackupConfigInfo]
+        attr_accessor :data_source_backup_config_info
+      
+        # Output only. The backup configuration state of the DataSource.
+        # Corresponds to the JSON property `dataSourceBackupConfigState`
+        # @return [String]
+        attr_accessor :data_source_backup_config_state
+      
+        # Output only. Number of backups in the DataSource.
+        # Corresponds to the JSON property `dataSourceBackupCount`
+        # @return [Fixnum]
+        attr_accessor :data_source_backup_count
+      
+        # The GCP resource that the DataSource is associated with.
+        # Corresponds to the JSON property `dataSourceGcpResourceInfo`
+        # @return [Google::Apis::BackupdrV1::DataSourceGcpResourceInfo]
+        attr_accessor :data_source_gcp_resource_info
+      
+        # Identifier. The resource name of the DataSourceReference. Format: projects/`
+        # project`/locations/`location`/dataSourceReferences/`data_source_reference`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @data_source = args[:data_source] if args.key?(:data_source)
+          @data_source_backup_config_info = args[:data_source_backup_config_info] if args.key?(:data_source_backup_config_info)
+          @data_source_backup_config_state = args[:data_source_backup_config_state] if args.key?(:data_source_backup_config_state)
+          @data_source_backup_count = args[:data_source_backup_count] if args.key?(:data_source_backup_count)
+          @data_source_gcp_resource_info = args[:data_source_gcp_resource_info] if args.key?(:data_source_gcp_resource_info)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -2658,6 +2965,58 @@ module Google
         end
       end
       
+      # Response for the FetchBackupPlanAssociationsForResourceType method.
+      class FetchBackupPlanAssociationsForResourceTypeResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The BackupPlanAssociations from the specified parent.
+        # Corresponds to the JSON property `backupPlanAssociations`
+        # @return [Array<Google::Apis::BackupdrV1::BackupPlanAssociation>]
+        attr_accessor :backup_plan_associations
+      
+        # Output only. A token, which can be sent as `page_token` to retrieve the next
+        # page. If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_plan_associations = args[:backup_plan_associations] if args.key?(:backup_plan_associations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response for the FetchDataSourceReferencesForResourceType method.
+      class FetchDataSourceReferencesForResourceTypeResponse
+        include Google::Apis::Core::Hashable
+      
+        # The DataSourceReferences from the specified parent.
+        # Corresponds to the JSON property `dataSourceReferences`
+        # @return [Array<Google::Apis::BackupdrV1::DataSourceReference>]
+        attr_accessor :data_source_references
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_source_references = args[:data_source_references] if args.key?(:data_source_references)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for fetching usable BackupVaults.
       class FetchUsableBackupVaultsResponse
         include Google::Apis::Core::Hashable
@@ -2940,6 +3299,12 @@ module Google
       class InitializeServiceRequest
         include Google::Apis::Core::Hashable
       
+        # CloudSqlInstanceInitializationConfig contains the configuration for
+        # initializing a Cloud SQL instance.
+        # Corresponds to the JSON property `cloudSqlInstanceInitializationConfig`
+        # @return [Google::Apis::BackupdrV1::CloudSqlInstanceInitializationConfig]
+        attr_accessor :cloud_sql_instance_initialization_config
+      
         # Optional. An optional request ID to identify requests. Specify a unique
         # request ID so that if you must retry your request, the server will know to
         # ignore the request if it has already been completed. The server will guarantee
@@ -2967,6 +3332,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_sql_instance_initialization_config = args[:cloud_sql_instance_initialization_config] if args.key?(:cloud_sql_instance_initialization_config)
           @request_id = args[:request_id] if args.key?(:request_id)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
         end
