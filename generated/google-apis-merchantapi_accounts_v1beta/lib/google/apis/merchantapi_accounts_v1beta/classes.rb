@@ -990,6 +990,81 @@ module Google
         end
       end
       
+      # [CheckoutSettings](https://support.google.com/merchants/answer/13945960) for a
+      # specific merchant.
+      class CheckoutSettings
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The effective value of enrollment_state for a given merchant ID.
+        # If account level settings are present then this value will be a copy of the
+        # account level settings. Otherwise, it will have the value of the parent
+        # account (for only marketplace sellers).
+        # Corresponds to the JSON property `effectiveEnrollmentState`
+        # @return [String]
+        attr_accessor :effective_enrollment_state
+      
+        # Output only. The effective value of `review_state` for a given merchant ID. If
+        # account level settings are present then this value will be a copy of the
+        # account level settings. Otherwise, it will have the value of the parent
+        # account (for only marketplace sellers).
+        # Corresponds to the JSON property `effectiveReviewState`
+        # @return [String]
+        attr_accessor :effective_review_state
+      
+        # URL settings for cart or checkout URL.
+        # Corresponds to the JSON property `effectiveUriSettings`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::UriSettings]
+        attr_accessor :effective_uri_settings
+      
+        # Optional. The destinations to which the checkout program applies, valid
+        # destination values are `SHOPPING_ADS`, `FREE_LISTINGS`
+        # Corresponds to the JSON property `eligibleDestinations`
+        # @return [Array<String>]
+        attr_accessor :eligible_destinations
+      
+        # Output only. Reflects the merchant enrollment state in `Checkout` program.
+        # Corresponds to the JSON property `enrollmentState`
+        # @return [String]
+        attr_accessor :enrollment_state
+      
+        # Identifier. The resource name of the program configuration settings. Format: `
+        # accounts/`account`/programs/`program`/checkoutSettings`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Reflects the merchant review state in `Checkout` program. This is
+        # set based on the data quality reviews of the URL provided by the merchant. A
+        # merchant with enrollment state as `ENROLLED` can be in the following review
+        # states: `IN_REVIEW`, `APPROVED` or `DISAPPROVED`. A merchant must be in an `
+        # enrollment_state` of `ENROLLED` before a review can begin for the merchant.For
+        # more details, check the help center doc.
+        # Corresponds to the JSON property `reviewState`
+        # @return [String]
+        attr_accessor :review_state
+      
+        # URL settings for cart or checkout URL.
+        # Corresponds to the JSON property `uriSettings`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::UriSettings]
+        attr_accessor :uri_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_enrollment_state = args[:effective_enrollment_state] if args.key?(:effective_enrollment_state)
+          @effective_review_state = args[:effective_review_state] if args.key?(:effective_review_state)
+          @effective_uri_settings = args[:effective_uri_settings] if args.key?(:effective_uri_settings)
+          @eligible_destinations = args[:eligible_destinations] if args.key?(:eligible_destinations)
+          @enrollment_state = args[:enrollment_state] if args.key?(:enrollment_state)
+          @name = args[:name] if args.key?(:name)
+          @review_state = args[:review_state] if args.key?(:review_state)
+          @uri_settings = args[:uri_settings] if args.key?(:uri_settings)
+        end
+      end
+      
       # Request message for the `ClaimHomepage` method.
       class ClaimHomepageRequest
         include Google::Apis::Core::Hashable
@@ -4113,6 +4188,39 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # URL settings for cart or checkout URL.
+      class UriSettings
+        include Google::Apis::Core::Hashable
+      
+        # Cart URL template. When the placeholders are expanded will redirect the buyer
+        # to the cart page on the merchant website with the selected item in cart. For
+        # more details, check the [help center doc](https://support.google.com/merchants/
+        # answer/13945960#method1&zippy=%2Cproduct-level-url-formatting%2Caccount-level-
+        # url-formatting)
+        # Corresponds to the JSON property `cartUriTemplate`
+        # @return [String]
+        attr_accessor :cart_uri_template
+      
+        # Checkout URL template. When the placeholders are expanded will redirect the
+        # buyer to the merchant checkout page with the item in the cart. For more
+        # details, check the [help center doc](https://support.google.com/merchants/
+        # answer/13945960#method1&zippy=%2Cproduct-level-url-formatting%2Caccount-level-
+        # url-formatting)
+        # Corresponds to the JSON property `checkoutUriTemplate`
+        # @return [String]
+        attr_accessor :checkout_uri_template
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cart_uri_template = args[:cart_uri_template] if args.key?(:cart_uri_template)
+          @checkout_uri_template = args[:checkout_uri_template] if args.key?(:checkout_uri_template)
         end
       end
       
