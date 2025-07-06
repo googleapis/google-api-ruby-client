@@ -10754,9 +10754,9 @@ module Google
       
         # Feature generation timestamp. Typically, it is provided by user at feature
         # ingestion time. If not, feature store will use the system timestamp when the
-        # data is ingested into feature store. For streaming ingestion, the time,
-        # aligned by days, must be no older than five years (1825 days) and no later
-        # than one year (366 days) in the future.
+        # data is ingested into feature store. Legacy Feature Store: For streaming
+        # ingestion, the time, aligned by days, must be no older than five years (1825
+        # days) and no later than one year (366 days) in the future.
         # Corresponds to the JSON property `generateTime`
         # @return [String]
         attr_accessor :generate_time
@@ -13049,8 +13049,7 @@ module Google
         attr_accessor :include_thoughts
         alias_method :include_thoughts?, :include_thoughts
       
-        # Optional. Indicates the thinking budget in tokens. This is only applied when
-        # enable_thinking is true.
+        # Optional. Indicates the thinking budget in tokens.
         # Corresponds to the JSON property `thinkingBudget`
         # @return [Fixnum]
         attr_accessor :thinking_budget
@@ -16710,7 +16709,7 @@ module Google
         end
       end
       
-      # The metric used for dataset level evaluation.
+      # The metric used for running evaluations.
       class GoogleCloudAiplatformV1Metric
         include Google::Apis::Core::Hashable
       
@@ -17776,10 +17775,11 @@ module Google
       
         # Immutable. Invoke route prefix for the custom container. "/*" is the only
         # supported value right now. By setting this field, any non-root route on this
-        # model will be accessible with [PredictionService.Invoke] eg: "/invoke/foo/bar".
-        # Only one of `predict_route` or `invoke_route_prefix` can be set, and we
-        # default to using `predict_route` if this field is not set. If this field is
-        # set, the Model can only be deployed to dedicated endpoint.
+        # model will be accessible with invoke http call eg: "/invoke/foo/bar", however
+        # the [PredictionService.Invoke] RPC is not supported yet. Only one of `
+        # predict_route` or `invoke_route_prefix` can be set, and we default to using `
+        # predict_route` if this field is not set. If this field is set, the Model can
+        # only be deployed to dedicated endpoint.
         # Corresponds to the JSON property `invokeRoutePrefix`
         # @return [String]
         attr_accessor :invoke_route_prefix
@@ -20925,8 +20925,8 @@ module Google
         end
       end
       
-      # PSC config that is used to automatically create forwarding rule via
-      # ServiceConnectionMap.
+      # PSC config that is used to automatically create PSC endpoints in the user
+      # projects.
       class GoogleCloudAiplatformV1PscAutomationConfig
         include Google::Apis::Core::Hashable
       
@@ -20947,9 +20947,8 @@ module Google
       
         # Required. The full name of the Google Compute Engine [network](https://cloud.
         # google.com/compute/docs/networks-and-firewalls#networks). [Format](https://
-        # cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/`
-        # project`/global/networks/`network``. Where `project` is a project number, as
-        # in '12345', and `network` is network name.
+        # cloud.google.com/compute/docs/reference/rest/v1/networks/get): `projects/`
+        # project`/global/networks/`network``.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -22014,6 +22013,16 @@ module Google
         # @return [String]
         attr_accessor :task_name
       
+        # Output only. The unique name of a task. This field is used by rerun pipeline
+        # job. Console UI and Vertex AI SDK will support triggering pipeline job reruns.
+        # The name is constructed by concatenating all the parent tasks name with the
+        # task name. For example, if a task named "child_task" has a parent task named "
+        # parent_task_1" and parent task 1 has a parent task named "parent_task_2", the
+        # task unique name will be "parent_task_2.parent_task_1.child_task".
+        # Corresponds to the JSON property `taskUniqueName`
+        # @return [String]
+        attr_accessor :task_unique_name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -22033,6 +22042,7 @@ module Google
           @state = args[:state] if args.key?(:state)
           @task_id = args[:task_id] if args.key?(:task_id)
           @task_name = args[:task_name] if args.key?(:task_name)
+          @task_unique_name = args[:task_unique_name] if args.key?(:task_unique_name)
         end
       end
       
@@ -22713,6 +22723,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :project_allowlist
       
+        # Optional. List of projects and networks where the PSC endpoints will be
+        # created. This field is used by Online Inference(Prediction) only.
+        # Corresponds to the JSON property `pscAutomationConfigs`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscAutomationConfig>]
+        attr_accessor :psc_automation_configs
+      
         # Output only. The name of the generated service attachment resource. This is
         # only populated if the endpoint is deployed with PrivateServiceConnect.
         # Corresponds to the JSON property `serviceAttachment`
@@ -22727,6 +22743,7 @@ module Google
         def update!(**args)
           @enable_private_service_connect = args[:enable_private_service_connect] if args.key?(:enable_private_service_connect)
           @project_allowlist = args[:project_allowlist] if args.key?(:project_allowlist)
+          @psc_automation_configs = args[:psc_automation_configs] if args.key?(:psc_automation_configs)
           @service_attachment = args[:service_attachment] if args.key?(:service_attachment)
         end
       end
@@ -39128,7 +39145,10 @@ module Google
         attr_accessor :endpoint
       
         # Output only. The resource name of the TunedModel. Format: `projects/`project`/
-        # locations/`location`/models/`model``.
+        # locations/`location`/models/`model`@`version_id`` When tuning from a base
+        # model, the version_id will be 1. For continuous tuning, the version id will be
+        # incremented by 1 from the last version id in the parent model. E.g., `projects/
+        # `project`/locations/`location`/models/`model`@`last_version_id + 1``
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
