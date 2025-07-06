@@ -1776,6 +1776,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dataset_template, as: 'datasetTemplate', class: Google::Apis::DatastreamV1::DatasetTemplate, decorator: Google::Apis::DatastreamV1::DatasetTemplate::Representation
       
+          property :project_id, as: 'projectId'
         end
       end
       
