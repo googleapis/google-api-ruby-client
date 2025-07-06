@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListReservationGroupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListReservationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,6 +131,12 @@ module Google
       end
       
       class Reservation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -300,6 +312,15 @@ module Google
         end
       end
       
+      class ListReservationGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :reservation_groups, as: 'reservationGroups', class: Google::Apis::BigqueryreservationV1::ReservationGroup, decorator: Google::Apis::BigqueryreservationV1::ReservationGroup::Representation
+      
+        end
+      end
+      
       class ListReservationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -365,10 +386,18 @@ module Google
           property :primary_location, as: 'primaryLocation'
           property :replication_status, as: 'replicationStatus', class: Google::Apis::BigqueryreservationV1::ReplicationStatus, decorator: Google::Apis::BigqueryreservationV1::ReplicationStatus::Representation
       
+          property :reservation_group, as: 'reservationGroup'
           property :scaling_mode, as: 'scalingMode'
           property :secondary_location, as: 'secondaryLocation'
           property :slot_capacity, :numeric_string => true, as: 'slotCapacity'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ReservationGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
