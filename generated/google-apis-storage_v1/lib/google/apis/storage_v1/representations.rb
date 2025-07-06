@@ -343,6 +343,12 @@ module Google
       class Object
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
+        class Contexts
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class CustomerEncryption
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -377,6 +383,12 @@ module Google
       end
       
       class ObjectAccessControls
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ObjectCustomContextPayload
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1054,6 +1066,8 @@ module Google
           property :content_encoding, as: 'contentEncoding'
           property :content_language, as: 'contentLanguage'
           property :content_type, as: 'contentType'
+          property :contexts, as: 'contexts', class: Google::Apis::StorageV1::Object::Contexts, decorator: Google::Apis::StorageV1::Object::Contexts::Representation
+      
           property :crc32c, as: 'crc32c'
           property :custom_time, as: 'customTime', type: DateTime
       
@@ -1095,6 +1109,14 @@ module Google
       
           property :updated, as: 'updated', type: DateTime
       
+        end
+        
+        class Contexts
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            hash :custom, as: 'custom', class: Google::Apis::StorageV1::ObjectCustomContextPayload, decorator: Google::Apis::StorageV1::ObjectCustomContextPayload::Representation
+        
+          end
         end
         
         class CustomerEncryption
@@ -1157,6 +1179,17 @@ module Google
           collection :items, as: 'items', class: Google::Apis::StorageV1::ObjectAccessControl, decorator: Google::Apis::StorageV1::ObjectAccessControl::Representation
       
           property :kind, as: 'kind'
+        end
+      end
+      
+      class ObjectCustomContextPayload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime', type: DateTime
+      
+          property :update_time, as: 'updateTime', type: DateTime
+      
+          property :value, as: 'value'
         end
       end
       

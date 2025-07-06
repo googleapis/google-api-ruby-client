@@ -2351,6 +2351,13 @@ module Google
         # @return [String]
         attr_accessor :content_type
       
+        # User-defined or system-defined object contexts. Each object context is a key-
+        # payload pair, where the key provides the identification and the payload holds
+        # the associated value and additional metadata.
+        # Corresponds to the JSON property `contexts`
+        # @return [Google::Apis::StorageV1::Object::Contexts]
+        attr_accessor :contexts
+      
         # CRC32c checksum, as described in RFC 4960, Appendix B; encoded using base64 in
         # big-endian byte order. For more information about using the CRC32c checksum,
         # see [Data Validation and Change Detection](https://cloud.google.com/storage/
@@ -2552,6 +2559,7 @@ module Google
           @content_encoding = args[:content_encoding] if args.key?(:content_encoding)
           @content_language = args[:content_language] if args.key?(:content_language)
           @content_type = args[:content_type] if args.key?(:content_type)
+          @contexts = args[:contexts] if args.key?(:contexts)
           @crc32c = args[:crc32c] if args.key?(:crc32c)
           @custom_time = args[:custom_time] if args.key?(:custom_time)
           @customer_encryption = args[:customer_encryption] if args.key?(:customer_encryption)
@@ -2581,6 +2589,27 @@ module Google
           @time_finalized = args[:time_finalized] if args.key?(:time_finalized)
           @time_storage_class_updated = args[:time_storage_class_updated] if args.key?(:time_storage_class_updated)
           @updated = args[:updated] if args.key?(:updated)
+        end
+        
+        # User-defined or system-defined object contexts. Each object context is a key-
+        # payload pair, where the key provides the identification and the payload holds
+        # the associated value and additional metadata.
+        class Contexts
+          include Google::Apis::Core::Hashable
+        
+          # User-defined object contexts.
+          # Corresponds to the JSON property `custom`
+          # @return [Hash<String,Google::Apis::StorageV1::ObjectCustomContextPayload>]
+          attr_accessor :custom
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @custom = args[:custom] if args.key?(:custom)
+          end
         end
         
         # Metadata of customer-supplied encryption key, if the object is encrypted by
@@ -2812,6 +2841,37 @@ module Google
         def update!(**args)
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # The payload of a single user-defined object context.
+      class ObjectCustomContextPayload
+        include Google::Apis::Core::Hashable
+      
+        # The time at which the object context was created in RFC 3339 format.
+        # Corresponds to the JSON property `createTime`
+        # @return [DateTime]
+        attr_accessor :create_time
+      
+        # The time at which the object context was last updated in RFC 3339 format.
+        # Corresponds to the JSON property `updateTime`
+        # @return [DateTime]
+        attr_accessor :update_time
+      
+        # The value of the object context.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
