@@ -704,7 +704,7 @@ module Google
         # If the destination table already exists and this flag is `TRUE`, the table
         # will be overwritten by the contents of assets snapshot. If the flag is `FALSE`
         # or unset and the destination table already exists, the export call returns an
-        # INVALID_ARGUMEMT error.
+        # INVALID_ARGUMENT error.
         # Corresponds to the JSON property `force`
         # @return [Boolean]
         attr_accessor :force
