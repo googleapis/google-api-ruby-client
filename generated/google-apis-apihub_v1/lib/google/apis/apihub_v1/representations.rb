@@ -508,6 +508,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApihubV1ResourceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApihubV1RuntimeProjectAttachment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1049,11 +1055,17 @@ module Google
           collection :endpoints, as: 'endpoints'
           property :environment, as: 'environment', class: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues::Representation
       
+          property :management_url, as: 'managementUrl', class: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues::Representation
+      
           property :name, as: 'name'
           property :resource_uri, as: 'resourceUri'
           property :slo, as: 'slo', class: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues::Representation
       
+          property :source_environment, as: 'sourceEnvironment'
           collection :source_metadata, as: 'sourceMetadata', class: Google::Apis::ApihubV1::GoogleCloudApihubV1SourceMetadata, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1SourceMetadata::Representation
+      
+          property :source_project, as: 'sourceProject'
+          property :source_uri, as: 'sourceUri', class: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues::Representation
       
           property :update_time, as: 'updateTime'
         end
@@ -1454,6 +1466,7 @@ module Google
           property :display_name, as: 'displayName'
           property :documentation, as: 'documentation', class: Google::Apis::ApihubV1::GoogleCloudApihubV1Documentation, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1Documentation::Representation
       
+          property :gateway_type, as: 'gatewayType'
           property :hosting_service, as: 'hostingService', class: Google::Apis::ApihubV1::GoogleCloudApihubV1HostingService, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1HostingService::Representation
       
           property :name, as: 'name'
@@ -1489,6 +1502,7 @@ module Google
           property :display_name, as: 'displayName'
           property :error_message, as: 'errorMessage'
           property :name, as: 'name'
+          property :source_project_id, as: 'sourceProjectId'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
         end
@@ -1502,8 +1516,11 @@ module Google
       
           property :hub_instance_action, as: 'hubInstanceAction', class: Google::Apis::ApihubV1::GoogleCloudApihubV1ExecutionStatus, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1ExecutionStatus::Representation
       
+          property :resource_config, as: 'resourceConfig', class: Google::Apis::ApihubV1::GoogleCloudApihubV1ResourceConfig, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1ResourceConfig::Representation
+      
           property :schedule_cron_expression, as: 'scheduleCronExpression'
           property :schedule_time_zone, as: 'scheduleTimeZone'
+          property :service_account, as: 'serviceAccount'
           property :state, as: 'state'
         end
       end
@@ -1539,6 +1556,14 @@ module Google
       
           property :start, as: 'start', class: Google::Apis::ApihubV1::GoogleCloudApihubV1Point, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1Point::Representation
       
+        end
+      end
+      
+      class GoogleCloudApihubV1ResourceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_type, as: 'actionType'
+          property :pubsub_topic, as: 'pubsubTopic'
         end
       end
       
