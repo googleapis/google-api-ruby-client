@@ -160,7 +160,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ChangeStreamRecord
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ChildLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ColumnMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -275,6 +287,12 @@ module Google
       end
       
       class CrontabSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataChangeRecord
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -413,6 +431,12 @@ module Google
       end
       
       class GetPolicyOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HeartbeatRecord
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -622,7 +646,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Mod
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ModValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MoveInEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MoveInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MoveOutEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -676,6 +724,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PartitionEndRecord
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PartitionEventRecord
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PartitionOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -695,6 +755,12 @@ module Google
       end
       
       class PartitionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PartitionStartRecord
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1250,12 +1316,39 @@ module Google
         end
       end
       
+      class ChangeStreamRecord
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_change_record, as: 'dataChangeRecord', class: Google::Apis::SpannerV1::DataChangeRecord, decorator: Google::Apis::SpannerV1::DataChangeRecord::Representation
+      
+          property :heartbeat_record, as: 'heartbeatRecord', class: Google::Apis::SpannerV1::HeartbeatRecord, decorator: Google::Apis::SpannerV1::HeartbeatRecord::Representation
+      
+          property :partition_end_record, as: 'partitionEndRecord', class: Google::Apis::SpannerV1::PartitionEndRecord, decorator: Google::Apis::SpannerV1::PartitionEndRecord::Representation
+      
+          property :partition_event_record, as: 'partitionEventRecord', class: Google::Apis::SpannerV1::PartitionEventRecord, decorator: Google::Apis::SpannerV1::PartitionEventRecord::Representation
+      
+          property :partition_start_record, as: 'partitionStartRecord', class: Google::Apis::SpannerV1::PartitionStartRecord, decorator: Google::Apis::SpannerV1::PartitionStartRecord::Representation
+      
+        end
+      end
+      
       class ChildLink
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :child_index, as: 'childIndex'
           property :type, as: 'type'
           property :variable, as: 'variable'
+        end
+      end
+      
+      class ColumnMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_primary_key, as: 'isPrimaryKey'
+          property :name, as: 'name'
+          property :ordinal_position, :numeric_string => true, as: 'ordinalPosition'
+          property :type, as: 'type', class: Google::Apis::SpannerV1::Type, decorator: Google::Apis::SpannerV1::Type::Representation
+      
         end
       end
       
@@ -1451,6 +1544,27 @@ module Google
           property :creation_window, as: 'creationWindow'
           property :text, as: 'text'
           property :time_zone, as: 'timeZone'
+        end
+      end
+      
+      class DataChangeRecord
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :column_metadata, as: 'columnMetadata', class: Google::Apis::SpannerV1::ColumnMetadata, decorator: Google::Apis::SpannerV1::ColumnMetadata::Representation
+      
+          property :commit_timestamp, as: 'commitTimestamp'
+          property :is_last_record_in_transaction_in_partition, as: 'isLastRecordInTransactionInPartition'
+          property :is_system_transaction, as: 'isSystemTransaction'
+          property :mod_type, as: 'modType'
+          collection :mods, as: 'mods', class: Google::Apis::SpannerV1::Mod, decorator: Google::Apis::SpannerV1::Mod::Representation
+      
+          property :number_of_partitions_in_transaction, as: 'numberOfPartitionsInTransaction'
+          property :number_of_records_in_transaction, as: 'numberOfRecordsInTransaction'
+          property :record_sequence, as: 'recordSequence'
+          property :server_transaction_id, as: 'serverTransactionId'
+          property :table, as: 'table'
+          property :transaction_tag, as: 'transactionTag'
+          property :value_capture_type, as: 'valueCaptureType'
         end
       end
       
@@ -1687,6 +1801,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :requested_policy_version, as: 'requestedPolicyVersion'
+        end
+      end
+      
+      class HeartbeatRecord
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :timestamp, as: 'timestamp'
         end
       end
       
@@ -2054,12 +2175,46 @@ module Google
         end
       end
       
+      class Mod
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :keys, as: 'keys', class: Google::Apis::SpannerV1::ModValue, decorator: Google::Apis::SpannerV1::ModValue::Representation
+      
+          collection :new_values, as: 'newValues', class: Google::Apis::SpannerV1::ModValue, decorator: Google::Apis::SpannerV1::ModValue::Representation
+      
+          collection :old_values, as: 'oldValues', class: Google::Apis::SpannerV1::ModValue, decorator: Google::Apis::SpannerV1::ModValue::Representation
+      
+        end
+      end
+      
+      class ModValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column_metadata_index, as: 'columnMetadataIndex'
+          property :value, as: 'value'
+        end
+      end
+      
+      class MoveInEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_partition_token, as: 'sourcePartitionToken'
+        end
+      end
+      
       class MoveInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :target_config, as: 'targetConfig'
           collection :target_database_move_configs, as: 'targetDatabaseMoveConfigs', class: Google::Apis::SpannerV1::DatabaseMoveConfig, decorator: Google::Apis::SpannerV1::DatabaseMoveConfig::Representation
       
+        end
+      end
+      
+      class MoveOutEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_partition_token, as: 'destinationPartitionToken'
         end
       end
       
@@ -2148,6 +2303,28 @@ module Google
         end
       end
       
+      class PartitionEndRecord
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_timestamp, as: 'endTimestamp'
+          property :partition_token, as: 'partitionToken'
+          property :record_sequence, as: 'recordSequence'
+        end
+      end
+      
+      class PartitionEventRecord
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :commit_timestamp, as: 'commitTimestamp'
+          collection :move_in_events, as: 'moveInEvents', class: Google::Apis::SpannerV1::MoveInEvent, decorator: Google::Apis::SpannerV1::MoveInEvent::Representation
+      
+          collection :move_out_events, as: 'moveOutEvents', class: Google::Apis::SpannerV1::MoveOutEvent, decorator: Google::Apis::SpannerV1::MoveOutEvent::Representation
+      
+          property :partition_token, as: 'partitionToken'
+          property :record_sequence, as: 'recordSequence'
+        end
+      end
+      
       class PartitionOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2192,6 +2369,15 @@ module Google
       
           property :transaction, as: 'transaction', class: Google::Apis::SpannerV1::Transaction, decorator: Google::Apis::SpannerV1::Transaction::Representation
       
+        end
+      end
+      
+      class PartitionStartRecord
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :partition_tokens, as: 'partitionTokens'
+          property :record_sequence, as: 'recordSequence'
+          property :start_timestamp, as: 'startTimestamp'
         end
       end
       
