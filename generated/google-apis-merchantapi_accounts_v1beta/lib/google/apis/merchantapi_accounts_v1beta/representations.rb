@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CheckoutSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ClaimHomepageRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -688,6 +694,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UriSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class User
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -963,6 +975,22 @@ module Google
           property :name, as: 'name'
           property :origin_postal_code, as: 'originPostalCode'
           property :percentage_adjustment, as: 'percentageAdjustment'
+        end
+      end
+      
+      class CheckoutSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :effective_enrollment_state, as: 'effectiveEnrollmentState'
+          property :effective_review_state, as: 'effectiveReviewState'
+          property :effective_uri_settings, as: 'effectiveUriSettings', class: Google::Apis::MerchantapiAccountsV1beta::UriSettings, decorator: Google::Apis::MerchantapiAccountsV1beta::UriSettings::Representation
+      
+          collection :eligible_destinations, as: 'eligibleDestinations'
+          property :enrollment_state, as: 'enrollmentState'
+          property :name, as: 'name'
+          property :review_state, as: 'reviewState'
+          property :uri_settings, as: 'uriSettings', class: Google::Apis::MerchantapiAccountsV1beta::UriSettings, decorator: Google::Apis::MerchantapiAccountsV1beta::UriSettings::Representation
+      
         end
       end
       
@@ -1818,6 +1846,14 @@ module Google
       class UnclaimHomepageRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UriSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cart_uri_template, as: 'cartUriTemplate'
+          property :checkout_uri_template, as: 'checkoutUriTemplate'
         end
       end
       
