@@ -3329,6 +3329,12 @@ module Google
         # @return [Google::Apis::DatastreamV1::DatasetTemplate]
         attr_accessor :dataset_template
       
+        # Optional. The project id of the BigQuery dataset. If not specified, the
+        # project will be inferred from the stream resource.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3336,6 +3342,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dataset_template = args[:dataset_template] if args.key?(:dataset_template)
+          @project_id = args[:project_id] if args.key?(:project_id)
         end
       end
       
