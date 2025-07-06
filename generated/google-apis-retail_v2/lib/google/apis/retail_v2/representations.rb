@@ -430,6 +430,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2IntentClassificationConfigInlineForceIntent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2IntentClassificationConfigInlineSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2Interval
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -983,6 +995,12 @@ module Google
       end
       
       class GoogleCloudRetailV2SetInventoryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2StringList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2205,6 +2223,8 @@ module Google
           collection :disabled_intent_types, as: 'disabledIntentTypes'
           collection :example, as: 'example', class: Google::Apis::RetailV2::GoogleCloudRetailV2IntentClassificationConfigExample, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2IntentClassificationConfigExample::Representation
       
+          property :inline_source, as: 'inlineSource', class: Google::Apis::RetailV2::GoogleCloudRetailV2IntentClassificationConfigInlineSource, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2IntentClassificationConfigInlineSource::Representation
+      
           property :model_preamble, as: 'modelPreamble'
         end
       end
@@ -2212,9 +2232,27 @@ module Google
       class GoogleCloudRetailV2IntentClassificationConfigExample
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :classified_positive, as: 'classifiedPositive'
           property :intent_type, as: 'intentType'
           property :query, as: 'query'
           property :reason, as: 'reason'
+        end
+      end
+      
+      class GoogleCloudRetailV2IntentClassificationConfigInlineForceIntent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :intent_type, as: 'intentType'
+          property :operation, as: 'operation'
+          property :query, as: 'query'
+        end
+      end
+      
+      class GoogleCloudRetailV2IntentClassificationConfigInlineSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :inline_force_intents, as: 'inlineForceIntents', class: Google::Apis::RetailV2::GoogleCloudRetailV2IntentClassificationConfigInlineForceIntent, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2IntentClassificationConfigInlineForceIntent::Representation
+      
         end
       end
       
@@ -2881,6 +2919,8 @@ module Google
       
           property :tile_navigation_spec, as: 'tileNavigationSpec', class: Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestTileNavigationSpec, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestTileNavigationSpec::Representation
       
+          hash :user_attributes, as: 'userAttributes', class: Google::Apis::RetailV2::GoogleCloudRetailV2StringList, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2StringList::Representation
+      
           property :user_info, as: 'userInfo', class: Google::Apis::RetailV2::GoogleCloudRetailV2UserInfo, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2UserInfo::Representation
       
           collection :variant_rollup_keys, as: 'variantRollupKeys'
@@ -3168,6 +3208,13 @@ module Google
       class GoogleCloudRetailV2SetInventoryResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRetailV2StringList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values'
         end
       end
       
