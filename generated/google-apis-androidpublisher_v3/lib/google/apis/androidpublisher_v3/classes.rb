@@ -4767,6 +4767,94 @@ module Google
         end
       end
       
+      # Contains item-level info for a ProductPurchaseV2.
+      class ProductLineItem
+        include Google::Apis::Core::Hashable
+      
+        # The purchased product ID (for example, 'monthly001').
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # Offer details information related to a purchase line item.
+        # Corresponds to the JSON property `productOfferDetails`
+        # @return [Google::Apis::AndroidpublisherV3::ProductOfferDetails]
+        attr_accessor :product_offer_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @product_offer_details = args[:product_offer_details] if args.key?(:product_offer_details)
+        end
+      end
+      
+      # Offer details information related to a purchase line item.
+      class ProductOfferDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The consumption state of the purchase.
+        # Corresponds to the JSON property `consumptionState`
+        # @return [String]
+        attr_accessor :consumption_state
+      
+        # The offer ID. Only present for offers.
+        # Corresponds to the JSON property `offerId`
+        # @return [String]
+        attr_accessor :offer_id
+      
+        # The latest offer tags associated with the offer. It includes tags inherited
+        # from the purchase option.
+        # Corresponds to the JSON property `offerTags`
+        # @return [Array<String>]
+        attr_accessor :offer_tags
+      
+        # The per-transaction offer token used to make this purchase line item.
+        # Corresponds to the JSON property `offerToken`
+        # @return [String]
+        attr_accessor :offer_token
+      
+        # The purchase option ID.
+        # Corresponds to the JSON property `purchaseOptionId`
+        # @return [String]
+        attr_accessor :purchase_option_id
+      
+        # The quantity associated with the purchase of the inapp product.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        # The quantity eligible for refund, i.e. quantity that hasn't been refunded. The
+        # value reflects quantity-based partial refunds and full refunds.
+        # Corresponds to the JSON property `refundableQuantity`
+        # @return [Fixnum]
+        attr_accessor :refundable_quantity
+      
+        # Offer details information related to a rental line item.
+        # Corresponds to the JSON property `rentOfferDetails`
+        # @return [Google::Apis::AndroidpublisherV3::RentOfferDetails]
+        attr_accessor :rent_offer_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumption_state = args[:consumption_state] if args.key?(:consumption_state)
+          @offer_id = args[:offer_id] if args.key?(:offer_id)
+          @offer_tags = args[:offer_tags] if args.key?(:offer_tags)
+          @offer_token = args[:offer_token] if args.key?(:offer_token)
+          @purchase_option_id = args[:purchase_option_id] if args.key?(:purchase_option_id)
+          @quantity = args[:quantity] if args.key?(:quantity)
+          @refundable_quantity = args[:refundable_quantity] if args.key?(:refundable_quantity)
+          @rent_offer_details = args[:rent_offer_details] if args.key?(:rent_offer_details)
+        end
+      end
+      
       # A ProductPurchase resource indicates the status of a user's inapp product
       # purchase.
       class ProductPurchase
@@ -4889,6 +4977,94 @@ module Google
         end
       end
       
+      # A ProductPurchaseV2 resource indicates the status of a user's inapp product
+      # purchase.
+      class ProductPurchaseV2
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The acknowledgement state of the purchase.
+        # Corresponds to the JSON property `acknowledgementState`
+        # @return [String]
+        attr_accessor :acknowledgement_state
+      
+        # This kind represents a ProductPurchaseV2 object in the androidpublisher
+        # service.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # An obfuscated version of the id that is uniquely associated with the user's
+        # account in your app. Only present if specified using https://developer.android.
+        # com/reference/com/android/billingclient/api/BillingFlowParams.Builder#
+        # setobfuscatedaccountid when the purchase was made.
+        # Corresponds to the JSON property `obfuscatedExternalAccountId`
+        # @return [String]
+        attr_accessor :obfuscated_external_account_id
+      
+        # An obfuscated version of the id that is uniquely associated with the user's
+        # profile in your app. Only present if specified using https://developer.android.
+        # com/reference/com/android/billingclient/api/BillingFlowParams.Builder#
+        # setobfuscatedprofileid when the purchase was made.
+        # Corresponds to the JSON property `obfuscatedExternalProfileId`
+        # @return [String]
+        attr_accessor :obfuscated_external_profile_id
+      
+        # The order id associated with the purchase of the inapp product. May not be set
+        # if there is no order associated with the purchase.
+        # Corresponds to the JSON property `orderId`
+        # @return [String]
+        attr_accessor :order_id
+      
+        # Contains item-level info for a ProductPurchaseV2.
+        # Corresponds to the JSON property `productLineItem`
+        # @return [Array<Google::Apis::AndroidpublisherV3::ProductLineItem>]
+        attr_accessor :product_line_item
+      
+        # The time when the purchase was successful, i.e., when the PurchaseState has
+        # changed to PURCHASED. This field will not be present until the payment is
+        # complete. For example, if the user initiated a pending transaction (https://
+        # developer.android.com/google/play/billing/integrate#pending), this field will
+        # not be populated until the user successfully completes the steps required to
+        # complete the transaction.
+        # Corresponds to the JSON property `purchaseCompletionTime`
+        # @return [String]
+        attr_accessor :purchase_completion_time
+      
+        # Context about the purchase state.
+        # Corresponds to the JSON property `purchaseStateContext`
+        # @return [Google::Apis::AndroidpublisherV3::PurchaseStateContext]
+        attr_accessor :purchase_state_context
+      
+        # ISO 3166-1 alpha-2 billing region code of the user at the time the product was
+        # granted.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        # Context about a test purchase.
+        # Corresponds to the JSON property `testPurchaseContext`
+        # @return [Google::Apis::AndroidpublisherV3::TestPurchaseContext]
+        attr_accessor :test_purchase_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @acknowledgement_state = args[:acknowledgement_state] if args.key?(:acknowledgement_state)
+          @kind = args[:kind] if args.key?(:kind)
+          @obfuscated_external_account_id = args[:obfuscated_external_account_id] if args.key?(:obfuscated_external_account_id)
+          @obfuscated_external_profile_id = args[:obfuscated_external_profile_id] if args.key?(:obfuscated_external_profile_id)
+          @order_id = args[:order_id] if args.key?(:order_id)
+          @product_line_item = args[:product_line_item] if args.key?(:product_line_item)
+          @purchase_completion_time = args[:purchase_completion_time] if args.key?(:purchase_completion_time)
+          @purchase_state_context = args[:purchase_state_context] if args.key?(:purchase_state_context)
+          @region_code = args[:region_code] if args.key?(:region_code)
+          @test_purchase_context = args[:test_purchase_context] if args.key?(:test_purchase_context)
+        end
+      end
+      
       # Request for the product.purchases.acknowledge API.
       class ProductPurchasesAcknowledgeRequest
         include Google::Apis::Core::Hashable
@@ -4905,6 +5081,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @developer_payload = args[:developer_payload] if args.key?(:developer_payload)
+        end
+      end
+      
+      # Context about the purchase state.
+      class PurchaseStateContext
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The purchase state of the purchase.
+        # Corresponds to the JSON property `purchaseState`
+        # @return [String]
+        attr_accessor :purchase_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @purchase_state = args[:purchase_state] if args.key?(:purchase_state)
         end
       end
       
@@ -5368,6 +5563,19 @@ module Google
           @recovered_device_count = args[:recovered_device_count] if args.key?(:recovered_device_count)
           @total_device_count = args[:total_device_count] if args.key?(:total_device_count)
           @version_code = args[:version_code] if args.key?(:version_code)
+        end
+      end
+      
+      # Offer details information related to a rental line item.
+      class RentOfferDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -7174,6 +7382,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Context about a test purchase.
+      class TestPurchaseContext
+        include Google::Apis::Core::Hashable
+      
+        # The fop type of the test purchase.
+        # Corresponds to the JSON property `fopType`
+        # @return [String]
+        attr_accessor :fop_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fop_type = args[:fop_type] if args.key?(:fop_type)
         end
       end
       
