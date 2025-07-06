@@ -23940,6 +23940,10 @@ module Google
         #   Required. The resource name of the session to list events from. Format: `
         #   projects/`project`/locations/`location`/reasoningEngines/`reasoning_engine`/
         #   sessions/`session``
+        # @param [String] filter
+        #   Optional. The standard list filter. Supported fields: * `timestamp` range (i.e.
+        #   `timestamp>="2025-01-31T11:30:00-04:00"` where the timestamp is in RFC 3339
+        #   format) More detail in [AIP-160](https://google.aip.dev/160).
         # @param [Fixnum] page_size
         #   Optional. The maximum number of events to return. The service may return fewer
         #   than this value. If unspecified, at most 100 events will be returned. These
@@ -23964,11 +23968,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_reasoning_engine_session_events(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_reasoning_engine_session_events(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/events', options)
           command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListEventsResponse::Representation
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListEventsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -29568,6 +29573,10 @@ module Google
         #   Required. The resource name of the session to list events from. Format: `
         #   projects/`project`/locations/`location`/reasoningEngines/`reasoning_engine`/
         #   sessions/`session``
+        # @param [String] filter
+        #   Optional. The standard list filter. Supported fields: * `timestamp` range (i.e.
+        #   `timestamp>="2025-01-31T11:30:00-04:00"` where the timestamp is in RFC 3339
+        #   format) More detail in [AIP-160](https://google.aip.dev/160).
         # @param [Fixnum] page_size
         #   Optional. The maximum number of events to return. The service may return fewer
         #   than this value. If unspecified, at most 100 events will be returned. These
@@ -29592,11 +29601,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_reasoning_engine_session_events(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_reasoning_engine_session_events(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/events', options)
           command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListEventsResponse::Representation
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListEventsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
