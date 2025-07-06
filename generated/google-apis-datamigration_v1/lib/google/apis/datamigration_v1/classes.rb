@@ -4290,6 +4290,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The PSC Interface configuration is used to create PSC Interface between DMS's
+        # internal VPC and the consumer's PSC.
+        # Corresponds to the JSON property `pscInterfaceConfig`
+        # @return [Google::Apis::DatamigrationV1::PscInterfaceConfig]
+        attr_accessor :psc_interface_config
+      
         # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
@@ -4329,6 +4335,7 @@ module Google
           @error = args[:error] if args.key?(:error)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @psc_interface_config = args[:psc_interface_config] if args.key?(:psc_interface_config)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
@@ -4394,6 +4401,28 @@ module Google
         # Update properties of this object
         def update!(**args)
           @objects_filter = args[:objects_filter] if args.key?(:objects_filter)
+        end
+      end
+      
+      # The PSC Interface configuration is used to create PSC Interface between DMS's
+      # internal VPC and the consumer's PSC.
+      class PscInterfaceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Fully qualified name of the Network Attachment that DMS will connect
+        # to. Format: `projects/``project``/regions/``region``/networkAttachments/``name`
+        # ``
+        # Corresponds to the JSON property `networkAttachment`
+        # @return [String]
+        attr_accessor :network_attachment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
         end
       end
       
