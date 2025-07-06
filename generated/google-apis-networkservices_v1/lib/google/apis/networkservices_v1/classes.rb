@@ -591,8 +591,8 @@ module Google
       
         # Required. A set of extensions to execute for the matching request. At least
         # one extension is required. Up to 3 extensions can be defined for each
-        # extension chain for `LbTrafficExtension` resource. `LbRouteExtension` chains
-        # are limited to 1 extension per extension chain.
+        # extension chain for `LbTrafficExtension` resource. `LbRouteExtension` and `
+        # LbEdgeExtension` chains are limited to 1 extension per extension chain.
         # Corresponds to the JSON property `extensions`
         # @return [Array<Google::Apis::NetworkservicesV1::ExtensionChainExtension>]
         attr_accessor :extensions
@@ -695,15 +695,18 @@ module Google
         # in the format: `projects/`project`/locations/`location`/wasmPlugins/`plugin``
         # or `//networkservices.googleapis.com/projects/`project`/locations/`location`/
         # wasmPlugins/`wasmPlugin``. Plugin extensions are currently supported for the `
-        # LbTrafficExtension` and the `LbRouteExtension` resources.
+        # LbTrafficExtension`, the `LbRouteExtension`, and the `LbEdgeExtension`
+        # resources.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
       
         # Optional. A set of events during request or response processing for which this
-        # extension is called. This field is required for the `LbTrafficExtension`
-        # resource. It is optional for the `LbRouteExtension` resource. If unspecified `
-        # REQUEST_HEADERS` event is assumed as supported.
+        # extension is called. For the `LbTrafficExtension` resource, this field is
+        # required. For the `LbRouteExtension` resource, this field is optional. If
+        # unspecified, `REQUEST_HEADERS` event is assumed as supported. For the `
+        # LbEdgeExtension` resource, this field is required and must only contain `
+        # REQUEST_HEADERS` event.
         # Corresponds to the JSON property `supportedEvents`
         # @return [Array<String>]
         attr_accessor :supported_events
