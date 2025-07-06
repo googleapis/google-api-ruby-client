@@ -808,6 +808,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2alphaIntentClassificationConfigInlineForceIntent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaIntentClassificationConfigInlineSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2alphaInterval
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2958,6 +2970,8 @@ module Google
           collection :disabled_intent_types, as: 'disabledIntentTypes'
           collection :example, as: 'example', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaIntentClassificationConfigExample, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaIntentClassificationConfigExample::Representation
       
+          property :inline_source, as: 'inlineSource', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaIntentClassificationConfigInlineSource, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaIntentClassificationConfigInlineSource::Representation
+      
           property :model_preamble, as: 'modelPreamble'
         end
       end
@@ -2965,9 +2979,27 @@ module Google
       class GoogleCloudRetailV2alphaIntentClassificationConfigExample
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :classified_positive, as: 'classifiedPositive'
           property :intent_type, as: 'intentType'
           property :query, as: 'query'
           property :reason, as: 'reason'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaIntentClassificationConfigInlineForceIntent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :intent_type, as: 'intentType'
+          property :operation, as: 'operation'
+          property :query, as: 'query'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaIntentClassificationConfigInlineSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :inline_force_intents, as: 'inlineForceIntents', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaIntentClassificationConfigInlineForceIntent, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaIntentClassificationConfigInlineForceIntent::Representation
+      
         end
       end
       
