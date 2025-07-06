@@ -1900,6 +1900,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaTenant
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaTrainCustomModelMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6010,6 +6016,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :additional_params, as: 'additionalParams'
           hash :auth_params, as: 'authParams'
+          property :tenant, as: 'tenant', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaTenant, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaTenant::Representation
+      
         end
       end
       
@@ -7380,6 +7388,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :total_required_quota, :numeric_string => true, as: 'totalRequiredQuota'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaTenant
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :id, as: 'id'
+          property :uri, as: 'uri'
         end
       end
       
