@@ -8004,6 +8004,12 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2File]
         attr_accessor :script
       
+        # The ID of the user that executed the process. E.g. If this is the root user
+        # this will always be 0.
+        # Corresponds to the JSON property `userId`
+        # @return [Fixnum]
+        attr_accessor :user_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8020,6 +8026,7 @@ module Google
           @parent_pid = args[:parent_pid] if args.key?(:parent_pid)
           @pid = args[:pid] if args.key?(:pid)
           @script = args[:script] if args.key?(:script)
+          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
       
@@ -9815,6 +9822,12 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta2::File]
         attr_accessor :script
       
+        # The ID of the user that executed the process. E.g. If this is the root user
+        # this will always be 0.
+        # Corresponds to the JSON property `userId`
+        # @return [Fixnum]
+        attr_accessor :user_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -9831,6 +9844,7 @@ module Google
           @parent_pid = args[:parent_pid] if args.key?(:parent_pid)
           @pid = args[:pid] if args.key?(:pid)
           @script = args[:script] if args.key?(:script)
+          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
       
