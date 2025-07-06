@@ -580,6 +580,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendServiceTlsSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceTlsSettingsSubjectAltName
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendServiceUsedBy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7984,6 +7996,8 @@ module Google
           property :subsetting, as: 'subsetting', class: Google::Apis::ComputeV1::Subsetting, decorator: Google::Apis::ComputeV1::Subsetting::Representation
       
           property :timeout_sec, as: 'timeoutSec'
+          property :tls_settings, as: 'tlsSettings', class: Google::Apis::ComputeV1::BackendServiceTlsSettings, decorator: Google::Apis::ComputeV1::BackendServiceTlsSettings::Representation
+      
           collection :used_by, as: 'usedBy', class: Google::Apis::ComputeV1::BackendServiceUsedBy, decorator: Google::Apis::ComputeV1::BackendServiceUsedBy::Representation
       
         end
@@ -8243,6 +8257,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backend_service, as: 'backendService'
+        end
+      end
+      
+      class BackendServiceTlsSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication_config, as: 'authenticationConfig'
+          property :sni, as: 'sni'
+          collection :subject_alt_names, as: 'subjectAltNames', class: Google::Apis::ComputeV1::BackendServiceTlsSettingsSubjectAltName, decorator: Google::Apis::ComputeV1::BackendServiceTlsSettingsSubjectAltName::Representation
+      
+        end
+      end
+      
+      class BackendServiceTlsSettingsSubjectAltName
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dns_name, as: 'dnsName'
+          property :uniform_resource_identifier, as: 'uniformResourceIdentifier'
         end
       end
       
@@ -9707,9 +9739,13 @@ module Google
       class GroupMaintenanceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_maintenance_ongoing_count, as: 'instanceMaintenanceOngoingCount'
+          property :instance_maintenance_pending_count, as: 'instanceMaintenancePendingCount'
           property :maintenance_ongoing_count, as: 'maintenanceOngoingCount'
           property :maintenance_pending_count, as: 'maintenancePendingCount'
           property :scheduling_type, as: 'schedulingType'
+          property :subblock_infra_maintenance_ongoing_count, as: 'subblockInfraMaintenanceOngoingCount'
+          property :subblock_infra_maintenance_pending_count, as: 'subblockInfraMaintenancePendingCount'
           property :upcoming_group_maintenance, as: 'upcomingGroupMaintenance', class: Google::Apis::ComputeV1::UpcomingMaintenance, decorator: Google::Apis::ComputeV1::UpcomingMaintenance::Representation
       
         end
@@ -16056,6 +16092,8 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :physical_topology, as: 'physicalTopology', class: Google::Apis::ComputeV1::ReservationSubBlockPhysicalTopology, decorator: Google::Apis::ComputeV1::ReservationSubBlockPhysicalTopology::Representation
+      
+          property :reservation_sub_block_maintenance, as: 'reservationSubBlockMaintenance', class: Google::Apis::ComputeV1::GroupMaintenanceInfo, decorator: Google::Apis::ComputeV1::GroupMaintenanceInfo::Representation
       
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
