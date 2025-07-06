@@ -4265,6 +4265,11 @@ module Google
         # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaIntentClassificationConfigExample>]
         attr_accessor :example
       
+        # Inline source for intent classifications.
+        # Corresponds to the JSON property `inlineSource`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaIntentClassificationConfigInlineSource]
+        attr_accessor :inline_source
+      
         # Optional. Customers can use the preamble to specify any requirements for
         # blocklisting intent classification. This preamble will be added to the
         # blocklisting intent classification model prompt.
@@ -4281,6 +4286,7 @@ module Google
           @blocklist_keywords = args[:blocklist_keywords] if args.key?(:blocklist_keywords)
           @disabled_intent_types = args[:disabled_intent_types] if args.key?(:disabled_intent_types)
           @example = args[:example] if args.key?(:example)
+          @inline_source = args[:inline_source] if args.key?(:inline_source)
           @model_preamble = args[:model_preamble] if args.key?(:model_preamble)
         end
       end
@@ -4288,6 +4294,12 @@ module Google
       # An example for intent classification.
       class GoogleCloudRetailV2alphaIntentClassificationConfigExample
         include Google::Apis::Core::Hashable
+      
+        # Required. Whether the example is classified positively.
+        # Corresponds to the JSON property `classifiedPositive`
+        # @return [Boolean]
+        attr_accessor :classified_positive
+        alias_method :classified_positive?, :classified_positive
       
         # Optional. The intent_type must match one of the predefined intent types
         # defined at https://cloud.google.com/retail/docs/reference/rpc/google.cloud.
@@ -4313,9 +4325,62 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @classified_positive = args[:classified_positive] if args.key?(:classified_positive)
           @intent_type = args[:intent_type] if args.key?(:intent_type)
           @query = args[:query] if args.key?(:query)
           @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # An inline force intent classification configuration.
+      class GoogleCloudRetailV2alphaIntentClassificationConfigInlineForceIntent
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The intent_type must match one of the predefined intent types
+        # defined at https://cloud.google.com/retail/docs/reference/rpc/google.cloud.
+        # retail.v2alpha#querytype
+        # Corresponds to the JSON property `intentType`
+        # @return [String]
+        attr_accessor :intent_type
+      
+        # Optional. The operation to perform for the query.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # Optional. A example query.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intent_type = args[:intent_type] if args.key?(:intent_type)
+          @operation = args[:operation] if args.key?(:operation)
+          @query = args[:query] if args.key?(:query)
+        end
+      end
+      
+      # Inline source for intent classifications.
+      class GoogleCloudRetailV2alphaIntentClassificationConfigInlineSource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of inline force intent classifications.
+        # Corresponds to the JSON property `inlineForceIntents`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaIntentClassificationConfigInlineForceIntent>]
+        attr_accessor :inline_force_intents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inline_force_intents = args[:inline_force_intents] if args.key?(:inline_force_intents)
         end
       end
       
