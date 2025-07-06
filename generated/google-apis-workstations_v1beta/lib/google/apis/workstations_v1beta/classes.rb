@@ -284,6 +284,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :pool_size
       
+        # ReservationAffinity is the configuration of the desired reservation from which
+        # instances can consume resources.
+        # Corresponds to the JSON property `reservationAffinity`
+        # @return [Google::Apis::WorkstationsV1beta::ReservationAffinity]
+        attr_accessor :reservation_affinity
+      
         def initialize(**args)
            update!(**args)
         end
@@ -296,6 +302,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @pool_size = args[:pool_size] if args.key?(:pool_size)
+          @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
         end
       end
       
@@ -635,6 +642,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :pooled_instances
       
+        # ReservationAffinity is the configuration of the desired reservation from which
+        # instances can consume resources.
+        # Corresponds to the JSON property `reservationAffinity`
+        # @return [Google::Apis::WorkstationsV1beta::ReservationAffinity]
+        attr_accessor :reservation_affinity
+      
         # Optional. The email address of the service account for Cloud Workstations VMs
         # created with this configuration. When specified, be sure that the service
         # account has `logging.logEntries.create` and `monitoring.timeSeries.create`
@@ -697,6 +710,7 @@ module Google
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @pool_size = args[:pool_size] if args.key?(:pool_size)
           @pooled_instances = args[:pooled_instances] if args.key?(:pooled_instances)
+          @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @service_account = args[:service_account] if args.key?(:service_account)
           @service_account_scopes = args[:service_account_scopes] if args.key?(:service_account_scopes)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
@@ -1547,6 +1561,41 @@ module Google
         def update!(**args)
           @path = args[:path] if args.key?(:path)
           @port = args[:port] if args.key?(:port)
+        end
+      end
+      
+      # ReservationAffinity is the configuration of the desired reservation from which
+      # instances can consume resources.
+      class ReservationAffinity
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Corresponds to the type of reservation consumption.
+        # Corresponds to the JSON property `consumeReservationType`
+        # @return [String]
+        attr_accessor :consume_reservation_type
+      
+        # Optional. Corresponds to the label key of reservation resource.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Optional. Corresponds to the label values of reservation resources. Valid
+        # values are either a name to a reservation in the same project or "projects/`
+        # project`/reservations/`reservation`" to target a shared reservation in the
+        # same zone but in a different project.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consume_reservation_type = args[:consume_reservation_type] if args.key?(:consume_reservation_type)
+          @key = args[:key] if args.key?(:key)
+          @values = args[:values] if args.key?(:values)
         end
       end
       

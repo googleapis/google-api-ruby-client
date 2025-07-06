@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReservationAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RuntimeHost
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -349,6 +355,8 @@ module Google
           property :id, as: 'id'
           property :machine_type, as: 'machineType'
           property :pool_size, as: 'poolSize'
+          property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::WorkstationsV1beta::ReservationAffinity, decorator: Google::Apis::WorkstationsV1beta::ReservationAffinity::Representation
+      
         end
       end
       
@@ -434,6 +442,8 @@ module Google
           property :machine_type, as: 'machineType'
           property :pool_size, as: 'poolSize'
           property :pooled_instances, as: 'pooledInstances'
+          property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::WorkstationsV1beta::ReservationAffinity, decorator: Google::Apis::WorkstationsV1beta::ReservationAffinity::Representation
+      
           property :service_account, as: 'serviceAccount'
           collection :service_account_scopes, as: 'serviceAccountScopes'
           property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::WorkstationsV1beta::GceShieldedInstanceConfig, decorator: Google::Apis::WorkstationsV1beta::GceShieldedInstanceConfig::Representation
@@ -649,6 +659,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :path, as: 'path'
           property :port, as: 'port'
+        end
+      end
+      
+      class ReservationAffinity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consume_reservation_type, as: 'consumeReservationType'
+          property :key, as: 'key'
+          collection :values, as: 'values'
         end
       end
       
