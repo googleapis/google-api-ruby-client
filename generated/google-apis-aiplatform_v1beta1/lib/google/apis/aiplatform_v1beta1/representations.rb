@@ -2308,6 +2308,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1FlexStart
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1FluencyInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -10037,6 +10043,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :autoscaling_metric_specs, as: 'autoscalingMetricSpecs', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AutoscalingMetricSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AutoscalingMetricSpec::Representation
       
+          property :flex_start, as: 'flexStart', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FlexStart, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FlexStart::Representation
+      
           property :machine_spec, as: 'machineSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MachineSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MachineSpec::Representation
       
           property :max_replica_count, as: 'maxReplicaCount'
@@ -10787,6 +10795,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :branch, as: 'branch'
+          hash :custom_metadata, as: 'customMetadata'
           property :grounding_metadata, as: 'groundingMetadata', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GroundingMetadata, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GroundingMetadata::Representation
       
           property :interrupted, as: 'interrupted'
@@ -12154,6 +12163,13 @@ module Google
       
           property :distance, as: 'distance'
           property :sparse_distance, as: 'sparseDistance'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1FlexStart
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_runtime_duration, as: 'maxRuntimeDuration'
         end
       end
       
@@ -15630,6 +15646,7 @@ module Google
           property :state, as: 'state'
           property :task_id, :numeric_string => true, as: 'taskId'
           property :task_name, as: 'taskName'
+          property :task_unique_name, as: 'taskUniqueName'
         end
       end
       
@@ -15871,6 +15888,8 @@ module Google
           property :enable_private_service_connect, as: 'enablePrivateServiceConnect'
           property :enable_secure_private_service_connect, as: 'enableSecurePrivateServiceConnect'
           collection :project_allowlist, as: 'projectAllowlist'
+          collection :psc_automation_configs, as: 'pscAutomationConfigs', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PscAutomationConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PscAutomationConfig::Representation
+      
           property :service_attachment, as: 'serviceAttachment'
         end
       end
