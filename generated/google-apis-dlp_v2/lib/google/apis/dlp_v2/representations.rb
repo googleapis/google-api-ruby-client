@@ -760,6 +760,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2Domain
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2EntityId
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3342,6 +3348,14 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2Domain
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          collection :signals, as: 'signals'
+        end
+      end
+      
       class GooglePrivacyDlpV2EntityId
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3496,6 +3510,8 @@ module Google
           property :data_source_type, as: 'dataSourceType', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DataSourceType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DataSourceType::Representation
       
           collection :data_storage_locations, as: 'dataStorageLocations'
+          collection :domains, as: 'domains', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Domain, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Domain::Representation
+      
           collection :file_cluster_summaries, as: 'fileClusterSummaries', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FileClusterSummary, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FileClusterSummary::Representation
       
           collection :file_store_info_type_summaries, as: 'fileStoreInfoTypeSummaries', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreInfoTypeSummary, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreInfoTypeSummary::Representation
@@ -5026,6 +5042,8 @@ module Google
           property :dataset_id, as: 'datasetId'
           property :dataset_location, as: 'datasetLocation'
           property :dataset_project_id, as: 'datasetProjectId'
+          collection :domains, as: 'domains', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Domain, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Domain::Representation
+      
           property :encryption_status, as: 'encryptionStatus'
           property :expiration_time, as: 'expirationTime'
           property :failed_column_count, :numeric_string => true, as: 'failedColumnCount'

@@ -4520,6 +4520,31 @@ module Google
         end
       end
       
+      # A domain represents a thematic category that a data profile can fall under.
+      class GooglePrivacyDlpV2Domain
+        include Google::Apis::Core::Hashable
+      
+        # A domain category that this profile is related to.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # The collection of signals that influenced selection of the category.
+        # Corresponds to the JSON property `signals`
+        # @return [Array<String>]
+        attr_accessor :signals
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @signals = args[:signals] if args.key?(:signals)
+        end
+      end
+      
       # An entity in a dataset is a field or set of fields that correspond to a single
       # person. For example, in medical records the `EntityId` might be a patient
       # identifier, or for financial records it might be an account identifier. This
@@ -5025,6 +5050,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :data_storage_locations
       
+        # Domains associated with the profile.
+        # Corresponds to the JSON property `domains`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Domain>]
+        attr_accessor :domains
+      
         # FileClusterSummary per each cluster.
         # Corresponds to the JSON property `fileClusterSummaries`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FileClusterSummary>]
@@ -5159,6 +5189,7 @@ module Google
           @data_risk_level = args[:data_risk_level] if args.key?(:data_risk_level)
           @data_source_type = args[:data_source_type] if args.key?(:data_source_type)
           @data_storage_locations = args[:data_storage_locations] if args.key?(:data_storage_locations)
+          @domains = args[:domains] if args.key?(:domains)
           @file_cluster_summaries = args[:file_cluster_summaries] if args.key?(:file_cluster_summaries)
           @file_store_info_type_summaries = args[:file_store_info_type_summaries] if args.key?(:file_store_info_type_summaries)
           @file_store_is_empty = args[:file_store_is_empty] if args.key?(:file_store_is_empty)
@@ -9938,6 +9969,11 @@ module Google
         # @return [String]
         attr_accessor :dataset_project_id
       
+        # Domains associated with the profile.
+        # Corresponds to the JSON property `domains`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Domain>]
+        attr_accessor :domains
+      
         # How the table is encrypted.
         # Corresponds to the JSON property `encryptionStatus`
         # @return [String]
@@ -10034,7 +10070,8 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore]
         attr_accessor :sensitivity_score
       
-        # State of a profile.
+        # State of a profile. This will always be set to DONE when the table data
+        # profile is written to another service like BigQuery or Pub/Sub.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -10069,6 +10106,7 @@ module Google
           @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
           @dataset_location = args[:dataset_location] if args.key?(:dataset_location)
           @dataset_project_id = args[:dataset_project_id] if args.key?(:dataset_project_id)
+          @domains = args[:domains] if args.key?(:domains)
           @encryption_status = args[:encryption_status] if args.key?(:encryption_status)
           @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
           @failed_column_count = args[:failed_column_count] if args.key?(:failed_column_count)
