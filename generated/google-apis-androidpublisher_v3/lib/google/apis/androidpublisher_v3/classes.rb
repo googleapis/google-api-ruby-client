@@ -4148,10 +4148,23 @@ module Google
         # @return [String]
         attr_accessor :offer_id
       
+        # ID of the purchase option. This field is set for both purchase options and
+        # variant offers. For purchase options, this ID identifies the purchase option
+        # itself. For variant offers, this ID refers to the associated purchase option,
+        # and in conjunction with offer_id it identifies the variant offer.
+        # Corresponds to the JSON property `purchaseOptionId`
+        # @return [String]
+        attr_accessor :purchase_option_id
+      
         # The number of items purchased (for multi-quantity item purchases).
         # Corresponds to the JSON property `quantity`
         # @return [Fixnum]
         attr_accessor :quantity
+      
+        # Details of a rental purchase.
+        # Corresponds to the JSON property `rentalDetails`
+        # @return [Google::Apis::AndroidpublisherV3::RentalDetails]
+        attr_accessor :rental_details
       
         def initialize(**args)
            update!(**args)
@@ -4160,7 +4173,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @offer_id = args[:offer_id] if args.key?(:offer_id)
+          @purchase_option_id = args[:purchase_option_id] if args.key?(:purchase_option_id)
           @quantity = args[:quantity] if args.key?(:quantity)
+          @rental_details = args[:rental_details] if args.key?(:rental_details)
         end
       end
       
@@ -5568,6 +5583,19 @@ module Google
       
       # Offer details information related to a rental line item.
       class RentOfferDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Details of a rental purchase.
+      class RentalDetails
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
