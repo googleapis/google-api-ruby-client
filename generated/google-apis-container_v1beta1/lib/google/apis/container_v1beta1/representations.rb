@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BootDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -389,6 +395,24 @@ module Google
       end
       
       class EphemeralStorageLocalSsdConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EvictionGracePeriod
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EvictionMinimumReclaim
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EvictionSignals
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -647,6 +671,12 @@ module Google
       end
       
       class LoggingVariantConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LustreCsiDriverConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1451,6 +1481,8 @@ module Google
       
           property :kubernetes_dashboard, as: 'kubernetesDashboard', class: Google::Apis::ContainerV1beta1::KubernetesDashboard, decorator: Google::Apis::ContainerV1beta1::KubernetesDashboard::Representation
       
+          property :lustre_csi_driver_config, as: 'lustreCsiDriverConfig', class: Google::Apis::ContainerV1beta1::LustreCsiDriverConfig, decorator: Google::Apis::ContainerV1beta1::LustreCsiDriverConfig::Representation
+      
           property :network_policy_config, as: 'networkPolicyConfig', class: Google::Apis::ContainerV1beta1::NetworkPolicyConfig, decorator: Google::Apis::ContainerV1beta1::NetworkPolicyConfig::Representation
       
           property :parallelstore_csi_driver_config, as: 'parallelstoreCsiDriverConfig', class: Google::Apis::ContainerV1beta1::ParallelstoreCsiDriverConfig, decorator: Google::Apis::ContainerV1beta1::ParallelstoreCsiDriverConfig::Representation
@@ -1631,6 +1663,16 @@ module Google
           property :node_pool_soak_duration, as: 'nodePoolSoakDuration'
           property :standard_rollout_policy, as: 'standardRolloutPolicy', class: Google::Apis::ContainerV1beta1::StandardRolloutPolicy, decorator: Google::Apis::ContainerV1beta1::StandardRolloutPolicy::Representation
       
+        end
+      end
+      
+      class BootDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_type, as: 'diskType'
+          property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
+          property :provisioned_throughput, :numeric_string => true, as: 'provisionedThroughput'
+          property :size_gb, :numeric_string => true, as: 'sizeGb'
         end
       end
       
@@ -2229,6 +2271,42 @@ module Google
         end
       end
       
+      class EvictionGracePeriod
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :imagefs_available, as: 'imagefsAvailable'
+          property :imagefs_inodes_free, as: 'imagefsInodesFree'
+          property :memory_available, as: 'memoryAvailable'
+          property :nodefs_available, as: 'nodefsAvailable'
+          property :nodefs_inodes_free, as: 'nodefsInodesFree'
+          property :pid_available, as: 'pidAvailable'
+        end
+      end
+      
+      class EvictionMinimumReclaim
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :imagefs_available, as: 'imagefsAvailable'
+          property :imagefs_inodes_free, as: 'imagefsInodesFree'
+          property :memory_available, as: 'memoryAvailable'
+          property :nodefs_available, as: 'nodefsAvailable'
+          property :nodefs_inodes_free, as: 'nodefsInodesFree'
+          property :pid_available, as: 'pidAvailable'
+        end
+      end
+      
+      class EvictionSignals
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :imagefs_available, as: 'imagefsAvailable'
+          property :imagefs_inodes_free, as: 'imagefsInodesFree'
+          property :memory_available, as: 'memoryAvailable'
+          property :nodefs_available, as: 'nodefsAvailable'
+          property :nodefs_inodes_free, as: 'nodefsInodesFree'
+          property :pid_available, as: 'pidAvailable'
+        end
+      end
+      
       class FastSocket
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2521,6 +2599,8 @@ module Google
           property :hugepages, as: 'hugepages', class: Google::Apis::ContainerV1beta1::HugepagesConfig, decorator: Google::Apis::ContainerV1beta1::HugepagesConfig::Representation
       
           hash :sysctls, as: 'sysctls'
+          property :transparent_hugepage_defrag, as: 'transparentHugepageDefrag'
+          property :transparent_hugepage_enabled, as: 'transparentHugepageEnabled'
         end
       end
       
@@ -2603,6 +2683,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :variant, as: 'variant'
+        end
+      end
+      
+      class LustreCsiDriverConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_legacy_lustre_port, as: 'enableLegacyLustrePort'
+          property :enabled, as: 'enabled'
         end
       end
       
@@ -2797,6 +2885,8 @@ module Google
       
           property :advanced_machine_features, as: 'advancedMachineFeatures', class: Google::Apis::ContainerV1beta1::AdvancedMachineFeatures, decorator: Google::Apis::ContainerV1beta1::AdvancedMachineFeatures::Representation
       
+          property :boot_disk, as: 'bootDisk', class: Google::Apis::ContainerV1beta1::BootDisk, decorator: Google::Apis::ContainerV1beta1::BootDisk::Representation
+      
           property :boot_disk_kms_key, as: 'bootDiskKmsKey'
           property :confidential_nodes, as: 'confidentialNodes', class: Google::Apis::ContainerV1beta1::ConfidentialNodes, decorator: Google::Apis::ContainerV1beta1::ConfidentialNodes::Representation
       
@@ -2891,11 +2981,19 @@ module Google
           property :cpu_cfs_quota, as: 'cpuCfsQuota'
           property :cpu_cfs_quota_period, as: 'cpuCfsQuotaPeriod'
           property :cpu_manager_policy, as: 'cpuManagerPolicy'
+          property :eviction_max_pod_grace_period_seconds, as: 'evictionMaxPodGracePeriodSeconds'
+          property :eviction_minimum_reclaim, as: 'evictionMinimumReclaim', class: Google::Apis::ContainerV1beta1::EvictionMinimumReclaim, decorator: Google::Apis::ContainerV1beta1::EvictionMinimumReclaim::Representation
+      
+          property :eviction_soft, as: 'evictionSoft', class: Google::Apis::ContainerV1beta1::EvictionSignals, decorator: Google::Apis::ContainerV1beta1::EvictionSignals::Representation
+      
+          property :eviction_soft_grace_period, as: 'evictionSoftGracePeriod', class: Google::Apis::ContainerV1beta1::EvictionGracePeriod, decorator: Google::Apis::ContainerV1beta1::EvictionGracePeriod::Representation
+      
           property :image_gc_high_threshold_percent, as: 'imageGcHighThresholdPercent'
           property :image_gc_low_threshold_percent, as: 'imageGcLowThresholdPercent'
           property :image_maximum_gc_age, as: 'imageMaximumGcAge'
           property :image_minimum_gc_age, as: 'imageMinimumGcAge'
           property :insecure_kubelet_readonly_port_enabled, as: 'insecureKubeletReadonlyPortEnabled'
+          property :max_parallel_image_pulls, as: 'maxParallelImagePulls'
           property :memory_manager, as: 'memoryManager', class: Google::Apis::ContainerV1beta1::MemoryManager, decorator: Google::Apis::ContainerV1beta1::MemoryManager::Representation
       
           property :pod_pids_limit, :numeric_string => true, as: 'podPidsLimit'
@@ -3712,6 +3810,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :accelerators, as: 'accelerators', class: Google::Apis::ContainerV1beta1::AcceleratorConfig, decorator: Google::Apis::ContainerV1beta1::AcceleratorConfig::Representation
+      
+          property :boot_disk, as: 'bootDisk', class: Google::Apis::ContainerV1beta1::BootDisk, decorator: Google::Apis::ContainerV1beta1::BootDisk::Representation
       
           property :cluster_id, as: 'clusterId'
           property :confidential_nodes, as: 'confidentialNodes', class: Google::Apis::ContainerV1beta1::ConfidentialNodes, decorator: Google::Apis::ContainerV1beta1::ConfidentialNodes::Representation
