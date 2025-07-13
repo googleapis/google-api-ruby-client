@@ -2001,6 +2001,11 @@ module Google
         # @return [String]
         attr_accessor :conversation_model
       
+        # Agent Assist generator ID.
+        # Corresponds to the JSON property `generatorId`
+        # @return [String]
+        attr_accessor :generator_id
+      
         # A map that contains metadata about the summarization and the document from
         # which it originates.
         # Corresponds to the JSON property `metadata`
@@ -2028,6 +2033,7 @@ module Google
           @answer_record = args[:answer_record] if args.key?(:answer_record)
           @confidence = args[:confidence] if args.key?(:confidence)
           @conversation_model = args[:conversation_model] if args.key?(:conversation_model)
+          @generator_id = args[:generator_id] if args.key?(:generator_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @text = args[:text] if args.key?(:text)
           @text_sections = args[:text_sections] if args.key?(:text_sections)
@@ -5131,10 +5137,21 @@ module Google
         # @return [Fixnum]
         attr_accessor :order
       
+        # Configuration for a predefined question. This field will only be set if the
+        # Question Type is predefined.
+        # Corresponds to the JSON property `predefinedQuestionConfig`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig]
+        attr_accessor :predefined_question_config
+      
         # Question text. E.g., "Did the agent greet the customer?"
         # Corresponds to the JSON property `questionBody`
         # @return [String]
         attr_accessor :question_body
+      
+        # The type of question.
+        # Corresponds to the JSON property `questionType`
+        # @return [String]
+        attr_accessor :question_type
       
         # Questions are tagged for categorization and scoring. Tags can either be: -
         # Default Tags: These are predefined categories. They are identified by their
@@ -5171,7 +5188,9 @@ module Google
           @metrics = args[:metrics] if args.key?(:metrics)
           @name = args[:name] if args.key?(:name)
           @order = args[:order] if args.key?(:order)
+          @predefined_question_config = args[:predefined_question_config] if args.key?(:predefined_question_config)
           @question_body = args[:question_body] if args.key?(:question_body)
+          @question_type = args[:question_type] if args.key?(:question_type)
           @tags = args[:tags] if args.key?(:tags)
           @tuning_metadata = args[:tuning_metadata] if args.key?(:tuning_metadata)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -5250,6 +5269,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accuracy = args[:accuracy] if args.key?(:accuracy)
+        end
+      end
+      
+      # Configuration for a predefined question. This field will only be set if the
+      # Question Type is predefined.
+      class GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig
+        include Google::Apis::Core::Hashable
+      
+        # The type of the predefined question.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -5357,6 +5396,13 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Whether the scorecard is the default one for the project. A default scorecard
+        # cannot be deleted and will always appear first in scorecard selector.
+        # Corresponds to the JSON property `isDefault`
+        # @return [Boolean]
+        attr_accessor :is_default
+        alias_method :is_default?, :is_default
+      
         # Identifier. The scorecard name. Format: projects/`project`/locations/`location`
         # /qaScorecards/`qa_scorecard`
         # Corresponds to the JSON property `name`
@@ -5377,6 +5423,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @is_default = args[:is_default] if args.key?(:is_default)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -8215,6 +8262,11 @@ module Google
         # @return [String]
         attr_accessor :conversation_model
       
+        # Agent Assist generator ID.
+        # Corresponds to the JSON property `generatorId`
+        # @return [String]
+        attr_accessor :generator_id
+      
         # A map that contains metadata about the summarization and the document from
         # which it originates.
         # Corresponds to the JSON property `metadata`
@@ -8242,6 +8294,7 @@ module Google
           @answer_record = args[:answer_record] if args.key?(:answer_record)
           @confidence = args[:confidence] if args.key?(:confidence)
           @conversation_model = args[:conversation_model] if args.key?(:conversation_model)
+          @generator_id = args[:generator_id] if args.key?(:generator_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @text = args[:text] if args.key?(:text)
           @text_sections = args[:text_sections] if args.key?(:text_sections)
