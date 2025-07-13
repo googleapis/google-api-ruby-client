@@ -1006,6 +1006,11 @@ module Google
       class CivicinfoSchemaV2SimpleAddressType
         include Google::Apis::Core::Hashable
       
+        # 
+        # Corresponds to the JSON property `addressLine`
+        # @return [Array<String>]
+        attr_accessor :address_line
+      
         # The city or town for the address.
         # Corresponds to the JSON property `city`
         # @return [String]
@@ -1047,6 +1052,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @address_line = args[:address_line] if args.key?(:address_line)
           @city = args[:city] if args.key?(:city)
           @line1 = args[:line1] if args.key?(:line1)
           @line2 = args[:line2] if args.key?(:line2)
