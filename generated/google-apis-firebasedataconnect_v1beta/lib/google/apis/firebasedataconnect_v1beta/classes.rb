@@ -363,9 +363,13 @@ module Google
         # @return [String]
         attr_accessor :code
       
-        # More detailed error message to assist debugging. In the backend, only include
-        # it in admin authenticated API like ExecuteGraphql. In the emulator, always
-        # include it to assist debugging.
+        # More detailed error message to assist debugging. It contains application
+        # business logic that are inappropriate to leak publicly. In the emulator, Data
+        # Connect API always includes it to assist local development and debugging. In
+        # the backend, ConnectorService always hides it. GraphqlService without
+        # impersonation always include it. GraphqlService with impersonation includes it
+        # only if explicitly opted-in with `include_debug_details` in `
+        # GraphqlRequestExtensions`.
         # Corresponds to the JSON property `debugDetails`
         # @return [String]
         attr_accessor :debug_details
@@ -502,6 +506,12 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :auth_claims
       
+        # Optional. If set, include debug details in GraphQL error extensions.
+        # Corresponds to the JSON property `includeDebugDetails`
+        # @return [Boolean]
+        attr_accessor :include_debug_details
+        alias_method :include_debug_details?, :include_debug_details
+      
         # Evaluate the auth policy as an unauthenticated request. Can only be set to
         # true.
         # Corresponds to the JSON property `unauthenticated`
@@ -516,6 +526,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auth_claims = args[:auth_claims] if args.key?(:auth_claims)
+          @include_debug_details = args[:include_debug_details] if args.key?(:include_debug_details)
           @unauthenticated = args[:unauthenticated] if args.key?(:unauthenticated)
         end
       end

@@ -342,6 +342,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :auth_claims, as: 'authClaims'
+          property :include_debug_details, as: 'includeDebugDetails'
           property :unauthenticated, as: 'unauthenticated'
         end
       end
