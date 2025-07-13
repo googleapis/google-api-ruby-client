@@ -739,6 +739,7 @@ module Google
           property :end_time, as: 'endTime'
           property :error, as: 'error', class: Google::Apis::TranscoderV1::Status, decorator: Google::Apis::TranscoderV1::Status::Representation
       
+          property :fill_content_gaps, as: 'fillContentGaps'
           property :input_uri, as: 'inputUri'
           hash :labels, as: 'labels'
           property :mode, as: 'mode'
