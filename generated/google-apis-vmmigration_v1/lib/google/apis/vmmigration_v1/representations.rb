@@ -845,6 +845,7 @@ module Google
           property :source_description, as: 'sourceDescription'
           property :source_id, as: 'sourceId'
           hash :tags, as: 'tags'
+          property :vcpu_count, as: 'vcpuCount'
           property :virtualization_type, as: 'virtualizationType'
           property :vm_id, as: 'vmId'
           property :vpc_id, as: 'vpcId'
