@@ -12630,6 +12630,40 @@ module Google
         end
       end
       
+      # The video ad inventory control used in certain YouTube line item types.
+      class VideoAdInventoryControl
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether ads can serve as in-feed format.
+        # Corresponds to the JSON property `allowInFeed`
+        # @return [Boolean]
+        attr_accessor :allow_in_feed
+        alias_method :allow_in_feed?, :allow_in_feed
+      
+        # Optional. Whether ads can serve as in-stream format.
+        # Corresponds to the JSON property `allowInStream`
+        # @return [Boolean]
+        attr_accessor :allow_in_stream
+        alias_method :allow_in_stream?, :allow_in_stream
+      
+        # Optional. Whether ads can serve as shorts format.
+        # Corresponds to the JSON property `allowShorts`
+        # @return [Boolean]
+        attr_accessor :allow_shorts
+        alias_method :allow_shorts?, :allow_shorts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_in_feed = args[:allow_in_feed] if args.key?(:allow_in_feed)
+          @allow_in_stream = args[:allow_in_stream] if args.key?(:allow_in_stream)
+          @allow_shorts = args[:allow_shorts] if args.key?(:allow_shorts)
+        end
+      end
+      
       # Settings related to VideoAdSequence.
       class VideoAdSequenceSettings
         include Google::Apis::Core::Hashable
@@ -13048,6 +13082,11 @@ module Google
         # @return [Google::Apis::DisplayvideoV3::ThirdPartyMeasurementConfigs]
         attr_accessor :third_party_measurement_configs
       
+        # The video ad inventory control used in certain YouTube line item types.
+        # Corresponds to the JSON property `videoAdInventoryControl`
+        # @return [Google::Apis::DisplayvideoV3::VideoAdInventoryControl]
+        attr_accessor :video_ad_inventory_control
+      
         # Settings related to VideoAdSequence.
         # Corresponds to the JSON property `videoAdSequenceSettings`
         # @return [Google::Apis::DisplayvideoV3::VideoAdSequenceSettings]
@@ -13073,6 +13112,7 @@ module Google
           @related_video_ids = args[:related_video_ids] if args.key?(:related_video_ids)
           @target_frequency = args[:target_frequency] if args.key?(:target_frequency)
           @third_party_measurement_configs = args[:third_party_measurement_configs] if args.key?(:third_party_measurement_configs)
+          @video_ad_inventory_control = args[:video_ad_inventory_control] if args.key?(:video_ad_inventory_control)
           @video_ad_sequence_settings = args[:video_ad_sequence_settings] if args.key?(:video_ad_sequence_settings)
           @view_frequency_cap = args[:view_frequency_cap] if args.key?(:view_frequency_cap)
         end
