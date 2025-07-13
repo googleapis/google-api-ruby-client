@@ -40629,6 +40629,11 @@ module Google
         # @return [String]
         attr_accessor :cluster
       
+        # The detailed instances information for a given Block
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::ComputeBeta::ReservationBlockPhysicalTopologyInstance>]
+        attr_accessor :instances
+      
         def initialize(**args)
            update!(**args)
         end
@@ -40637,6 +40642,63 @@ module Google
         def update!(**args)
           @block = args[:block] if args.key?(:block)
           @cluster = args[:cluster] if args.key?(:cluster)
+          @instances = args[:instances] if args.key?(:instances)
+        end
+      end
+      
+      # The instances information for a given Block
+      class ReservationBlockPhysicalTopologyInstance
+        include Google::Apis::Core::Hashable
+      
+        # The InstanceId of the instance
+        # Corresponds to the JSON property `instanceId`
+        # @return [Fixnum]
+        attr_accessor :instance_id
+      
+        # The PhysicalHostTopology of the instance within a Block resource.
+        # Corresponds to the JSON property `physicalHostTopology`
+        # @return [Google::Apis::ComputeBeta::ReservationBlockPhysicalTopologyInstancePhysicalHostTopology]
+        attr_accessor :physical_host_topology
+      
+        # Project where the instance lives
+        # Corresponds to the JSON property `projectId`
+        # @return [Fixnum]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @physical_host_topology = args[:physical_host_topology] if args.key?(:physical_host_topology)
+          @project_id = args[:project_id] if args.key?(:project_id)
+        end
+      end
+      
+      # The PhysicalHostTopology of the instance within a Block resource.
+      class ReservationBlockPhysicalTopologyInstancePhysicalHostTopology
+        include Google::Apis::Core::Hashable
+      
+        # Host hash for a given instance
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # Sub block hash for a given instance
+        # Corresponds to the JSON property `subBlock`
+        # @return [String]
+        attr_accessor :sub_block
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host = args[:host] if args.key?(:host)
+          @sub_block = args[:sub_block] if args.key?(:sub_block)
         end
       end
       
