@@ -826,6 +826,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaActionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1637,6 +1649,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfigStreamingError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2669,6 +2687,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfoFailureReason
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaRefreshTokenInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5768,6 +5792,21 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_token, as: 'accessToken'
+          property :refresh_token_info, as: 'refreshTokenInfo', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRefreshTokenInfo, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRefreshTokenInfo::Representation
+      
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaActionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7205,7 +7244,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :realtime_sync_secret, as: 'realtimeSyncSecret'
+          property :streaming_error, as: 'streamingError', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfigStreamingError, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfigStreamingError::Representation
+      
           property :webhook_uri, as: 'webhookUri'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfigStreamingError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::DiscoveryengineV1alpha::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleRpcStatus::Representation
+      
+          property :streaming_error_reason, as: 'streamingErrorReason'
         end
       end
       
@@ -8881,6 +8931,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :corpus_type, as: 'corpusType'
           property :error_message, as: 'errorMessage'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaRefreshTokenInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          collection :scopes, as: 'scopes'
         end
       end
       
