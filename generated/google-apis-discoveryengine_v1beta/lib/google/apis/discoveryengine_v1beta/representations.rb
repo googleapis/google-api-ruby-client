@@ -1090,6 +1090,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfigStreamingError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaDataConnectorSourceEntity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6025,7 +6031,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :realtime_sync_secret, as: 'realtimeSyncSecret'
+          property :streaming_error, as: 'streamingError', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfigStreamingError, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfigStreamingError::Representation
+      
           property :webhook_uri, as: 'webhookUri'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfigStreamingError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus::Representation
+      
+          property :streaming_error_reason, as: 'streamingErrorReason'
         end
       end
       
