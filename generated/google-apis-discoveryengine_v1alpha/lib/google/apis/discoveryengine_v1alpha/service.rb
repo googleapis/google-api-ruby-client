@@ -889,6 +889,44 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Uses the per-user refresh token minted with AcquireAndStoreRefreshToken to
+        # generate and return a new access token and its details. Takes the access token
+        # from cache if available. Rotates the stored refresh token if needed. Uses the
+        # end user identity to return the user specific access token. Does *not* return
+        # the credentials configured by the administrator. Used by Agentspace action
+        # execution and Agentspace UI.
+        # @param [String] name
+        #   Required. The resource name of the connector for which a token is queried.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenRequest] google_cloud_discoveryengine_v1alpha_acquire_access_token_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def acquire_project_location_collection_data_connector_access_token(name, google_cloud_discoveryengine_v1alpha_acquire_access_token_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+name}:acquireAccessToken', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_acquire_access_token_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Get the secret for the associated connector.
         # @param [String] name
         #   Required. The full resource name of the associated data connector.
@@ -3434,7 +3472,8 @@ module Google
         #   location`/collections/`collection`/dataStores/`data_store_id``
         # @param [String] filter
         #   A filter to apply on the list results. The supported features are:
-        #   user_pseudo_id, state. Example: "user_pseudo_id = some_id"
+        #   user_pseudo_id, state, starred. Examples: "user_pseudo_id = some_id" "starred =
+        #   true"
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
@@ -4516,6 +4555,9 @@ module Google
         #   the end user's view. It's recommended to set to true for maturely developed
         #   widgets, as it improves widget performance. Set to false to see changes
         #   reflected in prod right away, if your widget is under development.
+        # @param [Boolean] get_widget_config_request_option_turn_off_collection_components
+        #   Optional. Whether to turn off collection_components in WidgetConfig to reduce
+        #   latency and data transmission.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4533,12 +4575,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_collection_data_store_widget_config(name, accept_cache: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_collection_data_store_widget_config(name, accept_cache: nil, get_widget_config_request_option_turn_off_collection_components: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+name}', options)
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfig::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfig
           command.params['name'] = name unless name.nil?
           command.query['acceptCache'] = accept_cache unless accept_cache.nil?
+          command.query['getWidgetConfigRequestOption.turnOffCollectionComponents'] = get_widget_config_request_option_turn_off_collection_components unless get_widget_config_request_option_turn_off_collection_components.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -5826,7 +5869,8 @@ module Google
         #   location`/collections/`collection`/dataStores/`data_store_id``
         # @param [String] filter
         #   A filter to apply on the list results. The supported features are:
-        #   user_pseudo_id, state. Example: "user_pseudo_id = some_id"
+        #   user_pseudo_id, state, starred. Examples: "user_pseudo_id = some_id" "starred =
+        #   true"
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
@@ -5953,6 +5997,9 @@ module Google
         #   the end user's view. It's recommended to set to true for maturely developed
         #   widgets, as it improves widget performance. Set to false to see changes
         #   reflected in prod right away, if your widget is under development.
+        # @param [Boolean] get_widget_config_request_option_turn_off_collection_components
+        #   Optional. Whether to turn off collection_components in WidgetConfig to reduce
+        #   latency and data transmission.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5970,12 +6017,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_collection_engine_widget_config(name, accept_cache: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_collection_engine_widget_config(name, accept_cache: nil, get_widget_config_request_option_turn_off_collection_components: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+name}', options)
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfig::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfig
           command.params['name'] = name unless name.nil?
           command.query['acceptCache'] = accept_cache unless accept_cache.nil?
+          command.query['getWidgetConfigRequestOption.turnOffCollectionComponents'] = get_widget_config_request_option_turn_off_collection_components unless get_widget_config_request_option_turn_off_collection_components.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -8275,7 +8323,8 @@ module Google
         #   location`/collections/`collection`/dataStores/`data_store_id``
         # @param [String] filter
         #   A filter to apply on the list results. The supported features are:
-        #   user_pseudo_id, state. Example: "user_pseudo_id = some_id"
+        #   user_pseudo_id, state, starred. Examples: "user_pseudo_id = some_id" "starred =
+        #   true"
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
@@ -9067,6 +9116,9 @@ module Google
         #   the end user's view. It's recommended to set to true for maturely developed
         #   widgets, as it improves widget performance. Set to false to see changes
         #   reflected in prod right away, if your widget is under development.
+        # @param [Boolean] get_widget_config_request_option_turn_off_collection_components
+        #   Optional. Whether to turn off collection_components in WidgetConfig to reduce
+        #   latency and data transmission.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9084,12 +9136,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_data_store_widget_config(name, accept_cache: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_data_store_widget_config(name, accept_cache: nil, get_widget_config_request_option_turn_off_collection_components: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+name}', options)
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfig::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfig
           command.params['name'] = name unless name.nil?
           command.query['acceptCache'] = accept_cache unless accept_cache.nil?
+          command.query['getWidgetConfigRequestOption.turnOffCollectionComponents'] = get_widget_config_request_option_turn_off_collection_components unless get_widget_config_request_option_turn_off_collection_components.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
