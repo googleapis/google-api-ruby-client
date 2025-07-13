@@ -264,6 +264,7 @@ module Google
           property :gender, as: 'gender'
           property :google_product_category, as: 'googleProductCategory'
           collection :gtin, as: 'gtin'
+          collection :gtins, as: 'gtins'
           property :identifier_exists, as: 'identifierExists'
           property :image_link, as: 'imageLink'
           collection :included_destinations, as: 'includedDestinations'

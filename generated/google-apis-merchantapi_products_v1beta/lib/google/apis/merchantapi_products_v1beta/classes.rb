@@ -238,10 +238,17 @@ module Google
         attr_accessor :google_product_category
       
         # Global Trade Item Numbers ([GTIN](https://support.google.com/merchants/answer/
-        # 188494#gtin)) of the item. You can provide up to 10 GTINs.
+        # 188494#gtin)) of the item. You can provide up to 10 GTINs. Deprecated: Use `
+        # gtins` instead.
         # Corresponds to the JSON property `gtin`
         # @return [Array<String>]
         attr_accessor :gtin
+      
+        # Global Trade Item Numbers ([GTIN](https://support.google.com/merchants/answer/
+        # 188494#gtin)) of the item. You can provide up to 10 GTINs.
+        # Corresponds to the JSON property `gtins`
+        # @return [Array<String>]
+        attr_accessor :gtins
       
         # Set this value to false when the item does not have unique product identifiers
         # appropriate to its category, such as GTIN, MPN, and brand. Defaults to true,
@@ -618,6 +625,7 @@ module Google
           @gender = args[:gender] if args.key?(:gender)
           @google_product_category = args[:google_product_category] if args.key?(:google_product_category)
           @gtin = args[:gtin] if args.key?(:gtin)
+          @gtins = args[:gtins] if args.key?(:gtins)
           @identifier_exists = args[:identifier_exists] if args.key?(:identifier_exists)
           @image_link = args[:image_link] if args.key?(:image_link)
           @included_destinations = args[:included_destinations] if args.key?(:included_destinations)
