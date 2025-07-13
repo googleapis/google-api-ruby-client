@@ -32,8 +32,9 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The application's ID. Retrievable by using the [`applications.list()`](/admin-
-        # sdk/data-transfer/reference/rest/v1/applications/list) method.
+        # The application's ID. Retrievable by using the [`applications.list()`](https://
+        # developers.google.com/workspace/admin/data-transfer/reference/rest/v1/
+        # applications/list) method.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
@@ -80,7 +81,8 @@ module Google
         # The transfer parameters for the application. These parameters are used to
         # select the data which will get transferred in context of this application. For
         # more information about the specific values available for each application, see
-        # the [Transfer parameters](/admin-sdk/data-transfer/v1/parameters) reference.
+        # the [Transfer parameters](https://developers.google.com/workspace/admin/data-
+        # transfer/v1/parameters) reference.
         # Corresponds to the JSON property `applicationTransferParams`
         # @return [Array<Google::Apis::AdminDatatransferV1::ApplicationTransferParam>]
         attr_accessor :application_transfer_params
