@@ -50,7 +50,8 @@ module Google
         # @return [String]
         attr_accessor :input
       
-        # The local inventory data source.
+        # The local inventory data source type is only available for file inputs and can'
+        # t be used to create API local inventory data sources.
         # Corresponds to the JSON property `localInventoryDataSource`
         # @return [Google::Apis::MerchantapiDatasourcesV1beta::LocalInventoryDataSource]
         attr_accessor :local_inventory_data_source
@@ -81,7 +82,8 @@ module Google
         # @return [Google::Apis::MerchantapiDatasourcesV1beta::PromotionDataSource]
         attr_accessor :promotion_data_source
       
-        # The regional inventory data source.
+        # The [regional inventory](https://support.google.com/merchants/answer/7439058)
+        # data source.
         # Corresponds to the JSON property `regionalInventoryDataSource`
         # @return [Google::Apis::MerchantapiDatasourcesV1beta::RegionalInventoryDataSource]
         attr_accessor :regional_inventory_data_source
@@ -489,7 +491,8 @@ module Google
         end
       end
       
-      # The local inventory data source.
+      # The local inventory data source type is only available for file inputs and can'
+      # t be used to create API local inventory data sources.
       class LocalInventoryDataSource
         include Google::Apis::Core::Hashable
       
@@ -764,7 +767,7 @@ module Google
         end
       end
       
-      # The regional inventory data source.
+      # 
       class RegionalInventoryDataSource
         include Google::Apis::Core::Hashable
       
