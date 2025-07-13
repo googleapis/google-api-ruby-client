@@ -1438,6 +1438,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # This configuration provides VPCSC config for a connector.
+        # Corresponds to the JSON property `vpcscConfig`
+        # @return [Google::Apis::ConnectorsV1::VpcscConfig]
+        attr_accessor :vpcsc_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1468,6 +1473,7 @@ module Google
           @supported_standard_entities = args[:supported_standard_entities] if args.key?(:supported_standard_entities)
           @unsupported_connection_types = args[:unsupported_connection_types] if args.key?(:unsupported_connection_types)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @vpcsc_config = args[:vpcsc_config] if args.key?(:vpcsc_config)
         end
       end
       
@@ -7232,6 +7238,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @error_message = args[:error_message] if args.key?(:error_message)
+        end
+      end
+      
+      # This configuration provides VPCSC config for a connector.
+      class VpcscConfig
+        include Google::Apis::Core::Hashable
+      
+        # The list of allowlisted FQDNs for VPCSC.
+        # Corresponds to the JSON property `defaultAllowlistedHost`
+        # @return [Array<String>]
+        attr_accessor :default_allowlisted_host
+      
+        # Whether to disable firewall VPCSC flow.
+        # Corresponds to the JSON property `disableFirewallVpcscFlow`
+        # @return [Boolean]
+        attr_accessor :disable_firewall_vpcsc_flow
+        alias_method :disable_firewall_vpcsc_flow?, :disable_firewall_vpcsc_flow
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_allowlisted_host = args[:default_allowlisted_host] if args.key?(:default_allowlisted_host)
+          @disable_firewall_vpcsc_flow = args[:disable_firewall_vpcsc_flow] if args.key?(:disable_firewall_vpcsc_flow)
         end
       end
       
