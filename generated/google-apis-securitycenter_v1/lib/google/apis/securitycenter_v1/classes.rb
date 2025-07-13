@@ -3217,8 +3217,8 @@ module Google
         end
       end
       
-      # GCP metadata associated with the resource, only applicable if the finding's
-      # cloud provider is Google Cloud Platform.
+      # Google Cloud metadata associated with the resource. Only applicable if the
+      # finding's cloud provider is Google Cloud.
       class GcpMetadata
         include Google::Apis::Core::Hashable
       
@@ -8818,8 +8818,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # GCP metadata associated with the resource, only applicable if the finding's
-        # cloud provider is Google Cloud Platform.
+        # Google Cloud metadata associated with the resource. Only applicable if the
+        # finding's cloud provider is Google Cloud.
         # Corresponds to the JSON property `gcpMetadata`
         # @return [Google::Apis::SecuritycenterV1::GcpMetadata]
         attr_accessor :gcp_metadata
