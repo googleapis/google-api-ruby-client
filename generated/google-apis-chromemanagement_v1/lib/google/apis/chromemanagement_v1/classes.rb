@@ -658,6 +658,11 @@ module Google
         attr_accessor :kiosk_enabled
         alias_method :kiosk_enabled?, :kiosk_enabled
       
+        # Output only. The version of this extension's manifest.
+        # Corresponds to the JSON property `manifestVersion`
+        # @return [Fixnum]
+        attr_accessor :manifest_version
+      
         # Output only. The minimum number of users using this app.
         # Corresponds to the JSON property `minUserCount`
         # @return [Fixnum]
@@ -701,6 +706,7 @@ module Google
           @is_kiosk_only = args[:is_kiosk_only] if args.key?(:is_kiosk_only)
           @is_theme = args[:is_theme] if args.key?(:is_theme)
           @kiosk_enabled = args[:kiosk_enabled] if args.key?(:kiosk_enabled)
+          @manifest_version = args[:manifest_version] if args.key?(:manifest_version)
           @min_user_count = args[:min_user_count] if args.key?(:min_user_count)
           @permissions = args[:permissions] if args.key?(:permissions)
           @site_access = args[:site_access] if args.key?(:site_access)
@@ -1576,6 +1582,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :display_width_mm
       
+        # Output only. EDID version.
+        # Corresponds to the JSON property `edidVersion`
+        # @return [String]
+        attr_accessor :edid_version
+      
         # Output only. Is display internal or not.
         # Corresponds to the JSON property `internal`
         # @return [Boolean]
@@ -1597,6 +1608,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :model_id
       
+        # Output only. Serial number.
+        # Corresponds to the JSON property `serialNumber`
+        # @return [Fixnum]
+        attr_accessor :serial_number
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1606,10 +1622,12 @@ module Google
           @display_height_mm = args[:display_height_mm] if args.key?(:display_height_mm)
           @display_name = args[:display_name] if args.key?(:display_name)
           @display_width_mm = args[:display_width_mm] if args.key?(:display_width_mm)
+          @edid_version = args[:edid_version] if args.key?(:edid_version)
           @internal = args[:internal] if args.key?(:internal)
           @manufacture_year = args[:manufacture_year] if args.key?(:manufacture_year)
           @manufacturer_id = args[:manufacturer_id] if args.key?(:manufacturer_id)
           @model_id = args[:model_id] if args.key?(:model_id)
+          @serial_number = args[:serial_number] if args.key?(:serial_number)
         end
       end
       
@@ -1626,6 +1644,11 @@ module Google
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
+      
+        # Output only. EDID version.
+        # Corresponds to the JSON property `edidVersion`
+        # @return [String]
+        attr_accessor :edid_version
       
         # Output only. Indicates if display is internal or not.
         # Corresponds to the JSON property `isInternal`
@@ -1648,6 +1671,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :resolution_width
       
+        # Output only. Serial number.
+        # Corresponds to the JSON property `serialNumber`
+        # @return [Fixnum]
+        attr_accessor :serial_number
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1656,10 +1684,12 @@ module Google
         def update!(**args)
           @device_id = args[:device_id] if args.key?(:device_id)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @edid_version = args[:edid_version] if args.key?(:edid_version)
           @is_internal = args[:is_internal] if args.key?(:is_internal)
           @refresh_rate = args[:refresh_rate] if args.key?(:refresh_rate)
           @resolution_height = args[:resolution_height] if args.key?(:resolution_height)
           @resolution_width = args[:resolution_width] if args.key?(:resolution_width)
+          @serial_number = args[:serial_number] if args.key?(:serial_number)
         end
       end
       
@@ -4446,6 +4476,97 @@ module Google
         end
       end
       
+      # A representation of a remote command for a Chrome browser profile.
+      class GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand
+        include Google::Apis::Core::Hashable
+      
+        # Result of the execution of a command.
+        # Corresponds to the JSON property `commandResult`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult]
+        attr_accessor :command_result
+      
+        # Output only. State of the remote command.
+        # Corresponds to the JSON property `commandState`
+        # @return [String]
+        attr_accessor :command_state
+      
+        # Required. Type of the remote command. The only supported command_type is "
+        # clearBrowsingData".
+        # Corresponds to the JSON property `commandType`
+        # @return [String]
+        attr_accessor :command_type
+      
+        # Output only. Timestamp of the issurance of the remote command.
+        # Corresponds to the JSON property `issueTime`
+        # @return [String]
+        attr_accessor :issue_time
+      
+        # Identifier. Format: customers/`customer_id`/profiles/`profile_permanent_id`/
+        # commands/`command_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Payload of the remote command. The payload for "clearBrowsingData"
+        # command supports: - fields "clearCache" and "clearCookies" - values of boolean
+        # type.
+        # Corresponds to the JSON property `payload`
+        # @return [Hash<String,Object>]
+        attr_accessor :payload
+      
+        # Output only. Valid duration of the remote command.
+        # Corresponds to the JSON property `validDuration`
+        # @return [String]
+        attr_accessor :valid_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @command_result = args[:command_result] if args.key?(:command_result)
+          @command_state = args[:command_state] if args.key?(:command_state)
+          @command_type = args[:command_type] if args.key?(:command_type)
+          @issue_time = args[:issue_time] if args.key?(:issue_time)
+          @name = args[:name] if args.key?(:name)
+          @payload = args[:payload] if args.key?(:payload)
+          @valid_duration = args[:valid_duration] if args.key?(:valid_duration)
+        end
+      end
+      
+      # Result of the execution of a command.
+      class GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp of the client execution of the remote command.
+        # Corresponds to the JSON property `clientExecutionTime`
+        # @return [String]
+        attr_accessor :client_execution_time
+      
+        # Output only. Result code that indicates the type of error or success of the
+        # command.
+        # Corresponds to the JSON property `resultCode`
+        # @return [String]
+        attr_accessor :result_code
+      
+        # Output only. Result type of the remote command.
+        # Corresponds to the JSON property `resultType`
+        # @return [String]
+        attr_accessor :result_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_execution_time = args[:client_execution_time] if args.key?(:client_execution_time)
+          @result_code = args[:result_code] if args.key?(:result_code)
+          @result_type = args[:result_type] if args.key?(:result_type)
+        end
+      end
+      
       # Describes the ChromeOS device that a `CertificateProvisioningProcess` belongs
       # to.
       class GoogleChromeManagementVersionsV1ChromeOsDevice
@@ -4589,6 +4710,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @profile_adapter_config_reference = args[:profile_adapter_config_reference] if args.key?(:profile_adapter_config_reference)
+        end
+      end
+      
+      # Response to ListChromeBrowserProfileCommands method.
+      class GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of commands returned.
+        # Corresponds to the JSON property `chromeBrowserProfileCommands`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand>]
+        attr_accessor :chrome_browser_profile_commands
+      
+        # The pagination token that can be used to list the next page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Total size represents an estimated number of resources returned.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chrome_browser_profile_commands = args[:chrome_browser_profile_commands] if args.key?(:chrome_browser_profile_commands)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_size = args[:total_size] if args.key?(:total_size)
         end
       end
       
