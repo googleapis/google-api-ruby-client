@@ -499,8 +499,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_location_operation_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/{+name}', options)
+        def list_organization_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::DataplexV1::GoogleLongrunningListOperationsResponse
           command.params['name'] = name unless name.nil?
@@ -1349,7 +1349,7 @@ module Google
         # @param [String] parent
         #   Required. The resource name of the parent location: projects/`project`/
         #   locations/`location_id` where project refers to a project_id or project_number
-        #   and location_id refers to a GCP region.
+        #   and location_id refers to a Google Cloud region.
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScan] google_cloud_dataplex_v1_data_scan_object
         # @param [String] data_scan_id
         #   Required. DataScan identifier. Must contain only lowercase letters, numbers
@@ -1394,7 +1394,7 @@ module Google
         # @param [String] name
         #   Required. The resource name of the dataScan: projects/`project`/locations/`
         #   location_id`/dataScans/`data_scan_id` where project refers to a project_id or
-        #   project_number and location_id refers to a GCP region.
+        #   project_number and location_id refers to a Google Cloud region.
         # @param [Boolean] force
         #   Optional. If set to true, any child resources of this data scan will also be
         #   deleted. (Otherwise, the request will only work if the data scan has no child
@@ -1468,7 +1468,7 @@ module Google
         # @param [String] name
         #   Required. The resource name of the dataScan: projects/`project`/locations/`
         #   location_id`/dataScans/`data_scan_id` where project refers to a project_id or
-        #   project_number and location_id refers to a GCP region.
+        #   project_number and location_id refers to a Google Cloud region.
         # @param [String] view
         #   Optional. Select the DataScan view to return. Defaults to BASIC.
         # @param [String] fields
@@ -1548,7 +1548,7 @@ module Google
         # @param [String] parent
         #   Required. The resource name of the parent location: projects/`project`/
         #   locations/`location_id` where project refers to a project_id or project_number
-        #   and location_id refers to a GCP region.
+        #   and location_id refers to a Google Cloud region.
         # @param [String] filter
         #   Optional. Filter request.
         # @param [String] order_by
@@ -1598,7 +1598,7 @@ module Google
         #   Output only. Identifier. The relative resource name of the scan, of the form:
         #   projects/`project`/locations/`location_id`/dataScans/`datascan_id`, where
         #   project refers to a project_id or project_number and location_id refers to a
-        #   GCP region.
+        #   Google Cloud region.
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScan] google_cloud_dataplex_v1_data_scan_object
         # @param [String] update_mask
         #   Optional. Mask of fields to update.
@@ -1640,8 +1640,8 @@ module Google
         # @param [String] name
         #   Required. The resource name of the DataScan: projects/`project`/locations/`
         #   location_id`/dataScans/`data_scan_id`. where project refers to a project_id or
-        #   project_number and location_id refers to a GCP region.Only OnDemand data scans
-        #   are allowed.
+        #   project_number and location_id refers to a Google Cloud region.Only OnDemand
+        #   data scans are allowed.
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1RunDataScanRequest] google_cloud_dataplex_v1_run_data_scan_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1789,8 +1789,8 @@ module Google
         # @param [String] name
         #   Required. The resource name of the DataScanJob: projects/`project`/locations/`
         #   location_id`/dataScans/`data_scan_id`/jobs/`data_scan_job_id` where project
-        #   refers to a project_id or project_number and location_id refers to a GCP
-        #   region.
+        #   refers to a project_id or project_number and location_id refers to a Google
+        #   Cloud region.
         # @param [String] view
         #   Optional. Select the DataScanJob view to return. Defaults to BASIC.
         # @param [String] fields
@@ -1825,7 +1825,7 @@ module Google
         # @param [String] parent
         #   Required. The resource name of the parent environment: projects/`project`/
         #   locations/`location_id`/dataScans/`data_scan_id` where project refers to a
-        #   project_id or project_number and location_id refers to a GCP region.
+        #   project_id or project_number and location_id refers to a Google Cloud region.
         # @param [String] filter
         #   Optional. An expression for filtering the results of the ListDataScanJobs
         #   request.If unspecified, all datascan jobs will be returned. Multiple filters
@@ -2028,7 +2028,7 @@ module Google
         # @param [String] parent
         #   Required. The resource name of the DataTaxonomy location, of the form:
         #   projects/`project_number`/locations/`location_id` where location_id refers to
-        #   a GCP region.
+        #   a Google Cloud region.
         # @param [String] filter
         #   Optional. Filter request.
         # @param [String] order_by
@@ -2517,8 +2517,8 @@ module Google
         # Creates an EntryGroup.
         # @param [String] parent
         #   Required. The resource name of the entryGroup, of the form: projects/`
-        #   project_number`/locations/`location_id` where location_id refers to a GCP
-        #   region.
+        #   project_number`/locations/`location_id` where location_id refers to a Google
+        #   Cloud region.
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryGroup] google_cloud_dataplex_v1_entry_group_object
         # @param [String] entry_group_id
         #   Required. EntryGroup identifier.
@@ -3619,7 +3619,7 @@ module Google
         # @param [String] parent
         #   Required. The parent resource where this Glossary will be created. Format:
         #   projects/`project_id_or_number`/locations/`location_id` where location_id
-        #   refers to a GCP region.
+        #   refers to a Google Cloud region.
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1Glossary] google_cloud_dataplex_v1_glossary_object
         # @param [String] glossary_id
         #   Required. Glossary ID: Glossary identifier.
@@ -3774,7 +3774,7 @@ module Google
         # @param [String] parent
         #   Required. The parent, which has this collection of Glossaries. Format:
         #   projects/`project_id_or_number`/locations/`location_id` where location_id
-        #   refers to a GCP region.
+        #   refers to a Google Cloud region.
         # @param [String] filter
         #   Optional. Filter expression that filters Glossaries listed in the response.
         #   Filters on proto fields of Glossary are supported. Examples of using a filter
@@ -3943,7 +3943,7 @@ module Google
         # @param [String] parent
         #   Required. The parent resource where this GlossaryCategory will be created.
         #   Format: projects/`project_id_or_number`/locations/`location_id`/glossaries/`
-        #   glossary_id` where locationId refers to a GCP region.
+        #   glossary_id` where locationId refers to a Google Cloud region.
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryCategory] google_cloud_dataplex_v1_glossary_category_object
         # @param [String] category_id
         #   Required. GlossaryCategory identifier.
@@ -4092,7 +4092,7 @@ module Google
         # @param [String] parent
         #   Required. The parent, which has this collection of GlossaryCategories. Format:
         #   projects/`project_id_or_number`/locations/`location_id`/glossaries/`
-        #   glossary_id` Location is the GCP region.
+        #   glossary_id` Location is the Google Cloud region.
         # @param [String] filter
         #   Optional. Filter expression that filters GlossaryCategories listed in the
         #   response. Filters are supported on the following fields: -
@@ -4264,7 +4264,7 @@ module Google
         # @param [String] parent
         #   Required. The parent resource where the GlossaryTerm will be created. Format:
         #   projects/`project_id_or_number`/locations/`location_id`/glossaries/`
-        #   glossary_id` where location_id refers to a GCP region.
+        #   glossary_id` where location_id refers to a Google Cloud region.
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryTerm] google_cloud_dataplex_v1_glossary_term_object
         # @param [String] term_id
         #   Required. GlossaryTerm identifier.
@@ -4411,7 +4411,7 @@ module Google
         # @param [String] parent
         #   Required. The parent, which has this collection of GlossaryTerms. Format:
         #   projects/`project_id_or_number`/locations/`location_id`/glossaries/`
-        #   glossary_id` where location_id refers to a GCP region.
+        #   glossary_id` where location_id refers to a Google Cloud region.
         # @param [String] filter
         #   Optional. Filter expression that filters GlossaryTerms listed in the response.
         #   Filters are supported on the following fields: - immediate_parentExamples of
@@ -4702,8 +4702,8 @@ module Google
         # Creates a lake resource.
         # @param [String] parent
         #   Required. The resource name of the lake location, of the form: projects/`
-        #   project_number`/locations/`location_id` where location_id refers to a GCP
-        #   region.
+        #   project_number`/locations/`location_id` where location_id refers to a Google
+        #   Cloud region.
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1Lake] google_cloud_dataplex_v1_lake_object
         # @param [String] lake_id
         #   Required. Lake identifier. This ID will be used to generate names such as
@@ -4856,8 +4856,8 @@ module Google
         # Lists lake resources in a project and location.
         # @param [String] parent
         #   Required. The resource name of the lake location, of the form: projects/`
-        #   project_number`/locations/`location_id` where location_id refers to a GCP
-        #   region.
+        #   project_number`/locations/`location_id` where location_id refers to a Google
+        #   Cloud region.
         # @param [String] filter
         #   Optional. Filter request.
         # @param [String] order_by
