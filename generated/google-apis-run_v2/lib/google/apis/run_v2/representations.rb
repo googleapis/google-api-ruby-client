@@ -1539,6 +1539,7 @@ module Google
       
           property :encryption_key, as: 'encryptionKey'
           property :execution_environment, as: 'executionEnvironment'
+          property :gpu_zonal_redundancy_disabled, as: 'gpuZonalRedundancyDisabled'
           property :max_retries, as: 'maxRetries'
           property :node_selector, as: 'nodeSelector', class: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector, decorator: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector::Representation
       
