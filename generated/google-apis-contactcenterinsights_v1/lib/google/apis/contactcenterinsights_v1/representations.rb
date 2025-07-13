@@ -928,6 +928,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1QaQuestionTag
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2596,6 +2602,7 @@ module Google
           property :answer_record, as: 'answerRecord'
           property :confidence, as: 'confidence'
           property :conversation_model, as: 'conversationModel'
+          property :generator_id, as: 'generatorId'
           hash :metadata, as: 'metadata'
           property :text, as: 'text'
           hash :text_sections, as: 'textSections'
@@ -3549,7 +3556,10 @@ module Google
       
           property :name, as: 'name'
           property :order, as: 'order'
+          property :predefined_question_config, as: 'predefinedQuestionConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig::Representation
+      
           property :question_body, as: 'questionBody'
+          property :question_type, as: 'questionType'
           collection :tags, as: 'tags'
           property :tuning_metadata, as: 'tuningMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata::Representation
       
@@ -3573,6 +3583,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accuracy, as: 'accuracy'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
         end
       end
       
@@ -3602,6 +3619,7 @@ module Google
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :is_default, as: 'isDefault'
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
         end
@@ -4414,6 +4432,7 @@ module Google
           property :answer_record, as: 'answerRecord'
           property :confidence, as: 'confidence'
           property :conversation_model, as: 'conversationModel'
+          property :generator_id, as: 'generatorId'
           hash :metadata, as: 'metadata'
           property :text, as: 'text'
           hash :text_sections, as: 'textSections'
