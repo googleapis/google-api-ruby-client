@@ -465,6 +465,15 @@ module Google
       class Cluster
         include Google::Apis::Core::Hashable
       
+        # Optional. Immutable. Allows customers to specify if they are okay with
+        # deploying a multi-zone cluster in less than 3 zones. Once set, if there is a
+        # zonal outage during the cluster creation, the cluster will only be deployed in
+        # 2 zones, and stay within the 2 zones for its lifecycle.
+        # Corresponds to the JSON property `allowFewerZonesDeployment`
+        # @return [Boolean]
+        attr_accessor :allow_fewer_zones_deployment
+        alias_method :allow_fewer_zones_deployment?, :allow_fewer_zones_deployment
+      
         # Optional. If true, cluster endpoints that are created and registered by
         # customers can be deleted asynchronously. That is, such a cluster endpoint can
         # be de-registered before the forwarding rules in the cluster endpoint are
@@ -657,6 +666,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allow_fewer_zones_deployment = args[:allow_fewer_zones_deployment] if args.key?(:allow_fewer_zones_deployment)
           @async_cluster_endpoints_deletion_enabled = args[:async_cluster_endpoints_deletion_enabled] if args.key?(:async_cluster_endpoints_deletion_enabled)
           @authorization_mode = args[:authorization_mode] if args.key?(:authorization_mode)
           @automated_backup_config = args[:automated_backup_config] if args.key?(:automated_backup_config)
@@ -812,7 +822,7 @@ module Google
       class ClusterWeeklyMaintenanceWindow
         include Google::Apis::Core::Hashable
       
-        # Allows to define schedule that runs specified day of the week.
+        # Optional. Allows to define schedule that runs specified day of the week.
         # Corresponds to the JSON property `day`
         # @return [String]
         attr_accessor :day
@@ -861,6 +871,52 @@ module Google
         end
       end
       
+      # Config based signal data. This is used to send signals to Condor which are
+      # based on the DB level configurations. These will be used to send signals for
+      # self managed databases.
+      class ConfigBasedSignalData
+        include Google::Apis::Core::Hashable
+      
+        # Required. Full Resource name of the source resource.
+        # Corresponds to the JSON property `fullResourceName`
+        # @return [String]
+        attr_accessor :full_resource_name
+      
+        # Required. Last time signal was refreshed
+        # Corresponds to the JSON property `lastRefreshTime`
+        # @return [String]
+        attr_accessor :last_refresh_time
+      
+        # DatabaseResourceId will serve as primary key for any resource ingestion event.
+        # Corresponds to the JSON property `resourceId`
+        # @return [Google::Apis::RedisV1::DatabaseResourceId]
+        attr_accessor :resource_id
+      
+        # Signal data for boolean signals.
+        # Corresponds to the JSON property `signalBoolValue`
+        # @return [Boolean]
+        attr_accessor :signal_bool_value
+        alias_method :signal_bool_value?, :signal_bool_value
+      
+        # Required. Signal type of the signal
+        # Corresponds to the JSON property `signalType`
+        # @return [String]
+        attr_accessor :signal_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
+          @last_refresh_time = args[:last_refresh_time] if args.key?(:last_refresh_time)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @signal_bool_value = args[:signal_bool_value] if args.key?(:signal_bool_value)
+          @signal_type = args[:signal_type] if args.key?(:signal_type)
+        end
+      end
+      
       # Detailed information of each PSC connection.
       class ConnectionDetail
         include Google::Apis::Core::Hashable
@@ -891,7 +947,7 @@ module Google
       class CrossClusterReplicationConfig
         include Google::Apis::Core::Hashable
       
-        # The role of the cluster in cross cluster replication.
+        # Output only. The role of the cluster in cross cluster replication.
         # Corresponds to the JSON property `clusterRole`
         # @return [String]
         attr_accessor :cluster_role
@@ -956,9 +1012,16 @@ module Google
       end
       
       # DatabaseResourceFeed is the top level proto to be used to ingest different
-      # database resource level events into Condor platform. Next ID: 8
+      # database resource level events into Condor platform. Next ID: 9
       class DatabaseResourceFeed
         include Google::Apis::Core::Hashable
+      
+        # Config based signal data. This is used to send signals to Condor which are
+        # based on the DB level configurations. These will be used to send signals for
+        # self managed databases.
+        # Corresponds to the JSON property `configBasedSignalData`
+        # @return [Google::Apis::RedisV1::ConfigBasedSignalData]
+        attr_accessor :config_based_signal_data
       
         # Required. Timestamp when feed is generated.
         # Corresponds to the JSON property `feedTimestamp`
@@ -1001,6 +1064,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @config_based_signal_data = args[:config_based_signal_data] if args.key?(:config_based_signal_data)
           @feed_timestamp = args[:feed_timestamp] if args.key?(:feed_timestamp)
           @feed_type = args[:feed_type] if args.key?(:feed_type)
           @observability_metric_data = args[:observability_metric_data] if args.key?(:observability_metric_data)
@@ -2937,6 +3001,13 @@ module Google
         # @return [String]
         attr_accessor :engine
       
+        # Minor version of the underlying database engine. Example values: For MySQL, it
+        # could be "8.0.32", "5.7.32" etc.. For Postgres, it could be "14.3", "15.3" etc.
+        # .
+        # Corresponds to the JSON property `minorVersion`
+        # @return [String]
+        attr_accessor :minor_version
+      
         # Type of specific database product. It could be CloudSQL, AlloyDB etc..
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -2955,6 +3026,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @engine = args[:engine] if args.key?(:engine)
+          @minor_version = args[:minor_version] if args.key?(:minor_version)
           @type = args[:type] if args.key?(:type)
           @version = args[:version] if args.key?(:version)
         end
@@ -3212,8 +3284,8 @@ module Google
       class RemoteCluster
         include Google::Apis::Core::Hashable
       
-        # The full resource path of the remote cluster in the format: projects//
-        # locations//clusters/
+        # Output only. The full resource path of the remote cluster in the format:
+        # projects//locations//clusters/
         # Corresponds to the JSON property `cluster`
         # @return [String]
         attr_accessor :cluster
