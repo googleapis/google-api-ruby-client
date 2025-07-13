@@ -6862,6 +6862,11 @@ module Google
         # @return [String]
         attr_accessor :realtime_sync_secret
       
+        # Streaming error details.
+        # Corresponds to the JSON property `streamingError`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfigStreamingError]
+        attr_accessor :streaming_error
+      
         # Optional. Webhook url for the connector to specify additional params for
         # realtime sync.
         # Corresponds to the JSON property `webhookUri`
@@ -6875,7 +6880,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @realtime_sync_secret = args[:realtime_sync_secret] if args.key?(:realtime_sync_secret)
+          @streaming_error = args[:streaming_error] if args.key?(:streaming_error)
           @webhook_uri = args[:webhook_uri] if args.key?(:webhook_uri)
+        end
+      end
+      
+      # Streaming error details.
+      class GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfigStreamingError
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # Optional. Streaming error.
+        # Corresponds to the JSON property `streamingErrorReason`
+        # @return [String]
+        attr_accessor :streaming_error_reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @streaming_error_reason = args[:streaming_error_reason] if args.key?(:streaming_error_reason)
         end
       end
       
@@ -9306,7 +9342,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A filter to apply on the list results. The supported features are:
-        # user_pseudo_id, state. Example: "user_pseudo_id = some_id"
+        # user_pseudo_id, state, starred. Examples: "user_pseudo_id = some_id" "starred =
+        # true"
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -10507,10 +10544,11 @@ module Google
         # relevance and attractiveness of a search result from a user's perspective. A
         # higher pCTR suggests that the result is more likely to satisfy the user's
         # query and intent, making it a valuable signal for ranking. * `freshness_rank`:
-        # freshness adjustment as a rank * `topicality_rank`: topicality adjustment as a
-        # rank. Uses proprietary Google model to determine the keyword-based overlap
-        # between the query and the document. * `base_rank`: the default rank of the
-        # result
+        # freshness adjustment as a rank * `document_age`: The time in hours elapsed
+        # since the document was last updated, a floating-point number (e.g., 0.25 means
+        # 15 minutes). * `topicality_rank`: topicality adjustment as a rank. Uses
+        # proprietary Google model to determine the keyword-based overlap between the
+        # query and the document. * `base_rank`: the default rank of the result
         # Corresponds to the JSON property `rankingExpression`
         # @return [String]
         attr_accessor :ranking_expression
@@ -22294,10 +22332,11 @@ module Google
         # relevance and attractiveness of a search result from a user's perspective. A
         # higher pCTR suggests that the result is more likely to satisfy the user's
         # query and intent, making it a valuable signal for ranking. * `freshness_rank`:
-        # freshness adjustment as a rank * `topicality_rank`: topicality adjustment as a
-        # rank. Uses proprietary Google model to determine the keyword-based overlap
-        # between the query and the document. * `base_rank`: the default rank of the
-        # result
+        # freshness adjustment as a rank * `document_age`: The time in hours elapsed
+        # since the document was last updated, a floating-point number (e.g., 0.25 means
+        # 15 minutes). * `topicality_rank`: topicality adjustment as a rank. Uses
+        # proprietary Google model to determine the keyword-based overlap between the
+        # query and the document. * `base_rank`: the default rank of the result
         # Corresponds to the JSON property `rankingExpression`
         # @return [String]
         attr_accessor :ranking_expression
