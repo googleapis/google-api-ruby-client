@@ -1084,6 +1084,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RentalDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReplacementCancellation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2867,7 +2873,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :offer_id, as: 'offerId'
+          property :purchase_option_id, as: 'purchaseOptionId'
           property :quantity, as: 'quantity'
+          property :rental_details, as: 'rentalDetails', class: Google::Apis::AndroidpublisherV3::RentalDetails, decorator: Google::Apis::AndroidpublisherV3::RentalDetails::Representation
+      
         end
       end
       
@@ -3278,6 +3287,12 @@ module Google
       end
       
       class RentOfferDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RentalDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
