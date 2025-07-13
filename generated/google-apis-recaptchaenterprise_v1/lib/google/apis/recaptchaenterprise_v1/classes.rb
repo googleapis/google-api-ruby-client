@@ -1613,7 +1613,8 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1RiskAnalysis
         include Google::Apis::Core::Hashable
       
-        # Output only. Challenge information for SCORE_AND_CHALLENGE and INVISIBLE keys
+        # Output only. Challenge information for POLICY_BASED_CHALLENGE and INVISIBLE
+        # keys
         # Corresponds to the JSON property `challenge`
         # @return [String]
         attr_accessor :challenge
@@ -2343,11 +2344,17 @@ module Google
         attr_accessor :allowed_domains
       
         # Optional. Settings for the frequency and difficulty at which this key triggers
-        # captcha challenges. This should only be specified for IntegrationTypes
-        # CHECKBOX and INVISIBLE and SCORE_AND_CHALLENGE.
+        # captcha challenges. This should only be specified for `IntegrationType`
+        # CHECKBOX, INVISIBLE or POLICY_BASED_CHALLENGE.
         # Corresponds to the JSON property `challengeSecurityPreference`
         # @return [String]
         attr_accessor :challenge_security_preference
+      
+        # Settings for POLICY_BASED_CHALLENGE keys to control when a challenge is
+        # triggered.
+        # Corresponds to the JSON property `challengeSettings`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings]
+        attr_accessor :challenge_settings
       
         # Required. Describes how this key is integrated with the website.
         # Corresponds to the JSON property `integrationType`
@@ -2364,7 +2371,58 @@ module Google
           @allow_amp_traffic = args[:allow_amp_traffic] if args.key?(:allow_amp_traffic)
           @allowed_domains = args[:allowed_domains] if args.key?(:allowed_domains)
           @challenge_security_preference = args[:challenge_security_preference] if args.key?(:challenge_security_preference)
+          @challenge_settings = args[:challenge_settings] if args.key?(:challenge_settings)
           @integration_type = args[:integration_type] if args.key?(:integration_type)
+        end
+      end
+      
+      # Per-action challenge settings.
+      class GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings
+        include Google::Apis::Core::Hashable
+      
+        # Required. A challenge is triggered if the end-user score is below that
+        # threshold. Value must be between 0 and 1 (inclusive).
+        # Corresponds to the JSON property `scoreThreshold`
+        # @return [Float]
+        attr_accessor :score_threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @score_threshold = args[:score_threshold] if args.key?(:score_threshold)
+        end
+      end
+      
+      # Settings for POLICY_BASED_CHALLENGE keys to control when a challenge is
+      # triggered.
+      class GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The action to score threshold map. The action name should be the
+        # same as the action name passed in the `data-action` attribute (see https://
+        # cloud.google.com/recaptcha/docs/actions-website). Action names are case-
+        # insensitive. There is a maximum of 100 action settings. An action name has a
+        # maximum length of 100.
+        # Corresponds to the JSON property `actionSettings`
+        # @return [Hash<String,Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings>]
+        attr_accessor :action_settings
+      
+        # Per-action challenge settings.
+        # Corresponds to the JSON property `defaultSettings`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings]
+        attr_accessor :default_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_settings = args[:action_settings] if args.key?(:action_settings)
+          @default_settings = args[:default_settings] if args.key?(:default_settings)
         end
       end
       
