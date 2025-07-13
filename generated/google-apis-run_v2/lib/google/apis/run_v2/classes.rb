@@ -3312,6 +3312,12 @@ module Google
         # @return [String]
         attr_accessor :execution_environment
       
+        # Optional. True if GPU zonal redundancy is disabled on this task template.
+        # Corresponds to the JSON property `gpuZonalRedundancyDisabled`
+        # @return [Boolean]
+        attr_accessor :gpu_zonal_redundancy_disabled
+        alias_method :gpu_zonal_redundancy_disabled?, :gpu_zonal_redundancy_disabled
+      
         # Number of retries allowed per Task, before marking this Task failed. Defaults
         # to 3.
         # Corresponds to the JSON property `maxRetries`
@@ -3359,6 +3365,7 @@ module Google
           @containers = args[:containers] if args.key?(:containers)
           @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
           @execution_environment = args[:execution_environment] if args.key?(:execution_environment)
+          @gpu_zonal_redundancy_disabled = args[:gpu_zonal_redundancy_disabled] if args.key?(:gpu_zonal_redundancy_disabled)
           @max_retries = args[:max_retries] if args.key?(:max_retries)
           @node_selector = args[:node_selector] if args.key?(:node_selector)
           @service_account = args[:service_account] if args.key?(:service_account)
