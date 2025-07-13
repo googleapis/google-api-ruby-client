@@ -176,6 +176,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :private_components
       
+        # Output only. UJET release version, unique for each new release.
+        # Corresponds to the JSON property `releaseVersion`
+        # @return [String]
+        attr_accessor :release_version
+      
         # Message storing SAML params to enable Google as IDP.
         # Corresponds to the JSON property `samlParams`
         # @return [Google::Apis::ContactcenteraiplatformV1alpha1::SamlParams]
@@ -222,6 +227,7 @@ module Google
           @normal = args[:normal] if args.key?(:normal)
           @private_access = args[:private_access] if args.key?(:private_access)
           @private_components = args[:private_components] if args.key?(:private_components)
+          @release_version = args[:release_version] if args.key?(:release_version)
           @saml_params = args[:saml_params] if args.key?(:saml_params)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
