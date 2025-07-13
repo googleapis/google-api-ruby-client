@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConfigBasedSignalData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConnectionDetail
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -670,6 +676,7 @@ module Google
       class Cluster
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_fewer_zones_deployment, as: 'allowFewerZonesDeployment'
           property :async_cluster_endpoints_deletion_enabled, as: 'asyncClusterEndpointsDeletionEnabled'
           property :authorization_mode, as: 'authorizationMode'
           property :automated_backup_config, as: 'automatedBackupConfig', class: Google::Apis::RedisV1::AutomatedBackupConfig, decorator: Google::Apis::RedisV1::AutomatedBackupConfig::Representation
@@ -775,6 +782,18 @@ module Google
         end
       end
       
+      class ConfigBasedSignalData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :full_resource_name, as: 'fullResourceName'
+          property :last_refresh_time, as: 'lastRefreshTime'
+          property :resource_id, as: 'resourceId', class: Google::Apis::RedisV1::DatabaseResourceId, decorator: Google::Apis::RedisV1::DatabaseResourceId::Representation
+      
+          property :signal_bool_value, as: 'signalBoolValue'
+          property :signal_type, as: 'signalType'
+        end
+      end
+      
       class ConnectionDetail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -810,6 +829,8 @@ module Google
       class DatabaseResourceFeed
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :config_based_signal_data, as: 'configBasedSignalData', class: Google::Apis::RedisV1::ConfigBasedSignalData, decorator: Google::Apis::RedisV1::ConfigBasedSignalData::Representation
+      
           property :feed_timestamp, as: 'feedTimestamp'
           property :feed_type, as: 'feedType'
           property :observability_metric_data, as: 'observabilityMetricData', class: Google::Apis::RedisV1::ObservabilityMetricData, decorator: Google::Apis::RedisV1::ObservabilityMetricData::Representation
@@ -1320,6 +1341,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :engine, as: 'engine'
+          property :minor_version, as: 'minorVersion'
           property :type, as: 'type'
           property :version, as: 'version'
         end
