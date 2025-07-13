@@ -2426,7 +2426,8 @@ module Google
         #   location`/collections/`collection`/dataStores/`data_store_id``
         # @param [String] filter
         #   A filter to apply on the list results. The supported features are:
-        #   user_pseudo_id, state. Example: "user_pseudo_id = some_id"
+        #   user_pseudo_id, state, starred. Examples: "user_pseudo_id = some_id" "starred =
+        #   true"
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
@@ -4500,7 +4501,8 @@ module Google
         #   location`/collections/`collection`/dataStores/`data_store_id``
         # @param [String] filter
         #   A filter to apply on the list results. The supported features are:
-        #   user_pseudo_id, state. Example: "user_pseudo_id = some_id"
+        #   user_pseudo_id, state, starred. Examples: "user_pseudo_id = some_id" "starred =
+        #   true"
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
@@ -6604,7 +6606,8 @@ module Google
         #   location`/collections/`collection`/dataStores/`data_store_id``
         # @param [String] filter
         #   A filter to apply on the list results. The supported features are:
-        #   user_pseudo_id, state. Example: "user_pseudo_id = some_id"
+        #   user_pseudo_id, state, starred. Examples: "user_pseudo_id = some_id" "starred =
+        #   true"
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
