@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeveloperRegistration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DisableProgramRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -562,6 +568,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegisterGcpRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RejectAccountServiceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -689,6 +701,12 @@ module Google
       end
       
       class UnclaimHomepageRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UnregisterGcpRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1080,6 +1098,14 @@ module Google
       
           collection :warehouse_based_delivery_times, as: 'warehouseBasedDeliveryTimes', class: Google::Apis::MerchantapiAccountsV1beta::WarehouseBasedDeliveryTime, decorator: Google::Apis::MerchantapiAccountsV1beta::WarehouseBasedDeliveryTime::Representation
       
+        end
+      end
+      
+      class DeveloperRegistration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :gcp_ids, as: 'gcpIds'
+          property :name, as: 'name'
         end
       end
       
@@ -1631,6 +1657,13 @@ module Google
         end
       end
       
+      class RegisterGcpRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :developer_email, as: 'developerEmail'
+        end
+      end
+      
       class RejectAccountServiceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1844,6 +1877,12 @@ module Google
       end
       
       class UnclaimHomepageRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UnregisterGcpRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
