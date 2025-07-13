@@ -363,7 +363,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :committed_storage_mb
       
-        # The number of cpus the VM has.
+        # The number of CPU cores the VM has.
         # Corresponds to the JSON property `cpuCount`
         # @return [Fixnum]
         attr_accessor :cpu_count
@@ -418,6 +418,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :tags
       
+        # The number of vCPUs the VM has. It is calculated as the number of CPU cores *
+        # threads per CPU the VM has.
+        # Corresponds to the JSON property `vcpuCount`
+        # @return [Fixnum]
+        attr_accessor :vcpu_count
+      
         # The virtualization type.
         # Corresponds to the JSON property `virtualizationType`
         # @return [String]
@@ -458,6 +464,7 @@ module Google
           @source_description = args[:source_description] if args.key?(:source_description)
           @source_id = args[:source_id] if args.key?(:source_id)
           @tags = args[:tags] if args.key?(:tags)
+          @vcpu_count = args[:vcpu_count] if args.key?(:vcpu_count)
           @virtualization_type = args[:virtualization_type] if args.key?(:virtualization_type)
           @vm_id = args[:vm_id] if args.key?(:vm_id)
           @vpc_id = args[:vpc_id] if args.key?(:vpc_id)
