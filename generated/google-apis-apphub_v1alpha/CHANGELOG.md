@@ -1,5 +1,9 @@
 # Release history for google-apis-apphub_v1alpha
 
+### v0.14.0 (2025-07-13)
+
+* Regenerated from discovery document revision 20250630
+
 ### v0.13.0 (2025-06-22)
 
 * Regenerated from discovery document revision 20250416

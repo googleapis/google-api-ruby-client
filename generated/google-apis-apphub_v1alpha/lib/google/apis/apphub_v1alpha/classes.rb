@@ -1132,51 +1132,6 @@ module Google
         end
       end
       
-      # Perimeter is a boundary that describes application management on a `
-      # perimeter_node` (currently limited to an app-enabled folder).
-      class Perimeter
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Create time.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Identifier. Name of the Perimeter resource.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Immutable. Cloud Resource Manager node that determines the perimeter. Only `
-        # folders/`folder_number`` is currently supported.
-        # Corresponds to the JSON property `perimeterNode`
-        # @return [String]
-        attr_accessor :perimeter_node
-      
-        # Output only. Perimeter state.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # Output only. Update time.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @name = args[:name] if args.key?(:name)
-          @perimeter_node = args[:perimeter_node] if args.key?(:perimeter_node)
-          @state = args[:state] if args.key?(:state)
-          @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
       # An Identity and Access Management (IAM) policy, which specifies access
       # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
       # A `binding` binds one or more `members`, or principals, to a single `role`.
