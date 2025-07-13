@@ -1948,6 +1948,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VideoAdInventoryControl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VideoAdSequenceSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5401,6 +5407,15 @@ module Google
         end
       end
       
+      class VideoAdInventoryControl
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_in_feed, as: 'allowInFeed'
+          property :allow_in_stream, as: 'allowInStream'
+          property :allow_shorts, as: 'allowShorts'
+        end
+      end
+      
       class VideoAdSequenceSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5512,6 +5527,8 @@ module Google
           property :target_frequency, as: 'targetFrequency', class: Google::Apis::DisplayvideoV4::TargetFrequency, decorator: Google::Apis::DisplayvideoV4::TargetFrequency::Representation
       
           property :third_party_measurement_configs, as: 'thirdPartyMeasurementConfigs', class: Google::Apis::DisplayvideoV4::ThirdPartyMeasurementConfigs, decorator: Google::Apis::DisplayvideoV4::ThirdPartyMeasurementConfigs::Representation
+      
+          property :video_ad_inventory_control, as: 'videoAdInventoryControl', class: Google::Apis::DisplayvideoV4::VideoAdInventoryControl, decorator: Google::Apis::DisplayvideoV4::VideoAdInventoryControl::Representation
       
           property :video_ad_sequence_settings, as: 'videoAdSequenceSettings', class: Google::Apis::DisplayvideoV4::VideoAdSequenceSettings, decorator: Google::Apis::DisplayvideoV4::VideoAdSequenceSettings::Representation
       
