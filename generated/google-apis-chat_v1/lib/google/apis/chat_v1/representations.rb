@@ -1651,6 +1651,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :external_data_source, as: 'externalDataSource', class: Google::Apis::ChatV1::GoogleAppsCardV1Action, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Action::Representation
       
+          property :hint_text, as: 'hintText'
           collection :items, as: 'items', class: Google::Apis::ChatV1::GoogleAppsCardV1SelectionItem, decorator: Google::Apis::ChatV1::GoogleAppsCardV1SelectionItem::Representation
       
           property :label, as: 'label'

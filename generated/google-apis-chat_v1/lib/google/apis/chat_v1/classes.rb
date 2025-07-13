@@ -1037,7 +1037,12 @@ module Google
       # addition to receiving events from user interactions, Chat apps can receive
       # events about changes to spaces, such as when a new member is added to a space.
       # To learn about space events, see [Work with events from Google Chat](https://
-      # developers.google.com/workspace/chat/events-overview).
+      # developers.google.com/workspace/chat/events-overview). Note: This event is
+      # only used for [Chat interaction events](https://developers.google.com/
+      # workspace/chat/receive-respond-interactions). If your Chat app is built as a [
+      # Google Workspace add-on](https://developers.google.com/workspace/add-ons/chat/
+      # build), see [Chat event objects](https://developers.google.com/workspace/add-
+      # ons/concepts/event-objects#chat-event-object) in the add-ons documentation.
       class DeprecatedEvent
         include Google::Apis::Core::Hashable
       
@@ -3121,6 +3126,14 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
         attr_accessor :external_data_source
       
+        # Optional. Text that appears below the selection input field meant to assist
+        # users by prompting them to enter a certain value. This text is always visible.
+        # Only supported by Google Workspace Workflows, but not Google Chat API or
+        # Google Workspace Add-ons.
+        # Corresponds to the JSON property `hintText`
+        # @return [String]
+        attr_accessor :hint_text
+      
         # An array of selectable items. For example, an array of radio buttons or
         # checkboxes. Supports up to 100 items.
         # Corresponds to the JSON property `items`
@@ -3189,6 +3202,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @external_data_source = args[:external_data_source] if args.key?(:external_data_source)
+          @hint_text = args[:hint_text] if args.key?(:hint_text)
           @items = args[:items] if args.key?(:items)
           @label = args[:label] if args.key?(:label)
           @multi_select_max_selected_items = args[:multi_select_max_selected_items] if args.key?(:multi_select_max_selected_items)
