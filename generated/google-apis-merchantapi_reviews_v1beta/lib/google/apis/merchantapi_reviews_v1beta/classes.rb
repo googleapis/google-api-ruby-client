@@ -571,12 +571,24 @@ module Google
         # @return [Array<String>]
         attr_accessor :gtins
       
+        # Optional. Indicates whether the review is incentivized.
+        # Corresponds to the JSON property `isIncentivizedReview`
+        # @return [Boolean]
+        attr_accessor :is_incentivized_review
+        alias_method :is_incentivized_review?, :is_incentivized_review
+      
         # Optional. Indicates whether the review is marked as spam in the publisher's
         # system.
         # Corresponds to the JSON property `isSpam`
         # @return [Boolean]
         attr_accessor :is_spam
         alias_method :is_spam?, :is_spam
+      
+        # Optional. Indicates whether the reviewer's purchase is verified.
+        # Corresponds to the JSON property `isVerifiedPurchase`
+        # @return [Boolean]
+        attr_accessor :is_verified_purchase
+        alias_method :is_verified_purchase?, :is_verified_purchase
       
         # Optional. The maximum possible number for the rating. The value of the max
         # rating must be greater than the value of the min attribute.
@@ -713,7 +725,9 @@ module Google
           @cons = args[:cons] if args.key?(:cons)
           @content = args[:content] if args.key?(:content)
           @gtins = args[:gtins] if args.key?(:gtins)
+          @is_incentivized_review = args[:is_incentivized_review] if args.key?(:is_incentivized_review)
           @is_spam = args[:is_spam] if args.key?(:is_spam)
+          @is_verified_purchase = args[:is_verified_purchase] if args.key?(:is_verified_purchase)
           @max_rating = args[:max_rating] if args.key?(:max_rating)
           @min_rating = args[:min_rating] if args.key?(:min_rating)
           @mpns = args[:mpns] if args.key?(:mpns)
