@@ -977,7 +977,8 @@ module Google
       
       # Google Chrome devices run on the [Chrome OS](https://support.google.com/
       # chromeos). For more information about common API tasks, see the [Developer's
-      # Guide](/admin-sdk/directory/v1/guides/manage-chrome-devices).
+      # Guide](https://developers.google.com/workspace/admin/directory/v1/guides/
+      # manage-chrome-devices).
       class ChromeOsDevice
         include Google::Apis::Core::Hashable
       
@@ -1180,8 +1181,8 @@ module Google
         # typically used when adding a device to a wireless carrier's post-pay service
         # plan. If the device does not have this information, this property is not
         # included in the response. For more information on how to export a MEID/IMEI
-        # list, see the [Developer's Guide](/admin-sdk/directory/v1/guides/manage-chrome-
-        # devices.html#export_meid).
+        # list, see the [Developer's Guide](https://developers.google.com/workspace/
+        # admin/directory/v1/guides/manage-chrome-devices.html#export_meid).
         # Corresponds to the JSON property `meid`
         # @return [String]
         attr_accessor :meid
@@ -1193,9 +1194,10 @@ module Google
         attr_accessor :model
       
         # Notes about this device added by the administrator. This property can be [
-        # searched](https://support.google.com/chrome/a/answer/1698333) with the [list](/
-        # admin-sdk/directory/v1/reference/chromeosdevices/list) method's `query`
-        # parameter. Maximum length is 500 characters. Empty values are allowed.
+        # searched](https://support.google.com/chrome/a/answer/1698333) with the [list](
+        # https://developers.google.com/workspace/admin/directory/v1/reference/
+        # chromeosdevices/list) method's `query` parameter. Maximum length is 500
+        # characters. Empty values are allowed.
         # Corresponds to the JSON property `notes`
         # @return [String]
         attr_accessor :notes
@@ -1209,11 +1211,11 @@ module Google
         # The unique ID of the organizational unit. orgUnitPath is the human readable
         # version of orgUnitId. While orgUnitPath may change by renaming an
         # organizational unit within the path, orgUnitId is unchangeable for one
-        # organizational unit. This property can be [updated](/admin-sdk/directory/v1/
-        # guides/manage-chrome-devices#move_chrome_devices_to_ou) using the API. For
-        # more information about how to create an organizational structure for your
-        # device, see the [administration help center](https://support.google.com/a/
-        # answer/182433).
+        # organizational unit. This property can be [updated](https://developers.google.
+        # com/workspace/admin/directory/v1/guides/manage-chrome-devices#
+        # move_chrome_devices_to_ou) using the API. For more information about how to
+        # create an organizational structure for your device, see the [administration
+        # help center](https://support.google.com/a/answer/182433).
         # Corresponds to the JSON property `orgUnitId`
         # @return [String]
         attr_accessor :org_unit_id
@@ -1221,10 +1223,11 @@ module Google
         # The full parent path with the organizational unit's name associated with the
         # device. Path names are case insensitive. If the parent organizational unit is
         # the top-level organization, it is represented as a forward slash, `/`. This
-        # property can be [updated](/admin-sdk/directory/v1/guides/manage-chrome-devices#
-        # move_chrome_devices_to_ou) using the API. For more information about how to
-        # create an organizational structure for your device, see the [administration
-        # help center](https://support.google.com/a/answer/182433).
+        # property can be [updated](https://developers.google.com/workspace/admin/
+        # directory/v1/guides/manage-chrome-devices#move_chrome_devices_to_ou) using the
+        # API. For more information about how to create an organizational structure for
+        # your device, see the [administration help center](https://support.google.com/a/
+        # answer/182433).
         # Corresponds to the JSON property `orgUnitPath`
         # @return [String]
         attr_accessor :org_unit_path
@@ -1876,9 +1879,9 @@ module Google
       class CreatePrintServerRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The [unique ID](https://developers.google.com/admin-sdk/directory/
-        # reference/rest/v1/customers) of the customer's Google Workspace account.
-        # Format: `customers/`id``
+        # Required. The [unique ID](https://developers.google.com/workspace/admin/
+        # directory/reference/rest/v1/customers) of the customer's Google Workspace
+        # account. Format: `customers/`id``
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -1960,10 +1963,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The customer's ISO 639-2 language code. See the [Language Codes](/admin-sdk/
-        # directory/v1/languages) page for the list of supported codes. Valid language
-        # codes outside the supported set will be accepted by the API but may lead to
-        # unexpected behavior. The default value is `en`.
+        # The customer's ISO 639-2 language code. See the [Language Codes](https://
+        # developers.google.com/workspace/admin/directory/v1/languages) page for the
+        # list of supported codes. Valid language codes outside the supported set will
+        # be accepted by the API but may lead to unexpected behavior. The default value
+        # is `en`.
         # Corresponds to the JSON property `language`
         # @return [String]
         attr_accessor :language
@@ -2603,12 +2607,12 @@ module Google
       
       # Google Groups provide your users the ability to send messages to groups of
       # people using the group's email address. For more information about common
-      # tasks, see the [Developer's Guide](https://developers.google.com/admin-sdk/
-      # directory/v1/guides/manage-groups). For information about other types of
+      # tasks, see the [Developer's Guide](https://developers.google.com/workspace/
+      # admin/directory/v1/guides/manage-groups). For information about other types of
       # groups, see the [Cloud Identity Groups API documentation](https://cloud.google.
       # com/identity/docs/groups). Note: The user calling the API (or being
       # impersonated by a service account) must have an assigned [role](https://
-      # developers.google.com/admin-sdk/directory/v1/guides/manage-roles) that
+      # developers.google.com/workspace/admin/directory/v1/guides/manage-roles) that
       # includes Admin API Groups permissions, such as Super Admin or Groups Admin.
       class Group
         include Google::Apis::Core::Hashable
@@ -2865,8 +2869,8 @@ module Google
       
       # A Google Groups member can be a user or another group. This member can be
       # inside or outside of your account's domains. For more information about common
-      # group member tasks, see the [Developer's Guide](/admin-sdk/directory/v1/guides/
-      # manage-group-members).
+      # group member tasks, see the [Developer's Guide](https://developers.google.com/
+      # workspace/admin/directory/v1/guides/manage-group-members).
       class Member
         include Google::Apis::Core::Hashable
       
@@ -2996,8 +3000,9 @@ module Google
       
       # Google Workspace Mobile Management includes Android, [Google Sync](https://
       # support.google.com/a/answer/135937), and iOS devices. For more information
-      # about common group mobile device API tasks, see the [Developer's Guide](/admin-
-      # sdk/directory/v1/guides/manage-mobile-devices.html).
+      # about common group mobile device API tasks, see the [Developer's Guide](https:/
+      # /developers.google.com/workspace/admin/directory/v1/guides/manage-mobile-
+      # devices.html).
       class MobileDevice
         include Google::Apis::Core::Hashable
       
@@ -3065,9 +3070,10 @@ module Google
         attr_accessor :device_password_status
       
         # The list of the owner's email addresses. If your application needs the current
-        # list of user emails, use the [get](/admin-sdk/directory/v1/reference/
-        # mobiledevices/get.html) method. For additional information, see the [retrieve
-        # a user](/admin-sdk/directory/v1/guides/manage-users#get_user) method.
+        # list of user emails, use the [get](https://developers.google.com/workspace/
+        # admin/directory/v1/reference/mobiledevices/get.html) method. For additional
+        # information, see the [retrieve a user](https://developers.google.com/workspace/
+        # admin/directory/v1/guides/manage-users#get_user) method.
         # Corresponds to the JSON property `email`
         # @return [Array<String>]
         attr_accessor :email
@@ -3139,17 +3145,19 @@ module Google
         attr_accessor :meid
       
         # The mobile device's model name, for example Nexus S. This property can be [
-        # updated](/admin-sdk/directory/v1/reference/mobiledevices/update.html). For
-        # more information, see the [Developer's Guide](/admin-sdk/directory/v1/guides/
-        # manage-mobile=devices#update_mobile_device).
+        # updated](https://developers.google.com/workspace/admin/directory/v1/reference/
+        # mobiledevices/update.html). For more information, see the [Developer's Guide](
+        # https://developers.google.com/workspace/admin/directory/v1/guides/manage-
+        # mobile=devices#update_mobile_device).
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
       
         # The list of the owner's user names. If your application needs the current list
-        # of device owner names, use the [get](/admin-sdk/directory/v1/reference/
-        # mobiledevices/get.html) method. For more information about retrieving mobile
-        # device user information, see the [Developer's Guide](/admin-sdk/directory/v1/
+        # of device owner names, use the [get](https://developers.google.com/workspace/
+        # admin/directory/v1/reference/mobiledevices/get.html) method. For more
+        # information about retrieving mobile device user information, see the [
+        # Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/
         # guides/manage-users#get_user).
         # Corresponds to the JSON property `name`
         # @return [Array<String>]
@@ -3161,8 +3169,9 @@ module Google
         attr_accessor :network_operator
       
         # The mobile device's operating system, for example IOS 4.3 or Android 2.3.5.
-        # This property can be [updated](/admin-sdk/directory/v1/reference/mobiledevices/
-        # update.html). For more information, see the [Developer's Guide](/admin-sdk/
+        # This property can be [updated](https://developers.google.com/workspace/admin/
+        # directory/v1/reference/mobiledevices/update.html). For more information, see
+        # the [Developer's Guide](https://developers.google.com/workspace/admin/
         # directory/v1/guides/manage-mobile-devices#update_mobile_device).
         # Corresponds to the JSON property `os`
         # @return [String]
@@ -3221,9 +3230,10 @@ module Google
         alias_method :unknown_sources_status?, :unknown_sources_status
       
         # Gives information about the device such as `os` version. This property can be [
-        # updated](/admin-sdk/directory/v1/reference/mobiledevices/update.html). For
-        # more information, see the [Developer's Guide](/admin-sdk/directory/v1/guides/
-        # manage-mobile-devices#update_mobile_device).
+        # updated](https://developers.google.com/workspace/admin/directory/v1/reference/
+        # mobiledevices/update.html). For more information, see the [Developer's Guide](
+        # https://developers.google.com/workspace/admin/directory/v1/guides/manage-
+        # mobile-devices#update_mobile_device).
         # Corresponds to the JSON property `userAgent`
         # @return [String]
         attr_accessor :user_agent
@@ -3387,9 +3397,10 @@ module Google
       
       # Managing your account's organizational units allows you to configure your
       # users' access to services and custom settings. For more information about
-      # common organizational unit tasks, see the [Developer's Guide](/admin-sdk/
-      # directory/v1/guides/manage-org-units.html). The customer's organizational unit
-      # hierarchy is limited to 35 levels of depth.
+      # common organizational unit tasks, see the [Developer's Guide](https://
+      # developers.google.com/workspace/admin/directory/v1/guides/manage-org-units.
+      # html). The customer's organizational unit hierarchy is limited to 35 levels of
+      # depth.
       class OrgUnit
         include Google::Apis::Core::Hashable
       
@@ -3437,8 +3448,9 @@ module Google
         # is moved to a new organization, the user's access changes. For more
         # information about organization structures, see the [administration help center]
         # (https://support.google.com/a/answer/4352075). For more information about
-        # moving a user to a different organization, see [Update a user](/admin-sdk/
-        # directory/v1/guides/manage-users.html#update_user).
+        # moving a user to a different organization, see [Update a user](https://
+        # developers.google.com/workspace/admin/directory/v1/guides/manage-users.html#
+        # update_user).
         # Corresponds to the JSON property `orgUnitPath`
         # @return [String]
         attr_accessor :org_unit_path
@@ -3592,8 +3604,8 @@ module Google
         # ID of the organization unit (OU) that owns this print server. This value can
         # only be set when the print server is initially created. If it's not populated,
         # the print server is placed under the root OU. The `org_unit_id` can be
-        # retrieved using the [Directory API](/admin-sdk/directory/reference/rest/v1/
-        # orgunits).
+        # retrieved using the [Directory API](https://developers.google.com/workspace/
+        # admin/directory/reference/rest/v1/orgunits).
         # Corresponds to the JSON property `orgUnitId`
         # @return [String]
         attr_accessor :org_unit_id
@@ -3800,7 +3812,8 @@ module Google
         attr_accessor :privilege_name
       
         # The obfuscated ID of the service this privilege is for. This value is returned
-        # with [`Privileges.list()`](/admin-sdk/directory/v1/reference/privileges/list).
+        # with [`Privileges.list()`](https://developers.google.com/workspace/admin/
+        # directory/v1/reference/privileges/list).
         # Corresponds to the JSON property `serviceId`
         # @return [String]
         attr_accessor :service_id
@@ -3929,7 +3942,8 @@ module Google
           attr_accessor :privilege_name
         
           # The obfuscated ID of the service this privilege is for. This value is returned
-          # with [`Privileges.list()`](/admin-sdk/directory/v1/reference/privileges/list).
+          # with [`Privileges.list()`](https://developers.google.com/workspace/admin/
+          # directory/v1/reference/privileges/list).
           # Corresponds to the JSON property `serviceId`
           # @return [String]
           attr_accessor :service_id
@@ -3981,8 +3995,7 @@ module Google
         # and they only work with the following [pre-built administrator roles](https://
         # support.google.com/a/answer/2405986): - Groups Editor - Groups Reader The
         # condition follows [Cloud IAM condition syntax](https://cloud.google.com/iam/
-        # docs/conditions-overview). Additional conditions related to Locked Groups are
-        # available under Open Beta. - To make the `RoleAssignment` not applicable to [
+        # docs/conditions-overview). - To make the `RoleAssignment` not applicable to [
         # Locked Groups](https://cloud.google.com/identity/docs/groups#group_types): `!
         # api.getAttribute('cloudidentity.googleapis.com/groups.labels', []).hasAny(['
         # groups.locked']) && resource.type == 'cloudidentity.googleapis.com/Group'`
@@ -4169,8 +4182,8 @@ module Google
       # You can use schemas to add custom fields to user profiles. You can use these
       # fields to store information such as the projects your users work on, their
       # physical locations, their hire dates, or whatever else fits your business
-      # needs. For more information, see [Custom User Fields](/admin-sdk/directory/v1/
-      # guides/manage-schemas).
+      # needs. For more information, see [Custom User Fields](https://developers.
+      # google.com/workspace/admin/directory/v1/guides/manage-schemas).
       class SchemaFieldSpec
         include Google::Apis::Core::Hashable
       
@@ -4226,9 +4239,9 @@ module Google
         attr_accessor :numeric_indexing_spec
       
         # Specifies who can view values of this field. See [Retrieve users as a non-
-        # administrator](/admin-sdk/directory/v1/guides/manage-users#
-        # retrieve_users_non_admin) for more information. Note: It may take up to 24
-        # hours for changes to this field to be reflected.
+        # administrator](https://developers.google.com/workspace/admin/directory/v1/
+        # guides/manage-users#retrieve_users_non_admin) for more information. Note: It
+        # may take up to 24 hours for changes to this field to be reflected.
         # Corresponds to the JSON property `readAccessType`
         # @return [String]
         attr_accessor :read_access_type
@@ -4451,9 +4464,10 @@ module Google
       
       # The Directory API allows you to create and manage your account's users, user
       # aliases, and user Google profile photos. For more information about common
-      # tasks, see the [User Accounts Developer's Guide](/admin-sdk/directory/v1/
-      # guides/manage-users.html) and the [User Aliases Developer's Guide](/admin-sdk/
-      # directory/v1/guides/manage-user-aliases.html).
+      # tasks, see the [User Accounts Developer's Guide](https://developers.google.com/
+      # workspace/admin/directory/v1/guides/manage-users.html) and the [User Aliases
+      # Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/
+      # guides/manage-user-aliases.html).
       class User
         include Google::Apis::Core::Hashable
       
@@ -4500,12 +4514,13 @@ module Google
         # @return [Hash<String,Hash<String,Object>>]
         attr_accessor :custom_schemas
       
-        # Output only. The customer ID to [retrieve all account users](/admin-sdk/
-        # directory/v1/guides/manage-users.html#get_all_users). You can use the alias `
-        # my_customer` to represent your account's `customerId`. As a reseller
-        # administrator, you can use the resold customer account's `customerId`. To get
-        # a `customerId`, use the account's primary domain in the `domain` parameter of
-        # a [users.list](/admin-sdk/directory/v1/reference/users/list) request.
+        # Output only. The customer ID to [retrieve all account users](https://
+        # developers.google.com/workspace/admin/directory/v1/guides/manage-users.html#
+        # get_all_users). You can use the alias `my_customer` to represent your account'
+        # s `customerId`. As a reseller administrator, you can use the resold customer
+        # account's `customerId`. To get a `customerId`, use the account's primary
+        # domain in the `domain` parameter of a [users.list](https://developers.google.
+        # com/workspace/admin/directory/v1/reference/users/list) request.
         # Corresponds to the JSON property `customerId`
         # @return [String]
         attr_accessor :customer_id
@@ -4577,12 +4592,14 @@ module Google
         attr_accessor :ip_whitelisted
         alias_method :ip_whitelisted?, :ip_whitelisted
       
-        # Output only. Indicates a user with super admininistrator privileges. The `
-        # isAdmin` property can only be edited in the [Make a user an administrator](/
-        # admin-sdk/directory/v1/guides/manage-users.html#make_admin) operation ( [
-        # makeAdmin](/admin-sdk/directory/v1/reference/users/makeAdmin.html) method). If
-        # edited in the user [insert](/admin-sdk/directory/v1/reference/users/insert.
-        # html) or [update](/admin-sdk/directory/v1/reference/users/update.html) methods,
+        # Output only. Indicates a user with super administrator privileges. The `
+        # isAdmin` property can only be edited in the [Make a user an administrator](
+        # https://developers.google.com/workspace/admin/directory/v1/guides/manage-users.
+        # html#make_admin) operation ( [makeAdmin](https://developers.google.com/
+        # workspace/admin/directory/v1/reference/users/makeAdmin.html) method). If
+        # edited in the user [insert](https://developers.google.com/workspace/admin/
+        # directory/v1/reference/users/insert.html) or [update](https://developers.
+        # google.com/workspace/admin/directory/v1/reference/users/update.html) methods,
         # the edit is ignored by the API service.
         # Corresponds to the JSON property `isAdmin`
         # @return [Boolean]
