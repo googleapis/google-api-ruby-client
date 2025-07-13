@@ -100,6 +100,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Network information of the user doing the action.
+        # Corresponds to the JSON property `networkInfo`
+        # @return [Google::Apis::AdminReportsV1::ActivityNetworkInfo]
+        attr_accessor :network_info
+      
         # This is the domain that is affected by the report's event. For example domain
         # of Admin console or the Drive application's document owner.
         # Corresponds to the JSON property `ownerDomain`
@@ -123,6 +128,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @kind = args[:kind] if args.key?(:kind)
+          @network_info = args[:network_info] if args.key?(:network_info)
           @owner_domain = args[:owner_domain] if args.key?(:owner_domain)
           @resource_details = args[:resource_details] if args.key?(:resource_details)
         end
@@ -397,6 +403,38 @@ module Google
             @time = args[:time] if args.key?(:time)
             @unique_qualifier = args[:unique_qualifier] if args.key?(:unique_qualifier)
           end
+        end
+      end
+      
+      # Network information of the user doing the action.
+      class ActivityNetworkInfo
+        include Google::Apis::Core::Hashable
+      
+        # IP Address of the user doing the action.
+        # Corresponds to the JSON property `ipAsn`
+        # @return [Array<Fixnum>]
+        attr_accessor :ip_asn
+      
+        # ISO 3166-1 alpha-2 region code of the user doing the action.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        # ISO 3166-2 region code (states and provinces) for countries of the user doing
+        # the action.
+        # Corresponds to the JSON property `subdivisionCode`
+        # @return [String]
+        attr_accessor :subdivision_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_asn = args[:ip_asn] if args.key?(:ip_asn)
+          @region_code = args[:region_code] if args.key?(:region_code)
+          @subdivision_code = args[:subdivision_code] if args.key?(:subdivision_code)
         end
       end
       
@@ -921,7 +959,8 @@ module Google
       
         # Output only. Parameter value pairs for various applications. For the Entity
         # Usage Report parameters and values, see [the Entity Usage parameters reference]
-        # (/admin-sdk/reports/v1/reference/usage-ref-appendix-a/entities).
+        # (https://developers.google.com/workspace/admin/reports/v1/reference/usage-ref-
+        # appendix-a/entities).
         # Corresponds to the JSON property `parameters`
         # @return [Array<Google::Apis::AdminReportsV1::UsageReport::Parameter>]
         attr_accessor :parameters

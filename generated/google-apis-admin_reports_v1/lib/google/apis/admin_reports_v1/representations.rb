@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ActivityNetworkInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppliedLabel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -207,6 +213,8 @@ module Google
       
           property :ip_address, as: 'ipAddress'
           property :kind, as: 'kind'
+          property :network_info, as: 'networkInfo', class: Google::Apis::AdminReportsV1::ActivityNetworkInfo, decorator: Google::Apis::AdminReportsV1::ActivityNetworkInfo::Representation
+      
           property :owner_domain, as: 'ownerDomain'
           collection :resource_details, as: 'resourceDetails', class: Google::Apis::AdminReportsV1::ResourceDetails, decorator: Google::Apis::AdminReportsV1::ResourceDetails::Representation
       
@@ -285,6 +293,15 @@ module Google
         
             property :unique_qualifier, :numeric_string => true, as: 'uniqueQualifier'
           end
+        end
+      end
+      
+      class ActivityNetworkInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ip_asn, as: 'ipAsn'
+          property :region_code, as: 'regionCode'
+          property :subdivision_code, as: 'subdivisionCode'
         end
       end
       
