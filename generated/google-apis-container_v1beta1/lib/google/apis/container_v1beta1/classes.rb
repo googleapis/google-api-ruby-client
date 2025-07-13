@@ -270,6 +270,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::KubernetesDashboard]
         attr_accessor :kubernetes_dashboard
       
+        # Configuration for the Lustre CSI driver.
+        # Corresponds to the JSON property `lustreCsiDriverConfig`
+        # @return [Google::Apis::ContainerV1beta1::LustreCsiDriverConfig]
+        attr_accessor :lustre_csi_driver_config
+      
         # Configuration for NetworkPolicy. This only tracks whether the addon is enabled
         # or not on the Master, it does not track whether network policy is enabled for
         # the nodes.
@@ -311,6 +316,7 @@ module Google
           @istio_config = args[:istio_config] if args.key?(:istio_config)
           @kalm_config = args[:kalm_config] if args.key?(:kalm_config)
           @kubernetes_dashboard = args[:kubernetes_dashboard] if args.key?(:kubernetes_dashboard)
+          @lustre_csi_driver_config = args[:lustre_csi_driver_config] if args.key?(:lustre_csi_driver_config)
           @network_policy_config = args[:network_policy_config] if args.key?(:network_policy_config)
           @parallelstore_csi_driver_config = args[:parallelstore_csi_driver_config] if args.key?(:parallelstore_csi_driver_config)
           @ray_operator_config = args[:ray_operator_config] if args.key?(:ray_operator_config)
@@ -956,6 +962,43 @@ module Google
           @autoscaled_rollout_policy = args[:autoscaled_rollout_policy] if args.key?(:autoscaled_rollout_policy)
           @node_pool_soak_duration = args[:node_pool_soak_duration] if args.key?(:node_pool_soak_duration)
           @standard_rollout_policy = args[:standard_rollout_policy] if args.key?(:standard_rollout_policy)
+        end
+      end
+      
+      # BootDisk specifies the boot disk configuration for nodepools.
+      class BootDisk
+        include Google::Apis::Core::Hashable
+      
+        # Disk type of the boot disk. (i.e. Hyperdisk-Balanced, PD-Balanced, etc.)
+        # Corresponds to the JSON property `diskType`
+        # @return [String]
+        attr_accessor :disk_type
+      
+        # For Hyperdisk-Balanced only, the provisioned IOPS config value.
+        # Corresponds to the JSON property `provisionedIops`
+        # @return [Fixnum]
+        attr_accessor :provisioned_iops
+      
+        # For Hyperdisk-Balanced only, the provisioned throughput config value.
+        # Corresponds to the JSON property `provisionedThroughput`
+        # @return [Fixnum]
+        attr_accessor :provisioned_throughput
+      
+        # Disk size in GB. Replaces NodeConfig.disk_size_gb
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Fixnum]
+        attr_accessor :size_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
+          @provisioned_throughput = args[:provisioned_throughput] if args.key?(:provisioned_throughput)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
         end
       end
       
@@ -3236,6 +3279,214 @@ module Google
         end
       end
       
+      # Eviction grace periods are grace periods for each eviction signal.
+      class EvictionGracePeriod
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Grace period for eviction due to imagefs available signal. Sample
+        # format: "10s". Must be >= 0. See https://kubernetes.io/docs/concepts/
+        # scheduling-eviction/node-pressure-eviction/#eviction-signals
+        # Corresponds to the JSON property `imagefsAvailable`
+        # @return [String]
+        attr_accessor :imagefs_available
+      
+        # Optional. Grace period for eviction due to imagefs inodes free signal. Sample
+        # format: "10s". Must be >= 0. See https://kubernetes.io/docs/concepts/
+        # scheduling-eviction/node-pressure-eviction/#eviction-signals
+        # Corresponds to the JSON property `imagefsInodesFree`
+        # @return [String]
+        attr_accessor :imagefs_inodes_free
+      
+        # Optional. Grace period for eviction due to memory available signal. Sample
+        # format: "10s". Must be >= 0. See https://kubernetes.io/docs/concepts/
+        # scheduling-eviction/node-pressure-eviction/#eviction-signals
+        # Corresponds to the JSON property `memoryAvailable`
+        # @return [String]
+        attr_accessor :memory_available
+      
+        # Optional. Grace period for eviction due to nodefs available signal. Sample
+        # format: "10s". Must be >= 0. See https://kubernetes.io/docs/concepts/
+        # scheduling-eviction/node-pressure-eviction/#eviction-signals
+        # Corresponds to the JSON property `nodefsAvailable`
+        # @return [String]
+        attr_accessor :nodefs_available
+      
+        # Optional. Grace period for eviction due to nodefs inodes free signal. Sample
+        # format: "10s". Must be >= 0. See https://kubernetes.io/docs/concepts/
+        # scheduling-eviction/node-pressure-eviction/#eviction-signals
+        # Corresponds to the JSON property `nodefsInodesFree`
+        # @return [String]
+        attr_accessor :nodefs_inodes_free
+      
+        # Optional. Grace period for eviction due to pid available signal. Sample format:
+        # "10s". Must be >= 0. See https://kubernetes.io/docs/concepts/scheduling-
+        # eviction/node-pressure-eviction/#eviction-signals
+        # Corresponds to the JSON property `pidAvailable`
+        # @return [String]
+        attr_accessor :pid_available
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @imagefs_available = args[:imagefs_available] if args.key?(:imagefs_available)
+          @imagefs_inodes_free = args[:imagefs_inodes_free] if args.key?(:imagefs_inodes_free)
+          @memory_available = args[:memory_available] if args.key?(:memory_available)
+          @nodefs_available = args[:nodefs_available] if args.key?(:nodefs_available)
+          @nodefs_inodes_free = args[:nodefs_inodes_free] if args.key?(:nodefs_inodes_free)
+          @pid_available = args[:pid_available] if args.key?(:pid_available)
+        end
+      end
+      
+      # Eviction minimum reclaims are the resource amounts of minimum reclaims for
+      # each eviction signal.
+      class EvictionMinimumReclaim
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Minimum reclaim for eviction due to imagefs available signal. Only
+        # take percentage value for now. Sample format: "10%". Must be <=10%. See https:/
+        # /kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#
+        # eviction-signals
+        # Corresponds to the JSON property `imagefsAvailable`
+        # @return [String]
+        attr_accessor :imagefs_available
+      
+        # Optional. Minimum reclaim for eviction due to imagefs inodes free signal. Only
+        # take percentage value for now. Sample format: "10%". Must be <=10%. See https:/
+        # /kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#
+        # eviction-signals
+        # Corresponds to the JSON property `imagefsInodesFree`
+        # @return [String]
+        attr_accessor :imagefs_inodes_free
+      
+        # Optional. Minimum reclaim for eviction due to memory available signal. Only
+        # take percentage value for now. Sample format: "10%". Must be <=10%. See https:/
+        # /kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#
+        # eviction-signals
+        # Corresponds to the JSON property `memoryAvailable`
+        # @return [String]
+        attr_accessor :memory_available
+      
+        # Optional. Minimum reclaim for eviction due to nodefs available signal. Only
+        # take percentage value for now. Sample format: "10%". Must be <=10%. See https:/
+        # /kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#
+        # eviction-signals
+        # Corresponds to the JSON property `nodefsAvailable`
+        # @return [String]
+        attr_accessor :nodefs_available
+      
+        # Optional. Minimum reclaim for eviction due to nodefs inodes free signal. Only
+        # take percentage value for now. Sample format: "10%". Must be <=10%. See https:/
+        # /kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#
+        # eviction-signals
+        # Corresponds to the JSON property `nodefsInodesFree`
+        # @return [String]
+        attr_accessor :nodefs_inodes_free
+      
+        # Optional. Minimum reclaim for eviction due to pid available signal. Only take
+        # percentage value for now. Sample format: "10%". Must be <=10%. See https://
+        # kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#
+        # eviction-signals
+        # Corresponds to the JSON property `pidAvailable`
+        # @return [String]
+        attr_accessor :pid_available
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @imagefs_available = args[:imagefs_available] if args.key?(:imagefs_available)
+          @imagefs_inodes_free = args[:imagefs_inodes_free] if args.key?(:imagefs_inodes_free)
+          @memory_available = args[:memory_available] if args.key?(:memory_available)
+          @nodefs_available = args[:nodefs_available] if args.key?(:nodefs_available)
+          @nodefs_inodes_free = args[:nodefs_inodes_free] if args.key?(:nodefs_inodes_free)
+          @pid_available = args[:pid_available] if args.key?(:pid_available)
+        end
+      end
+      
+      # Eviction signals are the current state of a particular resource at a specific
+      # point in time. The kubelet uses eviction signals to make eviction decisions by
+      # comparing the signals to eviction thresholds, which are the minimum amount of
+      # the resource that should be available on the node.
+      class EvictionSignals
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Amount of storage available on filesystem that container runtime
+        # uses for storing images layers. If the container filesystem and image
+        # filesystem are not separate, then imagefs can store both image layers and
+        # writeable layers. Defines the amount of "imagefs.available" signal in kubelet.
+        # Default is unset, if not specified in the kubelet config. Sample format: "30%".
+        # Must be >= 15%. See https://kubernetes.io/docs/concepts/scheduling-eviction/
+        # node-pressure-eviction/#eviction-signals
+        # Corresponds to the JSON property `imagefsAvailable`
+        # @return [String]
+        attr_accessor :imagefs_available
+      
+        # Optional. Amount of inodes available on filesystem that container runtime uses
+        # for storing images layers. Defines the amount of "imagefs.inodesFree" signal
+        # in kubelet. Default is unset, if not specified in the kubelet config. Linux
+        # only. Sample format: "30%". Must be >= 5%. See https://kubernetes.io/docs/
+        # concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
+        # Corresponds to the JSON property `imagefsInodesFree`
+        # @return [String]
+        attr_accessor :imagefs_inodes_free
+      
+        # Optional. Memory available (i.e. capacity - workingSet), in bytes. Defines the
+        # amount of "memory.available" signal in kubelet. Default is unset, if not
+        # specified in the kubelet config. Format: positive number + unit, e.g. 100Ki,
+        # 10Mi, 5Gi. Valid units are Ki, Mi, Gi. Must be >= 100Mi and <= 50% of the node'
+        # s memory. See https://kubernetes.io/docs/concepts/scheduling-eviction/node-
+        # pressure-eviction/#eviction-signals
+        # Corresponds to the JSON property `memoryAvailable`
+        # @return [String]
+        attr_accessor :memory_available
+      
+        # Optional. Amount of storage available on filesystem that kubelet uses for
+        # volumes, daemon logs, etc. Defines the amount of "nodefs.available" signal in
+        # kubelet. Default is unset, if not specified in the kubelet config. Sample
+        # format: "30%". Must be >= 10%. See https://kubernetes.io/docs/concepts/
+        # scheduling-eviction/node-pressure-eviction/#eviction-signals
+        # Corresponds to the JSON property `nodefsAvailable`
+        # @return [String]
+        attr_accessor :nodefs_available
+      
+        # Optional. Amount of inodes available on filesystem that kubelet uses for
+        # volumes, daemon logs, etc. Defines the amount of "nodefs.inodesFree" signal in
+        # kubelet. Default is unset, if not specified in the kubelet config. Linux only.
+        # It takses percentage value for now. Sample format: "30%". Must be >= 5% and <=
+        # 50%. See https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-
+        # eviction/#eviction-signals
+        # Corresponds to the JSON property `nodefsInodesFree`
+        # @return [String]
+        attr_accessor :nodefs_inodes_free
+      
+        # Optional. Amount of PID available for pod allocation. Defines the amount of "
+        # pid.available" signal in kubelet. Default is unset, if not specified in the
+        # kubelet config. Sample format: "30%". Must be >= 10%. See https://kubernetes.
+        # io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
+        # Corresponds to the JSON property `pidAvailable`
+        # @return [String]
+        attr_accessor :pid_available
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @imagefs_available = args[:imagefs_available] if args.key?(:imagefs_available)
+          @imagefs_inodes_free = args[:imagefs_inodes_free] if args.key?(:imagefs_inodes_free)
+          @memory_available = args[:memory_available] if args.key?(:memory_available)
+          @nodefs_available = args[:nodefs_available] if args.key?(:nodefs_available)
+          @nodefs_inodes_free = args[:nodefs_inodes_free] if args.key?(:nodefs_inodes_free)
+          @pid_available = args[:pid_available] if args.key?(:pid_available)
+        end
+      end
+      
       # Configuration of Fast Socket feature.
       class FastSocket
         include Google::Apis::Core::Hashable
@@ -4291,15 +4542,37 @@ module Google
         # the nodes. The following parameters are supported. net.core.busy_poll net.core.
         # busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.rmem_default
         # net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn
-        # net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse net.netfilter.
-        # nf_conntrack_max net.netfilter.nf_conntrack_buckets net.netfilter.
-        # nf_conntrack_tcp_timeout_close_wait net.netfilter.
-        # nf_conntrack_tcp_timeout_time_wait net.netfilter.
+        # net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse net.ipv4.
+        # tcp_max_orphans net.netfilter.nf_conntrack_max net.netfilter.
+        # nf_conntrack_buckets net.netfilter.nf_conntrack_tcp_timeout_close_wait net.
+        # netfilter.nf_conntrack_tcp_timeout_time_wait net.netfilter.
         # nf_conntrack_tcp_timeout_established net.netfilter.nf_conntrack_acct kernel.
-        # shmmni kernel.shmmax kernel.shmall vm.max_map_count
+        # shmmni kernel.shmmax kernel.shmall fs.aio-max-nr fs.file-max fs.inotify.
+        # max_user_instances fs.inotify.max_user_watches fs.nr_open vm.
+        # dirty_background_ratio vm.dirty_expire_centisecs vm.dirty_ratio vm.
+        # dirty_writeback_centisecs vm.max_map_count vm.overcommit_memory vm.
+        # overcommit_ratio vm.vfs_cache_pressure vm.swappiness vm.watermark_scale_factor
+        # vm.min_free_kbytes
         # Corresponds to the JSON property `sysctls`
         # @return [Hash<String,String>]
         attr_accessor :sysctls
+      
+        # Optional. Defines the transparent hugepage defrag configuration on the node.
+        # VM hugepage allocation can be managed by either limiting defragmentation for
+        # delayed allocation or skipping it entirely for immediate allocation only. See
+        # https://docs.kernel.org/admin-guide/mm/transhuge.html for more details.
+        # Corresponds to the JSON property `transparentHugepageDefrag`
+        # @return [String]
+        attr_accessor :transparent_hugepage_defrag
+      
+        # Optional. Transparent hugepage support for anonymous memory can be entirely
+        # disabled (mostly for debugging purposes) or only enabled inside MADV_HUGEPAGE
+        # regions (to avoid the risk of consuming more memory resources) or enabled
+        # system wide. See https://docs.kernel.org/admin-guide/mm/transhuge.html for
+        # more details.
+        # Corresponds to the JSON property `transparentHugepageEnabled`
+        # @return [String]
+        attr_accessor :transparent_hugepage_enabled
       
         def initialize(**args)
            update!(**args)
@@ -4310,6 +4583,8 @@ module Google
           @cgroup_mode = args[:cgroup_mode] if args.key?(:cgroup_mode)
           @hugepages = args[:hugepages] if args.key?(:hugepages)
           @sysctls = args[:sysctls] if args.key?(:sysctls)
+          @transparent_hugepage_defrag = args[:transparent_hugepage_defrag] if args.key?(:transparent_hugepage_defrag)
+          @transparent_hugepage_enabled = args[:transparent_hugepage_enabled] if args.key?(:transparent_hugepage_enabled)
         end
       end
       
@@ -4561,6 +4836,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @variant = args[:variant] if args.key?(:variant)
+        end
+      end
+      
+      # Configuration for the Lustre CSI driver.
+      class LustreCsiDriverConfig
+        include Google::Apis::Core::Hashable
+      
+        # If set to true, the Lustre CSI driver will install Lustre kernel modules using
+        # port 6988.
+        # Corresponds to the JSON property `enableLegacyLustrePort`
+        # @return [Boolean]
+        attr_accessor :enable_legacy_lustre_port
+        alias_method :enable_legacy_lustre_port?, :enable_legacy_lustre_port
+      
+        # Whether the Lustre CSI driver is enabled for this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_legacy_lustre_port = args[:enable_legacy_lustre_port] if args.key?(:enable_legacy_lustre_port)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
@@ -5234,6 +5537,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::AdvancedMachineFeatures]
         attr_accessor :advanced_machine_features
       
+        # BootDisk specifies the boot disk configuration for nodepools.
+        # Corresponds to the JSON property `bootDisk`
+        # @return [Google::Apis::ContainerV1beta1::BootDisk]
+        attr_accessor :boot_disk
+      
         # The Customer Managed Encryption Key used to encrypt the boot disk attached to
         # each node in the node pool. This should be of the form projects/[
         # KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]
@@ -5256,8 +5564,7 @@ module Google
         attr_accessor :containerd_config
       
         # Size of the disk attached to each node, specified in GB. The smallest allowed
-        # disk size is 10GB. TODO(b/395671893) - Deprecate disk_size_gb and disk_type
-        # fields. If unspecified, the default disk size is 100GB.
+        # disk size is 10GB. If unspecified, the default disk size is 100GB.
         # Corresponds to the JSON property `diskSizeGb`
         # @return [Fixnum]
         attr_accessor :disk_size_gb
@@ -5550,6 +5857,7 @@ module Google
         def update!(**args)
           @accelerators = args[:accelerators] if args.key?(:accelerators)
           @advanced_machine_features = args[:advanced_machine_features] if args.key?(:advanced_machine_features)
+          @boot_disk = args[:boot_disk] if args.key?(:boot_disk)
           @boot_disk_kms_key = args[:boot_disk_kms_key] if args.key?(:boot_disk_kms_key)
           @confidential_nodes = args[:confidential_nodes] if args.key?(:confidential_nodes)
           @containerd_config = args[:containerd_config] if args.key?(:containerd_config)
@@ -5706,6 +6014,34 @@ module Google
         # @return [String]
         attr_accessor :cpu_manager_policy
       
+        # Optional. eviction_max_pod_grace_period_seconds is the maximum allowed grace
+        # period (in seconds) to use when terminating pods in response to a soft
+        # eviction threshold being met. This value effectively caps the Pod's
+        # terminationGracePeriodSeconds value during soft evictions. Default: 0. Range: [
+        # 0, 300].
+        # Corresponds to the JSON property `evictionMaxPodGracePeriodSeconds`
+        # @return [Fixnum]
+        attr_accessor :eviction_max_pod_grace_period_seconds
+      
+        # Eviction minimum reclaims are the resource amounts of minimum reclaims for
+        # each eviction signal.
+        # Corresponds to the JSON property `evictionMinimumReclaim`
+        # @return [Google::Apis::ContainerV1beta1::EvictionMinimumReclaim]
+        attr_accessor :eviction_minimum_reclaim
+      
+        # Eviction signals are the current state of a particular resource at a specific
+        # point in time. The kubelet uses eviction signals to make eviction decisions by
+        # comparing the signals to eviction thresholds, which are the minimum amount of
+        # the resource that should be available on the node.
+        # Corresponds to the JSON property `evictionSoft`
+        # @return [Google::Apis::ContainerV1beta1::EvictionSignals]
+        attr_accessor :eviction_soft
+      
+        # Eviction grace periods are grace periods for each eviction signal.
+        # Corresponds to the JSON property `evictionSoftGracePeriod`
+        # @return [Google::Apis::ContainerV1beta1::EvictionGracePeriod]
+        attr_accessor :eviction_soft_grace_period
+      
         # Optional. Defines the percent of disk usage after which image garbage
         # collection is always run. The percent is calculated as this field value out of
         # 100. The value must be between 10 and 85, inclusive and greater than
@@ -5750,6 +6086,14 @@ module Google
         attr_accessor :insecure_kubelet_readonly_port_enabled
         alias_method :insecure_kubelet_readonly_port_enabled?, :insecure_kubelet_readonly_port_enabled
       
+        # Optional. Defines the maximum number of image pulls in parallel. The range is
+        # 2 to 5, inclusive. The default value is 2 or 3 depending on the disk type. See
+        # https://kubernetes.io/docs/concepts/containers/images/#maximum-parallel-image-
+        # pulls for more details.
+        # Corresponds to the JSON property `maxParallelImagePulls`
+        # @return [Fixnum]
+        attr_accessor :max_parallel_image_pulls
+      
         # The option enables the Kubernetes NUMA-aware Memory Manager feature. Detailed
         # description about the feature can be found [here](https://kubernetes.io/docs/
         # tasks/administer-cluster/memory-manager/).
@@ -5792,11 +6136,16 @@ module Google
           @cpu_cfs_quota = args[:cpu_cfs_quota] if args.key?(:cpu_cfs_quota)
           @cpu_cfs_quota_period = args[:cpu_cfs_quota_period] if args.key?(:cpu_cfs_quota_period)
           @cpu_manager_policy = args[:cpu_manager_policy] if args.key?(:cpu_manager_policy)
+          @eviction_max_pod_grace_period_seconds = args[:eviction_max_pod_grace_period_seconds] if args.key?(:eviction_max_pod_grace_period_seconds)
+          @eviction_minimum_reclaim = args[:eviction_minimum_reclaim] if args.key?(:eviction_minimum_reclaim)
+          @eviction_soft = args[:eviction_soft] if args.key?(:eviction_soft)
+          @eviction_soft_grace_period = args[:eviction_soft_grace_period] if args.key?(:eviction_soft_grace_period)
           @image_gc_high_threshold_percent = args[:image_gc_high_threshold_percent] if args.key?(:image_gc_high_threshold_percent)
           @image_gc_low_threshold_percent = args[:image_gc_low_threshold_percent] if args.key?(:image_gc_low_threshold_percent)
           @image_maximum_gc_age = args[:image_maximum_gc_age] if args.key?(:image_maximum_gc_age)
           @image_minimum_gc_age = args[:image_minimum_gc_age] if args.key?(:image_minimum_gc_age)
           @insecure_kubelet_readonly_port_enabled = args[:insecure_kubelet_readonly_port_enabled] if args.key?(:insecure_kubelet_readonly_port_enabled)
+          @max_parallel_image_pulls = args[:max_parallel_image_pulls] if args.key?(:max_parallel_image_pulls)
           @memory_manager = args[:memory_manager] if args.key?(:memory_manager)
           @pod_pids_limit = args[:pod_pids_limit] if args.key?(:pod_pids_limit)
           @single_process_oom_kill = args[:single_process_oom_kill] if args.key?(:single_process_oom_kill)
@@ -8980,6 +9329,11 @@ module Google
         # @return [Array<Google::Apis::ContainerV1beta1::AcceleratorConfig>]
         attr_accessor :accelerators
       
+        # BootDisk specifies the boot disk configuration for nodepools.
+        # Corresponds to the JSON property `bootDisk`
+        # @return [Google::Apis::ContainerV1beta1::BootDisk]
+        attr_accessor :boot_disk
+      
         # Deprecated. The name of the cluster to upgrade. This field has been deprecated
         # and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
@@ -9228,6 +9582,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accelerators = args[:accelerators] if args.key?(:accelerators)
+          @boot_disk = args[:boot_disk] if args.key?(:boot_disk)
           @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
           @confidential_nodes = args[:confidential_nodes] if args.key?(:confidential_nodes)
           @containerd_config = args[:containerd_config] if args.key?(:containerd_config)
