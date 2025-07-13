@@ -5243,9 +5243,9 @@ module Google
       
         # Optional. The user attributes that could be used for personalization of search
         # results. * Populate at most 100 key-value pairs per query. * Only supports
-        # string keys and repeated string values. * Duplcate keys are not allowed within
-        # a single query. Example: user_attributes: [ ` key: "pets" value ` values: "dog"
-        # values: "cat" ` `, ` key: "state" value ` values: "CA" ` ` ]
+        # string keys and repeated string values. * Duplicate keys are not allowed
+        # within a single query. Example: user_attributes: [ ` key: "pets" value `
+        # values: "dog" values: "cat" ` `, ` key: "state" value ` values: "CA" ` ` ]
         # Corresponds to the JSON property `userAttributes`
         # @return [Hash<String,Google::Apis::RetailV2::GoogleCloudRetailV2StringList>]
         attr_accessor :user_attributes
