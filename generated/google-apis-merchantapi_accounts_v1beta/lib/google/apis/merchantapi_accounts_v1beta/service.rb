@@ -153,6 +153,36 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves a developer registration for a merchant.
+        # @param [String] name
+        #   Required. The `name` (ID) of the developer registration.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::DeveloperRegistration] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::DeveloperRegistration]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_developer_registration(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'accounts/v1beta/{+name}', options)
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::DeveloperRegistration::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::DeveloperRegistration
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Note: For the `accounts.list` method, quota and limits usage are charged for
         # each user, and not for the Merchant Center ID or the advanced account ID. To
         # list several sub-accounts, you should use the `accounts.listSubaccounts`
@@ -560,6 +590,80 @@ module Google
           command.response_class = Google::Apis::MerchantapiAccountsV1beta::BusinessInfo
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Registers the GCP used for the API call to the shopping account passed in the
+        # request. Will create a user with an "API developer" and add the "
+        # developer_email" as a contact with "API notifications" email preference on.
+        # @param [String] name
+        #   Required. The name of the developer registration to be created for the
+        #   merchant account that the GCP will be registered with. Format: `accounts/`
+        #   account`/developerRegistration`
+        # @param [Google::Apis::MerchantapiAccountsV1beta::RegisterGcpRequest] register_gcp_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::DeveloperRegistration] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::DeveloperRegistration]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def register_developer_registration_gcp(name, register_gcp_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'accounts/v1beta/{+name}:registerGcp', options)
+          command.request_representation = Google::Apis::MerchantapiAccountsV1beta::RegisterGcpRequest::Representation
+          command.request_object = register_gcp_request_object
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::DeveloperRegistration::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::DeveloperRegistration
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Unregister the calling GCP from the calling shopping account. Note that the
+        # GCP will still be able to access the API for at most 1 day from the unregister
+        # succussful call.
+        # @param [String] name
+        #   Required. The name of the developer registration to be created for the
+        #   merchant account that the GCP will be registered with. Format: `accounts/`
+        #   account`/developerRegistration`
+        # @param [Google::Apis::MerchantapiAccountsV1beta::UnregisterGcpRequest] unregister_gcp_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def unregister_developer_registration_gcp(name, unregister_gcp_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'accounts/v1beta/{+name}:unregisterGcp', options)
+          command.request_representation = Google::Apis::MerchantapiAccountsV1beta::UnregisterGcpRequest::Representation
+          command.request_object = unregister_gcp_request_object
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::Empty::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::Empty
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1334,11 +1438,8 @@ module Google
         #   account`/onlineReturnPolicies/`return_policy``
         # @param [Google::Apis::MerchantapiAccountsV1beta::OnlineReturnPolicy] online_return_policy_object
         # @param [String] update_mask
-        #   Optional. List of fields being updated. The following fields are supported (in
-        #   both `snake_case` and `lowerCamelCase`): - `accept_defective_only` - `
-        #   accept_exchange` - `item_conditions` - `policy` - `process_refund_days` - `
-        #   restocking_fee` - `return_methods` - `return_policy_uri` - `
-        #   return_shipping_fee`
+        #   Optional. Only support updating the entire OnlineReturnPolicy message. For
+        #   update_mask, always use `*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
