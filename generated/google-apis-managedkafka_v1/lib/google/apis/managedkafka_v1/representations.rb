@@ -515,6 +515,8 @@ module Google
           property :kafka_cluster, as: 'kafkaCluster'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
         end
