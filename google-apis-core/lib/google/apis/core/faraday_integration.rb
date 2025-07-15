@@ -28,20 +28,20 @@ module Google
       end
 
       Faraday::Response.register_middleware(follow_redirects_google_apis_core: FollowRedirectsMiddleware)
-    end
-  end
-end
 
-module Faraday
-  class Response
-    # Compatibility alias.
-    # Earlier versions based on the old `httpclient` gem used `HTTP::Message`,
-    # which defined the `header` field that some clients, notably
-    # google-cloud-storage, depend on.
-    # Faraday's `headers` isn't an exact replacement because its values are
-    # single strings whereas `HTTP::Message` values are arrays, but
-    # google-cloud-storage already passes the result through `Array()` so this
-    # should work sufficiently.
-    alias header headers
+      # Customized subclass of Faraday::Response with additional capabilities
+      # needed by older versions of some downstream dependencies.
+      class Response < Faraday::Response
+        # Compatibility alias.
+        # Earlier versions based on the old `httpclient` gem used `HTTP::Message`,
+        # which defined the `header` field that some clients, notably
+        # google-cloud-storage, depend on.
+        # Faraday's `headers` isn't an exact replacement because its values are
+        # single strings whereas `HTTP::Message` values are arrays, but
+        # google-cloud-storage already passes the result through `Array()` so this
+        # should work sufficiently.
+        alias header headers
+      end
+    end
   end
 end

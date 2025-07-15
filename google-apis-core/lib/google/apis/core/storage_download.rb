@@ -78,8 +78,13 @@ module Google
             result = @download_io
           end
           check_status(http_res.status.to_i, http_res.headers, http_res.body)
-          # In case of file download in storage, we need to respond back with http 
-          # header along with the actual object.
+          # In case of file download in storage, we need to respond back with
+          # the http response object along with the result IO object, because
+          # google-cloud-storage uses the HTTP info.
+          # Also, older versions of google-cloud-storage assume this object
+          # conforms to the old httpclient response API instead of the Faraday
+          # response API. Return a subclass that provides the needed methods.
+          http_res = Core::Response.new http_res.env
           success([result, http_res], &block)
         rescue => e
           @download_io.flush if @download_io.respond_to?(:flush)
