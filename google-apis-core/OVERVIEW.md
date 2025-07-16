@@ -4,6 +4,24 @@ This library includes common base classes and dependencies used by legacy REST
 clients for Google APIs. It is used by client libraries, but you should not
 need to install it by itself.
 
+## Usage
+
+In most cases, this library is installed automatically as a dependency of
+another library. For example, if you install the
+[google-apis-drive_v3](https://rubygems.org/gems/google-apis-drive_v3) client
+library, it will bring in the latest `google-apis-core` as a dependency. Thus,
+in most cases, you do not need to add `google-apis-core` to your Gemfile
+directly.
+
+Earlier (0.x) versions of this library utilized the legacy
+[httpclient](https://rubygems.org/gems/httpclient) gem and made some of its
+interfaces available for advanced use cases. Version 1.0 and later of this
+library replaced httpclient with [faraday](https://rubygems.org/gems/faraday).
+If your application makes use of the httpclient interfaces (this is rare), you
+should pin `google-apis-core` to a 0.x version in your Gemfile. For example:
+
+    gem "google-apis-core", "~> 0.18"
+
 ## Documentation
 
 More detailed descriptions of the Google legacy REST clients are available in two documents.

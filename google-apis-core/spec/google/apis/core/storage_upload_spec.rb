@@ -40,7 +40,7 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
 
     it 'should send upload command' do
       allow(client).to receive(:put).and_call_original
-      expect(client).to receive(:put).with(anything, hash_including(body: kind_of(StringIO)))
+      expect(client).to receive(:put).with(anything, kind_of(StringIO), kind_of(Hash))
 
       command.execute(client)
       expect(a_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')).to have_been_made

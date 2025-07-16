@@ -21,10 +21,10 @@ Gem::Specification.new do |gem|
 
   gem.required_ruby_version = '>= 3.1'
   gem.add_runtime_dependency "representable", "~> 3.0"
-  gem.add_runtime_dependency "retriable", ">= 2.0", "< 4.a"
-  gem.add_runtime_dependency "addressable", "~> 2.5", ">= 2.5.1"
-  gem.add_runtime_dependency "mini_mime", "~> 1.0"
-  gem.add_runtime_dependency "googleauth", "~> 1.9"
-  gem.add_runtime_dependency "httpclient", ">= 2.8.3", "< 3.a"
-  gem.add_runtime_dependency "mutex_m" # used by httpclient
+  gem.add_runtime_dependency "retriable", "~> 3.1"
+  gem.add_runtime_dependency "addressable", "~> 2.8", ">= 2.8.7"
+  gem.add_runtime_dependency "mini_mime", "~> 1.1"
+  gem.add_runtime_dependency "googleauth", "~> 1.14"
+  gem.add_runtime_dependency "faraday", "~> 2.13"
+  gem.add_runtime_dependency "faraday-follow_redirects", "~> 0.3"
 end
