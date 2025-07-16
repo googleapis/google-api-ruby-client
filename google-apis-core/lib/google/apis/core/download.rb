@@ -23,6 +23,8 @@ module Google
       # Streaming/resumable media download support
       class DownloadCommand < ApiCommand
         RANGE_HEADER = 'Range'
+
+        # @deprecated No longer used
         OK_STATUS = [200, 201, 206]
 
         # File or IO to write content to
@@ -82,6 +84,7 @@ module Google
               status = res.status.to_i
               next if chunk.nil? || (status >= 300 && status < 400)
 
+              # HTTP 206 is Partial Content
               download_offset ||= (status == 206 ? @offset : 0)
               download_offset  += chunk.bytesize
 

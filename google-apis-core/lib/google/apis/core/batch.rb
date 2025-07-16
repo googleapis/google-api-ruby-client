@@ -211,12 +211,12 @@ module Google
 
         protected
 
-        # Auxiliary method to split the header from the body in an HTTP response.
+        # Auxiliary method to split the headers from the body in an HTTP response.
         #
         # @param [String] response
         #   the response to parse.
-        # @return [Array<(Hash, String)>]
-        #   the header and the body, separately.
+        # @return [Array<(Hash{String=>Array<String>}, String)>]
+        #   the headers and the body, separately.
         def split_header_and_body(response)
           headers = {}
           payload = response.lstrip

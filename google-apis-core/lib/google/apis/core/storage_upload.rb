@@ -239,7 +239,7 @@ module Google
             @close_io_on_finish = true
             true # method returns true if upload is successfully cancelled
           else
-            logger.debug { sprintf("Failed to cancel upload session. Response: #{response.status} - #{response.body}") }
+            logger.debug { sprintf("Failed to cancel upload session. Response: #{response.status.to_i} - #{response.body}") }
           end
   
         end
@@ -264,7 +264,7 @@ module Google
             # Upload is complete.
             @upload_incomplete = false
           else
-            logger.debug { sprintf("Unexpected response: #{response.status} - #{response.body}") }
+            logger.debug { sprintf("Unexpected response: #{response.status.to_i} - #{response.body}") }
             @upload_incomplete = true
           end
         end
