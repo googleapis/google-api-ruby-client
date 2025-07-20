@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Metadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MobileFriendlyIssue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -315,6 +321,14 @@ module Google
         end
       end
       
+      class Metadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :first_incomplete_date, as: 'firstIncompleteDate'
+          property :first_incomplete_hour, as: 'firstIncompleteHour'
+        end
+      end
+      
       class MobileFriendlyIssue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -408,6 +422,8 @@ module Google
       class SearchAnalyticsQueryResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :metadata, as: 'metadata', class: Google::Apis::SearchconsoleV1::Metadata, decorator: Google::Apis::SearchconsoleV1::Metadata::Representation
+      
           property :response_aggregation_type, as: 'responseAggregationType'
           collection :rows, as: 'rows', class: Google::Apis::SearchconsoleV1::ApiDataRow, decorator: Google::Apis::SearchconsoleV1::ApiDataRow::Representation
       
