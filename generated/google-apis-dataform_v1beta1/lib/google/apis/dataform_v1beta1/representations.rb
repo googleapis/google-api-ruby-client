@@ -274,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IamPolicyOverrideView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IncrementalLoadMode
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -431,6 +437,12 @@ module Google
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicyName
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1085,6 +1097,15 @@ module Google
         end
       end
       
+      class IamPolicyOverrideView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :iam_policy_name, as: 'iamPolicyName', class: Google::Apis::DataformV1beta1::PolicyName, decorator: Google::Apis::DataformV1beta1::PolicyName::Representation
+      
+          property :is_active, as: 'isActive'
+        end
+      end
+      
       class IncrementalLoadMode
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1333,6 +1354,15 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class PolicyName
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :region, as: 'region'
+          property :type, as: 'type'
         end
       end
       
