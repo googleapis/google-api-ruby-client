@@ -128,6 +128,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Initiated by Cloud Console for Oauth consent flow for Workbench Instances. Do
+        # not use this method directly. Design doc: go/wbi-euc:auth-dd
+        # @param [String] name
+        #   Required. The name of the Notebook Instance resource. Format: `projects/`
+        #   project`/locations/`location`/instances/`instance``
+        # @param [Google::Apis::NotebooksV2::CheckAuthorizationRequest] check_authorization_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NotebooksV2::CheckAuthorizationResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NotebooksV2::CheckAuthorizationResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def check_instance_authorization(name, check_authorization_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:checkAuthorization', options)
+          command.request_representation = Google::Apis::NotebooksV2::CheckAuthorizationRequest::Representation
+          command.request_object = check_authorization_request_object
+          command.response_representation = Google::Apis::NotebooksV2::CheckAuthorizationResponse::Representation
+          command.response_class = Google::Apis::NotebooksV2::CheckAuthorizationResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Checks whether a notebook instance is upgradable.
         # @param [String] notebook_instance
         #   Required. Format: `projects/`project_id`/locations/`location`/instances/`
@@ -260,6 +295,41 @@ module Google
           command.request_object = diagnose_instance_request_object
           command.response_representation = Google::Apis::NotebooksV2::Operation::Representation
           command.response_class = Google::Apis::NotebooksV2::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Called by VM to return an EUC for the instance owner. Do not use this method
+        # directly. Design doc: go/wbi-euc:dd
+        # @param [String] name
+        #   Required. Format: `projects/`project`/locations/`location`/instances/`
+        #   instance_id``
+        # @param [Google::Apis::NotebooksV2::GenerateAccessTokenRequest] generate_access_token_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NotebooksV2::GenerateAccessTokenResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NotebooksV2::GenerateAccessTokenResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_instance_access_token(name, generate_access_token_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:generateAccessToken', options)
+          command.request_representation = Google::Apis::NotebooksV2::GenerateAccessTokenRequest::Representation
+          command.request_object = generate_access_token_request_object
+          command.response_representation = Google::Apis::NotebooksV2::GenerateAccessTokenResponse::Representation
+          command.response_class = Google::Apis::NotebooksV2::GenerateAccessTokenResponse
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
