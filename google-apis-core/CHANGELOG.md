@@ -1,5 +1,11 @@
 # Release History
 
+### 0.18.1 (2025-07-20)
+
+### Reverts
+
+* setting idempotency header ([#23588](https://github.com/googleapis/google-api-ruby-client/issues/23588)) 
+
 ### 0.18.0 (2025-05-22)
 
 #### Features
