@@ -61,7 +61,7 @@ module Google
       # @!attribute [rw] read_timeout_sec
       #   @return [Integer] How long, in seconds, before receiving data times out
       # @!attribute [rw] transparent_gzip_decompression
-      # @return [Boolean] True if gzip compression needs to be enabled
+      #   @return [Boolean] DEPRECATED. Gzip decompression is now always on.
       # Get the default options
       # @return [Google::Apis::ClientOptions]
       def self.default
