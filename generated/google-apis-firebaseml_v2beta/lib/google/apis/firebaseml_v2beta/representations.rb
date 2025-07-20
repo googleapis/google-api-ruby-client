@@ -250,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1GoogleMaps
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1GoogleSearchRetrieval
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -257,6 +263,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1GroundingChunk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1GroundingChunkMaps
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -937,6 +949,16 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1GoogleMaps
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_auth, as: 'apiAuth', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ApiAuth, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ApiAuth::Representation
+      
+          property :auth_config, as: 'authConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AuthConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AuthConfig::Representation
+      
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1GoogleSearchRetrieval
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -948,10 +970,22 @@ module Google
       class GoogleCloudAiplatformV1beta1GroundingChunk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :maps, as: 'maps', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunkMaps, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunkMaps::Representation
+      
           property :retrieved_context, as: 'retrievedContext', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunkRetrievedContext, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunkRetrievedContext::Representation
       
           property :web, as: 'web', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunkWeb, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunkWeb::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1GroundingChunkMaps
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :place_id, as: 'placeId'
+          property :text, as: 'text'
+          property :title, as: 'title'
+          property :uri, as: 'uri'
         end
       end
       
@@ -978,6 +1012,7 @@ module Google
       class GoogleCloudAiplatformV1beta1GroundingMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :google_maps_widget_context_token, as: 'googleMapsWidgetContextToken'
           collection :grounding_chunks, as: 'groundingChunks', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunk, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunk::Representation
       
           collection :grounding_supports, as: 'groundingSupports', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingSupport, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingSupport::Representation
@@ -1259,6 +1294,8 @@ module Google
           property :enterprise_web_search, as: 'enterpriseWebSearch', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1EnterpriseWebSearch, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1EnterpriseWebSearch::Representation
       
           collection :function_declarations, as: 'functionDeclarations', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionDeclaration, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionDeclaration::Representation
+      
+          property :google_maps, as: 'googleMaps', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GoogleMaps, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GoogleMaps::Representation
       
           property :google_search, as: 'googleSearch', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolGoogleSearch, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolGoogleSearch::Representation
       

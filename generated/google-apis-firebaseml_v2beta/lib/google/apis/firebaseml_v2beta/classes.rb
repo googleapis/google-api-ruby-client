@@ -1545,6 +1545,32 @@ module Google
         end
       end
       
+      # Tool to retrieve public maps data for grounding, powered by Google.
+      class GoogleCloudAiplatformV1beta1GoogleMaps
+        include Google::Apis::Core::Hashable
+      
+        # The generic reusable api auth config. Deprecated. Please use AuthConfig (
+        # google/cloud/aiplatform/master/auth.proto) instead.
+        # Corresponds to the JSON property `apiAuth`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ApiAuth]
+        attr_accessor :api_auth
+      
+        # Auth configuration to run the extension.
+        # Corresponds to the JSON property `authConfig`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AuthConfig]
+        attr_accessor :auth_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_auth = args[:api_auth] if args.key?(:api_auth)
+          @auth_config = args[:auth_config] if args.key?(:auth_config)
+        end
+      end
+      
       # Tool to retrieve public web data for grounding, powered by Google.
       class GoogleCloudAiplatformV1beta1GoogleSearchRetrieval
         include Google::Apis::Core::Hashable
@@ -1568,6 +1594,11 @@ module Google
       class GoogleCloudAiplatformV1beta1GroundingChunk
         include Google::Apis::Core::Hashable
       
+        # Chunk from Google Maps.
+        # Corresponds to the JSON property `maps`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunkMaps]
+        attr_accessor :maps
+      
         # Chunk from context retrieved by the retrieval tools.
         # Corresponds to the JSON property `retrievedContext`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunkRetrievedContext]
@@ -1584,8 +1615,47 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @maps = args[:maps] if args.key?(:maps)
           @retrieved_context = args[:retrieved_context] if args.key?(:retrieved_context)
           @web = args[:web] if args.key?(:web)
+        end
+      end
+      
+      # Chunk from Google Maps.
+      class GoogleCloudAiplatformV1beta1GroundingChunkMaps
+        include Google::Apis::Core::Hashable
+      
+        # This Place's resource name, in `places/`place_id`` format. Can be used to look
+        # up the Place.
+        # Corresponds to the JSON property `placeId`
+        # @return [String]
+        attr_accessor :place_id
+      
+        # Text of the chunk.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # Title of the chunk.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # URI reference of the chunk.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @place_id = args[:place_id] if args.key?(:place_id)
+          @text = args[:text] if args.key?(:text)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -1662,6 +1732,13 @@ module Google
       class GoogleCloudAiplatformV1beta1GroundingMetadata
         include Google::Apis::Core::Hashable
       
+        # Optional. Output only. Resource name of the Google Maps widget context token
+        # to be used with the PlacesContextElement widget to render contextual data.
+        # This is populated only for Google Maps grounding.
+        # Corresponds to the JSON property `googleMapsWidgetContextToken`
+        # @return [String]
+        attr_accessor :google_maps_widget_context_token
+      
         # List of supporting references retrieved from specified grounding source.
         # Corresponds to the JSON property `groundingChunks`
         # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunk>]
@@ -1698,6 +1775,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @google_maps_widget_context_token = args[:google_maps_widget_context_token] if args.key?(:google_maps_widget_context_token)
           @grounding_chunks = args[:grounding_chunks] if args.key?(:grounding_chunks)
           @grounding_supports = args[:grounding_supports] if args.key?(:grounding_supports)
           @retrieval_metadata = args[:retrieval_metadata] if args.key?(:retrieval_metadata)
@@ -2654,10 +2732,15 @@ module Google
         # subset of these functions by populating FunctionCall in the response. User
         # should provide a FunctionResponse for each function call in the next turn.
         # Based on the function responses, Model will generate the final response back
-        # to the user. Maximum 128 function declarations can be provided.
+        # to the user. Maximum 512 function declarations can be provided.
         # Corresponds to the JSON property `functionDeclarations`
         # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionDeclaration>]
         attr_accessor :function_declarations
+      
+        # Tool to retrieve public maps data for grounding, powered by Google.
+        # Corresponds to the JSON property `googleMaps`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GoogleMaps]
+        attr_accessor :google_maps
       
         # GoogleSearch tool type. Tool to support Google Search in Model. Powered by
         # Google.
@@ -2690,6 +2773,7 @@ module Google
           @computer_use = args[:computer_use] if args.key?(:computer_use)
           @enterprise_web_search = args[:enterprise_web_search] if args.key?(:enterprise_web_search)
           @function_declarations = args[:function_declarations] if args.key?(:function_declarations)
+          @google_maps = args[:google_maps] if args.key?(:google_maps)
           @google_search = args[:google_search] if args.key?(:google_search)
           @google_search_retrieval = args[:google_search_retrieval] if args.key?(:google_search_retrieval)
           @retrieval = args[:retrieval] if args.key?(:retrieval)
