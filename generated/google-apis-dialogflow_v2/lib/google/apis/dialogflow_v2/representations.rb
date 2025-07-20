@@ -1456,6 +1456,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2Connection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2ConnectionErrorDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2Context
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2404,6 +2416,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2ListSipTrunksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2ListVersionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2597,6 +2615,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2SipTrunk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6005,6 +6029,25 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2Connection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_id, as: 'connectionId'
+          property :error_details, as: 'errorDetails', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConnectionErrorDetails, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConnectionErrorDetails::Representation
+      
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2ConnectionErrorDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_state, as: 'certificateState'
+          property :error_message, as: 'errorMessage'
+        end
+      end
+      
       class GoogleCloudDialogflowV2Context
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7613,6 +7656,15 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2ListSipTrunksResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :sip_trunks, as: 'sipTrunks', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SipTrunk, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SipTrunk::Representation
+      
+        end
+      end
+      
       class GoogleCloudDialogflowV2ListVersionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7956,6 +8008,17 @@ module Google
           property :participant_role, as: 'participantRole'
           property :suggestion_feature_config, as: 'suggestionFeatureConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig::Representation
       
+        end
+      end
+      
+      class GoogleCloudDialogflowV2SipTrunk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :connections, as: 'connections', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Connection, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Connection::Representation
+      
+          property :display_name, as: 'displayName'
+          collection :expected_hostname, as: 'expectedHostname'
+          property :name, as: 'name'
         end
       end
       

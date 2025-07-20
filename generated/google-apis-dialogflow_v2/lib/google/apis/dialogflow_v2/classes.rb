@@ -8994,6 +8994,68 @@ module Google
         end
       end
       
+      # Represents a connection for SIP Trunk.
+      class GoogleCloudDialogflowV2Connection
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The unique identifier of the SIP Trunk connection.
+        # Corresponds to the JSON property `connectionId`
+        # @return [String]
+        attr_accessor :connection_id
+      
+        # The error details of Sip Trunk connection authentication.
+        # Corresponds to the JSON property `errorDetails`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConnectionErrorDetails]
+        attr_accessor :error_details
+      
+        # Output only. State of the connection.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. When the connection status changed.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_id = args[:connection_id] if args.key?(:connection_id)
+          @error_details = args[:error_details] if args.key?(:error_details)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The error details of Sip Trunk connection authentication.
+      class GoogleCloudDialogflowV2ConnectionErrorDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The status of the certificate authentication.
+        # Corresponds to the JSON property `certificateState`
+        # @return [String]
+        attr_accessor :certificate_state
+      
+        # The error message provided from SIP trunking auth service
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_state = args[:certificate_state] if args.key?(:certificate_state)
+          @error_message = args[:error_message] if args.key?(:error_message)
+        end
+      end
+      
       # Dialogflow contexts are similar to natural language context. If a person says
       # to you "they are orange", you need context in order to understand what "they"
       # is referring to. Similarly, for Dialogflow to handle an end-user expression
@@ -14677,6 +14739,32 @@ module Google
         end
       end
       
+      # The response message for SipTrunks.ListSipTrunks.
+      class GoogleCloudDialogflowV2ListSipTrunksResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of SIP trunks.
+        # Corresponds to the JSON property `sipTrunks`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SipTrunk>]
+        attr_accessor :sip_trunks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @sip_trunks = args[:sip_trunks] if args.key?(:sip_trunks)
+        end
+      end
+      
       # The response message for Versions.ListVersions.
       class GoogleCloudDialogflowV2ListVersionsResponse
         include Google::Apis::Core::Hashable
@@ -16062,6 +16150,46 @@ module Google
         def update!(**args)
           @participant_role = args[:participant_role] if args.key?(:participant_role)
           @suggestion_feature_config = args[:suggestion_feature_config] if args.key?(:suggestion_feature_config)
+        end
+      end
+      
+      # SipTrunk is the resource that represents a SIP trunk to connect to Google
+      # Telephony platform SIP trunking service.
+      class GoogleCloudDialogflowV2SipTrunk
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Connections of the SIP trunk.
+        # Corresponds to the JSON property `connections`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Connection>]
+        attr_accessor :connections
+      
+        # Optional. Human readable alias for this trunk.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. The expected hostnames in the peer certificate from partner that is
+        # used for TLS authentication.
+        # Corresponds to the JSON property `expectedHostname`
+        # @return [Array<String>]
+        attr_accessor :expected_hostname
+      
+        # Identifier. The unique identifier of the SIP trunk. Format: `projects//
+        # locations//sipTrunks/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connections = args[:connections] if args.key?(:connections)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @expected_hostname = args[:expected_hostname] if args.key?(:expected_hostname)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
