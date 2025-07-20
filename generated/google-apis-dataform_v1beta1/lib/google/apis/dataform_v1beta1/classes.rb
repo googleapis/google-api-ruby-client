@@ -1374,6 +1374,37 @@ module Google
         end
       end
       
+      # Contains metadata about the IAM policy override for a given Dataform resource.
+      # If is_active is true, this the policy encoded in iam_policy_name is the source
+      # of truth for this resource. Will be provided in internal ESV2 views for:
+      # Workspaces, Repositories, Folders, TeamFolders.
+      class IamPolicyOverrideView
+        include Google::Apis::Core::Hashable
+      
+        # An internal name for an IAM policy, based on the resource to which the policy
+        # applies. Not to be confused with a resource's external full resource name. For
+        # more information on this distinction, see go/iam-full-resource-names.
+        # Corresponds to the JSON property `iamPolicyName`
+        # @return [Google::Apis::DataformV1beta1::PolicyName]
+        attr_accessor :iam_policy_name
+      
+        # Whether the IAM policy encoded in this view is active.
+        # Corresponds to the JSON property `isActive`
+        # @return [Boolean]
+        attr_accessor :is_active
+        alias_method :is_active?, :is_active
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @iam_policy_name = args[:iam_policy_name] if args.key?(:iam_policy_name)
+          @is_active = args[:is_active] if args.key?(:is_active)
+        end
+      end
+      
       # Load definition for incremental load modes
       class IncrementalLoadMode
         include Google::Apis::Core::Hashable
@@ -2263,6 +2294,46 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # An internal name for an IAM policy, based on the resource to which the policy
+      # applies. Not to be confused with a resource's external full resource name. For
+      # more information on this distinction, see go/iam-full-resource-names.
+      class PolicyName
+        include Google::Apis::Core::Hashable
+      
+        # Identifies an instance of the type. ID format varies by type. The ID format is
+        # defined in the IAM .service file that defines the type, either in path_mapping
+        # or in a comment.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # For Cloud IAM: The location of the Policy. Must be empty or "global" for
+        # Policies owned by global IAM. Must name a region from prodspec/cloud-iam-
+        # cloudspec for Regional IAM Policies, see go/iam-faq#where-is-iam-currently-
+        # deployed. For Local IAM: This field should be set to "local".
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # Resource type. Types are defined in IAM's .service files. Valid values for
+        # type might be 'storage_buckets', 'compute_instances', '
+        # resourcemanager_customers', 'billing_accounts', etc.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @region = args[:region] if args.key?(:region)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
