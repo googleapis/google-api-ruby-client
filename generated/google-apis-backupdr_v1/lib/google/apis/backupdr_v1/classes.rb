@@ -1960,7 +1960,8 @@ module Google
         attr_accessor :description
       
         # Optional. Array of disks associated with this instance. Persistent disks must
-        # be created before you can assign them.
+        # be created before you can assign them. Source regional persistent disks will
+        # be restored with default replica zones if not specified.
         # Corresponds to the JSON property `disks`
         # @return [Array<Google::Apis::BackupdrV1::AttachedDisk>]
         attr_accessor :disks
@@ -2023,6 +2024,7 @@ module Google
         # Optional. An array of network configurations for this instance. These specify
         # how interfaces are configured to interact with other network services, such as
         # connecting to the internet. Multiple interfaces are supported per instance.
+        # Required to restore in different project or region.
         # Corresponds to the JSON property `networkInterfaces`
         # @return [Array<Google::Apis::BackupdrV1::NetworkInterface>]
         attr_accessor :network_interfaces
@@ -2048,7 +2050,8 @@ module Google
         # @return [Google::Apis::BackupdrV1::AllocationAffinity]
         attr_accessor :reservation_affinity
       
-        # Optional. Resource policies applied to this instance.
+        # Optional. Resource policies applied to this instance. By default, no resource
+        # policies will be applied.
         # Corresponds to the JSON property `resourcePolicies`
         # @return [Array<String>]
         attr_accessor :resource_policies
@@ -3014,6 +3017,46 @@ module Google
         def update!(**args)
           @data_source_references = args[:data_source_references] if args.key?(:data_source_references)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Request message for GetMsComplianceMetadata
+      class FetchMsComplianceMetadataRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The project id of the target project
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_id = args[:project_id] if args.key?(:project_id)
+        end
+      end
+      
+      # Response message for GetMsComplianceMetadata
+      class FetchMsComplianceMetadataResponse
+        include Google::Apis::Core::Hashable
+      
+        # The ms compliance metadata of the target project, if the project is an assured
+        # workloads project, values will be true, otherwise false.
+        # Corresponds to the JSON property `isAssuredWorkload`
+        # @return [Boolean]
+        attr_accessor :is_assured_workload
+        alias_method :is_assured_workload?, :is_assured_workload
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_assured_workload = args[:is_assured_workload] if args.key?(:is_assured_workload)
         end
       end
       

@@ -364,6 +364,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FetchMsComplianceMetadataRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FetchMsComplianceMetadataResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FetchUsableBackupVaultsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1416,6 +1428,20 @@ module Google
           collection :data_source_references, as: 'dataSourceReferences', class: Google::Apis::BackupdrV1::DataSourceReference, decorator: Google::Apis::BackupdrV1::DataSourceReference::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class FetchMsComplianceMetadataRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_id, as: 'projectId'
+        end
+      end
+      
+      class FetchMsComplianceMetadataResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_assured_workload, as: 'isAssuredWorkload'
         end
       end
       
