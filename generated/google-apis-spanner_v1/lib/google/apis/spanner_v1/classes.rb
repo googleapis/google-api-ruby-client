@@ -712,16 +712,9 @@ module Google
       class BatchWriteRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. When `exclude_txn_from_change_streams` is set to `true`: *
-        # Modifications from all transactions in this batch write operation are not be
-        # recorded in change streams with DDL option `allow_txn_exclusion=true` that are
-        # tracking columns modified by these transactions. * Modifications from all
-        # transactions in this batch write operation are recorded in change streams with
-        # DDL option `allow_txn_exclusion=false or not set` that are tracking columns
-        # modified by these transactions. When `exclude_txn_from_change_streams` is set
-        # to `false` or not set, Modifications from all transactions in this batch write
-        # operation are recorded in all change streams that are tracking columns
-        # modified by these transactions.
+        # Optional. If you don't set the `exclude_txn_from_change_streams` option or if
+        # it's set to `false`, then any change streams monitoring columns modified by
+        # transactions will capture the updates made within that transaction.
         # Corresponds to the JSON property `excludeTxnFromChangeStreams`
         # @return [Boolean]
         attr_accessor :exclude_txn_from_change_streams
@@ -2122,8 +2115,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The unique identifier of the database resource in the Instance. For
-        # example if the database uri is projects/foo/instances/bar/databases/baz, the
-        # id to supply here is baz.
+        # example, if the database uri is `projects/foo/instances/bar/databases/baz`,
+        # then the id to supply here is baz.
         # Corresponds to the JSON property `databaseId`
         # @return [String]
         attr_accessor :database_id
