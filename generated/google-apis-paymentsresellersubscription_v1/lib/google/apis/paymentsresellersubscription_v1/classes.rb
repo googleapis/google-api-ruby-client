@@ -454,7 +454,7 @@ module Google
         end
       end
       
-      # [Preview only] Request to generate a user session.
+      # Request to generate a user session.
       class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest
         include Google::Apis::Core::Hashable
       
@@ -473,7 +473,7 @@ module Google
         end
       end
       
-      # [Preview only] Response that contains the details for generated user session.
+      # Response that contains the details for generated user session.
       class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse
         include Google::Apis::Core::Hashable
       
