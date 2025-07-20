@@ -1153,6 +1153,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Completes the user input with advanced keyword suggestions.
+        # @param [String] completion_config
+        #   Required. The completion_config of the parent dataStore or engine resource
+        #   name for which the completion is performed, such as `projects/*/locations/
+        #   global/collections/default_collection/dataStores/*/completionConfig` `projects/
+        #   */locations/global/collections/default_collection/engines/*/completionConfig`.
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequest] google_cloud_discoveryengine_v1_advanced_complete_query_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def complete_project_location_collection_data_store_completion_config_query(completion_config, google_cloud_discoveryengine_v1_advanced_complete_query_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+completionConfig}:completeQuery', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1_advanced_complete_query_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse
+          command.params['completionConfig'] = completion_config unless completion_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Imports CompletionSuggestions for a DataStore.
         # @param [String] parent
         #   Required. The parent data store resource name for which to import customer
@@ -3618,6 +3654,77 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Assists the user with a query in a streaming fashion.
+        # @param [String] name
+        #   Required. The resource name of the Assistant. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/engines/`engine`/assistants/`
+        #   assistant``
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1StreamAssistRequest] google_cloud_discoveryengine_v1_stream_assist_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1StreamAssistResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1StreamAssistResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_project_location_collection_engine_assistant_assist(name, google_cloud_discoveryengine_v1_stream_assist_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:streamAssist', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1StreamAssistRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1_stream_assist_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1StreamAssistResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1StreamAssistResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Completes the user input with advanced keyword suggestions.
+        # @param [String] completion_config
+        #   Required. The completion_config of the parent dataStore or engine resource
+        #   name for which the completion is performed, such as `projects/*/locations/
+        #   global/collections/default_collection/dataStores/*/completionConfig` `projects/
+        #   */locations/global/collections/default_collection/engines/*/completionConfig`.
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequest] google_cloud_discoveryengine_v1_advanced_complete_query_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def complete_project_location_collection_engine_completion_config_query(completion_config, google_cloud_discoveryengine_v1_advanced_complete_query_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+completionConfig}:completeQuery', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1_advanced_complete_query_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse
+          command.params['completionConfig'] = completion_config unless completion_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Control. By default 1000 controls are allowed for a data store. A
         # request can be submitted to adjust this limit. If the Control to create
         # already exists, an ALREADY_EXISTS error is returned.
@@ -5431,6 +5538,42 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Completes the user input with advanced keyword suggestions.
+        # @param [String] completion_config
+        #   Required. The completion_config of the parent dataStore or engine resource
+        #   name for which the completion is performed, such as `projects/*/locations/
+        #   global/collections/default_collection/dataStores/*/completionConfig` `projects/
+        #   */locations/global/collections/default_collection/engines/*/completionConfig`.
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequest] google_cloud_discoveryengine_v1_advanced_complete_query_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def complete_project_location_data_store_completion_config_query(completion_config, google_cloud_discoveryengine_v1_advanced_complete_query_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+completionConfig}:completeQuery', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1_advanced_complete_query_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse
+          command.params['completionConfig'] = completion_config unless completion_config.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
