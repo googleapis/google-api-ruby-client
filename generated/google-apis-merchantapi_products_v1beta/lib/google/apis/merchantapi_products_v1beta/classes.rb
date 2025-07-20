@@ -31,7 +31,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :additional_image_links
       
-        # Used to group items in an arbitrary way. Only for CPA%, discouraged otherwise.
+        # Used to group items in an arbitrary way. Only for CPA, discouraged otherwise.
         # For more information, see [Display ads attribute](https://support.google.com/
         # merchants/answer/6069387).
         # Corresponds to the JSON property `adsGrouping`
@@ -244,8 +244,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :gtin
       
-        # Global Trade Item Numbers ([GTIN](https://support.google.com/merchants/answer/
-        # 188494#gtin)) of the item. You can provide up to 10 GTINs.
+        # A list of Global Trade Item Numbers ([GTIN](https://support.google.com/
+        # merchants/answer/188494#gtin)) of the item. You can provide up to 10 GTINs.
         # Corresponds to the JSON property `gtins`
         # @return [Array<String>]
         attr_accessor :gtins
@@ -1494,7 +1494,7 @@ module Google
         # @return [Array<Google::Apis::MerchantapiProductsV1beta::CustomAttribute>]
         attr_accessor :custom_attributes
       
-        # Required. Immutable. The label that lets you categorize and identify your
+        # Required. Immutable. The feed label that lets you categorize and identify your
         # products. The maximum allowed characters are 20, and the supported characters
         # are `A-Z`, `0-9`, hyphen, and underscore. The feed label must not include any
         # spaces. For more information, see [Using feed labels](//support.google.com/

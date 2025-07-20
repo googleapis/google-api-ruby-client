@@ -92,12 +92,13 @@ module Google
         end
         
         # [Uploads a product input to your Merchant Center account](/merchant/api/guides/
-        # products/overview#upload-product-input). You must have a products data source
-        # to be able to insert a product. The unique identifier of the data source is
-        # passed as a query parameter in the request URL. If an input with the same
-        # contentLanguage, offerId, and dataSource already exists, this method replaces
-        # that entry. After inserting, updating, or deleting a product input, it may
-        # take several minutes before the processed product can be retrieved.
+        # products/overview#upload-product-input). You must have a products [data source]
+        # (/merchant/api/guides/data-sources/overview) to be able to insert a product.
+        # The unique identifier of the data source is passed as a query parameter in the
+        # request URL. If a product input with the same contentLanguage, offerId, and
+        # dataSource already exists, then the product input inserted by this method
+        # replaces that entry. After inserting, updating, or deleting a product input,
+        # it may take several minutes before the processed product can be retrieved.
         # @param [String] parent
         #   Required. The account where this product will be inserted. Format: `accounts/`
         #   account``
@@ -239,7 +240,7 @@ module Google
         # @param [Fixnum] page_size
         #   The maximum number of products to return. The service may return fewer than
         #   this value. The maximum value is 1000; values above 1000 will be coerced to
-        #   1000. If unspecified, the maximum number of products will be returned.
+        #   1000. If unspecified, the default page size of 25 products will be returned.
         # @param [String] page_token
         #   A page token, received from a previous `ListProducts` call. Provide this to
         #   retrieve the subsequent page. When paginating, all other parameters provided
