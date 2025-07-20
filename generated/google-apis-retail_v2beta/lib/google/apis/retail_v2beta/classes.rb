@@ -5243,11 +5243,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :data_source_id
       
-        # Merchant Center primary feed ID. Deprecated: use data_source_id instead.
-        # Corresponds to the JSON property `primaryFeedId`
-        # @return [Fixnum]
-        attr_accessor :primary_feed_id
-      
         # Merchant Center primary feed name. The name is used for the display purposes
         # only.
         # Corresponds to the JSON property `primaryFeedName`
@@ -5261,7 +5256,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_source_id = args[:data_source_id] if args.key?(:data_source_id)
-          @primary_feed_id = args[:primary_feed_id] if args.key?(:primary_feed_id)
           @primary_feed_name = args[:primary_feed_name] if args.key?(:primary_feed_name)
         end
       end
