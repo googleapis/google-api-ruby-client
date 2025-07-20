@@ -10262,6 +10262,7 @@ module Google
           property :deployment_group, as: 'deploymentGroup'
           property :display_name, as: 'displayName'
           property :enable_access_logging, as: 'enableAccessLogging'
+          property :enable_datapoint_upsert_logging, as: 'enableDatapointUpsertLogging'
           property :id, as: 'id'
           property :index, as: 'index'
           property :index_sync_time, as: 'indexSyncTime'
