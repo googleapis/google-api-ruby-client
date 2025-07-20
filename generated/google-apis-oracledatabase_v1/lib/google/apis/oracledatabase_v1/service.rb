@@ -1163,6 +1163,330 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new ODB Network in a given project and location.
+        # @param [String] parent
+        #   Required. The parent value for the OdbNetwork in the following format:
+        #   projects/`project`/locations/`location`.
+        # @param [Google::Apis::OracledatabaseV1::OdbNetwork] odb_network_object
+        # @param [String] odb_network_id
+        #   Required. The ID of the OdbNetwork to create. This value is restricted to (^[a-
+        #   z]([a-z0-9-]`0,61`[a-z0-9])?$) and must be a maximum of 63 characters in
+        #   length. The value must start with a letter and end with a letter or a number.
+        # @param [String] request_id
+        #   Optional. An optional ID to identify the request. This value is used to
+        #   identify duplicate requests. If you make a request with the same request ID
+        #   and the original request is still in progress or completed, the server ignores
+        #   the second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_odb_network(parent, odb_network_object = nil, odb_network_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/odbNetworks', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::OdbNetwork::Representation
+          command.request_object = odb_network_object
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['odbNetworkId'] = odb_network_id unless odb_network_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single ODB Network.
+        # @param [String] name
+        #   Required. The name of the resource in the following format: projects/`project`/
+        #   locations/`location`/odbNetworks/`odb_network`.
+        # @param [String] request_id
+        #   Optional. An optional ID to identify the request. This value is used to
+        #   identify duplicate requests. If you make a request with the same request ID
+        #   and the original request is still in progress or completed, the server ignores
+        #   the second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_odb_network(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single ODB Network.
+        # @param [String] name
+        #   Required. The name of the OdbNetwork in the following format: projects/`
+        #   project`/locations/`location`/odbNetworks/`odb_network`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::OdbNetwork] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::OdbNetwork]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_odb_network(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::OdbNetwork::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::OdbNetwork
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the ODB Networks in a given project and location.
+        # @param [String] parent
+        #   Required. The parent value for the ODB Network in the following format:
+        #   projects/`project`/locations/`location`.
+        # @param [String] filter
+        #   Optional. An expression for filtering the results of the request.
+        # @param [String] order_by
+        #   Optional. An expression for ordering the results of the request.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If unspecified, at most 50
+        #   ODB Networks will be returned. The maximum value is 1000; values above 1000
+        #   will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::ListOdbNetworksResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::ListOdbNetworksResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_odb_networks(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/odbNetworks', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::ListOdbNetworksResponse::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::ListOdbNetworksResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new ODB Subnet in a given ODB Network.
+        # @param [String] parent
+        #   Required. The parent value for the OdbSubnet in the following format: projects/
+        #   `project`/locations/`location`/odbNetworks/`odb_network`.
+        # @param [Google::Apis::OracledatabaseV1::OdbSubnet] odb_subnet_object
+        # @param [String] odb_subnet_id
+        #   Required. The ID of the OdbSubnet to create. This value is restricted to (^[a-
+        #   z]([a-z0-9-]`0,61`[a-z0-9])?$) and must be a maximum of 63 characters in
+        #   length. The value must start with a letter and end with a letter or a number.
+        # @param [String] request_id
+        #   Optional. An optional ID to identify the request. This value is used to
+        #   identify duplicate requests. If you make a request with the same request ID
+        #   and the original request is still in progress or completed, the server ignores
+        #   the second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_odb_network_odb_subnet(parent, odb_subnet_object = nil, odb_subnet_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/odbSubnets', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::OdbSubnet::Representation
+          command.request_object = odb_subnet_object
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['odbSubnetId'] = odb_subnet_id unless odb_subnet_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single ODB Subnet.
+        # @param [String] name
+        #   Required. The name of the resource in the following format: projects/`project`/
+        #   locations/`region`/odbNetworks/`odb_network`/odbSubnets/`odb_subnet`.
+        # @param [String] request_id
+        #   Optional. An optional ID to identify the request. This value is used to
+        #   identify duplicate requests. If you make a request with the same request ID
+        #   and the original request is still in progress or completed, the server ignores
+        #   the second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_odb_network_odb_subnet(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single ODB Subnet.
+        # @param [String] name
+        #   Required. The name of the OdbSubnet in the following format: projects/`project`
+        #   /locations/`location`/odbNetworks/`odb_network`/odbSubnets/`odb_subnet`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::OdbSubnet] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::OdbSubnet]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_odb_network_odb_subnet(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::OdbSubnet::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::OdbSubnet
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the ODB Subnets in a given ODB Network.
+        # @param [String] parent
+        #   Required. The parent value for the OdbSubnet in the following format: projects/
+        #   `project`/locations/`location`/odbNetworks/`odb_network`.
+        # @param [String] filter
+        #   Optional. An expression for filtering the results of the request.
+        # @param [String] order_by
+        #   Optional. An expression for ordering the results of the request.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If unspecified, at most 50
+        #   ODB Networks will be returned. The maximum value is 1000; values above 1000
+        #   will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::ListOdbSubnetsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::ListOdbSubnetsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_odb_network_odb_subnets(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/odbSubnets', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::ListOdbSubnetsResponse::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::ListOdbSubnetsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.

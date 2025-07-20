@@ -274,6 +274,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListOdbNetworksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListOdbSubnetsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -293,6 +305,18 @@ module Google
       end
       
       class MaintenanceWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OdbNetwork
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OdbSubnet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -392,6 +416,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :odb_network, as: 'odbNetwork'
+          property :odb_subnet, as: 'odbSubnet'
           collection :peer_autonomous_databases, as: 'peerAutonomousDatabases'
           property :properties, as: 'properties', class: Google::Apis::OracledatabaseV1::AutonomousDatabaseProperties, decorator: Google::Apis::OracledatabaseV1::AutonomousDatabaseProperties::Representation
       
@@ -647,6 +673,7 @@ module Google
       class CloudVmCluster
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_odb_subnet, as: 'backupOdbSubnet'
           property :backup_subnet_cidr, as: 'backupSubnetCidr'
           property :cidr, as: 'cidr'
           property :create_time, as: 'createTime'
@@ -656,6 +683,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :odb_network, as: 'odbNetwork'
+          property :odb_subnet, as: 'odbSubnet'
           property :properties, as: 'properties', class: Google::Apis::OracledatabaseV1::CloudVmClusterProperties, decorator: Google::Apis::OracledatabaseV1::CloudVmClusterProperties::Representation
       
         end
@@ -745,6 +774,7 @@ module Google
       class DbNodeProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
           property :db_node_storage_size_gb, as: 'dbNodeStorageSizeGb'
           property :db_server_ocid, as: 'dbServerOcid'
           property :hostname, as: 'hostname'
@@ -949,6 +979,26 @@ module Google
         end
       end
       
+      class ListOdbNetworksResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :odb_networks, as: 'odbNetworks', class: Google::Apis::OracledatabaseV1::OdbNetwork, decorator: Google::Apis::OracledatabaseV1::OdbNetwork::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListOdbSubnetsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :odb_subnets, as: 'odbSubnets', class: Google::Apis::OracledatabaseV1::OdbSubnet, decorator: Google::Apis::OracledatabaseV1::OdbSubnet::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -988,6 +1038,30 @@ module Google
           property :patching_mode, as: 'patchingMode'
           property :preference, as: 'preference'
           collection :weeks_of_month, as: 'weeksOfMonth'
+        end
+      end
+      
+      class OdbNetwork
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :entitlement_id, as: 'entitlementId'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :state, as: 'state'
+        end
+      end
+      
+      class OdbSubnet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cidr_range, as: 'cidrRange'
+          property :create_time, as: 'createTime'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :purpose, as: 'purpose'
+          property :state, as: 'state'
         end
       end
       
