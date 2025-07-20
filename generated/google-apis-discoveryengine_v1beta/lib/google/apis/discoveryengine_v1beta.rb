@@ -31,6 +31,9 @@ module Google
 
       # See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # Search your organization's data in the Cloud Search index
+      AUTH_CLOUD_SEARCH_QUERY = 'https://www.googleapis.com/auth/cloud_search.query'
     end
   end
 end
