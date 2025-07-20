@@ -128,11 +128,6 @@ module Google
       class MerchantReview
         include Google::Apis::Core::Hashable
       
-        # Attributes.
-        # Corresponds to the JSON property `attributes`
-        # @return [Google::Apis::MerchantapiReviewsV1beta::MerchantReviewAttributes]
-        attr_accessor :attributes
-      
         # Optional. A list of custom (merchant-provided) attributes. It can also be used
         # for submitting any attribute of the data specification in its generic form (
         # for example, `` "name": "size type", "value": "regular" ``). This is useful
@@ -149,6 +144,11 @@ module Google
         # Corresponds to the JSON property `dataSource`
         # @return [String]
         attr_accessor :data_source
+      
+        # Attributes.
+        # Corresponds to the JSON property `merchantReviewAttributes`
+        # @return [Google::Apis::MerchantapiReviewsV1beta::MerchantReviewAttributes]
+        attr_accessor :merchant_review_attributes
       
         # Required. The user provided merchant review ID to uniquely identify the
         # merchant review.
@@ -174,9 +174,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @attributes = args[:attributes] if args.key?(:attributes)
           @custom_attributes = args[:custom_attributes] if args.key?(:custom_attributes)
           @data_source = args[:data_source] if args.key?(:data_source)
+          @merchant_review_attributes = args[:merchant_review_attributes] if args.key?(:merchant_review_attributes)
           @merchant_review_id = args[:merchant_review_id] if args.key?(:merchant_review_id)
           @merchant_review_status = args[:merchant_review_status] if args.key?(:merchant_review_status)
           @name = args[:name] if args.key?(:name)
@@ -478,11 +478,6 @@ module Google
       class ProductReview
         include Google::Apis::Core::Hashable
       
-        # Attributes.
-        # Corresponds to the JSON property `attributes`
-        # @return [Google::Apis::MerchantapiReviewsV1beta::ProductReviewAttributes]
-        attr_accessor :attributes
-      
         # Optional. A list of custom (merchant-provided) attributes.
         # Corresponds to the JSON property `customAttributes`
         # @return [Array<Google::Apis::MerchantapiReviewsV1beta::CustomAttribute>]
@@ -498,6 +493,11 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Attributes.
+        # Corresponds to the JSON property `productReviewAttributes`
+        # @return [Google::Apis::MerchantapiReviewsV1beta::ProductReviewAttributes]
+        attr_accessor :product_review_attributes
       
         # Required. The permanent, unique identifier for the product review in the
         # publisher’s system.
@@ -516,10 +516,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @attributes = args[:attributes] if args.key?(:attributes)
           @custom_attributes = args[:custom_attributes] if args.key?(:custom_attributes)
           @data_source = args[:data_source] if args.key?(:data_source)
           @name = args[:name] if args.key?(:name)
+          @product_review_attributes = args[:product_review_attributes] if args.key?(:product_review_attributes)
           @product_review_id = args[:product_review_id] if args.key?(:product_review_id)
           @product_review_status = args[:product_review_status] if args.key?(:product_review_status)
         end
