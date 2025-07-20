@@ -6466,6 +6466,17 @@ module Google
         attr_accessor :enable_access_logging
         alias_method :enable_access_logging?, :enable_access_logging
       
+        # Optional. If true, logs to Cloud Logging errors relating to datapoint upserts.
+        # Under normal operation conditions, these log entries should be very rare.
+        # However, if incompatible datapoint updates are being uploaded to an index, a
+        # high volume of log entries may be generated in a short period of time. Note
+        # that logs may incur a cost, especially if the deployed index receives a high
+        # volume of datapoint upserts. Estimate your costs before enabling this option.
+        # Corresponds to the JSON property `enableDatapointUpsertLogging`
+        # @return [Boolean]
+        attr_accessor :enable_datapoint_upsert_logging
+        alias_method :enable_datapoint_upsert_logging?, :enable_datapoint_upsert_logging
+      
         # Required. The user specified ID of the DeployedIndex. The ID can be up to 128
         # characters long and must start with a letter and only contain letters, numbers,
         # and underscores. The ID must be unique within the project it is created in.
@@ -6533,6 +6544,7 @@ module Google
           @deployment_group = args[:deployment_group] if args.key?(:deployment_group)
           @display_name = args[:display_name] if args.key?(:display_name)
           @enable_access_logging = args[:enable_access_logging] if args.key?(:enable_access_logging)
+          @enable_datapoint_upsert_logging = args[:enable_datapoint_upsert_logging] if args.key?(:enable_datapoint_upsert_logging)
           @id = args[:id] if args.key?(:id)
           @index = args[:index] if args.key?(:index)
           @index_sync_time = args[:index_sync_time] if args.key?(:index_sync_time)
