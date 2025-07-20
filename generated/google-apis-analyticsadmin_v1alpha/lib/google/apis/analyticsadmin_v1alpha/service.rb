@@ -779,38 +779,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a connected site tag for a Universal Analytics property. You can
-        # create a maximum of 20 connected site tags per property. Note: This API cannot
-        # be used on GA4 properties.
-        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagRequest] google_analytics_admin_v1alpha_create_connected_site_tag_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_property_connected_site_tag(google_analytics_admin_v1alpha_create_connected_site_tag_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha/properties:createConnectedSiteTag', options)
-          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagRequest::Representation
-          command.request_object = google_analytics_admin_v1alpha_create_connected_site_tag_request_object
-          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse::Representation
-          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Create a roll-up property and all roll-up property source links.
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest] google_analytics_admin_v1alpha_create_rollup_property_request_object
         # @param [String] fields
@@ -872,102 +840,6 @@ module Google
           command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty::Representation
           command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty
           command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deletes a connected site tag for a Universal Analytics property. Note: this
-        # has no effect on GA4 properties.
-        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest] google_analytics_admin_v1alpha_delete_connected_site_tag_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_property_connected_site_tag(google_analytics_admin_v1alpha_delete_connected_site_tag_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha/properties:deleteConnectedSiteTag', options)
-          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest::Representation
-          command.request_object = google_analytics_admin_v1alpha_delete_connected_site_tag_request_object
-          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty::Representation
-          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Fetches the opt out status for the automated GA4 setup process for a UA
-        # property. Note: this has no effect on GA4 property.
-        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest] google_analytics_admin_v1alpha_fetch_automated_ga4_configuration_opt_out_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def fetch_property_automated_ga4_configuration_opt_out(google_analytics_admin_v1alpha_fetch_automated_ga4_configuration_opt_out_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha/properties:fetchAutomatedGa4ConfigurationOptOut', options)
-          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest::Representation
-          command.request_object = google_analytics_admin_v1alpha_fetch_automated_ga4_configuration_opt_out_request_object
-          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse::Representation
-          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Given a specified UA property, looks up the GA4 property connected to it. Note:
-        # this cannot be used with GA4 properties.
-        # @param [String] property
-        #   Required. The UA property for which to look up the connected GA4 property.
-        #   Note this request uses the internal property ID, not the tracking ID of the
-        #   form UA-XXXXXX-YY. Format: properties/`internal_web_property_id` Example:
-        #   properties/1234
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def fetch_property_connected_ga4_property(property: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1alpha/properties:fetchConnectedGa4Property', options)
-          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse::Representation
-          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse
-          command.query['property'] = property unless property.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1185,38 +1057,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the connected site tags for a Universal Analytics property. A maximum of
-        # 20 connected site tags will be returned. Note: this has no effect on GA4
-        # property.
-        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest] google_analytics_admin_v1alpha_list_connected_site_tags_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_property_connected_site_tags(google_analytics_admin_v1alpha_list_connected_site_tags_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha/properties:listConnectedSiteTags', options)
-          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest::Representation
-          command.request_object = google_analytics_admin_v1alpha_list_connected_site_tags_request_object
-          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse::Representation
-          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Updates a property.
         # @param [String] name
         #   Output only. Resource name of this property. Format: properties/`property_id`
@@ -1334,37 +1174,6 @@ module Google
           command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaRunAccessReportResponse::Representation
           command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaRunAccessReportResponse
           command.params['entity'] = entity unless entity.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Sets the opt out status for the automated GA4 setup process for a UA property.
-        # Note: this has no effect on GA4 property.
-        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest] google_analytics_admin_v1alpha_set_automated_ga4_configuration_opt_out_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_property_automated_ga4_configuration_opt_out(google_analytics_admin_v1alpha_set_automated_ga4_configuration_opt_out_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha/properties:setAutomatedGa4ConfigurationOptOut', options)
-          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest::Representation
-          command.request_object = google_analytics_admin_v1alpha_set_automated_ga4_configuration_opt_out_request_object
-          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse::Representation
-          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

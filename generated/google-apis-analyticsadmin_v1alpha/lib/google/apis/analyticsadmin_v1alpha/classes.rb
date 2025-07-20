@@ -2218,33 +2218,6 @@ module Google
         end
       end
       
-      # Configuration for a specific Connected Site Tag.
-      class GoogleAnalyticsAdminV1alphaConnectedSiteTag
-        include Google::Apis::Core::Hashable
-      
-        # Required. User-provided display name for the connected site tag. Must be less
-        # than 256 characters.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Required. "Tag ID to forward events to. Also known as the Measurement ID, or
-        # the "G-ID" (For example: G-12345).
-        # Corresponds to the JSON property `tagId`
-        # @return [String]
-        attr_accessor :tag_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @tag_id = args[:tag_id] if args.key?(:tag_id)
-        end
-      end
-      
       # A conversion event in a Google Analytics property.
       class GoogleAnalyticsAdminV1alphaConversionEvent
         include Google::Apis::Core::Hashable
@@ -2419,46 +2392,6 @@ module Google
         def update!(**args)
           @access_binding = args[:access_binding] if args.key?(:access_binding)
           @parent = args[:parent] if args.key?(:parent)
-        end
-      end
-      
-      # Request message for CreateConnectedSiteTag RPC.
-      class GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagRequest
-        include Google::Apis::Core::Hashable
-      
-        # Configuration for a specific Connected Site Tag.
-        # Corresponds to the JSON property `connectedSiteTag`
-        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConnectedSiteTag]
-        attr_accessor :connected_site_tag
-      
-        # The Universal Analytics property to create connected site tags for. This API
-        # does not support GA4 properties. Format: properties/`
-        # universalAnalyticsPropertyId` Example: properties/1234
-        # Corresponds to the JSON property `property`
-        # @return [String]
-        attr_accessor :property
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @connected_site_tag = args[:connected_site_tag] if args.key?(:connected_site_tag)
-          @property = args[:property] if args.key?(:property)
-        end
-      end
-      
-      # Response message for CreateConnectedSiteTag RPC.
-      class GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -2967,34 +2900,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # Request message for DeleteConnectedSiteTag RPC.
-      class GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest
-        include Google::Apis::Core::Hashable
-      
-        # The Universal Analytics property to delete connected site tags for. This API
-        # does not support GA4 properties. Format: properties/`
-        # universalAnalyticsPropertyId` Example: properties/1234
-        # Corresponds to the JSON property `property`
-        # @return [String]
-        attr_accessor :property
-      
-        # Tag ID to forward events to. Also known as the Measurement ID, or the "G-ID" (
-        # For example: G-12345).
-        # Corresponds to the JSON property `tagId`
-        # @return [String]
-        attr_accessor :tag_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @property = args[:property] if args.key?(:property)
-          @tag_id = args[:tag_id] if args.key?(:tag_id)
         end
       end
       
@@ -3606,69 +3511,6 @@ module Google
         end
       end
       
-      # Request for fetching the opt out status for the automated GA4 setup process.
-      class GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. The UA property to get the opt out status. Note this request uses
-        # the internal property ID, not the tracking ID of the form UA-XXXXXX-YY. Format:
-        # properties/`internalWebPropertyId` Example: properties/1234
-        # Corresponds to the JSON property `property`
-        # @return [String]
-        attr_accessor :property
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @property = args[:property] if args.key?(:property)
-        end
-      end
-      
-      # Response message for fetching the opt out status for the automated GA4 setup
-      # process.
-      class GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse
-        include Google::Apis::Core::Hashable
-      
-        # The opt out status for the UA property.
-        # Corresponds to the JSON property `optOut`
-        # @return [Boolean]
-        attr_accessor :opt_out
-        alias_method :opt_out?, :opt_out
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @opt_out = args[:opt_out] if args.key?(:opt_out)
-        end
-      end
-      
-      # Response for looking up GA4 property connected to a UA property.
-      class GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse
-        include Google::Apis::Core::Hashable
-      
-        # The GA4 property connected to the UA property. An empty string is returned
-        # when there is no connected GA4 property. Format: properties/`property_id`
-        # Example: properties/1234
-        # Corresponds to the JSON property `property`
-        # @return [String]
-        attr_accessor :property
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @property = args[:property] if args.key?(:property)
-        end
-      end
-      
       # A link between a Google Analytics property and a Firebase project.
       class GoogleAnalyticsAdminV1alphaFirebaseLink
         include Google::Apis::Core::Hashable
@@ -4183,47 +4025,6 @@ module Google
         def update!(**args)
           @channel_groups = args[:channel_groups] if args.key?(:channel_groups)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # Request message for ListConnectedSiteTags RPC.
-      class GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest
-        include Google::Apis::Core::Hashable
-      
-        # The Universal Analytics property to fetch connected site tags for. This does
-        # not work on GA4 properties. A maximum of 20 connected site tags will be
-        # returned. Example Format: `properties/1234`
-        # Corresponds to the JSON property `property`
-        # @return [String]
-        attr_accessor :property
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @property = args[:property] if args.key?(:property)
-        end
-      end
-      
-      # Response message for ListConnectedSiteTags RPC.
-      class GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The site tags for the Universal Analytics property. A maximum of 20 connected
-        # site tags will be returned.
-        # Corresponds to the JSON property `connectedSiteTags`
-        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConnectedSiteTag>]
-        attr_accessor :connected_site_tags
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @connected_site_tags = args[:connected_site_tags] if args.key?(:connected_site_tags)
         end
       end
       
@@ -5750,48 +5551,6 @@ module Google
         def update!(**args)
           @change_history_events = args[:change_history_events] if args.key?(:change_history_events)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # Request for setting the opt out status for the automated GA4 setup process.
-      class GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest
-        include Google::Apis::Core::Hashable
-      
-        # The status to set.
-        # Corresponds to the JSON property `optOut`
-        # @return [Boolean]
-        attr_accessor :opt_out
-        alias_method :opt_out?, :opt_out
-      
-        # Required. The UA property to set the opt out status. Note this request uses
-        # the internal property ID, not the tracking ID of the form UA-XXXXXX-YY. Format:
-        # properties/`internalWebPropertyId` Example: properties/1234
-        # Corresponds to the JSON property `property`
-        # @return [String]
-        attr_accessor :property
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @opt_out = args[:opt_out] if args.key?(:opt_out)
-          @property = args[:property] if args.key?(:property)
-        end
-      end
-      
-      # Response message for setting the opt out status for the automated GA4 setup
-      # process.
-      class GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
