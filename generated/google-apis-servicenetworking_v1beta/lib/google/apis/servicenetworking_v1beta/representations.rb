@@ -717,6 +717,7 @@ module Google
       class Api
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :edition, as: 'edition'
           collection :methods_prop, as: 'methods', class: Google::Apis::ServicenetworkingV1beta::MethodProp, decorator: Google::Apis::ServicenetworkingV1beta::MethodProp::Representation
       
           collection :mixins, as: 'mixins', class: Google::Apis::ServicenetworkingV1beta::Mixin, decorator: Google::Apis::ServicenetworkingV1beta::Mixin::Representation
@@ -1289,6 +1290,7 @@ module Google
       class MethodProp
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :edition, as: 'edition'
           property :name, as: 'name'
           collection :options, as: 'options', class: Google::Apis::ServicenetworkingV1beta::Option, decorator: Google::Apis::ServicenetworkingV1beta::Option::Representation
       

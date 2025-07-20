@@ -200,6 +200,11 @@ module Google
       class Api
         include Google::Apis::Core::Hashable
       
+        # The source edition string, only valid when syntax is SYNTAX_EDITIONS.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
+      
         # The methods of this interface, in unspecified order.
         # Corresponds to the JSON property `methods`
         # @return [Array<Google::Apis::ServicenetworkingV1beta::MethodProp>]
@@ -255,6 +260,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @edition = args[:edition] if args.key?(:edition)
           @methods_prop = args[:methods_prop] if args.key?(:methods_prop)
           @mixins = args[:mixins] if args.key?(:mixins)
           @name = args[:name] if args.key?(:name)
@@ -573,7 +579,7 @@ module Google
         # @return [Hash<String,Google::Apis::ServicenetworkingV1beta::BackendRule>]
         attr_accessor :overrides_by_request_protocol
       
-        # 
+        # no-lint
         # Corresponds to the JSON property `pathTranslation`
         # @return [String]
         attr_accessor :path_translation
@@ -1972,7 +1978,8 @@ module Google
       
         # Map of service names to renamed services. Keys are the package relative
         # service names and values are the name to be used for the service client and
-        # call options. publishing: go_settings: renamed_services: Publisher: TopicAdmin
+        # call options. Example: publishing: go_settings: renamed_services: Publisher:
+        # TopicAdmin
         # Corresponds to the JSON property `renamedServices`
         # @return [Hash<String,String>]
         attr_accessor :renamed_services
@@ -2647,6 +2654,11 @@ module Google
       class MethodProp
         include Google::Apis::Core::Hashable
       
+        # The source edition string, only valid when syntax is SYNTAX_EDITIONS.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
+      
         # The simple name of this method.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2690,6 +2702,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @edition = args[:edition] if args.key?(:edition)
           @name = args[:name] if args.key?(:name)
           @options = args[:options] if args.key?(:options)
           @request_streaming = args[:request_streaming] if args.key?(:request_streaming)
