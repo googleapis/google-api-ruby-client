@@ -230,6 +230,60 @@ module Google
         end
       end
       
+      # Request message for checking authorization for the instance owner.
+      class CheckAuthorizationRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The details of the OAuth authorization response. This may include
+        # additional params such as dry_run, version_info, origin, propagate, etc.
+        # Corresponds to the JSON property `authorizationDetails`
+        # @return [Hash<String,String>]
+        attr_accessor :authorization_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorization_details = args[:authorization_details] if args.key?(:authorization_details)
+        end
+      end
+      
+      # Response message for checking authorization for the instance owner.
+      class CheckAuthorizationResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when this Authorization request was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # If the user has not completed OAuth consent, then the oauth_url is returned.
+        # Otherwise, this field is not set.
+        # Corresponds to the JSON property `oauth_uri`
+        # @return [String]
+        attr_accessor :oauth_uri
+      
+        # Success indicates that the user completed OAuth consent and access tokens can
+        # be generated.
+        # Corresponds to the JSON property `success`
+        # @return [Boolean]
+        attr_accessor :success
+        alias_method :success?, :success
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @oauth_uri = args[:oauth_uri] if args.key?(:oauth_uri)
+          @success = args[:success] if args.key?(:success)
+        end
+      end
+      
       # Response for checking if a notebook instance is upgradeable.
       class CheckInstanceUpgradabilityResponse
         include Google::Apis::Core::Hashable
@@ -762,6 +816,66 @@ module Google
         end
       end
       
+      # Request message for generating an EUC for the instance owner.
+      class GenerateAccessTokenRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The VM identity token (a JWT) for authenticating the VM. https://
+        # cloud.google.com/compute/docs/instances/verifying-instance-identity
+        # Corresponds to the JSON property `vmToken`
+        # @return [String]
+        attr_accessor :vm_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @vm_token = args[:vm_token] if args.key?(:vm_token)
+        end
+      end
+      
+      # Response message for generating an EUC for the instance owner.
+      class GenerateAccessTokenResponse
+        include Google::Apis::Core::Hashable
+      
+        # Short-lived access token string which may be used to access Google APIs.
+        # Corresponds to the JSON property `access_token`
+        # @return [String]
+        attr_accessor :access_token
+      
+        # The time in seconds when the access token expires. Typically that's 3600.
+        # Corresponds to the JSON property `expires_in`
+        # @return [Fixnum]
+        attr_accessor :expires_in
+      
+        # Space-separated list of scopes contained in the returned token. https://cloud.
+        # google.com/docs/authentication/token-types#access-contents
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # Type of the returned access token (e.g. "Bearer"). It specifies how the token
+        # must be used. Bearer tokens may be used by any entity without proof of
+        # identity.
+        # Corresponds to the JSON property `token_type`
+        # @return [String]
+        attr_accessor :token_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_token = args[:access_token] if args.key?(:access_token)
+          @expires_in = args[:expires_in] if args.key?(:expires_in)
+          @scope = args[:scope] if args.key?(:scope)
+          @token_type = args[:token_type] if args.key?(:token_type)
+        end
+      end
+      
       # ConfigImage represents an image release available to create a WbI
       class ImageRelease
         include Google::Apis::Core::Hashable
@@ -814,6 +928,12 @@ module Google
         # @return [Boolean]
         attr_accessor :enable_deletion_protection
         alias_method :enable_deletion_protection?, :enable_deletion_protection
+      
+        # Optional. Flag to enable managed end user credentials for the instance.
+        # Corresponds to the JSON property `enableManagedEuc`
+        # @return [Boolean]
+        attr_accessor :enable_managed_euc
+        alias_method :enable_managed_euc?, :enable_managed_euc
       
         # Optional. Flag that specifies that a notebook can be accessed with third party
         # identity provider.
@@ -913,6 +1033,7 @@ module Google
           @creator = args[:creator] if args.key?(:creator)
           @disable_proxy_access = args[:disable_proxy_access] if args.key?(:disable_proxy_access)
           @enable_deletion_protection = args[:enable_deletion_protection] if args.key?(:enable_deletion_protection)
+          @enable_managed_euc = args[:enable_managed_euc] if args.key?(:enable_managed_euc)
           @enable_third_party_identity = args[:enable_third_party_identity] if args.key?(:enable_third_party_identity)
           @gce_setup = args[:gce_setup] if args.key?(:gce_setup)
           @health_info = args[:health_info] if args.key?(:health_info)
