@@ -3772,8 +3772,8 @@ module Google
       
         # The fully qualified name of this WorkerPool. In CreateWorkerPoolRequest, this
         # field is ignored, and instead composed from CreateWorkerPoolRequest.parent and
-        # CreateWorkerPoolRequest.worker_id. Format: projects/`project`/locations/`
-        # location`/workerPools/`worker_id`
+        # CreateWorkerPoolRequest.worker_id. Format: `projects/`project`/locations/`
+        # location`/workerPools/`worker_id``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3922,6 +3922,12 @@ module Google
         # @return [String]
         attr_accessor :encryption_key_shutdown_duration
       
+        # Optional. True if GPU zonal redundancy is disabled on this worker pool.
+        # Corresponds to the JSON property `gpuZonalRedundancyDisabled`
+        # @return [Boolean]
+        attr_accessor :gpu_zonal_redundancy_disabled
+        alias_method :gpu_zonal_redundancy_disabled?, :gpu_zonal_redundancy_disabled
+      
         # Optional. Unstructured key value map that can be used to organize and
         # categorize objects. User-provided labels are shared with Google's billing
         # system, so they can be used to filter, or break down billing charges by team,
@@ -3983,6 +3989,7 @@ module Google
           @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
           @encryption_key_revocation_action = args[:encryption_key_revocation_action] if args.key?(:encryption_key_revocation_action)
           @encryption_key_shutdown_duration = args[:encryption_key_shutdown_duration] if args.key?(:encryption_key_shutdown_duration)
+          @gpu_zonal_redundancy_disabled = args[:gpu_zonal_redundancy_disabled] if args.key?(:gpu_zonal_redundancy_disabled)
           @labels = args[:labels] if args.key?(:labels)
           @node_selector = args[:node_selector] if args.key?(:node_selector)
           @revision = args[:revision] if args.key?(:revision)

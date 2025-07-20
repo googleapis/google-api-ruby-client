@@ -1668,6 +1668,7 @@ module Google
           property :encryption_key, as: 'encryptionKey'
           property :encryption_key_revocation_action, as: 'encryptionKeyRevocationAction'
           property :encryption_key_shutdown_duration, as: 'encryptionKeyShutdownDuration'
+          property :gpu_zonal_redundancy_disabled, as: 'gpuZonalRedundancyDisabled'
           hash :labels, as: 'labels'
           property :node_selector, as: 'nodeSelector', class: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector, decorator: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector::Representation
       
