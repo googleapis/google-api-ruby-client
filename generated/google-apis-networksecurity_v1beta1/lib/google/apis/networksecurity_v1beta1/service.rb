@@ -2735,7 +2735,7 @@ module Google
         # Updates the parameters of a single ClientTlsPolicy.
         # @param [String] name
         #   Required. Name of the ClientTlsPolicy resource. It matches the pattern `
-        #   projects/*/locations/`location`/clientTlsPolicies/`client_tls_policy``
+        #   projects/`project`/locations/`location`/clientTlsPolicies/`client_tls_policy``
         # @param [Google::Apis::NetworksecurityV1beta1::ClientTlsPolicy] client_tls_policy_object
         # @param [String] update_mask
         #   Optional. Field mask is used to specify the fields to be overwritten in the
