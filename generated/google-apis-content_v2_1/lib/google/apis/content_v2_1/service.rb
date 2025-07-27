@@ -1473,7 +1473,8 @@ module Google
         #   Required. The ID of the conversion source to be updated.
         # @param [Google::Apis::ContentV2_1::ConversionSource] conversion_source_object
         # @param [String] update_mask
-        #   Optional. List of fields being updated.
+        #   Optional. List of fields being updated. The following fields can be updated: `
+        #   attribution_settings`, `display_name`, `currency_code`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
