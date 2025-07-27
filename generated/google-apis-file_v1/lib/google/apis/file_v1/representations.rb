@@ -675,6 +675,7 @@ module Google
           property :peer_instance, as: 'peerInstance'
           property :state, as: 'state'
           collection :state_reasons, as: 'stateReasons'
+          property :state_update_time, as: 'stateUpdateTime'
         end
       end
       
