@@ -2851,6 +2851,11 @@ module Google
         # @return [String]
         attr_accessor :query
       
+        # Optional. The safety settings to be applied to the generated content.
+        # Corresponds to the JSON property `safetySettings`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSafetySetting>]
+        attr_accessor :safety_settings
+      
         # Search parameters.
         # Corresponds to the JSON property `searchParams`
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchRequestSearchParams]
@@ -2897,6 +2902,7 @@ module Google
           @conversational_filtering_spec = args[:conversational_filtering_spec] if args.key?(:conversational_filtering_spec)
           @page_categories = args[:page_categories] if args.key?(:page_categories)
           @query = args[:query] if args.key?(:query)
+          @safety_settings = args[:safety_settings] if args.key?(:safety_settings)
           @search_params = args[:search_params] if args.key?(:search_params)
           @user_info = args[:user_info] if args.key?(:user_info)
           @user_labels = args[:user_labels] if args.key?(:user_labels)
@@ -4933,6 +4939,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :data_source_id
       
+        # Merchant Center primary feed ID. Deprecated: use data_source_id instead.
+        # Corresponds to the JSON property `primaryFeedId`
+        # @return [Fixnum]
+        attr_accessor :primary_feed_id
+      
         # Merchant Center primary feed name. The name is used for the display purposes
         # only.
         # Corresponds to the JSON property `primaryFeedName`
@@ -4946,6 +4957,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_source_id = args[:data_source_id] if args.key?(:data_source_id)
+          @primary_feed_id = args[:primary_feed_id] if args.key?(:primary_feed_id)
           @primary_feed_name = args[:primary_feed_name] if args.key?(:primary_feed_name)
         end
       end
@@ -5457,6 +5469,57 @@ module Google
         def update!(**args)
           @bigquery_result = args[:bigquery_result] if args.key?(:bigquery_result)
           @gcs_result = args[:gcs_result] if args.key?(:gcs_result)
+        end
+      end
+      
+      # Detailed panel information associated with a user event.
+      class GoogleCloudRetailV2alphaPanelInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The attribution token of the panel.
+        # Corresponds to the JSON property `attributionToken`
+        # @return [String]
+        attr_accessor :attribution_token
+      
+        # Optional. The display name of the panel.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. The panel ID.
+        # Corresponds to the JSON property `panelId`
+        # @return [String]
+        attr_accessor :panel_id
+      
+        # Optional. The ordered position of the panel, if shown to the user with other
+        # panels. If set, then total_panels must also be set.
+        # Corresponds to the JSON property `panelPosition`
+        # @return [Fixnum]
+        attr_accessor :panel_position
+      
+        # Optional. The product details associated with the panel.
+        # Corresponds to the JSON property `productDetails`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProductDetail>]
+        attr_accessor :product_details
+      
+        # Optional. The total number of panels, including this one, shown to the user.
+        # Must be set if panel_position is set.
+        # Corresponds to the JSON property `totalPanels`
+        # @return [Fixnum]
+        attr_accessor :total_panels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribution_token = args[:attribution_token] if args.key?(:attribution_token)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @panel_id = args[:panel_id] if args.key?(:panel_id)
+          @panel_position = args[:panel_position] if args.key?(:panel_position)
+          @product_details = args[:product_details] if args.key?(:product_details)
+          @total_panels = args[:total_panels] if args.key?(:total_panels)
         end
       end
       
@@ -7469,6 +7532,38 @@ module Google
         end
       end
       
+      # Safety settings.
+      class GoogleCloudRetailV2alphaSafetySetting
+        include Google::Apis::Core::Hashable
+      
+        # Harm category.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Optional. Specify if the threshold is used for probability or severity score.
+        # If not specified, the threshold is used for probability score.
+        # Corresponds to the JSON property `method`
+        # @return [String]
+        attr_accessor :method_prop
+      
+        # The harm block threshold.
+        # Corresponds to the JSON property `threshold`
+        # @return [String]
+        attr_accessor :threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
+          @threshold = args[:threshold] if args.key?(:threshold)
+        end
+      end
+      
       # Request message for SearchService.Search method.
       class GoogleCloudRetailV2alphaSearchRequest
         include Google::Apis::Core::Hashable
@@ -9247,6 +9342,12 @@ module Google
         # @return [String]
         attr_accessor :page_view_id
       
+        # Optional. List of panels associated with this event. Used for panel-level
+        # impression data.
+        # Corresponds to the JSON property `panels`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaPanelInfo>]
+        attr_accessor :panels
+      
         # The main product details related to the event. This field is optional except
         # for the following event types: * `add-to-cart` * `detail-page-view` * `
         # purchase-complete` In a `search` event, this field represents the products
@@ -9334,6 +9435,7 @@ module Google
           @order_by = args[:order_by] if args.key?(:order_by)
           @page_categories = args[:page_categories] if args.key?(:page_categories)
           @page_view_id = args[:page_view_id] if args.key?(:page_view_id)
+          @panels = args[:panels] if args.key?(:panels)
           @product_details = args[:product_details] if args.key?(:product_details)
           @purchase_transaction = args[:purchase_transaction] if args.key?(:purchase_transaction)
           @referrer_uri = args[:referrer_uri] if args.key?(:referrer_uri)
