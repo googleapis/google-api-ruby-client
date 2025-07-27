@@ -346,31 +346,6 @@ module Google
         end
       end
       
-      # Capabilities adds and removes POSIX capabilities from running containers.
-      class Capabilities
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Added capabilities +optional
-        # Corresponds to the JSON property `add`
-        # @return [Array<String>]
-        attr_accessor :add
-      
-        # Optional. Removed capabilities +optional
-        # Corresponds to the JSON property `drop`
-        # @return [Array<String>]
-        attr_accessor :drop
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @add = args[:add] if args.key?(:add)
-          @drop = args[:drop] if args.key?(:drop)
-        end
-      end
-      
       # ChildStatusReference is used to point to the statuses of individual TaskRuns
       # and Runs within this PipelineRun.
       class ChildStatusReference
@@ -2434,11 +2409,6 @@ module Google
         attr_accessor :allow_privilege_escalation
         alias_method :allow_privilege_escalation?, :allow_privilege_escalation
       
-        # Capabilities adds and removes POSIX capabilities from running containers.
-        # Corresponds to the JSON property `capabilities`
-        # @return [Google::Apis::CloudbuildV2::Capabilities]
-        attr_accessor :capabilities
-      
         # Run container in privileged mode.
         # Corresponds to the JSON property `privileged`
         # @return [Boolean]
@@ -2481,7 +2451,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allow_privilege_escalation = args[:allow_privilege_escalation] if args.key?(:allow_privilege_escalation)
-          @capabilities = args[:capabilities] if args.key?(:capabilities)
           @privileged = args[:privileged] if args.key?(:privileged)
           @run_as_group = args[:run_as_group] if args.key?(:run_as_group)
           @run_as_non_root = args[:run_as_non_root] if args.key?(:run_as_non_root)
