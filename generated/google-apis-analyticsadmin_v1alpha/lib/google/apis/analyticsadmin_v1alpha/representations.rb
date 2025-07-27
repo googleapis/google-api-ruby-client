@@ -928,6 +928,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaSubpropertyEventFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2548,6 +2560,23 @@ module Google
           collection :change_history_events, as: 'changeHistoryEvents', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChangeHistoryEvent, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChangeHistoryEvent::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_instance_id, as: 'appInstanceId'
+          property :client_id, as: 'clientId'
+          property :user_id, as: 'userId'
+          property :user_provided_data, as: 'userProvidedData'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deletion_request_time, as: 'deletionRequestTime'
         end
       end
       

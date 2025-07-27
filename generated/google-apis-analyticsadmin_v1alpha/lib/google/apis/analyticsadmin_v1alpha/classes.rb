@@ -5554,6 +5554,69 @@ module Google
         end
       end
       
+      # Request message for SubmitUserDeletion RPC.
+      class GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Firebase [application instance ID](https://firebase.google.com/docs/reference/
+        # android/com/google/firebase/analytics/FirebaseAnalytics.html#getAppInstanceId).
+        # Corresponds to the JSON property `appInstanceId`
+        # @return [String]
+        attr_accessor :app_instance_id
+      
+        # Google Analytics [client ID](https://support.google.com/analytics/answer/
+        # 11593727).
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Google Analytics [user ID](https://firebase.google.com/docs/analytics/userid).
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        # [User-provided data](https://support.google.com/analytics/answer/14077171).
+        # May contain either one email address or one phone number. Email addresses
+        # should be normalized as such: * lowercase * remove periods before @ for gmail.
+        # com/googlemail.com addresses * remove all spaces Phone numbers should be
+        # normalized as such: * remove all non digit characters * add + prefix
+        # Corresponds to the JSON property `userProvidedData`
+        # @return [String]
+        attr_accessor :user_provided_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_instance_id = args[:app_instance_id] if args.key?(:app_instance_id)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @user_id = args[:user_id] if args.key?(:user_id)
+          @user_provided_data = args[:user_provided_data] if args.key?(:user_provided_data)
+        end
+      end
+      
+      # Response message for SubmitUserDeletion RPC.
+      class GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse
+        include Google::Apis::Core::Hashable
+      
+        # Marks the moment for which all visitor data before this point should be
+        # deleted. This is set to the time at which the deletion request was received.
+        # Corresponds to the JSON property `deletionRequestTime`
+        # @return [String]
+        attr_accessor :deletion_request_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deletion_request_time = args[:deletion_request_time] if args.key?(:deletion_request_time)
+        end
+      end
+      
       # A resource message representing a Google Analytics subproperty event filter.
       class GoogleAnalyticsAdminV1alphaSubpropertyEventFilter
         include Google::Apis::Core::Hashable
