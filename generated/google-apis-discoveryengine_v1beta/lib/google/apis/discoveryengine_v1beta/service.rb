@@ -2647,9 +2647,12 @@ module Google
         #   Required. The data store resource name. Format: `projects/`project`/locations/`
         #   location`/collections/`collection`/dataStores/`data_store_id``
         # @param [String] filter
-        #   A filter to apply on the list results. The supported features are:
-        #   user_pseudo_id, state, starred. Examples: "user_pseudo_id = some_id" "starred =
-        #   true"
+        #   A comma-separated list of fields to filter by, in EBNF grammar. The supported
+        #   fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `
+        #   is_pinned` * `labels` * `create_time` * `update_time` Examples: "
+        #   user_pseudo_id = some_id" "display_name = \"some_name\"" "starred = true" "
+        #   is_pinned=true AND (NOT labels:hidden)" "create_time > \"1970-01-01T12:00:00Z\"
+        #   "
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
@@ -3945,6 +3948,76 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets an Assistant.
+        # @param [String] name
+        #   Required. Resource name of Assistant. Format: `projects/`project`/locations/`
+        #   location`/collections/`collection`/engines/`engine`/assistants/`assistant``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistant] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistant]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_collection_engine_assistant(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistant::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistant
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an Assistant
+        # @param [String] name
+        #   Immutable. Resource name of the assistant. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/engines/`engine`/assistants/`
+        #   assistant`` It must be a UTF-8 encoded string with a length limit of 1024
+        #   characters.
+        # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistant] google_cloud_discoveryengine_v1beta_assistant_object
+        # @param [String] update_mask
+        #   The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistant] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistant]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_collection_engine_assistant(name, google_cloud_discoveryengine_v1beta_assistant_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta/{+name}', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistant::Representation
+          command.request_object = google_cloud_discoveryengine_v1beta_assistant_object
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistant::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistant
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Assists the user with a query in a streaming fashion.
         # @param [String] name
         #   Required. The resource name of the Assistant. Format: `projects/`project`/
@@ -4969,9 +5042,12 @@ module Google
         #   Required. The data store resource name. Format: `projects/`project`/locations/`
         #   location`/collections/`collection`/dataStores/`data_store_id``
         # @param [String] filter
-        #   A filter to apply on the list results. The supported features are:
-        #   user_pseudo_id, state, starred. Examples: "user_pseudo_id = some_id" "starred =
-        #   true"
+        #   A comma-separated list of fields to filter by, in EBNF grammar. The supported
+        #   fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `
+        #   is_pinned` * `labels` * `create_time` * `update_time` Examples: "
+        #   user_pseudo_id = some_id" "display_name = \"some_name\"" "starred = true" "
+        #   is_pinned=true AND (NOT labels:hidden)" "create_time > \"1970-01-01T12:00:00Z\"
+        #   "
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
@@ -7182,9 +7258,12 @@ module Google
         #   Required. The data store resource name. Format: `projects/`project`/locations/`
         #   location`/collections/`collection`/dataStores/`data_store_id``
         # @param [String] filter
-        #   A filter to apply on the list results. The supported features are:
-        #   user_pseudo_id, state, starred. Examples: "user_pseudo_id = some_id" "starred =
-        #   true"
+        #   A comma-separated list of fields to filter by, in EBNF grammar. The supported
+        #   fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `
+        #   is_pinned` * `labels` * `create_time` * `update_time` Examples: "
+        #   user_pseudo_id = some_id" "display_name = \"some_name\"" "starred = true" "
+        #   is_pinned=true AND (NOT labels:hidden)" "create_time > \"1970-01-01T12:00:00Z\"
+        #   "
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
