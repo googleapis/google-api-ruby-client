@@ -6361,6 +6361,15 @@ module Google
         # @return [String]
         attr_accessor :model_display_name
       
+        # Optional. The ID to use for the uploaded Model, which will become the final
+        # component of the model resource name. When not provided, Vertex AI will
+        # generate a value for this ID. When Model Registry model is provided, this
+        # field will be ignored. This value may be up to 63 characters, and valid
+        # characters are `[a-z0-9_-]`. The first character cannot be a number or hyphen.
+        # Corresponds to the JSON property `modelUserId`
+        # @return [String]
+        attr_accessor :model_user_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6372,6 +6381,7 @@ module Google
           @hugging_face_access_token = args[:hugging_face_access_token] if args.key?(:hugging_face_access_token)
           @hugging_face_cache_enabled = args[:hugging_face_cache_enabled] if args.key?(:hugging_face_cache_enabled)
           @model_display_name = args[:model_display_name] if args.key?(:model_display_name)
+          @model_user_id = args[:model_user_id] if args.key?(:model_user_id)
         end
       end
       
@@ -6705,6 +6715,12 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FasterDeploymentConfig]
         attr_accessor :faster_deployment_config
       
+        # GDC pretrained / Gemini model name. The model name is a plain model name, e.g.
+        # gemini-1.5-flash-002.
+        # Corresponds to the JSON property `gdcConnectedModel`
+        # @return [String]
+        attr_accessor :gdc_connected_model
+      
         # Immutable. The ID of the DeployedModel. If not provided upon deployment,
         # Vertex AI will generate a value for this ID. This value should be 1-10
         # characters, and valid characters are `/[0-9]/`.
@@ -6783,6 +6799,7 @@ module Google
           @enable_access_logging = args[:enable_access_logging] if args.key?(:enable_access_logging)
           @explanation_spec = args[:explanation_spec] if args.key?(:explanation_spec)
           @faster_deployment_config = args[:faster_deployment_config] if args.key?(:faster_deployment_config)
+          @gdc_connected_model = args[:gdc_connected_model] if args.key?(:gdc_connected_model)
           @id = args[:id] if args.key?(:id)
           @model = args[:model] if args.key?(:model)
           @model_version_id = args[:model_version_id] if args.key?(:model_version_id)
@@ -7278,6 +7295,11 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Google Distributed Cloud (GDC) config.
+        # Corresponds to the JSON property `gdcConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GdcConfig]
+        attr_accessor :gdc_config
+      
         # Configuration for GenAiAdvancedFeatures.
         # Corresponds to the JSON property `genAiAdvancedFeaturesConfig`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenAiAdvancedFeaturesConfig]
@@ -7369,6 +7391,7 @@ module Google
           @enable_private_service_connect = args[:enable_private_service_connect] if args.key?(:enable_private_service_connect)
           @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @etag = args[:etag] if args.key?(:etag)
+          @gdc_config = args[:gdc_config] if args.key?(:gdc_config)
           @gen_ai_advanced_features_config = args[:gen_ai_advanced_features_config] if args.key?(:gen_ai_advanced_features_config)
           @labels = args[:labels] if args.key?(:labels)
           @model_deployment_monitoring_job = args[:model_deployment_monitoring_job] if args.key?(:model_deployment_monitoring_job)
@@ -12465,6 +12488,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @uris = args[:uris] if args.key?(:uris)
+        end
+      end
+      
+      # Google Distributed Cloud (GDC) config.
+      class GoogleCloudAiplatformV1GdcConfig
+        include Google::Apis::Core::Hashable
+      
+        # GDC zone. A cluster will be designated for the Vertex AI workload in this zone.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @zone = args[:zone] if args.key?(:zone)
         end
       end
       
@@ -36563,7 +36605,7 @@ module Google
         attr_accessor :epoch_count
       
         # Optional. Multiplier for adjusting the default learning rate. Mutually
-        # exclusive with `learning_rate`.
+        # exclusive with `learning_rate`. This feature is only available for 1P models.
         # Corresponds to the JSON property `learningRateMultiplier`
         # @return [Float]
         attr_accessor :learning_rate_multiplier
