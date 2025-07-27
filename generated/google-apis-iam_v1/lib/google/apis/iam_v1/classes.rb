@@ -1383,6 +1383,58 @@ module Google
         end
       end
       
+      # Response message for ListWorkforcePoolProviderScimTenants.
+      class ListWorkforcePoolProviderScimTenantsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A token, which can be sent as `page_token` to retrieve the next page.
+        # If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. A list of scim tenants.
+        # Corresponds to the JSON property `workforcePoolProviderScimTenants`
+        # @return [Array<Google::Apis::IamV1::WorkforcePoolProviderScimTenant>]
+        attr_accessor :workforce_pool_provider_scim_tenants
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @workforce_pool_provider_scim_tenants = args[:workforce_pool_provider_scim_tenants] if args.key?(:workforce_pool_provider_scim_tenants)
+        end
+      end
+      
+      # Response message for ListWorkforcePoolProviderScimTokens.
+      class ListWorkforcePoolProviderScimTokensResponse
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A token, which can be sent as `page_token` to retrieve the next page.
+        # If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. A list of scim tokens.
+        # Corresponds to the JSON property `workforcePoolProviderScimTokens`
+        # @return [Array<Google::Apis::IamV1::WorkforcePoolProviderScimToken>]
+        attr_accessor :workforce_pool_provider_scim_tokens
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @workforce_pool_provider_scim_tokens = args[:workforce_pool_provider_scim_tokens] if args.key?(:workforce_pool_provider_scim_tokens)
+        end
+      end
+      
       # Response message for ListWorkforcePoolProviders.
       class ListWorkforcePoolProvidersResponse
         include Google::Apis::Core::Hashable
@@ -3080,6 +3132,32 @@ module Google
         end
       end
       
+      # Request message for UndeleteWorkforcePoolProviderScimTenant.
+      class UndeleteWorkforcePoolProviderScimTenantRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for UndeleteWorkforcePoolProviderScimToken.
+      class UndeleteWorkforcePoolProviderScimTokenRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for UndeleteWorkforcePool.
       class UndeleteWorkforcePoolRequest
         include Google::Apis::Core::Hashable
@@ -3379,6 +3457,15 @@ module Google
         # credentials from the identity provider, e.g. groups. See https://datatracker.
         # ietf.org/doc/html/rfc6749#section-4.4 for more details on client credentials
         # grant flow.
+        # Corresponds to the JSON property `extendedAttributesOauth2Client`
+        # @return [Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client]
+        attr_accessor :extended_attributes_oauth2_client
+      
+        # Represents the OAuth 2.0 client credential configuration for retrieving
+        # additional user attributes that are not present in the initial authentication
+        # credentials from the identity provider, e.g. groups. See https://datatracker.
+        # ietf.org/doc/html/rfc6749#section-4.4 for more details on client credentials
+        # grant flow.
         # Corresponds to the JSON property `extraAttributesOauth2Client`
         # @return [Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client]
         attr_accessor :extra_attributes_oauth2_client
@@ -3417,6 +3504,7 @@ module Google
           @disabled = args[:disabled] if args.key?(:disabled)
           @display_name = args[:display_name] if args.key?(:display_name)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @extended_attributes_oauth2_client = args[:extended_attributes_oauth2_client] if args.key?(:extended_attributes_oauth2_client)
           @extra_attributes_oauth2_client = args[:extra_attributes_oauth2_client] if args.key?(:extra_attributes_oauth2_client)
           @name = args[:name] if args.key?(:name)
           @oidc = args[:oidc] if args.key?(:oidc)
@@ -3470,6 +3558,111 @@ module Google
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @use = args[:use] if args.key?(:use)
+        end
+      end
+      
+      # Represents a scim tenant. Used for provisioning and managing identity data (
+      # such as Users and Groups) in cross-domain environments.
+      class WorkforcePoolProviderScimTenant
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Represents the base URI as defined in [RFC 7644, Section 1.3](
+        # https://datatracker.ietf.org/doc/html/rfc7644#section-1.3). Clients must use
+        # this as the root address for managing resources under the tenant. Format:
+        # https://iamscim.googleapis.com/`version`/`tenant_id`/
+        # Corresponds to the JSON property `baseUri`
+        # @return [String]
+        attr_accessor :base_uri
+      
+        # Optional. Maps BYOID claims to SCIM claims.
+        # Corresponds to the JSON property `claimMapping`
+        # @return [Hash<String,String>]
+        attr_accessor :claim_mapping
+      
+        # Optional. The user-specified description of the scim tenant. Cannot exceed 256
+        # characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. The user-specified display name of the scim tenant. Cannot exceed 32
+        # characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. The resource name of the SCIM Tenant. Format: `locations/`location`
+        # /workforcePools/`workforce_pool`/providers/ `workforce_pool_provider`/
+        # scimTenants/`scim_tenant``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The timestamp when the scim tenant is going to be purged.
+        # Corresponds to the JSON property `purgeTime`
+        # @return [String]
+        attr_accessor :purge_time
+      
+        # Output only. The state of the tenant.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_uri = args[:base_uri] if args.key?(:base_uri)
+          @claim_mapping = args[:claim_mapping] if args.key?(:claim_mapping)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @purge_time = args[:purge_time] if args.key?(:purge_time)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Represents a token for the WorkforcePoolProviderScimTenant. Used for
+      # authenticating SCIM Provisioning requests.
+      class WorkforcePoolProviderScimToken
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The user-specified display name of the scim token. Cannot exceed 32
+        # characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. The resource name of the SCIM Token. Format: `locations/`location`/
+        # workforcePools/`workforce_pool`/providers/ `workforce_pool_provider`/
+        # scimTenants/`scim_tenant`/tokens/`token``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The token string. Provide this to the IdP for authentication.
+        # Will be set only during creation.
+        # Corresponds to the JSON property `securityToken`
+        # @return [String]
+        attr_accessor :security_token
+      
+        # Output only. The state of the token.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @security_token = args[:security_token] if args.key?(:security_token)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
