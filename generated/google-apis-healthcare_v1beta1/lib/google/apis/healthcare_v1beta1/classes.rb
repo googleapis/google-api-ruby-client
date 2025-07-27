@@ -1970,6 +1970,56 @@ module Google
         end
       end
       
+      # Contains the configuration for DICOM notifications.
+      class DicomNotificationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that
+        # notifications of changes are published on. Supplied by the client. The
+        # notification is a `PubsubMessage` with the following fields: * `PubsubMessage.
+        # Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of
+        # this notification. It is guaranteed to be unique within the topic. * `
+        # PubsubMessage.PublishTime` is the time when the message was published. * `
+        # PubsubMessage.Attributes` contains the following attributes: * `action`: The
+        # name of the endpoint that generated the notification. Possible values are `
+        # StoreInstances`, `SetBlobSettings`, `ImportDicomData`, etc. * `lastUpdatedTime`
+        # : The latest timestamp when the DICOM instance was updated. * `storeName`: The
+        # resource name of the DICOM store, of the form `projects/`project_id`/locations/
+        # `location_id`/datasets/`dataset_id`/dicomStores/`dicom_store_id``. * `
+        # studyInstanceUID`: The study UID of the DICOM instance that was changed. * `
+        # seriesInstanceUID`: The series UID of the DICOM instance that was changed. * `
+        # sopInstanceUID`: The instance UID of the DICOM instance that was changed. * `
+        # versionId`: The version ID of the DICOM instance that was changed. * `modality`
+        # : The modality tag of the DICOM instance that was changed. * `
+        # previousStorageClass`: The storage class where the DICOM instance was
+        # previously stored if the storage class was changed. * `storageClass`: The
+        # storage class where the DICOM instance is currently stored. Note that
+        # notifications are only sent if the topic is non-empty. [Topic names](https://
+        # cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. The
+        # Cloud Healthcare API service account, service-@gcp-sa-healthcare.iam.
+        # gserviceaccount.com, must have the `pubsub.topics.publish` permission (which
+        # is typically included in `roles/pubsub.publisher` role) on the given Pub/Sub
+        # topic. Not having adequate permissions causes the calls that send
+        # notifications to fail (https://cloud.google.com/healthcare-api/docs/
+        # permissions-healthcare-api-gcp-products#
+        # dicom_fhir_and_hl7v2_store_cloud_pubsub_permissions). If a notification can't
+        # be published to Pub/Sub, errors are logged to Cloud Logging. For more
+        # information, see [Viewing error logs in Cloud Logging](https://cloud.google.
+        # com/healthcare-api/docs/how-tos/logging).
+        # Corresponds to the JSON property `pubsubTopic`
+        # @return [String]
+        attr_accessor :pubsub_topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
+        end
+      end
+      
       # Represents a DICOM store.
       class DicomStore
         include Google::Apis::Core::Hashable
@@ -1997,6 +2047,12 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::NotificationConfig]
         attr_accessor :notification_config
       
+        # Optional. Specifies where and whether to send notifications upon changes to a
+        # DICOM store.
+        # Corresponds to the JSON property `notificationConfigs`
+        # @return [Array<Google::Apis::HealthcareV1beta1::DicomNotificationConfig>]
+        attr_accessor :notification_configs
+      
         # Optional. A list of streaming configs used to configure the destination of
         # streaming exports for every DICOM instance insertion in this DICOM store.
         # After a new config is added to `stream_configs`, DICOM instance insertions are
@@ -2016,6 +2072,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
+          @notification_configs = args[:notification_configs] if args.key?(:notification_configs)
           @stream_configs = args[:stream_configs] if args.key?(:stream_configs)
         end
       end

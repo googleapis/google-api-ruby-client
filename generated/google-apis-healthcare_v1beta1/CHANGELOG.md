@@ -1,5 +1,9 @@
 # Release history for google-apis-healthcare_v1beta1
 
+### v0.84.0 (2025-07-27)
+
+* Regenerated from discovery document revision 20250625
+
 ### v0.83.0 (2025-06-22)
 
 * Regenerated from discovery document revision 20250609
