@@ -472,6 +472,7 @@ module Google
           property :configuration_file_path, as: 'configurationFilePath'
           property :configuration_valid, as: 'configurationValid'
           property :installed_version, as: 'installedVersion'
+          property :instance_uri, as: 'instanceUri'
           property :kernel_version, as: 'kernelVersion', class: Google::Apis::WorkloadmanagerV1::SapDiscoveryResourceInstancePropertiesKernelVersion, decorator: Google::Apis::WorkloadmanagerV1::SapDiscoveryResourceInstancePropertiesKernelVersion::Representation
       
           collection :references, as: 'references', class: Google::Apis::WorkloadmanagerV1::AgentStatusReference, decorator: Google::Apis::WorkloadmanagerV1::AgentStatusReference::Representation
