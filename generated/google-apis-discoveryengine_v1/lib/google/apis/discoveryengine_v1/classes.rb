@@ -2920,6 +2920,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :assist_skipped_reasons
       
+        # Immutable. Identifier. Resource name of the `AssistAnswer`. Format: `projects/`
+        # project`/locations/`location`/collections/`collection`/engines/`engine`/
+        # sessions/`session`/assistAnswers/`assist_answer`` This field must be a UTF-8
+        # encoded string with a length limit of 1024 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # Replies of the assistant.
         # Corresponds to the JSON property `replies`
         # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AssistAnswerReply>]
@@ -2937,6 +2945,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @assist_skipped_reasons = args[:assist_skipped_reasons] if args.key?(:assist_skipped_reasons)
+          @name = args[:name] if args.key?(:name)
           @replies = args[:replies] if args.key?(:replies)
           @state = args[:state] if args.key?(:state)
         end
@@ -2987,6 +2996,28 @@ module Google
         def update!(**args)
           @preferred_language_code = args[:preferred_language_code] if args.key?(:preferred_language_code)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
+        end
+      end
+      
+      # Discovery Engine Assistant resource.
+      class GoogleCloudDiscoveryengineV1Assistant
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Resource name of the assistant. Format: `projects/`project`/
+        # locations/`location`/collections/`collection`/engines/`engine`/assistants/`
+        # assistant`` It must be a UTF-8 encoded string with a length limit of 1024
+        # characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -4328,14 +4359,14 @@ module Google
         attr_accessor :is_default
         alias_method :is_default?, :is_default
       
-        # KMS key resource name which will be used to encrypt resources `projects/`
-        # project`/locations/`location`/keyRings/`keyRing`/cryptoKeys/`keyId``.
+        # Required. KMS key resource name which will be used to encrypt resources `
+        # projects/`project`/locations/`location`/keyRings/`keyRing`/cryptoKeys/`keyId``.
         # Corresponds to the JSON property `kmsKey`
         # @return [String]
         attr_accessor :kms_key
       
-        # KMS key version resource name which will be used to encrypt resources `/
-        # cryptoKeyVersions/`keyVersion``.
+        # Output only. KMS key version resource name which will be used to encrypt
+        # resources `/cryptoKeyVersions/`keyVersion``.
         # Corresponds to the JSON property `kmsKeyVersion`
         # @return [String]
         attr_accessor :kms_key_version
@@ -8661,6 +8692,11 @@ module Google
         # @return [String]
         attr_accessor :data_use_terms_version
       
+        # Parameters for Agentspace.
+        # Corresponds to the JSON property `saasParams`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ProvisionProjectRequestSaasParams]
+        attr_accessor :saas_params
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8669,6 +8705,28 @@ module Google
         def update!(**args)
           @accept_data_use_terms = args[:accept_data_use_terms] if args.key?(:accept_data_use_terms)
           @data_use_terms_version = args[:data_use_terms_version] if args.key?(:data_use_terms_version)
+          @saas_params = args[:saas_params] if args.key?(:saas_params)
+        end
+      end
+      
+      # Parameters for Agentspace.
+      class GoogleCloudDiscoveryengineV1ProvisionProjectRequestSaasParams
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Set to `true` to specify that caller has read and would like to give
+        # consent to the [Terms for Agent Space quality of service].
+        # Corresponds to the JSON property `acceptBizQos`
+        # @return [Boolean]
+        attr_accessor :accept_biz_qos
+        alias_method :accept_biz_qos?, :accept_biz_qos
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accept_biz_qos = args[:accept_biz_qos] if args.key?(:accept_biz_qos)
         end
       end
       
@@ -9119,7 +9177,7 @@ module Google
         # @return [String]
         attr_accessor :query
       
-        # Required. A list of records to rank. At most 200 records to rank.
+        # Required. A list of records to rank.
         # Corresponds to the JSON property `records`
         # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1RankingRecord>]
         attr_accessor :records
@@ -11822,12 +11880,6 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1StreamAssistRequestToolsSpecImageGenerationSpec]
         attr_accessor :image_generation_spec
       
-        # Optional. The name of the tool registry to use. Format: `projects/`project`/
-        # locations/`location`/toolRegistries/`tool_registry``
-        # Corresponds to the JSON property `toolRegistry`
-        # @return [String]
-        attr_accessor :tool_registry
-      
         # Specification of the Vertex AI Search tool.
         # Corresponds to the JSON property `vertexAiSearchSpec`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1StreamAssistRequestToolsSpecVertexAiSearchSpec]
@@ -11850,7 +11902,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @image_generation_spec = args[:image_generation_spec] if args.key?(:image_generation_spec)
-          @tool_registry = args[:tool_registry] if args.key?(:tool_registry)
           @vertex_ai_search_spec = args[:vertex_ai_search_spec] if args.key?(:vertex_ai_search_spec)
           @video_generation_spec = args[:video_generation_spec] if args.key?(:video_generation_spec)
           @web_grounding_spec = args[:web_grounding_spec] if args.key?(:web_grounding_spec)
@@ -11881,14 +11932,6 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchRequestDataStoreSpec>]
         attr_accessor :data_store_specs
       
-        # Optional. Deprecated. Please refrain from using this field. Whether the Vertex
-        # AI Search tool is disabled. Default value is false, the tool is enabled by
-        # default.
-        # Corresponds to the JSON property `disabled`
-        # @return [Boolean]
-        attr_accessor :disabled
-        alias_method :disabled?, :disabled
-      
         # Optional. The filter syntax consists of an expression language for
         # constructing a predicate from one or more fields of the documents being
         # filtered. Filter expression is case-sensitive. If this field is unrecognizable,
@@ -11911,7 +11954,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_store_specs = args[:data_store_specs] if args.key?(:data_store_specs)
-          @disabled = args[:disabled] if args.key?(:disabled)
           @filter = args[:filter] if args.key?(:filter)
         end
       end
@@ -11933,20 +11975,12 @@ module Google
       class GoogleCloudDiscoveryengineV1StreamAssistRequestToolsSpecWebGroundingSpec
         include Google::Apis::Core::Hashable
       
-        # Optional. Deprecated. Please refrain from using this field. Whether the web
-        # grounding tool is enabled.
-        # Corresponds to the JSON property `enabled`
-        # @return [Boolean]
-        attr_accessor :enabled
-        alias_method :enabled?, :enabled
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
@@ -13906,14 +13940,14 @@ module Google
         attr_accessor :is_default
         alias_method :is_default?, :is_default
       
-        # KMS key resource name which will be used to encrypt resources `projects/`
-        # project`/locations/`location`/keyRings/`keyRing`/cryptoKeys/`keyId``.
+        # Required. KMS key resource name which will be used to encrypt resources `
+        # projects/`project`/locations/`location`/keyRings/`keyRing`/cryptoKeys/`keyId``.
         # Corresponds to the JSON property `kmsKey`
         # @return [String]
         attr_accessor :kms_key
       
-        # KMS key version resource name which will be used to encrypt resources `/
-        # cryptoKeyVersions/`keyVersion``.
+        # Output only. KMS key version resource name which will be used to encrypt
+        # resources `/cryptoKeyVersions/`keyVersion``.
         # Corresponds to the JSON property `kmsKeyVersion`
         # @return [String]
         attr_accessor :kms_key_version
@@ -17648,9 +17682,12 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaListSessionsRequest
         include Google::Apis::Core::Hashable
       
-        # A filter to apply on the list results. The supported features are:
-        # user_pseudo_id, state, starred. Examples: "user_pseudo_id = some_id" "starred =
-        # true"
+        # A comma-separated list of fields to filter by, in EBNF grammar. The supported
+        # fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `
+        # is_pinned` * `labels` * `create_time` * `update_time` Examples: "
+        # user_pseudo_id = some_id" "display_name = \"some_name\"" "starred = true" "
+        # is_pinned=true AND (NOT labels:hidden)" "create_time > \"1970-01-01T12:00:00Z\"
+        # "
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -20994,14 +21031,14 @@ module Google
         attr_accessor :is_default
         alias_method :is_default?, :is_default
       
-        # KMS key resource name which will be used to encrypt resources `projects/`
-        # project`/locations/`location`/keyRings/`keyRing`/cryptoKeys/`keyId``.
+        # Required. KMS key resource name which will be used to encrypt resources `
+        # projects/`project`/locations/`location`/keyRings/`keyRing`/cryptoKeys/`keyId``.
         # Corresponds to the JSON property `kmsKey`
         # @return [String]
         attr_accessor :kms_key
       
-        # KMS key version resource name which will be used to encrypt resources `/
-        # cryptoKeyVersions/`keyVersion``.
+        # Output only. KMS key version resource name which will be used to encrypt
+        # resources `/cryptoKeyVersions/`keyVersion``.
         # Corresponds to the JSON property `kmsKeyVersion`
         # @return [String]
         attr_accessor :kms_key_version
