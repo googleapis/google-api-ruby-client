@@ -891,6 +891,43 @@ module Google
         end
       end
       
+      # CloudControl associated with the finding.
+      class CloudControl
+        include Google::Apis::Core::Hashable
+      
+        # Name of the CloudControl associated with the finding.
+        # Corresponds to the JSON property `cloudControlName`
+        # @return [String]
+        attr_accessor :cloud_control_name
+      
+        # Policy type of the CloudControl
+        # Corresponds to the JSON property `policyType`
+        # @return [String]
+        attr_accessor :policy_type
+      
+        # Type of cloud control.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Version of the Cloud Control
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_control_name = args[:cloud_control_name] if args.key?(:cloud_control_name)
+          @policy_type = args[:policy_type] if args.key?(:policy_type)
+          @type = args[:type] if args.key?(:type)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # The [data profile](https://cloud.google.com/dlp/docs/data-profiles) associated
       # with the finding.
       class CloudDlpDataProfile
@@ -1031,6 +1068,39 @@ module Google
           @ids = args[:ids] if args.key?(:ids)
           @standard = args[:standard] if args.key?(:standard)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Compliance Details associated with the finding.
+      class ComplianceDetails
+        include Google::Apis::Core::Hashable
+      
+        # CloudControl associated with the finding.
+        # Corresponds to the JSON property `cloudControl`
+        # @return [Google::Apis::SecuritycenterV1beta2::CloudControl]
+        attr_accessor :cloud_control
+      
+        # Cloud Control Deployments associated with the finding. For example,
+        # organizations/123/locations/global/cloudControlDeployments/
+        # deploymentIdentifier
+        # Corresponds to the JSON property `cloudControlDeploymentNames`
+        # @return [Array<String>]
+        attr_accessor :cloud_control_deployment_names
+      
+        # Details of Frameworks associated with the finding
+        # Corresponds to the JSON property `frameworks`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::Framework>]
+        attr_accessor :frameworks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_control = args[:cloud_control] if args.key?(:cloud_control)
+          @cloud_control_deployment_names = args[:cloud_control_deployment_names] if args.key?(:cloud_control_deployment_names)
+          @frameworks = args[:frameworks] if args.key?(:frameworks)
         end
       end
       
@@ -1236,6 +1306,31 @@ module Google
           @service_account = args[:service_account] if args.key?(:service_account)
           @service_enablement_state = args[:service_enablement_state] if args.key?(:service_enablement_state)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Compliance control associated with the finding.
+      class Control
+        include Google::Apis::Core::Hashable
+      
+        # Name of the Control
+        # Corresponds to the JSON property `controlName`
+        # @return [String]
+        attr_accessor :control_name
+      
+        # Display name of the control. For example, AU-02.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @control_name = args[:control_name] if args.key?(:control_name)
+          @display_name = args[:display_name] if args.key?(:display_name)
         end
       end
       
@@ -2194,6 +2289,11 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta2::CloudDlpInspection]
         attr_accessor :cloud_dlp_inspection
       
+        # Compliance Details associated with the finding.
+        # Corresponds to the JSON property `complianceDetails`
+        # @return [Google::Apis::SecuritycenterV1beta2::ComplianceDetails]
+        attr_accessor :compliance_details
+      
         # Contains compliance information for security standards associated to the
         # finding.
         # Corresponds to the JSON property `compliances`
@@ -2520,6 +2620,7 @@ module Google
           @cloud_armor = args[:cloud_armor] if args.key?(:cloud_armor)
           @cloud_dlp_data_profile = args[:cloud_dlp_data_profile] if args.key?(:cloud_dlp_data_profile)
           @cloud_dlp_inspection = args[:cloud_dlp_inspection] if args.key?(:cloud_dlp_inspection)
+          @compliance_details = args[:compliance_details] if args.key?(:compliance_details)
           @compliances = args[:compliances] if args.key?(:compliances)
           @connections = args[:connections] if args.key?(:connections)
           @contacts = args[:contacts] if args.key?(:contacts)
@@ -2595,6 +2696,54 @@ module Google
         def update!(**args)
           @resource_folder = args[:resource_folder] if args.key?(:resource_folder)
           @resource_folder_display_name = args[:resource_folder_display_name] if args.key?(:resource_folder_display_name)
+        end
+      end
+      
+      # Compliance framework associated with the finding.
+      class Framework
+        include Google::Apis::Core::Hashable
+      
+        # Category of the framework associated with the finding. E.g. Security Benchmark,
+        # or Assured Workloads
+        # Corresponds to the JSON property `category`
+        # @return [Array<String>]
+        attr_accessor :category
+      
+        # The controls associated with the framework.
+        # Corresponds to the JSON property `controls`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::Control>]
+        attr_accessor :controls
+      
+        # Display name of the framework. For a standard framework, this will look like e.
+        # g. PCI DSS 3.2.1, whereas for a custom framework it can be a user defined
+        # string like MyFramework
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Name of the framework associated with the finding
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Type of the framework associated with the finding, to specify whether the
+        # framework is built-in (pre-defined and immutable) or a custom framework
+        # defined by the customer (equivalent to security posture)
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @controls = args[:controls] if args.key?(:controls)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -4888,6 +5037,43 @@ module Google
         end
       end
       
+      # CloudControl associated with the finding.
+      class GoogleCloudSecuritycenterV2CloudControl
+        include Google::Apis::Core::Hashable
+      
+        # Name of the CloudControl associated with the finding.
+        # Corresponds to the JSON property `cloudControlName`
+        # @return [String]
+        attr_accessor :cloud_control_name
+      
+        # Policy type of the CloudControl
+        # Corresponds to the JSON property `policyType`
+        # @return [String]
+        attr_accessor :policy_type
+      
+        # Type of cloud control.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Version of the Cloud Control
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_control_name = args[:cloud_control_name] if args.key?(:cloud_control_name)
+          @policy_type = args[:policy_type] if args.key?(:policy_type)
+          @type = args[:type] if args.key?(:type)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # The [data profile](https://cloud.google.com/dlp/docs/data-profiles) associated
       # with the finding.
       class GoogleCloudSecuritycenterV2CloudDlpDataProfile
@@ -5031,6 +5217,39 @@ module Google
         end
       end
       
+      # Compliance Details associated with the finding.
+      class GoogleCloudSecuritycenterV2ComplianceDetails
+        include Google::Apis::Core::Hashable
+      
+        # CloudControl associated with the finding.
+        # Corresponds to the JSON property `cloudControl`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2CloudControl]
+        attr_accessor :cloud_control
+      
+        # Cloud Control Deployments associated with the finding. For example,
+        # organizations/123/locations/global/cloudControlDeployments/
+        # deploymentIdentifier
+        # Corresponds to the JSON property `cloudControlDeploymentNames`
+        # @return [Array<String>]
+        attr_accessor :cloud_control_deployment_names
+      
+        # Details of Frameworks associated with the finding
+        # Corresponds to the JSON property `frameworks`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Framework>]
+        attr_accessor :frameworks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_control = args[:cloud_control] if args.key?(:cloud_control)
+          @cloud_control_deployment_names = args[:cloud_control_deployment_names] if args.key?(:cloud_control_deployment_names)
+          @frameworks = args[:frameworks] if args.key?(:frameworks)
+        end
+      end
+      
       # Contains information about the IP connection associated with the finding.
       class GoogleCloudSecuritycenterV2Connection
         include Google::Apis::Core::Hashable
@@ -5155,6 +5374,31 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Compliance control associated with the finding.
+      class GoogleCloudSecuritycenterV2Control
+        include Google::Apis::Core::Hashable
+      
+        # Name of the Control
+        # Corresponds to the JSON property `controlName`
+        # @return [String]
+        attr_accessor :control_name
+      
+        # Display name of the control. For example, AU-02.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @control_name = args[:control_name] if args.key?(:control_name)
+          @display_name = args[:display_name] if args.key?(:display_name)
         end
       end
       
@@ -6041,6 +6285,11 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2CloudDlpInspection]
         attr_accessor :cloud_dlp_inspection
       
+        # Compliance Details associated with the finding.
+        # Corresponds to the JSON property `complianceDetails`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ComplianceDetails]
+        attr_accessor :compliance_details
+      
         # Contains compliance information for security standards associated to the
         # finding.
         # Corresponds to the JSON property `compliances`
@@ -6377,6 +6626,7 @@ module Google
           @cloud_armor = args[:cloud_armor] if args.key?(:cloud_armor)
           @cloud_dlp_data_profile = args[:cloud_dlp_data_profile] if args.key?(:cloud_dlp_data_profile)
           @cloud_dlp_inspection = args[:cloud_dlp_inspection] if args.key?(:cloud_dlp_inspection)
+          @compliance_details = args[:compliance_details] if args.key?(:compliance_details)
           @compliances = args[:compliances] if args.key?(:compliances)
           @connections = args[:connections] if args.key?(:connections)
           @contacts = args[:contacts] if args.key?(:contacts)
@@ -6452,6 +6702,54 @@ module Google
         def update!(**args)
           @resource_folder = args[:resource_folder] if args.key?(:resource_folder)
           @resource_folder_display_name = args[:resource_folder_display_name] if args.key?(:resource_folder_display_name)
+        end
+      end
+      
+      # Compliance framework associated with the finding.
+      class GoogleCloudSecuritycenterV2Framework
+        include Google::Apis::Core::Hashable
+      
+        # Category of the framework associated with the finding. E.g. Security Benchmark,
+        # or Assured Workloads
+        # Corresponds to the JSON property `category`
+        # @return [Array<String>]
+        attr_accessor :category
+      
+        # The controls associated with the framework.
+        # Corresponds to the JSON property `controls`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Control>]
+        attr_accessor :controls
+      
+        # Display name of the framework. For a standard framework, this will look like e.
+        # g. PCI DSS 3.2.1, whereas for a custom framework it can be a user defined
+        # string like MyFramework
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Name of the framework associated with the finding
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Type of the framework associated with the finding, to specify whether the
+        # framework is built-in (pre-defined and immutable) or a custom framework
+        # defined by the customer (equivalent to security posture)
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @controls = args[:controls] if args.key?(:controls)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
