@@ -6505,67 +6505,6 @@ module Google
         end
       end
       
-      # AgentFlow configurations.
-      class GoogleCloudIntegrationsV1alphaAgentFlow
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The timestamp when the agent flow was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Output only. The user who created the agent flow.
-        # Corresponds to the JSON property `creator`
-        # @return [String]
-        attr_accessor :creator
-      
-        # Optional. Description of the agent flow.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Optional. Display name of the agent flow.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Required. The flow configuration, represented as a string.
-        # Corresponds to the JSON property `flowConfig`
-        # @return [String]
-        attr_accessor :flow_config
-      
-        # Required. Resource name of the agent flow.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Optional. Name of the NoCodeAgent.
-        # Corresponds to the JSON property `noCodeAgent`
-        # @return [String]
-        attr_accessor :no_code_agent
-      
-        # Output only. The timestamp when the agent flow was last updated.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @creator = args[:creator] if args.key?(:creator)
-          @description = args[:description] if args.key?(:description)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @flow_config = args[:flow_config] if args.key?(:flow_config)
-          @name = args[:name] if args.key?(:name)
-          @no_code_agent = args[:no_code_agent] if args.key?(:no_code_agent)
-          @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
       # List of API triggerID and their workflow resource name.
       class GoogleCloudIntegrationsV1alphaApiTriggerResource
         include Google::Apis::Core::Hashable
@@ -8479,108 +8418,6 @@ module Google
         end
       end
       
-      # Request message for GenerateAgentFlow.
-      class GoogleCloudIntegrationsV1alphaGenerateAgentFlowRequest
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The creator id;
-        # Corresponds to the JSON property `creator`
-        # @return [String]
-        attr_accessor :creator
-      
-        # Optional. The description of the AgentFlow to be generated.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Optional. The display name of the AgentFlow to be generated.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Required. The intent, described in natural language, for the AgentFlow to
-        # generate.
-        # Corresponds to the JSON property `intent`
-        # @return [String]
-        attr_accessor :intent
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @creator = args[:creator] if args.key?(:creator)
-          @description = args[:description] if args.key?(:description)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @intent = args[:intent] if args.key?(:intent)
-        end
-      end
-      
-      # Response message for GenerateAgentFlow.
-      class GoogleCloudIntegrationsV1alphaGenerateAgentFlowResponse
-        include Google::Apis::Core::Hashable
-      
-        # AgentFlow configurations.
-        # Corresponds to the JSON property `agentFlow`
-        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow]
-        attr_accessor :agent_flow
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @agent_flow = args[:agent_flow] if args.key?(:agent_flow)
-        end
-      end
-      
-      # Request message for GenerateAndUpdateAgentFlow.
-      class GoogleCloudIntegrationsV1alphaGenerateAndUpdateAgentFlowRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. The intent, described in natural language, for the AgentFlow to
-        # update.
-        # Corresponds to the JSON property `intent`
-        # @return [String]
-        attr_accessor :intent
-      
-        # Optional. The updater id;
-        # Corresponds to the JSON property `updater`
-        # @return [String]
-        attr_accessor :updater
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @intent = args[:intent] if args.key?(:intent)
-          @updater = args[:updater] if args.key?(:updater)
-        end
-      end
-      
-      # Response message for GenerateAndUpdateAgentFlow.
-      class GoogleCloudIntegrationsV1alphaGenerateAndUpdateAgentFlowResponse
-        include Google::Apis::Core::Hashable
-      
-        # AgentFlow configurations.
-        # Corresponds to the JSON property `agentFlow`
-        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow]
-        attr_accessor :agent_flow
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @agent_flow = args[:agent_flow] if args.key?(:agent_flow)
-        end
-      end
-      
       # Request for GenerateOpenApiSpec.
       class GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest
         include Google::Apis::Core::Hashable
@@ -9411,32 +9248,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @script_id = args[:script_id] if args.key?(:script_id)
-        end
-      end
-      
-      # Response for ListAgentFlows.
-      class GoogleCloudIntegrationsV1alphaListAgentFlowsResponse
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The AgentFlows from the specified collection.
-        # Corresponds to the JSON property `agentFlows`
-        # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow>]
-        attr_accessor :agent_flows
-      
-        # Output only. A token, which can be sent as `page_token` to retrieve the next
-        # page. If this field is omitted, there are no subsequent pages.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @agent_flows = args[:agent_flows] if args.key?(:agent_flows)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
