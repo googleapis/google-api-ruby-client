@@ -2586,6 +2586,708 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes one or more one-time products.
+        # @param [String] package_name
+        #   Required. The parent app (package name) for which the one-time products should
+        #   be deleted. Must be equal to the package_name field on all the OneTimeProduct
+        #   resources.
+        # @param [Google::Apis::AndroidpublisherV3::BatchDeleteOneTimeProductsRequest] batch_delete_one_time_products_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_onetimeproduct_delete_one_time_products(package_name, batch_delete_one_time_products_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/oneTimeProducts:batchDelete', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::BatchDeleteOneTimeProductsRequest::Representation
+          command.request_object = batch_delete_one_time_products_request_object
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Reads one or more one-time products.
+        # @param [String] package_name
+        #   Required. The parent app (package name) for which the products should be
+        #   retrieved. Must be equal to the package_name field on all requests.
+        # @param [Array<String>, String] product_ids
+        #   Required. A list of up to 100 product IDs to retrieve. All IDs must be
+        #   different.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::BatchGetOneTimeProductsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::BatchGetOneTimeProductsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_monetization_onetimeproduct_get(package_name, product_ids: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'androidpublisher/v3/applications/{packageName}/oneTimeProducts:batchGet', options)
+          command.response_representation = Google::Apis::AndroidpublisherV3::BatchGetOneTimeProductsResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::BatchGetOneTimeProductsResponse
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.query['productIds'] = product_ids unless product_ids.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates or updates one or more one-time products.
+        # @param [String] package_name
+        #   Required. The parent app (package name) for which the one-time products should
+        #   be updated. Must be equal to the package_name field on all the OneTimeProduct
+        #   resources.
+        # @param [Google::Apis::AndroidpublisherV3::BatchUpdateOneTimeProductsRequest] batch_update_one_time_products_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::BatchUpdateOneTimeProductsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::BatchUpdateOneTimeProductsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_onetimeproduct_update_one_time_products(package_name, batch_update_one_time_products_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/oneTimeProducts:batchUpdate', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::BatchUpdateOneTimeProductsRequest::Representation
+          command.request_object = batch_update_one_time_products_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::BatchUpdateOneTimeProductsResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::BatchUpdateOneTimeProductsResponse
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a one-time product.
+        # @param [String] package_name
+        #   Required. The parent app (package name) of the one-time product to delete.
+        # @param [String] product_id
+        #   Required. The one-time product ID of the one-time product to delete.
+        # @param [String] latency_tolerance
+        #   Optional. The latency tolerance for the propagation of this product update.
+        #   Defaults to latency-sensitive.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_monetization_onetimeproduct(package_name, product_id, latency_tolerance: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}', options)
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['productId'] = product_id unless product_id.nil?
+          command.query['latencyTolerance'] = latency_tolerance unless latency_tolerance.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Reads a single one-time product.
+        # @param [String] package_name
+        #   Required. The parent app (package name) of the product to retrieve.
+        # @param [String] product_id
+        #   Required. The product ID of the product to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::OneTimeProduct] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::OneTimeProduct]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_monetization_onetimeproduct(package_name, product_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}', options)
+          command.response_representation = Google::Apis::AndroidpublisherV3::OneTimeProduct::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::OneTimeProduct
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['productId'] = product_id unless product_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all one-time products under a given app.
+        # @param [String] package_name
+        #   Required. The parent app (package name) for which the one-time product should
+        #   be read.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of one-time product to return. The service may
+        #   return fewer than this value. If unspecified, at most 50 one-time products
+        #   will be returned. The maximum value is 1000; values above 1000 will be coerced
+        #   to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListOneTimeProducts` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListOneTimeProducts` must match the call that provided
+        #   the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::ListOneTimeProductsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::ListOneTimeProductsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_monetization_onetimeproducts(package_name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'androidpublisher/v3/applications/{packageName}/oneTimeProducts', options)
+          command.response_representation = Google::Apis::AndroidpublisherV3::ListOneTimeProductsResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::ListOneTimeProductsResponse
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates or updates a one-time product.
+        # @param [String] package_name
+        #   Required. Immutable. Package name of the parent app.
+        # @param [String] product_id
+        #   Required. Immutable. Unique product ID of the product. Unique within the
+        #   parent app. Product IDs must start with a number or lowercase letter, and can
+        #   contain numbers (0-9), lowercase letters (a-z), underscores (_), and periods (.
+        #   ).
+        # @param [Google::Apis::AndroidpublisherV3::OneTimeProduct] one_time_product_object
+        # @param [Boolean] allow_missing
+        #   Optional. If set to true, and the one-time product with the given package_name
+        #   and product_id doesn't exist, the one-time product will be created. If a new
+        #   one-time product is created, update_mask is ignored.
+        # @param [String] latency_tolerance
+        #   Optional. The latency tolerance for the propagation of this product upsert.
+        #   Defaults to latency-sensitive.
+        # @param [String] regions_version_version
+        #   Required. A string representing the version of available regions being used
+        #   for the specified resource. Regional prices and latest supported version for
+        #   the resource have to be specified according to the information published in [
+        #   this article](https://support.google.com/googleplay/android-developer/answer/
+        #   10532353). Each time the supported locations substantially change, the version
+        #   will be incremented. Using this field will ensure that creating and updating
+        #   the resource with an older region's version and set of regional prices and
+        #   currencies will succeed even though a new version is available.
+        # @param [String] update_mask
+        #   Required. The list of fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::OneTimeProduct] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::OneTimeProduct]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_monetization_onetimeproduct(package_name, product_id, one_time_product_object = nil, allow_missing: nil, latency_tolerance: nil, regions_version_version: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'androidpublisher/v3/applications/{packageName}/onetimeproducts/{productId}', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::OneTimeProduct::Representation
+          command.request_object = one_time_product_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::OneTimeProduct::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::OneTimeProduct
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['productId'] = product_id unless product_id.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['latencyTolerance'] = latency_tolerance unless latency_tolerance.nil?
+          command.query['regionsVersion.version'] = regions_version_version unless regions_version_version.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes purchase options across one or multiple one-time products. By default
+        # this operation will fail if there are any existing offers under the deleted
+        # purchase options. Use the force parameter to override the default behavior.
+        # @param [String] package_name
+        #   Required. The parent app (package name) of the purchase options to delete.
+        # @param [String] product_id
+        #   Required. The product ID of the parent one-time product, if all purchase
+        #   options to delete belong to the same one-time product. If this batch delete
+        #   spans multiple one-time products, set this field to "-".
+        # @param [Google::Apis::AndroidpublisherV3::BatchDeletePurchaseOptionsRequest] batch_delete_purchase_options_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_delete_purchase_options(package_name, product_id, batch_delete_purchase_options_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions:batchDelete', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::BatchDeletePurchaseOptionsRequest::Representation
+          command.request_object = batch_delete_purchase_options_request_object
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['productId'] = product_id unless product_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Activates or deactivates purchase options across one or multiple one-time
+        # products.
+        # @param [String] package_name
+        #   Required. The parent app (package name) of the updated purchase options.
+        # @param [String] product_id
+        #   Required. The product ID of the parent one-time product, if all updated
+        #   purchase options belong to the same one-time product. If this batch update
+        #   spans multiple one-time products, set this field to "-".
+        # @param [Google::Apis::AndroidpublisherV3::BatchUpdatePurchaseOptionStatesRequest] batch_update_purchase_option_states_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::BatchUpdatePurchaseOptionStatesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::BatchUpdatePurchaseOptionStatesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_monetization_onetimeproduct_purchase_option_update_states(package_name, product_id, batch_update_purchase_option_states_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions:batchUpdateStates', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::BatchUpdatePurchaseOptionStatesRequest::Representation
+          command.request_object = batch_update_purchase_option_states_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::BatchUpdatePurchaseOptionStatesResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::BatchUpdatePurchaseOptionStatesResponse
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['productId'] = product_id unless product_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Activates a one-time product offer.
+        # @param [String] package_name
+        #   Required. The parent app (package name) of the offer to activate.
+        # @param [String] product_id
+        #   Required. The parent one-time product (ID) of the offer to activate.
+        # @param [String] purchase_option_id
+        #   Required. The parent purchase option (ID) of the offer to activate.
+        # @param [String] offer_id
+        #   Required. The offer ID of the offer to activate.
+        # @param [Google::Apis::AndroidpublisherV3::ActivateOneTimeProductOfferRequest] activate_one_time_product_offer_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::OneTimeProductOffer] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::OneTimeProductOffer]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def activate_one_time_product_offer(package_name, product_id, purchase_option_id, offer_id, activate_one_time_product_offer_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers/{offerId}:activate', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::ActivateOneTimeProductOfferRequest::Representation
+          command.request_object = activate_one_time_product_offer_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::OneTimeProductOffer::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::OneTimeProductOffer
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['productId'] = product_id unless product_id.nil?
+          command.params['purchaseOptionId'] = purchase_option_id unless purchase_option_id.nil?
+          command.params['offerId'] = offer_id unless offer_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes one or more one-time product offers.
+        # @param [String] package_name
+        #   Required. The parent app (package name) of the offers to delete. Must be equal
+        #   to the package_name field on all the OneTimeProductOffer resources.
+        # @param [String] product_id
+        #   Required. The product ID of the parent one-time product, if all offers to
+        #   delete belong to the same product. If this request spans multiple one-time
+        #   products, set this field to "-".
+        # @param [String] purchase_option_id
+        #   Required. The parent purchase option (ID) for which the offers should be
+        #   deleted. May be specified as '-' to update offers from multiple purchase
+        #   options.
+        # @param [Google::Apis::AndroidpublisherV3::BatchDeleteOneTimeProductOffersRequest] batch_delete_one_time_product_offers_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_delete_one_time_product_offers(package_name, product_id, purchase_option_id, batch_delete_one_time_product_offers_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers:batchDelete', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::BatchDeleteOneTimeProductOffersRequest::Representation
+          command.request_object = batch_delete_one_time_product_offers_request_object
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['productId'] = product_id unless product_id.nil?
+          command.params['purchaseOptionId'] = purchase_option_id unless purchase_option_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Reads one or more one-time product offers.
+        # @param [String] package_name
+        #   Required. The parent app (package name) of the updated offers. Must be equal
+        #   to the package_name field on all the updated OneTimeProductOffer resources.
+        # @param [String] product_id
+        #   Required. The product ID of the parent one-time product, if all updated offers
+        #   belong to the same product. If this request spans multiple one-time products,
+        #   set this field to "-".
+        # @param [String] purchase_option_id
+        #   Required. The parent purchase option (ID) for which the offers should be
+        #   updated. May be specified as '-' to update offers from multiple purchase
+        #   options.
+        # @param [Google::Apis::AndroidpublisherV3::BatchGetOneTimeProductOffersRequest] batch_get_one_time_product_offers_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::BatchGetOneTimeProductOffersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::BatchGetOneTimeProductOffersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_get_one_time_product_offers(package_name, product_id, purchase_option_id, batch_get_one_time_product_offers_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers:batchGet', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::BatchGetOneTimeProductOffersRequest::Representation
+          command.request_object = batch_get_one_time_product_offers_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::BatchGetOneTimeProductOffersResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::BatchGetOneTimeProductOffersResponse
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['productId'] = product_id unless product_id.nil?
+          command.params['purchaseOptionId'] = purchase_option_id unless purchase_option_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates or updates one or more one-time product offers.
+        # @param [String] package_name
+        #   Required. The parent app (package name) of the updated offers. Must be equal
+        #   to the package_name field on all the updated OneTimeProductOffer resources.
+        # @param [String] product_id
+        #   Required. The product ID of the parent one-time product, if all updated offers
+        #   belong to the same product. If this request spans multiple one-time products,
+        #   set this field to "-".
+        # @param [String] purchase_option_id
+        #   Required. The parent purchase option (ID) for which the offers should be
+        #   updated. May be specified as '-' to update offers from multiple purchase
+        #   options.
+        # @param [Google::Apis::AndroidpublisherV3::BatchUpdateOneTimeProductOffersRequest] batch_update_one_time_product_offers_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::BatchUpdateOneTimeProductOffersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::BatchUpdateOneTimeProductOffersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_update_one_time_product_offers(package_name, product_id, purchase_option_id, batch_update_one_time_product_offers_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers:batchUpdate', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::BatchUpdateOneTimeProductOffersRequest::Representation
+          command.request_object = batch_update_one_time_product_offers_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::BatchUpdateOneTimeProductOffersResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::BatchUpdateOneTimeProductOffersResponse
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['productId'] = product_id unless product_id.nil?
+          command.params['purchaseOptionId'] = purchase_option_id unless purchase_option_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a batch of one-time product offer states.
+        # @param [String] package_name
+        #   Required. The parent app (package name) of the updated one-time product offers.
+        # @param [String] product_id
+        #   Required. The product ID of the parent one-time product, if all updated offers
+        #   belong to the same one-time product. If this batch update spans multiple one-
+        #   time products, set this field to "-".
+        # @param [String] purchase_option_id
+        #   Required. The purchase option ID of the parent purchase option, if all updated
+        #   offers belong to the same purchase option. If this batch update spans multiple
+        #   purchase options, set this field to "-".
+        # @param [Google::Apis::AndroidpublisherV3::BatchUpdateOneTimeProductOfferStatesRequest] batch_update_one_time_product_offer_states_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::BatchUpdateOneTimeProductOfferStatesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::BatchUpdateOneTimeProductOfferStatesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_monetization_onetimeproduct_purchase_option_offer_update_states(package_name, product_id, purchase_option_id, batch_update_one_time_product_offer_states_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers:batchUpdateStates', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::BatchUpdateOneTimeProductOfferStatesRequest::Representation
+          command.request_object = batch_update_one_time_product_offer_states_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::BatchUpdateOneTimeProductOfferStatesResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::BatchUpdateOneTimeProductOfferStatesResponse
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['productId'] = product_id unless product_id.nil?
+          command.params['purchaseOptionId'] = purchase_option_id unless purchase_option_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Cancels a one-time product offer.
+        # @param [String] package_name
+        #   Required. The parent app (package name) of the offer to cancel.
+        # @param [String] product_id
+        #   Required. The parent one-time product (ID) of the offer to cancel.
+        # @param [String] purchase_option_id
+        #   Required. The parent purchase option (ID) of the offer to cancel.
+        # @param [String] offer_id
+        #   Required. The offer ID of the offer to cancel.
+        # @param [Google::Apis::AndroidpublisherV3::CancelOneTimeProductOfferRequest] cancel_one_time_product_offer_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::OneTimeProductOffer] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::OneTimeProductOffer]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_one_time_product_offer(package_name, product_id, purchase_option_id, offer_id, cancel_one_time_product_offer_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers/{offerId}:cancel', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::CancelOneTimeProductOfferRequest::Representation
+          command.request_object = cancel_one_time_product_offer_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::OneTimeProductOffer::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::OneTimeProductOffer
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['productId'] = product_id unless product_id.nil?
+          command.params['purchaseOptionId'] = purchase_option_id unless purchase_option_id.nil?
+          command.params['offerId'] = offer_id unless offer_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deactivates a one-time product offer.
+        # @param [String] package_name
+        #   Required. The parent app (package name) of the offer to deactivate.
+        # @param [String] product_id
+        #   Required. The parent one-time product (ID) of the offer to deactivate.
+        # @param [String] purchase_option_id
+        #   Required. The parent purchase option (ID) of the offer to deactivate.
+        # @param [String] offer_id
+        #   Required. The offer ID of the offer to deactivate.
+        # @param [Google::Apis::AndroidpublisherV3::DeactivateOneTimeProductOfferRequest] deactivate_one_time_product_offer_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::OneTimeProductOffer] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::OneTimeProductOffer]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def deactivate_one_time_product_offer(package_name, product_id, purchase_option_id, offer_id, deactivate_one_time_product_offer_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers/{offerId}:deactivate', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::DeactivateOneTimeProductOfferRequest::Representation
+          command.request_object = deactivate_one_time_product_offer_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::OneTimeProductOffer::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::OneTimeProductOffer
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['productId'] = product_id unless product_id.nil?
+          command.params['purchaseOptionId'] = purchase_option_id unless purchase_option_id.nil?
+          command.params['offerId'] = offer_id unless offer_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all offers under a given app, product, or purchase option.
+        # @param [String] package_name
+        #   Required. The parent app (package name) for which the offers should be read.
+        # @param [String] product_id
+        #   Required. The parent one-time product (ID) for which the offers should be read.
+        #   May be specified as '-' to read all offers under an app.
+        # @param [String] purchase_option_id
+        #   Required. The parent purchase option (ID) for which the offers should be read.
+        #   May be specified as '-' to read all offers under a one-time product or an app.
+        #   Must be specified as '-' if product_id is specified as '-'.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of offers to return. The service may return fewer
+        #   than this value. If unspecified, at most 50 offers will be returned. The
+        #   maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListOneTimeProductsOffers`
+        #   call. Provide this to retrieve the subsequent page. When paginating,
+        #   product_id, package_name and purchase_option_id provided to `
+        #   ListOneTimeProductsOffersRequest` must match the call that provided the page
+        #   token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::ListOneTimeProductOffersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::ListOneTimeProductOffersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_monetization_onetimeproduct_purchase_option_offers(package_name, product_id, purchase_option_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers', options)
+          command.response_representation = Google::Apis::AndroidpublisherV3::ListOneTimeProductOffersResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::ListOneTimeProductOffersResponse
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['productId'] = product_id unless product_id.nil?
+          command.params['purchaseOptionId'] = purchase_option_id unless purchase_option_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deprecated: subscription archiving is not supported.
         # @param [String] package_name
         #   Required. The parent app (package name) of the app of the subscription to

@@ -46,6 +46,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ActivateOneTimeProductOfferRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ActivatePurchaseOptionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ActivateSubscriptionOfferRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -190,6 +202,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchDeleteOneTimeProductOffersRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchDeleteOneTimeProductsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchDeletePurchaseOptionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchGetOneTimeProductOffersRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchGetOneTimeProductOffersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchGetOneTimeProductsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchGetOrdersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -233,6 +281,54 @@ module Google
       end
       
       class BatchUpdateBasePlanStatesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchUpdateOneTimeProductOfferStatesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchUpdateOneTimeProductOfferStatesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchUpdateOneTimeProductOffersRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchUpdateOneTimeProductOffersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchUpdateOneTimeProductsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchUpdateOneTimeProductsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchUpdatePurchaseOptionStatesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchUpdatePurchaseOptionStatesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -304,6 +400,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CancelOneTimeProductOfferRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelSurveyResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -370,6 +472,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeactivateOneTimeProductOfferRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeactivatePurchaseOptionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeactivateSubscriptionOfferRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -377,6 +491,24 @@ module Google
       end
       
       class DeferredItemReplacement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteOneTimeProductOfferRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteOneTimeProductRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeletePurchaseOptionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -580,6 +712,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetOneTimeProductOfferRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetSubscriptionOfferRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -718,6 +856,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListOneTimeProductOffersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListOneTimeProductsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSubscriptionOffersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -821,6 +971,84 @@ module Google
       end
       
       class OneTimeExternalTransaction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OneTimeProduct
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OneTimeProductBuyPurchaseOption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OneTimeProductDiscountedOffer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OneTimeProductListing
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OneTimeProductOffer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OneTimeProductOfferNoPriceOverrideOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OneTimeProductOfferRegionalPricingAndAvailabilityConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OneTimeProductPreOrderOffer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OneTimeProductPurchaseOption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OneTimeProductPurchaseOptionNewRegionsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OneTimeProductRentPurchaseOption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OneTimeProductTaxAndComplianceSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -982,6 +1210,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PurchaseOptionTaxAndComplianceSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PurchaseStateContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1037,6 +1271,12 @@ module Google
       end
       
       class RegionalSubscriptionOfferPhaseFreePriceOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionalTaxConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1486,6 +1726,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateOneTimeProductOfferRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateOneTimeProductOfferStateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateOneTimeProductRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdatePurchaseOptionStateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateSubscriptionOfferRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1608,6 +1872,27 @@ module Google
           property :latency_tolerance, as: 'latencyTolerance'
           property :package_name, as: 'packageName'
           property :product_id, as: 'productId'
+        end
+      end
+      
+      class ActivateOneTimeProductOfferRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :latency_tolerance, as: 'latencyTolerance'
+          property :offer_id, as: 'offerId'
+          property :package_name, as: 'packageName'
+          property :product_id, as: 'productId'
+          property :purchase_option_id, as: 'purchaseOptionId'
+        end
+      end
+      
+      class ActivatePurchaseOptionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :latency_tolerance, as: 'latencyTolerance'
+          property :package_name, as: 'packageName'
+          property :product_id, as: 'productId'
+          property :purchase_option_id, as: 'purchaseOptionId'
         end
       end
       
@@ -1856,6 +2141,54 @@ module Google
         end
       end
       
+      class BatchDeleteOneTimeProductOffersRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::AndroidpublisherV3::DeleteOneTimeProductOfferRequest, decorator: Google::Apis::AndroidpublisherV3::DeleteOneTimeProductOfferRequest::Representation
+      
+        end
+      end
+      
+      class BatchDeleteOneTimeProductsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::AndroidpublisherV3::DeleteOneTimeProductRequest, decorator: Google::Apis::AndroidpublisherV3::DeleteOneTimeProductRequest::Representation
+      
+        end
+      end
+      
+      class BatchDeletePurchaseOptionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::AndroidpublisherV3::DeletePurchaseOptionRequest, decorator: Google::Apis::AndroidpublisherV3::DeletePurchaseOptionRequest::Representation
+      
+        end
+      end
+      
+      class BatchGetOneTimeProductOffersRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::AndroidpublisherV3::GetOneTimeProductOfferRequest, decorator: Google::Apis::AndroidpublisherV3::GetOneTimeProductOfferRequest::Representation
+      
+        end
+      end
+      
+      class BatchGetOneTimeProductOffersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :one_time_product_offers, as: 'oneTimeProductOffers', class: Google::Apis::AndroidpublisherV3::OneTimeProductOffer, decorator: Google::Apis::AndroidpublisherV3::OneTimeProductOffer::Representation
+      
+        end
+      end
+      
+      class BatchGetOneTimeProductsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :one_time_products, as: 'oneTimeProducts', class: Google::Apis::AndroidpublisherV3::OneTimeProduct, decorator: Google::Apis::AndroidpublisherV3::OneTimeProduct::Representation
+      
+        end
+      end
+      
       class BatchGetOrdersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1916,6 +2249,70 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :subscriptions, as: 'subscriptions', class: Google::Apis::AndroidpublisherV3::Subscription, decorator: Google::Apis::AndroidpublisherV3::Subscription::Representation
+      
+        end
+      end
+      
+      class BatchUpdateOneTimeProductOfferStatesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::AndroidpublisherV3::UpdateOneTimeProductOfferStateRequest, decorator: Google::Apis::AndroidpublisherV3::UpdateOneTimeProductOfferStateRequest::Representation
+      
+        end
+      end
+      
+      class BatchUpdateOneTimeProductOfferStatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :one_time_product_offers, as: 'oneTimeProductOffers', class: Google::Apis::AndroidpublisherV3::OneTimeProductOffer, decorator: Google::Apis::AndroidpublisherV3::OneTimeProductOffer::Representation
+      
+        end
+      end
+      
+      class BatchUpdateOneTimeProductOffersRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::AndroidpublisherV3::UpdateOneTimeProductOfferRequest, decorator: Google::Apis::AndroidpublisherV3::UpdateOneTimeProductOfferRequest::Representation
+      
+        end
+      end
+      
+      class BatchUpdateOneTimeProductOffersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :one_time_product_offers, as: 'oneTimeProductOffers', class: Google::Apis::AndroidpublisherV3::OneTimeProductOffer, decorator: Google::Apis::AndroidpublisherV3::OneTimeProductOffer::Representation
+      
+        end
+      end
+      
+      class BatchUpdateOneTimeProductsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::AndroidpublisherV3::UpdateOneTimeProductRequest, decorator: Google::Apis::AndroidpublisherV3::UpdateOneTimeProductRequest::Representation
+      
+        end
+      end
+      
+      class BatchUpdateOneTimeProductsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :one_time_products, as: 'oneTimeProducts', class: Google::Apis::AndroidpublisherV3::OneTimeProduct, decorator: Google::Apis::AndroidpublisherV3::OneTimeProduct::Representation
+      
+        end
+      end
+      
+      class BatchUpdatePurchaseOptionStatesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::AndroidpublisherV3::UpdatePurchaseOptionStateRequest, decorator: Google::Apis::AndroidpublisherV3::UpdatePurchaseOptionStateRequest::Representation
+      
+        end
+      end
+      
+      class BatchUpdatePurchaseOptionStatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :one_time_products, as: 'oneTimeProducts', class: Google::Apis::AndroidpublisherV3::OneTimeProduct, decorator: Google::Apis::AndroidpublisherV3::OneTimeProduct::Representation
       
         end
       end
@@ -2004,6 +2401,17 @@ module Google
       class CancelAppRecoveryResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CancelOneTimeProductOfferRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :latency_tolerance, as: 'latencyTolerance'
+          property :offer_id, as: 'offerId'
+          property :package_name, as: 'packageName'
+          property :product_id, as: 'productId'
+          property :purchase_option_id, as: 'purchaseOptionId'
         end
       end
       
@@ -2115,6 +2523,27 @@ module Google
         end
       end
       
+      class DeactivateOneTimeProductOfferRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :latency_tolerance, as: 'latencyTolerance'
+          property :offer_id, as: 'offerId'
+          property :package_name, as: 'packageName'
+          property :product_id, as: 'productId'
+          property :purchase_option_id, as: 'purchaseOptionId'
+        end
+      end
+      
+      class DeactivatePurchaseOptionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :latency_tolerance, as: 'latencyTolerance'
+          property :package_name, as: 'packageName'
+          property :product_id, as: 'productId'
+          property :purchase_option_id, as: 'purchaseOptionId'
+        end
+      end
+      
       class DeactivateSubscriptionOfferRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2130,6 +2559,37 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :product_id, as: 'productId'
+        end
+      end
+      
+      class DeleteOneTimeProductOfferRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :latency_tolerance, as: 'latencyTolerance'
+          property :offer_id, as: 'offerId'
+          property :package_name, as: 'packageName'
+          property :product_id, as: 'productId'
+          property :purchase_option_id, as: 'purchaseOptionId'
+        end
+      end
+      
+      class DeleteOneTimeProductRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :latency_tolerance, as: 'latencyTolerance'
+          property :package_name, as: 'packageName'
+          property :product_id, as: 'productId'
+        end
+      end
+      
+      class DeletePurchaseOptionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :force, as: 'force'
+          property :latency_tolerance, as: 'latencyTolerance'
+          property :package_name, as: 'packageName'
+          property :product_id, as: 'productId'
+          property :purchase_option_id, as: 'purchaseOptionId'
         end
       end
       
@@ -2463,6 +2923,16 @@ module Google
         end
       end
       
+      class GetOneTimeProductOfferRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :offer_id, as: 'offerId'
+          property :package_name, as: 'packageName'
+          property :product_id, as: 'productId'
+          property :purchase_option_id, as: 'purchaseOptionId'
+        end
+      end
+      
       class GetSubscriptionOfferRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2704,6 +3174,24 @@ module Google
         end
       end
       
+      class ListOneTimeProductOffersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :one_time_product_offers, as: 'oneTimeProductOffers', class: Google::Apis::AndroidpublisherV3::OneTimeProductOffer, decorator: Google::Apis::AndroidpublisherV3::OneTimeProductOffer::Representation
+      
+        end
+      end
+      
+      class ListOneTimeProductsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :one_time_products, as: 'oneTimeProducts', class: Google::Apis::AndroidpublisherV3::OneTimeProduct, decorator: Google::Apis::AndroidpublisherV3::OneTimeProduct::Representation
+      
+        end
+      end
+      
       class ListSubscriptionOffersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2866,6 +3354,160 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :external_transaction_token, as: 'externalTransactionToken'
+        end
+      end
+      
+      class OneTimeProduct
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :listings, as: 'listings', class: Google::Apis::AndroidpublisherV3::OneTimeProductListing, decorator: Google::Apis::AndroidpublisherV3::OneTimeProductListing::Representation
+      
+          collection :offer_tags, as: 'offerTags', class: Google::Apis::AndroidpublisherV3::OfferTag, decorator: Google::Apis::AndroidpublisherV3::OfferTag::Representation
+      
+          property :package_name, as: 'packageName'
+          property :product_id, as: 'productId'
+          collection :purchase_options, as: 'purchaseOptions', class: Google::Apis::AndroidpublisherV3::OneTimeProductPurchaseOption, decorator: Google::Apis::AndroidpublisherV3::OneTimeProductPurchaseOption::Representation
+      
+          property :regions_version, as: 'regionsVersion', class: Google::Apis::AndroidpublisherV3::RegionsVersion, decorator: Google::Apis::AndroidpublisherV3::RegionsVersion::Representation
+      
+          property :restricted_payment_countries, as: 'restrictedPaymentCountries', class: Google::Apis::AndroidpublisherV3::RestrictedPaymentCountries, decorator: Google::Apis::AndroidpublisherV3::RestrictedPaymentCountries::Representation
+      
+          property :tax_and_compliance_settings, as: 'taxAndComplianceSettings', class: Google::Apis::AndroidpublisherV3::OneTimeProductTaxAndComplianceSettings, decorator: Google::Apis::AndroidpublisherV3::OneTimeProductTaxAndComplianceSettings::Representation
+      
+        end
+      end
+      
+      class OneTimeProductBuyPurchaseOption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :legacy_compatible, as: 'legacyCompatible'
+          property :multi_quantity_enabled, as: 'multiQuantityEnabled'
+        end
+      end
+      
+      class OneTimeProductDiscountedOffer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :redemption_limit, :numeric_string => true, as: 'redemptionLimit'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class OneTimeProductListing
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :language_code, as: 'languageCode'
+          property :title, as: 'title'
+        end
+      end
+      
+      class OneTimeProductOffer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :discounted_offer, as: 'discountedOffer', class: Google::Apis::AndroidpublisherV3::OneTimeProductDiscountedOffer, decorator: Google::Apis::AndroidpublisherV3::OneTimeProductDiscountedOffer::Representation
+      
+          property :offer_id, as: 'offerId'
+          collection :offer_tags, as: 'offerTags', class: Google::Apis::AndroidpublisherV3::OfferTag, decorator: Google::Apis::AndroidpublisherV3::OfferTag::Representation
+      
+          property :package_name, as: 'packageName'
+          property :pre_order_offer, as: 'preOrderOffer', class: Google::Apis::AndroidpublisherV3::OneTimeProductPreOrderOffer, decorator: Google::Apis::AndroidpublisherV3::OneTimeProductPreOrderOffer::Representation
+      
+          property :product_id, as: 'productId'
+          property :purchase_option_id, as: 'purchaseOptionId'
+          collection :regional_pricing_and_availability_configs, as: 'regionalPricingAndAvailabilityConfigs', class: Google::Apis::AndroidpublisherV3::OneTimeProductOfferRegionalPricingAndAvailabilityConfig, decorator: Google::Apis::AndroidpublisherV3::OneTimeProductOfferRegionalPricingAndAvailabilityConfig::Representation
+      
+          property :regions_version, as: 'regionsVersion', class: Google::Apis::AndroidpublisherV3::RegionsVersion, decorator: Google::Apis::AndroidpublisherV3::RegionsVersion::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class OneTimeProductOfferNoPriceOverrideOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class OneTimeProductOfferRegionalPricingAndAvailabilityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :absolute_discount, as: 'absoluteDiscount', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+          property :availability, as: 'availability'
+          property :no_override, as: 'noOverride', class: Google::Apis::AndroidpublisherV3::OneTimeProductOfferNoPriceOverrideOptions, decorator: Google::Apis::AndroidpublisherV3::OneTimeProductOfferNoPriceOverrideOptions::Representation
+      
+          property :region_code, as: 'regionCode'
+          property :relative_discount, as: 'relativeDiscount'
+        end
+      end
+      
+      class OneTimeProductPreOrderOffer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :price_change_behavior, as: 'priceChangeBehavior'
+          property :release_time, as: 'releaseTime'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class OneTimeProductPurchaseOption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :buy_option, as: 'buyOption', class: Google::Apis::AndroidpublisherV3::OneTimeProductBuyPurchaseOption, decorator: Google::Apis::AndroidpublisherV3::OneTimeProductBuyPurchaseOption::Representation
+      
+          property :new_regions_config, as: 'newRegionsConfig', class: Google::Apis::AndroidpublisherV3::OneTimeProductPurchaseOptionNewRegionsConfig, decorator: Google::Apis::AndroidpublisherV3::OneTimeProductPurchaseOptionNewRegionsConfig::Representation
+      
+          collection :offer_tags, as: 'offerTags', class: Google::Apis::AndroidpublisherV3::OfferTag, decorator: Google::Apis::AndroidpublisherV3::OfferTag::Representation
+      
+          property :purchase_option_id, as: 'purchaseOptionId'
+          collection :regional_pricing_and_availability_configs, as: 'regionalPricingAndAvailabilityConfigs', class: Google::Apis::AndroidpublisherV3::OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig, decorator: Google::Apis::AndroidpublisherV3::OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig::Representation
+      
+          property :rent_option, as: 'rentOption', class: Google::Apis::AndroidpublisherV3::OneTimeProductRentPurchaseOption, decorator: Google::Apis::AndroidpublisherV3::OneTimeProductRentPurchaseOption::Representation
+      
+          property :state, as: 'state'
+          property :tax_and_compliance_settings, as: 'taxAndComplianceSettings', class: Google::Apis::AndroidpublisherV3::PurchaseOptionTaxAndComplianceSettings, decorator: Google::Apis::AndroidpublisherV3::PurchaseOptionTaxAndComplianceSettings::Representation
+      
+        end
+      end
+      
+      class OneTimeProductPurchaseOptionNewRegionsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability, as: 'availability'
+          property :eur_price, as: 'eurPrice', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+          property :usd_price, as: 'usdPrice', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+        end
+      end
+      
+      class OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability, as: 'availability'
+          property :price, as: 'price', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+          property :region_code, as: 'regionCode'
+        end
+      end
+      
+      class OneTimeProductRentPurchaseOption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expiration_period, as: 'expirationPeriod'
+          property :rental_period, as: 'rentalPeriod'
+        end
+      end
+      
+      class OneTimeProductTaxAndComplianceSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_tokenized_digital_asset, as: 'isTokenizedDigitalAsset'
+          collection :regional_tax_configs, as: 'regionalTaxConfigs', class: Google::Apis::AndroidpublisherV3::RegionalTaxConfig, decorator: Google::Apis::AndroidpublisherV3::RegionalTaxConfig::Representation
+      
         end
       end
       
@@ -3141,6 +3783,13 @@ module Google
         end
       end
       
+      class PurchaseOptionTaxAndComplianceSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :withdrawal_right_type, as: 'withdrawalRightType'
+        end
+      end
+      
       class PurchaseStateContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3236,6 +3885,16 @@ module Google
       class RegionalSubscriptionOfferPhaseFreePriceOverride
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RegionalTaxConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :eligible_for_streaming_service_tax_rate, as: 'eligibleForStreamingServiceTaxRate'
+          property :region_code, as: 'regionCode'
+          property :streaming_tax_type, as: 'streamingTaxType'
+          property :tax_tier, as: 'taxTier'
         end
       end
       
@@ -3946,6 +4605,54 @@ module Google
           property :activate_base_plan_request, as: 'activateBasePlanRequest', class: Google::Apis::AndroidpublisherV3::ActivateBasePlanRequest, decorator: Google::Apis::AndroidpublisherV3::ActivateBasePlanRequest::Representation
       
           property :deactivate_base_plan_request, as: 'deactivateBasePlanRequest', class: Google::Apis::AndroidpublisherV3::DeactivateBasePlanRequest, decorator: Google::Apis::AndroidpublisherV3::DeactivateBasePlanRequest::Representation
+      
+        end
+      end
+      
+      class UpdateOneTimeProductOfferRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_missing, as: 'allowMissing'
+          property :latency_tolerance, as: 'latencyTolerance'
+          property :one_time_product_offer, as: 'oneTimeProductOffer', class: Google::Apis::AndroidpublisherV3::OneTimeProductOffer, decorator: Google::Apis::AndroidpublisherV3::OneTimeProductOffer::Representation
+      
+          property :regions_version, as: 'regionsVersion', class: Google::Apis::AndroidpublisherV3::RegionsVersion, decorator: Google::Apis::AndroidpublisherV3::RegionsVersion::Representation
+      
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class UpdateOneTimeProductOfferStateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :activate_one_time_product_offer_request, as: 'activateOneTimeProductOfferRequest', class: Google::Apis::AndroidpublisherV3::ActivateOneTimeProductOfferRequest, decorator: Google::Apis::AndroidpublisherV3::ActivateOneTimeProductOfferRequest::Representation
+      
+          property :cancel_one_time_product_offer_request, as: 'cancelOneTimeProductOfferRequest', class: Google::Apis::AndroidpublisherV3::CancelOneTimeProductOfferRequest, decorator: Google::Apis::AndroidpublisherV3::CancelOneTimeProductOfferRequest::Representation
+      
+          property :deactivate_one_time_product_offer_request, as: 'deactivateOneTimeProductOfferRequest', class: Google::Apis::AndroidpublisherV3::DeactivateOneTimeProductOfferRequest, decorator: Google::Apis::AndroidpublisherV3::DeactivateOneTimeProductOfferRequest::Representation
+      
+        end
+      end
+      
+      class UpdateOneTimeProductRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_missing, as: 'allowMissing'
+          property :latency_tolerance, as: 'latencyTolerance'
+          property :one_time_product, as: 'oneTimeProduct', class: Google::Apis::AndroidpublisherV3::OneTimeProduct, decorator: Google::Apis::AndroidpublisherV3::OneTimeProduct::Representation
+      
+          property :regions_version, as: 'regionsVersion', class: Google::Apis::AndroidpublisherV3::RegionsVersion, decorator: Google::Apis::AndroidpublisherV3::RegionsVersion::Representation
+      
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class UpdatePurchaseOptionStateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :activate_purchase_option_request, as: 'activatePurchaseOptionRequest', class: Google::Apis::AndroidpublisherV3::ActivatePurchaseOptionRequest, decorator: Google::Apis::AndroidpublisherV3::ActivatePurchaseOptionRequest::Representation
+      
+          property :deactivate_purchase_option_request, as: 'deactivatePurchaseOptionRequest', class: Google::Apis::AndroidpublisherV3::DeactivatePurchaseOptionRequest, decorator: Google::Apis::AndroidpublisherV3::DeactivatePurchaseOptionRequest::Representation
       
         end
       end
