@@ -2786,6 +2786,16 @@ module Google
         # @return [Google::Apis::ServiceconsumermanagementV1beta1::CommonLanguageSettings]
         attr_accessor :common
       
+        # The package name to use in Php. Clobbers the php_namespace option set in the
+        # protobuf. This should be used **only** by APIs who have already set the
+        # language_settings.php.package_name" field in gapic.yaml. API teams should use
+        # the protobuf php_namespace option where possible. Example of a YAML
+        # configuration:: publishing: library_settings: php_settings: library_package:
+        # Google\Cloud\PubSub\V1
+        # Corresponds to the JSON property `libraryPackage`
+        # @return [String]
+        attr_accessor :library_package
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2793,6 +2803,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common = args[:common] if args.key?(:common)
+          @library_package = args[:library_package] if args.key?(:library_package)
         end
       end
       
