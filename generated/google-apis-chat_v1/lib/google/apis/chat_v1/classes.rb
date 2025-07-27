@@ -184,14 +184,15 @@ module Google
         end
       end
       
-      # Output only. Annotations associated with the plain-text body of the message.
-      # To add basic formatting to a text message, see [Format text messages](https://
-      # developers.google.com/workspace/chat/format-messages). Example plain-text
-      # message body: ``` Hello @FooBot how are you!" ``` The corresponding
-      # annotations metadata: ``` "annotations":[` "type":"USER_MENTION", "startIndex":
-      # 6, "length":7, "userMention": ` "user": ` "name":"users/`user`", "displayName":
-      # "FooBot", "avatarUrl":"https://goo.gl/aeDtrS", "type":"BOT" `, "type":"MENTION"
-      # ` `] ```
+      # Annotations can be associated with the plain-text body of the message or with
+      # chips that link to Google Workspace resources like Google Docs or Sheets with
+      # a `start_index` and `length` of 0. To add basic formatting to a text message,
+      # see [Format text messages](https://developers.google.com/workspace/chat/format-
+      # messages). Example plain-text message body: ``` Hello @FooBot how are you!" ```
+      # The corresponding annotations metadata: ``` "annotations":[` "type":"
+      # USER_MENTION", "startIndex":6, "length":7, "userMention": ` "user": ` "name":"
+      # users/`user`", "displayName":"FooBot", "avatarUrl":"https://goo.gl/aeDtrS", "
+      # type":"BOT" `, "type":"MENTION" ` `] ```
       class Annotation
         include Google::Apis::Core::Hashable
       
@@ -201,12 +202,14 @@ module Google
         attr_accessor :custom_emoji_metadata
       
         # Length of the substring in the plain-text message body this annotation
-        # corresponds to.
+        # corresponds to. If not present, indicates a length of 0.
         # Corresponds to the JSON property `length`
         # @return [Fixnum]
         attr_accessor :length
       
-        # A rich link to a resource.
+        # A rich link to a resource. Rich links can be associated with the plain-text
+        # body of the message or represent chips that link to Google Workspace resources
+        # like Google Docs or Sheets with a with `start_index` and `length` of 0.
         # Corresponds to the JSON property `richLinkMetadata`
         # @return [Google::Apis::ChatV1::RichLinkMetadata]
         attr_accessor :rich_link_metadata
@@ -409,6 +412,33 @@ module Google
         def update!(**args)
           @image_button = args[:image_button] if args.key?(:image_button)
           @text_button = args[:text_button] if args.key?(:text_button)
+        end
+      end
+      
+      # Data for Calendar event links.
+      class CalendarEventLinkData
+        include Google::Apis::Core::Hashable
+      
+        # The [Calendar identifier](https://developers.google.com/workspace/calendar/api/
+        # v3/reference/calendars) of the linked Calendar.
+        # Corresponds to the JSON property `calendarId`
+        # @return [String]
+        attr_accessor :calendar_id
+      
+        # The [Event identifier](https://developers.google.com/workspace/calendar/api/v3/
+        # reference/events) of the linked Calendar event.
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @calendar_id = args[:calendar_id] if args.key?(:calendar_id)
+          @event_id = args[:event_id] if args.key?(:event_id)
         end
       end
       
@@ -4360,6 +4390,38 @@ module Google
         end
       end
       
+      # Data for Meet space links.
+      class MeetSpaceLinkData
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Output only. If the Meet is a Huddle, indicates the status of the
+        # huddle. Otherwise, this is unset.
+        # Corresponds to the JSON property `huddleStatus`
+        # @return [String]
+        attr_accessor :huddle_status
+      
+        # Meeting code of the linked Meet space.
+        # Corresponds to the JSON property `meetingCode`
+        # @return [String]
+        attr_accessor :meeting_code
+      
+        # Indicates the type of the Meet space.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @huddle_status = args[:huddle_status] if args.key?(:huddle_status)
+          @meeting_code = args[:meeting_code] if args.key?(:meeting_code)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Represents a membership relation in Google Chat, such as whether a user or
       # Chat app is invited to, part of, or absent from a space.
       class Membership
@@ -4595,7 +4657,9 @@ module Google
         # @return [Google::Apis::ChatV1::ActionResponse]
         attr_accessor :action_response
       
-        # Output only. Annotations associated with the `text` in this message.
+        # Output only. Annotations can be associated with the plain-text body of the
+        # message or with chips that link to Google Workspace resources like Google Docs
+        # or Sheets with a `start_index` and `length` of 0.
         # Corresponds to the JSON property `annotations`
         # @return [Array<Google::Apis::ChatV1::Annotation>]
         attr_accessor :annotations
@@ -5215,9 +5279,16 @@ module Google
         end
       end
       
-      # A rich link to a resource.
+      # A rich link to a resource. Rich links can be associated with the plain-text
+      # body of the message or represent chips that link to Google Workspace resources
+      # like Google Docs or Sheets with a with `start_index` and `length` of 0.
       class RichLinkMetadata
         include Google::Apis::Core::Hashable
+      
+        # Data for Calendar event links.
+        # Corresponds to the JSON property `calendarEventLinkData`
+        # @return [Google::Apis::ChatV1::CalendarEventLinkData]
+        attr_accessor :calendar_event_link_data
       
         # Data for Chat space links.
         # Corresponds to the JSON property `chatSpaceLinkData`
@@ -5228,6 +5299,11 @@ module Google
         # Corresponds to the JSON property `driveLinkData`
         # @return [Google::Apis::ChatV1::DriveLinkData]
         attr_accessor :drive_link_data
+      
+        # Data for Meet space links.
+        # Corresponds to the JSON property `meetSpaceLinkData`
+        # @return [Google::Apis::ChatV1::MeetSpaceLinkData]
+        attr_accessor :meet_space_link_data
       
         # The rich link type.
         # Corresponds to the JSON property `richLinkType`
@@ -5245,8 +5321,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @calendar_event_link_data = args[:calendar_event_link_data] if args.key?(:calendar_event_link_data)
           @chat_space_link_data = args[:chat_space_link_data] if args.key?(:chat_space_link_data)
           @drive_link_data = args[:drive_link_data] if args.key?(:drive_link_data)
+          @meet_space_link_data = args[:meet_space_link_data] if args.key?(:meet_space_link_data)
           @rich_link_type = args[:rich_link_type] if args.key?(:rich_link_type)
           @uri = args[:uri] if args.key?(:uri)
         end
@@ -5486,6 +5564,20 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. Immutable. The customer id of the domain of the space. Required only
+        # when creating a space with [app authentication](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-app) and `SpaceType` is `SPACE`,
+        # otherwise should not be set. In the format `customers/`customer``, where `
+        # customer` is the `id` from the [Admin SDK customer resource]( https://
+        # developers.google.com/admin-sdk/directory/reference/rest/v1/customers).
+        # Private apps can also use the `customers/my_customer` alias to create the
+        # space in the same Google Workspace organization as the app. For DMs, this
+        # field isn't populated. [Developer Preview](https://developers.google.com/
+        # workspace/preview).
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
         # Optional. The space's display name. Required when [creating a space](https://
         # developers.google.com/workspace/chat/api/reference/rest/v1/spaces/create) with
         # a `spaceType` of `SPACE`. If you receive the error message `ALREADY_EXISTS`
@@ -5621,6 +5713,7 @@ module Google
           @access_settings = args[:access_settings] if args.key?(:access_settings)
           @admin_installed = args[:admin_installed] if args.key?(:admin_installed)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @customer = args[:customer] if args.key?(:customer)
           @display_name = args[:display_name] if args.key?(:display_name)
           @external_user_allowed = args[:external_user_allowed] if args.key?(:external_user_allowed)
           @import_mode = args[:import_mode] if args.key?(:import_mode)
