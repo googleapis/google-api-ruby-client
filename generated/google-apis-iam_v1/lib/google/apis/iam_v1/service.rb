@@ -946,6 +946,456 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new WorkforcePoolProviderScimTenant in a WorkforcePoolProvider. You
+        # cannot reuse the name of a deleted scim tenant until 30 days after deletion.
+        # @param [String] parent
+        #   Required. The parent to create scim tenant. Format: 'locations/`location`/
+        #   workforcePools/`workforce_pool`/providers/`provider`'
+        # @param [Google::Apis::IamV1::WorkforcePoolProviderScimTenant] workforce_pool_provider_scim_tenant_object
+        # @param [String] workforce_pool_provider_scim_tenant_id
+        #   Required. The ID to use for the scim tenant, which becomes the final component
+        #   of the resource name. This value should be 4-32 characters, and may contain
+        #   the characters [a-z0-9-].
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::WorkforcePoolProviderScimTenant] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::WorkforcePoolProviderScimTenant]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_location_workforce_pool_provider_scim_tenant(parent, workforce_pool_provider_scim_tenant_object = nil, workforce_pool_provider_scim_tenant_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/scimTenants', options)
+          command.request_representation = Google::Apis::IamV1::WorkforcePoolProviderScimTenant::Representation
+          command.request_object = workforce_pool_provider_scim_tenant_object
+          command.response_representation = Google::Apis::IamV1::WorkforcePoolProviderScimTenant::Representation
+          command.response_class = Google::Apis::IamV1::WorkforcePoolProviderScimTenant
+          command.params['parent'] = parent unless parent.nil?
+          command.query['workforcePoolProviderScimTenantId'] = workforce_pool_provider_scim_tenant_id unless workforce_pool_provider_scim_tenant_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a WorkforcePoolProviderScimTenant. You can undelete a scim tenant for
+        # 30 days. After 30 days, deletion is permanent. You cannot update deleted scim
+        # tenants. However, you can view and list them.
+        # @param [String] name
+        #   Required. The name of the scim tenant to delete. Format: `locations/`location`/
+        #   workforcePools/`workforce_pool`/providers/`provider`/scimTenants/`scim_tenant``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::WorkforcePoolProviderScimTenant] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::WorkforcePoolProviderScimTenant]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_location_workforce_pool_provider_scim_tenant(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IamV1::WorkforcePoolProviderScimTenant::Representation
+          command.response_class = Google::Apis::IamV1::WorkforcePoolProviderScimTenant
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an individual WorkforcePoolProviderScimTenant.
+        # @param [String] name
+        #   Required. The name of the scim tenant to retrieve. Format: `locations/`
+        #   location`/workforcePools/`workforce_pool`/providers/`provider`/scimTenants/`
+        #   scim_tenant``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::WorkforcePoolProviderScimTenant] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::WorkforcePoolProviderScimTenant]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_location_workforce_pool_provider_scim_tenant(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IamV1::WorkforcePoolProviderScimTenant::Representation
+          command.response_class = Google::Apis::IamV1::WorkforcePoolProviderScimTenant
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all non-deleted WorkforcePoolProviderScimTenants in a
+        # WorkforcePoolProvider. If `show_deleted` is set to `true`, then deleted scim
+        # tenants are also listed.
+        # @param [String] parent
+        #   Required. The parent to list scim tenants. Format: 'locations/`location`/
+        #   workforcePools/`workforce_pool`/providers/`provider`'
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of scim tenants to return. If unspecified, at
+        #   most 1 scim tenant will be returned.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListScimTenants` call.
+        #   Provide this to retrieve the subsequent page.
+        # @param [Boolean] show_deleted
+        #   Optional. Whether to return soft-deleted scim tenants.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::ListWorkforcePoolProviderScimTenantsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::ListWorkforcePoolProviderScimTenantsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_location_workforce_pool_provider_scim_tenants(parent, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/scimTenants', options)
+          command.response_representation = Google::Apis::IamV1::ListWorkforcePoolProviderScimTenantsResponse::Representation
+          command.response_class = Google::Apis::IamV1::ListWorkforcePoolProviderScimTenantsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['showDeleted'] = show_deleted unless show_deleted.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing WorkforcePoolProviderScimTenant.
+        # @param [String] name
+        #   Identifier. The resource name of the SCIM Tenant. Format: `locations/`location`
+        #   /workforcePools/`workforce_pool`/providers/ `workforce_pool_provider`/
+        #   scimTenants/`scim_tenant``
+        # @param [Google::Apis::IamV1::WorkforcePoolProviderScimTenant] workforce_pool_provider_scim_tenant_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::WorkforcePoolProviderScimTenant] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::WorkforcePoolProviderScimTenant]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_location_workforce_pool_provider_scim_tenant(name, workforce_pool_provider_scim_tenant_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::IamV1::WorkforcePoolProviderScimTenant::Representation
+          command.request_object = workforce_pool_provider_scim_tenant_object
+          command.response_representation = Google::Apis::IamV1::WorkforcePoolProviderScimTenant::Representation
+          command.response_class = Google::Apis::IamV1::WorkforcePoolProviderScimTenant
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Undeletes a WorkforcePoolProviderScimTenant, as long as it was deleted fewer
+        # than 30 days ago.
+        # @param [String] name
+        #   Required. The name of the scim tenant to undelete. Format: `locations/`
+        #   location`/workforcePools/`workforce_pool`/providers/`provider`/scimTenants/`
+        #   scim_tenant``
+        # @param [Google::Apis::IamV1::UndeleteWorkforcePoolProviderScimTenantRequest] undelete_workforce_pool_provider_scim_tenant_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::WorkforcePoolProviderScimTenant] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::WorkforcePoolProviderScimTenant]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def undelete_workforce_pool_provider_scim_tenant(name, undelete_workforce_pool_provider_scim_tenant_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:undelete', options)
+          command.request_representation = Google::Apis::IamV1::UndeleteWorkforcePoolProviderScimTenantRequest::Representation
+          command.request_object = undelete_workforce_pool_provider_scim_tenant_request_object
+          command.response_representation = Google::Apis::IamV1::WorkforcePoolProviderScimTenant::Representation
+          command.response_class = Google::Apis::IamV1::WorkforcePoolProviderScimTenant
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new WorkforcePoolProviderScimToken in a
+        # WorkforcePoolProviderScimTenant. You cannot reuse the name of a deleted SCIM
+        # token until 30 days after deletion.
+        # @param [String] parent
+        #   Required. The parent tenant to create scim token. Format: 'locations/`location`
+        #   /workforcePools/`workforce_pool`/providers/`provider`/scimTenants/`scim_tenant`
+        #   '
+        # @param [Google::Apis::IamV1::WorkforcePoolProviderScimToken] workforce_pool_provider_scim_token_object
+        # @param [String] workforce_pool_provider_scim_token_id
+        #   Required. The ID to use for the scim token, which becomes the final component
+        #   of the resource name. This value should be 4-32 characters and follow this
+        #   pattern: "([a-z]([a-z0-9\\-]`2,30`[a-z0-9]))"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::WorkforcePoolProviderScimToken] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::WorkforcePoolProviderScimToken]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_location_workforce_pool_provider_scim_tenant_token(parent, workforce_pool_provider_scim_token_object = nil, workforce_pool_provider_scim_token_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/tokens', options)
+          command.request_representation = Google::Apis::IamV1::WorkforcePoolProviderScimToken::Representation
+          command.request_object = workforce_pool_provider_scim_token_object
+          command.response_representation = Google::Apis::IamV1::WorkforcePoolProviderScimToken::Representation
+          command.response_class = Google::Apis::IamV1::WorkforcePoolProviderScimToken
+          command.params['parent'] = parent unless parent.nil?
+          command.query['workforcePoolProviderScimTokenId'] = workforce_pool_provider_scim_token_id unless workforce_pool_provider_scim_token_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a WorkforcePoolProviderScimToken. You can undelete a scim token for 30
+        # days. After 30 days, deletion is permanent. You cannot update deleted scim
+        # tokens. However, you can view and list them.
+        # @param [String] name
+        #   Required. The name of the scim token to delete. Format: `locations/`location`/
+        #   workforcePools/`workforce_pool`/providers/`provider`/scimTenants/`scim_tenant`/
+        #   tokens/`token``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::WorkforcePoolProviderScimToken] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::WorkforcePoolProviderScimToken]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_location_workforce_pool_provider_scim_tenant_token(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IamV1::WorkforcePoolProviderScimToken::Representation
+          command.response_class = Google::Apis::IamV1::WorkforcePoolProviderScimToken
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an individual WorkforcePoolProviderScimToken.
+        # @param [String] name
+        #   Required. The name of the scim token to retrieve. Format: `locations/`location`
+        #   /workforcePools/`workforce_pool`/providers/`provider`/scimTenants/`scim_tenant`
+        #   /tokens/`token``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::WorkforcePoolProviderScimToken] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::WorkforcePoolProviderScimToken]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_location_workforce_pool_provider_scim_tenant_token(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IamV1::WorkforcePoolProviderScimToken::Representation
+          command.response_class = Google::Apis::IamV1::WorkforcePoolProviderScimToken
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all non-deleted WorkforcePoolProviderScimTokenss in a
+        # WorkforcePoolProviderScimTenant. If `show_deleted` is set to `true`, then
+        # deleted SCIM tokens are also listed.
+        # @param [String] parent
+        #   Required. The parent to list scim tokens. Format: 'locations/`location`/
+        #   workforcePools/`workforce_pool`/providers/`provider`/scimTenants/`scim_tenant`'
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of scim tokens to return. If unspecified, at most
+        #   2 scim tokens will be returned.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `
+        #   ListWorkforcePoolProviderScimTokens` call. Provide this to retrieve the
+        #   subsequent page.
+        # @param [Boolean] show_deleted
+        #   Optional. Whether to return soft-deleted scim tokens.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::ListWorkforcePoolProviderScimTokensResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::ListWorkforcePoolProviderScimTokensResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_location_workforce_pool_provider_scim_tenant_tokens(parent, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/tokens', options)
+          command.response_representation = Google::Apis::IamV1::ListWorkforcePoolProviderScimTokensResponse::Representation
+          command.response_class = Google::Apis::IamV1::ListWorkforcePoolProviderScimTokensResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['showDeleted'] = show_deleted unless show_deleted.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing WorkforcePoolProviderScimToken.
+        # @param [String] name
+        #   Identifier. The resource name of the SCIM Token. Format: `locations/`location`/
+        #   workforcePools/`workforce_pool`/providers/ `workforce_pool_provider`/
+        #   scimTenants/`scim_tenant`/tokens/`token``
+        # @param [Google::Apis::IamV1::WorkforcePoolProviderScimToken] workforce_pool_provider_scim_token_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::WorkforcePoolProviderScimToken] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::WorkforcePoolProviderScimToken]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_location_workforce_pool_provider_scim_tenant_token(name, workforce_pool_provider_scim_token_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::IamV1::WorkforcePoolProviderScimToken::Representation
+          command.request_object = workforce_pool_provider_scim_token_object
+          command.response_representation = Google::Apis::IamV1::WorkforcePoolProviderScimToken::Representation
+          command.response_class = Google::Apis::IamV1::WorkforcePoolProviderScimToken
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Undeletes a WorkforcePoolProviderScimToken, as long as it was deleted fewer
+        # than 30 days ago.
+        # @param [String] name
+        #   Required. The name of the scim token to undelete. Format: `locations/`location`
+        #   /workforcePools/`workforce_pool`/providers/`provider`/scimTenants/`scim_tenant`
+        #   /tokens/`token``
+        # @param [Google::Apis::IamV1::UndeleteWorkforcePoolProviderScimTokenRequest] undelete_workforce_pool_provider_scim_token_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::WorkforcePoolProviderScimToken] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::WorkforcePoolProviderScimToken]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def undelete_workforce_pool_provider_scim_token(name, undelete_workforce_pool_provider_scim_token_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:undelete', options)
+          command.request_representation = Google::Apis::IamV1::UndeleteWorkforcePoolProviderScimTokenRequest::Representation
+          command.request_object = undelete_workforce_pool_provider_scim_token_request_object
+          command.response_representation = Google::Apis::IamV1::WorkforcePoolProviderScimToken::Representation
+          command.response_class = Google::Apis::IamV1::WorkforcePoolProviderScimToken
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes a WorkforcePoolSubject. Subject must not already be in a deleted state.
         # A WorkforcePoolSubject is automatically created the first time an external
         # credential is exchanged for a Google Cloud credential using a mapped `google.
