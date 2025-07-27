@@ -292,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DicomNotificationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DicomStore
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1493,12 +1499,21 @@ module Google
         end
       end
       
+      class DicomNotificationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pubsub_topic, as: 'pubsubTopic'
+        end
+      end
+      
       class DicomStore
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :notification_config, as: 'notificationConfig', class: Google::Apis::HealthcareV1::NotificationConfig, decorator: Google::Apis::HealthcareV1::NotificationConfig::Representation
+      
+          collection :notification_configs, as: 'notificationConfigs', class: Google::Apis::HealthcareV1::DicomNotificationConfig, decorator: Google::Apis::HealthcareV1::DicomNotificationConfig::Representation
       
           collection :stream_configs, as: 'streamConfigs', class: Google::Apis::HealthcareV1::GoogleCloudHealthcareV1DicomStreamConfig, decorator: Google::Apis::HealthcareV1::GoogleCloudHealthcareV1DicomStreamConfig::Representation
       
