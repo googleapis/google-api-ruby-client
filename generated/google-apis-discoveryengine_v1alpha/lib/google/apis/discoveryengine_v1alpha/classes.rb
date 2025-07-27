@@ -1746,6 +1746,28 @@ module Google
         end
       end
       
+      # Discovery Engine Assistant resource.
+      class GoogleCloudDiscoveryengineV1Assistant
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Resource name of the assistant. Format: `projects/`project`/
+        # locations/`location`/collections/`collection`/engines/`engine`/assistants/`
+        # assistant`` It must be a UTF-8 encoded string with a length limit of 1024
+        # characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Metadata related to the progress of the SiteSearchEngineService.
       # BatchCreateTargetSites operation. This will be returned by the google.
       # longrunning.Operation.metadata field.
@@ -1868,14 +1890,14 @@ module Google
         attr_accessor :is_default
         alias_method :is_default?, :is_default
       
-        # KMS key resource name which will be used to encrypt resources `projects/`
-        # project`/locations/`location`/keyRings/`keyRing`/cryptoKeys/`keyId``.
+        # Required. KMS key resource name which will be used to encrypt resources `
+        # projects/`project`/locations/`location`/keyRings/`keyRing`/cryptoKeys/`keyId``.
         # Corresponds to the JSON property `kmsKey`
         # @return [String]
         attr_accessor :kms_key
       
-        # KMS key version resource name which will be used to encrypt resources `/
-        # cryptoKeyVersions/`keyVersion``.
+        # Output only. KMS key version resource name which will be used to encrypt
+        # resources `/cryptoKeyVersions/`keyVersion``.
         # Corresponds to the JSON property `kmsKeyVersion`
         # @return [String]
         attr_accessor :kms_key_version
@@ -7877,6 +7899,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :assist_skipped_reasons
       
+        # Immutable. Identifier. Resource name of the `AssistAnswer`. Format: `projects/`
+        # project`/locations/`location`/collections/`collection`/engines/`engine`/
+        # sessions/`session`/assistAnswers/`assist_answer`` This field must be a UTF-8
+        # encoded string with a length limit of 1024 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # Replies of the assistant.
         # Corresponds to the JSON property `replies`
         # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistAnswerReply>]
@@ -7894,6 +7924,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @assist_skipped_reasons = args[:assist_skipped_reasons] if args.key?(:assist_skipped_reasons)
+          @name = args[:name] if args.key?(:name)
           @replies = args[:replies] if args.key?(:replies)
           @state = args[:state] if args.key?(:state)
         end
@@ -7944,6 +7975,28 @@ module Google
         def update!(**args)
           @preferred_language_code = args[:preferred_language_code] if args.key?(:preferred_language_code)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
+        end
+      end
+      
+      # Discovery Engine Assistant resource.
+      class GoogleCloudDiscoveryengineV1alphaAssistant
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Resource name of the assistant. Format: `projects/`project`/
+        # locations/`location`/collections/`collection`/engines/`engine`/assistants/`
+        # assistant`` It must be a UTF-8 encoded string with a length limit of 1024
+        # characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -9446,14 +9499,14 @@ module Google
         attr_accessor :is_default
         alias_method :is_default?, :is_default
       
-        # KMS key resource name which will be used to encrypt resources `projects/`
-        # project`/locations/`location`/keyRings/`keyRing`/cryptoKeys/`keyId``.
+        # Required. KMS key resource name which will be used to encrypt resources `
+        # projects/`project`/locations/`location`/keyRings/`keyRing`/cryptoKeys/`keyId``.
         # Corresponds to the JSON property `kmsKey`
         # @return [String]
         attr_accessor :kms_key
       
-        # KMS key version resource name which will be used to encrypt resources `/
-        # cryptoKeyVersions/`keyVersion``.
+        # Output only. KMS key version resource name which will be used to encrypt
+        # resources `/cryptoKeyVersions/`keyVersion``.
         # Corresponds to the JSON property `kmsKeyVersion`
         # @return [String]
         attr_accessor :kms_key_version
@@ -13662,6 +13715,190 @@ module Google
         end
       end
       
+      # Caracteristics of other file types.
+      class GoogleCloudDiscoveryengineV1alphaFileCharacteristics
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Generic map of characteristics.
+        # Corresponds to the JSON property `characteristics`
+        # @return [Hash<String,String>]
+        attr_accessor :characteristics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @characteristics = args[:characteristics] if args.key?(:characteristics)
+        end
+      end
+      
+      # Represents a file attached to a session (context file)
+      class GoogleCloudDiscoveryengineV1alphaFileMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The size of the context file in bytes.
+        # Corresponds to the JSON property `byteSize`
+        # @return [Fixnum]
+        attr_accessor :byte_size
+      
+        # Output only. The AssistantService.DownloadSessionFile URL to download the file.
+        # This URL will need the same credentials as AssistantService.
+        # ListSessionFileMetadata method and will provide the resource.
+        # Corresponds to the JSON property `downloadUri`
+        # @return [String]
+        attr_accessor :download_uri
+      
+        # Output only. The ID of the file.
+        # Corresponds to the JSON property `fileId`
+        # @return [String]
+        attr_accessor :file_id
+      
+        # Optional. The origin of the file.
+        # Corresponds to the JSON property `fileOriginType`
+        # @return [String]
+        attr_accessor :file_origin_type
+      
+        # Output only. The time the file was added to the session. Note that if a file
+        # was added, then modified externally, then added again, the add time will be
+        # updated.
+        # Corresponds to the JSON property `lastAddTime`
+        # @return [String]
+        attr_accessor :last_add_time
+      
+        # Optional. Represents metadata related to the file that can suit particular use
+        # cases. The prefix "google." is reserved for the key for use by Google, but
+        # other prefixes can be freely used.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
+        # The content type of the file, see https://www.iana.org/assignments/media-types/
+        # media-types.xhtml.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # Output only. The name of the file uploaded.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The type of the original source of the file.
+        # Corresponds to the JSON property `originalSourceType`
+        # @return [String]
+        attr_accessor :original_source_type
+      
+        # Optional. The original location of the file. It may be a local file path, or
+        # any other URI that allows accessing the file in an external system. There are
+        # two scenarios in which this url may be empty: 1. If the file was sent as
+        # inline data (e.g. pasted from the clipboard). 2. If the original location is
+        # not available. Note that there's no guarantee that the URI will be pointing to
+        # a valid or actually existing file. For example, a file might have been
+        # uploaded to the session, and then deleted from the original source.
+        # Corresponds to the JSON property `originalUri`
+        # @return [String]
+        attr_accessor :original_uri
+      
+        # Output only. The time the file was uploaded (If this is a file generated by an
+        # internal process and then made available to the session, this indicates the
+        # moment it happened).
+        # Corresponds to the JSON property `uploadTime`
+        # @return [String]
+        attr_accessor :upload_time
+      
+        # Output only. Alternate views of this file object. Each file view is attached
+        # to a specific role. Possible example keys: - "thumbnail" - "mobile_thumbnail" -
+        # "clip" - "summary" - "translation"
+        # Corresponds to the JSON property `views`
+        # @return [Hash<String,Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaFileView>]
+        attr_accessor :views
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @byte_size = args[:byte_size] if args.key?(:byte_size)
+          @download_uri = args[:download_uri] if args.key?(:download_uri)
+          @file_id = args[:file_id] if args.key?(:file_id)
+          @file_origin_type = args[:file_origin_type] if args.key?(:file_origin_type)
+          @last_add_time = args[:last_add_time] if args.key?(:last_add_time)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @name = args[:name] if args.key?(:name)
+          @original_source_type = args[:original_source_type] if args.key?(:original_source_type)
+          @original_uri = args[:original_uri] if args.key?(:original_uri)
+          @upload_time = args[:upload_time] if args.key?(:upload_time)
+          @views = args[:views] if args.key?(:views)
+        end
+      end
+      
+      # Represents a specific alternate version or "view" of a file object, such as a
+      # summary, a thumbnail, a translated version, etc.
+      class GoogleCloudDiscoveryengineV1alphaFileView
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The size of the view in bytes.
+        # Corresponds to the JSON property `byteSize`
+        # @return [Fixnum]
+        attr_accessor :byte_size
+      
+        # Output only. The time the view was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Caracteristics of other file types.
+        # Corresponds to the JSON property `fileCharacteristics`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaFileCharacteristics]
+        attr_accessor :file_characteristics
+      
+        # Standard characteristics of an image media view.
+        # Corresponds to the JSON property `imageCharacteristics`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaImageCharacteristics]
+        attr_accessor :image_characteristics
+      
+        # Output only. MIME type (e.g., "image/jpeg", "image/png", "text/plain", "video/
+        # mp4")
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # Output only. The URI to access this media view.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        # Standard characteristics of a video media view.
+        # Corresponds to the JSON property `videoCharacteristics`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaVideoCharacteristics]
+        attr_accessor :video_characteristics
+      
+        # Output only. Globally Unique id for this specific view.
+        # Corresponds to the JSON property `viewId`
+        # @return [String]
+        attr_accessor :view_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @byte_size = args[:byte_size] if args.key?(:byte_size)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @file_characteristics = args[:file_characteristics] if args.key?(:file_characteristics)
+          @image_characteristics = args[:image_characteristics] if args.key?(:image_characteristics)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @uri = args[:uri] if args.key?(:uri)
+          @video_characteristics = args[:video_characteristics] if args.key?(:video_characteristics)
+          @view_id = args[:view_id] if args.key?(:view_id)
+        end
+      end
+      
       # Firestore source import data from.
       class GoogleCloudDiscoveryengineV1alphaFirestoreSource
         include Google::Apis::Core::Hashable
@@ -14133,6 +14370,43 @@ module Google
         # Update properties of this object
         def update!(**args)
           @workforce_pool_name = args[:workforce_pool_name] if args.key?(:workforce_pool_name)
+        end
+      end
+      
+      # Standard characteristics of an image media view.
+      class GoogleCloudDiscoveryengineV1alphaImageCharacteristics
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Bit depth of the image (e.g., 8-bit, 16-bit).
+        # Corresponds to the JSON property `bitDepth`
+        # @return [Fixnum]
+        attr_accessor :bit_depth
+      
+        # Output only. Color space of the image (e.g., "RGB", "CMYK", "Grayscale").
+        # Corresponds to the JSON property `colorSpace`
+        # @return [String]
+        attr_accessor :color_space
+      
+        # Output only. Image height in pixels.
+        # Corresponds to the JSON property `height`
+        # @return [Fixnum]
+        attr_accessor :height
+      
+        # Output only. Image width in pixels.
+        # Corresponds to the JSON property `width`
+        # @return [Fixnum]
+        attr_accessor :width
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bit_depth = args[:bit_depth] if args.key?(:bit_depth)
+          @color_space = args[:color_space] if args.key?(:color_space)
+          @height = args[:height] if args.key?(:height)
+          @width = args[:width] if args.key?(:width)
         end
       end
       
@@ -15324,6 +15598,33 @@ module Google
         end
       end
       
+      # Response message for SessionService.ListFiles method.
+      class GoogleCloudDiscoveryengineV1alphaListFilesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The FileMetadatas.
+        # Corresponds to the JSON property `files`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaFileMetadata>]
+        attr_accessor :files
+      
+        # A token to retrieve next page of results. Pass this value in the
+        # ListFilesRequest.page_token field in the subsequent call to `ListFiles` method
+        # to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @files = args[:files] if args.key?(:files)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for IdentityMappingStoreService.ListIdentityMappingStores
       class GoogleCloudDiscoveryengineV1alphaListIdentityMappingStoresResponse
         include Google::Apis::Core::Hashable
@@ -15483,9 +15784,12 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaListSessionsRequest
         include Google::Apis::Core::Hashable
       
-        # A filter to apply on the list results. The supported features are:
-        # user_pseudo_id, state, starred. Examples: "user_pseudo_id = some_id" "starred =
-        # true"
+        # A comma-separated list of fields to filter by, in EBNF grammar. The supported
+        # fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `
+        # is_pinned` * `labels` * `create_time` * `update_time` Examples: "
+        # user_pseudo_id = some_id" "display_name = \"some_name\"" "starred = true" "
+        # is_pinned=true AND (NOT labels:hidden)" "create_time > \"1970-01-01T12:00:00Z\"
+        # "
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -16063,6 +16367,11 @@ module Google
         # @return [String]
         attr_accessor :data_use_terms_version
       
+        # Parameters for Agentspace.
+        # Corresponds to the JSON property `saasParams`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaProvisionProjectRequestSaasParams]
+        attr_accessor :saas_params
+      
         def initialize(**args)
            update!(**args)
         end
@@ -16071,6 +16380,28 @@ module Google
         def update!(**args)
           @accept_data_use_terms = args[:accept_data_use_terms] if args.key?(:accept_data_use_terms)
           @data_use_terms_version = args[:data_use_terms_version] if args.key?(:data_use_terms_version)
+          @saas_params = args[:saas_params] if args.key?(:saas_params)
+        end
+      end
+      
+      # Parameters for Agentspace.
+      class GoogleCloudDiscoveryengineV1alphaProvisionProjectRequestSaasParams
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Set to `true` to specify that caller has read and would like to give
+        # consent to the [Terms for Agent Space quality of service].
+        # Corresponds to the JSON property `acceptBizQos`
+        # @return [Boolean]
+        attr_accessor :accept_biz_qos
+        alias_method :accept_biz_qos?, :accept_biz_qos
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accept_biz_qos = args[:accept_biz_qos] if args.key?(:accept_biz_qos)
         end
       end
       
@@ -16661,7 +16992,7 @@ module Google
         # @return [String]
         attr_accessor :query
       
-        # Required. A list of records to rank. At most 200 records to rank.
+        # Required. A list of records to rank.
         # Corresponds to the JSON property `records`
         # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRankingRecord>]
         attr_accessor :records
@@ -21187,12 +21518,6 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecImageGenerationSpec]
         attr_accessor :image_generation_spec
       
-        # Optional. The name of the tool registry to use. Format: `projects/`project`/
-        # locations/`location`/toolRegistries/`tool_registry``
-        # Corresponds to the JSON property `toolRegistry`
-        # @return [String]
-        attr_accessor :tool_registry
-      
         # Specification of the Vertex AI Search tool.
         # Corresponds to the JSON property `vertexAiSearchSpec`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecVertexAiSearchSpec]
@@ -21215,7 +21540,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @image_generation_spec = args[:image_generation_spec] if args.key?(:image_generation_spec)
-          @tool_registry = args[:tool_registry] if args.key?(:tool_registry)
           @vertex_ai_search_spec = args[:vertex_ai_search_spec] if args.key?(:vertex_ai_search_spec)
           @video_generation_spec = args[:video_generation_spec] if args.key?(:video_generation_spec)
           @web_grounding_spec = args[:web_grounding_spec] if args.key?(:web_grounding_spec)
@@ -21246,14 +21570,6 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec>]
         attr_accessor :data_store_specs
       
-        # Optional. Deprecated. Please refrain from using this field. Whether the Vertex
-        # AI Search tool is disabled. Default value is false, the tool is enabled by
-        # default.
-        # Corresponds to the JSON property `disabled`
-        # @return [Boolean]
-        attr_accessor :disabled
-        alias_method :disabled?, :disabled
-      
         # Optional. The filter syntax consists of an expression language for
         # constructing a predicate from one or more fields of the documents being
         # filtered. Filter expression is case-sensitive. If this field is unrecognizable,
@@ -21276,7 +21592,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_store_specs = args[:data_store_specs] if args.key?(:data_store_specs)
-          @disabled = args[:disabled] if args.key?(:disabled)
           @filter = args[:filter] if args.key?(:filter)
         end
       end
@@ -21298,20 +21613,12 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecWebGroundingSpec
         include Google::Apis::Core::Hashable
       
-        # Optional. Deprecated. Please refrain from using this field. Whether the web
-        # grounding tool is enabled.
-        # Corresponds to the JSON property `enabled`
-        # @return [Boolean]
-        attr_accessor :enabled
-        alias_method :enabled?, :enabled
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
@@ -21987,6 +22294,63 @@ module Google
         end
       end
       
+      # Request for the AssistantService.UploadSessionFile method.
+      class GoogleCloudDiscoveryengineV1alphaUploadSessionFileRequest
+        include Google::Apis::Core::Hashable
+      
+        # A reference to data stored on the filesystem, on GFS or in blobstore.
+        # Corresponds to the JSON property `blob`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GdataMedia]
+        attr_accessor :blob
+      
+        # Extra information added to operations that support Scotty media requests.
+        # Corresponds to the JSON property `mediaRequestInfo`
+        # @return [Google::Apis::DiscoveryengineV1alpha::ApiservingMediaRequestInfo]
+        attr_accessor :media_request_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blob = args[:blob] if args.key?(:blob)
+          @media_request_info = args[:media_request_info] if args.key?(:media_request_info)
+        end
+      end
+      
+      # Response for the AssistantService.UploadSessionFile method.
+      class GoogleCloudDiscoveryengineV1alphaUploadSessionFileResponse
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the uploaded file.
+        # Corresponds to the JSON property `fileId`
+        # @return [String]
+        attr_accessor :file_id
+      
+        # This message is for backends to pass their scotty media specific fields to ESF.
+        # Backend will include this in their response message to ESF. Example:
+        # ExportFile is an rpc defined for upload using scotty from ESF. rpc ExportFile(
+        # ExportFileRequest) returns (ExportFileResponse) Message ExportFileResponse
+        # will include apiserving.MediaResponseInfo to tell ESF about data like
+        # dynamic_dropzone it needs to pass to Scotty. message ExportFileResponse `
+        # optional gdata.Media blob = 1; optional apiserving.MediaResponseInfo
+        # media_response_info = 2 `
+        # Corresponds to the JSON property `mediaResponseInfo`
+        # @return [Google::Apis::DiscoveryengineV1alpha::ApiservingMediaResponseInfo]
+        attr_accessor :media_response_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_id = args[:file_id] if args.key?(:file_id)
+          @media_response_info = args[:media_response_info] if args.key?(:media_response_info)
+        end
+      end
+      
       # UserEvent captures all metadata information Discovery Engine API needs to know
       # about how end users interact with your website.
       class GoogleCloudDiscoveryengineV1alphaUserEvent
@@ -22321,6 +22685,67 @@ module Google
           @update_time = args[:update_time] if args.key?(:update_time)
           @user_principal = args[:user_principal] if args.key?(:user_principal)
           @user_profile = args[:user_profile] if args.key?(:user_profile)
+        end
+      end
+      
+      # Standard characteristics of a video media view.
+      class GoogleCloudDiscoveryengineV1alphaVideoCharacteristics
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Bitrate of the audio in kbps.
+        # Corresponds to the JSON property `audioBitrateKbps`
+        # @return [Fixnum]
+        attr_accessor :audio_bitrate_kbps
+      
+        # Output only. Audio codecs used in the video.
+        # Corresponds to the JSON property `audioCodecs`
+        # @return [Array<String>]
+        attr_accessor :audio_codecs
+      
+        # Output only. Video duration.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Output only. Frame rate (frames per second).
+        # Corresponds to the JSON property `frameRate`
+        # @return [Float]
+        attr_accessor :frame_rate
+      
+        # Output only. Video height in pixels.
+        # Corresponds to the JSON property `height`
+        # @return [Fixnum]
+        attr_accessor :height
+      
+        # Output only. Bitrate of the video in kbps.
+        # Corresponds to the JSON property `videoBitrateKbps`
+        # @return [Fixnum]
+        attr_accessor :video_bitrate_kbps
+      
+        # Output only. Video codecs used in the video.
+        # Corresponds to the JSON property `videoCodecs`
+        # @return [Array<String>]
+        attr_accessor :video_codecs
+      
+        # Output only. Video width in pixels.
+        # Corresponds to the JSON property `width`
+        # @return [Fixnum]
+        attr_accessor :width
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio_bitrate_kbps = args[:audio_bitrate_kbps] if args.key?(:audio_bitrate_kbps)
+          @audio_codecs = args[:audio_codecs] if args.key?(:audio_codecs)
+          @duration = args[:duration] if args.key?(:duration)
+          @frame_rate = args[:frame_rate] if args.key?(:frame_rate)
+          @height = args[:height] if args.key?(:height)
+          @video_bitrate_kbps = args[:video_bitrate_kbps] if args.key?(:video_bitrate_kbps)
+          @video_codecs = args[:video_codecs] if args.key?(:video_codecs)
+          @width = args[:width] if args.key?(:width)
         end
       end
       
@@ -23385,14 +23810,14 @@ module Google
         attr_accessor :is_default
         alias_method :is_default?, :is_default
       
-        # KMS key resource name which will be used to encrypt resources `projects/`
-        # project`/locations/`location`/keyRings/`keyRing`/cryptoKeys/`keyId``.
+        # Required. KMS key resource name which will be used to encrypt resources `
+        # projects/`project`/locations/`location`/keyRings/`keyRing`/cryptoKeys/`keyId``.
         # Corresponds to the JSON property `kmsKey`
         # @return [String]
         attr_accessor :kms_key
       
-        # KMS key version resource name which will be used to encrypt resources `/
-        # cryptoKeyVersions/`keyVersion``.
+        # Output only. KMS key version resource name which will be used to encrypt
+        # resources `/cryptoKeyVersions/`keyVersion``.
         # Corresponds to the JSON property `kmsKeyVersion`
         # @return [String]
         attr_accessor :kms_key_version
@@ -28314,6 +28739,220 @@ module Google
         end
       end
       
+      # Metadata about an agentspace source.
+      class GoogleCloudNotebooklmV1alphaAgentspaceMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The full document name in Agentspace.
+        # Corresponds to the JSON property `documentName`
+        # @return [String]
+        attr_accessor :document_name
+      
+        # Output only. The title of the document.
+        # Corresponds to the JSON property `documentTitle`
+        # @return [String]
+        attr_accessor :document_title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_name = args[:document_name] if args.key?(:document_name)
+          @document_title = args[:document_title] if args.key?(:document_title)
+        end
+      end
+      
+      # Request for SourceService.BatchCreateSources method.
+      class GoogleCloudNotebooklmV1alphaBatchCreateSourcesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The UserContents to be uploaded.
+        # Corresponds to the JSON property `userContents`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUserContent>]
+        attr_accessor :user_contents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @user_contents = args[:user_contents] if args.key?(:user_contents)
+        end
+      end
+      
+      # Response for SourceService.BatchCreateSources method.
+      class GoogleCloudNotebooklmV1alphaBatchCreateSourcesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The Sources.
+        # Corresponds to the JSON property `sources`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSource>]
+        attr_accessor :sources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sources = args[:sources] if args.key?(:sources)
+        end
+      end
+      
+      # Response for NotebookService.ListRecentlyViewedNotebooks method.
+      class GoogleCloudNotebooklmV1alphaListRecentlyViewedNotebooksResponse
+        include Google::Apis::Core::Hashable
+      
+        # The page token, provide this to retrieve the subsequent page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of recently viewed notebooks.
+        # Corresponds to the JSON property `notebooks`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaNotebook>]
+        attr_accessor :notebooks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @notebooks = args[:notebooks] if args.key?(:notebooks)
+        end
+      end
+      
+      # Notebook is a resource where users can store their content (as sources) and
+      # interacts with the content.
+      class GoogleCloudNotebooklmV1alphaNotebook
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The emoji of the notebook.
+        # Corresponds to the JSON property `emoji`
+        # @return [String]
+        attr_accessor :emoji
+      
+        # Metadata for a notebook.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaNotebookMetadata]
+        attr_accessor :metadata
+      
+        # Identifier. The identifier of the notebook. Format: `projects/`project`/
+        # locations/`location`/notebooks/`notebook_id``. This field must be a UTF-8
+        # encoded string.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Notebook id, which is the last segment of the notebook's resource
+        # name. This is to make it similar with notebooklm API.
+        # Corresponds to the JSON property `notebookId`
+        # @return [String]
+        attr_accessor :notebook_id
+      
+        # Optional. The title of the notebook.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @emoji = args[:emoji] if args.key?(:emoji)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+          @notebook_id = args[:notebook_id] if args.key?(:notebook_id)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Metadata for a notebook.
+      class GoogleCloudNotebooklmV1alphaNotebookMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time at which this project was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # True if the project is shareable.
+        # Corresponds to the JSON property `isShareable`
+        # @return [Boolean]
+        attr_accessor :is_shareable
+        alias_method :is_shareable?, :is_shareable
+      
+        # True if this project is currently shared with other people, false otherwise.
+        # Corresponds to the JSON property `isShared`
+        # @return [Boolean]
+        attr_accessor :is_shared
+        alias_method :is_shared?, :is_shared
+      
+        # A timestamp indicating the time that the current in session user has last
+        # viewed the project.
+        # Corresponds to the JSON property `lastViewed`
+        # @return [String]
+        attr_accessor :last_viewed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @is_shareable = args[:is_shareable] if args.key?(:is_shareable)
+          @is_shared = args[:is_shared] if args.key?(:is_shared)
+          @last_viewed = args[:last_viewed] if args.key?(:last_viewed)
+        end
+      end
+      
+      # Source represents a single source of content.
+      class GoogleCloudNotebooklmV1alphaSource
+        include Google::Apis::Core::Hashable
+      
+        # Represents the metadata of a source and some additional information.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSourceMetadata]
+        attr_accessor :metadata
+      
+        # Identifier. The full resource name of the source. Format: `projects/`project`/
+        # locations/`location`/notebooks/`notebook`/sources/`source_id``. This field
+        # must be a UTF-8 encoded string with a length limit of 1024 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # SourceId is the last segment of the source's resource name.
+        # Corresponds to the JSON property `sourceId`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSourceId]
+        attr_accessor :source_id
+      
+        # Optional. Title of the source.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+          @source_id = args[:source_id] if args.key?(:source_id)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
       # SourceId is the last segment of the source's resource name.
       class GoogleCloudNotebooklmV1alphaSourceId
         include Google::Apis::Core::Hashable
@@ -28330,6 +28969,43 @@ module Google
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # Represents the metadata of a source and some additional information.
+      class GoogleCloudNotebooklmV1alphaSourceMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Metadata about an agentspace source.
+        # Corresponds to the JSON property `agentspaceMetadata`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaAgentspaceMetadata]
+        attr_accessor :agentspace_metadata
+      
+        # The timestamp the source was added.
+        # Corresponds to the JSON property `sourceAddedTimestamp`
+        # @return [String]
+        attr_accessor :source_added_timestamp
+      
+        # The number of tokens in the source.
+        # Corresponds to the JSON property `tokenCount`
+        # @return [Fixnum]
+        attr_accessor :token_count
+      
+        # The word count of the source.
+        # Corresponds to the JSON property `wordCount`
+        # @return [Fixnum]
+        attr_accessor :word_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agentspace_metadata = args[:agentspace_metadata] if args.key?(:agentspace_metadata)
+          @source_added_timestamp = args[:source_added_timestamp] if args.key?(:source_added_timestamp)
+          @token_count = args[:token_count] if args.key?(:token_count)
+          @word_count = args[:word_count] if args.key?(:word_count)
         end
       end
       
@@ -28394,6 +29070,56 @@ module Google
         def update!(**args)
           @media_response_info = args[:media_response_info] if args.key?(:media_response_info)
           @source_id = args[:source_id] if args.key?(:source_id)
+        end
+      end
+      
+      # The "Content" messages refer to data the user wants to upload.
+      class GoogleCloudNotebooklmV1alphaUserContent
+        include Google::Apis::Core::Hashable
+      
+        # Agentspace content uploaded as source.
+        # Corresponds to the JSON property `agentspaceContent`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUserContentAgentspaceContent]
+        attr_accessor :agentspace_content
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agentspace_content = args[:agentspace_content] if args.key?(:agentspace_content)
+        end
+      end
+      
+      # Agentspace content uploaded as source.
+      class GoogleCloudNotebooklmV1alphaUserContentAgentspaceContent
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The full document name in Agentspace.
+        # Corresponds to the JSON property `documentName`
+        # @return [String]
+        attr_accessor :document_name
+      
+        # Optional. Engine to verify the permission of the document.
+        # Corresponds to the JSON property `engineName`
+        # @return [String]
+        attr_accessor :engine_name
+      
+        # Optional. The full idea name for IdeaForge.
+        # Corresponds to the JSON property `ideaforgeIdeaName`
+        # @return [String]
+        attr_accessor :ideaforge_idea_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_name = args[:document_name] if args.key?(:document_name)
+          @engine_name = args[:engine_name] if args.key?(:engine_name)
+          @ideaforge_idea_name = args[:ideaforge_idea_name] if args.key?(:ideaforge_idea_name)
         end
       end
       
