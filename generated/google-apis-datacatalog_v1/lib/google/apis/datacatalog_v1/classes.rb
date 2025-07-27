@@ -2224,8 +2224,7 @@ module Google
       class GoogleCloudDatacatalogV1ReconcileTagsRequest
         include Google::Apis::Core::Hashable
       
-        # If set to `true`, deletes entry tags related to a tag template not listed in
-        # the tags source from an entry. If set to `false`, unlisted tags are retained.
+        # 
         # Corresponds to the JSON property `forceDeleteMissing`
         # @return [Boolean]
         attr_accessor :force_delete_missing
