@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EnrollmentTokenGoogleAuthenticationOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Enterprise
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -805,7 +811,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :duration, as: 'duration'
           property :enrollment_token_type, as: 'enrollmentTokenType'
+          property :google_authentication_options, as: 'googleAuthenticationOptions', class: Google::Apis::AndroidenterpriseV1::EnrollmentTokenGoogleAuthenticationOptions, decorator: Google::Apis::AndroidenterpriseV1::EnrollmentTokenGoogleAuthenticationOptions::Representation
+      
           property :token, as: 'token'
+        end
+      end
+      
+      class EnrollmentTokenGoogleAuthenticationOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication_requirement, as: 'authenticationRequirement'
+          property :required_account_email, as: 'requiredAccountEmail'
         end
       end
       
