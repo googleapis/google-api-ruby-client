@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackupDrConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackupFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -637,6 +643,13 @@ module Google
         end
       end
       
+      class BackupDrConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backupdr_managed, as: 'backupdrManaged'
+        end
+      end
+      
       class BackupFile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -715,6 +728,8 @@ module Google
       
           hash :redis_configs, as: 'redisConfigs'
           property :replica_count, as: 'replicaCount'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :shard_count, as: 'shardCount'
           property :simulate_maintenance_event, as: 'simulateMaintenanceEvent'
           property :size_gb, as: 'sizeGb'
@@ -886,6 +901,8 @@ module Google
           property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::RedisV1::BackupConfiguration, decorator: Google::Apis::RedisV1::BackupConfiguration::Representation
       
           property :backup_run, as: 'backupRun', class: Google::Apis::RedisV1::BackupRun, decorator: Google::Apis::RedisV1::BackupRun::Representation
+      
+          property :backupdr_configuration, as: 'backupdrConfiguration', class: Google::Apis::RedisV1::BackupDrConfiguration, decorator: Google::Apis::RedisV1::BackupDrConfiguration::Representation
       
           property :creation_time, as: 'creationTime'
           property :current_state, as: 'currentState'

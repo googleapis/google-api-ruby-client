@@ -347,6 +347,27 @@ module Google
         end
       end
       
+      # BackupDRConfiguration to capture the backup and disaster recovery details of
+      # database resource.
+      class BackupDrConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # Indicates if the resource is managed by BackupDR.
+        # Corresponds to the JSON property `backupdrManaged`
+        # @return [Boolean]
+        attr_accessor :backupdr_managed
+        alias_method :backupdr_managed?, :backupdr_managed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backupdr_managed = args[:backupdr_managed] if args.key?(:backupdr_managed)
+        end
+      end
+      
       # Backup is consisted of multiple backup files.
       class BackupFile
         include Google::Apis::Core::Hashable
@@ -616,6 +637,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :replica_count
       
+        # Optional. Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Optional. Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Optional. Number of shards for the Redis cluster.
         # Corresponds to the JSON property `shardCount`
         # @return [Fixnum]
@@ -692,6 +725,8 @@ module Google
           @psc_service_attachments = args[:psc_service_attachments] if args.key?(:psc_service_attachments)
           @redis_configs = args[:redis_configs] if args.key?(:redis_configs)
           @replica_count = args[:replica_count] if args.key?(:replica_count)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @shard_count = args[:shard_count] if args.key?(:shard_count)
           @simulate_maintenance_event = args[:simulate_maintenance_event] if args.key?(:simulate_maintenance_event)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
@@ -1053,7 +1088,7 @@ module Google
         # @return [Google::Apis::RedisV1::DatabaseResourceId]
         attr_accessor :resource_id
       
-        # Common model for database resource instance metadata. Next ID: 25
+        # Common model for database resource instance metadata. Next ID: 26
         # Corresponds to the JSON property `resourceMetadata`
         # @return [Google::Apis::RedisV1::DatabaseResourceMetadata]
         attr_accessor :resource_metadata
@@ -1238,7 +1273,7 @@ module Google
         end
       end
       
-      # Common model for database resource instance metadata. Next ID: 25
+      # Common model for database resource instance metadata. Next ID: 26
       class DatabaseResourceMetadata
         include Google::Apis::Core::Hashable
       
@@ -1256,6 +1291,12 @@ module Google
         # Corresponds to the JSON property `backupRun`
         # @return [Google::Apis::RedisV1::BackupRun]
         attr_accessor :backup_run
+      
+        # BackupDRConfiguration to capture the backup and disaster recovery details of
+        # database resource.
+        # Corresponds to the JSON property `backupdrConfiguration`
+        # @return [Google::Apis::RedisV1::BackupDrConfiguration]
+        attr_accessor :backupdr_configuration
       
         # The creation time of the resource, i.e. the time when resource is created and
         # recorded in partner service.
@@ -1385,6 +1426,7 @@ module Google
           @availability_configuration = args[:availability_configuration] if args.key?(:availability_configuration)
           @backup_configuration = args[:backup_configuration] if args.key?(:backup_configuration)
           @backup_run = args[:backup_run] if args.key?(:backup_run)
+          @backupdr_configuration = args[:backupdr_configuration] if args.key?(:backupdr_configuration)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @current_state = args[:current_state] if args.key?(:current_state)
           @custom_metadata = args[:custom_metadata] if args.key?(:custom_metadata)
