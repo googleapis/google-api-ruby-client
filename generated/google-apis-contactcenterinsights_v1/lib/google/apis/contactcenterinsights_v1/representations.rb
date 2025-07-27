@@ -3103,6 +3103,7 @@ module Google
           property :bucket_uri, as: 'bucketUri'
           collection :custom_metadata_keys, as: 'customMetadataKeys'
           property :metadata_bucket_uri, as: 'metadataBucketUri'
+          property :transcript_bucket_uri, as: 'transcriptBucketUri'
         end
       end
       
@@ -4914,6 +4915,7 @@ module Google
           property :bucket_uri, as: 'bucketUri'
           collection :custom_metadata_keys, as: 'customMetadataKeys'
           property :metadata_bucket_uri, as: 'metadataBucketUri'
+          property :transcript_bucket_uri, as: 'transcriptBucketUri'
         end
       end
       
