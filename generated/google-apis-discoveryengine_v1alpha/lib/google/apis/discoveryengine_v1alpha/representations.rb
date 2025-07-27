@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1Assistant
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1BatchCreateTargetSiteMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1246,6 +1252,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaAssistant
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaAssistantContent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2128,6 +2140,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaFileCharacteristics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaFileMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaFileView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaFirestoreSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2207,6 +2237,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaIdpConfigExternalIdpConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaImageCharacteristics
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2446,6 +2482,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaListFilesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaListIdentityMappingStoresResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2585,6 +2627,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaProvisionProjectRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaProvisionProjectRequestSaasParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3520,6 +3568,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaUploadSessionFileRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaUploadSessionFileResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaUserEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3533,6 +3593,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaUserLicense
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaVideoCharacteristics
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4444,7 +4510,55 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudNotebooklmV1alphaAgentspaceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaBatchCreateSourcesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaBatchCreateSourcesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaListRecentlyViewedNotebooksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaNotebook
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaNotebookMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudNotebooklmV1alphaSourceId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaSourceMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4457,6 +4571,18 @@ module Google
       end
       
       class GoogleCloudNotebooklmV1alphaUploadSourceFileResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaUserContent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaUserContentAgentspaceContent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4931,6 +5057,13 @@ module Google
           property :temperature, as: 'temperature'
           property :top_k, :numeric_string => true, as: 'topK'
           property :top_p, as: 'topP'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1Assistant
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -6618,6 +6751,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :assist_skipped_reasons, as: 'assistSkippedReasons'
+          property :name, as: 'name'
           collection :replies, as: 'replies', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistAnswerReply, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistAnswerReply::Representation
       
           property :state, as: 'state'
@@ -6637,6 +6771,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :preferred_language_code, as: 'preferredLanguageCode'
           property :time_zone, as: 'timeZone'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAssistant
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -8170,6 +8311,49 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaFileCharacteristics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :characteristics, as: 'characteristics'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaFileMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :byte_size, :numeric_string => true, as: 'byteSize'
+          property :download_uri, as: 'downloadUri'
+          property :file_id, as: 'fileId'
+          property :file_origin_type, as: 'fileOriginType'
+          property :last_add_time, as: 'lastAddTime'
+          hash :metadata, as: 'metadata'
+          property :mime_type, as: 'mimeType'
+          property :name, as: 'name'
+          property :original_source_type, as: 'originalSourceType'
+          property :original_uri, as: 'originalUri'
+          property :upload_time, as: 'uploadTime'
+          hash :views, as: 'views', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaFileView, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaFileView::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaFileView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :byte_size, :numeric_string => true, as: 'byteSize'
+          property :create_time, as: 'createTime'
+          property :file_characteristics, as: 'fileCharacteristics', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaFileCharacteristics, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaFileCharacteristics::Representation
+      
+          property :image_characteristics, as: 'imageCharacteristics', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaImageCharacteristics, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaImageCharacteristics::Representation
+      
+          property :mime_type, as: 'mimeType'
+          property :uri, as: 'uri'
+          property :video_characteristics, as: 'videoCharacteristics', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaVideoCharacteristics, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaVideoCharacteristics::Representation
+      
+          property :view_id, as: 'viewId'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaFirestoreSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8292,6 +8476,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :workforce_pool_name, as: 'workforcePoolName'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaImageCharacteristics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bit_depth, as: 'bitDepth'
+          property :color_space, as: 'colorSpace'
+          property :height, as: 'height'
+          property :width, as: 'width'
         end
       end
       
@@ -8687,6 +8881,15 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaListFilesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :files, as: 'files', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaFileMetadata, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaFileMetadata::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaListIdentityMappingStoresResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8903,6 +9106,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accept_data_use_terms, as: 'acceptDataUseTerms'
           property :data_use_terms_version, as: 'dataUseTermsVersion'
+          property :saas_params, as: 'saasParams', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaProvisionProjectRequestSaasParams, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaProvisionProjectRequestSaasParams::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaProvisionProjectRequestSaasParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accept_biz_qos, as: 'acceptBizQos'
         end
       end
       
@@ -10236,7 +10448,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :image_generation_spec, as: 'imageGenerationSpec', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecImageGenerationSpec, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecImageGenerationSpec::Representation
       
-          property :tool_registry, as: 'toolRegistry'
           property :vertex_ai_search_spec, as: 'vertexAiSearchSpec', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecVertexAiSearchSpec, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecVertexAiSearchSpec::Representation
       
           property :video_generation_spec, as: 'videoGenerationSpec', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecVideoGenerationSpec, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecVideoGenerationSpec::Representation
@@ -10257,7 +10468,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :data_store_specs, as: 'dataStoreSpecs', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec::Representation
       
-          property :disabled, as: 'disabled'
           property :filter, as: 'filter'
         end
       end
@@ -10271,7 +10481,6 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecWebGroundingSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :enabled, as: 'enabled'
         end
       end
       
@@ -10467,6 +10676,25 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaUploadSessionFileRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :blob, as: 'blob', class: Google::Apis::DiscoveryengineV1alpha::GdataMedia, decorator: Google::Apis::DiscoveryengineV1alpha::GdataMedia::Representation
+      
+          property :media_request_info, as: 'mediaRequestInfo', class: Google::Apis::DiscoveryengineV1alpha::ApiservingMediaRequestInfo, decorator: Google::Apis::DiscoveryengineV1alpha::ApiservingMediaRequestInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaUploadSessionFileResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_id, as: 'fileId'
+          property :media_response_info, as: 'mediaResponseInfo', class: Google::Apis::DiscoveryengineV1alpha::ApiservingMediaResponseInfo, decorator: Google::Apis::DiscoveryengineV1alpha::ApiservingMediaResponseInfo::Representation
+      
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaUserEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10524,6 +10752,20 @@ module Google
           property :update_time, as: 'updateTime'
           property :user_principal, as: 'userPrincipal'
           property :user_profile, as: 'userProfile'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaVideoCharacteristics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_bitrate_kbps, as: 'audioBitrateKbps'
+          collection :audio_codecs, as: 'audioCodecs'
+          property :duration, as: 'duration'
+          property :frame_rate, as: 'frameRate'
+          property :height, as: 'height'
+          property :video_bitrate_kbps, as: 'videoBitrateKbps'
+          collection :video_codecs, as: 'videoCodecs'
+          property :width, as: 'width'
         end
       end
       
@@ -12090,10 +12332,88 @@ module Google
         end
       end
       
+      class GoogleCloudNotebooklmV1alphaAgentspaceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_name, as: 'documentName'
+          property :document_title, as: 'documentTitle'
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaBatchCreateSourcesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :user_contents, as: 'userContents', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUserContent, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUserContent::Representation
+      
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaBatchCreateSourcesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :sources, as: 'sources', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSource, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSource::Representation
+      
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaListRecentlyViewedNotebooksResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :notebooks, as: 'notebooks', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaNotebook, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaNotebook::Representation
+      
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaNotebook
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :emoji, as: 'emoji'
+          property :metadata, as: 'metadata', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaNotebookMetadata, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaNotebookMetadata::Representation
+      
+          property :name, as: 'name'
+          property :notebook_id, as: 'notebookId'
+          property :title, as: 'title'
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaNotebookMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :is_shareable, as: 'isShareable'
+          property :is_shared, as: 'isShared'
+          property :last_viewed, as: 'lastViewed'
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metadata, as: 'metadata', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSourceMetadata, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSourceMetadata::Representation
+      
+          property :name, as: 'name'
+          property :source_id, as: 'sourceId', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSourceId, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSourceId::Representation
+      
+          property :title, as: 'title'
+        end
+      end
+      
       class GoogleCloudNotebooklmV1alphaSourceId
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaSourceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agentspace_metadata, as: 'agentspaceMetadata', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaAgentspaceMetadata, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaAgentspaceMetadata::Representation
+      
+          property :source_added_timestamp, as: 'sourceAddedTimestamp'
+          property :token_count, as: 'tokenCount'
+          property :word_count, as: 'wordCount'
         end
       end
       
@@ -12115,6 +12435,23 @@ module Google
       
           property :source_id, as: 'sourceId', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSourceId, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSourceId::Representation
       
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaUserContent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agentspace_content, as: 'agentspaceContent', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUserContentAgentspaceContent, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUserContentAgentspaceContent::Representation
+      
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaUserContentAgentspaceContent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_name, as: 'documentName'
+          property :engine_name, as: 'engineName'
+          property :ideaforge_idea_name, as: 'ideaforgeIdeaName'
         end
       end
       
