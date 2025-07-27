@@ -268,6 +268,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -853,6 +871,32 @@ module Google
       
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
+          collection :upstreams, as: 'upstreams', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream::Representation
+      
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :egress_policy, as: 'egressPolicy', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy::Representation
+      
+          property :network, as: 'network', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork::Representation
+      
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :regions, as: 'regions'
         end
       end
       
@@ -903,6 +947,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :delegating_service_account, as: 'delegatingServiceAccount'
           property :display_name, as: 'displayName'
           collection :external_ips, as: 'externalIps'
           hash :hubs, as: 'hubs', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Hub, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Hub::Representation
