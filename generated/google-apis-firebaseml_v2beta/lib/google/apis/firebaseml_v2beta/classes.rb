@@ -1625,6 +1625,11 @@ module Google
       class GoogleCloudAiplatformV1beta1GroundingChunkMaps
         include Google::Apis::Core::Hashable
       
+        # Sources used to generate the place answer.
+        # Corresponds to the JSON property `placeAnswerSources`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSources]
+        attr_accessor :place_answer_sources
+      
         # This Place's resource name, in `places/`place_id`` format. Can be used to look
         # up the Place.
         # Corresponds to the JSON property `placeId`
@@ -1652,10 +1657,112 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @place_answer_sources = args[:place_answer_sources] if args.key?(:place_answer_sources)
           @place_id = args[:place_id] if args.key?(:place_id)
           @text = args[:text] if args.key?(:text)
           @title = args[:title] if args.key?(:title)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Sources used to generate the place answer.
+      class GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSources
+        include Google::Apis::Core::Hashable
+      
+        # A link where users can flag a problem with the generated answer.
+        # Corresponds to the JSON property `flagContentUri`
+        # @return [String]
+        attr_accessor :flag_content_uri
+      
+        # Snippets of reviews that are used to generate the answer.
+        # Corresponds to the JSON property `reviewSnippets`
+        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSourcesReviewSnippet>]
+        attr_accessor :review_snippets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @flag_content_uri = args[:flag_content_uri] if args.key?(:flag_content_uri)
+          @review_snippets = args[:review_snippets] if args.key?(:review_snippets)
+        end
+      end
+      
+      # Author attribution for a photo or review.
+      class GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSourcesAuthorAttribution
+        include Google::Apis::Core::Hashable
+      
+        # Name of the author of the Photo or Review.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Profile photo URI of the author of the Photo or Review.
+        # Corresponds to the JSON property `photoUri`
+        # @return [String]
+        attr_accessor :photo_uri
+      
+        # URI of the author of the Photo or Review.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @photo_uri = args[:photo_uri] if args.key?(:photo_uri)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Encapsulates a review snippet.
+      class GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSourcesReviewSnippet
+        include Google::Apis::Core::Hashable
+      
+        # Author attribution for a photo or review.
+        # Corresponds to the JSON property `authorAttribution`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSourcesAuthorAttribution]
+        attr_accessor :author_attribution
+      
+        # A link where users can flag a problem with the review.
+        # Corresponds to the JSON property `flagContentUri`
+        # @return [String]
+        attr_accessor :flag_content_uri
+      
+        # A link to show the review on Google Maps.
+        # Corresponds to the JSON property `googleMapsUri`
+        # @return [String]
+        attr_accessor :google_maps_uri
+      
+        # A string of formatted recent time, expressing the review time relative to the
+        # current time in a form appropriate for the language and country.
+        # Corresponds to the JSON property `relativePublishTimeDescription`
+        # @return [String]
+        attr_accessor :relative_publish_time_description
+      
+        # A reference representing this place review which may be used to look up this
+        # place review again.
+        # Corresponds to the JSON property `review`
+        # @return [String]
+        attr_accessor :review
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @author_attribution = args[:author_attribution] if args.key?(:author_attribution)
+          @flag_content_uri = args[:flag_content_uri] if args.key?(:flag_content_uri)
+          @google_maps_uri = args[:google_maps_uri] if args.key?(:google_maps_uri)
+          @relative_publish_time_description = args[:relative_publish_time_description] if args.key?(:relative_publish_time_description)
+          @review = args[:review] if args.key?(:review)
         end
       end
       
@@ -2716,11 +2823,6 @@ module Google
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolCodeExecution]
         attr_accessor :code_execution
       
-        # Tool to support computer use.
-        # Corresponds to the JSON property `computerUse`
-        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolComputerUse]
-        attr_accessor :computer_use
-      
         # Tool to search public web data, powered by Vertex AI Search and Sec4
         # compliance.
         # Corresponds to the JSON property `enterpriseWebSearch`
@@ -2770,7 +2872,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @code_execution = args[:code_execution] if args.key?(:code_execution)
-          @computer_use = args[:computer_use] if args.key?(:computer_use)
           @enterprise_web_search = args[:enterprise_web_search] if args.key?(:enterprise_web_search)
           @function_declarations = args[:function_declarations] if args.key?(:function_declarations)
           @google_maps = args[:google_maps] if args.key?(:google_maps)
@@ -2793,25 +2894,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # Tool to support computer use.
-      class GoogleCloudAiplatformV1beta1ToolComputerUse
-        include Google::Apis::Core::Hashable
-      
-        # Required. The environment being operated.
-        # Corresponds to the JSON property `environment`
-        # @return [String]
-        attr_accessor :environment
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @environment = args[:environment] if args.key?(:environment)
         end
       end
       
@@ -3086,6 +3168,12 @@ module Google
         # @return [String]
         attr_accessor :end_offset
       
+        # Optional. The frame rate of the video sent to the model. If not specified, the
+        # default value will be 1.0. The fps range is (0.0, 24.0].
+        # Corresponds to the JSON property `fps`
+        # @return [Float]
+        attr_accessor :fps
+      
         # Optional. The start offset of the video.
         # Corresponds to the JSON property `startOffset`
         # @return [String]
@@ -3098,6 +3186,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_offset = args[:end_offset] if args.key?(:end_offset)
+          @fps = args[:fps] if args.key?(:fps)
           @start_offset = args[:start_offset] if args.key?(:start_offset)
         end
       end
