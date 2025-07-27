@@ -2118,6 +2118,7 @@ module Google
           property :external_id, as: 'externalId'
           hash :labels, as: 'labels'
           property :last_connection_time, as: 'lastConnectionTime'
+          property :membership_type, as: 'membershipType'
           property :monitoring_config, as: 'monitoringConfig', class: Google::Apis::GkehubV1::MonitoringConfig, decorator: Google::Apis::GkehubV1::MonitoringConfig::Representation
       
           property :name, as: 'name'
