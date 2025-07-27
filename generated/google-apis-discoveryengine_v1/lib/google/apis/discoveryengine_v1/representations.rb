@@ -502,6 +502,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1Assistant
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1AssistantContent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1469,6 +1475,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1ProvisionProjectRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1ProvisionProjectRequestSaasParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4987,6 +4999,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :assist_skipped_reasons, as: 'assistSkippedReasons'
+          property :name, as: 'name'
           collection :replies, as: 'replies', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AssistAnswerReply, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AssistAnswerReply::Representation
       
           property :state, as: 'state'
@@ -5006,6 +5019,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :preferred_language_code, as: 'preferredLanguageCode'
           property :time_zone, as: 'timeZone'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1Assistant
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -6610,6 +6630,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accept_data_use_terms, as: 'acceptDataUseTerms'
           property :data_use_terms_version, as: 'dataUseTermsVersion'
+          property :saas_params, as: 'saasParams', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ProvisionProjectRequestSaasParams, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ProvisionProjectRequestSaasParams::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1ProvisionProjectRequestSaasParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accept_biz_qos, as: 'acceptBizQos'
         end
       end
       
@@ -7399,7 +7428,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :image_generation_spec, as: 'imageGenerationSpec', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1StreamAssistRequestToolsSpecImageGenerationSpec, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1StreamAssistRequestToolsSpecImageGenerationSpec::Representation
       
-          property :tool_registry, as: 'toolRegistry'
           property :vertex_ai_search_spec, as: 'vertexAiSearchSpec', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1StreamAssistRequestToolsSpecVertexAiSearchSpec, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1StreamAssistRequestToolsSpecVertexAiSearchSpec::Representation
       
           property :video_generation_spec, as: 'videoGenerationSpec', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1StreamAssistRequestToolsSpecVideoGenerationSpec, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1StreamAssistRequestToolsSpecVideoGenerationSpec::Representation
@@ -7420,7 +7448,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :data_store_specs, as: 'dataStoreSpecs', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchRequestDataStoreSpec, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchRequestDataStoreSpec::Representation
       
-          property :disabled, as: 'disabled'
           property :filter, as: 'filter'
         end
       end
@@ -7434,7 +7461,6 @@ module Google
       class GoogleCloudDiscoveryengineV1StreamAssistRequestToolsSpecWebGroundingSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :enabled, as: 'enabled'
         end
       end
       
