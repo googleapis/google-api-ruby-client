@@ -4500,6 +4500,33 @@ module Google
         end
       end
       
+      # Configure document processing to fall back to any of the following processing
+      # options if document processing is unavailable in the original request location.
+      class GooglePrivacyDlpV2DocumentFallbackLocation
+        include Google::Apis::Core::Hashable
+      
+        # Processing occurs in the global region.
+        # Corresponds to the JSON property `globalProcessing`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2GlobalProcessing]
+        attr_accessor :global_processing
+      
+        # Processing occurs in a multi-region that contains the current region if
+        # available.
+        # Corresponds to the JSON property `multiRegionProcessing`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2MultiRegionProcessing]
+        attr_accessor :multi_region_processing
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @global_processing = args[:global_processing] if args.key?(:global_processing)
+          @multi_region_processing = args[:multi_region_processing] if args.key?(:multi_region_processing)
+        end
+      end
+      
       # Location of a finding within a document.
       class GooglePrivacyDlpV2DocumentLocation
         include Google::Apis::Core::Hashable
@@ -5487,7 +5514,7 @@ module Google
         end
       end
       
-      # Processing will happen in the global region.
+      # Processing occurs in the global region.
       class GooglePrivacyDlpV2GlobalProcessing
         include Google::Apis::Core::Hashable
       
@@ -5750,17 +5777,17 @@ module Google
         end
       end
       
-      # Configure image processing to fall back to the configured processing option
-      # below if unavailable in the request location.
+      # Configure image processing to fall back to any of the following processing
+      # options if image processing is unavailable in the original request location.
       class GooglePrivacyDlpV2ImageFallbackLocation
         include Google::Apis::Core::Hashable
       
-        # Processing will happen in the global region.
+        # Processing occurs in the global region.
         # Corresponds to the JSON property `globalProcessing`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2GlobalProcessing]
         attr_accessor :global_processing
       
-        # Processing will happen in a multi-region that contains the current region if
+        # Processing occurs in a multi-region that contains the current region if
         # available.
         # Corresponds to the JSON property `multiRegionProcessing`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2MultiRegionProcessing]
@@ -6344,7 +6371,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2RequestedOptions]
         attr_accessor :requested_options
       
-        # All result fields mentioned below are updated while the job is processing.
+        # All Result fields are updated while the job is processing.
         # Corresponds to the JSON property `result`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Result]
         attr_accessor :result
@@ -7595,7 +7622,7 @@ module Google
         end
       end
       
-      # Processing will happen in a multi-region that contains the current region if
+      # Processing occurs in a multi-region that contains the current region if
       # available.
       class GooglePrivacyDlpV2MultiRegionProcessing
         include Google::Apis::Core::Hashable
@@ -8200,8 +8227,14 @@ module Google
       class GooglePrivacyDlpV2ProcessingLocation
         include Google::Apis::Core::Hashable
       
-        # Configure image processing to fall back to the configured processing option
-        # below if unavailable in the request location.
+        # Configure document processing to fall back to any of the following processing
+        # options if document processing is unavailable in the original request location.
+        # Corresponds to the JSON property `documentFallbackLocation`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DocumentFallbackLocation]
+        attr_accessor :document_fallback_location
+      
+        # Configure image processing to fall back to any of the following processing
+        # options if image processing is unavailable in the original request location.
         # Corresponds to the JSON property `imageFallbackLocation`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ImageFallbackLocation]
         attr_accessor :image_fallback_location
@@ -8212,6 +8245,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @document_fallback_location = args[:document_fallback_location] if args.key?(:document_fallback_location)
           @image_fallback_location = args[:image_fallback_location] if args.key?(:image_fallback_location)
         end
       end
@@ -8576,7 +8610,7 @@ module Google
       
         # A column can be tagged with a custom tag. In this case, the user must indicate
         # an auxiliary table that contains statistical information on the possible
-        # values of this column (below).
+        # values of this column.
         # Corresponds to the JSON property `customTag`
         # @return [String]
         attr_accessor :custom_tag
@@ -8645,7 +8679,7 @@ module Google
       
         # A column can be tagged with a custom tag. In this case, the user must indicate
         # an auxiliary table that contains statistical information on the possible
-        # values of this column (below).
+        # values of this column.
         # Corresponds to the JSON property `customTag`
         # @return [String]
         attr_accessor :custom_tag
@@ -9236,7 +9270,7 @@ module Google
         end
       end
       
-      # All result fields mentioned below are updated while the job is processing.
+      # All Result fields are updated while the job is processing.
       class GooglePrivacyDlpV2Result
         include Google::Apis::Core::Hashable
       
@@ -10348,7 +10382,7 @@ module Google
       
         # A column can be tagged with a custom tag. In this case, the user must indicate
         # an auxiliary table that contains statistical information on the possible
-        # values of this column (below).
+        # values of this column.
         # Corresponds to the JSON property `customTag`
         # @return [String]
         attr_accessor :custom_tag
