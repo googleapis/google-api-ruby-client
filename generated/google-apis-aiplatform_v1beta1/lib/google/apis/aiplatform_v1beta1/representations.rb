@@ -1264,6 +1264,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1DeployRequestCustomModel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1DeployRequestDeployConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2399,6 +2405,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1GcsSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1GdcConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -10200,6 +10212,8 @@ module Google
       class GoogleCloudAiplatformV1beta1DeployRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_model, as: 'customModel', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DeployRequestCustomModel, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DeployRequestCustomModel::Representation
+      
           property :deploy_config, as: 'deployConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DeployRequestDeployConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DeployRequestDeployConfig::Representation
       
           property :endpoint_config, as: 'endpointConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DeployRequestEndpointConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DeployRequestEndpointConfig::Representation
@@ -10208,6 +10222,14 @@ module Google
           property :model_config, as: 'modelConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DeployRequestModelConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DeployRequestModelConfig::Representation
       
           property :publisher_model_name, as: 'publisherModelName'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1DeployRequestCustomModel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_uri, as: 'gcsUri'
+          property :model_id, as: 'modelId'
         end
       end
       
@@ -10238,6 +10260,7 @@ module Google
           property :hugging_face_access_token, as: 'huggingFaceAccessToken'
           property :hugging_face_cache_enabled, as: 'huggingFaceCacheEnabled'
           property :model_display_name, as: 'modelDisplayName'
+          property :model_user_id, as: 'modelUserId'
         end
       end
       
@@ -10316,6 +10339,7 @@ module Google
       
           property :faster_deployment_config, as: 'fasterDeploymentConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FasterDeploymentConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FasterDeploymentConfig::Representation
       
+          property :gdc_connected_model, as: 'gdcConnectedModel'
           property :id, as: 'id'
           property :model, as: 'model'
           property :model_version_id, as: 'modelVersionId'
@@ -10502,6 +10526,8 @@ module Google
           property :encryption_spec, as: 'encryptionSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EncryptionSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EncryptionSpec::Representation
       
           property :etag, as: 'etag'
+          property :gdc_config, as: 'gdcConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GdcConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GdcConfig::Representation
+      
           property :gen_ai_advanced_features_config, as: 'genAiAdvancedFeaturesConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenAiAdvancedFeaturesConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenAiAdvancedFeaturesConfig::Representation
       
           hash :labels, as: 'labels'
@@ -12301,6 +12327,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :uris, as: 'uris'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1GdcConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :zone, as: 'zone'
         end
       end
       
@@ -19742,8 +19775,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
+          property :expire_time, as: 'expireTime'
           property :name, as: 'name'
           hash :session_state, as: 'sessionState'
+          property :ttl, as: 'ttl'
           property :update_time, as: 'updateTime'
           property :user_id, as: 'userId'
         end
