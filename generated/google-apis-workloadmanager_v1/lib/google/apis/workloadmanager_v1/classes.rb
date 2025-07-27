@@ -87,6 +87,11 @@ module Google
         # @return [String]
         attr_accessor :installed_version
       
+        # Output only. The URI of the instance. Format: projects//zones//instances/
+        # Corresponds to the JSON property `instanceUri`
+        # @return [String]
+        attr_accessor :instance_uri
+      
         # KernelVersion encapsulates the kernel version data for the system.
         # Corresponds to the JSON property `kernelVersion`
         # @return [Google::Apis::WorkloadmanagerV1::SapDiscoveryResourceInstancePropertiesKernelVersion]
@@ -125,6 +130,7 @@ module Google
           @configuration_file_path = args[:configuration_file_path] if args.key?(:configuration_file_path)
           @configuration_valid = args[:configuration_valid] if args.key?(:configuration_valid)
           @installed_version = args[:installed_version] if args.key?(:installed_version)
+          @instance_uri = args[:instance_uri] if args.key?(:instance_uri)
           @kernel_version = args[:kernel_version] if args.key?(:kernel_version)
           @references = args[:references] if args.key?(:references)
           @services = args[:services] if args.key?(:services)
