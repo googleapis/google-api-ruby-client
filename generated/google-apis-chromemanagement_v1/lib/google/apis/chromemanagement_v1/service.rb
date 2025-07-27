@@ -1170,7 +1170,8 @@ module Google
         #   user - audio_severe_underrun_event - usb_peripherals_event -
         #   https_latency_change_event - network_state_change_event -
         #   wifi_signal_strength_event - vpn_connection_state_change_event -
-        #   app_install_event - app_uninstall_event - app_launch_event - os_crash_event
+        #   app_install_event - app_uninstall_event - app_launch_event - os_crash_event -
+        #   external_displays_event
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
