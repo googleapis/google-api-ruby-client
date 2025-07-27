@@ -1000,6 +1000,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2alphaPanelInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2alphaPauseModelRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1301,6 +1307,12 @@ module Google
       end
       
       class GoogleCloudRetailV2alphaRuleTwowaySynonymsAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaSafetySetting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2568,6 +2580,8 @@ module Google
       
           collection :page_categories, as: 'pageCategories'
           property :query, as: 'query'
+          collection :safety_settings, as: 'safetySettings', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSafetySetting, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSafetySetting::Representation
+      
           property :search_params, as: 'searchParams', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchRequestSearchParams, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchRequestSearchParams::Representation
       
           property :user_info, as: 'userInfo', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaUserInfo, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaUserInfo::Representation
@@ -3161,6 +3175,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_source_id, :numeric_string => true, as: 'dataSourceId'
+          property :primary_feed_id, :numeric_string => true, as: 'primaryFeedId'
           property :primary_feed_name, as: 'primaryFeedName'
         end
       end
@@ -3294,6 +3309,19 @@ module Google
       
           collection :gcs_result, as: 'gcsResult', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaGcsOutputResult, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaGcsOutputResult::Representation
       
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaPanelInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribution_token, as: 'attributionToken'
+          property :display_name, as: 'displayName'
+          property :panel_id, as: 'panelId'
+          property :panel_position, as: 'panelPosition'
+          collection :product_details, as: 'productDetails', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProductDetail, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProductDetail::Representation
+      
+          property :total_panels, as: 'totalPanels'
         end
       end
       
@@ -3778,6 +3806,15 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2alphaSafetySetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          property :method_prop, as: 'method'
+          property :threshold, as: 'threshold'
+        end
+      end
+      
       class GoogleCloudRetailV2alphaSearchRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4178,6 +4215,8 @@ module Google
           property :order_by, as: 'orderBy'
           collection :page_categories, as: 'pageCategories'
           property :page_view_id, as: 'pageViewId'
+          collection :panels, as: 'panels', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaPanelInfo, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaPanelInfo::Representation
+      
           collection :product_details, as: 'productDetails', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProductDetail, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProductDetail::Representation
       
           property :purchase_transaction, as: 'purchaseTransaction', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaPurchaseTransaction, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaPurchaseTransaction::Representation
