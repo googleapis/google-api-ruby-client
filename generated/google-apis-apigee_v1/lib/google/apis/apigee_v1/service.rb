@@ -6527,10 +6527,10 @@ module Google
         # @param [String] name
         #   Required. The name of the debug session to retrieve. Must be of the form: `
         #   organizations/`organization`/environments/`environment`/apis/`api`/revisions/`
-        #   revision`/debugsessions/`session``. If the API proxy resource has the `space`
-        #   attribute set, IAM permissions are checked differently . To learn more, read
-        #   the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/
-        #   system-administration/spaces/apigee-spaces-overview).
+        #   revision`/debugsessions/`debug_session``. If the API proxy resource has the `
+        #   space` attribute set, IAM permissions are checked differently . To learn more,
+        #   read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-
+        #   platform/system-administration/spaces/apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6568,10 +6568,11 @@ module Google
         #   google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-
         #   overview).
         # @param [Fixnum] page_size
-        #   Maximum number of debug sessions to return. The page size defaults to 25.
+        #   Optional. Maximum number of debug sessions to return. The page size defaults
+        #   to 25.
         # @param [String] page_token
-        #   Page token, returned from a previous ListDebugSessions call, that you can use
-        #   to retrieve the next page.
+        #   Optional. Page token, returned from a previous ListDebugSessions call, that
+        #   you can use to retrieve the next page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6605,7 +6606,7 @@ module Google
         # @param [String] name
         #   Required. The name of the debug session transaction. Must be of the form: `
         #   organizations/`organization`/environments/`environment`/apis/`api`/revisions/`
-        #   revision`/debugsessions/`session`/data/`transaction``. If the API proxy
+        #   revision`/debugsessions/`debug_session`/data/`transaction``. If the API proxy
         #   resource has the `space` attribute set, IAM permissions are checked
         #   differently . To learn more, read the [Apigee Spaces Overview](https://cloud.
         #   google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-
@@ -11688,8 +11689,8 @@ module Google
         #   security_monitoring_condition`
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityMonitoringCondition] google_cloud_apigee_v1_security_monitoring_condition_object
         # @param [String] update_mask
-        #   Optional. The list of fields to update. Valid fields to update are `profile`, `
-        #   scope`, `include_all_resources`, `include`, and `exclude`.
+        #   Optional. The list of fields to update. Valid fields to update are `
+        #   include_all_resources` and `include`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
