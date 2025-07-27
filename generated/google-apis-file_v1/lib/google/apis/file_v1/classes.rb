@@ -1635,6 +1635,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :state_reasons
       
+        # Output only. The time when the replica state was updated.
+        # Corresponds to the JSON property `stateUpdateTime`
+        # @return [String]
+        attr_accessor :state_update_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1645,6 +1650,7 @@ module Google
           @peer_instance = args[:peer_instance] if args.key?(:peer_instance)
           @state = args[:state] if args.key?(:state)
           @state_reasons = args[:state_reasons] if args.key?(:state_reasons)
+          @state_update_time = args[:state_update_time] if args.key?(:state_update_time)
         end
       end
       
