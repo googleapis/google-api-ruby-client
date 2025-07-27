@@ -577,11 +577,35 @@ module Google
         class Encryption
           include Google::Apis::Core::Hashable
         
+          # If set, the new objects created in this bucket must comply with this
+          # enforcement config. Changing this has no effect on existing objects; it
+          # applies to new objects only. If omitted, the new objects are allowed to be
+          # encrypted with Customer Managed Encryption type by default.
+          # Corresponds to the JSON property `customerManagedEncryptionEnforcementConfig`
+          # @return [Google::Apis::StorageV1::Bucket::Encryption::CustomerManagedEncryptionEnforcementConfig]
+          attr_accessor :customer_managed_encryption_enforcement_config
+        
+          # If set, the new objects created in this bucket must comply with this
+          # enforcement config. Changing this has no effect on existing objects; it
+          # applies to new objects only. If omitted, the new objects are allowed to be
+          # encrypted with Customer Supplied Encryption type by default.
+          # Corresponds to the JSON property `customerSuppliedEncryptionEnforcementConfig`
+          # @return [Google::Apis::StorageV1::Bucket::Encryption::CustomerSuppliedEncryptionEnforcementConfig]
+          attr_accessor :customer_supplied_encryption_enforcement_config
+        
           # A Cloud KMS key that will be used to encrypt objects inserted into this bucket,
           # if no encryption method is specified.
           # Corresponds to the JSON property `defaultKmsKeyName`
           # @return [String]
           attr_accessor :default_kms_key_name
+        
+          # If set, the new objects created in this bucket must comply with this
+          # enforcement config. Changing this has no effect on existing objects; it
+          # applies to new objects only. If omitted, the new objects are allowed to be
+          # encrypted with Google Managed Encryption type by default.
+          # Corresponds to the JSON property `googleManagedEncryptionEnforcementConfig`
+          # @return [Google::Apis::StorageV1::Bucket::Encryption::GoogleManagedEncryptionEnforcementConfig]
+          attr_accessor :google_managed_encryption_enforcement_config
         
           def initialize(**args)
              update!(**args)
@@ -589,7 +613,99 @@ module Google
         
           # Update properties of this object
           def update!(**args)
+            @customer_managed_encryption_enforcement_config = args[:customer_managed_encryption_enforcement_config] if args.key?(:customer_managed_encryption_enforcement_config)
+            @customer_supplied_encryption_enforcement_config = args[:customer_supplied_encryption_enforcement_config] if args.key?(:customer_supplied_encryption_enforcement_config)
             @default_kms_key_name = args[:default_kms_key_name] if args.key?(:default_kms_key_name)
+            @google_managed_encryption_enforcement_config = args[:google_managed_encryption_enforcement_config] if args.key?(:google_managed_encryption_enforcement_config)
+          end
+          
+          # If set, the new objects created in this bucket must comply with this
+          # enforcement config. Changing this has no effect on existing objects; it
+          # applies to new objects only. If omitted, the new objects are allowed to be
+          # encrypted with Customer Managed Encryption type by default.
+          class CustomerManagedEncryptionEnforcementConfig
+            include Google::Apis::Core::Hashable
+          
+            # Server-determined value that indicates the time from which configuration was
+            # enforced and effective. This value is in RFC 3339 format.
+            # Corresponds to the JSON property `effectiveTime`
+            # @return [DateTime]
+            attr_accessor :effective_time
+          
+            # Restriction mode for Customer-Managed Encryption Keys. Defaults to
+            # NotRestricted.
+            # Corresponds to the JSON property `restrictionMode`
+            # @return [String]
+            attr_accessor :restriction_mode
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @effective_time = args[:effective_time] if args.key?(:effective_time)
+              @restriction_mode = args[:restriction_mode] if args.key?(:restriction_mode)
+            end
+          end
+          
+          # If set, the new objects created in this bucket must comply with this
+          # enforcement config. Changing this has no effect on existing objects; it
+          # applies to new objects only. If omitted, the new objects are allowed to be
+          # encrypted with Customer Supplied Encryption type by default.
+          class CustomerSuppliedEncryptionEnforcementConfig
+            include Google::Apis::Core::Hashable
+          
+            # Server-determined value that indicates the time from which configuration was
+            # enforced and effective. This value is in RFC 3339 format.
+            # Corresponds to the JSON property `effectiveTime`
+            # @return [DateTime]
+            attr_accessor :effective_time
+          
+            # Restriction mode for Customer-Supplied Encryption Keys. Defaults to
+            # NotRestricted.
+            # Corresponds to the JSON property `restrictionMode`
+            # @return [String]
+            attr_accessor :restriction_mode
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @effective_time = args[:effective_time] if args.key?(:effective_time)
+              @restriction_mode = args[:restriction_mode] if args.key?(:restriction_mode)
+            end
+          end
+          
+          # If set, the new objects created in this bucket must comply with this
+          # enforcement config. Changing this has no effect on existing objects; it
+          # applies to new objects only. If omitted, the new objects are allowed to be
+          # encrypted with Google Managed Encryption type by default.
+          class GoogleManagedEncryptionEnforcementConfig
+            include Google::Apis::Core::Hashable
+          
+            # Server-determined value that indicates the time from which configuration was
+            # enforced and effective. This value is in RFC 3339 format.
+            # Corresponds to the JSON property `effectiveTime`
+            # @return [DateTime]
+            attr_accessor :effective_time
+          
+            # Restriction mode for Google-Managed Encryption Keys. Defaults to NotRestricted.
+            # Corresponds to the JSON property `restrictionMode`
+            # @return [String]
+            attr_accessor :restriction_mode
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @effective_time = args[:effective_time] if args.key?(:effective_time)
+              @restriction_mode = args[:restriction_mode] if args.key?(:restriction_mode)
+            end
           end
         end
         
