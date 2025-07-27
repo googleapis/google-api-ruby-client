@@ -978,6 +978,12 @@ module Google
         attr_accessor :has_voice_of_merchant
         alias_method :has_voice_of_merchant?, :has_voice_of_merchant
       
+        # Output only.
+        # Corresponds to the JSON property `isParticularlyPersonalPlace`
+        # @return [Boolean]
+        attr_accessor :is_particularly_personal_place
+        alias_method :is_particularly_personal_place?, :is_particularly_personal_place
+      
         # Output only. A link to the location on Maps.
         # Corresponds to the JSON property `mapsUri`
         # @return [String]
@@ -1013,6 +1019,7 @@ module Google
           @has_google_updated = args[:has_google_updated] if args.key?(:has_google_updated)
           @has_pending_edits = args[:has_pending_edits] if args.key?(:has_pending_edits)
           @has_voice_of_merchant = args[:has_voice_of_merchant] if args.key?(:has_voice_of_merchant)
+          @is_particularly_personal_place = args[:is_particularly_personal_place] if args.key?(:is_particularly_personal_place)
           @maps_uri = args[:maps_uri] if args.key?(:maps_uri)
           @new_review_uri = args[:new_review_uri] if args.key?(:new_review_uri)
           @place_id = args[:place_id] if args.key?(:place_id)

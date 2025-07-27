@@ -569,6 +569,7 @@ module Google
           property :has_google_updated, as: 'hasGoogleUpdated'
           property :has_pending_edits, as: 'hasPendingEdits'
           property :has_voice_of_merchant, as: 'hasVoiceOfMerchant'
+          property :is_particularly_personal_place, as: 'isParticularlyPersonalPlace'
           property :maps_uri, as: 'mapsUri'
           property :new_review_uri, as: 'newReviewUri'
           property :place_id, as: 'placeId'
