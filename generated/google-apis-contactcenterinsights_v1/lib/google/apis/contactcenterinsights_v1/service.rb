@@ -2536,6 +2536,10 @@ module Google
         #   Immutable. The resource name of the conversation. Format: projects/`project`/
         #   locations/`location`/conversations/`conversation`
         # @param [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Conversation] google_cloud_contactcenterinsights_v1_conversation_object
+        # @param [Boolean] allow_missing
+        #   Optional. Defaults to false. If set to true, and the conversation is not found,
+        #   a new conversation will be created. In this situation, `update_mask` is
+        #   ignored.
         # @param [String] update_mask
         #   The list of fields to be updated. All possible fields can be updated by
         #   passing `*`, or a subset of the following updateable fields can be provided: *
@@ -2559,13 +2563,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_conversation(name, google_cloud_contactcenterinsights_v1_conversation_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_conversation(name, google_cloud_contactcenterinsights_v1_conversation_object = nil, allow_missing: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Conversation::Representation
           command.request_object = google_cloud_contactcenterinsights_v1_conversation_object
           command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Conversation::Representation
           command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Conversation
           command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

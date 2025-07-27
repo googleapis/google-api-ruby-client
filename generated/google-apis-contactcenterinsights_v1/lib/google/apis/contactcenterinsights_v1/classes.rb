@@ -3657,22 +3657,24 @@ module Google
       class GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource
         include Google::Apis::Core::Hashable
       
-        # Optional. The Cloud Storage path to the conversation audio file if already
-        # transcribed. Note that: [1] Don't set this field if the audio is not
-        # transcribed. [2] Audio files and transcript files must be in separate buckets /
-        # folders. [3] A source file and its corresponding audio file must share the
-        # same name to be properly ingested, E.g. `gs://bucket/transcript/conversation1.
-        # json` and `gs://bucket/audio/conversation1.mp3`.
+        # Optional. The Cloud Storage path to the conversation audio file. Note that: [1]
+        # Audio files will be transcribed if not already. [2] Audio files and
+        # transcript files must be in separate buckets / folders. [3] A source file and
+        # its corresponding audio file must share the same name to be properly ingested,
+        # E.g. `gs://bucket/transcript/conversation1.json` and `gs://bucket/audio/
+        # conversation1.mp3`.
         # Corresponds to the JSON property `audioBucketUri`
         # @return [String]
         attr_accessor :audio_bucket_uri
       
-        # Optional. Specifies the type of the objects in `bucket_uri`.
+        # Optional. Specifies the type of the objects in `bucket_uri`. Avoid passing
+        # this. This is inferred from the `transcript_bucket_uri`, `audio_bucket_uri`.
         # Corresponds to the JSON property `bucketObjectType`
         # @return [String]
         attr_accessor :bucket_object_type
       
-        # Required. The Cloud Storage bucket containing source objects.
+        # Optional. The Cloud Storage bucket containing source objects. Avoid passing
+        # this. Pass this through one of `transcript_bucket_uri` or `audio_bucket_uri`.
         # Corresponds to the JSON property `bucketUri`
         # @return [String]
         attr_accessor :bucket_uri
@@ -3694,6 +3696,16 @@ module Google
         # @return [String]
         attr_accessor :metadata_bucket_uri
       
+        # Optional. The Cloud Storage path to the conversation transcripts. Note that: [
+        # 1] Transcript files are expected to be in JSON format. [2] Transcript, audio,
+        # metadata files must be in separate buckets / folders. [3] A source file and
+        # its corresponding metadata file must share the same name to be properly
+        # ingested, E.g. `gs://bucket/audio/conversation1.mp3` and `gs://bucket/metadata/
+        # conversation1.json`.
+        # Corresponds to the JSON property `transcriptBucketUri`
+        # @return [String]
+        attr_accessor :transcript_bucket_uri
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3705,6 +3717,7 @@ module Google
           @bucket_uri = args[:bucket_uri] if args.key?(:bucket_uri)
           @custom_metadata_keys = args[:custom_metadata_keys] if args.key?(:custom_metadata_keys)
           @metadata_bucket_uri = args[:metadata_bucket_uri] if args.key?(:metadata_bucket_uri)
+          @transcript_bucket_uri = args[:transcript_bucket_uri] if args.key?(:transcript_bucket_uri)
         end
       end
       
@@ -9871,22 +9884,24 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource
         include Google::Apis::Core::Hashable
       
-        # Optional. The Cloud Storage path to the conversation audio file if already
-        # transcribed. Note that: [1] Don't set this field if the audio is not
-        # transcribed. [2] Audio files and transcript files must be in separate buckets /
-        # folders. [3] A source file and its corresponding audio file must share the
-        # same name to be properly ingested, E.g. `gs://bucket/transcript/conversation1.
-        # json` and `gs://bucket/audio/conversation1.mp3`.
+        # Optional. The Cloud Storage path to the conversation audio file. Note that: [1]
+        # Audio files will be transcribed if not already. [2] Audio files and
+        # transcript files must be in separate buckets / folders. [3] A source file and
+        # its corresponding audio file must share the same name to be properly ingested,
+        # E.g. `gs://bucket/transcript/conversation1.json` and `gs://bucket/audio/
+        # conversation1.mp3`.
         # Corresponds to the JSON property `audioBucketUri`
         # @return [String]
         attr_accessor :audio_bucket_uri
       
-        # Optional. Specifies the type of the objects in `bucket_uri`.
+        # Optional. Specifies the type of the objects in `bucket_uri`. Avoid passing
+        # this. This is inferred from the `transcript_bucket_uri`, `audio_bucket_uri`.
         # Corresponds to the JSON property `bucketObjectType`
         # @return [String]
         attr_accessor :bucket_object_type
       
-        # Required. The Cloud Storage bucket containing source objects.
+        # Optional. The Cloud Storage bucket containing source objects. Avoid passing
+        # this. Pass this through one of `transcript_bucket_uri` or `audio_bucket_uri`.
         # Corresponds to the JSON property `bucketUri`
         # @return [String]
         attr_accessor :bucket_uri
@@ -9908,6 +9923,16 @@ module Google
         # @return [String]
         attr_accessor :metadata_bucket_uri
       
+        # Optional. The Cloud Storage path to the conversation transcripts. Note that: [
+        # 1] Transcript files are expected to be in JSON format. [2] Transcript, audio,
+        # metadata files must be in separate buckets / folders. [3] A source file and
+        # its corresponding metadata file must share the same name to be properly
+        # ingested, E.g. `gs://bucket/audio/conversation1.mp3` and `gs://bucket/metadata/
+        # conversation1.json`.
+        # Corresponds to the JSON property `transcriptBucketUri`
+        # @return [String]
+        attr_accessor :transcript_bucket_uri
+      
         def initialize(**args)
            update!(**args)
         end
@@ -9919,6 +9944,7 @@ module Google
           @bucket_uri = args[:bucket_uri] if args.key?(:bucket_uri)
           @custom_metadata_keys = args[:custom_metadata_keys] if args.key?(:custom_metadata_keys)
           @metadata_bucket_uri = args[:metadata_bucket_uri] if args.key?(:metadata_bucket_uri)
+          @transcript_bucket_uri = args[:transcript_bucket_uri] if args.key?(:transcript_bucket_uri)
         end
       end
       
