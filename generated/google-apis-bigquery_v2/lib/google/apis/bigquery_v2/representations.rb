@@ -2173,6 +2173,7 @@ module Google
       class ExternalServiceCost
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing_method, as: 'billingMethod'
           property :bytes_billed, :numeric_string => true, as: 'bytesBilled'
           property :bytes_processed, :numeric_string => true, as: 'bytesProcessed'
           property :external_service, as: 'externalService'
@@ -2790,6 +2791,7 @@ module Google
           property :total_bytes_processed, :numeric_string => true, as: 'totalBytesProcessed'
           property :total_bytes_processed_accuracy, as: 'totalBytesProcessedAccuracy'
           property :total_partitions_processed, :numeric_string => true, as: 'totalPartitionsProcessed'
+          property :total_services_sku_slot_ms, :numeric_string => true, as: 'totalServicesSkuSlotMs'
           property :total_slot_ms, :numeric_string => true, as: 'totalSlotMs'
           property :transferred_bytes, :numeric_string => true, as: 'transferredBytes'
           collection :undeclared_query_parameters, as: 'undeclaredQueryParameters', class: Google::Apis::BigqueryV2::QueryParameter, decorator: Google::Apis::BigqueryV2::QueryParameter::Representation

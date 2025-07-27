@@ -3476,6 +3476,13 @@ module Google
       class ExternalServiceCost
         include Google::Apis::Core::Hashable
       
+        # The billing method used for the external job. This field is only used when
+        # billed on the services sku, set to "SERVICES_SKU". Otherwise, it is
+        # unspecified for backward compatibility.
+        # Corresponds to the JSON property `billingMethod`
+        # @return [String]
+        attr_accessor :billing_method
+      
         # External service cost in terms of bigquery bytes billed.
         # Corresponds to the JSON property `bytesBilled`
         # @return [Fixnum]
@@ -3509,6 +3516,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @billing_method = args[:billing_method] if args.key?(:billing_method)
           @bytes_billed = args[:bytes_billed] if args.key?(:bytes_billed)
           @bytes_processed = args[:bytes_processed] if args.key?(:bytes_processed)
           @external_service = args[:external_service] if args.key?(:external_service)
@@ -6116,6 +6124,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_partitions_processed
       
+        # Output only. Total slot-milliseconds for the job that run on external services
+        # and billed on the service SKU. This field is only populated for jobs that have
+        # external service costs, and is the total of the usage for costs whose billing
+        # method is "SERVICES_SKU".
+        # Corresponds to the JSON property `totalServicesSkuSlotMs`
+        # @return [Fixnum]
+        attr_accessor :total_services_sku_slot_ms
+      
         # Output only. Slot-milliseconds for the job.
         # Corresponds to the JSON property `totalSlotMs`
         # @return [Fixnum]
@@ -6184,6 +6200,7 @@ module Google
           @total_bytes_processed = args[:total_bytes_processed] if args.key?(:total_bytes_processed)
           @total_bytes_processed_accuracy = args[:total_bytes_processed_accuracy] if args.key?(:total_bytes_processed_accuracy)
           @total_partitions_processed = args[:total_partitions_processed] if args.key?(:total_partitions_processed)
+          @total_services_sku_slot_ms = args[:total_services_sku_slot_ms] if args.key?(:total_services_sku_slot_ms)
           @total_slot_ms = args[:total_slot_ms] if args.key?(:total_slot_ms)
           @transferred_bytes = args[:transferred_bytes] if args.key?(:transferred_bytes)
           @undeclared_query_parameters = args[:undeclared_query_parameters] if args.key?(:undeclared_query_parameters)
