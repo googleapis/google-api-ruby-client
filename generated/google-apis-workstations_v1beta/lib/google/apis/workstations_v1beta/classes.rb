@@ -1988,6 +1988,13 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # Output only. Whether or not the current workstation is actively boosted with
+        # this id.
+        # Corresponds to the JSON property `running`
+        # @return [Boolean]
+        attr_accessor :running
+        alias_method :running?, :running
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1995,6 +2002,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
+          @running = args[:running] if args.key?(:running)
         end
       end
       
