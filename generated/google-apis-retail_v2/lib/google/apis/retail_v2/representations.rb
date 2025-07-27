@@ -538,6 +538,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2PanelInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2PauseModelRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2412,6 +2418,19 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2PanelInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribution_token, as: 'attributionToken'
+          property :display_name, as: 'displayName'
+          property :panel_id, as: 'panelId'
+          property :panel_position, as: 'panelPosition'
+          collection :product_details, as: 'productDetails', class: Google::Apis::RetailV2::GoogleCloudRetailV2ProductDetail, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2ProductDetail::Representation
+      
+          property :total_panels, as: 'totalPanels'
+        end
+      end
+      
       class GoogleCloudRetailV2PauseModelRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3275,6 +3294,8 @@ module Google
           property :order_by, as: 'orderBy'
           collection :page_categories, as: 'pageCategories'
           property :page_view_id, as: 'pageViewId'
+          collection :panels, as: 'panels', class: Google::Apis::RetailV2::GoogleCloudRetailV2PanelInfo, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2PanelInfo::Representation
+      
           collection :product_details, as: 'productDetails', class: Google::Apis::RetailV2::GoogleCloudRetailV2ProductDetail, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2ProductDetail::Representation
       
           property :purchase_transaction, as: 'purchaseTransaction', class: Google::Apis::RetailV2::GoogleCloudRetailV2PurchaseTransaction, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2PurchaseTransaction::Representation
