@@ -767,7 +767,7 @@ module Google
           property :cloud_project_id, as: 'cloudProjectId'
           property :cloud_provider, as: 'cloudProvider'
           property :cloud_region, as: 'cloudRegion'
-          property :cloud_vpc_id, as: 'cloudVpcId'
+          collection :cloud_virtual_network_ids, as: 'cloudVirtualNetworkIds'
           property :cloud_zone, as: 'cloudZone'
           property :os, as: 'os'
         end
