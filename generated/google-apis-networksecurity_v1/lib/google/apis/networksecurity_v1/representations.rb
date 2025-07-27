@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuthzPolicyAuthzRulePrincipal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuthzPolicyAuthzRuleRequestResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -760,6 +766,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :ip_blocks, as: 'ipBlocks', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleIpBlock, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleIpBlock::Representation
       
+          collection :principals, as: 'principals', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRulePrincipal, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRulePrincipal::Representation
+      
           collection :resources, as: 'resources', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleRequestResource, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleRequestResource::Representation
       
         end
@@ -779,6 +787,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :length, as: 'length'
           property :prefix, as: 'prefix'
+        end
+      end
+      
+      class AuthzPolicyAuthzRulePrincipal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :principal, as: 'principal', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch::Representation
+      
+          property :principal_selector, as: 'principalSelector'
         end
       end
       
