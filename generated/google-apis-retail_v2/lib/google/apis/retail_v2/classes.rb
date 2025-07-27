@@ -3078,6 +3078,57 @@ module Google
         end
       end
       
+      # Detailed panel information associated with a user event.
+      class GoogleCloudRetailV2PanelInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The attribution token of the panel.
+        # Corresponds to the JSON property `attributionToken`
+        # @return [String]
+        attr_accessor :attribution_token
+      
+        # Optional. The display name of the panel.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. The panel ID.
+        # Corresponds to the JSON property `panelId`
+        # @return [String]
+        attr_accessor :panel_id
+      
+        # Optional. The ordered position of the panel, if shown to the user with other
+        # panels. If set, then total_panels must also be set.
+        # Corresponds to the JSON property `panelPosition`
+        # @return [Fixnum]
+        attr_accessor :panel_position
+      
+        # Optional. The product details associated with the panel.
+        # Corresponds to the JSON property `productDetails`
+        # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2ProductDetail>]
+        attr_accessor :product_details
+      
+        # Optional. The total number of panels, including this one, shown to the user.
+        # Must be set if panel_position is set.
+        # Corresponds to the JSON property `totalPanels`
+        # @return [Fixnum]
+        attr_accessor :total_panels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribution_token = args[:attribution_token] if args.key?(:attribution_token)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @panel_id = args[:panel_id] if args.key?(:panel_id)
+          @panel_position = args[:panel_position] if args.key?(:panel_position)
+          @product_details = args[:product_details] if args.key?(:product_details)
+          @total_panels = args[:total_panels] if args.key?(:total_panels)
+        end
+      end
+      
       # Request for pausing training of a model.
       class GoogleCloudRetailV2PauseModelRequest
         include Google::Apis::Core::Hashable
@@ -6798,6 +6849,12 @@ module Google
         # @return [String]
         attr_accessor :page_view_id
       
+        # Optional. List of panels associated with this event. Used for panel-level
+        # impression data.
+        # Corresponds to the JSON property `panels`
+        # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2PanelInfo>]
+        attr_accessor :panels
+      
         # The main product details related to the event. This field is optional except
         # for the following event types: * `add-to-cart` * `detail-page-view` * `
         # purchase-complete` In a `search` event, this field represents the products
@@ -6885,6 +6942,7 @@ module Google
           @order_by = args[:order_by] if args.key?(:order_by)
           @page_categories = args[:page_categories] if args.key?(:page_categories)
           @page_view_id = args[:page_view_id] if args.key?(:page_view_id)
+          @panels = args[:panels] if args.key?(:panels)
           @product_details = args[:product_details] if args.key?(:product_details)
           @purchase_transaction = args[:purchase_transaction] if args.key?(:purchase_transaction)
           @referrer_uri = args[:referrer_uri] if args.key?(:referrer_uri)
