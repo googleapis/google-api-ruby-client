@@ -215,7 +215,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :default_names
       
-        # Primary name of the device, generally provided by the user.
+        # Primary name of the device, generally provided by the user. Names will be
+        # truncated if over the 60 Unicode code point (character) limit and no errors
+        # will be thrown. Developers are responsible for handling long names.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
