@@ -1314,10 +1314,10 @@ module Google
         # @return [String]
         attr_accessor :cloud_region
       
-        # Output only. The id of Virtual Private Cloud (VPC) of the host.
-        # Corresponds to the JSON property `cloudVpcId`
-        # @return [String]
-        attr_accessor :cloud_vpc_id
+        # Output only. The ids of cloud virtual networks of the host.
+        # Corresponds to the JSON property `cloudVirtualNetworkIds`
+        # @return [Array<String>]
+        attr_accessor :cloud_virtual_network_ids
       
         # Output only. The cloud zone of the host.
         # Corresponds to the JSON property `cloudZone`
@@ -1339,7 +1339,7 @@ module Google
           @cloud_project_id = args[:cloud_project_id] if args.key?(:cloud_project_id)
           @cloud_provider = args[:cloud_provider] if args.key?(:cloud_provider)
           @cloud_region = args[:cloud_region] if args.key?(:cloud_region)
-          @cloud_vpc_id = args[:cloud_vpc_id] if args.key?(:cloud_vpc_id)
+          @cloud_virtual_network_ids = args[:cloud_virtual_network_ids] if args.key?(:cloud_virtual_network_ids)
           @cloud_zone = args[:cloud_zone] if args.key?(:cloud_zone)
           @os = args[:os] if args.key?(:os)
         end
