@@ -5338,7 +5338,7 @@ module Google
       class GoogleCloudDocumentaiV1Processor
         include Google::Apis::Core::Hashable
       
-        # The time the processor was created.
+        # Output only. The time the processor was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -5505,7 +5505,7 @@ module Google
       class GoogleCloudDocumentaiV1ProcessorVersion
         include Google::Apis::Core::Hashable
       
-        # The time the processor version was created.
+        # Output only. The time the processor version was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -5536,12 +5536,12 @@ module Google
         attr_accessor :google_managed
         alias_method :google_managed?, :google_managed
       
-        # The KMS key name used for encryption.
+        # Output only. The KMS key name used for encryption.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
       
-        # The KMS key version with which data is encrypted.
+        # Output only. The KMS key version with which data is encrypted.
         # Corresponds to the JSON property `kmsKeyVersionName`
         # @return [String]
         attr_accessor :kms_key_version_name
