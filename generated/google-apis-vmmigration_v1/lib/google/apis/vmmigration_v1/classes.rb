@@ -1199,7 +1199,7 @@ module Google
         attr_accessor :secure_boot
         alias_method :secure_boot?, :secure_boot
       
-        # The service account to associate the VM with.
+        # Optional. The service account to associate the VM with.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
