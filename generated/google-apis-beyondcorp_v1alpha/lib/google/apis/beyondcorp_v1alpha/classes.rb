@@ -2698,6 +2698,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Optional. Which upstream resources to forward traffic to.
+        # Corresponds to the JSON property `upstreams`
+        # @return [Array<Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstream>]
+        attr_accessor :upstreams
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2709,6 +2714,71 @@ module Google
           @endpoint_matchers = args[:endpoint_matchers] if args.key?(:endpoint_matchers)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @upstreams = args[:upstreams] if args.key?(:upstreams)
+        end
+      end
+      
+      # Which upstream resource to forward traffic to.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstream
+        include Google::Apis::Core::Hashable
+      
+        # Routing policy information.
+        # Corresponds to the JSON property `egressPolicy`
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaEgressPolicy]
+        attr_accessor :egress_policy
+      
+        # Network to forward traffic to.
+        # Corresponds to the JSON property `network`
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstreamNetwork]
+        attr_accessor :network
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @egress_policy = args[:egress_policy] if args.key?(:egress_policy)
+          @network = args[:network] if args.key?(:network)
+        end
+      end
+      
+      # Network to forward traffic to.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstreamNetwork
+        include Google::Apis::Core::Hashable
+      
+        # Required. Network name is of the format: `projects/`project`/global/networks/`
+        # network`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Routing policy information.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaEgressPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of the regions where the application sends traffic.
+        # Corresponds to the JSON property `regions`
+        # @return [Array<String>]
+        attr_accessor :regions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @regions = args[:regions] if args.key?(:regions)
         end
       end
       
@@ -2850,6 +2920,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. Service account used for operations that involve resources in
+        # consumer projects.
+        # Corresponds to the JSON property `delegatingServiceAccount`
+        # @return [String]
+        attr_accessor :delegating_service_account
+      
         # Optional. An arbitrary user-provided name for the SecurityGateway. Cannot
         # exceed 64 characters.
         # Corresponds to the JSON property `displayName`
@@ -2890,6 +2966,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @delegating_service_account = args[:delegating_service_account] if args.key?(:delegating_service_account)
           @display_name = args[:display_name] if args.key?(:display_name)
           @external_ips = args[:external_ips] if args.key?(:external_ips)
           @hubs = args[:hubs] if args.key?(:hubs)
