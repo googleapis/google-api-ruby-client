@@ -1266,6 +1266,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common, as: 'common', class: Google::Apis::ServiceconsumermanagementV1beta1::CommonLanguageSettings, decorator: Google::Apis::ServiceconsumermanagementV1beta1::CommonLanguageSettings::Representation
       
+          property :library_package, as: 'libraryPackage'
         end
       end
       
