@@ -376,6 +376,11 @@ module Google
         # @return [Google::Apis::LookerV1::AdminSettings]
         attr_accessor :admin_settings
       
+        # Optional. Storage class of the instance.
+        # Corresponds to the JSON property `classType`
+        # @return [String]
+        attr_accessor :class_type
+      
         # Network name in the consumer project. Format: `projects/`project`/global/
         # networks/`network``. Note that the consumer network may be in a different GCP
         # project than the consumer project that is hosting the Looker Instance.
@@ -544,6 +549,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @admin_settings = args[:admin_settings] if args.key?(:admin_settings)
+          @class_type = args[:class_type] if args.key?(:class_type)
           @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
           @create_time = args[:create_time] if args.key?(:create_time)
           @custom_domain = args[:custom_domain] if args.key?(:custom_domain)
