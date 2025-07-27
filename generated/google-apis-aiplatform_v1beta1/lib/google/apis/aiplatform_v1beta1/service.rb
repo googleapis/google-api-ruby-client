@@ -903,6 +903,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Fetches the configs of publisher models.
+        # @param [String] name
+        #   Required. The name of the publisher model, in the format of `projects/`project`
+        #   /locations/`location`/publishers/`publisher`/models/`model``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_publisher_model_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}:fetchPublisherModelConfig', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelConfig::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a GenAI cache config.
         # @param [String] name
         #   Required. Name of the cache config. Format: - `projects/`project`/cacheConfig`.
@@ -927,6 +958,41 @@ module Google
           command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CacheConfig::Representation
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CacheConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets (creates or updates) configs of publisher models. For example, sets the
+        # request/response logging config.
+        # @param [String] name
+        #   Required. The name of the publisher model, in the format of `projects/`project`
+        #   /locations/`location`/publishers/`publisher`/models/`model``.
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SetPublisherModelConfigRequest] google_cloud_aiplatform_v1beta1_set_publisher_model_config_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_project_publisher_model_config(name, google_cloud_aiplatform_v1beta1_set_publisher_model_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:setPublisherModelConfig', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SetPublisherModelConfigRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_set_publisher_model_config_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -5619,6 +5685,10 @@ module Google
         #   space must be quoted. `labels."a key"`. * `base_model_name` only supports `=`.
         #   Some examples: * `endpoint=1` * `displayName="myDisplayName"` * `labels.myKey="
         #   myValue"` * `baseModelName="text-bison"`
+        # @param [String] gdc_zone
+        #   Optional. Configures the Google Distributed Cloud (GDC) environment for online
+        #   prediction. Only set this field when the Endpoint is to be deployed in a GDC
+        #   environment.
         # @param [Fixnum] page_size
         #   Optional. The standard list page size.
         # @param [String] page_token
@@ -5644,12 +5714,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_endpoints(parent, filter: nil, page_size: nil, page_token: nil, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_endpoints(parent, filter: nil, gdc_zone: nil, page_size: nil, page_token: nil, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/endpoints', options)
           command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListEndpointsResponse::Representation
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListEndpointsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['gdcZone'] = gdc_zone unless gdc_zone.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['readMask'] = read_mask unless read_mask.nil?
@@ -5659,9 +5730,9 @@ module Google
         end
         
         # Updates an existing deployed model. Updatable fields include `
-        # min_replica_count`, `max_replica_count`, `autoscaling_metric_specs`, `
-        # disable_container_logging` (v1 only), and `enable_container_logging` (v1beta1
-        # only).
+        # min_replica_count`, `max_replica_count`, `required_replica_count`, `
+        # autoscaling_metric_specs`, `disable_container_logging` (v1 only), and `
+        # enable_container_logging` (v1beta1 only).
         # @param [String] endpoint
         #   Required. The name of the Endpoint resource into which to mutate a
         #   DeployedModel. Format: `projects/`project`/locations/`location`/endpoints/`
