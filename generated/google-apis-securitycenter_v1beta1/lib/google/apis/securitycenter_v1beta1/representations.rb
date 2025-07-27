@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudControl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudDlpDataProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -214,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ComplianceDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Connection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -233,6 +245,12 @@ module Google
       end
       
       class Container
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Control
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -377,6 +395,12 @@ module Google
       end
       
       class Folder
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Framework
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -700,6 +724,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2CloudControl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2CloudDlpDataProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -724,6 +754,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2ComplianceDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2Connection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -743,6 +779,12 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV2Container
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2Control
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -869,6 +911,12 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV2Folder
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2Framework
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1947,6 +1995,16 @@ module Google
         end
       end
       
+      class CloudControl
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_control_name, as: 'cloudControlName'
+          property :policy_type, as: 'policyType'
+          property :type, as: 'type'
+          property :version, as: 'version'
+        end
+      end
+      
       class CloudDlpDataProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1981,6 +2039,17 @@ module Google
           collection :ids, as: 'ids'
           property :standard, as: 'standard'
           property :version, as: 'version'
+        end
+      end
+      
+      class ComplianceDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_control, as: 'cloudControl', class: Google::Apis::SecuritycenterV1beta1::CloudControl, decorator: Google::Apis::SecuritycenterV1beta1::CloudControl::Representation
+      
+          collection :cloud_control_deployment_names, as: 'cloudControlDeploymentNames'
+          collection :frameworks, as: 'frameworks', class: Google::Apis::SecuritycenterV1beta1::Framework, decorator: Google::Apis::SecuritycenterV1beta1::Framework::Representation
+      
         end
       end
       
@@ -2019,6 +2088,14 @@ module Google
       
           property :name, as: 'name'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class Control
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :control_name, as: 'controlName'
+          property :display_name, as: 'displayName'
         end
       end
       
@@ -2261,6 +2338,8 @@ module Google
       
           property :cloud_dlp_inspection, as: 'cloudDlpInspection', class: Google::Apis::SecuritycenterV1beta1::CloudDlpInspection, decorator: Google::Apis::SecuritycenterV1beta1::CloudDlpInspection::Representation
       
+          property :compliance_details, as: 'complianceDetails', class: Google::Apis::SecuritycenterV1beta1::ComplianceDetails, decorator: Google::Apis::SecuritycenterV1beta1::ComplianceDetails::Representation
+      
           collection :compliances, as: 'compliances', class: Google::Apis::SecuritycenterV1beta1::Compliance, decorator: Google::Apis::SecuritycenterV1beta1::Compliance::Representation
       
           collection :connections, as: 'connections', class: Google::Apis::SecuritycenterV1beta1::Connection, decorator: Google::Apis::SecuritycenterV1beta1::Connection::Representation
@@ -2350,6 +2429,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_folder, as: 'resourceFolder'
           property :resource_folder_display_name, as: 'resourceFolderDisplayName'
+        end
+      end
+      
+      class Framework
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :category, as: 'category'
+          collection :controls, as: 'controls', class: Google::Apis::SecuritycenterV1beta1::Control, decorator: Google::Apis::SecuritycenterV1beta1::Control::Representation
+      
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :type, as: 'type'
         end
       end
       
@@ -2942,6 +3033,16 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV2CloudControl
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_control_name, as: 'cloudControlName'
+          property :policy_type, as: 'policyType'
+          property :type, as: 'type'
+          property :version, as: 'version'
+        end
+      end
+      
       class GoogleCloudSecuritycenterV2CloudDlpDataProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2976,6 +3077,17 @@ module Google
           collection :ids, as: 'ids'
           property :standard, as: 'standard'
           property :version, as: 'version'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2ComplianceDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_control, as: 'cloudControl', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2CloudControl, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2CloudControl::Representation
+      
+          collection :cloud_control_deployment_names, as: 'cloudControlDeploymentNames'
+          collection :frameworks, as: 'frameworks', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Framework, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Framework::Representation
+      
         end
       end
       
@@ -3014,6 +3126,14 @@ module Google
       
           property :name, as: 'name'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2Control
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :control_name, as: 'controlName'
+          property :display_name, as: 'displayName'
         end
       end
       
@@ -3243,6 +3363,8 @@ module Google
       
           property :cloud_dlp_inspection, as: 'cloudDlpInspection', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2CloudDlpInspection, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2CloudDlpInspection::Representation
       
+          property :compliance_details, as: 'complianceDetails', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2ComplianceDetails, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2ComplianceDetails::Representation
+      
           collection :compliances, as: 'compliances', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Compliance, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Compliance::Representation
       
           collection :connections, as: 'connections', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Connection, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Connection::Representation
@@ -3332,6 +3454,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_folder, as: 'resourceFolder'
           property :resource_folder_display_name, as: 'resourceFolderDisplayName'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2Framework
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :category, as: 'category'
+          collection :controls, as: 'controls', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Control, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Control::Representation
+      
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :type, as: 'type'
         end
       end
       
