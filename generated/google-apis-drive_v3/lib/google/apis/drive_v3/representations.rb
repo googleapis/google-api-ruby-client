@@ -268,12 +268,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListOperationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ModifyLabelsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1047,15 +1041,6 @@ module Google
           collection :access_proposals, as: 'accessProposals', class: Google::Apis::DriveV3::AccessProposal, decorator: Google::Apis::DriveV3::AccessProposal::Representation
       
           property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class ListOperationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :operations, as: 'operations', class: Google::Apis::DriveV3::Operation, decorator: Google::Apis::DriveV3::Operation::Representation
-      
         end
       end
       

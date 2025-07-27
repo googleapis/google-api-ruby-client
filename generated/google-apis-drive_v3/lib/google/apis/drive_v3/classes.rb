@@ -2005,8 +2005,8 @@ module Google
           attr_accessor :can_change_copy_requires_writer_permission
           alias_method :can_change_copy_requires_writer_permission?, :can_change_copy_requires_writer_permission
         
-          # Output only. Whether the current user can change the owner-applied download
-          # restrictions of the file.
+          # Output only. Whether the current user can change the owner or organizer-
+          # applied download restrictions of the file.
           # Corresponds to the JSON property `canChangeItemDownloadRestriction`
           # @return [Boolean]
           attr_accessor :can_change_item_download_restriction
@@ -3014,31 +3014,6 @@ module Google
         def update!(**args)
           @access_proposals = args[:access_proposals] if args.key?(:access_proposals)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # The response message for Operations.ListOperations.
-      class ListOperationsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The standard List next-page token.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # A list of operations that matches the specified filter in the request.
-        # Corresponds to the JSON property `operations`
-        # @return [Array<Google::Apis::DriveV3::Operation>]
-        attr_accessor :operations
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @operations = args[:operations] if args.key?(:operations)
         end
       end
       
