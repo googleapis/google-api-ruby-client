@@ -1299,8 +1299,8 @@ module Google
         # @return [String]
         attr_accessor :delete_time
       
-        # Output only. A system-generated fingerprint for this version of the resource.
-        # May be used to detect modification conflict during updates.
+        # Optional. A system-generated fingerprint for this version of the resource. May
+        # be used to detect modification conflict during updates.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -2552,8 +2552,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Output only. A system-generated fingerprint for this version of the resource.
-        # May be used to detect modification conflict during updates.
+        # Optional. A system-generated fingerprint for this version of the resource. May
+        # be used to detect modification conflict during updates.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -3694,8 +3694,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Output only. A system-generated fingerprint for this version of the resource.
-        # May be used to detect modification conflict during updates.
+        # Optional. A system-generated fingerprint for this version of the resource. May
+        # be used to detect modification conflict during updates.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
