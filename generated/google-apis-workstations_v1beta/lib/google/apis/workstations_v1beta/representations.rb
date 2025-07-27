@@ -763,6 +763,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
+          property :running, as: 'running'
         end
       end
       
