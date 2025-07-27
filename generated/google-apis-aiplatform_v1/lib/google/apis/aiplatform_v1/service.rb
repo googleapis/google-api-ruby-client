@@ -4922,6 +4922,10 @@ module Google
         #   space must be quoted. `labels."a key"`. * `base_model_name` only supports `=`.
         #   Some examples: * `endpoint=1` * `displayName="myDisplayName"` * `labels.myKey="
         #   myValue"` * `baseModelName="text-bison"`
+        # @param [String] gdc_zone
+        #   Optional. Configures the Google Distributed Cloud (GDC) environment for online
+        #   prediction. Only set this field when the Endpoint is to be deployed in a GDC
+        #   environment.
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `display_name` * `
@@ -4951,12 +4955,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_endpoints(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_endpoints(parent, filter: nil, gdc_zone: nil, order_by: nil, page_size: nil, page_token: nil, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/endpoints', options)
           command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListEndpointsResponse::Representation
           command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListEndpointsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['gdcZone'] = gdc_zone unless gdc_zone.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -4967,9 +4972,9 @@ module Google
         end
         
         # Updates an existing deployed model. Updatable fields include `
-        # min_replica_count`, `max_replica_count`, `autoscaling_metric_specs`, `
-        # disable_container_logging` (v1 only), and `enable_container_logging` (v1beta1
-        # only).
+        # min_replica_count`, `max_replica_count`, `required_replica_count`, `
+        # autoscaling_metric_specs`, `disable_container_logging` (v1 only), and `
+        # enable_container_logging` (v1beta1 only).
         # @param [String] endpoint
         #   Required. The name of the Endpoint resource into which to mutate a
         #   DeployedModel. Format: `projects/`project`/locations/`location`/endpoints/`
