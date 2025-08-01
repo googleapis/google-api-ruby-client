@@ -486,6 +486,7 @@ module Google
       class CloudRunRevisionEndpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_uri, as: 'serviceUri'
           property :uri, as: 'uri'
         end
       end
@@ -712,6 +713,7 @@ module Google
           property :psc_network_attachment_uri, as: 'pscNetworkAttachmentUri'
           property :running, as: 'running'
           property :service_account, as: 'serviceAccount'
+          property :status, as: 'status'
           property :uri, as: 'uri'
         end
       end

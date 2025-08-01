@@ -2485,6 +2485,15 @@ module Google
         attr_accessor :ca_certificate_set
         alias_method :ca_certificate_set?, :ca_certificate_set
       
+        # Optional. The distinguished name (DN) mentioned in the server certificate.
+        # This corresponds to SSL_SERVER_CERT_DN sqlnet parameter. Refer https://docs.
+        # oracle.com/en/database/oracle/oracle-database/19/netrf/local-naming-parameters-
+        # in-tns-ora-file.html#GUID-70AB0695-A9AA-4A94-B141-4C605236EEB7 If this field
+        # is not provided, the DN matching is not enforced.
+        # Corresponds to the JSON property `serverCertificateDistinguishedName`
+        # @return [String]
+        attr_accessor :server_certificate_distinguished_name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2493,6 +2502,7 @@ module Google
         def update!(**args)
           @ca_certificate = args[:ca_certificate] if args.key?(:ca_certificate)
           @ca_certificate_set = args[:ca_certificate_set] if args.key?(:ca_certificate_set)
+          @server_certificate_distinguished_name = args[:server_certificate_distinguished_name] if args.key?(:server_certificate_distinguished_name)
         end
       end
       
@@ -3210,6 +3220,13 @@ module Google
         # @return [String]
         attr_accessor :client_key
       
+        # Optional. The hostname mentioned in the Subject or SAN extension of the server
+        # certificate. If this field is not provided, the hostname in the server
+        # certificate is not validated.
+        # Corresponds to the JSON property `serverCertificateHostname`
+        # @return [String]
+        attr_accessor :server_certificate_hostname
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3219,6 +3236,7 @@ module Google
           @ca_certificate = args[:ca_certificate] if args.key?(:ca_certificate)
           @client_certificate = args[:client_certificate] if args.key?(:client_certificate)
           @client_key = args[:client_key] if args.key?(:client_key)
+          @server_certificate_hostname = args[:server_certificate_hostname] if args.key?(:server_certificate_hostname)
         end
       end
       
@@ -3233,6 +3251,13 @@ module Google
         # @return [String]
         attr_accessor :ca_certificate
       
+        # Optional. The hostname mentioned in the Subject or SAN extension of the server
+        # certificate. If this field is not provided, the hostname in the server
+        # certificate is not validated.
+        # Corresponds to the JSON property `serverCertificateHostname`
+        # @return [String]
+        attr_accessor :server_certificate_hostname
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3240,6 +3265,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ca_certificate = args[:ca_certificate] if args.key?(:ca_certificate)
+          @server_certificate_hostname = args[:server_certificate_hostname] if args.key?(:server_certificate_hostname)
         end
       end
       
@@ -3329,6 +3355,12 @@ module Google
         # @return [Google::Apis::DatastreamV1::DatasetTemplate]
         attr_accessor :dataset_template
       
+        # Optional. The project id of the BigQuery dataset. If not specified, the
+        # project will be inferred from the stream resource.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3336,6 +3368,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dataset_template = args[:dataset_template] if args.key?(:dataset_template)
+          @project_id = args[:project_id] if args.key?(:project_id)
         end
       end
       

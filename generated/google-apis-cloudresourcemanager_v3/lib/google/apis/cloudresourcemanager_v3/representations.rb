@@ -778,6 +778,7 @@ module Google
       class Project
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :configured_capabilities, as: 'configuredCapabilities'
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'

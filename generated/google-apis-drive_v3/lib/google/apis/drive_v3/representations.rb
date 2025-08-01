@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DownloadRestrictionsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Drive
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -257,12 +263,6 @@ module Google
       end
       
       class ListAccessProposalsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -632,6 +632,16 @@ module Google
         end
       end
       
+      class DownloadRestrictionsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :effective_download_restriction_with_context, as: 'effectiveDownloadRestrictionWithContext', class: Google::Apis::DriveV3::DownloadRestriction, decorator: Google::Apis::DriveV3::DownloadRestriction::Representation
+      
+          property :item_download_restriction, as: 'itemDownloadRestriction', class: Google::Apis::DriveV3::DownloadRestriction, decorator: Google::Apis::DriveV3::DownloadRestriction::Representation
+      
+        end
+      end
+      
       class Drive
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -669,6 +679,7 @@ module Google
             property :can_add_children, as: 'canAddChildren'
             property :can_change_copy_requires_writer_permission_restriction, as: 'canChangeCopyRequiresWriterPermissionRestriction'
             property :can_change_domain_users_only_restriction, as: 'canChangeDomainUsersOnlyRestriction'
+            property :can_change_download_restriction, as: 'canChangeDownloadRestriction'
             property :can_change_drive_background, as: 'canChangeDriveBackground'
             property :can_change_drive_members_only_restriction, as: 'canChangeDriveMembersOnlyRestriction'
             property :can_change_sharing_folders_requires_organizer_permission_restriction, as: 'canChangeSharingFoldersRequiresOrganizerPermissionRestriction'
@@ -727,6 +738,8 @@ module Google
           property :created_time, as: 'createdTime', type: DateTime
       
           property :description, as: 'description'
+          property :download_restrictions, as: 'downloadRestrictions', class: Google::Apis::DriveV3::DownloadRestrictionsMetadata, decorator: Google::Apis::DriveV3::DownloadRestrictionsMetadata::Representation
+      
           property :drive_id, as: 'driveId'
           property :explicitly_trashed, as: 'explicitlyTrashed'
           hash :export_links, as: 'exportLinks'
@@ -808,6 +821,7 @@ module Google
             property :can_add_folder_from_another_drive, as: 'canAddFolderFromAnotherDrive'
             property :can_add_my_drive_parent, as: 'canAddMyDriveParent'
             property :can_change_copy_requires_writer_permission, as: 'canChangeCopyRequiresWriterPermission'
+            property :can_change_item_download_restriction, as: 'canChangeItemDownloadRestriction'
             property :can_change_security_update_enabled, as: 'canChangeSecurityUpdateEnabled'
             property :can_change_viewers_can_copy_content, as: 'canChangeViewersCanCopyContent'
             property :can_comment, as: 'canComment'
@@ -1030,15 +1044,6 @@ module Google
         end
       end
       
-      class ListOperationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :operations, as: 'operations', class: Google::Apis::DriveV3::Operation, decorator: Google::Apis::DriveV3::Operation::Representation
-      
-        end
-      end
-      
       class ModifyLabelsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1247,6 +1252,7 @@ module Google
             property :can_add_children, as: 'canAddChildren'
             property :can_change_copy_requires_writer_permission_restriction, as: 'canChangeCopyRequiresWriterPermissionRestriction'
             property :can_change_domain_users_only_restriction, as: 'canChangeDomainUsersOnlyRestriction'
+            property :can_change_download_restriction, as: 'canChangeDownloadRestriction'
             property :can_change_sharing_folders_requires_organizer_permission_restriction, as: 'canChangeSharingFoldersRequiresOrganizerPermissionRestriction'
             property :can_change_team_drive_background, as: 'canChangeTeamDriveBackground'
             property :can_change_team_members_only_restriction, as: 'canChangeTeamMembersOnlyRestriction'

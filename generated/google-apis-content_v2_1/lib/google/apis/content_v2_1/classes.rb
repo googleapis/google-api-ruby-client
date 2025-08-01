@@ -9011,6 +9011,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_handling_time
       
+        # Maximum retail price (MRP) of the item. Applicable to India only.
+        # Corresponds to the JSON property `maximumRetailPrice`
+        # @return [Google::Apis::ContentV2_1::Price]
+        attr_accessor :maximum_retail_price
+      
         # The energy efficiency class as defined in EU directive 2010/30/EU.
         # Corresponds to the JSON property `minEnergyEfficiencyClass`
         # @return [String]
@@ -9329,6 +9334,7 @@ module Google
           @material = args[:material] if args.key?(:material)
           @max_energy_efficiency_class = args[:max_energy_efficiency_class] if args.key?(:max_energy_efficiency_class)
           @max_handling_time = args[:max_handling_time] if args.key?(:max_handling_time)
+          @maximum_retail_price = args[:maximum_retail_price] if args.key?(:maximum_retail_price)
           @min_energy_efficiency_class = args[:min_energy_efficiency_class] if args.key?(:min_energy_efficiency_class)
           @min_handling_time = args[:min_handling_time] if args.key?(:min_handling_time)
           @mobile_link = args[:mobile_link] if args.key?(:mobile_link)
@@ -11124,6 +11130,12 @@ module Google
         # @return [String]
         attr_accessor :coupon_value_type
       
+        # The custom redemption restriction for the promotion. If the `
+        # redemption_restriction` field is set to `CUSTOM`, this field must be set.
+        # Corresponds to the JSON property `customRedemptionRestriction`
+        # @return [String]
+        attr_accessor :custom_redemption_restriction
+      
         # Free gift description for the promotion.
         # Corresponds to the JSON property `freeGiftDescription`
         # @return [String]
@@ -11193,6 +11205,11 @@ module Google
         # Corresponds to the JSON property `longTitle`
         # @return [String]
         attr_accessor :long_title
+      
+        # The price represented as a number and currency.
+        # Corresponds to the JSON property `maxDiscountAmount`
+        # @return [Google::Apis::ContentV2_1::PriceAmount]
+        attr_accessor :max_discount_amount
       
         # The price represented as a number and currency.
         # Corresponds to the JSON property `minimumPurchaseAmount`
@@ -11295,6 +11312,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :redemption_channel
       
+        # The redemption restriction for the promotion.
+        # Corresponds to the JSON property `redemptionRestriction`
+        # @return [String]
+        attr_accessor :redemption_restriction
+      
         # Shipping service names for the promotion.
         # Corresponds to the JSON property `shippingServiceNames`
         # @return [Array<String>]
@@ -11334,6 +11356,7 @@ module Google
           @brand_exclusion = args[:brand_exclusion] if args.key?(:brand_exclusion)
           @content_language = args[:content_language] if args.key?(:content_language)
           @coupon_value_type = args[:coupon_value_type] if args.key?(:coupon_value_type)
+          @custom_redemption_restriction = args[:custom_redemption_restriction] if args.key?(:custom_redemption_restriction)
           @free_gift_description = args[:free_gift_description] if args.key?(:free_gift_description)
           @free_gift_item_id = args[:free_gift_item_id] if args.key?(:free_gift_item_id)
           @free_gift_value = args[:free_gift_value] if args.key?(:free_gift_value)
@@ -11347,6 +11370,7 @@ module Google
           @limit_quantity = args[:limit_quantity] if args.key?(:limit_quantity)
           @limit_value = args[:limit_value] if args.key?(:limit_value)
           @long_title = args[:long_title] if args.key?(:long_title)
+          @max_discount_amount = args[:max_discount_amount] if args.key?(:max_discount_amount)
           @minimum_purchase_amount = args[:minimum_purchase_amount] if args.key?(:minimum_purchase_amount)
           @minimum_purchase_quantity = args[:minimum_purchase_quantity] if args.key?(:minimum_purchase_quantity)
           @money_budget = args[:money_budget] if args.key?(:money_budget)
@@ -11366,6 +11390,7 @@ module Google
           @promotion_status = args[:promotion_status] if args.key?(:promotion_status)
           @promotion_url = args[:promotion_url] if args.key?(:promotion_url)
           @redemption_channel = args[:redemption_channel] if args.key?(:redemption_channel)
+          @redemption_restriction = args[:redemption_restriction] if args.key?(:redemption_restriction)
           @shipping_service_names = args[:shipping_service_names] if args.key?(:shipping_service_names)
           @store_applicability = args[:store_applicability] if args.key?(:store_applicability)
           @store_code = args[:store_code] if args.key?(:store_code)

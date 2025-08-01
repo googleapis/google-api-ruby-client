@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AllocationResourceStatusHealthInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AllocationResourceStatusSpecificSkuAllocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6232,7 +6238,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReservationBlockHealthInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReservationBlockPhysicalTopology
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationBlockPhysicalTopologyInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationBlockPhysicalTopologyInstancePhysicalHostTopology
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6281,6 +6305,12 @@ module Google
       end
       
       class ReservationSubBlock
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationSubBlockHealthInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -9494,6 +9524,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aggregate_allocation, as: 'aggregateAllocation', class: Google::Apis::ComputeAlpha::AllocationResourceStatusAggregateAllocation, decorator: Google::Apis::ComputeAlpha::AllocationResourceStatusAggregateAllocation::Representation
       
+          property :health_info, as: 'healthInfo', class: Google::Apis::ComputeAlpha::AllocationResourceStatusHealthInfo, decorator: Google::Apis::ComputeAlpha::AllocationResourceStatusHealthInfo::Representation
+      
           property :reservation_block_count, as: 'reservationBlockCount'
           property :reservation_maintenance, as: 'reservationMaintenance', class: Google::Apis::ComputeAlpha::GroupMaintenanceInfo, decorator: Google::Apis::ComputeAlpha::GroupMaintenanceInfo::Representation
       
@@ -9506,6 +9538,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :utilizations, as: 'utilizations'
+        end
+      end
+      
+      class AllocationResourceStatusHealthInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :degraded_block_count, as: 'degradedBlockCount'
+          property :health_status, as: 'healthStatus'
+          property :healthy_block_count, as: 'healthyBlockCount'
         end
       end
       
@@ -20902,6 +20943,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, as: 'count'
           property :creation_timestamp, as: 'creationTimestamp'
+          property :health_info, as: 'healthInfo', class: Google::Apis::ComputeAlpha::ReservationBlockHealthInfo, decorator: Google::Apis::ComputeAlpha::ReservationBlockHealthInfo::Representation
+      
           property :id, :numeric_string => true, as: 'id'
           property :in_use_count, as: 'inUseCount'
           property :kind, as: 'kind'
@@ -20920,11 +20963,40 @@ module Google
         end
       end
       
+      class ReservationBlockHealthInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :degraded_sub_block_count, as: 'degradedSubBlockCount'
+          property :health_status, as: 'healthStatus'
+          property :healthy_sub_block_count, as: 'healthySubBlockCount'
+        end
+      end
+      
       class ReservationBlockPhysicalTopology
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :block, as: 'block'
           property :cluster, as: 'cluster'
+          collection :instances, as: 'instances', class: Google::Apis::ComputeAlpha::ReservationBlockPhysicalTopologyInstance, decorator: Google::Apis::ComputeAlpha::ReservationBlockPhysicalTopologyInstance::Representation
+      
+        end
+      end
+      
+      class ReservationBlockPhysicalTopologyInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_id, :numeric_string => true, as: 'instanceId'
+          property :physical_host_topology, as: 'physicalHostTopology', class: Google::Apis::ComputeAlpha::ReservationBlockPhysicalTopologyInstancePhysicalHostTopology, decorator: Google::Apis::ComputeAlpha::ReservationBlockPhysicalTopologyInstancePhysicalHostTopology::Representation
+      
+          property :project_id, :numeric_string => true, as: 'projectId'
+        end
+      end
+      
+      class ReservationBlockPhysicalTopologyInstancePhysicalHostTopology
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host, as: 'host'
+          property :sub_block, as: 'subBlock'
         end
       end
       
@@ -21005,6 +21077,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, as: 'count'
           property :creation_timestamp, as: 'creationTimestamp'
+          property :health_info, as: 'healthInfo', class: Google::Apis::ComputeAlpha::ReservationSubBlockHealthInfo, decorator: Google::Apis::ComputeAlpha::ReservationSubBlockHealthInfo::Representation
+      
           property :id, :numeric_string => true, as: 'id'
           property :in_use_count, as: 'inUseCount'
           property :kind, as: 'kind'
@@ -21017,6 +21091,17 @@ module Google
           property :self_link_with_id, as: 'selfLinkWithId'
           property :status, as: 'status'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class ReservationSubBlockHealthInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :degraded_host_count, as: 'degradedHostCount'
+          property :degraded_infra_count, as: 'degradedInfraCount'
+          property :health_status, as: 'healthStatus'
+          property :healthy_host_count, as: 'healthyHostCount'
+          property :healthy_infra_count, as: 'healthyInfraCount'
         end
       end
       

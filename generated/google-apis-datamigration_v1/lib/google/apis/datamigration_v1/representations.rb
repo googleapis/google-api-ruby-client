@@ -598,6 +598,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PscInterfaceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RestartMigrationJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2016,6 +2022,8 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :psc_interface_config, as: 'pscInterfaceConfig', class: Google::Apis::DatamigrationV1::PscInterfaceConfig, decorator: Google::Apis::DatamigrationV1::PscInterfaceConfig::Representation
+      
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
@@ -2044,6 +2052,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :objects_filter, as: 'objectsFilter', class: Google::Apis::DatamigrationV1::MigrationJobObjectsConfig, decorator: Google::Apis::DatamigrationV1::MigrationJobObjectsConfig::Representation
       
+        end
+      end
+      
+      class PscInterfaceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_attachment, as: 'networkAttachment'
         end
       end
       

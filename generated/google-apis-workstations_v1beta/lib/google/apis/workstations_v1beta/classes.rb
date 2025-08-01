@@ -284,6 +284,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :pool_size
       
+        # ReservationAffinity is the configuration of the desired reservation from which
+        # instances can consume resources.
+        # Corresponds to the JSON property `reservationAffinity`
+        # @return [Google::Apis::WorkstationsV1beta::ReservationAffinity]
+        attr_accessor :reservation_affinity
+      
         def initialize(**args)
            update!(**args)
         end
@@ -296,6 +302,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @pool_size = args[:pool_size] if args.key?(:pool_size)
+          @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
         end
       end
       
@@ -505,6 +512,27 @@ module Google
         end
       end
       
+      # Configuration options for Cluster HTTP Gateway.
+      class GatewayConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether HTTP/2 is enabled for this workstation cluster. Defaults to
+        # false.
+        # Corresponds to the JSON property `http2Enabled`
+        # @return [Boolean]
+        attr_accessor :http2_enabled
+        alias_method :http2_enabled?, :http2_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @http2_enabled = args[:http2_enabled] if args.key?(:http2_enabled)
+        end
+      end
+      
       # A set of Compute Engine Confidential VM instance options.
       class GceConfidentialInstanceConfig
         include Google::Apis::Core::Hashable
@@ -614,6 +642,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :pooled_instances
       
+        # ReservationAffinity is the configuration of the desired reservation from which
+        # instances can consume resources.
+        # Corresponds to the JSON property `reservationAffinity`
+        # @return [Google::Apis::WorkstationsV1beta::ReservationAffinity]
+        attr_accessor :reservation_affinity
+      
         # Optional. The email address of the service account for Cloud Workstations VMs
         # created with this configuration. When specified, be sure that the service
         # account has `logging.logEntries.create` and `monitoring.timeSeries.create`
@@ -676,6 +710,7 @@ module Google
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @pool_size = args[:pool_size] if args.key?(:pool_size)
           @pooled_instances = args[:pooled_instances] if args.key?(:pooled_instances)
+          @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @service_account = args[:service_account] if args.key?(:service_account)
           @service_account_scopes = args[:service_account_scopes] if args.key?(:service_account_scopes)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
@@ -1529,6 +1564,41 @@ module Google
         end
       end
       
+      # ReservationAffinity is the configuration of the desired reservation from which
+      # instances can consume resources.
+      class ReservationAffinity
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Corresponds to the type of reservation consumption.
+        # Corresponds to the JSON property `consumeReservationType`
+        # @return [String]
+        attr_accessor :consume_reservation_type
+      
+        # Optional. Corresponds to the label key of reservation resource.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Optional. Corresponds to the label values of reservation resources. Valid
+        # values are either a name to a reservation in the same project or "projects/`
+        # project`/reservations/`reservation`" to target a shared reservation in the
+        # same zone but in a different project.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consume_reservation_type = args[:consume_reservation_type] if args.key?(:consume_reservation_type)
+          @key = args[:key] if args.key?(:key)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
       # Runtime host for the workstation.
       class RuntimeHost
         include Google::Apis::Core::Hashable
@@ -1918,6 +1988,13 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # Output only. Whether or not the current workstation is actively boosted with
+        # this id.
+        # Corresponds to the JSON property `running`
+        # @return [Boolean]
+        attr_accessor :running
+        alias_method :running?, :running
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1925,6 +2002,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
+          @running = args[:running] if args.key?(:running)
         end
       end
       
@@ -1986,6 +2064,11 @@ module Google
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
+      
+        # Configuration options for Cluster HTTP Gateway.
+        # Corresponds to the JSON property `gatewayConfig`
+        # @return [Google::Apis::WorkstationsV1beta::GatewayConfig]
+        attr_accessor :gateway_config
       
         # Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources)
         # that are applied to the workstation cluster and that are also propagated to
@@ -2068,6 +2151,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @domain_config = args[:domain_config] if args.key?(:domain_config)
           @etag = args[:etag] if args.key?(:etag)
+          @gateway_config = args[:gateway_config] if args.key?(:gateway_config)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)

@@ -610,6 +610,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementVersionsV1ChromeOsDevice
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -635,6 +647,12 @@ module Google
       end
       
       class GoogleChromeManagementVersionsV1GenericProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -853,6 +871,7 @@ module Google
           property :is_kiosk_only, as: 'isKioskOnly'
           property :is_theme, as: 'isTheme'
           property :kiosk_enabled, as: 'kioskEnabled'
+          property :manifest_version, :numeric_string => true, as: 'manifestVersion'
           property :min_user_count, as: 'minUserCount'
           collection :permissions, as: 'permissions', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ChromeAppPermission, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ChromeAppPermission::Representation
       
@@ -1100,10 +1119,12 @@ module Google
           property :display_height_mm, as: 'displayHeightMm'
           property :display_name, as: 'displayName'
           property :display_width_mm, as: 'displayWidthMm'
+          property :edid_version, as: 'edidVersion'
           property :internal, as: 'internal'
           property :manufacture_year, as: 'manufactureYear'
           property :manufacturer_id, as: 'manufacturerId'
           property :model_id, as: 'modelId'
+          property :serial_number, as: 'serialNumber'
         end
       end
       
@@ -1112,10 +1133,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :device_id, :numeric_string => true, as: 'deviceId'
           property :display_name, as: 'displayName'
+          property :edid_version, as: 'edidVersion'
           property :is_internal, as: 'isInternal'
           property :refresh_rate, as: 'refreshRate'
           property :resolution_height, as: 'resolutionHeight'
           property :resolution_width, as: 'resolutionWidth'
+          property :serial_number, as: 'serialNumber'
         end
       end
       
@@ -1845,6 +1868,29 @@ module Google
         end
       end
       
+      class GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :command_result, as: 'commandResult', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult::Representation
+      
+          property :command_state, as: 'commandState'
+          property :command_type, as: 'commandType'
+          property :issue_time, as: 'issueTime'
+          property :name, as: 'name'
+          hash :payload, as: 'payload'
+          property :valid_duration, as: 'validDuration'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_execution_time, as: 'clientExecutionTime'
+          property :result_code, as: 'resultCode'
+          property :result_type, as: 'resultType'
+        end
+      end
+      
       class GoogleChromeManagementVersionsV1ChromeOsDevice
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1884,6 +1930,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :profile_adapter_config_reference, as: 'profileAdapterConfigReference'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :chrome_browser_profile_commands, as: 'chromeBrowserProfileCommands', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          property :total_size, :numeric_string => true, as: 'totalSize'
         end
       end
       

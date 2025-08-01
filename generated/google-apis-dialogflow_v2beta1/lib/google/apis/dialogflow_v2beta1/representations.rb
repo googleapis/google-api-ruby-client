@@ -256,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3FulfillmentSetParameterAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -875,6 +881,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3924,6 +3936,8 @@ module Google
           collection :conditional_cases, as: 'conditionalCases', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3FulfillmentConditionalCases, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3FulfillmentConditionalCases::Representation
       
           property :enable_generative_fallback, as: 'enableGenerativeFallback'
+          collection :generators, as: 'generators', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings::Representation
+      
           collection :messages, as: 'messages', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3ResponseMessage, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3ResponseMessage::Representation
       
           property :return_partial_responses, as: 'returnPartialResponses'
@@ -3958,6 +3972,15 @@ module Google
       
           property :message, as: 'message', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3ResponseMessage, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3ResponseMessage::Representation
       
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generator, as: 'generator'
+          hash :input_parameters, as: 'inputParameters'
+          property :output_parameter, as: 'outputParameter'
         end
       end
       
@@ -4968,6 +4991,8 @@ module Google
           collection :conditional_cases, as: 'conditionalCases', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases::Representation
       
           property :enable_generative_fallback, as: 'enableGenerativeFallback'
+          collection :generators, as: 'generators', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings::Representation
+      
           collection :messages, as: 'messages', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1ResponseMessage, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1ResponseMessage::Representation
       
           property :return_partial_responses, as: 'returnPartialResponses'
@@ -5002,6 +5027,15 @@ module Google
       
           property :message, as: 'message', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1ResponseMessage, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1ResponseMessage::Representation
       
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generator, as: 'generator'
+          hash :input_parameters, as: 'inputParameters'
+          property :output_parameter, as: 'outputParameter'
         end
       end
       
@@ -5791,6 +5825,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :conversation_model, as: 'conversationModel'
           property :create_time, as: 'createTime'
+          property :done_time, as: 'doneTime'
           property :state, as: 'state'
         end
       end
@@ -5806,6 +5841,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :conversation_model, as: 'conversationModel'
           property :create_time, as: 'createTime'
+          property :done_time, as: 'doneTime'
         end
       end
       
@@ -5814,6 +5850,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :conversation_model, as: 'conversationModel'
           property :create_time, as: 'createTime'
+          property :done_time, as: 'doneTime'
         end
       end
       
@@ -6415,6 +6452,7 @@ module Google
       class GoogleCloudDialogflowV2KnowledgeOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :done_time, as: 'doneTime'
           property :export_operation_metadata, as: 'exportOperationMetadata', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2ExportOperationMetadata, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2ExportOperationMetadata::Representation
       
           property :knowledge_base, as: 'knowledgeBase'
@@ -6668,6 +6706,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :conversation_model, as: 'conversationModel'
           property :create_time, as: 'createTime'
+          property :done_time, as: 'doneTime'
         end
       end
       
@@ -8509,6 +8548,7 @@ module Google
       class GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :done_time, as: 'doneTime'
           property :export_operation_metadata, as: 'exportOperationMetadata', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ExportOperationMetadata, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ExportOperationMetadata::Representation
       
           property :knowledge_base, as: 'knowledgeBase'

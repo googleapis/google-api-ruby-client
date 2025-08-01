@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdditionalIpRangesConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdditionalNodeNetworkConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +77,12 @@ module Google
       end
       
       class AuthenticatorGroupsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutoIpamConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -155,6 +167,12 @@ module Google
       end
       
       class BlueGreenSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BootDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -340,6 +358,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DesiredAdditionalIpRangesConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DesiredEnterpriseConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -371,6 +395,24 @@ module Google
       end
       
       class EphemeralStorageLocalSsdConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EvictionGracePeriod
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EvictionMinimumReclaim
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EvictionSignals
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -449,6 +491,12 @@ module Google
       end
       
       class GetOpenIdConfigResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GkeAutoUpgradeConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -623,6 +671,12 @@ module Google
       end
       
       class LoggingVariantConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LustreCsiDriverConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1362,6 +1416,14 @@ module Google
         end
       end
       
+      class AdditionalIpRangesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :pod_ipv4_range_names, as: 'podIpv4RangeNames'
+          property :subnetwork, as: 'subnetwork'
+        end
+      end
+      
       class AdditionalNodeNetworkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1419,6 +1481,8 @@ module Google
       
           property :kubernetes_dashboard, as: 'kubernetesDashboard', class: Google::Apis::ContainerV1beta1::KubernetesDashboard, decorator: Google::Apis::ContainerV1beta1::KubernetesDashboard::Representation
       
+          property :lustre_csi_driver_config, as: 'lustreCsiDriverConfig', class: Google::Apis::ContainerV1beta1::LustreCsiDriverConfig, decorator: Google::Apis::ContainerV1beta1::LustreCsiDriverConfig::Representation
+      
           property :network_policy_config, as: 'networkPolicyConfig', class: Google::Apis::ContainerV1beta1::NetworkPolicyConfig, decorator: Google::Apis::ContainerV1beta1::NetworkPolicyConfig::Representation
       
           property :parallelstore_csi_driver_config, as: 'parallelstoreCsiDriverConfig', class: Google::Apis::ContainerV1beta1::ParallelstoreCsiDriverConfig, decorator: Google::Apis::ContainerV1beta1::ParallelstoreCsiDriverConfig::Representation
@@ -1451,6 +1515,7 @@ module Google
       class AnonymousAuthenticationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
         end
       end
       
@@ -1459,6 +1524,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
           property :security_group, as: 'securityGroup'
+        end
+      end
+      
+      class AutoIpamConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1595,6 +1666,16 @@ module Google
         end
       end
       
+      class BootDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_type, as: 'diskType'
+          property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
+          property :provisioned_throughput, :numeric_string => true, as: 'provisionedThroughput'
+          property :size_gb, :numeric_string => true, as: 'sizeGb'
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1694,6 +1775,8 @@ module Google
           property :etag, as: 'etag'
           property :expire_time, as: 'expireTime'
           property :fleet, as: 'fleet', class: Google::Apis::ContainerV1beta1::Fleet, decorator: Google::Apis::ContainerV1beta1::Fleet::Representation
+      
+          property :gke_auto_upgrade_config, as: 'gkeAutoUpgradeConfig', class: Google::Apis::ContainerV1beta1::GkeAutoUpgradeConfig, decorator: Google::Apis::ContainerV1beta1::GkeAutoUpgradeConfig::Representation
       
           property :id, as: 'id'
           property :identity_service_config, as: 'identityServiceConfig', class: Google::Apis::ContainerV1beta1::IdentityServiceConfig, decorator: Google::Apis::ContainerV1beta1::IdentityServiceConfig::Representation
@@ -1822,11 +1905,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :additional_pod_ranges_config, as: 'additionalPodRangesConfig', class: Google::Apis::ContainerV1beta1::AdditionalPodRangesConfig, decorator: Google::Apis::ContainerV1beta1::AdditionalPodRangesConfig::Representation
       
+          property :desired_additional_ip_ranges_config, as: 'desiredAdditionalIpRangesConfig', class: Google::Apis::ContainerV1beta1::DesiredAdditionalIpRangesConfig, decorator: Google::Apis::ContainerV1beta1::DesiredAdditionalIpRangesConfig::Representation
+      
           property :desired_addons_config, as: 'desiredAddonsConfig', class: Google::Apis::ContainerV1beta1::AddonsConfig, decorator: Google::Apis::ContainerV1beta1::AddonsConfig::Representation
       
           property :desired_anonymous_authentication_config, as: 'desiredAnonymousAuthenticationConfig', class: Google::Apis::ContainerV1beta1::AnonymousAuthenticationConfig, decorator: Google::Apis::ContainerV1beta1::AnonymousAuthenticationConfig::Representation
       
           property :desired_authenticator_groups_config, as: 'desiredAuthenticatorGroupsConfig', class: Google::Apis::ContainerV1beta1::AuthenticatorGroupsConfig, decorator: Google::Apis::ContainerV1beta1::AuthenticatorGroupsConfig::Representation
+      
+          property :desired_auto_ipam_config, as: 'desiredAutoIpamConfig', class: Google::Apis::ContainerV1beta1::AutoIpamConfig, decorator: Google::Apis::ContainerV1beta1::AutoIpamConfig::Representation
       
           property :desired_autopilot_workload_policy_config, as: 'desiredAutopilotWorkloadPolicyConfig', class: Google::Apis::ContainerV1beta1::WorkloadPolicyConfig, decorator: Google::Apis::ContainerV1beta1::WorkloadPolicyConfig::Representation
       
@@ -1939,6 +2026,8 @@ module Google
           property :desired_stack_type, as: 'desiredStackType'
           property :desired_tpu_config, as: 'desiredTpuConfig', class: Google::Apis::ContainerV1beta1::TpuConfig, decorator: Google::Apis::ContainerV1beta1::TpuConfig::Representation
       
+          property :desired_user_managed_keys_config, as: 'desiredUserManagedKeysConfig', class: Google::Apis::ContainerV1beta1::UserManagedKeysConfig, decorator: Google::Apis::ContainerV1beta1::UserManagedKeysConfig::Representation
+      
           property :desired_vertical_pod_autoscaling, as: 'desiredVerticalPodAutoscaling', class: Google::Apis::ContainerV1beta1::VerticalPodAutoscaling, decorator: Google::Apis::ContainerV1beta1::VerticalPodAutoscaling::Representation
       
           property :desired_workload_alts_config, as: 'desiredWorkloadAltsConfig', class: Google::Apis::ContainerV1beta1::WorkloadAltsConfig, decorator: Google::Apis::ContainerV1beta1::WorkloadAltsConfig::Representation
@@ -1950,6 +2039,8 @@ module Google
           property :enable_k8s_beta_apis, as: 'enableK8sBetaApis', class: Google::Apis::ContainerV1beta1::K8sBetaApiConfig, decorator: Google::Apis::ContainerV1beta1::K8sBetaApiConfig::Representation
       
           property :etag, as: 'etag'
+          property :gke_auto_upgrade_config, as: 'gkeAutoUpgradeConfig', class: Google::Apis::ContainerV1beta1::GkeAutoUpgradeConfig, decorator: Google::Apis::ContainerV1beta1::GkeAutoUpgradeConfig::Representation
+      
           property :private_cluster_config, as: 'privateClusterConfig', class: Google::Apis::ContainerV1beta1::PrivateClusterConfig, decorator: Google::Apis::ContainerV1beta1::PrivateClusterConfig::Representation
       
           property :removed_additional_pod_ranges_config, as: 'removedAdditionalPodRangesConfig', class: Google::Apis::ContainerV1beta1::AdditionalPodRangesConfig, decorator: Google::Apis::ContainerV1beta1::AdditionalPodRangesConfig::Representation
@@ -2129,6 +2220,14 @@ module Google
         end
       end
       
+      class DesiredAdditionalIpRangesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_ip_ranges_configs, as: 'additionalIpRangesConfigs', class: Google::Apis::ContainerV1beta1::AdditionalIpRangesConfig, decorator: Google::Apis::ContainerV1beta1::AdditionalIpRangesConfig::Representation
+      
+        end
+      end
+      
       class DesiredEnterpriseConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2169,6 +2268,42 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_cache_count, as: 'dataCacheCount'
           property :local_ssd_count, as: 'localSsdCount'
+        end
+      end
+      
+      class EvictionGracePeriod
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :imagefs_available, as: 'imagefsAvailable'
+          property :imagefs_inodes_free, as: 'imagefsInodesFree'
+          property :memory_available, as: 'memoryAvailable'
+          property :nodefs_available, as: 'nodefsAvailable'
+          property :nodefs_inodes_free, as: 'nodefsInodesFree'
+          property :pid_available, as: 'pidAvailable'
+        end
+      end
+      
+      class EvictionMinimumReclaim
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :imagefs_available, as: 'imagefsAvailable'
+          property :imagefs_inodes_free, as: 'imagefsInodesFree'
+          property :memory_available, as: 'memoryAvailable'
+          property :nodefs_available, as: 'nodefsAvailable'
+          property :nodefs_inodes_free, as: 'nodefsInodesFree'
+          property :pid_available, as: 'pidAvailable'
+        end
+      end
+      
+      class EvictionSignals
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :imagefs_available, as: 'imagefsAvailable'
+          property :imagefs_inodes_free, as: 'imagefsInodesFree'
+          property :memory_available, as: 'memoryAvailable'
+          property :nodefs_available, as: 'nodefsAvailable'
+          property :nodefs_inodes_free, as: 'nodefsInodesFree'
+          property :pid_available, as: 'pidAvailable'
         end
       end
       
@@ -2277,6 +2412,13 @@ module Google
         end
       end
       
+      class GkeAutoUpgradeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :patch_mode, as: 'patchMode'
+        end
+      end
+      
       class GkeBackupAgentConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2341,9 +2483,13 @@ module Google
       class IpAllocationPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_ip_ranges_configs, as: 'additionalIpRangesConfigs', class: Google::Apis::ContainerV1beta1::AdditionalIpRangesConfig, decorator: Google::Apis::ContainerV1beta1::AdditionalIpRangesConfig::Representation
+      
           property :additional_pod_ranges_config, as: 'additionalPodRangesConfig', class: Google::Apis::ContainerV1beta1::AdditionalPodRangesConfig, decorator: Google::Apis::ContainerV1beta1::AdditionalPodRangesConfig::Representation
       
           property :allow_route_overlap, as: 'allowRouteOverlap'
+          property :auto_ipam_config, as: 'autoIpamConfig', class: Google::Apis::ContainerV1beta1::AutoIpamConfig, decorator: Google::Apis::ContainerV1beta1::AutoIpamConfig::Representation
+      
           property :cluster_ipv4_cidr, as: 'clusterIpv4Cidr'
           property :cluster_ipv4_cidr_block, as: 'clusterIpv4CidrBlock'
           property :cluster_secondary_range_name, as: 'clusterSecondaryRangeName'
@@ -2453,6 +2599,8 @@ module Google
           property :hugepages, as: 'hugepages', class: Google::Apis::ContainerV1beta1::HugepagesConfig, decorator: Google::Apis::ContainerV1beta1::HugepagesConfig::Representation
       
           hash :sysctls, as: 'sysctls'
+          property :transparent_hugepage_defrag, as: 'transparentHugepageDefrag'
+          property :transparent_hugepage_enabled, as: 'transparentHugepageEnabled'
         end
       end
       
@@ -2535,6 +2683,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :variant, as: 'variant'
+        end
+      end
+      
+      class LustreCsiDriverConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_legacy_lustre_port, as: 'enableLegacyLustrePort'
+          property :enabled, as: 'enabled'
         end
       end
       
@@ -2729,6 +2885,8 @@ module Google
       
           property :advanced_machine_features, as: 'advancedMachineFeatures', class: Google::Apis::ContainerV1beta1::AdvancedMachineFeatures, decorator: Google::Apis::ContainerV1beta1::AdvancedMachineFeatures::Representation
       
+          property :boot_disk, as: 'bootDisk', class: Google::Apis::ContainerV1beta1::BootDisk, decorator: Google::Apis::ContainerV1beta1::BootDisk::Representation
+      
           property :boot_disk_kms_key, as: 'bootDiskKmsKey'
           property :confidential_nodes, as: 'confidentialNodes', class: Google::Apis::ContainerV1beta1::ConfidentialNodes, decorator: Google::Apis::ContainerV1beta1::ConfidentialNodes::Representation
       
@@ -2823,14 +2981,23 @@ module Google
           property :cpu_cfs_quota, as: 'cpuCfsQuota'
           property :cpu_cfs_quota_period, as: 'cpuCfsQuotaPeriod'
           property :cpu_manager_policy, as: 'cpuManagerPolicy'
+          property :eviction_max_pod_grace_period_seconds, as: 'evictionMaxPodGracePeriodSeconds'
+          property :eviction_minimum_reclaim, as: 'evictionMinimumReclaim', class: Google::Apis::ContainerV1beta1::EvictionMinimumReclaim, decorator: Google::Apis::ContainerV1beta1::EvictionMinimumReclaim::Representation
+      
+          property :eviction_soft, as: 'evictionSoft', class: Google::Apis::ContainerV1beta1::EvictionSignals, decorator: Google::Apis::ContainerV1beta1::EvictionSignals::Representation
+      
+          property :eviction_soft_grace_period, as: 'evictionSoftGracePeriod', class: Google::Apis::ContainerV1beta1::EvictionGracePeriod, decorator: Google::Apis::ContainerV1beta1::EvictionGracePeriod::Representation
+      
           property :image_gc_high_threshold_percent, as: 'imageGcHighThresholdPercent'
           property :image_gc_low_threshold_percent, as: 'imageGcLowThresholdPercent'
           property :image_maximum_gc_age, as: 'imageMaximumGcAge'
           property :image_minimum_gc_age, as: 'imageMinimumGcAge'
           property :insecure_kubelet_readonly_port_enabled, as: 'insecureKubeletReadonlyPortEnabled'
+          property :max_parallel_image_pulls, as: 'maxParallelImagePulls'
           property :memory_manager, as: 'memoryManager', class: Google::Apis::ContainerV1beta1::MemoryManager, decorator: Google::Apis::ContainerV1beta1::MemoryManager::Representation
       
           property :pod_pids_limit, :numeric_string => true, as: 'podPidsLimit'
+          property :single_process_oom_kill, as: 'singleProcessOomKill'
           property :topology_manager, as: 'topologyManager', class: Google::Apis::ContainerV1beta1::TopologyManager, decorator: Google::Apis::ContainerV1beta1::TopologyManager::Representation
       
         end
@@ -2869,6 +3036,7 @@ module Google
           property :pod_ipv4_cidr_block, as: 'podIpv4CidrBlock'
           property :pod_ipv4_range_utilization, as: 'podIpv4RangeUtilization'
           property :pod_range, as: 'podRange'
+          property :subnetwork, as: 'subnetwork'
         end
       end
       
@@ -3529,6 +3697,7 @@ module Google
       class SoleTenantConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :min_node_cpus, as: 'minNodeCpus'
           collection :node_affinities, as: 'nodeAffinities', class: Google::Apis::ContainerV1beta1::NodeAffinity, decorator: Google::Apis::ContainerV1beta1::NodeAffinity::Representation
       
         end
@@ -3641,6 +3810,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :accelerators, as: 'accelerators', class: Google::Apis::ContainerV1beta1::AcceleratorConfig, decorator: Google::Apis::ContainerV1beta1::AcceleratorConfig::Representation
+      
+          property :boot_disk, as: 'bootDisk', class: Google::Apis::ContainerV1beta1::BootDisk, decorator: Google::Apis::ContainerV1beta1::BootDisk::Representation
       
           property :cluster_id, as: 'clusterId'
           property :confidential_nodes, as: 'confidentialNodes', class: Google::Apis::ContainerV1beta1::ConfidentialNodes, decorator: Google::Apis::ContainerV1beta1::ConfidentialNodes::Representation

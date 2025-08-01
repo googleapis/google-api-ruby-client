@@ -202,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AllocationResourceStatusHealthInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AllocationResourceStatusSpecificSkuAllocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -575,6 +581,18 @@ module Google
       end
       
       class BackendServiceReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceTlsSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceTlsSettingsSubjectAltName
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4702,7 +4720,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReservationBlockHealthInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReservationBlockPhysicalTopology
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationBlockPhysicalTopologyInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationBlockPhysicalTopologyInstancePhysicalHostTopology
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4751,6 +4787,12 @@ module Google
       end
       
       class ReservationSubBlock
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationSubBlockHealthInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7470,11 +7512,22 @@ module Google
       class AllocationResourceStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :health_info, as: 'healthInfo', class: Google::Apis::ComputeV1::AllocationResourceStatusHealthInfo, decorator: Google::Apis::ComputeV1::AllocationResourceStatusHealthInfo::Representation
+      
           property :reservation_block_count, as: 'reservationBlockCount'
           property :reservation_maintenance, as: 'reservationMaintenance', class: Google::Apis::ComputeV1::GroupMaintenanceInfo, decorator: Google::Apis::ComputeV1::GroupMaintenanceInfo::Representation
       
           property :specific_sku_allocation, as: 'specificSkuAllocation', class: Google::Apis::ComputeV1::AllocationResourceStatusSpecificSkuAllocation, decorator: Google::Apis::ComputeV1::AllocationResourceStatusSpecificSkuAllocation::Representation
       
+        end
+      end
+      
+      class AllocationResourceStatusHealthInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :degraded_block_count, as: 'degradedBlockCount'
+          property :health_status, as: 'healthStatus'
+          property :healthy_block_count, as: 'healthyBlockCount'
         end
       end
       
@@ -7984,6 +8037,8 @@ module Google
           property :subsetting, as: 'subsetting', class: Google::Apis::ComputeV1::Subsetting, decorator: Google::Apis::ComputeV1::Subsetting::Representation
       
           property :timeout_sec, as: 'timeoutSec'
+          property :tls_settings, as: 'tlsSettings', class: Google::Apis::ComputeV1::BackendServiceTlsSettings, decorator: Google::Apis::ComputeV1::BackendServiceTlsSettings::Representation
+      
           collection :used_by, as: 'usedBy', class: Google::Apis::ComputeV1::BackendServiceUsedBy, decorator: Google::Apis::ComputeV1::BackendServiceUsedBy::Representation
       
         end
@@ -8243,6 +8298,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backend_service, as: 'backendService'
+        end
+      end
+      
+      class BackendServiceTlsSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication_config, as: 'authenticationConfig'
+          property :sni, as: 'sni'
+          collection :subject_alt_names, as: 'subjectAltNames', class: Google::Apis::ComputeV1::BackendServiceTlsSettingsSubjectAltName, decorator: Google::Apis::ComputeV1::BackendServiceTlsSettingsSubjectAltName::Representation
+      
+        end
+      end
+      
+      class BackendServiceTlsSettingsSubjectAltName
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dns_name, as: 'dnsName'
+          property :uniform_resource_identifier, as: 'uniformResourceIdentifier'
         end
       end
       
@@ -9707,9 +9780,13 @@ module Google
       class GroupMaintenanceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_maintenance_ongoing_count, as: 'instanceMaintenanceOngoingCount'
+          property :instance_maintenance_pending_count, as: 'instanceMaintenancePendingCount'
           property :maintenance_ongoing_count, as: 'maintenanceOngoingCount'
           property :maintenance_pending_count, as: 'maintenancePendingCount'
           property :scheduling_type, as: 'schedulingType'
+          property :subblock_infra_maintenance_ongoing_count, as: 'subblockInfraMaintenanceOngoingCount'
+          property :subblock_infra_maintenance_pending_count, as: 'subblockInfraMaintenancePendingCount'
           property :upcoming_group_maintenance, as: 'upcomingGroupMaintenance', class: Google::Apis::ComputeV1::UpcomingMaintenance, decorator: Google::Apis::ComputeV1::UpcomingMaintenance::Representation
       
         end
@@ -15891,6 +15968,7 @@ module Google
           property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeV1::AllocationResourceStatus, decorator: Google::Apis::ComputeV1::AllocationResourceStatus::Representation
       
           property :satisfies_pzs, as: 'satisfiesPzs'
+          property :scheduling_type, as: 'schedulingType'
           property :self_link, as: 'selfLink'
           property :share_settings, as: 'shareSettings', class: Google::Apis::ComputeV1::ShareSettings, decorator: Google::Apis::ComputeV1::ShareSettings::Representation
       
@@ -15949,6 +16027,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, as: 'count'
           property :creation_timestamp, as: 'creationTimestamp'
+          property :health_info, as: 'healthInfo', class: Google::Apis::ComputeV1::ReservationBlockHealthInfo, decorator: Google::Apis::ComputeV1::ReservationBlockHealthInfo::Representation
+      
           property :id, :numeric_string => true, as: 'id'
           property :in_use_count, as: 'inUseCount'
           property :kind, as: 'kind'
@@ -15966,11 +16046,40 @@ module Google
         end
       end
       
+      class ReservationBlockHealthInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :degraded_sub_block_count, as: 'degradedSubBlockCount'
+          property :health_status, as: 'healthStatus'
+          property :healthy_sub_block_count, as: 'healthySubBlockCount'
+        end
+      end
+      
       class ReservationBlockPhysicalTopology
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :block, as: 'block'
           property :cluster, as: 'cluster'
+          collection :instances, as: 'instances', class: Google::Apis::ComputeV1::ReservationBlockPhysicalTopologyInstance, decorator: Google::Apis::ComputeV1::ReservationBlockPhysicalTopologyInstance::Representation
+      
+        end
+      end
+      
+      class ReservationBlockPhysicalTopologyInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_id, :numeric_string => true, as: 'instanceId'
+          property :physical_host_topology, as: 'physicalHostTopology', class: Google::Apis::ComputeV1::ReservationBlockPhysicalTopologyInstancePhysicalHostTopology, decorator: Google::Apis::ComputeV1::ReservationBlockPhysicalTopologyInstancePhysicalHostTopology::Representation
+      
+          property :project_id, :numeric_string => true, as: 'projectId'
+        end
+      end
+      
+      class ReservationBlockPhysicalTopologyInstancePhysicalHostTopology
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host, as: 'host'
+          property :sub_block, as: 'subBlock'
         end
       end
       
@@ -16051,16 +16160,31 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, as: 'count'
           property :creation_timestamp, as: 'creationTimestamp'
+          property :health_info, as: 'healthInfo', class: Google::Apis::ComputeV1::ReservationSubBlockHealthInfo, decorator: Google::Apis::ComputeV1::ReservationSubBlockHealthInfo::Representation
+      
           property :id, :numeric_string => true, as: 'id'
           property :in_use_count, as: 'inUseCount'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :physical_topology, as: 'physicalTopology', class: Google::Apis::ComputeV1::ReservationSubBlockPhysicalTopology, decorator: Google::Apis::ComputeV1::ReservationSubBlockPhysicalTopology::Representation
       
+          property :reservation_sub_block_maintenance, as: 'reservationSubBlockMaintenance', class: Google::Apis::ComputeV1::GroupMaintenanceInfo, decorator: Google::Apis::ComputeV1::GroupMaintenanceInfo::Representation
+      
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :status, as: 'status'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class ReservationSubBlockHealthInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :degraded_host_count, as: 'degradedHostCount'
+          property :degraded_infra_count, as: 'degradedInfraCount'
+          property :health_status, as: 'healthStatus'
+          property :healthy_host_count, as: 'healthyHostCount'
+          property :healthy_infra_count, as: 'healthyInfraCount'
         end
       end
       
@@ -19708,6 +19832,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :can_reschedule, as: 'canReschedule'
           property :latest_window_start_time, as: 'latestWindowStartTime'
+          property :maintenance_on_shutdown, as: 'maintenanceOnShutdown'
+          collection :maintenance_reasons, as: 'maintenanceReasons'
           property :maintenance_status, as: 'maintenanceStatus'
           property :type, as: 'type'
           property :window_end_time, as: 'windowEndTime'

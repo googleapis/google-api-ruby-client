@@ -202,12 +202,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class WorkflowOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Actor
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -555,15 +549,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :plain_text, as: 'plainText'
-        end
-      end
-      
-      class WorkflowOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :namespace, as: 'namespace'
-          property :operation_action, as: 'operationAction'
-          property :workflow_operation_type, as: 'workflowOperationType'
         end
       end
     end

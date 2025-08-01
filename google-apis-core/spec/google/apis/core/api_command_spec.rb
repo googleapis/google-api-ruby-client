@@ -34,14 +34,10 @@ RSpec.describe Google::Apis::Core::ApiCommand do
 
   let(:client_version) { "1.2.3" }
   let(:x_goog_api_client_value) { "gl-ruby/#{RUBY_VERSION} gdcl/#{client_version}" }
+
   context('with preparation') do
     let(:command) do
       Google::Apis::Core::ApiCommand.new(:get, 'https://www.googleapis.com/zoo/animals', client_version: client_version)
-    end
-    let(:invocation_id) { 'test123' }
-
-    before(:example) do
-      Google::Apis::Core::ApiCommand.const_set(:INVOCATION_ID, invocation_id)
     end
 
     it 'should set X-Goog-Api-Client header if none is set' do
@@ -93,14 +89,6 @@ RSpec.describe Google::Apis::Core::ApiCommand do
       command.options.add_invocation_id_header = true
       command.prepare!
       expect(command.header["X-Goog-Api-Client"]).to include("gccl-invocation-id")
-      expect(command.header["X-Goog-Api-Client"]).to include(invocation_id)
-
-    end
-
-    it "should set the X-Goog-Gcs-Idempotency-Token header" do
-      command.prepare!
-      expect(command.header['X-Goog-Gcs-Idempotency-Token']).not_to be_nil
-      expect(command.header['X-Goog-Gcs-Idempotency-Token']).to eql invocation_id
     end
   end
 
@@ -262,17 +250,10 @@ EOF
       command.options.add_invocation_id_header = true
       result = command.execute(client)
       invocation_id_header = command.header["X-Goog-Api-Client"]
+      
       expect(invocation_id_header).to include("gccl-invocation-id")
       expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
         .with { |req| req.headers['X-Goog-Api-Client'] == invocation_id_header }).to have_been_made.times(2)
-    end
-
-    it 'should keep same idempotency_token across retries' do
-      result = command.execute(client)
-      idempotency_token_header = command.header['X-Goog-Gcs-Idempotency-Token']
-      expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
-        .with { |req| req.headers['X-Goog-Gcs-Idempotency-Token'] == idempotency_token_header })
-        .to have_been_made.times(2)
     end
   end
 

@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuthzPolicyAuthzRulePrincipal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuthzPolicyAuthzRuleRequestResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,6 +143,12 @@ module Google
       end
       
       class AuthzPolicyTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendAuthenticationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -371,6 +383,12 @@ module Google
       end
       
       class ListAuthzPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListBackendAuthenticationConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -748,6 +766,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :ip_blocks, as: 'ipBlocks', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleIpBlock, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleIpBlock::Representation
       
+          collection :principals, as: 'principals', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRulePrincipal, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRulePrincipal::Representation
+      
           collection :resources, as: 'resources', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleRequestResource, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleRequestResource::Representation
       
         end
@@ -767,6 +787,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :length, as: 'length'
           property :prefix, as: 'prefix'
+        end
+      end
+      
+      class AuthzPolicyAuthzRulePrincipal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :principal, as: 'principal', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch::Representation
+      
+          property :principal_selector, as: 'principalSelector'
         end
       end
       
@@ -857,6 +886,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :load_balancing_scheme, as: 'loadBalancingScheme'
           collection :resources, as: 'resources'
+        end
+      end
+      
+      class BackendAuthenticationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_certificate, as: 'clientCertificate'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :trust_config, as: 'trustConfig'
+          property :update_time, as: 'updateTime'
+          property :well_known_roots, as: 'wellKnownRoots'
         end
       end
       
@@ -1256,6 +1300,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :authz_policies, as: 'authzPolicies', class: Google::Apis::NetworksecurityV1::AuthzPolicy, decorator: Google::Apis::NetworksecurityV1::AuthzPolicy::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListBackendAuthenticationConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backend_authentication_configs, as: 'backendAuthenticationConfigs', class: Google::Apis::NetworksecurityV1::BackendAuthenticationConfig, decorator: Google::Apis::NetworksecurityV1::BackendAuthenticationConfig::Representation
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'

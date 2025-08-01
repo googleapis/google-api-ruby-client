@@ -2213,6 +2213,13 @@ module Google
         #   The current etag of the VMware admin cluster. If an etag is provided and does
         #   not match the current etag of the cluster, deletion will be blocked and an
         #   ABORTED error will be returned.
+        # @param [Boolean] ignore_errors
+        #   Optional. If set to true, the unenrollment of a vmware admin cluster resource
+        #   will succeed even if errors occur during unenrollment. This parameter can be
+        #   used when you want to unenroll admin cluster resource and the on-prem admin
+        #   cluster is disconnected / unreachable. WARNING: Using this parameter when your
+        #   admin cluster still exists may result in a deleted GCP admin cluster but
+        #   existing resourcelink in on-prem admin cluster and membership.
         # @param [Boolean] validate_only
         #   Validate the request without actually doing any updates.
         # @param [String] fields
@@ -2232,13 +2239,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def unenroll_project_location_vmware_admin_cluster(name, allow_missing: nil, etag: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def unenroll_project_location_vmware_admin_cluster(name, allow_missing: nil, etag: nil, ignore_errors: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}:unenroll', options)
           command.response_representation = Google::Apis::GkeonpremV1::Operation::Representation
           command.response_class = Google::Apis::GkeonpremV1::Operation
           command.params['name'] = name unless name.nil?
           command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['etag'] = etag unless etag.nil?
+          command.query['ignoreErrors'] = ignore_errors unless ignore_errors.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

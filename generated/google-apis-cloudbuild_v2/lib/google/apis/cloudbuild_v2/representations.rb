@@ -70,12 +70,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Capabilities
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ChildStatusReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -576,14 +570,6 @@ module Google
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class Capabilities
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :add, as: 'add'
-          collection :drop, as: 'drop'
         end
       end
       
@@ -1136,8 +1122,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_privilege_escalation, as: 'allowPrivilegeEscalation'
-          property :capabilities, as: 'capabilities', class: Google::Apis::CloudbuildV2::Capabilities, decorator: Google::Apis::CloudbuildV2::Capabilities::Representation
-      
           property :privileged, as: 'privileged'
           property :run_as_group, :numeric_string => true, as: 'runAsGroup'
           property :run_as_non_root, as: 'runAsNonRoot'

@@ -1153,6 +1153,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Completes the user input with advanced keyword suggestions.
+        # @param [String] completion_config
+        #   Required. The completion_config of the parent dataStore or engine resource
+        #   name for which the completion is performed, such as `projects/*/locations/
+        #   global/collections/default_collection/dataStores/*/completionConfig` `projects/
+        #   */locations/global/collections/default_collection/engines/*/completionConfig`.
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequest] google_cloud_discoveryengine_v1_advanced_complete_query_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def complete_project_location_collection_data_store_completion_config_query(completion_config, google_cloud_discoveryengine_v1_advanced_complete_query_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+completionConfig}:completeQuery', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1_advanced_complete_query_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse
+          command.params['completionConfig'] = completion_config unless completion_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Imports CompletionSuggestions for a DataStore.
         # @param [String] parent
         #   Required. The parent data store resource name for which to import customer
@@ -2425,8 +2461,12 @@ module Google
         #   Required. The data store resource name. Format: `projects/`project`/locations/`
         #   location`/collections/`collection`/dataStores/`data_store_id``
         # @param [String] filter
-        #   A filter to apply on the list results. The supported features are:
-        #   user_pseudo_id, state. Example: "user_pseudo_id = some_id"
+        #   A comma-separated list of fields to filter by, in EBNF grammar. The supported
+        #   fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `
+        #   is_pinned` * `labels` * `create_time` * `update_time` Examples: "
+        #   user_pseudo_id = some_id" "display_name = \"some_name\"" "starred = true" "
+        #   is_pinned=true AND (NOT labels:hidden)" "create_time > \"1970-01-01T12:00:00Z\"
+        #   "
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
@@ -3617,6 +3657,147 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets an Assistant.
+        # @param [String] name
+        #   Required. Resource name of Assistant. Format: `projects/`project`/locations/`
+        #   location`/collections/`collection`/engines/`engine`/assistants/`assistant``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Assistant] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Assistant]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_collection_engine_assistant(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Assistant::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Assistant
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an Assistant
+        # @param [String] name
+        #   Immutable. Resource name of the assistant. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/engines/`engine`/assistants/`
+        #   assistant`` It must be a UTF-8 encoded string with a length limit of 1024
+        #   characters.
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Assistant] google_cloud_discoveryengine_v1_assistant_object
+        # @param [String] update_mask
+        #   The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Assistant] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Assistant]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_collection_engine_assistant(name, google_cloud_discoveryengine_v1_assistant_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Assistant::Representation
+          command.request_object = google_cloud_discoveryengine_v1_assistant_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Assistant::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Assistant
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Assists the user with a query in a streaming fashion.
+        # @param [String] name
+        #   Required. The resource name of the Assistant. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/engines/`engine`/assistants/`
+        #   assistant``
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1StreamAssistRequest] google_cloud_discoveryengine_v1_stream_assist_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1StreamAssistResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1StreamAssistResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_project_location_collection_engine_assistant_assist(name, google_cloud_discoveryengine_v1_stream_assist_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:streamAssist', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1StreamAssistRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1_stream_assist_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1StreamAssistResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1StreamAssistResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Completes the user input with advanced keyword suggestions.
+        # @param [String] completion_config
+        #   Required. The completion_config of the parent dataStore or engine resource
+        #   name for which the completion is performed, such as `projects/*/locations/
+        #   global/collections/default_collection/dataStores/*/completionConfig` `projects/
+        #   */locations/global/collections/default_collection/engines/*/completionConfig`.
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequest] google_cloud_discoveryengine_v1_advanced_complete_query_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def complete_project_location_collection_engine_completion_config_query(completion_config, google_cloud_discoveryengine_v1_advanced_complete_query_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+completionConfig}:completeQuery', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1_advanced_complete_query_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse
+          command.params['completionConfig'] = completion_config unless completion_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Control. By default 1000 controls are allowed for a data store. A
         # request can be submitted to adjust this limit. If the Control to create
         # already exists, an ALREADY_EXISTS error is returned.
@@ -4499,8 +4680,12 @@ module Google
         #   Required. The data store resource name. Format: `projects/`project`/locations/`
         #   location`/collections/`collection`/dataStores/`data_store_id``
         # @param [String] filter
-        #   A filter to apply on the list results. The supported features are:
-        #   user_pseudo_id, state. Example: "user_pseudo_id = some_id"
+        #   A comma-separated list of fields to filter by, in EBNF grammar. The supported
+        #   fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `
+        #   is_pinned` * `labels` * `create_time` * `update_time` Examples: "
+        #   user_pseudo_id = some_id" "display_name = \"some_name\"" "starred = true" "
+        #   is_pinned=true AND (NOT labels:hidden)" "create_time > \"1970-01-01T12:00:00Z\"
+        #   "
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
@@ -5429,6 +5614,42 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Completes the user input with advanced keyword suggestions.
+        # @param [String] completion_config
+        #   Required. The completion_config of the parent dataStore or engine resource
+        #   name for which the completion is performed, such as `projects/*/locations/
+        #   global/collections/default_collection/dataStores/*/completionConfig` `projects/
+        #   */locations/global/collections/default_collection/engines/*/completionConfig`.
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequest] google_cloud_discoveryengine_v1_advanced_complete_query_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def complete_project_location_data_store_completion_config_query(completion_config, google_cloud_discoveryengine_v1_advanced_complete_query_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+completionConfig}:completeQuery', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1_advanced_complete_query_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse
+          command.params['completionConfig'] = completion_config unless completion_config.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -6603,8 +6824,12 @@ module Google
         #   Required. The data store resource name. Format: `projects/`project`/locations/`
         #   location`/collections/`collection`/dataStores/`data_store_id``
         # @param [String] filter
-        #   A filter to apply on the list results. The supported features are:
-        #   user_pseudo_id, state. Example: "user_pseudo_id = some_id"
+        #   A comma-separated list of fields to filter by, in EBNF grammar. The supported
+        #   fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `
+        #   is_pinned` * `labels` * `create_time` * `update_time` Examples: "
+        #   user_pseudo_id = some_id" "display_name = \"some_name\"" "starred = true" "
+        #   is_pinned=true AND (NOT labels:hidden)" "create_time > \"1970-01-01T12:00:00Z\"
+        #   "
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `

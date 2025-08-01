@@ -16,13 +16,13 @@ module Google
   module Apis
     module DataformV1beta1
       # Version of the google-apis-dataform_v1beta1 gem
-      GEM_VERSION = "0.44.0"
+      GEM_VERSION = "0.46.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.18.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20250518"
+      REVISION = "20250708"
     end
   end
 end

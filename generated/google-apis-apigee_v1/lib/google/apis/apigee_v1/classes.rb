@@ -7674,6 +7674,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Flag that specifies if internet egress is restricted for VPC Service
+        # Controls. Valid only when runtime_type is `CLOUD` and disable_vpc_peering is `
+        # true`.
+        # Corresponds to the JSON property `networkEgressRestricted`
+        # @return [Boolean]
+        attr_accessor :network_egress_restricted
+        alias_method :network_egress_restricted?, :network_egress_restricted
+      
         # Optional. Configuration for the Portals settings.
         # Corresponds to the JSON property `portalDisabled`
         # @return [Boolean]
@@ -7757,6 +7765,7 @@ module Google
           @expires_at = args[:expires_at] if args.key?(:expires_at)
           @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
           @name = args[:name] if args.key?(:name)
+          @network_egress_restricted = args[:network_egress_restricted] if args.key?(:network_egress_restricted)
           @portal_disabled = args[:portal_disabled] if args.key?(:portal_disabled)
           @project_id = args[:project_id] if args.key?(:project_id)
           @properties = args[:properties] if args.key?(:properties)

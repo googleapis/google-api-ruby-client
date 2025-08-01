@@ -900,6 +900,14 @@ module Google
         # @return [Google::Apis::SecretmanagerV1beta2::Rotation]
         attr_accessor :rotation
       
+        # Optional. Input only. Immutable. Mapping of Tag keys/values directly bound to
+        # this resource. For example: "123/environment": "production", "123/costCenter":
+        # "marketing" Tags are used to organize and group resources. Tags can be used to
+        # control policy evaluation for the resource.
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # Optional. A list of up to 10 Pub/Sub topics to which messages are published
         # when control plane operations are called on the secret or its versions.
         # Corresponds to the JSON property `topics`
@@ -946,6 +954,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @replication = args[:replication] if args.key?(:replication)
           @rotation = args[:rotation] if args.key?(:rotation)
+          @tags = args[:tags] if args.key?(:tags)
           @topics = args[:topics] if args.key?(:topics)
           @ttl = args[:ttl] if args.key?(:ttl)
           @version_aliases = args[:version_aliases] if args.key?(:version_aliases)

@@ -363,7 +363,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :committed_storage_mb
       
-        # The number of cpus the VM has.
+        # The number of CPU cores the VM has.
         # Corresponds to the JSON property `cpuCount`
         # @return [Fixnum]
         attr_accessor :cpu_count
@@ -418,6 +418,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :tags
       
+        # The number of vCPUs the VM has. It is calculated as the number of CPU cores *
+        # threads per CPU the VM has.
+        # Corresponds to the JSON property `vcpuCount`
+        # @return [Fixnum]
+        attr_accessor :vcpu_count
+      
         # The virtualization type.
         # Corresponds to the JSON property `virtualizationType`
         # @return [String]
@@ -458,6 +464,7 @@ module Google
           @source_description = args[:source_description] if args.key?(:source_description)
           @source_id = args[:source_id] if args.key?(:source_id)
           @tags = args[:tags] if args.key?(:tags)
+          @vcpu_count = args[:vcpu_count] if args.key?(:vcpu_count)
           @virtualization_type = args[:virtualization_type] if args.key?(:virtualization_type)
           @vm_id = args[:vm_id] if args.key?(:vm_id)
           @vpc_id = args[:vpc_id] if args.key?(:vpc_id)
@@ -1124,6 +1131,17 @@ module Google
         # @return [Google::Apis::VmmigrationV1alpha1::ComputeScheduling]
         attr_accessor :compute_scheduling
       
+        # Optional. Additional replica zones of the target regional disks. If this list
+        # is not empty a regional disk will be created. The first supported zone would
+        # be the one stated in the zone field. The rest are taken from this list. Please
+        # refer to the [regional disk creation API](https://cloud.google.com/compute/
+        # docs/regions-zones/global-regional-zonal-resources) for further details about
+        # regional vs zonal disks. If not specified, a zonal disk will be created in the
+        # same zone the VM is created.
+        # Corresponds to the JSON property `diskReplicaZones`
+        # @return [Array<String>]
+        attr_accessor :disk_replica_zones
+      
         # The disk type to use in the VM.
         # Corresponds to the JSON property `diskType`
         # @return [String]
@@ -1195,7 +1213,7 @@ module Google
         attr_accessor :secure_boot
         alias_method :secure_boot?, :secure_boot
       
-        # The service account to associate the VM with.
+        # Optional. The service account to associate the VM with.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -1227,6 +1245,7 @@ module Google
           @boot_conversion = args[:boot_conversion] if args.key?(:boot_conversion)
           @boot_option = args[:boot_option] if args.key?(:boot_option)
           @compute_scheduling = args[:compute_scheduling] if args.key?(:compute_scheduling)
+          @disk_replica_zones = args[:disk_replica_zones] if args.key?(:disk_replica_zones)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @enable_integrity_monitoring = args[:enable_integrity_monitoring] if args.key?(:enable_integrity_monitoring)
           @enable_vtpm = args[:enable_vtpm] if args.key?(:enable_vtpm)
@@ -1280,6 +1299,17 @@ module Google
         # Corresponds to the JSON property `computeScheduling`
         # @return [Google::Apis::VmmigrationV1alpha1::ComputeScheduling]
         attr_accessor :compute_scheduling
+      
+        # Optional. Additional replica zones of the target regional disks. If this list
+        # is not empty a regional disk will be created. The first supported zone would
+        # be the one stated in the zone field. The rest are taken from this list. Please
+        # refer to the [regional disk creation API](https://cloud.google.com/compute/
+        # docs/regions-zones/global-regional-zonal-resources) for further details about
+        # regional vs zonal disks. If not specified, a zonal disk will be created in the
+        # same zone the VM is created.
+        # Corresponds to the JSON property `diskReplicaZones`
+        # @return [Array<String>]
+        attr_accessor :disk_replica_zones
       
         # The disk type to use in the VM.
         # Corresponds to the JSON property `diskType`
@@ -1381,6 +1411,7 @@ module Google
           @boot_conversion = args[:boot_conversion] if args.key?(:boot_conversion)
           @boot_option = args[:boot_option] if args.key?(:boot_option)
           @compute_scheduling = args[:compute_scheduling] if args.key?(:compute_scheduling)
+          @disk_replica_zones = args[:disk_replica_zones] if args.key?(:disk_replica_zones)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @enable_integrity_monitoring = args[:enable_integrity_monitoring] if args.key?(:enable_integrity_monitoring)
           @enable_vtpm = args[:enable_vtpm] if args.key?(:enable_vtpm)
@@ -3148,8 +3179,8 @@ module Google
         attr_accessor :machine_image_parameters_overrides
       
         # Optional. The network interfaces to create with the instance created by the
-        # machine image. Internal and external IP addresses are ignored for machine
-        # image import.
+        # machine image. Internal and external IP addresses, and network tiers are
+        # ignored for machine image import.
         # Corresponds to the JSON property `networkInterfaces`
         # @return [Array<Google::Apis::VmmigrationV1alpha1::NetworkInterface>]
         attr_accessor :network_interfaces

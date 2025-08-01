@@ -1299,8 +1299,8 @@ module Google
         # @return [String]
         attr_accessor :delete_time
       
-        # Output only. A system-generated fingerprint for this version of the resource.
-        # May be used to detect modification conflict during updates.
+        # Optional. A system-generated fingerprint for this version of the resource. May
+        # be used to detect modification conflict during updates.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -1640,6 +1640,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @metadata = args[:metadata] if args.key?(:metadata)
+        end
+      end
+      
+      # Settings for multi-region deployment.
+      class GoogleCloudRunV2MultiRegionSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. System-generated unique id for the multi-region Service.
+        # Corresponds to the JSON property `multiRegionId`
+        # @return [String]
+        attr_accessor :multi_region_id
+      
+        # Required. List of regions to deploy to, including primary region.
+        # Corresponds to the JSON property `regions`
+        # @return [Array<String>]
+        attr_accessor :regions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @multi_region_id = args[:multi_region_id] if args.key?(:multi_region_id)
+          @regions = args[:regions] if args.key?(:regions)
         end
       end
       
@@ -2527,8 +2552,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Output only. A system-generated fingerprint for this version of the resource.
-        # May be used to detect modification conflict during updates.
+        # Optional. A system-generated fingerprint for this version of the resource. May
+        # be used to detect modification conflict during updates.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -2609,6 +2634,11 @@ module Google
         # Corresponds to the JSON property `launchStage`
         # @return [String]
         attr_accessor :launch_stage
+      
+        # Settings for multi-region deployment.
+        # Corresponds to the JSON property `multiRegionSettings`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2MultiRegionSettings]
+        attr_accessor :multi_region_settings
       
         # The fully qualified name of this Service. In CreateServiceRequest, this field
         # is ignored, and instead composed from CreateServiceRequest.parent and
@@ -2743,6 +2773,7 @@ module Google
           @latest_created_revision = args[:latest_created_revision] if args.key?(:latest_created_revision)
           @latest_ready_revision = args[:latest_ready_revision] if args.key?(:latest_ready_revision)
           @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
+          @multi_region_settings = args[:multi_region_settings] if args.key?(:multi_region_settings)
           @name = args[:name] if args.key?(:name)
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
@@ -3224,7 +3255,8 @@ module Google
       
         # Output only. The exit code of this attempt. This may be unset if the container
         # was unable to exit cleanly with a code due to some other failure. See status
-        # field for possible failure details.
+        # field for possible failure details. At most one of exit_code or term_signal
+        # will be set.
         # Corresponds to the JSON property `exitCode`
         # @return [Fixnum]
         attr_accessor :exit_code
@@ -3239,6 +3271,13 @@ module Google
         # @return [Google::Apis::RunV2::GoogleRpcStatus]
         attr_accessor :status
       
+        # Output only. Termination signal of the container. This is set to non-zero if
+        # the container is terminated by the system. At most one of exit_code or
+        # term_signal will be set.
+        # Corresponds to the JSON property `termSignal`
+        # @return [Fixnum]
+        attr_accessor :term_signal
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3247,6 +3286,7 @@ module Google
         def update!(**args)
           @exit_code = args[:exit_code] if args.key?(:exit_code)
           @status = args[:status] if args.key?(:status)
+          @term_signal = args[:term_signal] if args.key?(:term_signal)
         end
       end
       
@@ -3271,6 +3311,12 @@ module Google
         # Corresponds to the JSON property `executionEnvironment`
         # @return [String]
         attr_accessor :execution_environment
+      
+        # Optional. True if GPU zonal redundancy is disabled on this task template.
+        # Corresponds to the JSON property `gpuZonalRedundancyDisabled`
+        # @return [Boolean]
+        attr_accessor :gpu_zonal_redundancy_disabled
+        alias_method :gpu_zonal_redundancy_disabled?, :gpu_zonal_redundancy_disabled
       
         # Number of retries allowed per Task, before marking this Task failed. Defaults
         # to 3.
@@ -3319,6 +3365,7 @@ module Google
           @containers = args[:containers] if args.key?(:containers)
           @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
           @execution_environment = args[:execution_environment] if args.key?(:execution_environment)
+          @gpu_zonal_redundancy_disabled = args[:gpu_zonal_redundancy_disabled] if args.key?(:gpu_zonal_redundancy_disabled)
           @max_retries = args[:max_retries] if args.key?(:max_retries)
           @node_selector = args[:node_selector] if args.key?(:node_selector)
           @service_account = args[:service_account] if args.key?(:service_account)
@@ -3647,8 +3694,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Output only. A system-generated fingerprint for this version of the resource.
-        # May be used to detect modification conflict during updates.
+        # Optional. A system-generated fingerprint for this version of the resource. May
+        # be used to detect modification conflict during updates.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -3725,8 +3772,8 @@ module Google
       
         # The fully qualified name of this WorkerPool. In CreateWorkerPoolRequest, this
         # field is ignored, and instead composed from CreateWorkerPoolRequest.parent and
-        # CreateWorkerPoolRequest.worker_id. Format: projects/`project`/locations/`
-        # location`/workerPools/`worker_id`
+        # CreateWorkerPoolRequest.worker_id. Format: `projects/`project`/locations/`
+        # location`/workerPools/`worker_id``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3875,6 +3922,12 @@ module Google
         # @return [String]
         attr_accessor :encryption_key_shutdown_duration
       
+        # Optional. True if GPU zonal redundancy is disabled on this worker pool.
+        # Corresponds to the JSON property `gpuZonalRedundancyDisabled`
+        # @return [Boolean]
+        attr_accessor :gpu_zonal_redundancy_disabled
+        alias_method :gpu_zonal_redundancy_disabled?, :gpu_zonal_redundancy_disabled
+      
         # Optional. Unstructured key value map that can be used to organize and
         # categorize objects. User-provided labels are shared with Google's billing
         # system, so they can be used to filter, or break down billing charges by team,
@@ -3914,12 +3967,6 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2ServiceMesh]
         attr_accessor :service_mesh
       
-        # Optional. Enable session affinity.
-        # Corresponds to the JSON property `sessionAffinity`
-        # @return [Boolean]
-        attr_accessor :session_affinity
-        alias_method :session_affinity?, :session_affinity
-      
         # Optional. A list of Volumes to make available to containers.
         # Corresponds to the JSON property `volumes`
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Volume>]
@@ -3942,12 +3989,12 @@ module Google
           @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
           @encryption_key_revocation_action = args[:encryption_key_revocation_action] if args.key?(:encryption_key_revocation_action)
           @encryption_key_shutdown_duration = args[:encryption_key_shutdown_duration] if args.key?(:encryption_key_shutdown_duration)
+          @gpu_zonal_redundancy_disabled = args[:gpu_zonal_redundancy_disabled] if args.key?(:gpu_zonal_redundancy_disabled)
           @labels = args[:labels] if args.key?(:labels)
           @node_selector = args[:node_selector] if args.key?(:node_selector)
           @revision = args[:revision] if args.key?(:revision)
           @service_account = args[:service_account] if args.key?(:service_account)
           @service_mesh = args[:service_mesh] if args.key?(:service_mesh)
-          @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
           @volumes = args[:volumes] if args.key?(:volumes)
           @vpc_access = args[:vpc_access] if args.key?(:vpc_access)
         end
@@ -5033,9 +5080,8 @@ module Google
       class GoogleDevtoolsCloudbuildV1GitSourceRepository
         include Google::Apis::Core::Hashable
       
-        # The Developer Connect Git repository link or the url that matches a repository
-        # link in the current project, formatted as `projects/*/locations/*/connections/*
-        # /gitRepositoryLink/*`
+        # The Developer Connect Git repository link formatted as `projects/*/locations/*/
+        # connections/*/gitRepositoryLink/*`
         # Corresponds to the JSON property `developerConnect`
         # @return [String]
         attr_accessor :developer_connect

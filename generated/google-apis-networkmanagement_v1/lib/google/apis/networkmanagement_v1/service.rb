@@ -72,6 +72,227 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::Location::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::Location
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists information about the supported locations for this service.
+        # @param [String] name
+        #   The resource that owns the locations collection, if applicable.
+        # @param [Array<String>, String] extra_location_types
+        #   Optional. A list of extra location types that should be used as conditions for
+        #   controlling the visibility of the locations.
+        # @param [String] filter
+        #   A filter to narrow down results to a preferred subset. The filtering language
+        #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
+        #   in [AIP-160](https://google.aip.dev/160).
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return. If not set, the service selects a
+        #   default.
+        # @param [String] page_token
+        #   A page token received from the `next_page_token` field in the response. Send
+        #   that page token to receive the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::ListLocationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::ListLocationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_locations(name, extra_location_types: nil, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}/locations', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::ListLocationsResponse::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::ListLocationsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['extraLocationTypes'] = extra_location_types unless extra_location_types.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Starts asynchronous cancellation on a long-running operation. The server makes
+        # a best effort to cancel the operation, but success is not guaranteed. If the
+        # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+        # Clients can use Operations.GetOperation or other methods to check whether the
+        # cancellation succeeded or whether the operation completed despite cancellation.
+        # On successful cancellation, the operation is not deleted; instead, it becomes
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
+        # @param [String] name
+        #   The name of the operation resource to be cancelled.
+        # @param [Google::Apis::NetworkmanagementV1::CancelOperationRequest] cancel_operation_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_organization_location_operation(name, cancel_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command.request_representation = Google::Apis::NetworkmanagementV1::CancelOperationRequest::Representation
+          command.request_object = cancel_operation_request_object
+          command.response_representation = Google::Apis::NetworkmanagementV1::Empty::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a long-running operation. This method indicates that the client is no
+        # longer interested in the operation result. It does not cancel the operation.
+        # If the server doesn't support this method, it returns `google.rpc.Code.
+        # UNIMPLEMENTED`.
+        # @param [String] name
+        #   The name of the operation resource to be deleted.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_location_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::Empty::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
+        # @param [String] name
+        #   The name of the operation resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::Operation::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists operations that match the specified filter in the request. If the server
+        # doesn't support this method, it returns `UNIMPLEMENTED`.
+        # @param [String] name
+        #   The name of the operation's parent resource.
+        # @param [String] filter
+        #   The standard list filter.
+        # @param [Fixnum] page_size
+        #   The standard list page size.
+        # @param [String] page_token
+        #   The standard list page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::ListOperationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::ListOperationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}/operations', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::ListOperationsResponse::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::ListOperationsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets information about a location.
+        # @param [String] name
+        #   Resource name for the location.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::Location] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::Location]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::NetworkmanagementV1::Location::Representation
@@ -643,17 +864,384 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a NetworkMonitoringProvider resource.
+        # @param [String] parent
+        #   Required. Parent value for CreateNetworkMonitoringProviderRequest. Format:
+        #   projects/`project`/locations/`location`
+        # @param [Google::Apis::NetworkmanagementV1::NetworkMonitoringProvider] network_monitoring_provider_object
+        # @param [String] network_monitoring_provider_id
+        #   Required. The ID to use for the NetworkMonitoringProvider resource, which will
+        #   become the final component of the NetworkMonitoringProvider resource's name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_network_monitoring_provider(parent, network_monitoring_provider_object = nil, network_monitoring_provider_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/networkMonitoringProviders', options)
+          command.request_representation = Google::Apis::NetworkmanagementV1::NetworkMonitoringProvider::Representation
+          command.request_object = network_monitoring_provider_object
+          command.response_representation = Google::Apis::NetworkmanagementV1::Operation::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['networkMonitoringProviderId'] = network_monitoring_provider_id unless network_monitoring_provider_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a NetworkMonitoringProvider resource and all of its child resources.
+        # @param [String] name
+        #   Required. Name of the resource. Format: projects/`project`/locations/`location`
+        #   /networkMonitoringProviders/`network_monitoring_provider`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_network_monitoring_provider(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::Operation::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the NetworkMonitoringProvider resource.
+        # @param [String] name
+        #   Required. Name of the resource. Format: projects/`project`/locations/`location`
+        #   /networkMonitoringProviders/`network_monitoring_provider`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::NetworkMonitoringProvider] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::NetworkMonitoringProvider]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_network_monitoring_provider(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::NetworkMonitoringProvider::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::NetworkMonitoringProvider
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists NetworkMonitoringProviders for a given project and location.
+        # @param [String] parent
+        #   Required. Parent value for ListNetworkMonitoringProvidersRequest. Format:
+        #   projects/`project`/locations/`location`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of monitoring points to return. The service may
+        #   return fewer than this value. If unspecified, at most 20 monitoring points
+        #   will be returned. The maximum value is 1000; values above 1000 will be coerced
+        #   to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListMonitoringPoints` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListMonitoringPoints` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::ListNetworkMonitoringProvidersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::ListNetworkMonitoringProvidersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_network_monitoring_providers(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/networkMonitoringProviders', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::ListNetworkMonitoringProvidersResponse::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::ListNetworkMonitoringProvidersResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the MonitoringPoint resource.
+        # @param [String] name
+        #   Required. Name of the resource. Format: projects/`project`/locations/`location`
+        #   /networkMonitoringProviders/`network_monitoring_provider`/monitoringPoints/`
+        #   monitoring_point`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::MonitoringPoint] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::MonitoringPoint]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_network_monitoring_provider_monitoring_point(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::MonitoringPoint::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::MonitoringPoint
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists MonitoringPoints for a given network monitoring provider.
+        # @param [String] parent
+        #   Required. Parent value for ListMonitoringPointsRequest. Format: projects/`
+        #   project`/locations/`location`/networkMonitoringProviders/`
+        #   network_monitoring_provider`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of monitoring points to return. The service may
+        #   return fewer than this value. If unspecified, at most 20 monitoring points
+        #   will be returned. The maximum value is 1000; values above 1000 will be coerced
+        #   to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListMonitoringPoints` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListMonitoringPoints` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::ListMonitoringPointsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::ListMonitoringPointsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_network_monitoring_provider_monitoring_points(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/monitoringPoints', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::ListMonitoringPointsResponse::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::ListMonitoringPointsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the NetworkPath resource.
+        # @param [String] name
+        #   Required. Name of the resource. Format: projects/`project`/locations/`location`
+        #   /networkMonitoringProviders/`network_monitoring_provider`/networkPaths/`
+        #   network_path`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::NetworkPath] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::NetworkPath]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_network_monitoring_provider_network_path(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::NetworkPath::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::NetworkPath
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists NetworkPaths for a given network monitoring provider.
+        # @param [String] parent
+        #   Required. Parent value for ListNetworkPathsRequest. Format: projects/`project`/
+        #   locations/`location`/networkMonitoringProviders/`network_monitoring_provider`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of network paths to return. The service may
+        #   return fewer than this value. If unspecified, at most 20 network pathswill be
+        #   returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListNetworkPaths` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListNetworkPaths` must match the call that provided
+        #   the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::ListNetworkPathsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::ListNetworkPathsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_network_monitoring_provider_network_paths(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/networkPaths', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::ListNetworkPathsResponse::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::ListNetworkPathsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the WebPath resource.
+        # @param [String] name
+        #   Required. Name of the resource.. Format: projects/`project`/locations/`
+        #   location`/networkMonitoringProviders/`network_monitoring_provider`/webPaths/`
+        #   web_path`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::WebPath] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::WebPath]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_network_monitoring_provider_web_path(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::WebPath::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::WebPath
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists WebPaths for a given network monitoring provider.
+        # @param [String] parent
+        #   Required. Parent value for ListWebPathsRequest. Format: projects/`project`/
+        #   locations/`location`/networkMonitoringProviders/`network_monitoring_provider`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of web paths to return. The service may return
+        #   fewer than this value. If unspecified, at most 20 web paths will be returned.
+        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListWebPaths` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListWebPaths` must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::ListWebPathsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::ListWebPathsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_network_monitoring_provider_web_paths(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/webPaths', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::ListWebPathsResponse::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::ListWebPathsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new `VpcFlowLogsConfig`. If a configuration with the exact same
         # settings already exists (even if the ID is different), the creation fails.
-        # Notes: 1. Creating a configuration with state=DISABLED will fail 2. The
-        # following fields are not considered as `settings` for the purpose of the check
+        # Notes: 1. Creating a configuration with `state=DISABLED` will fail 2. The
+        # following fields are not considered as settings for the purpose of the check
         # mentioned above, therefore - creating another configuration with the same
         # fields but different values for the following fields will fail as well: * name
         # * create_time * update_time * labels * description
         # @param [String] parent
-        #   Required. The parent resource of the VPC Flow Logs configuration to create: `
-        #   projects/`project_id`/locations/global` `organizations/`organization_id`/
-        #   locations/global`
+        #   Required. The parent resource of the VpcFlowLogsConfig to create, in one of
+        #   the following formats: - For project-level resources: `projects/`project_id`/
+        #   locations/global` - For organization-level resources: `organizations/`
+        #   organization_id`/locations/global`
         # @param [Google::Apis::NetworkmanagementV1::VpcFlowLogsConfig] vpc_flow_logs_config_object
         # @param [String] vpc_flow_logs_config_id
         #   Required. ID of the `VpcFlowLogsConfig`.
@@ -689,10 +1277,11 @@ module Google
         
         # Deletes a specific `VpcFlowLogsConfig`.
         # @param [String] name
-        #   Required. `VpcFlowLogsConfig` resource name using one of the form: `projects/`
-        #   project_id`/locations/global/vpcFlowLogsConfigs/`vpc_flow_logs_config` `
-        #   organizations/`organization_id`/locations/global/vpcFlowLogsConfigs/`
-        #   vpc_flow_logs_config``
+        #   Required. The resource name of the VpcFlowLogsConfig, in one of the following
+        #   formats: - For a project-level resource: `projects/`project_id`/locations/
+        #   global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id`` - For an organization-
+        #   level resource: `organizations/`organization_id`/locations/global/
+        #   vpcFlowLogsConfigs/`vpc_flow_logs_config_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -722,10 +1311,11 @@ module Google
         
         # Gets the details of a specific `VpcFlowLogsConfig`.
         # @param [String] name
-        #   Required. `VpcFlowLogsConfig` resource name using the form: `projects/`
-        #   project_id`/locations/global/vpcFlowLogsConfigs/`vpc_flow_logs_config`` `
-        #   organizations/`organization_id`/locations/global/vpcFlowLogsConfigs/`
-        #   vpc_flow_logs_config``
+        #   Required. The resource name of the VpcFlowLogsConfig, in one of the following
+        #   formats: - For project-level resources: `projects/`project_id`/locations/
+        #   global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id`` - For organization-level
+        #   resources: `organizations/`organization_id`/locations/global/
+        #   vpcFlowLogsConfigs/`vpc_flow_logs_config_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -755,8 +1345,10 @@ module Google
         
         # Lists all `VpcFlowLogsConfigs` in a given project.
         # @param [String] parent
-        #   Required. The parent resource of the VpcFlowLogsConfig: `projects/`project_id`/
-        #   locations/global` `organizations/`organization_id`/locations/global`
+        #   Required. The parent resource of the VpcFlowLogsConfig, in one of the
+        #   following formats: - For project-level resourcs: `projects/`project_id`/
+        #   locations/global` - For organization-level resources: `organizations/`
+        #   organization_id`/locations/global`
         # @param [String] filter
         #   Optional. Lists the `VpcFlowLogsConfigs` that match the filter expression. A
         #   filter expression must use the supported [CEL logic operators] (https://cloud.
@@ -800,20 +1392,24 @@ module Google
         
         # Updates an existing `VpcFlowLogsConfig`. If a configuration with the exact
         # same settings already exists (even if the ID is different), the creation fails.
-        # Notes: 1. Updating a configuration with state=DISABLED will fail. 2. The
-        # following fields are not considered as `settings` for the purpose of the check
+        # Notes: 1. Updating a configuration with `state=DISABLED` will fail. 2. The
+        # following fields are not considered as settings for the purpose of the check
         # mentioned above, therefore - updating another configuration with the same
         # fields but different values for the following fields will fail as well: * name
         # * create_time * update_time * labels * description
         # @param [String] name
-        #   Identifier. Unique name of the configuration using one of the forms: `projects/
-        #   `project_id`/locations/global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id`` `
-        #   organizations/`organization_number`/locations/global/vpcFlowLogsConfigs/`
-        #   vpc_flow_logs_config_id``
+        #   Identifier. Unique name of the configuration. The name can have one of the
+        #   following forms: - For project-level configurations: `projects/`project_id`/
+        #   locations/global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id`` - For
+        #   organization-level configurations: `organizations/`organization_id`/locations/
+        #   global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id``
         # @param [Google::Apis::NetworkmanagementV1::VpcFlowLogsConfig] vpc_flow_logs_config_object
         # @param [String] update_mask
         #   Required. Mask of fields to update. At least one path must be supplied in this
-        #   field.
+        #   field. For example, to change the state of the configuration to ENABLED,
+        #   specify `update_mask` = `"state"`, and the `vpc_flow_logs_config` would be: `
+        #   vpc_flow_logs_config = ` name = "projects/my-project/locations/global/
+        #   vpcFlowLogsConfigs/my-config" state = "ENABLED" ``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

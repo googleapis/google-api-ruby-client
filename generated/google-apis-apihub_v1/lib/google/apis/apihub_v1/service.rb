@@ -531,33 +531,37 @@ module Google
         #   json_values.values` - The allowed value of the user defined JSON attribute
         #   associated with the Resource. Allowed comparison operator is `:`. Here user-
         #   defined-attribute-json is a placeholder that can be replaced with any user
-        #   defined JSON attribute name. Expressions are combined with either `AND` logic
-        #   operator or `OR` logical operator but not both of them together i.e. only one
-        #   of the `AND` or `OR` operator can be used throughout the filter string and
-        #   both the operators cannot be used together. No other logical operators are
-        #   supported. At most three filter fields are allowed in the filter string and if
-        #   provided more than that then `INVALID_ARGUMENT` error is returned by the API.
-        #   Here are a few examples: * `owner.email = \"apihub@google.com\"` - - The owner
-        #   team email is _apihub@google.com_. * `owner.email = \"apihub@google.com\" AND
-        #   create_time < \"2021-08-15T14:50:00Z\" AND create_time > \"2021-08-10T12:00:
-        #   00Z\"` - The owner team email is _apihub@google.com_ and the api was created
-        #   before _2021-08-15 14:50:00 UTC_ and after _2021-08-10 12:00:00 UTC_. * `owner.
-        #   email = \"apihub@google.com\" OR team.enum_values.values.id: apihub-team-id` -
-        #   The filter string specifies the APIs where the owner team email is _apihub@
-        #   google.com_ or the id of the allowed value associated with the team attribute
-        #   is _apihub-team-id_. * `owner.email = \"apihub@google.com\" OR team.
-        #   enum_values.values.display_name: ApiHub Team` - The filter string specifies
-        #   the APIs where the owner team email is _apihub@google.com_ or the display name
-        #   of the allowed value associated with the team attribute is `ApiHub Team`. * `
-        #   owner.email = \"apihub@google.com\" AND attributes.projects/test-project-id/
-        #   locations/test-location-id/ attributes/17650f90-4a29-4971-b3c0-d5532da3764b.
-        #   enum_values.values.id: test_enum_id AND attributes.projects/test-project-id/
-        #   locations/test-location-id/ attributes/1765\0f90-4a29-5431-b3d0-d5532da3764c.
-        #   string_values.values: test_string_value` - The filter string specifies the
-        #   APIs where the owner team email is _apihub@google.com_ and the id of the
-        #   allowed value associated with the user defined attribute of type enum is
-        #   _test_enum_id_ and the value of the user defined attribute of type string is
-        #   _test_..
+        #   defined JSON attribute name. A filter function is also supported in the filter
+        #   string. The filter function is `id(name)`. The `id(name)` function returns the
+        #   id of the resource name. For example, `id(name) = \"api-1\"` is equivalent to `
+        #   name = \"projects/test-project-id/locations/test-location-id/apis/api-1\"`
+        #   provided the parent is `projects/test-project-id/locations/test-location-id`.
+        #   Expressions are combined with either `AND` logic operator or `OR` logical
+        #   operator but not both of them together i.e. only one of the `AND` or `OR`
+        #   operator can be used throughout the filter string and both the operators
+        #   cannot be used together. No other logical operators are supported. At most
+        #   three filter fields are allowed in the filter string and if provided more than
+        #   that then `INVALID_ARGUMENT` error is returned by the API. Here are a few
+        #   examples: * `owner.email = \"apihub@google.com\"` - - The owner team email is
+        #   _apihub@google.com_. * `owner.email = \"apihub@google.com\" AND create_time < \
+        #   "2021-08-15T14:50:00Z\" AND create_time > \"2021-08-10T12:00:00Z\"` - The
+        #   owner team email is _apihub@google.com_ and the api was created before _2021-
+        #   08-15 14:50:00 UTC_ and after _2021-08-10 12:00:00 UTC_. * `owner.email = \"
+        #   apihub@google.com\" OR team.enum_values.values.id: apihub-team-id` - The
+        #   filter string specifies the APIs where the owner team email is _apihub@google.
+        #   com_ or the id of the allowed value associated with the team attribute is
+        #   _apihub-team-id_. * `owner.email = \"apihub@google.com\" OR team.enum_values.
+        #   values.display_name: ApiHub Team` - The filter string specifies the APIs where
+        #   the owner team email is _apihub@google.com_ or the display name of the allowed
+        #   value associated with the team attribute is `ApiHub Team`. * `owner.email = \"
+        #   apihub@google.com\" AND attributes.projects/test-project-id/locations/test-
+        #   location-id/ attributes/17650f90-4a29-4971-b3c0-d5532da3764b.enum_values.
+        #   values.id: test_enum_id AND attributes.projects/test-project-id/locations/test-
+        #   location-id/ attributes/1765\0f90-4a29-5431-b3d0-d5532da3764c.string_values.
+        #   values: test_string_value` - The filter string specifies the APIs where the
+        #   owner team email is _apihub@google.com_ and the id of the allowed value
+        #   associated with the user defined attribute of type enum is _test_enum_id_ and
+        #   the value of the user defined attribute of type string is _test_..
         # @param [Fixnum] page_size
         #   Optional. The maximum number of API resources to return. The service may
         #   return fewer than this value. If unspecified, at most 50 Apis will be returned.
@@ -2312,7 +2316,12 @@ module Google
         #   json_values.values` - The allowed value of the user defined JSON attribute
         #   associated with the Resource. Allowed comparison operator is `:`. Here user-
         #   defined-attribute-json is a placeholder that can be replaced with any user
-        #   defined JSON attribute name. Expressions are combined with either `AND` logic
+        #   defined JSON attribute name. A filter function is also supported in the filter
+        #   string. The filter function is `id(name)`. The `id(name)` function returns the
+        #   id of the resource name. For example, `id(name) = \"deployment-1\"` is
+        #   equivalent to `name = \"projects/test-project-id/locations/test-location-id/
+        #   deployments/deployment-1\"` provided the parent is `projects/test-project-id/
+        #   locations/test-location-id`. Expressions are combined with either `AND` logic
         #   operator or `OR` logical operator but not both of them together i.e. only one
         #   of the `AND` or `OR` operator can be used throughout the filter string and
         #   both the operators cannot be used together. No other logical operators are
@@ -2379,8 +2388,8 @@ module Google
         # Update a deployment resource in the API hub. The following fields in the
         # deployment resource can be updated: * display_name * description *
         # documentation * deployment_type * resource_uri * endpoints * slo * environment
-        # * attributes The update_mask should be used to specify the fields being
-        # updated.
+        # * attributes * source_project * source_environment * management_url *
+        # source_uri The update_mask should be used to specify the fields being updated.
         # @param [String] name
         #   Identifier. The name of the deployment. Format: `projects/`project`/locations/`
         #   location`/deployments/`deployment``
@@ -3397,14 +3406,19 @@ module Google
         #   filtering. The value must be a string. The comparison operator must be one of:
         #   `<`, `>` or `=`. Filters are not case sensitive. The following fields in the `
         #   PluginInstances` are eligible for filtering: * `state` - The state of the
-        #   Plugin Instance. Allowed comparison operators: `=`. Expressions are combined
-        #   with either `AND` logic operator or `OR` logical operator but not both of them
-        #   together i.e. only one of the `AND` or `OR` operator can be used throughout
-        #   the filter string and both the operators cannot be used together. No other
-        #   logical operators are supported. At most three filter fields are allowed in
-        #   the filter string and if provided more than that then `INVALID_ARGUMENT` error
-        #   is returned by the API. Here are a few examples: * `state = ENABLED` - The
-        #   plugin instance is in enabled state.
+        #   Plugin Instance. Allowed comparison operators: `=`. A filter function is also
+        #   supported in the filter string. The filter function is `id(name)`. The `id(
+        #   name)` function returns the id of the resource name. For example, `id(name) = \
+        #   "plugin-instance-1\"` is equivalent to `name = \"projects/test-project-id/
+        #   locations/test-location-id/plugins/plugin-1/instances/plugin-instance-1\"`
+        #   provided the parent is `projects/test-project-id/locations/test-location-id/
+        #   plugins/plugin-1`. Expressions are combined with either `AND` logic operator
+        #   or `OR` logical operator but not both of them together i.e. only one of the `
+        #   AND` or `OR` operator can be used throughout the filter string and both the
+        #   operators cannot be used together. No other logical operators are supported.
+        #   At most three filter fields are allowed in the filter string and if provided
+        #   more than that then `INVALID_ARGUMENT` error is returned by the API. Here are
+        #   a few examples: * `state = ENABLED` - The plugin instance is in enabled state.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of hub plugins to return. The service may return
         #   fewer than this value. If unspecified, at most 50 hub plugins will be returned.
@@ -3439,6 +3453,47 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a plugin instance in the API hub. The following fields in the
+        # plugin_instance can be updated currently: * display_name *
+        # schedule_cron_expression The update_mask should be used to specify the fields
+        # being updated. To update the auth_config and additional_config of the plugin
+        # instance, use the ApplyPluginInstanceConfig method.
+        # @param [String] name
+        #   Identifier. The unique name of the plugin instance resource. Format: `projects/
+        #   `project`/locations/`location`/plugins/`plugin`/instances/`instance``
+        # @param [Google::Apis::ApihubV1::GoogleCloudApihubV1PluginInstance] google_cloud_apihub_v1_plugin_instance_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApihubV1::GoogleCloudApihubV1PluginInstance] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1PluginInstance]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_plugin_instance(name, google_cloud_apihub_v1_plugin_instance_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApihubV1::GoogleCloudApihubV1PluginInstance::Representation
+          command.request_object = google_cloud_apihub_v1_plugin_instance_object
+          command.response_representation = Google::Apis::ApihubV1::GoogleCloudApihubV1PluginInstance::Representation
+          command.response_class = Google::Apis::ApihubV1::GoogleCloudApihubV1PluginInstance
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

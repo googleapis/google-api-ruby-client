@@ -876,6 +876,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :preemptible, as: 'preemptible'
           property :provisioning_model, as: 'provisioningModel'
+          property :reservation_name, as: 'reservationName'
           property :reserved, as: 'reserved'
           property :spot, as: 'spot'
           property :termination_timestamp, as: 'terminationTimestamp'

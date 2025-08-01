@@ -1021,6 +1021,31 @@ module Google
         end
       end
       
+      # Download restrictions applied to the file.
+      class DownloadRestrictionsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # A restriction for copy and download of the file.
+        # Corresponds to the JSON property `effectiveDownloadRestrictionWithContext`
+        # @return [Google::Apis::DriveV3::DownloadRestriction]
+        attr_accessor :effective_download_restriction_with_context
+      
+        # A restriction for copy and download of the file.
+        # Corresponds to the JSON property `itemDownloadRestriction`
+        # @return [Google::Apis::DriveV3::DownloadRestriction]
+        attr_accessor :item_download_restriction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_download_restriction_with_context = args[:effective_download_restriction_with_context] if args.key?(:effective_download_restriction_with_context)
+          @item_download_restriction = args[:item_download_restriction] if args.key?(:item_download_restriction)
+        end
+      end
+      
       # Representation of a shared drive. Some resource methods (such as `drives.
       # update`) require a `driveId`. Use the `drives.list` method to retrieve the ID
       # for a shared drive.
@@ -1199,6 +1224,13 @@ module Google
           attr_accessor :can_change_domain_users_only_restriction
           alias_method :can_change_domain_users_only_restriction?, :can_change_domain_users_only_restriction
         
+          # Output only. Whether the current user can change organizer-applied download
+          # restrictions of this shared drive.
+          # Corresponds to the JSON property `canChangeDownloadRestriction`
+          # @return [Boolean]
+          attr_accessor :can_change_download_restriction
+          alias_method :can_change_download_restriction?, :can_change_download_restriction
+        
           # Output only. Whether the current user can change the background of this shared
           # drive.
           # Corresponds to the JSON property `canChangeDriveBackground`
@@ -1324,6 +1356,7 @@ module Google
             @can_add_children = args[:can_add_children] if args.key?(:can_add_children)
             @can_change_copy_requires_writer_permission_restriction = args[:can_change_copy_requires_writer_permission_restriction] if args.key?(:can_change_copy_requires_writer_permission_restriction)
             @can_change_domain_users_only_restriction = args[:can_change_domain_users_only_restriction] if args.key?(:can_change_domain_users_only_restriction)
+            @can_change_download_restriction = args[:can_change_download_restriction] if args.key?(:can_change_download_restriction)
             @can_change_drive_background = args[:can_change_drive_background] if args.key?(:can_change_drive_background)
             @can_change_drive_members_only_restriction = args[:can_change_drive_members_only_restriction] if args.key?(:can_change_drive_members_only_restriction)
             @can_change_sharing_folders_requires_organizer_permission_restriction = args[:can_change_sharing_folders_requires_organizer_permission_restriction] if args.key?(:can_change_sharing_folders_requires_organizer_permission_restriction)
@@ -1496,6 +1529,11 @@ module Google
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # Download restrictions applied to the file.
+        # Corresponds to the JSON property `downloadRestrictions`
+        # @return [Google::Apis::DriveV3::DownloadRestrictionsMetadata]
+        attr_accessor :download_restrictions
       
         # Output only. ID of the shared drive the file resides in. Only populated for
         # items in shared drives.
@@ -1866,6 +1904,7 @@ module Google
           @copy_requires_writer_permission = args[:copy_requires_writer_permission] if args.key?(:copy_requires_writer_permission)
           @created_time = args[:created_time] if args.key?(:created_time)
           @description = args[:description] if args.key?(:description)
+          @download_restrictions = args[:download_restrictions] if args.key?(:download_restrictions)
           @drive_id = args[:drive_id] if args.key?(:drive_id)
           @explicitly_trashed = args[:explicitly_trashed] if args.key?(:explicitly_trashed)
           @export_links = args[:export_links] if args.key?(:export_links)
@@ -1965,6 +2004,13 @@ module Google
           # @return [Boolean]
           attr_accessor :can_change_copy_requires_writer_permission
           alias_method :can_change_copy_requires_writer_permission?, :can_change_copy_requires_writer_permission
+        
+          # Output only. Whether the current user can change the owner or organizer-
+          # applied download restrictions of the file.
+          # Corresponds to the JSON property `canChangeItemDownloadRestriction`
+          # @return [Boolean]
+          attr_accessor :can_change_item_download_restriction
+          alias_method :can_change_item_download_restriction?, :can_change_item_download_restriction
         
           # Output only. Whether the current user can change the securityUpdateEnabled
           # field on link share metadata.
@@ -2237,6 +2283,7 @@ module Google
             @can_add_folder_from_another_drive = args[:can_add_folder_from_another_drive] if args.key?(:can_add_folder_from_another_drive)
             @can_add_my_drive_parent = args[:can_add_my_drive_parent] if args.key?(:can_add_my_drive_parent)
             @can_change_copy_requires_writer_permission = args[:can_change_copy_requires_writer_permission] if args.key?(:can_change_copy_requires_writer_permission)
+            @can_change_item_download_restriction = args[:can_change_item_download_restriction] if args.key?(:can_change_item_download_restriction)
             @can_change_security_update_enabled = args[:can_change_security_update_enabled] if args.key?(:can_change_security_update_enabled)
             @can_change_viewers_can_copy_content = args[:can_change_viewers_can_copy_content] if args.key?(:can_change_viewers_can_copy_content)
             @can_comment = args[:can_comment] if args.key?(:can_comment)
@@ -2967,31 +3014,6 @@ module Google
         def update!(**args)
           @access_proposals = args[:access_proposals] if args.key?(:access_proposals)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # The response message for Operations.ListOperations.
-      class ListOperationsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The standard List next-page token.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # A list of operations that matches the specified filter in the request.
-        # Corresponds to the JSON property `operations`
-        # @return [Array<Google::Apis::DriveV3::Operation>]
-        attr_accessor :operations
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @operations = args[:operations] if args.key?(:operations)
         end
       end
       
@@ -3910,6 +3932,13 @@ module Google
           attr_accessor :can_change_domain_users_only_restriction
           alias_method :can_change_domain_users_only_restriction?, :can_change_domain_users_only_restriction
         
+          # Whether the current user can change organizer-applied download restrictions of
+          # this shared drive.
+          # Corresponds to the JSON property `canChangeDownloadRestriction`
+          # @return [Boolean]
+          attr_accessor :can_change_download_restriction
+          alias_method :can_change_download_restriction?, :can_change_download_restriction
+        
           # Whether the current user can change the `
           # sharingFoldersRequiresOrganizerPermission` restriction of this Team Drive.
           # Corresponds to the JSON property `canChangeSharingFoldersRequiresOrganizerPermissionRestriction`
@@ -4032,6 +4061,7 @@ module Google
             @can_add_children = args[:can_add_children] if args.key?(:can_add_children)
             @can_change_copy_requires_writer_permission_restriction = args[:can_change_copy_requires_writer_permission_restriction] if args.key?(:can_change_copy_requires_writer_permission_restriction)
             @can_change_domain_users_only_restriction = args[:can_change_domain_users_only_restriction] if args.key?(:can_change_domain_users_only_restriction)
+            @can_change_download_restriction = args[:can_change_download_restriction] if args.key?(:can_change_download_restriction)
             @can_change_sharing_folders_requires_organizer_permission_restriction = args[:can_change_sharing_folders_requires_organizer_permission_restriction] if args.key?(:can_change_sharing_folders_requires_organizer_permission_restriction)
             @can_change_team_drive_background = args[:can_change_team_drive_background] if args.key?(:can_change_team_drive_background)
             @can_change_team_members_only_restriction = args[:can_change_team_members_only_restriction] if args.key?(:can_change_team_members_only_restriction)

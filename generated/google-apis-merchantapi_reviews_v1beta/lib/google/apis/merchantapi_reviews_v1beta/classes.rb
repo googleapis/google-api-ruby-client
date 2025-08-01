@@ -128,11 +128,6 @@ module Google
       class MerchantReview
         include Google::Apis::Core::Hashable
       
-        # Attributes.
-        # Corresponds to the JSON property `attributes`
-        # @return [Google::Apis::MerchantapiReviewsV1beta::MerchantReviewAttributes]
-        attr_accessor :attributes
-      
         # Optional. A list of custom (merchant-provided) attributes. It can also be used
         # for submitting any attribute of the data specification in its generic form (
         # for example, `` "name": "size type", "value": "regular" ``). This is useful
@@ -149,6 +144,11 @@ module Google
         # Corresponds to the JSON property `dataSource`
         # @return [String]
         attr_accessor :data_source
+      
+        # Attributes.
+        # Corresponds to the JSON property `merchantReviewAttributes`
+        # @return [Google::Apis::MerchantapiReviewsV1beta::MerchantReviewAttributes]
+        attr_accessor :merchant_review_attributes
       
         # Required. The user provided merchant review ID to uniquely identify the
         # merchant review.
@@ -174,9 +174,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @attributes = args[:attributes] if args.key?(:attributes)
           @custom_attributes = args[:custom_attributes] if args.key?(:custom_attributes)
           @data_source = args[:data_source] if args.key?(:data_source)
+          @merchant_review_attributes = args[:merchant_review_attributes] if args.key?(:merchant_review_attributes)
           @merchant_review_id = args[:merchant_review_id] if args.key?(:merchant_review_id)
           @merchant_review_status = args[:merchant_review_status] if args.key?(:merchant_review_status)
           @name = args[:name] if args.key?(:name)
@@ -478,11 +478,6 @@ module Google
       class ProductReview
         include Google::Apis::Core::Hashable
       
-        # Attributes.
-        # Corresponds to the JSON property `attributes`
-        # @return [Google::Apis::MerchantapiReviewsV1beta::ProductReviewAttributes]
-        attr_accessor :attributes
-      
         # Optional. A list of custom (merchant-provided) attributes.
         # Corresponds to the JSON property `customAttributes`
         # @return [Array<Google::Apis::MerchantapiReviewsV1beta::CustomAttribute>]
@@ -498,6 +493,11 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Attributes.
+        # Corresponds to the JSON property `productReviewAttributes`
+        # @return [Google::Apis::MerchantapiReviewsV1beta::ProductReviewAttributes]
+        attr_accessor :product_review_attributes
       
         # Required. The permanent, unique identifier for the product review in the
         # publisher’s system.
@@ -516,10 +516,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @attributes = args[:attributes] if args.key?(:attributes)
           @custom_attributes = args[:custom_attributes] if args.key?(:custom_attributes)
           @data_source = args[:data_source] if args.key?(:data_source)
           @name = args[:name] if args.key?(:name)
+          @product_review_attributes = args[:product_review_attributes] if args.key?(:product_review_attributes)
           @product_review_id = args[:product_review_id] if args.key?(:product_review_id)
           @product_review_status = args[:product_review_status] if args.key?(:product_review_status)
         end
@@ -559,7 +559,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :cons
       
-        # Required. The content of the review.
+        # Optional. The content of the review. If empty, the content might still get
+        # populated from pros and cons.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
@@ -570,12 +571,24 @@ module Google
         # @return [Array<String>]
         attr_accessor :gtins
       
+        # Optional. Indicates whether the review is incentivized.
+        # Corresponds to the JSON property `isIncentivizedReview`
+        # @return [Boolean]
+        attr_accessor :is_incentivized_review
+        alias_method :is_incentivized_review?, :is_incentivized_review
+      
         # Optional. Indicates whether the review is marked as spam in the publisher's
         # system.
         # Corresponds to the JSON property `isSpam`
         # @return [Boolean]
         attr_accessor :is_spam
         alias_method :is_spam?, :is_spam
+      
+        # Optional. Indicates whether the reviewer's purchase is verified.
+        # Corresponds to the JSON property `isVerifiedPurchase`
+        # @return [Boolean]
+        attr_accessor :is_verified_purchase
+        alias_method :is_verified_purchase?, :is_verified_purchase
       
         # Optional. The maximum possible number for the rating. The value of the max
         # rating must be greater than the value of the min attribute.
@@ -712,7 +725,9 @@ module Google
           @cons = args[:cons] if args.key?(:cons)
           @content = args[:content] if args.key?(:content)
           @gtins = args[:gtins] if args.key?(:gtins)
+          @is_incentivized_review = args[:is_incentivized_review] if args.key?(:is_incentivized_review)
           @is_spam = args[:is_spam] if args.key?(:is_spam)
+          @is_verified_purchase = args[:is_verified_purchase] if args.key?(:is_verified_purchase)
           @max_rating = args[:max_rating] if args.key?(:max_rating)
           @min_rating = args[:min_rating] if args.key?(:min_rating)
           @mpns = args[:mpns] if args.key?(:mpns)
@@ -886,7 +901,7 @@ module Google
         # @return [String]
         attr_accessor :event_time
       
-        # Optional. The product expiration time. This field will not bet set if the
+        # Optional. The product expiration time. This field will not be set if the
         # notification is sent for a product deletion event.
         # Corresponds to the JSON property `expirationTime`
         # @return [String]

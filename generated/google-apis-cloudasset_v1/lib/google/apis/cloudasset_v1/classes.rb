@@ -397,6 +397,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :ancestors
       
+        # The exceptions of a resource.
+        # Corresponds to the JSON property `assetExceptions`
+        # @return [Array<Google::Apis::CloudassetV1::AssetException>]
+        attr_accessor :asset_exceptions
+      
         # The type of the asset. Example: `compute.googleapis.com/Disk` See [Supported
         # asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-
         # types) for more information.
@@ -512,6 +517,7 @@ module Google
           @access_level = args[:access_level] if args.key?(:access_level)
           @access_policy = args[:access_policy] if args.key?(:access_policy)
           @ancestors = args[:ancestors] if args.key?(:ancestors)
+          @asset_exceptions = args[:asset_exceptions] if args.key?(:asset_exceptions)
           @asset_type = args[:asset_type] if args.key?(:asset_type)
           @iam_policy = args[:iam_policy] if args.key?(:iam_policy)
           @name = args[:name] if args.key?(:name)
@@ -541,6 +547,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resource_owners = args[:resource_owners] if args.key?(:resource_owners)
+        end
+      end
+      
+      # An exception of an asset.
+      class AssetException
+        include Google::Apis::Core::Hashable
+      
+        # The details of the exception.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
+        # The type of exception.
+        # Corresponds to the JSON property `exceptionType`
+        # @return [String]
+        attr_accessor :exception_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @exception_type = args[:exception_type] if args.key?(:exception_type)
         end
       end
       
@@ -704,7 +735,7 @@ module Google
         # If the destination table already exists and this flag is `TRUE`, the table
         # will be overwritten by the contents of assets snapshot. If the flag is `FALSE`
         # or unset and the destination table already exists, the export call returns an
-        # INVALID_ARGUMEMT error.
+        # INVALID_ARGUMENT error.
         # Corresponds to the JSON property `force`
         # @return [Boolean]
         attr_accessor :force

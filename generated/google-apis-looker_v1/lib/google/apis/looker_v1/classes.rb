@@ -376,6 +376,11 @@ module Google
         # @return [Google::Apis::LookerV1::AdminSettings]
         attr_accessor :admin_settings
       
+        # Optional. Storage class of the instance.
+        # Corresponds to the JSON property `classType`
+        # @return [String]
+        attr_accessor :class_type
+      
         # Network name in the consumer project. Format: `projects/`project`/global/
         # networks/`network``. Note that the consumer network may be in a different GCP
         # project than the consumer project that is hosting the Looker Instance.
@@ -544,6 +549,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @admin_settings = args[:admin_settings] if args.key?(:admin_settings)
+          @class_type = args[:class_type] if args.key?(:class_type)
           @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
           @create_time = args[:create_time] if args.key?(:create_time)
           @custom_domain = args[:custom_domain] if args.key?(:custom_domain)
@@ -1057,11 +1063,17 @@ module Google
         # @return [String]
         attr_accessor :connection_status
       
-        # Required. Fully qualified domain name that will be used in the private DNS
+        # Optional. Fully qualified domain name that will be used in the private DNS
         # record created for the service attachment.
         # Corresponds to the JSON property `localFqdn`
         # @return [String]
         attr_accessor :local_fqdn
+      
+        # Optional. List of fully qualified domain names that will be used in the
+        # private DNS record created for the service attachment.
+        # Corresponds to the JSON property `localFqdns`
+        # @return [Array<String>]
+        attr_accessor :local_fqdns
       
         # Required. URI of the service attachment to connect to. Format: projects/`
         # project`/regions/`region`/serviceAttachments/`service_attachment`
@@ -1077,6 +1089,7 @@ module Google
         def update!(**args)
           @connection_status = args[:connection_status] if args.key?(:connection_status)
           @local_fqdn = args[:local_fqdn] if args.key?(:local_fqdn)
+          @local_fqdns = args[:local_fqdns] if args.key?(:local_fqdns)
           @target_service_attachment_uri = args[:target_service_attachment_uri] if args.key?(:target_service_attachment_uri)
         end
       end

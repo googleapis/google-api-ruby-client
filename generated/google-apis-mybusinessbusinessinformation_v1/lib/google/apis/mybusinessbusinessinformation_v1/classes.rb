@@ -837,16 +837,17 @@ module Google
         # @return [String]
         attr_accessor :store_code
       
-        # Represents a postal address (for example, for postal delivery or payments
-        # addresses). Given a postal address, a postal service can deliver items to a
-        # premise, P.O. box or similar. It is not intended to model geographical
-        # locations (roads, towns, mountains). In typical usage, an address would be
-        # created by user input or from importing existing data, depending on the type
-        # of process. Advice on address input or editing: - Use an internationalization-
-        # ready address widget such as https://github.com/google/libaddressinput. -
-        # Users should not be presented with UI elements for input or editing of fields
-        # outside countries where that field is used. For more guidance on how to use
-        # this schema, see: https://support.google.com/business/answer/6397478.
+        # Represents a postal address, such as for postal delivery or payments addresses.
+        # With a postal address, a postal service can deliver items to a premise, P.O.
+        # box, or similar. A postal address is not intended to model geographical
+        # locations like roads, towns, or mountains. In typical usage, an address would
+        # be created by user input or from importing existing data, depending on the
+        # type of process. Advice on address input or editing: - Use an
+        # internationalization-ready address widget such as https://github.com/google/
+        # libaddressinput. - Users should not be presented with UI elements for input or
+        # editing of fields outside countries where that field is used. For more
+        # guidance on how to use this schema, see: https://support.google.com/business/
+        # answer/6397478.
         # Corresponds to the JSON property `storefrontAddress`
         # @return [Google::Apis::MybusinessbusinessinformationV1::PostalAddress]
         attr_accessor :storefront_address
@@ -977,6 +978,12 @@ module Google
         attr_accessor :has_voice_of_merchant
         alias_method :has_voice_of_merchant?, :has_voice_of_merchant
       
+        # Output only.
+        # Corresponds to the JSON property `isParticularlyPersonalPlace`
+        # @return [Boolean]
+        attr_accessor :is_particularly_personal_place
+        alias_method :is_particularly_personal_place?, :is_particularly_personal_place
+      
         # Output only. A link to the location on Maps.
         # Corresponds to the JSON property `mapsUri`
         # @return [String]
@@ -1012,6 +1019,7 @@ module Google
           @has_google_updated = args[:has_google_updated] if args.key?(:has_google_updated)
           @has_pending_edits = args[:has_pending_edits] if args.key?(:has_pending_edits)
           @has_voice_of_merchant = args[:has_voice_of_merchant] if args.key?(:has_voice_of_merchant)
+          @is_particularly_personal_place = args[:is_particularly_personal_place] if args.key?(:is_particularly_personal_place)
           @maps_uri = args[:maps_uri] if args.key?(:maps_uri)
           @new_review_uri = args[:new_review_uri] if args.key?(:new_review_uri)
           @place_id = args[:place_id] if args.key?(:place_id)
@@ -1229,16 +1237,17 @@ module Google
         end
       end
       
-      # Represents a postal address (for example, for postal delivery or payments
-      # addresses). Given a postal address, a postal service can deliver items to a
-      # premise, P.O. box or similar. It is not intended to model geographical
-      # locations (roads, towns, mountains). In typical usage, an address would be
-      # created by user input or from importing existing data, depending on the type
-      # of process. Advice on address input or editing: - Use an internationalization-
-      # ready address widget such as https://github.com/google/libaddressinput. -
-      # Users should not be presented with UI elements for input or editing of fields
-      # outside countries where that field is used. For more guidance on how to use
-      # this schema, see: https://support.google.com/business/answer/6397478.
+      # Represents a postal address, such as for postal delivery or payments addresses.
+      # With a postal address, a postal service can deliver items to a premise, P.O.
+      # box, or similar. A postal address is not intended to model geographical
+      # locations like roads, towns, or mountains. In typical usage, an address would
+      # be created by user input or from importing existing data, depending on the
+      # type of process. Advice on address input or editing: - Use an
+      # internationalization-ready address widget such as https://github.com/google/
+      # libaddressinput. - Users should not be presented with UI elements for input or
+      # editing of fields outside countries where that field is used. For more
+      # guidance on how to use this schema, see: https://support.google.com/business/
+      # answer/6397478.
       class PostalAddress
         include Google::Apis::Core::Hashable
       

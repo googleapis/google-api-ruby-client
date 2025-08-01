@@ -757,7 +757,7 @@ module Google
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec]
         attr_accessor :database_view_spec
       
-        # Entry specification for a Dataplex table.
+        # Entry specification for a Dataplex Universal Catalog table.
         # Corresponds to the JSON property `dataplexTable`
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DataplexTableSpec]
         attr_accessor :dataplex_table
@@ -810,11 +810,12 @@ module Google
         end
       end
       
-      # External table registered by Dataplex. Dataplex publishes data discovered from
-      # an asset into multiple other systems (BigQuery, DPMS) in form of tables. We
-      # call them "external tables". External tables are also synced into the Data
-      # Catalog. This message contains pointers to those external tables (fully
-      # qualified name, resource name et cetera) within the Data Catalog.
+      # External table registered by Dataplex Universal Catalog. Dataplex Universal
+      # Catalog publishes data discovered from an asset into multiple other systems (
+      # BigQuery, DPMS) in form of tables. We call them "external tables". External
+      # tables are also synced into the Data Catalog. This message contains pointers
+      # to those external tables (fully qualified name, resource name et cetera)
+      # within the Data Catalog.
       class GoogleCloudDatacatalogV1DataplexExternalTable
         include Google::Apis::Core::Hashable
       
@@ -851,11 +852,11 @@ module Google
         end
       end
       
-      # Entry specyfication for a Dataplex fileset.
+      # Entry specification for a Dataplex Universal Catalog fileset.
       class GoogleCloudDatacatalogV1DataplexFilesetSpec
         include Google::Apis::Core::Hashable
       
-        # Common Dataplex fields.
+        # Common Dataplex Universal Catalog fields.
         # Corresponds to the JSON property `dataplexSpec`
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DataplexSpec]
         attr_accessor :dataplex_spec
@@ -870,13 +871,13 @@ module Google
         end
       end
       
-      # Common Dataplex fields.
+      # Common Dataplex Universal Catalog fields.
       class GoogleCloudDatacatalogV1DataplexSpec
         include Google::Apis::Core::Hashable
       
-        # Fully qualified resource name of an asset in Dataplex, to which the underlying
-        # data source (Cloud Storage bucket or BigQuery dataset) of the entity is
-        # attached.
+        # Fully qualified resource name of an asset in Dataplex Universal Catalog, to
+        # which the underlying data source (Cloud Storage bucket or BigQuery dataset) of
+        # the entity is attached.
         # Corresponds to the JSON property `asset`
         # @return [String]
         attr_accessor :asset
@@ -893,8 +894,8 @@ module Google
         attr_accessor :data_format
       
         # Project ID of the underlying Cloud Storage or BigQuery data. Note that this
-        # may not be the same project as the correspondingly Dataplex lake / zone /
-        # asset.
+        # may not be the same project as the corresponding Dataplex Universal Catalog
+        # lake / zone / asset.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -912,18 +913,18 @@ module Google
         end
       end
       
-      # Entry specification for a Dataplex table.
+      # Entry specification for a Dataplex Universal Catalog table.
       class GoogleCloudDatacatalogV1DataplexTableSpec
         include Google::Apis::Core::Hashable
       
-        # Common Dataplex fields.
+        # Common Dataplex Universal Catalog fields.
         # Corresponds to the JSON property `dataplexSpec`
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DataplexSpec]
         attr_accessor :dataplex_spec
       
-        # List of external tables registered by Dataplex in other systems based on the
-        # same underlying data. External tables allow to query this data in those
-        # systems.
+        # List of external tables registered by Dataplex Universal Catalog in other
+        # systems based on the same underlying data. External tables allow to query this
+        # data in those systems.
         # Corresponds to the JSON property `externalTables`
         # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DataplexExternalTable>]
         attr_accessor :external_tables
@@ -1279,7 +1280,7 @@ module Google
       class GoogleCloudDatacatalogV1FilesetSpec
         include Google::Apis::Core::Hashable
       
-        # Entry specyfication for a Dataplex fileset.
+        # Entry specification for a Dataplex Universal Catalog fileset.
         # Corresponds to the JSON property `dataplexFileset`
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DataplexFilesetSpec]
         attr_accessor :dataplex_fileset

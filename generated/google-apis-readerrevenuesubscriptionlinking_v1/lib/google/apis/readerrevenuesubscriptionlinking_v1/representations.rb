@@ -67,6 +67,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :name, as: 'name'
+          property :originating_publication_id, as: 'originatingPublicationId'
+          property :ppid, as: 'ppid'
+          property :publication_id, as: 'publicationId'
         end
       end
       

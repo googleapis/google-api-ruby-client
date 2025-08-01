@@ -264,6 +264,7 @@ module Google
           property :gender, as: 'gender'
           property :google_product_category, as: 'googleProductCategory'
           collection :gtin, as: 'gtin'
+          collection :gtins, as: 'gtins'
           property :identifier_exists, as: 'identifierExists'
           property :image_link, as: 'imageLink'
           collection :included_destinations, as: 'includedDestinations'
@@ -281,6 +282,8 @@ module Google
           property :material, as: 'material'
           property :max_energy_efficiency_class, as: 'maxEnergyEfficiencyClass'
           property :max_handling_time, :numeric_string => true, as: 'maxHandlingTime'
+          property :maximum_retail_price, as: 'maximumRetailPrice', class: Google::Apis::MerchantapiProductsV1beta::Price, decorator: Google::Apis::MerchantapiProductsV1beta::Price::Representation
+      
           property :min_energy_efficiency_class, as: 'minEnergyEfficiencyClass'
           property :min_handling_time, :numeric_string => true, as: 'minHandlingTime'
           property :mobile_link, as: 'mobileLink'

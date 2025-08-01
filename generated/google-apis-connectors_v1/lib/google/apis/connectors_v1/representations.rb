@@ -1006,6 +1006,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VpcscConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WebhookData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1367,6 +1373,8 @@ module Google
       
           collection :unsupported_connection_types, as: 'unsupportedConnectionTypes'
           property :update_time, as: 'updateTime'
+          property :vpcsc_config, as: 'vpcscConfig', class: Google::Apis::ConnectorsV1::VpcscConfig, decorator: Google::Apis::ConnectorsV1::VpcscConfig::Representation
+      
         end
       end
       
@@ -2943,6 +2951,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :error_message, as: 'errorMessage'
+        end
+      end
+      
+      class VpcscConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :default_allowlisted_host, as: 'defaultAllowlistedHost'
+          property :disable_firewall_vpcsc_flow, as: 'disableFirewallVpcscFlow'
         end
       end
       

@@ -333,6 +333,7 @@ module Google
           property :name, as: 'name'
           property :replication, as: 'replication', class: Google::Apis::SecretmanagerV1beta1::Replication, decorator: Google::Apis::SecretmanagerV1beta1::Replication::Representation
       
+          hash :tags, as: 'tags'
         end
       end
       

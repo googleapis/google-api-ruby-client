@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CleanupConnectionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ClientLibrarySettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -890,6 +896,7 @@ module Google
       class Api
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :edition, as: 'edition'
           collection :methods_prop, as: 'methods', class: Google::Apis::ServicenetworkingV1::MethodProp, decorator: Google::Apis::ServicenetworkingV1::MethodProp::Representation
       
           collection :mixins, as: 'mixins', class: Google::Apis::ServicenetworkingV1::Mixin, decorator: Google::Apis::ServicenetworkingV1::Mixin::Representation
@@ -1031,6 +1038,12 @@ module Google
       end
       
       class CancelOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CleanupConnectionMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -1549,6 +1562,7 @@ module Google
       class MethodProp
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :edition, as: 'edition'
           property :name, as: 'name'
           collection :options, as: 'options', class: Google::Apis::ServicenetworkingV1::Option, decorator: Google::Apis::ServicenetworkingV1::Option::Representation
       
@@ -1727,6 +1741,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common, as: 'common', class: Google::Apis::ServicenetworkingV1::CommonLanguageSettings, decorator: Google::Apis::ServicenetworkingV1::CommonLanguageSettings::Representation
       
+          property :library_package, as: 'libraryPackage'
         end
       end
       

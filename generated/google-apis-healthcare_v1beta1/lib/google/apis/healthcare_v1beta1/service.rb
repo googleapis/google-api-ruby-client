@@ -6278,10 +6278,11 @@ module Google
         # by the FHIR store contain a JSON-encoded `OperationOutcome` resource
         # describing the reason for the error. If the request cannot be mapped to a
         # valid API method on a FHIR store, a generic GCP error might be returned
-        # instead. In R5, the conditional update interaction If-None-Match is supported,
-        # including the wildcard behaviour. For samples that show how to call `update`,
-        # see [Updating a FHIR resource](https://cloud.google.com/healthcare/docs/how-
-        # tos/fhir-resources#updating_a_fhir_resource).
+        # instead. The conditional update interaction If-None-Match is supported,
+        # including the wildcard behaviour, as defined by the R5 spec. This
+        # functionality is supported in R4 and R5. For samples that show how to call `
+        # update`, see [Updating a FHIR resource](https://cloud.google.com/healthcare/
+        # docs/how-tos/fhir-resources#updating_a_fhir_resource).
         # @param [String] name
         #   Required. The name of the resource to update.
         # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object

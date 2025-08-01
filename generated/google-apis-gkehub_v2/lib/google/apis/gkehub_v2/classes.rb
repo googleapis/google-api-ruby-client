@@ -662,7 +662,7 @@ module Google
         # @return [String]
         attr_accessor :deployment_name
       
-        # Required. The namespace of the deployment resource to be overridden..
+        # Required. The namespace of the deployment resource to be overridden.
         # Corresponds to the JSON property `deploymentNamespace`
         # @return [String]
         attr_accessor :deployment_namespace

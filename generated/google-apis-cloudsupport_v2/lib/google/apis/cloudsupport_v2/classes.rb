@@ -1132,38 +1132,6 @@ module Google
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
-      
-      # Metadata about the operation. Used to lookup the current status.
-      class WorkflowOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # The namespace that the job was scheduled in. Must be included in the workflow
-        # metadata so the workflow status can be retrieved.
-        # Corresponds to the JSON property `namespace`
-        # @return [String]
-        attr_accessor :namespace
-      
-        # The type of action the operation is classified as.
-        # Corresponds to the JSON property `operationAction`
-        # @return [String]
-        attr_accessor :operation_action
-      
-        # Which version of the workflow service this operation came from.
-        # Corresponds to the JSON property `workflowOperationType`
-        # @return [String]
-        attr_accessor :workflow_operation_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @namespace = args[:namespace] if args.key?(:namespace)
-          @operation_action = args[:operation_action] if args.key?(:operation_action)
-          @workflow_operation_type = args[:workflow_operation_type] if args.key?(:workflow_operation_type)
-        end
-      end
     end
   end
 end

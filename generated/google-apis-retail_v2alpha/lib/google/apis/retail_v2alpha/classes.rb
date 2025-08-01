@@ -2774,6 +2774,41 @@ module Google
         end
       end
       
+      # The public proto to represent the conversational search customization config.
+      # It will be converted to the internal proto in the backend.
+      class GoogleCloudRetailV2alphaConversationalSearchCustomizationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Resource name of the catalog. Format: projects/`project`/locations/`
+        # location`/catalogs/`catalog`
+        # Corresponds to the JSON property `catalog`
+        # @return [String]
+        attr_accessor :catalog
+      
+        # The public proto to represent the intent classification config. It will be
+        # converted to the internal proto in the backend.
+        # Corresponds to the JSON property `intentClassificationConfig`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaIntentClassificationConfig]
+        attr_accessor :intent_classification_config
+      
+        # Optional. The retailer's display name that could be used in our LLM answers.
+        # Example - "Google"
+        # Corresponds to the JSON property `retailerDisplayName`
+        # @return [String]
+        attr_accessor :retailer_display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @catalog = args[:catalog] if args.key?(:catalog)
+          @intent_classification_config = args[:intent_classification_config] if args.key?(:intent_classification_config)
+          @retailer_display_name = args[:retailer_display_name] if args.key?(:retailer_display_name)
+        end
+      end
+      
       # Request message for ConversationalSearchService.ConversationalSearch method.
       class GoogleCloudRetailV2alphaConversationalSearchRequest
         include Google::Apis::Core::Hashable
@@ -2816,6 +2851,11 @@ module Google
         # @return [String]
         attr_accessor :query
       
+        # Optional. The safety settings to be applied to the generated content.
+        # Corresponds to the JSON property `safetySettings`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSafetySetting>]
+        attr_accessor :safety_settings
+      
         # Search parameters.
         # Corresponds to the JSON property `searchParams`
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchRequestSearchParams]
@@ -2825,6 +2865,21 @@ module Google
         # Corresponds to the JSON property `userInfo`
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaUserInfo]
         attr_accessor :user_info
+      
+        # Optional. The user labels applied to a resource must meet the following
+        # requirements: * Each resource can have multiple labels, up to a maximum of 64.
+        # * Each label must be a key-value pair. * Keys have a minimum length of 1
+        # character and a maximum length of 63 characters and cannot be empty. Values
+        # can be empty and have a maximum length of 63 characters. * Keys and values can
+        # contain only lowercase letters, numeric characters, underscores, and dashes.
+        # All characters must use UTF-8 encoding, and international characters are
+        # allowed. * The key portion of a label must be unique. However, you can use the
+        # same key with multiple resources. * Keys must start with a lowercase letter or
+        # international character. See [Google Cloud Document](https://cloud.google.com/
+        # resource-manager/docs/creating-managing-labels#requirements) for more details.
+        # Corresponds to the JSON property `userLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :user_labels
       
         # Required. A unique identifier for tracking visitors. For example, this could
         # be implemented with an HTTP cookie, which should be able to uniquely identify
@@ -2847,8 +2902,10 @@ module Google
           @conversational_filtering_spec = args[:conversational_filtering_spec] if args.key?(:conversational_filtering_spec)
           @page_categories = args[:page_categories] if args.key?(:page_categories)
           @query = args[:query] if args.key?(:query)
+          @safety_settings = args[:safety_settings] if args.key?(:safety_settings)
           @search_params = args[:search_params] if args.key?(:search_params)
           @user_info = args[:user_info] if args.key?(:user_info)
+          @user_labels = args[:user_labels] if args.key?(:user_labels)
           @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
@@ -4190,6 +4247,149 @@ module Google
         end
       end
       
+      # The public proto to represent the intent classification config. It will be
+      # converted to the internal proto in the backend.
+      class GoogleCloudRetailV2alphaIntentClassificationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of keywords that will be used to classify the query to the "
+        # BLOCKLISTED" intent type. The keywords are case insensitive.
+        # Corresponds to the JSON property `blocklistKeywords`
+        # @return [Array<String>]
+        attr_accessor :blocklist_keywords
+      
+        # Optional. A list of intent types that will be disabled for this customer. The
+        # intent types must match one of the predefined intent types defined at https://
+        # cloud.google.com/retail/docs/reference/rpc/google.cloud.retail.v2alpha#
+        # querytype
+        # Corresponds to the JSON property `disabledIntentTypes`
+        # @return [Array<String>]
+        attr_accessor :disabled_intent_types
+      
+        # Optional. A list of examples for intent classification.
+        # Corresponds to the JSON property `example`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaIntentClassificationConfigExample>]
+        attr_accessor :example
+      
+        # Inline source for intent classifications.
+        # Corresponds to the JSON property `inlineSource`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaIntentClassificationConfigInlineSource]
+        attr_accessor :inline_source
+      
+        # Optional. Customers can use the preamble to specify any requirements for
+        # blocklisting intent classification. This preamble will be added to the
+        # blocklisting intent classification model prompt.
+        # Corresponds to the JSON property `modelPreamble`
+        # @return [String]
+        attr_accessor :model_preamble
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blocklist_keywords = args[:blocklist_keywords] if args.key?(:blocklist_keywords)
+          @disabled_intent_types = args[:disabled_intent_types] if args.key?(:disabled_intent_types)
+          @example = args[:example] if args.key?(:example)
+          @inline_source = args[:inline_source] if args.key?(:inline_source)
+          @model_preamble = args[:model_preamble] if args.key?(:model_preamble)
+        end
+      end
+      
+      # An example for intent classification.
+      class GoogleCloudRetailV2alphaIntentClassificationConfigExample
+        include Google::Apis::Core::Hashable
+      
+        # Required. Whether the example is classified positively.
+        # Corresponds to the JSON property `classifiedPositive`
+        # @return [Boolean]
+        attr_accessor :classified_positive
+        alias_method :classified_positive?, :classified_positive
+      
+        # Optional. The intent_type must match one of the predefined intent types
+        # defined at https://cloud.google.com/retail/docs/reference/rpc/google.cloud.
+        # retail.v2alpha#querytype
+        # Corresponds to the JSON property `intentType`
+        # @return [String]
+        attr_accessor :intent_type
+      
+        # Required. Example query.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        # Optional. The reason for the intent classification. This is used to explain
+        # the intent classification decision.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @classified_positive = args[:classified_positive] if args.key?(:classified_positive)
+          @intent_type = args[:intent_type] if args.key?(:intent_type)
+          @query = args[:query] if args.key?(:query)
+          @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # An inline force intent classification configuration.
+      class GoogleCloudRetailV2alphaIntentClassificationConfigInlineForceIntent
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The intent_type must match one of the predefined intent types
+        # defined at https://cloud.google.com/retail/docs/reference/rpc/google.cloud.
+        # retail.v2alpha#querytype
+        # Corresponds to the JSON property `intentType`
+        # @return [String]
+        attr_accessor :intent_type
+      
+        # Optional. The operation to perform for the query.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # Optional. A example query.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intent_type = args[:intent_type] if args.key?(:intent_type)
+          @operation = args[:operation] if args.key?(:operation)
+          @query = args[:query] if args.key?(:query)
+        end
+      end
+      
+      # Inline source for intent classifications.
+      class GoogleCloudRetailV2alphaIntentClassificationConfigInlineSource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of inline force intent classifications.
+        # Corresponds to the JSON property `inlineForceIntents`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaIntentClassificationConfigInlineForceIntent>]
+        attr_accessor :inline_force_intents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inline_force_intents = args[:inline_force_intents] if args.key?(:inline_force_intents)
+        end
+      end
+      
       # A floating point interval.
       class GoogleCloudRetailV2alphaInterval
         include Google::Apis::Core::Hashable
@@ -5269,6 +5469,57 @@ module Google
         def update!(**args)
           @bigquery_result = args[:bigquery_result] if args.key?(:bigquery_result)
           @gcs_result = args[:gcs_result] if args.key?(:gcs_result)
+        end
+      end
+      
+      # Detailed panel information associated with a user event.
+      class GoogleCloudRetailV2alphaPanelInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The attribution token of the panel.
+        # Corresponds to the JSON property `attributionToken`
+        # @return [String]
+        attr_accessor :attribution_token
+      
+        # Optional. The display name of the panel.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. The panel ID.
+        # Corresponds to the JSON property `panelId`
+        # @return [String]
+        attr_accessor :panel_id
+      
+        # Optional. The ordered position of the panel, if shown to the user with other
+        # panels. If set, then total_panels must also be set.
+        # Corresponds to the JSON property `panelPosition`
+        # @return [Fixnum]
+        attr_accessor :panel_position
+      
+        # Optional. The product details associated with the panel.
+        # Corresponds to the JSON property `productDetails`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProductDetail>]
+        attr_accessor :product_details
+      
+        # Optional. The total number of panels, including this one, shown to the user.
+        # Must be set if panel_position is set.
+        # Corresponds to the JSON property `totalPanels`
+        # @return [Fixnum]
+        attr_accessor :total_panels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribution_token = args[:attribution_token] if args.key?(:attribution_token)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @panel_id = args[:panel_id] if args.key?(:panel_id)
+          @panel_position = args[:panel_position] if args.key?(:panel_position)
+          @product_details = args[:product_details] if args.key?(:product_details)
+          @total_panels = args[:total_panels] if args.key?(:total_panels)
         end
       end
       
@@ -7281,6 +7532,38 @@ module Google
         end
       end
       
+      # Safety settings.
+      class GoogleCloudRetailV2alphaSafetySetting
+        include Google::Apis::Core::Hashable
+      
+        # Harm category.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Optional. Specify if the threshold is used for probability or severity score.
+        # If not specified, the threshold is used for probability score.
+        # Corresponds to the JSON property `method`
+        # @return [String]
+        attr_accessor :method_prop
+      
+        # The harm block threshold.
+        # Corresponds to the JSON property `threshold`
+        # @return [String]
+        attr_accessor :threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
+          @threshold = args[:threshold] if args.key?(:threshold)
+        end
+      end
+      
       # Request message for SearchService.Search method.
       class GoogleCloudRetailV2alphaSearchRequest
         include Google::Apis::Core::Hashable
@@ -7327,6 +7610,11 @@ module Google
         # Corresponds to the JSON property `entity`
         # @return [String]
         attr_accessor :entity
+      
+        # Optional. An ID for the experiment group this search belongs to.
+        # Corresponds to the JSON property `experimentId`
+        # @return [String]
+        attr_accessor :experiment_id
       
         # Facet specifications for faceted search. If empty, no facets are returned. A
         # maximum of 200 values are allowed. Otherwise, an INVALID_ARGUMENT error is
@@ -7471,9 +7759,9 @@ module Google
       
         # Optional. The user attributes that could be used for personalization of search
         # results. * Populate at most 100 key-value pairs per query. * Only supports
-        # string keys and repeated string values. * Duplcate keys are not allowed within
-        # a single query. Example: user_attributes: [ ` key: "pets" value ` values: "dog"
-        # values: "cat" ` `, ` key: "state" value ` values: "CA" ` ` ]
+        # string keys and repeated string values. * Duplicate keys are not allowed
+        # within a single query. Example: user_attributes: [ ` key: "pets" value `
+        # values: "dog" values: "cat" ` `, ` key: "state" value ` values: "CA" ` ` ]
         # Corresponds to the JSON property `userAttributes`
         # @return [Hash<String,Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaStringList>]
         attr_accessor :user_attributes
@@ -7535,6 +7823,7 @@ module Google
           @conversational_search_spec = args[:conversational_search_spec] if args.key?(:conversational_search_spec)
           @dynamic_facet_spec = args[:dynamic_facet_spec] if args.key?(:dynamic_facet_spec)
           @entity = args[:entity] if args.key?(:entity)
+          @experiment_id = args[:experiment_id] if args.key?(:experiment_id)
           @facet_specs = args[:facet_specs] if args.key?(:facet_specs)
           @filter = args[:filter] if args.key?(:filter)
           @labels = args[:labels] if args.key?(:labels)
@@ -7964,9 +8253,9 @@ module Google
         # @return [String]
         attr_accessor :condition
       
-        # Whether to pin unexpanded results. If this field is set to true, unexpanded
-        # products are always at the top of the search results, followed by the expanded
-        # results.
+        # Whether to pin unexpanded results. The default value is false. If this field
+        # is set to true, unexpanded products are always at the top of the search
+        # results, followed by the expanded results.
         # Corresponds to the JSON property `pinUnexpandedResults`
         # @return [Boolean]
         attr_accessor :pin_unexpanded_results
@@ -9053,6 +9342,12 @@ module Google
         # @return [String]
         attr_accessor :page_view_id
       
+        # Optional. List of panels associated with this event. Used for panel-level
+        # impression data.
+        # Corresponds to the JSON property `panels`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaPanelInfo>]
+        attr_accessor :panels
+      
         # The main product details related to the event. This field is optional except
         # for the following event types: * `add-to-cart` * `detail-page-view` * `
         # purchase-complete` In a `search` event, this field represents the products
@@ -9088,9 +9383,9 @@ module Google
       
         # A unique identifier for tracking a visitor session with a length limit of 128
         # bytes. A session is an aggregation of an end user behavior in a time span. A
-        # general guideline to populate the sesion_id: 1. If user has no activity for 30
-        # min, a new session_id should be assigned. 2. The session_id should be unique
-        # across users, suggest use uuid or add visitor_id as prefix.
+        # general guideline to populate the session_id: 1. If user has no activity for
+        # 30 min, a new session_id should be assigned. 2. The session_id should be
+        # unique across users, suggest use uuid or add visitor_id as prefix.
         # Corresponds to the JSON property `sessionId`
         # @return [String]
         attr_accessor :session_id
@@ -9140,6 +9435,7 @@ module Google
           @order_by = args[:order_by] if args.key?(:order_by)
           @page_categories = args[:page_categories] if args.key?(:page_categories)
           @page_view_id = args[:page_view_id] if args.key?(:page_view_id)
+          @panels = args[:panels] if args.key?(:panels)
           @product_details = args[:product_details] if args.key?(:product_details)
           @purchase_transaction = args[:purchase_transaction] if args.key?(:purchase_transaction)
           @referrer_uri = args[:referrer_uri] if args.key?(:referrer_uri)

@@ -54,15 +54,15 @@ module Google
       
         # Immutable. The Pub/Sub topic that receives events for the subscription. Format:
         # `projects/`project`/topics/`topic`` You must create the topic in the same
-        # Google Cloud project where you create this subscription. Note: The Workspace
-        # Events API uses [ordering keys](https://cloud.google.com/pubsub/docs/ordering)
-        # for the benefit of sequential events. If the Cloud Pub/Sub topic has a [
-        # message storage policy](https://cloud.google.com/pubsub/docs/resource-location-
-        # restriction#exceptions) configured to exclude the nearest Google Cloud region,
-        # publishing events with ordering keys will fail. When the topic receives events,
-        # the events are encoded as Pub/Sub messages. For details, see the [Google
-        # Cloud Pub/Sub Protocol Binding for CloudEvents](https://github.com/googleapis/
-        # google-cloudevents/blob/main/docs/spec/pubsub.md).
+        # Google Cloud project where you create this subscription. Note: The Google
+        # Workspace Events API uses [ordering keys](https://cloud.google.com/pubsub/docs/
+        # ordering) for the benefit of sequential events. If the Cloud Pub/Sub topic has
+        # a [message storage policy](https://cloud.google.com/pubsub/docs/resource-
+        # location-restriction#exceptions) configured to exclude the nearest Google
+        # Cloud region, publishing events with ordering keys will fail. When the topic
+        # receives events, the events are encoded as Pub/Sub messages. For details, see
+        # the [Google Cloud Pub/Sub Protocol Binding for CloudEvents](https://github.com/
+        # googleapis/google-cloudevents/blob/main/docs/spec/pubsub.md).
         # Corresponds to the JSON property `pubsubTopic`
         # @return [String]
         attr_accessor :pubsub_topic
@@ -140,7 +140,7 @@ module Google
       end
       
       # Options about what data to include in the event payload. Only supported for
-      # Google Chat events.
+      # Google Chat and Google Drive events.
       class PayloadOptions
         include Google::Apis::Core::Hashable
       
@@ -285,7 +285,7 @@ module Google
         attr_accessor :notification_endpoint
       
         # Options about what data to include in the event payload. Only supported for
-        # Google Chat events.
+        # Google Chat and Google Drive events.
         # Corresponds to the JSON property `payloadOptions`
         # @return [Google::Apis::WorkspaceeventsV1::PayloadOptions]
         attr_accessor :payload_options

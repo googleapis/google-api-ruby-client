@@ -1348,6 +1348,13 @@ module Google
         # @return [Google::Apis::TranscoderV1::Status]
         attr_accessor :error
       
+        # Optional. Insert silence and duplicate frames when timestamp gaps are detected
+        # in a given stream.
+        # Corresponds to the JSON property `fillContentGaps`
+        # @return [Boolean]
+        attr_accessor :fill_content_gaps
+        alias_method :fill_content_gaps?, :fill_content_gaps
+      
         # Input only. Specify the `input_uri` to populate empty `uri` fields in each
         # element of `Job.config.inputs` or `JobTemplate.config.inputs` when using
         # template. URI of the media. Input files must be at least 5 seconds in duration
@@ -1424,6 +1431,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
           @error = args[:error] if args.key?(:error)
+          @fill_content_gaps = args[:fill_content_gaps] if args.key?(:fill_content_gaps)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @labels = args[:labels] if args.key?(:labels)
           @mode = args[:mode] if args.key?(:mode)

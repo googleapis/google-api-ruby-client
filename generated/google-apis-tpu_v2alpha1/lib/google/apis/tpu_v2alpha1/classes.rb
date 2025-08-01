@@ -244,10 +244,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The name of the encryption key that is stored in Google Cloud KMS. For example:
-        # "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/
-        # cryptoKeys/key The fully-qualifed key name may be returned for resource GET
-        # requests. For example: "kmsKeyName": "projects/kms_project_id/locations/region/
-        # keyRings/ key_region/cryptoKeys/key /cryptoKeyVersions/1
+        # "kmsKeyName": "projects/KMS_PROJECT_ID/locations/REGION/keyRings/KEY_REGION/
+        # cryptoKeys/KEY The fully-qualifed key name may be returned for resource GET
+        # requests. For example: "kmsKeyName": "projects/KMS_PROJECT_ID/locations/REGION/
+        # keyRings/KEY_REGION/cryptoKeys/KEY/cryptoKeyVersions/1
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
@@ -1612,6 +1612,11 @@ module Google
         # @return [String]
         attr_accessor :provisioning_model
       
+        # Optional. Name of the reservation in which the node should be provisioned.
+        # Corresponds to the JSON property `reservationName`
+        # @return [String]
+        attr_accessor :reservation_name
+      
         # Whether the node is created under a reservation.
         # Corresponds to the JSON property `reserved`
         # @return [Boolean]
@@ -1637,6 +1642,7 @@ module Google
         def update!(**args)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
+          @reservation_name = args[:reservation_name] if args.key?(:reservation_name)
           @reserved = args[:reserved] if args.key?(:reserved)
           @spot = args[:spot] if args.key?(:spot)
           @termination_timestamp = args[:termination_timestamp] if args.key?(:termination_timestamp)

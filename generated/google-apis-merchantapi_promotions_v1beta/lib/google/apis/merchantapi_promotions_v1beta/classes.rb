@@ -148,9 +148,7 @@ module Google
         # @return [Google::Apis::MerchantapiPromotionsV1beta::Price]
         attr_accessor :minimum_purchase_amount
       
-        # Optional. [Minimum purchase quantity](https://support.google.com/merchants/
-        # answer/13838182?ref_topic=13773355&sjid=17642868584668136159-NC) for the
-        # promotion.
+        # 
         # Corresponds to the JSON property `minimumPurchaseQuantity`
         # @return [Fixnum]
         attr_accessor :minimum_purchase_quantity
@@ -626,7 +624,7 @@ module Google
         # @return [String]
         attr_accessor :event_time
       
-        # Optional. The product expiration time. This field will not bet set if the
+        # Optional. The product expiration time. This field will not be set if the
         # notification is sent for a product deletion event.
         # Corresponds to the JSON property `expirationTime`
         # @return [String]

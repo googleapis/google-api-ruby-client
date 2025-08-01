@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRunV2MultiRegionSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2NfsVolumeSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1169,6 +1175,14 @@ module Google
         end
       end
       
+      class GoogleCloudRunV2MultiRegionSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :multi_region_id, as: 'multiRegionId'
+          collection :regions, as: 'regions'
+        end
+      end
+      
       class GoogleCloudRunV2NfsVolumeSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1380,6 +1394,8 @@ module Google
           property :latest_created_revision, as: 'latestCreatedRevision'
           property :latest_ready_revision, as: 'latestReadyRevision'
           property :launch_stage, as: 'launchStage'
+          property :multi_region_settings, as: 'multiRegionSettings', class: Google::Apis::RunV2::GoogleCloudRunV2MultiRegionSettings, decorator: Google::Apis::RunV2::GoogleCloudRunV2MultiRegionSettings::Representation
+      
           property :name, as: 'name'
           property :observed_generation, :numeric_string => true, as: 'observedGeneration'
           property :reconciling, as: 'reconciling'
@@ -1512,6 +1528,7 @@ module Google
           property :exit_code, as: 'exitCode'
           property :status, as: 'status', class: Google::Apis::RunV2::GoogleRpcStatus, decorator: Google::Apis::RunV2::GoogleRpcStatus::Representation
       
+          property :term_signal, as: 'termSignal'
         end
       end
       
@@ -1522,6 +1539,7 @@ module Google
       
           property :encryption_key, as: 'encryptionKey'
           property :execution_environment, as: 'executionEnvironment'
+          property :gpu_zonal_redundancy_disabled, as: 'gpuZonalRedundancyDisabled'
           property :max_retries, as: 'maxRetries'
           property :node_selector, as: 'nodeSelector', class: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector, decorator: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector::Representation
       
@@ -1650,6 +1668,7 @@ module Google
           property :encryption_key, as: 'encryptionKey'
           property :encryption_key_revocation_action, as: 'encryptionKeyRevocationAction'
           property :encryption_key_shutdown_duration, as: 'encryptionKeyShutdownDuration'
+          property :gpu_zonal_redundancy_disabled, as: 'gpuZonalRedundancyDisabled'
           hash :labels, as: 'labels'
           property :node_selector, as: 'nodeSelector', class: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector, decorator: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector::Representation
       
@@ -1657,7 +1676,6 @@ module Google
           property :service_account, as: 'serviceAccount'
           property :service_mesh, as: 'serviceMesh', class: Google::Apis::RunV2::GoogleCloudRunV2ServiceMesh, decorator: Google::Apis::RunV2::GoogleCloudRunV2ServiceMesh::Representation
       
-          property :session_affinity, as: 'sessionAffinity'
           collection :volumes, as: 'volumes', class: Google::Apis::RunV2::GoogleCloudRunV2Volume, decorator: Google::Apis::RunV2::GoogleCloudRunV2Volume::Representation
       
           property :vpc_access, as: 'vpcAccess', class: Google::Apis::RunV2::GoogleCloudRunV2VpcAccess, decorator: Google::Apis::RunV2::GoogleCloudRunV2VpcAccess::Representation

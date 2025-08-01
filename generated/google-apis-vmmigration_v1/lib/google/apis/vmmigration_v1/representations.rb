@@ -845,6 +845,7 @@ module Google
           property :source_description, as: 'sourceDescription'
           property :source_id, as: 'sourceId'
           hash :tags, as: 'tags'
+          property :vcpu_count, as: 'vcpuCount'
           property :virtualization_type, as: 'virtualizationType'
           property :vm_id, as: 'vmId'
           property :vpc_id, as: 'vpcId'
@@ -1043,6 +1044,7 @@ module Google
           property :boot_option, as: 'bootOption'
           property :compute_scheduling, as: 'computeScheduling', class: Google::Apis::VmmigrationV1::ComputeScheduling, decorator: Google::Apis::VmmigrationV1::ComputeScheduling::Representation
       
+          collection :disk_replica_zones, as: 'diskReplicaZones'
           property :disk_type, as: 'diskType'
           property :enable_integrity_monitoring, as: 'enableIntegrityMonitoring'
           property :enable_vtpm, as: 'enableVtpm'
@@ -1075,6 +1077,7 @@ module Google
           property :boot_option, as: 'bootOption'
           property :compute_scheduling, as: 'computeScheduling', class: Google::Apis::VmmigrationV1::ComputeScheduling, decorator: Google::Apis::VmmigrationV1::ComputeScheduling::Representation
       
+          collection :disk_replica_zones, as: 'diskReplicaZones'
           property :disk_type, as: 'diskType'
           property :enable_integrity_monitoring, as: 'enableIntegrityMonitoring'
           property :enable_vtpm, as: 'enableVtpm'

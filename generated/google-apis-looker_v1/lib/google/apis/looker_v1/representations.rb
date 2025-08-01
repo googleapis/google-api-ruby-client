@@ -315,6 +315,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :admin_settings, as: 'adminSettings', class: Google::Apis::LookerV1::AdminSettings, decorator: Google::Apis::LookerV1::AdminSettings::Representation
       
+          property :class_type, as: 'classType'
           property :consumer_network, as: 'consumerNetwork'
           property :create_time, as: 'createTime'
           property :custom_domain, as: 'customDomain', class: Google::Apis::LookerV1::CustomDomain, decorator: Google::Apis::LookerV1::CustomDomain::Representation
@@ -495,6 +496,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connection_status, as: 'connectionStatus'
           property :local_fqdn, as: 'localFqdn'
+          collection :local_fqdns, as: 'localFqdns'
           property :target_service_attachment_uri, as: 'targetServiceAttachmentUri'
         end
       end

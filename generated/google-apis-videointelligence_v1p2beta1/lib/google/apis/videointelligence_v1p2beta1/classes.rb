@@ -528,7 +528,7 @@ module Google
       # horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated
       # 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the
       # vertex order will still be (0, 1, 2, 3). Note that values can be less than 0,
-      # or greater than 1 due to trignometric calculations for location of the box.
+      # or greater than 1 due to trigonometric calculations for location of the box.
       class GoogleCloudVideointelligenceV1NormalizedBoundingPoly
         include Google::Apis::Core::Hashable
       
@@ -794,7 +794,7 @@ module Google
         # horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated
         # 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the
         # vertex order will still be (0, 1, 2, 3). Note that values can be less than 0,
-        # or greater than 1 due to trignometric calculations for location of the box.
+        # or greater than 1 due to trigonometric calculations for location of the box.
         # Corresponds to the JSON property `rotatedBoundingBox`
         # @return [Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1NormalizedBoundingPoly]
         attr_accessor :rotated_bounding_box
@@ -1708,7 +1708,7 @@ module Google
       # horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated
       # 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the
       # vertex order will still be (0, 1, 2, 3). Note that values can be less than 0,
-      # or greater than 1 due to trignometric calculations for location of the box.
+      # or greater than 1 due to trigonometric calculations for location of the box.
       class GoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly
         include Google::Apis::Core::Hashable
       
@@ -1974,7 +1974,7 @@ module Google
         # horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated
         # 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the
         # vertex order will still be (0, 1, 2, 3). Note that values can be less than 0,
-        # or greater than 1 due to trignometric calculations for location of the box.
+        # or greater than 1 due to trigonometric calculations for location of the box.
         # Corresponds to the JSON property `rotatedBoundingBox`
         # @return [Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly]
         attr_accessor :rotated_bounding_box
@@ -2888,7 +2888,7 @@ module Google
       # horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated
       # 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the
       # vertex order will still be (0, 1, 2, 3). Note that values can be less than 0,
-      # or greater than 1 due to trignometric calculations for location of the box.
+      # or greater than 1 due to trigonometric calculations for location of the box.
       class GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly
         include Google::Apis::Core::Hashable
       
@@ -3154,7 +3154,7 @@ module Google
         # horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated
         # 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the
         # vertex order will still be (0, 1, 2, 3). Note that values can be less than 0,
-        # or greater than 1 due to trignometric calculations for location of the box.
+        # or greater than 1 due to trigonometric calculations for location of the box.
         # Corresponds to the JSON property `rotatedBoundingBox`
         # @return [Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly]
         attr_accessor :rotated_bounding_box
@@ -4246,7 +4246,7 @@ module Google
       # horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated
       # 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the
       # vertex order will still be (0, 1, 2, 3). Note that values can be less than 0,
-      # or greater than 1 due to trignometric calculations for location of the box.
+      # or greater than 1 due to trigonometric calculations for location of the box.
       class GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly
         include Google::Apis::Core::Hashable
       
@@ -4738,7 +4738,7 @@ module Google
         # horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated
         # 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the
         # vertex order will still be (0, 1, 2, 3). Note that values can be less than 0,
-        # or greater than 1 due to trignometric calculations for location of the box.
+        # or greater than 1 due to trigonometric calculations for location of the box.
         # Corresponds to the JSON property `rotatedBoundingBox`
         # @return [Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly]
         attr_accessor :rotated_bounding_box
@@ -5807,7 +5807,7 @@ module Google
       # horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated
       # 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the
       # vertex order will still be (0, 1, 2, 3). Note that values can be less than 0,
-      # or greater than 1 due to trignometric calculations for location of the box.
+      # or greater than 1 due to trigonometric calculations for location of the box.
       class GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly
         include Google::Apis::Core::Hashable
       
@@ -6187,7 +6187,7 @@ module Google
         # horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated
         # 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the
         # vertex order will still be (0, 1, 2, 3). Note that values can be less than 0,
-        # or greater than 1 due to trignometric calculations for location of the box.
+        # or greater than 1 due to trigonometric calculations for location of the box.
         # Corresponds to the JSON property `rotatedBoundingBox`
         # @return [Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly]
         attr_accessor :rotated_bounding_box

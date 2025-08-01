@@ -1662,6 +1662,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authentication_error, as: 'authenticationError'
           property :authorization_error, as: 'authorizationError'
+          property :conversion_custom_variable_error, as: 'conversionCustomVariableError'
           property :custom_column_error, as: 'customColumnError'
           property :date_error, as: 'dateError'
           property :date_range_error, as: 'dateRangeError'

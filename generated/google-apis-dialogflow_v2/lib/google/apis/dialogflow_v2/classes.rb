@@ -1241,6 +1241,11 @@ module Google
         attr_accessor :enable_generative_fallback
         alias_method :enable_generative_fallback?, :enable_generative_fallback
       
+        # A list of Generators to be called during this fulfillment.
+        # Corresponds to the JSON property `generators`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings>]
+        attr_accessor :generators
+      
         # The list of rich message responses to present to the user.
         # Corresponds to the JSON property `messages`
         # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3ResponseMessage>]
@@ -1286,6 +1291,7 @@ module Google
           @advanced_settings = args[:advanced_settings] if args.key?(:advanced_settings)
           @conditional_cases = args[:conditional_cases] if args.key?(:conditional_cases)
           @enable_generative_fallback = args[:enable_generative_fallback] if args.key?(:enable_generative_fallback)
+          @generators = args[:generators] if args.key?(:generators)
           @messages = args[:messages] if args.key?(:messages)
           @return_partial_responses = args[:return_partial_responses] if args.key?(:return_partial_responses)
           @set_parameter_actions = args[:set_parameter_actions] if args.key?(:set_parameter_actions)
@@ -1377,6 +1383,44 @@ module Google
         def update!(**args)
           @additional_cases = args[:additional_cases] if args.key?(:additional_cases)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Generator settings used by the LLM to generate a text response.
+      class GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings
+        include Google::Apis::Core::Hashable
+      
+        # Required. The generator to call. Format: `projects//locations//agents//
+        # generators/`.
+        # Corresponds to the JSON property `generator`
+        # @return [String]
+        attr_accessor :generator
+      
+        # Map from placeholder parameter in the Generator to corresponding session
+        # parameters. By default, Dialogflow uses the session parameter with the same
+        # name to fill in the generator template. e.g. If there is a placeholder
+        # parameter `city` in the Generator, Dialogflow default to fill in the `$city`
+        # with `$session.params.city`. However, you may choose to fill `$city` with `$
+        # session.params.desination-city`. - Map key: parameter ID - Map value: session
+        # parameter name
+        # Corresponds to the JSON property `inputParameters`
+        # @return [Hash<String,String>]
+        attr_accessor :input_parameters
+      
+        # Required. Output parameter which should contain the generator response.
+        # Corresponds to the JSON property `outputParameter`
+        # @return [String]
+        attr_accessor :output_parameter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generator = args[:generator] if args.key?(:generator)
+          @input_parameters = args[:input_parameters] if args.key?(:input_parameters)
+          @output_parameter = args[:output_parameter] if args.key?(:output_parameter)
         end
       end
       
@@ -5128,6 +5172,11 @@ module Google
         attr_accessor :enable_generative_fallback
         alias_method :enable_generative_fallback?, :enable_generative_fallback
       
+        # A list of Generators to be called during this fulfillment.
+        # Corresponds to the JSON property `generators`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings>]
+        attr_accessor :generators
+      
         # The list of rich message responses to present to the user.
         # Corresponds to the JSON property `messages`
         # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ResponseMessage>]
@@ -5173,6 +5222,7 @@ module Google
           @advanced_settings = args[:advanced_settings] if args.key?(:advanced_settings)
           @conditional_cases = args[:conditional_cases] if args.key?(:conditional_cases)
           @enable_generative_fallback = args[:enable_generative_fallback] if args.key?(:enable_generative_fallback)
+          @generators = args[:generators] if args.key?(:generators)
           @messages = args[:messages] if args.key?(:messages)
           @return_partial_responses = args[:return_partial_responses] if args.key?(:return_partial_responses)
           @set_parameter_actions = args[:set_parameter_actions] if args.key?(:set_parameter_actions)
@@ -5264,6 +5314,44 @@ module Google
         def update!(**args)
           @additional_cases = args[:additional_cases] if args.key?(:additional_cases)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Generator settings used by the LLM to generate a text response.
+      class GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings
+        include Google::Apis::Core::Hashable
+      
+        # Required. The generator to call. Format: `projects//locations//agents//
+        # generators/`.
+        # Corresponds to the JSON property `generator`
+        # @return [String]
+        attr_accessor :generator
+      
+        # Map from placeholder parameter in the Generator to corresponding session
+        # parameters. By default, Dialogflow uses the session parameter with the same
+        # name to fill in the generator template. e.g. If there is a placeholder
+        # parameter `city` in the Generator, Dialogflow default to fill in the `$city`
+        # with `$session.params.city`. However, you may choose to fill `$city` with `$
+        # session.params.desination-city`. - Map key: parameter ID - Map value: session
+        # parameter name
+        # Corresponds to the JSON property `inputParameters`
+        # @return [Hash<String,String>]
+        attr_accessor :input_parameters
+      
+        # Required. Output parameter which should contain the generator response.
+        # Corresponds to the JSON property `outputParameter`
+        # @return [String]
+        attr_accessor :output_parameter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generator = args[:generator] if args.key?(:generator)
+          @input_parameters = args[:input_parameters] if args.key?(:input_parameters)
+          @output_parameter = args[:output_parameter] if args.key?(:output_parameter)
         end
       end
       
@@ -8906,6 +8994,68 @@ module Google
         end
       end
       
+      # Represents a connection for SIP Trunk.
+      class GoogleCloudDialogflowV2Connection
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The unique identifier of the SIP Trunk connection.
+        # Corresponds to the JSON property `connectionId`
+        # @return [String]
+        attr_accessor :connection_id
+      
+        # The error details of Sip Trunk connection authentication.
+        # Corresponds to the JSON property `errorDetails`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConnectionErrorDetails]
+        attr_accessor :error_details
+      
+        # Output only. State of the connection.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. When the connection status changed.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_id = args[:connection_id] if args.key?(:connection_id)
+          @error_details = args[:error_details] if args.key?(:error_details)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The error details of Sip Trunk connection authentication.
+      class GoogleCloudDialogflowV2ConnectionErrorDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The status of the certificate authentication.
+        # Corresponds to the JSON property `certificateState`
+        # @return [String]
+        attr_accessor :certificate_state
+      
+        # The error message provided from SIP trunking auth service
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_state = args[:certificate_state] if args.key?(:certificate_state)
+          @error_message = args[:error_message] if args.key?(:error_message)
+        end
+      end
+      
       # Dialogflow contexts are similar to natural language context. If a person says
       # to you "they are orange", you need context in order to understand what "they"
       # is referring to. Similarly, for Dialogflow to handle an end-user expression
@@ -9608,8 +9758,8 @@ module Google
         # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoMimeContent>]
         attr_accessor :extra_mime_contents
       
-        # Optional. SDP of the call. It's initially the SDP answer to the endpoint, but
-        # maybe later updated for the purpose of making the link active, etc.
+        # Optional. SDP of the call. It's initially the SDP answer to the incoming call,
+        # but maybe later updated for the purpose of making the link active, etc.
         # Corresponds to the JSON property `sdp`
         # @return [String]
         attr_accessor :sdp
@@ -9778,6 +9928,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # The time when the operation finished.
+        # Corresponds to the JSON property `doneTime`
+        # @return [String]
+        attr_accessor :done_time
+      
         # State of CreateConversationModel operation.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -9791,6 +9946,7 @@ module Google
         def update!(**args)
           @conversation_model = args[:conversation_model] if args.key?(:conversation_model)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @done_time = args[:done_time] if args.key?(:done_time)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -9857,6 +10013,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # The time when the operation finished.
+        # Corresponds to the JSON property `doneTime`
+        # @return [String]
+        attr_accessor :done_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -9865,6 +10026,7 @@ module Google
         def update!(**args)
           @conversation_model = args[:conversation_model] if args.key?(:conversation_model)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @done_time = args[:done_time] if args.key?(:done_time)
         end
       end
       
@@ -9884,6 +10046,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # The time when the operation finished.
+        # Corresponds to the JSON property `doneTime`
+        # @return [String]
+        attr_accessor :done_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -9892,6 +10059,7 @@ module Google
         def update!(**args)
           @conversation_model = args[:conversation_model] if args.key?(:conversation_model)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @done_time = args[:done_time] if args.key?(:done_time)
         end
       end
       
@@ -11508,7 +11676,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Version of current baseline model. It will be ignored if model is set. Valid
-        # versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default)
+        # versions are: - Article Suggestion baseline model: - 0.9 - 1.0 (default) -
         # Summarization baseline model: - 1.0
         # Corresponds to the JSON property `baselineModelVersion`
         # @return [String]
@@ -14110,6 +14278,11 @@ module Google
       class GoogleCloudDialogflowV2KnowledgeOperationMetadata
         include Google::Apis::Core::Hashable
       
+        # The time when the operation finished.
+        # Corresponds to the JSON property `doneTime`
+        # @return [String]
+        attr_accessor :done_time
+      
         # Metadata related to the Export Data Operations (e.g. ExportDocument).
         # Corresponds to the JSON property `exportOperationMetadata`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ExportOperationMetadata]
@@ -14131,6 +14304,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @done_time = args[:done_time] if args.key?(:done_time)
           @export_operation_metadata = args[:export_operation_metadata] if args.key?(:export_operation_metadata)
           @knowledge_base = args[:knowledge_base] if args.key?(:knowledge_base)
           @state = args[:state] if args.key?(:state)
@@ -14562,6 +14736,32 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @session_entity_types = args[:session_entity_types] if args.key?(:session_entity_types)
+        end
+      end
+      
+      # The response message for SipTrunks.ListSipTrunks.
+      class GoogleCloudDialogflowV2ListSipTrunksResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of SIP trunks.
+        # Corresponds to the JSON property `sipTrunks`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SipTrunk>]
+        attr_accessor :sip_trunks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @sip_trunks = args[:sip_trunks] if args.key?(:sip_trunks)
         end
       end
       
@@ -15953,6 +16153,46 @@ module Google
         end
       end
       
+      # SipTrunk is the resource that represents a SIP trunk to connect to Google
+      # Telephony platform SIP trunking service.
+      class GoogleCloudDialogflowV2SipTrunk
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Connections of the SIP trunk.
+        # Corresponds to the JSON property `connections`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Connection>]
+        attr_accessor :connections
+      
+        # Optional. Human readable alias for this trunk.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. The expected hostnames in the peer certificate from partner that is
+        # used for TLS authentication.
+        # Corresponds to the JSON property `expectedHostname`
+        # @return [Array<String>]
+        attr_accessor :expected_hostname
+      
+        # Identifier. The unique identifier of the SIP trunk. Format: `projects//
+        # locations//sipTrunks/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connections = args[:connections] if args.key?(:connections)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @expected_hostname = args[:expected_hostname] if args.key?(:expected_hostname)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Represents a smart reply answer.
       class GoogleCloudDialogflowV2SmartReplyAnswer
         include Google::Apis::Core::Hashable
@@ -17092,7 +17332,7 @@ module Google
       class GoogleCloudDialogflowV2ToolCall
         include Google::Apis::Core::Hashable
       
-        # Required. The name of the tool's action associated with this call.
+        # Optional. The name of the tool's action associated with this call.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -17107,7 +17347,7 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :input_parameters
       
-        # Required. The tool associated with this call. Format: `projects//locations//
+        # Optional. The tool associated with this call. Format: `projects//locations//
         # tools/`.
         # Corresponds to the JSON property `tool`
         # @return [String]
@@ -17130,7 +17370,7 @@ module Google
       class GoogleCloudDialogflowV2ToolCallResult
         include Google::Apis::Core::Hashable
       
-        # Required. The name of the tool's action associated with this call.
+        # Optional. The name of the tool's action associated with this call.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -17157,7 +17397,7 @@ module Google
         # @return [String]
         attr_accessor :raw_content
       
-        # Required. The tool associated with this call. Format: `projects//locations//
+        # Optional. The tool associated with this call. Format: `projects//locations//
         # tools/`.
         # Corresponds to the JSON property `tool`
         # @return [String]
@@ -17226,6 +17466,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # The time when the operation finished.
+        # Corresponds to the JSON property `doneTime`
+        # @return [String]
+        attr_accessor :done_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -17234,6 +17479,7 @@ module Google
         def update!(**args)
           @conversation_model = args[:conversation_model] if args.key?(:conversation_model)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @done_time = args[:done_time] if args.key?(:done_time)
         end
       end
       
@@ -20359,6 +20605,11 @@ module Google
       class GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata
         include Google::Apis::Core::Hashable
       
+        # The time when the operation finished.
+        # Corresponds to the JSON property `doneTime`
+        # @return [String]
+        attr_accessor :done_time
+      
         # Metadata related to the Export Data Operations (e.g. ExportDocument).
         # Corresponds to the JSON property `exportOperationMetadata`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1ExportOperationMetadata]
@@ -20380,6 +20631,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @done_time = args[:done_time] if args.key?(:done_time)
           @export_operation_metadata = args[:export_operation_metadata] if args.key?(:export_operation_metadata)
           @knowledge_base = args[:knowledge_base] if args.key?(:knowledge_base)
           @state = args[:state] if args.key?(:state)
@@ -21543,7 +21795,7 @@ module Google
       class GoogleCloudDialogflowV2beta1ToolCall
         include Google::Apis::Core::Hashable
       
-        # Required. The name of the tool's action associated with this call.
+        # Optional. The name of the tool's action associated with this call.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -21558,7 +21810,7 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :input_parameters
       
-        # Required. The tool associated with this call. Format: `projects//locations//
+        # Optional. The tool associated with this call. Format: `projects//locations//
         # tools/`.
         # Corresponds to the JSON property `tool`
         # @return [String]
@@ -21581,7 +21833,7 @@ module Google
       class GoogleCloudDialogflowV2beta1ToolCallResult
         include Google::Apis::Core::Hashable
       
-        # Required. The name of the tool's action associated with this call.
+        # Optional. The name of the tool's action associated with this call.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -21608,7 +21860,7 @@ module Google
         # @return [String]
         attr_accessor :raw_content
       
-        # Required. The tool associated with this call. Format: `projects//locations//
+        # Optional. The tool associated with this call. Format: `projects//locations//
         # tools/`.
         # Corresponds to the JSON property `tool`
         # @return [String]

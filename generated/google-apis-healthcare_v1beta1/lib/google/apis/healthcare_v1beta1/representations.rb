@@ -364,6 +364,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DicomNotificationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DicomStore
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -599,12 +605,6 @@ module Google
       end
       
       class GoogleCloudHealthcareV1beta1DicomBigQueryDestination
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudHealthcareV1beta1DicomChangeDataCaptureConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1786,12 +1786,21 @@ module Google
         end
       end
       
+      class DicomNotificationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pubsub_topic, as: 'pubsubTopic'
+        end
+      end
+      
       class DicomStore
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :notification_config, as: 'notificationConfig', class: Google::Apis::HealthcareV1beta1::NotificationConfig, decorator: Google::Apis::HealthcareV1beta1::NotificationConfig::Representation
+      
+          collection :notification_configs, as: 'notificationConfigs', class: Google::Apis::HealthcareV1beta1::DicomNotificationConfig, decorator: Google::Apis::HealthcareV1beta1::DicomNotificationConfig::Representation
       
           collection :stream_configs, as: 'streamConfigs', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DicomStreamConfig, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DicomStreamConfig::Representation
       
@@ -2203,17 +2212,9 @@ module Google
       class GoogleCloudHealthcareV1beta1DicomBigQueryDestination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :change_data_capture_config, as: 'changeDataCaptureConfig', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DicomChangeDataCaptureConfig, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DicomChangeDataCaptureConfig::Representation
-      
           property :force, as: 'force'
           property :table_uri, as: 'tableUri'
           property :write_disposition, as: 'writeDisposition'
-        end
-      end
-      
-      class GoogleCloudHealthcareV1beta1DicomChangeDataCaptureConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

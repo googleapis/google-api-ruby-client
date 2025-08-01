@@ -1,5 +1,25 @@
 # Release history for google-apis-backupdr_v1
 
+### v0.35.0 (2025-07-27)
+
+* Regenerated from discovery document revision 20250720
+
+### v0.34.0 (2025-07-20)
+
+* Regenerated from discovery document revision 20250711
+
+### v0.33.0 (2025-07-06)
+
+* Regenerated from discovery document revision 20250625
+
+### v0.32.0 (2025-06-22)
+
+* Regenerated from discovery document revision 20250611
+
+### v0.31.0 (2025-06-15)
+
+* Regenerated from discovery document revision 20250605
+
 ### v0.30.0 (2025-06-01)
 
 * Regenerated from discovery document revision 20250523

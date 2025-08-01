@@ -532,12 +532,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PitrFields
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class PasswordStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1114,8 +1108,6 @@ module Google
           property :on_premises_configuration, as: 'onPremisesConfiguration', class: Google::Apis::SqladminV1beta4::OnPremisesConfiguration, decorator: Google::Apis::SqladminV1beta4::OnPremisesConfiguration::Representation
       
           property :out_of_disk_report, as: 'outOfDiskReport', class: Google::Apis::SqladminV1beta4::SqlOutOfDiskReport, decorator: Google::Apis::SqladminV1beta4::SqlOutOfDiskReport::Representation
-      
-          property :pitr_fields, as: 'pitrFields', class: Google::Apis::SqladminV1beta4::PitrFields, decorator: Google::Apis::SqladminV1beta4::PitrFields::Representation
       
           property :primary_dns_name, as: 'primaryDnsName'
           property :project, as: 'project'
@@ -1820,16 +1812,6 @@ module Google
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class PitrFields
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :enable_bin_log, as: 'enableBinLog'
-          property :replication_log_archiving_enabled, as: 'replicationLogArchivingEnabled'
-          property :sqlserver_pitr_enabled, as: 'sqlserverPitrEnabled'
-          property :transaction_log_retention_days, as: 'transactionLogRetentionDays'
         end
       end
       

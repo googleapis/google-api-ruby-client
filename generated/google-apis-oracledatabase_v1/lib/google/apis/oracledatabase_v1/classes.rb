@@ -120,6 +120,21 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Optional. The name of the OdbNetwork associated with the Autonomous Database.
+        # Format: projects/`project`/locations/`location`/odbNetworks/`odb_network` It
+        # is optional but if specified, this should match the parent ODBNetwork of the
+        # OdbSubnet.
+        # Corresponds to the JSON property `odbNetwork`
+        # @return [String]
+        attr_accessor :odb_network
+      
+        # Optional. The name of the OdbSubnet associated with the Autonomous Database.
+        # Format: projects/`project`/locations/`location`/odbNetworks/`odb_network`/
+        # odbSubnets/`odb_subnet`
+        # Corresponds to the JSON property `odbSubnet`
+        # @return [String]
+        attr_accessor :odb_subnet
+      
         # Output only. The peer Autonomous Database names of the given Autonomous
         # Database.
         # Corresponds to the JSON property `peerAutonomousDatabases`
@@ -152,6 +167,8 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @odb_network = args[:odb_network] if args.key?(:odb_network)
+          @odb_subnet = args[:odb_subnet] if args.key?(:odb_subnet)
           @peer_autonomous_databases = args[:peer_autonomous_databases] if args.key?(:peer_autonomous_databases)
           @properties = args[:properties] if args.key?(:properties)
           @source_config = args[:source_config] if args.key?(:source_config)
@@ -1359,6 +1376,13 @@ module Google
       class CloudVmCluster
         include Google::Apis::Core::Hashable
       
+        # Optional. The name of the backup OdbSubnet associated with the VM Cluster.
+        # Format: projects/`project`/locations/`location`/odbNetworks/`odb_network`/
+        # odbSubnets/`odb_subnet`
+        # Corresponds to the JSON property `backupOdbSubnet`
+        # @return [String]
+        attr_accessor :backup_odb_subnet
+      
         # Optional. CIDR range of the backup subnet.
         # Corresponds to the JSON property `backupSubnetCidr`
         # @return [String]
@@ -1409,6 +1433,21 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Optional. The name of the OdbNetwork associated with the VM Cluster. Format:
+        # projects/`project`/locations/`location`/odbNetworks/`odb_network` It is
+        # optional but if specified, this should match the parent ODBNetwork of the
+        # odb_subnet and backup_odb_subnet.
+        # Corresponds to the JSON property `odbNetwork`
+        # @return [String]
+        attr_accessor :odb_network
+      
+        # Optional. The name of the OdbSubnet associated with the VM Cluster for IP
+        # allocation. Format: projects/`project`/locations/`location`/odbNetworks/`
+        # odb_network`/odbSubnets/`odb_subnet`
+        # Corresponds to the JSON property `odbSubnet`
+        # @return [String]
+        attr_accessor :odb_subnet
+      
         # Various properties and settings associated with Exadata VM cluster.
         # Corresponds to the JSON property `properties`
         # @return [Google::Apis::OracledatabaseV1::CloudVmClusterProperties]
@@ -1420,6 +1459,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @backup_odb_subnet = args[:backup_odb_subnet] if args.key?(:backup_odb_subnet)
           @backup_subnet_cidr = args[:backup_subnet_cidr] if args.key?(:backup_subnet_cidr)
           @cidr = args[:cidr] if args.key?(:cidr)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -1429,6 +1469,8 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @odb_network = args[:odb_network] if args.key?(:odb_network)
+          @odb_subnet = args[:odb_subnet] if args.key?(:odb_subnet)
           @properties = args[:properties] if args.key?(:properties)
         end
       end
@@ -1811,6 +1853,11 @@ module Google
       class DbNodeProperties
         include Google::Apis::Core::Hashable
       
+        # Output only. The date and time that the database node was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Optional. Local storage per database node.
         # Corresponds to the JSON property `dbNodeStorageSizeGb`
         # @return [Fixnum]
@@ -1857,6 +1904,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @db_node_storage_size_gb = args[:db_node_storage_size_gb] if args.key?(:db_node_storage_size_gb)
           @db_server_ocid = args[:db_server_ocid] if args.key?(:db_server_ocid)
           @hostname = args[:hostname] if args.key?(:hostname)
@@ -2498,6 +2546,70 @@ module Google
         end
       end
       
+      # The response for `OdbNetwork.List`.
+      class ListOdbNetworksResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of ODB Networks.
+        # Corresponds to the JSON property `odbNetworks`
+        # @return [Array<Google::Apis::OracledatabaseV1::OdbNetwork>]
+        attr_accessor :odb_networks
+      
+        # Unreachable locations when listing resources across all locations using
+        # wildcard location '-'.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @odb_networks = args[:odb_networks] if args.key?(:odb_networks)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # The response for `OdbSubnet.List`.
+      class ListOdbSubnetsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of ODB Subnets.
+        # Corresponds to the JSON property `odbSubnets`
+        # @return [Array<Google::Apis::OracledatabaseV1::OdbSubnet>]
+        attr_accessor :odb_subnets
+      
+        # Unreachable locations when listing resources across all locations using
+        # wildcard location '-'.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @odb_subnets = args[:odb_subnets] if args.key?(:odb_subnets)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -2667,6 +2779,109 @@ module Google
           @patching_mode = args[:patching_mode] if args.key?(:patching_mode)
           @preference = args[:preference] if args.key?(:preference)
           @weeks_of_month = args[:weeks_of_month] if args.key?(:weeks_of_month)
+        end
+      end
+      
+      # Represents OdbNetwork resource.
+      class OdbNetwork
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The date and time that the OdbNetwork was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The ID of the subscription entitlement associated with the
+        # OdbNetwork.
+        # Corresponds to the JSON property `entitlementId`
+        # @return [String]
+        attr_accessor :entitlement_id
+      
+        # Optional. Labels or tags associated with the resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The name of the OdbNetwork resource in the following format:
+        # projects/`project`/locations/`region`/odbNetworks/`odb_network`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The name of the VPC network in the following format: projects/`
+        # project`/global/networks/`network`
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Output only. State of the ODB Network.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @entitlement_id = args[:entitlement_id] if args.key?(:entitlement_id)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Represents OdbSubnet resource.
+      class OdbSubnet
+        include Google::Apis::Core::Hashable
+      
+        # Required. The CIDR range of the subnet.
+        # Corresponds to the JSON property `cidrRange`
+        # @return [String]
+        attr_accessor :cidr_range
+      
+        # Output only. The date and time that the OdbNetwork was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Labels or tags associated with the resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The name of the OdbSubnet resource in the following format:
+        # projects/`project`/locations/`location`/odbNetworks/`odb_network`/odbSubnets/`
+        # odb_subnet`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Purpose of the subnet.
+        # Corresponds to the JSON property `purpose`
+        # @return [String]
+        attr_accessor :purpose
+      
+        # Output only. State of the ODB Subnet.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cidr_range = args[:cidr_range] if args.key?(:cidr_range)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @purpose = args[:purpose] if args.key?(:purpose)
+          @state = args[:state] if args.key?(:state)
         end
       end
       

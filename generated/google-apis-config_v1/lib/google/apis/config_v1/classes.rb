@@ -780,6 +780,72 @@ module Google
         end
       end
       
+      # A response to a 'ListResourceChanges' call. Contains a list of ResourceChanges.
+      class ListResourceChangesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to request the next page of resources from the 'ListResourceChanges'
+        # method. The value of an empty string means that there are no more resources to
+        # return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of ResourceChanges.
+        # Corresponds to the JSON property `resourceChanges`
+        # @return [Array<Google::Apis::ConfigV1::ResourceChange>]
+        attr_accessor :resource_changes
+      
+        # Unreachable resources, if any.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @resource_changes = args[:resource_changes] if args.key?(:resource_changes)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # A response to a 'ListResourceDrifts' call. Contains a list of ResourceDrifts.
+      class ListResourceDriftsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to request the next page of resources from the 'ListResourceDrifts'
+        # method. The value of an empty string means that there are no more resources to
+        # return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of ResourceDrifts.
+        # Corresponds to the JSON property `resourceDrifts`
+        # @return [Array<Google::Apis::ConfigV1::ResourceDrift>]
+        attr_accessor :resource_drifts
+      
+        # Unreachable resources, if any.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @resource_drifts = args[:resource_drifts] if args.key?(:resource_drifts)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # A response to a 'ListResources' call. Contains a list of Resources.
       class ListResourcesResponse
         include Google::Apis::Core::Hashable
@@ -1465,6 +1531,96 @@ module Google
         end
       end
       
+      # A property change represents a change to a property in the state file.
+      class PropertyChange
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Representations of the object value after the actions.
+        # Corresponds to the JSON property `after`
+        # @return [Object]
+        attr_accessor :after
+      
+        # Output only. The paths of sensitive fields in `after`. Paths are relative to `
+        # path`.
+        # Corresponds to the JSON property `afterSensitivePaths`
+        # @return [Array<String>]
+        attr_accessor :after_sensitive_paths
+      
+        # Output only. Representations of the object value before the actions.
+        # Corresponds to the JSON property `before`
+        # @return [Object]
+        attr_accessor :before
+      
+        # Output only. The paths of sensitive fields in `before`. Paths are relative to `
+        # path`.
+        # Corresponds to the JSON property `beforeSensitivePaths`
+        # @return [Array<String>]
+        attr_accessor :before_sensitive_paths
+      
+        # Output only. The path of the property change.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @after = args[:after] if args.key?(:after)
+          @after_sensitive_paths = args[:after_sensitive_paths] if args.key?(:after_sensitive_paths)
+          @before = args[:before] if args.key?(:before)
+          @before_sensitive_paths = args[:before_sensitive_paths] if args.key?(:before_sensitive_paths)
+          @path = args[:path] if args.key?(:path)
+        end
+      end
+      
+      # A property drift represents a drift to a property in the state file.
+      class PropertyDrift
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Representations of the object value after the actions.
+        # Corresponds to the JSON property `after`
+        # @return [Object]
+        attr_accessor :after
+      
+        # Output only. The paths of sensitive fields in `after`. Paths are relative to `
+        # path`.
+        # Corresponds to the JSON property `afterSensitivePaths`
+        # @return [Array<String>]
+        attr_accessor :after_sensitive_paths
+      
+        # Output only. Representations of the object value before the actions.
+        # Corresponds to the JSON property `before`
+        # @return [Object]
+        attr_accessor :before
+      
+        # Output only. The paths of sensitive fields in `before`. Paths are relative to `
+        # path`.
+        # Corresponds to the JSON property `beforeSensitivePaths`
+        # @return [Array<String>]
+        attr_accessor :before_sensitive_paths
+      
+        # Output only. The path of the property drift.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @after = args[:after] if args.key?(:after)
+          @after_sensitive_paths = args[:after_sensitive_paths] if args.key?(:after_sensitive_paths)
+          @before = args[:before] if args.key?(:before)
+          @before_sensitive_paths = args[:before_sensitive_paths] if args.key?(:before_sensitive_paths)
+          @path = args[:path] if args.key?(:path)
+        end
+      end
+      
       # Resource represents a Google Cloud Platform resource actuated by IM. Resources
       # are child resources of Revisions.
       class Resource
@@ -1529,6 +1685,156 @@ module Google
         # Update properties of this object
         def update!(**args)
           @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
+        end
+      end
+      
+      # A resource change represents a change to a resource in the state file.
+      class ResourceChange
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The intent of the resource change.
+        # Corresponds to the JSON property `intent`
+        # @return [String]
+        attr_accessor :intent
+      
+        # Identifier. The name of the resource change. Format: 'projects/`project_id`/
+        # locations/`location`/previews/`preview`/resourceChanges/`resource_change`'.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The property changes of the resource change.
+        # Corresponds to the JSON property `propertyChanges`
+        # @return [Array<Google::Apis::ConfigV1::PropertyChange>]
+        attr_accessor :property_changes
+      
+        # Terraform info of a ResourceChange.
+        # Corresponds to the JSON property `terraformInfo`
+        # @return [Google::Apis::ConfigV1::ResourceChangeTerraformInfo]
+        attr_accessor :terraform_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intent = args[:intent] if args.key?(:intent)
+          @name = args[:name] if args.key?(:name)
+          @property_changes = args[:property_changes] if args.key?(:property_changes)
+          @terraform_info = args[:terraform_info] if args.key?(:terraform_info)
+        end
+      end
+      
+      # Terraform info of a ResourceChange.
+      class ResourceChangeTerraformInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. TF resource actions.
+        # Corresponds to the JSON property `actions`
+        # @return [Array<String>]
+        attr_accessor :actions
+      
+        # Output only. TF resource address that uniquely identifies the resource.
+        # Corresponds to the JSON property `address`
+        # @return [String]
+        attr_accessor :address
+      
+        # Output only. TF resource provider.
+        # Corresponds to the JSON property `provider`
+        # @return [String]
+        attr_accessor :provider
+      
+        # Output only. TF resource name.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Output only. TF resource type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actions = args[:actions] if args.key?(:actions)
+          @address = args[:address] if args.key?(:address)
+          @provider = args[:provider] if args.key?(:provider)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A resource drift represents a drift to a resource in the state file.
+      class ResourceDrift
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. The name of the resource drift. Format: 'projects/`project_id`/
+        # locations/`location`/previews/`preview`/resourceDrifts/`resource_drift`'.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The property drifts of the resource drift.
+        # Corresponds to the JSON property `propertyDrifts`
+        # @return [Array<Google::Apis::ConfigV1::PropertyDrift>]
+        attr_accessor :property_drifts
+      
+        # Terraform info of a ResourceChange.
+        # Corresponds to the JSON property `terraformInfo`
+        # @return [Google::Apis::ConfigV1::ResourceDriftTerraformInfo]
+        attr_accessor :terraform_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @property_drifts = args[:property_drifts] if args.key?(:property_drifts)
+          @terraform_info = args[:terraform_info] if args.key?(:terraform_info)
+        end
+      end
+      
+      # Terraform info of a ResourceChange.
+      class ResourceDriftTerraformInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The address of the drifted resource.
+        # Corresponds to the JSON property `address`
+        # @return [String]
+        attr_accessor :address
+      
+        # Output only. The provider of the drifted resource.
+        # Corresponds to the JSON property `provider`
+        # @return [String]
+        attr_accessor :provider
+      
+        # Output only. TF resource name.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Output only. The type of the drifted resource.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address = args[:address] if args.key?(:address)
+          @provider = args[:provider] if args.key?(:provider)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       

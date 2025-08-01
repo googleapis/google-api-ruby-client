@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CalendarEventLinkData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Card
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -586,6 +592,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MeetSpaceLinkData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Membership
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1017,6 +1029,14 @@ module Google
       
           property :text_button, as: 'textButton', class: Google::Apis::ChatV1::TextButton, decorator: Google::Apis::ChatV1::TextButton::Representation
       
+        end
+      end
+      
+      class CalendarEventLinkData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :calendar_id, as: 'calendarId'
+          property :event_id, as: 'eventId'
         end
       end
       
@@ -1651,6 +1671,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :external_data_source, as: 'externalDataSource', class: Google::Apis::ChatV1::GoogleAppsCardV1Action, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Action::Representation
       
+          property :hint_text, as: 'hintText'
           collection :items, as: 'items', class: Google::Apis::ChatV1::GoogleAppsCardV1SelectionItem, decorator: Google::Apis::ChatV1::GoogleAppsCardV1SelectionItem::Representation
       
           property :label, as: 'label'
@@ -1926,6 +1947,15 @@ module Google
         end
       end
       
+      class MeetSpaceLinkData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :huddle_status, as: 'huddleStatus'
+          property :meeting_code, as: 'meetingCode'
+          property :type, as: 'type'
+        end
+      end
+      
       class Membership
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2194,9 +2224,13 @@ module Google
       class RichLinkMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :calendar_event_link_data, as: 'calendarEventLinkData', class: Google::Apis::ChatV1::CalendarEventLinkData, decorator: Google::Apis::ChatV1::CalendarEventLinkData::Representation
+      
           property :chat_space_link_data, as: 'chatSpaceLinkData', class: Google::Apis::ChatV1::ChatSpaceLinkData, decorator: Google::Apis::ChatV1::ChatSpaceLinkData::Representation
       
           property :drive_link_data, as: 'driveLinkData', class: Google::Apis::ChatV1::DriveLinkData, decorator: Google::Apis::ChatV1::DriveLinkData::Representation
+      
+          property :meet_space_link_data, as: 'meetSpaceLinkData', class: Google::Apis::ChatV1::MeetSpaceLinkData, decorator: Google::Apis::ChatV1::MeetSpaceLinkData::Representation
       
           property :rich_link_type, as: 'richLinkType'
           property :uri, as: 'uri'
@@ -2267,6 +2301,7 @@ module Google
       
           property :admin_installed, as: 'adminInstalled'
           property :create_time, as: 'createTime'
+          property :customer, as: 'customer'
           property :display_name, as: 'displayName'
           property :external_user_allowed, as: 'externalUserAllowed'
           property :import_mode, as: 'importMode'

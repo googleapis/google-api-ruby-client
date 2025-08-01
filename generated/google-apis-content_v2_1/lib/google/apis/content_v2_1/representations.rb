@@ -4323,6 +4323,8 @@ module Google
           property :material, as: 'material'
           property :max_energy_efficiency_class, as: 'maxEnergyEfficiencyClass'
           property :max_handling_time, :numeric_string => true, as: 'maxHandlingTime'
+          property :maximum_retail_price, as: 'maximumRetailPrice', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+      
           property :min_energy_efficiency_class, as: 'minEnergyEfficiencyClass'
           property :min_handling_time, :numeric_string => true, as: 'minHandlingTime'
           property :mobile_link, as: 'mobileLink'
@@ -4828,6 +4830,7 @@ module Google
           collection :brand_exclusion, as: 'brandExclusion'
           property :content_language, as: 'contentLanguage'
           property :coupon_value_type, as: 'couponValueType'
+          property :custom_redemption_restriction, as: 'customRedemptionRestriction'
           property :free_gift_description, as: 'freeGiftDescription'
           property :free_gift_item_id, as: 'freeGiftItemId'
           property :free_gift_value, as: 'freeGiftValue', class: Google::Apis::ContentV2_1::PriceAmount, decorator: Google::Apis::ContentV2_1::PriceAmount::Representation
@@ -4843,6 +4846,8 @@ module Google
           property :limit_value, as: 'limitValue', class: Google::Apis::ContentV2_1::PriceAmount, decorator: Google::Apis::ContentV2_1::PriceAmount::Representation
       
           property :long_title, as: 'longTitle'
+          property :max_discount_amount, as: 'maxDiscountAmount', class: Google::Apis::ContentV2_1::PriceAmount, decorator: Google::Apis::ContentV2_1::PriceAmount::Representation
+      
           property :minimum_purchase_amount, as: 'minimumPurchaseAmount', class: Google::Apis::ContentV2_1::PriceAmount, decorator: Google::Apis::ContentV2_1::PriceAmount::Representation
       
           property :minimum_purchase_quantity, as: 'minimumPurchaseQuantity'
@@ -4868,6 +4873,7 @@ module Google
       
           property :promotion_url, as: 'promotionUrl'
           collection :redemption_channel, as: 'redemptionChannel'
+          property :redemption_restriction, as: 'redemptionRestriction'
           collection :shipping_service_names, as: 'shippingServiceNames'
           property :store_applicability, as: 'storeApplicability'
           collection :store_code, as: 'storeCode'

@@ -2992,6 +2992,11 @@ module Google
         # @return [String]
         attr_accessor :authorization_error
       
+        # The reasons for the conversion custom variable error
+        # Corresponds to the JSON property `conversionCustomVariableError`
+        # @return [String]
+        attr_accessor :conversion_custom_variable_error
+      
         # The reasons for the custom column error
         # Corresponds to the JSON property `customColumnError`
         # @return [String]
@@ -3055,6 +3060,7 @@ module Google
         def update!(**args)
           @authentication_error = args[:authentication_error] if args.key?(:authentication_error)
           @authorization_error = args[:authorization_error] if args.key?(:authorization_error)
+          @conversion_custom_variable_error = args[:conversion_custom_variable_error] if args.key?(:conversion_custom_variable_error)
           @custom_column_error = args[:custom_column_error] if args.key?(:custom_column_error)
           @date_error = args[:date_error] if args.key?(:date_error)
           @date_range_error = args[:date_range_error] if args.key?(:date_range_error)
@@ -4048,9 +4054,7 @@ module Google
         attr_accessor :id
       
         # Immutable. The name of the ad. This is only used to be able to identify the ad.
-        # It does not need to be unique and does not affect the served ad. The name
-        # field is currently only supported for DisplayUploadAd, ImageAd,
-        # ShoppingComparisonListingAd and VideoAd.
+        # It does not need to be unique and does not affect the served ad.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

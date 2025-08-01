@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackupDrConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackupFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,6 +131,12 @@ module Google
       end
       
       class Compliance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigBasedSignalData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -631,6 +643,13 @@ module Google
         end
       end
       
+      class BackupDrConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backupdr_managed, as: 'backupdrManaged'
+        end
+      end
+      
       class BackupFile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -670,6 +689,7 @@ module Google
       class Cluster
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_fewer_zones_deployment, as: 'allowFewerZonesDeployment'
           property :async_cluster_endpoints_deletion_enabled, as: 'asyncClusterEndpointsDeletionEnabled'
           property :authorization_mode, as: 'authorizationMode'
           property :automated_backup_config, as: 'automatedBackupConfig', class: Google::Apis::RedisV1::AutomatedBackupConfig, decorator: Google::Apis::RedisV1::AutomatedBackupConfig::Representation
@@ -708,7 +728,10 @@ module Google
       
           hash :redis_configs, as: 'redisConfigs'
           property :replica_count, as: 'replicaCount'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :shard_count, as: 'shardCount'
+          property :simulate_maintenance_event, as: 'simulateMaintenanceEvent'
           property :size_gb, as: 'sizeGb'
           property :state, as: 'state'
           property :state_info, as: 'stateInfo', class: Google::Apis::RedisV1::StateInfo, decorator: Google::Apis::RedisV1::StateInfo::Representation
@@ -774,6 +797,18 @@ module Google
         end
       end
       
+      class ConfigBasedSignalData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :full_resource_name, as: 'fullResourceName'
+          property :last_refresh_time, as: 'lastRefreshTime'
+          property :resource_id, as: 'resourceId', class: Google::Apis::RedisV1::DatabaseResourceId, decorator: Google::Apis::RedisV1::DatabaseResourceId::Representation
+      
+          property :signal_bool_value, as: 'signalBoolValue'
+          property :signal_type, as: 'signalType'
+        end
+      end
+      
       class ConnectionDetail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -809,6 +844,8 @@ module Google
       class DatabaseResourceFeed
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :config_based_signal_data, as: 'configBasedSignalData', class: Google::Apis::RedisV1::ConfigBasedSignalData, decorator: Google::Apis::RedisV1::ConfigBasedSignalData::Representation
+      
           property :feed_timestamp, as: 'feedTimestamp'
           property :feed_type, as: 'feedType'
           property :observability_metric_data, as: 'observabilityMetricData', class: Google::Apis::RedisV1::ObservabilityMetricData, decorator: Google::Apis::RedisV1::ObservabilityMetricData::Representation
@@ -833,6 +870,7 @@ module Google
           property :description, as: 'description'
           property :event_time, as: 'eventTime'
           property :external_uri, as: 'externalUri'
+          property :location, as: 'location'
           property :name, as: 'name'
           property :provider, as: 'provider'
           property :resource_container, as: 'resourceContainer'
@@ -863,6 +901,8 @@ module Google
           property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::RedisV1::BackupConfiguration, decorator: Google::Apis::RedisV1::BackupConfiguration::Representation
       
           property :backup_run, as: 'backupRun', class: Google::Apis::RedisV1::BackupRun, decorator: Google::Apis::RedisV1::BackupRun::Representation
+      
+          property :backupdr_configuration, as: 'backupdrConfiguration', class: Google::Apis::RedisV1::BackupDrConfiguration, decorator: Google::Apis::RedisV1::BackupDrConfiguration::Representation
       
           property :creation_time, as: 'creationTime'
           property :current_state, as: 'currentState'
@@ -1088,6 +1128,7 @@ module Google
           property :state, as: 'state'
           property :status_message, as: 'statusMessage'
           collection :suspension_reasons, as: 'suspensionReasons'
+          hash :tags, as: 'tags'
           property :tier, as: 'tier'
           property :transit_encryption_mode, as: 'transitEncryptionMode'
         end
@@ -1317,6 +1358,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :engine, as: 'engine'
+          property :minor_version, as: 'minorVersion'
           property :type, as: 'type'
           property :version, as: 'version'
         end

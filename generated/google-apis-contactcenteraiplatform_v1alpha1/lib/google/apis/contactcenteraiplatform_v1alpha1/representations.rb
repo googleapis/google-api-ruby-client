@@ -218,6 +218,7 @@ module Google
           property :private_access, as: 'privateAccess', class: Google::Apis::ContactcenteraiplatformV1alpha1::PrivateAccess, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::PrivateAccess::Representation
       
           collection :private_components, as: 'privateComponents'
+          property :release_version, as: 'releaseVersion'
           property :saml_params, as: 'samlParams', class: Google::Apis::ContactcenteraiplatformV1alpha1::SamlParams, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::SamlParams::Representation
       
           property :state, as: 'state'

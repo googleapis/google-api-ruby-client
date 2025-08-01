@@ -1370,6 +1370,11 @@ module Google
         # @return [Array<Google::Apis::DataprocV1::AuxiliaryNodeGroup>]
         attr_accessor :auxiliary_node_groups
       
+        # Optional. The tier of the cluster.
+        # Corresponds to the JSON property `clusterTier`
+        # @return [String]
+        attr_accessor :cluster_tier
+      
         # Optional. The type of the cluster.
         # Corresponds to the JSON property `clusterType`
         # @return [String]
@@ -1485,6 +1490,7 @@ module Google
         def update!(**args)
           @autoscaling_config = args[:autoscaling_config] if args.key?(:autoscaling_config)
           @auxiliary_node_groups = args[:auxiliary_node_groups] if args.key?(:auxiliary_node_groups)
+          @cluster_tier = args[:cluster_tier] if args.key?(:cluster_tier)
           @cluster_type = args[:cluster_type] if args.key?(:cluster_type)
           @config_bucket = args[:config_bucket] if args.key?(:config_bucket)
           @dataproc_metric_config = args[:dataproc_metric_config] if args.key?(:dataproc_metric_config)
@@ -4805,6 +4811,22 @@ module Google
         # @return [String]
         attr_accessor :auto_delete_ttl
       
+        # Optional. The time when cluster will be auto-stopped (see JSON representation
+        # of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json))
+        # .
+        # Corresponds to the JSON property `autoStopTime`
+        # @return [String]
+        attr_accessor :auto_stop_time
+      
+        # Optional. The lifetime duration of the cluster. The cluster will be auto-
+        # stopped at the end of this period, calculated from the time of submission of
+        # the create or update cluster request. Minimum value is 10 minutes; maximum
+        # value is 14 days (see JSON representation of Duration (https://developers.
+        # google.com/protocol-buffers/docs/proto3#json)).
+        # Corresponds to the JSON property `autoStopTtl`
+        # @return [String]
+        attr_accessor :auto_stop_ttl
+      
         # Optional. The duration to keep the cluster alive while idling (when no jobs
         # are running). Passing this threshold will cause the cluster to be deleted.
         # Minimum value is 5 minutes; maximum value is 14 days (see JSON representation
@@ -4820,6 +4842,14 @@ module Google
         # @return [String]
         attr_accessor :idle_start_time
       
+        # Optional. The duration to keep the cluster started while idling (when no jobs
+        # are running). Passing this threshold will cause the cluster to be stopped.
+        # Minimum value is 5 minutes; maximum value is 14 days (see JSON representation
+        # of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        # Corresponds to the JSON property `idleStopTtl`
+        # @return [String]
+        attr_accessor :idle_stop_ttl
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4828,8 +4858,11 @@ module Google
         def update!(**args)
           @auto_delete_time = args[:auto_delete_time] if args.key?(:auto_delete_time)
           @auto_delete_ttl = args[:auto_delete_ttl] if args.key?(:auto_delete_ttl)
+          @auto_stop_time = args[:auto_stop_time] if args.key?(:auto_stop_time)
+          @auto_stop_ttl = args[:auto_stop_ttl] if args.key?(:auto_stop_ttl)
           @idle_delete_ttl = args[:idle_delete_ttl] if args.key?(:idle_delete_ttl)
           @idle_start_time = args[:idle_start_time] if args.key?(:idle_start_time)
+          @idle_stop_ttl = args[:idle_stop_ttl] if args.key?(:idle_stop_ttl)
         end
       end
       

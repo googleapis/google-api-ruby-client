@@ -156,8 +156,8 @@ module Google
         end
         
         # Retrieves the configuration related to the migration from Data Catalog to
-        # Dataplex for a specific organization, including all the projects under it
-        # which have a separate configuration set.
+        # Dataplex Universal Catalog for a specific organization, including all the
+        # projects under it which have a separate configuration set.
         # @param [String] name
         #   Required. The organization whose config is being retrieved.
         # @param [String] fields
@@ -188,10 +188,10 @@ module Google
         end
         
         # Retrieves the effective configuration related to the migration from Data
-        # Catalog to Dataplex for a specific organization or project. If there is no
-        # specific configuration set for the resource, the setting is checked
-        # hierarchicahlly through the ancestors of the resource, starting from the
-        # resource itself.
+        # Catalog to Dataplex Universal Catalog for a specific organization or project.
+        # If there is no specific configuration set for the resource, the setting is
+        # checked hierarchicahlly through the ancestors of the resource, starting from
+        # the resource itself.
         # @param [String] name
         #   Required. The resource whose effective config is being retrieved.
         # @param [String] fields
@@ -221,8 +221,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the configuration related to the migration to Dataplex for an
-        # organization or project.
+        # Sets the configuration related to the migration to Dataplex Universal Catalog
+        # for an organization or project.
         # @param [String] name
         #   Required. The organization or project whose config is being specified.
         # @param [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SetConfigRequest] google_cloud_datacatalog_v1_set_config_request_object
@@ -256,10 +256,10 @@ module Google
         end
         
         # Retrieves the effective configuration related to the migration from Data
-        # Catalog to Dataplex for a specific organization or project. If there is no
-        # specific configuration set for the resource, the setting is checked
-        # hierarchicahlly through the ancestors of the resource, starting from the
-        # resource itself.
+        # Catalog to Dataplex Universal Catalog for a specific organization or project.
+        # If there is no specific configuration set for the resource, the setting is
+        # checked hierarchicahlly through the ancestors of the resource, starting from
+        # the resource itself.
         # @param [String] name
         #   Required. The resource whose effective config is being retrieved.
         # @param [String] fields
@@ -289,8 +289,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the configuration related to the migration to Dataplex for an
-        # organization or project.
+        # Sets the configuration related to the migration to Dataplex Universal Catalog
+        # for an organization or project.
         # @param [String] name
         #   Required. The organization or project whose config is being specified.
         # @param [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SetConfigRequest] google_cloud_datacatalog_v1_set_config_request_object

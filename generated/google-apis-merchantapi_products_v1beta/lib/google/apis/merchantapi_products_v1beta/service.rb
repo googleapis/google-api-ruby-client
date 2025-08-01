@@ -30,7 +30,7 @@ module Google
       #    Merchantapi = Google::Apis::MerchantapiProductsV1beta # Alias the module
       #    service = Merchantapi::MerchantService.new
       #
-      # @see https://developers.devsite.corp.google.com/merchant/api
+      # @see https://developers.google.com/merchant/api
       class MerchantService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://merchantapi.$UNIVERSE_DOMAIN$/"
 
@@ -91,8 +91,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Uploads a product input to your Merchant Center account. If an input with the
-        # same contentLanguage, offerId, and dataSource already exists, this method
+        # [Uploads a product input to your Merchant Center account](/merchant/api/guides/
+        # products/overview#upload-product-input). You must have a products [data source]
+        # (/merchant/api/guides/data-sources/overview) to be able to insert a product.
+        # The unique identifier of the data source is passed as a query parameter in the
+        # request URL. If a product input with the same contentLanguage, offerId, and
+        # dataSource already exists, then the product input inserted by this method
         # replaces that entry. After inserting, updating, or deleting a product input,
         # it may take several minutes before the processed product can be retrieved.
         # @param [String] parent
@@ -102,9 +106,10 @@ module Google
         # @param [String] data_source
         #   Required. The primary or supplemental product data source name. If the product
         #   already exists and data source provided is different, then the product will be
-        #   moved to a new data source. Only API data sources are supported. Format: `
-        #   accounts/`account`/dataSources/`datasource``. For example, `accounts/123456/
-        #   dataSources/104628`.
+        #   moved to a new data source. For more information, see [Overview of Data
+        #   sources sub-API](/merchant/api/guides/data-sources/overview). Only API data
+        #   sources are supported. Format: `accounts/`account`/dataSources/`datasource``.
+        #   For example, `accounts/123456/dataSources/104628`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -235,7 +240,7 @@ module Google
         # @param [Fixnum] page_size
         #   The maximum number of products to return. The service may return fewer than
         #   this value. The maximum value is 1000; values above 1000 will be coerced to
-        #   1000. If unspecified, the maximum number of products will be returned.
+        #   1000. If unspecified, the default page size of 25 products will be returned.
         # @param [String] page_token
         #   A page token, received from a previous `ListProducts` call. Provide this to
         #   retrieve the subsequent page. When paginating, all other parameters provided

@@ -142,6 +142,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListResourceChangesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListResourceDriftsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListResourcesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -220,6 +232,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PropertyChange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PropertyDrift
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Resource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -227,6 +251,30 @@ module Google
       end
       
       class ResourceCaiInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceChange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceChangeTerraformInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceDrift
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceDriftTerraformInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -500,6 +548,26 @@ module Google
         end
       end
       
+      class ListResourceChangesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :resource_changes, as: 'resourceChanges', class: Google::Apis::ConfigV1::ResourceChange, decorator: Google::Apis::ConfigV1::ResourceChange::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListResourceDriftsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :resource_drifts, as: 'resourceDrifts', class: Google::Apis::ConfigV1::ResourceDrift, decorator: Google::Apis::ConfigV1::ResourceDrift::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListResourcesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -657,6 +725,28 @@ module Google
         end
       end
       
+      class PropertyChange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :after, as: 'after'
+          collection :after_sensitive_paths, as: 'afterSensitivePaths'
+          property :before, as: 'before'
+          collection :before_sensitive_paths, as: 'beforeSensitivePaths'
+          property :path, as: 'path'
+        end
+      end
+      
+      class PropertyDrift
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :after, as: 'after'
+          collection :after_sensitive_paths, as: 'afterSensitivePaths'
+          property :before, as: 'before'
+          collection :before_sensitive_paths, as: 'beforeSensitivePaths'
+          property :path, as: 'path'
+        end
+      end
+      
       class Resource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -674,6 +764,50 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :full_resource_name, as: 'fullResourceName'
+        end
+      end
+      
+      class ResourceChange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :intent, as: 'intent'
+          property :name, as: 'name'
+          collection :property_changes, as: 'propertyChanges', class: Google::Apis::ConfigV1::PropertyChange, decorator: Google::Apis::ConfigV1::PropertyChange::Representation
+      
+          property :terraform_info, as: 'terraformInfo', class: Google::Apis::ConfigV1::ResourceChangeTerraformInfo, decorator: Google::Apis::ConfigV1::ResourceChangeTerraformInfo::Representation
+      
+        end
+      end
+      
+      class ResourceChangeTerraformInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :actions, as: 'actions'
+          property :address, as: 'address'
+          property :provider, as: 'provider'
+          property :resource_name, as: 'resourceName'
+          property :type, as: 'type'
+        end
+      end
+      
+      class ResourceDrift
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          collection :property_drifts, as: 'propertyDrifts', class: Google::Apis::ConfigV1::PropertyDrift, decorator: Google::Apis::ConfigV1::PropertyDrift::Representation
+      
+          property :terraform_info, as: 'terraformInfo', class: Google::Apis::ConfigV1::ResourceDriftTerraformInfo, decorator: Google::Apis::ConfigV1::ResourceDriftTerraformInfo::Representation
+      
+        end
+      end
+      
+      class ResourceDriftTerraformInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address'
+          property :provider, as: 'provider'
+          property :resource_name, as: 'resourceName'
+          property :type, as: 'type'
         end
       end
       

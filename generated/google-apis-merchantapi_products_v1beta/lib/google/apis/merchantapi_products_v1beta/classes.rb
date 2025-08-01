@@ -31,7 +31,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :additional_image_links
       
-        # Used to group items in an arbitrary way. Only for CPA%, discouraged otherwise.
+        # Used to group items in an arbitrary way. Only for CPA, discouraged otherwise.
         # For more information, see [Display ads attribute](https://support.google.com/
         # merchants/answer/6069387).
         # Corresponds to the JSON property `adsGrouping`
@@ -194,11 +194,13 @@ module Google
         # @return [String]
         attr_accessor :energy_efficiency_class
       
-        # The list of destinations to exclude for this target (corresponds to unchecked
-        # check boxes in Merchant Center). For more information, see [Excluded
-        # destination](https://support.google.com/merchants/answer/6324486). Note: We
-        # recommend setting destinations on datasources level for most use cases. Use
-        # this field within products to only setup exceptions.
+        # Destinations also known as [Marketing methods](https://support.google.com/
+        # merchants/answer/15130232) selections. The list of destinations to exclude for
+        # this target (corresponds to unchecked check boxes in Merchant Center). For
+        # more information, see [Excluded destination](https://support.google.com/
+        # merchants/answer/6324486). Note: We recommend setting destinations on
+        # datasources level for most use cases. Use this field within products to only
+        # setup exceptions.
         # Corresponds to the JSON property `excludedDestinations`
         # @return [Array<String>]
         attr_accessor :excluded_destinations
@@ -238,10 +240,17 @@ module Google
         attr_accessor :google_product_category
       
         # Global Trade Item Numbers ([GTIN](https://support.google.com/merchants/answer/
-        # 188494#gtin)) of the item. You can provide up to 10 GTINs.
+        # 188494#gtin)) of the item. You can provide up to 10 GTINs. Deprecated: Use `
+        # gtins` instead.
         # Corresponds to the JSON property `gtin`
         # @return [Array<String>]
         attr_accessor :gtin
+      
+        # A list of Global Trade Item Numbers ([GTIN](https://support.google.com/
+        # merchants/answer/188494#gtin)) of the item. You can provide up to 10 GTINs.
+        # Corresponds to the JSON property `gtins`
+        # @return [Array<String>]
+        attr_accessor :gtins
       
         # Set this value to false when the item does not have unique product identifiers
         # appropriate to its category, such as GTIN, MPN, and brand. Defaults to true,
@@ -256,12 +265,14 @@ module Google
         # @return [String]
         attr_accessor :image_link
       
-        # The list of destinations to include for this target (corresponds to checked
-        # check boxes in Merchant Center). Default destinations are always included
-        # unless provided in `excludedDestinations`. For more information, see [Included
-        # destination](https://support.google.com/merchants/answer/7501026). Note: We
-        # recommend setting destinations on datasources level for most use cases. Use
-        # this field within products to only setup exceptions.
+        # Destinations also known as [Marketing methods](https://support.google.com/
+        # merchants/answer/15130232) selections. The list of destinations to include for
+        # this target (corresponds to checked check boxes in Merchant Center). Default
+        # destinations are always included unless provided in `excludedDestinations`.
+        # For more information, see [Included destination](https://support.google.com/
+        # merchants/answer/7501026). Note: We recommend setting destinations on
+        # datasources level for most use cases. Use this field within products to only
+        # setup exceptions.
         # Corresponds to the JSON property `includedDestinations`
         # @return [Array<String>]
         attr_accessor :included_destinations
@@ -329,6 +340,11 @@ module Google
         # Corresponds to the JSON property `maxHandlingTime`
         # @return [Fixnum]
         attr_accessor :max_handling_time
+      
+        # The price represented as a number and currency.
+        # Corresponds to the JSON property `maximumRetailPrice`
+        # @return [Google::Apis::MerchantapiProductsV1beta::Price]
+        attr_accessor :maximum_retail_price
       
         # The energy efficiency class as defined in EU directive 2010/30/EU.
         # Corresponds to the JSON property `minEnergyEfficiencyClass`
@@ -613,6 +629,7 @@ module Google
           @gender = args[:gender] if args.key?(:gender)
           @google_product_category = args[:google_product_category] if args.key?(:google_product_category)
           @gtin = args[:gtin] if args.key?(:gtin)
+          @gtins = args[:gtins] if args.key?(:gtins)
           @identifier_exists = args[:identifier_exists] if args.key?(:identifier_exists)
           @image_link = args[:image_link] if args.key?(:image_link)
           @included_destinations = args[:included_destinations] if args.key?(:included_destinations)
@@ -627,6 +644,7 @@ module Google
           @material = args[:material] if args.key?(:material)
           @max_energy_efficiency_class = args[:max_energy_efficiency_class] if args.key?(:max_energy_efficiency_class)
           @max_handling_time = args[:max_handling_time] if args.key?(:max_handling_time)
+          @maximum_retail_price = args[:maximum_retail_price] if args.key?(:maximum_retail_price)
           @min_energy_efficiency_class = args[:min_energy_efficiency_class] if args.key?(:min_energy_efficiency_class)
           @min_handling_time = args[:min_handling_time] if args.key?(:min_handling_time)
           @mobile_link = args[:mobile_link] if args.key?(:mobile_link)
@@ -1265,7 +1283,11 @@ module Google
         # @return [String]
         attr_accessor :data_source
       
-        # Output only. The feed label for the product.
+        # Output only. The feed label lets you categorize and identify your products.
+        # The maximum allowed characters is 20 and the supported characters are`A-Z`, `0-
+        # 9`, hyphen and underscore. The feed label must not include any spaces. For
+        # more information, see [Using feed labels](//support.google.com/merchants/
+        # answer/14994087)
         # Corresponds to the JSON property `feedLabel`
         # @return [String]
         attr_accessor :feed_label
@@ -1476,7 +1498,7 @@ module Google
         # @return [Array<Google::Apis::MerchantapiProductsV1beta::CustomAttribute>]
         attr_accessor :custom_attributes
       
-        # Required. Immutable. The label that lets you categorize and identify your
+        # Required. Immutable. The feed label that lets you categorize and identify your
         # products. The maximum allowed characters are 20, and the supported characters
         # are `A-Z`, `0-9`, hyphen, and underscore. The feed label must not include any
         # spaces. For more information, see [Using feed labels](//support.google.com/
@@ -1615,7 +1637,7 @@ module Google
         # @return [String]
         attr_accessor :event_time
       
-        # Optional. The product expiration time. This field will not bet set if the
+        # Optional. The product expiration time. This field will not be set if the
         # notification is sent for a product deletion event.
         # Corresponds to the JSON property `expirationTime`
         # @return [String]

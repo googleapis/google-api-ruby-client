@@ -649,7 +649,7 @@ module Google
         # subset of conversations. If conversation_filter is empty, there is no
         # restriction on the conversations that the AuthorizedView can access. Having *
         # authorizedViews.get* access to the AuthorizedView means having the same read/
-        # write access to the Conversations (as well as metadata/annotations liked to
+        # write access to the Conversations (as well as metadata/annotations linked to
         # the conversation) that this AuthorizedView has.
         # Corresponds to the JSON property `conversationFilter`
         # @return [String]
@@ -2001,6 +2001,11 @@ module Google
         # @return [String]
         attr_accessor :conversation_model
       
+        # Agent Assist generator ID.
+        # Corresponds to the JSON property `generatorId`
+        # @return [String]
+        attr_accessor :generator_id
+      
         # A map that contains metadata about the summarization and the document from
         # which it originates.
         # Corresponds to the JSON property `metadata`
@@ -2028,6 +2033,7 @@ module Google
           @answer_record = args[:answer_record] if args.key?(:answer_record)
           @confidence = args[:confidence] if args.key?(:confidence)
           @conversation_model = args[:conversation_model] if args.key?(:conversation_model)
+          @generator_id = args[:generator_id] if args.key?(:generator_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @text = args[:text] if args.key?(:text)
           @text_sections = args[:text_sections] if args.key?(:text_sections)
@@ -2429,6 +2435,56 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The name of the issue model to delete.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The metadata for deleting a QaQuestionTag Resource.
+      class GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The request for deleting a QaQuestionTag.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # The request for deleting a QaQuestionTag.
+      class GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the QaQuestionTag to delete.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3601,12 +3657,24 @@ module Google
       class GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource
         include Google::Apis::Core::Hashable
       
-        # Optional. Specifies the type of the objects in `bucket_uri`.
+        # Optional. The Cloud Storage path to the conversation audio file. Note that: [1]
+        # Audio files will be transcribed if not already. [2] Audio files and
+        # transcript files must be in separate buckets / folders. [3] A source file and
+        # its corresponding audio file must share the same name to be properly ingested,
+        # E.g. `gs://bucket/transcript/conversation1.json` and `gs://bucket/audio/
+        # conversation1.mp3`.
+        # Corresponds to the JSON property `audioBucketUri`
+        # @return [String]
+        attr_accessor :audio_bucket_uri
+      
+        # Optional. Specifies the type of the objects in `bucket_uri`. Avoid passing
+        # this. This is inferred from the `transcript_bucket_uri`, `audio_bucket_uri`.
         # Corresponds to the JSON property `bucketObjectType`
         # @return [String]
         attr_accessor :bucket_object_type
       
-        # Required. The Cloud Storage bucket containing source objects.
+        # Optional. The Cloud Storage bucket containing source objects. Avoid passing
+        # this. Pass this through one of `transcript_bucket_uri` or `audio_bucket_uri`.
         # Corresponds to the JSON property `bucketUri`
         # @return [String]
         attr_accessor :bucket_uri
@@ -3620,13 +3688,23 @@ module Google
       
         # Optional. The Cloud Storage path to the conversation metadata. Note that: [1]
         # Metadata files are expected to be in JSON format. [2] Metadata and source
-        # files (transcripts or audio) must be in separate buckets. [3] A source file
-        # and its corresponding metadata file must share the same name to be properly
-        # ingested, E.g. `gs://bucket/audio/conversation1.mp3` and `gs://bucket/metadata/
-        # conversation1.json`.
+        # files (transcripts or audio) must be in separate buckets / folders. [3] A
+        # source file and its corresponding metadata file must share the same name to be
+        # properly ingested, E.g. `gs://bucket/audio/conversation1.mp3` and `gs://bucket/
+        # metadata/conversation1.json`.
         # Corresponds to the JSON property `metadataBucketUri`
         # @return [String]
         attr_accessor :metadata_bucket_uri
+      
+        # Optional. The Cloud Storage path to the conversation transcripts. Note that: [
+        # 1] Transcript files are expected to be in JSON format. [2] Transcript, audio,
+        # metadata files must be in separate buckets / folders. [3] A source file and
+        # its corresponding metadata file must share the same name to be properly
+        # ingested, E.g. `gs://bucket/audio/conversation1.mp3` and `gs://bucket/metadata/
+        # conversation1.json`.
+        # Corresponds to the JSON property `transcriptBucketUri`
+        # @return [String]
+        attr_accessor :transcript_bucket_uri
       
         def initialize(**args)
            update!(**args)
@@ -3634,10 +3712,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @audio_bucket_uri = args[:audio_bucket_uri] if args.key?(:audio_bucket_uri)
           @bucket_object_type = args[:bucket_object_type] if args.key?(:bucket_object_type)
           @bucket_uri = args[:bucket_uri] if args.key?(:bucket_uri)
           @custom_metadata_keys = args[:custom_metadata_keys] if args.key?(:custom_metadata_keys)
           @metadata_bucket_uri = args[:metadata_bucket_uri] if args.key?(:metadata_bucket_uri)
+          @transcript_bucket_uri = args[:transcript_bucket_uri] if args.key?(:transcript_bucket_uri)
         end
       end
       
@@ -4431,6 +4511,32 @@ module Google
         end
       end
       
+      # The response from a ListQaQuestionTags request.
+      class GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The parent resource of the questions.
+        # Corresponds to the JSON property `qaQuestionTags`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionTag>]
+        attr_accessor :qa_question_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @qa_question_tags = args[:qa_question_tags] if args.key?(:qa_question_tags)
+        end
+      end
+      
       # The response from a ListQaQuestions request.
       class GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse
         include Google::Apis::Core::Hashable
@@ -5044,10 +5150,21 @@ module Google
         # @return [Fixnum]
         attr_accessor :order
       
+        # Configuration for a predefined question. This field will only be set if the
+        # Question Type is predefined.
+        # Corresponds to the JSON property `predefinedQuestionConfig`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig]
+        attr_accessor :predefined_question_config
+      
         # Question text. E.g., "Did the agent greet the customer?"
         # Corresponds to the JSON property `questionBody`
         # @return [String]
         attr_accessor :question_body
+      
+        # The type of question.
+        # Corresponds to the JSON property `questionType`
+        # @return [String]
+        attr_accessor :question_type
       
         # Questions are tagged for categorization and scoring. Tags can either be: -
         # Default Tags: These are predefined categories. They are identified by their
@@ -5084,7 +5201,9 @@ module Google
           @metrics = args[:metrics] if args.key?(:metrics)
           @name = args[:name] if args.key?(:name)
           @order = args[:order] if args.key?(:order)
+          @predefined_question_config = args[:predefined_question_config] if args.key?(:predefined_question_config)
           @question_body = args[:question_body] if args.key?(:question_body)
+          @question_type = args[:question_type] if args.key?(:question_type)
           @tags = args[:tags] if args.key?(:tags)
           @tuning_metadata = args[:tuning_metadata] if args.key?(:tuning_metadata)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -5166,6 +5285,76 @@ module Google
         end
       end
       
+      # Configuration for a predefined question. This field will only be set if the
+      # Question Type is predefined.
+      class GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig
+        include Google::Apis::Core::Hashable
+      
+        # The type of the predefined question.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A tag is a resource which aims to categorize a set of questions across
+      # multiple scorecards, e.g., "Customer Satisfaction","Billing", etc.
+      class GoogleCloudContactcenterinsightsV1QaQuestionTag
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which the question tag was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. A user-specified display name for the tag.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. Resource name for the QaQuestionTag Format projects/`project`/
+        # locations/`location`/qaQuestionTags/`qa_question_tag` In the above format, the
+        # last segment, i.e., qa_question_tag, is a server-generated ID corresponding to
+        # the tag resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The list of Scorecard Question IDs that the tag applies to. Each
+        # QaQuestionId is represented as a full resource name containing the Question ID.
+        # Lastly, Since a tag may not necessarily be referenced by any Scorecard
+        # Questions, we treat this field as optional.
+        # Corresponds to the JSON property `qaQuestionIds`
+        # @return [Array<String>]
+        attr_accessor :qa_question_ids
+      
+        # Output only. The most recent time at which the question tag was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @qa_question_ids = args[:qa_question_ids] if args.key?(:qa_question_ids)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Metadata about the tuning operation for the question. Will only be set if a
       # scorecard containing this question has been tuned.
       class GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata
@@ -5220,6 +5409,13 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Whether the scorecard is the default one for the project. A default scorecard
+        # cannot be deleted and will always appear first in scorecard selector.
+        # Corresponds to the JSON property `isDefault`
+        # @return [Boolean]
+        attr_accessor :is_default
+        alias_method :is_default?, :is_default
+      
         # Identifier. The scorecard name. Format: projects/`project`/locations/`location`
         # /qaScorecards/`qa_scorecard`
         # Corresponds to the JSON property `name`
@@ -5240,6 +5436,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @is_default = args[:is_default] if args.key?(:is_default)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -5459,6 +5656,31 @@ module Google
           @name = args[:name] if args.key?(:name)
           @snapshot = args[:snapshot] if args.key?(:snapshot)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # A time window for querying conversations.
+      class GoogleCloudContactcenterinsightsV1QueryInterval
+        include Google::Apis::Core::Hashable
+      
+        # Required. The end time of the time window.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Required. The start time of the time window.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -5770,6 +5992,66 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The request for summarizing performance according to different metrics for
+      # conversations over a specified time window.
+      class GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest
+        include Google::Apis::Core::Hashable
+      
+        # The entity whose performance is being queried is a single agent.
+        # Corresponds to the JSON property `agentPerformanceSource`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource]
+        attr_accessor :agent_performance_source
+      
+        # A time window for querying conversations.
+        # Corresponds to the JSON property `comparisonQueryInterval`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryInterval]
+        attr_accessor :comparison_query_interval
+      
+        # Optional. Filter to select a subset of conversations to compute the
+        # performance overview. Supports the same filters as the filter field in
+        # QueryMetricsRequest. The source and query interval/comparison query interval
+        # should not be included here.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # A time window for querying conversations.
+        # Corresponds to the JSON property `queryInterval`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryInterval]
+        attr_accessor :query_interval
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_performance_source = args[:agent_performance_source] if args.key?(:agent_performance_source)
+          @comparison_query_interval = args[:comparison_query_interval] if args.key?(:comparison_query_interval)
+          @filter = args[:filter] if args.key?(:filter)
+          @query_interval = args[:query_interval] if args.key?(:query_interval)
+        end
+      end
+      
+      # The entity whose performance is being queried is a single agent.
+      class GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. Agent id to query performance overview for.
+        # Corresponds to the JSON property `agentId`
+        # @return [String]
+        attr_accessor :agent_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_id = args[:agent_id] if args.key?(:agent_id)
         end
       end
       
@@ -6550,6 +6832,66 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The metadata for updating a QaQuestionTag Resource.
+      class GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The request for updating a QaQuestionTag.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # The request for updating a QaQuestionTag.
+      class GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagRequest
+        include Google::Apis::Core::Hashable
+      
+        # A tag is a resource which aims to categorize a set of questions across
+        # multiple scorecards, e.g., "Customer Satisfaction","Billing", etc.
+        # Corresponds to the JSON property `qaQuestionTag`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionTag]
+        attr_accessor :qa_question_tag
+      
+        # Optional. The list of fields to be updated. All possible fields can be updated
+        # by passing `*`, or a subset of the following updateable fields can be provided:
+        # * `qa_question_tag_name` - the name of the tag * `qa_question_ids` - the list
+        # of questions the tag applies to
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @qa_question_tag = args[:qa_question_tag] if args.key?(:qa_question_tag)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       
@@ -7933,6 +8275,11 @@ module Google
         # @return [String]
         attr_accessor :conversation_model
       
+        # Agent Assist generator ID.
+        # Corresponds to the JSON property `generatorId`
+        # @return [String]
+        attr_accessor :generator_id
+      
         # A map that contains metadata about the summarization and the document from
         # which it originates.
         # Corresponds to the JSON property `metadata`
@@ -7960,6 +8307,7 @@ module Google
           @answer_record = args[:answer_record] if args.key?(:answer_record)
           @confidence = args[:confidence] if args.key?(:confidence)
           @conversation_model = args[:conversation_model] if args.key?(:conversation_model)
+          @generator_id = args[:generator_id] if args.key?(:generator_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @text = args[:text] if args.key?(:text)
           @text_sections = args[:text_sections] if args.key?(:text_sections)
@@ -8361,6 +8709,56 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The name of the issue model to delete.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The metadata for deleting a QaQuestionTag Resource.
+      class GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The request for deleting a QaQuestionTag.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # The request for deleting a QaQuestionTag.
+      class GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the QaQuestionTag to delete.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -9486,12 +9884,24 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource
         include Google::Apis::Core::Hashable
       
-        # Optional. Specifies the type of the objects in `bucket_uri`.
+        # Optional. The Cloud Storage path to the conversation audio file. Note that: [1]
+        # Audio files will be transcribed if not already. [2] Audio files and
+        # transcript files must be in separate buckets / folders. [3] A source file and
+        # its corresponding audio file must share the same name to be properly ingested,
+        # E.g. `gs://bucket/transcript/conversation1.json` and `gs://bucket/audio/
+        # conversation1.mp3`.
+        # Corresponds to the JSON property `audioBucketUri`
+        # @return [String]
+        attr_accessor :audio_bucket_uri
+      
+        # Optional. Specifies the type of the objects in `bucket_uri`. Avoid passing
+        # this. This is inferred from the `transcript_bucket_uri`, `audio_bucket_uri`.
         # Corresponds to the JSON property `bucketObjectType`
         # @return [String]
         attr_accessor :bucket_object_type
       
-        # Required. The Cloud Storage bucket containing source objects.
+        # Optional. The Cloud Storage bucket containing source objects. Avoid passing
+        # this. Pass this through one of `transcript_bucket_uri` or `audio_bucket_uri`.
         # Corresponds to the JSON property `bucketUri`
         # @return [String]
         attr_accessor :bucket_uri
@@ -9505,13 +9915,23 @@ module Google
       
         # Optional. The Cloud Storage path to the conversation metadata. Note that: [1]
         # Metadata files are expected to be in JSON format. [2] Metadata and source
-        # files (transcripts or audio) must be in separate buckets. [3] A source file
-        # and its corresponding metadata file must share the same name to be properly
-        # ingested, E.g. `gs://bucket/audio/conversation1.mp3` and `gs://bucket/metadata/
-        # conversation1.json`.
+        # files (transcripts or audio) must be in separate buckets / folders. [3] A
+        # source file and its corresponding metadata file must share the same name to be
+        # properly ingested, E.g. `gs://bucket/audio/conversation1.mp3` and `gs://bucket/
+        # metadata/conversation1.json`.
         # Corresponds to the JSON property `metadataBucketUri`
         # @return [String]
         attr_accessor :metadata_bucket_uri
+      
+        # Optional. The Cloud Storage path to the conversation transcripts. Note that: [
+        # 1] Transcript files are expected to be in JSON format. [2] Transcript, audio,
+        # metadata files must be in separate buckets / folders. [3] A source file and
+        # its corresponding metadata file must share the same name to be properly
+        # ingested, E.g. `gs://bucket/audio/conversation1.mp3` and `gs://bucket/metadata/
+        # conversation1.json`.
+        # Corresponds to the JSON property `transcriptBucketUri`
+        # @return [String]
+        attr_accessor :transcript_bucket_uri
       
         def initialize(**args)
            update!(**args)
@@ -9519,10 +9939,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @audio_bucket_uri = args[:audio_bucket_uri] if args.key?(:audio_bucket_uri)
           @bucket_object_type = args[:bucket_object_type] if args.key?(:bucket_object_type)
           @bucket_uri = args[:bucket_uri] if args.key?(:bucket_uri)
           @custom_metadata_keys = args[:custom_metadata_keys] if args.key?(:custom_metadata_keys)
           @metadata_bucket_uri = args[:metadata_bucket_uri] if args.key?(:metadata_bucket_uri)
+          @transcript_bucket_uri = args[:transcript_bucket_uri] if args.key?(:transcript_bucket_uri)
         end
       end
       
@@ -10212,6 +10634,56 @@ module Google
           @potential_score = args[:potential_score] if args.key?(:potential_score)
           @score = args[:score] if args.key?(:score)
           @str_value = args[:str_value] if args.key?(:str_value)
+        end
+      end
+      
+      # A tag is a resource which aims to categorize a set of questions across
+      # multiple scorecards, e.g., "Customer Satisfaction","Billing", etc.
+      class GoogleCloudContactcenterinsightsV1alpha1QaQuestionTag
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which the question tag was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. A user-specified display name for the tag.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. Resource name for the QaQuestionTag Format projects/`project`/
+        # locations/`location`/qaQuestionTags/`qa_question_tag` In the above format, the
+        # last segment, i.e., qa_question_tag, is a server-generated ID corresponding to
+        # the tag resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The list of Scorecard Question IDs that the tag applies to. Each
+        # QaQuestionId is represented as a full resource name containing the Question ID.
+        # Lastly, Since a tag may not necessarily be referenced by any Scorecard
+        # Questions, we treat this field as optional.
+        # Corresponds to the JSON property `qaQuestionIds`
+        # @return [Array<String>]
+        attr_accessor :qa_question_ids
+      
+        # Output only. The most recent time at which the question tag was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @qa_question_ids = args[:qa_question_ids] if args.key?(:qa_question_ids)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -11179,6 +11651,66 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The metadata for updating a QaQuestionTag Resource.
+      class GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The request for updating a QaQuestionTag.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # The request for updating a QaQuestionTag.
+      class GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagRequest
+        include Google::Apis::Core::Hashable
+      
+        # A tag is a resource which aims to categorize a set of questions across
+        # multiple scorecards, e.g., "Customer Satisfaction","Billing", etc.
+        # Corresponds to the JSON property `qaQuestionTag`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QaQuestionTag]
+        attr_accessor :qa_question_tag
+      
+        # Optional. The list of fields to be updated. All possible fields can be updated
+        # by passing `*`, or a subset of the following updateable fields can be provided:
+        # * `qa_question_tag_name` - the name of the tag * `qa_question_ids` - the list
+        # of questions the tag applies to
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @qa_question_tag = args[:qa_question_tag] if args.key?(:qa_question_tag)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       

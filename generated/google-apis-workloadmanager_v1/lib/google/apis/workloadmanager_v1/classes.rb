@@ -87,6 +87,11 @@ module Google
         # @return [String]
         attr_accessor :installed_version
       
+        # Output only. The URI of the instance. Format: projects//zones//instances/
+        # Corresponds to the JSON property `instanceUri`
+        # @return [String]
+        attr_accessor :instance_uri
+      
         # KernelVersion encapsulates the kernel version data for the system.
         # Corresponds to the JSON property `kernelVersion`
         # @return [Google::Apis::WorkloadmanagerV1::SapDiscoveryResourceInstancePropertiesKernelVersion]
@@ -125,6 +130,7 @@ module Google
           @configuration_file_path = args[:configuration_file_path] if args.key?(:configuration_file_path)
           @configuration_valid = args[:configuration_valid] if args.key?(:configuration_valid)
           @installed_version = args[:installed_version] if args.key?(:installed_version)
+          @instance_uri = args[:instance_uri] if args.key?(:instance_uri)
           @kernel_version = args[:kernel_version] if args.key?(:kernel_version)
           @references = args[:references] if args.key?(:references)
           @services = args[:services] if args.key?(:services)
@@ -389,62 +395,6 @@ module Google
         def update!(**args)
           @agent_command = args[:agent_command] if args.key?(:agent_command)
           @shell_command = args[:shell_command] if args.key?(:shell_command)
-        end
-      end
-      
-      # HealthCondition contains the detailed health check of each component.
-      class ComponentHealth
-        include Google::Apis::Core::Hashable
-      
-        # The component of a workload.
-        # Corresponds to the JSON property `component`
-        # @return [String]
-        attr_accessor :component
-      
-        # The detailed health checks of the component.
-        # Corresponds to the JSON property `componentHealthChecks`
-        # @return [Array<Google::Apis::WorkloadmanagerV1::HealthCheck>]
-        attr_accessor :component_health_checks
-      
-        # Output only. The type of the component health.
-        # Corresponds to the JSON property `componentHealthType`
-        # @return [String]
-        attr_accessor :component_health_type
-      
-        # Output only. The requirement of the component.
-        # Corresponds to the JSON property `isRequired`
-        # @return [Boolean]
-        attr_accessor :is_required
-        alias_method :is_required?, :is_required
-      
-        # Output only. The health state of the component.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # 
-        # Corresponds to the JSON property `subComponentHealthes`
-        # @return [Array<Google::Apis::WorkloadmanagerV1::ComponentHealth>]
-        attr_accessor :sub_component_healthes
-      
-        # Sub component health.
-        # Corresponds to the JSON property `subComponentsHealth`
-        # @return [Array<Google::Apis::WorkloadmanagerV1::ComponentHealth>]
-        attr_accessor :sub_components_health
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @component = args[:component] if args.key?(:component)
-          @component_health_checks = args[:component_health_checks] if args.key?(:component_health_checks)
-          @component_health_type = args[:component_health_type] if args.key?(:component_health_type)
-          @is_required = args[:is_required] if args.key?(:is_required)
-          @state = args[:state] if args.key?(:state)
-          @sub_component_healthes = args[:sub_component_healthes] if args.key?(:sub_component_healthes)
-          @sub_components_health = args[:sub_components_health] if args.key?(:sub_components_health)
         end
       end
       
@@ -788,49 +738,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
-        end
-      end
-      
-      # HealthCheck contains the detailed health check of a component based on asource.
-      class HealthCheck
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The message of the health check.
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
-      
-        # Output only. The health check source metric name.
-        # Corresponds to the JSON property `metric`
-        # @return [String]
-        attr_accessor :metric
-      
-        # The resource on GCP
-        # Corresponds to the JSON property `resource`
-        # @return [Google::Apis::WorkloadmanagerV1::CloudResource]
-        attr_accessor :resource
-      
-        # Output only. The source of the health check.
-        # Corresponds to the JSON property `source`
-        # @return [String]
-        attr_accessor :source
-      
-        # Output only. The state of the health check.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @message = args[:message] if args.key?(:message)
-          @metric = args[:metric] if args.key?(:metric)
-          @resource = args[:resource] if args.key?(:resource)
-          @source = args[:source] if args.key?(:source)
-          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -2818,43 +2725,6 @@ module Google
           @refreshed_time = args[:refreshed_time] if args.key?(:refreshed_time)
           @sap_workload = args[:sap_workload] if args.key?(:sap_workload)
           @workload_type = args[:workload_type] if args.key?(:workload_type)
-        end
-      end
-      
-      # WorkloadProfileHealth contains the detailed health check of workload.
-      class WorkloadProfileHealth
-        include Google::Apis::Core::Hashable
-      
-        # The time when the health check was performed.
-        # Corresponds to the JSON property `checkTime`
-        # @return [String]
-        attr_accessor :check_time
-      
-        # 
-        # Corresponds to the JSON property `componentHealthes`
-        # @return [Array<Google::Apis::WorkloadmanagerV1::ComponentHealth>]
-        attr_accessor :component_healthes
-      
-        # The detailed condition reports of each component.
-        # Corresponds to the JSON property `componentsHealth`
-        # @return [Array<Google::Apis::WorkloadmanagerV1::ComponentHealth>]
-        attr_accessor :components_health
-      
-        # Output only. The health state of the workload.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @check_time = args[:check_time] if args.key?(:check_time)
-          @component_healthes = args[:component_healthes] if args.key?(:component_healthes)
-          @components_health = args[:components_health] if args.key?(:components_health)
-          @state = args[:state] if args.key?(:state)
         end
       end
       

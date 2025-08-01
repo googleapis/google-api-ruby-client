@@ -2748,7 +2748,8 @@ module Google
       
         # Optional. Display name of the blob. Used to provide a label or filename to
         # distinguish blobs. This field is only returned in PromptMessage for prompt
-        # management. It is not currently used in the Gemini GenerateContent calls.
+        # management. It is currently used in the Gemini GenerateContent calls only when
+        # server side tools (code_execution, google_search, and url_context) are enabled.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -3146,6 +3147,11 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetyRating>]
         attr_accessor :safety_ratings
       
+        # Metadata related to url context retrieval tool.
+        # Corresponds to the JSON property `urlContextMetadata`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1UrlContextMetadata]
+        attr_accessor :url_context_metadata
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3161,6 +3167,7 @@ module Google
           @index = args[:index] if args.key?(:index)
           @logprobs_result = args[:logprobs_result] if args.key?(:logprobs_result)
           @safety_ratings = args[:safety_ratings] if args.key?(:safety_ratings)
+          @url_context_metadata = args[:url_context_metadata] if args.key?(:url_context_metadata)
         end
       end
       
@@ -6158,6 +6165,261 @@ module Google
         end
       end
       
+      # Runtime operation information for ModelGardenService.Deploy.
+      class GoogleCloudAiplatformV1DeployOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The resource name of the Location to deploy the model in. Format:
+        # `projects/`project`/locations/`location``
+        # Corresponds to the JSON property `destination`
+        # @return [String]
+        attr_accessor :destination
+      
+        # Generic Metadata shared by all operations.
+        # Corresponds to the JSON property `genericMetadata`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenericOperationMetadata]
+        attr_accessor :generic_metadata
+      
+        # Output only. The model id to be used at query time.
+        # Corresponds to the JSON property `modelId`
+        # @return [String]
+        attr_accessor :model_id
+      
+        # Output only. The project number where the deploy model request is sent.
+        # Corresponds to the JSON property `projectNumber`
+        # @return [Fixnum]
+        attr_accessor :project_number
+      
+        # Output only. The name of the model resource.
+        # Corresponds to the JSON property `publisherModel`
+        # @return [String]
+        attr_accessor :publisher_model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination = args[:destination] if args.key?(:destination)
+          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
+          @model_id = args[:model_id] if args.key?(:model_id)
+          @project_number = args[:project_number] if args.key?(:project_number)
+          @publisher_model = args[:publisher_model] if args.key?(:publisher_model)
+        end
+      end
+      
+      # Request message for ModelGardenService.Deploy.
+      class GoogleCloudAiplatformV1DeployRequest
+        include Google::Apis::Core::Hashable
+      
+        # The deploy config to use for the deployment.
+        # Corresponds to the JSON property `deployConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DeployRequestDeployConfig]
+        attr_accessor :deploy_config
+      
+        # The endpoint config to use for the deployment.
+        # Corresponds to the JSON property `endpointConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DeployRequestEndpointConfig]
+        attr_accessor :endpoint_config
+      
+        # The Hugging Face model to deploy. Format: Hugging Face model ID like `google/
+        # gemma-2-2b-it`.
+        # Corresponds to the JSON property `huggingFaceModelId`
+        # @return [String]
+        attr_accessor :hugging_face_model_id
+      
+        # The model config to use for the deployment.
+        # Corresponds to the JSON property `modelConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DeployRequestModelConfig]
+        attr_accessor :model_config
+      
+        # The Model Garden model to deploy. Format: `publishers/`publisher`/models/`
+        # publisher_model`@`version_id``, or `publishers/hf-`hugging-face-author`/models/
+        # `hugging-face-model-name`@001`.
+        # Corresponds to the JSON property `publisherModelName`
+        # @return [String]
+        attr_accessor :publisher_model_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deploy_config = args[:deploy_config] if args.key?(:deploy_config)
+          @endpoint_config = args[:endpoint_config] if args.key?(:endpoint_config)
+          @hugging_face_model_id = args[:hugging_face_model_id] if args.key?(:hugging_face_model_id)
+          @model_config = args[:model_config] if args.key?(:model_config)
+          @publisher_model_name = args[:publisher_model_name] if args.key?(:publisher_model_name)
+        end
+      end
+      
+      # The deploy config to use for the deployment.
+      class GoogleCloudAiplatformV1DeployRequestDeployConfig
+        include Google::Apis::Core::Hashable
+      
+        # A description of resources that are dedicated to a DeployedModel or
+        # DeployedIndex, and that need a higher degree of manual configuration.
+        # Corresponds to the JSON property `dedicatedResources`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DedicatedResources]
+        attr_accessor :dedicated_resources
+      
+        # Optional. If true, enable the QMT fast tryout feature for this model if
+        # possible.
+        # Corresponds to the JSON property `fastTryoutEnabled`
+        # @return [Boolean]
+        attr_accessor :fast_tryout_enabled
+        alias_method :fast_tryout_enabled?, :fast_tryout_enabled
+      
+        # Optional. System labels for Model Garden deployments. These labels are managed
+        # by Google and for tracking purposes only.
+        # Corresponds to the JSON property `systemLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :system_labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dedicated_resources = args[:dedicated_resources] if args.key?(:dedicated_resources)
+          @fast_tryout_enabled = args[:fast_tryout_enabled] if args.key?(:fast_tryout_enabled)
+          @system_labels = args[:system_labels] if args.key?(:system_labels)
+        end
+      end
+      
+      # The endpoint config to use for the deployment.
+      class GoogleCloudAiplatformV1DeployRequestEndpointConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, the endpoint will be exposed through a dedicated DNS [
+        # Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be
+        # isolated from other users' traffic and will have better performance and
+        # reliability. Note: Once you enabled dedicated endpoint, you won't be able to
+        # send request to the shared DNS `region`-aiplatform.googleapis.com. The
+        # limitations will be removed soon.
+        # Corresponds to the JSON property `dedicatedEndpointEnabled`
+        # @return [Boolean]
+        attr_accessor :dedicated_endpoint_enabled
+        alias_method :dedicated_endpoint_enabled?, :dedicated_endpoint_enabled
+      
+        # Optional. The user-specified display name of the endpoint. If not set, a
+        # default name will be used.
+        # Corresponds to the JSON property `endpointDisplayName`
+        # @return [String]
+        attr_accessor :endpoint_display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dedicated_endpoint_enabled = args[:dedicated_endpoint_enabled] if args.key?(:dedicated_endpoint_enabled)
+          @endpoint_display_name = args[:endpoint_display_name] if args.key?(:endpoint_display_name)
+        end
+      end
+      
+      # The model config to use for the deployment.
+      class GoogleCloudAiplatformV1DeployRequestModelConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether the user accepts the End User License Agreement (EULA) for
+        # the model.
+        # Corresponds to the JSON property `acceptEula`
+        # @return [Boolean]
+        attr_accessor :accept_eula
+        alias_method :accept_eula?, :accept_eula
+      
+        # Specification of a container for serving predictions. Some fields in this
+        # message correspond to fields in the [Kubernetes Container v1 core
+        # specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/
+        # v1.23/#container-v1-core).
+        # Corresponds to the JSON property `containerSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModelContainerSpec]
+        attr_accessor :container_spec
+      
+        # Optional. The Hugging Face read access token used to access the model
+        # artifacts of gated models.
+        # Corresponds to the JSON property `huggingFaceAccessToken`
+        # @return [String]
+        attr_accessor :hugging_face_access_token
+      
+        # Optional. If true, the model will deploy with a cached version instead of
+        # directly downloading the model artifacts from Hugging Face. This is suitable
+        # for VPC-SC users with limited internet access.
+        # Corresponds to the JSON property `huggingFaceCacheEnabled`
+        # @return [Boolean]
+        attr_accessor :hugging_face_cache_enabled
+        alias_method :hugging_face_cache_enabled?, :hugging_face_cache_enabled
+      
+        # Optional. The user-specified display name of the uploaded model. If not set, a
+        # default name will be used.
+        # Corresponds to the JSON property `modelDisplayName`
+        # @return [String]
+        attr_accessor :model_display_name
+      
+        # Optional. The ID to use for the uploaded Model, which will become the final
+        # component of the model resource name. When not provided, Vertex AI will
+        # generate a value for this ID. When Model Registry model is provided, this
+        # field will be ignored. This value may be up to 63 characters, and valid
+        # characters are `[a-z0-9_-]`. The first character cannot be a number or hyphen.
+        # Corresponds to the JSON property `modelUserId`
+        # @return [String]
+        attr_accessor :model_user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accept_eula = args[:accept_eula] if args.key?(:accept_eula)
+          @container_spec = args[:container_spec] if args.key?(:container_spec)
+          @hugging_face_access_token = args[:hugging_face_access_token] if args.key?(:hugging_face_access_token)
+          @hugging_face_cache_enabled = args[:hugging_face_cache_enabled] if args.key?(:hugging_face_cache_enabled)
+          @model_display_name = args[:model_display_name] if args.key?(:model_display_name)
+          @model_user_id = args[:model_user_id] if args.key?(:model_user_id)
+        end
+      end
+      
+      # Response message for ModelGardenService.Deploy.
+      class GoogleCloudAiplatformV1DeployResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The name of the Endpoint created. Format: `projects/`project`/
+        # locations/`location`/endpoints/`endpoint``
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        # Output only. The name of the Model created. Format: `projects/`project`/
+        # locations/`location`/models/`model``
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        # Output only. The name of the PublisherModel resource. Format: `publishers/`
+        # publisher`/models/`publisher_model`@`version_id``, or `publishers/hf-`hugging-
+        # face-author`/models/`hugging-face-model-name`@001`
+        # Corresponds to the JSON property `publisherModel`
+        # @return [String]
+        attr_accessor :publisher_model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @model = args[:model] if args.key?(:model)
+          @publisher_model = args[:publisher_model] if args.key?(:publisher_model)
+        end
+      end
+      
       # A deployment of an Index. IndexEndpoints contain one or more DeployedIndexes.
       class GoogleCloudAiplatformV1DeployedIndex
         include Google::Apis::Core::Hashable
@@ -6213,6 +6475,17 @@ module Google
         # @return [Boolean]
         attr_accessor :enable_access_logging
         alias_method :enable_access_logging?, :enable_access_logging
+      
+        # Optional. If true, logs to Cloud Logging errors relating to datapoint upserts.
+        # Under normal operation conditions, these log entries should be very rare.
+        # However, if incompatible datapoint updates are being uploaded to an index, a
+        # high volume of log entries may be generated in a short period of time. Note
+        # that logs may incur a cost, especially if the deployed index receives a high
+        # volume of datapoint upserts. Estimate your costs before enabling this option.
+        # Corresponds to the JSON property `enableDatapointUpsertLogging`
+        # @return [Boolean]
+        attr_accessor :enable_datapoint_upsert_logging
+        alias_method :enable_datapoint_upsert_logging?, :enable_datapoint_upsert_logging
       
         # Required. The user specified ID of the DeployedIndex. The ID can be up to 128
         # characters long and must start with a letter and only contain letters, numbers,
@@ -6281,6 +6554,7 @@ module Google
           @deployment_group = args[:deployment_group] if args.key?(:deployment_group)
           @display_name = args[:display_name] if args.key?(:display_name)
           @enable_access_logging = args[:enable_access_logging] if args.key?(:enable_access_logging)
+          @enable_datapoint_upsert_logging = args[:enable_datapoint_upsert_logging] if args.key?(:enable_datapoint_upsert_logging)
           @id = args[:id] if args.key?(:id)
           @index = args[:index] if args.key?(:index)
           @index_sync_time = args[:index_sync_time] if args.key?(:index_sync_time)
@@ -6441,6 +6715,12 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FasterDeploymentConfig]
         attr_accessor :faster_deployment_config
       
+        # GDC pretrained / Gemini model name. The model name is a plain model name, e.g.
+        # gemini-1.5-flash-002.
+        # Corresponds to the JSON property `gdcConnectedModel`
+        # @return [String]
+        attr_accessor :gdc_connected_model
+      
         # Immutable. The ID of the DeployedModel. If not provided upon deployment,
         # Vertex AI will generate a value for this ID. This value should be 1-10
         # characters, and valid characters are `/[0-9]/`.
@@ -6448,12 +6728,12 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Required. The resource name of the Model that this is the deployment of. Note
-        # that the Model may be in a different location than the DeployedModel's
-        # Endpoint. The resource name may contain version id or version alias to specify
-        # the version. Example: `projects/`project`/locations/`location`/models/`model`@
-        # 2` or `projects/`project`/locations/`location`/models/`model`@golden` if no
-        # version is specified, the default version will be deployed.
+        # The resource name of the Model that this is the deployment of. Note that the
+        # Model may be in a different location than the DeployedModel's Endpoint. The
+        # resource name may contain version id or version alias to specify the version.
+        # Example: `projects/`project`/locations/`location`/models/`model`@2` or `
+        # projects/`project`/locations/`location`/models/`model`@golden` if no version
+        # is specified, the default version will be deployed.
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
@@ -6519,6 +6799,7 @@ module Google
           @enable_access_logging = args[:enable_access_logging] if args.key?(:enable_access_logging)
           @explanation_spec = args[:explanation_spec] if args.key?(:explanation_spec)
           @faster_deployment_config = args[:faster_deployment_config] if args.key?(:faster_deployment_config)
+          @gdc_connected_model = args[:gdc_connected_model] if args.key?(:gdc_connected_model)
           @id = args[:id] if args.key?(:id)
           @model = args[:model] if args.key?(:model)
           @model_version_id = args[:model_version_id] if args.key?(:model_version_id)
@@ -6837,6 +7118,43 @@ module Google
         end
       end
       
+      # DNS peering configuration. These configurations are used to create DNS peering
+      # zones in the Vertex tenant project VPC, enabling resolution of records within
+      # the specified domain hosted in the target network's Cloud DNS.
+      class GoogleCloudAiplatformV1DnsPeeringConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The DNS name suffix of the zone being peered to, e.g., "my-internal-
+        # domain.corp.". Must end with a dot.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # Required. The VPC network name in the target_project where the DNS zone
+        # specified by 'domain' is visible.
+        # Corresponds to the JSON property `targetNetwork`
+        # @return [String]
+        attr_accessor :target_network
+      
+        # Required. The project ID hosting the Cloud DNS managed zone that contains the '
+        # domain'. The Vertex AI Service Agent requires the dns.peer role on this
+        # project.
+        # Corresponds to the JSON property `targetProject`
+        # @return [String]
+        attr_accessor :target_project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+          @target_network = args[:target_network] if args.key?(:target_network)
+          @target_project = args[:target_project] if args.key?(:target_project)
+        end
+      end
+      
       # A list of double values.
       class GoogleCloudAiplatformV1DoubleArray
         include Google::Apis::Core::Hashable
@@ -6977,6 +7295,11 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Google Distributed Cloud (GDC) config.
+        # Corresponds to the JSON property `gdcConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GdcConfig]
+        attr_accessor :gdc_config
+      
         # Configuration for GenAiAdvancedFeatures.
         # Corresponds to the JSON property `genAiAdvancedFeaturesConfig`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenAiAdvancedFeaturesConfig]
@@ -7068,6 +7391,7 @@ module Google
           @enable_private_service_connect = args[:enable_private_service_connect] if args.key?(:enable_private_service_connect)
           @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @etag = args[:etag] if args.key?(:etag)
+          @gdc_config = args[:gdc_config] if args.key?(:gdc_config)
           @gen_ai_advanced_features_config = args[:gen_ai_advanced_features_config] if args.key?(:gen_ai_advanced_features_config)
           @labels = args[:labels] if args.key?(:labels)
           @model_deployment_monitoring_job = args[:model_deployment_monitoring_job] if args.key?(:model_deployment_monitoring_job)
@@ -10465,9 +10789,9 @@ module Google
       
         # Feature generation timestamp. Typically, it is provided by user at feature
         # ingestion time. If not, feature store will use the system timestamp when the
-        # data is ingested into feature store. For streaming ingestion, the time,
-        # aligned by days, must be no older than five years (1825 days) and no later
-        # than one year (366 days) in the future.
+        # data is ingested into feature store. Legacy Feature Store: For streaming
+        # ingestion, the time, aligned by days, must be no older than five years (1825
+        # days) and no later than one year (366 days) in the future.
         # Corresponds to the JSON property `generateTime`
         # @return [String]
         attr_accessor :generate_time
@@ -11442,8 +11766,9 @@ module Google
       
         # Optional. Display name of the file data. Used to provide a label or filename
         # to distinguish file datas. This field is only returned in PromptMessage for
-        # prompt management. It is not currently used in the Gemini GenerateContent
-        # calls.
+        # prompt management. It is currently used in the Gemini GenerateContent calls
+        # only when server side tools (code_execution, google_search, and url_context)
+        # are enabled.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -12166,6 +12491,25 @@ module Google
         end
       end
       
+      # Google Distributed Cloud (GDC) config.
+      class GoogleCloudAiplatformV1GdcConfig
+        include Google::Apis::Core::Hashable
+      
+        # GDC zone. A cluster will be designated for the Vertex AI workload in this zone.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
       # Configuration for GenAiAdvancedFeatures.
       class GoogleCloudAiplatformV1GenAiAdvancedFeaturesConfig
         include Google::Apis::Core::Hashable
@@ -12759,8 +13103,7 @@ module Google
         attr_accessor :include_thoughts
         alias_method :include_thoughts?, :include_thoughts
       
-        # Optional. Indicates the thinking budget in tokens. This is only applied when
-        # enable_thinking is true.
+        # Optional. Indicates the thinking budget in tokens.
         # Corresponds to the JSON property `thinkingBudget`
         # @return [Fixnum]
         attr_accessor :thinking_budget
@@ -13136,7 +13479,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Confidence score of the support references. Ranges from 0 to 1. 1 is the most
-        # confident. This list must have the same size as the grounding_chunk_indices.
+        # confident. For Gemini 2.0 and before, this list must have the same size as the
+        # grounding_chunk_indices. For Gemini 2.5 and after, this list will be empty and
+        # should be ignored.
         # Corresponds to the JSON property `confidenceScores`
         # @return [Array<Float>]
         attr_accessor :confidence_scores
@@ -16418,7 +16763,7 @@ module Google
         end
       end
       
-      # The metric used for dataset level evaluation.
+      # The metric used for running evaluations.
       class GoogleCloudAiplatformV1Metric
         include Google::Apis::Core::Hashable
       
@@ -17482,6 +17827,17 @@ module Google
         # @return [String]
         attr_accessor :image_uri
       
+        # Immutable. Invoke route prefix for the custom container. "/*" is the only
+        # supported value right now. By setting this field, any non-root route on this
+        # model will be accessible with invoke http call eg: "/invoke/foo/bar", however
+        # the [PredictionService.Invoke] RPC is not supported yet. Only one of `
+        # predict_route` or `invoke_route_prefix` can be set, and we default to using `
+        # predict_route` if this field is not set. If this field is set, the Model can
+        # only be deployed to dedicated endpoint.
+        # Corresponds to the JSON property `invokeRoutePrefix`
+        # @return [String]
+        attr_accessor :invoke_route_prefix
+      
         # Probe describes a health check to be performed against a container to
         # determine whether it is alive or ready to receive traffic.
         # Corresponds to the JSON property `livenessProbe`
@@ -17550,6 +17906,7 @@ module Google
           @health_probe = args[:health_probe] if args.key?(:health_probe)
           @health_route = args[:health_route] if args.key?(:health_route)
           @image_uri = args[:image_uri] if args.key?(:image_uri)
+          @invoke_route_prefix = args[:invoke_route_prefix] if args.key?(:invoke_route_prefix)
           @liveness_probe = args[:liveness_probe] if args.key?(:liveness_probe)
           @ports = args[:ports] if args.key?(:ports)
           @predict_route = args[:predict_route] if args.key?(:predict_route)
@@ -20622,28 +20979,30 @@ module Google
         end
       end
       
-      # PSC config that is used to automatically create forwarding rule via
-      # ServiceConnectionMap.
+      # PSC config that is used to automatically create PSC endpoints in the user
+      # projects.
       class GoogleCloudAiplatformV1PscAutomationConfig
         include Google::Apis::Core::Hashable
       
-        # Output only. Forwarding rule created by the PSC service automation. Note for
-        # Vector search, use IndexPrivateEndpoint instead.
+        # Output only. Error message if the PSC service automation failed.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # Output only. Forwarding rule created by the PSC service automation.
         # Corresponds to the JSON property `forwardingRule`
         # @return [String]
         attr_accessor :forwarding_rule
       
-        # Output only. IP address rule created by the PSC service automation. Note for
-        # Vector search, use IndexPrivateEndpoint instead.
+        # Output only. IP address rule created by the PSC service automation.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
       
         # Required. The full name of the Google Compute Engine [network](https://cloud.
         # google.com/compute/docs/networks-and-firewalls#networks). [Format](https://
-        # cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/`
-        # project`/global/networks/`network``. Where `project` is a project number, as
-        # in '12345', and `network` is network name.
+        # cloud.google.com/compute/docs/reference/rest/v1/networks/get): `projects/`
+        # project`/global/networks/`network``.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -20653,16 +21012,23 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
+        # Output only. The state of the PSC service automation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @error_message = args[:error_message] if args.key?(:error_message)
           @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @network = args[:network] if args.key?(:network)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -21098,11 +21464,18 @@ module Google
         # @return [String]
         attr_accessor :text
       
-        # Output only. Indicates if the part is thought from the model.
+        # Optional. Indicates if the part is thought from the model.
         # Corresponds to the JSON property `thought`
         # @return [Boolean]
         attr_accessor :thought
         alias_method :thought?, :thought
+      
+        # Optional. An opaque signature for the thought so it can be reused in
+        # subsequent requests.
+        # Corresponds to the JSON property `thoughtSignature`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :thought_signature
       
         # Metadata describes the input video content.
         # Corresponds to the JSON property `videoMetadata`
@@ -21123,6 +21496,7 @@ module Google
           @inline_data = args[:inline_data] if args.key?(:inline_data)
           @text = args[:text] if args.key?(:text)
           @thought = args[:thought] if args.key?(:thought)
+          @thought_signature = args[:thought_signature] if args.key?(:thought_signature)
           @video_metadata = args[:video_metadata] if args.key?(:video_metadata)
         end
       end
@@ -21693,6 +22067,16 @@ module Google
         # @return [String]
         attr_accessor :task_name
       
+        # Output only. The unique name of a task. This field is used by rerun pipeline
+        # job. Console UI and Vertex AI SDK will support triggering pipeline job reruns.
+        # The name is constructed by concatenating all the parent tasks name with the
+        # task name. For example, if a task named "child_task" has a parent task named "
+        # parent_task_1" and parent task 1 has a parent task named "parent_task_2", the
+        # task unique name will be "parent_task_2.parent_task_1.child_task".
+        # Corresponds to the JSON property `taskUniqueName`
+        # @return [String]
+        attr_accessor :task_unique_name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -21712,6 +22096,7 @@ module Google
           @state = args[:state] if args.key?(:state)
           @task_id = args[:task_id] if args.key?(:task_id)
           @task_name = args[:task_name] if args.key?(:task_name)
+          @task_unique_name = args[:task_unique_name] if args.key?(:task_unique_name)
         end
       end
       
@@ -22392,6 +22777,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :project_allowlist
       
+        # Optional. List of projects and networks where the PSC endpoints will be
+        # created. This field is used by Online Inference(Prediction) only.
+        # Corresponds to the JSON property `pscAutomationConfigs`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscAutomationConfig>]
+        attr_accessor :psc_automation_configs
+      
         # Output only. The name of the generated service attachment resource. This is
         # only populated if the endpoint is deployed with PrivateServiceConnect.
         # Corresponds to the JSON property `serviceAttachment`
@@ -22406,6 +22797,7 @@ module Google
         def update!(**args)
           @enable_private_service_connect = args[:enable_private_service_connect] if args.key?(:enable_private_service_connect)
           @project_allowlist = args[:project_allowlist] if args.key?(:project_allowlist)
+          @psc_automation_configs = args[:psc_automation_configs] if args.key?(:psc_automation_configs)
           @service_attachment = args[:service_attachment] if args.key?(:service_attachment)
         end
       end
@@ -22674,6 +23066,14 @@ module Google
       class GoogleCloudAiplatformV1PscInterfaceConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. DNS peering configurations. When specified, Vertex AI will attempt
+        # to configure DNS peering zones in the tenant project VPC to resolve the
+        # specified domains using the target network's Cloud DNS. The user must grant
+        # the dns.peer role to the Vertex AI Service Agent on the target project.
+        # Corresponds to the JSON property `dnsPeeringConfigs`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DnsPeeringConfig>]
+        attr_accessor :dns_peering_configs
+      
         # Optional. The name of the Compute Engine [network attachment](https://cloud.
         # google.com/vpc/docs/about-network-attachments) to attach to the resource
         # within the region and user project. To specify this field, you must have
@@ -22690,6 +23090,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dns_peering_configs = args[:dns_peering_configs] if args.key?(:dns_peering_configs)
           @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
         end
       end
@@ -23087,6 +23488,12 @@ module Google
         # @return [String]
         attr_accessor :resource_use_case
       
+        # Optional. For notebook resource, whether the notebook supports Workbench.
+        # Corresponds to the JSON property `supportsWorkbench`
+        # @return [Boolean]
+        attr_accessor :supports_workbench
+        alias_method :supports_workbench?, :supports_workbench
+      
         # Required.
         # Corresponds to the JSON property `title`
         # @return [String]
@@ -23102,6 +23509,7 @@ module Google
           @resource_description = args[:resource_description] if args.key?(:resource_description)
           @resource_title = args[:resource_title] if args.key?(:resource_title)
           @resource_use_case = args[:resource_use_case] if args.key?(:resource_use_case)
+          @supports_workbench = args[:supports_workbench] if args.key?(:supports_workbench)
           @title = args[:title] if args.key?(:title)
         end
       end
@@ -24188,6 +24596,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Represents a customer-managed encryption key spec that can be applied to a top-
+        # level resource.
+        # Corresponds to the JSON property `encryptionSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EncryptionSpec]
+        attr_accessor :encryption_spec
+      
         # Output only. The resource name of the RagCorpus.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -24218,6 +24632,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
           @vector_db_config = args[:vector_db_config] if args.key?(:vector_db_config)
@@ -24277,6 +24692,32 @@ module Google
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @model = args[:model] if args.key?(:model)
           @model_version_id = args[:model_version_id] if args.key?(:model_version_id)
+        end
+      end
+      
+      # Config for RagEngine.
+      class GoogleCloudAiplatformV1RagEngineConfig
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. The name of the RagEngineConfig. Format: `projects/`project`/
+        # locations/`location`/ragEngineConfig`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Configuration message for RagManagedDb used by RagEngine.
+        # Corresponds to the JSON property `ragManagedDbConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagManagedDbConfig]
+        attr_accessor :rag_managed_db_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @rag_managed_db_config = args[:rag_managed_db_config] if args.key?(:rag_managed_db_config)
         end
       end
       
@@ -24345,6 +24786,12 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Output only. The metadata for metadata search. The user_metadata Needs to be
+        # in JSON format.
+        # Corresponds to the JSON property `userMetadata`
+        # @return [String]
+        attr_accessor :user_metadata
+      
         def initialize(**args)
            update!(**args)
         end
@@ -24363,6 +24810,7 @@ module Google
           @share_point_sources = args[:share_point_sources] if args.key?(:share_point_sources)
           @slack_source = args[:slack_source] if args.key?(:slack_source)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @user_metadata = args[:user_metadata] if args.key?(:user_metadata)
         end
       end
       
@@ -24519,6 +24967,92 @@ module Google
         # Update properties of this object
         def update!(**args)
           @rag_file_chunking_config = args[:rag_file_chunking_config] if args.key?(:rag_file_chunking_config)
+        end
+      end
+      
+      # Configuration message for RagManagedDb used by RagEngine.
+      class GoogleCloudAiplatformV1RagManagedDbConfig
+        include Google::Apis::Core::Hashable
+      
+        # Basic tier is a cost-effective and low compute tier suitable for the following
+        # cases: * Experimenting with RagManagedDb. * Small data size. * Latency
+        # insensitive workload. * Only using RAG Engine with external vector DBs. NOTE:
+        # This is the default tier if not explicitly chosen.
+        # Corresponds to the JSON property `basic`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagManagedDbConfigBasic]
+        attr_accessor :basic
+      
+        # Scaled tier offers production grade performance along with autoscaling
+        # functionality. It is suitable for customers with large amounts of data or
+        # performance sensitive workloads.
+        # Corresponds to the JSON property `scaled`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagManagedDbConfigScaled]
+        attr_accessor :scaled
+      
+        # Disables the RAG Engine service and deletes all your data held within this
+        # service. This will halt the billing of the service. NOTE: Once deleted the
+        # data cannot be recovered. To start using RAG Engine again, you will need to
+        # update the tier by calling the UpdateRagEngineConfig API.
+        # Corresponds to the JSON property `unprovisioned`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagManagedDbConfigUnprovisioned]
+        attr_accessor :unprovisioned
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @basic = args[:basic] if args.key?(:basic)
+          @scaled = args[:scaled] if args.key?(:scaled)
+          @unprovisioned = args[:unprovisioned] if args.key?(:unprovisioned)
+        end
+      end
+      
+      # Basic tier is a cost-effective and low compute tier suitable for the following
+      # cases: * Experimenting with RagManagedDb. * Small data size. * Latency
+      # insensitive workload. * Only using RAG Engine with external vector DBs. NOTE:
+      # This is the default tier if not explicitly chosen.
+      class GoogleCloudAiplatformV1RagManagedDbConfigBasic
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Scaled tier offers production grade performance along with autoscaling
+      # functionality. It is suitable for customers with large amounts of data or
+      # performance sensitive workloads.
+      class GoogleCloudAiplatformV1RagManagedDbConfigScaled
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Disables the RAG Engine service and deletes all your data held within this
+      # service. This will halt the billing of the service. NOTE: Once deleted the
+      # data cannot be recovered. To start using RAG Engine again, you will need to
+      # update the tier by calling the UpdateRagEngineConfig API.
+      class GoogleCloudAiplatformV1RagManagedDbConfigUnprovisioned
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -26350,6 +26884,13 @@ module Google
         # @return [String]
         attr_accessor :category
       
+        # Output only. The overwritten threshold for the safety category of Gemini 2.0
+        # image out. If minors are detected in the output image, the threshold of each
+        # safety category will be overwritten if user sets a lower threshold.
+        # Corresponds to the JSON property `overwrittenThreshold`
+        # @return [String]
+        attr_accessor :overwritten_threshold
+      
         # Output only. Harm probability levels in the content.
         # Corresponds to the JSON property `probability`
         # @return [String]
@@ -26378,6 +26919,7 @@ module Google
         def update!(**args)
           @blocked = args[:blocked] if args.key?(:blocked)
           @category = args[:category] if args.key?(:category)
+          @overwritten_threshold = args[:overwritten_threshold] if args.key?(:overwritten_threshold)
           @probability = args[:probability] if args.key?(:probability)
           @probability_score = args[:probability_score] if args.key?(:probability_score)
           @severity = args[:severity] if args.key?(:severity)
@@ -36062,7 +36604,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :epoch_count
       
-        # Optional. Multiplier for adjusting the default learning rate.
+        # Optional. Multiplier for adjusting the default learning rate. Mutually
+        # exclusive with `learning_rate`. This feature is only available for 1P models.
         # Corresponds to the JSON property `learningRateMultiplier`
         # @return [Float]
         attr_accessor :learning_rate_multiplier
@@ -37095,6 +37638,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolCodeExecution]
         attr_accessor :code_execution
       
+        # Tool to support computer use.
+        # Corresponds to the JSON property `computerUse`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolComputerUse]
+        attr_accessor :computer_use
+      
         # Tool to search public web data, powered by Vertex AI Search and Sec4
         # compliance.
         # Corresponds to the JSON property `enterpriseWebSearch`
@@ -37127,6 +37675,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Retrieval]
         attr_accessor :retrieval
       
+        # Tool to support URL context.
+        # Corresponds to the JSON property `urlContext`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1UrlContext]
+        attr_accessor :url_context
+      
         def initialize(**args)
            update!(**args)
         end
@@ -37134,11 +37687,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @code_execution = args[:code_execution] if args.key?(:code_execution)
+          @computer_use = args[:computer_use] if args.key?(:computer_use)
           @enterprise_web_search = args[:enterprise_web_search] if args.key?(:enterprise_web_search)
           @function_declarations = args[:function_declarations] if args.key?(:function_declarations)
           @google_search = args[:google_search] if args.key?(:google_search)
           @google_search_retrieval = args[:google_search_retrieval] if args.key?(:google_search_retrieval)
           @retrieval = args[:retrieval] if args.key?(:retrieval)
+          @url_context = args[:url_context] if args.key?(:url_context)
         end
       end
       
@@ -37280,6 +37835,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Tool to support computer use.
+      class GoogleCloudAiplatformV1ToolComputerUse
+        include Google::Apis::Core::Hashable
+      
+        # Required. The environment being operated.
+        # Corresponds to the JSON property `environment`
+        # @return [String]
+        attr_accessor :environment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environment = args[:environment] if args.key?(:environment)
         end
       end
       
@@ -38625,7 +39199,10 @@ module Google
         attr_accessor :endpoint
       
         # Output only. The resource name of the TunedModel. Format: `projects/`project`/
-        # locations/`location`/models/`model``.
+        # locations/`location`/models/`model`@`version_id`` When tuning from a base
+        # model, the version_id will be 1. For continuous tuning, the version id will be
+        # incremented by 1 from the last version id in the parent model. E.g., `projects/
+        # `project`/locations/`location`/models/`model`@`last_version_id + 1``
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
@@ -39564,6 +40141,63 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Tool to support URL context.
+      class GoogleCloudAiplatformV1UrlContext
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata related to url context retrieval tool.
+      class GoogleCloudAiplatformV1UrlContextMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of url context.
+        # Corresponds to the JSON property `urlMetadata`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1UrlMetadata>]
+        attr_accessor :url_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @url_metadata = args[:url_metadata] if args.key?(:url_metadata)
+        end
+      end
+      
+      # Context of the a single url retrieval.
+      class GoogleCloudAiplatformV1UrlMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Retrieved url by the tool.
+        # Corresponds to the JSON property `retrievedUrl`
+        # @return [String]
+        attr_accessor :retrieved_url
+      
+        # Status of the url retrieval.
+        # Corresponds to the JSON property `urlRetrievalStatus`
+        # @return [String]
+        attr_accessor :url_retrieval_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @retrieved_url = args[:retrieved_url] if args.key?(:retrieved_url)
+          @url_retrieval_status = args[:url_retrieval_status] if args.key?(:url_retrieval_status)
         end
       end
       

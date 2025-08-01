@@ -1264,6 +1264,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1DeployRequestCustomModel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1DeployRequestDeployConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1391,6 +1397,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1DistillationSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1DnsPeeringConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2302,6 +2314,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1FlexStart
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1FluencyInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2392,6 +2410,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1GdcConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1GeminiExample
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2453,6 +2477,30 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1GenerateMemoriesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1GenerateMemoriesRequestDirectContentsSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1GenerateMemoriesRequestDirectContentsSourceEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1GenerateMemoriesRequestVertexSessionSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2980,6 +3028,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1ListMemoriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1ListMetadataSchemasResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3233,6 +3287,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1MeasurementMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1Memory
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4780,6 +4840,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1RagFileMetadataConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1RagFileParsingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4823,6 +4889,18 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1RagManagedDbConfigEnterprise
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagManagedDbConfigScaled
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagManagedDbConfigUnprovisioned
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5044,6 +5122,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1ReasoningEngineContextSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfigGenerationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1ReasoningEngineSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5231,6 +5333,36 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1RetrieveContextsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1RetrieveMemoriesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1RetrieveMemoriesRequestSimilaritySearchParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1RetrieveMemoriesRequestSimpleRetrievalParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1RetrieveMemoriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1RetrieveMemoriesResponseRetrievedMemory
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7240,6 +7372,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1ToolComputerUse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1ToolConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7817,6 +7955,24 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1UpsertExamplesResponseUpsertResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1UrlContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1UrlContextMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1UrlMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -9060,6 +9216,8 @@ module Google
       
           collection :safety_ratings, as: 'safetyRatings', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SafetyRating, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SafetyRating::Representation
       
+          property :url_context_metadata, as: 'urlContextMetadata', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1UrlContextMetadata, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1UrlContextMetadata::Representation
+      
         end
       end
       
@@ -9897,6 +10055,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :autoscaling_metric_specs, as: 'autoscalingMetricSpecs', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AutoscalingMetricSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AutoscalingMetricSpec::Representation
       
+          property :flex_start, as: 'flexStart', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FlexStart, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FlexStart::Representation
+      
           property :machine_spec, as: 'machineSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MachineSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MachineSpec::Representation
       
           property :max_replica_count, as: 'maxReplicaCount'
@@ -10052,6 +10212,8 @@ module Google
       class GoogleCloudAiplatformV1beta1DeployRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_model, as: 'customModel', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DeployRequestCustomModel, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DeployRequestCustomModel::Representation
+      
           property :deploy_config, as: 'deployConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DeployRequestDeployConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DeployRequestDeployConfig::Representation
       
           property :endpoint_config, as: 'endpointConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DeployRequestEndpointConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DeployRequestEndpointConfig::Representation
@@ -10060,6 +10222,14 @@ module Google
           property :model_config, as: 'modelConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DeployRequestModelConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DeployRequestModelConfig::Representation
       
           property :publisher_model_name, as: 'publisherModelName'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1DeployRequestCustomModel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_uri, as: 'gcsUri'
+          property :model_id, as: 'modelId'
         end
       end
       
@@ -10090,6 +10260,7 @@ module Google
           property :hugging_face_access_token, as: 'huggingFaceAccessToken'
           property :hugging_face_cache_enabled, as: 'huggingFaceCacheEnabled'
           property :model_display_name, as: 'modelDisplayName'
+          property :model_user_id, as: 'modelUserId'
         end
       end
       
@@ -10114,6 +10285,7 @@ module Google
           property :deployment_group, as: 'deploymentGroup'
           property :display_name, as: 'displayName'
           property :enable_access_logging, as: 'enableAccessLogging'
+          property :enable_datapoint_upsert_logging, as: 'enableDatapointUpsertLogging'
           property :id, as: 'id'
           property :index, as: 'index'
           property :index_sync_time, as: 'indexSyncTime'
@@ -10167,6 +10339,7 @@ module Google
       
           property :faster_deployment_config, as: 'fasterDeploymentConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FasterDeploymentConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FasterDeploymentConfig::Representation
       
+          property :gdc_connected_model, as: 'gdcConnectedModel'
           property :id, as: 'id'
           property :model, as: 'model'
           property :model_version_id, as: 'modelVersionId'
@@ -10306,6 +10479,15 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1DnsPeeringConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+          property :target_network, as: 'targetNetwork'
+          property :target_project, as: 'targetProject'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1DoubleArray
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10344,6 +10526,8 @@ module Google
           property :encryption_spec, as: 'encryptionSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EncryptionSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EncryptionSpec::Representation
       
           property :etag, as: 'etag'
+          property :gdc_config, as: 'gdcConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GdcConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GdcConfig::Representation
+      
           property :gen_ai_advanced_features_config, as: 'genAiAdvancedFeaturesConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenAiAdvancedFeaturesConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenAiAdvancedFeaturesConfig::Representation
       
           hash :labels, as: 'labels'
@@ -10638,6 +10822,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :branch, as: 'branch'
+          hash :custom_metadata, as: 'customMetadata'
           property :grounding_metadata, as: 'groundingMetadata', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GroundingMetadata, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GroundingMetadata::Representation
       
           property :interrupted, as: 'interrupted'
@@ -12008,6 +12193,13 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1FlexStart
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_runtime_duration, as: 'maxRuntimeDuration'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1FluencyInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12135,6 +12327,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :uris, as: 'uris'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1GdcConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :zone, as: 'zone'
         end
       end
       
@@ -12272,6 +12471,43 @@ module Google
       
           property :total_token_count, as: 'totalTokenCount'
           property :traffic_type, as: 'trafficType'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1GenerateMemoriesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :direct_contents_source, as: 'directContentsSource', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateMemoriesRequestDirectContentsSource, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateMemoriesRequestDirectContentsSource::Representation
+      
+          property :disable_consolidation, as: 'disableConsolidation'
+          hash :scope, as: 'scope'
+          property :vertex_session_source, as: 'vertexSessionSource', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateMemoriesRequestVertexSessionSource, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateMemoriesRequestVertexSessionSource::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1GenerateMemoriesRequestDirectContentsSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :events, as: 'events', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateMemoriesRequestDirectContentsSourceEvent, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateMemoriesRequestDirectContentsSourceEvent::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1GenerateMemoriesRequestDirectContentsSourceEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1GenerateMemoriesRequestVertexSessionSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :session, as: 'session'
+          property :start_time, as: 'startTime'
         end
       end
       
@@ -12712,6 +12948,8 @@ module Google
           property :partial_failure_gcs_sink, as: 'partialFailureGcsSink', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GcsDestination, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GcsDestination::Representation
       
           property :rag_file_chunking_config, as: 'ragFileChunkingConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileChunkingConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileChunkingConfig::Representation
+      
+          property :rag_file_metadata_config, as: 'ragFileMetadataConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileMetadataConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileMetadataConfig::Representation
       
           property :rag_file_parsing_config, as: 'ragFileParsingConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileParsingConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileParsingConfig::Representation
       
@@ -13194,6 +13432,15 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1ListMemoriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :memories, as: 'memories', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Memory, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Memory::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1ListMetadataSchemasResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -13577,6 +13824,19 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1Memory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :fact, as: 'fact'
+          property :name, as: 'name'
+          hash :scope, as: 'scope'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1MergeVersionAliasesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -13883,6 +14143,7 @@ module Google
       
           property :health_route, as: 'healthRoute'
           property :image_uri, as: 'imageUri'
+          property :invoke_route_prefix, as: 'invokeRoutePrefix'
           property :liveness_probe, as: 'livenessProbe', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Probe, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Probe::Representation
       
           collection :ports, as: 'ports', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Port, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Port::Representation
@@ -15101,10 +15362,12 @@ module Google
       class GoogleCloudAiplatformV1beta1PscAutomationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_message, as: 'errorMessage'
           property :forwarding_rule, as: 'forwardingRule'
           property :ip_address, as: 'ipAddress'
           property :network, as: 'network'
           property :project_id, as: 'projectId'
+          property :state, as: 'state'
         end
       end
       
@@ -15242,6 +15505,7 @@ module Google
       
           property :text, as: 'text'
           property :thought, as: 'thought'
+          property :thought_signature, :base64 => true, as: 'thoughtSignature'
           property :video_metadata, as: 'videoMetadata', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1VideoMetadata, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1VideoMetadata::Representation
       
         end
@@ -15416,6 +15680,7 @@ module Google
           property :state, as: 'state'
           property :task_id, :numeric_string => true, as: 'taskId'
           property :task_name, as: 'taskName'
+          property :task_unique_name, as: 'taskUniqueName'
         end
       end
       
@@ -15657,6 +15922,8 @@ module Google
           property :enable_private_service_connect, as: 'enablePrivateServiceConnect'
           property :enable_secure_private_service_connect, as: 'enableSecurePrivateServiceConnect'
           collection :project_allowlist, as: 'projectAllowlist'
+          collection :psc_automation_configs, as: 'pscAutomationConfigs', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PscAutomationConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PscAutomationConfig::Representation
+      
           property :service_attachment, as: 'serviceAttachment'
         end
       end
@@ -15735,6 +16002,8 @@ module Google
       class GoogleCloudAiplatformV1beta1PscInterfaceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dns_peering_configs, as: 'dnsPeeringConfigs', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DnsPeeringConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DnsPeeringConfig::Representation
+      
           property :network_attachment, as: 'networkAttachment'
         end
       end
@@ -15861,6 +16130,7 @@ module Google
           property :resource_description, as: 'resourceDescription'
           property :resource_title, as: 'resourceTitle'
           property :resource_use_case, as: 'resourceUseCase'
+          property :supports_workbench, as: 'supportsWorkbench'
           property :title, as: 'title'
         end
       end
@@ -16363,6 +16633,7 @@ module Google
           property :slack_source, as: 'slackSource', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SlackSource, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SlackSource::Representation
       
           property :update_time, as: 'updateTime'
+          property :user_metadata, as: 'userMetadata'
         end
       end
       
@@ -16381,6 +16652,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :chunk_overlap, as: 'chunkOverlap'
           property :chunk_size, as: 'chunkSize'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagFileMetadataConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_metadata_schema_source, as: 'gcsMetadataSchemaSource', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GcsSource, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GcsSource::Representation
+      
+          property :gcs_metadata_source, as: 'gcsMetadataSource', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GcsSource, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GcsSource::Representation
+      
+          property :google_drive_metadata_schema_source, as: 'googleDriveMetadataSchemaSource', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GoogleDriveSource, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GoogleDriveSource::Representation
+      
+          property :google_drive_metadata_source, as: 'googleDriveMetadataSource', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GoogleDriveSource, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GoogleDriveSource::Representation
+      
+          property :inline_metadata_schema_source, as: 'inlineMetadataSchemaSource'
+          property :inline_metadata_source, as: 'inlineMetadataSource'
         end
       end
       
@@ -16438,6 +16725,10 @@ module Google
       
           property :enterprise, as: 'enterprise', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagManagedDbConfigEnterprise, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagManagedDbConfigEnterprise::Representation
       
+          property :scaled, as: 'scaled', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagManagedDbConfigScaled, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagManagedDbConfigScaled::Representation
+      
+          property :unprovisioned, as: 'unprovisioned', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagManagedDbConfigUnprovisioned, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagManagedDbConfigUnprovisioned::Representation
+      
         end
       end
       
@@ -16448,6 +16739,18 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1RagManagedDbConfigEnterprise
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagManagedDbConfigScaled
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagManagedDbConfigUnprovisioned
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -16763,6 +17066,8 @@ module Google
       class GoogleCloudAiplatformV1beta1ReasoningEngine
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :context_spec, as: 'contextSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineContextSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineContextSpec::Representation
+      
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
@@ -16771,6 +17076,38 @@ module Google
           property :spec, as: 'spec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpec::Representation
       
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ReasoningEngineContextSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :memory_bank_config, as: 'memoryBankConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generation_config, as: 'generationConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfigGenerationConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfigGenerationConfig::Representation
+      
+          property :similarity_search_config, as: 'similaritySearchConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfigGenerationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :model, as: 'model'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :embedding_model, as: 'embeddingModel'
         end
       end
       
@@ -17055,6 +17392,51 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1RetrieveMemoriesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :scope, as: 'scope'
+          property :similarity_search_params, as: 'similaritySearchParams', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RetrieveMemoriesRequestSimilaritySearchParams, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RetrieveMemoriesRequestSimilaritySearchParams::Representation
+      
+          property :simple_retrieval_params, as: 'simpleRetrievalParams', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RetrieveMemoriesRequestSimpleRetrievalParams, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RetrieveMemoriesRequestSimpleRetrievalParams::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1RetrieveMemoriesRequestSimilaritySearchParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :search_query, as: 'searchQuery'
+          property :top_k, as: 'topK'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1RetrieveMemoriesRequestSimpleRetrievalParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1RetrieveMemoriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :retrieved_memories, as: 'retrievedMemories', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RetrieveMemoriesResponseRetrievedMemory, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RetrieveMemoriesResponseRetrievedMemory::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1RetrieveMemoriesResponseRetrievedMemory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :distance, as: 'distance'
+          property :memory, as: 'memory', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Memory, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Memory::Representation
+      
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1RolloutOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -17213,6 +17595,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :blocked, as: 'blocked'
           property :category, as: 'category'
+          property :overwritten_threshold, as: 'overwrittenThreshold'
           property :probability, as: 'probability'
           property :probability_score, as: 'probabilityScore'
           property :severity, as: 'severity'
@@ -19392,8 +19775,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
+          property :expire_time, as: 'expireTime'
           property :name, as: 'name'
           hash :session_state, as: 'sessionState'
+          property :ttl, as: 'ttl'
           property :update_time, as: 'updateTime'
           property :user_id, as: 'userId'
         end
@@ -20335,6 +20720,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code_execution, as: 'codeExecution', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolCodeExecution, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolCodeExecution::Representation
       
+          property :computer_use, as: 'computerUse', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolComputerUse, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolComputerUse::Representation
+      
           property :enterprise_web_search, as: 'enterpriseWebSearch', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EnterpriseWebSearch, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EnterpriseWebSearch::Representation
       
           collection :function_declarations, as: 'functionDeclarations', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FunctionDeclaration, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FunctionDeclaration::Representation
@@ -20344,6 +20731,8 @@ module Google
           property :google_search_retrieval, as: 'googleSearchRetrieval', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GoogleSearchRetrieval, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GoogleSearchRetrieval::Representation
       
           property :retrieval, as: 'retrieval', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Retrieval, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Retrieval::Representation
+      
+          property :url_context, as: 'urlContext', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1UrlContext, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1UrlContext::Representation
       
         end
       end
@@ -20398,6 +20787,13 @@ module Google
       class GoogleCloudAiplatformV1beta1ToolCodeExecution
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ToolComputerUse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :environment, as: 'environment'
         end
       end
       
@@ -20940,6 +21336,8 @@ module Google
           property :partner_model_tuning_spec, as: 'partnerModelTuningSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PartnerModelTuningSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PartnerModelTuningSpec::Representation
       
           property :pipeline_job, as: 'pipelineJob'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :service_account, as: 'serviceAccount'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
@@ -21193,6 +21591,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :rag_file_chunking_config, as: 'ragFileChunkingConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileChunkingConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileChunkingConfig::Representation
       
+          property :rag_file_metadata_config, as: 'ragFileMetadataConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileMetadataConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileMetadataConfig::Representation
+      
+          property :rag_file_parsing_config, as: 'ragFileParsingConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileParsingConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileParsingConfig::Representation
+      
           property :rag_file_transformation_config, as: 'ragFileTransformationConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileTransformationConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileTransformationConfig::Representation
       
         end
@@ -21257,6 +21659,28 @@ module Google
       
           property :status, as: 'status', class: Google::Apis::AiplatformV1beta1::GoogleRpcStatus, decorator: Google::Apis::AiplatformV1beta1::GoogleRpcStatus::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1UrlContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1UrlContextMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :url_metadata, as: 'urlMetadata', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1UrlMetadata, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1UrlMetadata::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1UrlMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retrieved_url, as: 'retrievedUrl'
+          property :url_retrieval_status, as: 'urlRetrievalStatus'
         end
       end
       

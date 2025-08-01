@@ -436,6 +436,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleProtobufEmpty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1120,7 +1132,26 @@ module Google
           property :allow_amp_traffic, as: 'allowAmpTraffic'
           collection :allowed_domains, as: 'allowedDomains'
           property :challenge_security_preference, as: 'challengeSecurityPreference'
+          property :challenge_settings, as: 'challengeSettings', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings::Representation
+      
           property :integration_type, as: 'integrationType'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :score_threshold, as: 'scoreThreshold'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :action_settings, as: 'actionSettings', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings::Representation
+      
+          property :default_settings, as: 'defaultSettings', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings::Representation
+      
         end
       end
       

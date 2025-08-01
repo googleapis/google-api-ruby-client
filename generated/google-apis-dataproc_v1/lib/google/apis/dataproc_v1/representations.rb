@@ -1972,6 +1972,7 @@ module Google
       
           collection :auxiliary_node_groups, as: 'auxiliaryNodeGroups', class: Google::Apis::DataprocV1::AuxiliaryNodeGroup, decorator: Google::Apis::DataprocV1::AuxiliaryNodeGroup::Representation
       
+          property :cluster_tier, as: 'clusterTier'
           property :cluster_type, as: 'clusterType'
           property :config_bucket, as: 'configBucket'
           property :dataproc_metric_config, as: 'dataprocMetricConfig', class: Google::Apis::DataprocV1::DataprocMetricConfig, decorator: Google::Apis::DataprocV1::DataprocMetricConfig::Representation
@@ -2791,8 +2792,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_delete_time, as: 'autoDeleteTime'
           property :auto_delete_ttl, as: 'autoDeleteTtl'
+          property :auto_stop_time, as: 'autoStopTime'
+          property :auto_stop_ttl, as: 'autoStopTtl'
           property :idle_delete_ttl, as: 'idleDeleteTtl'
           property :idle_start_time, as: 'idleStartTime'
+          property :idle_stop_ttl, as: 'idleStopTtl'
         end
       end
       

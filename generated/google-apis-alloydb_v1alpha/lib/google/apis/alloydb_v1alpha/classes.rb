@@ -524,7 +524,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Deprecated and unused. This field will be removed in the near future.
+        # Deprecated and unused. This message will be removed in the near future.
         # Corresponds to the JSON property `geminiConfig`
         # @return [Google::Apis::AlloydbV1alpha::GeminiClusterConfig]
         attr_accessor :gemini_config
@@ -623,10 +623,9 @@ module Google
         # @return [Google::Apis::AlloydbV1alpha::SecondaryConfig]
         attr_accessor :secondary_config
       
-        # Output only. AlloyDB per-cluster service agent email. This service account is
-        # created per-cluster per-project, and is different from that of the primary
-        # service agent which is created per-project. The service account naming format
-        # is subject to change.
+        # Output only. AlloyDB per-cluster service account. This service account is
+        # created per-cluster per-project, and is different from the per-project service
+        # account. The per-cluster service account naming format is subject to change.
         # Corresponds to the JSON property `serviceAccountEmail`
         # @return [String]
         attr_accessor :service_account_email
@@ -827,7 +826,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Deprecated. Use 'flags' instead. The default pool size. Defaults to
-        # 20.
+        # 20. Note: This field should not be added to client libraries if not present
+        # already.
         # Corresponds to the JSON property `defaultPoolSize`
         # @return [String]
         attr_accessor :default_pool_size
@@ -850,13 +850,15 @@ module Google
         attr_accessor :flags
       
         # Optional. Deprecated. Use 'flags' instead. The list of startup parameters to
-        # ignore. Defaults to ["extra_float_digits"]
+        # ignore. Defaults to ["extra_float_digits"] Note: This field should not be
+        # added to client libraries if not present already.
         # Corresponds to the JSON property `ignoreStartupParameters`
         # @return [Array<String>]
         attr_accessor :ignore_startup_parameters
       
         # Optional. Deprecated. Use 'flags' instead. The maximum number of client
-        # connections allowed.
+        # connections allowed. Note: This field should not be added to client libraries
+        # if not present already.
         # Corresponds to the JSON property `maxClientConn`
         # @return [String]
         attr_accessor :max_client_conn
@@ -865,19 +867,22 @@ module Google
         # statements allowed. MCP makes sure that any statement prepared by a client, up
         # to this limit, is available on the backing server connection in transaction
         # and statement pooling mode. Even if the statement was originally prepared on
-        # another server connection. Defaults to 0.
+        # another server connection. Defaults to 0. Note: This field should not be added
+        # to client libraries if not present already.
         # Corresponds to the JSON property `maxPreparedStatements`
         # @return [String]
         attr_accessor :max_prepared_statements
       
         # Optional. Deprecated. Use 'flags' instead. The minimum pool size. Defaults to
-        # 0.
+        # 0. Note: This field should not be added to client libraries if not present
+        # already.
         # Corresponds to the JSON property `minPoolSize`
         # @return [String]
         attr_accessor :min_pool_size
       
         # Optional. Deprecated. Use 'flags' instead. The pool mode. Defaults to `
-        # POOL_MODE_TRANSACTION`.
+        # POOL_MODE_TRANSACTION`. Note: This field should not be added to client
+        # libraries if not present already.
         # Corresponds to the JSON property `poolMode`
         # @return [String]
         attr_accessor :pool_mode
@@ -890,18 +895,23 @@ module Google
         # Optional. Deprecated. Use 'flags' instead. The maximum number of seconds
         # queries are allowed to spend waiting for execution. If the query is not
         # assigned to a server during that time, the client is disconnected. 0 disables.
+        # Note: This field should not be added to client libraries if not present
+        # already.
         # Corresponds to the JSON property `queryWaitTimeout`
         # @return [String]
         attr_accessor :query_wait_timeout
       
         # Optional. Deprecated. Use 'flags' instead. The maximum number of seconds a
-        # server is allowed to be idle before it is disconnected. 0 disables.
+        # server is allowed to be idle before it is disconnected. 0 disables. Note: This
+        # field should not be added to client libraries if not present already.
         # Corresponds to the JSON property `serverIdleTimeout`
         # @return [String]
         attr_accessor :server_idle_timeout
       
         # Optional. Deprecated. Use 'flags' instead. The list of users that are allowed
         # to connect to the MCP stats console. The users must exist in the database.
+        # Note: This field should not be added to client libraries if not present
+        # already.
         # Corresponds to the JSON property `statsUsers`
         # @return [Array<String>]
         attr_accessor :stats_users
@@ -1360,7 +1370,7 @@ module Google
         end
       end
       
-      # Deprecated and unused. This field will be removed in the near future.
+      # Deprecated and unused. This message will be removed in the near future.
       class GeminiClusterConfig
         include Google::Apis::Core::Hashable
       
@@ -1381,7 +1391,7 @@ module Google
         end
       end
       
-      # Deprecated and unused. This field will be removed in the near future.
+      # Deprecated and unused. This message will be removed in the near future.
       class GeminiInstanceConfig
         include Google::Apis::Core::Hashable
       
@@ -1742,7 +1752,7 @@ module Google
         # @return [String]
         attr_accessor :gce_zone
       
-        # Deprecated and unused. This field will be removed in the near future.
+        # Deprecated and unused. This message will be removed in the near future.
         # Corresponds to the JSON property `geminiConfig`
         # @return [Google::Apis::AlloydbV1alpha::GeminiInstanceConfig]
         attr_accessor :gemini_config
@@ -1923,9 +1933,9 @@ module Google
         # Optional. Name of the allocated IP range for the private IP AlloyDB instance,
         # for example: "google-managed-services-default". If set, the instance IPs will
         # be created from this allocated range and will override the IP range used by
-        # the parent cluster. The range name must comply with [RFC 1035](http://go/rfc/
-        # 1035). Specifically, the name must be 1-63 characters long and match the
-        # regular expression [a-z]([-a-z0-9]*[a-z0-9])?.
+        # the parent cluster. The range name must comply with [RFC 1035](http://
+        # datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63
+        # characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.
         # Corresponds to the JSON property `allocatedIpRangeOverride`
         # @return [String]
         attr_accessor :allocated_ip_range_override
@@ -3549,7 +3559,7 @@ module Google
       end
       
       # DatabaseResourceFeed is the top level proto to be used to ingest different
-      # database resource level events into Condor platform.
+      # database resource level events into Condor platform. Next ID: 8
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed
         include Google::Apis::Core::Hashable
       
@@ -3640,6 +3650,11 @@ module Google
         # @return [String]
         attr_accessor :external_uri
       
+        # This is used to identify the location of the resource. Example: "us-central1"
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         # Required. The name of the signal, ex: PUBLIC_SQL_INSTANCE,
         # SQL_LOG_ERROR_VERBOSITY etc.
         # Corresponds to the JSON property `name`
@@ -3703,6 +3718,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @event_time = args[:event_time] if args.key?(:event_time)
           @external_uri = args[:external_uri] if args.key?(:external_uri)
+          @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @provider = args[:provider] if args.key?(:provider)
           @resource_container = args[:resource_container] if args.key?(:resource_container)
@@ -3729,15 +3745,15 @@ module Google
         # @return [String]
         attr_accessor :provider_description
       
-        # Required. The type of resource this ID is identifying. Ex redis.googleapis.com/
-        # Instance, redis.googleapis.com/Cluster, alloydb.googleapis.com/Cluster,
-        # alloydb.googleapis.com/Instance, spanner.googleapis.com/Instance, spanner.
-        # googleapis.com/Database, firestore.googleapis.com/Database, sqladmin.
-        # googleapis.com/Instance, bigtableadmin.googleapis.com/Cluster, bigtableadmin.
-        # googleapis.com/Instance oracledatabase.googleapis.com/
-        # cloudExadataInfrastructures oracledatabase.googleapis.com/cloudVmClusters
-        # oracledatabase.googleapis.com/autonomousDatabases REQUIRED Please refer go/
-        # condor-common-datamodel
+        # Required. The type of resource this ID is identifying. Ex go/keep-sorted start
+        # alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance, bigtableadmin.
+        # googleapis.com/Cluster, bigtableadmin.googleapis.com/Instance compute.
+        # googleapis.com/Instance firestore.googleapis.com/Database, redis.googleapis.
+        # com/Instance, redis.googleapis.com/Cluster, oracledatabase.googleapis.com/
+        # CloudExadataInfrastructure oracledatabase.googleapis.com/CloudVmCluster
+        # oracledatabase.googleapis.com/AutonomousDatabase spanner.googleapis.com/
+        # Instance, spanner.googleapis.com/Database, sqladmin.googleapis.com/Instance,
+        # go/keep-sorted end REQUIRED Please refer go/condor-common-datamodel
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type

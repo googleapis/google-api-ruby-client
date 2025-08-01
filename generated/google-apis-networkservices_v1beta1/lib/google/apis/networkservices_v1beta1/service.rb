@@ -715,8 +715,7 @@ module Google
         # Get a single RouteView of a Gateway.
         # @param [String] name
         #   Required. Name of the GatewayRouteView resource. Formats: projects/`
-        #   project_number`/locations/`location`/gateways/`gateway_name`/routeViews/`
-        #   route_view_name`
+        #   project_number`/locations/`location`/gateways/`gateway`/routeViews/`route_view`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -747,7 +746,7 @@ module Google
         # Lists RouteViews
         # @param [String] parent
         #   Required. The Gateway to which a Route is associated. Formats: projects/`
-        #   project_number`/locations/`location`/gateways/`gateway_name`
+        #   project_number`/locations/`location`/gateways/`gateway`
         # @param [Fixnum] page_size
         #   Maximum number of GatewayRouteViews to return per call.
         # @param [String] page_token
@@ -2001,7 +2000,7 @@ module Google
         # Get a single RouteView of a Mesh.
         # @param [String] name
         #   Required. Name of the MeshRouteView resource. Format: projects/`project_number`
-        #   /locations/`location`/meshes/`mesh_name`/routeViews/`route_view_name`
+        #   /locations/`location`/meshes/`mesh`/routeViews/`route_view`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2032,7 +2031,7 @@ module Google
         # Lists RouteViews
         # @param [String] parent
         #   Required. The Mesh to which a Route is associated. Format: projects/`
-        #   project_number`/locations/`location`/meshes/`mesh_name`
+        #   project_number`/locations/`location`/meshes/`mesh`
         # @param [Fixnum] page_size
         #   Maximum number of MeshRouteViews to return per call.
         # @param [String] page_token

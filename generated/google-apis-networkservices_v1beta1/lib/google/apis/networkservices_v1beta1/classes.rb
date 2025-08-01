@@ -309,8 +309,8 @@ module Google
       
         # Required. A set of extensions to execute for the matching request. At least
         # one extension is required. Up to 3 extensions can be defined for each
-        # extension chain for `LbTrafficExtension` resource. `LbRouteExtension` chains
-        # are limited to 1 extension per extension chain.
+        # extension chain for `LbTrafficExtension` resource. `LbRouteExtension` and `
+        # LbEdgeExtension` chains are limited to 1 extension per extension chain.
         # Corresponds to the JSON property `extensions`
         # @return [Array<Google::Apis::NetworkservicesV1beta1::ExtensionChainExtension>]
         attr_accessor :extensions
@@ -445,15 +445,18 @@ module Google
         # in the format: `projects/`project`/locations/`location`/wasmPlugins/`plugin``
         # or `//networkservices.googleapis.com/projects/`project`/locations/`location`/
         # wasmPlugins/`wasmPlugin``. Plugin extensions are currently supported for the `
-        # LbTrafficExtension` and the `LbRouteExtension` resources.
+        # LbTrafficExtension`, the `LbRouteExtension`, and the `LbEdgeExtension`
+        # resources.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
       
         # Optional. A set of events during request or response processing for which this
-        # extension is called. This field is required for the `LbTrafficExtension`
-        # resource. It is optional for the `LbRouteExtension` resource. If unspecified `
-        # REQUEST_HEADERS` event is assumed as supported.
+        # extension is called. For the `LbTrafficExtension` resource, this field is
+        # required. For the `LbRouteExtension` resource, this field is optional. If
+        # unspecified, `REQUEST_HEADERS` event is assumed as supported. For the `
+        # LbEdgeExtension` resource, this field is required and must only contain `
+        # REQUEST_HEADERS` event.
         # Corresponds to the JSON property `supportedEvents`
         # @return [Array<String>]
         attr_accessor :supported_events
@@ -581,8 +584,8 @@ module Google
       
         # Required. One or more port numbers (1-65535), on which the Gateway will
         # receive traffic. The proxy binds to the specified ports. Gateways of type '
-        # SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen
-        # on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
+        # SECURE_WEB_GATEWAY' are limited to 5 ports. Gateways of type 'OPEN_MESH'
+        # listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
         # Corresponds to the JSON property `ports`
         # @return [Array<Fixnum>]
         attr_accessor :ports
@@ -665,8 +668,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. Identifier. Full path name of the GatewayRouteView resource.
-        # Format: projects/`project_number`/locations/`location`/gateways/`gateway_name`/
-        # routeViews/`route_view_name`
+        # Format: projects/`project_number`/locations/`location`/gateways/`gateway`/
+        # routeViews/`route_view`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2092,7 +2095,7 @@ module Google
       end
       
       # `LbEdgeExtension` is a resource that lets the extension service influence the
-      # Backend Service selection or Cloud CDN cache keys by modifying the request
+      # selection of backend services and Cloud CDN cache keys by modifying request
       # headers.
       class LbEdgeExtension
         include Google::Apis::Core::Hashable
@@ -2130,10 +2133,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. All backend services and forwarding rules referenced by this
-        # extension must share the same load balancing scheme. Supported values: `
-        # EXTERNAL_MANAGED`. For more information, refer to [Backend services overview](
-        # https://cloud.google.com/load-balancing/docs/backend-service).
+        # Required. All forwarding rules referenced by this extension must share the
+        # same load balancing scheme. Supported values: `EXTERNAL_MANAGED`.
         # Corresponds to the JSON property `loadBalancingScheme`
         # @return [String]
         attr_accessor :load_balancing_scheme
@@ -3122,8 +3123,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. Identifier. Full path name of the MeshRouteView resource. Format:
-        # projects/`project_number`/locations/`location`/meshes/`mesh_name`/routeViews/`
-        # route_view_name`
+        # projects/`project_number`/locations/`location`/meshes/`mesh`/routeViews/`
+        # route_view`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4140,7 +4141,7 @@ module Google
         attr_accessor :enable
         alias_method :enable?, :enable
       
-        # Non-empty default. Specificies the lowest level of the plugin logs that are
+        # Non-empty default. Specifies the lowest level of the plugin logs that are
         # exported to Cloud Logging. This setting relates to the logs generated by using
         # logging statements in your Wasm code. This field is can be set only if logging
         # is enabled for the plugin. If the field is not provided when logging is

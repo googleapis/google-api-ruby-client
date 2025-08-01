@@ -52,43 +52,6 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Use custom pricing in the estimate, using a `CostScenario` with a defined `
-        # billingAccount`.
-        # @param [String] billing_account
-        #   Resource name of the billing account for the cost estimate. The resource name
-        #   has the form `billingAccounts/`billing_account_id``. For example, `
-        #   billingAccounts/012345-567890-ABCDEF` is the resource name for billing account
-        #   `012345-567890-ABCDEF`. Must be specified.
-        # @param [Google::Apis::CloudbillingV1beta::EstimateCostScenarioForBillingAccountRequest] estimate_cost_scenario_for_billing_account_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudbillingV1beta::EstimateCostScenarioForBillingAccountResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudbillingV1beta::EstimateCostScenarioForBillingAccountResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def estimate_cost_scenario_for_billing_account(billing_account, estimate_cost_scenario_for_billing_account_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta/{+billingAccount}:estimateCostScenario', options)
-          command.request_representation = Google::Apis::CloudbillingV1beta::EstimateCostScenarioForBillingAccountRequest::Representation
-          command.request_object = estimate_cost_scenario_for_billing_account_request_object
-          command.response_representation = Google::Apis::CloudbillingV1beta::EstimateCostScenarioForBillingAccountResponse::Representation
-          command.response_class = Google::Apis::CloudbillingV1beta::EstimateCostScenarioForBillingAccountResponse
-          command.params['billingAccount'] = billing_account unless billing_account.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Gets a Google Cloud service visible to a billing account.
         # @param [String] name
         #   Required. The name of the billing account service to retrieve. Format:
@@ -665,36 +628,6 @@ module Google
           command.query['currencyCode'] = currency_code unless currency_code.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Estimate list prices using a `CostScenario` without a defined `billingAccount`.
-        # @param [Google::Apis::CloudbillingV1beta::EstimateCostScenarioWithListPriceRequest] estimate_cost_scenario_with_list_price_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudbillingV1beta::EstimateCostScenarioWithListPriceResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudbillingV1beta::EstimateCostScenarioWithListPriceResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def estimate_cost_scenario_with_list_price(estimate_cost_scenario_with_list_price_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta:estimateCostScenario', options)
-          command.request_representation = Google::Apis::CloudbillingV1beta::EstimateCostScenarioWithListPriceRequest::Representation
-          command.request_object = estimate_cost_scenario_with_list_price_request_object
-          command.response_representation = Google::Apis::CloudbillingV1beta::EstimateCostScenarioWithListPriceResponse::Representation
-          command.response_class = Google::Apis::CloudbillingV1beta::EstimateCostScenarioWithListPriceResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

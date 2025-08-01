@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GatewayConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GceConfidentialInstanceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -232,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReservationAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RuntimeHost
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -343,6 +355,8 @@ module Google
           property :id, as: 'id'
           property :machine_type, as: 'machineType'
           property :pool_size, as: 'poolSize'
+          property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::WorkstationsV1beta::ReservationAffinity, decorator: Google::Apis::WorkstationsV1beta::ReservationAffinity::Representation
+      
         end
       end
       
@@ -398,6 +412,13 @@ module Google
         end
       end
       
+      class GatewayConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :http2_enabled, as: 'http2Enabled'
+        end
+      end
+      
       class GceConfidentialInstanceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -421,6 +442,8 @@ module Google
           property :machine_type, as: 'machineType'
           property :pool_size, as: 'poolSize'
           property :pooled_instances, as: 'pooledInstances'
+          property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::WorkstationsV1beta::ReservationAffinity, decorator: Google::Apis::WorkstationsV1beta::ReservationAffinity::Representation
+      
           property :service_account, as: 'serviceAccount'
           collection :service_account_scopes, as: 'serviceAccountScopes'
           property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::WorkstationsV1beta::GceShieldedInstanceConfig, decorator: Google::Apis::WorkstationsV1beta::GceShieldedInstanceConfig::Representation
@@ -639,6 +662,15 @@ module Google
         end
       end
       
+      class ReservationAffinity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consume_reservation_type, as: 'consumeReservationType'
+          property :key, as: 'key'
+          collection :values, as: 'values'
+        end
+      end
+      
       class RuntimeHost
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -731,6 +763,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
+          property :running, as: 'running'
         end
       end
       
@@ -748,6 +781,8 @@ module Google
           property :domain_config, as: 'domainConfig', class: Google::Apis::WorkstationsV1beta::DomainConfig, decorator: Google::Apis::WorkstationsV1beta::DomainConfig::Representation
       
           property :etag, as: 'etag'
+          property :gateway_config, as: 'gatewayConfig', class: Google::Apis::WorkstationsV1beta::GatewayConfig, decorator: Google::Apis::WorkstationsV1beta::GatewayConfig::Representation
+      
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'

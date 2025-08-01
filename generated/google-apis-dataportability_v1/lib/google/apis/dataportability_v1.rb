@@ -35,9 +35,6 @@ module Google
       # Move a copy of the Google Alerts subscriptions you created
       AUTH_DATAPORTABILITY_ALERTS_SUBSCRIPTIONS = 'https://www.googleapis.com/auth/dataportability.alerts.subscriptions'
 
-      # Move a copy of messages between you and the businesses you have conversations with across Google services
-      AUTH_DATAPORTABILITY_BUSINESSMESSAGING_CONVERSATIONS = 'https://www.googleapis.com/auth/dataportability.businessmessaging.conversations'
-
       # Move a copy of the information you entered into online forms in Chrome
       AUTH_DATAPORTABILITY_CHROME_AUTOFILL = 'https://www.googleapis.com/auth/dataportability.chrome.autofill'
 

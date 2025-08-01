@@ -178,7 +178,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The name of the subscription resource that is entitled to the
-        # current end user.
+        # current end user. It is in the format of "partners/`partner_id`/subscriptions/`
+        # subscriptionId`".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -453,7 +454,7 @@ module Google
         end
       end
       
-      # [Preview only] Request to generate a user session.
+      # Request to generate a user session.
       class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest
         include Google::Apis::Core::Hashable
       
@@ -472,7 +473,7 @@ module Google
         end
       end
       
-      # [Preview only] Response that contains the details for generated user session.
+      # Response that contains the details for generated user session.
       class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse
         include Google::Apis::Core::Hashable
       
@@ -486,8 +487,8 @@ module Google
         # need to worry about multiple sessions resulting in duplicate fulfillments as
         # guaranteed by the same subscription id. Please refer to the [Google Managed
         # Signup](/payments/reseller/subscription/reference/index/User.Signup.
-        # Integration/Google.Managed.Signup.\(In.Preview\)) documentation for additional
-        # integration details.
+        # Integration/Google.Managed.Signup) documentation for additional integration
+        # details.
         # Corresponds to the JSON property `userSession`
         # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1UserSession]
         attr_accessor :user_session
@@ -1511,8 +1512,8 @@ module Google
       # need to worry about multiple sessions resulting in duplicate fulfillments as
       # guaranteed by the same subscription id. Please refer to the [Google Managed
       # Signup](/payments/reseller/subscription/reference/index/User.Signup.
-      # Integration/Google.Managed.Signup.\(In.Preview\)) documentation for additional
-      # integration details.
+      # Integration/Google.Managed.Signup) documentation for additional integration
+      # details.
       class GoogleCloudPaymentsResellerSubscriptionV1UserSession
         include Google::Apis::Core::Hashable
       

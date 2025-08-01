@@ -591,8 +591,8 @@ module Google
       
         # Required. A set of extensions to execute for the matching request. At least
         # one extension is required. Up to 3 extensions can be defined for each
-        # extension chain for `LbTrafficExtension` resource. `LbRouteExtension` chains
-        # are limited to 1 extension per extension chain.
+        # extension chain for `LbTrafficExtension` resource. `LbRouteExtension` and `
+        # LbEdgeExtension` chains are limited to 1 extension per extension chain.
         # Corresponds to the JSON property `extensions`
         # @return [Array<Google::Apis::NetworkservicesV1::ExtensionChainExtension>]
         attr_accessor :extensions
@@ -695,15 +695,18 @@ module Google
         # in the format: `projects/`project`/locations/`location`/wasmPlugins/`plugin``
         # or `//networkservices.googleapis.com/projects/`project`/locations/`location`/
         # wasmPlugins/`wasmPlugin``. Plugin extensions are currently supported for the `
-        # LbTrafficExtension` and the `LbRouteExtension` resources.
+        # LbTrafficExtension`, the `LbRouteExtension`, and the `LbEdgeExtension`
+        # resources.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
       
         # Optional. A set of events during request or response processing for which this
-        # extension is called. This field is required for the `LbTrafficExtension`
-        # resource. It is optional for the `LbRouteExtension` resource. If unspecified `
-        # REQUEST_HEADERS` event is assumed as supported.
+        # extension is called. For the `LbTrafficExtension` resource, this field is
+        # required. For the `LbRouteExtension` resource, this field is optional. If
+        # unspecified, `REQUEST_HEADERS` event is assumed as supported. For the `
+        # LbEdgeExtension` resource, this field is required and must only contain `
+        # REQUEST_HEADERS` event.
         # Corresponds to the JSON property `supportedEvents`
         # @return [Array<String>]
         attr_accessor :supported_events
@@ -828,8 +831,8 @@ module Google
       
         # Required. One or more port numbers (1-65535), on which the Gateway will
         # receive traffic. The proxy binds to the specified ports. Gateways of type '
-        # SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen
-        # on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
+        # SECURE_WEB_GATEWAY' are limited to 5 ports. Gateways of type 'OPEN_MESH'
+        # listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
         # Corresponds to the JSON property `ports`
         # @return [Array<Fixnum>]
         attr_accessor :ports
@@ -912,8 +915,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. Identifier. Full path name of the GatewayRouteView resource.
-        # Format: projects/`project_number`/locations/`location`/gateways/`gateway_name`/
-        # routeViews/`route_view_name`
+        # Format: projects/`project_number`/locations/`location`/gateways/`gateway`/
+        # routeViews/`route_view`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3262,8 +3265,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. Identifier. Full path name of the MeshRouteView resource. Format:
-        # projects/`project_number`/locations/`location`/meshes/`mesh_name`/routeViews/`
-        # route_view_name`
+        # projects/`project_number`/locations/`location`/meshes/`mesh`/routeViews/`
+        # route_view`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3630,6 +3633,11 @@ module Google
         # @return [Google::Apis::NetworkservicesV1::ServiceLbPolicyFailoverConfig]
         attr_accessor :failover_config
       
+        # Configuration to provide isolation support for the associated Backend Service.
+        # Corresponds to the JSON property `isolationConfig`
+        # @return [Google::Apis::NetworkservicesV1::ServiceLbPolicyIsolationConfig]
+        attr_accessor :isolation_config
+      
         # Optional. Set of label tags associated with the ServiceLbPolicy resource.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -3662,6 +3670,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @failover_config = args[:failover_config] if args.key?(:failover_config)
+          @isolation_config = args[:isolation_config] if args.key?(:isolation_config)
           @labels = args[:labels] if args.key?(:labels)
           @load_balancing_algorithm = args[:load_balancing_algorithm] if args.key?(:load_balancing_algorithm)
           @name = args[:name] if args.key?(:name)
@@ -3715,6 +3724,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @failover_health_threshold = args[:failover_health_threshold] if args.key?(:failover_health_threshold)
+        end
+      end
+      
+      # Configuration to provide isolation support for the associated Backend Service.
+      class ServiceLbPolicyIsolationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The isolation granularity of the load balancer.
+        # Corresponds to the JSON property `isolationGranularity`
+        # @return [String]
+        attr_accessor :isolation_granularity
+      
+        # Optional. The isolation mode of the load balancer.
+        # Corresponds to the JSON property `isolationMode`
+        # @return [String]
+        attr_accessor :isolation_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @isolation_granularity = args[:isolation_granularity] if args.key?(:isolation_granularity)
+          @isolation_mode = args[:isolation_mode] if args.key?(:isolation_mode)
         end
       end
       
@@ -4372,7 +4406,7 @@ module Google
         attr_accessor :enable
         alias_method :enable?, :enable
       
-        # Non-empty default. Specificies the lowest level of the plugin logs that are
+        # Non-empty default. Specifies the lowest level of the plugin logs that are
         # exported to Cloud Logging. This setting relates to the logs generated by using
         # logging statements in your Wasm code. This field is can be set only if logging
         # is enabled for the plugin. If the field is not provided when logging is

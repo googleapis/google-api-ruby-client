@@ -777,7 +777,7 @@ module Google
         # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec]
         attr_accessor :database_view_spec
       
-        # Entry specification for a Dataplex table.
+        # Entry specification for a Dataplex Universal Catalog table.
         # Corresponds to the JSON property `dataplexTable`
         # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataplexTableSpec]
         attr_accessor :dataplex_table
@@ -830,11 +830,12 @@ module Google
         end
       end
       
-      # External table registered by Dataplex. Dataplex publishes data discovered from
-      # an asset into multiple other systems (BigQuery, DPMS) in form of tables. We
-      # call them "external tables". External tables are also synced into the Data
-      # Catalog. This message contains pointers to those external tables (fully
-      # qualified name, resource name et cetera) within the Data Catalog.
+      # External table registered by Dataplex Universal Catalog. Dataplex Universal
+      # Catalog publishes data discovered from an asset into multiple other systems (
+      # BigQuery, DPMS) in form of tables. We call them "external tables". External
+      # tables are also synced into the Data Catalog. This message contains pointers
+      # to those external tables (fully qualified name, resource name et cetera)
+      # within the Data Catalog.
       class GoogleCloudDatacatalogV1DataplexExternalTable
         include Google::Apis::Core::Hashable
       
@@ -871,11 +872,11 @@ module Google
         end
       end
       
-      # Entry specyfication for a Dataplex fileset.
+      # Entry specification for a Dataplex Universal Catalog fileset.
       class GoogleCloudDatacatalogV1DataplexFilesetSpec
         include Google::Apis::Core::Hashable
       
-        # Common Dataplex fields.
+        # Common Dataplex Universal Catalog fields.
         # Corresponds to the JSON property `dataplexSpec`
         # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataplexSpec]
         attr_accessor :dataplex_spec
@@ -890,13 +891,13 @@ module Google
         end
       end
       
-      # Common Dataplex fields.
+      # Common Dataplex Universal Catalog fields.
       class GoogleCloudDatacatalogV1DataplexSpec
         include Google::Apis::Core::Hashable
       
-        # Fully qualified resource name of an asset in Dataplex, to which the underlying
-        # data source (Cloud Storage bucket or BigQuery dataset) of the entity is
-        # attached.
+        # Fully qualified resource name of an asset in Dataplex Universal Catalog, to
+        # which the underlying data source (Cloud Storage bucket or BigQuery dataset) of
+        # the entity is attached.
         # Corresponds to the JSON property `asset`
         # @return [String]
         attr_accessor :asset
@@ -913,8 +914,8 @@ module Google
         attr_accessor :data_format
       
         # Project ID of the underlying Cloud Storage or BigQuery data. Note that this
-        # may not be the same project as the correspondingly Dataplex lake / zone /
-        # asset.
+        # may not be the same project as the corresponding Dataplex Universal Catalog
+        # lake / zone / asset.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -932,18 +933,18 @@ module Google
         end
       end
       
-      # Entry specification for a Dataplex table.
+      # Entry specification for a Dataplex Universal Catalog table.
       class GoogleCloudDatacatalogV1DataplexTableSpec
         include Google::Apis::Core::Hashable
       
-        # Common Dataplex fields.
+        # Common Dataplex Universal Catalog fields.
         # Corresponds to the JSON property `dataplexSpec`
         # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataplexSpec]
         attr_accessor :dataplex_spec
       
-        # List of external tables registered by Dataplex in other systems based on the
-        # same underlying data. External tables allow to query this data in those
-        # systems.
+        # List of external tables registered by Dataplex Universal Catalog in other
+        # systems based on the same underlying data. External tables allow to query this
+        # data in those systems.
         # Corresponds to the JSON property `externalTables`
         # @return [Array<Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataplexExternalTable>]
         attr_accessor :external_tables
@@ -1283,7 +1284,7 @@ module Google
         attr_accessor :name
       
         # Optional. When set to [true], it means DataCatalog EntryGroup was transferred
-        # to Dataplex Catalog Service. It makes EntryGroup and its Entries to be read-
+        # to Dataplex Universal Catalog. It makes EntryGroup and its Entries to be read-
         # only in DataCatalog. However, new Tags on EntryGroup and its Entries can be
         # created. After setting the flag to [true] it cannot be unset.
         # Corresponds to the JSON property `transferredToDataplex`
@@ -1441,7 +1442,7 @@ module Google
       class GoogleCloudDatacatalogV1FilesetSpec
         include Google::Apis::Core::Hashable
       
-        # Entry specyfication for a Dataplex fileset.
+        # Entry specification for a Dataplex Universal Catalog fileset.
         # Corresponds to the JSON property `dataplexFileset`
         # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataplexFilesetSpec]
         attr_accessor :dataplex_fileset
@@ -1563,8 +1564,8 @@ module Google
         # @return [String]
         attr_accessor :gcs_bucket_path
       
-        # Optional. (Optional) Dataplex task job id, if specified will be used as part
-        # of ImportEntries LRO ID
+        # Optional. (Optional) Dataplex Universal Catalog task job id, if specified will
+        # be used as part of ImportEntries LRO ID
         # Corresponds to the JSON property `jobId`
         # @return [String]
         attr_accessor :job_id
@@ -1851,18 +1852,18 @@ module Google
         end
       end
       
-      # The configuration related to the migration to Dataplex applied to an
-      # organization or project. It is the response message for SetConfig and
-      # RetrieveEffectiveConfig.
+      # The configuration related to the migration to Dataplex Universal Catalog
+      # applied to an organization or project. It is the response message for
+      # SetConfig and RetrieveEffectiveConfig.
       class GoogleCloudDatacatalogV1MigrationConfig
         include Google::Apis::Core::Hashable
       
-        # Opt-in status for the UI switch to Dataplex.
+        # Opt-in status for the UI switch to Dataplex Universal Catalog.
         # Corresponds to the JSON property `catalogUiExperience`
         # @return [String]
         attr_accessor :catalog_ui_experience
       
-        # Opt-in status for the migration of Tag Templates to Dataplex.
+        # Opt-in status for the migration of Tag Templates to Dataplex Universal Catalog.
         # Corresponds to the JSON property `tagTemplateMigration`
         # @return [String]
         attr_accessor :tag_template_migration
@@ -1943,9 +1944,9 @@ module Google
         end
       end
       
-      # The configuration related to the migration from Data Catalog to Dataplex that
-      # has been applied to an organization and any projects under it. It is the
-      # response message for RetrieveConfig.
+      # The configuration related to the migration from Data Catalog to Dataplex
+      # Universal Catalog that has been applied to an organization and any projects
+      # under it. It is the response message for RetrieveConfig.
       class GoogleCloudDatacatalogV1OrganizationConfig
         include Google::Apis::Core::Hashable
       
@@ -2223,8 +2224,7 @@ module Google
       class GoogleCloudDatacatalogV1ReconcileTagsRequest
         include Google::Apis::Core::Hashable
       
-        # If set to `true`, deletes entry tags related to a tag template not listed in
-        # the tags source from an entry. If set to `false`, unlisted tags are retained.
+        # 
         # Corresponds to the JSON property `forceDeleteMissing`
         # @return [Boolean]
         attr_accessor :force_delete_missing
@@ -2822,12 +2822,12 @@ module Google
       class GoogleCloudDatacatalogV1SetConfigRequest
         include Google::Apis::Core::Hashable
       
-        # Opt-in status for the UI switch to Dataplex.
+        # Opt-in status for the UI switch to Dataplex Universal Catalog.
         # Corresponds to the JSON property `catalogUiExperience`
         # @return [String]
         attr_accessor :catalog_ui_experience
       
-        # Opt-in status for the migration of Tag Templates to Dataplex.
+        # Opt-in status for the migration of Tag Templates to Dataplex Universal Catalog.
         # Corresponds to the JSON property `tagTemplateMigration`
         # @return [String]
         attr_accessor :tag_template_migration

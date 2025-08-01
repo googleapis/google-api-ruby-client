@@ -1066,6 +1066,13 @@ module Google
         # @return [String]
         attr_accessor :state_message
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: "123/environment": "production", "123/costCenter": "
+        # marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # Output only. The globally unique resource identifier of the metastore
         # federation.
         # Corresponds to the JSON property `uid`
@@ -1096,6 +1103,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
+          @tags = args[:tags] if args.key?(:tags)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
           @version = args[:version] if args.key?(:version)
@@ -2651,6 +2659,13 @@ module Google
         # @return [String]
         attr_accessor :state_message
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: "123/environment": "production", "123/costCenter": "
+        # marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # Telemetry Configuration for the Dataproc Metastore service.
         # Corresponds to the JSON property `telemetryConfig`
         # @return [Google::Apis::MetastoreV1alpha::TelemetryConfig]
@@ -2698,6 +2713,7 @@ module Google
           @scheduled_backup = args[:scheduled_backup] if args.key?(:scheduled_backup)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
+          @tags = args[:tags] if args.key?(:tags)
           @telemetry_config = args[:telemetry_config] if args.key?(:telemetry_config)
           @tier = args[:tier] if args.key?(:tier)
           @uid = args[:uid] if args.key?(:uid)

@@ -1459,7 +1459,7 @@ module Google
         # Creates a new WorkerPool in a given project and location.
         # @param [String] parent
         #   Required. The location and project in which this worker pool should be created.
-        #   Format: projects/`project`/locations/`location`, where `project` can be
+        #   Format: `projects/`project`/locations/`location``, where ``project`` can be
         #   project id or number. Only lowercase characters, digits, and hyphens.
         # @param [Google::Apis::RunV2::GoogleCloudRunV2WorkerPool] google_cloud_run_v2_worker_pool_object
         # @param [Boolean] validate_only
@@ -1468,7 +1468,7 @@ module Google
         # @param [String] worker_pool_id
         #   Required. The unique identifier for the WorkerPool. It must begin with letter,
         #   and cannot end with hyphen; must contain fewer than 50 characters. The name of
-        #   the worker pool becomes `parent`/workerPools/`worker_pool_id`.
+        #   the worker pool becomes ``parent`/workerPools/`worker_pool_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1502,9 +1502,9 @@ module Google
         
         # Deletes a WorkerPool.
         # @param [String] name
-        #   Required. The full name of the WorkerPool. Format: projects/`project`/
-        #   locations/`location`/workerPools/`worker_pool`, where `project` can be project
-        #   id or number.
+        #   Required. The full name of the WorkerPool. Format: `projects/`project`/
+        #   locations/`location`/workerPools/`worker_pool``, where ``project`` can be
+        #   project id or number.
         # @param [String] etag
         #   A system-generated fingerprint for this version of the resource. May be used
         #   to detect modification conflict during updates.
@@ -1542,9 +1542,9 @@ module Google
         
         # Gets information about a WorkerPool.
         # @param [String] name
-        #   Required. The full name of the WorkerPool. Format: projects/`project`/
-        #   locations/`location`/workerPools/`worker_pool`, where `project` can be project
-        #   id or number.
+        #   Required. The full name of the WorkerPool. Format: `projects/`project`/
+        #   locations/`location`/workerPools/`worker_pool``, where ``project`` can be
+        #   project id or number.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1620,8 +1620,8 @@ module Google
         # Lists WorkerPools. Results are sorted by creation time, descending.
         # @param [String] parent
         #   Required. The location and project to list resources on. Location must be a
-        #   valid Google Cloud region, and cannot be the "-" wildcard. Format: projects/`
-        #   project`/locations/`location`, where `project` can be project id or number.
+        #   valid Google Cloud region, and cannot be the "-" wildcard. Format: `projects/`
+        #   project`/locations/`location``, where ``project`` can be project id or number.
         # @param [Fixnum] page_size
         #   Maximum number of WorkerPools to return in this call.
         # @param [String] page_token
@@ -1663,8 +1663,8 @@ module Google
         # @param [String] name
         #   The fully qualified name of this WorkerPool. In CreateWorkerPoolRequest, this
         #   field is ignored, and instead composed from CreateWorkerPoolRequest.parent and
-        #   CreateWorkerPoolRequest.worker_id. Format: projects/`project`/locations/`
-        #   location`/workerPools/`worker_id`
+        #   CreateWorkerPoolRequest.worker_id. Format: `projects/`project`/locations/`
+        #   location`/workerPools/`worker_id``
         # @param [Google::Apis::RunV2::GoogleCloudRunV2WorkerPool] google_cloud_run_v2_worker_pool_object
         # @param [Boolean] allow_missing
         #   Optional. If set to true, and if the WorkerPool does not exist, it will create

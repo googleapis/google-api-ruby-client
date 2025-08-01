@@ -845,8 +845,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates tag bindings directly attached to a GCP resource. Update_mask can be
-        # kept empty or "*".
+        # Updates tag bindings directly attached to a GCP resource.
         # @param [String] name
         #   Identifier. The name of the TagBindingCollection, following the convention: `
         #   locations/`location`/tagBindingCollections/`encoded-full-resource-name`` where
@@ -854,8 +853,6 @@ module Google
         #   the TagBindings are bound to. "locations/global/tagBindingCollections/%2f%
         #   2fcloudresourcemanager.googleapis.com%2fprojects%2f123"
         # @param [Google::Apis::CloudresourcemanagerV3::TagBindingCollection] tag_binding_collection_object
-        # @param [String] update_mask
-        #   Optional. An update mask to selectively update fields.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -873,14 +870,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_location_tag_binding_collection(name, tag_binding_collection_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'v3/{+name}', options)
+        def update_location_tag_binding_collection(name, tag_binding_collection_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'v3/{+name}', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV3::TagBindingCollection::Representation
           command.request_object = tag_binding_collection_object
           command.response_representation = Google::Apis::CloudresourcemanagerV3::Operation::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV3::Operation
           command.params['name'] = name unless name.nil?
-          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

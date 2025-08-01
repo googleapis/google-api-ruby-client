@@ -1241,6 +1241,11 @@ module Google
         attr_accessor :enable_generative_fallback
         alias_method :enable_generative_fallback?, :enable_generative_fallback
       
+        # A list of Generators to be called during this fulfillment.
+        # Corresponds to the JSON property `generators`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings>]
+        attr_accessor :generators
+      
         # The list of rich message responses to present to the user.
         # Corresponds to the JSON property `messages`
         # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ResponseMessage>]
@@ -1286,6 +1291,7 @@ module Google
           @advanced_settings = args[:advanced_settings] if args.key?(:advanced_settings)
           @conditional_cases = args[:conditional_cases] if args.key?(:conditional_cases)
           @enable_generative_fallback = args[:enable_generative_fallback] if args.key?(:enable_generative_fallback)
+          @generators = args[:generators] if args.key?(:generators)
           @messages = args[:messages] if args.key?(:messages)
           @return_partial_responses = args[:return_partial_responses] if args.key?(:return_partial_responses)
           @set_parameter_actions = args[:set_parameter_actions] if args.key?(:set_parameter_actions)
@@ -1377,6 +1383,44 @@ module Google
         def update!(**args)
           @additional_cases = args[:additional_cases] if args.key?(:additional_cases)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Generator settings used by the LLM to generate a text response.
+      class GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings
+        include Google::Apis::Core::Hashable
+      
+        # Required. The generator to call. Format: `projects//locations//agents//
+        # generators/`.
+        # Corresponds to the JSON property `generator`
+        # @return [String]
+        attr_accessor :generator
+      
+        # Map from placeholder parameter in the Generator to corresponding session
+        # parameters. By default, Dialogflow uses the session parameter with the same
+        # name to fill in the generator template. e.g. If there is a placeholder
+        # parameter `city` in the Generator, Dialogflow default to fill in the `$city`
+        # with `$session.params.city`. However, you may choose to fill `$city` with `$
+        # session.params.desination-city`. - Map key: parameter ID - Map value: session
+        # parameter name
+        # Corresponds to the JSON property `inputParameters`
+        # @return [Hash<String,String>]
+        attr_accessor :input_parameters
+      
+        # Required. Output parameter which should contain the generator response.
+        # Corresponds to the JSON property `outputParameter`
+        # @return [String]
+        attr_accessor :output_parameter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generator = args[:generator] if args.key?(:generator)
+          @input_parameters = args[:input_parameters] if args.key?(:input_parameters)
+          @output_parameter = args[:output_parameter] if args.key?(:output_parameter)
         end
       end
       
@@ -6357,6 +6401,11 @@ module Google
         # @return [String]
         attr_accessor :document_uri
       
+        # Metadata associated with the document.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
         # Text included in the prompt.
         # Corresponds to the JSON property `text`
         # @return [String]
@@ -6370,6 +6419,7 @@ module Google
         def update!(**args)
           @document_title = args[:document_title] if args.key?(:document_title)
           @document_uri = args[:document_uri] if args.key?(:document_uri)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @text = args[:text] if args.key?(:text)
         end
       end
@@ -8535,6 +8585,11 @@ module Google
         attr_accessor :enable_generative_fallback
         alias_method :enable_generative_fallback?, :enable_generative_fallback
       
+        # A list of Generators to be called during this fulfillment.
+        # Corresponds to the JSON property `generators`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings>]
+        attr_accessor :generators
+      
         # The list of rich message responses to present to the user.
         # Corresponds to the JSON property `messages`
         # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessage>]
@@ -8580,6 +8635,7 @@ module Google
           @advanced_settings = args[:advanced_settings] if args.key?(:advanced_settings)
           @conditional_cases = args[:conditional_cases] if args.key?(:conditional_cases)
           @enable_generative_fallback = args[:enable_generative_fallback] if args.key?(:enable_generative_fallback)
+          @generators = args[:generators] if args.key?(:generators)
           @messages = args[:messages] if args.key?(:messages)
           @return_partial_responses = args[:return_partial_responses] if args.key?(:return_partial_responses)
           @set_parameter_actions = args[:set_parameter_actions] if args.key?(:set_parameter_actions)
@@ -8671,6 +8727,44 @@ module Google
         def update!(**args)
           @additional_cases = args[:additional_cases] if args.key?(:additional_cases)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Generator settings used by the LLM to generate a text response.
+      class GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings
+        include Google::Apis::Core::Hashable
+      
+        # Required. The generator to call. Format: `projects//locations//agents//
+        # generators/`.
+        # Corresponds to the JSON property `generator`
+        # @return [String]
+        attr_accessor :generator
+      
+        # Map from placeholder parameter in the Generator to corresponding session
+        # parameters. By default, Dialogflow uses the session parameter with the same
+        # name to fill in the generator template. e.g. If there is a placeholder
+        # parameter `city` in the Generator, Dialogflow default to fill in the `$city`
+        # with `$session.params.city`. However, you may choose to fill `$city` with `$
+        # session.params.desination-city`. - Map key: parameter ID - Map value: session
+        # parameter name
+        # Corresponds to the JSON property `inputParameters`
+        # @return [Hash<String,String>]
+        attr_accessor :input_parameters
+      
+        # Required. Output parameter which should contain the generator response.
+        # Corresponds to the JSON property `outputParameter`
+        # @return [String]
+        attr_accessor :output_parameter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generator = args[:generator] if args.key?(:generator)
+          @input_parameters = args[:input_parameters] if args.key?(:input_parameters)
+          @output_parameter = args[:output_parameter] if args.key?(:output_parameter)
         end
       end
       
@@ -11998,6 +12092,14 @@ module Google
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1LlmModelSettings]
         attr_accessor :llm_model_settings
       
+        # Scope for the parameters. If not specified, parameters will be treated as
+        # session parameters. Parameters with custom scope will not be put into session
+        # parameters. You can reference the parameters with custom scope in the agent
+        # with the following format: $parameter-scope.params.parameter-id.
+        # Corresponds to the JSON property `parameterScope`
+        # @return [String]
+        attr_accessor :parameter_scope
+      
         # Additional parameters to be put into session parameters. To remove a parameter
         # from the session, clients should explicitly set the parameter value to null.
         # You can reference the session parameters in the agent with the following
@@ -12085,6 +12187,7 @@ module Google
           @flow_versions = args[:flow_versions] if args.key?(:flow_versions)
           @geo_location = args[:geo_location] if args.key?(:geo_location)
           @llm_model_settings = args[:llm_model_settings] if args.key?(:llm_model_settings)
+          @parameter_scope = args[:parameter_scope] if args.key?(:parameter_scope)
           @parameters = args[:parameters] if args.key?(:parameters)
           @payload = args[:payload] if args.key?(:payload)
           @populate_data_store_connection_signals = args[:populate_data_store_connection_signals] if args.key?(:populate_data_store_connection_signals)
@@ -13084,6 +13187,11 @@ module Google
         # @return [String]
         attr_accessor :default_banned_phrase_match_strategy
       
+        # Settings for prompt security checks.
+        # Corresponds to the JSON property `promptSecuritySettings`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SafetySettingsPromptSecuritySettings]
+        attr_accessor :prompt_security_settings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -13092,6 +13200,7 @@ module Google
         def update!(**args)
           @banned_phrases = args[:banned_phrases] if args.key?(:banned_phrases)
           @default_banned_phrase_match_strategy = args[:default_banned_phrase_match_strategy] if args.key?(:default_banned_phrase_match_strategy)
+          @prompt_security_settings = args[:prompt_security_settings] if args.key?(:prompt_security_settings)
         end
       end
       
@@ -13117,6 +13226,26 @@ module Google
         def update!(**args)
           @language_code = args[:language_code] if args.key?(:language_code)
           @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Settings for prompt security checks.
+      class GoogleCloudDialogflowCxV3beta1SafetySettingsPromptSecuritySettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Enable prompt security checks.
+        # Corresponds to the JSON property `enablePromptSecurity`
+        # @return [Boolean]
+        attr_accessor :enable_prompt_security
+        alias_method :enable_prompt_security?, :enable_prompt_security
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_prompt_security = args[:enable_prompt_security] if args.key?(:enable_prompt_security)
         end
       end
       
@@ -16618,6 +16747,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # The time when the operation finished.
+        # Corresponds to the JSON property `doneTime`
+        # @return [String]
+        attr_accessor :done_time
+      
         # State of CreateConversationModel operation.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -16631,6 +16765,7 @@ module Google
         def update!(**args)
           @conversation_model = args[:conversation_model] if args.key?(:conversation_model)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @done_time = args[:done_time] if args.key?(:done_time)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -16664,6 +16799,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # The time when the operation finished.
+        # Corresponds to the JSON property `doneTime`
+        # @return [String]
+        attr_accessor :done_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -16672,6 +16812,7 @@ module Google
         def update!(**args)
           @conversation_model = args[:conversation_model] if args.key?(:conversation_model)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @done_time = args[:done_time] if args.key?(:done_time)
         end
       end
       
@@ -16691,6 +16832,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # The time when the operation finished.
+        # Corresponds to the JSON property `doneTime`
+        # @return [String]
+        attr_accessor :done_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -16699,6 +16845,7 @@ module Google
         def update!(**args)
           @conversation_model = args[:conversation_model] if args.key?(:conversation_model)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @done_time = args[:done_time] if args.key?(:done_time)
         end
       end
       
@@ -18714,6 +18861,11 @@ module Google
       class GoogleCloudDialogflowV2KnowledgeOperationMetadata
         include Google::Apis::Core::Hashable
       
+        # The time when the operation finished.
+        # Corresponds to the JSON property `doneTime`
+        # @return [String]
+        attr_accessor :done_time
+      
         # Metadata related to the Export Data Operations (e.g. ExportDocument).
         # Corresponds to the JSON property `exportOperationMetadata`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2ExportOperationMetadata]
@@ -18735,6 +18887,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @done_time = args[:done_time] if args.key?(:done_time)
           @export_operation_metadata = args[:export_operation_metadata] if args.key?(:export_operation_metadata)
           @knowledge_base = args[:knowledge_base] if args.key?(:knowledge_base)
           @state = args[:state] if args.key?(:state)
@@ -19617,7 +19770,7 @@ module Google
       class GoogleCloudDialogflowV2ToolCall
         include Google::Apis::Core::Hashable
       
-        # Required. The name of the tool's action associated with this call.
+        # Optional. The name of the tool's action associated with this call.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -19632,7 +19785,7 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :input_parameters
       
-        # Required. The tool associated with this call. Format: `projects//locations//
+        # Optional. The tool associated with this call. Format: `projects//locations//
         # tools/`.
         # Corresponds to the JSON property `tool`
         # @return [String]
@@ -19655,7 +19808,7 @@ module Google
       class GoogleCloudDialogflowV2ToolCallResult
         include Google::Apis::Core::Hashable
       
-        # Required. The name of the tool's action associated with this call.
+        # Optional. The name of the tool's action associated with this call.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -19682,7 +19835,7 @@ module Google
         # @return [String]
         attr_accessor :raw_content
       
-        # Required. The tool associated with this call. Format: `projects//locations//
+        # Optional. The tool associated with this call. Format: `projects//locations//
         # tools/`.
         # Corresponds to the JSON property `tool`
         # @return [String]
@@ -19738,6 +19891,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # The time when the operation finished.
+        # Corresponds to the JSON property `doneTime`
+        # @return [String]
+        attr_accessor :done_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -19746,6 +19904,7 @@ module Google
         def update!(**args)
           @conversation_model = args[:conversation_model] if args.key?(:conversation_model)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @done_time = args[:done_time] if args.key?(:done_time)
         end
       end
       
@@ -22717,6 +22876,11 @@ module Google
       class GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata
         include Google::Apis::Core::Hashable
       
+        # The time when the operation finished.
+        # Corresponds to the JSON property `doneTime`
+        # @return [String]
+        attr_accessor :done_time
+      
         # Metadata related to the Export Data Operations (e.g. ExportDocument).
         # Corresponds to the JSON property `exportOperationMetadata`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1ExportOperationMetadata]
@@ -22738,6 +22902,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @done_time = args[:done_time] if args.key?(:done_time)
           @export_operation_metadata = args[:export_operation_metadata] if args.key?(:export_operation_metadata)
           @knowledge_base = args[:knowledge_base] if args.key?(:knowledge_base)
           @state = args[:state] if args.key?(:state)
@@ -23901,7 +24066,7 @@ module Google
       class GoogleCloudDialogflowV2beta1ToolCall
         include Google::Apis::Core::Hashable
       
-        # Required. The name of the tool's action associated with this call.
+        # Optional. The name of the tool's action associated with this call.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -23916,7 +24081,7 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :input_parameters
       
-        # Required. The tool associated with this call. Format: `projects//locations//
+        # Optional. The tool associated with this call. Format: `projects//locations//
         # tools/`.
         # Corresponds to the JSON property `tool`
         # @return [String]
@@ -23939,7 +24104,7 @@ module Google
       class GoogleCloudDialogflowV2beta1ToolCallResult
         include Google::Apis::Core::Hashable
       
-        # Required. The name of the tool's action associated with this call.
+        # Optional. The name of the tool's action associated with this call.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -23966,7 +24131,7 @@ module Google
         # @return [String]
         attr_accessor :raw_content
       
-        # Required. The tool associated with this call. Format: `projects//locations//
+        # Optional. The tool associated with this call. Format: `projects//locations//
         # tools/`.
         # Corresponds to the JSON property `tool`
         # @return [String]

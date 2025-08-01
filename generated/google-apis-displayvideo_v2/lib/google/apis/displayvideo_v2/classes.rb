@@ -1636,7 +1636,7 @@ module Google
         # CreateAssignedTargetingOptionsRequest`. Supported targeting types: * `
         # TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `
         # TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `
-        # TARGETING_TYPE_KEYWORD`
+        # TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_INVENTORY_MODE`
         # Corresponds to the JSON property `createRequests`
         # @return [Array<Google::Apis::DisplayvideoV2::CreateAssignedTargetingOptionsRequest>]
         attr_accessor :create_requests
@@ -1645,7 +1645,7 @@ module Google
         # DeleteAssignedTargetingOptionsRequest`. Supported targeting types: * `
         # TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `
         # TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `
-        # TARGETING_TYPE_KEYWORD`
+        # TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_INVENTORY_MODE`
         # Corresponds to the JSON property `deleteRequests`
         # @return [Array<Google::Apis::DisplayvideoV2::DeleteAssignedTargetingOptionsRequest>]
         attr_accessor :delete_requests
@@ -11103,6 +11103,40 @@ module Google
         end
       end
       
+      # The video ad inventory control used in certain YouTube line item types.
+      class VideoAdInventoryControl
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether ads can serve as in-feed format.
+        # Corresponds to the JSON property `allowInFeed`
+        # @return [Boolean]
+        attr_accessor :allow_in_feed
+        alias_method :allow_in_feed?, :allow_in_feed
+      
+        # Optional. Whether ads can serve as in-stream format.
+        # Corresponds to the JSON property `allowInStream`
+        # @return [Boolean]
+        attr_accessor :allow_in_stream
+        alias_method :allow_in_stream?, :allow_in_stream
+      
+        # Optional. Whether ads can serve as shorts format.
+        # Corresponds to the JSON property `allowShorts`
+        # @return [Boolean]
+        attr_accessor :allow_shorts
+        alias_method :allow_shorts?, :allow_shorts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_in_feed = args[:allow_in_feed] if args.key?(:allow_in_feed)
+          @allow_in_stream = args[:allow_in_stream] if args.key?(:allow_in_stream)
+          @allow_shorts = args[:allow_shorts] if args.key?(:allow_shorts)
+        end
+      end
+      
       # Settings related to VideoAdSequence.
       class VideoAdSequenceSettings
         include Google::Apis::Core::Hashable
@@ -11697,20 +11731,17 @@ module Google
         # @return [Google::Apis::DisplayvideoV2::YoutubeAndPartnersBiddingStrategy]
         attr_accessor :bidding_strategy
       
-        # The kind of content on which the YouTube and Partners ads will be shown. *
-        # Warning*: Starting **June 12, 2025**, this setting will no longer be editable.
-        # This field will eventually be removed. [Read more about this announced change](
-        # /display-video/api/deprecations#features.li_yt_content_category)
+        # Output only. The kind of content on which the YouTube and Partners ads will be
+        # shown. *Warning*: This field will be removed in the near future. Use
+        # effective_content_category instead.
         # Corresponds to the JSON property `contentCategory`
         # @return [String]
         attr_accessor :content_category
       
         # Output only. The content category which takes effect when serving the line
         # item. When content category is set in both line item and advertiser, the
-        # stricter one will take effect when serving the line item. *Warning*: Starting *
-        # *June 12, 2025**, this field will only reflect the advertiser level setting
-        # for new line items. [Read more about this announced change](/display-video/api/
-        # deprecations#features.li_yt_content_category)
+        # stricter one will take effect when serving the line item. New line items will
+        # only inherit the advertiser level setting.
         # Corresponds to the JSON property `effectiveContentCategory`
         # @return [String]
         attr_accessor :effective_content_category
@@ -11750,6 +11781,11 @@ module Google
         # @return [Google::Apis::DisplayvideoV2::YoutubeAndPartnersThirdPartyMeasurementSettings]
         attr_accessor :third_party_measurement_settings
       
+        # The video ad inventory control used in certain YouTube line item types.
+        # Corresponds to the JSON property `videoAdInventoryControl`
+        # @return [Google::Apis::DisplayvideoV2::VideoAdInventoryControl]
+        attr_accessor :video_ad_inventory_control
+      
         # Settings related to VideoAdSequence.
         # Corresponds to the JSON property `videoAdSequenceSettings`
         # @return [Google::Apis::DisplayvideoV2::VideoAdSequenceSettings]
@@ -11776,6 +11812,7 @@ module Google
           @related_video_ids = args[:related_video_ids] if args.key?(:related_video_ids)
           @target_frequency = args[:target_frequency] if args.key?(:target_frequency)
           @third_party_measurement_settings = args[:third_party_measurement_settings] if args.key?(:third_party_measurement_settings)
+          @video_ad_inventory_control = args[:video_ad_inventory_control] if args.key?(:video_ad_inventory_control)
           @video_ad_sequence_settings = args[:video_ad_sequence_settings] if args.key?(:video_ad_sequence_settings)
           @view_frequency_cap = args[:view_frequency_cap] if args.key?(:view_frequency_cap)
         end

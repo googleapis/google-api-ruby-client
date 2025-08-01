@@ -1324,6 +1324,11 @@ module Google
       class AllocationResourceStatus
         include Google::Apis::Core::Hashable
       
+        # Health information for the reservation.
+        # Corresponds to the JSON property `healthInfo`
+        # @return [Google::Apis::ComputeV1::AllocationResourceStatusHealthInfo]
+        attr_accessor :health_info
+      
         # The number of reservation blocks associated with this reservation.
         # Corresponds to the JSON property `reservationBlockCount`
         # @return [Fixnum]
@@ -1345,9 +1350,41 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @health_info = args[:health_info] if args.key?(:health_info)
           @reservation_block_count = args[:reservation_block_count] if args.key?(:reservation_block_count)
           @reservation_maintenance = args[:reservation_maintenance] if args.key?(:reservation_maintenance)
           @specific_sku_allocation = args[:specific_sku_allocation] if args.key?(:specific_sku_allocation)
+        end
+      end
+      
+      # Health information for the reservation.
+      class AllocationResourceStatusHealthInfo
+        include Google::Apis::Core::Hashable
+      
+        # The number of reservation blocks that are degraded.
+        # Corresponds to the JSON property `degradedBlockCount`
+        # @return [Fixnum]
+        attr_accessor :degraded_block_count
+      
+        # The health status of the reservation.
+        # Corresponds to the JSON property `healthStatus`
+        # @return [String]
+        attr_accessor :health_status
+      
+        # The number of reservation blocks that are healthy.
+        # Corresponds to the JSON property `healthyBlockCount`
+        # @return [Fixnum]
+        attr_accessor :healthy_block_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @degraded_block_count = args[:degraded_block_count] if args.key?(:degraded_block_count)
+          @health_status = args[:health_status] if args.key?(:health_status)
+          @healthy_block_count = args[:healthy_block_count] if args.key?(:healthy_block_count)
         end
       end
       
@@ -3851,6 +3888,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :timeout_sec
       
+        # Configuration for Backend Authenticated TLS and mTLS. May only be specified
+        # when the backend protocol is SSL, HTTPS or HTTP2.
+        # Corresponds to the JSON property `tlsSettings`
+        # @return [Google::Apis::ComputeV1::BackendServiceTlsSettings]
+        attr_accessor :tls_settings
+      
         # [Output Only] List of resources referencing given backend service.
         # Corresponds to the JSON property `usedBy`
         # @return [Array<Google::Apis::ComputeV1::BackendServiceUsedBy>]
@@ -3909,6 +3952,7 @@ module Google
           @strong_session_affinity_cookie = args[:strong_session_affinity_cookie] if args.key?(:strong_session_affinity_cookie)
           @subsetting = args[:subsetting] if args.key?(:subsetting)
           @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
+          @tls_settings = args[:tls_settings] if args.key?(:tls_settings)
           @used_by = args[:used_by] if args.key?(:used_by)
         end
       end
@@ -5024,6 +5068,80 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backend_service = args[:backend_service] if args.key?(:backend_service)
+        end
+      end
+      
+      # 
+      class BackendServiceTlsSettings
+        include Google::Apis::Core::Hashable
+      
+        # Reference to the BackendAuthenticationConfig resource from the networksecurity.
+        # googleapis.com namespace. Can be used in authenticating TLS connections to the
+        # backend, as specified by the authenticationMode field. Can only be specified
+        # if authenticationMode is not NONE.
+        # Corresponds to the JSON property `authenticationConfig`
+        # @return [String]
+        attr_accessor :authentication_config
+      
+        # Server Name Indication - see RFC3546 section 3.1. If set, the load balancer
+        # sends this string as the SNI hostname in the TLS connection to the backend,
+        # and requires that this string match a Subject Alternative Name (SAN) in the
+        # backend's server certificate. With a Regional Internet NEG backend, if the SNI
+        # is specified here, the load balancer uses it regardless of whether the
+        # Regional Internet NEG is specified with FQDN or IP address and port. When both
+        # sni and subjectAltNames[] are specified, the load balancer matches the backend
+        # certificate's SAN only to subjectAltNames[].
+        # Corresponds to the JSON property `sni`
+        # @return [String]
+        attr_accessor :sni
+      
+        # A list of Subject Alternative Names (SANs) that the Load Balancer verifies
+        # during a TLS handshake with the backend. When the server presents its X.509
+        # certificate to the Load Balancer, the Load Balancer inspects the certificate's
+        # SAN field, and requires that at least one SAN match one of the subjectAltNames
+        # in the list. This field is limited to 5 entries. When both sni and
+        # subjectAltNames[] are specified, the load balancer matches the backend
+        # certificate's SAN only to subjectAltNames[].
+        # Corresponds to the JSON property `subjectAltNames`
+        # @return [Array<Google::Apis::ComputeV1::BackendServiceTlsSettingsSubjectAltName>]
+        attr_accessor :subject_alt_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authentication_config = args[:authentication_config] if args.key?(:authentication_config)
+          @sni = args[:sni] if args.key?(:sni)
+          @subject_alt_names = args[:subject_alt_names] if args.key?(:subject_alt_names)
+        end
+      end
+      
+      # A Subject Alternative Name that the load balancer matches against the SAN
+      # field in the TLS certificate provided by the backend, specified as either a
+      # DNS name or a URI, in accordance with RFC 5280 4.2.1.6
+      class BackendServiceTlsSettingsSubjectAltName
+        include Google::Apis::Core::Hashable
+      
+        # The SAN specified as a DNS Name.
+        # Corresponds to the JSON property `dnsName`
+        # @return [String]
+        attr_accessor :dns_name
+      
+        # The SAN specified as a URI.
+        # Corresponds to the JSON property `uniformResourceIdentifier`
+        # @return [String]
+        attr_accessor :uniform_resource_identifier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_name = args[:dns_name] if args.key?(:dns_name)
+          @uniform_resource_identifier = args[:uniform_resource_identifier] if args.key?(:uniform_resource_identifier)
         end
       end
       
@@ -11445,6 +11563,16 @@ module Google
       class GroupMaintenanceInfo
         include Google::Apis::Core::Hashable
       
+        # Describes number of instances that have ongoing maintenance.
+        # Corresponds to the JSON property `instanceMaintenanceOngoingCount`
+        # @return [Fixnum]
+        attr_accessor :instance_maintenance_ongoing_count
+      
+        # Describes number of instances that have pending maintenance.
+        # Corresponds to the JSON property `instanceMaintenancePendingCount`
+        # @return [Fixnum]
+        attr_accessor :instance_maintenance_pending_count
+      
         # Progress for ongoing maintenance for this group of VMs/hosts. Describes number
         # of hosts in the block that have ongoing maintenance.
         # Corresponds to the JSON property `maintenanceOngoingCount`
@@ -11462,6 +11590,22 @@ module Google
         # @return [String]
         attr_accessor :scheduling_type
       
+        # Describes number of subblock Infrastructure that has ongoing maintenance. Here,
+        # Subblock Infrastructure Maintenance pertains to upstream hardware contained
+        # in the Subblock that is necessary for a VM Family(e.g. NVLink Domains). Not
+        # all VM Families will support this field.
+        # Corresponds to the JSON property `subblockInfraMaintenanceOngoingCount`
+        # @return [Fixnum]
+        attr_accessor :subblock_infra_maintenance_ongoing_count
+      
+        # Describes number of subblock Infrastructure that has pending maintenance. Here,
+        # Subblock Infrastructure Maintenance pertains to upstream hardware contained
+        # in the Subblock that is necessary for a VM Family (e.g. NVLink Domains). Not
+        # all VM Families will support this field.
+        # Corresponds to the JSON property `subblockInfraMaintenancePendingCount`
+        # @return [Fixnum]
+        attr_accessor :subblock_infra_maintenance_pending_count
+      
         # Upcoming Maintenance notification information.
         # Corresponds to the JSON property `upcomingGroupMaintenance`
         # @return [Google::Apis::ComputeV1::UpcomingMaintenance]
@@ -11473,9 +11617,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @instance_maintenance_ongoing_count = args[:instance_maintenance_ongoing_count] if args.key?(:instance_maintenance_ongoing_count)
+          @instance_maintenance_pending_count = args[:instance_maintenance_pending_count] if args.key?(:instance_maintenance_pending_count)
           @maintenance_ongoing_count = args[:maintenance_ongoing_count] if args.key?(:maintenance_ongoing_count)
           @maintenance_pending_count = args[:maintenance_pending_count] if args.key?(:maintenance_pending_count)
           @scheduling_type = args[:scheduling_type] if args.key?(:scheduling_type)
+          @subblock_infra_maintenance_ongoing_count = args[:subblock_infra_maintenance_ongoing_count] if args.key?(:subblock_infra_maintenance_ongoing_count)
+          @subblock_infra_maintenance_pending_count = args[:subblock_infra_maintenance_pending_count] if args.key?(:subblock_infra_maintenance_pending_count)
           @upcoming_group_maintenance = args[:upcoming_group_maintenance] if args.key?(:upcoming_group_maintenance)
         end
       end
@@ -35952,6 +36100,11 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
+        # The type of maintenance for the reservation.
+        # Corresponds to the JSON property `schedulingType`
+        # @return [String]
+        attr_accessor :scheduling_type
+      
         # [Output Only] Server-defined fully-qualified URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -36011,6 +36164,7 @@ module Google
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @resource_status = args[:resource_status] if args.key?(:resource_status)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
+          @scheduling_type = args[:scheduling_type] if args.key?(:scheduling_type)
           @self_link = args[:self_link] if args.key?(:self_link)
           @share_settings = args[:share_settings] if args.key?(:share_settings)
           @specific_reservation = args[:specific_reservation] if args.key?(:specific_reservation)
@@ -36196,6 +36350,11 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
+        # Health information for the reservation block.
+        # Corresponds to the JSON property `healthInfo`
+        # @return [Google::Apis::ComputeV1::ReservationBlockHealthInfo]
+        attr_accessor :health_info
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -36272,6 +36431,7 @@ module Google
         def update!(**args)
           @count = args[:count] if args.key?(:count)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @health_info = args[:health_info] if args.key?(:health_info)
           @id = args[:id] if args.key?(:id)
           @in_use_count = args[:in_use_count] if args.key?(:in_use_count)
           @kind = args[:kind] if args.key?(:kind)
@@ -36284,6 +36444,37 @@ module Google
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @status = args[:status] if args.key?(:status)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # Health information for the reservation block.
+      class ReservationBlockHealthInfo
+        include Google::Apis::Core::Hashable
+      
+        # The number of subBlocks that are degraded.
+        # Corresponds to the JSON property `degradedSubBlockCount`
+        # @return [Fixnum]
+        attr_accessor :degraded_sub_block_count
+      
+        # The health status of the reservation block.
+        # Corresponds to the JSON property `healthStatus`
+        # @return [String]
+        attr_accessor :health_status
+      
+        # The number of subBlocks that are healthy.
+        # Corresponds to the JSON property `healthySubBlockCount`
+        # @return [Fixnum]
+        attr_accessor :healthy_sub_block_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @degraded_sub_block_count = args[:degraded_sub_block_count] if args.key?(:degraded_sub_block_count)
+          @health_status = args[:health_status] if args.key?(:health_status)
+          @healthy_sub_block_count = args[:healthy_sub_block_count] if args.key?(:healthy_sub_block_count)
         end
       end
       
@@ -36301,6 +36492,11 @@ module Google
         # @return [String]
         attr_accessor :cluster
       
+        # The detailed instances information for a given Block
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::ComputeV1::ReservationBlockPhysicalTopologyInstance>]
+        attr_accessor :instances
+      
         def initialize(**args)
            update!(**args)
         end
@@ -36309,6 +36505,63 @@ module Google
         def update!(**args)
           @block = args[:block] if args.key?(:block)
           @cluster = args[:cluster] if args.key?(:cluster)
+          @instances = args[:instances] if args.key?(:instances)
+        end
+      end
+      
+      # The instances information for a given Block
+      class ReservationBlockPhysicalTopologyInstance
+        include Google::Apis::Core::Hashable
+      
+        # The InstanceId of the instance
+        # Corresponds to the JSON property `instanceId`
+        # @return [Fixnum]
+        attr_accessor :instance_id
+      
+        # The PhysicalHostTopology of the instance within a Block resource.
+        # Corresponds to the JSON property `physicalHostTopology`
+        # @return [Google::Apis::ComputeV1::ReservationBlockPhysicalTopologyInstancePhysicalHostTopology]
+        attr_accessor :physical_host_topology
+      
+        # Project where the instance lives
+        # Corresponds to the JSON property `projectId`
+        # @return [Fixnum]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @physical_host_topology = args[:physical_host_topology] if args.key?(:physical_host_topology)
+          @project_id = args[:project_id] if args.key?(:project_id)
+        end
+      end
+      
+      # The PhysicalHostTopology of the instance within a Block resource.
+      class ReservationBlockPhysicalTopologyInstancePhysicalHostTopology
+        include Google::Apis::Core::Hashable
+      
+        # Host hash for a given instance
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # Sub block hash for a given instance
+        # Corresponds to the JSON property `subBlock`
+        # @return [String]
+        attr_accessor :sub_block
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host = args[:host] if args.key?(:host)
+          @sub_block = args[:sub_block] if args.key?(:sub_block)
         end
       end
       
@@ -36583,6 +36836,11 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
+        # Health information for the reservation subBlock.
+        # Corresponds to the JSON property `healthInfo`
+        # @return [Google::Apis::ComputeV1::ReservationSubBlockHealthInfo]
+        attr_accessor :health_info
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -36613,6 +36871,11 @@ module Google
         # @return [Google::Apis::ComputeV1::ReservationSubBlockPhysicalTopology]
         attr_accessor :physical_topology
       
+        # Maintenance Info for ReservationBlocks.
+        # Corresponds to the JSON property `reservationSubBlockMaintenance`
+        # @return [Google::Apis::ComputeV1::GroupMaintenanceInfo]
+        attr_accessor :reservation_sub_block_maintenance
+      
         # [Output Only] Server-defined fully-qualified URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -36641,15 +36904,62 @@ module Google
         def update!(**args)
           @count = args[:count] if args.key?(:count)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @health_info = args[:health_info] if args.key?(:health_info)
           @id = args[:id] if args.key?(:id)
           @in_use_count = args[:in_use_count] if args.key?(:in_use_count)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @physical_topology = args[:physical_topology] if args.key?(:physical_topology)
+          @reservation_sub_block_maintenance = args[:reservation_sub_block_maintenance] if args.key?(:reservation_sub_block_maintenance)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @status = args[:status] if args.key?(:status)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # Health information for the reservation subBlock.
+      class ReservationSubBlockHealthInfo
+        include Google::Apis::Core::Hashable
+      
+        # The number of degraded hosts in the reservation subBlock.
+        # Corresponds to the JSON property `degradedHostCount`
+        # @return [Fixnum]
+        attr_accessor :degraded_host_count
+      
+        # The number of degraded infrastructure (e.g NV link domain) in the reservation
+        # subblock.
+        # Corresponds to the JSON property `degradedInfraCount`
+        # @return [Fixnum]
+        attr_accessor :degraded_infra_count
+      
+        # The health status of the reservation subBlock.
+        # Corresponds to the JSON property `healthStatus`
+        # @return [String]
+        attr_accessor :health_status
+      
+        # The number of healthy hosts in the reservation subBlock.
+        # Corresponds to the JSON property `healthyHostCount`
+        # @return [Fixnum]
+        attr_accessor :healthy_host_count
+      
+        # The number of healthy infrastructure (e.g NV link domain) in the reservation
+        # subblock.
+        # Corresponds to the JSON property `healthyInfraCount`
+        # @return [Fixnum]
+        attr_accessor :healthy_infra_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @degraded_host_count = args[:degraded_host_count] if args.key?(:degraded_host_count)
+          @degraded_infra_count = args[:degraded_infra_count] if args.key?(:degraded_infra_count)
+          @health_status = args[:health_status] if args.key?(:health_status)
+          @healthy_host_count = args[:healthy_host_count] if args.key?(:healthy_host_count)
+          @healthy_infra_count = args[:healthy_infra_count] if args.key?(:healthy_infra_count)
         end
       end
       
@@ -51271,6 +51581,17 @@ module Google
         # @return [String]
         attr_accessor :latest_window_start_time
       
+        # Indicates whether the UpcomingMaintenance will be triggered on VM shutdown.
+        # Corresponds to the JSON property `maintenanceOnShutdown`
+        # @return [Boolean]
+        attr_accessor :maintenance_on_shutdown
+        alias_method :maintenance_on_shutdown?, :maintenance_on_shutdown
+      
+        # The reasons for the maintenance. Only valid for vms.
+        # Corresponds to the JSON property `maintenanceReasons`
+        # @return [Array<String>]
+        attr_accessor :maintenance_reasons
+      
         # 
         # Corresponds to the JSON property `maintenanceStatus`
         # @return [String]
@@ -51301,6 +51622,8 @@ module Google
         def update!(**args)
           @can_reschedule = args[:can_reschedule] if args.key?(:can_reschedule)
           @latest_window_start_time = args[:latest_window_start_time] if args.key?(:latest_window_start_time)
+          @maintenance_on_shutdown = args[:maintenance_on_shutdown] if args.key?(:maintenance_on_shutdown)
+          @maintenance_reasons = args[:maintenance_reasons] if args.key?(:maintenance_reasons)
           @maintenance_status = args[:maintenance_status] if args.key?(:maintenance_status)
           @type = args[:type] if args.key?(:type)
           @window_end_time = args[:window_end_time] if args.key?(:window_end_time)

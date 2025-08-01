@@ -1521,6 +1521,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ca_certificate, as: 'caCertificate'
           property :ca_certificate_set, as: 'caCertificateSet'
+          property :server_certificate_distinguished_name, as: 'serverCertificateDistinguishedName'
         end
       end
       
@@ -1735,6 +1736,7 @@ module Google
           property :ca_certificate, as: 'caCertificate'
           property :client_certificate, as: 'clientCertificate'
           property :client_key, as: 'clientKey'
+          property :server_certificate_hostname, as: 'serverCertificateHostname'
         end
       end
       
@@ -1742,6 +1744,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ca_certificate, as: 'caCertificate'
+          property :server_certificate_hostname, as: 'serverCertificateHostname'
         end
       end
       
@@ -1776,6 +1779,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dataset_template, as: 'datasetTemplate', class: Google::Apis::DatastreamV1::DatasetTemplate, decorator: Google::Apis::DatastreamV1::DatasetTemplate::Representation
       
+          property :project_id, as: 'projectId'
         end
       end
       

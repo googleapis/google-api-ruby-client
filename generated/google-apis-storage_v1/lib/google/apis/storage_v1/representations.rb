@@ -69,6 +69,24 @@ module Google
         
         class Encryption
           class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class CustomerManagedEncryptionEnforcementConfig
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+          
+          class CustomerSuppliedEncryptionEnforcementConfig
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+          
+          class GoogleManagedEncryptionEnforcementConfig
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
         
           include Google::Apis::Core::JsonObjectSupport
         end
@@ -343,6 +361,12 @@ module Google
       class Object
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
+        class Contexts
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class CustomerEncryption
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -377,6 +401,12 @@ module Google
       end
       
       class ObjectAccessControls
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ObjectCustomContextPayload
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -573,7 +603,40 @@ module Google
         class Encryption
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
+            property :customer_managed_encryption_enforcement_config, as: 'customerManagedEncryptionEnforcementConfig', class: Google::Apis::StorageV1::Bucket::Encryption::CustomerManagedEncryptionEnforcementConfig, decorator: Google::Apis::StorageV1::Bucket::Encryption::CustomerManagedEncryptionEnforcementConfig::Representation
+        
+            property :customer_supplied_encryption_enforcement_config, as: 'customerSuppliedEncryptionEnforcementConfig', class: Google::Apis::StorageV1::Bucket::Encryption::CustomerSuppliedEncryptionEnforcementConfig, decorator: Google::Apis::StorageV1::Bucket::Encryption::CustomerSuppliedEncryptionEnforcementConfig::Representation
+        
             property :default_kms_key_name, as: 'defaultKmsKeyName'
+            property :google_managed_encryption_enforcement_config, as: 'googleManagedEncryptionEnforcementConfig', class: Google::Apis::StorageV1::Bucket::Encryption::GoogleManagedEncryptionEnforcementConfig, decorator: Google::Apis::StorageV1::Bucket::Encryption::GoogleManagedEncryptionEnforcementConfig::Representation
+        
+          end
+          
+          class CustomerManagedEncryptionEnforcementConfig
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :effective_time, as: 'effectiveTime', type: DateTime
+          
+              property :restriction_mode, as: 'restrictionMode'
+            end
+          end
+          
+          class CustomerSuppliedEncryptionEnforcementConfig
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :effective_time, as: 'effectiveTime', type: DateTime
+          
+              property :restriction_mode, as: 'restrictionMode'
+            end
+          end
+          
+          class GoogleManagedEncryptionEnforcementConfig
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :effective_time, as: 'effectiveTime', type: DateTime
+          
+              property :restriction_mode, as: 'restrictionMode'
+            end
           end
         end
         
@@ -616,6 +679,7 @@ module Google
         class IpFilter
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
+            property :allow_all_service_agent_access, as: 'allowAllServiceAgentAccess'
             property :allow_cross_org_vpcs, as: 'allowCrossOrgVpcs'
             property :mode, as: 'mode'
             property :public_network_source, as: 'publicNetworkSource', class: Google::Apis::StorageV1::Bucket::IpFilter::PublicNetworkSource, decorator: Google::Apis::StorageV1::Bucket::IpFilter::PublicNetworkSource::Representation
@@ -1053,6 +1117,8 @@ module Google
           property :content_encoding, as: 'contentEncoding'
           property :content_language, as: 'contentLanguage'
           property :content_type, as: 'contentType'
+          property :contexts, as: 'contexts', class: Google::Apis::StorageV1::Object::Contexts, decorator: Google::Apis::StorageV1::Object::Contexts::Representation
+      
           property :crc32c, as: 'crc32c'
           property :custom_time, as: 'customTime', type: DateTime
       
@@ -1094,6 +1160,14 @@ module Google
       
           property :updated, as: 'updated', type: DateTime
       
+        end
+        
+        class Contexts
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            hash :custom, as: 'custom', class: Google::Apis::StorageV1::ObjectCustomContextPayload, decorator: Google::Apis::StorageV1::ObjectCustomContextPayload::Representation
+        
+          end
         end
         
         class CustomerEncryption
@@ -1156,6 +1230,17 @@ module Google
           collection :items, as: 'items', class: Google::Apis::StorageV1::ObjectAccessControl, decorator: Google::Apis::StorageV1::ObjectAccessControl::Representation
       
           property :kind, as: 'kind'
+        end
+      end
+      
+      class ObjectCustomContextPayload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime', type: DateTime
+      
+          property :update_time, as: 'updateTime', type: DateTime
+      
+          property :value, as: 'value'
         end
       end
       

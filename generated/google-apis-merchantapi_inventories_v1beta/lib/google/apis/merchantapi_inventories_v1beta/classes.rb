@@ -366,7 +366,7 @@ module Google
         # @return [String]
         attr_accessor :event_time
       
-        # Optional. The product expiration time. This field will not bet set if the
+        # Optional. The product expiration time. This field will not be set if the
         # notification is sent for a product deletion event.
         # Corresponds to the JSON property `expirationTime`
         # @return [String]
@@ -427,7 +427,7 @@ module Google
       
         # Availability of the product in this region. For accepted attribute values, see
         # the [regional product inventory data specification](https://support.google.com/
-        # merchants/answer/6324448).
+        # merchants/answer/14644124).
         # Corresponds to the JSON property `availability`
         # @return [String]
         attr_accessor :availability

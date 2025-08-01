@@ -444,6 +444,7 @@ module Google
       
           property :rotation, as: 'rotation', class: Google::Apis::SecretmanagerV1::Rotation, decorator: Google::Apis::SecretmanagerV1::Rotation::Representation
       
+          hash :tags, as: 'tags'
           collection :topics, as: 'topics', class: Google::Apis::SecretmanagerV1::Topic, decorator: Google::Apis::SecretmanagerV1::Topic::Representation
       
           property :ttl, as: 'ttl'

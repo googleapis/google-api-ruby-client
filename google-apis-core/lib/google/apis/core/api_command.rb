@@ -18,6 +18,7 @@ require 'google/apis/core/http_command'
 require 'google/apis/errors'
 require 'json'
 require 'retriable'
+require "securerandom"
 
 module Google
   module Apis
@@ -69,7 +70,6 @@ module Google
         def prepare!
           set_api_client_header
           set_user_project_header
-          set_idempotency_token_header 
           if options&.api_format_version
             header['X-Goog-Api-Format-Version'] = options.api_format_version.to_s
           end
@@ -143,7 +143,6 @@ module Google
         end
 
         private
-        INVOCATION_ID = SecureRandom.uuid
 
         def set_api_client_header
           old_xgac = header
@@ -175,12 +174,8 @@ module Google
           header['X-Goog-User-Project'] = quota_project_id if quota_project_id
         end
 
-        def set_idempotency_token_header
-          header['X-Goog-Gcs-Idempotency-Token'] = INVOCATION_ID
-        end
-
         def invocation_id_header
-          "gccl-invocation-id/#{INVOCATION_ID}"
+          "gccl-invocation-id/#{SecureRandom.uuid}"
         end
 
         # Attempt to parse a JSON error message

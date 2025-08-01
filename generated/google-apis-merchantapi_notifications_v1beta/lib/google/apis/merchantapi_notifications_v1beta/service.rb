@@ -30,7 +30,7 @@ module Google
       #    Merchantapi = Google::Apis::MerchantapiNotificationsV1beta # Alias the module
       #    service = Merchantapi::MerchantService.new
       #
-      # @see https://developers.devsite.corp.google.com/merchant/api
+      # @see https://developers.google.com/merchant/api
       class MerchantService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://merchantapi.$UNIVERSE_DOMAIN$/"
 

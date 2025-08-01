@@ -2622,8 +2622,8 @@ module Google
         attr_accessor :description
       
         # Required. The dimension a rule belongs to. Results are also aggregated at the
-        # dimension level. Supported dimensions are "COMPLETENESS", "ACCURACY", "
-        # CONSISTENCY", "VALIDITY", "UNIQUENESS", "FRESHNESS", "VOLUME"
+        # dimension level. Custom dimension name is supported with all uppercase letters
+        # and maximum length of 30 characters.
         # Corresponds to the JSON property `dimension`
         # @return [String]
         attr_accessor :dimension
@@ -3433,7 +3433,7 @@ module Google
         # Output only. Identifier. The relative resource name of the scan, of the form:
         # projects/`project`/locations/`location_id`/dataScans/`datascan_id`, where
         # project refers to a project_id or project_number and location_id refers to a
-        # GCP region.
+        # Google Cloud region.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3915,7 +3915,7 @@ module Google
         # Output only. Identifier. The relative resource name of the DataScanJob, of the
         # form: projects/`project`/locations/`location_id`/dataScans/`datascan_id`/jobs/`
         # job_id`, where project refers to a project_id or project_number and
-        # location_id refers to a GCP region.
+        # location_id refers to a Google Cloud region.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3975,9 +3975,11 @@ module Google
         attr_accessor :entity
       
         # Immutable. The service-qualified full resource name of the cloud resource for
-        # a DataScan job to scan against. The field could be: BigQuery table of type "
-        # TABLE" for DataProfileScan/DataQualityScan Format: //bigquery.googleapis.com/
-        # projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        # a DataScan job to scan against. The field could either be: Cloud Storage
+        # bucket for DataDiscoveryScan Format: //storage.googleapis.com/projects/
+        # PROJECT_ID/buckets/BUCKET_ID or BigQuery table of type "TABLE" for
+        # DataProfileScan/DataQualityScan Format: //bigquery.googleapis.com/projects/
+        # PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
         # Corresponds to the JSON property `resource`
         # @return [String]
         attr_accessor :resource
@@ -4729,8 +4731,12 @@ module Google
         attr_accessor :create_time
       
         # Required. Immutable. Relative resource name of the Entry Link Type used to
-        # create this Entry Link, of the form: `projects/`project_id_or_number`/
-        # locations/`location_id`/entryLinkTypes/`entry_link_type_id`.
+        # create this Entry Link. For example: Entry link between synonym terms in a
+        # glossary: projects/dataplex-types/locations/global/entryLinkTypes/synonym
+        # Entry link between related terms in a glossary: projects/dataplex-types/
+        # locations/global/entryLinkTypes/related Entry link between glossary terms and
+        # data assets: projects/dataplex-types/locations/global/entryLinkTypes/
+        # definition
         # Corresponds to the JSON property `entryLinkType`
         # @return [String]
         attr_accessor :entry_link_type
@@ -5380,8 +5386,8 @@ module Google
       end
       
       # A Glossary represents a collection of GlossaryCategories and GlossaryTerms
-      # defined by the user. Glossary is a top level resource and is the GCP parent
-      # resource of all the GlossaryCategories and GlossaryTerms within it.
+      # defined by the user. Glossary is a top level resource and is the Google Cloud
+      # parent resource of all the GlossaryCategories and GlossaryTerms within it.
       class GoogleCloudDataplexV1Glossary
         include Google::Apis::Core::Hashable
       

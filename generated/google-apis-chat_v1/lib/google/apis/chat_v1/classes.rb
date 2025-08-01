@@ -184,14 +184,15 @@ module Google
         end
       end
       
-      # Output only. Annotations associated with the plain-text body of the message.
-      # To add basic formatting to a text message, see [Format text messages](https://
-      # developers.google.com/workspace/chat/format-messages). Example plain-text
-      # message body: ``` Hello @FooBot how are you!" ``` The corresponding
-      # annotations metadata: ``` "annotations":[` "type":"USER_MENTION", "startIndex":
-      # 6, "length":7, "userMention": ` "user": ` "name":"users/`user`", "displayName":
-      # "FooBot", "avatarUrl":"https://goo.gl/aeDtrS", "type":"BOT" `, "type":"MENTION"
-      # ` `] ```
+      # Annotations can be associated with the plain-text body of the message or with
+      # chips that link to Google Workspace resources like Google Docs or Sheets with
+      # a `start_index` and `length` of 0. To add basic formatting to a text message,
+      # see [Format text messages](https://developers.google.com/workspace/chat/format-
+      # messages). Example plain-text message body: ``` Hello @FooBot how are you!" ```
+      # The corresponding annotations metadata: ``` "annotations":[` "type":"
+      # USER_MENTION", "startIndex":6, "length":7, "userMention": ` "user": ` "name":"
+      # users/`user`", "displayName":"FooBot", "avatarUrl":"https://goo.gl/aeDtrS", "
+      # type":"BOT" `, "type":"MENTION" ` `] ```
       class Annotation
         include Google::Apis::Core::Hashable
       
@@ -201,12 +202,14 @@ module Google
         attr_accessor :custom_emoji_metadata
       
         # Length of the substring in the plain-text message body this annotation
-        # corresponds to.
+        # corresponds to. If not present, indicates a length of 0.
         # Corresponds to the JSON property `length`
         # @return [Fixnum]
         attr_accessor :length
       
-        # A rich link to a resource.
+        # A rich link to a resource. Rich links can be associated with the plain-text
+        # body of the message or represent chips that link to Google Workspace resources
+        # like Google Docs or Sheets with a with `start_index` and `length` of 0.
         # Corresponds to the JSON property `richLinkMetadata`
         # @return [Google::Apis::ChatV1::RichLinkMetadata]
         attr_accessor :rich_link_metadata
@@ -409,6 +412,33 @@ module Google
         def update!(**args)
           @image_button = args[:image_button] if args.key?(:image_button)
           @text_button = args[:text_button] if args.key?(:text_button)
+        end
+      end
+      
+      # Data for Calendar event links.
+      class CalendarEventLinkData
+        include Google::Apis::Core::Hashable
+      
+        # The [Calendar identifier](https://developers.google.com/workspace/calendar/api/
+        # v3/reference/calendars) of the linked Calendar.
+        # Corresponds to the JSON property `calendarId`
+        # @return [String]
+        attr_accessor :calendar_id
+      
+        # The [Event identifier](https://developers.google.com/workspace/calendar/api/v3/
+        # reference/events) of the linked Calendar event.
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @calendar_id = args[:calendar_id] if args.key?(:calendar_id)
+          @event_id = args[:event_id] if args.key?(:event_id)
         end
       end
       
@@ -756,23 +786,60 @@ module Google
         end
       end
       
-      # Represents information about the user's client, such as locale, host app, and
-      # platform. For Chat apps, `CommonEventObject` includes data submitted by users
-      # interacting with cards, like data entered in [dialogs](https://developers.
-      # google.com/chat/how-tos/dialogs).
+      # The common event object is the portion of the overall event object that
+      # carries general, host-independent information to the add-on from the user's
+      # client. This information includes details such as the user's locale, host app,
+      # and platform. In addition to homepage and contextual triggers, add-ons
+      # construct and pass event objects to [action callback functions](https://
+      # developers.google.com/workspace/add-ons/concepts/actions#callback_functions)
+      # when the user interacts with widgets. Your add-on's callback function can
+      # query the common event object to determine the contents of open widgets in the
+      # user's client. For example, your add-on can locate the text a user has entered
+      # into a [TextInput](https://developers.google.com/apps-script/reference/card-
+      # service/text-input) widget in the `eventObject.commentEventObject.formInputs`
+      # object. For Chat apps, the name of the function that the user invoked when
+      # interacting with a widget.
       class CommonEventObject
         include Google::Apis::Core::Hashable
       
-        # A map containing the values that a user inputs in a widget from a card or
-        # dialog. The map keys are the string IDs assigned to each widget, and the
-        # values represent inputs to the widget. For details, see [Process information
-        # inputted by users](https://developers.google.com/chat/ui/read-form-data).
+        # A map containing the current values of the widgets in the displayed card. The
+        # map keys are the string IDs assigned with each widget. The structure of the
+        # map value object is dependent on the widget type: **Note**: The following
+        # examples are formatted for Apps Script's V8 runtime. If you're using Rhino
+        # runtime, you must add `[""]` after the value. For example, instead of `e.
+        # commonEventObject.formInputs.employeeName.stringInputs.value[0]`, format the
+        # event object as `e.commonEventObject.formInputs.employeeName[""].stringInputs.
+        # value[0]`. To learn more about runtimes in Apps Script, see the [V8 Runtime
+        # Overview](https://developers.google.com/apps-script/guides/v8-runtime). *
+        # Single-valued widgets (for example, a text box): a list of strings (only one
+        # element). **Example**: for a text input widget with `employeeName` as its ID,
+        # access the text input value with: `e.commonEventObject.formInputs.employeeName.
+        # stringInputs.value[0]`. * Multi-valued widgets (for example, checkbox groups):
+        # a list of strings. **Example**: for a multi-value widget with `participants`
+        # as its ID, access the value array with: `e.commonEventObject.formInputs.
+        # participants.stringInputs.value`. * **A date-time picker**: a [`DateTimeInput
+        # object`](https://developers.google.com/workspace/add-ons/concepts/event-
+        # objects#date-time-input). **Example**: For a picker with an ID of `myDTPicker`,
+        # access the [`DateTimeInput`](https://developers.google.com/workspace/add-ons/
+        # concepts/event-objects#date-time-input) object using `e.commonEventObject.
+        # formInputs.myDTPicker.dateTimeInput`. * **A date-only picker**: a [`DateInput
+        # object`](https://developers.google.com/workspace/add-ons/concepts/event-
+        # objects#date-input). **Example**: For a picker with an ID of `myDatePicker`,
+        # access the [`DateInput`](https://developers.google.com/workspace/add-ons/
+        # concepts/event-objects#date-input) object using `e.commonEventObject.
+        # formInputs.myDatePicker.dateInput`. * **A time-only picker**: a [`TimeInput
+        # object`](https://developers.google.com/workspace/add-ons/concepts/event-
+        # objects#time-input). **Example**: For a picker with an ID of `myTimePicker`,
+        # access the [`TimeInput`](https://developers.google.com/workspace/add-ons/
+        # concepts/event-objects#time-input) object using `e.commonEventObject.
+        # formInputs.myTimePicker.timeInput`.
         # Corresponds to the JSON property `formInputs`
         # @return [Hash<String,Google::Apis::ChatV1::Inputs>]
         attr_accessor :form_inputs
       
-        # The hostApp enum which indicates the app the add-on is invoked from. Always `
-        # CHAT` for Chat apps.
+        # Indicates the host app the add-on is active in when the event object is
+        # generated. Possible values include the following: * `GMAIL` * `CALENDAR` * `
+        # DRIVE` * `DOCS` * `SHEETS` * `SLIDES` * `CHAT`
         # Corresponds to the JSON property `hostApp`
         # @return [String]
         attr_accessor :host_app
@@ -783,8 +850,18 @@ module Google
         # @return [String]
         attr_accessor :invoked_function
       
-        # Custom [parameters](/chat/api/reference/rest/v1/cards#ActionParameter) passed
-        # to the invoked function. Both keys and values must be strings.
+        # Any additional parameters you supply to an action using [`actionParameters`](
+        # https://developers.google.com/workspace/add-ons/reference/rpc/google.apps.card.
+        # v1#google.apps.card.v1.Action.ActionParameter) or [`Action.setParameters()`](
+        # https://developers.google.com/apps-script/reference/card-service/action#
+        # setparametersparameters). **Developer Preview:** For [add-ons that extend
+        # Google Chat](https://developers.google.com/workspace/add-ons/chat), to suggest
+        # items based on what the users type in multiselect menus, use the value of the `
+        # "autocomplete_widget_query"` key (`event.commonEventObject.parameters["
+        # autocomplete_widget_query"]`). You can use this value to query a database and
+        # suggest selectable items to users as they type. For details, see [Collect and
+        # process information from Google Chat users](https://developers.google.com/
+        # workspace/add-ons/chat/collect-information).
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,String>]
         attr_accessor :parameters
@@ -804,8 +881,14 @@ module Google
         # @return [Google::Apis::ChatV1::TimeZone]
         attr_accessor :time_zone
       
-        # The full `locale.displayName` in the format of [ISO 639 language code]-[ISO
-        # 3166 country/region code] such as "en-US".
+        # **Disabled by default.** The user's language and country/region identifier in
+        # the format of [ISO 639](https://wikipedia.org/wiki/ISO_639_macrolanguage)
+        # language code-[ISO 3166](https://wikipedia.org/wiki/ISO_3166) country/region
+        # code. For example, `en-US`. To turn on this field, you must set `addOns.common.
+        # useLocaleFromApp` to `true` in your add-on's manifest. Your add-on's scope
+        # list must also include `https://www.googleapis.com/auth/script.locale`. See [
+        # Accessing user locale and timezone](https://developers.google.com/workspace/
+        # add-ons/how-tos/access-user-locale) for more details.
         # Corresponds to the JSON property `userLocale`
         # @return [String]
         attr_accessor :user_locale
@@ -1037,7 +1120,12 @@ module Google
       # addition to receiving events from user interactions, Chat apps can receive
       # events about changes to spaces, such as when a new member is added to a space.
       # To learn about space events, see [Work with events from Google Chat](https://
-      # developers.google.com/workspace/chat/events-overview).
+      # developers.google.com/workspace/chat/events-overview). Note: This event is
+      # only used for [Chat interaction events](https://developers.google.com/
+      # workspace/chat/receive-respond-interactions). If your Chat app is built as a [
+      # Google Workspace add-on](https://developers.google.com/workspace/add-ons/chat/
+      # build), see [Chat event objects](https://developers.google.com/workspace/add-
+      # ons/concepts/event-objects#chat-event-object) in the add-ons documentation.
       class DeprecatedEvent
         include Google::Apis::Core::Hashable
       
@@ -1053,10 +1141,19 @@ module Google
         # @return [Google::Apis::ChatV1::AppCommandMetadata]
         attr_accessor :app_command_metadata
       
-        # Represents information about the user's client, such as locale, host app, and
-        # platform. For Chat apps, `CommonEventObject` includes data submitted by users
-        # interacting with cards, like data entered in [dialogs](https://developers.
-        # google.com/chat/how-tos/dialogs).
+        # The common event object is the portion of the overall event object that
+        # carries general, host-independent information to the add-on from the user's
+        # client. This information includes details such as the user's locale, host app,
+        # and platform. In addition to homepage and contextual triggers, add-ons
+        # construct and pass event objects to [action callback functions](https://
+        # developers.google.com/workspace/add-ons/concepts/actions#callback_functions)
+        # when the user interacts with widgets. Your add-on's callback function can
+        # query the common event object to determine the contents of open widgets in the
+        # user's client. For example, your add-on can locate the text a user has entered
+        # into a [TextInput](https://developers.google.com/apps-script/reference/card-
+        # service/text-input) widget in the `eventObject.commentEventObject.formInputs`
+        # object. For Chat apps, the name of the function that the user invoked when
+        # interacting with a widget.
         # Corresponds to the JSON property `common`
         # @return [Google::Apis::ChatV1::CommonEventObject]
         attr_accessor :common
@@ -3121,6 +3218,14 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
         attr_accessor :external_data_source
       
+        # Optional. Text that appears below the selection input field meant to assist
+        # users by prompting them to enter a certain value. This text is always visible.
+        # Only supported by Google Workspace Workflows, but not Google Chat API or
+        # Google Workspace Add-ons.
+        # Corresponds to the JSON property `hintText`
+        # @return [String]
+        attr_accessor :hint_text
+      
         # An array of selectable items. For example, an array of radio buttons or
         # checkboxes. Supports up to 100 items.
         # Corresponds to the JSON property `items`
@@ -3189,6 +3294,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @external_data_source = args[:external_data_source] if args.key?(:external_data_source)
+          @hint_text = args[:hint_text] if args.key?(:hint_text)
           @items = args[:items] if args.key?(:items)
           @label = args[:label] if args.key?(:label)
           @multi_select_max_selected_items = args[:multi_select_max_selected_items] if args.key?(:multi_select_max_selected_items)
@@ -4284,6 +4390,38 @@ module Google
         end
       end
       
+      # Data for Meet space links.
+      class MeetSpaceLinkData
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Output only. If the Meet is a Huddle, indicates the status of the
+        # huddle. Otherwise, this is unset.
+        # Corresponds to the JSON property `huddleStatus`
+        # @return [String]
+        attr_accessor :huddle_status
+      
+        # Meeting code of the linked Meet space.
+        # Corresponds to the JSON property `meetingCode`
+        # @return [String]
+        attr_accessor :meeting_code
+      
+        # Indicates the type of the Meet space.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @huddle_status = args[:huddle_status] if args.key?(:huddle_status)
+          @meeting_code = args[:meeting_code] if args.key?(:meeting_code)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Represents a membership relation in Google Chat, such as whether a user or
       # Chat app is invited to, part of, or absent from a space.
       class Membership
@@ -4519,7 +4657,9 @@ module Google
         # @return [Google::Apis::ChatV1::ActionResponse]
         attr_accessor :action_response
       
-        # Output only. Annotations associated with the `text` in this message.
+        # Output only. Annotations can be associated with the plain-text body of the
+        # message or with chips that link to Google Workspace resources like Google Docs
+        # or Sheets with a `start_index` and `length` of 0.
         # Corresponds to the JSON property `annotations`
         # @return [Array<Google::Apis::ChatV1::Annotation>]
         attr_accessor :annotations
@@ -5139,9 +5279,16 @@ module Google
         end
       end
       
-      # A rich link to a resource.
+      # A rich link to a resource. Rich links can be associated with the plain-text
+      # body of the message or represent chips that link to Google Workspace resources
+      # like Google Docs or Sheets with a with `start_index` and `length` of 0.
       class RichLinkMetadata
         include Google::Apis::Core::Hashable
+      
+        # Data for Calendar event links.
+        # Corresponds to the JSON property `calendarEventLinkData`
+        # @return [Google::Apis::ChatV1::CalendarEventLinkData]
+        attr_accessor :calendar_event_link_data
       
         # Data for Chat space links.
         # Corresponds to the JSON property `chatSpaceLinkData`
@@ -5152,6 +5299,11 @@ module Google
         # Corresponds to the JSON property `driveLinkData`
         # @return [Google::Apis::ChatV1::DriveLinkData]
         attr_accessor :drive_link_data
+      
+        # Data for Meet space links.
+        # Corresponds to the JSON property `meetSpaceLinkData`
+        # @return [Google::Apis::ChatV1::MeetSpaceLinkData]
+        attr_accessor :meet_space_link_data
       
         # The rich link type.
         # Corresponds to the JSON property `richLinkType`
@@ -5169,8 +5321,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @calendar_event_link_data = args[:calendar_event_link_data] if args.key?(:calendar_event_link_data)
           @chat_space_link_data = args[:chat_space_link_data] if args.key?(:chat_space_link_data)
           @drive_link_data = args[:drive_link_data] if args.key?(:drive_link_data)
+          @meet_space_link_data = args[:meet_space_link_data] if args.key?(:meet_space_link_data)
           @rich_link_type = args[:rich_link_type] if args.key?(:rich_link_type)
           @uri = args[:uri] if args.key?(:uri)
         end
@@ -5410,6 +5564,20 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. Immutable. The customer id of the domain of the space. Required only
+        # when creating a space with [app authentication](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-app) and `SpaceType` is `SPACE`,
+        # otherwise should not be set. In the format `customers/`customer``, where `
+        # customer` is the `id` from the [Admin SDK customer resource]( https://
+        # developers.google.com/admin-sdk/directory/reference/rest/v1/customers).
+        # Private apps can also use the `customers/my_customer` alias to create the
+        # space in the same Google Workspace organization as the app. For DMs, this
+        # field isn't populated. [Developer Preview](https://developers.google.com/
+        # workspace/preview).
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
         # Optional. The space's display name. Required when [creating a space](https://
         # developers.google.com/workspace/chat/api/reference/rest/v1/spaces/create) with
         # a `spaceType` of `SPACE`. If you receive the error message `ALREADY_EXISTS`
@@ -5545,6 +5713,7 @@ module Google
           @access_settings = args[:access_settings] if args.key?(:access_settings)
           @admin_installed = args[:admin_installed] if args.key?(:admin_installed)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @customer = args[:customer] if args.key?(:customer)
           @display_name = args[:display_name] if args.key?(:display_name)
           @external_user_allowed = args[:external_user_allowed] if args.key?(:external_user_allowed)
           @import_mode = args[:import_mode] if args.key?(:import_mode)

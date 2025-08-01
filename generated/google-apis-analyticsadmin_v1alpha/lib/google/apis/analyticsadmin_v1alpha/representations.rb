@@ -412,12 +412,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAnalyticsAdminV1alphaConnectedSiteTag
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleAnalyticsAdminV1alphaConversionEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -437,18 +431,6 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -526,12 +508,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -599,24 +575,6 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -713,18 +671,6 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaListChannelGroupsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -844,6 +790,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaMatchingCondition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -928,6 +880,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaReportingIdentitySettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaRollupPropertySourceLink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -970,13 +928,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest
+      class GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse
+      class GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1013,6 +971,12 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSubpropertySyncConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1625,9 +1589,13 @@ module Google
       
           property :reporting_data_annotation, as: 'reportingDataAnnotation', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation::Representation
       
+          property :reporting_identity_settings, as: 'reportingIdentitySettings', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingIdentitySettings, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingIdentitySettings::Representation
+      
           property :search_ads360_link, as: 'searchAds360Link', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSearchAds360Link, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSearchAds360Link::Representation
       
           property :skadnetwork_conversion_value_schema, as: 'skadnetworkConversionValueSchema', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema::Representation
+      
+          property :subproperty_sync_config, as: 'subpropertySyncConfig', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertySyncConfig, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertySyncConfig::Representation
       
         end
       end
@@ -1706,14 +1674,6 @@ module Google
         end
       end
       
-      class GoogleAnalyticsAdminV1alphaConnectedSiteTag
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :display_name, as: 'displayName'
-          property :tag_id, as: 'tagId'
-        end
-      end
-      
       class GoogleAnalyticsAdminV1alphaConversionEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1754,21 +1714,6 @@ module Google
           property :access_binding, as: 'accessBinding', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding::Representation
       
           property :parent, as: 'parent'
-        end
-      end
-      
-      class GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :connected_site_tag, as: 'connectedSiteTag', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConnectedSiteTag, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConnectedSiteTag::Representation
-      
-          property :property, as: 'property'
-        end
-      end
-      
-      class GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1894,14 +1839,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
-        end
-      end
-      
-      class GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :property, as: 'property'
-          property :tag_id, as: 'tagId'
         end
       end
       
@@ -2045,27 +1982,6 @@ module Google
           property :case_sensitive, as: 'caseSensitive'
           property :match_type, as: 'matchType'
           property :value, as: 'value'
-        end
-      end
-      
-      class GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :property, as: 'property'
-        end
-      end
-      
-      class GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :opt_out, as: 'optOut'
-        end
-      end
-      
-      class GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :property, as: 'property'
         end
       end
       
@@ -2217,21 +2133,6 @@ module Google
           collection :channel_groups, as: 'channelGroups', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroup, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroup::Representation
       
           property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :property, as: 'property'
-        end
-      end
-      
-      class GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :connected_site_tags, as: 'connectedSiteTags', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConnectedSiteTag, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConnectedSiteTag::Representation
-      
         end
       end
       
@@ -2406,6 +2307,15 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :subproperty_sync_configs, as: 'subpropertySyncConfigs', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertySyncConfig, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertySyncConfig::Representation
+      
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaMatchingCondition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2498,6 +2408,7 @@ module Google
       class GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_dimension_and_metric_synchronization_mode, as: 'customDimensionAndMetricSynchronizationMode'
           property :subproperty, as: 'subproperty', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty::Representation
       
           property :subproperty_event_filter, as: 'subpropertyEventFilter', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter::Representation
@@ -2544,6 +2455,14 @@ module Google
       
           property :start_date, as: 'startDate', class: Google::Apis::AnalyticsadminV1alpha::GoogleTypeDate, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleTypeDate::Representation
       
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaReportingIdentitySettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :reporting_identity, as: 'reportingIdentity'
         end
       end
       
@@ -2644,17 +2563,20 @@ module Google
         end
       end
       
-      class GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest
+      class GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :opt_out, as: 'optOut'
-          property :property, as: 'property'
+          property :app_instance_id, as: 'appInstanceId'
+          property :client_id, as: 'clientId'
+          property :user_id, as: 'userId'
+          property :user_provided_data, as: 'userProvidedData'
         end
       end
       
-      class GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse
+      class GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :deletion_request_time, as: 'deletionRequestTime'
         end
       end
       
@@ -2713,6 +2635,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :filter_expressions, as: 'filterExpressions', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression::Representation
       
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSubpropertySyncConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :apply_to_property, as: 'applyToProperty'
+          property :custom_dimension_and_metric_sync_mode, as: 'customDimensionAndMetricSyncMode'
+          property :name, as: 'name'
         end
       end
       

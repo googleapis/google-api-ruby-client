@@ -1347,7 +1347,7 @@ module Google
         # @return [Google::Apis::AnalyticshubV1::BigQueryDatasetSource]
         attr_accessor :bigquery_dataset
       
-        # Optional. Categories of the listing. Up to two categories are allowed.
+        # Optional. Categories of the listing. Up to five categories are allowed.
         # Corresponds to the JSON property `categories`
         # @return [Array<String>]
         attr_accessor :categories

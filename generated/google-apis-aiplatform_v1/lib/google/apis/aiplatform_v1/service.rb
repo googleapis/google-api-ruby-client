@@ -1040,6 +1040,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deploys a model to a new endpoint.
+        # @param [String] destination
+        #   Required. The resource name of the Location to deploy the model in. Format: `
+        #   projects/`project`/locations/`location``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DeployRequest] google_cloud_aiplatform_v1_deploy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def deploy_project_location(destination, google_cloud_aiplatform_v1_deploy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+destination}:deploy', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DeployRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_deploy_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
+          command.params['destination'] = destination unless destination.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Evaluates a dataset based on a set of given metrics.
         # @param [String] location
         #   Required. The resource name of the Location to evaluate the dataset. Format: `
@@ -1138,6 +1172,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets a RagEngineConfig.
+        # @param [String] name
+        #   Required. The name of the RagEngineConfig resource. Format: `projects/`project`
+        #   /locations/`location`/ragEngineConfig`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagEngineConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagEngineConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_rag_engine_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagEngineConfig::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagEngineConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists information about the supported locations for this service.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
@@ -1215,6 +1280,40 @@ module Google
           command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RetrieveContextsResponse::Representation
           command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RetrieveContextsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a RagEngineConfig.
+        # @param [String] name
+        #   Identifier. The name of the RagEngineConfig. Format: `projects/`project`/
+        #   locations/`location`/ragEngineConfig`
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagEngineConfig] google_cloud_aiplatform_v1_rag_engine_config_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_rag_engine_config(name, google_cloud_aiplatform_v1_rag_engine_config_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagEngineConfig::Representation
+          command.request_object = google_cloud_aiplatform_v1_rag_engine_config_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -4823,6 +4922,10 @@ module Google
         #   space must be quoted. `labels."a key"`. * `base_model_name` only supports `=`.
         #   Some examples: * `endpoint=1` * `displayName="myDisplayName"` * `labels.myKey="
         #   myValue"` * `baseModelName="text-bison"`
+        # @param [String] gdc_zone
+        #   Optional. Configures the Google Distributed Cloud (GDC) environment for online
+        #   prediction. Only set this field when the Endpoint is to be deployed in a GDC
+        #   environment.
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `display_name` * `
@@ -4852,12 +4955,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_endpoints(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_endpoints(parent, filter: nil, gdc_zone: nil, order_by: nil, page_size: nil, page_token: nil, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/endpoints', options)
           command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListEndpointsResponse::Representation
           command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListEndpointsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['gdcZone'] = gdc_zone unless gdc_zone.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -4868,9 +4972,9 @@ module Google
         end
         
         # Updates an existing deployed model. Updatable fields include `
-        # min_replica_count`, `max_replica_count`, `autoscaling_metric_specs`, `
-        # disable_container_logging` (v1 only), and `enable_container_logging` (v1beta1
-        # only).
+        # min_replica_count`, `max_replica_count`, `required_replica_count`, `
+        # autoscaling_metric_specs`, `disable_container_logging` (v1 only), and `
+        # enable_container_logging` (v1beta1 only).
         # @param [String] endpoint
         #   Required. The name of the Endpoint resource into which to mutate a
         #   DeployedModel. Format: `projects/`project`/locations/`location`/endpoints/`

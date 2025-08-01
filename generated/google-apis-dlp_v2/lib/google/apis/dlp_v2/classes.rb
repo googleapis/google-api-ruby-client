@@ -3840,7 +3840,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStorageResourceReference]
         attr_accessor :cloud_storage_resource_reference
       
-        # Match file stores (e.g. buckets) using regex filters.
+        # Match file stores (e.g. buckets) using filters.
         # Corresponds to the JSON property `collection`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreCollection]
         attr_accessor :collection
@@ -4500,6 +4500,33 @@ module Google
         end
       end
       
+      # Configure document processing to fall back to any of the following processing
+      # options if document processing is unavailable in the original request location.
+      class GooglePrivacyDlpV2DocumentFallbackLocation
+        include Google::Apis::Core::Hashable
+      
+        # Processing occurs in the global region.
+        # Corresponds to the JSON property `globalProcessing`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2GlobalProcessing]
+        attr_accessor :global_processing
+      
+        # Processing occurs in a multi-region that contains the current region if
+        # available.
+        # Corresponds to the JSON property `multiRegionProcessing`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2MultiRegionProcessing]
+        attr_accessor :multi_region_processing
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @global_processing = args[:global_processing] if args.key?(:global_processing)
+          @multi_region_processing = args[:multi_region_processing] if args.key?(:multi_region_processing)
+        end
+      end
+      
       # Location of a finding within a document.
       class GooglePrivacyDlpV2DocumentLocation
         include Google::Apis::Core::Hashable
@@ -4517,6 +4544,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @file_offset = args[:file_offset] if args.key?(:file_offset)
+        end
+      end
+      
+      # A domain represents a thematic category that a data profile can fall under.
+      class GooglePrivacyDlpV2Domain
+        include Google::Apis::Core::Hashable
+      
+        # A domain category that this profile is related to.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # The collection of signals that influenced selection of the category.
+        # Corresponds to the JSON property `signals`
+        # @return [Array<String>]
+        attr_accessor :signals
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @signals = args[:signals] if args.key?(:signals)
         end
       end
       
@@ -4970,7 +5022,7 @@ module Google
         end
       end
       
-      # Match file stores (e.g. buckets) using regex filters.
+      # Match file stores (e.g. buckets) using filters.
       class GooglePrivacyDlpV2FileStoreCollection
         include Google::Apis::Core::Hashable
       
@@ -5024,6 +5076,11 @@ module Google
         # Corresponds to the JSON property `dataStorageLocations`
         # @return [Array<String>]
         attr_accessor :data_storage_locations
+      
+        # Domains associated with the profile.
+        # Corresponds to the JSON property `domains`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Domain>]
+        attr_accessor :domains
       
         # FileClusterSummary per each cluster.
         # Corresponds to the JSON property `fileClusterSummaries`
@@ -5159,6 +5216,7 @@ module Google
           @data_risk_level = args[:data_risk_level] if args.key?(:data_risk_level)
           @data_source_type = args[:data_source_type] if args.key?(:data_source_type)
           @data_storage_locations = args[:data_storage_locations] if args.key?(:data_storage_locations)
+          @domains = args[:domains] if args.key?(:domains)
           @file_cluster_summaries = args[:file_cluster_summaries] if args.key?(:file_cluster_summaries)
           @file_store_info_type_summaries = args[:file_store_info_type_summaries] if args.key?(:file_store_info_type_summaries)
           @file_store_is_empty = args[:file_store_is_empty] if args.key?(:file_store_is_empty)
@@ -5456,7 +5514,7 @@ module Google
         end
       end
       
-      # Processing will happen in the global region.
+      # Processing occurs in the global region.
       class GooglePrivacyDlpV2GlobalProcessing
         include Google::Apis::Core::Hashable
       
@@ -5719,17 +5777,17 @@ module Google
         end
       end
       
-      # Configure image processing to fall back to the configured processing option
-      # below if unavailable in the request location.
+      # Configure image processing to fall back to any of the following processing
+      # options if image processing is unavailable in the original request location.
       class GooglePrivacyDlpV2ImageFallbackLocation
         include Google::Apis::Core::Hashable
       
-        # Processing will happen in the global region.
+        # Processing occurs in the global region.
         # Corresponds to the JSON property `globalProcessing`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2GlobalProcessing]
         attr_accessor :global_processing
       
-        # Processing will happen in a multi-region that contains the current region if
+        # Processing occurs in a multi-region that contains the current region if
         # available.
         # Corresponds to the JSON property `multiRegionProcessing`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2MultiRegionProcessing]
@@ -6313,7 +6371,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2RequestedOptions]
         attr_accessor :requested_options
       
-        # All result fields mentioned below are updated while the job is processing.
+        # All Result fields are updated while the job is processing.
         # Corresponds to the JSON property `result`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Result]
         attr_accessor :result
@@ -7564,7 +7622,7 @@ module Google
         end
       end
       
-      # Processing will happen in a multi-region that contains the current region if
+      # Processing occurs in a multi-region that contains the current region if
       # available.
       class GooglePrivacyDlpV2MultiRegionProcessing
         include Google::Apis::Core::Hashable
@@ -8169,8 +8227,14 @@ module Google
       class GooglePrivacyDlpV2ProcessingLocation
         include Google::Apis::Core::Hashable
       
-        # Configure image processing to fall back to the configured processing option
-        # below if unavailable in the request location.
+        # Configure document processing to fall back to any of the following processing
+        # options if document processing is unavailable in the original request location.
+        # Corresponds to the JSON property `documentFallbackLocation`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DocumentFallbackLocation]
+        attr_accessor :document_fallback_location
+      
+        # Configure image processing to fall back to any of the following processing
+        # options if image processing is unavailable in the original request location.
         # Corresponds to the JSON property `imageFallbackLocation`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ImageFallbackLocation]
         attr_accessor :image_fallback_location
@@ -8181,6 +8245,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @document_fallback_location = args[:document_fallback_location] if args.key?(:document_fallback_location)
           @image_fallback_location = args[:image_fallback_location] if args.key?(:image_fallback_location)
         end
       end
@@ -8545,7 +8610,7 @@ module Google
       
         # A column can be tagged with a custom tag. In this case, the user must indicate
         # an auxiliary table that contains statistical information on the possible
-        # values of this column (below).
+        # values of this column.
         # Corresponds to the JSON property `customTag`
         # @return [String]
         attr_accessor :custom_tag
@@ -8614,7 +8679,7 @@ module Google
       
         # A column can be tagged with a custom tag. In this case, the user must indicate
         # an auxiliary table that contains statistical information on the possible
-        # values of this column (below).
+        # values of this column.
         # Corresponds to the JSON property `customTag`
         # @return [String]
         attr_accessor :custom_tag
@@ -9205,7 +9270,7 @@ module Google
         end
       end
       
-      # All result fields mentioned below are updated while the job is processing.
+      # All Result fields are updated while the job is processing.
       class GooglePrivacyDlpV2Result
         include Google::Apis::Core::Hashable
       
@@ -9322,6 +9387,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @output_config = args[:output_config] if args.key?(:output_config)
+        end
+      end
+      
+      # Collection of findings saved to a Cloud Storage bucket. This is used as the
+      # proto schema for textproto files created when specifying a cloud storage path
+      # to save Inspect findings.
+      class GooglePrivacyDlpV2SaveToGcsFindingsOutput
+        include Google::Apis::Core::Hashable
+      
+        # List of findings.
+        # Corresponds to the JSON property `findings`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Finding>]
+        attr_accessor :findings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @findings = args[:findings] if args.key?(:findings)
         end
       end
       
@@ -9917,6 +10003,11 @@ module Google
         # @return [String]
         attr_accessor :dataset_project_id
       
+        # Domains associated with the profile.
+        # Corresponds to the JSON property `domains`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Domain>]
+        attr_accessor :domains
+      
         # How the table is encrypted.
         # Corresponds to the JSON property `encryptionStatus`
         # @return [String]
@@ -10013,7 +10104,8 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore]
         attr_accessor :sensitivity_score
       
-        # State of a profile.
+        # State of a profile. This will always be set to DONE when the table data
+        # profile is written to another service like BigQuery or Pub/Sub.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -10048,6 +10140,7 @@ module Google
           @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
           @dataset_location = args[:dataset_location] if args.key?(:dataset_location)
           @dataset_project_id = args[:dataset_project_id] if args.key?(:dataset_project_id)
+          @domains = args[:domains] if args.key?(:domains)
           @encryption_status = args[:encryption_status] if args.key?(:encryption_status)
           @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
           @failed_column_count = args[:failed_column_count] if args.key?(:failed_column_count)
@@ -10289,7 +10382,7 @@ module Google
       
         # A column can be tagged with a custom tag. In this case, the user must indicate
         # an auxiliary table that contains statistical information on the possible
-        # values of this column (below).
+        # values of this column.
         # Corresponds to the JSON property `customTag`
         # @return [String]
         attr_accessor :custom_tag

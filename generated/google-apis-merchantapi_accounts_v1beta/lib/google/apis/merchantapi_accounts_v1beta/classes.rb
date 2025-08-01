@@ -92,13 +92,13 @@ module Google
       class Accepted
         include Google::Apis::Core::Hashable
       
-        # The account where the acceptance was recorded. This can be the account itself
-        # or, in the case of subaccounts, the advanced account.
+        # Required. The account where the acceptance was recorded. This can be the
+        # account itself or, in the case of subaccounts, the advanced account.
         # Corresponds to the JSON property `acceptedBy`
         # @return [String]
         attr_accessor :accepted_by
       
-        # The accepted termsOfService.
+        # Required. The accepted termsOfService.
         # Corresponds to the JSON property `termsOfService`
         # @return [String]
         attr_accessor :terms_of_service
@@ -852,16 +852,17 @@ module Google
       class BusinessInfo
         include Google::Apis::Core::Hashable
       
-        # Represents a postal address (for example, for postal delivery or payments
-        # addresses). Given a postal address, a postal service can deliver items to a
-        # premise, P.O. box or similar. It is not intended to model geographical
-        # locations (roads, towns, mountains). In typical usage, an address would be
-        # created by user input or from importing existing data, depending on the type
-        # of process. Advice on address input or editing: - Use an internationalization-
-        # ready address widget such as https://github.com/google/libaddressinput. -
-        # Users should not be presented with UI elements for input or editing of fields
-        # outside countries where that field is used. For more guidance on how to use
-        # this schema, see: https://support.google.com/business/answer/6397478.
+        # Represents a postal address, such as for postal delivery or payments addresses.
+        # With a postal address, a postal service can deliver items to a premise, P.O.
+        # box, or similar. A postal address is not intended to model geographical
+        # locations like roads, towns, or mountains. In typical usage, an address would
+        # be created by user input or from importing existing data, depending on the
+        # type of process. Advice on address input or editing: - Use an
+        # internationalization-ready address widget such as https://github.com/google/
+        # libaddressinput. - Users should not be presented with UI elements for input or
+        # editing of fields outside countries where that field is used. For more
+        # guidance on how to use this schema, see: https://support.google.com/business/
+        # answer/6397478.
         # Corresponds to the JSON property `address`
         # @return [Google::Apis::MerchantapiAccountsV1beta::PostalAddress]
         attr_accessor :address
@@ -986,6 +987,81 @@ module Google
           @name = args[:name] if args.key?(:name)
           @origin_postal_code = args[:origin_postal_code] if args.key?(:origin_postal_code)
           @percentage_adjustment = args[:percentage_adjustment] if args.key?(:percentage_adjustment)
+        end
+      end
+      
+      # [CheckoutSettings](https://support.google.com/merchants/answer/13945960) for a
+      # specific merchant.
+      class CheckoutSettings
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The effective value of enrollment_state for a given merchant ID.
+        # If account level settings are present then this value will be a copy of the
+        # account level settings. Otherwise, it will have the value of the parent
+        # account (for only marketplace sellers).
+        # Corresponds to the JSON property `effectiveEnrollmentState`
+        # @return [String]
+        attr_accessor :effective_enrollment_state
+      
+        # Output only. The effective value of `review_state` for a given merchant ID. If
+        # account level settings are present then this value will be a copy of the
+        # account level settings. Otherwise, it will have the value of the parent
+        # account (for only marketplace sellers).
+        # Corresponds to the JSON property `effectiveReviewState`
+        # @return [String]
+        attr_accessor :effective_review_state
+      
+        # URL settings for cart or checkout URL.
+        # Corresponds to the JSON property `effectiveUriSettings`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::UriSettings]
+        attr_accessor :effective_uri_settings
+      
+        # Optional. The destinations to which the checkout program applies, valid
+        # destination values are `SHOPPING_ADS`, `FREE_LISTINGS`
+        # Corresponds to the JSON property `eligibleDestinations`
+        # @return [Array<String>]
+        attr_accessor :eligible_destinations
+      
+        # Output only. Reflects the merchant enrollment state in `Checkout` program.
+        # Corresponds to the JSON property `enrollmentState`
+        # @return [String]
+        attr_accessor :enrollment_state
+      
+        # Identifier. The resource name of the program configuration settings. Format: `
+        # accounts/`account`/programs/`program`/checkoutSettings`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Reflects the merchant review state in `Checkout` program. This is
+        # set based on the data quality reviews of the URL provided by the merchant. A
+        # merchant with enrollment state as `ENROLLED` can be in the following review
+        # states: `IN_REVIEW`, `APPROVED` or `DISAPPROVED`. A merchant must be in an `
+        # enrollment_state` of `ENROLLED` before a review can begin for the merchant.For
+        # more details, check the help center doc.
+        # Corresponds to the JSON property `reviewState`
+        # @return [String]
+        attr_accessor :review_state
+      
+        # URL settings for cart or checkout URL.
+        # Corresponds to the JSON property `uriSettings`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::UriSettings]
+        attr_accessor :uri_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_enrollment_state = args[:effective_enrollment_state] if args.key?(:effective_enrollment_state)
+          @effective_review_state = args[:effective_review_state] if args.key?(:effective_review_state)
+          @effective_uri_settings = args[:effective_uri_settings] if args.key?(:effective_uri_settings)
+          @eligible_destinations = args[:eligible_destinations] if args.key?(:eligible_destinations)
+          @enrollment_state = args[:enrollment_state] if args.key?(:enrollment_state)
+          @name = args[:name] if args.key?(:name)
+          @review_state = args[:review_state] if args.key?(:review_state)
+          @uri_settings = args[:uri_settings] if args.key?(:uri_settings)
         end
       end
       
@@ -1333,6 +1409,33 @@ module Google
           @transit_business_day_config = args[:transit_business_day_config] if args.key?(:transit_business_day_config)
           @transit_time_table = args[:transit_time_table] if args.key?(:transit_time_table)
           @warehouse_based_delivery_times = args[:warehouse_based_delivery_times] if args.key?(:warehouse_based_delivery_times)
+        end
+      end
+      
+      # Represents a developer registration owned by a Merchant account.
+      class DeveloperRegistration
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The GCP ids attached to this developer registration
+        # Corresponds to the JSON property `gcpIds`
+        # @return [Array<String>]
+        attr_accessor :gcp_ids
+      
+        # Identifier. The `name` (ID) of the developer registration. Generated by the
+        # Content API upon creation of a new `DeveloperRegistration`. The `account`
+        # represents the merchant ID of the merchant that owns the registration.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcp_ids = args[:gcp_ids] if args.key?(:gcp_ids)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -2087,7 +2190,7 @@ module Google
         end
       end
       
-      # Response message for the `ListAccounts` method.
+      # Response message for the `accounts.list` method.
       class ListAccountsResponse
         include Google::Apis::Core::Hashable
       
@@ -2561,11 +2664,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :item_conditions
       
-        # Required. Immutable. This field represents the unique user-defined label of
-        # the return policy. It is important to note that the same label cannot be used
-        # in different return policies for the same country. Unless a product specifies
-        # a specific label attribute, policies will be automatically labeled as 'default'
-        # . To assign a custom return policy to certain product groups, follow the
+        # Optional. Immutable. This field represents the unique user-defined label of
+        # the return policy for the given country. It is important to note that the same
+        # label cannot be used in different return policies for the same country. If not
+        # given, policies will be automatically treated as the 'default' for the country.
+        # When using label, you are creating an exception policy in that country to
+        # assign a custom return policy to certain product groups, follow the
         # instructions provided in the [Return policy label] (https://support.google.com/
         # merchants/answer/9445425). The label can contain up to 50 characters.
         # Corresponds to the JSON property `label`
@@ -2672,7 +2776,7 @@ module Google
         # phone number that uses a relaxed ITU E.164 format consisting of the country
         # calling code (1 to 3 digits) and the subscriber number, with no additional
         # spaces or formatting. For example: - correct: "+15552220123" - incorrect: "+1 (
-        # 555) 222-01234 x123". The ITU E.164 format limits the latter to 12 digits, but
+        # 555) 222-01234 x123" The ITU E.164 format limits the latter to 12 digits, but
         # in practice not all countries respect that, so we relax that restriction here.
         # National-only numbers are not allowed. References: - https://www.itu.int/rec/T-
         # REC-E.164-201011-I - https://en.wikipedia.org/wiki/E.164. - https://en.
@@ -2769,16 +2873,17 @@ module Google
         end
       end
       
-      # Represents a postal address (for example, for postal delivery or payments
-      # addresses). Given a postal address, a postal service can deliver items to a
-      # premise, P.O. box or similar. It is not intended to model geographical
-      # locations (roads, towns, mountains). In typical usage, an address would be
-      # created by user input or from importing existing data, depending on the type
-      # of process. Advice on address input or editing: - Use an internationalization-
-      # ready address widget such as https://github.com/google/libaddressinput. -
-      # Users should not be presented with UI elements for input or editing of fields
-      # outside countries where that field is used. For more guidance on how to use
-      # this schema, see: https://support.google.com/business/answer/6397478.
+      # Represents a postal address, such as for postal delivery or payments addresses.
+      # With a postal address, a postal service can deliver items to a premise, P.O.
+      # box, or similar. A postal address is not intended to model geographical
+      # locations like roads, towns, or mountains. In typical usage, an address would
+      # be created by user input or from importing existing data, depending on the
+      # type of process. Advice on address input or editing: - Use an
+      # internationalization-ready address widget such as https://github.com/google/
+      # libaddressinput. - Users should not be presented with UI elements for input or
+      # editing of fields outside countries where that field is used. For more
+      # guidance on how to use this schema, see: https://support.google.com/business/
+      # answer/6397478.
       class PostalAddress
         include Google::Apis::Core::Hashable
       
@@ -3067,7 +3172,7 @@ module Google
         # @return [String]
         attr_accessor :event_time
       
-        # Optional. The product expiration time. This field will not bet set if the
+        # Optional. The product expiration time. This field will not be set if the
         # notification is sent for a product deletion event.
         # Corresponds to the JSON property `expirationTime`
         # @return [String]
@@ -3340,6 +3445,31 @@ module Google
         end
       end
       
+      # Request message for the RegisterGCP method.
+      class RegisterGcpRequest
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. If the developer email provided is associated with a user in the
+        # merchant account provided, the user will be updated to have "API developer"
+        # access type and the email preference corresponding to that user will be
+        # updated to have the new "API notifications" preference. If the developer email
+        # provided is not associated with any user we will just add it as a contact. The
+        # email preference corresponding to that contact will have the new "API
+        # notifications" preference
+        # Corresponds to the JSON property `developerEmail`
+        # @return [String]
+        attr_accessor :developer_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @developer_email = args[:developer_email] if args.key?(:developer_email)
+        end
+      end
+      
       # Request to reject an account service.
       class RejectAccountServiceRequest
         include Google::Apis::Core::Hashable
@@ -3389,12 +3519,12 @@ module Google
       class Required
         include Google::Apis::Core::Hashable
       
-        # The `TermsOfService` that need to be accepted.
+        # Required. The `TermsOfService` that need to be accepted.
         # Corresponds to the JSON property `termsOfService`
         # @return [String]
         attr_accessor :terms_of_service
       
-        # Full URL to the terms of service file. This field is the same as `
+        # Required. Full URL to the terms of service file. This field is the same as `
         # TermsOfService.file_uri`, it is added here for convenience only.
         # Corresponds to the JSON property `tosFileUri`
         # @return [String]
@@ -3674,16 +3804,17 @@ module Google
       class ShippingSettings
         include Google::Apis::Core::Hashable
       
-        # Required. This field is used for avoid async issue. Make sure shipping setting
-        # data didn't change between get call and insert call. The user should do
-        # following steps： 1. Set etag field as empty string for initial shipping
-        # setting creation. 2. After initial creation, call get method to obtain an etag
-        # and current shipping setting data before call insert. 3. Modify to wanted
-        # shipping setting information. 4. Call insert method with the wanted shipping
-        # setting information with the etag obtained from step 2. 5. If shipping setting
-        # data changed between step 2 and step 4. Insert request will fail because the
-        # etag changes every time the shipping setting data changes. User should repeate
-        # step 2-4 with the new etag.
+        # Required. This field helps avoid async issues. It ensures that the shipping
+        # setting data doesn't change between the `get` call and the `insert` call. The
+        # user should follow these steps: 1. Set the etag field as an empty string for
+        # the initial shipping setting creation. 2. After the initial creation, call the
+        # `get` method to obtain an etag and the current shipping setting data before
+        # calling `insert`. 3. Modify the shipping setting information. 4. Call the `
+        # insert` method with the shipping setting information and the etag obtained in
+        # step 2. 5. If the shipping setting data changes between step 2 and step 4, the
+        # insert request will fail because the etag changes every time the shipping
+        # setting data changes. In this case, the user should repeat steps 2-4 with the
+        # new etag.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -3957,8 +4088,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Region code as defined by https://cldr.unicode.org/. This is the country the
-        # current state applies to.
+        # Required. Region code as defined by https://cldr.unicode.org/. This is the
+        # country the current state applies to.
         # Corresponds to the JSON property `regionCode`
         # @return [String]
         attr_accessor :region_code
@@ -3968,7 +4099,7 @@ module Google
         # @return [Google::Apis::MerchantapiAccountsV1beta::Required]
         attr_accessor :required
       
-        # Terms of Service kind associated with the particular version.
+        # Required. Terms of Service kind associated with the particular version.
         # Corresponds to the JSON property `termsOfServiceKind`
         # @return [String]
         attr_accessor :terms_of_service_kind
@@ -4110,6 +4241,52 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Request message for the UnregisterGCP method.
+      class UnregisterGcpRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # URL settings for cart or checkout URL.
+      class UriSettings
+        include Google::Apis::Core::Hashable
+      
+        # Cart URL template. When the placeholders are expanded will redirect the buyer
+        # to the cart page on the merchant website with the selected item in cart. For
+        # more details, check the [help center doc](https://support.google.com/merchants/
+        # answer/13945960#method1&zippy=%2Cproduct-level-url-formatting%2Caccount-level-
+        # url-formatting)
+        # Corresponds to the JSON property `cartUriTemplate`
+        # @return [String]
+        attr_accessor :cart_uri_template
+      
+        # Checkout URL template. When the placeholders are expanded will redirect the
+        # buyer to the merchant checkout page with the item in the cart. For more
+        # details, check the [help center doc](https://support.google.com/merchants/
+        # answer/13945960#method1&zippy=%2Cproduct-level-url-formatting%2Caccount-level-
+        # url-formatting)
+        # Corresponds to the JSON property `checkoutUriTemplate`
+        # @return [String]
+        attr_accessor :checkout_uri_template
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cart_uri_template = args[:cart_uri_template] if args.key?(:cart_uri_template)
+          @checkout_uri_template = args[:checkout_uri_template] if args.key?(:checkout_uri_template)
         end
       end
       

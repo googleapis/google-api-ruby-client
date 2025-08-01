@@ -178,26 +178,28 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Use [BatchChangeChromeOsDeviceStatus](/admin-sdk/directory/reference/rest/v1/
-        # customer.devices.chromeos/batchChangeStatus) instead. Takes an action that
-        # affects a Chrome OS Device. This includes deprovisioning, disabling, and re-
-        # enabling devices. *Warning:* * Deprovisioning a device will stop device policy
-        # syncing and remove device-level printers. After a device is deprovisioned, it
-        # must be wiped before it can be re-enrolled. * Lost or stolen devices should
-        # use the disable action. * Re-enabling a disabled device will consume a device
-        # license. If you do not have sufficient licenses available when completing the
-        # re-enable action, you will receive an error. For more information about
-        # deprovisioning and disabling devices, visit the [help center](https://support.
-        # google.com/chrome/a/answer/3523633).
+        # Use [BatchChangeChromeOsDeviceStatus](https://developers.google.com/workspace/
+        # admin/directory/reference/rest/v1/customer.devices.chromeos/batchChangeStatus)
+        # instead. Takes an action that affects a Chrome OS Device. This includes
+        # deprovisioning, disabling, and re-enabling devices. *Warning:* *
+        # Deprovisioning a device will stop device policy syncing and remove device-
+        # level printers. After a device is deprovisioned, it must be wiped before it
+        # can be re-enrolled. * Lost or stolen devices should use the disable action. *
+        # Re-enabling a disabled device will consume a device license. If you do not
+        # have sufficient licenses available when completing the re-enable action, you
+        # will receive an error. For more information about deprovisioning and disabling
+        # devices, visit the [help center](https://support.google.com/chrome/a/answer/
+        # 3523633).
         # @param [String] customer_id
         #   The unique ID for the customer's Google Workspace account. As an account
         #   administrator, you can also use the `my_customer` alias to represent your
         #   account's `customerId`. The `customerId` is also returned as part of the [
-        #   Users resource](/admin-sdk/directory/v1/reference/users).
+        #   Users resource](https://developers.google.com/workspace/admin/directory/v1/
+        #   reference/users).
         # @param [String] resource_id
         #   The unique ID of the device. The `resourceId`s are returned in the response
-        #   from the [chromeosdevices.list](/admin-sdk/directory/v1/reference/
-        #   chromeosdevices/list) method.
+        #   from the [chromeosdevices.list](https://developers.google.com/workspace/admin/
+        #   directory/v1/reference/chromeosdevices/list) method.
         # @param [Google::Apis::AdminDirectoryV1::ChromeOsDeviceAction] chrome_os_device_action_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -232,11 +234,12 @@ module Google
         #   The unique ID for the customer's Google Workspace account. As an account
         #   administrator, you can also use the `my_customer` alias to represent your
         #   account's `customerId`. The `customerId` is also returned as part of the [
-        #   Users resource](/admin-sdk/directory/v1/reference/users).
+        #   Users resource](https://developers.google.com/workspace/admin/directory/v1/
+        #   reference/users).
         # @param [String] device_id
         #   The unique ID of the device. The `deviceId`s are returned in the response from
-        #   the [chromeosdevices.list](/admin-sdk/directory/v1/reference/chromeosdevices/
-        #   list) method.
+        #   the [chromeosdevices.list](https://developers.google.com/workspace/admin/
+        #   directory/v1/reference/chromeosdevices/list) method.
         # @param [String] projection
         #   Determines whether the response contains the full list of properties or only a
         #   subset.
@@ -274,7 +277,8 @@ module Google
         #   The unique ID for the customer's Google Workspace account. As an account
         #   administrator, you can also use the `my_customer` alias to represent your
         #   account's `customerId`. The `customerId` is also returned as part of the [
-        #   Users resource](/admin-sdk/directory/v1/reference/users).
+        #   Users resource](https://developers.google.com/workspace/admin/directory/v1/
+        #   reference/users).
         # @param [Boolean] include_child_orgunits
         #   Return devices from all child orgunits, as well as the specified org unit. If
         #   this is set to true, 'orgUnitPath' must be provided.
@@ -293,8 +297,8 @@ module Google
         #   Determines whether the response contains the full list of properties or only a
         #   subset.
         # @param [String] query
-        #   Search string in the format given at https://developers.google.com/admin-sdk/
-        #   directory/v1/list-query-operators
+        #   Search string in the format given at https://developers.google.com/workspace/
+        #   admin/directory/v1/list-query-operators
         # @param [String] sort_order
         #   Whether to return results in ascending or descending order. Must be used with
         #   the `orderBy` parameter.
@@ -370,16 +374,18 @@ module Google
         
         # Updates a device's updatable properties, such as `annotatedUser`, `
         # annotatedLocation`, `notes`, `orgUnitPath`, or `annotatedAssetId`. This method
-        # supports [patch semantics](/admin-sdk/directory/v1/guides/performance#patch).
+        # supports [patch semantics](https://developers.google.com/workspace/admin/
+        # directory/v1/guides/performance#patch).
         # @param [String] customer_id
         #   The unique ID for the customer's Google Workspace account. As an account
         #   administrator, you can also use the `my_customer` alias to represent your
         #   account's `customerId`. The `customerId` is also returned as part of the [
-        #   Users resource](/admin-sdk/directory/v1/reference/users).
+        #   Users resource](https://developers.google.com/workspace/admin/directory/v1/
+        #   reference/users).
         # @param [String] device_id
         #   The unique ID of the device. The `deviceId`s are returned in the response from
-        #   the [chromeosdevices.list](/admin-sdk/v1/reference/chromeosdevices/list)
-        #   method.
+        #   the [chromeosdevices.list](https://developers.google.com/workspace/admin/v1/
+        #   reference/chromeosdevices/list) method.
         # @param [Google::Apis::AdminDirectoryV1::ChromeOsDevice] chrome_os_device_object
         # @param [String] projection
         #   Determines whether the response contains the full list of properties or only a
@@ -421,11 +427,12 @@ module Google
         #   The unique ID for the customer's Google Workspace account. As an account
         #   administrator, you can also use the `my_customer` alias to represent your
         #   account's `customerId`. The `customerId` is also returned as part of the [
-        #   Users resource](/admin-sdk/directory/v1/reference/users).
+        #   Users resource](https://developers.google.com/workspace/admin/directory/v1/
+        #   reference/users).
         # @param [String] device_id
         #   The unique ID of the device. The `deviceId`s are returned in the response from
-        #   the [chromeosdevices.list](/admin-sdk/v1/reference/chromeosdevices/list)
-        #   method.
+        #   the [chromeosdevices.list](https://developers.google.com/workspace/admin/v1/
+        #   reference/chromeosdevices/list) method.
         # @param [Google::Apis::AdminDirectoryV1::ChromeOsDevice] chrome_os_device_object
         # @param [String] projection
         #   Determines whether the response contains the full list of properties or only a
@@ -666,9 +673,9 @@ module Google
         
         # Creates multiple print servers.
         # @param [String] parent
-        #   Required. The [unique ID](https://developers.google.com/admin-sdk/directory/
-        #   reference/rest/v1/customers) of the customer's Google Workspace account.
-        #   Format: `customers/`id``
+        #   Required. The [unique ID](https://developers.google.com/workspace/admin/
+        #   directory/reference/rest/v1/customers) of the customer's Google Workspace
+        #   account. Format: `customers/`id``
         # @param [Google::Apis::AdminDirectoryV1::BatchCreatePrintServersRequest] batch_create_print_servers_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -701,9 +708,9 @@ module Google
         
         # Deletes multiple print servers.
         # @param [String] parent
-        #   Required. The [unique ID](https://developers.google.com/admin-sdk/directory/
-        #   reference/rest/v1/customers) of the customer's Google Workspace account.
-        #   Format: `customers/`customer.id``
+        #   Required. The [unique ID](https://developers.google.com/workspace/admin/
+        #   directory/reference/rest/v1/customers) of the customer's Google Workspace
+        #   account. Format: `customers/`customer.id``
         # @param [Google::Apis::AdminDirectoryV1::BatchDeletePrintServersRequest] batch_delete_print_servers_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -736,9 +743,9 @@ module Google
         
         # Creates a print server.
         # @param [String] parent
-        #   Required. The [unique ID](https://developers.google.com/admin-sdk/directory/
-        #   reference/rest/v1/customers) of the customer's Google Workspace account.
-        #   Format: `customers/`id``
+        #   Required. The [unique ID](https://developers.google.com/workspace/admin/
+        #   directory/reference/rest/v1/customers) of the customer's Google Workspace
+        #   account. Format: `customers/`id``
         # @param [Google::Apis::AdminDirectoryV1::PrintServer] print_server_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -802,9 +809,9 @@ module Google
         
         # Returns a print server's configuration.
         # @param [String] name
-        #   Required. The [unique ID](https://developers.google.com/admin-sdk/directory/
-        #   reference/rest/v1/customers) of the customer's Google Workspace account.
-        #   Format: `customers/`id``
+        #   Required. The [unique ID](https://developers.google.com/workspace/admin/
+        #   directory/reference/rest/v1/customers) of the customer's Google Workspace
+        #   account. Format: `customers/`id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -834,9 +841,9 @@ module Google
         
         # Lists print server configurations.
         # @param [String] parent
-        #   Required. The [unique ID](https://developers.google.com/admin-sdk/directory/
-        #   reference/rest/v1/customers) of the customer's Google Workspace account.
-        #   Format: `customers/`id``
+        #   Required. The [unique ID](https://developers.google.com/workspace/admin/
+        #   directory/reference/rest/v1/customers) of the customer's Google Workspace
+        #   account. Format: `customers/`id``
         # @param [String] filter
         #   Search query in [Common Expression Language syntax](https://github.com/google/
         #   cel-spec). Supported filters are `display_name`, `description`, and `uri`.
@@ -1267,9 +1274,9 @@ module Google
         #   The unique ID for the customer's Google Workspace account. In case of a multi-
         #   domain account, to fetch all groups for a customer, use this field instead of `
         #   domain`. You can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users](/admin-
-        #   sdk/directory/v1/reference/users) resource. You must provide either the `
-        #   customer` or the `domain` parameter.
+        #   customerId`. The `customerId` is also returned as part of the [Users](https://
+        #   developers.google.com/workspace/admin/directory/v1/reference/users) resource.
+        #   You must provide either the `customer` or the `domain` parameter.
         # @param [String] domain_alias_name
         #   Name of domain alias to be retrieved.
         # @param [String] fields
@@ -1338,9 +1345,9 @@ module Google
         #   The unique ID for the customer's Google Workspace account. In case of a multi-
         #   domain account, to fetch all groups for a customer, use this field instead of `
         #   domain`. You can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users](/admin-
-        #   sdk/directory/v1/reference/users) resource. You must provide either the `
-        #   customer` or the `domain` parameter.
+        #   customerId`. The `customerId` is also returned as part of the [Users](https://
+        #   developers.google.com/workspace/admin/directory/v1/reference/users) resource.
+        #   You must provide either the `customer` or the `domain` parameter.
         # @param [String] parent_domain_name
         #   Name of the parent domain for which domain aliases are to be fetched.
         # @param [String] fields
@@ -1407,9 +1414,9 @@ module Google
         #   The unique ID for the customer's Google Workspace account. In case of a multi-
         #   domain account, to fetch all groups for a customer, use this field instead of `
         #   domain`. You can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users](/admin-
-        #   sdk/directory/v1/reference/users) resource. You must provide either the `
-        #   customer` or the `domain` parameter.
+        #   customerId`. The `customerId` is also returned as part of the [Users](https://
+        #   developers.google.com/workspace/admin/directory/v1/reference/users) resource.
+        #   You must provide either the `customer` or the `domain` parameter.
         # @param [String] domain_name
         #   Name of domain to be retrieved
         # @param [String] fields
@@ -1478,9 +1485,9 @@ module Google
         #   The unique ID for the customer's Google Workspace account. In case of a multi-
         #   domain account, to fetch all groups for a customer, use this field instead of `
         #   domain`. You can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users](/admin-
-        #   sdk/directory/v1/reference/users) resource. You must provide either the `
-        #   customer` or the `domain` parameter.
+        #   customerId`. The `customerId` is also returned as part of the [Users](https://
+        #   developers.google.com/workspace/admin/directory/v1/reference/users) resource.
+        #   You must provide either the `customer` or the `domain` parameter.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1603,9 +1610,9 @@ module Google
         #   The unique ID for the customer's Google Workspace account. In case of a multi-
         #   domain account, to fetch all groups for a customer, use this field instead of `
         #   domain`. You can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users](/admin-
-        #   sdk/directory/v1/reference/users) resource. You must provide either the `
-        #   customer` or the `domain` parameter.
+        #   customerId`. The `customerId` is also returned as part of the [Users](https://
+        #   developers.google.com/workspace/admin/directory/v1/reference/users) resource.
+        #   You must provide either the `customer` or the `domain` parameter.
         # @param [String] domain
         #   The domain name. Use this field to get groups from only one domain. To return
         #   all domains for a customer account, use the `customer` query parameter instead.
@@ -1659,8 +1666,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a group's properties. This method supports [patch semantics](/admin-
-        # sdk/directory/v1/guides/performance#patch).
+        # Updates a group's properties. This method supports [patch semantics](https://
+        # developers.google.com/workspace/admin/directory/v1/guides/performance#patch).
         # @param [String] group_key
         #   Identifies the group in the API request. The value can be the group's email
         #   address, group alias, or the unique group ID.
@@ -1972,7 +1979,8 @@ module Google
         
         # Retrieves a paginated list of all members in a group. This method times out
         # after 60 minutes. For more information, see [Troubleshoot error codes](https://
-        # developers.google.com/admin-sdk/directory/v1/guides/troubleshoot-error-codes).
+        # developers.google.com/workspace/admin/directory/v1/guides/troubleshoot-error-
+        # codes).
         # @param [String] group_key
         #   Identifies the group in the API request. The value can be the group's email
         #   address, group alias, or the unique group ID.
@@ -2017,8 +2025,8 @@ module Google
         end
         
         # Updates the membership properties of a user in the specified group. This
-        # method supports [patch semantics](/admin-sdk/directory/v1/guides/performance#
-        # patch).
+        # method supports [patch semantics](https://developers.google.com/workspace/
+        # admin/directory/v1/guides/performance#patch).
         # @param [String] group_key
         #   Identifies the group in the API request. The value can be the group's email
         #   address, group alias, or the unique group ID.
@@ -2102,7 +2110,8 @@ module Google
         #   The unique ID for the customer's Google Workspace account. As an account
         #   administrator, you can also use the `my_customer` alias to represent your
         #   account's `customerId`. The `customerId` is also returned as part of the [
-        #   Users resource](/admin-sdk/directory/v1/reference/users).
+        #   Users resource](https://developers.google.com/workspace/admin/directory/v1/
+        #   reference/users).
         # @param [String] resource_id
         #   The unique ID the API service uses to identify the mobile device.
         # @param [Google::Apis::AdminDirectoryV1::MobileDeviceAction] mobile_device_action_object
@@ -2139,7 +2148,8 @@ module Google
         #   The unique ID for the customer's Google Workspace account. As an account
         #   administrator, you can also use the `my_customer` alias to represent your
         #   account's `customerId`. The `customerId` is also returned as part of the [
-        #   Users resource](/admin-sdk/directory/v1/reference/users).
+        #   Users resource](https://developers.google.com/workspace/admin/directory/v1/
+        #   reference/users).
         # @param [String] resource_id
         #   The unique ID the API service uses to identify the mobile device.
         # @param [String] fields
@@ -2173,7 +2183,8 @@ module Google
         #   The unique ID for the customer's Google Workspace account. As an account
         #   administrator, you can also use the `my_customer` alias to represent your
         #   account's `customerId`. The `customerId` is also returned as part of the [
-        #   Users resource](/admin-sdk/directory/v1/reference/users).
+        #   Users resource](https://developers.google.com/workspace/admin/directory/v1/
+        #   reference/users).
         # @param [String] resource_id
         #   The unique ID the API service uses to identify the mobile device.
         # @param [String] projection
@@ -2211,13 +2222,14 @@ module Google
         # retrieve a list that includes company-owned devices, use the Cloud Identity [
         # Devices API](https://cloud.google.com/identity/docs/concepts/overview-devices)
         # instead. This method times out after 60 minutes. For more information, see [
-        # Troubleshoot error codes](https://developers.google.com/admin-sdk/directory/v1/
-        # guides/troubleshoot-error-codes).
+        # Troubleshoot error codes](https://developers.google.com/workspace/admin/
+        # directory/v1/guides/troubleshoot-error-codes).
         # @param [String] customer_id
         #   The unique ID for the customer's Google Workspace account. As an account
         #   administrator, you can also use the `my_customer` alias to represent your
         #   account's `customerId`. The `customerId` is also returned as part of the [
-        #   Users resource](/admin-sdk/directory/v1/reference/users).
+        #   Users resource](https://developers.google.com/workspace/admin/directory/v1/
+        #   reference/users).
         # @param [Fixnum] max_results
         #   Maximum number of results to return. Max allowed value is 100.
         # @param [String] order_by
@@ -2227,8 +2239,8 @@ module Google
         # @param [String] projection
         #   Restrict information returned to a set of selected fields.
         # @param [String] query
-        #   Search string in the format given at https://developers.google.com/admin-sdk/
-        #   directory/v1/search-operators
+        #   Search string in the format given at https://developers.google.com/workspace/
+        #   admin/directory/v1/search-operators
         # @param [String] sort_order
         #   Whether to return results in ascending or descending order. Must be used with
         #   the `orderBy` parameter.
@@ -2270,7 +2282,8 @@ module Google
         #   The unique ID for the customer's Google Workspace account. As an account
         #   administrator, you can also use the `my_customer` alias to represent your
         #   account's `customerId`. The `customerId` is also returned as part of the [
-        #   Users resource](/admin-sdk/directory/v1/reference/users).
+        #   Users resource](https://developers.google.com/workspace/admin/directory/v1/
+        #   reference/users).
         # @param [String] org_unit_path
         #   The full path of the organizational unit (minus the leading `/`) or its unique
         #   ID.
@@ -2305,7 +2318,8 @@ module Google
         #   The unique ID for the customer's Google Workspace account. As an account
         #   administrator, you can also use the `my_customer` alias to represent your
         #   account's `customerId`. The `customerId` is also returned as part of the [
-        #   Users resource](/admin-sdk/directory/v1/reference/users).
+        #   Users resource](https://developers.google.com/workspace/admin/directory/v1/
+        #   reference/users).
         # @param [String] org_unit_path
         #   The full path of the organizational unit (minus the leading `/`) or its unique
         #   ID.
@@ -2342,7 +2356,8 @@ module Google
         #   The unique ID for the customer's Google Workspace account. As an account
         #   administrator, you can also use the `my_customer` alias to represent your
         #   account's `customerId`. The `customerId` is also returned as part of the [
-        #   Users resource](/admin-sdk/directory/v1/reference/users).
+        #   Users resource](https://developers.google.com/workspace/admin/directory/v1/
+        #   reference/users).
         # @param [Google::Apis::AdminDirectoryV1::OrgUnit] org_unit_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2378,7 +2393,8 @@ module Google
         #   The unique ID for the customer's Google Workspace account. As an account
         #   administrator, you can also use the `my_customer` alias to represent your
         #   account's `customerId`. The `customerId` is also returned as part of the [
-        #   Users resource](/admin-sdk/directory/v1/reference/users).
+        #   Users resource](https://developers.google.com/workspace/admin/directory/v1/
+        #   reference/users).
         # @param [String] org_unit_path
         #   The full path to the organizational unit or its unique ID. Returns the
         #   children of the specified organizational unit.
@@ -2413,13 +2429,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an organizational unit. This method supports [patch semantics](/admin-
-        # sdk/directory/v1/guides/performance#patch)
+        # Updates an organizational unit. This method supports [patch semantics](https://
+        # developers.google.com/workspace/admin/directory/v1/guides/performance#patch)
         # @param [String] customer_id
         #   The unique ID for the customer's Google Workspace account. As an account
         #   administrator, you can also use the `my_customer` alias to represent your
         #   account's `customerId`. The `customerId` is also returned as part of the [
-        #   Users resource](/admin-sdk/directory/v1/reference/users).
+        #   Users resource](https://developers.google.com/workspace/admin/directory/v1/
+        #   reference/users).
         # @param [String] org_unit_path
         #   The full path of the organizational unit (minus the leading `/`) or its unique
         #   ID.
@@ -2459,7 +2476,8 @@ module Google
         #   The unique ID for the customer's Google Workspace account. As an account
         #   administrator, you can also use the `my_customer` alias to represent your
         #   account's `customerId`. The `customerId` is also returned as part of the [
-        #   Users resource](/admin-sdk/directory/v1/reference/users).
+        #   Users resource](https://developers.google.com/workspace/admin/directory/v1/
+        #   reference/users).
         # @param [String] org_unit_path
         #   The full path of the organizational unit (minus the leading `/`) or its unique
         #   ID.
@@ -2499,9 +2517,9 @@ module Google
         #   The unique ID for the customer's Google Workspace account. In case of a multi-
         #   domain account, to fetch all groups for a customer, use this field instead of `
         #   domain`. You can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users](/admin-
-        #   sdk/directory/v1/reference/users) resource. You must provide either the `
-        #   customer` or the `domain` parameter.
+        #   customerId`. The `customerId` is also returned as part of the [Users](https://
+        #   developers.google.com/workspace/admin/directory/v1/reference/users) resource.
+        #   You must provide either the `customer` or the `domain` parameter.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3282,9 +3300,9 @@ module Google
         #   The unique ID for the customer's Google Workspace account. In case of a multi-
         #   domain account, to fetch all groups for a customer, use this field instead of `
         #   domain`. You can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users](/admin-
-        #   sdk/directory/v1/reference/users) resource. You must provide either the `
-        #   customer` or the `domain` parameter.
+        #   customerId`. The `customerId` is also returned as part of the [Users](https://
+        #   developers.google.com/workspace/admin/directory/v1/reference/users) resource.
+        #   You must provide either the `customer` or the `domain` parameter.
         # @param [String] role_assignment_id
         #   Immutable ID of the role assignment.
         # @param [String] fields
@@ -3353,9 +3371,9 @@ module Google
         #   The unique ID for the customer's Google Workspace account. In case of a multi-
         #   domain account, to fetch all groups for a customer, use this field instead of `
         #   domain`. You can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users](/admin-
-        #   sdk/directory/v1/reference/users) resource. You must provide either the `
-        #   customer` or the `domain` parameter.
+        #   customerId`. The `customerId` is also returned as part of the [Users](https://
+        #   developers.google.com/workspace/admin/directory/v1/reference/users) resource.
+        #   You must provide either the `customer` or the `domain` parameter.
         # @param [Boolean] include_indirect_role_assignments
         #   When set to `true`, fetches indirect role assignments (i.e. role assignment
         #   via a group) as well as direct ones. Defaults to `false`. You must specify `
@@ -3438,9 +3456,9 @@ module Google
         #   The unique ID for the customer's Google Workspace account. In case of a multi-
         #   domain account, to fetch all groups for a customer, use this field instead of `
         #   domain`. You can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users](/admin-
-        #   sdk/directory/v1/reference/users) resource. You must provide either the `
-        #   customer` or the `domain` parameter.
+        #   customerId`. The `customerId` is also returned as part of the [Users](https://
+        #   developers.google.com/workspace/admin/directory/v1/reference/users) resource.
+        #   You must provide either the `customer` or the `domain` parameter.
         # @param [String] role_id
         #   Immutable ID of the role.
         # @param [String] fields
@@ -3509,9 +3527,9 @@ module Google
         #   The unique ID for the customer's Google Workspace account. In case of a multi-
         #   domain account, to fetch all groups for a customer, use this field instead of `
         #   domain`. You can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users](/admin-
-        #   sdk/directory/v1/reference/users) resource. You must provide either the `
-        #   customer` or the `domain` parameter.
+        #   customerId`. The `customerId` is also returned as part of the [Users](https://
+        #   developers.google.com/workspace/admin/directory/v1/reference/users) resource.
+        #   You must provide either the `customer` or the `domain` parameter.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] page_token
@@ -3653,9 +3671,9 @@ module Google
         #   The unique ID for the customer's Google Workspace account. In case of a multi-
         #   domain account, to fetch all groups for a customer, use this field instead of `
         #   domain`. You can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users](/admin-
-        #   sdk/directory/v1/reference/users) resource. You must provide either the `
-        #   customer` or the `domain` parameter.
+        #   customerId`. The `customerId` is also returned as part of the [Users](https://
+        #   developers.google.com/workspace/admin/directory/v1/reference/users) resource.
+        #   You must provide either the `customer` or the `domain` parameter.
         # @param [String] schema_key
         #   Name or immutable ID of the schema.
         # @param [String] fields
@@ -3724,9 +3742,9 @@ module Google
         #   The unique ID for the customer's Google Workspace account. In case of a multi-
         #   domain account, to fetch all groups for a customer, use this field instead of `
         #   domain`. You can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users](/admin-
-        #   sdk/directory/v1/reference/users) resource. You must provide either the `
-        #   customer` or the `domain` parameter.
+        #   customerId`. The `customerId` is also returned as part of the [Users](https://
+        #   developers.google.com/workspace/admin/directory/v1/reference/users) resource.
+        #   You must provide either the `customer` or the `domain` parameter.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3992,8 +4010,9 @@ module Google
         #   What subset of fields to fetch for this user.
         # @param [String] view_type
         #   Whether to fetch the administrator-only or domain-wide public view of the user.
-        #   For more information, see [Retrieve a user as a non-administrator](/admin-sdk/
-        #   directory/v1/guides/manage-users#retrieve_users_non_admin).
+        #   For more information, see [Retrieve a user as a non-administrator](https://
+        #   developers.google.com/workspace/admin/directory/v1/guides/manage-users#
+        #   retrieve_users_non_admin).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4076,9 +4095,9 @@ module Google
         #   The unique ID for the customer's Google Workspace account. In case of a multi-
         #   domain account, to fetch all users for a customer, use this field instead of `
         #   domain`. You can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users](/admin-
-        #   sdk/directory/v1/reference/users) resource. You must provide either the `
-        #   customer` or the `domain` parameter.
+        #   customerId`. The `customerId` is also returned as part of the [Users](https://
+        #   developers.google.com/workspace/admin/directory/v1/reference/users) resource.
+        #   You must provide either the `customer` or the `domain` parameter.
         # @param [String] domain
         #   The domain name. Use this field to get users from only one domain. To return
         #   all domains for a customer account, use the `customer` query parameter instead.
@@ -4096,16 +4115,17 @@ module Google
         #   What subset of fields to fetch for this user.
         # @param [String] query
         #   Query string for searching user fields. For more information on constructing
-        #   user queries, see [Search for Users](/admin-sdk/directory/v1/guides/search-
-        #   users).
+        #   user queries, see [Search for Users](https://developers.google.com/workspace/
+        #   admin/directory/v1/guides/search-users).
         # @param [String] show_deleted
         #   If set to `true`, retrieves the list of deleted users. (Default: `false`)
         # @param [String] sort_order
         #   Whether to return results in ascending or descending order, ignoring case.
         # @param [String] view_type
         #   Whether to fetch the administrator-only or domain-wide public view of the user.
-        #   For more information, see [Retrieve a user as a non-administrator](/admin-sdk/
-        #   directory/v1/guides/manage-users#retrieve_users_non_admin).
+        #   For more information, see [Retrieve a user as a non-administrator](https://
+        #   developers.google.com/workspace/admin/directory/v1/guides/manage-users#
+        #   retrieve_users_non_admin).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4179,10 +4199,10 @@ module Google
         # Updates a user using patch semantics. The update method should be used instead,
         # because it also supports patch semantics and has better performance. If you'
         # re mapping an external identity to a Google identity, use the [`update`](https:
-        # //developers.google.com/admin-sdk/directory/v1/reference/users/update) method
-        # instead of the `patch` method. This method is unable to clear fields that
-        # contain repeated objects (`addresses`, `phones`, etc). Use the update method
-        # instead.
+        # //developers.google.com/workspace/admin/directory/v1/reference/users/update)
+        # method instead of the `patch` method. This method is unable to clear fields
+        # that contain repeated objects (`addresses`, `phones`, etc). Use the update
+        # method instead.
         # @param [String] user_key
         #   Identifies the user in the API request. The value can be the user's primary
         #   email address, alias email address, or unique user ID.
@@ -4283,7 +4303,7 @@ module Google
         # repeating fields that contain arrays, individual items in the array can't be
         # patched piecemeal; they must be supplied in the request body with the desired
         # values for all items. See the [user accounts guide](https://developers.google.
-        # com/admin-sdk/directory/v1/guides/manage-users#update_user) for more
+        # com/workspace/admin/directory/v1/guides/manage-users#update_user) for more
         # information.
         # @param [String] user_key
         #   Identifies the user in the API request. The value can be the user's primary
@@ -4348,8 +4368,9 @@ module Google
         #   Whether to return results in ascending or descending order.
         # @param [String] view_type
         #   Whether to fetch the administrator-only or domain-wide public view of the user.
-        #   For more information, see [Retrieve a user as a non-administrator](/admin-sdk/
-        #   directory/v1/guides/manage-users#retrieve_users_non_admin).
+        #   For more information, see [Retrieve a user as a non-administrator](https://
+        #   developers.google.com/workspace/admin/directory/v1/guides/manage-users#
+        #   retrieve_users_non_admin).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4586,8 +4607,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds a photo for the user. This method supports [patch semantics](/admin-sdk/
-        # directory/v1/guides/performance#patch).
+        # Adds a photo for the user. This method supports [patch semantics](https://
+        # developers.google.com/workspace/admin/directory/v1/guides/performance#patch).
         # @param [String] user_key
         #   Identifies the user in the API request. The value can be the user's primary
         #   email address, alias email address, or unique user ID.

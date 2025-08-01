@@ -303,7 +303,10 @@ module Google
       class GraphqlErrorExtensions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :debug_details, as: 'debugDetails'
           property :file, as: 'file'
+          property :resource, as: 'resource'
         end
       end
       
@@ -339,6 +342,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :auth_claims, as: 'authClaims'
+          property :include_debug_details, as: 'includeDebugDetails'
           property :unauthenticated, as: 'unauthenticated'
         end
       end

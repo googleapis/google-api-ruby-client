@@ -51,45 +51,46 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Uploads a file for Notebook LM to use. Creates a Source.
-        # @param [String] parent
-        #   Required. The parent resource where the sources will be created. Format:
-        #   projects/`project`/locations/`location`/notebooks/`notebook`
-        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUploadSourceFileRequest] google_cloud_notebooklm_v1alpha_upload_source_file_request_object
+        # Downloads a file from the session.
+        # @param [String] name
+        #   Required. The resource name of the Session. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/engines/`engine`/sessions/`
+        #   session``
+        # @param [String] file_id
+        #   Required. The ID of the file to be downloaded.
+        # @param [String] view_id
+        #   Optional. The ID of the view to be downloaded.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [IO, String] upload_source
-        #   IO stream or filename containing content to upload
-        # @param [String] content_type
-        #   Content type of the uploaded content.
+        # @param [IO, String] download_dest
+        #   IO stream or filename to receive content download
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUploadSourceFileResponse] parsed result object
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GdataMedia] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUploadSourceFileResponse]
+        # @return [Google::Apis::DiscoveryengineV1alpha::GdataMedia]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def upload_medium(parent, google_cloud_notebooklm_v1alpha_upload_source_file_request_object = nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
-          if upload_source.nil?
-            command = make_simple_command(:post, 'v1alpha/{+parent}/sources:uploadFile', options)
+        def download_medium(name, file_id: nil, view_id: nil, fields: nil, quota_user: nil, download_dest: nil, options: nil, &block)
+          if download_dest.nil?
+            command = make_simple_command(:get, 'v1alpha/{+name}:downloadFile', options)
           else
-            command = make_upload_command(:post, 'v1alpha/{+parent}/sources:uploadFile', options)
-            command.upload_source = upload_source
-            command.upload_content_type = content_type
+            command = make_download_command(:get, 'v1alpha/{+name}:downloadFile', options)
+            command.download_dest = download_dest
           end
-          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUploadSourceFileRequest::Representation
-          command.request_object = google_cloud_notebooklm_v1alpha_upload_source_file_request_object
-          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUploadSourceFileResponse::Representation
-          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUploadSourceFileResponse
-          command.params['parent'] = parent unless parent.nil?
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GdataMedia::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GdataMedia
+          command.params['name'] = name unless name.nil?
+          command.query['fileId'] = file_id unless file_id.nil?
+          command.query['viewId'] = view_id unless view_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -854,10 +855,11 @@ module Google
         #   Indicates which fields in the provided DataConnector to update. Supported
         #   field paths include: - refresh_interval - params - auto_run_disabled -
         #   action_config - action_config.action_params - action_config.service_name -
-        #   destination_configs - blocking_reasons - sync_mode Note: Support for these
-        #   fields may vary depending on the connector type. For example, not all
-        #   connectors support `destination_configs`. If an unsupported or unknown field
-        #   path is provided, the request will return an INVALID_ARGUMENT error.
+        #   destination_configs - blocking_reasons - sync_mode - incremental_sync_disabled
+        #   - incremental_refresh_interval Note: Support for these fields may vary
+        #   depending on the connector type. For example, not all connectors support `
+        #   destination_configs`. If an unsupported or unknown field path is provided, the
+        #   request will return an INVALID_ARGUMENT error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -883,6 +885,44 @@ module Google
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataConnector
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Uses the per-user refresh token minted with AcquireAndStoreRefreshToken to
+        # generate and return a new access token and its details. Takes the access token
+        # from cache if available. Rotates the stored refresh token if needed. Uses the
+        # end user identity to return the user specific access token. Does *not* return
+        # the credentials configured by the administrator. Used by Agentspace action
+        # execution and Agentspace UI.
+        # @param [String] name
+        #   Required. The resource name of the connector for which a token is queried.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenRequest] google_cloud_discoveryengine_v1alpha_acquire_access_token_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def acquire_project_location_collection_data_connector_access_token(name, google_cloud_discoveryengine_v1alpha_acquire_access_token_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+name}:acquireAccessToken', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_acquire_access_token_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3432,8 +3472,12 @@ module Google
         #   Required. The data store resource name. Format: `projects/`project`/locations/`
         #   location`/collections/`collection`/dataStores/`data_store_id``
         # @param [String] filter
-        #   A filter to apply on the list results. The supported features are:
-        #   user_pseudo_id, state. Example: "user_pseudo_id = some_id"
+        #   A comma-separated list of fields to filter by, in EBNF grammar. The supported
+        #   fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `
+        #   is_pinned` * `labels` * `create_time` * `update_time` Examples: "
+        #   user_pseudo_id = some_id" "display_name = \"some_name\"" "starred = true" "
+        #   is_pinned=true AND (NOT labels:hidden)" "create_time > \"1970-01-01T12:00:00Z\"
+        #   "
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
@@ -4515,6 +4559,9 @@ module Google
         #   the end user's view. It's recommended to set to true for maturely developed
         #   widgets, as it improves widget performance. Set to false to see changes
         #   reflected in prod right away, if your widget is under development.
+        # @param [Boolean] get_widget_config_request_option_turn_off_collection_components
+        #   Optional. Whether to turn off collection_components in WidgetConfig to reduce
+        #   latency and data transmission.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4532,12 +4579,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_collection_data_store_widget_config(name, accept_cache: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_collection_data_store_widget_config(name, accept_cache: nil, get_widget_config_request_option_turn_off_collection_components: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+name}', options)
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfig::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfig
           command.params['name'] = name unless name.nil?
           command.query['acceptCache'] = accept_cache unless accept_cache.nil?
+          command.query['getWidgetConfigRequestOption.turnOffCollectionComponents'] = get_widget_config_request_option_turn_off_collection_components unless get_widget_config_request_option_turn_off_collection_components.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -4829,6 +4877,111 @@ module Google
           command.request_object = google_cloud_discoveryengine_v1alpha_tune_engine_request_object
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an Assistant.
+        # @param [String] name
+        #   Required. Resource name of Assistant. Format: `projects/`project`/locations/`
+        #   location`/collections/`collection`/engines/`engine`/assistants/`assistant``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistant] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistant]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_collection_engine_assistant(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistant::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistant
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an Assistant
+        # @param [String] name
+        #   Immutable. Resource name of the assistant. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/engines/`engine`/assistants/`
+        #   assistant`` It must be a UTF-8 encoded string with a length limit of 1024
+        #   characters.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistant] google_cloud_discoveryengine_v1alpha_assistant_object
+        # @param [String] update_mask
+        #   The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistant] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistant]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_collection_engine_assistant(name, google_cloud_discoveryengine_v1alpha_assistant_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistant::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_assistant_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistant::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistant
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Assists the user with a query in a streaming fashion.
+        # @param [String] name
+        #   Required. The resource name of the Assistant. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/engines/`engine`/assistants/`
+        #   assistant``
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaStreamAssistRequest] google_cloud_discoveryengine_v1alpha_stream_assist_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaStreamAssistResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaStreamAssistResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_project_location_collection_engine_assistant_assist(name, google_cloud_discoveryengine_v1alpha_stream_assist_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+name}:streamAssist', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaStreamAssistRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_stream_assist_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaStreamAssistResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaStreamAssistResponse
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -5824,8 +5977,12 @@ module Google
         #   Required. The data store resource name. Format: `projects/`project`/locations/`
         #   location`/collections/`collection`/dataStores/`data_store_id``
         # @param [String] filter
-        #   A filter to apply on the list results. The supported features are:
-        #   user_pseudo_id, state. Example: "user_pseudo_id = some_id"
+        #   A comma-separated list of fields to filter by, in EBNF grammar. The supported
+        #   fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `
+        #   is_pinned` * `labels` * `create_time` * `update_time` Examples: "
+        #   user_pseudo_id = some_id" "display_name = \"some_name\"" "starred = true" "
+        #   is_pinned=true AND (NOT labels:hidden)" "create_time > \"1970-01-01T12:00:00Z\"
+        #   "
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
@@ -5941,6 +6098,60 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists metadata for all files in the current session.
+        # @param [String] parent
+        #   Required. The resource name of the Session. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/engines/`engine`/sessions/`
+        #   session`` Name of the session resource to which the file belong.
+        # @param [String] filter
+        #   Optional. The filter syntax consists of an expression language for
+        #   constructing a predicate from one or more fields of the files being filtered.
+        #   Filter expression is case-sensitive. Currently supported field names are: *
+        #   upload_time * last_add_time * last_use_time * file_name * mime_type Some
+        #   examples of filters would be: * "file_name = 'file_1'" * "file_name = 'file_1'
+        #   AND mime_type = 'text/plain'" * "last_use_time > '2025-06-14T12:00:00Z'" For a
+        #   full description of the filter format, please see https://google.aip.dev/160.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of files to return. The service may return fewer
+        #   than this value. If unspecified, at most 100 files will be returned. The
+        #   maximum value is 1000; values above 1000 will be coerced to 1000. If user
+        #   specifies a value less than or equal to 0 - the request will be rejected with
+        #   an INVALID_ARGUMENT error.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous `ListFiles` call. Provide this
+        #   to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListFiles` must match the call that provided the page token (
+        #   except `page_size`, which may differ).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListFilesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListFilesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_collection_engine_session_files(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/files', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListFilesResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListFilesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a WidgetConfig.
         # @param [String] name
         #   Required. Full WidgetConfig resource name. Format: `projects/`project`/
@@ -5952,6 +6163,9 @@ module Google
         #   the end user's view. It's recommended to set to true for maturely developed
         #   widgets, as it improves widget performance. Set to false to see changes
         #   reflected in prod right away, if your widget is under development.
+        # @param [Boolean] get_widget_config_request_option_turn_off_collection_components
+        #   Optional. Whether to turn off collection_components in WidgetConfig to reduce
+        #   latency and data transmission.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5969,12 +6183,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_collection_engine_widget_config(name, accept_cache: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_collection_engine_widget_config(name, accept_cache: nil, get_widget_config_request_option_turn_off_collection_components: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+name}', options)
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfig::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfig
           command.params['name'] = name unless name.nil?
           command.query['acceptCache'] = accept_cache unless accept_cache.nil?
+          command.query['getWidgetConfigRequestOption.turnOffCollectionComponents'] = get_widget_config_request_option_turn_off_collection_components unless get_widget_config_request_option_turn_off_collection_components.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -8273,8 +8488,12 @@ module Google
         #   Required. The data store resource name. Format: `projects/`project`/locations/`
         #   location`/collections/`collection`/dataStores/`data_store_id``
         # @param [String] filter
-        #   A filter to apply on the list results. The supported features are:
-        #   user_pseudo_id, state. Example: "user_pseudo_id = some_id"
+        #   A comma-separated list of fields to filter by, in EBNF grammar. The supported
+        #   fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `
+        #   is_pinned` * `labels` * `create_time` * `update_time` Examples: "
+        #   user_pseudo_id = some_id" "display_name = \"some_name\"" "starred = true" "
+        #   is_pinned=true AND (NOT labels:hidden)" "create_time > \"1970-01-01T12:00:00Z\"
+        #   "
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
@@ -9066,6 +9285,9 @@ module Google
         #   the end user's view. It's recommended to set to true for maturely developed
         #   widgets, as it improves widget performance. Set to false to see changes
         #   reflected in prod right away, if your widget is under development.
+        # @param [Boolean] get_widget_config_request_option_turn_off_collection_components
+        #   Optional. Whether to turn off collection_components in WidgetConfig to reduce
+        #   latency and data transmission.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9083,12 +9305,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_data_store_widget_config(name, accept_cache: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_data_store_widget_config(name, accept_cache: nil, get_widget_config_request_option_turn_off_collection_components: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+name}', options)
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfig::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfig
           command.params['name'] = name unless name.nil?
           command.query['acceptCache'] = accept_cache unless accept_cache.nil?
+          command.query['getWidgetConfigRequestOption.turnOffCollectionComponents'] = get_widget_config_request_option_turn_off_collection_components unless get_widget_config_request_option_turn_off_collection_components.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -9652,6 +9875,79 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the recently viewed notebooks. Needs a side channel with the user's EUC.
+        # @param [String] parent
+        #   Required. The parent branch resource name, such as `projects/`project`/
+        #   locations/`location``.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of Notebooks to return. If unspecified, defaults to "
+        #   200". The maximum allowed value is "500". If this field is negative, will use
+        #   the default value.
+        # @param [String] page_token
+        #   Optional. The page token, provide this to retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaListRecentlyViewedNotebooksResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaListRecentlyViewedNotebooksResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_notebook_recently_viewed(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/notebooks:listRecentlyViewed', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaListRecentlyViewedNotebooksResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaListRecentlyViewedNotebooksResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a list of Sources.
+        # @param [String] parent
+        #   Required. The parent resource where the sources will be created. Format:
+        #   projects/`project`/locations/`location`/notebooks/`notebook`
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaBatchCreateSourcesRequest] google_cloud_notebooklm_v1alpha_batch_create_sources_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaBatchCreateSourcesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaBatchCreateSourcesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_project_location_notebook_source_create(parent, google_cloud_notebooklm_v1alpha_batch_create_sources_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/sources:batchCreate', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaBatchCreateSourcesRequest::Representation
+          command.request_object = google_cloud_notebooklm_v1alpha_batch_create_sources_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaBatchCreateSourcesResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaBatchCreateSourcesResponse
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

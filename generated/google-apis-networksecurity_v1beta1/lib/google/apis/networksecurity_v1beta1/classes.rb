@@ -375,11 +375,22 @@ module Google
       class AuthzPolicyAuthzRuleFromRequestSource
         include Google::Apis::Core::Hashable
       
-        # Optional. A list of IPs or CIDRs to match against the source IP of a request.
-        # Limited to 5 ip_blocks.
+        # Optional. A list of IP addresses or IP address ranges to match against the
+        # source IP address of the request. Limited to 5 ip_blocks.
         # Corresponds to the JSON property `ipBlocks`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleIpBlock>]
         attr_accessor :ip_blocks
+      
+        # Optional. A list of identities derived from the client's certificate. This
+        # field will not match on a request unless frontend mutual TLS is enabled for
+        # the forwarding rule or Gateway and the client certificate has been
+        # successfully validated by mTLS. Each identity is a string whose value is
+        # matched against a list of URI SANs, DNS Name SANs, or the common name in the
+        # client's certificate. A match happens when any principal matches with the rule.
+        # Limited to 5 principals.
+        # Corresponds to the JSON property `principals`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRulePrincipal>]
+        attr_accessor :principals
       
         # Optional. A list of resources to match against the resource of the source VM
         # of a request. Limited to 5 resources.
@@ -394,6 +405,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ip_blocks = args[:ip_blocks] if args.key?(:ip_blocks)
+          @principals = args[:principals] if args.key?(:principals)
           @resources = args[:resources] if args.key?(:resources)
         end
       end
@@ -445,6 +457,32 @@ module Google
         def update!(**args)
           @length = args[:length] if args.key?(:length)
           @prefix = args[:prefix] if args.key?(:prefix)
+        end
+      end
+      
+      # Describes the properties of a principal to be matched against.
+      class AuthzPolicyAuthzRulePrincipal
+        include Google::Apis::Core::Hashable
+      
+        # Determines how a string value should be matched.
+        # Corresponds to the JSON property `principal`
+        # @return [Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleStringMatch]
+        attr_accessor :principal
+      
+        # Optional. An enum to decide what principal value the principal rule will match
+        # against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+        # Corresponds to the JSON property `principalSelector`
+        # @return [String]
+        attr_accessor :principal_selector
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @principal = args[:principal] if args.key?(:principal)
+          @principal_selector = args[:principal_selector] if args.key?(:principal_selector)
         end
       end
       
@@ -757,7 +795,7 @@ module Google
       # certificates trusted by the TrustConfig. * `clientCertificate` is a client
       # certificate that the load balancer uses to express its identity to the backend,
       # if the connection to the backend uses mTLS. You can attach the
-      # BackendAuthenticationConfig to the load balancer’s BackendService directly
+      # BackendAuthenticationConfig to the load balancer's BackendService directly
       # determining how that BackendService negotiates TLS.
       class BackendAuthenticationConfig
         include Google::Apis::Core::Hashable
@@ -901,7 +939,7 @@ module Google
         attr_accessor :labels
       
         # Required. Name of the ClientTlsPolicy resource. It matches the pattern `
-        # projects/*/locations/`location`/clientTlsPolicies/`client_tls_policy``
+        # projects/`project`/locations/`location`/clientTlsPolicies/`client_tls_policy``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3035,7 +3073,7 @@ module Google
         end
       end
       
-      # Message for response to listing SACAttachments
+      # Response for `ListSACAttachments` method.
       class ListSacAttachmentsResponse
         include Google::Apis::Core::Hashable
       
@@ -3044,7 +3082,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # The list of SACAttachments
+        # The list of SACAttachments.
         # Corresponds to the JSON property `sacAttachments`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::SacAttachment>]
         attr_accessor :sac_attachments
@@ -3066,7 +3104,7 @@ module Google
         end
       end
       
-      # Message for response to listing SACRealms
+      # Response for `ListSACRealms` method.
       class ListSacRealmsResponse
         include Google::Apis::Core::Hashable
       
@@ -3075,7 +3113,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # The list of SACRealms
+        # The list of SACRealms.
         # Corresponds to the JSON property `sacRealms`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::SacRealm>]
         attr_accessor :sac_realms
@@ -4048,19 +4086,18 @@ module Google
         end
       end
       
-      # Configuration for an attachment within a SAC realm.
+      # Represents a Secure Access Connect (SAC) attachment resource. A Secure Access
+      # Connect attachment enables NCC Gateway to process traffic with an SSE product.
       class SacAttachment
         include Google::Apis::Core::Hashable
       
-        # Optional. ISO-3166 alpha 2 country code used for localization. Only used for
-        # Symantec's API today, and is optional even for gateways connected to Symantec,
-        # since Symantec applies a default if we don't specify it. Not case-sensitive,
-        # since it will be upper-cased when sending to Symantec API.
+        # Optional. Case-insensitive ISO-3166 alpha-2 country code used for localization.
+        # Only valid for Symantec attachments.
         # Corresponds to the JSON property `country`
         # @return [String]
         attr_accessor :country
       
-        # Output only. [Output only] Timestamp when the attachment was created.
+        # Output only. Timestamp when the attachment was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -4076,39 +4113,37 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. Name of the NCC Gateway which connects to the attachment. ID or full
-        # URI can be specified. Full URI is stored either way，in the form `projects/`
-        # project`/locations/`location`/spokes/`ncc_gateway``.
+        # Required. NCC Gateway associated with the attachment. This can be input as an
+        # ID or a full resource name. The output always has the form `projects/`
+        # project_number`/locations/`location`/spokes/`ncc_gateway``.
         # Corresponds to the JSON property `nccGateway`
         # @return [String]
         attr_accessor :ncc_gateway
       
-        # Required. Name of the SAC Realm which owns the attachment. The input can be
-        # either an ID for a full name. The output will always be the full name using
-        # project number instead of project ID. The format is `projects/`project_number`/
+        # Required. SAC Realm which owns the attachment. This can be input as an ID or a
+        # full resource name. The output always has the form `projects/`project_number`/
         # locations/`location`/sacRealms/`sac_realm``.
         # Corresponds to the JSON property `sacRealm`
         # @return [String]
         attr_accessor :sac_realm
       
-        # Output only. [Output only] State of the attachment.
+        # Output only. State of the attachment.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Fields specific to SSEGWs connecting to Symantec Cloud SWG.
+        # Fields specific to attachments associated with Symantec Cloud SWG.
         # Corresponds to the JSON property `symantecOptions`
         # @return [Google::Apis::NetworksecurityV1beta1::SacAttachmentSacAttachmentSymantecOptions]
         attr_accessor :symantec_options
       
-        # Optional. tzinfo identifier used for localization. Only used for Symantec's
-        # API today, and is optional even for gateways connected to Symantec, since
-        # Symantec applies a default if we don't specify it. Case sensitive.
+        # Optional. Case-sensitive tzinfo identifier used for localization. Only valid
+        # for Symantec attachments.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
         attr_accessor :time_zone
       
-        # Output only. [Output only] Timestamp when the attachment was last updated.
+        # Output only. Timestamp when the attachment was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -4132,19 +4167,18 @@ module Google
         end
       end
       
-      # Fields specific to SSEGWs connecting to Symantec Cloud SWG.
+      # Fields specific to attachments associated with Symantec Cloud SWG.
       class SacAttachmentSacAttachmentSymantecOptions
         include Google::Apis::Core::Hashable
       
-        # Immutable. Name to be used for when creating a Location on the customer's
-        # behalf in Symantec's Location API. Required iff sac_realm uses
-        # SYMANTEC_CLOUD_SWG. Not to be confused with GCP locations.
+        # Immutable. Name to be used when creating a location on the customer's behalf
+        # in Symantec's Location API. Not to be confused with Google Cloud locations.
         # Corresponds to the JSON property `symantecLocationName`
         # @return [String]
         attr_accessor :symantec_location_name
       
-        # Immutable. Symantec data center identifier that this Attachment will connect
-        # to. Required iff sac_realm uses SYMANTEC_CLOUD_SWG.
+        # Immutable. Symantec data center identifier that this attachment will connect
+        # to.
         # Corresponds to the JSON property `symantecSite`
         # @return [String]
         attr_accessor :symantec_site
@@ -4160,47 +4194,49 @@ module Google
         end
       end
       
-      # Message describing SACRealm object
+      # Represents a Secure Access Connect (SAC) realm resource. A Secure Access
+      # Connect realm establishes a connection between your Google Cloud project and
+      # an SSE service.
       class SacRealm
         include Google::Apis::Core::Hashable
       
-        # Output only. [Output only] Create time stamp
+        # Output only. Timestamp when the realm was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. Labels as key value pairs
+        # Optional. Optional list of labels applied to the resource.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Identifier. Resource name. It matches the pattern `projects/`project`/
-        # locations/`location`/sacRealms/`sacRealm``
+        # Identifier. Resource name, in the form `projects/`project`/locations/global/
+        # sacRealms/`sacRealm``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Key to be shared with SSE service provider to establish global handshake
+        # Key to be shared with SSE service provider to establish global handshake.
         # Corresponds to the JSON property `pairingKey`
         # @return [Google::Apis::NetworksecurityV1beta1::SacRealmPairingKey]
         attr_accessor :pairing_key
       
-        # Immutable. SSE service provider
+        # Immutable. SSE service provider associated with the realm.
         # Corresponds to the JSON property `securityService`
         # @return [String]
         attr_accessor :security_service
       
-        # Output only. [Output only] State of the realm
+        # Output only. State of the realm.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Fields specific to realms using SYMANTEC_CLOUD_SWG.
+        # Fields specific to realms using Symantec Cloud SWG.
         # Corresponds to the JSON property `symantecOptions`
         # @return [Google::Apis::NetworksecurityV1beta1::SacRealmSacRealmSymantecOptions]
         attr_accessor :symantec_options
       
-        # Output only. [Output only] Update time stamp
+        # Output only. Timestamp when the realm was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -4222,16 +4258,17 @@ module Google
         end
       end
       
-      # Key to be shared with SSE service provider to establish global handshake
+      # Key to be shared with SSE service provider to establish global handshake.
       class SacRealmPairingKey
         include Google::Apis::Core::Hashable
       
-        # Output only. Timestamp in UTC of when this resource is considered expired.
+        # Output only. Timestamp in UTC of when this resource is considered expired. It
+        # expires 7 days after creation.
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time
       
-        # Output only. The name of the key. It expires 7 days after creation.
+        # Output only. Key value.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -4247,25 +4284,25 @@ module Google
         end
       end
       
-      # Fields specific to realms using SYMANTEC_CLOUD_SWG.
+      # Fields specific to realms using Symantec Cloud SWG.
       class SacRealmSacRealmSymantecOptions
         include Google::Apis::Core::Hashable
       
-        # Output only. Symantec site IDs that the user can choose to connect to.
+        # Output only. Symantec site IDs which the user can choose to connect to.
         # Corresponds to the JSON property `availableSymantecSites`
         # @return [Array<String>]
         attr_accessor :available_symantec_sites
       
         # Optional. API Key used to call Symantec APIs on the user's behalf. Required if
-        # using SYMANTEC_CLOUD_SWG. P4SA account needs permissions granted to read this
+        # using Symantec Cloud SWG. P4SA account needs permissions granted to read this
         # secret. A secret ID, secret name, or secret URI can be specified, but it will
-        # be parsed and stored as secret URI in the format of "projects/`PROJECT_NUMBER`/
-        # secrets/my-secret".
+        # be parsed and stored as a secret URI in the form `projects/`project_number`/
+        # secrets/my-secret`.
         # Corresponds to the JSON property `secretPath`
         # @return [String]
         attr_accessor :secret_path
       
-        # Output only. [Output only] Connection status to Symantec API.
+        # Output only. Connection status to Symantec API.
         # Corresponds to the JSON property `symantecConnectionState`
         # @return [String]
         attr_accessor :symantec_connection_state

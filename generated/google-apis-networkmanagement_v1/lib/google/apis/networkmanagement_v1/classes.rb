@@ -363,6 +363,12 @@ module Google
       class CloudRunRevisionEndpoint
         include Google::Apis::Core::Hashable
       
+        # Output only. The URI of the Cloud Run service that the revision belongs to.
+        # The format is: projects/`project`/locations/`location`/services/`service`
+        # Corresponds to the JSON property `serviceUri`
+        # @return [String]
+        attr_accessor :service_uri
+      
         # A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.
         # com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is:
         # projects/`project`/locations/`location`/revisions/`revision`
@@ -376,6 +382,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @service_uri = args[:service_uri] if args.key?(:service_uri)
           @uri = args[:uri] if args.key?(:uri)
         end
       end
@@ -1283,6 +1290,61 @@ module Google
         end
       end
       
+      # Message describing information about the host.
+      class Host
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The cloud instance id of the host.
+        # Corresponds to the JSON property `cloudInstanceId`
+        # @return [String]
+        attr_accessor :cloud_instance_id
+      
+        # Output only. The cloud project id of the host.
+        # Corresponds to the JSON property `cloudProjectId`
+        # @return [String]
+        attr_accessor :cloud_project_id
+      
+        # Output only. The cloud provider of the host.
+        # Corresponds to the JSON property `cloudProvider`
+        # @return [String]
+        attr_accessor :cloud_provider
+      
+        # Output only. The cloud region of the host.
+        # Corresponds to the JSON property `cloudRegion`
+        # @return [String]
+        attr_accessor :cloud_region
+      
+        # Output only. The ids of cloud virtual networks of the host.
+        # Corresponds to the JSON property `cloudVirtualNetworkIds`
+        # @return [Array<String>]
+        attr_accessor :cloud_virtual_network_ids
+      
+        # Output only. The cloud zone of the host.
+        # Corresponds to the JSON property `cloudZone`
+        # @return [String]
+        attr_accessor :cloud_zone
+      
+        # Output only. The operating system of the host.
+        # Corresponds to the JSON property `os`
+        # @return [String]
+        attr_accessor :os
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_instance_id = args[:cloud_instance_id] if args.key?(:cloud_instance_id)
+          @cloud_project_id = args[:cloud_project_id] if args.key?(:cloud_project_id)
+          @cloud_provider = args[:cloud_provider] if args.key?(:cloud_provider)
+          @cloud_region = args[:cloud_region] if args.key?(:cloud_region)
+          @cloud_virtual_network_ids = args[:cloud_virtual_network_ids] if args.key?(:cloud_virtual_network_ids)
+          @cloud_zone = args[:cloud_zone] if args.key?(:cloud_zone)
+          @os = args[:os] if args.key?(:os)
+        end
+      end
+      
       # For display only. Metadata associated with a Compute Engine instance.
       class InstanceInfo
         include Google::Apis::Core::Hashable
@@ -1322,7 +1384,8 @@ module Google
         # @return [String]
         attr_accessor :psc_network_attachment_uri
       
-        # Indicates whether the Compute Engine instance is running.
+        # Indicates whether the Compute Engine instance is running. Deprecated: use the `
+        # status` field instead.
         # Corresponds to the JSON property `running`
         # @return [Boolean]
         attr_accessor :running
@@ -1332,6 +1395,11 @@ module Google
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
+      
+        # The status of the instance.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
       
         # URI of a Compute Engine instance.
         # Corresponds to the JSON property `uri`
@@ -1353,6 +1421,7 @@ module Google
           @psc_network_attachment_uri = args[:psc_network_attachment_uri] if args.key?(:psc_network_attachment_uri)
           @running = args[:running] if args.key?(:running)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @status = args[:status] if args.key?(:status)
           @uri = args[:uri] if args.key?(:uri)
         end
       end
@@ -1458,6 +1527,81 @@ module Google
         end
       end
       
+      # Message for response to listing MonitoringPoints
+      class ListMonitoringPointsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of MonitoringPoints.
+        # Corresponds to the JSON property `monitoringPoints`
+        # @return [Array<Google::Apis::NetworkmanagementV1::MonitoringPoint>]
+        attr_accessor :monitoring_points
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @monitoring_points = args[:monitoring_points] if args.key?(:monitoring_points)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Message for response to listing NetworkMonitoringProviders
+      class ListNetworkMonitoringProvidersResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of NetworkMonitoringProvider
+        # Corresponds to the JSON property `networkMonitoringProviders`
+        # @return [Array<Google::Apis::NetworkmanagementV1::NetworkMonitoringProvider>]
+        attr_accessor :network_monitoring_providers
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_monitoring_providers = args[:network_monitoring_providers] if args.key?(:network_monitoring_providers)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Message for response to listing NetworkPaths
+      class ListNetworkPathsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of NetworkPath
+        # Corresponds to the JSON property `networkPaths`
+        # @return [Array<Google::Apis::NetworkmanagementV1::NetworkPath>]
+        attr_accessor :network_paths
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_paths = args[:network_paths] if args.key?(:network_paths)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -1511,6 +1655,31 @@ module Google
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
           @vpc_flow_logs_configs = args[:vpc_flow_logs_configs] if args.key?(:vpc_flow_logs_configs)
+        end
+      end
+      
+      # Message for response to listing WebPaths
+      class ListWebPathsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of WebPath.
+        # Corresponds to the JSON property `webPaths`
+        # @return [Array<Google::Apis::NetworkmanagementV1::WebPath>]
+        attr_accessor :web_paths
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @web_paths = args[:web_paths] if args.key?(:web_paths)
         end
       end
       
@@ -1730,6 +1899,120 @@ module Google
         end
       end
       
+      # Message describing MonitoringPoint resource.
+      class MonitoringPoint
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Indicates if automaitic geographic location is enabled for the
+        # MonitoringPoint.
+        # Corresponds to the JSON property `autoGeoLocationEnabled`
+        # @return [Boolean]
+        attr_accessor :auto_geo_location_enabled
+        alias_method :auto_geo_location_enabled?, :auto_geo_location_enabled
+      
+        # Output only. Connection status of the MonitoringPoint.
+        # Corresponds to the JSON property `connectionStatus`
+        # @return [String]
+        attr_accessor :connection_status
+      
+        # Output only. The time the MonitoringPoint was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Display name of the MonitoringPoint.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The codes of errors detected in the MonitoringPoint.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<String>]
+        attr_accessor :errors
+      
+        # Output only. The geographical location of the MonitoringPoint. Examples: - "
+        # New York, NY, USA" - "Berlin, Germany"
+        # Corresponds to the JSON property `geoLocation`
+        # @return [String]
+        attr_accessor :geo_location
+      
+        # Message describing information about the host.
+        # Corresponds to the JSON property `host`
+        # @return [Google::Apis::NetworkmanagementV1::Host]
+        attr_accessor :host
+      
+        # Output only. The hostname of the MonitoringPoint.
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
+        # Identifier. Name of the resource. Format: `projects/`project`/locations/`
+        # location`/networkMonitoringProviders/`network_monitoring_provider`/
+        # monitoringPoints/`monitoring_point``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The network interfaces of the MonitoringPoint.
+        # Corresponds to the JSON property `networkInterfaces`
+        # @return [Array<Google::Apis::NetworkmanagementV1::NetworkInterface>]
+        attr_accessor :network_interfaces
+      
+        # Output only. IP address visible when MonitoringPoint connects to the provider.
+        # Corresponds to the JSON property `originatingIp`
+        # @return [String]
+        attr_accessor :originating_ip
+      
+        # Output only. The provider tags of the MonitoringPoint.
+        # Corresponds to the JSON property `providerTags`
+        # @return [Array<Google::Apis::NetworkmanagementV1::ProviderTag>]
+        attr_accessor :provider_tags
+      
+        # Output only. Deployment type of the MonitoringPoint.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. The time the MonitoringPoint was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Output only. The type of upgrade available for the MonitoringPoint.
+        # Corresponds to the JSON property `upgradeType`
+        # @return [String]
+        attr_accessor :upgrade_type
+      
+        # Output only. Version of the software running on the MonitoringPoint.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_geo_location_enabled = args[:auto_geo_location_enabled] if args.key?(:auto_geo_location_enabled)
+          @connection_status = args[:connection_status] if args.key?(:connection_status)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @errors = args[:errors] if args.key?(:errors)
+          @geo_location = args[:geo_location] if args.key?(:geo_location)
+          @host = args[:host] if args.key?(:host)
+          @hostname = args[:hostname] if args.key?(:hostname)
+          @name = args[:name] if args.key?(:name)
+          @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
+          @originating_ip = args[:originating_ip] if args.key?(:originating_ip)
+          @provider_tags = args[:provider_tags] if args.key?(:provider_tags)
+          @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @upgrade_type = args[:upgrade_type] if args.key?(:upgrade_type)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # For display only. Metadata associated with NAT.
       class NatInfo
         include Google::Apis::Core::Hashable
@@ -1862,6 +2145,223 @@ module Google
           @matched_subnet_uri = args[:matched_subnet_uri] if args.key?(:matched_subnet_uri)
           @region = args[:region] if args.key?(:region)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Message describing network interfaces.
+      class NetworkInterface
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The description of the interface.
+        # Corresponds to the JSON property `adapterDescription`
+        # @return [String]
+        attr_accessor :adapter_description
+      
+        # Output only. The IP address of the interface and subnet mask in CIDR format.
+        # Examples: 192.168.1.0/24, 2001:db8::/32
+        # Corresponds to the JSON property `cidr`
+        # @return [String]
+        attr_accessor :cidr
+      
+        # Output only. The name of the network interface. Examples: eth0, eno1
+        # Corresponds to the JSON property `interfaceName`
+        # @return [String]
+        attr_accessor :interface_name
+      
+        # Output only. The IP address of the interface.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # Output only. The MAC address of the interface.
+        # Corresponds to the JSON property `macAddress`
+        # @return [String]
+        attr_accessor :mac_address
+      
+        # Output only. Speed of the interface in millions of bits per second.
+        # Corresponds to the JSON property `speed`
+        # @return [Fixnum]
+        attr_accessor :speed
+      
+        # Output only. The id of the VLAN.
+        # Corresponds to the JSON property `vlanId`
+        # @return [Fixnum]
+        attr_accessor :vlan_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adapter_description = args[:adapter_description] if args.key?(:adapter_description)
+          @cidr = args[:cidr] if args.key?(:cidr)
+          @interface_name = args[:interface_name] if args.key?(:interface_name)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @mac_address = args[:mac_address] if args.key?(:mac_address)
+          @speed = args[:speed] if args.key?(:speed)
+          @vlan_id = args[:vlan_id] if args.key?(:vlan_id)
+        end
+      end
+      
+      # Message describing NetworkMonitoringProvider resource.
+      class NetworkMonitoringProvider
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the NetworkMonitoringProvider was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Identifier. Name of the resource. Format: `projects/`project`/
+        # locations/`location`/networkMonitoringProviders/`network_monitoring_provider``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Type of the NetworkMonitoringProvider.
+        # Corresponds to the JSON property `providerType`
+        # @return [String]
+        attr_accessor :provider_type
+      
+        # Output only. Link to the provider's UI.
+        # Corresponds to the JSON property `providerUri`
+        # @return [String]
+        attr_accessor :provider_uri
+      
+        # Output only. State of the NetworkMonitoringProvider.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The time the NetworkMonitoringProvider was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @provider_type = args[:provider_type] if args.key?(:provider_type)
+          @provider_uri = args[:provider_uri] if args.key?(:provider_uri)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Message describing NetworkPath resource.
+      class NetworkPath
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the NetworkPath was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. IP address or hostname of the network path destination.
+        # Corresponds to the JSON property `destination`
+        # @return [String]
+        attr_accessor :destination
+      
+        # Output only. Geographical location of the destination MonitoringPoint.
+        # Corresponds to the JSON property `destinationGeoLocation`
+        # @return [String]
+        attr_accessor :destination_geo_location
+      
+        # Output only. The display name of the network path.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Indicates if the network path is dual ended. When true, the
+        # network path is measured both: from both source to destination, and from
+        # destination to source. When false, the network path is measured from the
+        # source through the destination back to the source (round trip measurement).
+        # Corresponds to the JSON property `dualEnded`
+        # @return [Boolean]
+        attr_accessor :dual_ended
+        alias_method :dual_ended?, :dual_ended
+      
+        # Output only. Is monitoring enabled for the network path.
+        # Corresponds to the JSON property `monitoringEnabled`
+        # @return [Boolean]
+        attr_accessor :monitoring_enabled
+        alias_method :monitoring_enabled?, :monitoring_enabled
+      
+        # Output only. Display name of the monitoring policy.
+        # Corresponds to the JSON property `monitoringPolicyDisplayName`
+        # @return [String]
+        attr_accessor :monitoring_policy_display_name
+      
+        # Output only. ID of monitoring policy.
+        # Corresponds to the JSON property `monitoringPolicyId`
+        # @return [String]
+        attr_accessor :monitoring_policy_id
+      
+        # Output only. The monitoring status of the network path.
+        # Corresponds to the JSON property `monitoringStatus`
+        # @return [String]
+        attr_accessor :monitoring_status
+      
+        # Identifier. Name of the resource. Format: `projects/`project`/locations/`
+        # location`/networkMonitoringProviders/`network_monitoring_provider`/
+        # networkPaths/`network_path``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The network protocol of the network path.
+        # Corresponds to the JSON property `networkProtocol`
+        # @return [String]
+        attr_accessor :network_protocol
+      
+        # Output only. The provider tags of the network path.
+        # Corresponds to the JSON property `providerTags`
+        # @return [Array<Google::Apis::NetworkmanagementV1::ProviderTag>]
+        attr_accessor :provider_tags
+      
+        # Output only. Link to provider's UI; link shows the NetworkPath.
+        # Corresponds to the JSON property `providerUiUri`
+        # @return [String]
+        attr_accessor :provider_ui_uri
+      
+        # Output only. Provider's UUID of the source MonitoringPoint. This id may not
+        # point to a resource in the GCP.
+        # Corresponds to the JSON property `sourceMonitoringPointId`
+        # @return [String]
+        attr_accessor :source_monitoring_point_id
+      
+        # Output only. The time the NetworkPath was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @destination = args[:destination] if args.key?(:destination)
+          @destination_geo_location = args[:destination_geo_location] if args.key?(:destination_geo_location)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @dual_ended = args[:dual_ended] if args.key?(:dual_ended)
+          @monitoring_enabled = args[:monitoring_enabled] if args.key?(:monitoring_enabled)
+          @monitoring_policy_display_name = args[:monitoring_policy_display_name] if args.key?(:monitoring_policy_display_name)
+          @monitoring_policy_id = args[:monitoring_policy_id] if args.key?(:monitoring_policy_id)
+          @monitoring_status = args[:monitoring_status] if args.key?(:monitoring_status)
+          @name = args[:name] if args.key?(:name)
+          @network_protocol = args[:network_protocol] if args.key?(:network_protocol)
+          @provider_tags = args[:provider_tags] if args.key?(:provider_tags)
+          @provider_ui_uri = args[:provider_ui_uri] if args.key?(:provider_ui_uri)
+          @source_monitoring_point_id = args[:source_monitoring_point_id] if args.key?(:source_monitoring_point_id)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -2164,6 +2664,37 @@ module Google
           @sent_probe_count = args[:sent_probe_count] if args.key?(:sent_probe_count)
           @successful_probe_count = args[:successful_probe_count] if args.key?(:successful_probe_count)
           @verify_time = args[:verify_time] if args.key?(:verify_time)
+        end
+      end
+      
+      # Message describing the provider tag.
+      class ProviderTag
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The category of the provider tag.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Output only. The resource type of the provider tag.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        # Output only. The value of the provider tag.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -3173,10 +3704,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :metadata_fields
       
-        # Identifier. Unique name of the configuration using one of the forms: `projects/
-        # `project_id`/locations/global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id`` `
-        # organizations/`organization_number`/locations/global/vpcFlowLogsConfigs/`
-        # vpc_flow_logs_config_id``
+        # Identifier. Unique name of the configuration. The name can have one of the
+        # following forms: - For project-level configurations: `projects/`project_id`/
+        # locations/global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id`` - For
+        # organization-level configurations: `organizations/`organization_id`/locations/
+        # global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3188,8 +3720,8 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Output only. A diagnostic bit - describes the state of the configured target
-        # resource for diagnostic purposes.
+        # Output only. Describes the state of the configured target resource for
+        # diagnostic purposes.
         # Corresponds to the JSON property `targetResourceState`
         # @return [String]
         attr_accessor :target_resource_state
@@ -3343,6 +3875,112 @@ module Google
           @source_gateway = args[:source_gateway] if args.key?(:source_gateway)
           @source_gateway_ip = args[:source_gateway_ip] if args.key?(:source_gateway_ip)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Message describing WebPath resource.
+      class WebPath
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the WebPath was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Web monitoring target.
+        # Corresponds to the JSON property `destination`
+        # @return [String]
+        attr_accessor :destination
+      
+        # Output only. Display name of the WebPath.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Monitoring interval.
+        # Corresponds to the JSON property `interval`
+        # @return [String]
+        attr_accessor :interval
+      
+        # Output only. Is monitoring enabled for the WebPath.
+        # Corresponds to the JSON property `monitoringEnabled`
+        # @return [Boolean]
+        attr_accessor :monitoring_enabled
+        alias_method :monitoring_enabled?, :monitoring_enabled
+      
+        # Output only. Display name of the monitoring policy.
+        # Corresponds to the JSON property `monitoringPolicyDisplayName`
+        # @return [String]
+        attr_accessor :monitoring_policy_display_name
+      
+        # Output only. ID of the monitoring policy.
+        # Corresponds to the JSON property `monitoringPolicyId`
+        # @return [String]
+        attr_accessor :monitoring_policy_id
+      
+        # Output only. The monitoring status of the WebPath.
+        # Corresponds to the JSON property `monitoringStatus`
+        # @return [String]
+        attr_accessor :monitoring_status
+      
+        # Identifier. Name of the resource. Format: `projects/`project`/locations/`
+        # location`/networkMonitoringProviders/`network_monitoring_provider`/webPaths/`
+        # web_path``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The provider tags of the web path.
+        # Corresponds to the JSON property `providerTags`
+        # @return [Array<Google::Apis::NetworkmanagementV1::ProviderTag>]
+        attr_accessor :provider_tags
+      
+        # Output only. Link to provider's UI; link shows the WebPath.
+        # Corresponds to the JSON property `providerUiUri`
+        # @return [String]
+        attr_accessor :provider_ui_uri
+      
+        # Output only. Provider's UUID of the related NetworkPath.
+        # Corresponds to the JSON property `relatedNetworkPathId`
+        # @return [String]
+        attr_accessor :related_network_path_id
+      
+        # Output only. ID of the source MonitoringPoint.
+        # Corresponds to the JSON property `sourceMonitoringPointId`
+        # @return [String]
+        attr_accessor :source_monitoring_point_id
+      
+        # Output only. The time the WebPath was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Output only. The workflow type of the WebPath.
+        # Corresponds to the JSON property `workflowType`
+        # @return [String]
+        attr_accessor :workflow_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @destination = args[:destination] if args.key?(:destination)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @interval = args[:interval] if args.key?(:interval)
+          @monitoring_enabled = args[:monitoring_enabled] if args.key?(:monitoring_enabled)
+          @monitoring_policy_display_name = args[:monitoring_policy_display_name] if args.key?(:monitoring_policy_display_name)
+          @monitoring_policy_id = args[:monitoring_policy_id] if args.key?(:monitoring_policy_id)
+          @monitoring_status = args[:monitoring_status] if args.key?(:monitoring_status)
+          @name = args[:name] if args.key?(:name)
+          @provider_tags = args[:provider_tags] if args.key?(:provider_tags)
+          @provider_ui_uri = args[:provider_ui_uri] if args.key?(:provider_ui_uri)
+          @related_network_path_id = args[:related_network_path_id] if args.key?(:related_network_path_id)
+          @source_monitoring_point_id = args[:source_monitoring_point_id] if args.key?(:source_monitoring_point_id)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @workflow_type = args[:workflow_type] if args.key?(:workflow_type)
         end
       end
     end

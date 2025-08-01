@@ -1368,6 +1368,11 @@ module Google
         # @return [Google::Apis::ComputeAlpha::AllocationResourceStatusAggregateAllocation]
         attr_accessor :aggregate_allocation
       
+        # Health information for the reservation.
+        # Corresponds to the JSON property `healthInfo`
+        # @return [Google::Apis::ComputeAlpha::AllocationResourceStatusHealthInfo]
+        attr_accessor :health_info
+      
         # The number of reservation blocks associated with this reservation.
         # Corresponds to the JSON property `reservationBlockCount`
         # @return [Fixnum]
@@ -1390,6 +1395,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @aggregate_allocation = args[:aggregate_allocation] if args.key?(:aggregate_allocation)
+          @health_info = args[:health_info] if args.key?(:health_info)
           @reservation_block_count = args[:reservation_block_count] if args.key?(:reservation_block_count)
           @reservation_maintenance = args[:reservation_maintenance] if args.key?(:reservation_maintenance)
           @specific_sku_allocation = args[:specific_sku_allocation] if args.key?(:specific_sku_allocation)
@@ -1413,6 +1419,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @utilizations = args[:utilizations] if args.key?(:utilizations)
+        end
+      end
+      
+      # Health information for the reservation.
+      class AllocationResourceStatusHealthInfo
+        include Google::Apis::Core::Hashable
+      
+        # The number of reservation blocks that are degraded.
+        # Corresponds to the JSON property `degradedBlockCount`
+        # @return [Fixnum]
+        attr_accessor :degraded_block_count
+      
+        # The health status of the reservation.
+        # Corresponds to the JSON property `healthStatus`
+        # @return [String]
+        attr_accessor :health_status
+      
+        # The number of reservation blocks that are healthy.
+        # Corresponds to the JSON property `healthyBlockCount`
+        # @return [Fixnum]
+        attr_accessor :healthy_block_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @degraded_block_count = args[:degraded_block_count] if args.key?(:degraded_block_count)
+          @health_status = args[:health_status] if args.key?(:health_status)
+          @healthy_block_count = args[:healthy_block_count] if args.key?(:healthy_block_count)
         end
       end
       
@@ -47722,6 +47759,11 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
+        # Health information for the reservation block.
+        # Corresponds to the JSON property `healthInfo`
+        # @return [Google::Apis::ComputeAlpha::ReservationBlockHealthInfo]
+        attr_accessor :health_info
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -47806,6 +47848,7 @@ module Google
         def update!(**args)
           @count = args[:count] if args.key?(:count)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @health_info = args[:health_info] if args.key?(:health_info)
           @id = args[:id] if args.key?(:id)
           @in_use_count = args[:in_use_count] if args.key?(:in_use_count)
           @kind = args[:kind] if args.key?(:kind)
@@ -47819,6 +47862,37 @@ module Google
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @status = args[:status] if args.key?(:status)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # Health information for the reservation block.
+      class ReservationBlockHealthInfo
+        include Google::Apis::Core::Hashable
+      
+        # The number of subBlocks that are degraded.
+        # Corresponds to the JSON property `degradedSubBlockCount`
+        # @return [Fixnum]
+        attr_accessor :degraded_sub_block_count
+      
+        # The health status of the reservation block.
+        # Corresponds to the JSON property `healthStatus`
+        # @return [String]
+        attr_accessor :health_status
+      
+        # The number of subBlocks that are healthy.
+        # Corresponds to the JSON property `healthySubBlockCount`
+        # @return [Fixnum]
+        attr_accessor :healthy_sub_block_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @degraded_sub_block_count = args[:degraded_sub_block_count] if args.key?(:degraded_sub_block_count)
+          @health_status = args[:health_status] if args.key?(:health_status)
+          @healthy_sub_block_count = args[:healthy_sub_block_count] if args.key?(:healthy_sub_block_count)
         end
       end
       
@@ -47836,6 +47910,11 @@ module Google
         # @return [String]
         attr_accessor :cluster
       
+        # The detailed instances information for a given Block
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::ComputeAlpha::ReservationBlockPhysicalTopologyInstance>]
+        attr_accessor :instances
+      
         def initialize(**args)
            update!(**args)
         end
@@ -47844,6 +47923,63 @@ module Google
         def update!(**args)
           @block = args[:block] if args.key?(:block)
           @cluster = args[:cluster] if args.key?(:cluster)
+          @instances = args[:instances] if args.key?(:instances)
+        end
+      end
+      
+      # The instances information for a given Block
+      class ReservationBlockPhysicalTopologyInstance
+        include Google::Apis::Core::Hashable
+      
+        # The InstanceId of the instance
+        # Corresponds to the JSON property `instanceId`
+        # @return [Fixnum]
+        attr_accessor :instance_id
+      
+        # The PhysicalHostTopology of the instance within a Block resource.
+        # Corresponds to the JSON property `physicalHostTopology`
+        # @return [Google::Apis::ComputeAlpha::ReservationBlockPhysicalTopologyInstancePhysicalHostTopology]
+        attr_accessor :physical_host_topology
+      
+        # Project where the instance lives
+        # Corresponds to the JSON property `projectId`
+        # @return [Fixnum]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @physical_host_topology = args[:physical_host_topology] if args.key?(:physical_host_topology)
+          @project_id = args[:project_id] if args.key?(:project_id)
+        end
+      end
+      
+      # The PhysicalHostTopology of the instance within a Block resource.
+      class ReservationBlockPhysicalTopologyInstancePhysicalHostTopology
+        include Google::Apis::Core::Hashable
+      
+        # Host hash for a given instance
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # Sub block hash for a given instance
+        # Corresponds to the JSON property `subBlock`
+        # @return [String]
+        attr_accessor :sub_block
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host = args[:host] if args.key?(:host)
+          @sub_block = args[:sub_block] if args.key?(:sub_block)
         end
       end
       
@@ -48118,6 +48254,11 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
+        # Health information for the reservation subBlock.
+        # Corresponds to the JSON property `healthInfo`
+        # @return [Google::Apis::ComputeAlpha::ReservationSubBlockHealthInfo]
+        attr_accessor :health_info
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -48181,6 +48322,7 @@ module Google
         def update!(**args)
           @count = args[:count] if args.key?(:count)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @health_info = args[:health_info] if args.key?(:health_info)
           @id = args[:id] if args.key?(:id)
           @in_use_count = args[:in_use_count] if args.key?(:in_use_count)
           @kind = args[:kind] if args.key?(:kind)
@@ -48191,6 +48333,51 @@ module Google
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @status = args[:status] if args.key?(:status)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # Health information for the reservation subBlock.
+      class ReservationSubBlockHealthInfo
+        include Google::Apis::Core::Hashable
+      
+        # The number of degraded hosts in the reservation subBlock.
+        # Corresponds to the JSON property `degradedHostCount`
+        # @return [Fixnum]
+        attr_accessor :degraded_host_count
+      
+        # The number of degraded infrastructure (e.g NV link domain) in the reservation
+        # subblock.
+        # Corresponds to the JSON property `degradedInfraCount`
+        # @return [Fixnum]
+        attr_accessor :degraded_infra_count
+      
+        # The health status of the reservation subBlock.
+        # Corresponds to the JSON property `healthStatus`
+        # @return [String]
+        attr_accessor :health_status
+      
+        # The number of healthy hosts in the reservation subBlock.
+        # Corresponds to the JSON property `healthyHostCount`
+        # @return [Fixnum]
+        attr_accessor :healthy_host_count
+      
+        # The number of healthy infrastructure (e.g NV link domain) in the reservation
+        # subblock.
+        # Corresponds to the JSON property `healthyInfraCount`
+        # @return [Fixnum]
+        attr_accessor :healthy_infra_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @degraded_host_count = args[:degraded_host_count] if args.key?(:degraded_host_count)
+          @degraded_infra_count = args[:degraded_infra_count] if args.key?(:degraded_infra_count)
+          @health_status = args[:health_status] if args.key?(:health_status)
+          @healthy_host_count = args[:healthy_host_count] if args.key?(:healthy_host_count)
+          @healthy_infra_count = args[:healthy_infra_count] if args.key?(:healthy_infra_count)
         end
       end
       

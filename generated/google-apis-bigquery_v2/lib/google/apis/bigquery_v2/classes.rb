@@ -3414,6 +3414,55 @@ module Google
         end
       end
       
+      # Options for the runtime of the external system.
+      class ExternalRuntimeOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Amount of CPU provisioned for the container instance. If not
+        # specified, the default value is 0.33 vCPUs.
+        # Corresponds to the JSON property `containerCpu`
+        # @return [Float]
+        attr_accessor :container_cpu
+      
+        # Optional. Amount of memory provisioned for the container instance. Format: `
+        # number``unit` where unit is one of "M", "G", "Mi" and "Gi" (e.g. 1G, 512Mi).
+        # If not specified, the default value is 512Mi.
+        # Corresponds to the JSON property `containerMemory`
+        # @return [String]
+        attr_accessor :container_memory
+      
+        # Optional. Maximum number of rows in each batch sent to the external runtime.
+        # If absent or if 0, BigQuery dynamically decides the number of rows in a batch.
+        # Corresponds to the JSON property `maxBatchingRows`
+        # @return [Fixnum]
+        attr_accessor :max_batching_rows
+      
+        # Optional. Fully qualified name of the connection whose service account will be
+        # used to execute the code in the container. Format: ```"projects/`project_id`/
+        # locations/`location_id`/connections/`connection_id`"```
+        # Corresponds to the JSON property `runtimeConnection`
+        # @return [String]
+        attr_accessor :runtime_connection
+      
+        # Optional. Language runtime version (e.g. python-3.11).
+        # Corresponds to the JSON property `runtimeVersion`
+        # @return [String]
+        attr_accessor :runtime_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @container_cpu = args[:container_cpu] if args.key?(:container_cpu)
+          @container_memory = args[:container_memory] if args.key?(:container_memory)
+          @max_batching_rows = args[:max_batching_rows] if args.key?(:max_batching_rows)
+          @runtime_connection = args[:runtime_connection] if args.key?(:runtime_connection)
+          @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
+        end
+      end
+      
       # The external service cost is a portion of the total cost, these costs are not
       # additive with total_bytes_billed. Moreover, this field only track external
       # service costs that will show up as BigQuery costs (e.g. training BigQuery ML
@@ -3426,6 +3475,13 @@ module Google
       # Output only.
       class ExternalServiceCost
         include Google::Apis::Core::Hashable
+      
+        # The billing method used for the external job. This field is only used when
+        # billed on the services sku, set to "SERVICES_SKU". Otherwise, it is
+        # unspecified for backward compatibility.
+        # Corresponds to the JSON property `billingMethod`
+        # @return [String]
+        attr_accessor :billing_method
       
         # External service cost in terms of bigquery bytes billed.
         # Corresponds to the JSON property `bytesBilled`
@@ -3460,6 +3516,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @billing_method = args[:billing_method] if args.key?(:billing_method)
           @bytes_billed = args[:bytes_billed] if args.key?(:bytes_billed)
           @bytes_processed = args[:bytes_processed] if args.key?(:bytes_processed)
           @external_service = args[:external_service] if args.key?(:external_service)
@@ -4355,8 +4412,7 @@ module Google
         # com/bigquery/docs/reference/rest/v2/jobs/query) method when used with `
         # JOB_CREATION_OPTIONAL` Job creation mode. For [`jobs.insert`](https://cloud.
         # google.com/bigquery/docs/reference/rest/v2/jobs/insert) method calls it will
-        # always be `REQUESTED`. [Preview](https://cloud.google.com/products/#product-
-        # launch-stages)
+        # always be `REQUESTED`.
         # Corresponds to the JSON property `jobCreationReason`
         # @return [Google::Apis::BigqueryV2::JobCreationReason]
         attr_accessor :job_creation_reason
@@ -5397,8 +5453,7 @@ module Google
       # com/bigquery/docs/reference/rest/v2/jobs/query) method when used with `
       # JOB_CREATION_OPTIONAL` Job creation mode. For [`jobs.insert`](https://cloud.
       # google.com/bigquery/docs/reference/rest/v2/jobs/insert) method calls it will
-      # always be `REQUESTED`. [Preview](https://cloud.google.com/products/#product-
-      # launch-stages)
+      # always be `REQUESTED`.
       class JobCreationReason
         include Google::Apis::Core::Hashable
       
@@ -6069,6 +6124,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_partitions_processed
       
+        # Output only. Total slot-milliseconds for the job that run on external services
+        # and billed on the service SKU. This field is only populated for jobs that have
+        # external service costs, and is the total of the usage for costs whose billing
+        # method is "SERVICES_SKU".
+        # Corresponds to the JSON property `totalServicesSkuSlotMs`
+        # @return [Fixnum]
+        attr_accessor :total_services_sku_slot_ms
+      
         # Output only. Slot-milliseconds for the job.
         # Corresponds to the JSON property `totalSlotMs`
         # @return [Fixnum]
@@ -6137,6 +6200,7 @@ module Google
           @total_bytes_processed = args[:total_bytes_processed] if args.key?(:total_bytes_processed)
           @total_bytes_processed_accuracy = args[:total_bytes_processed_accuracy] if args.key?(:total_bytes_processed_accuracy)
           @total_partitions_processed = args[:total_partitions_processed] if args.key?(:total_partitions_processed)
+          @total_services_sku_slot_ms = args[:total_services_sku_slot_ms] if args.key?(:total_services_sku_slot_ms)
           @total_slot_ms = args[:total_slot_ms] if args.key?(:total_slot_ms)
           @transferred_bytes = args[:transferred_bytes] if args.key?(:transferred_bytes)
           @undeclared_query_parameters = args[:undeclared_query_parameters] if args.key?(:undeclared_query_parameters)
@@ -7502,6 +7566,32 @@ module Google
         end
       end
       
+      # Options for a user-defined Python function.
+      class PythonOptions
+        include Google::Apis::Core::Hashable
+      
+        # Required. The entry point function in the user's Python code.
+        # Corresponds to the JSON property `entryPoint`
+        # @return [String]
+        attr_accessor :entry_point
+      
+        # Optional. A list of package names along with versions to be installed. Follows
+        # requirements.txt syntax (e.g. numpy==2.0, permutation, urllib3<2.2.1)
+        # Corresponds to the JSON property `packages`
+        # @return [Array<String>]
+        attr_accessor :packages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entry_point = args[:entry_point] if args.key?(:entry_point)
+          @packages = args[:packages] if args.key?(:packages)
+        end
+      end
+      
       # Query optimization information for a QUERY job.
       class QueryInfo
         include Google::Apis::Core::Hashable
@@ -7710,8 +7800,7 @@ module Google
         attr_accessor :format_options
       
         # Optional. If not set, jobs are always required. If set, the query request will
-        # follow the behavior described JobCreationMode. [Preview](https://cloud.google.
-        # com/products/#product-launch-stages)
+        # follow the behavior described JobCreationMode.
         # Corresponds to the JSON property `jobCreationMode`
         # @return [String]
         attr_accessor :job_creation_mode
@@ -7937,8 +8026,7 @@ module Google
         # com/bigquery/docs/reference/rest/v2/jobs/query) method when used with `
         # JOB_CREATION_OPTIONAL` Job creation mode. For [`jobs.insert`](https://cloud.
         # google.com/bigquery/docs/reference/rest/v2/jobs/insert) method calls it will
-        # always be `REQUESTED`. [Preview](https://cloud.google.com/products/#product-
-        # launch-stages)
+        # always be `REQUESTED`.
         # Corresponds to the JSON property `jobCreationReason`
         # @return [Google::Apis::BigqueryV2::JobCreationReason]
         attr_accessor :job_creation_reason
@@ -7974,8 +8062,7 @@ module Google
         # @return [String]
         attr_accessor :page_token
       
-        # Auto-generated ID for the query. [Preview](https://cloud.google.com/products/#
-        # product-launch-stages)
+        # Auto-generated ID for the query.
         # Corresponds to the JSON property `queryId`
         # @return [String]
         attr_accessor :query_id
@@ -8462,6 +8549,11 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Options for the runtime of the external system.
+        # Corresponds to the JSON property `externalRuntimeOptions`
+        # @return [Google::Apis::BigqueryV2::ExternalRuntimeOptions]
+        attr_accessor :external_runtime_options
+      
         # Optional. If language = "JAVASCRIPT", this field stores the path of the
         # imported JAVASCRIPT libraries.
         # Corresponds to the JSON property `importedLibraries`
@@ -8479,6 +8571,11 @@ module Google
         # Corresponds to the JSON property `lastModifiedTime`
         # @return [Fixnum]
         attr_accessor :last_modified_time
+      
+        # Options for a user-defined Python function.
+        # Corresponds to the JSON property `pythonOptions`
+        # @return [Google::Apis::BigqueryV2::PythonOptions]
+        attr_accessor :python_options
       
         # Options for a remote user-defined function.
         # Corresponds to the JSON property `remoteFunctionOptions`
@@ -8549,9 +8646,11 @@ module Google
           @description = args[:description] if args.key?(:description)
           @determinism_level = args[:determinism_level] if args.key?(:determinism_level)
           @etag = args[:etag] if args.key?(:etag)
+          @external_runtime_options = args[:external_runtime_options] if args.key?(:external_runtime_options)
           @imported_libraries = args[:imported_libraries] if args.key?(:imported_libraries)
           @language = args[:language] if args.key?(:language)
           @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
+          @python_options = args[:python_options] if args.key?(:python_options)
           @remote_function_options = args[:remote_function_options] if args.key?(:remote_function_options)
           @return_table_type = args[:return_table_type] if args.key?(:return_table_type)
           @return_type = args[:return_type] if args.key?(:return_type)

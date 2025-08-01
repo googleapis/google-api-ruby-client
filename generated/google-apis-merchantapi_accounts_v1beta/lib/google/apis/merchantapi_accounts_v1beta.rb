@@ -23,7 +23,7 @@ module Google
     #
     # Programmatically manage your Merchant Center Accounts.
     #
-    # @see https://developers.devsite.corp.google.com/merchant/api
+    # @see https://developers.google.com/merchant/api
     module MerchantapiAccountsV1beta
       # Version of the Merchant API this client connects to.
       # This is NOT the gem version.

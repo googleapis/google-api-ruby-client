@@ -2735,7 +2735,7 @@ module Google
         # Updates the parameters of a single ClientTlsPolicy.
         # @param [String] name
         #   Required. Name of the ClientTlsPolicy resource. It matches the pattern `
-        #   projects/*/locations/`location`/clientTlsPolicies/`client_tls_policy``
+        #   projects/`project`/locations/`location`/clientTlsPolicies/`client_tls_policy``
         # @param [Google::Apis::NetworksecurityV1beta1::ClientTlsPolicy] client_tls_policy_object
         # @param [String] update_mask
         #   Optional. Field mask is used to specify the fields to be overwritten in the
@@ -5252,7 +5252,7 @@ module Google
         
         # Creates a new SACAttachment in a given project and location.
         # @param [String] parent
-        #   Required. Value for parent.
+        #   Required. The parent, in the form `projects/`project`/locations/`location``.
         # @param [Google::Apis::NetworksecurityV1beta1::SacAttachment] sac_attachment_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
@@ -5266,9 +5266,12 @@ module Google
         #   duplicate commitments. The request ID must be a valid UUID with the exception
         #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] sac_attachment_id
-        #   Required. Id of the requesting object If auto-generating Id server-side,
-        #   remove this field and sac_attachment_id from the method_signature of Create
-        #   RPC
+        #   Required. ID of the created attachment. The ID must be 1-63 characters long,
+        #   and comply with RFC1035. Specifically, it must be 1-63 characters long and
+        #   match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the
+        #   first character must be a lowercase letter, and all following characters must
+        #   be a dash, lowercase letter, or digit, except the last character, which cannot
+        #   be a dash.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5300,9 +5303,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a single SACAttachment.
+        # Deletes the specified attachment.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. Name of the resource, in the form `projects/`project`/locations/`
+        #   location`/sacAttachments/`sac_attachment``.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -5342,9 +5346,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets details of a single SACAttachment.
+        # Returns the specified attachment.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. Name of the resource, in the form `projects/`project`/locations/`
+        #   location`/sacAttachments/`sac_attachment``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5374,11 +5379,11 @@ module Google
         
         # Lists SACAttachments in a given project and location.
         # @param [String] parent
-        #   Required. Parent value for ListSACAttachmentsRequest
+        #   Required. The parent, in the form `projects/`project`/locations/`location``.
         # @param [String] filter
-        #   Optional. Filtering results
+        #   Optional. An expression that filters the list of results.
         # @param [String] order_by
-        #   Optional. Hint for how to order the results
+        #   Optional. Sort the results by a certain order.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server may return fewer items than requested.
         #   If unspecified, server will pick an appropriate default.
@@ -5417,7 +5422,7 @@ module Google
         
         # Creates a new SACRealm in a given project.
         # @param [String] parent
-        #   Required. Value for parent.
+        #   Required. The parent, in the form `projects/`project`/locations/global`.
         # @param [Google::Apis::NetworksecurityV1beta1::SacRealm] sac_realm_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
@@ -5431,8 +5436,12 @@ module Google
         #   duplicate commitments. The request ID must be a valid UUID with the exception
         #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] sac_realm_id
-        #   Required. Id of the requesting object If auto-generating Id server-side,
-        #   remove this field and sac_realm_id from the method_signature of Create RPC
+        #   Required. ID of the created realm. The ID must be 1-63 characters long, and
+        #   comply with RFC1035. Specifically, it must be 1-63 characters long and match
+        #   the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
+        #   character must be a lowercase letter, and all following characters must be a
+        #   dash, lowercase letter, or digit, except the last character, which cannot be a
+        #   dash.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5464,9 +5473,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a single SACRealm.
+        # Deletes the specified realm.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. Name of the resource, in the form `projects/`project`/locations/
+        #   global/sacRealms/`sacRealm``.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -5506,9 +5516,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets details of a single SACRealm.
+        # Returns the specified realm.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. Name of the resource, in the form `projects/`project`/locations/
+        #   global/sacRealms/`sacRealm``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5538,11 +5549,11 @@ module Google
         
         # Lists SACRealms in a given project.
         # @param [String] parent
-        #   Required. Parent value for ListSACRealmsRequest
+        #   Required. The parent, in the form `projects/`project`/locations/global`.
         # @param [String] filter
-        #   Optional. Filtering results
+        #   Optional. An expression that filters the list of results.
         # @param [String] order_by
-        #   Optional. Hint for how to order the results
+        #   Optional. Sort the results by a certain order.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server may return fewer items than requested.
         #   If unspecified, server will pick an appropriate default.

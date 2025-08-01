@@ -285,7 +285,8 @@ module Google
         alias_method :deny_all?, :deny_all
       
         # If `true`, then the policy is enforced. If `false`, then any configuration is
-        # acceptable. This field can be set only in policies for boolean constraints.
+        # acceptable. This field can be set in policies for boolean constraints, custom
+        # constraints and managed constraints.
         # Corresponds to the JSON property `enforce`
         # @return [Boolean]
         attr_accessor :enforce
@@ -1310,6 +1311,321 @@ module Google
           @ancestors = args[:ancestors] if args.key?(:ancestors)
           @asset_type = args[:asset_type] if args.key?(:asset_type)
           @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
+      # CreateOrgPolicyViolationsPreviewOperationMetadata is metadata about an
+      # OrgPolicyViolationsPreview generations operation.
+      class GoogleCloudPolicysimulatorV1betaCreateOrgPolicyViolationsPreviewOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time when the request was received.
+        # Corresponds to the JSON property `requestTime`
+        # @return [String]
+        attr_accessor :request_time
+      
+        # Total number of resources that need scanning. Should equal resource_scanned +
+        # resources_pending
+        # Corresponds to the JSON property `resourcesFound`
+        # @return [Fixnum]
+        attr_accessor :resources_found
+      
+        # Number of resources still to scan.
+        # Corresponds to the JSON property `resourcesPending`
+        # @return [Fixnum]
+        attr_accessor :resources_pending
+      
+        # Number of resources already scanned.
+        # Corresponds to the JSON property `resourcesScanned`
+        # @return [Fixnum]
+        attr_accessor :resources_scanned
+      
+        # Time when the request started processing, i.e., when the state was set to
+        # RUNNING.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. The current state of the operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_time = args[:request_time] if args.key?(:request_time)
+          @resources_found = args[:resources_found] if args.key?(:resources_found)
+          @resources_pending = args[:resources_pending] if args.key?(:resources_pending)
+          @resources_scanned = args[:resources_scanned] if args.key?(:resources_scanned)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # GenerateOrgPolicyViolationsPreviewOperationMetadata is metadata about an
+      # OrgPolicyViolationsPreview generations operation.
+      class GoogleCloudPolicysimulatorV1betaGenerateOrgPolicyViolationsPreviewOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time when the request was received.
+        # Corresponds to the JSON property `requestTime`
+        # @return [String]
+        attr_accessor :request_time
+      
+        # Total number of resources that need scanning. Should equal resource_scanned +
+        # resources_pending
+        # Corresponds to the JSON property `resourcesFound`
+        # @return [Fixnum]
+        attr_accessor :resources_found
+      
+        # Number of resources still to scan.
+        # Corresponds to the JSON property `resourcesPending`
+        # @return [Fixnum]
+        attr_accessor :resources_pending
+      
+        # Number of resources already scanned.
+        # Corresponds to the JSON property `resourcesScanned`
+        # @return [Fixnum]
+        attr_accessor :resources_scanned
+      
+        # Time when the request started processing, i.e. when the state was set to
+        # RUNNING.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The current state of the operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_time = args[:request_time] if args.key?(:request_time)
+          @resources_found = args[:resources_found] if args.key?(:resources_found)
+          @resources_pending = args[:resources_pending] if args.key?(:resources_pending)
+          @resources_scanned = args[:resources_scanned] if args.key?(:resources_scanned)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # The proposed changes to OrgPolicy.
+      class GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The OrgPolicy CustomConstraint changes to preview violations for.
+        # Any existing CustomConstraints with the same name will be overridden in the
+        # simulation. That is, violations will be determined as if all custom
+        # constraints in the overlay were instantiated. Only a single custom_constraint
+        # is supported in the overlay at a time. For evaluating multiple constraints,
+        # multiple `GenerateOrgPolicyViolationsPreview` requests are made, where each
+        # request evaluates a single constraint.
+        # Corresponds to the JSON property `customConstraints`
+        # @return [Array<Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay>]
+        attr_accessor :custom_constraints
+      
+        # Optional. The OrgPolicy changes to preview violations for. Any existing
+        # OrgPolicies with the same name will be overridden in the simulation. That is,
+        # violations will be determined as if all policies in the overlay were created
+        # or updated.
+        # Corresponds to the JSON property `policies`
+        # @return [Array<Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay>]
+        attr_accessor :policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_constraints = args[:custom_constraints] if args.key?(:custom_constraints)
+          @policies = args[:policies] if args.key?(:policies)
+        end
+      end
+      
+      # A change to an OrgPolicy custom constraint.
+      class GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay
+        include Google::Apis::Core::Hashable
+      
+        # A custom constraint defined by customers which can *only* be applied to the
+        # given resource types and organization. By creating a custom constraint,
+        # customers can apply policies of this custom constraint. *Creating a custom
+        # constraint itself does NOT apply any policy enforcement*.
+        # Corresponds to the JSON property `customConstraint`
+        # @return [Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2CustomConstraint]
+        attr_accessor :custom_constraint
+      
+        # Optional. Resource the constraint is attached to. Example: "organization/
+        # 987654"
+        # Corresponds to the JSON property `customConstraintParent`
+        # @return [String]
+        attr_accessor :custom_constraint_parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_constraint = args[:custom_constraint] if args.key?(:custom_constraint)
+          @custom_constraint_parent = args[:custom_constraint_parent] if args.key?(:custom_constraint_parent)
+        end
+      end
+      
+      # A change to an OrgPolicy.
+      class GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay
+        include Google::Apis::Core::Hashable
+      
+        # Defines an organization policy which is used to specify constraints for
+        # configurations of Google Cloud resources.
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2Policy]
+        attr_accessor :policy
+      
+        # Optional. The parent of the policy we are attaching to. Example: "projects/
+        # 123456"
+        # Corresponds to the JSON property `policyParent`
+        # @return [String]
+        attr_accessor :policy_parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
+          @policy_parent = args[:policy_parent] if args.key?(:policy_parent)
+        end
+      end
+      
+      # OrgPolicyViolationsPreview is a resource providing a preview of the violations
+      # that will exist if an OrgPolicy change is made. The list of violations are
+      # modeled as child resources and retrieved via a ListOrgPolicyViolations API
+      # call. There are potentially more OrgPolicyViolations than could fit in an
+      # embedded field. Thus, the use of a child resource instead of a field.
+      class GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time when this `OrgPolicyViolationsPreview` was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The names of the constraints against which all `
+        # OrgPolicyViolations` were evaluated. If `OrgPolicyOverlay` only contains `
+        # PolicyOverlay` then it contains the name of the configured custom constraint,
+        # applicable to the specified policies. Otherwise it contains the name of the
+        # constraint specified in `CustomConstraintOverlay`. Format: `organizations/`
+        # organization_id`/customConstraints/`custom_constraint_id`` Example: `
+        # organizations/123/customConstraints/custom.createOnlyE2TypeVms`
+        # Corresponds to the JSON property `customConstraints`
+        # @return [Array<String>]
+        attr_accessor :custom_constraints
+      
+        # Output only. The resource name of the `OrgPolicyViolationsPreview`. It has the
+        # following format: `organizations/`organization`/locations/`location`/
+        # orgPolicyViolationsPreviews/`orgPolicyViolationsPreview`` Example: `
+        # organizations/my-example-org/locations/global/orgPolicyViolationsPreviews/
+        # 506a5f7f`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The proposed changes to OrgPolicy.
+        # Corresponds to the JSON property `overlay`
+        # @return [Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay]
+        attr_accessor :overlay
+      
+        # A summary of the state of all resources scanned for compliance with the
+        # changed OrgPolicy.
+        # Corresponds to the JSON property `resourceCounts`
+        # @return [Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts]
+        attr_accessor :resource_counts
+      
+        # Output only. The state of the `OrgPolicyViolationsPreview`.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The number of OrgPolicyViolations in this `
+        # OrgPolicyViolationsPreview`. This count may differ from `resource_summary.
+        # noncompliant_count` because each OrgPolicyViolation is specific to a resource *
+        # *and** constraint. If there are multiple constraints being evaluated (i.e.
+        # multiple policies in the overlay), a single resource may violate multiple
+        # constraints.
+        # Corresponds to the JSON property `violationsCount`
+        # @return [Fixnum]
+        attr_accessor :violations_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_constraints = args[:custom_constraints] if args.key?(:custom_constraints)
+          @name = args[:name] if args.key?(:name)
+          @overlay = args[:overlay] if args.key?(:overlay)
+          @resource_counts = args[:resource_counts] if args.key?(:resource_counts)
+          @state = args[:state] if args.key?(:state)
+          @violations_count = args[:violations_count] if args.key?(:violations_count)
+        end
+      end
+      
+      # A summary of the state of all resources scanned for compliance with the
+      # changed OrgPolicy.
+      class GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Number of scanned resources with zero violations.
+        # Corresponds to the JSON property `compliant`
+        # @return [Fixnum]
+        attr_accessor :compliant
+      
+        # Output only. Number of resources that returned an error when scanned.
+        # Corresponds to the JSON property `errors`
+        # @return [Fixnum]
+        attr_accessor :errors
+      
+        # Output only. Number of scanned resources with at least one violation.
+        # Corresponds to the JSON property `noncompliant`
+        # @return [Fixnum]
+        attr_accessor :noncompliant
+      
+        # Output only. Number of resources checked for compliance. Must equal:
+        # unenforced + noncompliant + compliant + error
+        # Corresponds to the JSON property `scanned`
+        # @return [Fixnum]
+        attr_accessor :scanned
+      
+        # Output only. Number of resources where the constraint was not enforced, i.e.
+        # the Policy set `enforced: false` for that resource.
+        # Corresponds to the JSON property `unenforced`
+        # @return [Fixnum]
+        attr_accessor :unenforced
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compliant = args[:compliant] if args.key?(:compliant)
+          @errors = args[:errors] if args.key?(:errors)
+          @noncompliant = args[:noncompliant] if args.key?(:noncompliant)
+          @scanned = args[:scanned] if args.key?(:scanned)
+          @unenforced = args[:unenforced] if args.key?(:unenforced)
         end
       end
       

@@ -462,8 +462,8 @@ module Google
         end
         
         # Generates an enterprise upgrade URL to upgrade an existing managed Google Play
-        # Accounts enterprise to a managed Google domain. **Note:** This feature is not
-        # generally available.
+        # Accounts enterprise to a managed Google domain. See the guide to upgrading an
+        # enterprise for more details.
         # @param [String] enterprise_id
         #   Required. The ID of the enterprise.
         # @param [String] admin_email

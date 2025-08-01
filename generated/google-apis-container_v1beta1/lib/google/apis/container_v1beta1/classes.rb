@@ -32,7 +32,7 @@ module Google
         attr_accessor :accelerator_count
       
         # The accelerator type resource name. List of supported accelerators [here](
-        # https://cloud.google.com/compute/docs/gpus)
+        # https://`$universe.dns_names.final_documentation_domain`/compute/docs/gpus)
         # Corresponds to the JSON property `acceleratorType`
         # @return [String]
         attr_accessor :accelerator_type
@@ -73,6 +73,35 @@ module Google
           @gpu_partition_size = args[:gpu_partition_size] if args.key?(:gpu_partition_size)
           @gpu_sharing_config = args[:gpu_sharing_config] if args.key?(:gpu_sharing_config)
           @max_time_shared_clients_per_gpu = args[:max_time_shared_clients_per_gpu] if args.key?(:max_time_shared_clients_per_gpu)
+        end
+      end
+      
+      # AdditionalIPRangesConfig is the configuration for individual additional
+      # subnetwork attached to the cluster
+      class AdditionalIpRangesConfig
+        include Google::Apis::Core::Hashable
+      
+        # List of secondary ranges names within this subnetwork that can be used for pod
+        # IPs. Example1: gke-pod-range1 Example2: gke-pod-range1,gke-pod-range2
+        # Corresponds to the JSON property `podIpv4RangeNames`
+        # @return [Array<String>]
+        attr_accessor :pod_ipv4_range_names
+      
+        # Name of the subnetwork. This can be the full path of the subnetwork or just
+        # the name. Example1: my-subnet Example2: projects/gke-project/regions/us-
+        # central1/subnetworks/my-subnet
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pod_ipv4_range_names = args[:pod_ipv4_range_names] if args.key?(:pod_ipv4_range_names)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
         end
       end
       
@@ -241,6 +270,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::KubernetesDashboard]
         attr_accessor :kubernetes_dashboard
       
+        # Configuration for the Lustre CSI driver.
+        # Corresponds to the JSON property `lustreCsiDriverConfig`
+        # @return [Google::Apis::ContainerV1beta1::LustreCsiDriverConfig]
+        attr_accessor :lustre_csi_driver_config
+      
         # Configuration for NetworkPolicy. This only tracks whether the addon is enabled
         # or not on the Master, it does not track whether network policy is enabled for
         # the nodes.
@@ -282,6 +316,7 @@ module Google
           @istio_config = args[:istio_config] if args.key?(:istio_config)
           @kalm_config = args[:kalm_config] if args.key?(:kalm_config)
           @kubernetes_dashboard = args[:kubernetes_dashboard] if args.key?(:kubernetes_dashboard)
+          @lustre_csi_driver_config = args[:lustre_csi_driver_config] if args.key?(:lustre_csi_driver_config)
           @network_policy_config = args[:network_policy_config] if args.key?(:network_policy_config)
           @parallelstore_csi_driver_config = args[:parallelstore_csi_driver_config] if args.key?(:parallelstore_csi_driver_config)
           @ray_operator_config = args[:ray_operator_config] if args.key?(:ray_operator_config)
@@ -363,12 +398,18 @@ module Google
       class AnonymousAuthenticationConfig
         include Google::Apis::Core::Hashable
       
+        # Defines the mode of limiting anonymous access in the cluster.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
         end
       end
       
@@ -397,6 +438,19 @@ module Google
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
           @security_group = args[:security_group] if args.key?(:security_group)
+        end
+      end
+      
+      # AutoIpamConfig contains all information related to Auto IPAM
+      class AutoIpamConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -579,7 +633,8 @@ module Google
         # each node in the node pool. This should be of the form projects/[
         # KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]
         # . For more information about protecting resources with Cloud KMS Keys please
-        # see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+        # see: https://`$universe.dns_names.final_documentation_domain`/compute/docs/
+        # disks/customer-managed-encryption
         # Corresponds to the JSON property `bootDiskKmsKey`
         # @return [String]
         attr_accessor :boot_disk_kms_key
@@ -596,8 +651,9 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
-        # The image type to use for NAP created node. Please see https://cloud.google.
-        # com/kubernetes-engine/docs/concepts/node-images for available image types.
+        # The image type to use for NAP created node. Please see https://`$universe.
+        # dns_names.final_documentation_domain`/kubernetes-engine/docs/concepts/node-
+        # images for available image types.
         # Corresponds to the JSON property `imageType`
         # @return [String]
         attr_accessor :image_type
@@ -618,11 +674,11 @@ module Google
         # instance may be scheduled on the specified or newer CPU platform. Applicable
         # values are the friendly names of CPU platforms, such as minCpuPlatform: Intel
         # Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how
-        # to specify min CPU platform](https://cloud.google.com/compute/docs/instances/
-        # specify-min-cpu-platform). This field is deprecated, min_cpu_platform should
-        # be specified using `cloud.google.com/requested-min-cpu-platform` label
-        # selector on the pod. To unset the min cpu platform field pass "automatic" as
-        # field value.
+        # to specify min CPU platform](https://`$universe.dns_names.
+        # final_documentation_domain`/compute/docs/instances/specify-min-cpu-platform).
+        # This field is deprecated, min_cpu_platform should be specified using `cloud.
+        # google.com/requested-min-cpu-platform` label selector on the pod. To unset the
+        # min cpu platform field pass "automatic" as field value.
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
         attr_accessor :min_cpu_platform
@@ -632,10 +688,10 @@ module Google
         # required, and by default are not included: * `https://www.googleapis.com/auth/
         # compute` is required for mounting persistent storage on your nodes. * `https://
         # www.googleapis.com/auth/devstorage.read_only` is required for communicating
-        # with **gcr.io** (the [Google Container Registry](https://cloud.google.com/
-        # container-registry/)). If unspecified, no scopes are added, unless Cloud
-        # Logging or Cloud Monitoring are enabled, in which case their required scopes
-        # will be added.
+        # with **gcr.io** (the [Google Container Registry](https://`$universe.dns_names.
+        # final_documentation_domain`/container-registry/)). If unspecified, no scopes
+        # are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case
+        # their required scopes will be added.
         # Corresponds to the JSON property `oauthScopes`
         # @return [Array<String>]
         attr_accessor :oauth_scopes
@@ -909,6 +965,43 @@ module Google
         end
       end
       
+      # BootDisk specifies the boot disk configuration for nodepools.
+      class BootDisk
+        include Google::Apis::Core::Hashable
+      
+        # Disk type of the boot disk. (i.e. Hyperdisk-Balanced, PD-Balanced, etc.)
+        # Corresponds to the JSON property `diskType`
+        # @return [String]
+        attr_accessor :disk_type
+      
+        # For Hyperdisk-Balanced only, the provisioned IOPS config value.
+        # Corresponds to the JSON property `provisionedIops`
+        # @return [Fixnum]
+        attr_accessor :provisioned_iops
+      
+        # For Hyperdisk-Balanced only, the provisioned throughput config value.
+        # Corresponds to the JSON property `provisionedThroughput`
+        # @return [Fixnum]
+        attr_accessor :provisioned_throughput
+      
+        # Disk size in GB. Replaces NodeConfig.disk_size_gb
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Fixnum]
+        attr_accessor :size_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
+          @provisioned_throughput = args[:provisioned_throughput] if args.key?(:provisioned_throughput)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
+        end
+      end
+      
       # CancelOperationRequest cancels a single operation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -919,22 +1012,24 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. Deprecated. The server-assigned `name` of the operation. This field
-        # has been deprecated and replaced by the name field.
+        # Deprecated. The server-assigned `name` of the operation. This field has been
+        # deprecated and replaced by the name field.
         # Corresponds to the JSON property `operationId`
         # @return [String]
         attr_accessor :operation_id
       
-        # Required. Deprecated. The Google Developers Console [project ID or project
-        # number](https://cloud.google.com/resource-manager/docs/creating-managing-
-        # projects). This field has been deprecated and replaced by the name field.
+        # Deprecated. The Google Developers Console [project ID or project number](https:
+        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
+        # creating-managing-projects). This field has been deprecated and replaced by
+        # the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Required. Deprecated. The name of the Google Compute Engine [zone](https://
-        # cloud.google.com/compute/docs/zones#available) in which the operation resides.
-        # This field has been deprecated and replaced by the name field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
+        # the operation resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -964,7 +1059,8 @@ module Google
         attr_accessor :fqdns
       
         # GCPSecretManagerCertificateConfig configures a secret from [Google Secret
-        # Manager](https://cloud.google.com/secret-manager).
+        # Manager](https://`$universe.dns_names.final_documentation_domain`/secret-
+        # manager).
         # Corresponds to the JSON property `gcpSecretManagerCertificateConfig`
         # @return [Google::Apis::ContainerV1beta1::GcpSecretManagerCertificateConfig]
         attr_accessor :gcp_secret_manager_certificate_config
@@ -1178,11 +1274,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :current_node_count
       
-        # Output only. Deprecated, use [NodePool.version](https://cloud.google.com/
-        # kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.
-        # nodePools) instead. The current version of the node software components. If
-        # they are currently at multiple versions because they're in the process of
-        # being upgraded, this reflects the minimum version of all nodes.
+        # Output only. Deprecated, use [NodePool.version](https://`$universe.dns_names.
+        # final_documentation_domain`/kubernetes-engine/docs/reference/rest/v1beta1/
+        # projects.locations.clusters.nodePools) instead. The current version of the
+        # node software components. If they are currently at multiple versions because
+        # they're in the process of being upgraded, this reflects the minimum version of
+        # all nodes.
         # Corresponds to the JSON property `currentNodeVersion`
         # @return [String]
         attr_accessor :current_node_version
@@ -1256,6 +1353,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::Fleet]
         attr_accessor :fleet
       
+        # GkeAutoUpgradeConfig is the configuration for GKE auto upgrades.
+        # Corresponds to the JSON property `gkeAutoUpgradeConfig`
+        # @return [Google::Apis::ContainerV1beta1::GkeAutoUpgradeConfig]
+        attr_accessor :gke_auto_upgrade_config
+      
         # Output only. Unique id for the cluster.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -1281,13 +1383,14 @@ module Google
         attr_accessor :initial_cluster_version
       
         # The number of nodes to create in this cluster. You must ensure that your
-        # Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is
-        # sufficient for this number of instances. You must also have available firewall
-        # and routes quota. For requests, this field should only be used in lieu of a "
-        # node_pool" object, since this configuration (along with the "node_config")
-        # will be used to create a "NodePool" object with an auto-generated name. Do not
-        # use this and a node_pool at the same time. This field is deprecated, use
-        # node_pool.initial_node_count instead.
+        # Compute Engine [resource quota](https://`$universe.dns_names.
+        # final_documentation_domain`/compute/quotas) is sufficient for this number of
+        # instances. You must also have available firewall and routes quota. For
+        # requests, this field should only be used in lieu of a "node_pool" object,
+        # since this configuration (along with the "node_config") will be used to create
+        # a "NodePool" object with an auto-generated name. Do not use this and a
+        # node_pool at the same time. This field is deprecated, use node_pool.
+        # initial_node_count instead.
         # Corresponds to the JSON property `initialNodeCount`
         # @return [Fixnum]
         attr_accessor :initial_node_count
@@ -1312,23 +1415,26 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::LegacyAbac]
         attr_accessor :legacy_abac
       
-        # Output only. The name of the Google Compute Engine [zone](https://cloud.google.
-        # com/compute/docs/regions-zones/regions-zones#available) or [region](https://
-        # cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which
-        # the cluster resides.
+        # Output only. The name of the Google Compute Engine [zone](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/regions-zones/regions-zones#
+        # available) or [region](https://`$universe.dns_names.final_documentation_domain`
+        # /compute/docs/regions-zones/regions-zones#available) in which the cluster
+        # resides.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # The list of Google Compute Engine [zones](https://cloud.google.com/compute/
-        # docs/zones#available) in which the cluster's nodes should be located. This
-        # field provides a default value if [NodePool.Locations](https://cloud.google.
-        # com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.
-        # nodePools#NodePool.FIELDS.locations) are not specified during node pool
-        # creation. Warning: changing cluster locations will update the [NodePool.
-        # Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/
-        # projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node
-        # pools and will result in nodes being added and/or removed.
+        # The list of Google Compute Engine [zones](https://`$universe.dns_names.
+        # final_documentation_domain`/compute/docs/zones#available) in which the cluster'
+        # s nodes should be located. This field provides a default value if [NodePool.
+        # Locations](https://`$universe.dns_names.final_documentation_domain`/kubernetes-
+        # engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.
+        # FIELDS.locations) are not specified during node pool creation. Warning:
+        # changing cluster locations will update the [NodePool.Locations](https://`$
+        # universe.dns_names.final_documentation_domain`/kubernetes-engine/docs/
+        # reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.
+        # locations) of all node pools and will result in nodes being added and/or
+        # removed.
         # Corresponds to the JSON property `locations`
         # @return [Array<String>]
         attr_accessor :locations
@@ -1410,10 +1516,10 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The name of the Google Compute Engine [network](https://cloud.google.com/
-        # compute/docs/networks-and-firewalls#networks) to which the cluster is
-        # connected. If left unspecified, the `default` network will be used. On output
-        # this shows the network ID instead of the name.
+        # The name of the Google Compute Engine [network](https://`$universe.dns_names.
+        # final_documentation_domain`/compute/docs/networks-and-firewalls#networks) to
+        # which the cluster is connected. If left unspecified, the `default` network
+        # will be used. On output this shows the network ID instead of the name.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -1580,9 +1686,10 @@ module Google
         # @return [String]
         attr_accessor :status_message
       
-        # The name of the Google Compute Engine [subnetwork](https://cloud.google.com/
-        # compute/docs/subnetworks) to which the cluster is connected. On output this
-        # shows the subnetwork ID instead of the name.
+        # The name of the Google Compute Engine [subnetwork](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/subnetworks) to which the
+        # cluster is connected. On output this shows the subnetwork ID instead of the
+        # name.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -1629,9 +1736,9 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::WorkloadIdentityConfig]
         attr_accessor :workload_identity_config
       
-        # Output only. The name of the Google Compute Engine [zone](https://cloud.google.
-        # com/compute/docs/zones#available) in which the cluster resides. This field is
-        # deprecated, use location instead.
+        # Output only. The name of the Google Compute Engine [zone](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
+        # the cluster resides. This field is deprecated, use location instead.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -1671,6 +1778,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @fleet = args[:fleet] if args.key?(:fleet)
+          @gke_auto_upgrade_config = args[:gke_auto_upgrade_config] if args.key?(:gke_auto_upgrade_config)
           @id = args[:id] if args.key?(:id)
           @identity_service_config = args[:identity_service_config] if args.key?(:identity_service_config)
           @initial_cluster_version = args[:initial_cluster_version] if args.key?(:initial_cluster_version)
@@ -1738,8 +1846,9 @@ module Google
       class ClusterAutoscaling
         include Google::Apis::Core::Hashable
       
-        # The list of Google Compute Engine [zones](https://cloud.google.com/compute/
-        # docs/zones#available) in which the NodePool's nodes can be created by NAP.
+        # The list of Google Compute Engine [zones](https://`$universe.dns_names.
+        # final_documentation_domain`/compute/docs/zones#available) in which the
+        # NodePool's nodes can be created by NAP.
         # Corresponds to the JSON property `autoprovisioningLocations`
         # @return [Array<String>]
         attr_accessor :autoprovisioning_locations
@@ -1830,6 +1939,12 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::AdditionalPodRangesConfig]
         attr_accessor :additional_pod_ranges_config
       
+        # DesiredAdditionalIPRangesConfig is a wrapper used for cluster update operation
+        # and contains multiple AdditionalIPRangesConfigs.
+        # Corresponds to the JSON property `desiredAdditionalIpRangesConfig`
+        # @return [Google::Apis::ContainerV1beta1::DesiredAdditionalIpRangesConfig]
+        attr_accessor :desired_additional_ip_ranges_config
+      
         # Configuration for the addons that can be automatically spun up in the cluster,
         # enabling additional functionality.
         # Corresponds to the JSON property `desiredAddonsConfig`
@@ -1846,6 +1961,11 @@ module Google
         # Corresponds to the JSON property `desiredAuthenticatorGroupsConfig`
         # @return [Google::Apis::ContainerV1beta1::AuthenticatorGroupsConfig]
         attr_accessor :desired_authenticator_groups_config
+      
+        # AutoIpamConfig contains all information related to Auto IPAM
+        # Corresponds to the JSON property `desiredAutoIpamConfig`
+        # @return [Google::Apis::ContainerV1beta1::AutoIpamConfig]
+        attr_accessor :desired_auto_ipam_config
       
         # WorkloadPolicyConfig is the configuration related to GCW workload policy
         # Corresponds to the JSON property `desiredAutopilotWorkloadPolicyConfig`
@@ -2013,11 +2133,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::IlbSubsettingConfig]
         attr_accessor :desired_l4ilb_subsetting_config
       
-        # The desired list of Google Compute Engine [zones](https://cloud.google.com/
-        # compute/docs/zones#available) in which the cluster's nodes should be located.
-        # This list must always include the cluster's primary zone. Warning: changing
-        # cluster locations will update the locations of all node pools and will result
-        # in nodes being added and/or removed.
+        # The desired list of Google Compute Engine [zones](https://`$universe.dns_names.
+        # final_documentation_domain`/compute/docs/zones#available) in which the cluster'
+        # s nodes should be located. This list must always include the cluster's primary
+        # zone. Warning: changing cluster locations will update the locations of all
+        # node pools and will result in nodes being added and/or removed.
         # Corresponds to the JSON property `desiredLocations`
         # @return [Array<String>]
         attr_accessor :desired_locations
@@ -2112,9 +2232,10 @@ module Google
       
         # A map of resource manager tag keys and values to be attached to the nodes for
         # managing Compute Engine firewalls using Network Firewall Policies. Tags must
-        # be according to specifications in https://cloud.google.com/vpc/docs/tags-
-        # firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be
-        # specified. Existing tags will be replaced with new values.
+        # be according to specifications in https://`$universe.dns_names.
+        # final_documentation_domain`/vpc/docs/tags-firewalls-overview#specifications. A
+        # maximum of 5 tag key-value pairs can be specified. Existing tags will be
+        # replaced with new values.
         # Corresponds to the JSON property `desiredNodePoolAutoConfigResourceManagerTags`
         # @return [Google::Apis::ContainerV1beta1::ResourceManagerTags]
         attr_accessor :desired_node_pool_auto_config_resource_manager_tags
@@ -2241,6 +2362,12 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::TpuConfig]
         attr_accessor :desired_tpu_config
       
+        # UserManagedKeysConfig holds the resource address to Keys which are used for
+        # signing certs and token that are used for communication within cluster.
+        # Corresponds to the JSON property `desiredUserManagedKeysConfig`
+        # @return [Google::Apis::ContainerV1beta1::UserManagedKeysConfig]
+        attr_accessor :desired_user_managed_keys_config
+      
         # VerticalPodAutoscaling contains global, per-cluster information required by
         # Vertical Pod Autoscaler to automatically adjust the resources of pods
         # controlled by it.
@@ -2275,6 +2402,11 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # GkeAutoUpgradeConfig is the configuration for GKE auto upgrades.
+        # Corresponds to the JSON property `gkeAutoUpgradeConfig`
+        # @return [Google::Apis::ContainerV1beta1::GkeAutoUpgradeConfig]
+        attr_accessor :gke_auto_upgrade_config
+      
         # Configuration options for private clusters.
         # Corresponds to the JSON property `privateClusterConfig`
         # @return [Google::Apis::ContainerV1beta1::PrivateClusterConfig]
@@ -2299,9 +2431,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @additional_pod_ranges_config = args[:additional_pod_ranges_config] if args.key?(:additional_pod_ranges_config)
+          @desired_additional_ip_ranges_config = args[:desired_additional_ip_ranges_config] if args.key?(:desired_additional_ip_ranges_config)
           @desired_addons_config = args[:desired_addons_config] if args.key?(:desired_addons_config)
           @desired_anonymous_authentication_config = args[:desired_anonymous_authentication_config] if args.key?(:desired_anonymous_authentication_config)
           @desired_authenticator_groups_config = args[:desired_authenticator_groups_config] if args.key?(:desired_authenticator_groups_config)
+          @desired_auto_ipam_config = args[:desired_auto_ipam_config] if args.key?(:desired_auto_ipam_config)
           @desired_autopilot_workload_policy_config = args[:desired_autopilot_workload_policy_config] if args.key?(:desired_autopilot_workload_policy_config)
           @desired_binary_authorization = args[:desired_binary_authorization] if args.key?(:desired_binary_authorization)
           @desired_cluster_autoscaling = args[:desired_cluster_autoscaling] if args.key?(:desired_cluster_autoscaling)
@@ -2366,12 +2500,14 @@ module Google
           @desired_shielded_nodes = args[:desired_shielded_nodes] if args.key?(:desired_shielded_nodes)
           @desired_stack_type = args[:desired_stack_type] if args.key?(:desired_stack_type)
           @desired_tpu_config = args[:desired_tpu_config] if args.key?(:desired_tpu_config)
+          @desired_user_managed_keys_config = args[:desired_user_managed_keys_config] if args.key?(:desired_user_managed_keys_config)
           @desired_vertical_pod_autoscaling = args[:desired_vertical_pod_autoscaling] if args.key?(:desired_vertical_pod_autoscaling)
           @desired_workload_alts_config = args[:desired_workload_alts_config] if args.key?(:desired_workload_alts_config)
           @desired_workload_certificates = args[:desired_workload_certificates] if args.key?(:desired_workload_certificates)
           @desired_workload_identity_config = args[:desired_workload_identity_config] if args.key?(:desired_workload_identity_config)
           @enable_k8s_beta_apis = args[:enable_k8s_beta_apis] if args.key?(:enable_k8s_beta_apis)
           @etag = args[:etag] if args.key?(:etag)
+          @gke_auto_upgrade_config = args[:gke_auto_upgrade_config] if args.key?(:gke_auto_upgrade_config)
           @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
           @removed_additional_pod_ranges_config = args[:removed_additional_pod_ranges_config] if args.key?(:removed_additional_pod_ranges_config)
           @user_managed_keys_config = args[:user_managed_keys_config] if args.key?(:user_managed_keys_config)
@@ -2437,8 +2573,8 @@ module Google
       class CompleteIpRotationRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Deprecated. The name of the cluster. This field has been deprecated
-        # and replaced by the name field.
+        # Deprecated. The name of the cluster. This field has been deprecated and
+        # replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
@@ -2449,16 +2585,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. Deprecated. The Google Developers Console [project ID or project
-        # number](https://cloud.google.com/resource-manager/docs/creating-managing-
-        # projects). This field has been deprecated and replaced by the name field.
+        # Deprecated. The Google Developers Console [project ID or project number](https:
+        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
+        # creating-managing-projects). This field has been deprecated and replaced by
+        # the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Required. Deprecated. The name of the Google Compute Engine [zone](https://
-        # cloud.google.com/compute/docs/zones#available) in which the cluster resides.
-        # This field has been deprecated and replaced by the name field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
+        # the cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -2683,16 +2821,18 @@ module Google
         # @return [String]
         attr_accessor :parent
       
-        # Required. Deprecated. The Google Developers Console [project ID or project
-        # number](https://cloud.google.com/resource-manager/docs/creating-managing-
-        # projects). This field has been deprecated and replaced by the parent field.
+        # Deprecated. The Google Developers Console [project ID or project number](https:
+        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
+        # creating-managing-projects). This field has been deprecated and replaced by
+        # the parent field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Required. Deprecated. The name of the Google Compute Engine [zone](https://
-        # cloud.google.com/compute/docs/zones#available) in which the cluster resides.
-        # This field has been deprecated and replaced by the parent field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
+        # the cluster resides. This field has been deprecated and replaced by the parent
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -2714,8 +2854,8 @@ module Google
       class CreateNodePoolRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Deprecated. The name of the cluster. This field has been deprecated
-        # and replaced by the parent field.
+        # Deprecated. The name of the cluster. This field has been deprecated and
+        # replaced by the parent field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
@@ -2736,16 +2876,18 @@ module Google
         # @return [String]
         attr_accessor :parent
       
-        # Required. Deprecated. The Google Developers Console [project ID or project
-        # number](https://cloud.google.com/resource-manager/docs/creating-managing-
-        # projects). This field has been deprecated and replaced by the parent field.
+        # Deprecated. The Google Developers Console [project ID or project number](https:
+        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
+        # creating-managing-projects). This field has been deprecated and replaced by
+        # the parent field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Required. Deprecated. The name of the Google Compute Engine [zone](https://
-        # cloud.google.com/compute/docs/zones#available) in which the cluster resides.
-        # This field has been deprecated and replaced by the parent field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
+        # the cluster resides. This field has been deprecated and replaced by the parent
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -2965,6 +3107,27 @@ module Google
         end
       end
       
+      # DesiredAdditionalIPRangesConfig is a wrapper used for cluster update operation
+      # and contains multiple AdditionalIPRangesConfigs.
+      class DesiredAdditionalIpRangesConfig
+        include Google::Apis::Core::Hashable
+      
+        # List of additional IP ranges configs where each AdditionalIPRangesConfig
+        # corresponds to one subnetwork's IP ranges
+        # Corresponds to the JSON property `additionalIpRangesConfigs`
+        # @return [Array<Google::Apis::ContainerV1beta1::AdditionalIpRangesConfig>]
+        attr_accessor :additional_ip_ranges_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_ip_ranges_configs = args[:additional_ip_ranges_configs] if args.key?(:additional_ip_ranges_configs)
+        end
+      end
+      
       # DesiredEnterpriseConfig is a wrapper used for updating enterprise_config.
       class DesiredEnterpriseConfig
         include Google::Apis::Core::Hashable
@@ -3052,15 +3215,16 @@ module Google
       
         # Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces.
         # The limit for this value is dependent upon the maximum number of disk
-        # available on a machine per zone. See: https://cloud.google.com/compute/docs/
-        # disks/local-ssd for more information. A zero (or unset) value has different
-        # meanings depending on machine type being used: 1. For pre-Gen3 machines, which
-        # support flexible numbers of local ssds, zero (or unset) means to disable using
-        # local SSDs as ephemeral storage. 2. For Gen3 machines which dictate a specific
-        # number of local ssds, zero (or unset) means to use the default number of local
-        # ssds that goes with that machine type. For example, for a c3-standard-8-lssd
-        # machine, 2 local ssds would be provisioned. For c3-standard-8 (which doesn't
-        # support local ssds), 0 will be provisioned. See https://cloud.google.com/
+        # available on a machine per zone. See: https://`$universe.dns_names.
+        # final_documentation_domain`/compute/docs/disks/local-ssd for more information.
+        # A zero (or unset) value has different meanings depending on machine type being
+        # used: 1. For pre-Gen3 machines, which support flexible numbers of local ssds,
+        # zero (or unset) means to disable using local SSDs as ephemeral storage. 2. For
+        # Gen3 machines which dictate a specific number of local ssds, zero (or unset)
+        # means to use the default number of local ssds that goes with that machine type.
+        # For example, for a c3-standard-8-lssd machine, 2 local ssds would be
+        # provisioned. For c3-standard-8 (which doesn't support local ssds), 0 will be
+        # provisioned. See https://`$universe.dns_names.final_documentation_domain`/
         # compute/docs/disks/local-ssd#choose_number_local_ssds for more info.
         # Corresponds to the JSON property `localSsdCount`
         # @return [Fixnum]
@@ -3091,13 +3255,15 @@ module Google
         # used: 1. For pre-Gen3 machines, which support flexible numbers of local ssds,
         # zero (or unset) means to disable using local SSDs as ephemeral storage. The
         # limit for this value is dependent upon the maximum number of disk available on
-        # a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd
-        # for more information. 2. For Gen3 machines which dictate a specific number of
-        # local ssds, zero (or unset) means to use the default number of local ssds that
-        # goes with that machine type. For example, for a c3-standard-8-lssd machine, 2
-        # local ssds would be provisioned. For c3-standard-8 (which doesn't support
-        # local ssds), 0 will be provisioned. See https://cloud.google.com/compute/docs/
-        # disks/local-ssd#choose_number_local_ssds for more info.
+        # a machine per zone. See: https://`$universe.dns_names.
+        # final_documentation_domain`/compute/docs/disks/local-ssd for more information.
+        # 2. For Gen3 machines which dictate a specific number of local ssds, zero (or
+        # unset) means to use the default number of local ssds that goes with that
+        # machine type. For example, for a c3-standard-8-lssd machine, 2 local ssds
+        # would be provisioned. For c3-standard-8 (which doesn't support local ssds), 0
+        # will be provisioned. See https://`$universe.dns_names.
+        # final_documentation_domain`/compute/docs/disks/local-ssd#
+        # choose_number_local_ssds for more info.
         # Corresponds to the JSON property `localSsdCount`
         # @return [Fixnum]
         attr_accessor :local_ssd_count
@@ -3110,6 +3276,214 @@ module Google
         def update!(**args)
           @data_cache_count = args[:data_cache_count] if args.key?(:data_cache_count)
           @local_ssd_count = args[:local_ssd_count] if args.key?(:local_ssd_count)
+        end
+      end
+      
+      # Eviction grace periods are grace periods for each eviction signal.
+      class EvictionGracePeriod
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Grace period for eviction due to imagefs available signal. Sample
+        # format: "10s". Must be >= 0. See https://kubernetes.io/docs/concepts/
+        # scheduling-eviction/node-pressure-eviction/#eviction-signals
+        # Corresponds to the JSON property `imagefsAvailable`
+        # @return [String]
+        attr_accessor :imagefs_available
+      
+        # Optional. Grace period for eviction due to imagefs inodes free signal. Sample
+        # format: "10s". Must be >= 0. See https://kubernetes.io/docs/concepts/
+        # scheduling-eviction/node-pressure-eviction/#eviction-signals
+        # Corresponds to the JSON property `imagefsInodesFree`
+        # @return [String]
+        attr_accessor :imagefs_inodes_free
+      
+        # Optional. Grace period for eviction due to memory available signal. Sample
+        # format: "10s". Must be >= 0. See https://kubernetes.io/docs/concepts/
+        # scheduling-eviction/node-pressure-eviction/#eviction-signals
+        # Corresponds to the JSON property `memoryAvailable`
+        # @return [String]
+        attr_accessor :memory_available
+      
+        # Optional. Grace period for eviction due to nodefs available signal. Sample
+        # format: "10s". Must be >= 0. See https://kubernetes.io/docs/concepts/
+        # scheduling-eviction/node-pressure-eviction/#eviction-signals
+        # Corresponds to the JSON property `nodefsAvailable`
+        # @return [String]
+        attr_accessor :nodefs_available
+      
+        # Optional. Grace period for eviction due to nodefs inodes free signal. Sample
+        # format: "10s". Must be >= 0. See https://kubernetes.io/docs/concepts/
+        # scheduling-eviction/node-pressure-eviction/#eviction-signals
+        # Corresponds to the JSON property `nodefsInodesFree`
+        # @return [String]
+        attr_accessor :nodefs_inodes_free
+      
+        # Optional. Grace period for eviction due to pid available signal. Sample format:
+        # "10s". Must be >= 0. See https://kubernetes.io/docs/concepts/scheduling-
+        # eviction/node-pressure-eviction/#eviction-signals
+        # Corresponds to the JSON property `pidAvailable`
+        # @return [String]
+        attr_accessor :pid_available
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @imagefs_available = args[:imagefs_available] if args.key?(:imagefs_available)
+          @imagefs_inodes_free = args[:imagefs_inodes_free] if args.key?(:imagefs_inodes_free)
+          @memory_available = args[:memory_available] if args.key?(:memory_available)
+          @nodefs_available = args[:nodefs_available] if args.key?(:nodefs_available)
+          @nodefs_inodes_free = args[:nodefs_inodes_free] if args.key?(:nodefs_inodes_free)
+          @pid_available = args[:pid_available] if args.key?(:pid_available)
+        end
+      end
+      
+      # Eviction minimum reclaims are the resource amounts of minimum reclaims for
+      # each eviction signal.
+      class EvictionMinimumReclaim
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Minimum reclaim for eviction due to imagefs available signal. Only
+        # take percentage value for now. Sample format: "10%". Must be <=10%. See https:/
+        # /kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#
+        # eviction-signals
+        # Corresponds to the JSON property `imagefsAvailable`
+        # @return [String]
+        attr_accessor :imagefs_available
+      
+        # Optional. Minimum reclaim for eviction due to imagefs inodes free signal. Only
+        # take percentage value for now. Sample format: "10%". Must be <=10%. See https:/
+        # /kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#
+        # eviction-signals
+        # Corresponds to the JSON property `imagefsInodesFree`
+        # @return [String]
+        attr_accessor :imagefs_inodes_free
+      
+        # Optional. Minimum reclaim for eviction due to memory available signal. Only
+        # take percentage value for now. Sample format: "10%". Must be <=10%. See https:/
+        # /kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#
+        # eviction-signals
+        # Corresponds to the JSON property `memoryAvailable`
+        # @return [String]
+        attr_accessor :memory_available
+      
+        # Optional. Minimum reclaim for eviction due to nodefs available signal. Only
+        # take percentage value for now. Sample format: "10%". Must be <=10%. See https:/
+        # /kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#
+        # eviction-signals
+        # Corresponds to the JSON property `nodefsAvailable`
+        # @return [String]
+        attr_accessor :nodefs_available
+      
+        # Optional. Minimum reclaim for eviction due to nodefs inodes free signal. Only
+        # take percentage value for now. Sample format: "10%". Must be <=10%. See https:/
+        # /kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#
+        # eviction-signals
+        # Corresponds to the JSON property `nodefsInodesFree`
+        # @return [String]
+        attr_accessor :nodefs_inodes_free
+      
+        # Optional. Minimum reclaim for eviction due to pid available signal. Only take
+        # percentage value for now. Sample format: "10%". Must be <=10%. See https://
+        # kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#
+        # eviction-signals
+        # Corresponds to the JSON property `pidAvailable`
+        # @return [String]
+        attr_accessor :pid_available
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @imagefs_available = args[:imagefs_available] if args.key?(:imagefs_available)
+          @imagefs_inodes_free = args[:imagefs_inodes_free] if args.key?(:imagefs_inodes_free)
+          @memory_available = args[:memory_available] if args.key?(:memory_available)
+          @nodefs_available = args[:nodefs_available] if args.key?(:nodefs_available)
+          @nodefs_inodes_free = args[:nodefs_inodes_free] if args.key?(:nodefs_inodes_free)
+          @pid_available = args[:pid_available] if args.key?(:pid_available)
+        end
+      end
+      
+      # Eviction signals are the current state of a particular resource at a specific
+      # point in time. The kubelet uses eviction signals to make eviction decisions by
+      # comparing the signals to eviction thresholds, which are the minimum amount of
+      # the resource that should be available on the node.
+      class EvictionSignals
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Amount of storage available on filesystem that container runtime
+        # uses for storing images layers. If the container filesystem and image
+        # filesystem are not separate, then imagefs can store both image layers and
+        # writeable layers. Defines the amount of "imagefs.available" signal in kubelet.
+        # Default is unset, if not specified in the kubelet config. Sample format: "30%".
+        # Must be >= 15%. See https://kubernetes.io/docs/concepts/scheduling-eviction/
+        # node-pressure-eviction/#eviction-signals
+        # Corresponds to the JSON property `imagefsAvailable`
+        # @return [String]
+        attr_accessor :imagefs_available
+      
+        # Optional. Amount of inodes available on filesystem that container runtime uses
+        # for storing images layers. Defines the amount of "imagefs.inodesFree" signal
+        # in kubelet. Default is unset, if not specified in the kubelet config. Linux
+        # only. Sample format: "30%". Must be >= 5%. See https://kubernetes.io/docs/
+        # concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
+        # Corresponds to the JSON property `imagefsInodesFree`
+        # @return [String]
+        attr_accessor :imagefs_inodes_free
+      
+        # Optional. Memory available (i.e. capacity - workingSet), in bytes. Defines the
+        # amount of "memory.available" signal in kubelet. Default is unset, if not
+        # specified in the kubelet config. Format: positive number + unit, e.g. 100Ki,
+        # 10Mi, 5Gi. Valid units are Ki, Mi, Gi. Must be >= 100Mi and <= 50% of the node'
+        # s memory. See https://kubernetes.io/docs/concepts/scheduling-eviction/node-
+        # pressure-eviction/#eviction-signals
+        # Corresponds to the JSON property `memoryAvailable`
+        # @return [String]
+        attr_accessor :memory_available
+      
+        # Optional. Amount of storage available on filesystem that kubelet uses for
+        # volumes, daemon logs, etc. Defines the amount of "nodefs.available" signal in
+        # kubelet. Default is unset, if not specified in the kubelet config. Sample
+        # format: "30%". Must be >= 10%. See https://kubernetes.io/docs/concepts/
+        # scheduling-eviction/node-pressure-eviction/#eviction-signals
+        # Corresponds to the JSON property `nodefsAvailable`
+        # @return [String]
+        attr_accessor :nodefs_available
+      
+        # Optional. Amount of inodes available on filesystem that kubelet uses for
+        # volumes, daemon logs, etc. Defines the amount of "nodefs.inodesFree" signal in
+        # kubelet. Default is unset, if not specified in the kubelet config. Linux only.
+        # It takses percentage value for now. Sample format: "30%". Must be >= 5% and <=
+        # 50%. See https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-
+        # eviction/#eviction-signals
+        # Corresponds to the JSON property `nodefsInodesFree`
+        # @return [String]
+        attr_accessor :nodefs_inodes_free
+      
+        # Optional. Amount of PID available for pod allocation. Defines the amount of "
+        # pid.available" signal in kubelet. Default is unset, if not specified in the
+        # kubelet config. Sample format: "30%". Must be >= 10%. See https://kubernetes.
+        # io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
+        # Corresponds to the JSON property `pidAvailable`
+        # @return [String]
+        attr_accessor :pid_available
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @imagefs_available = args[:imagefs_available] if args.key?(:imagefs_available)
+          @imagefs_inodes_free = args[:imagefs_inodes_free] if args.key?(:imagefs_inodes_free)
+          @memory_available = args[:memory_available] if args.key?(:memory_available)
+          @nodefs_available = args[:nodefs_available] if args.key?(:nodefs_available)
+          @nodefs_inodes_free = args[:nodefs_inodes_free] if args.key?(:nodefs_inodes_free)
+          @pid_available = args[:pid_available] if args.key?(:pid_available)
         end
       end
       
@@ -3192,7 +3566,8 @@ module Google
       end
       
       # GCPSecretManagerCertificateConfig configures a secret from [Google Secret
-      # Manager](https://cloud.google.com/secret-manager).
+      # Manager](https://`$universe.dns_names.final_documentation_domain`/secret-
+      # manager).
       class GcpSecretManagerCertificateConfig
         include Google::Apis::Core::Hashable
       
@@ -3444,6 +3819,25 @@ module Google
         end
       end
       
+      # GkeAutoUpgradeConfig is the configuration for GKE auto upgrades.
+      class GkeAutoUpgradeConfig
+        include Google::Apis::Core::Hashable
+      
+        # PatchMode specifies how auto upgrade patch builds should be selected.
+        # Corresponds to the JSON property `patchMode`
+        # @return [String]
+        attr_accessor :patch_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @patch_mode = args[:patch_mode] if args.key?(:patch_mode)
+        end
+      end
+      
       # Configuration for the Backup for GKE Agent.
       class GkeBackupAgentConfig
         include Google::Apis::Core::Hashable
@@ -3636,6 +4030,14 @@ module Google
       class IpAllocationPolicy
         include Google::Apis::Core::Hashable
       
+        # Output only. The additional IP ranges that are added to the cluster. These IP
+        # ranges can be used by new node pools to allocate node and pod IPs
+        # automatically. Each AdditionalIPRangesConfig corresponds to a single
+        # subnetwork. Once a range is removed it will not show up in IPAllocationPolicy.
+        # Corresponds to the JSON property `additionalIpRangesConfigs`
+        # @return [Array<Google::Apis::ContainerV1beta1::AdditionalIpRangesConfig>]
+        attr_accessor :additional_ip_ranges_configs
+      
         # AdditionalPodRangesConfig is the configuration for additional pod secondary
         # ranges supporting the ClusterUpdate message.
         # Corresponds to the JSON property `additionalPodRangesConfig`
@@ -3655,6 +4057,11 @@ module Google
         # @return [Boolean]
         attr_accessor :allow_route_overlap
         alias_method :allow_route_overlap?, :allow_route_overlap
+      
+        # AutoIpamConfig contains all information related to Auto IPAM
+        # Corresponds to the JSON property `autoIpamConfig`
+        # @return [Google::Apis::ContainerV1beta1::AutoIpamConfig]
+        attr_accessor :auto_ipam_config
       
         # This field is deprecated, use cluster_ipv4_cidr_block.
         # Corresponds to the JSON property `clusterIpv4Cidr`
@@ -3804,8 +4211,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_ip_ranges_configs = args[:additional_ip_ranges_configs] if args.key?(:additional_ip_ranges_configs)
           @additional_pod_ranges_config = args[:additional_pod_ranges_config] if args.key?(:additional_pod_ranges_config)
           @allow_route_overlap = args[:allow_route_overlap] if args.key?(:allow_route_overlap)
+          @auto_ipam_config = args[:auto_ipam_config] if args.key?(:auto_ipam_config)
           @cluster_ipv4_cidr = args[:cluster_ipv4_cidr] if args.key?(:cluster_ipv4_cidr)
           @cluster_ipv4_cidr_block = args[:cluster_ipv4_cidr_block] if args.key?(:cluster_ipv4_cidr_block)
           @cluster_secondary_range_name = args[:cluster_secondary_range_name] if args.key?(:cluster_secondary_range_name)
@@ -4133,15 +4542,37 @@ module Google
         # the nodes. The following parameters are supported. net.core.busy_poll net.core.
         # busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.rmem_default
         # net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn
-        # net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse net.netfilter.
-        # nf_conntrack_max net.netfilter.nf_conntrack_buckets net.netfilter.
-        # nf_conntrack_tcp_timeout_close_wait net.netfilter.
-        # nf_conntrack_tcp_timeout_time_wait net.netfilter.
+        # net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse net.ipv4.
+        # tcp_max_orphans net.netfilter.nf_conntrack_max net.netfilter.
+        # nf_conntrack_buckets net.netfilter.nf_conntrack_tcp_timeout_close_wait net.
+        # netfilter.nf_conntrack_tcp_timeout_time_wait net.netfilter.
         # nf_conntrack_tcp_timeout_established net.netfilter.nf_conntrack_acct kernel.
-        # shmmni kernel.shmmax kernel.shmall vm.max_map_count
+        # shmmni kernel.shmmax kernel.shmall fs.aio-max-nr fs.file-max fs.inotify.
+        # max_user_instances fs.inotify.max_user_watches fs.nr_open vm.
+        # dirty_background_ratio vm.dirty_expire_centisecs vm.dirty_ratio vm.
+        # dirty_writeback_centisecs vm.max_map_count vm.overcommit_memory vm.
+        # overcommit_ratio vm.vfs_cache_pressure vm.swappiness vm.watermark_scale_factor
+        # vm.min_free_kbytes
         # Corresponds to the JSON property `sysctls`
         # @return [Hash<String,String>]
         attr_accessor :sysctls
+      
+        # Optional. Defines the transparent hugepage defrag configuration on the node.
+        # VM hugepage allocation can be managed by either limiting defragmentation for
+        # delayed allocation or skipping it entirely for immediate allocation only. See
+        # https://docs.kernel.org/admin-guide/mm/transhuge.html for more details.
+        # Corresponds to the JSON property `transparentHugepageDefrag`
+        # @return [String]
+        attr_accessor :transparent_hugepage_defrag
+      
+        # Optional. Transparent hugepage support for anonymous memory can be entirely
+        # disabled (mostly for debugging purposes) or only enabled inside MADV_HUGEPAGE
+        # regions (to avoid the risk of consuming more memory resources) or enabled
+        # system wide. See https://docs.kernel.org/admin-guide/mm/transhuge.html for
+        # more details.
+        # Corresponds to the JSON property `transparentHugepageEnabled`
+        # @return [String]
+        attr_accessor :transparent_hugepage_enabled
       
         def initialize(**args)
            update!(**args)
@@ -4152,6 +4583,8 @@ module Google
           @cgroup_mode = args[:cgroup_mode] if args.key?(:cgroup_mode)
           @hugepages = args[:hugepages] if args.key?(:hugepages)
           @sysctls = args[:sysctls] if args.key?(:sysctls)
+          @transparent_hugepage_defrag = args[:transparent_hugepage_defrag] if args.key?(:transparent_hugepage_defrag)
+          @transparent_hugepage_enabled = args[:transparent_hugepage_enabled] if args.key?(:transparent_hugepage_enabled)
         end
       end
       
@@ -4289,17 +4722,18 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Number of local NVMe SSDs to use. The limit for this value is dependent upon
-        # the maximum number of disk available on a machine per zone. See: https://cloud.
-        # google.com/compute/docs/disks/local-ssd for more information. A zero (or unset)
-        # value has different meanings depending on machine type being used: 1. For pre-
-        # Gen3 machines, which support flexible numbers of local ssds, zero (or unset)
-        # means to disable using local SSDs as ephemeral storage. 2. For Gen3 machines
-        # which dictate a specific number of local ssds, zero (or unset) means to use
-        # the default number of local ssds that goes with that machine type. For example,
-        # for a c3-standard-8-lssd machine, 2 local ssds would be provisioned. For c3-
-        # standard-8 (which doesn't support local ssds), 0 will be provisioned. See
-        # https://cloud.google.com/compute/docs/disks/local-ssd#choose_number_local_ssds
-        # for more info.
+        # the maximum number of disk available on a machine per zone. See: https://`$
+        # universe.dns_names.final_documentation_domain`/compute/docs/disks/local-ssd
+        # for more information. A zero (or unset) value has different meanings depending
+        # on machine type being used: 1. For pre-Gen3 machines, which support flexible
+        # numbers of local ssds, zero (or unset) means to disable using local SSDs as
+        # ephemeral storage. 2. For Gen3 machines which dictate a specific number of
+        # local ssds, zero (or unset) means to use the default number of local ssds that
+        # goes with that machine type. For example, for a c3-standard-8-lssd machine, 2
+        # local ssds would be provisioned. For c3-standard-8 (which doesn't support
+        # local ssds), 0 will be provisioned. See https://`$universe.dns_names.
+        # final_documentation_domain`/compute/docs/disks/local-ssd#
+        # choose_number_local_ssds for more info.
         # Corresponds to the JSON property `localSsdCount`
         # @return [Fixnum]
         attr_accessor :local_ssd_count
@@ -4402,6 +4836,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @variant = args[:variant] if args.key?(:variant)
+        end
+      end
+      
+      # Configuration for the Lustre CSI driver.
+      class LustreCsiDriverConfig
+        include Google::Apis::Core::Hashable
+      
+        # If set to true, the Lustre CSI driver will install Lustre kernel modules using
+        # port 6988.
+        # Corresponds to the JSON property `enableLegacyLustrePort`
+        # @return [Boolean]
+        attr_accessor :enable_legacy_lustre_port
+        alias_method :enable_legacy_lustre_port?, :enable_legacy_lustre_port
+      
+        # Whether the Lustre CSI driver is enabled for this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_legacy_lustre_port = args[:enable_legacy_lustre_port] if args.key?(:enable_legacy_lustre_port)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
@@ -4559,8 +5021,9 @@ module Google
         # strong password. If a password is provided for cluster creation, username must
         # be non-empty. Warning: basic authentication is deprecated, and will be removed
         # in GKE control plane versions 1.19 and newer. For a list of recommended
-        # authentication methods, see: https://cloud.google.com/kubernetes-engine/docs/
-        # how-to/api-server-authentication
+        # authentication methods, see: https://`$universe.dns_names.
+        # final_documentation_domain`/kubernetes-engine/docs/how-to/api-server-
+        # authentication
         # Corresponds to the JSON property `password`
         # @return [String]
         attr_accessor :password
@@ -4570,8 +5033,8 @@ module Google
         # username unspecified (or setting it to the empty string). Warning: basic
         # authentication is deprecated, and will be removed in GKE control plane
         # versions 1.19 and newer. For a list of recommended authentication methods, see:
-        # https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-
-        # authentication
+        # https://`$universe.dns_names.final_documentation_domain`/kubernetes-engine/
+        # docs/how-to/api-server-authentication
         # Corresponds to the JSON property `username`
         # @return [String]
         attr_accessor :username
@@ -4868,9 +5331,10 @@ module Google
         # @return [String]
         attr_accessor :in_transit_encryption_config
       
-        # Output only. The relative name of the Google Compute Engine [network](https://
-        # cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the
-        # cluster is connected. Example: projects/my-project/global/networks/my-network
+        # Output only. The relative name of the Google Compute Engine [network](https://`
+        # $universe.dns_names.final_documentation_domain`/compute/docs/networks-and-
+        # firewalls#networks) to which the cluster is connected. Example: projects/my-
+        # project/global/networks/my-network
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -4892,8 +5356,9 @@ module Google
         attr_accessor :service_external_ips_config
       
         # Output only. The relative name of the Google Compute Engine [subnetwork](https:
-        # //cloud.google.com/compute/docs/vpc) to which the cluster is connected.
-        # Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
+        # //`$universe.dns_names.final_documentation_domain`/compute/docs/vpc) to which
+        # the cluster is connected. Example: projects/my-project/regions/us-central1/
+        # subnetworks/my-subnet
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -5021,8 +5486,9 @@ module Google
       end
       
       # Specifies the NodeAffinity key, values, and affinity operator according to [
-      # shared sole tenant node group affinities](https://cloud.google.com/compute/
-      # docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity).
+      # shared sole tenant node group affinities](https://`$universe.dns_names.
+      # final_documentation_domain`/compute/docs/nodes/sole-tenant-nodes#
+      # node_affinity_and_anti-affinity).
       class NodeAffinity
         include Google::Apis::Core::Hashable
       
@@ -5059,8 +5525,9 @@ module Google
       class NodeConfig
         include Google::Apis::Core::Hashable
       
-        # A list of hardware accelerators to be attached to each node. See https://cloud.
-        # google.com/compute/docs/gpus for more information about support for GPUs.
+        # A list of hardware accelerators to be attached to each node. See https://`$
+        # universe.dns_names.final_documentation_domain`/compute/docs/gpus for more
+        # information about support for GPUs.
         # Corresponds to the JSON property `accelerators`
         # @return [Array<Google::Apis::ContainerV1beta1::AcceleratorConfig>]
         attr_accessor :accelerators
@@ -5070,11 +5537,17 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::AdvancedMachineFeatures]
         attr_accessor :advanced_machine_features
       
+        # BootDisk specifies the boot disk configuration for nodepools.
+        # Corresponds to the JSON property `bootDisk`
+        # @return [Google::Apis::ContainerV1beta1::BootDisk]
+        attr_accessor :boot_disk
+      
         # The Customer Managed Encryption Key used to encrypt the boot disk attached to
         # each node in the node pool. This should be of the form projects/[
         # KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]
         # . For more information about protecting resources with Cloud KMS Keys please
-        # see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+        # see: https://`$universe.dns_names.final_documentation_domain`/compute/docs/
+        # disks/customer-managed-encryption
         # Corresponds to the JSON property `bootDiskKmsKey`
         # @return [String]
         attr_accessor :boot_disk_kms_key
@@ -5091,8 +5564,7 @@ module Google
         attr_accessor :containerd_config
       
         # Size of the disk attached to each node, specified in GB. The smallest allowed
-        # disk size is 10GB. TODO(b/395671893) - Deprecate disk_size_gb and disk_type
-        # fields. If unspecified, the default disk size is 100GB.
+        # disk size is 10GB. If unspecified, the default disk size is 100GB.
         # Corresponds to the JSON property `diskSizeGb`
         # @return [Fixnum]
         attr_accessor :disk_size_gb
@@ -5157,8 +5629,9 @@ module Google
         attr_accessor :host_maintenance_policy
       
         # The image type to use for this node. Note that for a given image type, the
-        # latest version of it will be used. Please see https://cloud.google.com/
-        # kubernetes-engine/docs/concepts/node-images for available image types.
+        # latest version of it will be used. Please see https://`$universe.dns_names.
+        # final_documentation_domain`/kubernetes-engine/docs/concepts/node-images for
+        # available image types.
         # Corresponds to the JSON property `imageType`
         # @return [String]
         attr_accessor :image_type
@@ -5192,8 +5665,8 @@ module Google
       
         # The number of local SSD disks to be attached to the node. The limit for this
         # value is dependent upon the maximum number of disks available on a machine per
-        # zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more
-        # information.
+        # zone. See: https://`$universe.dns_names.final_documentation_domain`/compute/
+        # docs/disks/local-ssd for more information.
         # Corresponds to the JSON property `localSsdCount`
         # @return [Fixnum]
         attr_accessor :local_ssd_count
@@ -5209,9 +5682,9 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NodePoolLoggingConfig]
         attr_accessor :logging_config
       
-        # The name of a Google Compute Engine [machine type](https://cloud.google.com/
-        # compute/docs/machine-types). If unspecified, the default machine type is `e2-
-        # medium`.
+        # The name of a Google Compute Engine [machine type](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/machine-types). If
+        # unspecified, the default machine type is `e2-medium`.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
@@ -5244,15 +5717,16 @@ module Google
         # scheduled on the specified or newer CPU platform. Applicable values are the
         # friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `
         # minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to
-        # specify min CPU platform](https://cloud.google.com/compute/docs/instances/
-        # specify-min-cpu-platform).
+        # specify min CPU platform](https://`$universe.dns_names.
+        # final_documentation_domain`/compute/docs/instances/specify-min-cpu-platform).
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
         attr_accessor :min_cpu_platform
       
         # Setting this field will assign instances of this pool to run on the specified
         # node group. This is useful for running workloads on [sole tenant nodes](https:/
-        # /cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
+        # /`$universe.dns_names.final_documentation_domain`/compute/docs/nodes/sole-
+        # tenant-nodes).
         # Corresponds to the JSON property `nodeGroup`
         # @return [String]
         attr_accessor :node_group
@@ -5262,25 +5736,25 @@ module Google
         # required, and by default are not included: * `https://www.googleapis.com/auth/
         # compute` is required for mounting persistent storage on your nodes. * `https://
         # www.googleapis.com/auth/devstorage.read_only` is required for communicating
-        # with **gcr.io** (the [Google Container Registry](https://cloud.google.com/
-        # container-registry/)). If unspecified, no scopes are added, unless Cloud
-        # Logging or Cloud Monitoring are enabled, in which case their required scopes
-        # will be added.
+        # with **gcr.io** (the [Google Container Registry](https://`$universe.dns_names.
+        # final_documentation_domain`/container-registry/)). If unspecified, no scopes
+        # are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case
+        # their required scopes will be added.
         # Corresponds to the JSON property `oauthScopes`
         # @return [Array<String>]
         attr_accessor :oauth_scopes
       
-        # Whether the nodes are created as preemptible VM instances. See: https://cloud.
-        # google.com/compute/docs/instances/preemptible for more information about
-        # preemptible VM instances.
+        # Whether the nodes are created as preemptible VM instances. See: https://`$
+        # universe.dns_names.final_documentation_domain`/compute/docs/instances/
+        # preemptible for more information about preemptible VM instances.
         # Corresponds to the JSON property `preemptible`
         # @return [Boolean]
         attr_accessor :preemptible
         alias_method :preemptible?, :preemptible
       
-        # [ReservationAffinity](https://cloud.google.com/compute/docs/instances/
-        # reserving-zonal-resources) is the configuration of desired reservation which
-        # instances could take capacity from.
+        # [ReservationAffinity](https://`$universe.dns_names.final_documentation_domain`/
+        # compute/docs/instances/reserving-zonal-resources) is the configuration of
+        # desired reservation which instances could take capacity from.
         # Corresponds to the JSON property `reservationAffinity`
         # @return [Google::Apis::ContainerV1beta1::ReservationAffinity]
         attr_accessor :reservation_affinity
@@ -5293,9 +5767,10 @@ module Google
       
         # A map of resource manager tag keys and values to be attached to the nodes for
         # managing Compute Engine firewalls using Network Firewall Policies. Tags must
-        # be according to specifications in https://cloud.google.com/vpc/docs/tags-
-        # firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be
-        # specified. Existing tags will be replaced with new values.
+        # be according to specifications in https://`$universe.dns_names.
+        # final_documentation_domain`/vpc/docs/tags-firewalls-overview#specifications. A
+        # maximum of 5 tag key-value pairs can be specified. Existing tags will be
+        # replaced with new values.
         # Corresponds to the JSON property `resourceManagerTags`
         # @return [Google::Apis::ContainerV1beta1::ResourceManagerTags]
         attr_accessor :resource_manager_tags
@@ -5382,6 +5857,7 @@ module Google
         def update!(**args)
           @accelerators = args[:accelerators] if args.key?(:accelerators)
           @advanced_machine_features = args[:advanced_machine_features] if args.key?(:advanced_machine_features)
+          @boot_disk = args[:boot_disk] if args.key?(:boot_disk)
           @boot_disk_kms_key = args[:boot_disk_kms_key] if args.key?(:boot_disk_kms_key)
           @confidential_nodes = args[:confidential_nodes] if args.key?(:confidential_nodes)
           @containerd_config = args[:containerd_config] if args.key?(:containerd_config)
@@ -5538,6 +6014,34 @@ module Google
         # @return [String]
         attr_accessor :cpu_manager_policy
       
+        # Optional. eviction_max_pod_grace_period_seconds is the maximum allowed grace
+        # period (in seconds) to use when terminating pods in response to a soft
+        # eviction threshold being met. This value effectively caps the Pod's
+        # terminationGracePeriodSeconds value during soft evictions. Default: 0. Range: [
+        # 0, 300].
+        # Corresponds to the JSON property `evictionMaxPodGracePeriodSeconds`
+        # @return [Fixnum]
+        attr_accessor :eviction_max_pod_grace_period_seconds
+      
+        # Eviction minimum reclaims are the resource amounts of minimum reclaims for
+        # each eviction signal.
+        # Corresponds to the JSON property `evictionMinimumReclaim`
+        # @return [Google::Apis::ContainerV1beta1::EvictionMinimumReclaim]
+        attr_accessor :eviction_minimum_reclaim
+      
+        # Eviction signals are the current state of a particular resource at a specific
+        # point in time. The kubelet uses eviction signals to make eviction decisions by
+        # comparing the signals to eviction thresholds, which are the minimum amount of
+        # the resource that should be available on the node.
+        # Corresponds to the JSON property `evictionSoft`
+        # @return [Google::Apis::ContainerV1beta1::EvictionSignals]
+        attr_accessor :eviction_soft
+      
+        # Eviction grace periods are grace periods for each eviction signal.
+        # Corresponds to the JSON property `evictionSoftGracePeriod`
+        # @return [Google::Apis::ContainerV1beta1::EvictionGracePeriod]
+        attr_accessor :eviction_soft_grace_period
+      
         # Optional. Defines the percent of disk usage after which image garbage
         # collection is always run. The percent is calculated as this field value out of
         # 100. The value must be between 10 and 85, inclusive and greater than
@@ -5582,6 +6086,14 @@ module Google
         attr_accessor :insecure_kubelet_readonly_port_enabled
         alias_method :insecure_kubelet_readonly_port_enabled?, :insecure_kubelet_readonly_port_enabled
       
+        # Optional. Defines the maximum number of image pulls in parallel. The range is
+        # 2 to 5, inclusive. The default value is 2 or 3 depending on the disk type. See
+        # https://kubernetes.io/docs/concepts/containers/images/#maximum-parallel-image-
+        # pulls for more details.
+        # Corresponds to the JSON property `maxParallelImagePulls`
+        # @return [Fixnum]
+        attr_accessor :max_parallel_image_pulls
+      
         # The option enables the Kubernetes NUMA-aware Memory Manager feature. Detailed
         # description about the feature can be found [here](https://kubernetes.io/docs/
         # tasks/administer-cluster/memory-manager/).
@@ -5596,6 +6108,15 @@ module Google
         # Corresponds to the JSON property `podPidsLimit`
         # @return [Fixnum]
         attr_accessor :pod_pids_limit
+      
+        # Optional. Defines whether to enable single process OOM killer. If true, will
+        # prevent the memory.oom.group flag from being set for container cgroups in
+        # cgroups v2. This causes processes in the container to be OOM killed
+        # individually instead of as a group.
+        # Corresponds to the JSON property `singleProcessOomKill`
+        # @return [Boolean]
+        attr_accessor :single_process_oom_kill
+        alias_method :single_process_oom_kill?, :single_process_oom_kill
       
         # TopologyManager defines the configuration options for Topology Manager feature.
         # See https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/
@@ -5615,13 +6136,19 @@ module Google
           @cpu_cfs_quota = args[:cpu_cfs_quota] if args.key?(:cpu_cfs_quota)
           @cpu_cfs_quota_period = args[:cpu_cfs_quota_period] if args.key?(:cpu_cfs_quota_period)
           @cpu_manager_policy = args[:cpu_manager_policy] if args.key?(:cpu_manager_policy)
+          @eviction_max_pod_grace_period_seconds = args[:eviction_max_pod_grace_period_seconds] if args.key?(:eviction_max_pod_grace_period_seconds)
+          @eviction_minimum_reclaim = args[:eviction_minimum_reclaim] if args.key?(:eviction_minimum_reclaim)
+          @eviction_soft = args[:eviction_soft] if args.key?(:eviction_soft)
+          @eviction_soft_grace_period = args[:eviction_soft_grace_period] if args.key?(:eviction_soft_grace_period)
           @image_gc_high_threshold_percent = args[:image_gc_high_threshold_percent] if args.key?(:image_gc_high_threshold_percent)
           @image_gc_low_threshold_percent = args[:image_gc_low_threshold_percent] if args.key?(:image_gc_low_threshold_percent)
           @image_maximum_gc_age = args[:image_maximum_gc_age] if args.key?(:image_maximum_gc_age)
           @image_minimum_gc_age = args[:image_minimum_gc_age] if args.key?(:image_minimum_gc_age)
           @insecure_kubelet_readonly_port_enabled = args[:insecure_kubelet_readonly_port_enabled] if args.key?(:insecure_kubelet_readonly_port_enabled)
+          @max_parallel_image_pulls = args[:max_parallel_image_pulls] if args.key?(:max_parallel_image_pulls)
           @memory_manager = args[:memory_manager] if args.key?(:memory_manager)
           @pod_pids_limit = args[:pod_pids_limit] if args.key?(:pod_pids_limit)
+          @single_process_oom_kill = args[:single_process_oom_kill] if args.key?(:single_process_oom_kill)
           @topology_manager = args[:topology_manager] if args.key?(:topology_manager)
         end
       end
@@ -5753,6 +6280,14 @@ module Google
         # @return [String]
         attr_accessor :pod_range
       
+        # Output only. The subnetwork path for the node pool. Format: projects/`project`/
+        # regions/`region`/subnetworks/`subnetwork` If the cluster is associated with
+        # multiple subnetworks, the subnetwork for the node pool is picked based on the
+        # IP utilization during node pool creation and is immutable.
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5768,6 +6303,7 @@ module Google
           @pod_ipv4_cidr_block = args[:pod_ipv4_cidr_block] if args.key?(:pod_ipv4_cidr_block)
           @pod_ipv4_range_utilization = args[:pod_ipv4_range_utilization] if args.key?(:pod_ipv4_range_utilization)
           @pod_range = args[:pod_range] if args.key?(:pod_range)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
         end
       end
       
@@ -5816,27 +6352,30 @@ module Google
         attr_accessor :etag
       
         # The initial node count for the pool. You must ensure that your Compute Engine [
-        # resource quota](https://cloud.google.com/compute/quotas) is sufficient for
-        # this number of instances. You must also have available firewall and routes
-        # quota.
+        # resource quota](https://`$universe.dns_names.final_documentation_domain`/
+        # compute/quotas) is sufficient for this number of instances. You must also have
+        # available firewall and routes quota.
         # Corresponds to the JSON property `initialNodeCount`
         # @return [Fixnum]
         attr_accessor :initial_node_count
       
-        # Output only. The resource URLs of the [managed instance groups](https://cloud.
-        # google.com/compute/docs/instance-groups/creating-groups-of-managed-instances)
-        # associated with this node pool. During the node pool blue-green upgrade
-        # operation, the URLs contain both blue and green resources.
+        # Output only. The resource URLs of the [managed instance groups](https://`$
+        # universe.dns_names.final_documentation_domain`/compute/docs/instance-groups/
+        # creating-groups-of-managed-instances) associated with this node pool. During
+        # the node pool blue-green upgrade operation, the URLs contain both blue and
+        # green resources.
         # Corresponds to the JSON property `instanceGroupUrls`
         # @return [Array<String>]
         attr_accessor :instance_group_urls
       
-        # The list of Google Compute Engine [zones](https://cloud.google.com/compute/
-        # docs/zones#available) in which the NodePool's nodes should be located. If this
-        # value is unspecified during node pool creation, the [Cluster.Locations](https:/
-        # /cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.
-        # clusters#Cluster.FIELDS.locations) value will be used, instead. Warning:
-        # changing node pool locations will result in nodes being added and/or removed.
+        # The list of Google Compute Engine [zones](https://`$universe.dns_names.
+        # final_documentation_domain`/compute/docs/zones#available) in which the
+        # NodePool's nodes should be located. If this value is unspecified during node
+        # pool creation, the [Cluster.Locations](https://`$universe.dns_names.
+        # final_documentation_domain`/kubernetes-engine/docs/reference/rest/v1/projects.
+        # locations.clusters#Cluster.FIELDS.locations) value will be used, instead.
+        # Warning: changing node pool locations will result in nodes being added and/or
+        # removed.
         # Corresponds to the JSON property `locations`
         # @return [Array<String>]
         attr_accessor :locations
@@ -5935,8 +6474,9 @@ module Google
         attr_accessor :upgrade_settings
       
         # The version of Kubernetes running on this NodePool's nodes. If unspecified, it
-        # defaults as described [here](https://cloud.google.com/kubernetes-engine/
-        # versioning#specifying_node_version).
+        # defaults as described [here](https://`$universe.dns_names.
+        # final_documentation_domain`/kubernetes-engine/versioning#
+        # specifying_node_version).
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -5996,9 +6536,10 @@ module Google
       
         # A map of resource manager tag keys and values to be attached to the nodes for
         # managing Compute Engine firewalls using Network Firewall Policies. Tags must
-        # be according to specifications in https://cloud.google.com/vpc/docs/tags-
-        # firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be
-        # specified. Existing tags will be replaced with new values.
+        # be according to specifications in https://`$universe.dns_names.
+        # final_documentation_domain`/vpc/docs/tags-firewalls-overview#specifications. A
+        # maximum of 5 tag key-value pairs can be specified. Existing tags will be
+        # replaced with new values.
         # Corresponds to the JSON property `resourceManagerTags`
         # @return [Google::Apis::ContainerV1beta1::ResourceManagerTags]
         attr_accessor :resource_manager_tags
@@ -6279,10 +6820,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::Status]
         attr_accessor :error
       
-        # Output only. The name of the Google Compute Engine [zone](https://cloud.google.
-        # com/compute/docs/regions-zones/regions-zones#available) or [region](https://
-        # cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which
-        # the cluster resides.
+        # Output only. The name of the Google Compute Engine [zone](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/regions-zones/regions-zones#
+        # available) or [region](https://`$universe.dns_names.final_documentation_domain`
+        # /compute/docs/regions-zones/regions-zones#available) in which the cluster
+        # resides.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -6344,9 +6886,9 @@ module Google
         # @return [String]
         attr_accessor :target_link
       
-        # Output only. The name of the Google Compute Engine [zone](https://cloud.google.
-        # com/compute/docs/zones#available) in which the operation is taking place. This
-        # field is deprecated, use location instead.
+        # Output only. The name of the Google Compute Engine [zone](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
+        # the operation is taking place. This field is deprecated, use location instead.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -6542,8 +7084,8 @@ module Google
         # @return [String]
         attr_accessor :policy_name
       
-        # TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/
-        # docs/types-topologies#tpu_topologies
+        # TPU placement topology for pod slice node pool. https://`$universe.dns_names.
+        # final_documentation_domain`/tpu/docs/types-topologies#tpu_topologies
         # Corresponds to the JSON property `tpuTopology`
         # @return [String]
         attr_accessor :tpu_topology
@@ -7089,9 +7631,9 @@ module Google
         end
       end
       
-      # [ReservationAffinity](https://cloud.google.com/compute/docs/instances/
-      # reserving-zonal-resources) is the configuration of desired reservation which
-      # instances could take capacity from.
+      # [ReservationAffinity](https://`$universe.dns_names.final_documentation_domain`/
+      # compute/docs/instances/reserving-zonal-resources) is the configuration of
+      # desired reservation which instances could take capacity from.
       class ReservationAffinity
         include Google::Apis::Core::Hashable
       
@@ -7124,8 +7666,8 @@ module Google
         end
       end
       
-      # Collection of [GCP labels](https://cloud.google.com/resource-manager/docs/
-      # creating-managing-labels).
+      # Collection of [GCP labels](https://`$universe.dns_names.
+      # final_documentation_domain`/resource-manager/docs/creating-managing-labels).
       class ResourceLabels
         include Google::Apis::Core::Hashable
       
@@ -7178,9 +7720,10 @@ module Google
       
       # A map of resource manager tag keys and values to be attached to the nodes for
       # managing Compute Engine firewalls using Network Firewall Policies. Tags must
-      # be according to specifications in https://cloud.google.com/vpc/docs/tags-
-      # firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be
-      # specified. Existing tags will be replaced with new values.
+      # be according to specifications in https://`$universe.dns_names.
+      # final_documentation_domain`/vpc/docs/tags-firewalls-overview#specifications. A
+      # maximum of 5 tag key-value pairs can be specified. Existing tags will be
+      # replaced with new values.
       class ResourceManagerTags
         include Google::Apis::Core::Hashable
       
@@ -7240,7 +7783,7 @@ module Google
       class RollbackNodePoolUpgradeRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Deprecated. The name of the cluster to rollback. This field has been
+        # Deprecated. The name of the cluster to rollback. This field has been
         # deprecated and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
@@ -7253,15 +7796,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. Deprecated. The name of the node pool to rollback. This field has
-        # been deprecated and replaced by the name field.
+        # Deprecated. The name of the node pool to rollback. This field has been
+        # deprecated and replaced by the name field.
         # Corresponds to the JSON property `nodePoolId`
         # @return [String]
         attr_accessor :node_pool_id
       
-        # Required. Deprecated. The Google Developers Console [project ID or project
-        # number](https://cloud.google.com/resource-manager/docs/creating-managing-
-        # projects). This field has been deprecated and replaced by the name field.
+        # Deprecated. The Google Developers Console [project ID or project number](https:
+        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
+        # creating-managing-projects). This field has been deprecated and replaced by
+        # the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -7272,9 +7816,10 @@ module Google
         attr_accessor :respect_pdb
         alias_method :respect_pdb?, :respect_pdb
       
-        # Required. Deprecated. The name of the Google Compute Engine [zone](https://
-        # cloud.google.com/compute/docs/zones#available) in which the cluster resides.
-        # This field has been deprecated and replaced by the name field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
+        # the cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -7612,8 +8157,8 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::AddonsConfig]
         attr_accessor :addons_config
       
-        # Required. Deprecated. The name of the cluster to upgrade. This field has been
-        # deprecated and replaced by the name field.
+        # Deprecated. The name of the cluster to upgrade. This field has been deprecated
+        # and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
@@ -7624,16 +8169,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. Deprecated. The Google Developers Console [project ID or project
-        # number](https://cloud.google.com/resource-manager/docs/creating-managing-
-        # projects). This field has been deprecated and replaced by the name field.
+        # Deprecated. The Google Developers Console [project ID or project number](https:
+        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
+        # creating-managing-projects). This field has been deprecated and replaced by
+        # the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Required. Deprecated. The name of the Google Compute Engine [zone](https://
-        # cloud.google.com/compute/docs/zones#available) in which the cluster resides.
-        # This field has been deprecated and replaced by the name field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
+        # the cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -7658,8 +8205,8 @@ module Google
       class SetLabelsRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Deprecated. The name of the cluster. This field has been deprecated
-        # and replaced by the name field.
+        # Deprecated. The name of the cluster. This field has been deprecated and
+        # replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
@@ -7679,9 +8226,10 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. Deprecated. The Google Developers Console [project ID or project
-        # number](https://cloud.google.com/resource-manager/docs/creating-managing-
-        # projects). This field has been deprecated and replaced by the name field.
+        # Deprecated. The Google Developers Console [project ID or project number](https:
+        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
+        # creating-managing-projects). This field has been deprecated and replaced by
+        # the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -7691,9 +8239,10 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :resource_labels
       
-        # Required. Deprecated. The name of the Google Compute Engine [zone](https://
-        # cloud.google.com/compute/docs/zones#available) in which the cluster resides.
-        # This field has been deprecated and replaced by the name field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
+        # the cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -7718,8 +8267,8 @@ module Google
       class SetLegacyAbacRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Deprecated. The name of the cluster to update. This field has been
-        # deprecated and replaced by the name field.
+        # Deprecated. The name of the cluster to update. This field has been deprecated
+        # and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
@@ -7736,16 +8285,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. Deprecated. The Google Developers Console [project ID or project
-        # number](https://cloud.google.com/resource-manager/docs/creating-managing-
-        # projects). This field has been deprecated and replaced by the name field.
+        # Deprecated. The Google Developers Console [project ID or project number](https:
+        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
+        # creating-managing-projects). This field has been deprecated and replaced by
+        # the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Required. Deprecated. The name of the Google Compute Engine [zone](https://
-        # cloud.google.com/compute/docs/zones#available) in which the cluster resides.
-        # This field has been deprecated and replaced by the name field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
+        # the cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -7768,18 +8319,18 @@ module Google
       class SetLocationsRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Deprecated. The name of the cluster to upgrade. This field has been
-        # deprecated and replaced by the name field.
+        # Deprecated. The name of the cluster to upgrade. This field has been deprecated
+        # and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
       
-        # Required. The desired list of Google Compute Engine [zones](https://cloud.
-        # google.com/compute/docs/zones#available) in which the cluster's nodes should
-        # be located. Changing the locations a cluster is in will result in nodes being
-        # either created or removed from the cluster, depending on whether locations are
-        # being added or removed. This list must always include the cluster's primary
-        # zone.
+        # Required. The desired list of Google Compute Engine [zones](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
+        # the cluster's nodes should be located. Changing the locations a cluster is in
+        # will result in nodes being either created or removed from the cluster,
+        # depending on whether locations are being added or removed. This list must
+        # always include the cluster's primary zone.
         # Corresponds to the JSON property `locations`
         # @return [Array<String>]
         attr_accessor :locations
@@ -7790,16 +8341,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. Deprecated. The Google Developers Console [project ID or project
-        # number](https://cloud.google.com/resource-manager/docs/creating-managing-
-        # projects). This field has been deprecated and replaced by the name field.
+        # Deprecated. The Google Developers Console [project ID or project number](https:
+        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
+        # creating-managing-projects). This field has been deprecated and replaced by
+        # the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Required. Deprecated. The name of the Google Compute Engine [zone](https://
-        # cloud.google.com/compute/docs/zones#available) in which the cluster resides.
-        # This field has been deprecated and replaced by the name field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
+        # the cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -7822,8 +8375,8 @@ module Google
       class SetLoggingServiceRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Deprecated. The name of the cluster to upgrade. This field has been
-        # deprecated and replaced by the name field.
+        # Deprecated. The name of the cluster to upgrade. This field has been deprecated
+        # and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
@@ -7845,16 +8398,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. Deprecated. The Google Developers Console [project ID or project
-        # number](https://cloud.google.com/resource-manager/docs/creating-managing-
-        # projects). This field has been deprecated and replaced by the name field.
+        # Deprecated. The Google Developers Console [project ID or project number](https:
+        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
+        # creating-managing-projects). This field has been deprecated and replaced by
+        # the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Required. Deprecated. The name of the Google Compute Engine [zone](https://
-        # cloud.google.com/compute/docs/zones#available) in which the cluster resides.
-        # This field has been deprecated and replaced by the name field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
+        # the cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -7894,13 +8449,15 @@ module Google
         attr_accessor :name
       
         # Required. The Google Developers Console [project ID or project number](https://
-        # cloud.google.com/resource-manager/docs/creating-managing-projects).
+        # `$universe.dns_names.final_documentation_domain`/resource-manager/docs/
+        # creating-managing-projects).
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Required. The name of the Google Compute Engine [zone](https://cloud.google.
-        # com/compute/docs/zones#available) in which the cluster resides.
+        # Required. The name of the Google Compute Engine [zone](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
+        # the cluster resides.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -7928,8 +8485,8 @@ module Google
         # @return [String]
         attr_accessor :action
       
-        # Required. Deprecated. The name of the cluster to upgrade. This field has been
-        # deprecated and replaced by the name field.
+        # Deprecated. The name of the cluster to upgrade. This field has been deprecated
+        # and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
@@ -7940,9 +8497,10 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. Deprecated. The Google Developers Console [project ID or project
-        # number](https://cloud.google.com/resource-manager/docs/creating-managing-
-        # projects). This field has been deprecated and replaced by the name field.
+        # Deprecated. The Google Developers Console [project ID or project number](https:
+        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
+        # creating-managing-projects). This field has been deprecated and replaced by
+        # the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -7953,9 +8511,10 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::MasterAuth]
         attr_accessor :update
       
-        # Required. Deprecated. The name of the Google Compute Engine [zone](https://
-        # cloud.google.com/compute/docs/zones#available) in which the cluster resides.
-        # This field has been deprecated and replaced by the name field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
+        # the cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -7979,8 +8538,8 @@ module Google
       class SetMonitoringServiceRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Deprecated. The name of the cluster to upgrade. This field has been
-        # deprecated and replaced by the name field.
+        # Deprecated. The name of the cluster to upgrade. This field has been deprecated
+        # and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
@@ -8002,16 +8561,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. Deprecated. The Google Developers Console [project ID or project
-        # number](https://cloud.google.com/resource-manager/docs/creating-managing-
-        # projects). This field has been deprecated and replaced by the name field.
+        # Deprecated. The Google Developers Console [project ID or project number](https:
+        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
+        # creating-managing-projects). This field has been deprecated and replaced by
+        # the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Required. Deprecated. The name of the Google Compute Engine [zone](https://
-        # cloud.google.com/compute/docs/zones#available) in which the cluster resides.
-        # This field has been deprecated and replaced by the name field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
+        # the cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -8034,8 +8595,8 @@ module Google
       class SetNetworkPolicyRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Deprecated. The name of the cluster. This field has been deprecated
-        # and replaced by the name field.
+        # Deprecated. The name of the cluster. This field has been deprecated and
+        # replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
@@ -8052,16 +8613,18 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NetworkPolicy]
         attr_accessor :network_policy
       
-        # Required. Deprecated. The Google Developers Console [project ID or project
-        # number](https://cloud.google.com/resource-manager/docs/creating-managing-
-        # projects). This field has been deprecated and replaced by the name field.
+        # Deprecated. The Google Developers Console [project ID or project number](https:
+        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
+        # creating-managing-projects). This field has been deprecated and replaced by
+        # the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Required. Deprecated. The name of the Google Compute Engine [zone](https://
-        # cloud.google.com/compute/docs/zones#available) in which the cluster resides.
-        # This field has been deprecated and replaced by the name field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
+        # the cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -8090,8 +8653,8 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NodePoolAutoscaling]
         attr_accessor :autoscaling
       
-        # Required. Deprecated. The name of the cluster to upgrade. This field has been
-        # deprecated and replaced by the name field.
+        # Deprecated. The name of the cluster to upgrade. This field has been deprecated
+        # and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
@@ -8103,22 +8666,24 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. Deprecated. The name of the node pool to upgrade. This field has
-        # been deprecated and replaced by the name field.
+        # Deprecated. The name of the node pool to upgrade. This field has been
+        # deprecated and replaced by the name field.
         # Corresponds to the JSON property `nodePoolId`
         # @return [String]
         attr_accessor :node_pool_id
       
-        # Required. Deprecated. The Google Developers Console [project ID or project
-        # number](https://cloud.google.com/resource-manager/docs/creating-managing-
-        # projects). This field has been deprecated and replaced by the name field.
+        # Deprecated. The Google Developers Console [project ID or project number](https:
+        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
+        # creating-managing-projects). This field has been deprecated and replaced by
+        # the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Required. Deprecated. The name of the Google Compute Engine [zone](https://
-        # cloud.google.com/compute/docs/zones#available) in which the cluster resides.
-        # This field has been deprecated and replaced by the name field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
+        # the cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -8143,8 +8708,8 @@ module Google
       class SetNodePoolManagementRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Deprecated. The name of the cluster to update. This field has been
-        # deprecated and replaced by the name field.
+        # Deprecated. The name of the cluster to update. This field has been deprecated
+        # and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
@@ -8162,22 +8727,24 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. Deprecated. The name of the node pool to update. This field has been
+        # Deprecated. The name of the node pool to update. This field has been
         # deprecated and replaced by the name field.
         # Corresponds to the JSON property `nodePoolId`
         # @return [String]
         attr_accessor :node_pool_id
       
-        # Required. Deprecated. The Google Developers Console [project ID or project
-        # number](https://cloud.google.com/resource-manager/docs/creating-managing-
-        # projects). This field has been deprecated and replaced by the name field.
+        # Deprecated. The Google Developers Console [project ID or project number](https:
+        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
+        # creating-managing-projects). This field has been deprecated and replaced by
+        # the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Required. Deprecated. The name of the Google Compute Engine [zone](https://
-        # cloud.google.com/compute/docs/zones#available) in which the cluster resides.
-        # This field has been deprecated and replaced by the name field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
+        # the cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -8201,8 +8768,8 @@ module Google
       class SetNodePoolSizeRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Deprecated. The name of the cluster to update. This field has been
-        # deprecated and replaced by the name field.
+        # Deprecated. The name of the cluster to update. This field has been deprecated
+        # and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
@@ -8218,22 +8785,24 @@ module Google
         # @return [Fixnum]
         attr_accessor :node_count
       
-        # Required. Deprecated. The name of the node pool to update. This field has been
+        # Deprecated. The name of the node pool to update. This field has been
         # deprecated and replaced by the name field.
         # Corresponds to the JSON property `nodePoolId`
         # @return [String]
         attr_accessor :node_pool_id
       
-        # Required. Deprecated. The Google Developers Console [project ID or project
-        # number](https://cloud.google.com/resource-manager/docs/creating-managing-
-        # projects). This field has been deprecated and replaced by the name field.
+        # Deprecated. The Google Developers Console [project ID or project number](https:
+        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
+        # creating-managing-projects). This field has been deprecated and replaced by
+        # the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Required. Deprecated. The name of the Google Compute Engine [zone](https://
-        # cloud.google.com/compute/docs/zones#available) in which the cluster resides.
-        # This field has been deprecated and replaced by the name field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
+        # the cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -8312,6 +8881,13 @@ module Google
       class SoleTenantConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. The minimum number of virtual CPUs this instance will consume when
+        # running on a sole-tenant node. This field can only be set if the node pool is
+        # created in a shared sole-tenant node group.
+        # Corresponds to the JSON property `minNodeCpus`
+        # @return [Fixnum]
+        attr_accessor :min_node_cpus
+      
         # NodeAffinities used to match to a shared sole tenant node group.
         # Corresponds to the JSON property `nodeAffinities`
         # @return [Array<Google::Apis::ContainerV1beta1::NodeAffinity>]
@@ -8323,6 +8899,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @min_node_cpus = args[:min_node_cpus] if args.key?(:min_node_cpus)
           @node_affinities = args[:node_affinities] if args.key?(:node_affinities)
         end
       end
@@ -8364,8 +8941,8 @@ module Google
       class StartIpRotationRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Deprecated. The name of the cluster. This field has been deprecated
-        # and replaced by the name field.
+        # Deprecated. The name of the cluster. This field has been deprecated and
+        # replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
@@ -8376,9 +8953,10 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. Deprecated. The Google Developers Console [project ID or project
-        # number](https://cloud.google.com/resource-manager/docs/creating-managing-
-        # projects). This field has been deprecated and replaced by the name field.
+        # Deprecated. The Google Developers Console [project ID or project number](https:
+        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
+        # creating-managing-projects). This field has been deprecated and replaced by
+        # the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -8389,9 +8967,10 @@ module Google
         attr_accessor :rotate_credentials
         alias_method :rotate_credentials?, :rotate_credentials
       
-        # Required. Deprecated. The name of the Google Compute Engine [zone](https://
-        # cloud.google.com/compute/docs/zones#available) in which the cluster resides.
-        # This field has been deprecated and replaced by the name field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
+        # the cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -8614,8 +9193,8 @@ module Google
       class UpdateClusterRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Deprecated. The name of the cluster to upgrade. This field has been
-        # deprecated and replaced by the name field.
+        # Deprecated. The name of the cluster to upgrade. This field has been deprecated
+        # and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
@@ -8626,9 +9205,10 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. Deprecated. The Google Developers Console [project ID or project
-        # number](https://cloud.google.com/resource-manager/docs/creating-managing-
-        # projects). This field has been deprecated and replaced by the name field.
+        # Deprecated. The Google Developers Console [project ID or project number](https:
+        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
+        # creating-managing-projects). This field has been deprecated and replaced by
+        # the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -8639,9 +9219,10 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ClusterUpdate]
         attr_accessor :update
       
-        # Required. Deprecated. The name of the Google Compute Engine [zone](https://
-        # cloud.google.com/compute/docs/zones#available) in which the cluster resides.
-        # This field has been deprecated and replaced by the name field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
+        # the cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -8684,8 +9265,8 @@ module Google
       class UpdateMasterRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Deprecated. The name of the cluster to upgrade. This field has been
-        # deprecated and replaced by the name field.
+        # Deprecated. The name of the cluster to upgrade. This field has been deprecated
+        # and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
@@ -8707,16 +9288,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. Deprecated. The Google Developers Console [project ID or project
-        # number](https://cloud.google.com/resource-manager/docs/creating-managing-
-        # projects). This field has been deprecated and replaced by the name field.
+        # Deprecated. The Google Developers Console [project ID or project number](https:
+        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
+        # creating-managing-projects). This field has been deprecated and replaced by
+        # the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Required. Deprecated. The name of the Google Compute Engine [zone](https://
-        # cloud.google.com/compute/docs/zones#available) in which the cluster resides.
-        # This field has been deprecated and replaced by the name field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
+        # the cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -8739,14 +9322,20 @@ module Google
       class UpdateNodePoolRequest
         include Google::Apis::Core::Hashable
       
-        # A list of hardware accelerators to be attached to each node. See https://cloud.
-        # google.com/compute/docs/gpus for more information about support for GPUs.
+        # A list of hardware accelerators to be attached to each node. See https://`$
+        # universe.dns_names.final_documentation_domain`/compute/docs/gpus for more
+        # information about support for GPUs.
         # Corresponds to the JSON property `accelerators`
         # @return [Array<Google::Apis::ContainerV1beta1::AcceleratorConfig>]
         attr_accessor :accelerators
       
-        # Required. Deprecated. The name of the cluster to upgrade. This field has been
-        # deprecated and replaced by the name field.
+        # BootDisk specifies the boot disk configuration for nodepools.
+        # Corresponds to the JSON property `bootDisk`
+        # @return [Google::Apis::ContainerV1beta1::BootDisk]
+        attr_accessor :boot_disk
+      
+        # Deprecated. The name of the cluster to upgrade. This field has been deprecated
+        # and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
@@ -8804,9 +9393,9 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::VirtualNic]
         attr_accessor :gvnic
       
-        # Required. The desired image type for the node pool. Please see https://cloud.
-        # google.com/kubernetes-engine/docs/concepts/node-images for available image
-        # types.
+        # Required. The desired image type for the node pool. Please see https://`$
+        # universe.dns_names.final_documentation_domain`/kubernetes-engine/docs/concepts/
+        # node-images for available image types.
         # Corresponds to the JSON property `imageType`
         # @return [String]
         attr_accessor :image_type
@@ -8827,11 +9416,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::LinuxNodeConfig]
         attr_accessor :linux_node_config
       
-        # The desired list of Google Compute Engine [zones](https://cloud.google.com/
-        # compute/docs/zones#available) in which the node pool's nodes should be located.
-        # Changing the locations for a node pool will result in nodes being either
-        # created or removed from the node pool, depending on whether locations are
-        # being added or removed.
+        # The desired list of Google Compute Engine [zones](https://`$universe.dns_names.
+        # final_documentation_domain`/compute/docs/zones#available) in which the node
+        # pool's nodes should be located. Changing the locations for a node pool will
+        # result in nodes being either created or removed from the node pool, depending
+        # on whether locations are being added or removed.
         # Corresponds to the JSON property `locations`
         # @return [Array<String>]
         attr_accessor :locations
@@ -8865,8 +9454,8 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NodeNetworkConfig]
         attr_accessor :node_network_config
       
-        # Required. Deprecated. The name of the node pool to upgrade. This field has
-        # been deprecated and replaced by the name field.
+        # Deprecated. The name of the node pool to upgrade. This field has been
+        # deprecated and replaced by the name field.
         # Corresponds to the JSON property `nodePoolId`
         # @return [String]
         attr_accessor :node_pool_id
@@ -8882,9 +9471,10 @@ module Google
         # @return [String]
         attr_accessor :node_version
       
-        # Required. Deprecated. The Google Developers Console [project ID or project
-        # number](https://cloud.google.com/resource-manager/docs/creating-managing-
-        # projects). This field has been deprecated and replaced by the name field.
+        # Deprecated. The Google Developers Console [project ID or project number](https:
+        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
+        # creating-managing-projects). This field has been deprecated and replaced by
+        # the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -8894,17 +9484,18 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::QueuedProvisioning]
         attr_accessor :queued_provisioning
       
-        # Collection of [GCP labels](https://cloud.google.com/resource-manager/docs/
-        # creating-managing-labels).
+        # Collection of [GCP labels](https://`$universe.dns_names.
+        # final_documentation_domain`/resource-manager/docs/creating-managing-labels).
         # Corresponds to the JSON property `resourceLabels`
         # @return [Google::Apis::ContainerV1beta1::ResourceLabels]
         attr_accessor :resource_labels
       
         # A map of resource manager tag keys and values to be attached to the nodes for
         # managing Compute Engine firewalls using Network Firewall Policies. Tags must
-        # be according to specifications in https://cloud.google.com/vpc/docs/tags-
-        # firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be
-        # specified. Existing tags will be replaced with new values.
+        # be according to specifications in https://`$universe.dns_names.
+        # final_documentation_domain`/vpc/docs/tags-firewalls-overview#specifications. A
+        # maximum of 5 tag key-value pairs can be specified. Existing tags will be
+        # replaced with new values.
         # Corresponds to the JSON property `resourceManagerTags`
         # @return [Google::Apis::ContainerV1beta1::ResourceManagerTags]
         attr_accessor :resource_manager_tags
@@ -8976,9 +9567,10 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::WorkloadMetadataConfig]
         attr_accessor :workload_metadata_config
       
-        # Required. Deprecated. The name of the Google Compute Engine [zone](https://
-        # cloud.google.com/compute/docs/zones#available) in which the cluster resides.
-        # This field has been deprecated and replaced by the name field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
+        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
+        # the cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -8990,6 +9582,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accelerators = args[:accelerators] if args.key?(:accelerators)
+          @boot_disk = args[:boot_disk] if args.key?(:boot_disk)
           @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
           @confidential_nodes = args[:confidential_nodes] if args.key?(:confidential_nodes)
           @containerd_config = args[:containerd_config] if args.key?(:containerd_config)

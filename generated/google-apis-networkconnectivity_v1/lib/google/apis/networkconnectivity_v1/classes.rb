@@ -1265,9 +1265,8 @@ module Google
       class LinkedInterconnectAttachments
         include Google::Apis::Core::Hashable
       
-        # Optional. IP ranges allowed to be included during import from hub (does not
-        # control transit connectivity). The only allowed value for now is "
-        # ALL_IPV4_RANGES".
+        # Optional. Hub routes fully encompassed by include import ranges are included
+        # during import from hub.
         # Corresponds to the JSON property `includeImportRanges`
         # @return [Array<String>]
         attr_accessor :include_import_ranges
@@ -1377,9 +1376,8 @@ module Google
       class LinkedRouterApplianceInstances
         include Google::Apis::Core::Hashable
       
-        # Optional. IP ranges allowed to be included during import from hub (does not
-        # control transit connectivity). The only allowed value for now is "
-        # ALL_IPV4_RANGES".
+        # Optional. Hub routes fully encompassed by include import ranges are included
+        # during import from hub.
         # Corresponds to the JSON property `includeImportRanges`
         # @return [Array<String>]
         attr_accessor :include_import_ranges
@@ -1481,9 +1479,8 @@ module Google
       class LinkedVpnTunnels
         include Google::Apis::Core::Hashable
       
-        # Optional. IP ranges allowed to be included during import from hub (does not
-        # control transit connectivity). The only allowed value for now is "
-        # ALL_IPV4_RANGES".
+        # Optional. Hub routes fully encompassed by include import ranges are included
+        # during import from hub.
         # Corresponds to the JSON property `includeImportRanges`
         # @return [Array<String>]
         attr_accessor :include_import_ranges
@@ -2537,7 +2534,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :limit
       
-        # Required. ProducerInstanceLocation is used to specify which authorization
+        # Optional. ProducerInstanceLocation is used to specify which authorization
         # mechanism to use to determine which projects the Producer instance can be
         # within.
         # Corresponds to the JSON property `producerInstanceLocation`

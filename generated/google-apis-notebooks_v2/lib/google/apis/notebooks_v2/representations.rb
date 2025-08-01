@@ -52,6 +52,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CheckAuthorizationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CheckAuthorizationResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CheckInstanceUpgradabilityResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,6 +137,18 @@ module Google
       end
       
       class GceSetup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateAccessTokenRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateAccessTokenResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -351,6 +375,22 @@ module Google
         end
       end
       
+      class CheckAuthorizationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :authorization_details, as: 'authorizationDetails'
+        end
+      end
+      
+      class CheckAuthorizationResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :oauth_uri, as: 'oauth_uri'
+          property :success, as: 'success'
+        end
+      end
+      
       class CheckInstanceUpgradabilityResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -493,6 +533,23 @@ module Google
         end
       end
       
+      class GenerateAccessTokenRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :vm_token, as: 'vmToken'
+        end
+      end
+      
+      class GenerateAccessTokenResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_token, as: 'access_token'
+          property :expires_in, as: 'expires_in'
+          property :scope, as: 'scope'
+          property :token_type, as: 'token_type'
+        end
+      end
+      
       class ImageRelease
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -508,6 +565,7 @@ module Google
           property :creator, as: 'creator'
           property :disable_proxy_access, as: 'disableProxyAccess'
           property :enable_deletion_protection, as: 'enableDeletionProtection'
+          property :enable_managed_euc, as: 'enableManagedEuc'
           property :enable_third_party_identity, as: 'enableThirdPartyIdentity'
           property :gce_setup, as: 'gceSetup', class: Google::Apis::NotebooksV2::GceSetup, decorator: Google::Apis::NotebooksV2::GceSetup::Representation
       

@@ -368,6 +368,7 @@ module Google
       class CivicinfoSchemaV2SimpleAddressType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :address_line, as: 'addressLine'
           property :city, as: 'city'
           property :line1, as: 'line1'
           property :line2, as: 'line2'

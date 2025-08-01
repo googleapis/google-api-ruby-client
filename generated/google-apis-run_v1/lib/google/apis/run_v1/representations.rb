@@ -2364,6 +2364,7 @@ module Google
           property :exit_code, as: 'exitCode'
           property :status, as: 'status', class: Google::Apis::RunV1::GoogleRpcStatus, decorator: Google::Apis::RunV1::GoogleRpcStatus::Representation
       
+          property :term_signal, as: 'termSignal'
         end
       end
       

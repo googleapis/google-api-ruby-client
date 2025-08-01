@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AssetException
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AttachedResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -976,6 +982,8 @@ module Google
           property :access_policy, as: 'accessPolicy', class: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1AccessPolicy, decorator: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1AccessPolicy::Representation
       
           collection :ancestors, as: 'ancestors'
+          collection :asset_exceptions, as: 'assetExceptions', class: Google::Apis::CloudassetV1::AssetException, decorator: Google::Apis::CloudassetV1::AssetException::Representation
+      
           property :asset_type, as: 'assetType'
           property :iam_policy, as: 'iamPolicy', class: Google::Apis::CloudassetV1::Policy, decorator: Google::Apis::CloudassetV1::Policy::Representation
       
@@ -1001,6 +1009,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_owners, as: 'resourceOwners', class: Google::Apis::CloudassetV1::ResourceOwners, decorator: Google::Apis::CloudassetV1::ResourceOwners::Representation
       
+        end
+      end
+      
+      class AssetException
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :details, as: 'details'
+          property :exception_type, as: 'exceptionType'
         end
       end
       

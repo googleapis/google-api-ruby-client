@@ -230,6 +230,61 @@ module Google
         end
       end
       
+      # Contains information about the AI model associated with the finding.
+      class AiModel
+        include Google::Apis::Core::Hashable
+      
+        # The platform on which the model is deployed.
+        # Corresponds to the JSON property `deploymentPlatform`
+        # @return [String]
+        attr_accessor :deployment_platform
+      
+        # The user defined display name of model. Ex. baseline-classification-model
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The domain of the model, for example, “image-classification”.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # The name of the model library, for example, “transformers”.
+        # Corresponds to the JSON property `library`
+        # @return [String]
+        attr_accessor :library
+      
+        # The region in which the model is used, for example, “us-central1”.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # The name of the AI model, for example, "gemini:1.0.0".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The publisher of the model, for example, “google” or “nvidia”.
+        # Corresponds to the JSON property `publisher`
+        # @return [String]
+        attr_accessor :publisher
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment_platform = args[:deployment_platform] if args.key?(:deployment_platform)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @domain = args[:domain] if args.key?(:domain)
+          @library = args[:library] if args.key?(:library)
+          @location = args[:location] if args.key?(:location)
+          @name = args[:name] if args.key?(:name)
+          @publisher = args[:publisher] if args.key?(:publisher)
+        end
+      end
+      
       # Allowed IP rule.
       class Allowed
         include Google::Apis::Core::Hashable
@@ -894,6 +949,26 @@ module Google
         end
       end
       
+      # The destination big query dataset to export findings to.
+      class BigQueryDestination
+        include Google::Apis::Core::Hashable
+      
+        # Required. The relative resource name of the destination dataset, in the form
+        # projects/`projectId`/datasets/`datasetId`.
+        # Corresponds to the JSON property `dataset`
+        # @return [String]
+        attr_accessor :dataset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset = args[:dataset] if args.key?(:dataset)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -1087,6 +1162,43 @@ module Google
         end
       end
       
+      # CloudControl associated with the finding.
+      class CloudControl
+        include Google::Apis::Core::Hashable
+      
+        # Name of the CloudControl associated with the finding.
+        # Corresponds to the JSON property `cloudControlName`
+        # @return [String]
+        attr_accessor :cloud_control_name
+      
+        # Policy type of the CloudControl
+        # Corresponds to the JSON property `policyType`
+        # @return [String]
+        attr_accessor :policy_type
+      
+        # Type of cloud control.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Version of the Cloud Control
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_control_name = args[:cloud_control_name] if args.key?(:cloud_control_name)
+          @policy_type = args[:policy_type] if args.key?(:policy_type)
+          @type = args[:type] if args.key?(:type)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # The [data profile](https://cloud.google.com/dlp/docs/data-profiles) associated
       # with the finding.
       class CloudDlpDataProfile
@@ -1230,6 +1342,39 @@ module Google
         end
       end
       
+      # Compliance Details associated with the finding.
+      class ComplianceDetails
+        include Google::Apis::Core::Hashable
+      
+        # CloudControl associated with the finding.
+        # Corresponds to the JSON property `cloudControl`
+        # @return [Google::Apis::SecuritycenterV1beta1::CloudControl]
+        attr_accessor :cloud_control
+      
+        # Cloud Control Deployments associated with the finding. For example,
+        # organizations/123/locations/global/cloudControlDeployments/
+        # deploymentIdentifier
+        # Corresponds to the JSON property `cloudControlDeploymentNames`
+        # @return [Array<String>]
+        attr_accessor :cloud_control_deployment_names
+      
+        # Details of Frameworks associated with the finding
+        # Corresponds to the JSON property `frameworks`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::Framework>]
+        attr_accessor :frameworks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_control = args[:cloud_control] if args.key?(:cloud_control)
+          @cloud_control_deployment_names = args[:cloud_control_deployment_names] if args.key?(:cloud_control_deployment_names)
+          @frameworks = args[:frameworks] if args.key?(:frameworks)
+        end
+      end
+      
       # Contains information about the IP connection associated with the finding.
       class Connection
         include Google::Apis::Core::Hashable
@@ -1354,6 +1499,31 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Compliance control associated with the finding.
+      class Control
+        include Google::Apis::Core::Hashable
+      
+        # Name of the Control
+        # Corresponds to the JSON property `controlName`
+        # @return [String]
+        attr_accessor :control_name
+      
+        # Display name of the control. For example, AU-02.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @control_name = args[:control_name] if args.key?(:control_name)
+          @display_name = args[:display_name] if args.key?(:display_name)
         end
       end
       
@@ -1741,6 +1911,39 @@ module Google
         end
       end
       
+      # Vertex AI dataset associated with the finding.
+      class Dataset
+        include Google::Apis::Core::Hashable
+      
+        # The user defined display name of dataset, e.g. plants-dataset
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Resource name of the dataset, e.g. projects/`project`/locations/`location`/
+        # datasets/2094040236064505856
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Data source, such as BigQuery source URI, e.g. bq://scc-nexus-test.AIPPtest.
+        # gsod
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @source = args[:source] if args.key?(:source)
+        end
+      end
+      
       # Denied IP rule.
       class Denied
         include Google::Apis::Core::Hashable
@@ -1967,6 +2170,44 @@ module Google
         end
       end
       
+      # The LRO metadata for a ExportFindings request.
+      class ExportFindingsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The destination big query dataset to export findings to.
+        # Corresponds to the JSON property `bigQueryDestination`
+        # @return [Google::Apis::SecuritycenterV1beta1::BigQueryDestination]
+        attr_accessor :big_query_destination
+      
+        # Optional. Timestamp at which export was started
+        # Corresponds to the JSON property `exportStartTime`
+        # @return [String]
+        attr_accessor :export_start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @big_query_destination = args[:big_query_destination] if args.key?(:big_query_destination)
+          @export_start_time = args[:export_start_time] if args.key?(:export_start_time)
+        end
+      end
+      
+      # The response to a ExportFindings request. Contains the LRO information.
+      class ExportFindingsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Represents a textual expression in the Common Expression Language (CEL) syntax.
       # CEL is a C-like expression language. The syntax and semantics of CEL are
       # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -2123,6 +2364,11 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta1::AffectedResources]
         attr_accessor :affected_resources
       
+        # Contains information about the AI model associated with the finding.
+        # Corresponds to the JSON property `aiModel`
+        # @return [Google::Apis::SecuritycenterV1beta1::AiModel]
+        attr_accessor :ai_model
+      
         # Represents an application associated with a finding.
         # Corresponds to the JSON property `application`
         # @return [Google::Apis::SecuritycenterV1beta1::Application]
@@ -2178,6 +2424,11 @@ module Google
         # Corresponds to the JSON property `cloudDlpInspection`
         # @return [Google::Apis::SecuritycenterV1beta1::CloudDlpInspection]
         attr_accessor :cloud_dlp_inspection
+      
+        # Compliance Details associated with the finding.
+        # Corresponds to the JSON property `complianceDetails`
+        # @return [Google::Apis::SecuritycenterV1beta1::ComplianceDetails]
+        attr_accessor :compliance_details
       
         # Contains compliance information for security standards associated to the
         # finding.
@@ -2477,6 +2728,11 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta1::ToxicCombination]
         attr_accessor :toxic_combination
       
+        # Vertex AI-related information associated with the finding.
+        # Corresponds to the JSON property `vertexAi`
+        # @return [Google::Apis::SecuritycenterV1beta1::VertexAi]
+        attr_accessor :vertex_ai
+      
         # Refers to common vulnerability fields e.g. cve, cvss, cwe etc.
         # Corresponds to the JSON property `vulnerability`
         # @return [Google::Apis::SecuritycenterV1beta1::Vulnerability]
@@ -2490,6 +2746,7 @@ module Google
         def update!(**args)
           @access = args[:access] if args.key?(:access)
           @affected_resources = args[:affected_resources] if args.key?(:affected_resources)
+          @ai_model = args[:ai_model] if args.key?(:ai_model)
           @application = args[:application] if args.key?(:application)
           @attack_exposure = args[:attack_exposure] if args.key?(:attack_exposure)
           @backup_disaster_recovery = args[:backup_disaster_recovery] if args.key?(:backup_disaster_recovery)
@@ -2499,6 +2756,7 @@ module Google
           @cloud_armor = args[:cloud_armor] if args.key?(:cloud_armor)
           @cloud_dlp_data_profile = args[:cloud_dlp_data_profile] if args.key?(:cloud_dlp_data_profile)
           @cloud_dlp_inspection = args[:cloud_dlp_inspection] if args.key?(:cloud_dlp_inspection)
+          @compliance_details = args[:compliance_details] if args.key?(:compliance_details)
           @compliances = args[:compliances] if args.key?(:compliances)
           @connections = args[:connections] if args.key?(:connections)
           @contacts = args[:contacts] if args.key?(:contacts)
@@ -2546,6 +2804,7 @@ module Google
           @source_properties = args[:source_properties] if args.key?(:source_properties)
           @state = args[:state] if args.key?(:state)
           @toxic_combination = args[:toxic_combination] if args.key?(:toxic_combination)
+          @vertex_ai = args[:vertex_ai] if args.key?(:vertex_ai)
           @vulnerability = args[:vulnerability] if args.key?(:vulnerability)
         end
       end
@@ -2576,8 +2835,56 @@ module Google
         end
       end
       
-      # GCP metadata associated with the resource, only applicable if the finding's
-      # cloud provider is Google Cloud Platform.
+      # Compliance framework associated with the finding.
+      class Framework
+        include Google::Apis::Core::Hashable
+      
+        # Category of the framework associated with the finding. E.g. Security Benchmark,
+        # or Assured Workloads
+        # Corresponds to the JSON property `category`
+        # @return [Array<String>]
+        attr_accessor :category
+      
+        # The controls associated with the framework.
+        # Corresponds to the JSON property `controls`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::Control>]
+        attr_accessor :controls
+      
+        # Display name of the framework. For a standard framework, this will look like e.
+        # g. PCI DSS 3.2.1, whereas for a custom framework it can be a user defined
+        # string like MyFramework
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Name of the framework associated with the finding
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Type of the framework associated with the finding, to specify whether the
+        # framework is built-in (pre-defined and immutable) or a custom framework
+        # defined by the customer (equivalent to security posture)
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @controls = args[:controls] if args.key?(:controls)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Google Cloud metadata associated with the resource. Only applicable if the
+      # finding's cloud provider is Google Cloud.
       class GcpMetadata
         include Google::Apis::Core::Hashable
       
@@ -4270,6 +4577,61 @@ module Google
         end
       end
       
+      # Contains information about the AI model associated with the finding.
+      class GoogleCloudSecuritycenterV2AiModel
+        include Google::Apis::Core::Hashable
+      
+        # The platform on which the model is deployed.
+        # Corresponds to the JSON property `deploymentPlatform`
+        # @return [String]
+        attr_accessor :deployment_platform
+      
+        # The user defined display name of model. Ex. baseline-classification-model
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The domain of the model, for example, “image-classification”.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # The name of the model library, for example, “transformers”.
+        # Corresponds to the JSON property `library`
+        # @return [String]
+        attr_accessor :library
+      
+        # The region in which the model is used, for example, “us-central1”.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # The name of the AI model, for example, "gemini:1.0.0".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The publisher of the model, for example, “google” or “nvidia”.
+        # Corresponds to the JSON property `publisher`
+        # @return [String]
+        attr_accessor :publisher
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment_platform = args[:deployment_platform] if args.key?(:deployment_platform)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @domain = args[:domain] if args.key?(:domain)
+          @library = args[:library] if args.key?(:library)
+          @location = args[:location] if args.key?(:location)
+          @name = args[:name] if args.key?(:name)
+          @publisher = args[:publisher] if args.key?(:publisher)
+        end
+      end
+      
       # Allowed IP rule.
       class GoogleCloudSecuritycenterV2Allowed
         include Google::Apis::Core::Hashable
@@ -4991,6 +5353,43 @@ module Google
         end
       end
       
+      # CloudControl associated with the finding.
+      class GoogleCloudSecuritycenterV2CloudControl
+        include Google::Apis::Core::Hashable
+      
+        # Name of the CloudControl associated with the finding.
+        # Corresponds to the JSON property `cloudControlName`
+        # @return [String]
+        attr_accessor :cloud_control_name
+      
+        # Policy type of the CloudControl
+        # Corresponds to the JSON property `policyType`
+        # @return [String]
+        attr_accessor :policy_type
+      
+        # Type of cloud control.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Version of the Cloud Control
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_control_name = args[:cloud_control_name] if args.key?(:cloud_control_name)
+          @policy_type = args[:policy_type] if args.key?(:policy_type)
+          @type = args[:type] if args.key?(:type)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # The [data profile](https://cloud.google.com/dlp/docs/data-profiles) associated
       # with the finding.
       class GoogleCloudSecuritycenterV2CloudDlpDataProfile
@@ -5134,6 +5533,39 @@ module Google
         end
       end
       
+      # Compliance Details associated with the finding.
+      class GoogleCloudSecuritycenterV2ComplianceDetails
+        include Google::Apis::Core::Hashable
+      
+        # CloudControl associated with the finding.
+        # Corresponds to the JSON property `cloudControl`
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2CloudControl]
+        attr_accessor :cloud_control
+      
+        # Cloud Control Deployments associated with the finding. For example,
+        # organizations/123/locations/global/cloudControlDeployments/
+        # deploymentIdentifier
+        # Corresponds to the JSON property `cloudControlDeploymentNames`
+        # @return [Array<String>]
+        attr_accessor :cloud_control_deployment_names
+      
+        # Details of Frameworks associated with the finding
+        # Corresponds to the JSON property `frameworks`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Framework>]
+        attr_accessor :frameworks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_control = args[:cloud_control] if args.key?(:cloud_control)
+          @cloud_control_deployment_names = args[:cloud_control_deployment_names] if args.key?(:cloud_control_deployment_names)
+          @frameworks = args[:frameworks] if args.key?(:frameworks)
+        end
+      end
+      
       # Contains information about the IP connection associated with the finding.
       class GoogleCloudSecuritycenterV2Connection
         include Google::Apis::Core::Hashable
@@ -5258,6 +5690,31 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Compliance control associated with the finding.
+      class GoogleCloudSecuritycenterV2Control
+        include Google::Apis::Core::Hashable
+      
+        # Name of the Control
+        # Corresponds to the JSON property `controlName`
+        # @return [String]
+        attr_accessor :control_name
+      
+        # Display name of the control. For example, AU-02.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @control_name = args[:control_name] if args.key?(:control_name)
+          @display_name = args[:display_name] if args.key?(:display_name)
         end
       end
       
@@ -5642,6 +6099,39 @@ module Google
           @query = args[:query] if args.key?(:query)
           @user_name = args[:user_name] if args.key?(:user_name)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Vertex AI dataset associated with the finding.
+      class GoogleCloudSecuritycenterV2Dataset
+        include Google::Apis::Core::Hashable
+      
+        # The user defined display name of dataset, e.g. plants-dataset
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Resource name of the dataset, e.g. projects/`project`/locations/`location`/
+        # datasets/2094040236064505856
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Data source, such as a BigQuery source URI, e.g. bq://scc-nexus-test.AIPPtest.
+        # gsod
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @source = args[:source] if args.key?(:source)
         end
       end
       
@@ -6046,6 +6536,11 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AffectedResources]
         attr_accessor :affected_resources
       
+        # Contains information about the AI model associated with the finding.
+        # Corresponds to the JSON property `aiModel`
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AiModel]
+        attr_accessor :ai_model
+      
         # Represents an application associated with a finding.
         # Corresponds to the JSON property `application`
         # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Application]
@@ -6105,6 +6600,11 @@ module Google
         # Corresponds to the JSON property `cloudDlpInspection`
         # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2CloudDlpInspection]
         attr_accessor :cloud_dlp_inspection
+      
+        # Compliance Details associated with the finding.
+        # Corresponds to the JSON property `complianceDetails`
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2ComplianceDetails]
+        attr_accessor :compliance_details
       
         # Contains compliance information for security standards associated to the
         # finding.
@@ -6304,7 +6804,7 @@ module Google
         # @return [String]
         attr_accessor :mute_update_time
       
-        # The [relative resource name](https://cloud.google.com/apis/design/
+        # Identifier. The [relative resource name](https://cloud.google.com/apis/design/
         # resource_names#relative_resource_name) of the finding. The following list
         # shows some examples: + `organizations/`organization_id`/sources/`source_id`/
         # findings/`finding_id`` + `organizations/`organization_id`/sources/`source_id`/
@@ -6414,6 +6914,11 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2ToxicCombination]
         attr_accessor :toxic_combination
       
+        # Vertex AI-related information associated with the finding.
+        # Corresponds to the JSON property `vertexAi`
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2VertexAi]
+        attr_accessor :vertex_ai
+      
         # Refers to common vulnerability fields e.g. cve, cvss, cwe etc.
         # Corresponds to the JSON property `vulnerability`
         # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Vulnerability]
@@ -6427,6 +6932,7 @@ module Google
         def update!(**args)
           @access = args[:access] if args.key?(:access)
           @affected_resources = args[:affected_resources] if args.key?(:affected_resources)
+          @ai_model = args[:ai_model] if args.key?(:ai_model)
           @application = args[:application] if args.key?(:application)
           @attack_exposure = args[:attack_exposure] if args.key?(:attack_exposure)
           @backup_disaster_recovery = args[:backup_disaster_recovery] if args.key?(:backup_disaster_recovery)
@@ -6436,6 +6942,7 @@ module Google
           @cloud_armor = args[:cloud_armor] if args.key?(:cloud_armor)
           @cloud_dlp_data_profile = args[:cloud_dlp_data_profile] if args.key?(:cloud_dlp_data_profile)
           @cloud_dlp_inspection = args[:cloud_dlp_inspection] if args.key?(:cloud_dlp_inspection)
+          @compliance_details = args[:compliance_details] if args.key?(:compliance_details)
           @compliances = args[:compliances] if args.key?(:compliances)
           @connections = args[:connections] if args.key?(:connections)
           @contacts = args[:contacts] if args.key?(:contacts)
@@ -6483,6 +6990,7 @@ module Google
           @source_properties = args[:source_properties] if args.key?(:source_properties)
           @state = args[:state] if args.key?(:state)
           @toxic_combination = args[:toxic_combination] if args.key?(:toxic_combination)
+          @vertex_ai = args[:vertex_ai] if args.key?(:vertex_ai)
           @vulnerability = args[:vulnerability] if args.key?(:vulnerability)
         end
       end
@@ -6510,6 +7018,54 @@ module Google
         def update!(**args)
           @resource_folder = args[:resource_folder] if args.key?(:resource_folder)
           @resource_folder_display_name = args[:resource_folder_display_name] if args.key?(:resource_folder_display_name)
+        end
+      end
+      
+      # Compliance framework associated with the finding.
+      class GoogleCloudSecuritycenterV2Framework
+        include Google::Apis::Core::Hashable
+      
+        # Category of the framework associated with the finding. E.g. Security Benchmark,
+        # or Assured Workloads
+        # Corresponds to the JSON property `category`
+        # @return [Array<String>]
+        attr_accessor :category
+      
+        # The controls associated with the framework.
+        # Corresponds to the JSON property `controls`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Control>]
+        attr_accessor :controls
+      
+        # Display name of the framework. For a standard framework, this will look like e.
+        # g. PCI DSS 3.2.1, whereas for a custom framework it can be a user defined
+        # string like MyFramework
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Name of the framework associated with the finding
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Type of the framework associated with the finding, to specify whether the
+        # framework is built-in (pre-defined and immutable) or a custom framework
+        # defined by the customer (equivalent to security posture)
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @controls = args[:controls] if args.key?(:controls)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -7878,6 +8434,32 @@ module Google
         end
       end
       
+      # Vertex AI training pipeline associated with the finding.
+      class GoogleCloudSecuritycenterV2Pipeline
+        include Google::Apis::Core::Hashable
+      
+        # The user-defined display name of pipeline, e.g. plants-classification
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Resource name of the pipeline, e.g. projects/`project`/locations/`location`/
+        # trainingPipelines/5253428229225578496
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # A Kubernetes Pod.
       class GoogleCloudSecuritycenterV2Pod
         include Google::Apis::Core::Hashable
@@ -8036,6 +8618,12 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2File]
         attr_accessor :script
       
+        # The ID of the user that executed the process. E.g. If this is the root user
+        # this will always be 0.
+        # Corresponds to the JSON property `userId`
+        # @return [Fixnum]
+        attr_accessor :user_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8052,6 +8640,7 @@ module Google
           @parent_pid = args[:parent_pid] if args.key?(:parent_pid)
           @pid = args[:pid] if args.key?(:pid)
           @script = args[:script] if args.key?(:script)
+          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
       
@@ -8177,8 +8766,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # GCP metadata associated with the resource, only applicable if the finding's
-        # cloud provider is Google Cloud Platform.
+        # Google Cloud metadata associated with the resource. Only applicable if the
+        # finding's cloud provider is Google Cloud.
         # Corresponds to the JSON property `gcpMetadata`
         # @return [Google::Apis::SecuritycenterV1beta1::GcpMetadata]
         attr_accessor :gcp_metadata
@@ -8807,6 +9396,31 @@ module Google
         def update!(**args)
           @attack_exposure_score = args[:attack_exposure_score] if args.key?(:attack_exposure_score)
           @related_findings = args[:related_findings] if args.key?(:related_findings)
+        end
+      end
+      
+      # Vertex AI-related information associated with the finding.
+      class GoogleCloudSecuritycenterV2VertexAi
+        include Google::Apis::Core::Hashable
+      
+        # Datasets associated with the finding.
+        # Corresponds to the JSON property `datasets`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Dataset>]
+        attr_accessor :datasets
+      
+        # Pipelines associated with the finding.
+        # Corresponds to the JSON property `pipelines`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Pipeline>]
+        attr_accessor :pipelines
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @datasets = args[:datasets] if args.key?(:datasets)
+          @pipelines = args[:pipelines] if args.key?(:pipelines)
         end
       end
       
@@ -10132,6 +10746,32 @@ module Google
         end
       end
       
+      # Vertex AI training pipeline associated with the finding.
+      class Pipeline
+        include Google::Apis::Core::Hashable
+      
+        # The user defined display name of pipeline, e.g. plants-classification
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Resource name of the pipeline, e.g. projects/`project`/locations/`location`/
+        # trainingPipelines/5253428229225578496
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # A Kubernetes Pod.
       class Pod
         include Google::Apis::Core::Hashable
@@ -10385,6 +11025,12 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta1::File]
         attr_accessor :script
       
+        # The ID of the user that executed the process. E.g. If this is the root user
+        # this will always be 0.
+        # Corresponds to the JSON property `userId`
+        # @return [Fixnum]
+        attr_accessor :user_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10401,6 +11047,7 @@ module Google
           @parent_pid = args[:parent_pid] if args.key?(:parent_pid)
           @pid = args[:pid] if args.key?(:pid)
           @script = args[:script] if args.key?(:script)
+          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
       
@@ -11198,6 +11845,31 @@ module Google
         def update!(**args)
           @attack_exposure_score = args[:attack_exposure_score] if args.key?(:attack_exposure_score)
           @related_findings = args[:related_findings] if args.key?(:related_findings)
+        end
+      end
+      
+      # Vertex AI-related information associated with the finding.
+      class VertexAi
+        include Google::Apis::Core::Hashable
+      
+        # Datasets associated with the finding.
+        # Corresponds to the JSON property `datasets`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::Dataset>]
+        attr_accessor :datasets
+      
+        # Pipelines associated with the finding.
+        # Corresponds to the JSON property `pipelines`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::Pipeline>]
+        attr_accessor :pipelines
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @datasets = args[:datasets] if args.key?(:datasets)
+          @pipelines = args[:pipelines] if args.key?(:pipelines)
         end
       end
       

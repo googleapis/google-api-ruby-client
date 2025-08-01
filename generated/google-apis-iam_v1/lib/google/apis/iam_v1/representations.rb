@@ -286,6 +286,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListWorkforcePoolProviderScimTenantsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListWorkforcePoolProviderScimTokensResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListWorkforcePoolProvidersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -574,6 +586,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UndeleteWorkforcePoolProviderScimTenantRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UndeleteWorkforcePoolProviderScimTokenRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UndeleteWorkforcePoolRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -635,6 +659,18 @@ module Google
       end
       
       class WorkforcePoolProviderKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkforcePoolProviderScimTenant
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkforcePoolProviderScimToken
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1052,6 +1088,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :workforce_pool_provider_keys, as: 'workforcePoolProviderKeys', class: Google::Apis::IamV1::WorkforcePoolProviderKey, decorator: Google::Apis::IamV1::WorkforcePoolProviderKey::Representation
+      
+        end
+      end
+      
+      class ListWorkforcePoolProviderScimTenantsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :workforce_pool_provider_scim_tenants, as: 'workforcePoolProviderScimTenants', class: Google::Apis::IamV1::WorkforcePoolProviderScimTenant, decorator: Google::Apis::IamV1::WorkforcePoolProviderScimTenant::Representation
+      
+        end
+      end
+      
+      class ListWorkforcePoolProviderScimTokensResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :workforce_pool_provider_scim_tokens, as: 'workforcePoolProviderScimTokens', class: Google::Apis::IamV1::WorkforcePoolProviderScimToken, decorator: Google::Apis::IamV1::WorkforcePoolProviderScimToken::Representation
       
         end
       end
@@ -1493,6 +1547,18 @@ module Google
         end
       end
       
+      class UndeleteWorkforcePoolProviderScimTenantRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UndeleteWorkforcePoolProviderScimTokenRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class UndeleteWorkforcePoolRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1568,6 +1634,8 @@ module Google
           property :disabled, as: 'disabled'
           property :display_name, as: 'displayName'
           property :expire_time, as: 'expireTime'
+          property :extended_attributes_oauth2_client, as: 'extendedAttributesOauth2Client', class: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client, decorator: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client::Representation
+      
           property :extra_attributes_oauth2_client, as: 'extraAttributesOauth2Client', class: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client, decorator: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client::Representation
       
           property :name, as: 'name'
@@ -1588,6 +1656,29 @@ module Google
           property :name, as: 'name'
           property :state, as: 'state'
           property :use, as: 'use'
+        end
+      end
+      
+      class WorkforcePoolProviderScimTenant
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_uri, as: 'baseUri'
+          hash :claim_mapping, as: 'claimMapping'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :purge_time, as: 'purgeTime'
+          property :state, as: 'state'
+        end
+      end
+      
+      class WorkforcePoolProviderScimToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :security_token, as: 'securityToken'
+          property :state, as: 'state'
         end
       end
       
