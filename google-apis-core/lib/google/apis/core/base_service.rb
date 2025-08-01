@@ -376,7 +376,7 @@ module Google
           command = make_storage_upload_command(:delete, 'b/{bucket}/o', options)
           command.upload_id = upload_id
           command.params['bucket'] = bucket unless bucket.nil?
-          command.delete_upload = options[:delete_upload] unless options[:delete_upload].nil?
+          command.delete_upload = true
           execute_or_queue_command(command)
         end
 
