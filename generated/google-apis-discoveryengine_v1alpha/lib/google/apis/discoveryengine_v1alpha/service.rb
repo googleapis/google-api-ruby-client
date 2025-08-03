@@ -3474,10 +3474,10 @@ module Google
         # @param [String] filter
         #   A comma-separated list of fields to filter by, in EBNF grammar. The supported
         #   fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `
-        #   is_pinned` * `labels` * `create_time` * `update_time` Examples: "
-        #   user_pseudo_id = some_id" "display_name = \"some_name\"" "starred = true" "
-        #   is_pinned=true AND (NOT labels:hidden)" "create_time > \"1970-01-01T12:00:00Z\"
-        #   "
+        #   is_pinned` * `labels` * `create_time` * `update_time` Examples: * `
+        #   user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `
+        #   is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"
+        #   `
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
@@ -4883,6 +4883,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Exports metrics.
+        # @param [String] analytics
+        #   Required. The analytics resource name under the engine where the metrics are
+        #   created. The format is `projects/`project`/locations/`location`/collections/`
+        #   collection`/engines/`engine`/analytics`.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaExportMetricsRequest] google_cloud_discoveryengine_v1alpha_export_metrics_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def export_project_location_collection_engine_analytic_metrics(analytics, google_cloud_discoveryengine_v1alpha_export_metrics_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+analytics}:exportMetrics', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaExportMetricsRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_export_metrics_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['analytics'] = analytics unless analytics.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets an Assistant.
         # @param [String] name
         #   Required. Resource name of Assistant. Format: `projects/`project`/locations/`
@@ -5979,10 +6014,10 @@ module Google
         # @param [String] filter
         #   A comma-separated list of fields to filter by, in EBNF grammar. The supported
         #   fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `
-        #   is_pinned` * `labels` * `create_time` * `update_time` Examples: "
-        #   user_pseudo_id = some_id" "display_name = \"some_name\"" "starred = true" "
-        #   is_pinned=true AND (NOT labels:hidden)" "create_time > \"1970-01-01T12:00:00Z\"
-        #   "
+        #   is_pinned` * `labels` * `create_time` * `update_time` Examples: * `
+        #   user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `
+        #   is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"
+        #   `
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
@@ -8490,10 +8525,10 @@ module Google
         # @param [String] filter
         #   A comma-separated list of fields to filter by, in EBNF grammar. The supported
         #   fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `
-        #   is_pinned` * `labels` * `create_time` * `update_time` Examples: "
-        #   user_pseudo_id = some_id" "display_name = \"some_name\"" "starred = true" "
-        #   is_pinned=true AND (NOT labels:hidden)" "create_time > \"1970-01-01T12:00:00Z\"
-        #   "
+        #   is_pinned` * `labels` * `create_time` * `update_time` Examples: * `
+        #   user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `
+        #   is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"
+        #   `
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `

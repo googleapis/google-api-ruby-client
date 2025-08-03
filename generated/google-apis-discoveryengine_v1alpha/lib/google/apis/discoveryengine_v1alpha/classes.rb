@@ -8622,6 +8622,31 @@ module Google
         end
       end
       
+      # The BigQuery output destination configuration.
+      class GoogleCloudDiscoveryengineV1alphaBigQueryDestination
+        include Google::Apis::Core::Hashable
+      
+        # Required. The ID of a BigQuery Dataset.
+        # Corresponds to the JSON property `datasetId`
+        # @return [String]
+        attr_accessor :dataset_id
+      
+        # Required. The table_id of exported BigQuery table.
+        # Corresponds to the JSON property `tableId`
+        # @return [String]
+        attr_accessor :table_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @table_id = args[:table_id] if args.key?(:table_id)
+        end
+      end
+      
       # BigQuery source import data from.
       class GoogleCloudDiscoveryengineV1alphaBigQuerySource
         include Google::Apis::Core::Hashable
@@ -13388,6 +13413,67 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the Export operation. This is returned by
+      # the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1alphaExportMetricsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Request message for the `ExportMetrics` method.
+      class GoogleCloudDiscoveryengineV1alphaExportMetricsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The output configuration setting.
+        # Corresponds to the JSON property `outputConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaOutputConfig]
+        attr_accessor :output_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output_config = args[:output_config] if args.key?(:output_config)
+        end
+      end
+      
+      # Response of the ExportMetricsRequest. If the long running operation was
+      # successful, then this message is returned by the google.longrunning.Operations.
+      # response field.
+      class GoogleCloudDiscoveryengineV1alphaExportMetricsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Fact Chunk.
       class GoogleCloudDiscoveryengineV1alphaFactChunk
         include Google::Apis::Core::Hashable
@@ -15786,10 +15872,10 @@ module Google
       
         # A comma-separated list of fields to filter by, in EBNF grammar. The supported
         # fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `
-        # is_pinned` * `labels` * `create_time` * `update_time` Examples: "
-        # user_pseudo_id = some_id" "display_name = \"some_name\"" "starred = true" "
-        # is_pinned=true AND (NOT labels:hidden)" "create_time > \"1970-01-01T12:00:00Z\"
-        # "
+        # is_pinned` * `labels` * `create_time` * `update_time` Examples: * `
+        # user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `
+        # is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"
+        # `
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -16065,6 +16151,25 @@ module Google
         def update!(**args)
           @google_organic_crawl_rate = args[:google_organic_crawl_rate] if args.key?(:google_organic_crawl_rate)
           @vertex_ai_organic_crawl_rate = args[:vertex_ai_organic_crawl_rate] if args.key?(:vertex_ai_organic_crawl_rate)
+        end
+      end
+      
+      # The output configuration setting.
+      class GoogleCloudDiscoveryengineV1alphaOutputConfig
+        include Google::Apis::Core::Hashable
+      
+        # The BigQuery output destination configuration.
+        # Corresponds to the JSON property `bigqueryDestination`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaBigQueryDestination]
+        attr_accessor :bigquery_destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
         end
       end
       
@@ -19476,6 +19581,17 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaSearchRequestNaturalLanguageQueryUnderstandingSpec
         include Google::Apis::Core::Hashable
       
+        # Optional. Controls behavior of how extracted filters are applied to the search.
+        # The default behavior depends on the request. For single datastore structured
+        # search, the default is `HARD_FILTER`. For multi-datastore search, the default
+        # behavior is `SOFT_BOOST`. Location-based filters are always applied as hard
+        # filters, and the `SOFT_BOOST` setting will not affect them. This field is only
+        # used if SearchRequest.natural_language_query_understanding_spec.
+        # filter_extraction_condition is set to FilterExtractionCondition.ENABLED.
+        # Corresponds to the JSON property `extractedFilterBehavior`
+        # @return [String]
+        attr_accessor :extracted_filter_behavior
+      
         # The condition under which filter extraction should occur. Server behavior
         # defaults to `DISABLED`.
         # Corresponds to the JSON property `filterExtractionCondition`
@@ -19497,6 +19613,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @extracted_filter_behavior = args[:extracted_filter_behavior] if args.key?(:extracted_filter_behavior)
           @filter_extraction_condition = args[:filter_extraction_condition] if args.key?(:filter_extraction_condition)
           @geo_search_query_detection_field_names = args[:geo_search_query_detection_field_names] if args.key?(:geo_search_query_detection_field_names)
         end
@@ -27994,6 +28111,17 @@ module Google
       class GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpec
         include Google::Apis::Core::Hashable
       
+        # Optional. Controls behavior of how extracted filters are applied to the search.
+        # The default behavior depends on the request. For single datastore structured
+        # search, the default is `HARD_FILTER`. For multi-datastore search, the default
+        # behavior is `SOFT_BOOST`. Location-based filters are always applied as hard
+        # filters, and the `SOFT_BOOST` setting will not affect them. This field is only
+        # used if SearchRequest.natural_language_query_understanding_spec.
+        # filter_extraction_condition is set to FilterExtractionCondition.ENABLED.
+        # Corresponds to the JSON property `extractedFilterBehavior`
+        # @return [String]
+        attr_accessor :extracted_filter_behavior
+      
         # The condition under which filter extraction should occur. Server behavior
         # defaults to `DISABLED`.
         # Corresponds to the JSON property `filterExtractionCondition`
@@ -28015,6 +28143,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @extracted_filter_behavior = args[:extracted_filter_behavior] if args.key?(:extracted_filter_behavior)
           @filter_extraction_condition = args[:filter_extraction_condition] if args.key?(:filter_extraction_condition)
           @geo_search_query_detection_field_names = args[:geo_search_query_detection_field_names] if args.key?(:geo_search_query_detection_field_names)
         end
