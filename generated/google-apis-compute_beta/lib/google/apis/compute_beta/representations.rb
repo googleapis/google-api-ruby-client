@@ -436,6 +436,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendBucketParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendBucketUsedBy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -623,6 +629,12 @@ module Google
       end
       
       class BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4738,18 +4750,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PreviewFeatureRolloutOperationRolloutStatus
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PreviewFeatureRolloutOperationRolloutStatusRolloutMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class PreviewFeatureStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6940,6 +6940,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SubnetworkUtilizationDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubnetworkUtilizationDetailsIpv4Utilization
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubnetworkUtilizationDetailsIpv6Utilization
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SubnetworksExpandIpCidrRangeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8731,6 +8749,8 @@ module Google
           property :kind, as: 'kind'
           property :load_balancing_scheme, as: 'loadBalancingScheme'
           property :name, as: 'name'
+          property :params, as: 'params', class: Google::Apis::ComputeBeta::BackendBucketParams, decorator: Google::Apis::ComputeBeta::BackendBucketParams::Representation
+      
           property :self_link, as: 'selfLink'
           collection :used_by, as: 'usedBy', class: Google::Apis::ComputeBeta::BackendBucketUsedBy, decorator: Google::Apis::ComputeBeta::BackendBucketUsedBy::Representation
       
@@ -8845,6 +8865,13 @@ module Google
         end
       end
       
+      class BackendBucketParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
+        end
+      end
+      
       class BackendBucketUsedBy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8915,6 +8942,8 @@ module Google
           property :network_pass_through_lb_traffic_policy, as: 'networkPassThroughLbTrafficPolicy', class: Google::Apis::ComputeBeta::BackendServiceNetworkPassThroughLbTrafficPolicy, decorator: Google::Apis::ComputeBeta::BackendServiceNetworkPassThroughLbTrafficPolicy::Representation
       
           property :outlier_detection, as: 'outlierDetection', class: Google::Apis::ComputeBeta::OutlierDetection, decorator: Google::Apis::ComputeBeta::OutlierDetection::Representation
+      
+          property :params, as: 'params', class: Google::Apis::ComputeBeta::BackendServiceParams, decorator: Google::Apis::ComputeBeta::BackendServiceParams::Representation
       
           property :port, as: 'port'
           property :port_name, as: 'portName'
@@ -9217,6 +9246,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :spillover, as: 'spillover'
           property :spillover_ratio, as: 'spilloverRatio'
+        end
+      end
+      
+      class BackendServiceParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -14980,14 +15016,12 @@ module Google
       class MultiMigsList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, as: 'etag'
           property :id, as: 'id'
           collection :items, as: 'items', class: Google::Apis::ComputeBeta::MultiMig, decorator: Google::Apis::ComputeBeta::MultiMig::Representation
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
-          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeBeta::MultiMigsList::Warning, decorator: Google::Apis::ComputeBeta::MultiMigsList::Warning::Representation
       
         end
@@ -16969,8 +17003,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :rollout_input, as: 'rolloutInput', class: Google::Apis::ComputeBeta::PreviewFeatureRolloutOperationRolloutInput, decorator: Google::Apis::ComputeBeta::PreviewFeatureRolloutOperationRolloutInput::Representation
       
-          property :rollout_status, as: 'rolloutStatus', class: Google::Apis::ComputeBeta::PreviewFeatureRolloutOperationRolloutStatus, decorator: Google::Apis::ComputeBeta::PreviewFeatureRolloutOperationRolloutStatus::Representation
-      
         end
       end
       
@@ -16979,27 +17011,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :predefined_rollout_plan, as: 'predefinedRolloutPlan'
-          property :retry_uuid, as: 'retryUuid'
-        end
-      end
-      
-      class PreviewFeatureRolloutOperationRolloutStatus
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :ongoing_rollouts, as: 'ongoingRollouts', class: Google::Apis::ComputeBeta::PreviewFeatureRolloutOperationRolloutStatusRolloutMetadata, decorator: Google::Apis::ComputeBeta::PreviewFeatureRolloutOperationRolloutStatusRolloutMetadata::Representation
-      
-          property :previous_rollout, as: 'previousRollout', class: Google::Apis::ComputeBeta::PreviewFeatureRolloutOperationRolloutStatusRolloutMetadata, decorator: Google::Apis::ComputeBeta::PreviewFeatureRolloutOperationRolloutStatusRolloutMetadata::Representation
-      
-        end
-      end
-      
-      class PreviewFeatureRolloutOperationRolloutStatusRolloutMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :rollout, as: 'rollout'
-          property :rollout_plan, as: 'rolloutPlan'
-          property :status, as: 'status', class: Google::Apis::ComputeBeta::PreviewFeatureStatus, decorator: Google::Apis::ComputeBeta::PreviewFeatureStatus::Representation
-      
         end
       end
       
@@ -17007,6 +17018,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
+          property :help_link, as: 'helpLink'
           property :release_status, as: 'releaseStatus', class: Google::Apis::ComputeBeta::PreviewFeatureStatusReleaseStatus, decorator: Google::Apis::ComputeBeta::PreviewFeatureStatusReleaseStatus::Representation
       
         end
@@ -17923,6 +17935,7 @@ module Google
           property :kind, as: 'kind'
           collection :linked_commitments, as: 'linkedCommitments'
           property :name, as: 'name'
+          property :protection_tier, as: 'protectionTier'
           property :reservation_mode, as: 'reservationMode'
           property :reservation_sharing_policy, as: 'reservationSharingPolicy', class: Google::Apis::ComputeBeta::AllocationReservationSharingPolicy, decorator: Google::Apis::ComputeBeta::AllocationReservationSharingPolicy::Representation
       
@@ -19791,6 +19804,7 @@ module Google
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          hash :metadata, as: 'metadata'
           property :name, as: 'name'
           collection :nat_subnets, as: 'natSubnets'
           property :producer_forwarding_rule, as: 'producerForwardingRule'
@@ -20933,6 +20947,7 @@ module Google
           property :purpose, as: 'purpose'
           property :region, as: 'region'
           property :reserved_internal_range, as: 'reservedInternalRange'
+          property :resolve_subnet_mask, as: 'resolveSubnetMask'
           property :role, as: 'role'
           collection :secondary_ip_ranges, as: 'secondaryIpRanges', class: Google::Apis::ComputeBeta::SubnetworkSecondaryRange, decorator: Google::Apis::ComputeBeta::SubnetworkSecondaryRange::Representation
       
@@ -20941,6 +20956,8 @@ module Google
           property :state, as: 'state'
           collection :system_reserved_external_ipv6_ranges, as: 'systemReservedExternalIpv6Ranges'
           collection :system_reserved_internal_ipv6_ranges, as: 'systemReservedInternalIpv6Ranges'
+          property :utilization_details, as: 'utilizationDetails', class: Google::Apis::ComputeBeta::SubnetworkUtilizationDetails, decorator: Google::Apis::ComputeBeta::SubnetworkUtilizationDetails::Representation
+      
         end
       end
       
@@ -21034,6 +21051,39 @@ module Google
           property :ip_cidr_range, as: 'ipCidrRange'
           property :range_name, as: 'rangeName'
           property :reserved_internal_range, as: 'reservedInternalRange'
+        end
+      end
+      
+      class SubnetworkUtilizationDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_ipv6_instance_utilization, as: 'externalIpv6InstanceUtilization', class: Google::Apis::ComputeBeta::SubnetworkUtilizationDetailsIpv6Utilization, decorator: Google::Apis::ComputeBeta::SubnetworkUtilizationDetailsIpv6Utilization::Representation
+      
+          property :external_ipv6_lb_utilization, as: 'externalIpv6LbUtilization', class: Google::Apis::ComputeBeta::SubnetworkUtilizationDetailsIpv6Utilization, decorator: Google::Apis::ComputeBeta::SubnetworkUtilizationDetailsIpv6Utilization::Representation
+      
+          property :internal_ipv6_utilization, as: 'internalIpv6Utilization', class: Google::Apis::ComputeBeta::SubnetworkUtilizationDetailsIpv6Utilization, decorator: Google::Apis::ComputeBeta::SubnetworkUtilizationDetailsIpv6Utilization::Representation
+      
+          collection :ipv4_utilizations, as: 'ipv4Utilizations', class: Google::Apis::ComputeBeta::SubnetworkUtilizationDetailsIpv4Utilization, decorator: Google::Apis::ComputeBeta::SubnetworkUtilizationDetailsIpv4Utilization::Representation
+      
+        end
+      end
+      
+      class SubnetworkUtilizationDetailsIpv4Utilization
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :range_name, as: 'rangeName'
+          property :total_allocated_ip, :numeric_string => true, as: 'totalAllocatedIp'
+          property :total_free_ip, :numeric_string => true, as: 'totalFreeIp'
+        end
+      end
+      
+      class SubnetworkUtilizationDetailsIpv6Utilization
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :total_allocated_ip, as: 'totalAllocatedIp', class: Google::Apis::ComputeBeta::Uint128, decorator: Google::Apis::ComputeBeta::Uint128::Representation
+      
+          property :total_free_ip, as: 'totalFreeIp', class: Google::Apis::ComputeBeta::Uint128, decorator: Google::Apis::ComputeBeta::Uint128::Representation
+      
         end
       end
       

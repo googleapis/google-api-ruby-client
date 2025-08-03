@@ -3120,6 +3120,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Additional Backend Bucket parameters.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeBeta::BackendBucketParams]
+        attr_accessor :params
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -3148,6 +3153,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
           @name = args[:name] if args.key?(:name)
+          @params = args[:params] if args.key?(:params)
           @self_link = args[:self_link] if args.key?(:self_link)
           @used_by = args[:used_by] if args.key?(:used_by)
         end
@@ -3623,6 +3629,32 @@ module Google
         end
       end
       
+      # Additional Backend Bucket parameters.
+      class BackendBucketParams
+        include Google::Apis::Core::Hashable
+      
+        # Tag keys/values directly bound to this resource. Tag keys and values have the
+        # same definition as resource manager tags. The field is allowed for INSERT only.
+        # The keys/values to set on the resource should be specified in either ID ` : `
+        # or Namespaced format ` : `. For example the following are valid inputs: * `"
+        # tagKeys/333" : "tagValues/444", "tagKeys/123" : "tagValues/456"` * `"123/
+        # environment" : "production", "345/abc" : "xyz"` Note: * Invalid combinations
+        # of ID & namespaced format is not supported. For instance: `"123/environment" :
+        # "tagValues/444"` is invalid.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
+        end
+      end
+      
       # 
       class BackendBucketUsedBy
         include Google::Apis::Core::Hashable
@@ -3660,7 +3692,7 @@ module Google
         attr_accessor :max_utilization
       
         # Name of a custom utilization signal. The name must be 1-64 characters long and
-        # match the regular expression [a-z]([-_.a-z0-9]*[a-z0-9])? which means the
+        # match the regular expression [a-z]([-_.a-z0-9]*[a-z0-9])? which means that the
         # first character must be a lowercase letter, and all following characters must
         # be a dash, period, underscore, lowercase letter, or digit, except the last
         # character, which cannot be a dash, period, or underscore. For usage guidelines,
@@ -3948,11 +3980,16 @@ module Google
         # was redirected to the load balancer. - MAGLEV: used as a drop in replacement
         # for the ring hash load balancer. Maglev is not as stable as ring hash but has
         # faster table lookup build times and host selection times. For more information
-        # about Maglev, see https://ai.google/research/pubs/pub44824 This field is
-        # applicable to either: - A regional backend service with the service_protocol
-        # set to HTTP, HTTPS, HTTP2 or H2C, and load_balancing_scheme set to
-        # INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme
-        # set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If
+        # about Maglev, see https://ai.google/research/pubs/pub44824 -
+        # WEIGHTED_ROUND_ROBIN: Per-endpoint Weighted Round Robin Load Balancing using
+        # weights computed from Backend reported Custom Metrics. If set, the Backend
+        # Service responses are expected to contain non-standard HTTP response header
+        # field Endpoint-Load-Metrics. The reported metrics to use for computing the
+        # weights are specified via the customMetrics field. This field is applicable to
+        # either: - A regional backend service with the service_protocol set to HTTP,
+        # HTTPS, HTTP2 or H2C, and load_balancing_scheme set to INTERNAL_MANAGED. - A
+        # global backend service with the load_balancing_scheme set to
+        # INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If
         # sessionAffinity is not configured—that is, if session affinity remains at the
         # default value of NONE—then the default value for localityLbPolicy is
         # ROUND_ROBIN. If session affinity is set to a value other than NONE, then the
@@ -4015,6 +4052,11 @@ module Google
         # Corresponds to the JSON property `outlierDetection`
         # @return [Google::Apis::ComputeBeta::OutlierDetection]
         attr_accessor :outlier_detection
+      
+        # Additional Backend Service parameters.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeBeta::BackendServiceParams]
+        attr_accessor :params
       
         # Deprecated in favor of portName. The TCP port to connect on the backend. The
         # default value is 80. For internal passthrough Network Load Balancers and
@@ -4168,6 +4210,7 @@ module Google
           @network = args[:network] if args.key?(:network)
           @network_pass_through_lb_traffic_policy = args[:network_pass_through_lb_traffic_policy] if args.key?(:network_pass_through_lb_traffic_policy)
           @outlier_detection = args[:outlier_detection] if args.key?(:outlier_detection)
+          @params = args[:params] if args.key?(:params)
           @port = args[:port] if args.key?(:port)
           @port_name = args[:port_name] if args.key?(:port_name)
           @protocol = args[:protocol] if args.key?(:protocol)
@@ -4595,7 +4638,7 @@ module Google
         alias_method :dry_run?, :dry_run
       
         # Name of a custom utilization signal. The name must be 1-64 characters long and
-        # match the regular expression [a-z]([-_.a-z0-9]*[a-z0-9])? which means the
+        # match the regular expression [a-z]([-_.a-z0-9]*[a-z0-9])? which means that the
         # first character must be a lowercase letter, and all following characters must
         # be a dash, period, underscore, lowercase letter, or digit, except the last
         # character, which cannot be a dash, period, or underscore. For usage guidelines,
@@ -5381,6 +5424,32 @@ module Google
         def update!(**args)
           @spillover = args[:spillover] if args.key?(:spillover)
           @spillover_ratio = args[:spillover_ratio] if args.key?(:spillover_ratio)
+        end
+      end
+      
+      # Additional Backend Service parameters.
+      class BackendServiceParams
+        include Google::Apis::Core::Hashable
+      
+        # Tag keys/values directly bound to this resource. Tag keys and values have the
+        # same definition as resource manager tags. The field is allowed for INSERT only.
+        # The keys/values to set on the resource should be specified in either ID ` : `
+        # or Namespaced format ` : `. For example the following are valid inputs: * `"
+        # tagKeys/333" : "tagValues/444", "tagKeys/123" : "tagValues/456"` * `"123/
+        # environment" : "production", "345/abc" : "xyz"` Note: * Invalid combinations
+        # of ID & namespaced format is not supported. For instance: `"123/environment" :
+        # "tagValues/444"` is invalid.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
@@ -11432,7 +11501,8 @@ module Google
         # allowed to inject packets into the consumer's network. If set to true, the
         # target service attachment must have tunneling enabled and TunnelingConfig.
         # RoutingMode set to PACKET_INJECTION Non-PSC forwarding rules should not use
-        # this field.
+        # this field. This field was never released to any customers and is deprecated
+        # and will be removed in the future.
         # Corresponds to the JSON property `allowPscPacketInjection`
         # @return [Boolean]
         attr_accessor :allow_psc_packet_injection
@@ -28846,11 +28916,6 @@ module Google
       class MultiMigsList
         include Google::Apis::Core::Hashable
       
-        # 
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
         # Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -28879,11 +28944,6 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output only] Unreachable resources.
-        # Corresponds to the JSON property `unreachables`
-        # @return [Array<String>]
-        attr_accessor :unreachables
-      
         # Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::MultiMigsList::Warning]
@@ -28895,13 +28955,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] if args.key?(:etag)
           @id = args[:id] if args.key?(:id)
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
-          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -36744,15 +36802,10 @@ module Google
       class PreviewFeatureRolloutOperation
         include Google::Apis::Core::Hashable
       
-        # 
+        # Represents the input for the rollout operation.
         # Corresponds to the JSON property `rolloutInput`
         # @return [Google::Apis::ComputeBeta::PreviewFeatureRolloutOperationRolloutInput]
         attr_accessor :rollout_input
-      
-        # 
-        # Corresponds to the JSON property `rolloutStatus`
-        # @return [Google::Apis::ComputeBeta::PreviewFeatureRolloutOperationRolloutStatus]
-        attr_accessor :rollout_status
       
         def initialize(**args)
            update!(**args)
@@ -36761,11 +36814,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @rollout_input = args[:rollout_input] if args.key?(:rollout_input)
-          @rollout_status = args[:rollout_status] if args.key?(:rollout_status)
         end
       end
       
-      # 
+      # Represents the input for the rollout operation.
       class PreviewFeatureRolloutOperationRolloutInput
         include Google::Apis::Core::Hashable
       
@@ -36781,13 +36833,6 @@ module Google
         # @return [String]
         attr_accessor :predefined_rollout_plan
       
-        # The UUID of the retry action. Only needed if this is a retry for an existing
-        # rollout. This can be used after the user canceled a rollout and want to retry
-        # it with no changes.
-        # Corresponds to the JSON property `retryUuid`
-        # @return [String]
-        attr_accessor :retry_uuid
-      
         def initialize(**args)
            update!(**args)
         end
@@ -36796,68 +36841,6 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @predefined_rollout_plan = args[:predefined_rollout_plan] if args.key?(:predefined_rollout_plan)
-          @retry_uuid = args[:retry_uuid] if args.key?(:retry_uuid)
-        end
-      end
-      
-      # 
-      class PreviewFeatureRolloutOperationRolloutStatus
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The ongoing rollout resources. There can be multiple ongoing
-        # rollouts for a resource.
-        # Corresponds to the JSON property `ongoingRollouts`
-        # @return [Array<Google::Apis::ComputeBeta::PreviewFeatureRolloutOperationRolloutStatusRolloutMetadata>]
-        attr_accessor :ongoing_rollouts
-      
-        # Output only. The last completed rollout resource. This field will not be
-        # populated until the first rollout is completed.
-        # Corresponds to the JSON property `previousRollout`
-        # @return [Google::Apis::ComputeBeta::PreviewFeatureRolloutOperationRolloutStatusRolloutMetadata]
-        attr_accessor :previous_rollout
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @ongoing_rollouts = args[:ongoing_rollouts] if args.key?(:ongoing_rollouts)
-          @previous_rollout = args[:previous_rollout] if args.key?(:previous_rollout)
-        end
-      end
-      
-      # 
-      class PreviewFeatureRolloutOperationRolloutStatusRolloutMetadata
-        include Google::Apis::Core::Hashable
-      
-        # The name of the rollout Ex. organizations//locations/global/rollouts/ Ex.
-        # folders//locations/global/rollouts/ Ex. projects//locations/global/rollouts/.
-        # Corresponds to the JSON property `rollout`
-        # @return [String]
-        attr_accessor :rollout
-      
-        # The name of the rollout plan Ex. organizations//locations/global/rolloutPlans/
-        # Ex. folders//locations/global/rolloutPlans/ Ex. projects//locations/global/
-        # rolloutPlans/.
-        # Corresponds to the JSON property `rolloutPlan`
-        # @return [String]
-        attr_accessor :rollout_plan
-      
-        # [Output Only] The status of the feature.
-        # Corresponds to the JSON property `status`
-        # @return [Google::Apis::ComputeBeta::PreviewFeatureStatus]
-        attr_accessor :status
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @rollout = args[:rollout] if args.key?(:rollout)
-          @rollout_plan = args[:rollout_plan] if args.key?(:rollout_plan)
-          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -36870,7 +36853,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # 
+        # [Output Only] Link to the public documentation for the feature.
+        # Corresponds to the JSON property `helpLink`
+        # @return [String]
+        attr_accessor :help_link
+      
+        # [Output Only] The release status of the feature.
         # Corresponds to the JSON property `releaseStatus`
         # @return [Google::Apis::ComputeBeta::PreviewFeatureStatusReleaseStatus]
         attr_accessor :release_status
@@ -36882,11 +36870,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @description = args[:description] if args.key?(:description)
+          @help_link = args[:help_link] if args.key?(:help_link)
           @release_status = args[:release_status] if args.key?(:release_status)
         end
       end
       
-      # 
+      # [Output Only] The release status of the feature.
       class PreviewFeatureStatusReleaseStatus
         include Google::Apis::Core::Hashable
       
@@ -40287,6 +40276,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Protection tier for the workload which specifies the workload expectations in
+        # the event of infrastructure failures at data center (e.g. power and/or cooling
+        # failures).
+        # Corresponds to the JSON property `protectionTier`
+        # @return [String]
+        attr_accessor :protection_tier
+      
         # [Output only] Indicates the reservation mode of the reservation.
         # Corresponds to the JSON property `reservationMode`
         # @return [String]
@@ -40376,6 +40372,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @linked_commitments = args[:linked_commitments] if args.key?(:linked_commitments)
           @name = args[:name] if args.key?(:name)
+          @protection_tier = args[:protection_tier] if args.key?(:protection_tier)
           @reservation_mode = args[:reservation_mode] if args.key?(:reservation_mode)
           @reservation_sharing_policy = args[:reservation_sharing_policy] if args.key?(:reservation_sharing_policy)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
@@ -47521,7 +47518,9 @@ module Google
         # @return [String]
         attr_accessor :target
       
-        # Type of the redirect action.
+        # Type of the redirect action. Possible values are: - GOOGLE_RECAPTCHA: redirect
+        # to reCAPTCHA for manual challenge assessment. - EXTERNAL_302: redirect to a
+        # different URL via a 302 response.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -47764,7 +47763,8 @@ module Google
         # service attachment. Each project or network has a connection limit. A given
         # service attachment can manage connections at either the project or network
         # level. Therefore, both the accept and reject lists for a given service
-        # attachment must contain either only projects or only networks.
+        # attachment must contain either only projects or only networks or only
+        # endpoints.
         # Corresponds to the JSON property `consumerAcceptLists`
         # @return [Array<Google::Apis::ComputeBeta::ServiceAttachmentConsumerProjectLimit>]
         attr_accessor :consumer_accept_lists
@@ -47827,6 +47827,11 @@ module Google
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # Metadata of the service attachment.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -47925,6 +47930,7 @@ module Google
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @nat_subnets = args[:nat_subnets] if args.key?(:nat_subnets)
           @producer_forwarding_rule = args[:producer_forwarding_rule] if args.key?(:producer_forwarding_rule)
@@ -48109,7 +48115,8 @@ module Google
       class ServiceAttachmentConsumerProjectLimit
         include Google::Apis::Core::Hashable
       
-        # The value of the limit to set.
+        # The value of the limit to set. For endpoint_url, the limit should be no more
+        # than 1.
         # Corresponds to the JSON property `connectionLimit`
         # @return [Fixnum]
         attr_accessor :connection_limit
@@ -50968,7 +50975,7 @@ module Google
         # @return [String]
         attr_accessor :performance_provisioning_type
       
-        # Size, in GiB, of the storage pool. For more information about the size limits,
+        # Size of the storage pool in GiB. For more information about the size limits,
         # see https://cloud.google.com/compute/docs/disks/storage-pools.
         # Corresponds to the JSON property `poolProvisionedCapacityGb`
         # @return [Fixnum]
@@ -50980,8 +50987,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :pool_provisioned_iops
       
-        # Provisioned throughput of the storage pool. Only relevant if the storage pool
-        # type is hyperdisk-balanced or hyperdisk-throughput.
+        # Provisioned throughput of the storage pool in MiB/s. Only relevant if the
+        # storage pool type is hyperdisk-balanced or hyperdisk-throughput.
         # Corresponds to the JSON property `poolProvisionedThroughput`
         # @return [Fixnum]
         attr_accessor :pool_provisioned_throughput
@@ -51539,7 +51546,7 @@ module Google
         # @return [String]
         attr_accessor :last_resize_timestamp
       
-        # [Output Only] Maximum allowed aggregate disk size in gigabytes.
+        # [Output Only] Maximum allowed aggregate disk size in GiB.
         # Corresponds to the JSON property `maxTotalProvisionedDiskCapacityGb`
         # @return [Fixnum]
         attr_accessor :max_total_provisioned_disk_capacity_gb
@@ -51558,7 +51565,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :pool_used_iops
       
-        # [Output Only] Sum of all the disks' provisioned throughput in MB/s.
+        # [Output Only] Sum of all the disks' provisioned throughput in MiB/s.
         # Corresponds to the JSON property `poolUsedThroughput`
         # @return [Fixnum]
         attr_accessor :pool_used_throughput
@@ -51568,8 +51575,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :pool_user_written_bytes
       
-        # [Output Only] Sum of all the capacity provisioned in disks in this storage
-        # pool. A disk's provisioned capacity is the same as its total capacity.
+        # [Output Only] Sum of all the disks' provisioned capacity (in GiB) in this
+        # storage pool. A disk's provisioned capacity is the same as its total capacity.
         # Corresponds to the JSON property `totalProvisionedDiskCapacityGb`
         # @return [Fixnum]
         attr_accessor :total_provisioned_disk_capacity_gb
@@ -51579,9 +51586,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_provisioned_disk_iops
       
-        # [Output Only] Sum of all the disks' provisioned throughput in MB/s, minus some
-        # amount that is allowed per disk that is not counted towards pool's throughput
-        # capacity.
+        # [Output Only] Sum of all the disks' provisioned throughput in MiB/s, minus
+        # some amount that is allowed per disk that is not counted towards pool's
+        # throughput capacity.
         # Corresponds to the JSON property `totalProvisionedDiskThroughput`
         # @return [Fixnum]
         attr_accessor :total_provisioned_disk_throughput
@@ -52350,6 +52357,11 @@ module Google
         # @return [String]
         attr_accessor :reserved_internal_range
       
+        # Configures subnet mask resolution for this subnetwork.
+        # Corresponds to the JSON property `resolveSubnetMask`
+        # @return [String]
+        attr_accessor :resolve_subnet_mask
+      
         # The role of subnetwork. Currently, this field is only used when purpose is set
         # to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY. The value can be set to
         # ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for
@@ -52403,6 +52415,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :system_reserved_internal_ipv6_ranges
       
+        # The current IP utilization of all subnetwork ranges. Contains the total number
+        # of allocated and free IPs in each range.
+        # Corresponds to the JSON property `utilizationDetails`
+        # @return [Google::Apis::ComputeBeta::SubnetworkUtilizationDetails]
+        attr_accessor :utilization_details
+      
         def initialize(**args)
            update!(**args)
         end
@@ -52433,6 +52451,7 @@ module Google
           @purpose = args[:purpose] if args.key?(:purpose)
           @region = args[:region] if args.key?(:region)
           @reserved_internal_range = args[:reserved_internal_range] if args.key?(:reserved_internal_range)
+          @resolve_subnet_mask = args[:resolve_subnet_mask] if args.key?(:resolve_subnet_mask)
           @role = args[:role] if args.key?(:role)
           @secondary_ip_ranges = args[:secondary_ip_ranges] if args.key?(:secondary_ip_ranges)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -52440,6 +52459,7 @@ module Google
           @state = args[:state] if args.key?(:state)
           @system_reserved_external_ipv6_ranges = args[:system_reserved_external_ipv6_ranges] if args.key?(:system_reserved_external_ipv6_ranges)
           @system_reserved_internal_ipv6_ranges = args[:system_reserved_internal_ipv6_ranges] if args.key?(:system_reserved_internal_ipv6_ranges)
+          @utilization_details = args[:utilization_details] if args.key?(:utilization_details)
         end
       end
       
@@ -52811,6 +52831,101 @@ module Google
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @range_name = args[:range_name] if args.key?(:range_name)
           @reserved_internal_range = args[:reserved_internal_range] if args.key?(:reserved_internal_range)
+        end
+      end
+      
+      # The current IP utilization of all subnetwork ranges. Contains the total number
+      # of allocated and free IPs in each range.
+      class SubnetworkUtilizationDetails
+        include Google::Apis::Core::Hashable
+      
+        # The IPV6 utilization of a single IP range.
+        # Corresponds to the JSON property `externalIpv6InstanceUtilization`
+        # @return [Google::Apis::ComputeBeta::SubnetworkUtilizationDetailsIpv6Utilization]
+        attr_accessor :external_ipv6_instance_utilization
+      
+        # The IPV6 utilization of a single IP range.
+        # Corresponds to the JSON property `externalIpv6LbUtilization`
+        # @return [Google::Apis::ComputeBeta::SubnetworkUtilizationDetailsIpv6Utilization]
+        attr_accessor :external_ipv6_lb_utilization
+      
+        # The IPV6 utilization of a single IP range.
+        # Corresponds to the JSON property `internalIpv6Utilization`
+        # @return [Google::Apis::ComputeBeta::SubnetworkUtilizationDetailsIpv6Utilization]
+        attr_accessor :internal_ipv6_utilization
+      
+        # Utilizations of all IPV4 IP ranges. For primary ranges, the range name will be
+        # empty.
+        # Corresponds to the JSON property `ipv4Utilizations`
+        # @return [Array<Google::Apis::ComputeBeta::SubnetworkUtilizationDetailsIpv4Utilization>]
+        attr_accessor :ipv4_utilizations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_ipv6_instance_utilization = args[:external_ipv6_instance_utilization] if args.key?(:external_ipv6_instance_utilization)
+          @external_ipv6_lb_utilization = args[:external_ipv6_lb_utilization] if args.key?(:external_ipv6_lb_utilization)
+          @internal_ipv6_utilization = args[:internal_ipv6_utilization] if args.key?(:internal_ipv6_utilization)
+          @ipv4_utilizations = args[:ipv4_utilizations] if args.key?(:ipv4_utilizations)
+        end
+      end
+      
+      # The IPV4 utilization of a single IP range.
+      class SubnetworkUtilizationDetailsIpv4Utilization
+        include Google::Apis::Core::Hashable
+      
+        # Will be set for secondary range. Empty for primary IPv4 range.
+        # Corresponds to the JSON property `rangeName`
+        # @return [String]
+        attr_accessor :range_name
+      
+        # 
+        # Corresponds to the JSON property `totalAllocatedIp`
+        # @return [Fixnum]
+        attr_accessor :total_allocated_ip
+      
+        # 
+        # Corresponds to the JSON property `totalFreeIp`
+        # @return [Fixnum]
+        attr_accessor :total_free_ip
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @range_name = args[:range_name] if args.key?(:range_name)
+          @total_allocated_ip = args[:total_allocated_ip] if args.key?(:total_allocated_ip)
+          @total_free_ip = args[:total_free_ip] if args.key?(:total_free_ip)
+        end
+      end
+      
+      # The IPV6 utilization of a single IP range.
+      class SubnetworkUtilizationDetailsIpv6Utilization
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `totalAllocatedIp`
+        # @return [Google::Apis::ComputeBeta::Uint128]
+        attr_accessor :total_allocated_ip
+      
+        # 
+        # Corresponds to the JSON property `totalFreeIp`
+        # @return [Google::Apis::ComputeBeta::Uint128]
+        attr_accessor :total_free_ip
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @total_allocated_ip = args[:total_allocated_ip] if args.key?(:total_allocated_ip)
+          @total_free_ip = args[:total_free_ip] if args.key?(:total_free_ip)
         end
       end
       
