@@ -1556,7 +1556,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new SecurityGateway in a given project and location.
+        # Creates a new Security Gateway in a given project and location.
         # @param [String] parent
         #   Required. The resource project name of the SecurityGateway location using the
         #   form: `projects/`project_id`/locations/`location_id``
@@ -1564,7 +1564,7 @@ module Google
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
-        #   ignore request if it has already been completed. The server will guarantee
+        #   ignore the request if it has already been completed. The server will guarantee
         #   that for at least 60 minutes since the first request.
         # @param [String] security_gateway_id
         #   Optional. User-settable SecurityGateway resource ID. * Must start with a
@@ -1945,7 +1945,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a single Application.
+        # Deletes a single application.
         # @param [String] name
         #   Required. Name of the resource.
         # @param [String] request_id
