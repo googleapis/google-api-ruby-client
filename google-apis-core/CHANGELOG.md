@@ -1,5 +1,18 @@
 # Release History
 
+### 1.0.0 (2025-08-03)
+
+### ⚠ BREAKING CHANGES
+
+* Replace underlying httpclient library with Faraday ([#23524](https://github.com/googleapis/google-api-ruby-client/issues/23524))
+
+#### Features
+
+* Replace underlying httpclient library with Faraday ([#23524](https://github.com/googleapis/google-api-ruby-client/issues/23524)) 
+### Reverts
+
+* setting idempotency header ([#23588](https://github.com/googleapis/google-api-ruby-client/issues/23588)) 
+
 ### 0.18.0 (2025-05-22)
 
 #### Features
