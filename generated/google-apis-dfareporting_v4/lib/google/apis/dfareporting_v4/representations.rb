@@ -334,6 +334,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContentSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContentSourceMetaData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Conversion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -526,6 +538,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomValueField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomViewabilityMetric
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -563,6 +587,12 @@ module Google
       end
       
       class DeliverySchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DependentFieldValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -622,6 +652,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DynamicFeed
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DynamicFeedsInsertRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DynamicProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DynamicProfileFeedSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DynamicProfileVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DynamicRules
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DynamicTargetingKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -629,6 +695,12 @@ module Google
       end
       
       class DynamicTargetingKeysListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Element
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -653,6 +725,36 @@ module Google
       end
       
       class EventTagsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FeedField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FeedIngestionStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FeedSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FieldError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FieldFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -755,6 +857,18 @@ module Google
       end
       
       class GeoTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngestionErrorRecord
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngestionStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1114,6 +1228,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProximityFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReachReportCompatibleFields
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1151,6 +1271,12 @@ module Google
       end
       
       class RemarketingListsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemarketingValueAttribute
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1240,6 +1366,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RequestValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RichMediaExitOverride
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1247,6 +1379,12 @@ module Google
       end
       
       class Rule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RuleBlock
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2217,6 +2355,31 @@ module Google
         end
       end
       
+      class ContentSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_source_name, as: 'contentSourceName'
+          property :create_info, as: 'createInfo', class: Google::Apis::DfareportingV4::LastModifiedInfo, decorator: Google::Apis::DfareportingV4::LastModifiedInfo::Representation
+      
+          property :last_modified_info, as: 'lastModifiedInfo', class: Google::Apis::DfareportingV4::LastModifiedInfo, decorator: Google::Apis::DfareportingV4::LastModifiedInfo::Representation
+      
+          property :meta_data, as: 'metaData', class: Google::Apis::DfareportingV4::ContentSourceMetaData, decorator: Google::Apis::DfareportingV4::ContentSourceMetaData::Representation
+      
+          property :resource_link, as: 'resourceLink'
+          property :resource_type, as: 'resourceType'
+        end
+      end
+      
+      class ContentSourceMetaData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :charset, as: 'charset'
+          collection :field_names, as: 'fieldNames'
+          property :row_number, as: 'rowNumber'
+          property :separator, as: 'separator'
+        end
+      end
+      
       class Conversion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2742,6 +2905,24 @@ module Google
         end
       end
       
+      class CustomRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :priority, as: 'priority'
+          collection :rule_blocks, as: 'ruleBlocks', class: Google::Apis::DfareportingV4::RuleBlock, decorator: Google::Apis::DfareportingV4::RuleBlock::Representation
+      
+        end
+      end
+      
+      class CustomValueField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field_id, as: 'fieldId'
+          property :request_key, as: 'requestKey'
+        end
+      end
+      
       class CustomViewabilityMetric
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2811,6 +2992,14 @@ module Google
           property :hard_cutoff, as: 'hardCutoff'
           property :impression_ratio, :numeric_string => true, as: 'impressionRatio'
           property :priority, as: 'priority'
+        end
+      end
+      
+      class DependentFieldValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :element_id, :numeric_string => true, as: 'elementId'
+          property :field_id, as: 'fieldId'
         end
       end
       
@@ -2917,6 +3106,96 @@ module Google
         end
       end
       
+      class DynamicFeed
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_source, as: 'contentSource', class: Google::Apis::DfareportingV4::ContentSource, decorator: Google::Apis::DfareportingV4::ContentSource::Representation
+      
+          property :create_info, as: 'createInfo', class: Google::Apis::DfareportingV4::LastModifiedInfo, decorator: Google::Apis::DfareportingV4::LastModifiedInfo::Representation
+      
+          property :dynamic_feed_id, :numeric_string => true, as: 'dynamicFeedId'
+          property :dynamic_feed_name, as: 'dynamicFeedName'
+          property :element, as: 'element', class: Google::Apis::DfareportingV4::Element, decorator: Google::Apis::DfareportingV4::Element::Representation
+      
+          property :feed_ingestion_status, as: 'feedIngestionStatus', class: Google::Apis::DfareportingV4::FeedIngestionStatus, decorator: Google::Apis::DfareportingV4::FeedIngestionStatus::Representation
+      
+          property :feed_schedule, as: 'feedSchedule', class: Google::Apis::DfareportingV4::FeedSchedule, decorator: Google::Apis::DfareportingV4::FeedSchedule::Representation
+      
+          property :has_published, as: 'hasPublished'
+          property :last_modified_info, as: 'lastModifiedInfo', class: Google::Apis::DfareportingV4::LastModifiedInfo, decorator: Google::Apis::DfareportingV4::LastModifiedInfo::Representation
+      
+          property :status, as: 'status'
+          property :studio_advertiser_id, :numeric_string => true, as: 'studioAdvertiserId'
+        end
+      end
+      
+      class DynamicFeedsInsertRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dynamic_feed, as: 'dynamicFeed', class: Google::Apis::DfareportingV4::DynamicFeed, decorator: Google::Apis::DfareportingV4::DynamicFeed::Representation
+      
+          property :dynamic_profile_id, :numeric_string => true, as: 'dynamicProfileId'
+        end
+      end
+      
+      class DynamicProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active, as: 'active', class: Google::Apis::DfareportingV4::DynamicProfileVersion, decorator: Google::Apis::DfareportingV4::DynamicProfileVersion::Representation
+      
+          property :archive_status, as: 'archiveStatus'
+          property :create_info, as: 'createInfo', class: Google::Apis::DfareportingV4::LastModifiedInfo, decorator: Google::Apis::DfareportingV4::LastModifiedInfo::Representation
+      
+          property :description, as: 'description'
+          property :draft, as: 'draft', class: Google::Apis::DfareportingV4::DynamicProfileVersion, decorator: Google::Apis::DfareportingV4::DynamicProfileVersion::Representation
+      
+          property :dynamic_profile_id, :numeric_string => true, as: 'dynamicProfileId'
+          property :kind, as: 'kind'
+          property :last_modified_info, as: 'lastModifiedInfo', class: Google::Apis::DfareportingV4::LastModifiedInfo, decorator: Google::Apis::DfareportingV4::LastModifiedInfo::Representation
+      
+          property :name, as: 'name'
+          property :status, as: 'status'
+          property :studio_advertiser_id, :numeric_string => true, as: 'studioAdvertiserId'
+        end
+      end
+      
+      class DynamicProfileFeedSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dynamic_feed_id, :numeric_string => true, as: 'dynamicFeedId'
+          property :dynamic_rules, as: 'dynamicRules', class: Google::Apis::DfareportingV4::DynamicRules, decorator: Google::Apis::DfareportingV4::DynamicRules::Representation
+      
+          property :quantity, as: 'quantity'
+        end
+      end
+      
+      class DynamicProfileVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dynamic_profile_feed_settings, as: 'dynamicProfileFeedSettings', class: Google::Apis::DfareportingV4::DynamicProfileFeedSettings, decorator: Google::Apis::DfareportingV4::DynamicProfileFeedSettings::Representation
+      
+          property :version_id, :numeric_string => true, as: 'versionId'
+        end
+      end
+      
+      class DynamicRules
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :auto_targeted_field_ids, as: 'autoTargetedFieldIds'
+          collection :custom_rules, as: 'customRules', class: Google::Apis::DfareportingV4::CustomRule, decorator: Google::Apis::DfareportingV4::CustomRule::Representation
+      
+          collection :custom_value_fields, as: 'customValueFields', class: Google::Apis::DfareportingV4::CustomValueField, decorator: Google::Apis::DfareportingV4::CustomValueField::Representation
+      
+          property :proximity_filter, as: 'proximityFilter', class: Google::Apis::DfareportingV4::ProximityFilter, decorator: Google::Apis::DfareportingV4::ProximityFilter::Representation
+      
+          collection :remarketing_value_attributes, as: 'remarketingValueAttributes', class: Google::Apis::DfareportingV4::RemarketingValueAttribute, decorator: Google::Apis::DfareportingV4::RemarketingValueAttribute::Representation
+      
+          property :rotation_type, as: 'rotationType'
+          property :rule_type, as: 'ruleType'
+          property :weight_field_id, as: 'weightFieldId'
+        end
+      end
+      
       class DynamicTargetingKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2933,6 +3212,27 @@ module Google
           collection :dynamic_targeting_keys, as: 'dynamicTargetingKeys', class: Google::Apis::DfareportingV4::DynamicTargetingKey, decorator: Google::Apis::DfareportingV4::DynamicTargetingKey::Representation
       
           property :kind, as: 'kind'
+        end
+      end
+      
+      class Element
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_field_id, as: 'activeFieldId'
+          property :create_info, as: 'createInfo', class: Google::Apis::DfareportingV4::LastModifiedInfo, decorator: Google::Apis::DfareportingV4::LastModifiedInfo::Representation
+      
+          property :default_field_id, as: 'defaultFieldId'
+          property :element_name, as: 'elementName'
+          property :end_timestamp_field_id, as: 'endTimestampFieldId'
+          property :external_id_field_id, as: 'externalIdFieldId'
+          collection :feed_fields, as: 'feedFields', class: Google::Apis::DfareportingV4::FeedField, decorator: Google::Apis::DfareportingV4::FeedField::Representation
+      
+          property :is_local_timestamp, as: 'isLocalTimestamp'
+          property :last_modified_info, as: 'lastModifiedInfo', class: Google::Apis::DfareportingV4::LastModifiedInfo, decorator: Google::Apis::DfareportingV4::LastModifiedInfo::Representation
+      
+          property :proximity_targeting_field_id, as: 'proximityTargetingFieldId'
+          property :reporting_label_field_id, as: 'reportingLabelFieldId'
+          property :start_timestamp_field_id, as: 'startTimestampFieldId'
         end
       end
       
@@ -2986,6 +3286,67 @@ module Google
           collection :event_tags, as: 'eventTags', class: Google::Apis::DfareportingV4::EventTag, decorator: Google::Apis::DfareportingV4::EventTag::Representation
       
           property :kind, as: 'kind'
+        end
+      end
+      
+      class FeedField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_value, as: 'defaultValue'
+          property :filterable, as: 'filterable'
+          property :id, as: 'id'
+          property :name, as: 'name'
+          property :renderable, as: 'renderable'
+          property :required, as: 'required'
+          property :type, as: 'type'
+        end
+      end
+      
+      class FeedIngestionStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ingestion_error_records, as: 'ingestionErrorRecords', class: Google::Apis::DfareportingV4::IngestionErrorRecord, decorator: Google::Apis::DfareportingV4::IngestionErrorRecord::Representation
+      
+          property :ingestion_status, as: 'ingestionStatus', class: Google::Apis::DfareportingV4::IngestionStatus, decorator: Google::Apis::DfareportingV4::IngestionStatus::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class FeedSchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :repeat_value, :numeric_string => true, as: 'repeatValue'
+          property :schedule_enabled, as: 'scheduleEnabled'
+          property :start_hour, as: 'startHour'
+          property :start_minute, as: 'startMinute'
+          property :time_zone, as: 'timeZone'
+        end
+      end
+      
+      class FieldError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field_id, as: 'fieldId'
+          property :field_name, as: 'fieldName'
+          collection :field_values, as: 'fieldValues'
+          property :ingestion_error, as: 'ingestionError'
+          property :is_error, as: 'isError'
+        end
+      end
+      
+      class FieldFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bool_value, as: 'boolValue'
+          property :dependent_field_value, as: 'dependentFieldValue', class: Google::Apis::DfareportingV4::DependentFieldValue, decorator: Google::Apis::DfareportingV4::DependentFieldValue::Representation
+      
+          property :field_id, as: 'fieldId'
+          property :match_type, as: 'matchType'
+          property :request_value, as: 'requestValue', class: Google::Apis::DfareportingV4::RequestValue, decorator: Google::Apis::DfareportingV4::RequestValue::Representation
+      
+          property :string_value, as: 'stringValue'
+          property :value_type, as: 'valueType'
         end
       end
       
@@ -3238,6 +3599,26 @@ module Google
       
           collection :regions, as: 'regions', class: Google::Apis::DfareportingV4::Region, decorator: Google::Apis::DfareportingV4::Region::Representation
       
+        end
+      end
+      
+      class IngestionErrorRecord
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :errors, as: 'errors', class: Google::Apis::DfareportingV4::FieldError, decorator: Google::Apis::DfareportingV4::FieldError::Representation
+      
+          property :record_id, as: 'recordId'
+        end
+      end
+      
+      class IngestionStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :num_active_rows, :numeric_string => true, as: 'numActiveRows'
+          property :num_rows_processed, :numeric_string => true, as: 'numRowsProcessed'
+          property :num_rows_total, :numeric_string => true, as: 'numRowsTotal'
+          property :num_rows_with_errors, :numeric_string => true, as: 'numRowsWithErrors'
+          property :num_warnings_total, :numeric_string => true, as: 'numWarningsTotal'
         end
       end
       
@@ -4012,6 +4393,16 @@ module Google
         end
       end
       
+      class ProximityFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field_id, as: 'fieldId'
+          property :radius_bucket_type, as: 'radiusBucketType'
+          property :radius_unit_type, as: 'radiusUnitType'
+          property :radius_value, as: 'radiusValue'
+        end
+      end
+      
       class ReachReportCompatibleFields
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4097,6 +4488,14 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :remarketing_lists, as: 'remarketingLists', class: Google::Apis::DfareportingV4::RemarketingList, decorator: Google::Apis::DfareportingV4::RemarketingList::Representation
       
+        end
+      end
+      
+      class RemarketingValueAttribute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field_id, as: 'fieldId'
+          collection :user_attribute_ids, as: 'userAttributeIds'
         end
       end
       
@@ -4327,6 +4726,15 @@ module Google
         end
       end
       
+      class RequestValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exclude_from_user_attribute_ids, as: 'excludeFromUserAttributeIds'
+          property :key, as: 'key'
+          collection :user_attribute_ids, as: 'userAttributeIds'
+        end
+      end
+      
       class RichMediaExitOverride
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4343,6 +4751,14 @@ module Google
           property :asset_id, :numeric_string => true, as: 'assetId'
           property :name, as: 'name'
           property :targeting_template_id, :numeric_string => true, as: 'targetingTemplateId'
+        end
+      end
+      
+      class RuleBlock
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :field_filter, as: 'fieldFilter', class: Google::Apis::DfareportingV4::FieldFilter, decorator: Google::Apis::DfareportingV4::FieldFilter::Representation
+      
         end
       end
       

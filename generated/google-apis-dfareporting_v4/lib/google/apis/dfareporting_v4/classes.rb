@@ -2758,6 +2758,93 @@ module Google
         end
       end
       
+      # Contains the content source of the dynamic feed.
+      class ContentSource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the content source. It is defaulted to content source
+        # file name if not provided.
+        # Corresponds to the JSON property `contentSourceName`
+        # @return [String]
+        attr_accessor :content_source_name
+      
+        # Modification timestamp.
+        # Corresponds to the JSON property `createInfo`
+        # @return [Google::Apis::DfareportingV4::LastModifiedInfo]
+        attr_accessor :create_info
+      
+        # Modification timestamp.
+        # Corresponds to the JSON property `lastModifiedInfo`
+        # @return [Google::Apis::DfareportingV4::LastModifiedInfo]
+        attr_accessor :last_modified_info
+      
+        # Contains the meta data of the content source. This is a read-only field.
+        # Corresponds to the JSON property `metaData`
+        # @return [Google::Apis::DfareportingV4::ContentSourceMetaData]
+        attr_accessor :meta_data
+      
+        # Required. The link to the file of the content source.
+        # Corresponds to the JSON property `resourceLink`
+        # @return [String]
+        attr_accessor :resource_link
+      
+        # Required. The resource type of the content source.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_source_name = args[:content_source_name] if args.key?(:content_source_name)
+          @create_info = args[:create_info] if args.key?(:create_info)
+          @last_modified_info = args[:last_modified_info] if args.key?(:last_modified_info)
+          @meta_data = args[:meta_data] if args.key?(:meta_data)
+          @resource_link = args[:resource_link] if args.key?(:resource_link)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+        end
+      end
+      
+      # Contains the meta data of the content source. This is a read-only field.
+      class ContentSourceMetaData
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The charset of the content source.
+        # Corresponds to the JSON property `charset`
+        # @return [String]
+        attr_accessor :charset
+      
+        # Output only. The list of column names in the content source.
+        # Corresponds to the JSON property `fieldNames`
+        # @return [Array<String>]
+        attr_accessor :field_names
+      
+        # Output only. The number of rows in the content source.
+        # Corresponds to the JSON property `rowNumber`
+        # @return [Fixnum]
+        attr_accessor :row_number
+      
+        # Output only. The separator of the content source.
+        # Corresponds to the JSON property `separator`
+        # @return [String]
+        attr_accessor :separator
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @charset = args[:charset] if args.key?(:charset)
+          @field_names = args[:field_names] if args.key?(:field_names)
+          @row_number = args[:row_number] if args.key?(:row_number)
+          @separator = args[:separator] if args.key?(:separator)
+        end
+      end
+      
       # A Conversion represents when a user successfully performs a desired action
       # after seeing an ad.
       class Conversion
@@ -5130,6 +5217,62 @@ module Google
         end
       end
       
+      # Contains custom rule information.
+      class CustomRule
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Name of this custom rule.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Priority of the custom rule.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
+        # Optional. A list of field filter, the custom rule will apply.
+        # Corresponds to the JSON property `ruleBlocks`
+        # @return [Array<Google::Apis::DfareportingV4::RuleBlock>]
+        attr_accessor :rule_blocks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @priority = args[:priority] if args.key?(:priority)
+          @rule_blocks = args[:rule_blocks] if args.key?(:rule_blocks)
+        end
+      end
+      
+      # Contains custom value field information.
+      class CustomValueField
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Field ID in the element.
+        # Corresponds to the JSON property `fieldId`
+        # @return [Fixnum]
+        attr_accessor :field_id
+      
+        # Optional. Custom key used to match for auto filtering.
+        # Corresponds to the JSON property `requestKey`
+        # @return [String]
+        attr_accessor :request_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_id = args[:field_id] if args.key?(:field_id)
+          @request_key = args[:request_key] if args.key?(:request_key)
+        end
+      end
+      
       # Custom Viewability Metric
       class CustomViewabilityMetric
         include Google::Apis::Core::Hashable
@@ -5398,6 +5541,31 @@ module Google
           @hard_cutoff = args[:hard_cutoff] if args.key?(:hard_cutoff)
           @impression_ratio = args[:impression_ratio] if args.key?(:impression_ratio)
           @priority = args[:priority] if args.key?(:priority)
+        end
+      end
+      
+      # Contains dependent field value information.
+      class DependentFieldValue
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The ID of the element that value's field will match against.
+        # Corresponds to the JSON property `elementId`
+        # @return [Fixnum]
+        attr_accessor :element_id
+      
+        # Optional. The field id of the dependent field.
+        # Corresponds to the JSON property `fieldId`
+        # @return [Fixnum]
+        attr_accessor :field_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @element_id = args[:element_id] if args.key?(:element_id)
+          @field_id = args[:field_id] if args.key?(:field_id)
         end
       end
       
@@ -5792,6 +5960,333 @@ module Google
         end
       end
       
+      # Contains dynamic feed information.
+      class DynamicFeed
+        include Google::Apis::Core::Hashable
+      
+        # Contains the content source of the dynamic feed.
+        # Corresponds to the JSON property `contentSource`
+        # @return [Google::Apis::DfareportingV4::ContentSource]
+        attr_accessor :content_source
+      
+        # Modification timestamp.
+        # Corresponds to the JSON property `createInfo`
+        # @return [Google::Apis::DfareportingV4::LastModifiedInfo]
+        attr_accessor :create_info
+      
+        # Output only. Unique ID of this dynamic feed. This is a read-only, auto-
+        # generated field.
+        # Corresponds to the JSON property `dynamicFeedId`
+        # @return [Fixnum]
+        attr_accessor :dynamic_feed_id
+      
+        # Optional. Name of this dynamic feed. It is defaulted to content source file
+        # name if not provided.
+        # Corresponds to the JSON property `dynamicFeedName`
+        # @return [String]
+        attr_accessor :dynamic_feed_name
+      
+        # Contains the element of the dynamic feed.
+        # Corresponds to the JSON property `element`
+        # @return [Google::Apis::DfareportingV4::Element]
+        attr_accessor :element
+      
+        # Contains the ingestion status of the dynamic feed. Feed ingestion is an
+        # asynchronous process. If the feed create request is successful, feed ingestion
+        # will be processed in the background, including validation, assets retrieval,
+        # and saving the data from the resource link. The processing time is dependent
+        # on the data size in the resource link. This read-only status field contains
+        # the current stage of that processing and its ingestion state.
+        # Corresponds to the JSON property `feedIngestionStatus`
+        # @return [Google::Apis::DfareportingV4::FeedIngestionStatus]
+        attr_accessor :feed_ingestion_status
+      
+        # Contains the schedule of the dynamic feed.
+        # Corresponds to the JSON property `feedSchedule`
+        # @return [Google::Apis::DfareportingV4::FeedSchedule]
+        attr_accessor :feed_schedule
+      
+        # Output only. Indicates whether the dynamic feed has a published version. This
+        # is a read-only field.
+        # Corresponds to the JSON property `hasPublished`
+        # @return [Boolean]
+        attr_accessor :has_published
+        alias_method :has_published?, :has_published
+      
+        # Modification timestamp.
+        # Corresponds to the JSON property `lastModifiedInfo`
+        # @return [Google::Apis::DfareportingV4::LastModifiedInfo]
+        attr_accessor :last_modified_info
+      
+        # Output only. The status of the feed. It is a read-only field that depends on
+        # the the feed ingestion status. The default value is INACTIVE, and it will be
+        # updated to ACTIVE once the feed is ingested successfully.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Required. Advertiser ID of this dynamic feed. This is a required field.
+        # Corresponds to the JSON property `studioAdvertiserId`
+        # @return [Fixnum]
+        attr_accessor :studio_advertiser_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_source = args[:content_source] if args.key?(:content_source)
+          @create_info = args[:create_info] if args.key?(:create_info)
+          @dynamic_feed_id = args[:dynamic_feed_id] if args.key?(:dynamic_feed_id)
+          @dynamic_feed_name = args[:dynamic_feed_name] if args.key?(:dynamic_feed_name)
+          @element = args[:element] if args.key?(:element)
+          @feed_ingestion_status = args[:feed_ingestion_status] if args.key?(:feed_ingestion_status)
+          @feed_schedule = args[:feed_schedule] if args.key?(:feed_schedule)
+          @has_published = args[:has_published] if args.key?(:has_published)
+          @last_modified_info = args[:last_modified_info] if args.key?(:last_modified_info)
+          @status = args[:status] if args.key?(:status)
+          @studio_advertiser_id = args[:studio_advertiser_id] if args.key?(:studio_advertiser_id)
+        end
+      end
+      
+      # Dynamic profile ID is required for dynamic feed insert as the current GPA API
+      # only can create a dynamic feed under profile context,even though the dynnamic
+      # feed itself don't need the dynamic profile id. See go/cm3-dco-display-api-
+      # interface
+      class DynamicFeedsInsertRequest
+        include Google::Apis::Core::Hashable
+      
+        # Contains dynamic feed information.
+        # Corresponds to the JSON property `dynamicFeed`
+        # @return [Google::Apis::DfareportingV4::DynamicFeed]
+        attr_accessor :dynamic_feed
+      
+        # Required. Dynamic profile ID of the inserted dynamic feed.
+        # Corresponds to the JSON property `dynamicProfileId`
+        # @return [Fixnum]
+        attr_accessor :dynamic_profile_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dynamic_feed = args[:dynamic_feed] if args.key?(:dynamic_feed)
+          @dynamic_profile_id = args[:dynamic_profile_id] if args.key?(:dynamic_profile_id)
+        end
+      end
+      
+      # Contains dynamic profile information.
+      class DynamicProfile
+        include Google::Apis::Core::Hashable
+      
+        # Contains dynamic profile version information.
+        # Corresponds to the JSON property `active`
+        # @return [Google::Apis::DfareportingV4::DynamicProfileVersion]
+        attr_accessor :active
+      
+        # Optional. Archive status of this dynamic profile.
+        # Corresponds to the JSON property `archiveStatus`
+        # @return [String]
+        attr_accessor :archive_status
+      
+        # Modification timestamp.
+        # Corresponds to the JSON property `createInfo`
+        # @return [Google::Apis::DfareportingV4::LastModifiedInfo]
+        attr_accessor :create_info
+      
+        # Optional. Description of this dynamic profile.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Contains dynamic profile version information.
+        # Corresponds to the JSON property `draft`
+        # @return [Google::Apis::DfareportingV4::DynamicProfileVersion]
+        attr_accessor :draft
+      
+        # Output only. Unique ID of this dynamic profile. This is a read-only, auto-
+        # generated field.
+        # Corresponds to the JSON property `dynamicProfileId`
+        # @return [Fixnum]
+        attr_accessor :dynamic_profile_id
+      
+        # Output only. Identifies what kind of resource this is. Value: the fixed string
+        # "dfareporting#dynamicProfile".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Modification timestamp.
+        # Corresponds to the JSON property `lastModifiedInfo`
+        # @return [Google::Apis::DfareportingV4::LastModifiedInfo]
+        attr_accessor :last_modified_info
+      
+        # Required. Identifier. Name of this dynamic profile. This is a required field
+        # and must be less than 256 characters long.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Status of this dynamic profile.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Required. Advertiser ID of this dynamic profile. This is a required field on
+        # insertion.
+        # Corresponds to the JSON property `studioAdvertiserId`
+        # @return [Fixnum]
+        attr_accessor :studio_advertiser_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active = args[:active] if args.key?(:active)
+          @archive_status = args[:archive_status] if args.key?(:archive_status)
+          @create_info = args[:create_info] if args.key?(:create_info)
+          @description = args[:description] if args.key?(:description)
+          @draft = args[:draft] if args.key?(:draft)
+          @dynamic_profile_id = args[:dynamic_profile_id] if args.key?(:dynamic_profile_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @last_modified_info = args[:last_modified_info] if args.key?(:last_modified_info)
+          @name = args[:name] if args.key?(:name)
+          @status = args[:status] if args.key?(:status)
+          @studio_advertiser_id = args[:studio_advertiser_id] if args.key?(:studio_advertiser_id)
+        end
+      end
+      
+      # Contains dynamic profile specific settings for an associated dynamic feed.
+      class DynamicProfileFeedSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Dynamic feed ID associated with dynamic profile version.
+        # Corresponds to the JSON property `dynamicFeedId`
+        # @return [Fixnum]
+        attr_accessor :dynamic_feed_id
+      
+        # Contains dynamic rules information.
+        # Corresponds to the JSON property `dynamicRules`
+        # @return [Google::Apis::DfareportingV4::DynamicRules]
+        attr_accessor :dynamic_rules
+      
+        # Optional. The number of this dynamic feed rows needed by the dynamic profile,
+        # default value is 1. Acceptable values are between 1 to 99, inclusive.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dynamic_feed_id = args[:dynamic_feed_id] if args.key?(:dynamic_feed_id)
+          @dynamic_rules = args[:dynamic_rules] if args.key?(:dynamic_rules)
+          @quantity = args[:quantity] if args.key?(:quantity)
+        end
+      end
+      
+      # Contains dynamic profile version information.
+      class DynamicProfileVersion
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Associated dynamic feeds and their settings (including dynamic rules)
+        # for this dynamic profile version.
+        # Corresponds to the JSON property `dynamicProfileFeedSettings`
+        # @return [Array<Google::Apis::DfareportingV4::DynamicProfileFeedSettings>]
+        attr_accessor :dynamic_profile_feed_settings
+      
+        # Output only. Version ID of this dynamic profile version. This is a read-only,
+        # auto-generated field. -1 for draft version, 0+ for published versions.
+        # Corresponds to the JSON property `versionId`
+        # @return [Fixnum]
+        attr_accessor :version_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dynamic_profile_feed_settings = args[:dynamic_profile_feed_settings] if args.key?(:dynamic_profile_feed_settings)
+          @version_id = args[:version_id] if args.key?(:version_id)
+        end
+      end
+      
+      # Contains dynamic rules information.
+      class DynamicRules
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of field IDs in this element that should be auto-targeted.
+        # Applicable when rule type is AUTO.
+        # Corresponds to the JSON property `autoTargetedFieldIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :auto_targeted_field_ids
+      
+        # Optional. The custom rules of the dynamic feed, only applicable when rule type
+        # is CUSTOM.
+        # Corresponds to the JSON property `customRules`
+        # @return [Array<Google::Apis::DfareportingV4::CustomRule>]
+        attr_accessor :custom_rules
+      
+        # Optional. Mapping between field ID and custom key that are used to match for
+        # auto filtering.
+        # Corresponds to the JSON property `customValueFields`
+        # @return [Array<Google::Apis::DfareportingV4::CustomValueField>]
+        attr_accessor :custom_value_fields
+      
+        # Contains proximity filter information.
+        # Corresponds to the JSON property `proximityFilter`
+        # @return [Google::Apis::DfareportingV4::ProximityFilter]
+        attr_accessor :proximity_filter
+      
+        # Optional. The link between an element field ID and a list of user attribute
+        # IDs.
+        # Corresponds to the JSON property `remarketingValueAttributes`
+        # @return [Array<Google::Apis::DfareportingV4::RemarketingValueAttribute>]
+        attr_accessor :remarketing_value_attributes
+      
+        # Optional. The rotation type to select from eligible rows. Rotation type only
+        # apply when the filtering rule results in more than one eligible rows.
+        # Corresponds to the JSON property `rotationType`
+        # @return [String]
+        attr_accessor :rotation_type
+      
+        # Optional. The type of the rule, the default value is OPEN.
+        # Corresponds to the JSON property `ruleType`
+        # @return [String]
+        attr_accessor :rule_type
+      
+        # Optional. The field ID for the feed that will be used for weighted rotation,
+        # only applicable when rotation type is WEIGHTED.
+        # Corresponds to the JSON property `weightFieldId`
+        # @return [Fixnum]
+        attr_accessor :weight_field_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_targeted_field_ids = args[:auto_targeted_field_ids] if args.key?(:auto_targeted_field_ids)
+          @custom_rules = args[:custom_rules] if args.key?(:custom_rules)
+          @custom_value_fields = args[:custom_value_fields] if args.key?(:custom_value_fields)
+          @proximity_filter = args[:proximity_filter] if args.key?(:proximity_filter)
+          @remarketing_value_attributes = args[:remarketing_value_attributes] if args.key?(:remarketing_value_attributes)
+          @rotation_type = args[:rotation_type] if args.key?(:rotation_type)
+          @rule_type = args[:rule_type] if args.key?(:rule_type)
+          @weight_field_id = args[:weight_field_id] if args.key?(:weight_field_id)
+        end
+      end
+      
       # Contains properties of a dynamic targeting key. Dynamic targeting keys are
       # unique, user-friendly labels, created at the advertiser level in DCM, that can
       # be assigned to ads, creatives, and placements and used for targeting with
@@ -5860,6 +6355,101 @@ module Google
         def update!(**args)
           @dynamic_targeting_keys = args[:dynamic_targeting_keys] if args.key?(:dynamic_targeting_keys)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # Contains the element of the dynamic feed.
+      class Element
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The field ID to specify the active field in the feed.
+        # Corresponds to the JSON property `activeFieldId`
+        # @return [Fixnum]
+        attr_accessor :active_field_id
+      
+        # Modification timestamp.
+        # Corresponds to the JSON property `createInfo`
+        # @return [Google::Apis::DfareportingV4::LastModifiedInfo]
+        attr_accessor :create_info
+      
+        # Optional. The field ID to specify the field that represents the default field
+        # in the feed.
+        # Corresponds to the JSON property `defaultFieldId`
+        # @return [Fixnum]
+        attr_accessor :default_field_id
+      
+        # Optional. The name of the element. It is defaulted to resource file name if
+        # not provided.
+        # Corresponds to the JSON property `elementName`
+        # @return [String]
+        attr_accessor :element_name
+      
+        # Optional. The field ID to specify the field that represents the end timestamp.
+        # Only applicable if you're planning to use scheduling in your dynamic creative.
+        # Corresponds to the JSON property `endTimestampFieldId`
+        # @return [Fixnum]
+        attr_accessor :end_timestamp_field_id
+      
+        # Required. The field ID to specify the field used for uniquely identifying the
+        # feed row. This is a required field.
+        # Corresponds to the JSON property `externalIdFieldId`
+        # @return [Fixnum]
+        attr_accessor :external_id_field_id
+      
+        # Required. The list of fields of the element. The field order and name should
+        # match the meta data in the content source source.
+        # Corresponds to the JSON property `feedFields`
+        # @return [Array<Google::Apis::DfareportingV4::FeedField>]
+        attr_accessor :feed_fields
+      
+        # Optional. Whether the start and end timestamp is local timestamp. The default
+        # value is false which means start and end timestamp is in UTC.
+        # Corresponds to the JSON property `isLocalTimestamp`
+        # @return [Boolean]
+        attr_accessor :is_local_timestamp
+        alias_method :is_local_timestamp?, :is_local_timestamp
+      
+        # Modification timestamp.
+        # Corresponds to the JSON property `lastModifiedInfo`
+        # @return [Google::Apis::DfareportingV4::LastModifiedInfo]
+        attr_accessor :last_modified_info
+      
+        # Optional. The field ID that specify field used for proximity targeting.
+        # Corresponds to the JSON property `proximityTargetingFieldId`
+        # @return [Fixnum]
+        attr_accessor :proximity_targeting_field_id
+      
+        # Required. The field ID to specify the field used for dynamic reporting in
+        # Campaign Manager 360.
+        # Corresponds to the JSON property `reportingLabelFieldId`
+        # @return [Fixnum]
+        attr_accessor :reporting_label_field_id
+      
+        # Optional. The field ID to specify the field that represents the start
+        # timestamp. Only applicable if you're planning to use scheduling in your
+        # dynamic creative.
+        # Corresponds to the JSON property `startTimestampFieldId`
+        # @return [Fixnum]
+        attr_accessor :start_timestamp_field_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_field_id = args[:active_field_id] if args.key?(:active_field_id)
+          @create_info = args[:create_info] if args.key?(:create_info)
+          @default_field_id = args[:default_field_id] if args.key?(:default_field_id)
+          @element_name = args[:element_name] if args.key?(:element_name)
+          @end_timestamp_field_id = args[:end_timestamp_field_id] if args.key?(:end_timestamp_field_id)
+          @external_id_field_id = args[:external_id_field_id] if args.key?(:external_id_field_id)
+          @feed_fields = args[:feed_fields] if args.key?(:feed_fields)
+          @is_local_timestamp = args[:is_local_timestamp] if args.key?(:is_local_timestamp)
+          @last_modified_info = args[:last_modified_info] if args.key?(:last_modified_info)
+          @proximity_targeting_field_id = args[:proximity_targeting_field_id] if args.key?(:proximity_targeting_field_id)
+          @reporting_label_field_id = args[:reporting_label_field_id] if args.key?(:reporting_label_field_id)
+          @start_timestamp_field_id = args[:start_timestamp_field_id] if args.key?(:start_timestamp_field_id)
         end
       end
       
@@ -6095,6 +6685,262 @@ module Google
         def update!(**args)
           @event_tags = args[:event_tags] if args.key?(:event_tags)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # Each field of the element. This is a required field.
+      class FeedField
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The default value of the field.
+        # Corresponds to the JSON property `defaultValue`
+        # @return [String]
+        attr_accessor :default_value
+      
+        # Optional. Whether the field is filterable. Could be set as true when the field
+        # type is any of the following and is not renderable: - STRING - BOOL -
+        # COUNTRY_CODE_ISO - CM360_SITE_ID - CM360_KEYWORD - CM360_CREATIVE_ID -
+        # CM360_PLACEMENT_ID - CM360_AD_ID - CM360_ADVERTISER_ID - CM360_CAMPAIGN_ID -
+        # CITY - REGION - POSTAL_CODE - METRO - CUSTOM_VALUE - REMARKETING_VALUE -
+        # GEO_CANONICAL - STRING_LIST - CREATIVE_DIMENSION - USERLIST_ID -
+        # CM360_DYNAMIC_TARGETING_KEY - DV360_LINE_ITEM_ID
+        # Corresponds to the JSON property `filterable`
+        # @return [Boolean]
+        attr_accessor :filterable
+        alias_method :filterable?, :filterable
+      
+        # Required. The ID of the field. The ID is based on the column index starting
+        # from 0, and it should match the column index in the resource link.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Required. The name of the field.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Whether the field is able to display. Could be set as true when the
+        # field type is not in any of the following and the field is not filterable: -
+        # COUNTRY_CODE_ISO - CITY - REGION - POSTAL_CODE - METRO - GEO_CANONICAL -
+        # USERLIST_ID - CONTEXTUAL_KEYWORD - CM360_DYNAMIC_TARGETING_KEY - WEIGHT
+        # Corresponds to the JSON property `renderable`
+        # @return [Boolean]
+        attr_accessor :renderable
+        alias_method :renderable?, :renderable
+      
+        # Optional. Whether the field is required and should not be empty in the feed.
+        # Could be set as true when the field type is any of the following: -
+        # GPA_SERVED_IMAGE_URL - GPA_SERVED_ASSET_URL - ASSET_LIBRARY_HANDLE -
+        # ASSET_LIBRARY_VIDEO_HANDLE - ASSET_LIBRARY_DIRECTORY_HANDLE
+        # Corresponds to the JSON property `required`
+        # @return [Boolean]
+        attr_accessor :required
+        alias_method :required?, :required
+      
+        # Required. The type of the field.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_value = args[:default_value] if args.key?(:default_value)
+          @filterable = args[:filterable] if args.key?(:filterable)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @renderable = args[:renderable] if args.key?(:renderable)
+          @required = args[:required] if args.key?(:required)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Contains the ingestion status of the dynamic feed. Feed ingestion is an
+      # asynchronous process. If the feed create request is successful, feed ingestion
+      # will be processed in the background, including validation, assets retrieval,
+      # and saving the data from the resource link. The processing time is dependent
+      # on the data size in the resource link. This read-only status field contains
+      # the current stage of that processing and its ingestion state.
+      class FeedIngestionStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The ingestion error records of the feed.
+        # Corresponds to the JSON property `ingestionErrorRecords`
+        # @return [Array<Google::Apis::DfareportingV4::IngestionErrorRecord>]
+        attr_accessor :ingestion_error_records
+      
+        # Contains the ingestion status of the dynamic feed.
+        # Corresponds to the JSON property `ingestionStatus`
+        # @return [Google::Apis::DfareportingV4::IngestionStatus]
+        attr_accessor :ingestion_status
+      
+        # Output only. The processing state of the feed.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ingestion_error_records = args[:ingestion_error_records] if args.key?(:ingestion_error_records)
+          @ingestion_status = args[:ingestion_status] if args.key?(:ingestion_status)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Contains the schedule of the dynamic feed.
+      class FeedSchedule
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The number of times the feed retransforms within one day. This is a
+        # required field if the schedule is enabled. Acceptable values are between 1 to
+        # 6, inclusive.
+        # Corresponds to the JSON property `repeatValue`
+        # @return [Fixnum]
+        attr_accessor :repeat_value
+      
+        # Optional. Whether the schedule is enabled.
+        # Corresponds to the JSON property `scheduleEnabled`
+        # @return [Boolean]
+        attr_accessor :schedule_enabled
+        alias_method :schedule_enabled?, :schedule_enabled
+      
+        # Optional. The hour of the day to start the feed. It is applicable if the
+        # repeat value is equal to 1. Default value is 0.
+        # Corresponds to the JSON property `startHour`
+        # @return [String]
+        attr_accessor :start_hour
+      
+        # Optional. The minute of the hour to start the feed. It is applicable if the
+        # repeat value is equal to 1. Default value is 0.
+        # Corresponds to the JSON property `startMinute`
+        # @return [String]
+        attr_accessor :start_minute
+      
+        # Optional. The time zone to schedule the feed. It is applicable if the repeat
+        # value is equal to 1. Default value is "America/Los_Angeles".
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @repeat_value = args[:repeat_value] if args.key?(:repeat_value)
+          @schedule_enabled = args[:schedule_enabled] if args.key?(:schedule_enabled)
+          @start_hour = args[:start_hour] if args.key?(:start_hour)
+          @start_minute = args[:start_minute] if args.key?(:start_minute)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
+        end
+      end
+      
+      # Contains the field error of the dynamic feed.
+      class FieldError
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The ID of the field.
+        # Corresponds to the JSON property `fieldId`
+        # @return [Fixnum]
+        attr_accessor :field_id
+      
+        # Output only. The name of the field.
+        # Corresponds to the JSON property `fieldName`
+        # @return [String]
+        attr_accessor :field_name
+      
+        # Output only. The list of values of the field.
+        # Corresponds to the JSON property `fieldValues`
+        # @return [Array<String>]
+        attr_accessor :field_values
+      
+        # Output only. The ingestion error of the field.
+        # Corresponds to the JSON property `ingestionError`
+        # @return [String]
+        attr_accessor :ingestion_error
+      
+        # Output only. Incidcates whether the field has error or warning.
+        # Corresponds to the JSON property `isError`
+        # @return [Boolean]
+        attr_accessor :is_error
+        alias_method :is_error?, :is_error
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_id = args[:field_id] if args.key?(:field_id)
+          @field_name = args[:field_name] if args.key?(:field_name)
+          @field_values = args[:field_values] if args.key?(:field_values)
+          @ingestion_error = args[:ingestion_error] if args.key?(:ingestion_error)
+          @is_error = args[:is_error] if args.key?(:is_error)
+        end
+      end
+      
+      # Contains field filter information.
+      class FieldFilter
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The boolean values, only applicable when rhs_value_type is BOOL.
+        # Corresponds to the JSON property `boolValue`
+        # @return [Boolean]
+        attr_accessor :bool_value
+        alias_method :bool_value?, :bool_value
+      
+        # Contains dependent field value information.
+        # Corresponds to the JSON property `dependentFieldValue`
+        # @return [Google::Apis::DfareportingV4::DependentFieldValue]
+        attr_accessor :dependent_field_value
+      
+        # Optional. The field ID on the left hand side of the expression.
+        # Corresponds to the JSON property `fieldId`
+        # @return [Fixnum]
+        attr_accessor :field_id
+      
+        # Optional. Left hand side of the expression match type.
+        # Corresponds to the JSON property `matchType`
+        # @return [String]
+        attr_accessor :match_type
+      
+        # Contains request value information.
+        # Corresponds to the JSON property `requestValue`
+        # @return [Google::Apis::DfareportingV4::RequestValue]
+        attr_accessor :request_value
+      
+        # Optional. The string value, only applicable when rhs_value_type is STRING.
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        # Optional. Right hand side of the expression.
+        # Corresponds to the JSON property `valueType`
+        # @return [String]
+        attr_accessor :value_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @dependent_field_value = args[:dependent_field_value] if args.key?(:dependent_field_value)
+          @field_id = args[:field_id] if args.key?(:field_id)
+          @match_type = args[:match_type] if args.key?(:match_type)
+          @request_value = args[:request_value] if args.key?(:request_value)
+          @string_value = args[:string_value] if args.key?(:string_value)
+          @value_type = args[:value_type] if args.key?(:value_type)
         end
       end
       
@@ -7110,6 +7956,75 @@ module Google
           @metros = args[:metros] if args.key?(:metros)
           @postal_codes = args[:postal_codes] if args.key?(:postal_codes)
           @regions = args[:regions] if args.key?(:regions)
+        end
+      end
+      
+      # Contains the ingestion error record of the dynamic feed. limited to 100
+      # records.
+      class IngestionErrorRecord
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The list of field errors of the ingestion error record.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::DfareportingV4::FieldError>]
+        attr_accessor :errors
+      
+        # Output only. The record ID of the ingestion error record.
+        # Corresponds to the JSON property `recordId`
+        # @return [String]
+        attr_accessor :record_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @errors = args[:errors] if args.key?(:errors)
+          @record_id = args[:record_id] if args.key?(:record_id)
+        end
+      end
+      
+      # Contains the ingestion status of the dynamic feed.
+      class IngestionStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The number of active rows in the feed.
+        # Corresponds to the JSON property `numActiveRows`
+        # @return [Fixnum]
+        attr_accessor :num_active_rows
+      
+        # Output only. The number of rows processed in the feed.
+        # Corresponds to the JSON property `numRowsProcessed`
+        # @return [Fixnum]
+        attr_accessor :num_rows_processed
+      
+        # Output only. The total number of rows in the feed.
+        # Corresponds to the JSON property `numRowsTotal`
+        # @return [Fixnum]
+        attr_accessor :num_rows_total
+      
+        # Output only. The number of rows with errors in the feed.
+        # Corresponds to the JSON property `numRowsWithErrors`
+        # @return [Fixnum]
+        attr_accessor :num_rows_with_errors
+      
+        # Output only. The total number of warnings in the feed.
+        # Corresponds to the JSON property `numWarningsTotal`
+        # @return [Fixnum]
+        attr_accessor :num_warnings_total
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @num_active_rows = args[:num_active_rows] if args.key?(:num_active_rows)
+          @num_rows_processed = args[:num_rows_processed] if args.key?(:num_rows_processed)
+          @num_rows_total = args[:num_rows_total] if args.key?(:num_rows_total)
+          @num_rows_with_errors = args[:num_rows_with_errors] if args.key?(:num_rows_with_errors)
+          @num_warnings_total = args[:num_warnings_total] if args.key?(:num_warnings_total)
         end
       end
       
@@ -10141,6 +11056,43 @@ module Google
         end
       end
       
+      # Contains proximity filter information.
+      class ProximityFilter
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Field ID in the element.
+        # Corresponds to the JSON property `fieldId`
+        # @return [Fixnum]
+        attr_accessor :field_id
+      
+        # Optional. The radius bucket type of the proximity filter
+        # Corresponds to the JSON property `radiusBucketType`
+        # @return [String]
+        attr_accessor :radius_bucket_type
+      
+        # Optional. The units of the radius value
+        # Corresponds to the JSON property `radiusUnitType`
+        # @return [String]
+        attr_accessor :radius_unit_type
+      
+        # Optional. Radius length in units defined by radius_units.
+        # Corresponds to the JSON property `radiusValue`
+        # @return [Fixnum]
+        attr_accessor :radius_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_id = args[:field_id] if args.key?(:field_id)
+          @radius_bucket_type = args[:radius_bucket_type] if args.key?(:radius_bucket_type)
+          @radius_unit_type = args[:radius_unit_type] if args.key?(:radius_unit_type)
+          @radius_value = args[:radius_value] if args.key?(:radius_value)
+        end
+      end
+      
       # Represents fields that are compatible to be selected for a report of type "
       # REACH".
       class ReachReportCompatibleFields
@@ -10477,6 +11429,31 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @remarketing_lists = args[:remarketing_lists] if args.key?(:remarketing_lists)
+        end
+      end
+      
+      # Contains remarketing value attribute information.
+      class RemarketingValueAttribute
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Field ID in the element.
+        # Corresponds to the JSON property `fieldId`
+        # @return [Fixnum]
+        attr_accessor :field_id
+      
+        # Optional. Remarketing user attribute IDs for auto filtering.
+        # Corresponds to the JSON property `userAttributeIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :user_attribute_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_id = args[:field_id] if args.key?(:field_id)
+          @user_attribute_ids = args[:user_attribute_ids] if args.key?(:user_attribute_ids)
         end
       end
       
@@ -11317,6 +12294,40 @@ module Google
         end
       end
       
+      # Contains request value information.
+      class RequestValue
+        include Google::Apis::Core::Hashable
+      
+        # Optional. User attribute IDs in the request that should be excluded. Used only
+        # when the field type is REMARKETING_VALUE or USER_ATTRIBUTE_ID.
+        # Corresponds to the JSON property `excludeFromUserAttributeIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :exclude_from_user_attribute_ids
+      
+        # Optional. Custom key in the request. Used only when the field type is
+        # CUSTOM_VALUE.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Optional. User attribute IDs in the request. Used only when the field type is
+        # REMARKETING_VALUE or USER_ATTRIBUTE_ID.
+        # Corresponds to the JSON property `userAttributeIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :user_attribute_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclude_from_user_attribute_ids = args[:exclude_from_user_attribute_ids] if args.key?(:exclude_from_user_attribute_ids)
+          @key = args[:key] if args.key?(:key)
+          @user_attribute_ids = args[:user_attribute_ids] if args.key?(:user_attribute_ids)
+        end
+      end
+      
       # Rich Media Exit Override.
       class RichMediaExitOverride
         include Google::Apis::Core::Hashable
@@ -11382,6 +12393,25 @@ module Google
           @asset_id = args[:asset_id] if args.key?(:asset_id)
           @name = args[:name] if args.key?(:name)
           @targeting_template_id = args[:targeting_template_id] if args.key?(:targeting_template_id)
+        end
+      end
+      
+      # Contains a list of field filters that the given custom rule will apply.
+      class RuleBlock
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of non-auto field filters
+        # Corresponds to the JSON property `fieldFilter`
+        # @return [Array<Google::Apis::DfareportingV4::FieldFilter>]
+        attr_accessor :field_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_filter = args[:field_filter] if args.key?(:field_filter)
         end
       end
       

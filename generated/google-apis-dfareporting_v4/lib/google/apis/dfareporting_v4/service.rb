@@ -3709,6 +3709,156 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets a dynamic feed by ID.
+        # @param [Fixnum] dynamic_feed_id
+        #   Required. Dynamic feed ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DfareportingV4::DynamicFeed] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DfareportingV4::DynamicFeed]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_dynamic_feed(dynamic_feed_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'studio/dynamicFeeds/{+dynamicFeedId}', options)
+          command.response_representation = Google::Apis::DfareportingV4::DynamicFeed::Representation
+          command.response_class = Google::Apis::DfareportingV4::DynamicFeed
+          command.params['dynamicFeedId'] = dynamic_feed_id unless dynamic_feed_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Inserts a new dynamic feed.
+        # @param [Google::Apis::DfareportingV4::DynamicFeedsInsertRequest] dynamic_feeds_insert_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DfareportingV4::DynamicFeed] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DfareportingV4::DynamicFeed]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_dynamic_feed(dynamic_feeds_insert_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'studio/dynamicFeeds', options)
+          command.request_representation = Google::Apis::DfareportingV4::DynamicFeedsInsertRequest::Representation
+          command.request_object = dynamic_feeds_insert_request_object
+          command.response_representation = Google::Apis::DfareportingV4::DynamicFeed::Representation
+          command.response_class = Google::Apis::DfareportingV4::DynamicFeed
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a dynamic profile by ID.
+        # @param [Fixnum] dynamic_profile_id
+        #   Required. Dynamic profile ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DfareportingV4::DynamicProfile] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DfareportingV4::DynamicProfile]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_dynamic_profile(dynamic_profile_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'studio/dynamicProfiles/{+dynamicProfileId}', options)
+          command.response_representation = Google::Apis::DfareportingV4::DynamicProfile::Representation
+          command.response_class = Google::Apis::DfareportingV4::DynamicProfile
+          command.params['dynamicProfileId'] = dynamic_profile_id unless dynamic_profile_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Inserts a new dynamic profile.
+        # @param [Google::Apis::DfareportingV4::DynamicProfile] dynamic_profile_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DfareportingV4::DynamicProfile] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DfareportingV4::DynamicProfile]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_dynamic_profile(dynamic_profile_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'studio/dynamicProfiles', options)
+          command.request_representation = Google::Apis::DfareportingV4::DynamicProfile::Representation
+          command.request_object = dynamic_profile_object
+          command.response_representation = Google::Apis::DfareportingV4::DynamicProfile::Representation
+          command.response_class = Google::Apis::DfareportingV4::DynamicProfile
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing dynamic profile.
+        # @param [Google::Apis::DfareportingV4::DynamicProfile] dynamic_profile_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DfareportingV4::DynamicProfile] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DfareportingV4::DynamicProfile]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_dynamic_profile(dynamic_profile_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'studio/dynamicProfiles', options)
+          command.request_representation = Google::Apis::DfareportingV4::DynamicProfile::Representation
+          command.request_object = dynamic_profile_object
+          command.response_representation = Google::Apis::DfareportingV4::DynamicProfile::Representation
+          command.response_class = Google::Apis::DfareportingV4::DynamicProfile
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes an existing dynamic targeting key.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.

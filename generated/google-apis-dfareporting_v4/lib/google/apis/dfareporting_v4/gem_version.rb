@@ -16,13 +16,13 @@ module Google
   module Apis
     module DfareportingV4
       # Version of the google-apis-dfareporting_v4 gem
-      GEM_VERSION = "0.21.0"
+      GEM_VERSION = "0.22.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.18.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20250602"
+      REVISION = "20250722"
     end
   end
 end
