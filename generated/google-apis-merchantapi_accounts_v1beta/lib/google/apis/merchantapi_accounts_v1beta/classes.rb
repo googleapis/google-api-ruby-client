@@ -87,8 +87,9 @@ module Google
         end
       end
       
-      # Describes the [accepted terms of service](/merchant/api/guides/accounts/create-
-      # and-configure#accept_the_merchant_center_terms_of_service).
+      # Describes the [accepted terms of service](https://developers.google.com/
+      # merchant/api/guides/accounts/create-and-configure#
+      # accept_the_merchant_center_terms_of_service).
       class Accepted
         include Google::Apis::Core::Hashable
       
@@ -1016,8 +1017,9 @@ module Google
         # @return [Google::Apis::MerchantapiAccountsV1beta::UriSettings]
         attr_accessor :effective_uri_settings
       
-        # Optional. The destinations to which the checkout program applies, valid
-        # destination values are `SHOPPING_ADS`, `FREE_LISTINGS`
+        # Optional. The destinations (also known as [Marketing methods](https://support.
+        # google.com/merchants/answer/15130232)) to which the checkout program applies,
+        # valid destination values are `SHOPPING_ADS`, `FREE_LISTINGS`
         # Corresponds to the JSON property `eligibleDestinations`
         # @return [Array<String>]
         attr_accessor :eligible_destinations
@@ -4074,8 +4076,9 @@ module Google
       class TermsOfServiceAgreementState
         include Google::Apis::Core::Hashable
       
-        # Describes the [accepted terms of service](/merchant/api/guides/accounts/create-
-        # and-configure#accept_the_merchant_center_terms_of_service).
+        # Describes the [accepted terms of service](https://developers.google.com/
+        # merchant/api/guides/accounts/create-and-configure#
+        # accept_the_merchant_center_terms_of_service).
         # Corresponds to the JSON property `accepted`
         # @return [Google::Apis::MerchantapiAccountsV1beta::Accepted]
         attr_accessor :accepted
@@ -4443,8 +4446,7 @@ module Google
         # @return [String]
         attr_accessor :carrier_service
       
-        # Required. Warehouse name. This should match [warehouse](/merchant/api/
-        # reference/rest/accounts_v1beta/accounts.shippingSettings#warehouse)
+        # Required. Warehouse name. This should match warehouse.
         # Corresponds to the JSON property `warehouse`
         # @return [String]
         attr_accessor :warehouse
