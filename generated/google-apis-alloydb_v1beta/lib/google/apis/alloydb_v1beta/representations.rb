@@ -448,6 +448,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StageSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StageStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -478,6 +484,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageDatabasecenterPartnerapiV1mainBackupDrConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainBackupRun
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -485,6 +497,12 @@ module Google
       end
       
       class StorageDatabasecenterPartnerapiV1mainCompliance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1467,10 +1485,22 @@ module Google
         end
       end
       
+      class StageSchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :actual_end_time, as: 'actualEndTime'
+          property :actual_start_time, as: 'actualStartTime'
+          property :estimated_end_time, as: 'estimatedEndTime'
+          property :estimated_start_time, as: 'estimatedStartTime'
+        end
+      end
+      
       class StageStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :read_pool_instances_upgrade, as: 'readPoolInstancesUpgrade', class: Google::Apis::AlloydbV1beta::ReadPoolInstancesUpgradeStageStatus, decorator: Google::Apis::AlloydbV1beta::ReadPoolInstancesUpgradeStageStatus::Representation
+      
+          property :schedule, as: 'schedule', class: Google::Apis::AlloydbV1beta::StageSchedule, decorator: Google::Apis::AlloydbV1beta::StageSchedule::Representation
       
           property :stage, as: 'stage'
           property :state, as: 'state'
@@ -1517,6 +1547,13 @@ module Google
         end
       end
       
+      class StorageDatabasecenterPartnerapiV1mainBackupDrConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backupdr_managed, as: 'backupdrManaged'
+        end
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainBackupRun
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1536,6 +1573,18 @@ module Google
         end
       end
       
+      class StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :full_resource_name, as: 'fullResourceName'
+          property :last_refresh_time, as: 'lastRefreshTime'
+          property :resource_id, as: 'resourceId', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
+      
+          property :signal_bool_value, as: 'signalBoolValue'
+          property :signal_type, as: 'signalType'
+        end
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainCustomMetadataData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1547,6 +1596,8 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :config_based_signal_data, as: 'configBasedSignalData', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData::Representation
+      
           property :feed_timestamp, as: 'feedTimestamp'
           property :feed_type, as: 'feedType'
           property :observability_metric_data, as: 'observabilityMetricData', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainObservabilityMetricData, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainObservabilityMetricData::Representation
@@ -1602,6 +1653,8 @@ module Google
           property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupConfiguration, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupConfiguration::Representation
       
           property :backup_run, as: 'backupRun', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupRun, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupRun::Representation
+      
+          property :backupdr_configuration, as: 'backupdrConfiguration', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupDrConfiguration, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupDrConfiguration::Representation
       
           property :creation_time, as: 'creationTime'
           property :current_state, as: 'currentState'
@@ -1740,6 +1793,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :engine, as: 'engine'
+          property :minor_version, as: 'minorVersion'
           property :type, as: 'type'
           property :version, as: 'version'
         end

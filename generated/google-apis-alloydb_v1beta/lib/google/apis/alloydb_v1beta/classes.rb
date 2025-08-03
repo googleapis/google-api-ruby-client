@@ -3244,6 +3244,43 @@ module Google
         end
       end
       
+      # Timing information for the stage execution.
+      class StageSchedule
+        include Google::Apis::Core::Hashable
+      
+        # Actual end time of the stage. Set only if the stage has completed.
+        # Corresponds to the JSON property `actualEndTime`
+        # @return [String]
+        attr_accessor :actual_end_time
+      
+        # Actual start time of the stage. Set only if the stage has started.
+        # Corresponds to the JSON property `actualStartTime`
+        # @return [String]
+        attr_accessor :actual_start_time
+      
+        # When the stage is expected to end. Set only if the stage has not completed yet.
+        # Corresponds to the JSON property `estimatedEndTime`
+        # @return [String]
+        attr_accessor :estimated_end_time
+      
+        # When the stage is expected to start. Set only if the stage has not started yet.
+        # Corresponds to the JSON property `estimatedStartTime`
+        # @return [String]
+        attr_accessor :estimated_start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actual_end_time = args[:actual_end_time] if args.key?(:actual_end_time)
+          @actual_start_time = args[:actual_start_time] if args.key?(:actual_start_time)
+          @estimated_end_time = args[:estimated_end_time] if args.key?(:estimated_end_time)
+          @estimated_start_time = args[:estimated_start_time] if args.key?(:estimated_start_time)
+        end
+      end
+      
       # Status of an upgrade stage.
       class StageStatus
         include Google::Apis::Core::Hashable
@@ -3252,6 +3289,11 @@ module Google
         # Corresponds to the JSON property `readPoolInstancesUpgrade`
         # @return [Google::Apis::AlloydbV1beta::ReadPoolInstancesUpgradeStageStatus]
         attr_accessor :read_pool_instances_upgrade
+      
+        # Timing information for the stage execution.
+        # Corresponds to the JSON property `schedule`
+        # @return [Google::Apis::AlloydbV1beta::StageSchedule]
+        attr_accessor :schedule
       
         # Upgrade stage.
         # Corresponds to the JSON property `stage`
@@ -3270,6 +3312,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @read_pool_instances_upgrade = args[:read_pool_instances_upgrade] if args.key?(:read_pool_instances_upgrade)
+          @schedule = args[:schedule] if args.key?(:schedule)
           @stage = args[:stage] if args.key?(:stage)
           @state = args[:state] if args.key?(:state)
         end
@@ -3439,6 +3482,27 @@ module Google
         end
       end
       
+      # BackupDRConfiguration to capture the backup and disaster recovery details of
+      # database resource.
+      class StorageDatabasecenterPartnerapiV1mainBackupDrConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # Indicates if the resource is managed by BackupDR.
+        # Corresponds to the JSON property `backupdrManaged`
+        # @return [Boolean]
+        attr_accessor :backupdr_managed
+        alias_method :backupdr_managed?, :backupdr_managed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backupdr_managed = args[:backupdr_managed] if args.key?(:backupdr_managed)
+        end
+      end
+      
       # A backup run.
       class StorageDatabasecenterPartnerapiV1mainBackupRun
         include Google::Apis::Core::Hashable
@@ -3502,6 +3566,52 @@ module Google
         end
       end
       
+      # Config based signal data. This is used to send signals to Condor which are
+      # based on the DB level configurations. These will be used to send signals for
+      # self managed databases.
+      class StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData
+        include Google::Apis::Core::Hashable
+      
+        # Required. Full Resource name of the source resource.
+        # Corresponds to the JSON property `fullResourceName`
+        # @return [String]
+        attr_accessor :full_resource_name
+      
+        # Required. Last time signal was refreshed
+        # Corresponds to the JSON property `lastRefreshTime`
+        # @return [String]
+        attr_accessor :last_refresh_time
+      
+        # DatabaseResourceId will serve as primary key for any resource ingestion event.
+        # Corresponds to the JSON property `resourceId`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
+        attr_accessor :resource_id
+      
+        # Signal data for boolean signals.
+        # Corresponds to the JSON property `signalBoolValue`
+        # @return [Boolean]
+        attr_accessor :signal_bool_value
+        alias_method :signal_bool_value?, :signal_bool_value
+      
+        # Required. Signal type of the signal
+        # Corresponds to the JSON property `signalType`
+        # @return [String]
+        attr_accessor :signal_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
+          @last_refresh_time = args[:last_refresh_time] if args.key?(:last_refresh_time)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @signal_bool_value = args[:signal_bool_value] if args.key?(:signal_bool_value)
+          @signal_type = args[:signal_type] if args.key?(:signal_type)
+        end
+      end
+      
       # Any custom metadata associated with the resource. e.g. A spanner instance can
       # have multiple databases with its own unique metadata. Information for these
       # individual databases can be captured in custom metadata data
@@ -3525,9 +3635,16 @@ module Google
       end
       
       # DatabaseResourceFeed is the top level proto to be used to ingest different
-      # database resource level events into Condor platform. Next ID: 8
+      # database resource level events into Condor platform. Next ID: 9
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed
         include Google::Apis::Core::Hashable
+      
+        # Config based signal data. This is used to send signals to Condor which are
+        # based on the DB level configurations. These will be used to send signals for
+        # self managed databases.
+        # Corresponds to the JSON property `configBasedSignalData`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData]
+        attr_accessor :config_based_signal_data
       
         # Required. Timestamp when feed is generated.
         # Corresponds to the JSON property `feedTimestamp`
@@ -3559,7 +3676,7 @@ module Google
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
         attr_accessor :resource_id
       
-        # Common model for database resource instance metadata. Next ID: 25
+        # Common model for database resource instance metadata. Next ID: 26
         # Corresponds to the JSON property `resourceMetadata`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata]
         attr_accessor :resource_metadata
@@ -3570,6 +3687,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @config_based_signal_data = args[:config_based_signal_data] if args.key?(:config_based_signal_data)
           @feed_timestamp = args[:feed_timestamp] if args.key?(:feed_timestamp)
           @feed_type = args[:feed_type] if args.key?(:feed_type)
           @observability_metric_data = args[:observability_metric_data] if args.key?(:observability_metric_data)
@@ -3743,7 +3861,7 @@ module Google
         end
       end
       
-      # Common model for database resource instance metadata. Next ID: 25
+      # Common model for database resource instance metadata. Next ID: 26
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata
         include Google::Apis::Core::Hashable
       
@@ -3761,6 +3879,12 @@ module Google
         # Corresponds to the JSON property `backupRun`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupRun]
         attr_accessor :backup_run
+      
+        # BackupDRConfiguration to capture the backup and disaster recovery details of
+        # database resource.
+        # Corresponds to the JSON property `backupdrConfiguration`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupDrConfiguration]
+        attr_accessor :backupdr_configuration
       
         # The creation time of the resource, i.e. the time when resource is created and
         # recorded in partner service.
@@ -3890,6 +4014,7 @@ module Google
           @availability_configuration = args[:availability_configuration] if args.key?(:availability_configuration)
           @backup_configuration = args[:backup_configuration] if args.key?(:backup_configuration)
           @backup_run = args[:backup_run] if args.key?(:backup_run)
+          @backupdr_configuration = args[:backupdr_configuration] if args.key?(:backupdr_configuration)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @current_state = args[:current_state] if args.key?(:current_state)
           @custom_metadata = args[:custom_metadata] if args.key?(:custom_metadata)
@@ -4296,6 +4421,13 @@ module Google
         # @return [String]
         attr_accessor :engine
       
+        # Minor version of the underlying database engine. Example values: For MySQL, it
+        # could be "8.0.32", "5.7.32" etc.. For Postgres, it could be "14.3", "15.3" etc.
+        # .
+        # Corresponds to the JSON property `minorVersion`
+        # @return [String]
+        attr_accessor :minor_version
+      
         # Type of specific database product. It could be CloudSQL, AlloyDB etc..
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -4314,6 +4446,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @engine = args[:engine] if args.key?(:engine)
+          @minor_version = args[:minor_version] if args.key?(:minor_version)
           @type = args[:type] if args.key?(:type)
           @version = args[:version] if args.key?(:version)
         end
