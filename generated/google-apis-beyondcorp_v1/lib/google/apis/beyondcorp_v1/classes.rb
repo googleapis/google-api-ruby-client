@@ -1674,7 +1674,7 @@ module Google
         end
       end
       
-      # A Beyondcorp Application resource information.
+      # The information about an application resource.
       class GoogleCloudBeyondcorpSecuritygatewaysV1Application
         include Google::Apis::Core::Hashable
       
@@ -1683,19 +1683,20 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. An arbitrary user-provided name for the Application resource. Cannot
+        # Optional. An arbitrary user-provided name for the application resource. Cannot
         # exceed 64 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
         # Required. Endpoint matchers associated with an application. A combination of
-        # hostname and ports as endpoint matcher is used to match the application. Match
-        # conditions for OR logic. An array of match conditions to allow for multiple
-        # matching criteria. The rule is considered a match if one the conditions are
-        # met. The conditions can be one of the following combination (Hostname), (
-        # Hostname & Ports) EXAMPLES: Hostname - ("*.abc.com"), ("xyz.abc.com") Hostname
-        # and Ports - ("abc.com" and "22"), ("abc.com" and "22,33") etc
+        # hostname and ports as endpoint matchers is used to match the application.
+        # Match conditions for OR logic. An array of match conditions to allow for
+        # multiple matching criteria. The rule is considered a match if one of the
+        # conditions is met. The conditions can be one of the following combinations (
+        # Hostname), (Hostname & Ports) EXAMPLES: Hostname - ("*.example.com"), ("xyz.
+        # example.com") Hostname and Ports - ("example.com" and "22"), ("example.com"
+        # and "22,33") etc
         # Corresponds to the JSON property `endpointMatchers`
         # @return [Array<Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher>]
         attr_accessor :endpoint_matchers
@@ -1923,7 +1924,7 @@ module Google
         end
       end
       
-      # Information about a BeyondCorp SecurityGateway resource.
+      # The information about a security gateway resource.
       class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway
         include Google::Apis::Core::Hashable
       
