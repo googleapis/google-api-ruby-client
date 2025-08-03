@@ -340,6 +340,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BulkListCampaignAssignedTargetingOptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BulkListInsertionOrderAssignedTargetingOptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BulkUpdateLineItemsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1126,6 +1138,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListCampaignAssignedTargetingOptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListCampaignsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1181,6 +1199,12 @@ module Google
       end
       
       class ListGuaranteedOrdersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListInsertionOrderAssignedTargetingOptionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2480,6 +2504,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :line_item_assigned_targeting_options, as: 'lineItemAssignedTargetingOptions', class: Google::Apis::DisplayvideoV2::LineItemAssignedTargetingOption, decorator: Google::Apis::DisplayvideoV2::LineItemAssignedTargetingOption::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class BulkListCampaignAssignedTargetingOptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assigned_targeting_options, as: 'assignedTargetingOptions', class: Google::Apis::DisplayvideoV2::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV2::AssignedTargetingOption::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class BulkListInsertionOrderAssignedTargetingOptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assigned_targeting_options, as: 'assignedTargetingOptions', class: Google::Apis::DisplayvideoV2::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV2::AssignedTargetingOption::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -3838,6 +3880,15 @@ module Google
         end
       end
       
+      class ListCampaignAssignedTargetingOptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assigned_targeting_options, as: 'assignedTargetingOptions', class: Google::Apis::DisplayvideoV2::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV2::AssignedTargetingOption::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListCampaignsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3923,6 +3974,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :guaranteed_orders, as: 'guaranteedOrders', class: Google::Apis::DisplayvideoV2::GuaranteedOrder, decorator: Google::Apis::DisplayvideoV2::GuaranteedOrder::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListInsertionOrderAssignedTargetingOptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assigned_targeting_options, as: 'assignedTargetingOptions', class: Google::Apis::DisplayvideoV2::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV2::AssignedTargetingOption::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
