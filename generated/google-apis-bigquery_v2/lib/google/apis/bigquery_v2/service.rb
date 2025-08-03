@@ -516,6 +516,10 @@ module Google
         #   Required. Project ID of the query job.
         # @param [String] job_id
         #   Required. Job ID of the query job.
+        # @param [String] format_options_timestamp_output_format
+        #   Optional. The API output format for a timestamp. This offers more explicit
+        #   control over the timestamp output format as compared to the existing `
+        #   use_int64_timestamp` option.
         # @param [Boolean] format_options_use_int64_timestamp
         #   Optional. Output timestamp as usec int64. Default is false.
         # @param [String] location
@@ -558,12 +562,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_job_query_results(project_id, job_id, format_options_use_int64_timestamp: nil, location: nil, max_results: nil, page_token: nil, start_index: nil, timeout_ms: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_job_query_results(project_id, job_id, format_options_timestamp_output_format: nil, format_options_use_int64_timestamp: nil, location: nil, max_results: nil, page_token: nil, start_index: nil, timeout_ms: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{+projectId}/queries/{+jobId}', options)
           command.response_representation = Google::Apis::BigqueryV2::GetQueryResultsResponse::Representation
           command.response_class = Google::Apis::BigqueryV2::GetQueryResultsResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['jobId'] = job_id unless job_id.nil?
+          command.query['formatOptions.timestampOutputFormat'] = format_options_timestamp_output_format unless format_options_timestamp_output_format.nil?
           command.query['formatOptions.useInt64Timestamp'] = format_options_use_int64_timestamp unless format_options_use_int64_timestamp.nil?
           command.query['location'] = location unless location.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -1616,6 +1621,10 @@ module Google
         #   Required. Dataset id of the table to list.
         # @param [String] table_id
         #   Required. Table id of the table to list.
+        # @param [String] format_options_timestamp_output_format
+        #   Optional. The API output format for a timestamp. This offers more explicit
+        #   control over the timestamp output format as compared to the existing `
+        #   use_int64_timestamp` option.
         # @param [Boolean] format_options_use_int64_timestamp
         #   Optional. Output timestamp as usec int64. Default is false.
         # @param [Fixnum] max_results
@@ -1646,13 +1655,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_table_data(project_id, dataset_id, table_id, format_options_use_int64_timestamp: nil, max_results: nil, page_token: nil, selected_fields: nil, start_index: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_table_data(project_id, dataset_id, table_id, format_options_timestamp_output_format: nil, format_options_use_int64_timestamp: nil, max_results: nil, page_token: nil, selected_fields: nil, start_index: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/data', options)
           command.response_representation = Google::Apis::BigqueryV2::TableDataList::Representation
           command.response_class = Google::Apis::BigqueryV2::TableDataList
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
           command.params['tableId'] = table_id unless table_id.nil?
+          command.query['formatOptions.timestampOutputFormat'] = format_options_timestamp_output_format unless format_options_timestamp_output_format.nil?
           command.query['formatOptions.useInt64Timestamp'] = format_options_use_int64_timestamp unless format_options_use_int64_timestamp.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?

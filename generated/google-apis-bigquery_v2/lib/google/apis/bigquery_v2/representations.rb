@@ -1763,6 +1763,7 @@ module Google
       class DataFormatOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :timestamp_output_format, as: 'timestampOutputFormat'
           property :use_int64_timestamp, as: 'useInt64Timestamp'
         end
       end
@@ -3212,6 +3213,7 @@ module Google
       
           collection :struct_types, as: 'structTypes', class: Google::Apis::BigqueryV2::QueryParameterType::StructType, decorator: Google::Apis::BigqueryV2::QueryParameterType::StructType::Representation
       
+          property :timestamp_precision, :numeric_string => true, as: 'timestampPrecision'
           property :type, as: 'type'
         end
         

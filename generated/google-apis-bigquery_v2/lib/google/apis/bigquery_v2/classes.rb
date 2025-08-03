@@ -1688,6 +1688,13 @@ module Google
       class DataFormatOptions
         include Google::Apis::Core::Hashable
       
+        # Optional. The API output format for a timestamp. This offers more explicit
+        # control over the timestamp output format as compared to the existing `
+        # use_int64_timestamp` option.
+        # Corresponds to the JSON property `timestampOutputFormat`
+        # @return [String]
+        attr_accessor :timestamp_output_format
+      
         # Optional. Output timestamp as usec int64. Default is false.
         # Corresponds to the JSON property `useInt64Timestamp`
         # @return [Boolean]
@@ -1700,6 +1707,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @timestamp_output_format = args[:timestamp_output_format] if args.key?(:timestamp_output_format)
           @use_int64_timestamp = args[:use_int64_timestamp] if args.key?(:use_int64_timestamp)
         end
       end
@@ -3418,15 +3426,19 @@ module Google
       class ExternalRuntimeOptions
         include Google::Apis::Core::Hashable
       
-        # Optional. Amount of CPU provisioned for the container instance. If not
-        # specified, the default value is 0.33 vCPUs.
+        # Optional. Amount of CPU provisioned for a Python UDF container instance. For
+        # more information, see [Configure container limits for Python UDFs](https://
+        # cloud.google.com/bigquery/docs/user-defined-functions-python#configure-
+        # container-limits)
         # Corresponds to the JSON property `containerCpu`
         # @return [Float]
         attr_accessor :container_cpu
       
-        # Optional. Amount of memory provisioned for the container instance. Format: `
-        # number``unit` where unit is one of "M", "G", "Mi" and "Gi" (e.g. 1G, 512Mi).
-        # If not specified, the default value is 512Mi.
+        # Optional. Amount of memory provisioned for a Python UDF container instance.
+        # Format: `number``unit` where unit is one of "M", "G", "Mi" and "Gi" (e.g. 1G,
+        # 512Mi). If not specified, the default value is 512Mi. For more information,
+        # see [Configure container limits for Python UDFs](https://cloud.google.com/
+        # bigquery/docs/user-defined-functions-python#configure-container-limits)
         # Corresponds to the JSON property `containerMemory`
         # @return [String]
         attr_accessor :container_memory
@@ -3444,7 +3456,7 @@ module Google
         # @return [String]
         attr_accessor :runtime_connection
       
-        # Optional. Language runtime version (e.g. python-3.11).
+        # Optional. Language runtime version. Example: `python-3.11`.
         # Corresponds to the JSON property `runtimeVersion`
         # @return [String]
         attr_accessor :runtime_version
@@ -7570,13 +7582,16 @@ module Google
       class PythonOptions
         include Google::Apis::Core::Hashable
       
-        # Required. The entry point function in the user's Python code.
+        # Required. The name of the function defined in Python code as the entry point
+        # when the Python UDF is invoked.
         # Corresponds to the JSON property `entryPoint`
         # @return [String]
         attr_accessor :entry_point
       
-        # Optional. A list of package names along with versions to be installed. Follows
-        # requirements.txt syntax (e.g. numpy==2.0, permutation, urllib3<2.2.1)
+        # Optional. A list of Python package names along with versions to be installed.
+        # Example: ["pandas>=2.1", "google-cloud-translate==3.11"]. For more information,
+        # see [Use third-party packages](https://cloud.google.com/bigquery/docs/user-
+        # defined-functions-python#third-party-packages).
         # Corresponds to the JSON property `packages`
         # @return [Array<String>]
         attr_accessor :packages
@@ -7663,6 +7678,13 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::QueryParameterType::StructType>]
         attr_accessor :struct_types
       
+        # Optional. Precision (maximum number of total digits in base 10) for seconds of
+        # TIMESTAMP type. Possible values include: * 6 (Default, for TIMESTAMP type with
+        # microsecond precision) * 12 (For TIMESTAMP type with picosecond precision)
+        # Corresponds to the JSON property `timestampPrecision`
+        # @return [Fixnum]
+        attr_accessor :timestamp_precision
+      
         # Required. The top level type of this field.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -7677,6 +7699,7 @@ module Google
           @array_type = args[:array_type] if args.key?(:array_type)
           @range_element_type = args[:range_element_type] if args.key?(:range_element_type)
           @struct_types = args[:struct_types] if args.key?(:struct_types)
+          @timestamp_precision = args[:timestamp_precision] if args.key?(:timestamp_precision)
           @type = args[:type] if args.key?(:type)
         end
         
