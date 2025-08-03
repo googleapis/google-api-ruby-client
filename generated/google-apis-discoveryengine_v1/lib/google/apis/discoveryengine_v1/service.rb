@@ -51,6 +51,51 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Downloads a file from the session.
+        # @param [String] name
+        #   Required. The resource name of the Session. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/engines/`engine`/sessions/`
+        #   session``
+        # @param [String] file_id
+        #   Required. The ID of the file to be downloaded.
+        # @param [String] view_id
+        #   Optional. The ID of the view to be downloaded.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [IO, String] download_dest
+        #   IO stream or filename to receive content download
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GdataMedia] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GdataMedia]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def download_medium(name, file_id: nil, view_id: nil, fields: nil, quota_user: nil, download_dest: nil, options: nil, &block)
+          if download_dest.nil?
+            command = make_simple_command(:get, 'v1/{+name}:downloadFile', options)
+          else
+            command = make_download_command(:get, 'v1/{+name}:downloadFile', options)
+            command.download_dest = download_dest
+          end
+          command.response_representation = Google::Apis::DiscoveryengineV1::GdataMedia::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GdataMedia
+          command.params['name'] = name unless name.nil?
+          command.query['fileId'] = file_id unless file_id.nil?
+          command.query['viewId'] = view_id unless view_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Provisions the project resource. During the process, related systems will get
         # prepared and initialized. Caller must read the [Terms for data use](https://
         # cloud.google.com/retail/data-use-terms), and optionally specify in request to
@@ -2463,10 +2508,10 @@ module Google
         # @param [String] filter
         #   A comma-separated list of fields to filter by, in EBNF grammar. The supported
         #   fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `
-        #   is_pinned` * `labels` * `create_time` * `update_time` Examples: "
-        #   user_pseudo_id = some_id" "display_name = \"some_name\"" "starred = true" "
-        #   is_pinned=true AND (NOT labels:hidden)" "create_time > \"1970-01-01T12:00:00Z\"
-        #   "
+        #   is_pinned` * `labels` * `create_time` * `update_time` Examples: * `
+        #   user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `
+        #   is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"
+        #   `
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
@@ -4682,10 +4727,10 @@ module Google
         # @param [String] filter
         #   A comma-separated list of fields to filter by, in EBNF grammar. The supported
         #   fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `
-        #   is_pinned` * `labels` * `create_time` * `update_time` Examples: "
-        #   user_pseudo_id = some_id" "display_name = \"some_name\"" "starred = true" "
-        #   is_pinned=true AND (NOT labels:hidden)" "create_time > \"1970-01-01T12:00:00Z\"
-        #   "
+        #   is_pinned` * `labels` * `create_time` * `update_time` Examples: * `
+        #   user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `
+        #   is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"
+        #   `
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
@@ -6826,10 +6871,10 @@ module Google
         # @param [String] filter
         #   A comma-separated list of fields to filter by, in EBNF grammar. The supported
         #   fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `
-        #   is_pinned` * `labels` * `create_time` * `update_time` Examples: "
-        #   user_pseudo_id = some_id" "display_name = \"some_name\"" "starred = true" "
-        #   is_pinned=true AND (NOT labels:hidden)" "create_time > \"1970-01-01T12:00:00Z\"
-        #   "
+        #   is_pinned` * `labels` * `create_time` * `update_time` Examples: * `
+        #   user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `
+        #   is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"
+        #   `
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
