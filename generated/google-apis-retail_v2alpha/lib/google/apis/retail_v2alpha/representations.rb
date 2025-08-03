@@ -2635,8 +2635,13 @@ module Google
           property :conversation_id, as: 'conversationId'
           property :conversational_filtering_result, as: 'conversationalFilteringResult', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponseConversationalFilteringResult, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponseConversationalFilteringResult::Representation
       
+          property :conversational_text_response, as: 'conversationalTextResponse'
+          property :followup_question, as: 'followupQuestion', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponseFollowupQuestion, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponseFollowupQuestion::Representation
+      
           collection :refined_search, as: 'refinedSearch', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponseRefinedSearch, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponseRefinedSearch::Representation
       
+          property :state, as: 'state'
+          collection :user_query_types, as: 'userQueryTypes'
         end
       end
       
