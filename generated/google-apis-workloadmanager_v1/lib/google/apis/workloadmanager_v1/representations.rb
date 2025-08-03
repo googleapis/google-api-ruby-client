@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AgentStates
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AgentStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -462,6 +468,14 @@ module Google
         end
       end
       
+      class AgentStates
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :available_version, as: 'availableVersion'
+          property :installed_version, as: 'installedVersion'
+        end
+      end
+      
       class AgentStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -590,6 +604,7 @@ module Google
           property :custom_rules_bucket, as: 'customRulesBucket'
           property :description, as: 'description'
           property :evaluation_type, as: 'evaluationType'
+          property :kms_key, as: 'kmsKey'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :resource_filter, as: 'resourceFilter', class: Google::Apis::WorkloadmanagerV1::ResourceFilter, decorator: Google::Apis::WorkloadmanagerV1::ResourceFilter::Representation
@@ -1079,6 +1094,8 @@ module Google
       class SapInstanceProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_states, as: 'agentStates', class: Google::Apis::WorkloadmanagerV1::AgentStates, decorator: Google::Apis::WorkloadmanagerV1::AgentStates::Representation
+      
           collection :numbers, as: 'numbers'
         end
       end

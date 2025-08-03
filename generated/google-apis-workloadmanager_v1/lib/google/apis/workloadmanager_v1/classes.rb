@@ -48,6 +48,31 @@ module Google
         end
       end
       
+      # Agent status.
+      class AgentStates
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The available version of the agent in artifact registry.
+        # Corresponds to the JSON property `availableVersion`
+        # @return [String]
+        attr_accessor :available_version
+      
+        # Optional. The installed version of the agent on the host.
+        # Corresponds to the JSON property `installedVersion`
+        # @return [String]
+        attr_accessor :installed_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @available_version = args[:available_version] if args.key?(:available_version)
+          @installed_version = args[:installed_version] if args.key?(:installed_version)
+        end
+      end
+      
       # The schema of agent status data.
       class AgentStatus
         include Google::Apis::Core::Hashable
@@ -468,6 +493,12 @@ module Google
         # @return [String]
         attr_accessor :evaluation_type
       
+        # Optional. Immutable. Customer-managed encryption key name, in the format
+        # projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
         # Labels as key value pairs
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -522,6 +553,7 @@ module Google
           @custom_rules_bucket = args[:custom_rules_bucket] if args.key?(:custom_rules_bucket)
           @description = args[:description] if args.key?(:description)
           @evaluation_type = args[:evaluation_type] if args.key?(:evaluation_type)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @resource_filter = args[:resource_filter] if args.key?(:resource_filter)
@@ -2230,6 +2262,11 @@ module Google
       class SapInstanceProperties
         include Google::Apis::Core::Hashable
       
+        # Agent status.
+        # Corresponds to the JSON property `agentStates`
+        # @return [Google::Apis::WorkloadmanagerV1::AgentStates]
+        attr_accessor :agent_states
+      
         # Optional. SAP Instance numbers. They are from '00' to '99'.
         # Corresponds to the JSON property `numbers`
         # @return [Array<String>]
@@ -2241,6 +2278,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_states = args[:agent_states] if args.key?(:agent_states)
           @numbers = args[:numbers] if args.key?(:numbers)
         end
       end
