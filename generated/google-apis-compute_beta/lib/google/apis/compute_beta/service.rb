@@ -8787,9 +8787,9 @@ module Google
         # Retrieves the specified Operations resource. Gets a list of operations by
         # making a `list()` request.
         # @param [String] operation
-        #   Name of the Operations resource to return, or its unique numeric identifier.
+        #   Name of the Operations resource to return. Parent is derived from this field.
         # @param [String] parent_id
-        #   Parent ID for this request.
+        #   Parent ID for this request. Not used. Parent is derived from resource_id.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -47876,6 +47876,9 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] subnetwork
         #   Name of the Subnetwork resource to return.
+        # @param [Array<String>, String] views
+        #   Defines the extra views returned back in the subnetwork resource. Supported
+        #   values: - WITH_UTILIZATION: Utilization data is included in the response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -47895,13 +47898,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_subnetwork(project, region, subnetwork, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_subnetwork(project, region, subnetwork, views: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/subnetworks/{subnetwork}', options)
           command.response_representation = Google::Apis::ComputeBeta::Subnetwork::Representation
           command.response_class = Google::Apis::ComputeBeta::Subnetwork
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['subnetwork'] = subnetwork unless subnetwork.nil?
+          command.query['views'] = views unless views.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -48060,6 +48064,9 @@ module Google
         #   failure. The default value is false. For example, when partial success
         #   behavior is enabled, aggregatedList for a single zone scope either returns all
         #   resources in the zone or no resources, with an error code.
+        # @param [Array<String>, String] views
+        #   Defines the extra views returned back in the subnetwork resource. Supported
+        #   values: - WITH_UTILIZATION: Utilization data is included in the response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -48079,7 +48086,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_subnetworks(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_subnetworks(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, views: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/subnetworks', options)
           command.response_representation = Google::Apis::ComputeBeta::SubnetworkList::Representation
           command.response_class = Google::Apis::ComputeBeta::SubnetworkList
@@ -48090,6 +48097,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['views'] = views unless views.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
