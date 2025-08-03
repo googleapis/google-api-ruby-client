@@ -43,9 +43,8 @@ module Google
         # authentication](https://developers.google.com/workspace/chat/authenticate-
         # authorize-chat-user) - [App authentication](https://developers.google.com/
         # workspace/chat/authenticate-authorize-chat-app) with [administrator approval](
-        # https://support.google.com/a?p=chat-app-auth) with the `chat.app.spaces` scope
-        # in [Developer Preview](https://developers.google.com/workspace/preview). This
-        # field is not populated when using the `chat.bot` scope with [app
+        # https://support.google.com/a?p=chat-app-auth) with the `chat.app.spaces` scope.
+        # This field is not populated when using the `chat.bot` scope with [app
         # authentication](https://developers.google.com/workspace/chat/authenticate-
         # authorize-chat-app). Setting the target audience requires [user authentication]
         # (https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
@@ -184,15 +183,15 @@ module Google
         end
       end
       
-      # Annotations can be associated with the plain-text body of the message or with
-      # chips that link to Google Workspace resources like Google Docs or Sheets with
-      # a `start_index` and `length` of 0. To add basic formatting to a text message,
-      # see [Format text messages](https://developers.google.com/workspace/chat/format-
-      # messages). Example plain-text message body: ``` Hello @FooBot how are you!" ```
-      # The corresponding annotations metadata: ``` "annotations":[` "type":"
-      # USER_MENTION", "startIndex":6, "length":7, "userMention": ` "user": ` "name":"
-      # users/`user`", "displayName":"FooBot", "avatarUrl":"https://goo.gl/aeDtrS", "
-      # type":"BOT" `, "type":"MENTION" ` `] ```
+      # Output only. Annotations can be associated with the plain-text body of the
+      # message or with chips that link to Google Workspace resources like Google Docs
+      # or Sheets with `start_index` and `length` of 0. To add basic formatting to a
+      # text message, see [Format text messages](https://developers.google.com/
+      # workspace/chat/format-messages). Example plain-text message body: ``` Hello @
+      # FooBot how are you!" ``` The corresponding annotations metadata: ``` "
+      # annotations":[` "type":"USER_MENTION", "startIndex":6, "length":7, "
+      # userMention": ` "user": ` "name":"users/`user`", "displayName":"FooBot", "
+      # avatarUrl":"https://goo.gl/aeDtrS", "type":"BOT" `, "type":"MENTION" ` `] ```
       class Annotation
         include Google::Apis::Core::Hashable
       
@@ -209,7 +208,7 @@ module Google
       
         # A rich link to a resource. Rich links can be associated with the plain-text
         # body of the message or represent chips that link to Google Workspace resources
-        # like Google Docs or Sheets with a with `start_index` and `length` of 0.
+        # like Google Docs or Sheets with `start_index` and `length` of 0.
         # Corresponds to the JSON property `richLinkMetadata`
         # @return [Google::Apis::ChatV1::RichLinkMetadata]
         attr_accessor :rich_link_metadata
@@ -4659,7 +4658,7 @@ module Google
       
         # Output only. Annotations can be associated with the plain-text body of the
         # message or with chips that link to Google Workspace resources like Google Docs
-        # or Sheets with a `start_index` and `length` of 0.
+        # or Sheets with `start_index` and `length` of 0.
         # Corresponds to the JSON property `annotations`
         # @return [Array<Google::Apis::ChatV1::Annotation>]
         attr_accessor :annotations
@@ -5141,13 +5140,13 @@ module Google
       class QuotedMessageMetadata
         include Google::Apis::Core::Hashable
       
-        # Output only. The timestamp when the quoted message was created or when the
-        # quoted message was last updated.
+        # Required. The timestamp when the quoted message was created or when the quoted
+        # message was last updated.
         # Corresponds to the JSON property `lastUpdateTime`
         # @return [String]
         attr_accessor :last_update_time
       
-        # Output only. Resource name of the quoted message. Format: `spaces/`space`/
+        # Required. Resource name of the message that is quoted. Format: `spaces/`space`/
         # messages/`message``
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -5281,7 +5280,7 @@ module Google
       
       # A rich link to a resource. Rich links can be associated with the plain-text
       # body of the message or represent chips that link to Google Workspace resources
-      # like Google Docs or Sheets with a with `start_index` and `length` of 0.
+      # like Google Docs or Sheets with `start_index` and `length` of 0.
       class RichLinkMetadata
         include Google::Apis::Core::Hashable
       
@@ -5572,8 +5571,7 @@ module Google
         # developers.google.com/admin-sdk/directory/reference/rest/v1/customers).
         # Private apps can also use the `customers/my_customer` alias to create the
         # space in the same Google Workspace organization as the app. For DMs, this
-        # field isn't populated. [Developer Preview](https://developers.google.com/
-        # workspace/preview).
+        # field isn't populated.
         # Corresponds to the JSON property `customer`
         # @return [String]
         attr_accessor :customer
@@ -5649,9 +5647,8 @@ module Google
         # Optional. Input only. Predefined space permission settings, input only when
         # creating a space. If the field is not set, a collaboration space is created.
         # After you create the space, settings are populated in the `PermissionSettings`
-        # field. Setting predefined permission settings supports: - In [Developer
-        # Preview](https://developers.google.com/workspace/preview), [App authentication]
-        # (https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
+        # field. Setting predefined permission settings supports: - [App authentication](
+        # https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
         # with [administrator approval](https://support.google.com/a?p=chat-app-auth)
         # with the `chat.app.spaces` or `chat.app.spaces.create` scopes. - [User
         # authentication](https://developers.google.com/workspace/chat/authenticate-

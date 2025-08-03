@@ -371,24 +371,23 @@ module Google
         # authentication](https://developers.google.com/workspace/chat/authenticate-
         # authorize): - [App authentication](https://developers.google.com/workspace/
         # chat/authenticate-authorize-chat-app) with [administrator approval](https://
-        # support.google.com/a?p=chat-app-auth) in [Developer Preview](https://
-        # developers.google.com/workspace/preview) and one of the following
-        # authorization scopes: - `https://www.googleapis.com/auth/chat.app.spaces.
-        # create` - `https://www.googleapis.com/auth/chat.app.spaces` - [User
-        # authentication](https://developers.google.com/workspace/chat/authenticate-
-        # authorize-chat-user) with one of the following authorization scopes: - `https:/
-        # /www.googleapis.com/auth/chat.spaces.create` - `https://www.googleapis.com/
-        # auth/chat.spaces` - `https://www.googleapis.com/auth/chat.import` (import mode
-        # spaces only) When authenticating as an app, the `space.customer` field must be
-        # set in the request. When authenticating as an app, the Chat app is added as a
-        # member of the space. However, unlike human authentication, the Chat app is not
-        # added as a space manager. By default, the Chat app can be removed from the
-        # space by all space members. To allow only space managers to remove the app
-        # from a space, set `space.permission_settings.manage_apps` to `managers_allowed`
-        # . Space membership upon creation depends on whether the space is created in `
-        # Import mode`: * **Import mode:** No members are created. * **All other modes:**
-        # The calling user is added as a member. This is: * The app itself when using
-        # app authentication. * The human user when using user authentication. If you
+        # support.google.com/a?p=chat-app-auth) and one of the following authorization
+        # scopes: - `https://www.googleapis.com/auth/chat.app.spaces.create` - `https://
+        # www.googleapis.com/auth/chat.app.spaces` - [User authentication](https://
+        # developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
+        # one of the following authorization scopes: - `https://www.googleapis.com/auth/
+        # chat.spaces.create` - `https://www.googleapis.com/auth/chat.spaces` - `https://
+        # www.googleapis.com/auth/chat.import` (import mode spaces only) When
+        # authenticating as an app, the `space.customer` field must be set in the
+        # request. When authenticating as an app, the Chat app is added as a member of
+        # the space. However, unlike human authentication, the Chat app is not added as
+        # a space manager. By default, the Chat app can be removed from the space by all
+        # space members. To allow only space managers to remove the app from a space,
+        # set `space.permission_settings.manage_apps` to `managers_allowed`. Space
+        # membership upon creation depends on whether the space is created in `Import
+        # mode`: * **Import mode:** No members are created. * **All other modes:** The
+        # calling user is added as a member. This is: * The app itself when using app
+        # authentication. * The human user when using user authentication. If you
         # receive the error message `ALREADY_EXISTS` when creating a space, try a
         # different `displayName`. An existing space within the Google Workspace
         # organization might already use this display name.
@@ -434,16 +433,15 @@ module Google
         # types of [authentication](https://developers.google.com/workspace/chat/
         # authenticate-authorize): - [App authentication](https://developers.google.com/
         # workspace/chat/authenticate-authorize-chat-app) with [administrator approval](
-        # https://support.google.com/a?p=chat-app-auth) in [Developer Preview](https://
-        # developers.google.com/workspace/preview) and the authorization scope: - `https:
-        # //www.googleapis.com/auth/chat.app.delete` (only in spaces the app created) - [
-        # User authentication](https://developers.google.com/workspace/chat/authenticate-
-        # authorize-chat-user) with one of the following authorization scopes: - `https:/
-        # /www.googleapis.com/auth/chat.delete` - `https://www.googleapis.com/auth/chat.
-        # import` (import mode spaces only) - User authentication grants administrator
-        # privileges when an administrator account authenticates, `use_admin_access` is `
-        # true`, and the following authorization scope is used: - `https://www.
-        # googleapis.com/auth/chat.admin.delete`
+        # https://support.google.com/a?p=chat-app-auth) and the authorization scope: - `
+        # https://www.googleapis.com/auth/chat.app.delete` (only in spaces the app
+        # created) - [User authentication](https://developers.google.com/workspace/chat/
+        # authenticate-authorize-chat-user) with one of the following authorization
+        # scopes: - `https://www.googleapis.com/auth/chat.delete` - `https://www.
+        # googleapis.com/auth/chat.import` (import mode spaces only) - User
+        # authentication grants administrator privileges when an administrator account
+        # authenticates, `use_admin_access` is `true`, and the following authorization
+        # scope is used: - `https://www.googleapis.com/auth/chat.admin.delete`
         # @param [String] name
         #   Required. Resource name of the space to delete. Format: `spaces/`space``
         # @param [Boolean] use_admin_access
@@ -662,9 +660,8 @@ module Google
         # (https://developers.google.com/workspace/chat/authenticate-authorize): - [App
         # authentication](https://developers.google.com/workspace/chat/authenticate-
         # authorize-chat-app) with [administrator approval](https://support.google.com/a?
-        # p=chat-app-auth) in [Developer Preview](https://developers.google.com/
-        # workspace/preview) and one of the following authorization scopes: - `https://
-        # www.googleapis.com/auth/chat.app.spaces` - [User authentication](https://
+        # p=chat-app-auth) and one of the following authorization scopes: - `https://www.
+        # googleapis.com/auth/chat.app.spaces` - [User authentication](https://
         # developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
         # one of the following authorization scopes: - `https://www.googleapis.com/auth/
         # chat.spaces` - `https://www.googleapis.com/auth/chat.import` (import mode
@@ -944,11 +941,10 @@ module Google
         # space. Supports the following types of [authentication](https://developers.
         # google.com/workspace/chat/authenticate-authorize): - [App authentication](
         # https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
-        # with [administrator approval](https://support.google.com/a?p=chat-app-auth) in
-        # [Developer Preview](https://developers.google.com/workspace/preview) and the
-        # authorization scope: - `https://www.googleapis.com/auth/chat.app.memberships` -
-        # [User authentication](https://developers.google.com/workspace/chat/
-        # authenticate-authorize-chat-user) with one of the following authorization
+        # with [administrator approval](https://support.google.com/a?p=chat-app-auth)
+        # and the authorization scope: - `https://www.googleapis.com/auth/chat.app.
+        # memberships` - [User authentication](https://developers.google.com/workspace/
+        # chat/authenticate-authorize-chat-user) with one of the following authorization
         # scopes: - `https://www.googleapis.com/auth/chat.memberships` - `https://www.
         # googleapis.com/auth/chat.memberships.app` (to add the calling app to the space)
         # - `https://www.googleapis.com/auth/chat.import` (import mode spaces only) -
@@ -1012,8 +1008,7 @@ module Google
         # Supports the following types of [authentication](https://developers.google.com/
         # workspace/chat/authenticate-authorize): - [App authentication](https://
         # developers.google.com/workspace/chat/authenticate-authorize-chat-app) with [
-        # administrator approval](https://support.google.com/a?p=chat-app-auth) in [
-        # Developer Preview](https://developers.google.com/workspace/preview) and the
+        # administrator approval](https://support.google.com/a?p=chat-app-auth) and the
         # authorization scope: - `https://www.googleapis.com/auth/chat.app.memberships` -
         # [User authentication](https://developers.google.com/workspace/chat/
         # authenticate-authorize-chat-user) with one of the following authorization
@@ -1249,8 +1244,7 @@ module Google
         # the following types of [authentication](https://developers.google.com/
         # workspace/chat/authenticate-authorize): - [App authentication](https://
         # developers.google.com/workspace/chat/authenticate-authorize-chat-app) with [
-        # administrator approval](https://support.google.com/a?p=chat-app-auth) in [
-        # Developer Preview](https://developers.google.com/workspace/preview) and the
+        # administrator approval](https://support.google.com/a?p=chat-app-auth) and the
         # authorization scope: - `https://www.googleapis.com/auth/chat.app.memberships` (
         # only in spaces the app created) - [User authentication](https://developers.
         # google.com/workspace/chat/authenticate-authorize-chat-user) with one of the
