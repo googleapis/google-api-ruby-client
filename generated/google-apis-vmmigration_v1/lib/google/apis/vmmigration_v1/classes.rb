@@ -3493,7 +3493,7 @@ module Google
         # @return [String]
         attr_accessor :internal_ip
       
-        # The network to connect the NIC to.
+        # Optional. The network to connect the NIC to.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
