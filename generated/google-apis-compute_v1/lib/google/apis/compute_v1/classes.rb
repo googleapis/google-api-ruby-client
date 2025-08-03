@@ -3444,7 +3444,7 @@ module Google
         attr_accessor :max_utilization
       
         # Name of a custom utilization signal. The name must be 1-64 characters long and
-        # match the regular expression [a-z]([-_.a-z0-9]*[a-z0-9])? which means the
+        # match the regular expression [a-z]([-_.a-z0-9]*[a-z0-9])? which means that the
         # first character must be a lowercase letter, and all following characters must
         # be a dash, period, underscore, lowercase letter, or digit, except the last
         # character, which cannot be a dash, period, or underscore. For usage guidelines,
@@ -3727,11 +3727,16 @@ module Google
         # was redirected to the load balancer. - MAGLEV: used as a drop in replacement
         # for the ring hash load balancer. Maglev is not as stable as ring hash but has
         # faster table lookup build times and host selection times. For more information
-        # about Maglev, see https://ai.google/research/pubs/pub44824 This field is
-        # applicable to either: - A regional backend service with the service_protocol
-        # set to HTTP, HTTPS, HTTP2 or H2C, and load_balancing_scheme set to
-        # INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme
-        # set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If
+        # about Maglev, see https://ai.google/research/pubs/pub44824 -
+        # WEIGHTED_ROUND_ROBIN: Per-endpoint Weighted Round Robin Load Balancing using
+        # weights computed from Backend reported Custom Metrics. If set, the Backend
+        # Service responses are expected to contain non-standard HTTP response header
+        # field Endpoint-Load-Metrics. The reported metrics to use for computing the
+        # weights are specified via the customMetrics field. This field is applicable to
+        # either: - A regional backend service with the service_protocol set to HTTP,
+        # HTTPS, HTTP2 or H2C, and load_balancing_scheme set to INTERNAL_MANAGED. - A
+        # global backend service with the load_balancing_scheme set to
+        # INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If
         # sessionAffinity is not configured—that is, if session affinity remains at the
         # default value of NONE—then the default value for localityLbPolicy is
         # ROUND_ROBIN. If session affinity is set to a value other than NONE, then the
@@ -4366,7 +4371,7 @@ module Google
         alias_method :dry_run?, :dry_run
       
         # Name of a custom utilization signal. The name must be 1-64 characters long and
-        # match the regular expression [a-z]([-_.a-z0-9]*[a-z0-9])? which means the
+        # match the regular expression [a-z]([-_.a-z0-9]*[a-z0-9])? which means that the
         # first character must be a lowercase letter, and all following characters must
         # be a dash, period, underscore, lowercase letter, or digit, except the last
         # character, which cannot be a dash, period, or underscore. For usage guidelines,
@@ -42836,7 +42841,9 @@ module Google
         # @return [String]
         attr_accessor :target
       
-        # Type of the redirect action.
+        # Type of the redirect action. Possible values are: - GOOGLE_RECAPTCHA: redirect
+        # to reCAPTCHA for manual challenge assessment. - EXTERNAL_302: redirect to a
+        # different URL via a 302 response.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -43073,7 +43080,8 @@ module Google
         # service attachment. Each project or network has a connection limit. A given
         # service attachment can manage connections at either the project or network
         # level. Therefore, both the accept and reject lists for a given service
-        # attachment must contain either only projects or only networks.
+        # attachment must contain either only projects or only networks or only
+        # endpoints.
         # Corresponds to the JSON property `consumerAcceptLists`
         # @return [Array<Google::Apis::ComputeV1::ServiceAttachmentConsumerProjectLimit>]
         attr_accessor :consumer_accept_lists
@@ -43136,6 +43144,11 @@ module Google
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # Metadata of the service attachment.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -43226,6 +43239,7 @@ module Google
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @nat_subnets = args[:nat_subnets] if args.key?(:nat_subnets)
           @producer_forwarding_rule = args[:producer_forwarding_rule] if args.key?(:producer_forwarding_rule)
@@ -43409,7 +43423,8 @@ module Google
       class ServiceAttachmentConsumerProjectLimit
         include Google::Apis::Core::Hashable
       
-        # The value of the limit to set.
+        # The value of the limit to set. For endpoint_url, the limit should be no more
+        # than 1.
         # Corresponds to the JSON property `connectionLimit`
         # @return [Fixnum]
         attr_accessor :connection_limit
@@ -45826,7 +45841,7 @@ module Google
         # @return [String]
         attr_accessor :performance_provisioning_type
       
-        # Size, in GiB, of the storage pool. For more information about the size limits,
+        # Size of the storage pool in GiB. For more information about the size limits,
         # see https://cloud.google.com/compute/docs/disks/storage-pools.
         # Corresponds to the JSON property `poolProvisionedCapacityGb`
         # @return [Fixnum]
@@ -45838,8 +45853,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :pool_provisioned_iops
       
-        # Provisioned throughput of the storage pool. Only relevant if the storage pool
-        # type is hyperdisk-balanced or hyperdisk-throughput.
+        # Provisioned throughput of the storage pool in MiB/s. Only relevant if the
+        # storage pool type is hyperdisk-balanced or hyperdisk-throughput.
         # Corresponds to the JSON property `poolProvisionedThroughput`
         # @return [Fixnum]
         attr_accessor :pool_provisioned_throughput
@@ -46397,7 +46412,7 @@ module Google
         # @return [String]
         attr_accessor :last_resize_timestamp
       
-        # [Output Only] Maximum allowed aggregate disk size in gigabytes.
+        # [Output Only] Maximum allowed aggregate disk size in GiB.
         # Corresponds to the JSON property `maxTotalProvisionedDiskCapacityGb`
         # @return [Fixnum]
         attr_accessor :max_total_provisioned_disk_capacity_gb
@@ -46416,7 +46431,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :pool_used_iops
       
-        # [Output Only] Sum of all the disks' provisioned throughput in MB/s.
+        # [Output Only] Sum of all the disks' provisioned throughput in MiB/s.
         # Corresponds to the JSON property `poolUsedThroughput`
         # @return [Fixnum]
         attr_accessor :pool_used_throughput
@@ -46426,8 +46441,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :pool_user_written_bytes
       
-        # [Output Only] Sum of all the capacity provisioned in disks in this storage
-        # pool. A disk's provisioned capacity is the same as its total capacity.
+        # [Output Only] Sum of all the disks' provisioned capacity (in GiB) in this
+        # storage pool. A disk's provisioned capacity is the same as its total capacity.
         # Corresponds to the JSON property `totalProvisionedDiskCapacityGb`
         # @return [Fixnum]
         attr_accessor :total_provisioned_disk_capacity_gb
@@ -46437,9 +46452,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_provisioned_disk_iops
       
-        # [Output Only] Sum of all the disks' provisioned throughput in MB/s, minus some
-        # amount that is allowed per disk that is not counted towards pool's throughput
-        # capacity.
+        # [Output Only] Sum of all the disks' provisioned throughput in MiB/s, minus
+        # some amount that is allowed per disk that is not counted towards pool's
+        # throughput capacity.
         # Corresponds to the JSON property `totalProvisionedDiskThroughput`
         # @return [Fixnum]
         attr_accessor :total_provisioned_disk_throughput
