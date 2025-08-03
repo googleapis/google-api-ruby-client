@@ -6839,6 +6839,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Bidirectional streaming RPC to directly write to feature values in a feature
+        # view. Requests may not have a one-to-one mapping to responses and responses
+        # may be returned out-of-order to reduce latency.
+        # @param [String] feature_view
+        #   FeatureView resource format `projects/`project`/locations/`location`/
+        #   featureOnlineStores/`featureOnlineStore`/featureViews/`featureView``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewDirectWriteRequest] google_cloud_aiplatform_v1_feature_view_direct_write_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewDirectWriteResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewDirectWriteResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def direct_project_location_feature_online_store_feature_view_write(feature_view, google_cloud_aiplatform_v1_feature_view_direct_write_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+featureView}:directWrite', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewDirectWriteRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_feature_view_direct_write_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewDirectWriteResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewDirectWriteResponse
+          command.params['featureView'] = feature_view unless feature_view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Fetch feature values under a FeatureView.
         # @param [String] feature_view
         #   Required. FeatureView resource format `projects/`project`/locations/`location`/

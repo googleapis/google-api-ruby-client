@@ -4389,6 +4389,12 @@ module Google
       class GoogleCloudAiplatformV1CreateEndpointOperationMetadata
         include Google::Apis::Core::Hashable
       
+        # Output only. The deployment stage of the model. Only populated if this
+        # CreateEndpoint request deploys a model at the same time.
+        # Corresponds to the JSON property `deploymentStage`
+        # @return [String]
+        attr_accessor :deployment_stage
+      
         # Generic Metadata shared by all operations.
         # Corresponds to the JSON property `genericMetadata`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenericOperationMetadata]
@@ -4400,6 +4406,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @deployment_stage = args[:deployment_stage] if args.key?(:deployment_stage)
           @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
         end
       end
@@ -6100,6 +6107,11 @@ module Google
       class GoogleCloudAiplatformV1DeployModelOperationMetadata
         include Google::Apis::Core::Hashable
       
+        # Output only. The deployment stage of the model.
+        # Corresponds to the JSON property `deploymentStage`
+        # @return [String]
+        attr_accessor :deployment_stage
+      
         # Generic Metadata shared by all operations.
         # Corresponds to the JSON property `genericMetadata`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenericOperationMetadata]
@@ -6111,6 +6123,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @deployment_stage = args[:deployment_stage] if args.key?(:deployment_stage)
           @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
         end
       end
@@ -11000,6 +11013,133 @@ module Google
         end
       end
       
+      # Request message for FeatureOnlineStoreService.FeatureViewDirectWrite.
+      class GoogleCloudAiplatformV1FeatureViewDirectWriteRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The data keys and associated feature values.
+        # Corresponds to the JSON property `dataKeyAndFeatureValues`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewDirectWriteRequestDataKeyAndFeatureValues>]
+        attr_accessor :data_key_and_feature_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_key_and_feature_values = args[:data_key_and_feature_values] if args.key?(:data_key_and_feature_values)
+        end
+      end
+      
+      # A data key and associated feature values to write to the feature view.
+      class GoogleCloudAiplatformV1FeatureViewDirectWriteRequestDataKeyAndFeatureValues
+        include Google::Apis::Core::Hashable
+      
+        # Lookup key for a feature view.
+        # Corresponds to the JSON property `dataKey`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewDataKey]
+        attr_accessor :data_key
+      
+        # List of features to write.
+        # Corresponds to the JSON property `features`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewDirectWriteRequestDataKeyAndFeatureValuesFeature>]
+        attr_accessor :features
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_key = args[:data_key] if args.key?(:data_key)
+          @features = args[:features] if args.key?(:features)
+        end
+      end
+      
+      # Feature name & value pair.
+      class GoogleCloudAiplatformV1FeatureViewDirectWriteRequestDataKeyAndFeatureValuesFeature
+        include Google::Apis::Core::Hashable
+      
+        # Feature short name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Value for a feature.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureValue]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Response message for FeatureOnlineStoreService.FeatureViewDirectWrite.
+      class GoogleCloudAiplatformV1FeatureViewDirectWriteResponse
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::AiplatformV1::GoogleRpcStatus]
+        attr_accessor :status
+      
+        # Details about write for each key. If status is not OK, WriteResponse.data_key
+        # will have the key with error, but WriteResponse.online_store_write_time will
+        # not be present.
+        # Corresponds to the JSON property `writeResponses`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewDirectWriteResponseWriteResponse>]
+        attr_accessor :write_responses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @status = args[:status] if args.key?(:status)
+          @write_responses = args[:write_responses] if args.key?(:write_responses)
+        end
+      end
+      
+      # Details about the write for each key.
+      class GoogleCloudAiplatformV1FeatureViewDirectWriteResponseWriteResponse
+        include Google::Apis::Core::Hashable
+      
+        # Lookup key for a feature view.
+        # Corresponds to the JSON property `dataKey`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewDataKey]
+        attr_accessor :data_key
+      
+        # When the feature values were written to the online store. If
+        # FeatureViewDirectWriteResponse.status is not OK, this field is not populated.
+        # Corresponds to the JSON property `onlineStoreWriteTime`
+        # @return [String]
+        attr_accessor :online_store_write_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_key = args[:data_key] if args.key?(:data_key)
+          @online_store_write_time = args[:online_store_write_time] if args.key?(:online_store_write_time)
+        end
+      end
+      
       # A Feature Registry source for features that need to be synced to Online Store.
       class GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource
         include Google::Apis::Core::Hashable
@@ -13217,6 +13357,32 @@ module Google
         end
       end
       
+      # Tool to retrieve public maps data for grounding, powered by Google.
+      class GoogleCloudAiplatformV1GoogleMaps
+        include Google::Apis::Core::Hashable
+      
+        # The generic reusable api auth config. Deprecated. Please use AuthConfig (
+        # google/cloud/aiplatform/master/auth.proto) instead.
+        # Corresponds to the JSON property `apiAuth`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ApiAuth]
+        attr_accessor :api_auth
+      
+        # Auth configuration to run the extension.
+        # Corresponds to the JSON property `authConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AuthConfig]
+        attr_accessor :auth_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_auth = args[:api_auth] if args.key?(:api_auth)
+          @auth_config = args[:auth_config] if args.key?(:auth_config)
+        end
+      end
+      
       # Tool to retrieve public web data for grounding, powered by Google.
       class GoogleCloudAiplatformV1GoogleSearchRetrieval
         include Google::Apis::Core::Hashable
@@ -13341,6 +13507,11 @@ module Google
       class GoogleCloudAiplatformV1GroundingChunk
         include Google::Apis::Core::Hashable
       
+        # Chunk from Google Maps.
+        # Corresponds to the JSON property `maps`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingChunkMaps]
+        attr_accessor :maps
+      
         # Chunk from context retrieved by the retrieval tools.
         # Corresponds to the JSON property `retrievedContext`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingChunkRetrievedContext]
@@ -13357,8 +13528,154 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @maps = args[:maps] if args.key?(:maps)
           @retrieved_context = args[:retrieved_context] if args.key?(:retrieved_context)
           @web = args[:web] if args.key?(:web)
+        end
+      end
+      
+      # Chunk from Google Maps.
+      class GoogleCloudAiplatformV1GroundingChunkMaps
+        include Google::Apis::Core::Hashable
+      
+        # Sources used to generate the place answer.
+        # Corresponds to the JSON property `placeAnswerSources`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingChunkMapsPlaceAnswerSources]
+        attr_accessor :place_answer_sources
+      
+        # This Place's resource name, in `places/`place_id`` format. Can be used to look
+        # up the Place.
+        # Corresponds to the JSON property `placeId`
+        # @return [String]
+        attr_accessor :place_id
+      
+        # Text of the chunk.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # Title of the chunk.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # URI reference of the chunk.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @place_answer_sources = args[:place_answer_sources] if args.key?(:place_answer_sources)
+          @place_id = args[:place_id] if args.key?(:place_id)
+          @text = args[:text] if args.key?(:text)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Sources used to generate the place answer.
+      class GoogleCloudAiplatformV1GroundingChunkMapsPlaceAnswerSources
+        include Google::Apis::Core::Hashable
+      
+        # A link where users can flag a problem with the generated answer.
+        # Corresponds to the JSON property `flagContentUri`
+        # @return [String]
+        attr_accessor :flag_content_uri
+      
+        # Snippets of reviews that are used to generate the answer.
+        # Corresponds to the JSON property `reviewSnippets`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingChunkMapsPlaceAnswerSourcesReviewSnippet>]
+        attr_accessor :review_snippets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @flag_content_uri = args[:flag_content_uri] if args.key?(:flag_content_uri)
+          @review_snippets = args[:review_snippets] if args.key?(:review_snippets)
+        end
+      end
+      
+      # Author attribution for a photo or review.
+      class GoogleCloudAiplatformV1GroundingChunkMapsPlaceAnswerSourcesAuthorAttribution
+        include Google::Apis::Core::Hashable
+      
+        # Name of the author of the Photo or Review.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Profile photo URI of the author of the Photo or Review.
+        # Corresponds to the JSON property `photoUri`
+        # @return [String]
+        attr_accessor :photo_uri
+      
+        # URI of the author of the Photo or Review.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @photo_uri = args[:photo_uri] if args.key?(:photo_uri)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Encapsulates a review snippet.
+      class GoogleCloudAiplatformV1GroundingChunkMapsPlaceAnswerSourcesReviewSnippet
+        include Google::Apis::Core::Hashable
+      
+        # Author attribution for a photo or review.
+        # Corresponds to the JSON property `authorAttribution`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingChunkMapsPlaceAnswerSourcesAuthorAttribution]
+        attr_accessor :author_attribution
+      
+        # A link where users can flag a problem with the review.
+        # Corresponds to the JSON property `flagContentUri`
+        # @return [String]
+        attr_accessor :flag_content_uri
+      
+        # A link to show the review on Google Maps.
+        # Corresponds to the JSON property `googleMapsUri`
+        # @return [String]
+        attr_accessor :google_maps_uri
+      
+        # A string of formatted recent time, expressing the review time relative to the
+        # current time in a form appropriate for the language and country.
+        # Corresponds to the JSON property `relativePublishTimeDescription`
+        # @return [String]
+        attr_accessor :relative_publish_time_description
+      
+        # A reference representing this place review which may be used to look up this
+        # place review again.
+        # Corresponds to the JSON property `review`
+        # @return [String]
+        attr_accessor :review
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @author_attribution = args[:author_attribution] if args.key?(:author_attribution)
+          @flag_content_uri = args[:flag_content_uri] if args.key?(:flag_content_uri)
+          @google_maps_uri = args[:google_maps_uri] if args.key?(:google_maps_uri)
+          @relative_publish_time_description = args[:relative_publish_time_description] if args.key?(:relative_publish_time_description)
+          @review = args[:review] if args.key?(:review)
         end
       end
       
@@ -13435,6 +13752,13 @@ module Google
       class GoogleCloudAiplatformV1GroundingMetadata
         include Google::Apis::Core::Hashable
       
+        # Optional. Output only. Resource name of the Google Maps widget context token
+        # to be used with the PlacesContextElement widget to render contextual data.
+        # This is populated only for Google Maps grounding.
+        # Corresponds to the JSON property `googleMapsWidgetContextToken`
+        # @return [String]
+        attr_accessor :google_maps_widget_context_token
+      
         # List of supporting references retrieved from specified grounding source.
         # Corresponds to the JSON property `groundingChunks`
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingChunk>]
@@ -13466,6 +13790,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @google_maps_widget_context_token = args[:google_maps_widget_context_token] if args.key?(:google_maps_widget_context_token)
           @grounding_chunks = args[:grounding_chunks] if args.key?(:grounding_chunks)
           @grounding_supports = args[:grounding_supports] if args.key?(:grounding_supports)
           @retrieval_metadata = args[:retrieval_metadata] if args.key?(:retrieval_metadata)
@@ -14275,6 +14600,11 @@ module Google
         # @return [String]
         attr_accessor :datapoint_id
       
+        # Optional. The key-value map of additional metadata for the datapoint.
+        # Corresponds to the JSON property `embeddingMetadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :embedding_metadata
+      
         # Required. Feature embedding vector for dense index. An array of numbers with
         # the length of [NearestNeighborSearchConfig.dimensions].
         # Corresponds to the JSON property `featureVector`
@@ -14310,6 +14640,7 @@ module Google
         def update!(**args)
           @crowding_tag = args[:crowding_tag] if args.key?(:crowding_tag)
           @datapoint_id = args[:datapoint_id] if args.key?(:datapoint_id)
+          @embedding_metadata = args[:embedding_metadata] if args.key?(:embedding_metadata)
           @feature_vector = args[:feature_vector] if args.key?(:feature_vector)
           @numeric_restricts = args[:numeric_restricts] if args.key?(:numeric_restricts)
           @restricts = args[:restricts] if args.key?(:restricts)
@@ -23468,6 +23799,13 @@ module Google
       class GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences
         include Google::Apis::Core::Hashable
       
+        # Optional. For notebook resource. When set to true, the Colab Enterprise link
+        # will be disabled in the "open notebook" dialog in UI.
+        # Corresponds to the JSON property `colabNotebookDisabled`
+        # @return [Boolean]
+        attr_accessor :colab_notebook_disabled
+        alias_method :colab_notebook_disabled?, :colab_notebook_disabled
+      
         # Required.
         # Corresponds to the JSON property `references`
         # @return [Hash<String,Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelResourceReference>]
@@ -23505,6 +23843,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @colab_notebook_disabled = args[:colab_notebook_disabled] if args.key?(:colab_notebook_disabled)
           @references = args[:references] if args.key?(:references)
           @resource_description = args[:resource_description] if args.key?(:resource_description)
           @resource_title = args[:resource_title] if args.key?(:resource_title)
@@ -25862,6 +26201,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Represents a customer-managed encryption key spec that can be applied to a top-
+        # level resource.
+        # Corresponds to the JSON property `encryptionSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EncryptionSpec]
+        attr_accessor :encryption_spec
+      
         # Optional. Used to perform consistent read-modify-write updates. If not set, a
         # blind "overwrite" update happens.
         # Corresponds to the JSON property `etag`
@@ -25893,6 +26238,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @spec = args[:spec] if args.key?(:spec)
@@ -25927,6 +26273,15 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReasoningEngineSpecPackageSpec]
         attr_accessor :package_spec
       
+        # Optional. The service account that the Reasoning Engine artifact runs as. It
+        # should have "roles/storage.objectViewer" for reading the user project's Cloud
+        # Storage and "roles/aiplatform.user" for using Vertex extensions. If not
+        # specified, the Vertex AI Reasoning Engine Service Agent in the project will be
+        # used.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
         def initialize(**args)
            update!(**args)
         end
@@ -25937,6 +26292,7 @@ module Google
           @class_methods = args[:class_methods] if args.key?(:class_methods)
           @deployment_spec = args[:deployment_spec] if args.key?(:deployment_spec)
           @package_spec = args[:package_spec] if args.key?(:package_spec)
+          @service_account = args[:service_account] if args.key?(:service_account)
         end
       end
       
@@ -37654,10 +38010,15 @@ module Google
         # subset of these functions by populating FunctionCall in the response. User
         # should provide a FunctionResponse for each function call in the next turn.
         # Based on the function responses, Model will generate the final response back
-        # to the user. Maximum 128 function declarations can be provided.
+        # to the user. Maximum 512 function declarations can be provided.
         # Corresponds to the JSON property `functionDeclarations`
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionDeclaration>]
         attr_accessor :function_declarations
+      
+        # Tool to retrieve public maps data for grounding, powered by Google.
+        # Corresponds to the JSON property `googleMaps`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GoogleMaps]
+        attr_accessor :google_maps
       
         # GoogleSearch tool type. Tool to support Google Search in Model. Powered by
         # Google.
@@ -37690,6 +38051,7 @@ module Google
           @computer_use = args[:computer_use] if args.key?(:computer_use)
           @enterprise_web_search = args[:enterprise_web_search] if args.key?(:enterprise_web_search)
           @function_declarations = args[:function_declarations] if args.key?(:function_declarations)
+          @google_maps = args[:google_maps] if args.key?(:google_maps)
           @google_search = args[:google_search] if args.key?(:google_search)
           @google_search_retrieval = args[:google_search_retrieval] if args.key?(:google_search_retrieval)
           @retrieval = args[:retrieval] if args.key?(:retrieval)
