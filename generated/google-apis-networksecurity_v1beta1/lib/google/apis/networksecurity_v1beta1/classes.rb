@@ -1098,6 +1098,57 @@ module Google
         end
       end
       
+      # Message describing DnsThreatDetector object
+      class DnsThreatDetector
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output only] Create time stamp
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A list of Network resource names which are exempt from the
+        # configuration in this DnsThreatDetector. Example: `projects/PROJECT_ID/global/
+        # networks/NETWORK_NAME`.
+        # Corresponds to the JSON property `excludedNetworks`
+        # @return [Array<String>]
+        attr_accessor :excluded_networks
+      
+        # Optional. Labels as key value pairs
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Immutable. Identifier. Name of the DnsThreatDetector resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The provider used for DNS threat analysis.
+        # Corresponds to the JSON property `provider`
+        # @return [String]
+        attr_accessor :provider
+      
+        # Output only. [Output only] Update time stamp
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @excluded_networks = args[:excluded_networks] if args.key?(:excluded_networks)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @provider = args[:provider] if args.key?(:provider)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -2664,6 +2715,37 @@ module Google
         def update!(**args)
           @client_tls_policies = args[:client_tls_policies] if args.key?(:client_tls_policies)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Message for response to listing DnsThreatDetectors
+      class ListDnsThreatDetectorsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of DnsThreatDetector resources.
+        # Corresponds to the JSON property `dnsThreatDetectors`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::DnsThreatDetector>]
+        attr_accessor :dns_threat_detectors
+      
+        # A token, which can be sent as `page_token` to retrieve the next page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unordered list. Unreachable `DnsThreatDetector` resources.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_threat_detectors = args[:dns_threat_detectors] if args.key?(:dns_threat_detectors)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       

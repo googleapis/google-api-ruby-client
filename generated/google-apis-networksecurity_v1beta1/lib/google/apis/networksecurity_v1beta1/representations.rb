@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DnsThreatDetector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -395,6 +401,12 @@ module Google
       end
       
       class ListClientTlsPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListDnsThreatDetectorsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1008,6 +1020,18 @@ module Google
         end
       end
       
+      class DnsThreatDetector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          collection :excluded_networks, as: 'excludedNetworks'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :provider, as: 'provider'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1364,6 +1388,16 @@ module Google
           collection :client_tls_policies, as: 'clientTlsPolicies', class: Google::Apis::NetworksecurityV1beta1::ClientTlsPolicy, decorator: Google::Apis::NetworksecurityV1beta1::ClientTlsPolicy::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListDnsThreatDetectorsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dns_threat_detectors, as: 'dnsThreatDetectors', class: Google::Apis::NetworksecurityV1beta1::DnsThreatDetector, decorator: Google::Apis::NetworksecurityV1beta1::DnsThreatDetector::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
