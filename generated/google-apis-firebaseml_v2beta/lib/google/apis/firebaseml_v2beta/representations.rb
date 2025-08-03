@@ -732,6 +732,7 @@ module Google
       class GoogleCloudAiplatformV1beta1EnterpriseWebSearch
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exclude_domains, as: 'excludeDomains'
         end
       end
       
@@ -1369,6 +1370,7 @@ module Google
       class GoogleCloudAiplatformV1beta1ToolGoogleSearch
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exclude_domains, as: 'excludeDomains'
         end
       end
       
