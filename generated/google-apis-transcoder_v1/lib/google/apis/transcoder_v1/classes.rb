@@ -1280,6 +1280,11 @@ module Google
       class Input
         include Google::Apis::Core::Hashable
       
+        # Input attributes that provide additional information about the input asset.
+        # Corresponds to the JSON property `attributes`
+        # @return [Google::Apis::TranscoderV1::InputAttributes]
+        attr_accessor :attributes
+      
         # A unique key for this input. Must be specified when using advanced mapping and
         # edit lists.
         # Corresponds to the JSON property `key`
@@ -1306,9 +1311,29 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
           @key = args[:key] if args.key?(:key)
           @preprocessing_config = args[:preprocessing_config] if args.key?(:preprocessing_config)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Input attributes that provide additional information about the input asset.
+      class InputAttributes
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of track definitions for the input asset.
+        # Corresponds to the JSON property `trackDefinitions`
+        # @return [Array<Google::Apis::TranscoderV1::TrackDefinition>]
+        attr_accessor :track_definitions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @track_definitions = args[:track_definitions] if args.key?(:track_definitions)
         end
       end
       
@@ -2227,6 +2252,51 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @language_code = args[:language_code] if args.key?(:language_code)
           @mapping = args[:mapping] if args.key?(:mapping)
+        end
+      end
+      
+      # Track definition for the input asset.
+      class TrackDefinition
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to automatically detect the languages present in the track.
+        # If true, the system will attempt to identify all the languages present in the
+        # track and populate the languages field.
+        # Corresponds to the JSON property `detectLanguages`
+        # @return [Boolean]
+        attr_accessor :detect_languages
+        alias_method :detect_languages?, :detect_languages
+      
+        # Output only. A list of languages detected in the input asset, represented by a
+        # BCP 47 language code, such as "en-US" or "sr-Latn". For more information, see
+        # https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. This field is
+        # only populated if the detect_languages field is set to true.
+        # Corresponds to the JSON property `detectedLanguages`
+        # @return [Array<String>]
+        attr_accessor :detected_languages
+      
+        # The input track.
+        # Corresponds to the JSON property `inputTrack`
+        # @return [Fixnum]
+        attr_accessor :input_track
+      
+        # Optional. A list of languages spoken in the input asset, represented by a BCP
+        # 47 language code, such as "en-US" or "sr-Latn". For more information, see
+        # https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # Corresponds to the JSON property `languages`
+        # @return [Array<String>]
+        attr_accessor :languages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detect_languages = args[:detect_languages] if args.key?(:detect_languages)
+          @detected_languages = args[:detected_languages] if args.key?(:detected_languages)
+          @input_track = args[:input_track] if args.key?(:input_track)
+          @languages = args[:languages] if args.key?(:languages)
         end
       end
       
