@@ -1390,6 +1390,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaBigQueryDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaBigQuerySource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2104,6 +2110,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaExportMetricsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaExportMetricsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaExportMetricsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaFactChunk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2573,6 +2597,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaOrganicCrawlRateTimeSeries
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaOutputConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6982,6 +7012,14 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaBigQueryDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_id, as: 'datasetId'
+          property :table_id, as: 'tableId'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaBigQuerySource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8244,6 +8282,28 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaExportMetricsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaExportMetricsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_config, as: 'outputConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaOutputConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaOutputConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaExportMetricsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaFactChunk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9024,6 +9084,14 @@ module Google
           property :google_organic_crawl_rate, as: 'googleOrganicCrawlRate', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries::Representation
       
           property :vertex_ai_organic_crawl_rate, as: 'vertexAiOrganicCrawlRate', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaOutputConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_destination, as: 'bigqueryDestination', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaBigQueryDestination, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaBigQueryDestination::Representation
       
         end
       end
@@ -9878,6 +9946,7 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaSearchRequestNaturalLanguageQueryUnderstandingSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :extracted_filter_behavior, as: 'extractedFilterBehavior'
           property :filter_extraction_condition, as: 'filterExtractionCondition'
           collection :geo_search_query_detection_field_names, as: 'geoSearchQueryDetectionFieldNames'
         end
@@ -12127,6 +12196,7 @@ module Google
       class GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :extracted_filter_behavior, as: 'extractedFilterBehavior'
           property :filter_extraction_condition, as: 'filterExtractionCondition'
           collection :geo_search_query_detection_field_names, as: 'geoSearchQueryDetectionFieldNames'
         end
