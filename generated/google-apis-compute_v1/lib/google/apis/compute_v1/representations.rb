@@ -17726,6 +17726,7 @@ module Google
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          hash :metadata, as: 'metadata'
           property :name, as: 'name'
           collection :nat_subnets, as: 'natSubnets'
           property :producer_forwarding_rule, as: 'producerForwardingRule'
