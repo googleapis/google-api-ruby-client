@@ -56,9 +56,9 @@ module Google
         # processed product can be retrieved.
         # @param [String] name
         #   Required. The name of the product input resource to delete. Format: `accounts/`
-        #   account`/productInputs/`product`` where the last section `product` consists of
-        #   4 parts: `channel~content_language~feed_label~offer_id` example for product
-        #   name is `accounts/123/productInputs/online~en~US~sku123`.
+        #   account`/productInputs/`product`` where the last section `product` consists of:
+        #   `content_language~feed_label~offer_id` example for product name is `accounts/
+        #   123/productInputs/en~US~sku123`.
         # @param [String] data_source
         #   Required. The primary or supplemental data source from which the product input
         #   should be deleted. Format: `accounts/`account`/dataSources/`datasource``. For
@@ -146,8 +146,12 @@ module Google
         # @param [String] name
         #   Identifier. The name of the product input. Format: `accounts/`account`/
         #   productInputs/`productinput`` where the last section `productinput` consists
-        #   of 4 parts: `channel~content_language~feed_label~offer_id` example for product
-        #   input name is `accounts/123/productInputs/online~en~US~sku123`
+        #   of: `content_language~feed_label~offer_id` example for product input name is `
+        #   accounts/123/productInputs/en~US~sku123`. A legacy local product input name
+        #   would be `accounts/123/productInputs/local~en~US~sku123`. Note: For calls to
+        #   the v1beta version, the `productInput` section consists of: `channel~
+        #   content_language~feed_label~offer_id`, for example: `accounts/123/
+        #   productInputs/online~en~US~sku123`.
         # @param [Google::Apis::MerchantapiProductsV1beta::ProductInput] product_input_object
         # @param [String] data_source
         #   Required. The primary or supplemental product data source where `data_source`
@@ -199,9 +203,12 @@ module Google
         # before the updated final product can be retrieved.
         # @param [String] name
         #   Required. The name of the product to retrieve. Format: `accounts/`account`/
-        #   products/`product`` where the last section `product` consists of 4 parts: `
-        #   channel~content_language~feed_label~offer_id` example for product name is `
-        #   accounts/123/products/online~en~US~sku123`
+        #   products/`product`` where the last section `product` consists of: `
+        #   content_language~feed_label~offer_id` example for product name is `accounts/
+        #   123/products/en~US~sku123`. A legacy local product name would be `accounts/123/
+        #   products/local~en~US~sku123`. Note: For calls to the v1beta version, the `
+        #   product` section consists of: `channel~content_language~feed_label~offer_id`,
+        #   for example: `accounts/123/products/online~en~US~sku123`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

@@ -1293,9 +1293,12 @@ module Google
         attr_accessor :feed_label
       
         # The name of the product. Format: `accounts/`account`/products/`product`` where
-        # the last section `product` consists of 4 parts: `channel~content_language~
-        # feed_label~offer_id` example for product name is `accounts/123/products/online~
-        # en~US~sku123`
+        # the last section `product` consists of: `content_language~feed_label~offer_id`
+        # example for product name is `accounts/123/products/en~US~sku123`. A legacy
+        # local product name would be `accounts/123/products/local~en~US~sku123`. Note:
+        # For calls to the v1beta version, the `product` section consists of: `channel~
+        # content_language~feed_label~offer_id`, for example: `accounts/123/products/
+        # online~en~US~sku123`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1509,8 +1512,12 @@ module Google
       
         # Identifier. The name of the product input. Format: `accounts/`account`/
         # productInputs/`productinput`` where the last section `productinput` consists
-        # of 4 parts: `channel~content_language~feed_label~offer_id` example for product
-        # input name is `accounts/123/productInputs/online~en~US~sku123`
+        # of: `content_language~feed_label~offer_id` example for product input name is `
+        # accounts/123/productInputs/en~US~sku123`. A legacy local product input name
+        # would be `accounts/123/productInputs/local~en~US~sku123`. Note: For calls to
+        # the v1beta version, the `productInput` section consists of: `channel~
+        # content_language~feed_label~offer_id`, for example: `accounts/123/
+        # productInputs/online~en~US~sku123`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
