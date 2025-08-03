@@ -4208,18 +4208,27 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Output only. The resolved digest for the image specified in the `image` field.
-        # The digest is resolved during the creation of `WasmPluginVersion` resource.
-        # This field holds the digest value, regardless of whether a tag or digest was
-        # originally specified in the `image` field.
+        # Output only. This field holds the digest (usually checksum) value for the
+        # plugin image. The value is calculated based on the `image_uri` field. If the `
+        # image_uri` field refers to a container image, the digest value is obtained
+        # from the container image. If the `image_uri` field refers to a generic
+        # artifact, the digest value is calculated based on the contents of the file.
         # Corresponds to the JSON property `imageDigest`
         # @return [String]
         attr_accessor :image_digest
       
-        # Optional. URI of the container image containing the plugin, stored in the
-        # Artifact Registry. When a new `WasmPluginVersion` resource is created, the
-        # digest of the container image is saved in the `image_digest` field. When
-        # downloading an image, the digest value is used instead of an image tag.
+        # Optional. URI of the image containing the Wasm module, stored in Artifact
+        # Registry. The URI can refer to one of the following repository formats: *
+        # Container images: the `image_uri` must point to a container that contains a
+        # single file with the name `plugin.wasm`. When a new `WasmPluginVersion`
+        # resource is created, the digest of the image is saved in the `image_digest`
+        # field. When pulling a container image from Artifact Registry, the digest value
+        # is used instead of an image tag. * Generic artifacts: the `image_uri` must be
+        # in this format: `projects/`project`/locations/`location`/repositories/`
+        # repository`/ genericArtifacts/`package`:`version``. The specified package and
+        # version must contain a file with the name `plugin.wasm`. When a new `
+        # WasmPluginVersion` resource is created, the checksum of the contents of the
+        # file is saved in the `image_digest` field.
         # Corresponds to the JSON property `imageUri`
         # @return [String]
         attr_accessor :image_uri
@@ -4247,7 +4256,7 @@ module Google
       
         # Output only. This field holds the digest (usually checksum) value for the
         # plugin configuration. The value is calculated based on the contents of `
-        # plugin_config_data` or the container image defined by the `plugin_config_uri`
+        # plugin_config_data` field or the image defined by the `plugin_config_uri`
         # field.
         # Corresponds to the JSON property `pluginConfigDigest`
         # @return [String]
@@ -4255,9 +4264,18 @@ module Google
       
         # URI of the plugin configuration stored in the Artifact Registry. The
         # configuration is provided to the plugin at runtime through the `ON_CONFIGURE`
-        # callback. The container image must contain only a single file with the name `
-        # plugin.config`. When a new `WasmPluginVersion` resource is created, the digest
-        # of the container image is saved in the `plugin_config_digest` field.
+        # callback. The URI can refer to one of the following repository formats: *
+        # Container images: the `plugin_config_uri` must point to a container that
+        # contains a single file with the name `plugin.config`. When a new `
+        # WasmPluginVersion` resource is created, the digest of the image is saved in
+        # the `plugin_config_digest` field. When pulling a container image from Artifact
+        # Registry, the digest value is used instead of an image tag. * Generic
+        # artifacts: the `plugin_config_uri` must be in this format: `projects/`project`/
+        # locations/`location`/repositories/`repository`/ genericArtifacts/`package`:`
+        # version``. The specified package and version must contain a file with the name
+        # `plugin.config`. When a new `WasmPluginVersion` resource is created, the
+        # checksum of the contents of the file is saved in the `plugin_config_digest`
+        # field.
         # Corresponds to the JSON property `pluginConfigUri`
         # @return [String]
         attr_accessor :plugin_config_uri
@@ -4301,18 +4319,27 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Output only. The resolved digest for the image specified in `image`. The
-        # digest is resolved during the creation of a `WasmPluginVersion` resource. This
-        # field holds the digest value regardless of whether a tag or digest was
-        # originally specified in the `image` field.
+        # Output only. This field holds the digest (usually checksum) value for the
+        # plugin image. The value is calculated based on the `image_uri` field. If the `
+        # image_uri` field refers to a container image, the digest value is obtained
+        # from the container image. If the `image_uri` field refers to a generic
+        # artifact, the digest value is calculated based on the contents of the file.
         # Corresponds to the JSON property `imageDigest`
         # @return [String]
         attr_accessor :image_digest
       
-        # Optional. URI of the container image containing the Wasm module, stored in the
-        # Artifact Registry. The container image must contain only a single file with
-        # the name `plugin.wasm`. When a new `WasmPluginVersion` resource is created,
-        # the URI gets resolved to an image digest and saved in the `image_digest` field.
+        # Optional. URI of the image containing the Wasm module, stored in Artifact
+        # Registry. The URI can refer to one of the following repository formats: *
+        # Container images: the `image_uri` must point to a container that contains a
+        # single file with the name `plugin.wasm`. When a new `WasmPluginVersion`
+        # resource is created, the digest of the image is saved in the `image_digest`
+        # field. When pulling a container image from Artifact Registry, the digest value
+        # is used instead of an image tag. * Generic artifacts: the `image_uri` must be
+        # in this format: `projects/`project`/locations/`location`/repositories/`
+        # repository`/ genericArtifacts/`package`:`version``. The specified package and
+        # version must contain a file with the name `plugin.wasm`. When a new `
+        # WasmPluginVersion` resource is created, the checksum of the contents of the
+        # file is saved in the `image_digest` field.
         # Corresponds to the JSON property `imageUri`
         # @return [String]
         attr_accessor :image_uri
@@ -4332,18 +4359,27 @@ module Google
         attr_accessor :plugin_config_data
       
         # Output only. This field holds the digest (usually checksum) value for the
-        # plugin configuration. The value is calculated based on the contents of the `
-        # plugin_config_data` field or the container image defined by the `
-        # plugin_config_uri` field.
+        # plugin configuration. The value is calculated based on the contents of `
+        # plugin_config_data` field or the image defined by the `plugin_config_uri`
+        # field.
         # Corresponds to the JSON property `pluginConfigDigest`
         # @return [String]
         attr_accessor :plugin_config_digest
       
         # URI of the plugin configuration stored in the Artifact Registry. The
         # configuration is provided to the plugin at runtime through the `ON_CONFIGURE`
-        # callback. The container image must contain only a single file with the name `
-        # plugin.config`. When a new `WasmPluginVersion` resource is created, the digest
-        # of the container image is saved in the `plugin_config_digest` field.
+        # callback. The URI can refer to one of the following repository formats: *
+        # Container images: the `plugin_config_uri` must point to a container that
+        # contains a single file with the name `plugin.config`. When a new `
+        # WasmPluginVersion` resource is created, the digest of the image is saved in
+        # the `plugin_config_digest` field. When pulling a container image from Artifact
+        # Registry, the digest value is used instead of an image tag. * Generic
+        # artifacts: the `plugin_config_uri` must be in this format: `projects/`project`/
+        # locations/`location`/repositories/`repository`/ genericArtifacts/`package`:`
+        # version``. The specified package and version must contain a file with the name
+        # `plugin.config`. When a new `WasmPluginVersion` resource is created, the
+        # checksum of the contents of the file is saved in the `plugin_config_digest`
+        # field.
         # Corresponds to the JSON property `pluginConfigUri`
         # @return [String]
         attr_accessor :plugin_config_uri
