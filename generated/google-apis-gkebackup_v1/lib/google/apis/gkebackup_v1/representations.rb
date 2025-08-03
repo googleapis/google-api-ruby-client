@@ -406,6 +406,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TroubleshootingInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VolumeBackup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -483,6 +489,8 @@ module Google
           property :size_bytes, :numeric_string => true, as: 'sizeBytes'
           property :state, as: 'state'
           property :state_reason, as: 'stateReason'
+          property :troubleshooting_info, as: 'troubleshootingInfo', class: Google::Apis::GkebackupV1::TroubleshootingInfo, decorator: Google::Apis::GkebackupV1::TroubleshootingInfo::Representation
+      
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
           property :volume_count, as: 'volumeCount'
@@ -976,6 +984,8 @@ module Google
       
           property :state, as: 'state'
           property :state_reason, as: 'stateReason'
+          property :troubleshooting_info, as: 'troubleshootingInfo', class: Google::Apis::GkebackupV1::TroubleshootingInfo, decorator: Google::Apis::GkebackupV1::TroubleshootingInfo::Representation
+      
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
           collection :volume_data_restore_policy_overrides, as: 'volumeDataRestorePolicyOverrides', class: Google::Apis::GkebackupV1::VolumeDataRestorePolicyOverride, decorator: Google::Apis::GkebackupV1::VolumeDataRestorePolicyOverride::Representation
@@ -1167,6 +1177,14 @@ module Google
           property :op, as: 'op'
           property :path, as: 'path'
           property :value, as: 'value'
+        end
+      end
+      
+      class TroubleshootingInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state_reason_code, as: 'stateReasonCode'
+          property :state_reason_uri, as: 'stateReasonUri'
         end
       end
       

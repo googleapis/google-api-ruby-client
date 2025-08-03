@@ -275,6 +275,13 @@ module Google
         # @return [String]
         attr_accessor :state_reason
       
+        # Stores information about troubleshooting doc for debugging a particular state
+        # of an operation (eg - backup/restore). This will be used by the end user to
+        # debug their operation failure scenario easily.
+        # Corresponds to the JSON property `troubleshootingInfo`
+        # @return [Google::Apis::GkebackupV1::TroubleshootingInfo]
+        attr_accessor :troubleshooting_info
+      
         # Output only. Server generated global unique identifier of [UUID4](https://en.
         # wikipedia.org/wiki/Universally_unique_identifier)
         # Corresponds to the JSON property `uid`
@@ -325,6 +332,7 @@ module Google
           @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
           @state = args[:state] if args.key?(:state)
           @state_reason = args[:state_reason] if args.key?(:state_reason)
+          @troubleshooting_info = args[:troubleshooting_info] if args.key?(:troubleshooting_info)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
           @volume_count = args[:volume_count] if args.key?(:volume_count)
@@ -2347,6 +2355,13 @@ module Google
         # @return [String]
         attr_accessor :state_reason
       
+        # Stores information about troubleshooting doc for debugging a particular state
+        # of an operation (eg - backup/restore). This will be used by the end user to
+        # debug their operation failure scenario easily.
+        # Corresponds to the JSON property `troubleshootingInfo`
+        # @return [Google::Apis::GkebackupV1::TroubleshootingInfo]
+        attr_accessor :troubleshooting_info
+      
         # Output only. Server generated global unique identifier of [UUID](https://en.
         # wikipedia.org/wiki/Universally_unique_identifier) format.
         # Corresponds to the JSON property `uid`
@@ -2390,6 +2405,7 @@ module Google
           @restore_config = args[:restore_config] if args.key?(:restore_config)
           @state = args[:state] if args.key?(:state)
           @state_reason = args[:state_reason] if args.key?(:state_reason)
+          @troubleshooting_info = args[:troubleshooting_info] if args.key?(:troubleshooting_info)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
           @volume_data_restore_policy_overrides = args[:volume_data_restore_policy_overrides] if args.key?(:volume_data_restore_policy_overrides)
@@ -3250,6 +3266,35 @@ module Google
           @op = args[:op] if args.key?(:op)
           @path = args[:path] if args.key?(:path)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Stores information about troubleshooting doc for debugging a particular state
+      # of an operation (eg - backup/restore). This will be used by the end user to
+      # debug their operation failure scenario easily.
+      class TroubleshootingInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Unique code for each backup/restore operation failure message
+        # which helps user identify the failure.
+        # Corresponds to the JSON property `stateReasonCode`
+        # @return [String]
+        attr_accessor :state_reason_code
+      
+        # Output only. URL for the troubleshooting doc which will help the user fix the
+        # failing backup/restore operation.
+        # Corresponds to the JSON property `stateReasonUri`
+        # @return [String]
+        attr_accessor :state_reason_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state_reason_code = args[:state_reason_code] if args.key?(:state_reason_code)
+          @state_reason_uri = args[:state_reason_uri] if args.key?(:state_reason_uri)
         end
       end
       
