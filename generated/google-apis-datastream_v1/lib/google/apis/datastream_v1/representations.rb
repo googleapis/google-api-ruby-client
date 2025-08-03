@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BasicEncryption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BigQueryDestinationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,6 +137,18 @@ module Google
       end
       
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EncryptionAndServerValidation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EncryptionNotEnforced
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -664,6 +682,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlServerSslConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SqlServerTable
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -815,6 +839,12 @@ module Google
       end
       
       class BackfillNoneStrategy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class BasicEncryption
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -991,6 +1021,20 @@ module Google
       end
       
       class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EncryptionAndServerValidation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ca_certificate, as: 'caCertificate'
+          property :server_certificate_hostname, as: 'serverCertificateHostname'
+        end
+      end
+      
+      class EncryptionNotEnforced
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -1858,6 +1902,8 @@ module Google
           property :password, as: 'password'
           property :port, as: 'port'
           property :secret_manager_stored_password, as: 'secretManagerStoredPassword'
+          property :ssl_config, as: 'sslConfig', class: Google::Apis::DatastreamV1::SqlServerSslConfig, decorator: Google::Apis::DatastreamV1::SqlServerSslConfig::Representation
+      
           property :username, as: 'username'
         end
       end
@@ -1891,6 +1937,18 @@ module Google
           property :max_concurrent_backfill_tasks, as: 'maxConcurrentBackfillTasks'
           property :max_concurrent_cdc_tasks, as: 'maxConcurrentCdcTasks'
           property :transaction_logs, as: 'transactionLogs', class: Google::Apis::DatastreamV1::SqlServerTransactionLogs, decorator: Google::Apis::DatastreamV1::SqlServerTransactionLogs::Representation
+      
+        end
+      end
+      
+      class SqlServerSslConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :basic_encryption, as: 'basicEncryption', class: Google::Apis::DatastreamV1::BasicEncryption, decorator: Google::Apis::DatastreamV1::BasicEncryption::Representation
+      
+          property :encryption_and_server_validation, as: 'encryptionAndServerValidation', class: Google::Apis::DatastreamV1::EncryptionAndServerValidation, decorator: Google::Apis::DatastreamV1::EncryptionAndServerValidation::Representation
+      
+          property :encryption_not_enforced, as: 'encryptionNotEnforced', class: Google::Apis::DatastreamV1::EncryptionNotEnforced, decorator: Google::Apis::DatastreamV1::EncryptionNotEnforced::Representation
       
         end
       end
