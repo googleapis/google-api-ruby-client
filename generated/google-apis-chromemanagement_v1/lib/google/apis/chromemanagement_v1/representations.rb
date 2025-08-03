@@ -664,6 +664,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementVersionsV1ReportingData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -701,6 +713,12 @@ module Google
       end
       
       class GoogleChromeManagementVersionsV1SignDataResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1ThirdPartyProfileUser
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1953,6 +1971,21 @@ module Google
         end
       end
       
+      class GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_org_unit, as: 'destinationOrgUnit'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :third_party_profile_user, as: 'thirdPartyProfileUser', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ThirdPartyProfileUser, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ThirdPartyProfileUser::Representation
+      
+        end
+      end
+      
       class GoogleChromeManagementVersionsV1ReportingData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2026,6 +2059,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :certificate_provisioning_process, as: 'certificateProvisioningProcess', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1CertificateProvisioningProcess, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1CertificateProvisioningProcess::Representation
       
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1ThirdPartyProfileUser
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :org_unit_id, as: 'orgUnitId'
         end
       end
       

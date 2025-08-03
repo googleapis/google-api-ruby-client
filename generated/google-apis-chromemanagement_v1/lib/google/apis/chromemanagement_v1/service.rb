@@ -1394,6 +1394,41 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Moves a third party chrome profile user to a destination OU. All profiles
+        # associated to that user will be moved to the destination OU.
+        # @param [String] name
+        #   Required. Format: customers/`customer_id`/thirdPartyProfileUsers/`
+        #   third_party_profile_user_id`
+        # @param [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest] google_chrome_management_versions_v1_move_third_party_profile_user_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def move_customer_third_party_profile_user(name, google_chrome_management_versions_v1_move_third_party_profile_user_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:move', options)
+          command.request_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest::Representation
+          command.request_object = google_chrome_management_versions_v1_move_third_party_profile_user_request_object
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 

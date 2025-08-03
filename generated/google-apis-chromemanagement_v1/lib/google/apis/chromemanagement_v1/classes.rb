@@ -4776,6 +4776,46 @@ module Google
         end
       end
       
+      # Request to MoveThirdPartyProfileUser method.
+      class GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Destination organizational unit where the third party chrome profile
+        # user will be moved to.
+        # Corresponds to the JSON property `destinationOrgUnit`
+        # @return [String]
+        attr_accessor :destination_org_unit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_org_unit = args[:destination_org_unit] if args.key?(:destination_org_unit)
+        end
+      end
+      
+      # Response for MoveThirdPartyProfileUser method.
+      class GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse
+        include Google::Apis::Core::Hashable
+      
+        # A representation of non-Google (third party) user that is associated with a
+        # managed Chrome profile.
+        # Corresponds to the JSON property `thirdPartyProfileUser`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ThirdPartyProfileUser]
+        attr_accessor :third_party_profile_user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @third_party_profile_user = args[:third_party_profile_user] if args.key?(:third_party_profile_user)
+        end
+      end
+      
       # Reporting data of a Chrome browser profile.
       class GoogleChromeManagementVersionsV1ReportingData
         include Google::Apis::Core::Hashable
@@ -5038,6 +5078,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @certificate_provisioning_process = args[:certificate_provisioning_process] if args.key?(:certificate_provisioning_process)
+        end
+      end
+      
+      # A representation of non-Google (third party) user that is associated with a
+      # managed Chrome profile.
+      class GoogleChromeManagementVersionsV1ThirdPartyProfileUser
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. Format: customers/`customer_id`/thirdPartyProfileUsers/`
+        # third_party_profile_user_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The ID of the organizational unit assigned to the user.
+        # Corresponds to the JSON property `orgUnitId`
+        # @return [String]
+        attr_accessor :org_unit_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @org_unit_id = args[:org_unit_id] if args.key?(:org_unit_id)
         end
       end
       
