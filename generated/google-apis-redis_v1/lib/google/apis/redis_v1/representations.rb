@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackupDrMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackupFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -650,6 +656,22 @@ module Google
         end
       end
       
+      class BackupDrMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::RedisV1::BackupConfiguration, decorator: Google::Apis::RedisV1::BackupConfiguration::Representation
+      
+          property :backup_run, as: 'backupRun', class: Google::Apis::RedisV1::BackupRun, decorator: Google::Apis::RedisV1::BackupRun::Representation
+      
+          property :backupdr_configuration, as: 'backupdrConfiguration', class: Google::Apis::RedisV1::BackupDrConfiguration, decorator: Google::Apis::RedisV1::BackupDrConfiguration::Representation
+      
+          property :full_resource_name, as: 'fullResourceName'
+          property :last_refresh_time, as: 'lastRefreshTime'
+          property :resource_id, as: 'resourceId', class: Google::Apis::RedisV1::DatabaseResourceId, decorator: Google::Apis::RedisV1::DatabaseResourceId::Representation
+      
+        end
+      end
+      
       class BackupFile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -844,6 +866,8 @@ module Google
       class DatabaseResourceFeed
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backupdr_metadata, as: 'backupdrMetadata', class: Google::Apis::RedisV1::BackupDrMetadata, decorator: Google::Apis::RedisV1::BackupDrMetadata::Representation
+      
           property :config_based_signal_data, as: 'configBasedSignalData', class: Google::Apis::RedisV1::ConfigBasedSignalData, decorator: Google::Apis::RedisV1::ConfigBasedSignalData::Representation
       
           property :feed_timestamp, as: 'feedTimestamp'
