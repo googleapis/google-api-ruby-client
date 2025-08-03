@@ -220,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InputAttributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Job
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -347,6 +353,12 @@ module Google
       end
       
       class TextStream
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TrackDefinition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -722,10 +734,20 @@ module Google
       class Input
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :attributes, as: 'attributes', class: Google::Apis::TranscoderV1::InputAttributes, decorator: Google::Apis::TranscoderV1::InputAttributes::Representation
+      
           property :key, as: 'key'
           property :preprocessing_config, as: 'preprocessingConfig', class: Google::Apis::TranscoderV1::PreprocessingConfig, decorator: Google::Apis::TranscoderV1::PreprocessingConfig::Representation
       
           property :uri, as: 'uri'
+        end
+      end
+      
+      class InputAttributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :track_definitions, as: 'trackDefinitions', class: Google::Apis::TranscoderV1::TrackDefinition, decorator: Google::Apis::TranscoderV1::TrackDefinition::Representation
+      
         end
       end
       
@@ -976,6 +998,16 @@ module Google
           property :language_code, as: 'languageCode'
           collection :mapping, as: 'mapping', class: Google::Apis::TranscoderV1::TextMapping, decorator: Google::Apis::TranscoderV1::TextMapping::Representation
       
+        end
+      end
+      
+      class TrackDefinition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detect_languages, as: 'detectLanguages'
+          collection :detected_languages, as: 'detectedLanguages'
+          property :input_track, as: 'inputTrack'
+          collection :languages, as: 'languages'
         end
       end
       
