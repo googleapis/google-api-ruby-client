@@ -2849,6 +2849,182 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new DnsThreatDetector in a given project and location.
+        # @param [String] parent
+        #   Required. Value for parent of the DnsThreatDetector resource.
+        # @param [Google::Apis::NetworksecurityV1beta1::DnsThreatDetector] dns_threat_detector_object
+        # @param [String] dns_threat_detector_id
+        #   Optional. Id of the requesting DnsThreatDetector object. If this field is not
+        #   supplied, the service will generate an identifier.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::DnsThreatDetector] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::DnsThreatDetector]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_dns_threat_detector(parent, dns_threat_detector_object = nil, dns_threat_detector_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/dnsThreatDetectors', options)
+          command.request_representation = Google::Apis::NetworksecurityV1beta1::DnsThreatDetector::Representation
+          command.request_object = dns_threat_detector_object
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::DnsThreatDetector::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::DnsThreatDetector
+          command.params['parent'] = parent unless parent.nil?
+          command.query['dnsThreatDetectorId'] = dns_threat_detector_id unless dns_threat_detector_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single DnsThreatDetector.
+        # @param [String] name
+        #   Required. Name of the DnsThreatDetector resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_dns_threat_detector(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::Empty::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single DnsThreatDetector.
+        # @param [String] name
+        #   Required. Name of the DnsThreatDetector resource
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::DnsThreatDetector] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::DnsThreatDetector]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_dns_threat_detector(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::DnsThreatDetector::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::DnsThreatDetector
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists DnsThreatDetectors in a given project and location.
+        # @param [String] parent
+        #   Required. Parent value for ListDnsThreatDetectorsRequest
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, server will pick an appropriate default.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `
+        #   ListDnsThreatDetectorsRequest` call. Provide this to retrieve the subsequent
+        #   page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::ListDnsThreatDetectorsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::ListDnsThreatDetectorsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_dns_threat_detectors(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/dnsThreatDetectors', options)
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::ListDnsThreatDetectorsResponse::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::ListDnsThreatDetectorsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the parameters of a single DnsThreatDetector.
+        # @param [String] name
+        #   Immutable. Identifier. Name of the DnsThreatDetector resource.
+        # @param [Google::Apis::NetworksecurityV1beta1::DnsThreatDetector] dns_threat_detector_object
+        # @param [String] update_mask
+        #   Optional. Field mask is used to specify the fields to be overwritten in the
+        #   DnsThreatDetector resource by the update. The fields specified in the
+        #   update_mask are relative to the resource, not the full request. A field will
+        #   be overwritten if it is in the mask. If the mask is not provided then all
+        #   fields present in the request will be overwritten.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::DnsThreatDetector] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::DnsThreatDetector]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_dns_threat_detector(name, dns_threat_detector_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::NetworksecurityV1beta1::DnsThreatDetector::Representation
+          command.request_object = dns_threat_detector_object
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::DnsThreatDetector::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::DnsThreatDetector
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new FirewallEndpointAssociation in a given project and location.
         # @param [String] parent
         #   Required. Value for parent.
