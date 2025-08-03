@@ -463,7 +463,7 @@ module Google
         attr_accessor :backup_type
       
         # CloudSqlInstanceBackupProperties represents Cloud SQL Instance Backup
-        # properties. .
+        # properties.
         # Corresponds to the JSON property `cloudSqlInstanceBackupProperties`
         # @return [Google::Apis::BackupdrV1::CloudSqlInstanceBackupProperties]
         attr_accessor :cloud_sql_instance_backup_properties
@@ -1025,8 +1025,7 @@ module Google
       class BackupPlan
         include Google::Apis::Core::Hashable
       
-        # Optional. The backup rules for this `BackupPlan`. There must be at least one `
-        # BackupRule` message if on_demand_retention_limit_days is not set.
+        # Optional. The backup rules for this `BackupPlan`.
         # Corresponds to the JSON property `backupRules`
         # @return [Array<Google::Apis::BackupdrV1::BackupRule>]
         attr_accessor :backup_rules
@@ -1072,9 +1071,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Optional. Required for CloudSQL resource_type Configures how long logs will be
-        # stored. It is defined in “days”. This value should be greater than or equal to
-        # minimum enforced log retention duration of the backup vault.
+        # Optional. Applicable only for CloudSQL resource_type. Configures how long logs
+        # will be stored. It is defined in “days”. This value should be greater than or
+        # equal to minimum enforced log retention duration of the backup vault.
         # Corresponds to the JSON property `logRetentionDays`
         # @return [Fixnum]
         attr_accessor :log_retention_days
@@ -1085,7 +1084,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required.
+        # Required. The resource type to which the `BackupPlan` will be applied.
+        # Examples include, "compute.googleapis.com/Instance", "sqladmin.googleapis.com/
+        # Instance", "alloydb.googleapis.com/Cluster", "compute.googleapis.com/Disk".
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
@@ -1199,7 +1200,7 @@ module Google
         # @return [String]
         attr_accessor :resource
       
-        # Required. Immutable.
+        # Required. Immutable. Resource type of workload on which backupplan is applied
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
@@ -1615,7 +1616,7 @@ module Google
       end
       
       # CloudSqlInstanceBackupProperties represents Cloud SQL Instance Backup
-      # properties. .
+      # properties.
       class CloudSqlInstanceBackupProperties
         include Google::Apis::Core::Hashable
       
@@ -1657,7 +1658,7 @@ module Google
       end
       
       # CloudSqlInstanceDataSourceProperties represents the properties of a Cloud SQL
-      # resource that are stored in the DataSource. .
+      # resource that are stored in the DataSource.
       class CloudSqlInstanceDataSourceProperties
         include Google::Apis::Core::Hashable
       
@@ -1697,7 +1698,7 @@ module Google
       end
       
       # CloudSqlInstanceDataSourceReferenceProperties represents the properties of a
-      # Cloud SQL resource that are stored in the DataSourceReference. .
+      # Cloud SQL resource that are stored in the DataSourceReference.
       class CloudSqlInstanceDataSourceReferenceProperties
         include Google::Apis::Core::Hashable
       
@@ -2377,7 +2378,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # CloudSqlInstanceDataSourceProperties represents the properties of a Cloud SQL
-        # resource that are stored in the DataSource. .
+        # resource that are stored in the DataSource.
         # Corresponds to the JSON property `cloudSqlInstanceDatasourceProperties`
         # @return [Google::Apis::BackupdrV1::CloudSqlInstanceDataSourceProperties]
         attr_accessor :cloud_sql_instance_datasource_properties
@@ -2430,7 +2431,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # CloudSqlInstanceDataSourceReferenceProperties represents the properties of a
-        # Cloud SQL resource that are stored in the DataSourceReference. .
+        # Cloud SQL resource that are stored in the DataSourceReference.
         # Corresponds to the JSON property `cloudSqlInstanceProperties`
         # @return [Google::Apis::BackupdrV1::CloudSqlInstanceDataSourceReferenceProperties]
         attr_accessor :cloud_sql_instance_properties
@@ -2686,7 +2687,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :licenses
       
-        # Required. Name of the disk..
+        # Required. Name of the disk.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -5163,7 +5164,8 @@ module Google
         # @return [String]
         attr_accessor :request_id
       
-        # Required. backup rule_id for which a backup needs to be triggered.
+        # Optional. backup rule_id for which a backup needs to be triggered. If not
+        # specified, on-demand backup with custom retention will be triggered.
         # Corresponds to the JSON property `ruleId`
         # @return [String]
         attr_accessor :rule_id

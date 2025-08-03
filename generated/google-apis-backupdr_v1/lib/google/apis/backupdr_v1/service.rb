@@ -357,7 +357,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update a BackupPlanAssociation
+        # Update a BackupPlanAssociation.
         # @param [String] name
         #   Output only. Identifier. The resource name of BackupPlanAssociation in below
         #   format Format : projects/`project`/locations/`location`/backupPlanAssociations/
@@ -626,7 +626,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update a BackupPlan
+        # Update a BackupPlan.
         # @param [String] name
         #   Output only. Identifier. The resource name of the `BackupPlan`. Format: `
         #   projects/`project`/locations/`location`/backupPlans/`backup_plan``
