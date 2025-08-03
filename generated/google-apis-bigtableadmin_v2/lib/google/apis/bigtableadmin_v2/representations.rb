@@ -376,6 +376,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleBigtableAdminV2TypeEnum
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleBigtableAdminV2TypeFloat32
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -413,6 +419,12 @@ module Google
       end
       
       class GoogleBigtableAdminV2TypeMap
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleBigtableAdminV2TypeProto
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1398,6 +1410,14 @@ module Google
         end
       end
       
+      class GoogleBigtableAdminV2TypeEnum
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enum_name, as: 'enumName'
+          property :schema_bundle_id, as: 'schemaBundleId'
+        end
+      end
+      
       class GoogleBigtableAdminV2TypeFloat32
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1449,6 +1469,14 @@ module Google
       
           property :value_type, as: 'valueType', class: Google::Apis::BigtableadminV2::Type, decorator: Google::Apis::BigtableadminV2::Type::Representation
       
+        end
+      end
+      
+      class GoogleBigtableAdminV2TypeProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message_name, as: 'messageName'
+          property :schema_bundle_id, as: 'schemaBundleId'
         end
       end
       
@@ -2012,6 +2040,8 @@ module Google
       
           property :date_type, as: 'dateType', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeDate, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeDate::Representation
       
+          property :enum_type, as: 'enumType', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeEnum, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeEnum::Representation
+      
           property :float32_type, as: 'float32Type', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeFloat32, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeFloat32::Representation
       
           property :float64_type, as: 'float64Type', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeFloat64, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeFloat64::Representation
@@ -2019,6 +2049,8 @@ module Google
           property :int64_type, as: 'int64Type', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt64, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt64::Representation
       
           property :map_type, as: 'mapType', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeMap, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeMap::Representation
+      
+          property :proto_type, as: 'protoType', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeProto, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeProto::Representation
       
           property :string_type, as: 'stringType', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeString, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeString::Representation
       

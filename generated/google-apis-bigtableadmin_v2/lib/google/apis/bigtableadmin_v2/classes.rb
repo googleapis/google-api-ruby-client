@@ -2035,6 +2035,32 @@ module Google
         end
       end
       
+      # A protobuf enum type. Values of type `Enum` are stored in `Value.int_value`.
+      class GoogleBigtableAdminV2TypeEnum
+        include Google::Apis::Core::Hashable
+      
+        # The fully qualified name of the protobuf enum message, including package. In
+        # the format of "foo.bar.EnumMessage".
+        # Corresponds to the JSON property `enumName`
+        # @return [String]
+        attr_accessor :enum_name
+      
+        # The ID of the schema bundle that this enum is defined in.
+        # Corresponds to the JSON property `schemaBundleId`
+        # @return [String]
+        attr_accessor :schema_bundle_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enum_name = args[:enum_name] if args.key?(:enum_name)
+          @schema_bundle_id = args[:schema_bundle_id] if args.key?(:schema_bundle_id)
+        end
+      end
+      
       # Float32 Values of type `Float32` are stored in `Value.float_value`.
       class GoogleBigtableAdminV2TypeFloat32
         include Google::Apis::Core::Hashable
@@ -2204,6 +2230,33 @@ module Google
         def update!(**args)
           @key_type = args[:key_type] if args.key?(:key_type)
           @value_type = args[:value_type] if args.key?(:value_type)
+        end
+      end
+      
+      # A protobuf message type. Values of type `Proto` are stored in `Value.
+      # bytes_value`.
+      class GoogleBigtableAdminV2TypeProto
+        include Google::Apis::Core::Hashable
+      
+        # The fully qualified name of the protobuf message, including package. In the
+        # format of "foo.bar.Message".
+        # Corresponds to the JSON property `messageName`
+        # @return [String]
+        attr_accessor :message_name
+      
+        # The ID of the schema bundle that this proto is defined in.
+        # Corresponds to the JSON property `schemaBundleId`
+        # @return [String]
+        attr_accessor :schema_bundle_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message_name = args[:message_name] if args.key?(:message_name)
+          @schema_bundle_id = args[:schema_bundle_id] if args.key?(:schema_bundle_id)
         end
       end
       
@@ -4245,6 +4298,11 @@ module Google
         # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeDate]
         attr_accessor :date_type
       
+        # A protobuf enum type. Values of type `Enum` are stored in `Value.int_value`.
+        # Corresponds to the JSON property `enumType`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeEnum]
+        attr_accessor :enum_type
+      
         # Float32 Values of type `Float32` are stored in `Value.float_value`.
         # Corresponds to the JSON property `float32Type`
         # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeFloat32]
@@ -4269,6 +4327,12 @@ module Google
         # Corresponds to the JSON property `mapType`
         # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeMap]
         attr_accessor :map_type
+      
+        # A protobuf message type. Values of type `Proto` are stored in `Value.
+        # bytes_value`.
+        # Corresponds to the JSON property `protoType`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeProto]
+        attr_accessor :proto_type
       
         # String Values of type `String` are stored in `Value.string_value`.
         # Corresponds to the JSON property `stringType`
@@ -4298,10 +4362,12 @@ module Google
           @bool_type = args[:bool_type] if args.key?(:bool_type)
           @bytes_type = args[:bytes_type] if args.key?(:bytes_type)
           @date_type = args[:date_type] if args.key?(:date_type)
+          @enum_type = args[:enum_type] if args.key?(:enum_type)
           @float32_type = args[:float32_type] if args.key?(:float32_type)
           @float64_type = args[:float64_type] if args.key?(:float64_type)
           @int64_type = args[:int64_type] if args.key?(:int64_type)
           @map_type = args[:map_type] if args.key?(:map_type)
+          @proto_type = args[:proto_type] if args.key?(:proto_type)
           @string_type = args[:string_type] if args.key?(:string_type)
           @struct_type = args[:struct_type] if args.key?(:struct_type)
           @timestamp_type = args[:timestamp_type] if args.key?(:timestamp_type)
