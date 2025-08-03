@@ -682,12 +682,19 @@ module Google
       class GoogleCloudAiplatformV1beta1EnterpriseWebSearch
         include Google::Apis::Core::Hashable
       
+        # Optional. List of domains to be excluded from the search results. The default
+        # limit is 2000 domains.
+        # Corresponds to the JSON property `excludeDomains`
+        # @return [Array<String>]
+        attr_accessor :exclude_domains
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @exclude_domains = args[:exclude_domains] if args.key?(:exclude_domains)
         end
       end
       
@@ -2927,12 +2934,19 @@ module Google
       class GoogleCloudAiplatformV1beta1ToolGoogleSearch
         include Google::Apis::Core::Hashable
       
+        # Optional. List of domains to be excluded from the search results. The default
+        # limit is 2000 domains. Example: ["amazon.com", "facebook.com"].
+        # Corresponds to the JSON property `excludeDomains`
+        # @return [Array<String>]
+        attr_accessor :exclude_domains
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @exclude_domains = args[:exclude_domains] if args.key?(:exclude_domains)
         end
       end
       
