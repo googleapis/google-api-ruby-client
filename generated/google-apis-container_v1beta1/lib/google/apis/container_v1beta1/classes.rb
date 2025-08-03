@@ -445,12 +445,19 @@ module Google
       class AutoIpamConfig
         include Google::Apis::Core::Hashable
       
+        # The flag that enables Auto IPAM on this cluster
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
@@ -518,6 +525,12 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
+        # PrivilegedAdmissionConfig stores the list of authorized allowlist paths for
+        # the cluster.
+        # Corresponds to the JSON property `privilegedAdmissionConfig`
+        # @return [Google::Apis::ContainerV1beta1::PrivilegedAdmissionConfig]
+        attr_accessor :privileged_admission_config
+      
         # WorkloadPolicyConfig is the configuration related to GCW workload policy
         # Corresponds to the JSON property `workloadPolicyConfig`
         # @return [Google::Apis::ContainerV1beta1::WorkloadPolicyConfig]
@@ -531,6 +544,7 @@ module Google
         def update!(**args)
           @conversion_status = args[:conversion_status] if args.key?(:conversion_status)
           @enabled = args[:enabled] if args.key?(:enabled)
+          @privileged_admission_config = args[:privileged_admission_config] if args.key?(:privileged_admission_config)
           @workload_policy_config = args[:workload_policy_config] if args.key?(:workload_policy_config)
         end
       end
@@ -763,20 +777,6 @@ module Google
         end
       end
       
-      # Autoscaled rollout policy uses cluster autoscaler during blue-green upgrades
-      # to scale both the green and blue pools.
-      class AutoscaledRolloutPolicy
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Deprecated.
       class AvailableVersion
         include Google::Apis::Core::Hashable
@@ -936,12 +936,6 @@ module Google
       class BlueGreenSettings
         include Google::Apis::Core::Hashable
       
-        # Autoscaled rollout policy uses cluster autoscaler during blue-green upgrades
-        # to scale both the green and blue pools.
-        # Corresponds to the JSON property `autoscaledRolloutPolicy`
-        # @return [Google::Apis::ContainerV1beta1::AutoscaledRolloutPolicy]
-        attr_accessor :autoscaled_rollout_policy
-      
         # Time needed after draining entire blue pool. After this period, blue pool will
         # be cleaned up.
         # Corresponds to the JSON property `nodePoolSoakDuration`
@@ -959,7 +953,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @autoscaled_rollout_policy = args[:autoscaled_rollout_policy] if args.key?(:autoscaled_rollout_policy)
           @node_pool_soak_duration = args[:node_pool_soak_duration] if args.key?(:node_pool_soak_duration)
           @standard_rollout_policy = args[:standard_rollout_policy] if args.key?(:standard_rollout_policy)
         end
@@ -1864,6 +1857,11 @@ module Google
         # @return [String]
         attr_accessor :autoscaling_profile
       
+        # DefaultComputeClassConfig defines default compute class configuration.
+        # Corresponds to the JSON property `defaultComputeClassConfig`
+        # @return [Google::Apis::ContainerV1beta1::DefaultComputeClassConfig]
+        attr_accessor :default_compute_class_config
+      
         # Enables automatic node pool creation and deletion.
         # Corresponds to the JSON property `enableNodeAutoprovisioning`
         # @return [Boolean]
@@ -1885,6 +1883,7 @@ module Google
           @autoprovisioning_locations = args[:autoprovisioning_locations] if args.key?(:autoprovisioning_locations)
           @autoprovisioning_node_pool_defaults = args[:autoprovisioning_node_pool_defaults] if args.key?(:autoprovisioning_node_pool_defaults)
           @autoscaling_profile = args[:autoscaling_profile] if args.key?(:autoscaling_profile)
+          @default_compute_class_config = args[:default_compute_class_config] if args.key?(:default_compute_class_config)
           @enable_node_autoprovisioning = args[:enable_node_autoprovisioning] if args.key?(:enable_node_autoprovisioning)
           @resource_limits = args[:resource_limits] if args.key?(:resource_limits)
         end
@@ -3086,6 +3085,26 @@ module Google
         end
       end
       
+      # DefaultComputeClassConfig defines default compute class configuration.
+      class DefaultComputeClassConfig
+        include Google::Apis::Core::Hashable
+      
+        # Enables default compute class.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # DefaultSnatStatus contains the desired state of whether default sNAT should be
       # disabled on the cluster.
       class DefaultSnatStatus
@@ -3540,6 +3559,11 @@ module Google
         # @return [String]
         attr_accessor :membership
       
+        # The type of the cluster's fleet membership.
+        # Corresponds to the JSON property `membershipType`
+        # @return [String]
+        attr_accessor :membership_type
+      
         # Output only. Whether the cluster has been registered through the fleet API.
         # Corresponds to the JSON property `preRegistered`
         # @return [Boolean]
@@ -3560,6 +3584,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @membership = args[:membership] if args.key?(:membership)
+          @membership_type = args[:membership_type] if args.key?(:membership_type)
           @pre_registered = args[:pre_registered] if args.key?(:pre_registered)
           @project = args[:project] if args.key?(:project)
         end
@@ -7312,6 +7337,31 @@ module Google
         def update!(**args)
           @certificate_authority_domain_config = args[:certificate_authority_domain_config] if args.key?(:certificate_authority_domain_config)
           @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # PrivilegedAdmissionConfig stores the list of authorized allowlist paths for
+      # the cluster.
+      class PrivilegedAdmissionConfig
+        include Google::Apis::Core::Hashable
+      
+        # The customer allowlist Cloud Storage paths for the cluster. These paths are
+        # used with the `--autopilot-privileged-admission` flag to authorize privileged
+        # workloads in Autopilot clusters. Paths can be GKE-owned, in the format `gke:///
+        # /`, or customer-owned, in the format `gs:///`. Wildcards (`*`) are supported
+        # to authorize all allowlists under specific paths or directories. Example: `gs:/
+        # /my-bucket/*` will authorize all allowlists under the `my-bucket` bucket.
+        # Corresponds to the JSON property `allowlistPaths`
+        # @return [Array<String>]
+        attr_accessor :allowlist_paths
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowlist_paths = args[:allowlist_paths] if args.key?(:allowlist_paths)
         end
       end
       

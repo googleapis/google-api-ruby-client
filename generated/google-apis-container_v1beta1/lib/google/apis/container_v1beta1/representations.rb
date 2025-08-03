@@ -130,12 +130,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AutoscaledRolloutPolicy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AvailableVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -347,6 +341,12 @@ module Google
       end
       
       class Date
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DefaultComputeClassConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -970,6 +970,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PrivilegedAdmissionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProtectConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1530,6 +1536,7 @@ module Google
       class AutoIpamConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
@@ -1554,6 +1561,8 @@ module Google
           property :conversion_status, as: 'conversionStatus', class: Google::Apis::ContainerV1beta1::AutopilotConversionStatus, decorator: Google::Apis::ContainerV1beta1::AutopilotConversionStatus::Representation
       
           property :enabled, as: 'enabled'
+          property :privileged_admission_config, as: 'privilegedAdmissionConfig', class: Google::Apis::ContainerV1beta1::PrivilegedAdmissionConfig, decorator: Google::Apis::ContainerV1beta1::PrivilegedAdmissionConfig::Representation
+      
           property :workload_policy_config, as: 'workloadPolicyConfig', class: Google::Apis::ContainerV1beta1::WorkloadPolicyConfig, decorator: Google::Apis::ContainerV1beta1::WorkloadPolicyConfig::Representation
       
         end
@@ -1605,12 +1614,6 @@ module Google
         end
       end
       
-      class AutoscaledRolloutPolicy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
       class AvailableVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1658,8 +1661,6 @@ module Google
       class BlueGreenSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :autoscaled_rollout_policy, as: 'autoscaledRolloutPolicy', class: Google::Apis::ContainerV1beta1::AutoscaledRolloutPolicy, decorator: Google::Apis::ContainerV1beta1::AutoscaledRolloutPolicy::Representation
-      
           property :node_pool_soak_duration, as: 'nodePoolSoakDuration'
           property :standard_rollout_policy, as: 'standardRolloutPolicy', class: Google::Apis::ContainerV1beta1::StandardRolloutPolicy, decorator: Google::Apis::ContainerV1beta1::StandardRolloutPolicy::Representation
       
@@ -1880,6 +1881,8 @@ module Google
           property :autoprovisioning_node_pool_defaults, as: 'autoprovisioningNodePoolDefaults', class: Google::Apis::ContainerV1beta1::AutoprovisioningNodePoolDefaults, decorator: Google::Apis::ContainerV1beta1::AutoprovisioningNodePoolDefaults::Representation
       
           property :autoscaling_profile, as: 'autoscalingProfile'
+          property :default_compute_class_config, as: 'defaultComputeClassConfig', class: Google::Apis::ContainerV1beta1::DefaultComputeClassConfig, decorator: Google::Apis::ContainerV1beta1::DefaultComputeClassConfig::Representation
+      
           property :enable_node_autoprovisioning, as: 'enableNodeAutoprovisioning'
           collection :resource_limits, as: 'resourceLimits', class: Google::Apis::ContainerV1beta1::ResourceLimit, decorator: Google::Apis::ContainerV1beta1::ResourceLimit::Representation
       
@@ -2213,6 +2216,13 @@ module Google
         end
       end
       
+      class DefaultComputeClassConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class DefaultSnatStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2325,6 +2335,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :membership, as: 'membership'
+          property :membership_type, as: 'membershipType'
           property :pre_registered, as: 'preRegistered'
           property :project, as: 'project'
         end
@@ -3297,6 +3308,13 @@ module Google
           collection :certificate_authority_domain_config, as: 'certificateAuthorityDomainConfig', class: Google::Apis::ContainerV1beta1::CertificateAuthorityDomainConfig, decorator: Google::Apis::ContainerV1beta1::CertificateAuthorityDomainConfig::Representation
       
           property :enabled, as: 'enabled'
+        end
+      end
+      
+      class PrivilegedAdmissionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowlist_paths, as: 'allowlistPaths'
         end
       end
       
