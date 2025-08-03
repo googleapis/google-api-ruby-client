@@ -155,6 +155,21 @@ module Google
         end
       end
       
+      # Message to represent the option where Datastream will enforce encryption
+      # without authenticating server identity. Server certificates will be trusted by
+      # default.
+      class BasicEncryption
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # BigQuery destination configuration
       class BigQueryDestinationConfig
         include Google::Apis::Core::Hashable
@@ -688,6 +703,54 @@ module Google
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
       # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Message to represent the option where Datastream will enforce encryption and
+      # authenticate server identity. ca_certificate must be set if user selects this
+      # option.
+      class EncryptionAndServerValidation
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Input only. PEM-encoded certificate of the CA that signed the source
+        # database server's certificate.
+        # Corresponds to the JSON property `caCertificate`
+        # @return [String]
+        attr_accessor :ca_certificate
+      
+        # Optional. The hostname mentioned in the Subject or SAN extension of the server
+        # certificate. This field is used for bypassing the hostname validation while
+        # verifying server certificate. This is required for scenarios where the host
+        # name that datastream connects to is different from the certificate's subject.
+        # This specifically happens for private connectivity. It could also happen when
+        # the customer provides a public IP in connection profile but the same is not
+        # present in the server certificate.
+        # Corresponds to the JSON property `serverCertificateHostname`
+        # @return [String]
+        attr_accessor :server_certificate_hostname
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ca_certificate = args[:ca_certificate] if args.key?(:ca_certificate)
+          @server_certificate_hostname = args[:server_certificate_hostname] if args.key?(:server_certificate_hostname)
+        end
+      end
+      
+      # Message to represent the option where encryption is not enforced. An empty
+      # message right now to allow future extensibility.
+      class EncryptionNotEnforced
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -3609,6 +3672,11 @@ module Google
         # @return [String]
         attr_accessor :secret_manager_stored_password
       
+        # SQL Server SSL configuration information.
+        # Corresponds to the JSON property `sslConfig`
+        # @return [Google::Apis::DatastreamV1::SqlServerSslConfig]
+        attr_accessor :ssl_config
+      
         # Required. Username for the SQLServer connection.
         # Corresponds to the JSON property `username`
         # @return [String]
@@ -3625,6 +3693,7 @@ module Google
           @password = args[:password] if args.key?(:password)
           @port = args[:port] if args.key?(:port)
           @secret_manager_stored_password = args[:secret_manager_stored_password] if args.key?(:secret_manager_stored_password)
+          @ssl_config = args[:ssl_config] if args.key?(:ssl_config)
           @username = args[:username] if args.key?(:username)
         end
       end
@@ -3719,6 +3788,42 @@ module Google
           @max_concurrent_backfill_tasks = args[:max_concurrent_backfill_tasks] if args.key?(:max_concurrent_backfill_tasks)
           @max_concurrent_cdc_tasks = args[:max_concurrent_cdc_tasks] if args.key?(:max_concurrent_cdc_tasks)
           @transaction_logs = args[:transaction_logs] if args.key?(:transaction_logs)
+        end
+      end
+      
+      # SQL Server SSL configuration information.
+      class SqlServerSslConfig
+        include Google::Apis::Core::Hashable
+      
+        # Message to represent the option where Datastream will enforce encryption
+        # without authenticating server identity. Server certificates will be trusted by
+        # default.
+        # Corresponds to the JSON property `basicEncryption`
+        # @return [Google::Apis::DatastreamV1::BasicEncryption]
+        attr_accessor :basic_encryption
+      
+        # Message to represent the option where Datastream will enforce encryption and
+        # authenticate server identity. ca_certificate must be set if user selects this
+        # option.
+        # Corresponds to the JSON property `encryptionAndServerValidation`
+        # @return [Google::Apis::DatastreamV1::EncryptionAndServerValidation]
+        attr_accessor :encryption_and_server_validation
+      
+        # Message to represent the option where encryption is not enforced. An empty
+        # message right now to allow future extensibility.
+        # Corresponds to the JSON property `encryptionNotEnforced`
+        # @return [Google::Apis::DatastreamV1::EncryptionNotEnforced]
+        attr_accessor :encryption_not_enforced
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @basic_encryption = args[:basic_encryption] if args.key?(:basic_encryption)
+          @encryption_and_server_validation = args[:encryption_and_server_validation] if args.key?(:encryption_and_server_validation)
+          @encryption_not_enforced = args[:encryption_not_enforced] if args.key?(:encryption_not_enforced)
         end
       end
       
