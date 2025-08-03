@@ -3060,7 +3060,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :csv_output_file, as: 'csvOutputFile', class: Google::Apis::MigrationcenterV1alpha1::CsvOutputFile, decorator: Google::Apis::MigrationcenterV1alpha1::CsvOutputFile::Representation
       
-          property :file_size_bytes, as: 'fileSizeBytes'
+          property :file_size_bytes, :numeric_string => true, as: 'fileSizeBytes'
           property :xlsx_output_file, as: 'xlsxOutputFile', class: Google::Apis::MigrationcenterV1alpha1::XlsxOutputFile, decorator: Google::Apis::MigrationcenterV1alpha1::XlsxOutputFile::Representation
       
         end
