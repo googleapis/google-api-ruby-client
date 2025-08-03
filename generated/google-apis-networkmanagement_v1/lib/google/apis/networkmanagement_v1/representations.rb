@@ -768,6 +768,7 @@ module Google
           property :cloud_provider, as: 'cloudProvider'
           property :cloud_region, as: 'cloudRegion'
           collection :cloud_virtual_network_ids, as: 'cloudVirtualNetworkIds'
+          property :cloud_vpc_id, as: 'cloudVpcId'
           property :cloud_zone, as: 'cloudZone'
           property :os, as: 'os'
         end
