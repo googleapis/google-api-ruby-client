@@ -1,5 +1,11 @@
 # Release History
 
+### 1.0.0 (2025-08-03)
+
+This is a major release that replaces the underlying httpclient library with Faraday ([#23524](https://github.com/googleapis/google-api-ruby-client/issues/23524)). This will ensure the client libraries are on a more stable and better maintained foundation moving forward.
+
+For most users, this change should be transparent. However, if your application depends on the httpclient interfaces, you can retain compatibility with httpclient by pinning the `google-apis-core` gem to `~> 0.18` in your Gemfile. Httpclient-based versions of this gem will remain on the 0.x release train, while Faraday-based versions will occupy the 1.x release train. We will push critical fixes and security updates to both branches for one year until August 2026, but new feature work will take place only on the 1.x branch.
+
 ### 0.18.0 (2025-05-22)
 
 #### Features
