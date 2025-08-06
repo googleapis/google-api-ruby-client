@@ -183,6 +183,9 @@ module Google
           end
 
           self.body = '' if self.body.nil? && [:post, :put, :patch].include?(method)
+          if defined?(::Google::Apis::Core::CompositeIO) && body.is_a?(::Google::Apis::Core::CompositeIO)
+            header["Content-Length"] ||= body.size.to_s
+          end
         end
 
         # Release any resources used by this command
