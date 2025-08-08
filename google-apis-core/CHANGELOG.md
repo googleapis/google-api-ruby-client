@@ -1,5 +1,11 @@
 # Release History
 
+### 1.0.1 (2025-08-08)
+
+#### Bug Fixes
+
+* Compute and send content-length header when posting a CompositeIO ([#23864](https://github.com/googleapis/google-api-ruby-client/issues/23864)) 
+
 ### 1.0.0 (2025-08-03)
 
 This is a major release that replaces the underlying httpclient library with Faraday ([#23524](https://github.com/googleapis/google-api-ruby-client/issues/23524)). This will ensure the client libraries are on a more stable and better maintained foundation moving forward.
