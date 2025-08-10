@@ -1759,6 +1759,9 @@ module Google
         # @param [String] parent
         #   Required. The parent whose schema registry instances are to be listed.
         #   Structured like: `projects/`project`/locations/`location``
+        # @param [String] view
+        #   Optional. Specifies the view to return for the schema registry instances. If
+        #   not specified, the default view is SCHEMA_REGISTRY_VIEW_BASIC.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1776,11 +1779,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_schema_registries(parent, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_schema_registries(parent, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/schemaRegistries', options)
           command.response_representation = Google::Apis::ManagedkafkaV1::ListSchemaRegistriesResponse::Representation
           command.response_class = Google::Apis::ManagedkafkaV1::ListSchemaRegistriesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
