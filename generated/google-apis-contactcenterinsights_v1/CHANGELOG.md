@@ -1,5 +1,9 @@
 # Release history for google-apis-contactcenterinsights_v1
 
+### v0.71.0 (2025-08-10)
+
+* Regenerated from discovery document revision 20250804
+
 ### v0.70.0 (2025-08-03)
 
 * Regenerated from discovery document revision 20250729
