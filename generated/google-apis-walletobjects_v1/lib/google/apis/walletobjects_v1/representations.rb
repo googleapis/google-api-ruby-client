@@ -910,6 +910,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UploadPrivateImageRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UploadPrivateImageResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Uri
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2052,6 +2064,7 @@ module Google
           property :content_description, as: 'contentDescription', class: Google::Apis::WalletobjectsV1::LocalizedString, decorator: Google::Apis::WalletobjectsV1::LocalizedString::Representation
       
           property :kind, as: 'kind'
+          property :private_image_id, as: 'privateImageId'
           property :source_uri, as: 'sourceUri', class: Google::Apis::WalletobjectsV1::ImageUri, decorator: Google::Apis::WalletobjectsV1::ImageUri::Representation
       
         end
@@ -3241,6 +3254,19 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_notification, as: 'enableNotification'
+        end
+      end
+      
+      class UploadPrivateImageRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UploadPrivateImageResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :private_image_id, as: 'privateImageId'
         end
       end
       
