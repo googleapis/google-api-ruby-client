@@ -511,6 +511,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieve an attachment associated with a support case. EXAMPLES: cURL: ```
+        # shell attachment="projects/some-project/cases/23598314/attachments/
+        # 0684M00000P3h1fQAB" curl \ --header "Authorization: Bearer $(gcloud auth print-
+        # access-token)" \ "https://cloudsupport.googleapis.com/v2/$attachment" ```
+        # Python: ```python import googleapiclient.discovery api_version = "v2beta"
+        # supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport"
+        # , version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.
+        # com/$discovery/rest?version=`api_version`", ) request = ( supportApiService.
+        # cases() .attachments() .get(name="projects/some-project/cases/43595344/
+        # attachments/0684M00000P3h1fQAB") ) print(request.execute()) ```
+        # @param [String] name
+        #   Required. The name of the attachment to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudsupportV2beta::Attachment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudsupportV2beta::Attachment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_case_attachment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2beta/{+name}', options)
+          command.response_representation = Google::Apis::CloudsupportV2beta::Attachment::Representation
+          command.response_class = Google::Apis::CloudsupportV2beta::Attachment
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # List all the attachments associated with a support case. EXAMPLES: cURL: ```
         # shell case="projects/some-project/cases/23598314" curl \ --header "
         # Authorization: Bearer $(gcloud auth print-access-token)" \ "https://
@@ -600,6 +639,44 @@ module Google
           command.response_representation = Google::Apis::CloudsupportV2beta::Comment::Representation
           command.response_class = Google::Apis::CloudsupportV2beta::Comment
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieve a comment. EXAMPLES: cURL: ```shell comment="projects/some-project/
+        # cases/43595344/comments/234567890" curl \ --header "Authorization: Bearer $(
+        # gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$
+        # comment" ``` Python: ```python import googleapiclient.discovery api_version = "
+        # v2beta" supportApiService = googleapiclient.discovery.build( serviceName="
+        # cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.
+        # googleapis.com/$discovery/rest?version=`api_version`", ) request =
+        # supportApiService.cases().comments().get( name="projects/some-project/cases/
+        # 43595344/comments/234567890", ) print(request.execute()) ```
+        # @param [String] name
+        #   Required. The name of the comment to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudsupportV2beta::Comment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudsupportV2beta::Comment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_case_comment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2beta/{+name}', options)
+          command.response_representation = Google::Apis::CloudsupportV2beta::Comment::Representation
+          command.response_class = Google::Apis::CloudsupportV2beta::Comment
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
