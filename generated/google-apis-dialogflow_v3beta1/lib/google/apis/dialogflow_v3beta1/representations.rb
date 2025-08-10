@@ -6127,6 +6127,8 @@ module Google
           property :display_name, as: 'displayName'
           collection :event_handlers, as: 'eventHandlers', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1EventHandler, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1EventHandler::Representation
       
+          collection :input_parameter_definitions, as: 'inputParameterDefinitions', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ParameterDefinition, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ParameterDefinition::Representation
+      
           property :knowledge_connector_settings, as: 'knowledgeConnectorSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings::Representation
       
           property :locked, as: 'locked'
@@ -6134,6 +6136,8 @@ module Google
       
           property :name, as: 'name'
           property :nlu_settings, as: 'nluSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1NluSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1NluSettings::Representation
+      
+          collection :output_parameter_definitions, as: 'outputParameterDefinitions', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ParameterDefinition, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ParameterDefinition::Representation
       
           collection :transition_route_groups, as: 'transitionRouteGroups'
           collection :transition_routes, as: 'transitionRoutes', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionRoute, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionRoute::Representation
