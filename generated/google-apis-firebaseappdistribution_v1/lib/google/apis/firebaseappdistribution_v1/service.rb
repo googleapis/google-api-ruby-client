@@ -55,7 +55,8 @@ module Google
         # an update to an existing release, or a no-op if a release with the same
         # binary already exists.
         # @param [String] app
-        #   The name of the app resource. Format: `projects/`project_number`/apps/`app_id``
+        #   Required. The name of the app resource. Format: `projects/`project_number`/
+        #   apps/`app_id``
         # @param [Google::Apis::FirebaseappdistributionV1::GoogleFirebaseAppdistroV1UploadReleaseRequest] google_firebase_appdistro_v1_upload_release_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -235,26 +236,26 @@ module Google
         #   Required. The name of the app resource, which is the parent of the release
         #   resources. Format: `projects/`project_number`/apps/`app_id``
         # @param [String] filter
-        #   The expression to filter releases listed in the response. To learn more about
-        #   filtering, refer to [Google's AIP-160 standard](http://aip.dev/160). Supported
-        #   fields: - `releaseNotes.text` supports `=` (can contain a wildcard character (`
-        #   *`) at the beginning or end of the string) - `createTime` supports `<`, `<=`, `
-        #   >` and `>=`, and expects an RFC-3339 formatted string Examples: - `createTime <
-        #   = "2021-09-08T00:00:00+04:00"` - `releaseNotes.text="fixes" AND createTime >= "
-        #   2021-09-08T00:00:00.0Z"` - `releaseNotes.text="*v1.0.0-rc*"`
+        #   Optional. The expression to filter releases listed in the response. To learn
+        #   more about filtering, refer to [Google's AIP-160 standard](http://aip.dev/160).
+        #   Supported fields: - `releaseNotes.text` supports `=` (can contain a wildcard
+        #   character (`*`) at the beginning or end of the string) - `createTime` supports
+        #   `<`, `<=`, `>` and `>=`, and expects an RFC-3339 formatted string Examples: - `
+        #   createTime <= "2021-09-08T00:00:00+04:00"` - `releaseNotes.text="fixes" AND
+        #   createTime >= "2021-09-08T00:00:00.0Z"` - `releaseNotes.text="*v1.0.0-rc*"`
         # @param [String] order_by
-        #   The fields used to order releases. Supported fields: - `createTime` To specify
-        #   descending order for a field, append a "desc" suffix, for example, `createTime
-        #   desc`. If this parameter is not set, releases are ordered by `createTime` in
-        #   descending order.
+        #   Optional. The fields used to order releases. Supported fields: - `createTime`
+        #   To specify descending order for a field, append a "desc" suffix, for example, `
+        #   createTime desc`. If this parameter is not set, releases are ordered by `
+        #   createTime` in descending order.
         # @param [Fixnum] page_size
-        #   The maximum number of releases to return. The service may return fewer than
-        #   this value. The valid range is [1-100]; If unspecified (0), at most 25
-        #   releases are returned. Values above 100 are coerced to 100.
+        #   Optional. The maximum number of releases to return. The service may return
+        #   fewer than this value. The valid range is [1-100]; If unspecified (0), at most
+        #   25 releases are returned. Values above 100 are coerced to 100.
         # @param [String] page_token
-        #   A page token, received from a previous `ListReleases` call. Provide this to
-        #   retrieve the subsequent page. When paginating, all other parameters provided
-        #   to `ListReleases` must match the call that provided the page token.
+        #   Optional. A page token, received from a previous `ListReleases` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListReleases` must match the call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -292,7 +293,7 @@ module Google
         #   app_id`/releases/`release_id``
         # @param [Google::Apis::FirebaseappdistributionV1::GoogleFirebaseAppdistroV1Release] google_firebase_appdistro_v1_release_object
         # @param [String] update_mask
-        #   The list of fields to update.
+        #   Optional. The list of fields to update.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -391,14 +392,14 @@ module Google
         #   feedback report resources. Format: `projects/`project_number`/apps/`app`/
         #   releases/`release``
         # @param [Fixnum] page_size
-        #   The maximum number of feedback reports to return. The service may return fewer
-        #   than this value. The valid range is [1-100]; If unspecified (0), at most 25
-        #   feedback reports are returned. Values above 100 are coerced to 100.
+        #   Output only. The maximum number of feedback reports to return. The service may
+        #   return fewer than this value. The valid range is [1-100]; If unspecified (0),
+        #   at most 25 feedback reports are returned. Values above 100 are coerced to 100.
         # @param [String] page_token
-        #   A page token, received from a previous `ListFeedbackReports` call. Provide
-        #   this to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to `ListFeedbackReports` must match the call that provided the page
-        #   token.
+        #   Output only. A page token, received from a previous `ListFeedbackReports` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListFeedbackReports` must match the call that provided
+        #   the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -832,7 +833,7 @@ module Google
         #   group_alias``
         # @param [Google::Apis::FirebaseappdistributionV1::GoogleFirebaseAppdistroV1Group] google_firebase_appdistro_v1_group_object
         # @param [String] update_mask
-        #   The list of fields to update.
+        #   Optional. The list of fields to update.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -987,7 +988,7 @@ module Google
         #   email_address``
         # @param [Google::Apis::FirebaseappdistributionV1::GoogleFirebaseAppdistroV1Tester] google_firebase_appdistro_v1_tester_object
         # @param [String] update_mask
-        #   The list of fields to update.
+        #   Optional. The list of fields to update.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
