@@ -256,7 +256,7 @@ module Google
         end
       end
       
-      # Deletes one of more Label Permissions.
+      # Deletes one or more label permissions.
       class GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest
         include Google::Apis::Core::Hashable
       
@@ -266,9 +266,9 @@ module Google
         attr_accessor :requests
       
         # Set to `true` in order to use the user's admin credentials. The server will
-        # verify the user is an admin for the Label before allowing access. If this is
-        # set, the use_admin_access field in the DeleteLabelPermissionRequest messages
-        # must either be empty or match this field.
+        # verify the user is an admin for the label before allowing access. If this is
+        # set, the `use_admin_access` field in the `DeleteLabelPermissionRequest`
+        # messages must either be empty or match this field.
         # Corresponds to the JSON property `useAdminAccess`
         # @return [Boolean]
         attr_accessor :use_admin_access
@@ -285,7 +285,7 @@ module Google
         end
       end
       
-      # Updates one or more Label Permissions.
+      # Updates one or more label permissions.
       class GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest
         include Google::Apis::Core::Hashable
       
@@ -295,9 +295,9 @@ module Google
         attr_accessor :requests
       
         # Set to `true` in order to use the user's admin credentials. The server will
-        # verify the user is an admin for the Label before allowing access. If this is
-        # set, the use_admin_access field in the UpdateLabelPermissionRequest messages
-        # must either be empty or match this field.
+        # verify the user is an admin for the label before allowing access. If this is
+        # set, the `use_admin_access` field in the `UpdateLabelPermissionRequest`
+        # messages must either be empty or match this field.
         # Corresponds to the JSON property `useAdminAccess`
         # @return [Boolean]
         attr_accessor :use_admin_access
@@ -314,7 +314,7 @@ module Google
         end
       end
       
-      # Response for updating one or more Label Permissions.
+      # Response for updating one or more label permissions.
       class GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse
         include Google::Apis::Core::Hashable
       
@@ -333,7 +333,7 @@ module Google
         end
       end
       
-      # Limits for date Field type.
+      # Limits for date field type.
       class GoogleAppsDriveLabelsV2DateLimits
         include Google::Apis::Core::Hashable
       
@@ -372,18 +372,18 @@ module Google
         end
       end
       
-      # Deletes a Label Permission. Permissions affect the Label resource as a whole,
-      # are not revisioned, and do not require publishing.
+      # Deletes a label permission. Permissions affect the label resource as a whole,
+      # aren't revisioned, and don't require publishing.
       class GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Label Permission resource name.
+        # Required. Label permission resource name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # Set to `true` in order to use the user's admin credentials. The server will
-        # verify the user is an admin for the Label before allowing access.
+        # verify the user is an admin for the label before allowing access.
         # Corresponds to the JSON property `useAdminAccess`
         # @return [Boolean]
         attr_accessor :use_admin_access
@@ -400,25 +400,25 @@ module Google
         end
       end
       
-      # The set of requests for updating aspects of a Label. If any request is not
+      # The set of requests for updating aspects of a label. If any request isn't
       # valid, no requests will be applied.
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequest
         include Google::Apis::Core::Hashable
       
-        # The BCP-47 language code to use for evaluating localized Field labels when `
+        # The BCP-47 language code to use for evaluating localized field labels when `
         # include_label_in_response` is `true`.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
       
-        # A list of updates to apply to the Label. Requests will be applied in the order
+        # A list of updates to apply to the label. Requests will be applied in the order
         # they are specified.
         # Corresponds to the JSON property `requests`
         # @return [Array<Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest>]
         attr_accessor :requests
       
         # Set to `true` in order to use the user's admin credentials. The server will
-        # verify the user is an admin for the Label before allowing access.
+        # verify the user is an admin for the label before allowing access.
         # Corresponds to the JSON property `useAdminAccess`
         # @return [Boolean]
         attr_accessor :use_admin_access
@@ -450,7 +450,7 @@ module Google
         end
       end
       
-      # Request to create a Field within a Label.
+      # Request to create a field within a label.
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest
         include Google::Apis::Core::Hashable
       
@@ -471,7 +471,7 @@ module Google
         end
       end
       
-      # Request to create a Selection Choice.
+      # Request to create a selection choice.
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest
         include Google::Apis::Core::Hashable
       
@@ -480,7 +480,7 @@ module Google
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice]
         attr_accessor :choice
       
-        # Required. The Selection Field in which a Choice will be created.
+        # Required. The selection field in which a choice will be created.
         # Corresponds to the JSON property `fieldId`
         # @return [String]
         attr_accessor :field_id
@@ -496,11 +496,11 @@ module Google
         end
       end
       
-      # Request to delete the Field.
+      # Request to delete the field.
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest
         include Google::Apis::Core::Hashable
       
-        # Required. ID of the Field to delete.
+        # Required. ID of the field to delete.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -515,11 +515,11 @@ module Google
         end
       end
       
-      # Request to delete a Choice.
+      # Request to delete a choice.
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The Selection Field from which a Choice will be deleted.
+        # Required. The selection field from which a choice will be deleted.
         # Corresponds to the JSON property `fieldId`
         # @return [String]
         attr_accessor :field_id
@@ -540,7 +540,7 @@ module Google
         end
       end
       
-      # Request to disable the Field.
+      # Request to disable the field.
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest
         include Google::Apis::Core::Hashable
       
@@ -550,14 +550,14 @@ module Google
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2LifecycleDisabledPolicy]
         attr_accessor :disabled_policy
       
-        # Required. Key of the Field to disable.
+        # Required. Key of the field to disable.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
         # The fields that should be updated. At least one field must be specified. The
         # root `disabled_policy` is implied and should not be specified. A single `*`
-        # can be used as short-hand for updating every field.
+        # can be used as a short-hand for updating every field.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -574,7 +574,7 @@ module Google
         end
       end
       
-      # Request to disable a Choice.
+      # Request to disable a choice.
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest
         include Google::Apis::Core::Hashable
       
@@ -584,7 +584,7 @@ module Google
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2LifecycleDisabledPolicy]
         attr_accessor :disabled_policy
       
-        # Required. The Selection Field in which a Choice will be disabled.
+        # Required. The selection field in which a choice will be disabled.
         # Corresponds to the JSON property `fieldId`
         # @return [String]
         attr_accessor :field_id
@@ -596,7 +596,7 @@ module Google
       
         # The fields that should be updated. At least one field must be specified. The
         # root `disabled_policy` is implied and should not be specified. A single `*`
-        # can be used as short-hand for updating every field.
+        # can be used as a short-hand for updating every field.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -614,11 +614,11 @@ module Google
         end
       end
       
-      # Request to enable the Field.
+      # Request to enable the field.
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest
         include Google::Apis::Core::Hashable
       
-        # Required. ID of the Field to enable.
+        # Required. ID of the field to enable.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -633,11 +633,11 @@ module Google
         end
       end
       
-      # Request to enable a Choice.
+      # Request to enable a choice.
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The Selection Field in which a Choice will be enabled.
+        # Required. The selection field in which a choice will be enabled.
         # Corresponds to the JSON property `fieldId`
         # @return [String]
         attr_accessor :field_id
@@ -658,66 +658,66 @@ module Google
         end
       end
       
-      # A single kind of update to apply to a Label.
+      # A single kind of update to apply to a label.
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest
         include Google::Apis::Core::Hashable
       
-        # Request to create a Field within a Label.
+        # Request to create a field within a label.
         # Corresponds to the JSON property `createField`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest]
         attr_accessor :create_field
       
-        # Request to create a Selection Choice.
+        # Request to create a selection choice.
         # Corresponds to the JSON property `createSelectionChoice`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest]
         attr_accessor :create_selection_choice
       
-        # Request to delete the Field.
+        # Request to delete the field.
         # Corresponds to the JSON property `deleteField`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest]
         attr_accessor :delete_field
       
-        # Request to delete a Choice.
+        # Request to delete a choice.
         # Corresponds to the JSON property `deleteSelectionChoice`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest]
         attr_accessor :delete_selection_choice
       
-        # Request to disable the Field.
+        # Request to disable the field.
         # Corresponds to the JSON property `disableField`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest]
         attr_accessor :disable_field
       
-        # Request to disable a Choice.
+        # Request to disable a choice.
         # Corresponds to the JSON property `disableSelectionChoice`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest]
         attr_accessor :disable_selection_choice
       
-        # Request to enable the Field.
+        # Request to enable the field.
         # Corresponds to the JSON property `enableField`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest]
         attr_accessor :enable_field
       
-        # Request to enable a Choice.
+        # Request to enable a choice.
         # Corresponds to the JSON property `enableSelectionChoice`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest]
         attr_accessor :enable_selection_choice
       
-        # Request to update Field properties.
+        # Request to update field properties.
         # Corresponds to the JSON property `updateField`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest]
         attr_accessor :update_field
       
-        # Request to change the type of a Field.
+        # Request to change the type of a field.
         # Corresponds to the JSON property `updateFieldType`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest]
         attr_accessor :update_field_type
       
-        # Updates basic properties of a Label.
+        # Updates basic properties of a label.
         # Corresponds to the JSON property `updateLabel`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest]
         attr_accessor :update_label
       
-        # Request to update a Choice properties.
+        # Request to update a choice property.
         # Corresponds to the JSON property `updateSelectionChoiceProperties`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest]
         attr_accessor :update_selection_choice_properties
@@ -743,11 +743,11 @@ module Google
         end
       end
       
-      # Request to update Field properties.
+      # Request to update field properties.
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The Field to update.
+        # Required. The field to update.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -759,7 +759,7 @@ module Google
       
         # The fields that should be updated. At least one field must be specified. The
         # root `properties` is implied and should not be specified. A single `*` can be
-        # used as short-hand for updating every field.
+        # used as a short-hand for updating every field.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -776,7 +776,7 @@ module Google
         end
       end
       
-      # Request to change the type of a Field.
+      # Request to change the type of a field.
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest
         include Google::Apis::Core::Hashable
       
@@ -785,7 +785,7 @@ module Google
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2FieldDateOptions]
         attr_accessor :date_options
       
-        # Required. The Field to update.
+        # Required. The field to update.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -807,7 +807,7 @@ module Google
       
         # The fields that should be updated. At least one field must be specified. The
         # root of `type_options` is implied and should not be specified. A single `*`
-        # can be used as short-hand for updating every field.
+        # can be used as a short-hand for updating every field.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -833,7 +833,7 @@ module Google
         end
       end
       
-      # Updates basic properties of a Label.
+      # Updates basic properties of a label.
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest
         include Google::Apis::Core::Hashable
       
@@ -844,7 +844,7 @@ module Google
       
         # The fields that should be updated. At least one field must be specified. The
         # root `label_properties` is implied and should not be specified. A single `*`
-        # can be used as short-hand for updating every field.
+        # can be used as a short-hand for updating every field.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -860,16 +860,16 @@ module Google
         end
       end
       
-      # Request to update a Choice properties.
+      # Request to update a choice property.
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The Selection Field to update.
+        # Required. The selection field to update.
         # Corresponds to the JSON property `fieldId`
         # @return [String]
         attr_accessor :field_id
       
-        # Required. The Choice to update.
+        # Required. The choice to update.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -881,7 +881,7 @@ module Google
       
         # The fields that should be updated. At least one field must be specified. The
         # root `properties` is implied and should not be specified. A single `*` can be
-        # used as short-hand for updating every field.
+        # used as a short-hand for updating every field.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -899,7 +899,7 @@ module Google
         end
       end
       
-      # Response for Label update.
+      # Response for label update.
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponse
         include Google::Apis::Core::Hashable
       
@@ -928,7 +928,7 @@ module Google
         end
       end
       
-      # Response following Field create.
+      # Response following field create.
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse
         include Google::Apis::Core::Hashable
       
@@ -955,16 +955,16 @@ module Google
         end
       end
       
-      # Response following Selection Choice create.
+      # Response following selection choice create.
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse
         include Google::Apis::Core::Hashable
       
-        # The server-generated id of the field.
+        # The server-generated ID of the field.
         # Corresponds to the JSON property `fieldId`
         # @return [String]
         attr_accessor :field_id
       
-        # The server-generated ID of the created choice within the Field
+        # The server-generated ID of the created choice within the field.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -980,7 +980,7 @@ module Google
         end
       end
       
-      # Response following Field delete.
+      # Response following field delete.
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse
         include Google::Apis::Core::Hashable
       
@@ -993,7 +993,7 @@ module Google
         end
       end
       
-      # Response following Choice delete.
+      # Response following choice delete.
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse
         include Google::Apis::Core::Hashable
       
@@ -1006,7 +1006,7 @@ module Google
         end
       end
       
-      # Response following Field disable.
+      # Response following field disable.
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse
         include Google::Apis::Core::Hashable
       
@@ -1019,7 +1019,7 @@ module Google
         end
       end
       
-      # Response following Choice disable.
+      # Response following choice disable.
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse
         include Google::Apis::Core::Hashable
       
@@ -1032,7 +1032,7 @@ module Google
         end
       end
       
-      # Response following Field enable.
+      # Response following field enable.
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse
         include Google::Apis::Core::Hashable
       
@@ -1045,7 +1045,7 @@ module Google
         end
       end
       
-      # Response following Choice enable.
+      # Response following choice enable.
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse
         include Google::Apis::Core::Hashable
       
@@ -1062,62 +1062,62 @@ module Google
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse
         include Google::Apis::Core::Hashable
       
-        # Response following Field create.
+        # Response following field create.
         # Corresponds to the JSON property `createField`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse]
         attr_accessor :create_field
       
-        # Response following Selection Choice create.
+        # Response following selection choice create.
         # Corresponds to the JSON property `createSelectionChoice`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse]
         attr_accessor :create_selection_choice
       
-        # Response following Field delete.
+        # Response following field delete.
         # Corresponds to the JSON property `deleteField`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse]
         attr_accessor :delete_field
       
-        # Response following Choice delete.
+        # Response following choice delete.
         # Corresponds to the JSON property `deleteSelectionChoice`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse]
         attr_accessor :delete_selection_choice
       
-        # Response following Field disable.
+        # Response following field disable.
         # Corresponds to the JSON property `disableField`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse]
         attr_accessor :disable_field
       
-        # Response following Choice disable.
+        # Response following choice disable.
         # Corresponds to the JSON property `disableSelectionChoice`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse]
         attr_accessor :disable_selection_choice
       
-        # Response following Field enable.
+        # Response following field enable.
         # Corresponds to the JSON property `enableField`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse]
         attr_accessor :enable_field
       
-        # Response following Choice enable.
+        # Response following choice enable.
         # Corresponds to the JSON property `enableSelectionChoice`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse]
         attr_accessor :enable_selection_choice
       
-        # Response following update to Field properties.
+        # Response following update to field properties.
         # Corresponds to the JSON property `updateField`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse]
         attr_accessor :update_field
       
-        # Response following update to Field type.
+        # Response following update to field type.
         # Corresponds to the JSON property `updateFieldType`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse]
         attr_accessor :update_field_type
       
-        # Response following update to Label properties.
+        # Response following update to label properties.
         # Corresponds to the JSON property `updateLabel`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse]
         attr_accessor :update_label
       
-        # Response following update to Selection Choice properties.
+        # Response following update to selection choice properties.
         # Corresponds to the JSON property `updateSelectionChoiceProperties`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse]
         attr_accessor :update_selection_choice_properties
@@ -1143,7 +1143,7 @@ module Google
         end
       end
       
-      # Response following update to Field properties.
+      # Response following update to field properties.
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse
         include Google::Apis::Core::Hashable
       
@@ -1163,7 +1163,7 @@ module Google
         end
       end
       
-      # Response following update to Field type.
+      # Response following update to field type.
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse
         include Google::Apis::Core::Hashable
       
@@ -1176,7 +1176,7 @@ module Google
         end
       end
       
-      # Response following update to Label properties.
+      # Response following update to label properties.
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse
         include Google::Apis::Core::Hashable
       
@@ -1189,7 +1189,7 @@ module Google
         end
       end
       
-      # Response following update to Selection Choice properties.
+      # Response following update to selection choice properties.
       class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse
         include Google::Apis::Core::Hashable
       
@@ -1209,7 +1209,7 @@ module Google
         end
       end
       
-      # Request to deprecate a published Label.
+      # Request to deprecate a published label.
       class GoogleAppsDriveLabelsV2DisableLabelRequest
         include Google::Apis::Core::Hashable
       
@@ -1227,13 +1227,13 @@ module Google
       
         # The fields that should be updated. At least one field must be specified. The
         # root `disabled_policy` is implied and should not be specified. A single `*`
-        # can be used as short-hand for updating every field.
+        # can be used as a short-hand for updating every field.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
       
         # Set to `true` in order to use the user's admin credentials. The server will
-        # verify the user is an admin for the Label before allowing access.
+        # verify the user is an admin for the label before allowing access.
         # Corresponds to the JSON property `useAdminAccess`
         # @return [Boolean]
         attr_accessor :use_admin_access
@@ -1270,7 +1270,7 @@ module Google
         attr_accessor :language_code
       
         # Set to `true` in order to use the user's admin credentials. The server will
-        # verify the user is an admin for the Label before allowing access.
+        # verify the user is an admin for the label before allowing access.
         # Corresponds to the JSON property `useAdminAccess`
         # @return [Boolean]
         attr_accessor :use_admin_access
@@ -1337,7 +1337,7 @@ module Google
         attr_accessor :display_hints
       
         # Output only. The key of a field, unique within a label or library. This value
-        # is autogenerated. Matches the regex: `([a-zA-Z0-9])+`
+        # is autogenerated. Matches the regex: `([a-zA-Z0-9])+`.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -1347,16 +1347,18 @@ module Google
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2FieldIntegerOptions]
         attr_accessor :integer_options
       
-        # The lifecycle state of an object, such as label, field, or choice. The
-        # lifecycle enforces the following transitions: * `UNPUBLISHED_DRAFT` (starting
-        # state) * `UNPUBLISHED_DRAFT` -> `PUBLISHED` * `UNPUBLISHED_DRAFT` -> (Deleted)
-        # * `PUBLISHED` -> `DISABLED` * `DISABLED` -> `PUBLISHED` * `DISABLED` -> (
-        # Deleted) The published and disabled states have some distinct characteristics:
-        # * Published—Some kinds of changes might be made to an object in this state, in
-        # which case `has_unpublished_changes` will be true. Also, some kinds of changes
-        # are not permitted. Generally, any change that would invalidate or cause new
-        # restrictions on existing metadata related to the label are rejected. *
-        # Disabled—When disabled, the configured `DisabledPolicy` takes effect.
+        # The lifecycle state of an object, such as label, field, or choice. For more
+        # information, see [Label lifecycle](https://developers.google.com/workspace/
+        # drive/labels/guides/label-lifecycle). The lifecycle enforces the following
+        # transitions: * `UNPUBLISHED_DRAFT` (starting state) * `UNPUBLISHED_DRAFT` -> `
+        # PUBLISHED` * `UNPUBLISHED_DRAFT` -> (Deleted) * `PUBLISHED` -> `DISABLED` * `
+        # DISABLED` -> `PUBLISHED` * `DISABLED` -> (Deleted) The published and disabled
+        # states have some distinct characteristics: * `Published`: Some kinds of
+        # changes might be made to an object in this state, in which case `
+        # has_unpublished_changes` will be true. Also, some kinds of changes aren't
+        # permitted. Generally, any change that would invalidate or cause new
+        # restrictions on existing metadata related to the label are rejected. * `
+        # Disabled`: When disabled, the configured `DisabledPolicy` takes effect.
         # Corresponds to the JSON property `lifecycle`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2Lifecycle]
         attr_accessor :lifecycle
@@ -1596,47 +1598,47 @@ module Google
         end
       end
       
-      # Field constants governing the structure of a Field; such as, the maximum title
+      # Field constants governing the structure of a field; such as, the maximum title
       # length, minimum and maximum field values or length, etc.
       class GoogleAppsDriveLabelsV2FieldLimits
         include Google::Apis::Core::Hashable
       
-        # Limits for date Field type.
+        # Limits for date field type.
         # Corresponds to the JSON property `dateLimits`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DateLimits]
         attr_accessor :date_limits
       
-        # Limits for integer Field type.
+        # Limits for integer field type.
         # Corresponds to the JSON property `integerLimits`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2IntegerLimits]
         attr_accessor :integer_limits
       
-        # Limits for long text Field type.
+        # Limits for long text field type.
         # Corresponds to the JSON property `longTextLimits`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2LongTextLimits]
         attr_accessor :long_text_limits
       
-        # Limits for Field description, also called help text.
+        # Limits for field description, also called help text.
         # Corresponds to the JSON property `maxDescriptionLength`
         # @return [Fixnum]
         attr_accessor :max_description_length
       
-        # Limits for Field title.
+        # Limits for field title.
         # Corresponds to the JSON property `maxDisplayNameLength`
         # @return [Fixnum]
         attr_accessor :max_display_name_length
       
-        # Max length for the id.
+        # Maximum length for the id.
         # Corresponds to the JSON property `maxIdLength`
         # @return [Fixnum]
         attr_accessor :max_id_length
       
-        # Limits for selection Field type.
+        # Limits for selection field type.
         # Corresponds to the JSON property `selectionLimits`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2SelectionLimits]
         attr_accessor :selection_limits
       
-        # Limits for text Field type.
+        # Limits for text field type.
         # Corresponds to the JSON property `textLimits`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2TextLimits]
         attr_accessor :text_limits
@@ -1827,16 +1829,18 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The lifecycle state of an object, such as label, field, or choice. The
-        # lifecycle enforces the following transitions: * `UNPUBLISHED_DRAFT` (starting
-        # state) * `UNPUBLISHED_DRAFT` -> `PUBLISHED` * `UNPUBLISHED_DRAFT` -> (Deleted)
-        # * `PUBLISHED` -> `DISABLED` * `DISABLED` -> `PUBLISHED` * `DISABLED` -> (
-        # Deleted) The published and disabled states have some distinct characteristics:
-        # * Published—Some kinds of changes might be made to an object in this state, in
-        # which case `has_unpublished_changes` will be true. Also, some kinds of changes
-        # are not permitted. Generally, any change that would invalidate or cause new
-        # restrictions on existing metadata related to the label are rejected. *
-        # Disabled—When disabled, the configured `DisabledPolicy` takes effect.
+        # The lifecycle state of an object, such as label, field, or choice. For more
+        # information, see [Label lifecycle](https://developers.google.com/workspace/
+        # drive/labels/guides/label-lifecycle). The lifecycle enforces the following
+        # transitions: * `UNPUBLISHED_DRAFT` (starting state) * `UNPUBLISHED_DRAFT` -> `
+        # PUBLISHED` * `UNPUBLISHED_DRAFT` -> (Deleted) * `PUBLISHED` -> `DISABLED` * `
+        # DISABLED` -> `PUBLISHED` * `DISABLED` -> (Deleted) The published and disabled
+        # states have some distinct characteristics: * `Published`: Some kinds of
+        # changes might be made to an object in this state, in which case `
+        # has_unpublished_changes` will be true. Also, some kinds of changes aren't
+        # permitted. Generally, any change that would invalidate or cause new
+        # restrictions on existing metadata related to the label are rejected. * `
+        # Disabled`: When disabled, the configured `DisabledPolicy` takes effect.
         # Corresponds to the JSON property `lifecycle`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2Lifecycle]
         attr_accessor :lifecycle
@@ -2118,16 +2122,16 @@ module Google
         end
       end
       
-      # Limits for integer Field type.
+      # Limits for integer field type.
       class GoogleAppsDriveLabelsV2IntegerLimits
         include Google::Apis::Core::Hashable
       
-        # Maximum value for an integer Field type.
+        # Maximum value for an integer field type.
         # Corresponds to the JSON property `maxValue`
         # @return [Fixnum]
         attr_accessor :max_value
       
-        # Minimum value for an integer Field type.
+        # Minimum value for an integer field type.
         # Corresponds to the JSON property `minValue`
         # @return [Fixnum]
         attr_accessor :min_value
@@ -2170,14 +2174,14 @@ module Google
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2UserInfo]
         attr_accessor :creator
       
-        # Output only. The customer this label belongs to. For example: "customers/
-        # 123abc789."
+        # Output only. The customer this label belongs to. For example: `customers/
+        # 123abc789`.
         # Corresponds to the JSON property `customer`
         # @return [String]
         attr_accessor :customer
       
         # Output only. The time this label was disabled. This value has no meaning when
-        # the label is not disabled.
+        # the label isn't disabled.
         # Corresponds to the JSON property `disableTime`
         # @return [String]
         attr_accessor :disable_time
@@ -2187,12 +2191,12 @@ module Google
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2UserInfo]
         attr_accessor :disabler
       
-        # UI display hints for rendering the label.
+        # The UI display hints for rendering the label.
         # Corresponds to the JSON property `displayHints`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2LabelDisplayHints]
         attr_accessor :display_hints
       
-        # Describes the Workspace apps in which the Label can be used.
+        # Describes the Google Workspace apps in which the label can be used.
         # Corresponds to the JSON property `enabledAppSettings`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2LabelEnabledAppSettings]
         attr_accessor :enabled_app_settings
@@ -2204,7 +2208,7 @@ module Google
       
         # Output only. Globally unique identifier of this label. ID makes up part of the
         # label `name`, but unlike `name`, ID is consistent between revisions. Matches
-        # the regex: `([a-zA-Z0-9])+`
+        # the regex: `([a-zA-Z0-9])+`.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -2220,16 +2224,18 @@ module Google
         # @return [String]
         attr_accessor :learn_more_uri
       
-        # The lifecycle state of an object, such as label, field, or choice. The
-        # lifecycle enforces the following transitions: * `UNPUBLISHED_DRAFT` (starting
-        # state) * `UNPUBLISHED_DRAFT` -> `PUBLISHED` * `UNPUBLISHED_DRAFT` -> (Deleted)
-        # * `PUBLISHED` -> `DISABLED` * `DISABLED` -> `PUBLISHED` * `DISABLED` -> (
-        # Deleted) The published and disabled states have some distinct characteristics:
-        # * Published—Some kinds of changes might be made to an object in this state, in
-        # which case `has_unpublished_changes` will be true. Also, some kinds of changes
-        # are not permitted. Generally, any change that would invalidate or cause new
-        # restrictions on existing metadata related to the label are rejected. *
-        # Disabled—When disabled, the configured `DisabledPolicy` takes effect.
+        # The lifecycle state of an object, such as label, field, or choice. For more
+        # information, see [Label lifecycle](https://developers.google.com/workspace/
+        # drive/labels/guides/label-lifecycle). The lifecycle enforces the following
+        # transitions: * `UNPUBLISHED_DRAFT` (starting state) * `UNPUBLISHED_DRAFT` -> `
+        # PUBLISHED` * `UNPUBLISHED_DRAFT` -> (Deleted) * `PUBLISHED` -> `DISABLED` * `
+        # DISABLED` -> `PUBLISHED` * `DISABLED` -> (Deleted) The published and disabled
+        # states have some distinct characteristics: * `Published`: Some kinds of
+        # changes might be made to an object in this state, in which case `
+        # has_unpublished_changes` will be true. Also, some kinds of changes aren't
+        # permitted. Generally, any change that would invalidate or cause new
+        # restrictions on existing metadata related to the label are rejected. * `
+        # Disabled`: When disabled, the configured `DisabledPolicy` takes effect.
         # Corresponds to the JSON property `lifecycle`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2Lifecycle]
         attr_accessor :lifecycle
@@ -2253,7 +2259,7 @@ module Google
         attr_accessor :properties
       
         # Output only. The time this label was published. This value has no meaning when
-        # the label is not published.
+        # the label isn't published.
         # Corresponds to the JSON property `publishTime`
         # @return [String]
         attr_accessor :publish_time
@@ -2276,7 +2282,7 @@ module Google
         # Output only. Revision ID of the label. Revision ID might be part of the label `
         # name` depending on the request issued. A new revision is created whenever
         # revisioned properties of a label are changed. Matches the regex: `([a-zA-Z0-9])
-        # +`
+        # +`.
         # Corresponds to the JSON property `revisionId`
         # @return [String]
         attr_accessor :revision_id
@@ -2372,7 +2378,7 @@ module Google
         end
       end
       
-      # UI display hints for rendering the label.
+      # The UI display hints for rendering the label.
       class GoogleAppsDriveLabelsV2LabelDisplayHints
         include Google::Apis::Core::Hashable
       
@@ -2388,7 +2394,7 @@ module Google
         attr_accessor :hidden_in_search
         alias_method :hidden_in_search?, :hidden_in_search
       
-        # Order to display label in a list.
+        # The order to display labels in a list.
         # Corresponds to the JSON property `priority`
         # @return [Fixnum]
         attr_accessor :priority
@@ -2413,11 +2419,11 @@ module Google
         end
       end
       
-      # Describes the Workspace apps in which the Label can be used.
+      # Describes the Google Workspace apps in which the label can be used.
       class GoogleAppsDriveLabelsV2LabelEnabledAppSettings
         include Google::Apis::Core::Hashable
       
-        # Optional. The list of Apps where the Label can be used.
+        # Optional. The list of apps where the label can be used.
         # Corresponds to the JSON property `enabledApps`
         # @return [Array<Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp>]
         attr_accessor :enabled_apps
@@ -2432,11 +2438,11 @@ module Google
         end
       end
       
-      # An App where the Label can be used.
+      # An app where the label can be used.
       class GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp
         include Google::Apis::Core::Hashable
       
-        # Optional. The name of the App.
+        # Optional. The name of the app.
         # Corresponds to the JSON property `app`
         # @return [String]
         attr_accessor :app
@@ -2451,18 +2457,18 @@ module Google
         end
       end
       
-      # Label constraints governing the structure of a Label; such as, the maximum
-      # number of Fields allowed and maximum length of the label title.
+      # Label constraints governing the structure of a label; such as, the maximum
+      # number of fields allowed and maximum length of the label title.
       class GoogleAppsDriveLabelsV2LabelLimits
         include Google::Apis::Core::Hashable
       
-        # Field constants governing the structure of a Field; such as, the maximum title
+        # Field constants governing the structure of a field; such as, the maximum title
         # length, minimum and maximum field values or length, etc.
         # Corresponds to the JSON property `fieldLimits`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2FieldLimits]
         attr_accessor :field_limits
       
-        # The maximum number of published Fields that can be deleted.
+        # The maximum number of published fields that can be deleted.
         # Corresponds to the JSON property `maxDeletedFields`
         # @return [Fixnum]
         attr_accessor :max_deleted_fields
@@ -2478,7 +2484,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_draft_revisions
       
-        # The maximum number of Fields allowed within the label.
+        # The maximum number of fields allowed within the label.
         # Corresponds to the JSON property `maxFields`
         # @return [Fixnum]
         attr_accessor :max_fields
@@ -2509,22 +2515,22 @@ module Google
         end
       end
       
-      # A Lock that can be applied to a Label, Field, or Choice.
+      # A lock that can be applied to a label, field, or choice.
       class GoogleAppsDriveLabelsV2LabelLock
         include Google::Apis::Core::Hashable
       
-        # A description of a user's capabilities on a LabelLock.
+        # A description of a user's capabilities on a label lock.
         # Corresponds to the JSON property `capabilities`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2LabelLockCapabilities]
         attr_accessor :capabilities
       
-        # The ID of the Selection Field Choice that should be locked. If present, `
+        # The ID of the selection field choice that should be locked. If present, `
         # field_id` must also be present.
         # Corresponds to the JSON property `choiceId`
         # @return [String]
         attr_accessor :choice_id
       
-        # Output only. The time this LabelLock was created.
+        # Output only. The time this label lock was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -2534,24 +2540,24 @@ module Google
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2UserInfo]
         attr_accessor :creator
       
-        # Output only. A timestamp indicating when this LabelLock was scheduled for
-        # deletion. This will be present only if this LabelLock is in the DELETING state.
+        # Output only. A timestamp indicating when this label lock was scheduled for
+        # deletion. Present only if this label lock is in the `DELETING` state.
         # Corresponds to the JSON property `deleteTime`
         # @return [String]
         attr_accessor :delete_time
       
-        # The ID of the Field that should be locked. Empty if the whole Label should be
+        # The ID of the field that should be locked. Empty if the whole label should be
         # locked.
         # Corresponds to the JSON property `fieldId`
         # @return [String]
         attr_accessor :field_id
       
-        # Output only. Resource name of this LabelLock.
+        # Output only. Resource name of this label lock.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. This LabelLock's state.
+        # Output only. This label lock's state.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -2573,7 +2579,7 @@ module Google
         end
       end
       
-      # A description of a user's capabilities on a LabelLock.
+      # A description of a user's capabilities on a label lock.
       class GoogleAppsDriveLabelsV2LabelLockCapabilities
         include Google::Apis::Core::Hashable
       
@@ -2599,13 +2605,13 @@ module Google
       
         # Audience to grant a role to. The magic value of `audiences/default` may be
         # used to apply the role to the default audience in the context of the
-        # organization that owns the Label.
+        # organization that owns the label.
         # Corresponds to the JSON property `audience`
         # @return [String]
         attr_accessor :audience
       
-        # Specifies the email address for a user or group pricinpal. Not populated for
-        # audience principals. User and Group permissions may only be inserted using
+        # Specifies the email address for a user or group principal. Not populated for
+        # audience principals. User and group permissions may only be inserted using an
         # email address. On update requests, if email address is specified, no principal
         # should be specified.
         # Corresponds to the JSON property `email`
@@ -2716,16 +2722,18 @@ module Google
         end
       end
       
-      # The lifecycle state of an object, such as label, field, or choice. The
-      # lifecycle enforces the following transitions: * `UNPUBLISHED_DRAFT` (starting
-      # state) * `UNPUBLISHED_DRAFT` -> `PUBLISHED` * `UNPUBLISHED_DRAFT` -> (Deleted)
-      # * `PUBLISHED` -> `DISABLED` * `DISABLED` -> `PUBLISHED` * `DISABLED` -> (
-      # Deleted) The published and disabled states have some distinct characteristics:
-      # * Published—Some kinds of changes might be made to an object in this state, in
-      # which case `has_unpublished_changes` will be true. Also, some kinds of changes
-      # are not permitted. Generally, any change that would invalidate or cause new
-      # restrictions on existing metadata related to the label are rejected. *
-      # Disabled—When disabled, the configured `DisabledPolicy` takes effect.
+      # The lifecycle state of an object, such as label, field, or choice. For more
+      # information, see [Label lifecycle](https://developers.google.com/workspace/
+      # drive/labels/guides/label-lifecycle). The lifecycle enforces the following
+      # transitions: * `UNPUBLISHED_DRAFT` (starting state) * `UNPUBLISHED_DRAFT` -> `
+      # PUBLISHED` * `UNPUBLISHED_DRAFT` -> (Deleted) * `PUBLISHED` -> `DISABLED` * `
+      # DISABLED` -> `PUBLISHED` * `DISABLED` -> (Deleted) The published and disabled
+      # states have some distinct characteristics: * `Published`: Some kinds of
+      # changes might be made to an object in this state, in which case `
+      # has_unpublished_changes` will be true. Also, some kinds of changes aren't
+      # permitted. Generally, any change that would invalidate or cause new
+      # restrictions on existing metadata related to the label are rejected. * `
+      # Disabled`: When disabled, the configured `DisabledPolicy` takes effect.
       class GoogleAppsDriveLabelsV2Lifecycle
         include Google::Apis::Core::Hashable
       
@@ -2792,11 +2800,11 @@ module Google
         end
       end
       
-      # The response to a ListLabelLocksRequest.
+      # The response to a `ListLabelLocksRequest`.
       class GoogleAppsDriveLabelsV2ListLabelLocksResponse
         include Google::Apis::Core::Hashable
       
-        # LabelLocks.
+        # Label locks.
         # Corresponds to the JSON property `labelLocks`
         # @return [Array<Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2LabelLock>]
         attr_accessor :label_locks
@@ -2817,7 +2825,7 @@ module Google
         end
       end
       
-      # Response for listing the permissions on a Label.
+      # Response for listing the permissions on a label.
       class GoogleAppsDriveLabelsV2ListLabelPermissionsResponse
         include Google::Apis::Core::Hashable
       
@@ -2842,7 +2850,7 @@ module Google
         end
       end
       
-      # Response for listing Labels.
+      # Response for listing labels.
       class GoogleAppsDriveLabelsV2ListLabelsResponse
         include Google::Apis::Core::Hashable
       
@@ -2867,11 +2875,11 @@ module Google
         end
       end
       
-      # Limits for list-variant of a Field type.
+      # Limits for list-variant of a field type.
       class GoogleAppsDriveLabelsV2ListLimits
         include Google::Apis::Core::Hashable
       
-        # Maximum number of values allowed for the Field type.
+        # Maximum number of values allowed for the field type.
         # Corresponds to the JSON property `maxEntries`
         # @return [Fixnum]
         attr_accessor :max_entries
@@ -2892,8 +2900,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. Indicates whether this label component is the (direct) target of
-        # a LabelLock. A label component can be implicitly locked even if it's not the
-        # direct target of a LabelLock, in which case this field is set to false.
+        # a label lock. A label component can be implicitly locked even if it's not the
+        # direct target of a label lock, in which case this field is set to false.
         # Corresponds to the JSON property `locked`
         # @return [Boolean]
         attr_accessor :locked
@@ -2909,16 +2917,16 @@ module Google
         end
       end
       
-      # Limits for long text Field type.
+      # Limits for long text field type.
       class GoogleAppsDriveLabelsV2LongTextLimits
         include Google::Apis::Core::Hashable
       
-        # Maximum length allowed for a long text Field type.
+        # Maximum length allowed for a long text field type.
         # Corresponds to the JSON property `maxLength`
         # @return [Fixnum]
         attr_accessor :max_length
       
-        # Minimum length allowed for a long text Field type.
+        # Minimum length allowed for a long text field type.
         # Corresponds to the JSON property `minLength`
         # @return [Fixnum]
         attr_accessor :min_length
@@ -2945,7 +2953,7 @@ module Google
         attr_accessor :language_code
       
         # Set to `true` in order to use the user's admin credentials. The server will
-        # verify the user is an admin for the Label before allowing access.
+        # verify the user is an admin for the label before allowing access.
         # Corresponds to the JSON property `useAdminAccess`
         # @return [Boolean]
         attr_accessor :use_admin_access
@@ -2969,16 +2977,16 @@ module Google
         end
       end
       
-      # Limits for selection Field type.
+      # Limits for selection field type.
       class GoogleAppsDriveLabelsV2SelectionLimits
         include Google::Apis::Core::Hashable
       
-        # Limits for list-variant of a Field type.
+        # Limits for list-variant of a field type.
         # Corresponds to the JSON property `listLimits`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2ListLimits]
         attr_accessor :list_limits
       
-        # The max number of choices.
+        # Maximum number of choices.
         # Corresponds to the JSON property `maxChoices`
         # @return [Fixnum]
         attr_accessor :max_choices
@@ -2993,7 +3001,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_display_name_length
       
-        # Maximum ID length for a selection options.
+        # Maximum ID length for a selection option.
         # Corresponds to the JSON property `maxIdLength`
         # @return [Fixnum]
         attr_accessor :max_id_length
@@ -3012,16 +3020,16 @@ module Google
         end
       end
       
-      # Limits for text Field type.
+      # Limits for text field type.
       class GoogleAppsDriveLabelsV2TextLimits
         include Google::Apis::Core::Hashable
       
-        # Maximum length allowed for a text Field type.
+        # Maximum length allowed for a text field type.
         # Corresponds to the JSON property `maxLength`
         # @return [Fixnum]
         attr_accessor :max_length
       
-        # Minimum length allowed for a text Field type.
+        # Minimum length allowed for a text field type.
         # Corresponds to the JSON property `minLength`
         # @return [Fixnum]
         attr_accessor :min_length
@@ -3037,12 +3045,12 @@ module Google
         end
       end
       
-      # Request to update the `CopyMode` of the given Label. Changes to this policy
-      # are not revisioned, do not require publishing, and take effect immediately. \
+      # Request to update the `CopyMode` of the given label. Changes to this policy
+      # aren't revisioned, don't require publishing, and take effect immediately. \
       class GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Indicates how the applied Label, and Field values should be copied
+        # Required. Indicates how the applied label and field values should be copied
         # when a Drive item is copied.
         # Corresponds to the JSON property `copyMode`
         # @return [String]
@@ -3055,7 +3063,7 @@ module Google
         attr_accessor :language_code
       
         # Set to `true` in order to use the user's admin credentials. The server will
-        # verify the user is an admin for the Label before allowing access.
+        # verify the user is an admin for the label before allowing access.
         # Corresponds to the JSON property `useAdminAccess`
         # @return [Boolean]
         attr_accessor :use_admin_access
@@ -3080,12 +3088,12 @@ module Google
         end
       end
       
-      # Request to update the `EnabledAppSettings` of the given Label. This change is
-      # not revisioned, does not require publishing, and takes effect immediately. \
+      # Request to update the `EnabledAppSettings` of the given label. This change is
+      # not revisioned, doesn't require publishing, and takes effect immediately. \
       class GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest
         include Google::Apis::Core::Hashable
       
-        # Describes the Workspace apps in which the Label can be used.
+        # Describes the Google Workspace apps in which the label can be used.
         # Corresponds to the JSON property `enabledAppSettings`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2LabelEnabledAppSettings]
         attr_accessor :enabled_app_settings
@@ -3098,7 +3106,7 @@ module Google
         attr_accessor :language_code
       
         # Optional. Set to `true` in order to use the user's admin credentials. The
-        # server will verify the user is an admin for the Label before allowing access.
+        # server will verify the user is an admin for the label before allowing access.
         # Corresponds to the JSON property `useAdminAccess`
         # @return [Boolean]
         attr_accessor :use_admin_access
@@ -3123,8 +3131,8 @@ module Google
         end
       end
       
-      # Updates a Label Permission. Permissions affect the Label resource as a whole,
-      # are not revisioned, and do not require publishing.
+      # Updates a label permission. Permissions affect the label resource as a whole,
+      # aren't revisioned, and don't require publishing.
       class GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest
         include Google::Apis::Core::Hashable
       
@@ -3133,13 +3141,13 @@ module Google
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2LabelPermission]
         attr_accessor :label_permission
       
-        # Required. The parent Label resource name.
+        # Required. The parent label resource name.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
       
         # Set to `true` in order to use the user's admin credentials. The server will
-        # verify the user is an admin for the Label before allowing access.
+        # verify the user is an admin for the label before allowing access.
         # Corresponds to the JSON property `useAdminAccess`
         # @return [Boolean]
         attr_accessor :use_admin_access
@@ -3174,13 +3182,13 @@ module Google
         attr_accessor :can_administrate_labels
         alias_method :can_administrate_labels?, :can_administrate_labels
       
-        # Output only. Whether the user is allowed to create new admin labels.
+        # Output only. Whether the user is allowed to create admin labels.
         # Corresponds to the JSON property `canCreateAdminLabels`
         # @return [Boolean]
         attr_accessor :can_create_admin_labels
         alias_method :can_create_admin_labels?, :can_create_admin_labels
       
-        # Output only. Whether the user is allowed to create new shared labels.
+        # Output only. Whether the user is allowed to create shared labels.
         # Corresponds to the JSON property `canCreateSharedLabels`
         # @return [Boolean]
         attr_accessor :can_create_shared_labels
@@ -3209,8 +3217,9 @@ module Google
       class GoogleAppsDriveLabelsV2UserInfo
         include Google::Apis::Core::Hashable
       
-        # The identifier for this user that can be used with the People API to get more
-        # information. For example, people/12345678.
+        # The identifier for this user that can be used with the [People API](https://
+        # developers.google.com/people) to get more information. For example, `people/
+        # 12345678`.
         # Corresponds to the JSON property `person`
         # @return [String]
         attr_accessor :person
@@ -3229,7 +3238,7 @@ module Google
       class GoogleAppsDriveLabelsV2UserLimits
         include Google::Apis::Core::Hashable
       
-        # Limits for list-variant of a Field type.
+        # Limits for list-variant of a field type.
         # Corresponds to the JSON property `listLimits`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2ListLimits]
         attr_accessor :list_limits
@@ -3249,9 +3258,9 @@ module Google
       class GoogleAppsDriveLabelsV2WriteControl
         include Google::Apis::Core::Hashable
       
-        # The revision_id of the label that the write request will be applied to. If
-        # this is not the latest revision of the label, the request will not be
-        # processed and will return a 400 Bad Request error.
+        # The revision ID of the label that the write request will be applied to. If
+        # this isn't the latest revision of the label, the request will not be processed
+        # and will return a 400 Bad Request error.
         # Corresponds to the JSON property `requiredRevisionId`
         # @return [String]
         attr_accessor :required_revision_id
