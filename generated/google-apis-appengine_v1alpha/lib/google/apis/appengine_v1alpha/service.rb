@@ -53,7 +53,8 @@ module Google
         
         # Uploads the specified SSL certificate.
         # @param [String] apps_id
-        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
         # @param [Google::Apis::AppengineV1alpha::AuthorizedCertificate] authorized_certificate_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -86,7 +87,7 @@ module Google
         
         # Deletes the specified SSL certificate.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource to delete. Example: apps/myapp/
+        #   Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/
         #   authorizedCertificates/12345.
         # @param [String] authorized_certificates_id
         #   Part of `name`. See documentation of `appsId`.
@@ -120,7 +121,7 @@ module Google
         
         # Gets the specified SSL certificate.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
         #   authorizedCertificates/12345.
         # @param [String] authorized_certificates_id
         #   Part of `name`. See documentation of `appsId`.
@@ -157,7 +158,8 @@ module Google
         
         # Lists all SSL certificates the user is authorized to administer.
         # @param [String] apps_id
-        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
         # @param [Fixnum] page_size
         #   Maximum results to return per page.
         # @param [String] page_token
@@ -199,7 +201,7 @@ module Google
         # new certificate must be applicable to the same domains as the original
         # certificate. The certificate display_name may also be updated.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource to update. Example: apps/myapp/
+        #   Part of `name`. Required. Name of the resource to update. Example: apps/myapp/
         #   authorizedCertificates/12345.
         # @param [String] authorized_certificates_id
         #   Part of `name`. See documentation of `appsId`.
@@ -240,7 +242,8 @@ module Google
         
         # Lists all domains the user is authorized to administer.
         # @param [String] apps_id
-        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
         # @param [Fixnum] page_size
         #   Maximum results to return per page.
         # @param [String] page_token
@@ -278,7 +281,8 @@ module Google
         # domain in order to map it to an application. For a list of available
         # authorized domains, see AuthorizedDomains.ListAuthorizedDomains.
         # @param [String] apps_id
-        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
         # @param [Google::Apis::AppengineV1alpha::DomainMapping] domain_mapping_object
         # @param [Boolean] no_managed_certificate
         #   Whether a managed certificate should be provided by App Engine. If true, a
@@ -322,7 +326,7 @@ module Google
         # Deletes the specified domain mapping. A user must be authorized to administer
         # the associated domain in order to delete a DomainMapping resource.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource to delete. Example: apps/myapp/
+        #   Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/
         #   domainMappings/example.com.
         # @param [String] domain_mappings_id
         #   Part of `name`. See documentation of `appsId`.
@@ -356,7 +360,7 @@ module Google
         
         # Gets the specified domain mapping.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
         #   domainMappings/example.com.
         # @param [String] domain_mappings_id
         #   Part of `name`. See documentation of `appsId`.
@@ -390,7 +394,8 @@ module Google
         
         # Lists the domain mappings on an application.
         # @param [String] apps_id
-        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
         # @param [Fixnum] page_size
         #   Maximum results to return per page.
         # @param [String] page_token
@@ -429,7 +434,7 @@ module Google
         # A user must be authorized to administer the associated domain in order to
         # update a DomainMapping resource.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource to update. Example: apps/myapp/
+        #   Part of `name`. Required. Name of the resource to update. Example: apps/myapp/
         #   domainMappings/example.com.
         # @param [String] domain_mappings_id
         #   Part of `name`. See documentation of `appsId`.
@@ -710,7 +715,8 @@ module Google
         
         # Uploads the specified SSL certificate.
         # @param [String] projects_id
-        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
         # @param [String] locations_id
         #   Part of `parent`. See documentation of `projectsId`.
         # @param [String] applications_id
@@ -749,7 +755,7 @@ module Google
         
         # Deletes the specified SSL certificate.
         # @param [String] projects_id
-        #   Part of `name`. Name of the resource to delete. Example: apps/myapp/
+        #   Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/
         #   authorizedCertificates/12345.
         # @param [String] locations_id
         #   Part of `name`. See documentation of `projectsId`.
@@ -789,7 +795,7 @@ module Google
         
         # Gets the specified SSL certificate.
         # @param [String] projects_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
         #   authorizedCertificates/12345.
         # @param [String] locations_id
         #   Part of `name`. See documentation of `projectsId`.
@@ -832,7 +838,8 @@ module Google
         
         # Lists all SSL certificates the user is authorized to administer.
         # @param [String] projects_id
-        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
         # @param [String] locations_id
         #   Part of `parent`. See documentation of `projectsId`.
         # @param [String] applications_id
@@ -880,7 +887,7 @@ module Google
         # new certificate must be applicable to the same domains as the original
         # certificate. The certificate display_name may also be updated.
         # @param [String] projects_id
-        #   Part of `name`. Name of the resource to update. Example: apps/myapp/
+        #   Part of `name`. Required. Name of the resource to update. Example: apps/myapp/
         #   authorizedCertificates/12345.
         # @param [String] locations_id
         #   Part of `name`. See documentation of `projectsId`.
@@ -927,7 +934,8 @@ module Google
         
         # Lists all domains the user is authorized to administer.
         # @param [String] projects_id
-        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
         # @param [String] locations_id
         #   Part of `parent`. See documentation of `projectsId`.
         # @param [String] applications_id
@@ -971,7 +979,8 @@ module Google
         # domain in order to map it to an application. For a list of available
         # authorized domains, see AuthorizedDomains.ListAuthorizedDomains.
         # @param [String] projects_id
-        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
         # @param [String] locations_id
         #   Part of `parent`. See documentation of `projectsId`.
         # @param [String] applications_id
@@ -1020,7 +1029,7 @@ module Google
         
         # Gets the specified domain mapping.
         # @param [String] projects_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
         #   domainMappings/example.com.
         # @param [String] locations_id
         #   Part of `name`. See documentation of `projectsId`.
