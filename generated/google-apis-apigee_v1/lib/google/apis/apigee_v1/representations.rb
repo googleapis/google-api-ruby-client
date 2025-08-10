@@ -3396,6 +3396,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :encrypted, as: 'encrypted'
+          property :masked_values, as: 'maskedValues'
           property :name, as: 'name'
         end
       end
