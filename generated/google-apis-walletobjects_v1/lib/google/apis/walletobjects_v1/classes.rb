@@ -4412,7 +4412,15 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The URI for the image.
+        # An ID for an already uploaded private image. Either this or source_uri should
+        # be set. Requests setting both or neither will be rejected. Please contact
+        # support to use private images.
+        # Corresponds to the JSON property `privateImageId`
+        # @return [String]
+        attr_accessor :private_image_id
+      
+        # A URI for the image. Either this or private_image_id should be set. Requests
+        # setting both or neither will be rejected.
         # Corresponds to the JSON property `sourceUri`
         # @return [Google::Apis::WalletobjectsV1::ImageUri]
         attr_accessor :source_uri
@@ -4425,6 +4433,7 @@ module Google
         def update!(**args)
           @content_description = args[:content_description] if args.key?(:content_description)
           @kind = args[:kind] if args.key?(:kind)
+          @private_image_id = args[:private_image_id] if args.key?(:private_image_id)
           @source_uri = args[:source_uri] if args.key?(:source_uri)
         end
       end
@@ -8934,6 +8943,39 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable_notification = args[:enable_notification] if args.key?(:enable_notification)
+        end
+      end
+      
+      # Request to upload a private image to use in a pass.
+      class UploadPrivateImageRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response for uploading the private image.
+      class UploadPrivateImageResponse
+        include Google::Apis::Core::Hashable
+      
+        # Unique ID of the uploaded image to be referenced later in Image.
+        # private_image_id.
+        # Corresponds to the JSON property `privateImageId`
+        # @return [String]
+        attr_accessor :private_image_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @private_image_id = args[:private_image_id] if args.key?(:private_image_id)
         end
       end
       
