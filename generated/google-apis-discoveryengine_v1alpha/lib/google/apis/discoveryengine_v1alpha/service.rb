@@ -9428,13 +9428,13 @@ module Google
         #   Evaluations under this location, regardless of whether or not this location
         #   exists, a `PERMISSION_DENIED` error is returned.
         # @param [Fixnum] page_size
-        #   Maximum number of Evaluations to return. If unspecified, defaults to 100. The
-        #   maximum allowed value is 1000. Values above 1000 will be coerced to 1000. If
-        #   this field is negative, an `INVALID_ARGUMENT` error is returned.
+        #   Optional. Maximum number of Evaluations to return. If unspecified, defaults to
+        #   100. The maximum allowed value is 1000. Values above 1000 will be coerced to
+        #   1000. If this field is negative, an `INVALID_ARGUMENT` error is returned.
         # @param [String] page_token
-        #   A page token ListEvaluationsResponse.next_page_token, received from a previous
-        #   EvaluationService.ListEvaluations call. Provide this to retrieve the
-        #   subsequent page. When paginating, all other parameters provided to
+        #   Optional. A page token ListEvaluationsResponse.next_page_token, received from
+        #   a previous EvaluationService.ListEvaluations call. Provide this to retrieve
+        #   the subsequent page. When paginating, all other parameters provided to
         #   EvaluationService.ListEvaluations must match the call that provided the page
         #   token. Otherwise, an `INVALID_ARGUMENT` error is returned.
         # @param [String] fields
@@ -9474,13 +9474,13 @@ module Google
         #   regardless of whether or not this evaluation set exists, a `PERMISSION_DENIED`
         #   error is returned.
         # @param [Fixnum] page_size
-        #   Maximum number of ListEvaluationResultsResponse.EvaluationResult to return. If
-        #   unspecified, defaults to 100. The maximum allowed value is 1000. Values above
-        #   1000 will be coerced to 1000. If this field is negative, an `INVALID_ARGUMENT`
-        #   error is returned.
+        #   Optional. Maximum number of ListEvaluationResultsResponse.EvaluationResult to
+        #   return. If unspecified, defaults to 100. The maximum allowed value is 1000.
+        #   Values above 1000 will be coerced to 1000. If this field is negative, an `
+        #   INVALID_ARGUMENT` error is returned.
         # @param [String] page_token
-        #   A page token ListEvaluationResultsResponse.next_page_token, received from a
-        #   previous EvaluationService.ListEvaluationResults call. Provide this to
+        #   Optional. A page token ListEvaluationResultsResponse.next_page_token, received
+        #   from a previous EvaluationService.ListEvaluationResults call. Provide this to
         #   retrieve the subsequent page. When paginating, all other parameters provided
         #   to EvaluationService.ListEvaluationResults must match the call that provided
         #   the page token. Otherwise, an `INVALID_ARGUMENT` error is returned.
