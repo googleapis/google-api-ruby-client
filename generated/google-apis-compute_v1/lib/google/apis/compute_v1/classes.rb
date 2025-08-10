@@ -3022,6 +3022,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Additional Backend Bucket parameters.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeV1::BackendBucketParams]
+        attr_accessor :params
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -3050,6 +3055,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
           @name = args[:name] if args.key?(:name)
+          @params = args[:params] if args.key?(:params)
           @self_link = args[:self_link] if args.key?(:self_link)
           @used_by = args[:used_by] if args.key?(:used_by)
         end
@@ -3404,6 +3410,32 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Additional Backend Bucket parameters.
+      class BackendBucketParams
+        include Google::Apis::Core::Hashable
+      
+        # Tag keys/values directly bound to this resource. Tag keys and values have the
+        # same definition as resource manager tags. The field is allowed for INSERT only.
+        # The keys/values to set on the resource should be specified in either ID ` : `
+        # or Namespaced format ` : `. For example the following are valid inputs: * `"
+        # tagKeys/333" : "tagValues/444", "tagKeys/123" : "tagValues/456"` * `"123/
+        # environment" : "production", "345/abc" : "xyz"` Note: * Invalid combinations
+        # of ID & namespaced format is not supported. For instance: `"123/environment" :
+        # "tagValues/444"` is invalid.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
@@ -3794,6 +3826,11 @@ module Google
         # @return [Google::Apis::ComputeV1::OutlierDetection]
         attr_accessor :outlier_detection
       
+        # Additional Backend Service parameters.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeV1::BackendServiceParams]
+        attr_accessor :params
+      
         # Deprecated in favor of portName. The TCP port to connect on the backend. The
         # default value is 80. For internal passthrough Network Load Balancers and
         # external passthrough Network Load Balancers, omit port.
@@ -3944,6 +3981,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @outlier_detection = args[:outlier_detection] if args.key?(:outlier_detection)
+          @params = args[:params] if args.key?(:params)
           @port = args[:port] if args.key?(:port)
           @port_name = args[:port_name] if args.key?(:port_name)
           @protocol = args[:protocol] if args.key?(:protocol)
@@ -5054,6 +5092,32 @@ module Google
           @optional_fields = args[:optional_fields] if args.key?(:optional_fields)
           @optional_mode = args[:optional_mode] if args.key?(:optional_mode)
           @sample_rate = args[:sample_rate] if args.key?(:sample_rate)
+        end
+      end
+      
+      # Additional Backend Service parameters.
+      class BackendServiceParams
+        include Google::Apis::Core::Hashable
+      
+        # Tag keys/values directly bound to this resource. Tag keys and values have the
+        # same definition as resource manager tags. The field is allowed for INSERT only.
+        # The keys/values to set on the resource should be specified in either ID ` : `
+        # or Namespaced format ` : `. For example the following are valid inputs: * `"
+        # tagKeys/333" : "tagValues/444", "tagKeys/123" : "tagValues/456"` * `"123/
+        # environment" : "production", "345/abc" : "xyz"` Note: * Invalid combinations
+        # of ID & namespaced format is not supported. For instance: `"123/environment" :
+        # "tagValues/444"` is invalid.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
@@ -20218,6 +20282,12 @@ module Google
       class Interconnect
         include Google::Apis::Core::Hashable
       
+        # Enable or disable the application awareness feature on this Cloud Interconnect.
+        # Corresponds to the JSON property `aaiEnabled`
+        # @return [Boolean]
+        attr_accessor :aai_enabled
+        alias_method :aai_enabled?, :aai_enabled
+      
         # Administrative status of the interconnect. When this is set to true, the
         # Interconnect is functional and can carry traffic. When set to false, no
         # packets can be carried over the interconnect and no BGP routes are exchanged
@@ -20226,6 +20296,11 @@ module Google
         # @return [Boolean]
         attr_accessor :admin_enabled
         alias_method :admin_enabled?, :admin_enabled
+      
+        # Configuration information for application awareness on this Cloud Interconnect.
+        # Corresponds to the JSON property `applicationAwareInterconnect`
+        # @return [Google::Apis::ComputeV1::InterconnectApplicationAwareInterconnect]
+        attr_accessor :application_aware_interconnect
       
         # [Output only] List of features available for this Interconnect connection,
         # which can take one of the following values: - IF_MACSEC If present then the
@@ -20449,7 +20524,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @aai_enabled = args[:aai_enabled] if args.key?(:aai_enabled)
           @admin_enabled = args[:admin_enabled] if args.key?(:admin_enabled)
+          @application_aware_interconnect = args[:application_aware_interconnect] if args.key?(:application_aware_interconnect)
           @available_features = args[:available_features] if args.key?(:available_features)
           @circuit_infos = args[:circuit_infos] if args.key?(:circuit_infos)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
@@ -20480,6 +20557,104 @@ module Google
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Configuration information for application awareness on this Cloud Interconnect.
+      class InterconnectApplicationAwareInterconnect
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `bandwidthPercentagePolicy`
+        # @return [Google::Apis::ComputeV1::InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy]
+        attr_accessor :bandwidth_percentage_policy
+      
+        # Description for the application awareness profile on this Cloud Interconnect.
+        # Corresponds to the JSON property `profileDescription`
+        # @return [String]
+        attr_accessor :profile_description
+      
+        # Optional field to specify a list of shape average percentages to be applied in
+        # conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy.
+        # Corresponds to the JSON property `shapeAveragePercentages`
+        # @return [Array<Google::Apis::ComputeV1::InterconnectApplicationAwareInterconnectBandwidthPercentage>]
+        attr_accessor :shape_average_percentages
+      
+        # Specify configuration for StrictPriorityPolicy.
+        # Corresponds to the JSON property `strictPriorityPolicy`
+        # @return [Google::Apis::ComputeV1::InterconnectApplicationAwareInterconnectStrictPriorityPolicy]
+        attr_accessor :strict_priority_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bandwidth_percentage_policy = args[:bandwidth_percentage_policy] if args.key?(:bandwidth_percentage_policy)
+          @profile_description = args[:profile_description] if args.key?(:profile_description)
+          @shape_average_percentages = args[:shape_average_percentages] if args.key?(:shape_average_percentages)
+          @strict_priority_policy = args[:strict_priority_policy] if args.key?(:strict_priority_policy)
+        end
+      end
+      
+      # Specify bandwidth percentages [1-100] for various traffic classes in
+      # BandwidthPercentagePolicy. The sum of all percentages must equal 100. All
+      # traffic classes must have a percentage value specified.
+      class InterconnectApplicationAwareInterconnectBandwidthPercentage
+        include Google::Apis::Core::Hashable
+      
+        # Bandwidth percentage for a specific traffic class.
+        # Corresponds to the JSON property `percentage`
+        # @return [Fixnum]
+        attr_accessor :percentage
+      
+        # TrafficClass whose bandwidth percentage is being specified.
+        # Corresponds to the JSON property `trafficClass`
+        # @return [String]
+        attr_accessor :traffic_class
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @percentage = args[:percentage] if args.key?(:percentage)
+          @traffic_class = args[:traffic_class] if args.key?(:traffic_class)
+        end
+      end
+      
+      # 
+      class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Specify bandwidth percentages for various traffic classes for queuing type
+        # Bandwidth Percent.
+        # Corresponds to the JSON property `bandwidthPercentages`
+        # @return [Array<Google::Apis::ComputeV1::InterconnectApplicationAwareInterconnectBandwidthPercentage>]
+        attr_accessor :bandwidth_percentages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bandwidth_percentages = args[:bandwidth_percentages] if args.key?(:bandwidth_percentages)
+        end
+      end
+      
+      # Specify configuration for StrictPriorityPolicy.
+      class InterconnectApplicationAwareInterconnectStrictPriorityPolicy
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -28229,6 +28404,14 @@ module Google
         attr_accessor :auto_create_routes
         alias_method :auto_create_routes?, :auto_create_routes
       
+        # [Output Only] Describes the state of a peering connection, not just the local
+        # peering. This field provides information about the effective settings for the
+        # connection as a whole, including pending delete/update requests for CONSENSUS
+        # peerings.
+        # Corresponds to the JSON property `connectionStatus`
+        # @return [Google::Apis::ComputeV1::NetworkPeeringConnectionStatus]
+        attr_accessor :connection_status
+      
         # Indicates whether full mesh connectivity is created and managed automatically
         # between peered networks. Currently this field should always be true since
         # Google Compute Engine will automatically create and manage subnetwork routes
@@ -28308,6 +28491,12 @@ module Google
         # @return [String]
         attr_accessor :state_details
       
+        # The update strategy determines the semantics for updates and deletes to the
+        # peering connection configuration.
+        # Corresponds to the JSON property `updateStrategy`
+        # @return [String]
+        attr_accessor :update_strategy
+      
         def initialize(**args)
            update!(**args)
         end
@@ -28315,6 +28504,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_create_routes = args[:auto_create_routes] if args.key?(:auto_create_routes)
+          @connection_status = args[:connection_status] if args.key?(:connection_status)
           @exchange_subnet_routes = args[:exchange_subnet_routes] if args.key?(:exchange_subnet_routes)
           @export_custom_routes = args[:export_custom_routes] if args.key?(:export_custom_routes)
           @export_subnet_routes_with_public_ip = args[:export_subnet_routes_with_public_ip] if args.key?(:export_subnet_routes_with_public_ip)
@@ -28326,6 +28516,122 @@ module Google
           @stack_type = args[:stack_type] if args.key?(:stack_type)
           @state = args[:state] if args.key?(:state)
           @state_details = args[:state_details] if args.key?(:state_details)
+          @update_strategy = args[:update_strategy] if args.key?(:update_strategy)
+        end
+      end
+      
+      # [Output Only] Describes the state of a peering connection, not just the local
+      # peering. This field provides information about the effective settings for the
+      # connection as a whole, including pending delete/update requests for CONSENSUS
+      # peerings.
+      class NetworkPeeringConnectionStatus
+        include Google::Apis::Core::Hashable
+      
+        # The status of update/delete for a consensus peering connection. Only set when
+        # connection_status.update_strategy is CONSENSUS or a network peering is
+        # proposing to update the strategy to CONSENSUS.
+        # Corresponds to the JSON property `consensusState`
+        # @return [Google::Apis::ComputeV1::NetworkPeeringConnectionStatusConsensusState]
+        attr_accessor :consensus_state
+      
+        # The active connectivity settings for the peering connection based on the
+        # settings of the network peerings.
+        # Corresponds to the JSON property `trafficConfiguration`
+        # @return [Google::Apis::ComputeV1::NetworkPeeringConnectionStatusTrafficConfiguration]
+        attr_accessor :traffic_configuration
+      
+        # The update strategy determines the update/delete semantics for this peering
+        # connection.
+        # Corresponds to the JSON property `updateStrategy`
+        # @return [String]
+        attr_accessor :update_strategy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consensus_state = args[:consensus_state] if args.key?(:consensus_state)
+          @traffic_configuration = args[:traffic_configuration] if args.key?(:traffic_configuration)
+          @update_strategy = args[:update_strategy] if args.key?(:update_strategy)
+        end
+      end
+      
+      # The status of update/delete for a consensus peering connection. Only set when
+      # connection_status.update_strategy is CONSENSUS or a network peering is
+      # proposing to update the strategy to CONSENSUS.
+      class NetworkPeeringConnectionStatusConsensusState
+        include Google::Apis::Core::Hashable
+      
+        # The status of the delete request.
+        # Corresponds to the JSON property `deleteStatus`
+        # @return [String]
+        attr_accessor :delete_status
+      
+        # The status of the update request.
+        # Corresponds to the JSON property `updateStatus`
+        # @return [String]
+        attr_accessor :update_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delete_status = args[:delete_status] if args.key?(:delete_status)
+          @update_status = args[:update_status] if args.key?(:update_status)
+        end
+      end
+      
+      # 
+      class NetworkPeeringConnectionStatusTrafficConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # Whether custom routes are being exported to the peer network.
+        # Corresponds to the JSON property `exportCustomRoutesToPeer`
+        # @return [Boolean]
+        attr_accessor :export_custom_routes_to_peer
+        alias_method :export_custom_routes_to_peer?, :export_custom_routes_to_peer
+      
+        # Whether subnet routes with public IP ranges are being exported to the peer
+        # network.
+        # Corresponds to the JSON property `exportSubnetRoutesWithPublicIpToPeer`
+        # @return [Boolean]
+        attr_accessor :export_subnet_routes_with_public_ip_to_peer
+        alias_method :export_subnet_routes_with_public_ip_to_peer?, :export_subnet_routes_with_public_ip_to_peer
+      
+        # Whether custom routes are being imported from the peer network.
+        # Corresponds to the JSON property `importCustomRoutesFromPeer`
+        # @return [Boolean]
+        attr_accessor :import_custom_routes_from_peer
+        alias_method :import_custom_routes_from_peer?, :import_custom_routes_from_peer
+      
+        # Whether subnet routes with public IP ranges are being imported from the peer
+        # network.
+        # Corresponds to the JSON property `importSubnetRoutesWithPublicIpFromPeer`
+        # @return [Boolean]
+        attr_accessor :import_subnet_routes_with_public_ip_from_peer
+        alias_method :import_subnet_routes_with_public_ip_from_peer?, :import_subnet_routes_with_public_ip_from_peer
+      
+        # Which IP version(s) of traffic and routes are being imported or exported
+        # between peer networks.
+        # Corresponds to the JSON property `stackType`
+        # @return [String]
+        attr_accessor :stack_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @export_custom_routes_to_peer = args[:export_custom_routes_to_peer] if args.key?(:export_custom_routes_to_peer)
+          @export_subnet_routes_with_public_ip_to_peer = args[:export_subnet_routes_with_public_ip_to_peer] if args.key?(:export_subnet_routes_with_public_ip_to_peer)
+          @import_custom_routes_from_peer = args[:import_custom_routes_from_peer] if args.key?(:import_custom_routes_from_peer)
+          @import_subnet_routes_with_public_ip_from_peer = args[:import_subnet_routes_with_public_ip_from_peer] if args.key?(:import_subnet_routes_with_public_ip_from_peer)
+          @stack_type = args[:stack_type] if args.key?(:stack_type)
         end
       end
       
@@ -28952,6 +29258,25 @@ module Google
       
       # 
       class NetworksRemovePeeringRequest
+        include Google::Apis::Core::Hashable
+      
+        # Name of the peering, which should conform to RFC1035.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # 
+      class NetworksRequestRemovePeeringRequest
         include Google::Apis::Core::Hashable
       
         # Name of the peering, which should conform to RFC1035.
@@ -36002,6 +36327,12 @@ module Google
       class Reservation
         include Google::Apis::Core::Hashable
       
+        # Advance control for cluster management, applicable only to DENSE deployment
+        # type reservations.
+        # Corresponds to the JSON property `advancedDeploymentControl`
+        # @return [Google::Apis::ComputeV1::ReservationAdvancedDeploymentControl]
+        attr_accessor :advanced_deployment_control
+      
         # This reservation type is specified by total resource amounts (e.g. total count
         # of CPUs) and can account for multiple instance SKUs. In other words, one can
         # create instances of varying shapes against this reservation.
@@ -36153,6 +36484,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advanced_deployment_control = args[:advanced_deployment_control] if args.key?(:advanced_deployment_control)
           @aggregate_reservation = args[:aggregate_reservation] if args.key?(:aggregate_reservation)
           @commitment = args[:commitment] if args.key?(:commitment)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
@@ -36176,6 +36508,26 @@ module Google
           @specific_reservation_required = args[:specific_reservation_required] if args.key?(:specific_reservation_required)
           @status = args[:status] if args.key?(:status)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # Advance control for cluster management, applicable only to DENSE deployment
+      # type reservations.
+      class ReservationAdvancedDeploymentControl
+        include Google::Apis::Core::Hashable
+      
+        # Indicates chosen reservation operational mode for the reservation.
+        # Corresponds to the JSON property `reservationOperationalMode`
+        # @return [String]
+        attr_accessor :reservation_operational_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reservation_operational_mode = args[:reservation_operational_mode] if args.key?(:reservation_operational_mode)
         end
       end
       
@@ -38230,17 +38582,18 @@ module Google
       class ResourcePolicyWorkloadPolicy
         include Google::Apis::Core::Hashable
       
-        # 
+        # Specifies the topology required to create a partition for VMs that have
+        # interconnected GPUs.
         # Corresponds to the JSON property `acceleratorTopology`
         # @return [String]
         attr_accessor :accelerator_topology
       
-        # 
+        # Specifies the maximum distance between instances.
         # Corresponds to the JSON property `maxTopologyDistance`
         # @return [String]
         attr_accessor :max_topology_distance
       
-        # 
+        # Specifies the intent of the instance placement in the MIG.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
