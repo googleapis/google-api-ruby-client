@@ -1,5 +1,9 @@
 # Release history for google-apis-appengine_v1
 
+### v0.64.0 (2025-08-10)
+
+* Regenerated from discovery document revision 20250805
+
 ### v0.63.0 (2025-06-22)
 
 * Regenerated from discovery document revision 20250616
