@@ -2526,6 +2526,11 @@ module Google
       class DiskBackupProperties
         include Google::Apis::Core::Hashable
       
+        # The access mode of the source disk.
+        # Corresponds to the JSON property `accessMode`
+        # @return [String]
+        attr_accessor :access_mode
+      
         # The architecture of the source disk. Valid values are ARM64 or X86_64.
         # Corresponds to the JSON property `architecture`
         # @return [String]
@@ -2536,16 +2541,42 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Indicates whether the source disk is using confidential compute mode.
+        # Corresponds to the JSON property `enableConfidentialCompute`
+        # @return [Boolean]
+        attr_accessor :enable_confidential_compute
+        alias_method :enable_confidential_compute?, :enable_confidential_compute
+      
         # A list of guest OS features that are applicable to this backup.
         # Corresponds to the JSON property `guestOsFeature`
         # @return [Array<Google::Apis::BackupdrV1::GuestOsFeature>]
         attr_accessor :guest_os_feature
+      
+        # The labels of the source disk.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
       
         # A list of publicly available licenses that are applicable to this backup. This
         # is applicable if the original image had licenses attached, e.g. Windows image.
         # Corresponds to the JSON property `licenses`
         # @return [Array<String>]
         attr_accessor :licenses
+      
+        # The physical block size of the source disk.
+        # Corresponds to the JSON property `physicalBlockSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :physical_block_size_bytes
+      
+        # The number of IOPS provisioned for the source disk.
+        # Corresponds to the JSON property `provisionedIops`
+        # @return [Fixnum]
+        attr_accessor :provisioned_iops
+      
+        # The number of throughput provisioned for the source disk.
+        # Corresponds to the JSON property `provisionedThroughput`
+        # @return [Fixnum]
+        attr_accessor :provisioned_throughput
       
         # Region and zone are mutually exclusive fields. The URL of the region of the
         # source disk.
@@ -2568,6 +2599,11 @@ module Google
         # @return [String]
         attr_accessor :source_disk
       
+        # The storage pool of the source disk.
+        # Corresponds to the JSON property `storagePool`
+        # @return [String]
+        attr_accessor :storage_pool
+      
         # The URL of the type of the disk.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -2584,14 +2620,21 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @access_mode = args[:access_mode] if args.key?(:access_mode)
           @architecture = args[:architecture] if args.key?(:architecture)
           @description = args[:description] if args.key?(:description)
+          @enable_confidential_compute = args[:enable_confidential_compute] if args.key?(:enable_confidential_compute)
           @guest_os_feature = args[:guest_os_feature] if args.key?(:guest_os_feature)
+          @labels = args[:labels] if args.key?(:labels)
           @licenses = args[:licenses] if args.key?(:licenses)
+          @physical_block_size_bytes = args[:physical_block_size_bytes] if args.key?(:physical_block_size_bytes)
+          @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
+          @provisioned_throughput = args[:provisioned_throughput] if args.key?(:provisioned_throughput)
           @region = args[:region] if args.key?(:region)
           @replica_zones = args[:replica_zones] if args.key?(:replica_zones)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
           @source_disk = args[:source_disk] if args.key?(:source_disk)
+          @storage_pool = args[:storage_pool] if args.key?(:storage_pool)
           @type = args[:type] if args.key?(:type)
           @zone = args[:zone] if args.key?(:zone)
         end
@@ -3829,6 +3872,25 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # 
+      class LocationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `unsupportedFeatures`
+        # @return [Array<String>]
+        attr_accessor :unsupported_features
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @unsupported_features = args[:unsupported_features] if args.key?(:unsupported_features)
         end
       end
       

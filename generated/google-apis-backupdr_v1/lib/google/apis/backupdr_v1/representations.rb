@@ -508,6 +508,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LocationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManagementServer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1307,15 +1313,22 @@ module Google
       class DiskBackupProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_mode, as: 'accessMode'
           property :architecture, as: 'architecture'
           property :description, as: 'description'
+          property :enable_confidential_compute, as: 'enableConfidentialCompute'
           collection :guest_os_feature, as: 'guestOsFeature', class: Google::Apis::BackupdrV1::GuestOsFeature, decorator: Google::Apis::BackupdrV1::GuestOsFeature::Representation
       
+          hash :labels, as: 'labels'
           collection :licenses, as: 'licenses'
+          property :physical_block_size_bytes, :numeric_string => true, as: 'physicalBlockSizeBytes'
+          property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
+          property :provisioned_throughput, :numeric_string => true, as: 'provisionedThroughput'
           property :region, as: 'region'
           collection :replica_zones, as: 'replicaZones'
           property :size_gb, :numeric_string => true, as: 'sizeGb'
           property :source_disk, as: 'sourceDisk'
+          property :storage_pool, as: 'storagePool'
           property :type, as: 'type'
           property :zone, as: 'zone'
         end
@@ -1652,6 +1665,13 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class LocationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :unsupported_features, as: 'unsupportedFeatures'
         end
       end
       
