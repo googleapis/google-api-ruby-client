@@ -871,6 +871,17 @@ module Google
         # @return [String]
         attr_accessor :database
       
+        # Output only. Ephemeral is true if this data connect service is served from in-
+        # memory emulation of Postgres. Data Connect service will transfer the data on a
+        # best-effort basis to the Cloud SQL instance once it's provisioned and linked.
+        # WARNING: When `ephemeral=true`, mutations to the database are not guaranteed
+        # to be durably persisted, even if an OK status code is returned. All or parts
+        # of the data may be lost or reverted to earlier versions.
+        # Corresponds to the JSON property `ephemeral`
+        # @return [Boolean]
+        attr_accessor :ephemeral
+        alias_method :ephemeral?, :ephemeral
+      
         # Optional. Configure how to perform Postgresql schema migration.
         # Corresponds to the JSON property `schemaMigration`
         # @return [String]
@@ -896,6 +907,7 @@ module Google
         def update!(**args)
           @cloud_sql = args[:cloud_sql] if args.key?(:cloud_sql)
           @database = args[:database] if args.key?(:database)
+          @ephemeral = args[:ephemeral] if args.key?(:ephemeral)
           @schema_migration = args[:schema_migration] if args.key?(:schema_migration)
           @schema_validation = args[:schema_validation] if args.key?(:schema_validation)
           @unlinked = args[:unlinked] if args.key?(:unlinked)

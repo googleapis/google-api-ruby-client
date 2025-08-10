@@ -437,6 +437,7 @@ module Google
           property :cloud_sql, as: 'cloudSql', class: Google::Apis::FirebasedataconnectV1beta::CloudSqlInstance, decorator: Google::Apis::FirebasedataconnectV1beta::CloudSqlInstance::Representation
       
           property :database, as: 'database'
+          property :ephemeral, as: 'ephemeral'
           property :schema_migration, as: 'schemaMigration'
           property :schema_validation, as: 'schemaValidation'
           property :unlinked, as: 'unlinked'
