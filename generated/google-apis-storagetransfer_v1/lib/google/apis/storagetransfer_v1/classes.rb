@@ -404,13 +404,13 @@ module Google
       class ErrorLogEntry
         include Google::Apis::Core::Hashable
       
-        # A list of messages that carry the error details.
+        # Optional. A list of messages that carry the error details.
         # Corresponds to the JSON property `errorDetails`
         # @return [Array<String>]
         attr_accessor :error_details
       
-        # Required. A URL that refers to the target (a data source, a data sink, or an
-        # object) with which the error is associated.
+        # Output only. A URL that refers to the target (a data source, a data sink, or
+        # an object) with which the error is associated.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
