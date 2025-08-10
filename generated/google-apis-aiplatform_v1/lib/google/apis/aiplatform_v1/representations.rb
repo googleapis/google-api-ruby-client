@@ -6280,12 +6280,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudAiplatformV1ToolComputerUse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudAiplatformV1ToolConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8916,6 +8910,7 @@ module Google
           property :deployed_index_auth_config, as: 'deployedIndexAuthConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DeployedIndexAuthConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DeployedIndexAuthConfig::Representation
       
           property :deployment_group, as: 'deploymentGroup'
+          property :deployment_tier, as: 'deploymentTier'
           property :display_name, as: 'displayName'
           property :enable_access_logging, as: 'enableAccessLogging'
           property :enable_datapoint_upsert_logging, as: 'enableDatapointUpsertLogging'
@@ -9148,6 +9143,7 @@ module Google
       class GoogleCloudAiplatformV1EnterpriseWebSearch
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exclude_domains, as: 'excludeDomains'
         end
       end
       
@@ -17712,8 +17708,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code_execution, as: 'codeExecution', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolCodeExecution, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolCodeExecution::Representation
       
-          property :computer_use, as: 'computerUse', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolComputerUse, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolComputerUse::Representation
-      
           property :enterprise_web_search, as: 'enterpriseWebSearch', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EnterpriseWebSearch, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EnterpriseWebSearch::Representation
       
           collection :function_declarations, as: 'functionDeclarations', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionDeclaration, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionDeclaration::Representation
@@ -17784,13 +17778,6 @@ module Google
         end
       end
       
-      class GoogleCloudAiplatformV1ToolComputerUse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :environment, as: 'environment'
-        end
-      end
-      
       class GoogleCloudAiplatformV1ToolConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -17804,6 +17791,7 @@ module Google
       class GoogleCloudAiplatformV1ToolGoogleSearch
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exclude_domains, as: 'excludeDomains'
         end
       end
       
@@ -18667,6 +18655,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_offset, as: 'endOffset'
+          property :fps, as: 'fps'
           property :start_offset, as: 'startOffset'
         end
       end
