@@ -1600,6 +1600,7 @@ module Google
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
+          hash :tags, as: 'tags'
           property :type, as: 'type'
         end
       end

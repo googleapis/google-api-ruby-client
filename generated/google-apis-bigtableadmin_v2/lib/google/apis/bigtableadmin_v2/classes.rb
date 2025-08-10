@@ -2693,6 +2693,16 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: "123/environment": "production", "123/costCenter": "
+        # marketing" Tags and Labels (above) are both used to bind metadata to resources,
+        # with different use-cases. See https://cloud.google.com/resource-manager/docs/
+        # tags/tags-overview for an in-depth overview on the difference between tags and
+        # labels.
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # The type of the instance. Defaults to `PRODUCTION`.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -2711,6 +2721,7 @@ module Google
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
+          @tags = args[:tags] if args.key?(:tags)
           @type = args[:type] if args.key?(:type)
         end
       end
