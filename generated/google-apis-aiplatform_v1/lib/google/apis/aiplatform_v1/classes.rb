@@ -1559,7 +1559,8 @@ module Google
       
         # Required. The resource metric name. Supported metrics: * For Online Prediction:
         # * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `
-        # aiplatform.googleapis.com/prediction/online/cpu/utilization`
+        # aiplatform.googleapis.com/prediction/online/cpu/utilization` * `aiplatform.
+        # googleapis.com/prediction/online/request_count`
         # Corresponds to the JSON property `metricName`
         # @return [String]
         attr_accessor :metric_name
@@ -6473,6 +6474,12 @@ module Google
         # @return [String]
         attr_accessor :deployment_group
       
+        # Optional. The deployment tier that the index is deployed to.
+        # DEPLOYMENT_TIER_UNSPECIFIED defaults to PERFORMANCE.
+        # Corresponds to the JSON property `deploymentTier`
+        # @return [String]
+        attr_accessor :deployment_tier
+      
         # The display name of the DeployedIndex. If not provided upon creation, the
         # Index's display_name is used.
         # Corresponds to the JSON property `displayName`
@@ -6565,6 +6572,7 @@ module Google
           @dedicated_resources = args[:dedicated_resources] if args.key?(:dedicated_resources)
           @deployed_index_auth_config = args[:deployed_index_auth_config] if args.key?(:deployed_index_auth_config)
           @deployment_group = args[:deployment_group] if args.key?(:deployment_group)
+          @deployment_tier = args[:deployment_tier] if args.key?(:deployment_tier)
           @display_name = args[:display_name] if args.key?(:display_name)
           @enable_access_logging = args[:enable_access_logging] if args.key?(:enable_access_logging)
           @enable_datapoint_upsert_logging = args[:enable_datapoint_upsert_logging] if args.key?(:enable_datapoint_upsert_logging)
@@ -7424,12 +7432,19 @@ module Google
       class GoogleCloudAiplatformV1EnterpriseWebSearch
         include Google::Apis::Core::Hashable
       
+        # Optional. List of domains to be excluded from the search results. The default
+        # limit is 2000 domains.
+        # Corresponds to the JSON property `excludeDomains`
+        # @return [Array<String>]
+        attr_accessor :exclude_domains
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @exclude_domains = args[:exclude_domains] if args.key?(:exclude_domains)
         end
       end
       
@@ -37994,11 +38009,6 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolCodeExecution]
         attr_accessor :code_execution
       
-        # Tool to support computer use.
-        # Corresponds to the JSON property `computerUse`
-        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolComputerUse]
-        attr_accessor :computer_use
-      
         # Tool to search public web data, powered by Vertex AI Search and Sec4
         # compliance.
         # Corresponds to the JSON property `enterpriseWebSearch`
@@ -38048,7 +38058,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @code_execution = args[:code_execution] if args.key?(:code_execution)
-          @computer_use = args[:computer_use] if args.key?(:computer_use)
           @enterprise_web_search = args[:enterprise_web_search] if args.key?(:enterprise_web_search)
           @function_declarations = args[:function_declarations] if args.key?(:function_declarations)
           @google_maps = args[:google_maps] if args.key?(:google_maps)
@@ -38200,25 +38209,6 @@ module Google
         end
       end
       
-      # Tool to support computer use.
-      class GoogleCloudAiplatformV1ToolComputerUse
-        include Google::Apis::Core::Hashable
-      
-        # Required. The environment being operated.
-        # Corresponds to the JSON property `environment`
-        # @return [String]
-        attr_accessor :environment
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @environment = args[:environment] if args.key?(:environment)
-        end
-      end
-      
       # Tool config. This config is shared for all tools provided in the request.
       class GoogleCloudAiplatformV1ToolConfig
         include Google::Apis::Core::Hashable
@@ -38249,12 +38239,19 @@ module Google
       class GoogleCloudAiplatformV1ToolGoogleSearch
         include Google::Apis::Core::Hashable
       
+        # Optional. List of domains to be excluded from the search results. The default
+        # limit is 2000 domains. Example: ["amazon.com", "facebook.com"].
+        # Corresponds to the JSON property `excludeDomains`
+        # @return [Array<String>]
+        attr_accessor :exclude_domains
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @exclude_domains = args[:exclude_domains] if args.key?(:exclude_domains)
         end
       end
       
@@ -40812,6 +40809,12 @@ module Google
         # @return [String]
         attr_accessor :end_offset
       
+        # Optional. The frame rate of the video sent to the model. If not specified, the
+        # default value will be 1.0. The fps range is (0.0, 24.0].
+        # Corresponds to the JSON property `fps`
+        # @return [Float]
+        attr_accessor :fps
+      
         # Optional. The start offset of the video.
         # Corresponds to the JSON property `startOffset`
         # @return [String]
@@ -40824,6 +40827,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_offset = args[:end_offset] if args.key?(:end_offset)
+          @fps = args[:fps] if args.key?(:fps)
           @start_offset = args[:start_offset] if args.key?(:start_offset)
         end
       end
