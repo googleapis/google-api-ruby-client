@@ -2981,6 +2981,24 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_connections_per_instance
       
+        # Defines a maximum number of in-flight requests for the whole NEG or instance
+        # group. Not available if backend's balancingMode is RATE or CONNECTION.
+        # Corresponds to the JSON property `maxInFlightRequests`
+        # @return [Fixnum]
+        attr_accessor :max_in_flight_requests
+      
+        # Defines a maximum number of in-flight requests for a single endpoint. Not
+        # available if backend's balancingMode is RATE or CONNECTION.
+        # Corresponds to the JSON property `maxInFlightRequestsPerEndpoint`
+        # @return [Fixnum]
+        attr_accessor :max_in_flight_requests_per_endpoint
+      
+        # Defines a maximum number of in-flight requests for a single VM. Not available
+        # if backend's balancingMode is RATE or CONNECTION.
+        # Corresponds to the JSON property `maxInFlightRequestsPerInstance`
+        # @return [Fixnum]
+        attr_accessor :max_in_flight_requests_per_instance
+      
         # Defines a maximum number of HTTP requests per second (RPS). For usage
         # guidelines, see Rate balancing mode and Utilization balancing mode. Not
         # available if the backend's balancingMode is CONNECTION.
@@ -3019,6 +3037,11 @@ module Google
         # @return [String]
         attr_accessor :preference
       
+        # 
+        # Corresponds to the JSON property `trafficDuration`
+        # @return [String]
+        attr_accessor :traffic_duration
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3034,11 +3057,15 @@ module Google
           @max_connections = args[:max_connections] if args.key?(:max_connections)
           @max_connections_per_endpoint = args[:max_connections_per_endpoint] if args.key?(:max_connections_per_endpoint)
           @max_connections_per_instance = args[:max_connections_per_instance] if args.key?(:max_connections_per_instance)
+          @max_in_flight_requests = args[:max_in_flight_requests] if args.key?(:max_in_flight_requests)
+          @max_in_flight_requests_per_endpoint = args[:max_in_flight_requests_per_endpoint] if args.key?(:max_in_flight_requests_per_endpoint)
+          @max_in_flight_requests_per_instance = args[:max_in_flight_requests_per_instance] if args.key?(:max_in_flight_requests_per_instance)
           @max_rate = args[:max_rate] if args.key?(:max_rate)
           @max_rate_per_endpoint = args[:max_rate_per_endpoint] if args.key?(:max_rate_per_endpoint)
           @max_rate_per_instance = args[:max_rate_per_instance] if args.key?(:max_rate_per_instance)
           @max_utilization = args[:max_utilization] if args.key?(:max_utilization)
           @preference = args[:preference] if args.key?(:preference)
+          @traffic_duration = args[:traffic_duration] if args.key?(:traffic_duration)
         end
       end
       
@@ -28417,6 +28444,12 @@ module Google
         # @return [Google::Apis::ComputeBeta::ManagedInstancePropertiesFromFlexibilityPolicy]
         attr_accessor :properties_from_flexibility_policy
       
+        # [Output Only] Information about the termination timestamp of the instance, if
+        # applicable.
+        # Corresponds to the JSON property `scheduling`
+        # @return [Google::Apis::ComputeBeta::ManagedInstanceScheduling]
+        attr_accessor :scheduling
+      
         # [Output Only] The eventual status of the instance. The instance group manager
         # will not be identified as stable till each managed instance reaches its
         # targetStatus.
@@ -28446,6 +28479,7 @@ module Google
           @preserved_state_from_config = args[:preserved_state_from_config] if args.key?(:preserved_state_from_config)
           @preserved_state_from_policy = args[:preserved_state_from_policy] if args.key?(:preserved_state_from_policy)
           @properties_from_flexibility_policy = args[:properties_from_flexibility_policy] if args.key?(:properties_from_flexibility_policy)
+          @scheduling = args[:scheduling] if args.key?(:scheduling)
           @target_status = args[:target_status] if args.key?(:target_status)
           @version = args[:version] if args.key?(:version)
         end
@@ -28648,6 +28682,26 @@ module Google
         def update!(**args)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
+        end
+      end
+      
+      # 
+      class ManagedInstanceScheduling
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The timestamp at which the managed instance will be terminated.
+        # This is in RFC3339 text format.
+        # Corresponds to the JSON property `terminationTimestamp`
+        # @return [String]
+        attr_accessor :termination_timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @termination_timestamp = args[:termination_timestamp] if args.key?(:termination_timestamp)
         end
       end
       
@@ -40197,6 +40251,12 @@ module Google
       class Reservation
         include Google::Apis::Core::Hashable
       
+        # Advance control for cluster management, applicable only to DENSE deployment
+        # type reservations.
+        # Corresponds to the JSON property `advancedDeploymentControl`
+        # @return [Google::Apis::ComputeBeta::ReservationAdvancedDeploymentControl]
+        attr_accessor :advanced_deployment_control
+      
         # This reservation type is specified by total resource amounts (e.g. total count
         # of CPUs) and can account for multiple instance SKUs. In other words, one can
         # create instances of varying shapes against this reservation.
@@ -40360,6 +40420,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advanced_deployment_control = args[:advanced_deployment_control] if args.key?(:advanced_deployment_control)
           @aggregate_reservation = args[:aggregate_reservation] if args.key?(:aggregate_reservation)
           @commitment = args[:commitment] if args.key?(:commitment)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
@@ -40385,6 +40446,26 @@ module Google
           @specific_reservation_required = args[:specific_reservation_required] if args.key?(:specific_reservation_required)
           @status = args[:status] if args.key?(:status)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # Advance control for cluster management, applicable only to DENSE deployment
+      # type reservations.
+      class ReservationAdvancedDeploymentControl
+        include Google::Apis::Core::Hashable
+      
+        # Indicates chosen reservation operational mode for the reservation.
+        # Corresponds to the JSON property `reservationOperationalMode`
+        # @return [String]
+        attr_accessor :reservation_operational_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reservation_operational_mode = args[:reservation_operational_mode] if args.key?(:reservation_operational_mode)
         end
       end
       
@@ -42463,17 +42544,18 @@ module Google
       class ResourcePolicyWorkloadPolicy
         include Google::Apis::Core::Hashable
       
-        # 
+        # Specifies the topology required to create a partition for VMs that have
+        # interconnected GPUs.
         # Corresponds to the JSON property `acceleratorTopology`
         # @return [String]
         attr_accessor :accelerator_topology
       
-        # 
+        # Specifies the maximum distance between instances.
         # Corresponds to the JSON property `maxTopologyDistance`
         # @return [String]
         attr_accessor :max_topology_distance
       
-        # 
+        # Specifies the intent of the instance placement in the MIG.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type

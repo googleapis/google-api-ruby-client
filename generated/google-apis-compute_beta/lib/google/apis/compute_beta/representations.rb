@@ -3658,6 +3658,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedInstanceScheduling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManagedInstanceVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5297,6 +5303,12 @@ module Google
       end
       
       class Reservation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationAdvancedDeploymentControl
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8725,11 +8737,15 @@ module Google
           property :max_connections, as: 'maxConnections'
           property :max_connections_per_endpoint, as: 'maxConnectionsPerEndpoint'
           property :max_connections_per_instance, as: 'maxConnectionsPerInstance'
+          property :max_in_flight_requests, as: 'maxInFlightRequests'
+          property :max_in_flight_requests_per_endpoint, as: 'maxInFlightRequestsPerEndpoint'
+          property :max_in_flight_requests_per_instance, as: 'maxInFlightRequestsPerInstance'
           property :max_rate, as: 'maxRate'
           property :max_rate_per_endpoint, as: 'maxRatePerEndpoint'
           property :max_rate_per_instance, as: 'maxRatePerInstance'
           property :max_utilization, as: 'maxUtilization'
           property :preference, as: 'preference'
+          property :traffic_duration, as: 'trafficDuration'
         end
       end
       
@@ -14878,6 +14894,8 @@ module Google
       
           property :properties_from_flexibility_policy, as: 'propertiesFromFlexibilityPolicy', class: Google::Apis::ComputeBeta::ManagedInstancePropertiesFromFlexibilityPolicy, decorator: Google::Apis::ComputeBeta::ManagedInstancePropertiesFromFlexibilityPolicy::Representation
       
+          property :scheduling, as: 'scheduling', class: Google::Apis::ComputeBeta::ManagedInstanceScheduling, decorator: Google::Apis::ComputeBeta::ManagedInstanceScheduling::Representation
+      
           property :target_status, as: 'targetStatus'
           property :version, as: 'version', class: Google::Apis::ComputeBeta::ManagedInstanceVersion, decorator: Google::Apis::ComputeBeta::ManagedInstanceVersion::Representation
       
@@ -14945,6 +14963,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :machine_type, as: 'machineType'
           property :provisioning_model, as: 'provisioningModel'
+        end
+      end
+      
+      class ManagedInstanceScheduling
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :termination_timestamp, as: 'terminationTimestamp'
         end
       end
       
@@ -17921,6 +17946,8 @@ module Google
       class Reservation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_deployment_control, as: 'advancedDeploymentControl', class: Google::Apis::ComputeBeta::ReservationAdvancedDeploymentControl, decorator: Google::Apis::ComputeBeta::ReservationAdvancedDeploymentControl::Representation
+      
           property :aggregate_reservation, as: 'aggregateReservation', class: Google::Apis::ComputeBeta::AllocationAggregateReservation, decorator: Google::Apis::ComputeBeta::AllocationAggregateReservation::Representation
       
           property :commitment, as: 'commitment'
@@ -17952,6 +17979,13 @@ module Google
           property :specific_reservation_required, as: 'specificReservationRequired'
           property :status, as: 'status'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class ReservationAdvancedDeploymentControl
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reservation_operational_mode, as: 'reservationOperationalMode'
         end
       end
       
