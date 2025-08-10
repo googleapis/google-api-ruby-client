@@ -4796,6 +4796,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :disk_size_gb
       
+        # Optional. Enable nested virtualization on the worker, if supported by the
+        # machine type. By default, nested virtualization is disabled.
+        # Corresponds to the JSON property `enableNestedVirtualization`
+        # @return [Boolean]
+        attr_accessor :enable_nested_virtualization
+        alias_method :enable_nested_virtualization?, :enable_nested_virtualization
+      
         # Optional. Machine type of a worker, such as `e2-medium`. See [Worker pool
         # config file](https://cloud.google.com/build/docs/private-pools/worker-pool-
         # config-file-schema). If left blank, Cloud Build will use a sensible default.
@@ -4810,6 +4817,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @enable_nested_virtualization = args[:enable_nested_virtualization] if args.key?(:enable_nested_virtualization)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
         end
       end
