@@ -23,7 +23,7 @@ module Google
     module PaymentsresellersubscriptionV1
       
       # Describes the amount unit including the currency code.
-      class GoogleCloudPaymentsResellerSubscriptionV1Amount
+      class Amount
         include Google::Apis::Core::Hashable
       
         # Required. Amount in micros (1_000_000 micros = 1 currency unit)
@@ -49,7 +49,7 @@ module Google
       end
       
       # Request to cancel a subscription.
-      class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest
+      class CancelSubscriptionRequest
         include Google::Apis::Core::Hashable
       
         # Optional. If true, Google will cancel the subscription immediately, and may or
@@ -80,7 +80,7 @@ module Google
       end
       
       # Response that contains the cancelled subscription resource.
-      class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse
+      class CancelSubscriptionResponse
         include Google::Apis::Core::Hashable
       
         # A subscription serves as a central billing entity between an external partner
@@ -93,7 +93,7 @@ module Google
         # fully understand the specific details, please consult the relevant contract or
         # product policy.
         # Corresponds to the JSON property `subscription`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::Subscription]
         attr_accessor :subscription
       
         def initialize(**args)
@@ -107,7 +107,7 @@ module Google
       end
       
       # Intent message for creating a Subscription resource.
-      class GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent
+      class CreateSubscriptionIntent
         include Google::Apis::Core::Hashable
       
         # Required. The parent resource name, which is the identifier of the partner.
@@ -125,7 +125,7 @@ module Google
         # fully understand the specific details, please consult the relevant contract or
         # product policy.
         # Corresponds to the JSON property `subscription`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::Subscription]
         attr_accessor :subscription
       
         # Required. Identifies the subscription resource on the Partner side. The value
@@ -149,7 +149,7 @@ module Google
       end
       
       # Describes the length of a period of a time.
-      class GoogleCloudPaymentsResellerSubscriptionV1Duration
+      class Duration
         include Google::Apis::Core::Hashable
       
         # number of duration units to be included.
@@ -174,7 +174,7 @@ module Google
       end
       
       # Intent for entitling the previously provisioned subscription to an end user.
-      class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent
+      class EntitleSubscriptionIntent
         include Google::Apis::Core::Hashable
       
         # Required. The name of the subscription resource that is entitled to the
@@ -196,13 +196,13 @@ module Google
       
       # Partner request for entitling the previously provisioned subscription to an
       # end user. The end user identity is inferred from the request OAuth context.
-      class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest
+      class EntitleSubscriptionRequest
         include Google::Apis::Core::Hashable
       
         # Optional. The line items to be entitled. If unspecified, all line items will
         # be entitled.
         # Corresponds to the JSON property `lineItemEntitlementDetails`
-        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails>]
+        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::EntitleSubscriptionRequestLineItemEntitlementDetails>]
         attr_accessor :line_item_entitlement_details
       
         def initialize(**args)
@@ -216,7 +216,7 @@ module Google
       end
       
       # The details of the line item to be entitled.
-      class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails
+      class EntitleSubscriptionRequestLineItemEntitlementDetails
         include Google::Apis::Core::Hashable
       
         # Required. The index of the line item to be entitled.
@@ -244,7 +244,7 @@ module Google
       end
       
       # Response that contains the entitled subscription resource.
-      class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse
+      class EntitleSubscriptionResponse
         include Google::Apis::Core::Hashable
       
         # A subscription serves as a central billing entity between an external partner
@@ -257,7 +257,7 @@ module Google
         # fully understand the specific details, please consult the relevant contract or
         # product policy.
         # Corresponds to the JSON property `subscription`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::Subscription]
         attr_accessor :subscription
       
         def initialize(**args)
@@ -272,12 +272,12 @@ module Google
       
       # Request message for extending a Subscription resource. A new recurrence will
       # be made based on the subscription schedule defined by the original product.
-      class GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionRequest
+      class ExtendSubscriptionRequest
         include Google::Apis::Core::Hashable
       
         # Describes the details of an extension request.
         # Corresponds to the JSON property `extension`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Extension]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::Extension]
         attr_accessor :extension
       
         # Required. Restricted to 36 ASCII characters. A random UUID is recommended. The
@@ -300,7 +300,7 @@ module Google
       end
       
       # Response that contains the timestamps after the extension.
-      class GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse
+      class ExtendSubscriptionResponse
         include Google::Apis::Core::Hashable
       
         # The time at which the subscription is expected to be extended, in ISO 8061
@@ -339,12 +339,12 @@ module Google
       end
       
       # Describes the details of an extension request.
-      class GoogleCloudPaymentsResellerSubscriptionV1Extension
+      class Extension
         include Google::Apis::Core::Hashable
       
         # Describes the length of a period of a time.
         # Corresponds to the JSON property `duration`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Duration]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::Duration]
         attr_accessor :duration
       
         # Required. Identifier of the end-user in partner’s system.
@@ -364,7 +364,7 @@ module Google
       end
       
       # Request to find eligible promotions for the current user.
-      class GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest
+      class FindEligiblePromotionsRequest
         include Google::Apis::Core::Hashable
       
         # Optional. Specifies the filters for the promotion results. The syntax is
@@ -409,7 +409,7 @@ module Google
       end
       
       # Response containing the found promotions for the current user.
-      class GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse
+      class FindEligiblePromotionsResponse
         include Google::Apis::Core::Hashable
       
         # A token, which can be sent as `page_token` to retrieve the next page. If this
@@ -420,7 +420,7 @@ module Google
       
         # The promotions for the current user.
         # Corresponds to the JSON property `promotions`
-        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Promotion>]
+        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::Promotion>]
         attr_accessor :promotions
       
         def initialize(**args)
@@ -435,7 +435,7 @@ module Google
       end
       
       # Details for a subscriptiin line item with finite billing cycles.
-      class GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails
+      class FiniteBillingCycleDetails
         include Google::Apis::Core::Hashable
       
         # Required. The number of a subscription line item billing cycles after which
@@ -455,12 +455,12 @@ module Google
       end
       
       # Request to generate a user session.
-      class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest
+      class GenerateUserSessionRequest
         include Google::Apis::Core::Hashable
       
         # The payload that describes the user intent.
         # Corresponds to the JSON property `intentPayload`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1IntentPayload]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::IntentPayload]
         attr_accessor :intent_payload
       
         def initialize(**args)
@@ -474,7 +474,7 @@ module Google
       end
       
       # Response that contains the details for generated user session.
-      class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse
+      class GenerateUserSessionResponse
         include Google::Apis::Core::Hashable
       
         # A user session contains a short-lived token that includes information required
@@ -490,7 +490,7 @@ module Google
         # Integration/Google.Managed.Signup) documentation for additional integration
         # details.
         # Corresponds to the JSON property `userSession`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1UserSession]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::UserSession]
         attr_accessor :user_session
       
         def initialize(**args)
@@ -504,7 +504,7 @@ module Google
       end
       
       # Payload specific for Google Home products.
-      class GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload
+      class GoogleHomePayload
         include Google::Apis::Core::Hashable
       
         # Output only. This identifies whether the subscription is attached to a Google
@@ -513,6 +513,11 @@ module Google
         # @return [Boolean]
         attr_accessor :attached_to_google_structure
         alias_method :attached_to_google_structure?, :attached_to_google_structure
+      
+        # Optional. Structure identifier on Google side.
+        # Corresponds to the JSON property `googleStructureId`
+        # @return [String]
+        attr_accessor :google_structure_id
       
         # Optional. This identifies the structure ID on partner side that the
         # subscription should be applied to. Only required when the partner requires
@@ -528,12 +533,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @attached_to_google_structure = args[:attached_to_google_structure] if args.key?(:attached_to_google_structure)
+          @google_structure_id = args[:google_structure_id] if args.key?(:google_structure_id)
           @partner_structure_id = args[:partner_structure_id] if args.key?(:partner_structure_id)
         end
       end
       
       # Payload specific to Google One products.
-      class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload
+      class GoogleOnePayload
         include Google::Apis::Core::Hashable
       
         # Campaign attributed to sales of this subscription.
@@ -569,18 +575,45 @@ module Google
         end
       end
       
+      # Localized variant of a text in a particular language.
+      class GoogleTypeLocalizedText
+        include Google::Apis::Core::Hashable
+      
+        # The text's BCP-47 language code, such as "en-US" or "sr-Latn". For more
+        # information, see http://www.unicode.org/reports/tr35/#
+        # Unicode_locale_identifier.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Localized string in the language corresponding to language_code below.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
       # The payload that describes the user intent.
-      class GoogleCloudPaymentsResellerSubscriptionV1IntentPayload
+      class IntentPayload
         include Google::Apis::Core::Hashable
       
         # Intent message for creating a Subscription resource.
         # Corresponds to the JSON property `createIntent`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::CreateSubscriptionIntent]
         attr_accessor :create_intent
       
         # Intent for entitling the previously provisioned subscription to an end user.
         # Corresponds to the JSON property `entitleIntent`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::EntitleSubscriptionIntent]
         attr_accessor :entitle_intent
       
         def initialize(**args)
@@ -595,7 +628,7 @@ module Google
       end
       
       # Response that contains the products.
-      class GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse
+      class ListProductsResponse
         include Google::Apis::Core::Hashable
       
         # A token, which can be sent as `page_token` to retrieve the next page. If this
@@ -606,7 +639,7 @@ module Google
       
         # The products for the specified partner.
         # Corresponds to the JSON property `products`
-        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Product>]
+        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::Product>]
         attr_accessor :products
       
         def initialize(**args)
@@ -621,7 +654,7 @@ module Google
       end
       
       # Response that contains the promotions.
-      class GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse
+      class ListPromotionsResponse
         include Google::Apis::Core::Hashable
       
         # A token, which can be sent as `page_token` to retrieve the next page. If this
@@ -632,7 +665,7 @@ module Google
       
         # The promotions for the specified partner.
         # Corresponds to the JSON property `promotions`
-        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Promotion>]
+        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::Promotion>]
         attr_accessor :promotions
       
         def initialize(**args)
@@ -647,7 +680,7 @@ module Google
       end
       
       # Describes a location of an end user.
-      class GoogleCloudPaymentsResellerSubscriptionV1Location
+      class Location
         include Google::Apis::Core::Hashable
       
         # The postal code this location refers to. Ex. "94043"
@@ -673,7 +706,7 @@ module Google
       end
       
       # A Product resource that defines a subscription service that can be resold.
-      class GoogleCloudPaymentsResellerSubscriptionV1Product
+      class Product
         include Google::Apis::Core::Hashable
       
         # Details for a bundle product.
@@ -683,7 +716,7 @@ module Google
       
         # Details for a subscriptiin line item with finite billing cycles.
         # Corresponds to the JSON property `finiteBillingCycleDetails`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::FiniteBillingCycleDetails]
         attr_accessor :finite_billing_cycle_details
       
         # Identifier. Response only. Resource name of the product. It will have the
@@ -694,7 +727,7 @@ module Google
       
         # Output only. Price configs for the product in the available regions.
         # Corresponds to the JSON property `priceConfigs`
-        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig>]
+        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::ProductPriceConfig>]
         attr_accessor :price_configs
       
         # Output only. Specifies the type of the product.
@@ -710,7 +743,7 @@ module Google
       
         # Describes the length of a period of a time.
         # Corresponds to the JSON property `subscriptionBillingCycleDuration`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Duration]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::Duration]
         attr_accessor :subscription_billing_cycle_duration
       
         # Output only. Localized human readable name of the product.
@@ -735,8 +768,33 @@ module Google
         end
       end
       
+      # Details for a bundle product.
+      class ProductBundleDetails
+        include Google::Apis::Core::Hashable
+      
+        # The individual products that are included in the bundle.
+        # Corresponds to the JSON property `bundleElements`
+        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::ProductBundleDetailsBundleElement>]
+        attr_accessor :bundle_elements
+      
+        # The entitlement mode of the bundle product.
+        # Corresponds to the JSON property `entitlementMode`
+        # @return [String]
+        attr_accessor :entitlement_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bundle_elements = args[:bundle_elements] if args.key?(:bundle_elements)
+          @entitlement_mode = args[:entitlement_mode] if args.key?(:entitlement_mode)
+        end
+      end
+      
       # The individual product that is included in the bundle.
-      class GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement
+      class ProductBundleDetailsBundleElement
         include Google::Apis::Core::Hashable
       
         # Required. Output only. Product resource name that identifies the bundle
@@ -756,22 +814,22 @@ module Google
       end
       
       # Specifies product specific payload.
-      class GoogleCloudPaymentsResellerSubscriptionV1ProductPayload
+      class ProductPayload
         include Google::Apis::Core::Hashable
       
         # Payload specific for Google Home products.
         # Corresponds to the JSON property `googleHomePayload`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleHomePayload]
         attr_accessor :google_home_payload
       
         # Payload specific to Google One products.
         # Corresponds to the JSON property `googleOnePayload`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleOnePayload]
         attr_accessor :google_one_payload
       
         # Payload specific to Youtube products.
         # Corresponds to the JSON property `youtubePayload`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::YoutubePayload]
         attr_accessor :youtube_payload
       
         def initialize(**args)
@@ -787,12 +845,12 @@ module Google
       end
       
       # Configs the prices in an available region.
-      class GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig
+      class ProductPriceConfig
         include Google::Apis::Core::Hashable
       
         # Describes the amount unit including the currency code.
         # Corresponds to the JSON property `amount`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Amount]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::Amount]
         attr_accessor :amount
       
         # Output only. 2-letter ISO region code where the product is available in. Ex. "
@@ -814,7 +872,7 @@ module Google
       
       # A Promotion resource that defines a promotion for a subscription that can be
       # resold.
-      class GoogleCloudPaymentsResellerSubscriptionV1Promotion
+      class Promotion
         include Google::Apis::Core::Hashable
       
         # Output only. The product ids this promotion can be applied to.
@@ -830,12 +888,12 @@ module Google
       
         # Describes the length of a period of a time.
         # Corresponds to the JSON property `freeTrialDuration`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Duration]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::Duration]
         attr_accessor :free_trial_duration
       
         # The details of a introductory pricing promotion.
         # Corresponds to the JSON property `introductoryPricingDetails`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::PromotionIntroductoryPricingDetails]
         attr_accessor :introductory_pricing_details
       
         # Identifier. Response only. Resource name of the subscription promotion. It
@@ -885,12 +943,12 @@ module Google
       end
       
       # The details of a introductory pricing promotion.
-      class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails
+      class PromotionIntroductoryPricingDetails
         include Google::Apis::Core::Hashable
       
         # Output only. Specifies the introductory pricing periods.
         # Corresponds to the JSON property `introductoryPricingSpecs`
-        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>]
+        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>]
         attr_accessor :introductory_pricing_specs
       
         def initialize(**args)
@@ -904,12 +962,12 @@ module Google
       end
       
       # The duration of an introductory pricing promotion.
-      class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec
+      class PromotionIntroductoryPricingDetailsIntroductoryPricingSpec
         include Google::Apis::Core::Hashable
       
         # Describes the amount unit including the currency code.
         # Corresponds to the JSON property `discountAmount`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Amount]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::Amount]
         attr_accessor :discount_amount
       
         # Output only. The discount percentage in micros. For example, 50,000 represents
@@ -943,7 +1001,7 @@ module Google
       end
       
       # Request to resume a suspended subscription.
-      class GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest
+      class ResumeSubscriptionRequest
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -956,7 +1014,7 @@ module Google
       end
       
       # Response that contains the resumed subscription.
-      class GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse
+      class ResumeSubscriptionResponse
         include Google::Apis::Core::Hashable
       
         # A subscription serves as a central billing entity between an external partner
@@ -969,7 +1027,7 @@ module Google
         # fully understand the specific details, please consult the relevant contract or
         # product policy.
         # Corresponds to the JSON property `subscription`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::Subscription]
         attr_accessor :subscription
       
         def initialize(**args)
@@ -984,7 +1042,7 @@ module Google
       
       # A description of what time period or moment in time the product or service is
       # being delivered over.
-      class GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod
+      class ServicePeriod
         include Google::Apis::Core::Hashable
       
         # Optional. The end time of the service period. Time is exclusive.
@@ -1017,12 +1075,12 @@ module Google
       # been immediately canceled. However, other services may not do the same. To
       # fully understand the specific details, please consult the relevant contract or
       # product policy.
-      class GoogleCloudPaymentsResellerSubscriptionV1Subscription
+      class Subscription
         include Google::Apis::Core::Hashable
       
         # Describes the details of a cancelled or cancelling subscription.
         # Corresponds to the JSON property `cancellationDetails`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::SubscriptionCancellationDetails]
         attr_accessor :cancellation_details
       
         # Output only. System generated timestamp when the subscription is created. UTC
@@ -1052,12 +1110,12 @@ module Google
       
         # Required. The line items of the subscription.
         # Corresponds to the JSON property `lineItems`
-        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem>]
+        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItem>]
         attr_accessor :line_items
       
         # Describes the details of the migrated subscription.
         # Corresponds to the JSON property `migrationDetails`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::SubscriptionMigrationDetails]
         attr_accessor :migration_details
       
         # Identifier. Resource name of the subscription. It will have the format of "
@@ -1092,7 +1150,7 @@ module Google
         # of the free trial period. Specify the promotion resource name only when used
         # as input.
         # Corresponds to the JSON property `promotionSpecs`
-        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec>]
+        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::SubscriptionPromotionSpec>]
         attr_accessor :promotion_specs
       
         # Optional. Deprecated: consider using the top-level `promotion_specs` as the
@@ -1129,7 +1187,7 @@ module Google
       
         # Describes a location of an end user.
         # Corresponds to the JSON property `serviceLocation`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Location]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::Location]
         attr_accessor :service_location
       
         # Output only. Describes the state of the subscription. See more details at [the
@@ -1148,7 +1206,7 @@ module Google
         # Details about the previous subscription that this new subscription upgrades/
         # downgrades from.
         # Corresponds to the JSON property `upgradeDowngradeDetails`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::SubscriptionUpgradeDowngradeDetails]
         attr_accessor :upgrade_downgrade_details
       
         def initialize(**args)
@@ -1181,7 +1239,7 @@ module Google
       end
       
       # Describes the details of a cancelled or cancelling subscription.
-      class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails
+      class SubscriptionCancellationDetails
         include Google::Apis::Core::Hashable
       
         # Output only. The reason of the cancellation.
@@ -1200,12 +1258,12 @@ module Google
       end
       
       # Individual line item definition of a subscription.
-      class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem
+      class SubscriptionLineItem
         include Google::Apis::Core::Hashable
       
         # Describes the amount unit including the currency code.
         # Corresponds to the JSON property `amount`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Amount]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::Amount]
         attr_accessor :amount
       
         # The bundle details for a line item corresponding to a hard bundle.
@@ -1220,7 +1278,7 @@ module Google
       
         # Details for a subscriptiin line item with finite billing cycles.
         # Corresponds to the JSON property `finiteBillingCycleDetails`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::FiniteBillingCycleDetails]
         attr_accessor :finite_billing_cycle_details
       
         # Output only. The free trial end time will be populated after the line item is
@@ -1241,12 +1299,12 @@ module Google
         # enabled. If used, the request will be rejected. When used as input in Create
         # or Provision API, specify its resource name only.
         # Corresponds to the JSON property `lineItemPromotionSpecs`
-        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec>]
+        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::SubscriptionPromotionSpec>]
         attr_accessor :line_item_promotion_specs
       
         # Details for a ONE_TIME recurrence line item.
         # Corresponds to the JSON property `oneTimeRecurrenceDetails`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItemOneTimeRecurrenceDetails]
         attr_accessor :one_time_recurrence_details
       
         # Required. Product resource name that identifies one the line item The format
@@ -1257,7 +1315,7 @@ module Google
       
         # Specifies product specific payload.
         # Corresponds to the JSON property `productPayload`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductPayload]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::ProductPayload]
         attr_accessor :product_payload
       
         # Output only. The recurrence type of the line item.
@@ -1291,8 +1349,27 @@ module Google
         end
       end
       
+      # The bundle details for a line item corresponding to a hard bundle.
+      class SubscriptionLineItemBundleDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The details for each element in the hard bundle.
+        # Corresponds to the JSON property `bundleElementDetails`
+        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItemBundleDetailsBundleElementDetails>]
+        attr_accessor :bundle_element_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bundle_element_details = args[:bundle_element_details] if args.key?(:bundle_element_details)
+        end
+      end
+      
       # The details for an element in the hard bundle.
-      class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails
+      class SubscriptionLineItemBundleDetailsBundleElementDetails
         include Google::Apis::Core::Hashable
       
         # Output only. Product resource name that identifies the bundle element. The
@@ -1318,13 +1395,13 @@ module Google
       end
       
       # Details for a ONE_TIME recurrence line item.
-      class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails
+      class SubscriptionLineItemOneTimeRecurrenceDetails
         include Google::Apis::Core::Hashable
       
         # A description of what time period or moment in time the product or service is
         # being delivered over.
         # Corresponds to the JSON property `servicePeriod`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::ServicePeriod]
         attr_accessor :service_period
       
         def initialize(**args)
@@ -1338,7 +1415,7 @@ module Google
       end
       
       # Describes the details of the migrated subscription.
-      class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails
+      class SubscriptionMigrationDetails
         include Google::Apis::Core::Hashable
       
         # Output only. The migrated subscription id in the legacy system.
@@ -1357,17 +1434,17 @@ module Google
       end
       
       # Describes the spec for one promotion.
-      class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec
+      class SubscriptionPromotionSpec
         include Google::Apis::Core::Hashable
       
         # Describes the length of a period of a time.
         # Corresponds to the JSON property `freeTrialDuration`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Duration]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::Duration]
         attr_accessor :free_trial_duration
       
         # The details of a introductory pricing promotion.
         # Corresponds to the JSON property `introductoryPricingDetails`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::PromotionIntroductoryPricingDetails]
         attr_accessor :introductory_pricing_details
       
         # Required. Promotion resource name that identifies a promotion. The format is '
@@ -1396,7 +1473,7 @@ module Google
       
       # Details about the previous subscription that this new subscription upgrades/
       # downgrades from.
-      class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails
+      class SubscriptionUpgradeDowngradeDetails
         include Google::Apis::Core::Hashable
       
         # Required. Specifies the billing cycle spec for the new upgraded/downgraded
@@ -1423,7 +1500,7 @@ module Google
       end
       
       # Request to suspend a subscription.
-      class GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest
+      class SuspendSubscriptionRequest
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -1436,7 +1513,7 @@ module Google
       end
       
       # Response that contains the suspended subscription.
-      class GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse
+      class SuspendSubscriptionResponse
         include Google::Apis::Core::Hashable
       
         # A subscription serves as a central billing entity between an external partner
@@ -1449,7 +1526,7 @@ module Google
         # fully understand the specific details, please consult the relevant contract or
         # product policy.
         # Corresponds to the JSON property `subscription`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::Subscription]
         attr_accessor :subscription
       
         def initialize(**args)
@@ -1463,7 +1540,7 @@ module Google
       end
       
       # Request to revoke a cancellation request.
-      class GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionRequest
+      class UndoCancelSubscriptionRequest
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -1476,7 +1553,7 @@ module Google
       end
       
       # Response that contains the updated subscription resource.
-      class GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse
+      class UndoCancelSubscriptionResponse
         include Google::Apis::Core::Hashable
       
         # A subscription serves as a central billing entity between an external partner
@@ -1489,7 +1566,7 @@ module Google
         # fully understand the specific details, please consult the relevant contract or
         # product policy.
         # Corresponds to the JSON property `subscription`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::Subscription]
         attr_accessor :subscription
       
         def initialize(**args)
@@ -1514,7 +1591,7 @@ module Google
       # Signup](/payments/reseller/subscription/reference/index/User.Signup.
       # Integration/Google.Managed.Signup) documentation for additional integration
       # details.
-      class GoogleCloudPaymentsResellerSubscriptionV1UserSession
+      class UserSession
         include Google::Apis::Core::Hashable
       
         # Output only. The time at which the user session expires.
@@ -1541,7 +1618,7 @@ module Google
       end
       
       # Payload specific to Youtube products.
-      class GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload
+      class YoutubePayload
         include Google::Apis::Core::Hashable
       
         # Output only. The access expiration time for this line item.
@@ -1568,77 +1645,6 @@ module Google
           @access_end_time = args[:access_end_time] if args.key?(:access_end_time)
           @partner_eligibility_ids = args[:partner_eligibility_ids] if args.key?(:partner_eligibility_ids)
           @partner_plan_type = args[:partner_plan_type] if args.key?(:partner_plan_type)
-        end
-      end
-      
-      # Localized variant of a text in a particular language.
-      class GoogleTypeLocalizedText
-        include Google::Apis::Core::Hashable
-      
-        # The text's BCP-47 language code, such as "en-US" or "sr-Latn". For more
-        # information, see http://www.unicode.org/reports/tr35/#
-        # Unicode_locale_identifier.
-        # Corresponds to the JSON property `languageCode`
-        # @return [String]
-        attr_accessor :language_code
-      
-        # Localized string in the language corresponding to language_code below.
-        # Corresponds to the JSON property `text`
-        # @return [String]
-        attr_accessor :text
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @language_code = args[:language_code] if args.key?(:language_code)
-          @text = args[:text] if args.key?(:text)
-        end
-      end
-      
-      # Details for a bundle product.
-      class ProductBundleDetails
-        include Google::Apis::Core::Hashable
-      
-        # The individual products that are included in the bundle.
-        # Corresponds to the JSON property `bundleElements`
-        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement>]
-        attr_accessor :bundle_elements
-      
-        # The entitlement mode of the bundle product.
-        # Corresponds to the JSON property `entitlementMode`
-        # @return [String]
-        attr_accessor :entitlement_mode
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bundle_elements = args[:bundle_elements] if args.key?(:bundle_elements)
-          @entitlement_mode = args[:entitlement_mode] if args.key?(:entitlement_mode)
-        end
-      end
-      
-      # The bundle details for a line item corresponding to a hard bundle.
-      class SubscriptionLineItemBundleDetails
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The details for each element in the hard bundle.
-        # Corresponds to the JSON property `bundleElementDetails`
-        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails>]
-        attr_accessor :bundle_element_details
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bundle_element_details = args[:bundle_element_details] if args.key?(:bundle_element_details)
         end
       end
     end
