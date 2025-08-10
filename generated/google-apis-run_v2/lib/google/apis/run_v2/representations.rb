@@ -1452,6 +1452,7 @@ module Google
           property :docker_build, as: 'dockerBuild', class: Google::Apis::RunV2::GoogleCloudRunV2DockerBuild, decorator: Google::Apis::RunV2::GoogleCloudRunV2DockerBuild::Representation
       
           property :image_uri, as: 'imageUri'
+          property :machine_type, as: 'machineType'
           property :service_account, as: 'serviceAccount'
           property :storage_source, as: 'storageSource', class: Google::Apis::RunV2::GoogleCloudRunV2StorageSource, decorator: Google::Apis::RunV2::GoogleCloudRunV2StorageSource::Representation
       
