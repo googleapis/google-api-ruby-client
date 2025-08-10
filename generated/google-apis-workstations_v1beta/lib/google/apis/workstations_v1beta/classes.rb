@@ -1580,7 +1580,7 @@ module Google
         attr_accessor :key
       
         # Optional. Corresponds to the label values of reservation resources. Valid
-        # values are either a name to a reservation in the same project or "projects/`
+        # values are either the name of a reservation in the same project or "projects/`
         # project`/reservations/`reservation`" to target a shared reservation in the
         # same zone but in a different project.
         # Corresponds to the JSON property `values`
