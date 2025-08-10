@@ -685,6 +685,12 @@ module Google
         # @return [Google::Apis::MybusinessverificationsV1::VerificationToken]
         attr_accessor :token
       
+        # The input for TRUSTED_PARTNER method The verification token that is associated
+        # to the location.
+        # Corresponds to the JSON property `trustedPartnerToken`
+        # @return [String]
+        attr_accessor :trusted_partner_token
+      
         def initialize(**args)
            update!(**args)
         end
@@ -698,6 +704,7 @@ module Google
           @method_prop = args[:method_prop] if args.key?(:method_prop)
           @phone_number = args[:phone_number] if args.key?(:phone_number)
           @token = args[:token] if args.key?(:token)
+          @trusted_partner_token = args[:trusted_partner_token] if args.key?(:trusted_partner_token)
         end
       end
       
