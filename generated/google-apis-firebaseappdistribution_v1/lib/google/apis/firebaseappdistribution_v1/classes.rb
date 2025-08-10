@@ -878,16 +878,16 @@ module Google
       class GoogleFirebaseAppdistroV1DistributeReleaseRequest
         include Google::Apis::Core::Hashable
       
-        # A list of group aliases (IDs) to be given access to this release. A combined
-        # maximum of 999 `testerEmails` and `groupAliases` can be specified in a single
-        # request.
+        # Optional. A list of group aliases (IDs) to be given access to this release. A
+        # combined maximum of 999 `testerEmails` and `groupAliases` can be specified in
+        # a single request.
         # Corresponds to the JSON property `groupAliases`
         # @return [Array<String>]
         attr_accessor :group_aliases
       
-        # A list of tester email addresses to be given access to this release. A
-        # combined maximum of 999 `testerEmails` and `groupAliases` can be specified in
-        # a single request.
+        # Optional. A list of tester email addresses to be given access to this release.
+        # A combined maximum of 999 `testerEmails` and `groupAliases` can be specified
+        # in a single request.
         # Corresponds to the JSON property `testerEmails`
         # @return [Array<String>]
         attr_accessor :tester_emails
