@@ -435,8 +435,9 @@ module Google
         # @param [String] parent
         #   The name of the enterprise in the form enterprises/`enterpriseId`.
         # @param [Fixnum] page_size
-        #   The requested page size. The actual page size may be fixed to a min or max
-        #   value.
+        #   The requested page size. If unspecified, at most 10 devices will be returned.
+        #   The maximum value is 100; values above 100 will be coerced to 100. The limits
+        #   can change over time.
         # @param [String] page_token
         #   A token identifying a page of results returned by the server.
         # @param [String] fields
