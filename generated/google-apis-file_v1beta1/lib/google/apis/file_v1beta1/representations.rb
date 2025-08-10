@@ -526,6 +526,7 @@ module Google
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backend_type, as: 'backendType'
           property :capacity_gb, :numeric_string => true, as: 'capacityGb'
           property :capacity_step_size_gb, :numeric_string => true, as: 'capacityStepSizeGb'
           property :create_time, as: 'createTime'
