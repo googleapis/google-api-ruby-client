@@ -1242,6 +1242,11 @@ module Google
         # @return [String]
         attr_accessor :os_version
       
+        # Output only. Compliance status of the OS version.
+        # Corresponds to the JSON property `osVersionCompliance`
+        # @return [String]
+        attr_accessor :os_version_compliance
+      
         # The Chrome device's platform version.
         # Corresponds to the JSON property `platformVersion`
         # @return [String]
@@ -1345,6 +1350,7 @@ module Google
           @org_unit_path = args[:org_unit_path] if args.key?(:org_unit_path)
           @os_update_status = args[:os_update_status] if args.key?(:os_update_status)
           @os_version = args[:os_version] if args.key?(:os_version)
+          @os_version_compliance = args[:os_version_compliance] if args.key?(:os_version_compliance)
           @platform_version = args[:platform_version] if args.key?(:platform_version)
           @recent_users = args[:recent_users] if args.key?(:recent_users)
           @screenshot_files = args[:screenshot_files] if args.key?(:screenshot_files)
