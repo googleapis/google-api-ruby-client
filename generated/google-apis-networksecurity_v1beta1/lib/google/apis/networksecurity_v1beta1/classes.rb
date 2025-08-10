@@ -376,7 +376,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. A list of IP addresses or IP address ranges to match against the
-        # source IP address of the request. Limited to 5 ip_blocks.
+        # source IP address of the request. Limited to 10 ip_blocks per Authorization
+        # Policy
         # Corresponds to the JSON property `ipBlocks`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleIpBlock>]
         attr_accessor :ip_blocks
@@ -387,13 +388,17 @@ module Google
         # successfully validated by mTLS. Each identity is a string whose value is
         # matched against a list of URI SANs, DNS Name SANs, or the common name in the
         # client's certificate. A match happens when any principal matches with the rule.
-        # Limited to 5 principals.
+        # Limited to 50 principals per Authorization Policy for Regional Internal
+        # Application Load Balancer, Regional External Application Load Balancer, Cross-
+        # region Internal Application Load Balancer, and Cloud Service Mesh. Limited to
+        # 25 principals per Authorization Policy for Global External Application Load
+        # Balancer.
         # Corresponds to the JSON property `principals`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRulePrincipal>]
         attr_accessor :principals
       
         # Optional. A list of resources to match against the resource of the source VM
-        # of a request. Limited to 5 resources.
+        # of a request. Limited to 10 resources per Authorization Policy.
         # Corresponds to the JSON property `resources`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleRequestResource>]
         attr_accessor :resources
@@ -521,7 +526,7 @@ module Google
         # Required. A list of resource tag value permanent IDs to match against the
         # resource manager tags value associated with the source VM of a request. The
         # match follows AND semantics which means all the ids must match. Limited to 5
-        # matches.
+        # ids in the Tag value id set.
         # Corresponds to the JSON property `ids`
         # @return [Array<Fixnum>]
         attr_accessor :ids
@@ -632,23 +637,26 @@ module Google
       
         # Optional. A list of HTTP Hosts to match against. The match can be one of exact,
         # prefix, suffix, or contains (substring match). Matches are always case
-        # sensitive unless the ignoreCase is set. Limited to 5 matches.
+        # sensitive unless the ignoreCase is set. Limited to 10 hosts per Authorization
+        # Policy.
         # Corresponds to the JSON property `hosts`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleStringMatch>]
         attr_accessor :hosts
       
         # Optional. A list of HTTP methods to match against. Each entry must be a valid
         # HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only
-        # allows exact match and is always case sensitive.
+        # allows exact match and is always case sensitive. Limited to 10 methods per
+        # Authorization Policy.
         # Corresponds to the JSON property `methods`
         # @return [Array<String>]
         attr_accessor :methods_prop
       
         # Optional. A list of paths to match against. The match can be one of exact,
         # prefix, suffix, or contains (substring match). Matches are always case
-        # sensitive unless the ignoreCase is set. Limited to 5 matches. Note that this
-        # path match includes the query parameters. For gRPC services, this should be a
-        # fully-qualified name of the form /package.service/method.
+        # sensitive unless the ignoreCase is set. Limited to 10 paths per Authorization
+        # Policy. Note that this path match includes the query parameters. For gRPC
+        # services, this should be a fully-qualified name of the form /package.service/
+        # method.
         # Corresponds to the JSON property `paths`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleStringMatch>]
         attr_accessor :paths
@@ -673,7 +681,8 @@ module Google
         # Required. A list of headers to match against in http header. The match can be
         # one of exact, prefix, suffix, or contains (substring match). The match follows
         # AND semantics which means all the headers must match. Matches are always case
-        # sensitive unless the ignoreCase is set. Limited to 5 matches.
+        # sensitive unless the ignoreCase is set. Limited to 10 headers per
+        # Authorization Policy.
         # Corresponds to the JSON property `headers`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleHeaderMatch>]
         attr_accessor :headers
@@ -1098,7 +1107,7 @@ module Google
         end
       end
       
-      # Message describing DnsThreatDetector object
+      # Message describing DnsThreatDetector object.
       class DnsThreatDetector
         include Google::Apis::Core::Hashable
       
@@ -2718,7 +2727,7 @@ module Google
         end
       end
       
-      # Message for response to listing DnsThreatDetectors
+      # Message for response to listing DnsThreatDetectors.
       class ListDnsThreatDetectorsResponse
         include Google::Apis::Core::Hashable
       
