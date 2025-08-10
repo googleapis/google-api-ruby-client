@@ -2260,6 +2260,85 @@ module Google
         end
       end
       
+      # `LbTcpExtension` is a resource that allows traffic forwarding to different
+      # backend services to make allow/deny decisions on TCP connections for all L7
+      # Load Balancers within a network. Currently only internal load-balancers are
+      # supported.
+      class LbTcpExtension
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A human-readable description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. A set of ordered extension chains that contain the match conditions
+        # and extensions to execute. Match conditions for each extension chain are
+        # evaluated in sequence for a given request. The first extension chain that has
+        # a condition that matches the request is executed. Any subsequent extension
+        # chains do not execute. Limited to 5 extension chains per resource.
+        # Corresponds to the JSON property `extensionChains`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::ExtensionChain>]
+        attr_accessor :extension_chains
+      
+        # Optional. Set of labels associated with the `LbTcpExtension` resource. The
+        # format must comply with [the requirements for labels](/compute/docs/labeling-
+        # resources#requirements) for Google Cloud resources.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. All backend services and forwarding rules referenced by this
+        # extension must share the same load balancing scheme. Supported values: `
+        # INTERNAL_MANAGED`. For more information, refer to [Backend services overview](
+        # https://cloud.google.com/load-balancing/docs/backend-service).
+        # Corresponds to the JSON property `loadBalancingScheme`
+        # @return [String]
+        attr_accessor :load_balancing_scheme
+      
+        # Required. Identifier. Name of the `LbTcpExtension` resource in the following
+        # format: `projects/`project`/locations/`location`/LbTcpExtension/`
+        # lb_tcp_extension``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. If set, this `LbTcpExtension` resource applies to all `
+        # ForwardingRule` resources in these VPC networks. Values should be relative
+        # resource names identifying VPC networks, for example `projects/*/global/
+        # networks/network-1`. Currently limited to 1 network per resource. Limited to 1
+        # network per resource.
+        # Corresponds to the JSON property `networks`
+        # @return [Array<String>]
+        attr_accessor :networks
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @extension_chains = args[:extension_chains] if args.key?(:extension_chains)
+          @labels = args[:labels] if args.key?(:labels)
+          @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
+          @name = args[:name] if args.key?(:name)
+          @networks = args[:networks] if args.key?(:networks)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # `LbTrafficExtension` is a resource that lets the extension service modify the
       # headers and payloads of both requests and responses without impacting the
       # choice of backend services or any other security policies associated with the
@@ -2614,6 +2693,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @lb_route_extensions = args[:lb_route_extensions] if args.key?(:lb_route_extensions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Message for response to listing `LbTcpExtension` resources.
+      class ListLbTcpExtensionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of `LbTcpExtension` resources.
+        # Corresponds to the JSON property `lbTcpExtensions`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::LbTcpExtension>]
+        attr_accessor :lb_tcp_extensions
+      
+        # A token identifying a page of results that the server returns.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @lb_tcp_extensions = args[:lb_tcp_extensions] if args.key?(:lb_tcp_extensions)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
