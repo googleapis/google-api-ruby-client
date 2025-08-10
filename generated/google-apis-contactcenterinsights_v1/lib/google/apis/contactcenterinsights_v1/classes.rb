@@ -1900,6 +1900,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :customer_satisfaction_rating
       
+        # Input only. The feedback labels associated with the conversation.
+        # Corresponds to the JSON property `feedbackLabels`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1FeedbackLabel>]
+        attr_accessor :feedback_labels
+      
         # An arbitrary string value specifying the menu path the customer took.
         # Corresponds to the JSON property `menuPath`
         # @return [String]
@@ -1918,6 +1923,7 @@ module Google
         def update!(**args)
           @agent_info = args[:agent_info] if args.key?(:agent_info)
           @customer_satisfaction_rating = args[:customer_satisfaction_rating] if args.key?(:customer_satisfaction_rating)
+          @feedback_labels = args[:feedback_labels] if args.key?(:feedback_labels)
           @menu_path = args[:menu_path] if args.key?(:menu_path)
           @wait_duration = args[:wait_duration] if args.key?(:wait_duration)
         end
@@ -8174,6 +8180,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :customer_satisfaction_rating
       
+        # Input only. The feedback labels associated with the conversation.
+        # Corresponds to the JSON property `feedbackLabels`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel>]
+        attr_accessor :feedback_labels
+      
         # An arbitrary string value specifying the menu path the customer took.
         # Corresponds to the JSON property `menuPath`
         # @return [String]
@@ -8192,6 +8203,7 @@ module Google
         def update!(**args)
           @agent_info = args[:agent_info] if args.key?(:agent_info)
           @customer_satisfaction_rating = args[:customer_satisfaction_rating] if args.key?(:customer_satisfaction_rating)
+          @feedback_labels = args[:feedback_labels] if args.key?(:feedback_labels)
           @menu_path = args[:menu_path] if args.key?(:menu_path)
           @wait_duration = args[:wait_duration] if args.key?(:wait_duration)
         end

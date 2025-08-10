@@ -2578,6 +2578,8 @@ module Google
           collection :agent_info, as: 'agentInfo', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo::Representation
       
           property :customer_satisfaction_rating, as: 'customerSatisfactionRating'
+          collection :feedback_labels, as: 'feedbackLabels', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1FeedbackLabel, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1FeedbackLabel::Representation
+      
           property :menu_path, as: 'menuPath'
           property :wait_duration, as: 'waitDuration'
         end
@@ -4409,6 +4411,8 @@ module Google
           collection :agent_info, as: 'agentInfo', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo::Representation
       
           property :customer_satisfaction_rating, as: 'customerSatisfactionRating'
+          collection :feedback_labels, as: 'feedbackLabels', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel::Representation
+      
           property :menu_path, as: 'menuPath'
           property :wait_duration, as: 'waitDuration'
         end
