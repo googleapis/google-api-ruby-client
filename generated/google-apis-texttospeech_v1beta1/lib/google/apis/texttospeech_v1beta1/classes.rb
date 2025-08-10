@@ -721,6 +721,12 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
+        # Optional. The name of the model. If set, the service will choose the model
+        # matching the specified configuration.
+        # Corresponds to the JSON property `modelName`
+        # @return [String]
+        attr_accessor :model_name
+      
         # The name of the voice. If both the name and the gender are not set, the
         # service will choose a voice based on the other parameters such as
         # language_code.
@@ -750,6 +756,7 @@ module Google
         def update!(**args)
           @custom_voice = args[:custom_voice] if args.key?(:custom_voice)
           @language_code = args[:language_code] if args.key?(:language_code)
+          @model_name = args[:model_name] if args.key?(:model_name)
           @name = args[:name] if args.key?(:name)
           @ssml_gender = args[:ssml_gender] if args.key?(:ssml_gender)
           @voice_clone = args[:voice_clone] if args.key?(:voice_clone)

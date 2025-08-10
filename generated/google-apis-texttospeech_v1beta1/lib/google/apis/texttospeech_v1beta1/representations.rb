@@ -347,6 +347,7 @@ module Google
           property :custom_voice, as: 'customVoice', class: Google::Apis::TexttospeechV1beta1::CustomVoiceParams, decorator: Google::Apis::TexttospeechV1beta1::CustomVoiceParams::Representation
       
           property :language_code, as: 'languageCode'
+          property :model_name, as: 'modelName'
           property :name, as: 'name'
           property :ssml_gender, as: 'ssmlGender'
           property :voice_clone, as: 'voiceClone', class: Google::Apis::TexttospeechV1beta1::VoiceCloneParams, decorator: Google::Apis::TexttospeechV1beta1::VoiceCloneParams::Representation
