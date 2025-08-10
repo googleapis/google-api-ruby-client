@@ -745,8 +745,10 @@ module Google
           property :ai_instructions, as: 'aiInstructions', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiInstructions, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiInstructions::Representation
       
           property :create_time, as: 'createTime'
+          collection :dependent_test_cases, as: 'dependentTestCases'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :prerequisite_test_case, as: 'prerequisiteTestCase'
         end
       end
       

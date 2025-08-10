@@ -1406,6 +1406,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. Other test cases that depend on this test cse as a prerequisite.
+        # Corresponds to the JSON property `dependentTestCases`
+        # @return [Array<String>]
+        attr_accessor :dependent_test_cases
+      
         # Required. Display name of the test case.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -1417,6 +1422,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Test case that must be run before this test case.
+        # Corresponds to the JSON property `prerequisiteTestCase`
+        # @return [String]
+        attr_accessor :prerequisite_test_case
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1425,8 +1435,10 @@ module Google
         def update!(**args)
           @ai_instructions = args[:ai_instructions] if args.key?(:ai_instructions)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @dependent_test_cases = args[:dependent_test_cases] if args.key?(:dependent_test_cases)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @prerequisite_test_case = args[:prerequisite_test_case] if args.key?(:prerequisite_test_case)
         end
       end
       
