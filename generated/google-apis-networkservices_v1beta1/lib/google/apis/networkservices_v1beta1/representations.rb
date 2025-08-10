@@ -280,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LbTcpExtension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LbTrafficExtension
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -329,6 +335,12 @@ module Google
       end
       
       class ListLbRouteExtensionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListLbTcpExtensionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1087,6 +1099,21 @@ module Google
         end
       end
       
+      class LbTcpExtension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          collection :extension_chains, as: 'extensionChains', class: Google::Apis::NetworkservicesV1beta1::ExtensionChain, decorator: Google::Apis::NetworkservicesV1beta1::ExtensionChain::Representation
+      
+          hash :labels, as: 'labels'
+          property :load_balancing_scheme, as: 'loadBalancingScheme'
+          property :name, as: 'name'
+          collection :networks, as: 'networks'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class LbTrafficExtension
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1177,6 +1204,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :lb_route_extensions, as: 'lbRouteExtensions', class: Google::Apis::NetworkservicesV1beta1::LbRouteExtension, decorator: Google::Apis::NetworkservicesV1beta1::LbRouteExtension::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListLbTcpExtensionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :lb_tcp_extensions, as: 'lbTcpExtensions', class: Google::Apis::NetworkservicesV1beta1::LbTcpExtension, decorator: Google::Apis::NetworkservicesV1beta1::LbTcpExtension::Representation
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
