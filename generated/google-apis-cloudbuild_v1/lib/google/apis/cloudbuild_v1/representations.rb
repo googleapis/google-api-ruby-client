@@ -1999,6 +1999,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          property :enable_nested_virtualization, as: 'enableNestedVirtualization'
           property :machine_type, as: 'machineType'
         end
       end
