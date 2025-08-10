@@ -1462,6 +1462,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExternalVpnGatewayParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FileContentBuffer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1954,14 +1960,158 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HaController
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HaControllerStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HaControllerStatusFailoverProgress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HaControllerStatusFailoverProgressLastFailoverAttempt
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Errors
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Error
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+            class ErrorDetail
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HaControllerStatusZoneStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HaControllerStatusZoneStatusLastError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Errors
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Error
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+            class ErrorDetail
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HaControllerZoneConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HaControllerZoneConfigurationNodeAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HaControllerZoneConfigurationReservationAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HaControllersFailoverRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HaControllersList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HealthAggregationPoliciesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HealthAggregationPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HealthAggregationPolicyAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -4306,6 +4456,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MultiMigStatusAcceleratorTopology
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Error
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Error
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+            class ErrorDetail
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MultiMigsList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -6354,6 +6534,18 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationSubBlocksReportFaultyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationSubBlocksReportFaultyRequestFaultReason
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -8614,6 +8806,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TargetVpnGatewayParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TargetVpnGatewaysScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -8956,6 +9154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VpnGatewayParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VpnGatewayStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -9054,6 +9258,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnTunnelParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -9547,6 +9757,9 @@ module Google
       class AllocationAggregateReservation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :host_count, as: 'hostCount'
+          property :in_use_host_count, as: 'inUseHostCount'
+          property :in_use_instance_count, as: 'inUseInstanceCount'
           collection :in_use_resources, as: 'inUseResources', class: Google::Apis::ComputeAlpha::AllocationAggregateReservationReservedResourceInfo, decorator: Google::Apis::ComputeAlpha::AllocationAggregateReservationReservedResourceInfo::Representation
       
           collection :reserved_resources, as: 'reservedResources', class: Google::Apis::ComputeAlpha::AllocationAggregateReservationReservedResourceInfo, decorator: Google::Apis::ComputeAlpha::AllocationAggregateReservationReservedResourceInfo::Representation
@@ -9980,11 +10193,15 @@ module Google
           property :max_connections, as: 'maxConnections'
           property :max_connections_per_endpoint, as: 'maxConnectionsPerEndpoint'
           property :max_connections_per_instance, as: 'maxConnectionsPerInstance'
+          property :max_in_flight_requests, as: 'maxInFlightRequests'
+          property :max_in_flight_requests_per_endpoint, as: 'maxInFlightRequestsPerEndpoint'
+          property :max_in_flight_requests_per_instance, as: 'maxInFlightRequestsPerInstance'
           property :max_rate, as: 'maxRate'
           property :max_rate_per_endpoint, as: 'maxRatePerEndpoint'
           property :max_rate_per_instance, as: 'maxRatePerInstance'
           property :max_utilization, as: 'maxUtilization'
           property :preference, as: 'preference'
+          property :traffic_duration, as: 'trafficDuration'
         end
       end
       
@@ -11902,6 +12119,8 @@ module Google
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :params, as: 'params', class: Google::Apis::ComputeAlpha::ExternalVpnGatewayParams, decorator: Google::Apis::ComputeAlpha::ExternalVpnGatewayParams::Representation
+      
           property :redundancy_type, as: 'redundancyType'
           property :self_link, as: 'selfLink'
         end
@@ -11946,6 +12165,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class ExternalVpnGatewayParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -12423,6 +12649,7 @@ module Google
           property :name, as: 'name'
           property :name_prefix, as: 'namePrefix'
           property :planning_status, as: 'planningStatus'
+          property :protection_tier, as: 'protectionTier'
           property :reservation_mode, as: 'reservationMode'
           property :reservation_name, as: 'reservationName'
           property :scheduling_type, as: 'schedulingType'
@@ -12904,10 +13131,238 @@ module Google
         end
       end
       
+      class HaController
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :failover_initiation, as: 'failoverInitiation'
+          property :id, :numeric_string => true, as: 'id'
+          property :instance_name, as: 'instanceName'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :region, as: 'region'
+          property :secondary_zone_capacity, as: 'secondaryZoneCapacity'
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :status, as: 'status', class: Google::Apis::ComputeAlpha::HaControllerStatus, decorator: Google::Apis::ComputeAlpha::HaControllerStatus::Representation
+      
+          hash :zone_configurations, as: 'zoneConfigurations', class: Google::Apis::ComputeAlpha::HaControllerZoneConfiguration, decorator: Google::Apis::ComputeAlpha::HaControllerZoneConfiguration::Representation
+      
+        end
+      end
+      
+      class HaControllerStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failover_progress, as: 'failoverProgress', class: Google::Apis::ComputeAlpha::HaControllerStatusFailoverProgress, decorator: Google::Apis::ComputeAlpha::HaControllerStatusFailoverProgress::Representation
+      
+          property :ongoing_failover, as: 'ongoingFailover'
+          property :primary_instance, as: 'primaryInstance'
+          property :primary_zone, as: 'primaryZone'
+          property :ready_for_failover, as: 'readyForFailover'
+          hash :zone_status, as: 'zoneStatus', class: Google::Apis::ComputeAlpha::HaControllerStatusZoneStatus, decorator: Google::Apis::ComputeAlpha::HaControllerStatusZoneStatus::Representation
+      
+        end
+      end
+      
+      class HaControllerStatusFailoverProgress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failover_trigger, as: 'failoverTrigger'
+          property :failover_trigger_timestamp, as: 'failoverTriggerTimestamp'
+          property :last_failover_attempt, as: 'lastFailoverAttempt', class: Google::Apis::ComputeAlpha::HaControllerStatusFailoverProgressLastFailoverAttempt, decorator: Google::Apis::ComputeAlpha::HaControllerStatusFailoverProgressLastFailoverAttempt::Representation
+      
+        end
+      end
+      
+      class HaControllerStatusFailoverProgressLastFailoverAttempt
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :errors, as: 'errors', class: Google::Apis::ComputeAlpha::HaControllerStatusFailoverProgressLastFailoverAttempt::Errors, decorator: Google::Apis::ComputeAlpha::HaControllerStatusFailoverProgressLastFailoverAttempt::Errors::Representation
+      
+          property :timestamp, as: 'timestamp'
+        end
+        
+        class Errors
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :errors, as: 'errors', class: Google::Apis::ComputeAlpha::HaControllerStatusFailoverProgressLastFailoverAttempt::Errors::Error, decorator: Google::Apis::ComputeAlpha::HaControllerStatusFailoverProgressLastFailoverAttempt::Errors::Error::Representation
+        
+          end
+          
+          class Error
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :code, as: 'code'
+              collection :error_details, as: 'errorDetails', class: Google::Apis::ComputeAlpha::HaControllerStatusFailoverProgressLastFailoverAttempt::Errors::Error::ErrorDetail, decorator: Google::Apis::ComputeAlpha::HaControllerStatusFailoverProgressLastFailoverAttempt::Errors::Error::ErrorDetail::Representation
+          
+              property :location, as: 'location'
+              property :message, as: 'message'
+            end
+            
+            class ErrorDetail
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :error_info, as: 'errorInfo', class: Google::Apis::ComputeAlpha::ErrorInfo, decorator: Google::Apis::ComputeAlpha::ErrorInfo::Representation
+            
+                property :help, as: 'help', class: Google::Apis::ComputeAlpha::Help, decorator: Google::Apis::ComputeAlpha::Help::Representation
+            
+                property :localized_message, as: 'localizedMessage', class: Google::Apis::ComputeAlpha::LocalizedMessage, decorator: Google::Apis::ComputeAlpha::LocalizedMessage::Representation
+            
+                property :quota_info, as: 'quotaInfo', class: Google::Apis::ComputeAlpha::QuotaExceededInfo, decorator: Google::Apis::ComputeAlpha::QuotaExceededInfo::Representation
+            
+              end
+            end
+          end
+        end
+      end
+      
+      class HaControllerStatusZoneStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_primary, as: 'isPrimary'
+          property :is_zone_ready, as: 'isZoneReady'
+          property :last_error, as: 'lastError', class: Google::Apis::ComputeAlpha::HaControllerStatusZoneStatusLastError, decorator: Google::Apis::ComputeAlpha::HaControllerStatusZoneStatusLastError::Representation
+      
+        end
+      end
+      
+      class HaControllerStatusZoneStatusLastError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :errors, as: 'errors', class: Google::Apis::ComputeAlpha::HaControllerStatusZoneStatusLastError::Errors, decorator: Google::Apis::ComputeAlpha::HaControllerStatusZoneStatusLastError::Errors::Representation
+      
+          property :timestamp, as: 'timestamp'
+        end
+        
+        class Errors
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :errors, as: 'errors', class: Google::Apis::ComputeAlpha::HaControllerStatusZoneStatusLastError::Errors::Error, decorator: Google::Apis::ComputeAlpha::HaControllerStatusZoneStatusLastError::Errors::Error::Representation
+        
+          end
+          
+          class Error
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :code, as: 'code'
+              collection :error_details, as: 'errorDetails', class: Google::Apis::ComputeAlpha::HaControllerStatusZoneStatusLastError::Errors::Error::ErrorDetail, decorator: Google::Apis::ComputeAlpha::HaControllerStatusZoneStatusLastError::Errors::Error::ErrorDetail::Representation
+          
+              property :location, as: 'location'
+              property :message, as: 'message'
+            end
+            
+            class ErrorDetail
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :error_info, as: 'errorInfo', class: Google::Apis::ComputeAlpha::ErrorInfo, decorator: Google::Apis::ComputeAlpha::ErrorInfo::Representation
+            
+                property :help, as: 'help', class: Google::Apis::ComputeAlpha::Help, decorator: Google::Apis::ComputeAlpha::Help::Representation
+            
+                property :localized_message, as: 'localizedMessage', class: Google::Apis::ComputeAlpha::LocalizedMessage, decorator: Google::Apis::ComputeAlpha::LocalizedMessage::Representation
+            
+                property :quota_info, as: 'quotaInfo', class: Google::Apis::ComputeAlpha::QuotaExceededInfo, decorator: Google::Apis::ComputeAlpha::QuotaExceededInfo::Representation
+            
+              end
+            end
+          end
+        end
+      end
+      
+      class HaControllerZoneConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :node_affinities, as: 'nodeAffinities', class: Google::Apis::ComputeAlpha::HaControllerZoneConfigurationNodeAffinity, decorator: Google::Apis::ComputeAlpha::HaControllerZoneConfigurationNodeAffinity::Representation
+      
+          property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeAlpha::HaControllerZoneConfigurationReservationAffinity, decorator: Google::Apis::ComputeAlpha::HaControllerZoneConfigurationReservationAffinity::Representation
+      
+        end
+      end
+      
+      class HaControllerZoneConfigurationNodeAffinity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :operator, as: 'operator'
+          collection :values, as: 'values'
+        end
+      end
+      
+      class HaControllerZoneConfigurationReservationAffinity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consume_reservation_type, as: 'consumeReservationType'
+          property :key, as: 'key'
+          collection :values, as: 'values'
+        end
+      end
+      
       class HaControllersFailoverRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :primary_zone, as: 'primaryZone'
+        end
+      end
+      
+      class HaControllersList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::HaController, decorator: Google::Apis::ComputeAlpha::HaController::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::HaControllersList::Warning, decorator: Google::Apis::ComputeAlpha::HaControllersList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::HaControllersList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::HaControllersList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class HealthAggregationPoliciesScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :health_aggregation_policies, as: 'healthAggregationPolicies', class: Google::Apis::ComputeAlpha::HealthAggregationPolicy, decorator: Google::Apis::ComputeAlpha::HealthAggregationPolicy::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::HealthAggregationPoliciesScopedList::Warning, decorator: Google::Apis::ComputeAlpha::HealthAggregationPoliciesScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::HealthAggregationPoliciesScopedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::HealthAggregationPoliciesScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -12926,6 +13381,39 @@ module Google
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
+        end
+      end
+      
+      class HealthAggregationPolicyAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeAlpha::HealthAggregationPoliciesScopedList, decorator: Google::Apis::ComputeAlpha::HealthAggregationPoliciesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::HealthAggregationPolicyAggregatedList::Warning, decorator: Google::Apis::ComputeAlpha::HealthAggregationPolicyAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::HealthAggregationPolicyAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::HealthAggregationPolicyAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -17396,8 +17884,62 @@ module Google
       class MultiMigStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :applied_accelerator_topologies, as: 'appliedAcceleratorTopologies', class: Google::Apis::ComputeAlpha::MultiMigStatusAcceleratorTopology, decorator: Google::Apis::ComputeAlpha::MultiMigStatusAcceleratorTopology::Representation
+      
           collection :member_instance_group_managers, as: 'memberInstanceGroupManagers'
           property :members_count, as: 'membersCount'
+        end
+      end
+      
+      class MultiMigStatusAcceleratorTopology
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_topology, as: 'acceleratorTopology'
+          property :accelerator_topology_state, as: 'acceleratorTopologyState'
+          property :accelerator_topology_state_last_check, as: 'acceleratorTopologyStateLastCheck', class: Google::Apis::ComputeAlpha::MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck, decorator: Google::Apis::ComputeAlpha::MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck::Representation
+      
+        end
+      end
+      
+      class MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::ComputeAlpha::MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck::Error, decorator: Google::Apis::ComputeAlpha::MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck::Error::Representation
+      
+          property :timestamp, as: 'timestamp'
+        end
+        
+        class Error
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :errors, as: 'errors', class: Google::Apis::ComputeAlpha::MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck::Error::Error, decorator: Google::Apis::ComputeAlpha::MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck::Error::Error::Representation
+        
+          end
+          
+          class Error
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :code, as: 'code'
+              collection :error_details, as: 'errorDetails', class: Google::Apis::ComputeAlpha::MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck::Error::Error::ErrorDetail, decorator: Google::Apis::ComputeAlpha::MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck::Error::Error::ErrorDetail::Representation
+          
+              property :location, as: 'location'
+              property :message, as: 'message'
+            end
+            
+            class ErrorDetail
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :error_info, as: 'errorInfo', class: Google::Apis::ComputeAlpha::ErrorInfo, decorator: Google::Apis::ComputeAlpha::ErrorInfo::Representation
+            
+                property :help, as: 'help', class: Google::Apis::ComputeAlpha::Help, decorator: Google::Apis::ComputeAlpha::Help::Representation
+            
+                property :localized_message, as: 'localizedMessage', class: Google::Apis::ComputeAlpha::LocalizedMessage, decorator: Google::Apis::ComputeAlpha::LocalizedMessage::Representation
+            
+                property :quota_info, as: 'quotaInfo', class: Google::Apis::ComputeAlpha::QuotaExceededInfo, decorator: Google::Apis::ComputeAlpha::QuotaExceededInfo::Representation
+            
+              end
+            end
+          end
         end
       end
       
@@ -18201,6 +18743,7 @@ module Google
           property :allow_cloud_router, as: 'allowCloudRouter'
           property :allow_default_nic_attachment, as: 'allowDefaultNicAttachment'
           property :allow_external_ip_access, as: 'allowExternalIpAccess'
+          property :allow_firewall_policy, as: 'allowFirewallPolicy'
           property :allow_interconnect, as: 'allowInterconnect'
           property :allow_ip_forwarding, as: 'allowIpForwarding'
           property :allow_load_balancing, as: 'allowLoadBalancing'
@@ -18213,8 +18756,10 @@ module Google
           property :allow_same_network_unicast, as: 'allowSameNetworkUnicast'
           property :allow_static_routes, as: 'allowStaticRoutes'
           property :allow_sub_interfaces, as: 'allowSubInterfaces'
+          property :allow_vpc_firewall_rules, as: 'allowVpcFirewallRules'
           property :allow_vpc_peering, as: 'allowVpcPeering'
           property :allow_vpn, as: 'allowVpn'
+          collection :firewall_policy_types, as: 'firewallPolicyTypes'
           collection :interface_types, as: 'interfaceTypes'
           collection :subnet_purposes, as: 'subnetPurposes'
           collection :subnet_stack_types, as: 'subnetStackTypes'
@@ -21020,6 +21565,7 @@ module Google
       
           property :id, :numeric_string => true, as: 'id'
           property :in_use_count, as: 'inUseCount'
+          property :in_use_host_count, as: 'inUseHostCount'
           property :kind, as: 'kind'
           property :location_prefix, as: 'locationPrefix'
           property :name, as: 'name'
@@ -21154,6 +21700,7 @@ module Google
       
           property :id, :numeric_string => true, as: 'id'
           property :in_use_count, as: 'inUseCount'
+          property :in_use_host_count, as: 'inUseHostCount'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :physical_topology, as: 'physicalTopology', class: Google::Apis::ComputeAlpha::ReservationSubBlockPhysicalTopology, decorator: Google::Apis::ComputeAlpha::ReservationSubBlockPhysicalTopology::Representation
@@ -21224,6 +21771,24 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class ReservationSubBlocksReportFaultyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disruption_schedule, as: 'disruptionSchedule'
+          property :failure_component, as: 'failureComponent'
+          collection :fault_reasons, as: 'faultReasons', class: Google::Apis::ComputeAlpha::ReservationSubBlocksReportFaultyRequestFaultReason, decorator: Google::Apis::ComputeAlpha::ReservationSubBlocksReportFaultyRequestFaultReason::Representation
+      
+        end
+      end
+      
+      class ReservationSubBlocksReportFaultyRequestFaultReason
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :behavior, as: 'behavior'
+          property :description, as: 'description'
         end
       end
       
@@ -25371,6 +25936,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :params, as: 'params', class: Google::Apis::ComputeAlpha::TargetVpnGatewayParams, decorator: Google::Apis::ComputeAlpha::TargetVpnGatewayParams::Representation
+      
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
@@ -25440,6 +26007,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class TargetVpnGatewayParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -25999,6 +26573,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :params, as: 'params', class: Google::Apis::ComputeAlpha::VpnGatewayParams, decorator: Google::Apis::ComputeAlpha::VpnGatewayParams::Representation
+      
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :stack_type, as: 'stackType'
@@ -26069,6 +26645,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class VpnGatewayParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -26170,6 +26753,8 @@ module Google
           hash :labels, as: 'labels'
           collection :local_traffic_selector, as: 'localTrafficSelector'
           property :name, as: 'name'
+          property :params, as: 'params', class: Google::Apis::ComputeAlpha::VpnTunnelParams, decorator: Google::Apis::ComputeAlpha::VpnTunnelParams::Representation
+      
           property :peer_external_gateway, as: 'peerExternalGateway'
           property :peer_external_gateway_interface, as: 'peerExternalGatewayInterface'
           property :peer_gcp_gateway, as: 'peerGcpGateway'
@@ -26259,6 +26844,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class VpnTunnelParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
