@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateInboundOidcSsoProfileOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateInboundSamlSsoProfileOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,6 +161,12 @@ module Google
       end
       
       class DeleteIdpCredentialOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteInboundOidcSsoProfileOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -424,6 +436,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InboundOidcSsoProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InboundSamlSsoProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -467,6 +485,12 @@ module Google
       end
       
       class ListIdpCredentialsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListInboundOidcSsoProfilesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -581,6 +605,24 @@ module Google
       end
       
       class MoveOrgMembershipRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OidcIdpConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OidcRpConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OidcSsoInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -707,6 +749,12 @@ module Google
       end
       
       class TransitiveMembershipRole
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateInboundOidcSsoProfileOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -944,6 +992,13 @@ module Google
         end
       end
       
+      class CreateInboundOidcSsoProfileOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
+        end
+      end
+      
       class CreateInboundSamlSsoProfileOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -967,6 +1022,12 @@ module Google
       end
       
       class DeleteIdpCredentialOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DeleteInboundOidcSsoProfileOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -1447,6 +1508,19 @@ module Google
         end
       end
       
+      class InboundOidcSsoProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
+          property :display_name, as: 'displayName'
+          property :idp_config, as: 'idpConfig', class: Google::Apis::CloudidentityV1beta1::OidcIdpConfig, decorator: Google::Apis::CloudidentityV1beta1::OidcIdpConfig::Representation
+      
+          property :name, as: 'name'
+          property :rp_config, as: 'rpConfig', class: Google::Apis::CloudidentityV1beta1::OidcRpConfig, decorator: Google::Apis::CloudidentityV1beta1::OidcRpConfig::Representation
+      
+        end
+      end
+      
       class InboundSamlSsoProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1465,6 +1539,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :customer, as: 'customer'
           property :name, as: 'name'
+          property :oidc_sso_info, as: 'oidcSsoInfo', class: Google::Apis::CloudidentityV1beta1::OidcSsoInfo, decorator: Google::Apis::CloudidentityV1beta1::OidcSsoInfo::Representation
+      
           property :rank, as: 'rank'
           property :saml_sso_info, as: 'samlSsoInfo', class: Google::Apis::CloudidentityV1beta1::SamlSsoInfo, decorator: Google::Apis::CloudidentityV1beta1::SamlSsoInfo::Representation
       
@@ -1523,6 +1599,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :idp_credentials, as: 'idpCredentials', class: Google::Apis::CloudidentityV1beta1::IdpCredential, decorator: Google::Apis::CloudidentityV1beta1::IdpCredential::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListInboundOidcSsoProfilesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :inbound_oidc_sso_profiles, as: 'inboundOidcSsoProfiles', class: Google::Apis::CloudidentityV1beta1::InboundOidcSsoProfile, decorator: Google::Apis::CloudidentityV1beta1::InboundOidcSsoProfile::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -1712,6 +1797,30 @@ module Google
         end
       end
       
+      class OidcIdpConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :change_password_uri, as: 'changePasswordUri'
+          property :issuer_uri, as: 'issuerUri'
+        end
+      end
+      
+      class OidcRpConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret'
+          collection :redirect_uris, as: 'redirectUris'
+        end
+      end
+      
+      class OidcSsoInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inbound_oidc_sso_profile, as: 'inboundOidcSsoProfile'
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1892,6 +2001,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :role, as: 'role'
+        end
+      end
+      
+      class UpdateInboundOidcSsoProfileOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
         end
       end
       

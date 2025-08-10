@@ -737,6 +737,28 @@ module Google
         end
       end
       
+      # LRO response metadata for InboundOidcSsoProfilesService.
+      # CreateInboundOidcSsoProfile.
+      class CreateInboundOidcSsoProfileOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # State of this Operation Will be "awaiting-multi-party-approval" when the
+        # operation is deferred due to the target customer having enabled [Multi-party
+        # approval for sensitive actions](https://support.google.com/a/answer/13790448).
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # LRO response metadata for InboundSamlSsoProfilesService.
       # CreateInboundSamlSsoProfile.
       class CreateInboundSamlSsoProfileOperationMetadata
@@ -807,6 +829,20 @@ module Google
       
       # LRO response metadata for InboundSamlSsoProfilesService.DeleteIdpCredential.
       class DeleteIdpCredentialOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # LRO response metadata for InboundOidcSsoProfilesService.
+      # DeleteInboundOidcSsoProfile.
+      class DeleteInboundOidcSsoProfileOperationMetadata
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -2663,6 +2699,51 @@ module Google
         end
       end
       
+      # An [OIDC](https://openid.net/developers/how-connect-works/) federation between
+      # a Google enterprise customer and an OIDC identity provider.
+      class InboundOidcSsoProfile
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The customer. For example: `customers/C0123abc`.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
+        # Human-readable name of the OIDC SSO profile.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # OIDC IDP (identity provider) configuration.
+        # Corresponds to the JSON property `idpConfig`
+        # @return [Google::Apis::CloudidentityV1beta1::OidcIdpConfig]
+        attr_accessor :idp_config
+      
+        # Output only. [Resource name](https://cloud.google.com/apis/design/
+        # resource_names) of the OIDC SSO profile.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # OIDC RP (relying party) configuration.
+        # Corresponds to the JSON property `rpConfig`
+        # @return [Google::Apis::CloudidentityV1beta1::OidcRpConfig]
+        attr_accessor :rp_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @idp_config = args[:idp_config] if args.key?(:idp_config)
+          @name = args[:name] if args.key?(:name)
+          @rp_config = args[:rp_config] if args.key?(:rp_config)
+        end
+      end
+      
       # A [SAML 2.0](https://www.oasis-open.org/standards#samlv2.0) federation between
       # a Google enterprise customer and a SAML identity provider.
       class InboundSamlSsoProfile
@@ -2723,6 +2804,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Details that are applicable when `sso_mode` is set to `OIDC_SSO`.
+        # Corresponds to the JSON property `oidcSsoInfo`
+        # @return [Google::Apis::CloudidentityV1beta1::OidcSsoInfo]
+        attr_accessor :oidc_sso_info
+      
         # Must be zero (which is the default value so it can be omitted) for assignments
         # with `target_org_unit` set and must be greater-than-or-equal-to one for
         # assignments with `target_group` set.
@@ -2763,6 +2849,7 @@ module Google
         def update!(**args)
           @customer = args[:customer] if args.key?(:customer)
           @name = args[:name] if args.key?(:name)
+          @oidc_sso_info = args[:oidc_sso_info] if args.key?(:oidc_sso_info)
           @rank = args[:rank] if args.key?(:rank)
           @saml_sso_info = args[:saml_sso_info] if args.key?(:saml_sso_info)
           @sign_in_behavior = args[:sign_in_behavior] if args.key?(:sign_in_behavior)
@@ -2915,6 +3002,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @idp_credentials = args[:idp_credentials] if args.key?(:idp_credentials)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response of the InboundOidcSsoProfilesService.ListInboundOidcSsoProfiles
+      # method.
+      class ListInboundOidcSsoProfilesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of InboundOidcSsoProfiles.
+        # Corresponds to the JSON property `inboundOidcSsoProfiles`
+        # @return [Array<Google::Apis::CloudidentityV1beta1::InboundOidcSsoProfile>]
+        attr_accessor :inbound_oidc_sso_profiles
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inbound_oidc_sso_profiles = args[:inbound_oidc_sso_profiles] if args.key?(:inbound_oidc_sso_profiles)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -3530,6 +3644,87 @@ module Google
         def update!(**args)
           @customer = args[:customer] if args.key?(:customer)
           @destination_org_unit = args[:destination_org_unit] if args.key?(:destination_org_unit)
+        end
+      end
+      
+      # OIDC IDP (identity provider) configuration.
+      class OidcIdpConfig
+        include Google::Apis::Core::Hashable
+      
+        # The **Change Password URL** of the identity provider. Users will be sent to
+        # this URL when changing their passwords at `myaccount.google.com`. This takes
+        # precedence over the change password URL configured at customer-level. Must use
+        # `HTTPS`.
+        # Corresponds to the JSON property `changePasswordUri`
+        # @return [String]
+        attr_accessor :change_password_uri
+      
+        # Required. The Issuer identifier for the IdP. Must be a URL. The discovery URL
+        # will be derived from this as described in Section 4 of [the OIDC specification]
+        # (https://openid.net/specs/openid-connect-discovery-1_0.html).
+        # Corresponds to the JSON property `issuerUri`
+        # @return [String]
+        attr_accessor :issuer_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @change_password_uri = args[:change_password_uri] if args.key?(:change_password_uri)
+          @issuer_uri = args[:issuer_uri] if args.key?(:issuer_uri)
+        end
+      end
+      
+      # OIDC RP (relying party) configuration.
+      class OidcRpConfig
+        include Google::Apis::Core::Hashable
+      
+        # OAuth2 client ID for OIDC.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Input only. OAuth2 client secret for OIDC.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [String]
+        attr_accessor :client_secret
+      
+        # Output only. The URL(s) that this client may use in authentication requests.
+        # Corresponds to the JSON property `redirectUris`
+        # @return [Array<String>]
+        attr_accessor :redirect_uris
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+          @redirect_uris = args[:redirect_uris] if args.key?(:redirect_uris)
+        end
+      end
+      
+      # Details that are applicable when `sso_mode` is set to `OIDC_SSO`.
+      class OidcSsoInfo
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the `InboundOidcSsoProfile` to use. Must be of the form `
+        # inboundOidcSsoProfiles/`inbound_oidc_sso_profile``.
+        # Corresponds to the JSON property `inboundOidcSsoProfile`
+        # @return [String]
+        attr_accessor :inbound_oidc_sso_profile
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inbound_oidc_sso_profile = args[:inbound_oidc_sso_profile] if args.key?(:inbound_oidc_sso_profile)
         end
       end
       
@@ -4179,6 +4374,28 @@ module Google
         # Update properties of this object
         def update!(**args)
           @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # LRO response metadata for InboundOidcSsoProfilesService.
+      # UpdateInboundOidcSsoProfile.
+      class UpdateInboundOidcSsoProfileOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # State of this Operation Will be "awaiting-multi-party-approval" when the
+        # operation is deferred due to the target customer having enabled [Multi-party
+        # approval for sensitive actions](https://support.google.com/a/answer/13790448).
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
