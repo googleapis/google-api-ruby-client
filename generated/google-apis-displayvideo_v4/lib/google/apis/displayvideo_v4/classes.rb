@@ -4904,6 +4904,12 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :shared_advertiser_ids
       
+        # Optional. Immutable. Designates the third party optimization partner that
+        # manages this algorithm.
+        # Corresponds to the JSON property `thirdPartyOptimizationPartner`
+        # @return [String]
+        attr_accessor :third_party_optimization_partner
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4919,6 +4925,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @partner_id = args[:partner_id] if args.key?(:partner_id)
           @shared_advertiser_ids = args[:shared_advertiser_ids] if args.key?(:shared_advertiser_ids)
+          @third_party_optimization_partner = args[:third_party_optimization_partner] if args.key?(:third_party_optimization_partner)
         end
       end
       

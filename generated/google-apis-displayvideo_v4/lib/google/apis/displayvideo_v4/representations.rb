@@ -3349,6 +3349,7 @@ module Google
           property :name, as: 'name'
           property :partner_id, :numeric_string => true, as: 'partnerId'
           collection :shared_advertiser_ids, as: 'sharedAdvertiserIds'
+          property :third_party_optimization_partner, as: 'thirdPartyOptimizationPartner'
         end
       end
       
