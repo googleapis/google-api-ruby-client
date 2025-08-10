@@ -3643,16 +3643,16 @@ module Google
       class InstanceSplit
         include Google::Apis::Core::Hashable
       
-        # Uses the "status.latestReadyRevisionName" to determine the traffic target.
-        # When it changes, traffic will automatically migrate from the prior "latest
-        # ready" revision to the new one.
+        # Uses the "status.latestReadyRevisionName" to determine the instance split
+        # target. When it changes, workloads will automatically migrate from the prior "
+        # latest ready" revision to the new one.
         # Corresponds to the JSON property `latestRevision`
         # @return [Boolean]
         attr_accessor :latest_revision
         alias_method :latest_revision?, :latest_revision
       
-        # Specifies percent of the instance split to this Revision. This defaults to
-        # zero if unspecified.
+        # Optional. Specifies percent of the instance split to this Revision. This
+        # defaults to zero if unspecified.
         # Corresponds to the JSON property `percent`
         # @return [Fixnum]
         attr_accessor :percent
@@ -6333,7 +6333,7 @@ module Google
         # @return [Array<Google::Apis::RunV1::GoogleCloudRunV1Condition>]
         attr_accessor :conditions
       
-        # Holds the configured traffic distribution. These entries will always contain
+        # Holds the configured workload distribution. These entries will always contain
         # RevisionName references. When ConfigurationName appears in the spec, this will
         # hold the LatestReadyRevisionName that we last observed.
         # Corresponds to the JSON property `instanceSplits`
