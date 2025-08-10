@@ -23,7 +23,7 @@ module Google
     module MerchantapiAccountsV1beta
       
       # Collection of information related to the about page ([impressum](https://
-      # support.google.com/merchants/answer/14675634?hl=en&ref_topic=15145634&sjid=
+      # support.google.com/merchants/answer/14675634?ref_topic=15145634&sjid=
       # 6892280366904591178-NC)).
       class About
         include Google::Apis::Core::Hashable
@@ -1877,7 +1877,7 @@ module Google
       end
       
       # Collection of information related to [inventory verification](https://support.
-      # google.com/merchants/answer/14684499?hl=en&ref_topic=15145634&sjid=
+      # google.com/merchants/answer/14684499?ref_topic=15145634&sjid=
       # 6892280366904591178-NC).
       class InventoryVerification
         include Google::Apis::Core::Hashable
@@ -2537,7 +2537,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Collection of information related to the about page ([impressum](https://
-        # support.google.com/merchants/answer/14675634?hl=en&ref_topic=15145634&sjid=
+        # support.google.com/merchants/answer/14675634?ref_topic=15145634&sjid=
         # 6892280366904591178-NC)).
         # Corresponds to the JSON property `about`
         # @return [Google::Apis::MerchantapiAccountsV1beta::About]
@@ -2549,7 +2549,7 @@ module Google
         attr_accessor :in_stock
       
         # Collection of information related to [inventory verification](https://support.
-        # google.com/merchants/answer/14684499?hl=en&ref_topic=15145634&sjid=
+        # google.com/merchants/answer/14684499?ref_topic=15145634&sjid=
         # 6892280366904591178-NC).
         # Corresponds to the JSON property `inventoryVerification`
         # @return [Google::Apis::MerchantapiAccountsV1beta::InventoryVerification]
@@ -2572,7 +2572,7 @@ module Google
         attr_accessor :name
       
         # Collection of information related to the on display to order ([ODO](https://
-        # support.google.com/merchants/answer/14615056?hl=en&ref_topic=15145747&sjid=
+        # support.google.com/merchants/answer/14615056?ref_topic=15145747&sjid=
         # 6892280366904591178-NC)).
         # Corresponds to the JSON property `odo`
         # @return [Google::Apis::MerchantapiAccountsV1beta::OnDisplayToOrder]
@@ -2608,7 +2608,7 @@ module Google
       end
       
       # Collection of information related to the on display to order ([ODO](https://
-      # support.google.com/merchants/answer/14615056?hl=en&ref_topic=15145747&sjid=
+      # support.google.com/merchants/answer/14615056?ref_topic=15145747&sjid=
       # 6892280366904591178-NC)).
       class OnDisplayToOrder
         include Google::Apis::Core::Hashable
