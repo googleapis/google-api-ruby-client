@@ -328,6 +328,7 @@ module Google
           property :phone_number, as: 'phoneNumber'
           property :token, as: 'token', class: Google::Apis::MybusinessverificationsV1::VerificationToken, decorator: Google::Apis::MybusinessverificationsV1::VerificationToken::Representation
       
+          property :trusted_partner_token, as: 'trustedPartnerToken'
         end
       end
       
