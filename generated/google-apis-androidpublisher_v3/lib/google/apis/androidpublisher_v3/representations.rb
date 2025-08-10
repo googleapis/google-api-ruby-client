@@ -490,6 +490,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeferredItemRemoval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeferredItemReplacement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2555,6 +2561,12 @@ module Google
         end
       end
       
+      class DeferredItemRemoval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class DeferredItemReplacement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4315,6 +4327,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_renewing_plan, as: 'autoRenewingPlan', class: Google::Apis::AndroidpublisherV3::AutoRenewingPlan, decorator: Google::Apis::AndroidpublisherV3::AutoRenewingPlan::Representation
+      
+          property :deferred_item_removal, as: 'deferredItemRemoval', class: Google::Apis::AndroidpublisherV3::DeferredItemRemoval, decorator: Google::Apis::AndroidpublisherV3::DeferredItemRemoval::Representation
       
           property :deferred_item_replacement, as: 'deferredItemReplacement', class: Google::Apis::AndroidpublisherV3::DeferredItemReplacement, decorator: Google::Apis::AndroidpublisherV3::DeferredItemReplacement::Representation
       

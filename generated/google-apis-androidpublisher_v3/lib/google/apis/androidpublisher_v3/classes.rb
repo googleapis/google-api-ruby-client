@@ -2138,6 +2138,19 @@ module Google
       end
       
       # Information related to deferred item replacement.
+      class DeferredItemRemoval
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Information related to deferred item replacement.
       class DeferredItemReplacement
         include Google::Apis::Core::Hashable
       
@@ -8163,6 +8176,11 @@ module Google
         attr_accessor :auto_renewing_plan
       
         # Information related to deferred item replacement.
+        # Corresponds to the JSON property `deferredItemRemoval`
+        # @return [Google::Apis::AndroidpublisherV3::DeferredItemRemoval]
+        attr_accessor :deferred_item_removal
+      
+        # Information related to deferred item replacement.
         # Corresponds to the JSON property `deferredItemReplacement`
         # @return [Google::Apis::AndroidpublisherV3::DeferredItemReplacement]
         attr_accessor :deferred_item_replacement
@@ -8207,6 +8225,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_renewing_plan = args[:auto_renewing_plan] if args.key?(:auto_renewing_plan)
+          @deferred_item_removal = args[:deferred_item_removal] if args.key?(:deferred_item_removal)
           @deferred_item_replacement = args[:deferred_item_replacement] if args.key?(:deferred_item_replacement)
           @expiry_time = args[:expiry_time] if args.key?(:expiry_time)
           @latest_successful_order_id = args[:latest_successful_order_id] if args.key?(:latest_successful_order_id)
