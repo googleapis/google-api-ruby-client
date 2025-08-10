@@ -399,8 +399,8 @@ module Google
       class LfpStore
         include Google::Apis::Core::Hashable
       
-        # Optional. [Google My Business category id](https://gcid-explorer.corp.google.
-        # com/static/gcid.html).
+        # Optional. [Google My Business category id](https://support.google.com/business/
+        # answer/7249669).
         # Corresponds to the JSON property `gcidCategory`
         # @return [Array<String>]
         attr_accessor :gcid_category
