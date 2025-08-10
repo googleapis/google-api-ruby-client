@@ -220,6 +220,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1AssistantCustomerPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1AssistantGenerationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1AssistantGenerationConfigSystemInstruction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1AssistantToolInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1AssistantToolList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1BatchCreateTargetSiteMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2494,6 +2530,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyBannedPhrase
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAssistantGenerationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAssistantGenerationConfigSystemInstruction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaAssistantGroundedContent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2519,6 +2579,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataSegment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAssistantToolInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAssistantToolList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4813,7 +4885,63 @@ module Google
       class GoogleCloudDiscoveryengineV1Assistant
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_policy, as: 'customerPolicy', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantCustomerPolicy, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantCustomerPolicy::Representation
+      
+          hash :enabled_tools, as: 'enabledTools', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantToolList, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantToolList::Representation
+      
+          property :generation_config, as: 'generationConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantGenerationConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantGenerationConfig::Representation
+      
           property :name, as: 'name'
+          property :web_grounding_type, as: 'webGroundingType'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1AssistantCustomerPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :banned_phrases, as: 'bannedPhrases', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ignore_diacritics, as: 'ignoreDiacritics'
+          property :match_type, as: 'matchType'
+          property :phrase, as: 'phrase'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1AssistantGenerationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_language, as: 'defaultLanguage'
+          property :system_instruction, as: 'systemInstruction', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantGenerationConfigSystemInstruction, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantGenerationConfigSystemInstruction::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1AssistantGenerationConfigSystemInstruction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_system_instruction, as: 'additionalSystemInstruction'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1AssistantToolInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tool_display_name, as: 'toolDisplayName'
+          property :tool_name, as: 'toolName'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1AssistantToolList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tool_info, as: 'toolInfo', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantToolInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantToolInfo::Representation
+      
         end
       end
       
@@ -8605,7 +8733,14 @@ module Google
       class GoogleCloudDiscoveryengineV1betaAssistant
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_policy, as: 'customerPolicy', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicy, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicy::Representation
+      
+          hash :enabled_tools, as: 'enabledTools', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantToolList, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantToolList::Representation
+      
+          property :generation_config, as: 'generationConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantGenerationConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantGenerationConfig::Representation
+      
           property :name, as: 'name'
+          property :web_grounding_type, as: 'webGroundingType'
         end
       end
       
@@ -8657,6 +8792,39 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :banned_phrases, as: 'bannedPhrases', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyBannedPhrase, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyBannedPhrase::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyBannedPhrase
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ignore_diacritics, as: 'ignoreDiacritics'
+          property :match_type, as: 'matchType'
+          property :phrase, as: 'phrase'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAssistantGenerationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_language, as: 'defaultLanguage'
+          property :system_instruction, as: 'systemInstruction', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantGenerationConfigSystemInstruction, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantGenerationConfigSystemInstruction::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAssistantGenerationConfigSystemInstruction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_system_instruction, as: 'additionalSystemInstruction'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1betaAssistantGroundedContent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8705,6 +8873,22 @@ module Google
           collection :reference_indices, as: 'referenceIndices'
           property :start_index, :numeric_string => true, as: 'startIndex'
           property :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAssistantToolInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tool_display_name, as: 'toolDisplayName'
+          property :tool_name, as: 'toolName'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAssistantToolList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tool_info, as: 'toolInfo', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantToolInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantToolInfo::Representation
+      
         end
       end
       
@@ -8952,6 +9136,7 @@ module Google
       class GoogleCloudDiscoveryengineV1betaChunkDocumentMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :mime_type, as: 'mimeType'
           hash :struct_data, as: 'structData'
           property :title, as: 'title'
           property :uri, as: 'uri'

@@ -1544,6 +1544,28 @@ module Google
       class GoogleCloudDiscoveryengineV1Assistant
         include Google::Apis::Core::Hashable
       
+        # Customer-defined policy for the assistant.
+        # Corresponds to the JSON property `customerPolicy`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantCustomerPolicy]
+        attr_accessor :customer_policy
+      
+        # Optional. Note: not implemented yet. Use enabled_actions instead. The enabled
+        # tools on this assistant. The keys are connector name, for example "projects/`
+        # projectId`/locations/`locationId`/collections/`collectionId`/dataconnector The
+        # values consist of admin enabled tools towards the connector instance. Admin
+        # can selectively enable multiple tools on any of the connector instances that
+        # they created in the project. For example `"jira1ConnectorName": [(toolId1, "
+        # createTicket"), (toolId2, "transferTicket")], "gmail1ConnectorName": [(toolId3,
+        # "sendEmail"),..] `
+        # Corresponds to the JSON property `enabledTools`
+        # @return [Hash<String,Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantToolList>]
+        attr_accessor :enabled_tools
+      
+        # Configuration for the generation of the assistant response.
+        # Corresponds to the JSON property `generationConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantGenerationConfig]
+        attr_accessor :generation_config
+      
         # Immutable. Resource name of the assistant. Format: `projects/`project`/
         # locations/`location`/collections/`collection`/engines/`engine`/assistants/`
         # assistant`` It must be a UTF-8 encoded string with a length limit of 1024
@@ -1552,13 +1574,169 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The type of web grounding to use.
+        # Corresponds to the JSON property `webGroundingType`
+        # @return [String]
+        attr_accessor :web_grounding_type
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @customer_policy = args[:customer_policy] if args.key?(:customer_policy)
+          @enabled_tools = args[:enabled_tools] if args.key?(:enabled_tools)
+          @generation_config = args[:generation_config] if args.key?(:generation_config)
           @name = args[:name] if args.key?(:name)
+          @web_grounding_type = args[:web_grounding_type] if args.key?(:web_grounding_type)
+        end
+      end
+      
+      # Customer-defined policy for the assistant.
+      class GoogleCloudDiscoveryengineV1AssistantCustomerPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of banned phrases.
+        # Corresponds to the JSON property `bannedPhrases`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase>]
+        attr_accessor :banned_phrases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @banned_phrases = args[:banned_phrases] if args.key?(:banned_phrases)
+        end
+      end
+      
+      # Definition of a customer-defined banned phrase. A banned phrase is not allowed
+      # to appear in the user query or the LLM response, or else the answer will be
+      # refused.
+      class GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, diacritical marks (e.g., accents, umlauts) are ignored when
+        # matching banned phrases. For example, "cafe" would match "café".
+        # Corresponds to the JSON property `ignoreDiacritics`
+        # @return [Boolean]
+        attr_accessor :ignore_diacritics
+        alias_method :ignore_diacritics?, :ignore_diacritics
+      
+        # Optional. Match type for the banned phrase.
+        # Corresponds to the JSON property `matchType`
+        # @return [String]
+        attr_accessor :match_type
+      
+        # Required. The raw string content to be banned.
+        # Corresponds to the JSON property `phrase`
+        # @return [String]
+        attr_accessor :phrase
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ignore_diacritics = args[:ignore_diacritics] if args.key?(:ignore_diacritics)
+          @match_type = args[:match_type] if args.key?(:match_type)
+          @phrase = args[:phrase] if args.key?(:phrase)
+        end
+      end
+      
+      # Configuration for the generation of the assistant response.
+      class GoogleCloudDiscoveryengineV1AssistantGenerationConfig
+        include Google::Apis::Core::Hashable
+      
+        # The default language to use for the generation of the assistant response. Use
+        # an ISO 639-1 language code such as `en`. If not specified, the language will
+        # be automatically detected.
+        # Corresponds to the JSON property `defaultLanguage`
+        # @return [String]
+        attr_accessor :default_language
+      
+        # System instruction, also known as the prompt preamble for LLM calls.
+        # Corresponds to the JSON property `systemInstruction`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantGenerationConfigSystemInstruction]
+        attr_accessor :system_instruction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_language = args[:default_language] if args.key?(:default_language)
+          @system_instruction = args[:system_instruction] if args.key?(:system_instruction)
+        end
+      end
+      
+      # System instruction, also known as the prompt preamble for LLM calls.
+      class GoogleCloudDiscoveryengineV1AssistantGenerationConfigSystemInstruction
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Additional system instruction that will be added to the default
+        # system instruction.
+        # Corresponds to the JSON property `additionalSystemInstruction`
+        # @return [String]
+        attr_accessor :additional_system_instruction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_system_instruction = args[:additional_system_instruction] if args.key?(:additional_system_instruction)
+        end
+      end
+      
+      # Information to identify a tool.
+      class GoogleCloudDiscoveryengineV1AssistantToolInfo
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the tool.
+        # Corresponds to the JSON property `toolDisplayName`
+        # @return [String]
+        attr_accessor :tool_display_name
+      
+        # The name of the tool as defined by DataConnectorService.QueryAvailableActions.
+        # Note: it's using `action` in the DataConnectorService apis, but they are the
+        # same as the `tool` here.
+        # Corresponds to the JSON property `toolName`
+        # @return [String]
+        attr_accessor :tool_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tool_display_name = args[:tool_display_name] if args.key?(:tool_display_name)
+          @tool_name = args[:tool_name] if args.key?(:tool_name)
+        end
+      end
+      
+      # The enabled tools on a connector
+      class GoogleCloudDiscoveryengineV1AssistantToolList
+        include Google::Apis::Core::Hashable
+      
+        # The list of tools with corresponding tool information.
+        # Corresponds to the JSON property `toolInfo`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantToolInfo>]
+        attr_accessor :tool_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tool_info = args[:tool_info] if args.key?(:tool_info)
         end
       end
       
@@ -15655,6 +15833,28 @@ module Google
       class GoogleCloudDiscoveryengineV1betaAssistant
         include Google::Apis::Core::Hashable
       
+        # Customer-defined policy for the assistant.
+        # Corresponds to the JSON property `customerPolicy`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicy]
+        attr_accessor :customer_policy
+      
+        # Optional. Note: not implemented yet. Use enabled_actions instead. The enabled
+        # tools on this assistant. The keys are connector name, for example "projects/`
+        # projectId`/locations/`locationId`/collections/`collectionId`/dataconnector The
+        # values consist of admin enabled tools towards the connector instance. Admin
+        # can selectively enable multiple tools on any of the connector instances that
+        # they created in the project. For example `"jira1ConnectorName": [(toolId1, "
+        # createTicket"), (toolId2, "transferTicket")], "gmail1ConnectorName": [(toolId3,
+        # "sendEmail"),..] `
+        # Corresponds to the JSON property `enabledTools`
+        # @return [Hash<String,Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantToolList>]
+        attr_accessor :enabled_tools
+      
+        # Configuration for the generation of the assistant response.
+        # Corresponds to the JSON property `generationConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantGenerationConfig]
+        attr_accessor :generation_config
+      
         # Immutable. Resource name of the assistant. Format: `projects/`project`/
         # locations/`location`/collections/`collection`/engines/`engine`/assistants/`
         # assistant`` It must be a UTF-8 encoded string with a length limit of 1024
@@ -15663,13 +15863,22 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The type of web grounding to use.
+        # Corresponds to the JSON property `webGroundingType`
+        # @return [String]
+        attr_accessor :web_grounding_type
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @customer_policy = args[:customer_policy] if args.key?(:customer_policy)
+          @enabled_tools = args[:enabled_tools] if args.key?(:enabled_tools)
+          @generation_config = args[:generation_config] if args.key?(:generation_config)
           @name = args[:name] if args.key?(:name)
+          @web_grounding_type = args[:web_grounding_type] if args.key?(:web_grounding_type)
         end
       end
       
@@ -15822,6 +16031,107 @@ module Google
         def update!(**args)
           @file_id = args[:file_id] if args.key?(:file_id)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
+      # Customer-defined policy for the assistant.
+      class GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of banned phrases.
+        # Corresponds to the JSON property `bannedPhrases`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyBannedPhrase>]
+        attr_accessor :banned_phrases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @banned_phrases = args[:banned_phrases] if args.key?(:banned_phrases)
+        end
+      end
+      
+      # Definition of a customer-defined banned phrase. A banned phrase is not allowed
+      # to appear in the user query or the LLM response, or else the answer will be
+      # refused.
+      class GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyBannedPhrase
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, diacritical marks (e.g., accents, umlauts) are ignored when
+        # matching banned phrases. For example, "cafe" would match "café".
+        # Corresponds to the JSON property `ignoreDiacritics`
+        # @return [Boolean]
+        attr_accessor :ignore_diacritics
+        alias_method :ignore_diacritics?, :ignore_diacritics
+      
+        # Optional. Match type for the banned phrase.
+        # Corresponds to the JSON property `matchType`
+        # @return [String]
+        attr_accessor :match_type
+      
+        # Required. The raw string content to be banned.
+        # Corresponds to the JSON property `phrase`
+        # @return [String]
+        attr_accessor :phrase
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ignore_diacritics = args[:ignore_diacritics] if args.key?(:ignore_diacritics)
+          @match_type = args[:match_type] if args.key?(:match_type)
+          @phrase = args[:phrase] if args.key?(:phrase)
+        end
+      end
+      
+      # Configuration for the generation of the assistant response.
+      class GoogleCloudDiscoveryengineV1betaAssistantGenerationConfig
+        include Google::Apis::Core::Hashable
+      
+        # The default language to use for the generation of the assistant response. Use
+        # an ISO 639-1 language code such as `en`. If not specified, the language will
+        # be automatically detected.
+        # Corresponds to the JSON property `defaultLanguage`
+        # @return [String]
+        attr_accessor :default_language
+      
+        # System instruction, also known as the prompt preamble for LLM calls.
+        # Corresponds to the JSON property `systemInstruction`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantGenerationConfigSystemInstruction]
+        attr_accessor :system_instruction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_language = args[:default_language] if args.key?(:default_language)
+          @system_instruction = args[:system_instruction] if args.key?(:system_instruction)
+        end
+      end
+      
+      # System instruction, also known as the prompt preamble for LLM calls.
+      class GoogleCloudDiscoveryengineV1betaAssistantGenerationConfigSystemInstruction
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Additional system instruction that will be added to the default
+        # system instruction.
+        # Corresponds to the JSON property `additionalSystemInstruction`
+        # @return [String]
+        attr_accessor :additional_system_instruction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_system_instruction = args[:additional_system_instruction] if args.key?(:additional_system_instruction)
         end
       end
       
@@ -15990,6 +16300,52 @@ module Google
           @reference_indices = args[:reference_indices] if args.key?(:reference_indices)
           @start_index = args[:start_index] if args.key?(:start_index)
           @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Information to identify a tool.
+      class GoogleCloudDiscoveryengineV1betaAssistantToolInfo
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the tool.
+        # Corresponds to the JSON property `toolDisplayName`
+        # @return [String]
+        attr_accessor :tool_display_name
+      
+        # The name of the tool as defined by DataConnectorService.QueryAvailableActions.
+        # Note: it's using `action` in the DataConnectorService apis, but they are the
+        # same as the `tool` here.
+        # Corresponds to the JSON property `toolName`
+        # @return [String]
+        attr_accessor :tool_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tool_display_name = args[:tool_display_name] if args.key?(:tool_display_name)
+          @tool_name = args[:tool_name] if args.key?(:tool_name)
+        end
+      end
+      
+      # The enabled tools on a connector
+      class GoogleCloudDiscoveryengineV1betaAssistantToolList
+        include Google::Apis::Core::Hashable
+      
+        # The list of tools with corresponding tool information.
+        # Corresponds to the JSON property `toolInfo`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantToolInfo>]
+        attr_accessor :tool_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tool_info = args[:tool_info] if args.key?(:tool_info)
         end
       end
       
@@ -16864,6 +17220,12 @@ module Google
       class GoogleCloudDiscoveryengineV1betaChunkDocumentMetadata
         include Google::Apis::Core::Hashable
       
+        # The mime type of the document. https://www.iana.org/assignments/media-types/
+        # media-types.xhtml.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
         # Data representation. The structured JSON data for the document. It should
         # conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         # Corresponds to the JSON property `structData`
@@ -16886,6 +17248,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
           @struct_data = args[:struct_data] if args.key?(:struct_data)
           @title = args[:title] if args.key?(:title)
           @uri = args[:uri] if args.key?(:uri)
