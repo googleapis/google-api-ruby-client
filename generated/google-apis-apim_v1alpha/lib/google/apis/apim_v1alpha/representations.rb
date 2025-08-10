@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Entitlement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GclbObservationSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -282,6 +288,17 @@ module Google
       class EnableObservationJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Entitlement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_observation_entitled, as: 'apiObservationEntitled'
+          property :billing_project_number, :numeric_string => true, as: 'billingProjectNumber'
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
         end
       end
       

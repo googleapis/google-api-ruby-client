@@ -261,6 +261,53 @@ module Google
         end
       end
       
+      # Entitlement stores data related to API Observation entitlement for a given
+      # project
+      class Entitlement
+        include Google::Apis::Core::Hashable
+      
+        # Whether API Observation is entitled.
+        # Corresponds to the JSON property `apiObservationEntitled`
+        # @return [Boolean]
+        attr_accessor :api_observation_entitled
+        alias_method :api_observation_entitled?, :api_observation_entitled
+      
+        # Project number of associated billing project that has Apigee and Advanced API
+        # Security entitled.
+        # Corresponds to the JSON property `billingProjectNumber`
+        # @return [Fixnum]
+        attr_accessor :billing_project_number
+      
+        # Output only. The time of the entitlement creation.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Identifier. The entitlement resource name `projects/`project`/locations/`
+        # location`/entitlement`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The time of the entitlement update.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_observation_entitled = args[:api_observation_entitled] if args.key?(:api_observation_entitled)
+          @billing_project_number = args[:billing_project_number] if args.key?(:billing_project_number)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # The GCLB observation source.
       class GclbObservationSource
         include Google::Apis::Core::Hashable
