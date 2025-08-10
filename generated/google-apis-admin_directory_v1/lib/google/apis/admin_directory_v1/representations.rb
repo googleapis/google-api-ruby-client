@@ -1078,6 +1078,7 @@ module Google
           property :os_update_status, as: 'osUpdateStatus', class: Google::Apis::AdminDirectoryV1::OsUpdateStatus, decorator: Google::Apis::AdminDirectoryV1::OsUpdateStatus::Representation
       
           property :os_version, as: 'osVersion'
+          property :os_version_compliance, as: 'osVersionCompliance'
           property :platform_version, as: 'platformVersion'
           collection :recent_users, as: 'recentUsers', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::RecentUser, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::RecentUser::Representation
       
