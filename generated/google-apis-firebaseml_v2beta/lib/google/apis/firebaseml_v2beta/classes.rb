@@ -1061,6 +1061,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Configuration for Model Armor integrations of prompt and responses.
+        # Corresponds to the JSON property `modelArmorConfig`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModelArmorConfig]
+        attr_accessor :model_armor_config
+      
         # Optional. Per request settings for blocking unsafe content. Enforced on
         # GenerateContentResponse.candidates.
         # Corresponds to the JSON property `safetySettings`
@@ -1098,6 +1103,7 @@ module Google
           @contents = args[:contents] if args.key?(:contents)
           @generation_config = args[:generation_config] if args.key?(:generation_config)
           @labels = args[:labels] if args.key?(:labels)
+          @model_armor_config = args[:model_armor_config] if args.key?(:model_armor_config)
           @safety_settings = args[:safety_settings] if args.key?(:safety_settings)
           @system_instruction = args[:system_instruction] if args.key?(:system_instruction)
           @tool_config = args[:tool_config] if args.key?(:tool_config)
@@ -2034,6 +2040,32 @@ module Google
         def update!(**args)
           @modality = args[:modality] if args.key?(:modality)
           @token_count = args[:token_count] if args.key?(:token_count)
+        end
+      end
+      
+      # Configuration for Model Armor integrations of prompt and responses.
+      class GoogleCloudAiplatformV1beta1ModelArmorConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the Model Armor template to use for prompt sanitization.
+        # Corresponds to the JSON property `promptTemplateName`
+        # @return [String]
+        attr_accessor :prompt_template_name
+      
+        # Optional. The name of the Model Armor template to use for response
+        # sanitization.
+        # Corresponds to the JSON property `responseTemplateName`
+        # @return [String]
+        attr_accessor :response_template_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prompt_template_name = args[:prompt_template_name] if args.key?(:prompt_template_name)
+          @response_template_name = args[:response_template_name] if args.key?(:response_template_name)
         end
       end
       

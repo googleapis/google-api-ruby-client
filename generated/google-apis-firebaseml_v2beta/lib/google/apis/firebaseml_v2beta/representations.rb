@@ -340,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1ModelArmorConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1Part
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -833,6 +839,8 @@ module Google
           property :generation_config, as: 'generationConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfig::Representation
       
           hash :labels, as: 'labels'
+          property :model_armor_config, as: 'modelArmorConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModelArmorConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModelArmorConfig::Representation
+      
           collection :safety_settings, as: 'safetySettings', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SafetySetting, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SafetySetting::Representation
       
           property :system_instruction, as: 'systemInstruction', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content::Representation
@@ -1113,6 +1121,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :modality, as: 'modality'
           property :token_count, as: 'tokenCount'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ModelArmorConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prompt_template_name, as: 'promptTemplateName'
+          property :response_template_name, as: 'responseTemplateName'
         end
       end
       
