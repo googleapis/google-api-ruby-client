@@ -2285,7 +2285,10 @@ module Google
         #   https://tools.ietf.org/html/rfc3339] format. Allowed comparison operators: `>`
         #   and `<`. * `resource_uri` - A URI to the deployment resource. Allowed
         #   comparison operators: `=`. * `api_versions` - The API versions linked to this
-        #   deployment. Allowed comparison operators: `:`. * `deployment_type.enum_values.
+        #   deployment. Allowed comparison operators: `:`. * `source_project` - The
+        #   project/organization at source for the deployment. Allowed comparison
+        #   operators: `=`. * `source_environment` - The environment at source for the
+        #   deployment. Allowed comparison operators: `=`. * `deployment_type.enum_values.
         #   values.id` - The allowed value id of the deployment_type attribute associated
         #   with the Deployment. Allowed comparison operators: `:`. * `deployment_type.
         #   enum_values.values.display_name` - The allowed value display name of the
@@ -2421,6 +2424,159 @@ module Google
           command.response_class = Google::Apis::ApihubV1::GoogleCloudApihubV1Deployment
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a DiscoveredAPIObservation in a given project, location and
+        # ApiObservation.
+        # @param [String] name
+        #   Required. The name of the DiscoveredApiObservation to retrieve. Format:
+        #   projects/`project`/locations/`location`/discoveredApiObservations/`
+        #   discovered_api_observation`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApihubV1::GoogleCloudApihubV1DiscoveredApiObservation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1DiscoveredApiObservation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_discovered_api_observation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApihubV1::GoogleCloudApihubV1DiscoveredApiObservation::Representation
+          command.response_class = Google::Apis::ApihubV1::GoogleCloudApihubV1DiscoveredApiObservation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the DiscoveredAPIObservations in a given project and location.
+        # @param [String] parent
+        #   Required. The parent, which owns this collection of ApiObservations. Format:
+        #   projects/`project`/locations/`location`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of ApiObservations to return. The service may
+        #   return fewer than this value. If unspecified, at most 10 ApiObservations will
+        #   be returned. The maximum value is 1000; values above 1000 will be coerced to
+        #   1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListApiObservations` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListApiObservations` must match the call that provided
+        #   the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApihubV1::GoogleCloudApihubV1ListDiscoveredApiObservationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1ListDiscoveredApiObservationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_discovered_api_observations(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/discoveredApiObservations', options)
+          command.response_representation = Google::Apis::ApihubV1::GoogleCloudApihubV1ListDiscoveredApiObservationsResponse::Representation
+          command.response_class = Google::Apis::ApihubV1::GoogleCloudApihubV1ListDiscoveredApiObservationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a DiscoveredAPIOperation in a given project, location, ApiObservation and
+        # ApiOperation.
+        # @param [String] name
+        #   Required. The name of the DiscoveredApiOperation to retrieve. Format: projects/
+        #   `project`/locations/`location`/discoveredApiObservations/`
+        #   discovered_api_observation`/discoveredApiOperations/`discovered_api_operation`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApihubV1::GoogleCloudApihubV1DiscoveredApiOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1DiscoveredApiOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_discovered_api_observation_discovered_api_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApihubV1::GoogleCloudApihubV1DiscoveredApiOperation::Representation
+          command.response_class = Google::Apis::ApihubV1::GoogleCloudApihubV1DiscoveredApiOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the DiscoveredAPIOperations in a given project, location and
+        # ApiObservation.
+        # @param [String] parent
+        #   Required. The parent, which owns this collection of DiscoveredApiOperations.
+        #   Format: projects/`project`/locations/`location`/discoveredApiObservations/`
+        #   discovered_api_observation`
+        # @param [Fixnum] page_size
+        #   Optional. DiscoveredApiOperations will be returned. The maximum value is 1000;
+        #   values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `
+        #   ListDiscoveredApiApiOperations` call. Provide this to retrieve the subsequent
+        #   page. When paginating, all other parameters provided to `
+        #   ListDiscoveredApiApiOperations` must match the call that provided the page
+        #   token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApihubV1::GoogleCloudApihubV1ListDiscoveredApiOperationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1ListDiscoveredApiOperationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_discovered_api_observation_discovered_api_operations(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/discoveredApiOperations', options)
+          command.response_representation = Google::Apis::ApihubV1::GoogleCloudApihubV1ListDiscoveredApiOperationsResponse::Representation
+          command.response_class = Google::Apis::ApihubV1::GoogleCloudApihubV1ListDiscoveredApiOperationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
