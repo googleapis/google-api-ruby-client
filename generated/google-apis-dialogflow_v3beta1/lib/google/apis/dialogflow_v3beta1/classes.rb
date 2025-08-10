@@ -8082,6 +8082,11 @@ module Google
         # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1EventHandler>]
         attr_accessor :event_handlers
       
+        # Optional. Defined structured input parameters for this flow.
+        # Corresponds to the JSON property `inputParameterDefinitions`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ParameterDefinition>]
+        attr_accessor :input_parameter_definitions
+      
         # The Knowledge Connector settings for this page or flow. This includes
         # information such as the attached Knowledge Bases, and the way to execute
         # fulfillment.
@@ -8111,6 +8116,11 @@ module Google
         # Corresponds to the JSON property `nluSettings`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1NluSettings]
         attr_accessor :nlu_settings
+      
+        # Optional. Defined structured output parameters for this flow.
+        # Corresponds to the JSON property `outputParameterDefinitions`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ParameterDefinition>]
+        attr_accessor :output_parameter_definitions
       
         # A flow's transition route group serve two purposes: * They are responsible for
         # matching the user's first utterances in the flow. * They are inherited by
@@ -8145,11 +8155,13 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @event_handlers = args[:event_handlers] if args.key?(:event_handlers)
+          @input_parameter_definitions = args[:input_parameter_definitions] if args.key?(:input_parameter_definitions)
           @knowledge_connector_settings = args[:knowledge_connector_settings] if args.key?(:knowledge_connector_settings)
           @locked = args[:locked] if args.key?(:locked)
           @multi_language_settings = args[:multi_language_settings] if args.key?(:multi_language_settings)
           @name = args[:name] if args.key?(:name)
           @nlu_settings = args[:nlu_settings] if args.key?(:nlu_settings)
+          @output_parameter_definitions = args[:output_parameter_definitions] if args.key?(:output_parameter_definitions)
           @transition_route_groups = args[:transition_route_groups] if args.key?(:transition_route_groups)
           @transition_routes = args[:transition_routes] if args.key?(:transition_routes)
         end
