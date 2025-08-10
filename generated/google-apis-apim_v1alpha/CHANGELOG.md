@@ -1,5 +1,9 @@
 # Release history for google-apis-apim_v1alpha
 
+### v0.5.0 (2025-08-10)
+
+* Regenerated from discovery document revision 20250730
+
 ### v0.4.0 (2025-05-25)
 
 * Regenerated from discovery document revision 20250521
