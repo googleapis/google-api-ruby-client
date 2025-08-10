@@ -21,7 +21,7 @@ module Google
   module Apis
     # Cloud Dataplex API
     #
-    # Dataplex API is used to manage the lifecycle of data lakes.
+    # A unified, intelligent governance solution for data and AI assets.
     #
     # @see https://cloud.google.com/dataplex/docs
     module DataplexV1

@@ -22,7 +22,7 @@ module Google
     module DataplexV1
       # Cloud Dataplex API
       #
-      # Dataplex API is used to manage the lifecycle of data lakes.
+      # A unified, intelligent governance solution for data and AI assets.
       #
       # @example
       #    require 'google/apis/dataplex_v1'
@@ -651,8 +651,8 @@ module Google
         #   to retrieve the subsequent page.
         # @param [String] query
         #   Required. The query against which entries in scope should be matched. The
-        #   query syntax is defined in Search syntax for Dataplex Catalog (https://cloud.
-        #   google.com/dataplex/docs/search-syntax).
+        #   query syntax is defined in Search syntax for Dataplex Universal Catalog (https:
+        #   //cloud.google.com/dataplex/docs/search-syntax).
         # @param [String] scope
         #   Optional. The scope under which the search should be operating. It must either
         #   be organizations/ or projects/. If it is unspecified, it defaults to the
@@ -7864,8 +7864,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a metadata job. For example, use a metadata job to import Dataplex
-        # Catalog entries and aspects from a third-party system into Dataplex.
+        # Creates a metadata job. For example, use a metadata job to import metadata
+        # from a third-party system into Dataplex Universal Catalog.
         # @param [String] parent
         #   Required. The resource name of the parent location, in the format projects/`
         #   project_id_or_number`/locations/`location_id`

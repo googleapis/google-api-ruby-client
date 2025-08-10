@@ -506,8 +506,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Immutable. The IAM permission grantable on the EntryGroup to allow access to
-        # instantiate Aspects of Dataplex owned AspectTypes, only settable for Dataplex
-        # owned Types.
+        # instantiate Aspects of Dataplex Universal Catalog owned AspectTypes, only
+        # settable for Dataplex Universal Catalog owned Types.
         # Corresponds to the JSON property `alternateUsePermission`
         # @return [String]
         attr_accessor :alternate_use_permission
@@ -2038,8 +2038,8 @@ module Google
         # The data type retrieved from the schema of the data source. For instance, for
         # a BigQuery native table, it is the BigQuery Table Schema (https://cloud.google.
         # com/bigquery/docs/reference/rest/v2/tables#tablefieldschema). For a Dataplex
-        # Entity, it is the Entity Schema (https://cloud.google.com/dataplex/docs/
-        # reference/rpc/google.cloud.dataplex.v1#type_3).
+        # Universal Catalog Entity, it is the Entity Schema (https://cloud.google.com/
+        # dataplex/docs/reference/rpc/google.cloud.dataplex.v1#type_3).
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2494,7 +2494,8 @@ module Google
       class GoogleCloudDataplexV1DataQualityResult
         include Google::Apis::Core::Hashable
       
-        # The status of publishing the data scan result to Catalog.
+        # The status of publishing the data scan result as Dataplex Universal Catalog
+        # metadata.
         # Corresponds to the JSON property `catalogPublishingStatus`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanCatalogPublishingStatus]
         attr_accessor :catalog_publishing_status
@@ -3146,8 +3147,8 @@ module Google
       class GoogleCloudDataplexV1DataQualitySpec
         include Google::Apis::Core::Hashable
       
-        # Optional. If set, the latest DataScan job result will be published to Dataplex
-        # Catalog.
+        # Optional. If set, the latest DataScan job result will be published as Dataplex
+        # Universal Catalog metadata.
         # Corresponds to the JSON property `catalogPublishingEnabled`
         # @return [Boolean]
         attr_accessor :catalog_publishing_enabled
@@ -3486,7 +3487,8 @@ module Google
         end
       end
       
-      # The status of publishing the data scan result to Catalog.
+      # The status of publishing the data scan result as Dataplex Universal Catalog
+      # metadata.
       class GoogleCloudDataplexV1DataScanCatalogPublishingStatus
         include Google::Apis::Core::Hashable
       
@@ -3510,7 +3512,8 @@ module Google
       class GoogleCloudDataplexV1DataScanEvent
         include Google::Apis::Core::Hashable
       
-        # The status of publishing the data scan result to Catalog.
+        # The status of publishing the data scan result as Dataplex Universal Catalog
+        # metadata.
         # Corresponds to the JSON property `catalogPublishingStatus`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanCatalogPublishingStatus]
         attr_accessor :catalog_publishing_status
@@ -3967,9 +3970,10 @@ module Google
       class GoogleCloudDataplexV1DataSource
         include Google::Apis::Core::Hashable
       
-        # Immutable. The Dataplex entity that represents the data source (e.g. BigQuery
-        # table) for DataScan, of the form: projects/`project_number`/locations/`
-        # location_id`/lakes/`lake_id`/zones/`zone_id`/entities/`entity_id`.
+        # Immutable. The Dataplex Universal Catalog entity that represents the data
+        # source (e.g. BigQuery table) for DataScan, of the form: projects/`
+        # project_number`/locations/`location_id`/lakes/`lake_id`/zones/`zone_id`/
+        # entities/`entity_id`.
         # Corresponds to the JSON property `entity`
         # @return [String]
         attr_accessor :entity
@@ -4586,7 +4590,7 @@ module Google
         # @return [Hash<String,Google::Apis::DataplexV1::GoogleCloudDataplexV1Aspect>]
         attr_accessor :aspects
       
-        # Output only. The time when the entry was created in Dataplex.
+        # Output only. The time when the entry was created in Dataplex Universal Catalog.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -4626,7 +4630,8 @@ module Google
         # @return [String]
         attr_accessor :parent_entry
       
-        # Output only. The time when the entry was last updated in Dataplex.
+        # Output only. The time when the entry was last updated in Dataplex Universal
+        # Catalog.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -5069,8 +5074,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Immutable. The IAM permission grantable on the Entry Group to allow access to
-        # instantiate Entries of Dataplex owned Entry Types, only settable for Dataplex
-        # owned Types.
+        # instantiate Entries of Dataplex Universal Catalog owned Entry Types, only
+        # settable for Dataplex Universal Catalog owned Types.
         # Corresponds to the JSON property `alternateUsePermission`
         # @return [String]
         attr_accessor :alternate_use_permission
@@ -5261,7 +5266,7 @@ module Google
       class GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime
         include Google::Apis::Core::Hashable
       
-        # Required. Dataplex Image version.
+        # Required. Dataplex Universal Catalog Image version.
         # Corresponds to the JSON property `imageVersion`
         # @return [String]
         attr_accessor :image_version
@@ -5369,8 +5374,8 @@ module Google
       class GoogleCloudDataplexV1GenerateDataQualityRulesResponse
         include Google::Apis::Core::Hashable
       
-        # The data quality rules that Dataplex generates based on the results of a data
-        # profiling scan.
+        # The data quality rules that Dataplex Universal Catalog generates based on the
+        # results of a data profiling scan.
         # Corresponds to the JSON property `rule`
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRule>]
         attr_accessor :rule
@@ -5683,8 +5688,8 @@ module Google
         # to the aspect type, in the format `project_id_or_number`.`location_id`.`
         # aspect_type_id`.In FULL entry sync mode, if you leave this field empty, it is
         # treated as specifying exactly those aspects that are present within the
-        # specified entry. Dataplex implicitly adds the keys for all of the required
-        # aspects of an entry.
+        # specified entry. Dataplex Universal Catalog implicitly adds the keys for all
+        # of the required aspects of an entry.
         # Corresponds to the JSON property `aspectKeys`
         # @return [Array<String>]
         attr_accessor :aspect_keys
@@ -5701,18 +5706,19 @@ module Google
         attr_accessor :entry_link
       
         # The fields to update, in paths that are relative to the Entry resource.
-        # Separate each field with a comma.In FULL entry sync mode, Dataplex includes
-        # the paths of all of the fields for an entry that can be modified, including
-        # aspects. This means that Dataplex replaces the existing entry with the entry
-        # in the metadata import file. All modifiable fields are updated, regardless of
-        # the fields that are listed in the update mask, and regardless of whether a
-        # field is present in the entry object.The update_mask field is ignored when an
-        # entry is created or re-created.In an aspect-only metadata job (when entry sync
-        # mode is NONE), set this value to aspects.Dataplex also determines which
-        # entries and aspects to modify by comparing the values and timestamps that you
-        # provide in the metadata import file with the values and timestamps that exist
-        # in your project. For more information, see Comparison logic (https://cloud.
-        # google.com/dataplex/docs/import-metadata#data-modification-logic).
+        # Separate each field with a comma.In FULL entry sync mode, Dataplex Universal
+        # Catalog includes the paths of all of the fields for an entry that can be
+        # modified, including aspects. This means that Dataplex Universal Catalog
+        # replaces the existing entry with the entry in the metadata import file. All
+        # modifiable fields are updated, regardless of the fields that are listed in the
+        # update mask, and regardless of whether a field is present in the entry object.
+        # The update_mask field is ignored when an entry is created or re-created.In an
+        # aspect-only metadata job (when entry sync mode is NONE), set this value to
+        # aspects.Dataplex Universal Catalog also determines which entries and aspects
+        # to modify by comparing the values and timestamps that you provide in the
+        # metadata import file with the values and timestamps that exist in your project.
+        # For more information, see Comparison logic (https://cloud.google.com/dataplex/
+        # docs/import-metadata#data-modification-logic).
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -6903,10 +6909,10 @@ module Google
         # Required. The root path of the Cloud Storage bucket to export the metadata to,
         # in the format gs://`bucket`/. You can optionally specify a custom prefix after
         # the bucket name, in the format gs://`bucket`/`prefix`/. The maximum length of
-        # the custom prefix is 128 characters. Dataplex constructs the object path for
-        # the exported files by using the bucket name and prefix that you provide,
-        # followed by a system-generated path.The bucket must be in the same VPC Service
-        # Controls perimeter as the job.
+        # the custom prefix is 128 characters. Dataplex Universal Catalog constructs the
+        # object path for the exported files by using the bucket name and prefix that
+        # you provide, followed by a system-generated path.The bucket must be in the
+        # same VPC Service Controls perimeter as the job.
         # Corresponds to the JSON property `outputPath`
         # @return [String]
         attr_accessor :output_path
@@ -7547,14 +7553,16 @@ module Google
         # @return [String]
         attr_accessor :partition_style
       
-        # Required. Set to true if user-managed or false if managed by Dataplex. The
-        # default is false (managed by Dataplex). Set to falseto enable Dataplex
-        # discovery to update the schema. including new data discovery, schema inference,
-        # and schema evolution. Users retain the ability to input and edit the schema.
-        # Dataplex treats schema input by the user as though produced by a previous
-        # Dataplex discovery operation, and it will evolve the schema and take action
-        # based on that treatment. Set to true to fully manage the entity schema. This
-        # setting guarantees that Dataplex will not change schema fields.
+        # Required. Set to true if user-managed or false if managed by Dataplex
+        # Universal Catalog. The default is false (managed by Dataplex Universal Catalog)
+        # . Set to falseto enable Dataplex Universal Catalog discovery to update the
+        # schema. including new data discovery, schema inference, and schema evolution.
+        # Users retain the ability to input and edit the schema. Dataplex Universal
+        # Catalog treats schema input by the user as though produced by a previous
+        # Dataplex Universal Catalog discovery operation, and it will evolve the schema
+        # and take action based on that treatment. Set to true to fully manage the
+        # entity schema. This setting guarantees that Dataplex Universal Catalog will
+        # not change schema fields.
         # Corresponds to the JSON property `userManaged`
         # @return [Boolean]
         attr_accessor :user_managed
