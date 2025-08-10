@@ -88,7 +88,8 @@ module Google
         
         # Gets information about an application.
         # @param [String] apps_id
-        #   Part of `name`. Name of the Application resource to get. Example: apps/myapp.
+        #   Part of `name`. Required. Name of the Application resource to get. Example:
+        #   apps/myapp.
         # @param [String] include_extra_data
         #   Optional. Options to include extra data
         # @param [String] fields
@@ -158,8 +159,8 @@ module Google
         # to the application. default_cookie_expiration - Cookie expiration policy for
         # the application. iap - Identity-Aware Proxy properties for the application.
         # @param [String] apps_id
-        #   Part of `name`. Name of the Application resource to update. Example: apps/
-        #   myapp.
+        #   Part of `name`. Required. Name of the Application resource to update. Example:
+        #   apps/myapp.
         # @param [Google::Apis::AppengineV1beta::Application] application_object
         # @param [String] update_mask
         #   Required. Standard field mask for the set of fields to be updated.
@@ -204,7 +205,8 @@ module Google
         # 7D . If the deletion was recent, the numeric ID can be found in the Cloud
         # Console Activity Log.
         # @param [String] apps_id
-        #   Part of `name`. Name of the application to repair. Example: apps/myapp
+        #   Part of `name`. Required. Name of the application to repair. Example: apps/
+        #   myapp
         # @param [Google::Apis::AppengineV1beta::RepairApplicationRequest] repair_application_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -237,7 +239,8 @@ module Google
         
         # Uploads the specified SSL certificate.
         # @param [String] apps_id
-        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
         # @param [Google::Apis::AppengineV1beta::AuthorizedCertificate] authorized_certificate_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -270,7 +273,7 @@ module Google
         
         # Deletes the specified SSL certificate.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource to delete. Example: apps/myapp/
+        #   Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/
         #   authorizedCertificates/12345.
         # @param [String] authorized_certificates_id
         #   Part of `name`. See documentation of `appsId`.
@@ -304,7 +307,7 @@ module Google
         
         # Gets the specified SSL certificate.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
         #   authorizedCertificates/12345.
         # @param [String] authorized_certificates_id
         #   Part of `name`. See documentation of `appsId`.
@@ -341,7 +344,8 @@ module Google
         
         # Lists all SSL certificates the user is authorized to administer.
         # @param [String] apps_id
-        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
         # @param [Fixnum] page_size
         #   Maximum results to return per page.
         # @param [String] page_token
@@ -383,7 +387,7 @@ module Google
         # new certificate must be applicable to the same domains as the original
         # certificate. The certificate display_name may also be updated.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource to update. Example: apps/myapp/
+        #   Part of `name`. Required. Name of the resource to update. Example: apps/myapp/
         #   authorizedCertificates/12345.
         # @param [String] authorized_certificates_id
         #   Part of `name`. See documentation of `appsId`.
@@ -424,7 +428,8 @@ module Google
         
         # Lists all domains the user is authorized to administer.
         # @param [String] apps_id
-        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
         # @param [Fixnum] page_size
         #   Maximum results to return per page.
         # @param [String] page_token
@@ -462,7 +467,8 @@ module Google
         # domain in order to map it to an application. For a list of available
         # authorized domains, see AuthorizedDomains.ListAuthorizedDomains.
         # @param [String] apps_id
-        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
         # @param [Google::Apis::AppengineV1beta::DomainMapping] domain_mapping_object
         # @param [String] override_strategy
         #   Whether the domain creation should override any existing mappings for this
@@ -500,7 +506,7 @@ module Google
         # Deletes the specified domain mapping. A user must be authorized to administer
         # the associated domain in order to delete a DomainMapping resource.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource to delete. Example: apps/myapp/
+        #   Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/
         #   domainMappings/example.com.
         # @param [String] domain_mappings_id
         #   Part of `name`. See documentation of `appsId`.
@@ -534,7 +540,7 @@ module Google
         
         # Gets the specified domain mapping.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
         #   domainMappings/example.com.
         # @param [String] domain_mappings_id
         #   Part of `name`. See documentation of `appsId`.
@@ -568,7 +574,8 @@ module Google
         
         # Lists the domain mappings on an application.
         # @param [String] apps_id
-        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
         # @param [Fixnum] page_size
         #   Maximum results to return per page.
         # @param [String] page_token
@@ -607,7 +614,7 @@ module Google
         # A user must be authorized to administer the associated domain in order to
         # update a DomainMapping resource.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource to update. Example: apps/myapp/
+        #   Part of `name`. Required. Name of the resource to update. Example: apps/myapp/
         #   domainMappings/example.com.
         # @param [String] domain_mappings_id
         #   Part of `name`. See documentation of `appsId`.
@@ -684,8 +691,8 @@ module Google
         
         # Creates a firewall rule for the application.
         # @param [String] apps_id
-        #   Part of `parent`. Name of the parent Firewall collection in which to create a
-        #   new rule. Example: apps/myapp/firewall/ingressRules.
+        #   Part of `parent`. Required. Name of the parent Firewall collection in which to
+        #   create a new rule. Example: apps/myapp/firewall/ingressRules.
         # @param [Google::Apis::AppengineV1beta::FirewallRule] firewall_rule_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1021,8 +1028,8 @@ module Google
         
         # Deletes the specified service and all enclosed versions.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
-        #   default.
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
+        #   services/default.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [String] fields
@@ -1055,8 +1062,8 @@ module Google
         
         # Gets the current configuration of the specified service.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
-        #   default.
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
+        #   services/default.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [String] include_extra_data
@@ -1092,7 +1099,8 @@ module Google
         
         # Lists all the services in the application.
         # @param [String] apps_id
-        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
         # @param [Fixnum] page_size
         #   Maximum results to return per page.
         # @param [String] page_token
@@ -1128,8 +1136,8 @@ module Google
         
         # Updates the configuration of the specified service.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource to update. Example: apps/myapp/services/
-        #   default.
+        #   Part of `name`. Required. Name of the resource to update. Example: apps/myapp/
+        #   services/default.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [Google::Apis::AppengineV1beta::Service] service_object
@@ -1182,8 +1190,8 @@ module Google
         
         # Deploys code and resource files to a new version.
         # @param [String] apps_id
-        #   Part of `parent`. Name of the parent resource to create this version under.
-        #   Example: apps/myapp/services/default.
+        #   Part of `parent`. Required. Name of the parent resource to create this version
+        #   under. Example: apps/myapp/services/default.
         # @param [String] services_id
         #   Part of `parent`. See documentation of `appsId`.
         # @param [Google::Apis::AppengineV1beta::Version] version_object
@@ -1219,8 +1227,8 @@ module Google
         
         # Deletes an existing Version resource.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
-        #   default/versions/v1.
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
+        #   services/default/versions/v1.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [String] versions_id
@@ -1257,8 +1265,8 @@ module Google
         # Gets the specified Version resource. By default, only a BASIC_VIEW will be
         # returned. Specify the FULL_VIEW parameter to get the full resource.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
-        #   default/versions/v1.
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
+        #   services/default/versions/v1.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [String] versions_id
@@ -1300,8 +1308,8 @@ module Google
         
         # Lists the versions of a service.
         # @param [String] apps_id
-        #   Part of `parent`. Name of the parent Service resource. Example: apps/myapp/
-        #   services/default.
+        #   Part of `parent`. Required. Name of the parent Service resource. Example: apps/
+        #   myapp/services/default.
         # @param [String] services_id
         #   Part of `parent`. See documentation of `appsId`.
         # @param [Fixnum] page_size
@@ -1381,8 +1389,8 @@ module Google
         # instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/
         # v1beta/apps.services.versions#manualscaling)
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource to update. Example: apps/myapp/services/
-        #   default/versions/1.
+        #   Part of `name`. Required. Name of the resource to update. Example: apps/myapp/
+        #   services/default/versions/1.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [String] versions_id
@@ -1429,8 +1437,8 @@ module Google
         # determine if another instance should be started.Only applicable for instances
         # in App Engine flexible environment.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
-        #   default/versions/v1/instances/instance-1.
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
+        #   services/default/versions/v1/instances/instance-1.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [String] versions_id
@@ -1481,8 +1489,8 @@ module Google
         # versions.patch (https://cloud.google.com/appengine/docs/admin-api/reference/
         # rest/v1/apps.services.versions/patch) method.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
-        #   default/versions/v1/instances/instance-1.
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
+        #   services/default/versions/v1/instances/instance-1.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [String] versions_id
@@ -1521,8 +1529,8 @@ module Google
         
         # Gets instance information.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
-        #   default/versions/v1/instances/instance-1.
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
+        #   services/default/versions/v1/instances/instance-1.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [String] versions_id
@@ -1563,8 +1571,8 @@ module Google
         # over time, see the Stackdriver Monitoring API (https://cloud.google.com/
         # monitoring/api/ref_v3/rest/v3/projects.timeSeries/list).
         # @param [String] apps_id
-        #   Part of `parent`. Name of the parent Version resource. Example: apps/myapp/
-        #   services/default/versions/v1.
+        #   Part of `parent`. Required. Name of the parent Version resource. Example: apps/
+        #   myapp/services/default/versions/v1.
         # @param [String] services_id
         #   Part of `parent`. See documentation of `appsId`.
         # @param [String] versions_id
@@ -1689,8 +1697,8 @@ module Google
         # to the application. default_cookie_expiration - Cookie expiration policy for
         # the application. iap - Identity-Aware Proxy properties for the application.
         # @param [String] projects_id
-        #   Part of `name`. Name of the Application resource to update. Example: apps/
-        #   myapp.
+        #   Part of `name`. Required. Name of the Application resource to update. Example:
+        #   apps/myapp.
         # @param [String] locations_id
         #   Part of `name`. See documentation of `projectsId`.
         # @param [String] applications_id
@@ -1732,7 +1740,8 @@ module Google
         
         # Uploads the specified SSL certificate.
         # @param [String] projects_id
-        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
         # @param [String] locations_id
         #   Part of `parent`. See documentation of `projectsId`.
         # @param [String] applications_id
@@ -1771,7 +1780,7 @@ module Google
         
         # Deletes the specified SSL certificate.
         # @param [String] projects_id
-        #   Part of `name`. Name of the resource to delete. Example: apps/myapp/
+        #   Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/
         #   authorizedCertificates/12345.
         # @param [String] locations_id
         #   Part of `name`. See documentation of `projectsId`.
@@ -1811,7 +1820,7 @@ module Google
         
         # Gets the specified SSL certificate.
         # @param [String] projects_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
         #   authorizedCertificates/12345.
         # @param [String] locations_id
         #   Part of `name`. See documentation of `projectsId`.
@@ -1854,7 +1863,8 @@ module Google
         
         # Lists all SSL certificates the user is authorized to administer.
         # @param [String] projects_id
-        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
         # @param [String] locations_id
         #   Part of `parent`. See documentation of `projectsId`.
         # @param [String] applications_id
@@ -1902,7 +1912,7 @@ module Google
         # new certificate must be applicable to the same domains as the original
         # certificate. The certificate display_name may also be updated.
         # @param [String] projects_id
-        #   Part of `name`. Name of the resource to update. Example: apps/myapp/
+        #   Part of `name`. Required. Name of the resource to update. Example: apps/myapp/
         #   authorizedCertificates/12345.
         # @param [String] locations_id
         #   Part of `name`. See documentation of `projectsId`.
@@ -1949,7 +1959,8 @@ module Google
         
         # Lists all domains the user is authorized to administer.
         # @param [String] projects_id
-        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
         # @param [String] locations_id
         #   Part of `parent`. See documentation of `projectsId`.
         # @param [String] applications_id
@@ -1993,7 +2004,8 @@ module Google
         # domain in order to map it to an application. For a list of available
         # authorized domains, see AuthorizedDomains.ListAuthorizedDomains.
         # @param [String] projects_id
-        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
         # @param [String] locations_id
         #   Part of `parent`. See documentation of `projectsId`.
         # @param [String] applications_id
@@ -2036,7 +2048,7 @@ module Google
         
         # Gets the specified domain mapping.
         # @param [String] projects_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
         #   domainMappings/example.com.
         # @param [String] locations_id
         #   Part of `name`. See documentation of `projectsId`.
@@ -2076,8 +2088,8 @@ module Google
         
         # Deletes the specified service and all enclosed versions.
         # @param [String] projects_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
-        #   default.
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
+        #   services/default.
         # @param [String] locations_id
         #   Part of `name`. See documentation of `projectsId`.
         # @param [String] applications_id
@@ -2116,8 +2128,8 @@ module Google
         
         # Updates the configuration of the specified service.
         # @param [String] projects_id
-        #   Part of `name`. Name of the resource to update. Example: apps/myapp/services/
-        #   default.
+        #   Part of `name`. Required. Name of the resource to update. Example: apps/myapp/
+        #   services/default.
         # @param [String] locations_id
         #   Part of `name`. See documentation of `projectsId`.
         # @param [String] applications_id
@@ -2176,8 +2188,8 @@ module Google
         
         # Deletes an existing Version resource.
         # @param [String] projects_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
-        #   default/versions/v1.
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
+        #   services/default/versions/v1.
         # @param [String] locations_id
         #   Part of `name`. See documentation of `projectsId`.
         # @param [String] applications_id
@@ -2257,8 +2269,8 @@ module Google
         # instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/
         # v1beta/apps.services.versions#manualscaling)
         # @param [String] projects_id
-        #   Part of `name`. Name of the resource to update. Example: apps/myapp/services/
-        #   default/versions/1.
+        #   Part of `name`. Required. Name of the resource to update. Example: apps/myapp/
+        #   services/default/versions/1.
         # @param [String] locations_id
         #   Part of `name`. See documentation of `projectsId`.
         # @param [String] applications_id
