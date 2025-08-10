@@ -848,6 +848,12 @@ module Google
       class Instance
         include Google::Apis::Core::Hashable
       
+        # Optional. Immutable. Designates the backend type of this instance. Intended to
+        # be used by internal tests and allowed customers.
+        # Corresponds to the JSON property `backendType`
+        # @return [String]
+        attr_accessor :backend_type
+      
         # The storage capacity of the instance in gigabytes (GB = 1024^3 bytes). This
         # capacity can be increased up to `max_capacity_gb` GB in multipliers of `
         # capacity_step_size_gb` GB.
@@ -1024,6 +1030,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @backend_type = args[:backend_type] if args.key?(:backend_type)
           @capacity_gb = args[:capacity_gb] if args.key?(:capacity_gb)
           @capacity_step_size_gb = args[:capacity_step_size_gb] if args.key?(:capacity_step_size_gb)
           @create_time = args[:create_time] if args.key?(:create_time)
