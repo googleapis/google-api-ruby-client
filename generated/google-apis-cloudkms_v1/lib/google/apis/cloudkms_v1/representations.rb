@@ -106,6 +106,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DecapsulateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DecapsulateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DecryptRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -578,6 +590,25 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :algorithm, as: 'algorithm'
           property :protection_level, as: 'protectionLevel'
+        end
+      end
+      
+      class DecapsulateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ciphertext, :base64 => true, as: 'ciphertext'
+          property :ciphertext_crc32c, :numeric_string => true, as: 'ciphertextCrc32c'
+        end
+      end
+      
+      class DecapsulateResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :protection_level, as: 'protectionLevel'
+          property :shared_secret, :base64 => true, as: 'sharedSecret'
+          property :shared_secret_crc32c, :numeric_string => true, as: 'sharedSecretCrc32c'
+          property :verified_ciphertext_crc32c, as: 'verifiedCiphertextCrc32c'
         end
       end
       

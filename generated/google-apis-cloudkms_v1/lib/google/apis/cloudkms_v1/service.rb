@@ -1893,6 +1893,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Decapsulates data that was encapsulated with a public key retrieved from
+        # GetPublicKey corresponding to a CryptoKeyVersion with CryptoKey.purpose
+        # KEY_ENCAPSULATION.
+        # @param [String] name
+        #   Required. The resource name of the CryptoKeyVersion to use for decapsulation.
+        # @param [Google::Apis::CloudkmsV1::DecapsulateRequest] decapsulate_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::DecapsulateResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::DecapsulateResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def decapsulate_crypto_key_version(name, decapsulate_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:decapsulate', options)
+          command.request_representation = Google::Apis::CloudkmsV1::DecapsulateRequest::Representation
+          command.request_object = decapsulate_request_object
+          command.response_representation = Google::Apis::CloudkmsV1::DecapsulateResponse::Representation
+          command.response_class = Google::Apis::CloudkmsV1::DecapsulateResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Schedule a CryptoKeyVersion for destruction. Upon calling this method,
         # CryptoKeyVersion.state will be set to DESTROY_SCHEDULED, and destroy_time will
         # be set to the time destroy_scheduled_duration in the future. At that time, the

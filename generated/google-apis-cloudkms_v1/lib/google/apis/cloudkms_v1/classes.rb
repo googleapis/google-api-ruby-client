@@ -886,6 +886,107 @@ module Google
         end
       end
       
+      # Request message for KeyManagementService.Decapsulate.
+      class DecapsulateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The ciphertext produced from encapsulation with the named
+        # CryptoKeyVersion public key(s).
+        # Corresponds to the JSON property `ciphertext`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :ciphertext
+      
+        # Optional. A CRC32C checksum of the DecapsulateRequest.ciphertext. If specified,
+        # KeyManagementService will verify the integrity of the received
+        # DecapsulateRequest.ciphertext using this checksum. KeyManagementService will
+        # report an error if the checksum verification fails. If you receive a checksum
+        # error, your client should verify that CRC32C(DecapsulateRequest.ciphertext) is
+        # equal to DecapsulateRequest.ciphertext_crc32c, and if so, perform a limited
+        # number of retries. A persistent mismatch may indicate an issue in your
+        # computation of the CRC32C checksum. Note: This field is defined as int64 for
+        # reasons of compatibility across different languages. However, it is a non-
+        # negative integer, which will never exceed 2^32-1, and can be safely
+        # downconverted to uint32 in languages that support this type.
+        # Corresponds to the JSON property `ciphertextCrc32c`
+        # @return [Fixnum]
+        attr_accessor :ciphertext_crc32c
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ciphertext = args[:ciphertext] if args.key?(:ciphertext)
+          @ciphertext_crc32c = args[:ciphertext_crc32c] if args.key?(:ciphertext_crc32c)
+        end
+      end
+      
+      # Response message for KeyManagementService.Decapsulate.
+      class DecapsulateResponse
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the CryptoKeyVersion used for decapsulation. Check this
+        # field to verify that the intended resource was used for decapsulation.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The ProtectionLevel of the CryptoKeyVersion used in decapsulation.
+        # Corresponds to the JSON property `protectionLevel`
+        # @return [String]
+        attr_accessor :protection_level
+      
+        # The decapsulated shared_secret originally encapsulated with the matching
+        # public key.
+        # Corresponds to the JSON property `sharedSecret`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :shared_secret
+      
+        # Integrity verification field. A CRC32C checksum of the returned
+        # DecapsulateResponse.shared_secret. An integrity check of DecapsulateResponse.
+        # shared_secret can be performed by computing the CRC32C checksum of
+        # DecapsulateResponse.shared_secret and comparing your results to this field.
+        # Discard the response in case of non-matching checksum values, and perform a
+        # limited number of retries. A persistent mismatch may indicate an issue in your
+        # computation of the CRC32C checksum. Note: receiving this response message
+        # indicates that KeyManagementService is able to successfully decrypt the
+        # ciphertext. Note: This field is defined as int64 for reasons of compatibility
+        # across different languages. However, it is a non-negative integer, which will
+        # never exceed 2^32-1, and can be safely downconverted to uint32 in languages
+        # that support this type.
+        # Corresponds to the JSON property `sharedSecretCrc32c`
+        # @return [Fixnum]
+        attr_accessor :shared_secret_crc32c
+      
+        # Integrity verification field. A flag indicating whether DecapsulateRequest.
+        # ciphertext_crc32c was received by KeyManagementService and used for the
+        # integrity verification of the ciphertext. A false value of this field
+        # indicates either that DecapsulateRequest.ciphertext_crc32c was left unset or
+        # that it was not delivered to KeyManagementService. If you've set
+        # DecapsulateRequest.ciphertext_crc32c but this field is still false, discard
+        # the response and perform a limited number of retries.
+        # Corresponds to the JSON property `verifiedCiphertextCrc32c`
+        # @return [Boolean]
+        attr_accessor :verified_ciphertext_crc32c
+        alias_method :verified_ciphertext_crc32c?, :verified_ciphertext_crc32c
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @protection_level = args[:protection_level] if args.key?(:protection_level)
+          @shared_secret = args[:shared_secret] if args.key?(:shared_secret)
+          @shared_secret_crc32c = args[:shared_secret_crc32c] if args.key?(:shared_secret_crc32c)
+          @verified_ciphertext_crc32c = args[:verified_ciphertext_crc32c] if args.key?(:verified_ciphertext_crc32c)
+        end
+      end
+      
       # Request message for KeyManagementService.Decrypt.
       class DecryptRequest
         include Google::Apis::Core::Hashable
