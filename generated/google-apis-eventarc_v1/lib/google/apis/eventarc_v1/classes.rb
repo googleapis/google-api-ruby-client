@@ -212,9 +212,9 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Resource name of a KMS crypto key (managed by the user) used to encrypt/
-        # decrypt their event data. It must match the pattern `projects/*/locations/*/
-        # keyRings/*/cryptoKeys/*`.
+        # Optional. Resource name of a KMS crypto key (managed by the user) used to
+        # encrypt/decrypt their event data. It must match the pattern `projects/*/
+        # locations/*/keyRings/*/cryptoKeys/*`.
         # Corresponds to the JSON property `cryptoKeyName`
         # @return [String]
         attr_accessor :crypto_key_name
