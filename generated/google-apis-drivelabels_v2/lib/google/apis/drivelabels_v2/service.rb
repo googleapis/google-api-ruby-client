@@ -51,10 +51,11 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Creates a new Label.
+        # Creates a label. For more information, see [Create and publish a label](https:/
+        # /developers.google.com/workspace/drive/labels/guides/create-label).
         # @param [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2Label] google_apps_drive_labels_v2_label_object
         # @param [String] language_code
-        #   The BCP-47 language code to use for evaluating localized Field labels in
+        #   The BCP-47 language code to use for evaluating localized field labels in
         #   response. When not specified, values in the default configured language will
         #   be used.
         # @param [Boolean] use_admin_access
@@ -90,18 +91,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Permanently deletes a Label and related metadata on Drive Items. Once deleted,
-        # the Label and related Drive item metadata will be deleted. Only draft Labels,
-        # and disabled Labels may be deleted.
+        # Permanently deletes a label and related metadata on Drive items. For more
+        # information, see [Disable, enable, and delete a label](https://developers.
+        # google.com/workspace/drive/labels/guides/disable-delete-label). Once deleted,
+        # the label and related Drive item metadata will be deleted. Only draft labels
+        # and disabled labels may be deleted.
         # @param [String] name
         #   Required. Label resource name.
         # @param [Boolean] use_admin_access
         #   Set to `true` in order to use the user's admin credentials. The server will
-        #   verify the user is an admin for the Label before allowing access.
+        #   verify the user is an admin for the label before allowing access.
         # @param [String] write_control_required_revision_id
-        #   The revision_id of the label that the write request will be applied to. If
-        #   this is not the latest revision of the label, the request will not be
-        #   processed and will return a 400 Bad Request error.
+        #   The revision ID of the label that the write request will be applied to. If
+        #   this isn't the latest revision of the label, the request will not be processed
+        #   and will return a 400 Bad Request error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -131,12 +134,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a single Label by applying a set of update requests resulting in a new
-        # draft revision. The batch update is all-or-nothing: If any of the update
-        # requests are invalid, no changes are applied. The resulting draft revision
-        # must be published before the changes may be used with Drive Items.
+        # Updates a single label by applying a set of update requests resulting in a new
+        # draft revision. For more information, see [Update a label](https://developers.
+        # google.com/workspace/drive/labels/guides/update-label). The batch update is
+        # all-or-nothing: If any of the update requests are invalid, no changes are
+        # applied. The resulting draft revision must be published before the changes may
+        # be used with Drive items.
         # @param [String] name
-        #   Required. The resource name of the Label to update.
+        #   Required. The resource name of the label to update.
         # @param [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DeltaUpdateLabelRequest] google_apps_drive_labels_v2_delta_update_label_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -167,11 +172,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Disable a published Label. Disabling a Label will result in a new disabled
-        # published revision based on the current published revision. If there is a
-        # draft revision, a new disabled draft revision will be created based on the
-        # latest draft revision. Older draft revisions will be deleted. Once disabled, a
-        # label may be deleted with `DeleteLabel`.
+        # Disable a published label. For more information, see [Disable, enable, and
+        # delete a label](https://developers.google.com/workspace/drive/labels/guides/
+        # disable-delete-label). Disabling a label will result in a new disabled
+        # published revision based on the current published revision. If there's a draft
+        # revision, a new disabled draft revision will be created based on the latest
+        # draft revision. Older draft revisions will be deleted. Once disabled, a label
+        # may be deleted with `DeleteLabel`.
         # @param [String] name
         #   Required. Label resource name.
         # @param [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2DisableLabelRequest] google_apps_drive_labels_v2_disable_label_request_object
@@ -204,9 +211,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Enable a disabled Label and restore it to its published state. This will
+        # Enable a disabled label and restore it to its published state. For more
+        # information, see [Disable, enable, and delete a label](https://developers.
+        # google.com/workspace/drive/labels/guides/disable-delete-label). This will
         # result in a new published revision based on the current disabled published
-        # revision. If there is an existing disabled draft revision, a new revision will
+        # revision. If there's an existing disabled draft revision, a new revision will
         # be created based on that draft and will be enabled.
         # @param [String] name
         #   Required. Label resource name.
@@ -240,11 +249,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get a label by its resource name. Resource name may be any of: * `labels/`id``
-        # - See `labels/`id`@latest` * `labels/`id`@latest` - Gets the latest revision
-        # of the label. * `labels/`id`@published` - Gets the current published revision
-        # of the label. * `labels/`id`@`revision_id`` - Gets the label at the specified
-        # revision ID.
+        # Get a label by its resource name. For more information, see [Search for labels]
+        # (https://developers.google.com/workspace/drive/labels/guides/search-label).
+        # Resource name may be any of: * `labels/`id`` - See `labels/`id`@latest` * `
+        # labels/`id`@latest` - Gets the latest revision of the label. * `labels/`id`@
+        # published` - Gets the current published revision of the label. * `labels/`id`@`
+        # revision_id`` - Gets the label at the specified revision ID.
         # @param [String] name
         #   Required. Label resource name. May be any of: * `labels/`id`` (equivalent to
         #   labels/`id`@latest) * `labels/`id`@latest` * `labels/`id`@published` * `labels/
@@ -288,15 +298,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List labels.
+        # List labels. For more information, see [Search for labels](https://developers.
+        # google.com/workspace/drive/labels/guides/search-label).
         # @param [String] customer
-        #   The customer to scope this list request to. For example: "customers/abcd1234".
+        #   The customer to scope this list request to. For example: `customers/abcd1234`.
         #   If unset, will return all labels within the current customer.
         # @param [String] language_code
         #   The BCP-47 language code to use for evaluating localized field labels. When
         #   not specified, values in the default configured language are used.
         # @param [String] minimum_role
-        #   Specifies the level of access the user must have on the returned Labels. The
+        #   Specifies the level of access the user must have on the returned labels. The
         #   minimum role a user must have on a label. Defaults to `READER`.
         # @param [Fixnum] page_size
         #   Maximum number of labels to return per page. Default: 50. Max: 200.
@@ -311,7 +322,7 @@ module Google
         #   reference a specific revision (`labels/`id``).
         # @param [Boolean] use_admin_access
         #   Set to `true` in order to use the user's admin credentials. This will return
-        #   all Labels within the customer.
+        #   all labels within the customer.
         # @param [String] view
         #   When specified, only certain fields belonging to the indicated view are
         #   returned.
@@ -349,18 +360,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Publish all draft changes to the Label. Once published, the Label may not
-        # return to its draft state. See `google.apps.drive.labels.v2.Lifecycle` for
-        # more information. Publishing a Label will result in a new published revision.
-        # All previous draft revisions will be deleted. Previous published revisions
-        # will be kept but are subject to automated deletion as needed. Once published,
-        # some changes are no longer permitted. Generally, any change that would
-        # invalidate or cause new restrictions on existing metadata related to the Label
-        # will be rejected. For example, the following changes to a Label will be
-        # rejected after the Label is published: * The label cannot be directly deleted.
-        # It must be disabled first, then deleted. * Field.FieldType cannot be changed. *
-        # Changes to Field validation options cannot reject something that was
-        # previously accepted. * Reducing the max entries.
+        # Publish all draft changes to the label. Once published, the label may not
+        # return to its draft state. For more information, see [Create and publish a
+        # label](https://developers.google.com/workspace/drive/labels/guides/create-
+        # label). Publishing a label will result in a new published revision. All
+        # previous draft revisions will be deleted. Previous published revisions will be
+        # kept but are subject to automated deletion as needed. For more information,
+        # see [Label lifecycle](https://developers.google.com/workspace/drive/labels/
+        # guides/label-lifecycle). Once published, some changes are no longer permitted.
+        # Generally, any change that would invalidate or cause new restrictions on
+        # existing metadata related to the label will be rejected. For example, the
+        # following changes to a label will be rejected after the label is published: *
+        # The label cannot be directly deleted. It must be disabled first, then deleted.
+        # * `Field.FieldType` cannot be changed. * Changes to field validation options
+        # cannot reject something that was previously accepted. * Reducing the maximum
+        # entries.
         # @param [String] name
         #   Required. Label resource name.
         # @param [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2PublishLabelRequest] google_apps_drive_labels_v2_publish_label_request_object
@@ -393,10 +407,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a Label's `CopyMode`. Changes to this policy are not revisioned, do
-        # not require publishing, and take effect immediately.
+        # Updates a label's `CopyMode`. Changes to this policy aren't revisioned, don't
+        # require publishing, and take effect immediately.
         # @param [String] name
-        #   Required. The resource name of the Label to update.
+        #   Required. The resource name of the label to update.
         # @param [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest] google_apps_drive_labels_v2_update_label_copy_mode_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -427,12 +441,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a Label's EabledAppSettings. Enabling a Label in a Workspace
-        # Application allows it to be used in that application. This change is not
-        # revisioned, does not require publishing, and takes effect immediately.
+        # Updates a label's `EnabledAppSettings`. Enabling a label in a Google Workspace
+        # app allows it to be used in that app. This change isn't revisioned, doesn't
+        # require publishing, and takes effect immediately.
         # @param [String] name
-        #   Required. The resource name of the Label to update. The resource name of the
-        #   Label to update.
+        #   Required. The resource name of the label to update. The resource name of the
+        #   label to update.
         # @param [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest] google_apps_drive_labels_v2_update_label_enabled_app_settings_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -463,16 +477,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a Label's permissions. If a permission for the indicated principal
-        # doesn't exist, a new Label Permission is created, otherwise the existing
-        # permission is updated. Permissions affect the Label resource as a whole, are
-        # not revisioned, and do not require publishing.
+        # Updates a label's permissions. If a permission for the indicated principal
+        # doesn't exist, a label permission is created, otherwise the existing
+        # permission is updated. Permissions affect the label resource as a whole, aren'
+        # t revisioned, and don't require publishing.
         # @param [String] parent
-        #   Required. The parent Label resource name.
+        #   Required. The parent label resource name.
         # @param [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2LabelPermission] google_apps_drive_labels_v2_label_permission_object
         # @param [Boolean] use_admin_access
         #   Set to `true` in order to use the user's admin credentials. The server will
-        #   verify the user is an admin for the Label before allowing access.
+        #   verify the user is an admin for the label before allowing access.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -503,11 +517,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the LabelLocks on a Label.
+        # Lists the label locks on a label.
         # @param [String] parent
-        #   Required. Label on which Locks are applied. Format: labels/`label`
+        #   Required. Label on which locks are applied. Format: `labels/`label``.
         # @param [Fixnum] page_size
-        #   Maximum number of Locks to return per page. Default: 100. Max: 200.
+        #   Maximum number of locks to return per page. Default: 100. Max: 200.
         # @param [String] page_token
         #   The token of the page to return.
         # @param [String] fields
@@ -539,12 +553,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes Label permissions. Permissions affect the Label resource as a whole,
-        # are not revisioned, and do not require publishing.
+        # Deletes label permissions. Permissions affect the label resource as a whole,
+        # aren't revisioned, and don't require publishing.
         # @param [String] parent
-        #   Required. The parent Label resource name shared by all permissions being
-        #   deleted. Format: labels/`label` If this is set, the parent field in the
-        #   UpdateLabelPermissionRequest messages must either be empty or match this field.
+        #   Required. The parent label resource name shared by all permissions being
+        #   deleted. Format: `labels/`label``. If this is set, the parent field in the `
+        #   UpdateLabelPermissionRequest` messages must either be empty or match this
+        #   field.
         # @param [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest] google_apps_drive_labels_v2_batch_delete_label_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -575,14 +590,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates Label permissions. If a permission for the indicated principal doesn't
-        # exist, a new Label Permission is created, otherwise the existing permission is
-        # updated. Permissions affect the Label resource as a whole, are not revisioned,
-        # and do not require publishing.
+        # Updates label permissions. If a permission for the indicated principal doesn't
+        # exist, a label permission is created, otherwise the existing permission is
+        # updated. Permissions affect the label resource as a whole, aren't revisioned,
+        # and don't require publishing.
         # @param [String] parent
-        #   Required. The parent Label resource name shared by all permissions being
-        #   updated. Format: labels/`label` If this is set, the parent field in the
-        #   UpdateLabelPermissionRequest messages must either be empty or match this field.
+        #   Required. The parent label resource name shared by all permissions being
+        #   updated. Format: `labels/`label``. If this is set, the parent field in the `
+        #   UpdateLabelPermissionRequest` messages must either be empty or match this
+        #   field.
         # @param [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest] google_apps_drive_labels_v2_batch_update_label_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -613,17 +629,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a Label's permissions. If a permission for the indicated principal
-        # doesn't exist, a new Label Permission is created, otherwise the existing
-        # permission is updated. Permissions affect the Label resource as a whole, are
-        # not revisioned, and do not require publishing.
+        # Updates a label's permissions. If a permission for the indicated principal
+        # doesn't exist, a label permission is created, otherwise the existing
+        # permission is updated. Permissions affect the label resource as a whole, aren'
+        # t revisioned, and don't require publishing.
         # @param [String] parent
-        #   Required. The parent Label resource name on the Label Permission is created.
-        #   Format: labels/`label`
+        #   Required. The parent label resource name on the label permission is created.
+        #   Format: `labels/`label``.
         # @param [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2LabelPermission] google_apps_drive_labels_v2_label_permission_object
         # @param [Boolean] use_admin_access
         #   Set to `true` in order to use the user's admin credentials. The server will
-        #   verify the user is an admin for the Label before allowing access.
+        #   verify the user is an admin for the label before allowing access.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -654,13 +670,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a Label's permission. Permissions affect the Label resource as a whole,
-        # are not revisioned, and do not require publishing.
+        # Deletes a label's permission. Permissions affect the label resource as a whole,
+        # aren't revisioned, and don't require publishing.
         # @param [String] name
-        #   Required. Label Permission resource name.
+        #   Required. Label permission resource name.
         # @param [Boolean] use_admin_access
         #   Set to `true` in order to use the user's admin credentials. The server will
-        #   verify the user is an admin for the Label before allowing access.
+        #   verify the user is an admin for the label before allowing access.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -689,17 +705,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists a Label's permissions.
+        # Lists a label's permissions.
         # @param [String] parent
-        #   Required. The parent Label resource name on which Label Permission are listed.
-        #   Format: labels/`label`
+        #   Required. The parent label resource name on which label permissions are listed.
+        #   Format: `labels/`label``.
         # @param [Fixnum] page_size
         #   Maximum number of permissions to return per page. Default: 50. Max: 200.
         # @param [String] page_token
         #   The token of the page to return.
         # @param [Boolean] use_admin_access
         #   Set to `true` in order to use the user's admin credentials. The server will
-        #   verify the user is an admin for the Label before allowing access.
+        #   verify the user is an admin for the label before allowing access.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -730,16 +746,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a Label's permissions. If a permission for the indicated principal
-        # doesn't exist, a new Label Permission is created, otherwise the existing
-        # permission is updated. Permissions affect the Label resource as a whole, are
-        # not revisioned, and do not require publishing.
+        # Updates a label's permissions. If a permission for the indicated principal
+        # doesn't exist, a label permission is created, otherwise the existing
+        # permission is updated. Permissions affect the label resource as a whole, aren'
+        # t revisioned, and don't require publishing.
         # @param [String] parent
-        #   Required. The parent Label resource name.
+        #   Required. The parent label resource name.
         # @param [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2LabelPermission] google_apps_drive_labels_v2_label_permission_object
         # @param [Boolean] use_admin_access
         #   Set to `true` in order to use the user's admin credentials. The server will
-        #   verify the user is an admin for the Label before allowing access.
+        #   verify the user is an admin for the label before allowing access.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -770,11 +786,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the LabelLocks on a Label.
+        # Lists the label locks on a label.
         # @param [String] parent
-        #   Required. Label on which Locks are applied. Format: labels/`label`
+        #   Required. Label on which locks are applied. Format: `labels/`label``.
         # @param [Fixnum] page_size
-        #   Maximum number of Locks to return per page. Default: 100. Max: 200.
+        #   Maximum number of locks to return per page. Default: 100. Max: 200.
         # @param [String] page_token
         #   The token of the page to return.
         # @param [String] fields
@@ -806,12 +822,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes Label permissions. Permissions affect the Label resource as a whole,
-        # are not revisioned, and do not require publishing.
+        # Deletes label permissions. Permissions affect the label resource as a whole,
+        # aren't revisioned, and don't require publishing.
         # @param [String] parent
-        #   Required. The parent Label resource name shared by all permissions being
-        #   deleted. Format: labels/`label` If this is set, the parent field in the
-        #   UpdateLabelPermissionRequest messages must either be empty or match this field.
+        #   Required. The parent label resource name shared by all permissions being
+        #   deleted. Format: `labels/`label``. If this is set, the parent field in the `
+        #   UpdateLabelPermissionRequest` messages must either be empty or match this
+        #   field.
         # @param [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest] google_apps_drive_labels_v2_batch_delete_label_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -842,14 +859,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates Label permissions. If a permission for the indicated principal doesn't
-        # exist, a new Label Permission is created, otherwise the existing permission is
-        # updated. Permissions affect the Label resource as a whole, are not revisioned,
-        # and do not require publishing.
+        # Updates label permissions. If a permission for the indicated principal doesn't
+        # exist, a label permission is created, otherwise the existing permission is
+        # updated. Permissions affect the label resource as a whole, aren't revisioned,
+        # and don't require publishing.
         # @param [String] parent
-        #   Required. The parent Label resource name shared by all permissions being
-        #   updated. Format: labels/`label` If this is set, the parent field in the
-        #   UpdateLabelPermissionRequest messages must either be empty or match this field.
+        #   Required. The parent label resource name shared by all permissions being
+        #   updated. Format: `labels/`label``. If this is set, the parent field in the `
+        #   UpdateLabelPermissionRequest` messages must either be empty or match this
+        #   field.
         # @param [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest] google_apps_drive_labels_v2_batch_update_label_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -880,17 +898,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a Label's permissions. If a permission for the indicated principal
-        # doesn't exist, a new Label Permission is created, otherwise the existing
-        # permission is updated. Permissions affect the Label resource as a whole, are
-        # not revisioned, and do not require publishing.
+        # Updates a label's permissions. If a permission for the indicated principal
+        # doesn't exist, a label permission is created, otherwise the existing
+        # permission is updated. Permissions affect the label resource as a whole, aren'
+        # t revisioned, and don't require publishing.
         # @param [String] parent
-        #   Required. The parent Label resource name on the Label Permission is created.
-        #   Format: labels/`label`
+        #   Required. The parent label resource name on the label permission is created.
+        #   Format: `labels/`label``.
         # @param [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2LabelPermission] google_apps_drive_labels_v2_label_permission_object
         # @param [Boolean] use_admin_access
         #   Set to `true` in order to use the user's admin credentials. The server will
-        #   verify the user is an admin for the Label before allowing access.
+        #   verify the user is an admin for the label before allowing access.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -921,13 +939,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a Label's permission. Permissions affect the Label resource as a whole,
-        # are not revisioned, and do not require publishing.
+        # Deletes a label's permission. Permissions affect the label resource as a whole,
+        # aren't revisioned, and don't require publishing.
         # @param [String] name
-        #   Required. Label Permission resource name.
+        #   Required. Label permission resource name.
         # @param [Boolean] use_admin_access
         #   Set to `true` in order to use the user's admin credentials. The server will
-        #   verify the user is an admin for the Label before allowing access.
+        #   verify the user is an admin for the label before allowing access.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -956,17 +974,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists a Label's permissions.
+        # Lists a label's permissions.
         # @param [String] parent
-        #   Required. The parent Label resource name on which Label Permission are listed.
-        #   Format: labels/`label`
+        #   Required. The parent label resource name on which label permissions are listed.
+        #   Format: `labels/`label``.
         # @param [Fixnum] page_size
         #   Maximum number of permissions to return per page. Default: 50. Max: 200.
         # @param [String] page_token
         #   The token of the page to return.
         # @param [Boolean] use_admin_access
         #   Set to `true` in order to use the user's admin credentials. The server will
-        #   verify the user is an admin for the Label before allowing access.
+        #   verify the user is an admin for the label before allowing access.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -997,10 +1015,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the constraints on the structure of a Label; such as, the maximum number
-        # of Fields allowed and maximum length of the label title.
+        # Get the constraints on the structure of a label; such as, the maximum number
+        # of fields allowed and maximum length of the label title.
         # @param [String] name
-        #   Required. Label revision resource name Must be: "limits/label"
+        #   Required. Label revision resource name must be: "limits/label".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1033,8 +1051,8 @@ module Google
         #   Required. The resource name of the user. Only "users/me/capabilities" is
         #   supported.
         # @param [String] customer
-        #   The customer to scope this request to. For example: "customers/abcd1234". If
-        #   unset, will return settings within the current customer.
+        #   The customer to scope this request to. For example: `customers/abcd1234`. If
+        #   unset, it will return settings within the current customer.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
