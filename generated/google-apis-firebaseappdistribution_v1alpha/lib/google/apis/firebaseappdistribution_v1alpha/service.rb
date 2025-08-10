@@ -88,8 +88,9 @@ module Google
         
         # Get a JWT token
         # @param [String] mobilesdk_app_id
-        #   Unique id for a Firebase app of the format: `version`:`project_number`:`
-        #   platform`:`hash(bundle_id)` Example: 1:581234567376:android:aa0a3c7b135e90289
+        #   Required. Unique id for a Firebase app of the format: `version`:`
+        #   project_number`:`platform`:`hash(bundle_id)` Example: 1:581234567376:android:
+        #   aa0a3c7b135e90289
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -119,10 +120,11 @@ module Google
         
         # GET Release by binary upload hash
         # @param [String] mobilesdk_app_id
-        #   Unique id for a Firebase app of the format: `version`:`project_number`:`
-        #   platform`:`hash(bundle_id)` Example: 1:581234567376:android:aa0a3c7b135e90289
+        #   Required. Unique id for a Firebase app of the format: `version`:`
+        #   project_number`:`platform`:`hash(bundle_id)` Example: 1:581234567376:android:
+        #   aa0a3c7b135e90289
         # @param [String] upload_hash
-        #   The hash for the upload
+        #   Required. The hash for the upload
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -153,10 +155,11 @@ module Google
         
         # Enable access on a release for testers.
         # @param [String] mobilesdk_app_id
-        #   Unique id for a Firebase app of the format: `version`:`project_number`:`
-        #   platform`:`hash(bundle_id)` Example: 1:581234567376:android:aa0a3c7b135e90289
+        #   Required. Unique id for a Firebase app of the format: `version`:`
+        #   project_number`:`platform`:`hash(bundle_id)` Example: 1:581234567376:android:
+        #   aa0a3c7b135e90289
         # @param [String] release_id
-        #   Release identifier
+        #   Required. Release identifier
         # @param [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseRequest] google_firebase_appdistro_v1alpha_enable_access_on_release_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -190,10 +193,11 @@ module Google
         
         # Create release notes on a release.
         # @param [String] mobilesdk_app_id
-        #   Unique id for a Firebase app of the format: `version`:`project_number`:`
-        #   platform`:`hash(bundle_id)` Example: 1:581234567376:android:aa0a3c7b135e90289
+        #   Required. Unique id for a Firebase app of the format: `version`:`
+        #   project_number`:`platform`:`hash(bundle_id)` Example: 1:581234567376:android:
+        #   aa0a3c7b135e90289
         # @param [String] release_id
-        #   Release identifier
+        #   Required. Release identifier
         # @param [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaCreateReleaseNotesRequest] google_firebase_appdistro_v1alpha_create_release_notes_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -262,10 +266,11 @@ module Google
         
         # GET Binary upload status by token
         # @param [String] mobilesdk_app_id
-        #   Unique id for a Firebase app of the format: `version`:`project_number`:`
-        #   platform`:`hash(bundle_id)` Example: 1:581234567376:android:aa0a3c7b135e90289
+        #   Required. Unique id for a Firebase app of the format: `version`:`
+        #   project_number`:`platform`:`hash(bundle_id)` Example: 1:581234567376:android:
+        #   aa0a3c7b135e90289
         # @param [String] upload_token
-        #   The token for the upload
+        #   Required. The token for the upload
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
