@@ -562,6 +562,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3FlowTransition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3FlowValidationResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -785,6 +791,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3InlineDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3InlineSchema
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1066,6 +1078,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3ParameterDefinition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3Phrase
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1109,6 +1127,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3PlaybookStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3PlaybookTransition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1601,6 +1625,18 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3TurnSignals
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3TypeSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3TypeSchemaSchemaReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3707,7 +3743,11 @@ module Google
       
           property :flow_invocation, as: 'flowInvocation', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FlowInvocation, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FlowInvocation::Representation
       
+          property :flow_transition, as: 'flowTransition', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FlowTransition, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FlowTransition::Representation
+      
           property :playbook_invocation, as: 'playbookInvocation', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3PlaybookInvocation, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3PlaybookInvocation::Representation
+      
+          property :playbook_transition, as: 'playbookTransition', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3PlaybookTransition, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3PlaybookTransition::Representation
       
           property :tool_use, as: 'toolUse', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ToolUse, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ToolUse::Representation
       
@@ -4586,6 +4626,8 @@ module Google
           property :display_name, as: 'displayName'
           collection :event_handlers, as: 'eventHandlers', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3EventHandler, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3EventHandler::Representation
       
+          collection :input_parameter_definitions, as: 'inputParameterDefinitions', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ParameterDefinition, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ParameterDefinition::Representation
+      
           property :knowledge_connector_settings, as: 'knowledgeConnectorSettings', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3KnowledgeConnectorSettings, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3KnowledgeConnectorSettings::Representation
       
           property :locked, as: 'locked'
@@ -4593,6 +4635,8 @@ module Google
       
           property :name, as: 'name'
           property :nlu_settings, as: 'nluSettings', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3NluSettings, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3NluSettings::Representation
+      
+          collection :output_parameter_definitions, as: 'outputParameterDefinitions', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ParameterDefinition, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ParameterDefinition::Representation
       
           collection :transition_route_groups, as: 'transitionRouteGroups'
           collection :transition_routes, as: 'transitionRoutes', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRoute, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRoute::Representation
@@ -4621,6 +4665,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_multi_language_detection, as: 'enableMultiLanguageDetection'
           collection :supported_response_language_codes, as: 'supportedResponseLanguageCodes'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3FlowTransition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :flow, as: 'flow'
         end
       end
       
@@ -4995,6 +5047,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, :base64 => true, as: 'content'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3InlineSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :items, as: 'items', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TypeSchema, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TypeSchema::Representation
+      
+          property :type, as: 'type'
         end
       end
       
@@ -5450,6 +5511,17 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3ParameterDefinition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :name, as: 'name'
+          property :type, as: 'type'
+          property :type_schema, as: 'typeSchema', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TypeSchema, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TypeSchema::Representation
+      
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3Phrase
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5465,11 +5537,16 @@ module Google
           property :goal, as: 'goal'
           collection :handlers, as: 'handlers', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Handler, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Handler::Representation
       
+          collection :input_parameter_definitions, as: 'inputParameterDefinitions', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ParameterDefinition, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ParameterDefinition::Representation
+      
           property :instruction, as: 'instruction', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3PlaybookInstruction, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3PlaybookInstruction::Representation
       
           property :llm_model_settings, as: 'llmModelSettings', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3LlmModelSettings, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3LlmModelSettings::Representation
       
           property :name, as: 'name'
+          collection :output_parameter_definitions, as: 'outputParameterDefinitions', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ParameterDefinition, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ParameterDefinition::Representation
+      
+          property :playbook_type, as: 'playbookType'
           collection :referenced_flows, as: 'referencedFlows'
           collection :referenced_playbooks, as: 'referencedPlaybooks'
           collection :referenced_tools, as: 'referencedTools'
@@ -5529,6 +5606,14 @@ module Google
           collection :steps, as: 'steps', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3PlaybookStep, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3PlaybookStep::Representation
       
           property :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3PlaybookTransition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :playbook, as: 'playbook'
         end
       end
       
@@ -6360,6 +6445,24 @@ module Google
           property :sentiment_score, as: 'sentimentScore'
           property :user_escalated, as: 'userEscalated'
           collection :webhook_statuses, as: 'webhookStatuses'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3TypeSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inline_schema, as: 'inlineSchema', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3InlineSchema, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3InlineSchema::Representation
+      
+          property :schema_reference, as: 'schemaReference', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TypeSchemaSchemaReference, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TypeSchemaSchemaReference::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3TypeSchemaSchemaReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :schema, as: 'schema'
+          property :tool, as: 'tool'
         end
       end
       
