@@ -604,6 +604,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1AssistantCustomerPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1AssistantGenerationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1AssistantGenerationConfigSystemInstruction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1AssistantGroundedContent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -629,6 +653,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataSegment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1AssistantToolInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1AssistantToolList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5256,7 +5292,14 @@ module Google
       class GoogleCloudDiscoveryengineV1Assistant
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_policy, as: 'customerPolicy', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AssistantCustomerPolicy, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AssistantCustomerPolicy::Representation
+      
+          hash :enabled_tools, as: 'enabledTools', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AssistantToolList, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AssistantToolList::Representation
+      
+          property :generation_config, as: 'generationConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AssistantGenerationConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AssistantGenerationConfig::Representation
+      
           property :name, as: 'name'
+          property :web_grounding_type, as: 'webGroundingType'
         end
       end
       
@@ -5308,6 +5351,39 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1AssistantCustomerPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :banned_phrases, as: 'bannedPhrases', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ignore_diacritics, as: 'ignoreDiacritics'
+          property :match_type, as: 'matchType'
+          property :phrase, as: 'phrase'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1AssistantGenerationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_language, as: 'defaultLanguage'
+          property :system_instruction, as: 'systemInstruction', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AssistantGenerationConfigSystemInstruction, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AssistantGenerationConfigSystemInstruction::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1AssistantGenerationConfigSystemInstruction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_system_instruction, as: 'additionalSystemInstruction'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1AssistantGroundedContent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5356,6 +5432,22 @@ module Google
           collection :reference_indices, as: 'referenceIndices'
           property :start_index, :numeric_string => true, as: 'startIndex'
           property :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1AssistantToolInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tool_display_name, as: 'toolDisplayName'
+          property :tool_name, as: 'toolName'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1AssistantToolList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tool_info, as: 'toolInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AssistantToolInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AssistantToolInfo::Representation
+      
         end
       end
       
@@ -5603,6 +5695,7 @@ module Google
       class GoogleCloudDiscoveryengineV1ChunkDocumentMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :mime_type, as: 'mimeType'
           hash :struct_data, as: 'structData'
           property :title, as: 'title'
           property :uri, as: 'uri'
