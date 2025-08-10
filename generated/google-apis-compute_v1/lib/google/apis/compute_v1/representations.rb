@@ -412,6 +412,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendBucketParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendBucketUsedBy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -575,6 +581,12 @@ module Google
       end
       
       class BackendServiceLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2542,6 +2554,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InterconnectApplicationAwareInterconnect
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectApplicationAwareInterconnectBandwidthPercentage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectApplicationAwareInterconnectStrictPriorityPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InterconnectAttachment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3580,6 +3616,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkPeeringConnectionStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkPeeringConnectionStatusConsensusState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkPeeringConnectionStatusTrafficConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkPerformanceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3647,6 +3701,12 @@ module Google
       end
       
       class NetworksRemovePeeringRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworksRequestRemovePeeringRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4685,6 +4745,12 @@ module Google
       end
       
       class Reservation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationAdvancedDeploymentControl
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7872,6 +7938,8 @@ module Google
           property :kind, as: 'kind'
           property :load_balancing_scheme, as: 'loadBalancingScheme'
           property :name, as: 'name'
+          property :params, as: 'params', class: Google::Apis::ComputeV1::BackendBucketParams, decorator: Google::Apis::ComputeV1::BackendBucketParams::Representation
+      
           property :self_link, as: 'selfLink'
           collection :used_by, as: 'usedBy', class: Google::Apis::ComputeV1::BackendBucketUsedBy, decorator: Google::Apis::ComputeV1::BackendBucketUsedBy::Representation
       
@@ -7954,6 +8022,13 @@ module Google
         end
       end
       
+      class BackendBucketParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
+        end
+      end
+      
       class BackendBucketUsedBy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8020,6 +8095,8 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :outlier_detection, as: 'outlierDetection', class: Google::Apis::ComputeV1::OutlierDetection, decorator: Google::Apis::ComputeV1::OutlierDetection::Representation
+      
+          property :params, as: 'params', class: Google::Apis::ComputeV1::BackendServiceParams, decorator: Google::Apis::ComputeV1::BackendServiceParams::Representation
       
           property :port, as: 'port'
           property :port_name, as: 'portName'
@@ -8291,6 +8368,13 @@ module Google
           collection :optional_fields, as: 'optionalFields'
           property :optional_mode, as: 'optionalMode'
           property :sample_rate, as: 'sampleRate'
+        end
+      end
+      
+      class BackendServiceParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -11959,7 +12043,10 @@ module Google
       class Interconnect
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :aai_enabled, as: 'aaiEnabled'
           property :admin_enabled, as: 'adminEnabled'
+          property :application_aware_interconnect, as: 'applicationAwareInterconnect', class: Google::Apis::ComputeV1::InterconnectApplicationAwareInterconnect, decorator: Google::Apis::ComputeV1::InterconnectApplicationAwareInterconnect::Representation
+      
           collection :available_features, as: 'availableFeatures'
           collection :circuit_infos, as: 'circuitInfos', class: Google::Apis::ComputeV1::InterconnectCircuitInfo, decorator: Google::Apis::ComputeV1::InterconnectCircuitInfo::Representation
       
@@ -11993,6 +12080,41 @@ module Google
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :state, as: 'state'
+        end
+      end
+      
+      class InterconnectApplicationAwareInterconnect
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bandwidth_percentage_policy, as: 'bandwidthPercentagePolicy', class: Google::Apis::ComputeV1::InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy, decorator: Google::Apis::ComputeV1::InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy::Representation
+      
+          property :profile_description, as: 'profileDescription'
+          collection :shape_average_percentages, as: 'shapeAveragePercentages', class: Google::Apis::ComputeV1::InterconnectApplicationAwareInterconnectBandwidthPercentage, decorator: Google::Apis::ComputeV1::InterconnectApplicationAwareInterconnectBandwidthPercentage::Representation
+      
+          property :strict_priority_policy, as: 'strictPriorityPolicy', class: Google::Apis::ComputeV1::InterconnectApplicationAwareInterconnectStrictPriorityPolicy, decorator: Google::Apis::ComputeV1::InterconnectApplicationAwareInterconnectStrictPriorityPolicy::Representation
+      
+        end
+      end
+      
+      class InterconnectApplicationAwareInterconnectBandwidthPercentage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :percentage, as: 'percentage'
+          property :traffic_class, as: 'trafficClass'
+        end
+      end
+      
+      class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bandwidth_percentages, as: 'bandwidthPercentages', class: Google::Apis::ComputeV1::InterconnectApplicationAwareInterconnectBandwidthPercentage, decorator: Google::Apis::ComputeV1::InterconnectApplicationAwareInterconnectBandwidthPercentage::Representation
+      
+        end
+      end
+      
+      class InterconnectApplicationAwareInterconnectStrictPriorityPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -13934,6 +14056,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_create_routes, as: 'autoCreateRoutes'
+          property :connection_status, as: 'connectionStatus', class: Google::Apis::ComputeV1::NetworkPeeringConnectionStatus, decorator: Google::Apis::ComputeV1::NetworkPeeringConnectionStatus::Representation
+      
           property :exchange_subnet_routes, as: 'exchangeSubnetRoutes'
           property :export_custom_routes, as: 'exportCustomRoutes'
           property :export_subnet_routes_with_public_ip, as: 'exportSubnetRoutesWithPublicIp'
@@ -13945,6 +14069,37 @@ module Google
           property :stack_type, as: 'stackType'
           property :state, as: 'state'
           property :state_details, as: 'stateDetails'
+          property :update_strategy, as: 'updateStrategy'
+        end
+      end
+      
+      class NetworkPeeringConnectionStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consensus_state, as: 'consensusState', class: Google::Apis::ComputeV1::NetworkPeeringConnectionStatusConsensusState, decorator: Google::Apis::ComputeV1::NetworkPeeringConnectionStatusConsensusState::Representation
+      
+          property :traffic_configuration, as: 'trafficConfiguration', class: Google::Apis::ComputeV1::NetworkPeeringConnectionStatusTrafficConfiguration, decorator: Google::Apis::ComputeV1::NetworkPeeringConnectionStatusTrafficConfiguration::Representation
+      
+          property :update_strategy, as: 'updateStrategy'
+        end
+      end
+      
+      class NetworkPeeringConnectionStatusConsensusState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delete_status, as: 'deleteStatus'
+          property :update_status, as: 'updateStatus'
+        end
+      end
+      
+      class NetworkPeeringConnectionStatusTrafficConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :export_custom_routes_to_peer, as: 'exportCustomRoutesToPeer'
+          property :export_subnet_routes_with_public_ip_to_peer, as: 'exportSubnetRoutesWithPublicIpToPeer'
+          property :import_custom_routes_from_peer, as: 'importCustomRoutesFromPeer'
+          property :import_subnet_routes_with_public_ip_from_peer, as: 'importSubnetRoutesWithPublicIpFromPeer'
+          property :stack_type, as: 'stackType'
         end
       end
       
@@ -14097,6 +14252,13 @@ module Google
       end
       
       class NetworksRemovePeeringRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class NetworksRequestRemovePeeringRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
@@ -15948,6 +16110,8 @@ module Google
       class Reservation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_deployment_control, as: 'advancedDeploymentControl', class: Google::Apis::ComputeV1::ReservationAdvancedDeploymentControl, decorator: Google::Apis::ComputeV1::ReservationAdvancedDeploymentControl::Representation
+      
           property :aggregate_reservation, as: 'aggregateReservation', class: Google::Apis::ComputeV1::AllocationAggregateReservation, decorator: Google::Apis::ComputeV1::AllocationAggregateReservation::Representation
       
           property :commitment, as: 'commitment'
@@ -15977,6 +16141,13 @@ module Google
           property :specific_reservation_required, as: 'specificReservationRequired'
           property :status, as: 'status'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class ReservationAdvancedDeploymentControl
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reservation_operational_mode, as: 'reservationOperationalMode'
         end
       end
       
