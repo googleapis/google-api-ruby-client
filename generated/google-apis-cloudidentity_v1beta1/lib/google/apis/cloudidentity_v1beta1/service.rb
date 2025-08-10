@@ -1776,6 +1776,193 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates an InboundOidcSsoProfile for a customer. When the target customer has
+        # enabled [Multi-party approval for sensitive actions](https://support.google.
+        # com/a/answer/13790448), the `Operation` in the response will have `"done":
+        # false`, it will not have a response, and the metadata will have `"state": "
+        # awaiting-multi-party-approval"`.
+        # @param [Google::Apis::CloudidentityV1beta1::InboundOidcSsoProfile] inbound_oidc_sso_profile_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_inbound_oidc_sso_profile(inbound_oidc_sso_profile_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/inboundOidcSsoProfiles', options)
+          command.request_representation = Google::Apis::CloudidentityV1beta1::InboundOidcSsoProfile::Representation
+          command.request_object = inbound_oidc_sso_profile_object
+          command.response_representation = Google::Apis::CloudidentityV1beta1::Operation::Representation
+          command.response_class = Google::Apis::CloudidentityV1beta1::Operation
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an InboundOidcSsoProfile.
+        # @param [String] name
+        #   Required. The [resource name](https://cloud.google.com/apis/design/
+        #   resource_names) of the InboundOidcSsoProfile to delete. Format: `
+        #   inboundOidcSsoProfiles/`sso_profile_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_inbound_oidc_sso_profile(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::CloudidentityV1beta1::Operation::Representation
+          command.response_class = Google::Apis::CloudidentityV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an InboundOidcSsoProfile.
+        # @param [String] name
+        #   Required. The [resource name](https://cloud.google.com/apis/design/
+        #   resource_names) of the InboundOidcSsoProfile to get. Format: `
+        #   inboundOidcSsoProfiles/`sso_profile_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1beta1::InboundOidcSsoProfile] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1beta1::InboundOidcSsoProfile]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_inbound_oidc_sso_profile(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::CloudidentityV1beta1::InboundOidcSsoProfile::Representation
+          command.response_class = Google::Apis::CloudidentityV1beta1::InboundOidcSsoProfile
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists InboundOidcSsoProfile objects for a Google enterprise customer.
+        # @param [String] filter
+        #   A [Common Expression Language](https://github.com/google/cel-spec) expression
+        #   to filter the results. The only supported filter is filtering by customer. For
+        #   example: `customer=="customers/C0123abc"`. Omitting the filter or specifying a
+        #   filter of `customer=="customers/my_customer"` will return the profiles for the
+        #   customer that the caller (authenticated user) belongs to. Specifying a filter
+        #   of `customer==""` will return the global shared OIDC profiles.
+        # @param [Fixnum] page_size
+        #   The maximum number of InboundOidcSsoProfiles to return. The service may return
+        #   fewer than this value. If omitted (or defaulted to zero) the server will use a
+        #   sensible default. This default may change over time. The maximum allowed value
+        #   is 100. Requests with page_size greater than that will be silently interpreted
+        #   as having this maximum value.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListInboundOidcSsoProfiles` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListInboundOidcSsoProfiles` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1beta1::ListInboundOidcSsoProfilesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1beta1::ListInboundOidcSsoProfilesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_inbound_oidc_sso_profiles(filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/inboundOidcSsoProfiles', options)
+          command.response_representation = Google::Apis::CloudidentityV1beta1::ListInboundOidcSsoProfilesResponse::Representation
+          command.response_class = Google::Apis::CloudidentityV1beta1::ListInboundOidcSsoProfilesResponse
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an InboundOidcSsoProfile. When the target customer has enabled [Multi-
+        # party approval for sensitive actions](https://support.google.com/a/answer/
+        # 13790448), the `Operation` in the response will have `"done": false`, it will
+        # not have a response, and the metadata will have `"state": "awaiting-multi-
+        # party-approval"`.
+        # @param [String] name
+        #   Output only. [Resource name](https://cloud.google.com/apis/design/
+        #   resource_names) of the OIDC SSO profile.
+        # @param [Google::Apis::CloudidentityV1beta1::InboundOidcSsoProfile] inbound_oidc_sso_profile_object
+        # @param [String] update_mask
+        #   Required. The list of fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_inbound_oidc_sso_profile(name, inbound_oidc_sso_profile_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::CloudidentityV1beta1::InboundOidcSsoProfile::Representation
+          command.request_object = inbound_oidc_sso_profile_object
+          command.response_representation = Google::Apis::CloudidentityV1beta1::Operation::Representation
+          command.response_class = Google::Apis::CloudidentityV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates an InboundSamlSsoProfile for a customer. When the target customer has
         # enabled [Multi-party approval for sensitive actions](https://support.google.
         # com/a/answer/13790448), the `Operation` in the response will have `"done":
