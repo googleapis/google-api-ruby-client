@@ -2899,13 +2899,13 @@ module Google
         end
         
         # RetrieveStudyMetadata returns instance associated with the given study
-        # presented as metadata with the bulk data removed. See [RetrieveTransaction] (
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
-        # For details on the implementation of RetrieveStudyMetadata, see [Metadata
-        # resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources)
-        # in the Cloud Healthcare API conformance statement. For samples that show how
-        # to call RetrieveStudyMetadata, see [Retrieve metadata](https://cloud.google.
-        # com/healthcare/docs/how-tos/dicomweb#retrieve-metadata).
+        # presented as metadata. See [RetrieveTransaction] (http://dicom.nema.org/
+        # medical/dicom/current/output/html/part18.html#sect_10.4). For details on the
+        # implementation of RetrieveStudyMetadata, see [Metadata resources](https://
+        # cloud.google.com/healthcare/docs/dicom#metadata_resources) in the Cloud
+        # Healthcare API conformance statement. For samples that show how to call
+        # RetrieveStudyMetadata, see [Retrieve metadata](https://cloud.google.com/
+        # healthcare/docs/how-tos/dicomweb#retrieve-metadata).
         # @param [String] parent
         #   Required. The name of the DICOM store that is being accessed. For example, `
         #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -3159,12 +3159,11 @@ module Google
         end
         
         # RetrieveSeriesMetadata returns instance associated with the given study and
-        # series, presented as metadata with the bulk data removed. See [
-        # RetrieveTransaction] (http://dicom.nema.org/medical/dicom/current/output/html/
-        # part18.html#sect_10.4). For details on the implementation of
-        # RetrieveSeriesMetadata, see [Metadata resources](https://cloud.google.com/
-        # healthcare/docs/dicom#metadata_resources) in the Cloud Healthcare API
-        # conformance statement. For samples that show how to call
+        # series, presented as metadata. See [RetrieveTransaction] (http://dicom.nema.
+        # org/medical/dicom/current/output/html/part18.html#sect_10.4). For details on
+        # the implementation of RetrieveSeriesMetadata, see [Metadata resources](https://
+        # cloud.google.com/healthcare/docs/dicom#metadata_resources) in the Cloud
+        # Healthcare API conformance statement. For samples that show how to call
         # RetrieveSeriesMetadata, see [Retrieve metadata](https://cloud.google.com/
         # healthcare/docs/how-tos/dicomweb#retrieve-metadata).
         # @param [String] parent
@@ -3375,14 +3374,13 @@ module Google
         end
         
         # RetrieveInstanceMetadata returns instance associated with the given study,
-        # series, and SOP Instance UID presented as metadata with the bulk data removed.
-        # See [RetrieveTransaction] (http://dicom.nema.org/medical/dicom/current/output/
-        # html/part18.html#sect_10.4). For details on the implementation of
-        # RetrieveInstanceMetadata, see [Metadata resources](https://cloud.google.com/
-        # healthcare/docs/dicom#metadata_resources) in the Cloud Healthcare API
-        # conformance statement. For samples that show how to call
-        # RetrieveInstanceMetadata, see [Retrieve metadata](https://cloud.google.com/
-        # healthcare/docs/how-tos/dicomweb#retrieve-metadata).
+        # series, and SOP Instance UID presented as metadata. See [RetrieveTransaction] (
+        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
+        # For details on the implementation of RetrieveInstanceMetadata, see [Metadata
+        # resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources)
+        # in the Cloud Healthcare API conformance statement. For samples that show how
+        # to call RetrieveInstanceMetadata, see [Retrieve metadata](https://cloud.google.
+        # com/healthcare/docs/how-tos/dicomweb#retrieve-metadata).
         # @param [String] parent
         #   Required. The name of the DICOM store that is being accessed. For example, `
         #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -3469,9 +3467,9 @@ module Google
         end
         
         # Returns uncompressed, unencoded bytes representing the referenced bulkdata tag
-        # from an instance. See [Retrieve Transaction] (http://dicom.nema.org/medical/
-        # dicom/current/output/html/part18.html#sect_10.4)`: .external`. For details on
-        # the implementation of RetrieveBulkdata, see [Bulkdata resources](https://cloud.
+        # from an instance. See [Retrieve Transaction](http://dicom.nema.org/medical/
+        # dicom/current/output/html/part18.html#sect_10.4). For details on the
+        # implementation of RetrieveBulkdata, see [Bulkdata resources](https://cloud.
         # google.com/healthcare/docs/dicom#bulkdata-resources) in the Cloud Healthcare
         # API conformance statement. For samples that show how to call RetrieveBulkdata,
         # see [Retrieve bulkdata](https://cloud.google.com/healthcare/docs/how-tos/
