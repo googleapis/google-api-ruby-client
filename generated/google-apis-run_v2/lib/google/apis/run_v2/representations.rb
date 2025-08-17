@@ -1605,6 +1605,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :mount_path, as: 'mountPath'
           property :name, as: 'name'
+          property :sub_path, as: 'subPath'
         end
       end
       

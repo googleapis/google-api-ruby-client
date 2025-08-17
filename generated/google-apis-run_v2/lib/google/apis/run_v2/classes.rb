@@ -3580,6 +3580,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Path within the volume from which the container's volume should be
+        # mounted. Defaults to "" (volume's root).
+        # Corresponds to the JSON property `subPath`
+        # @return [String]
+        attr_accessor :sub_path
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3588,6 +3594,7 @@ module Google
         def update!(**args)
           @mount_path = args[:mount_path] if args.key?(:mount_path)
           @name = args[:name] if args.key?(:name)
+          @sub_path = args[:sub_path] if args.key?(:sub_path)
         end
       end
       
