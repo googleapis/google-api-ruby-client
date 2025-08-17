@@ -1281,7 +1281,7 @@ module Google
         # @return [String]
         attr_accessor :idfa_targeting
       
-        # Describes the platform of the app. Examples: "IOS", "Android".
+        # Describes the platform of the app. Examples: "IOS", "ANDROID".
         # Corresponds to the JSON property `platform`
         # @return [String]
         attr_accessor :platform
