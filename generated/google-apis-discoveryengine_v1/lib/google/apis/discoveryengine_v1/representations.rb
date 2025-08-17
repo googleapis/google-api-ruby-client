@@ -8020,6 +8020,7 @@ module Google
           hash :action_params, as: 'actionParams'
           property :is_action_configured, as: 'isActionConfigured'
           property :service_name, as: 'serviceName'
+          property :use_static_secrets, as: 'useStaticSecrets'
         end
       end
       
