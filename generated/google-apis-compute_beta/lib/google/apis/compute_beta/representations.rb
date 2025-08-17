@@ -3706,6 +3706,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MultiMigStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MultiMigStatusAcceleratorTopology
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Error
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Error
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+            class ErrorDetail
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MultiMigsList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -15028,6 +15064,8 @@ module Google
           property :resource_policies, as: 'resourcePolicies', class: Google::Apis::ComputeBeta::MultiMigResourcePolicies, decorator: Google::Apis::ComputeBeta::MultiMigResourcePolicies::Representation
       
           property :self_link, as: 'selfLink'
+          property :status, as: 'status', class: Google::Apis::ComputeBeta::MultiMigStatus, decorator: Google::Apis::ComputeBeta::MultiMigStatus::Representation
+      
         end
       end
       
@@ -15035,6 +15073,66 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :workload_policy, as: 'workloadPolicy'
+        end
+      end
+      
+      class MultiMigStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :applied_accelerator_topologies, as: 'appliedAcceleratorTopologies', class: Google::Apis::ComputeBeta::MultiMigStatusAcceleratorTopology, decorator: Google::Apis::ComputeBeta::MultiMigStatusAcceleratorTopology::Representation
+      
+        end
+      end
+      
+      class MultiMigStatusAcceleratorTopology
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_topology, as: 'acceleratorTopology'
+          property :accelerator_topology_state, as: 'acceleratorTopologyState'
+          property :accelerator_topology_state_last_check, as: 'acceleratorTopologyStateLastCheck', class: Google::Apis::ComputeBeta::MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck, decorator: Google::Apis::ComputeBeta::MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck::Representation
+      
+        end
+      end
+      
+      class MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::ComputeBeta::MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck::Error, decorator: Google::Apis::ComputeBeta::MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck::Error::Representation
+      
+          property :timestamp, as: 'timestamp'
+        end
+        
+        class Error
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :errors, as: 'errors', class: Google::Apis::ComputeBeta::MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck::Error::Error, decorator: Google::Apis::ComputeBeta::MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck::Error::Error::Representation
+        
+          end
+          
+          class Error
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :code, as: 'code'
+              collection :error_details, as: 'errorDetails', class: Google::Apis::ComputeBeta::MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck::Error::Error::ErrorDetail, decorator: Google::Apis::ComputeBeta::MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck::Error::Error::ErrorDetail::Representation
+          
+              property :location, as: 'location'
+              property :message, as: 'message'
+            end
+            
+            class ErrorDetail
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :error_info, as: 'errorInfo', class: Google::Apis::ComputeBeta::ErrorInfo, decorator: Google::Apis::ComputeBeta::ErrorInfo::Representation
+            
+                property :help, as: 'help', class: Google::Apis::ComputeBeta::Help, decorator: Google::Apis::ComputeBeta::Help::Representation
+            
+                property :localized_message, as: 'localizedMessage', class: Google::Apis::ComputeBeta::LocalizedMessage, decorator: Google::Apis::ComputeBeta::LocalizedMessage::Representation
+            
+                property :quota_info, as: 'quotaInfo', class: Google::Apis::ComputeBeta::QuotaExceededInfo, decorator: Google::Apis::ComputeBeta::QuotaExceededInfo::Representation
+            
+              end
+            end
+          end
         end
       end
       
