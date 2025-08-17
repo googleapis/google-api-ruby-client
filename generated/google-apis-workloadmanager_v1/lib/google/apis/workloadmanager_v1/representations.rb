@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IamPermission
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Insight
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -388,6 +394,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceStates
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ShellCommand
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -472,7 +484,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :available_version, as: 'availableVersion'
+          property :hana_monitoring, as: 'hanaMonitoring', class: Google::Apis::WorkloadmanagerV1::ServiceStates, decorator: Google::Apis::WorkloadmanagerV1::ServiceStates::Representation
+      
           property :installed_version, as: 'installedVersion'
+          property :is_fully_enabled, as: 'isFullyEnabled'
+          property :process_metrics, as: 'processMetrics', class: Google::Apis::WorkloadmanagerV1::ServiceStates, decorator: Google::Apis::WorkloadmanagerV1::ServiceStates::Representation
+      
+          property :system_discovery, as: 'systemDiscovery', class: Google::Apis::WorkloadmanagerV1::ServiceStates, decorator: Google::Apis::WorkloadmanagerV1::ServiceStates::Representation
+      
         end
       end
       
@@ -622,6 +641,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
+          property :engine, as: 'engine'
           property :evaluation_id, as: 'evaluationId'
           collection :external_data_sources, as: 'externalDataSources', class: Google::Apis::WorkloadmanagerV1::ExternalDataSources, decorator: Google::Apis::WorkloadmanagerV1::ExternalDataSources::Representation
       
@@ -671,6 +691,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :service_accounts, as: 'serviceAccounts'
+        end
+      end
+      
+      class IamPermission
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :granted, as: 'granted'
+          property :name, as: 'name'
         end
       end
       
@@ -1138,6 +1166,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource, as: 'resource'
           property :type, as: 'type'
+        end
+      end
+      
+      class ServiceStates
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :iam_permissions, as: 'iamPermissions', class: Google::Apis::WorkloadmanagerV1::IamPermission, decorator: Google::Apis::WorkloadmanagerV1::IamPermission::Representation
+      
+          property :state, as: 'state'
         end
       end
       
