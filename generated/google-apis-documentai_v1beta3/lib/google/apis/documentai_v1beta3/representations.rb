@@ -1108,6 +1108,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta3DocumentValidationOutput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentValidationOutputValidationResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta3EnableProcessorMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2648,6 +2660,8 @@ module Google
           collection :text_styles, as: 'textStyles', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentStyle, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentStyle::Representation
       
           property :uri, as: 'uri'
+          collection :validation_outputs, as: 'validationOutputs', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentValidationOutput, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentValidationOutput::Representation
+      
         end
       end
       
@@ -2860,6 +2874,7 @@ module Google
           property :id, as: 'id'
           property :mention_id, as: 'mentionId'
           property :mention_text, as: 'mentionText'
+          property :method_prop, as: 'method'
           property :normalized_value, as: 'normalizedValue', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntityNormalizedValue, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntityNormalizedValue::Representation
       
           property :page_anchor, as: 'pageAnchor', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentPageAnchor, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentPageAnchor::Representation
@@ -3422,6 +3437,25 @@ module Google
       
           property :text_anchor, as: 'textAnchor', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentTextAnchor, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentTextAnchor::Representation
       
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentValidationOutput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pass_all_rules, as: 'passAllRules'
+          collection :validation_results, as: 'validationResults', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentValidationOutputValidationResult, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentValidationOutputValidationResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentValidationOutputValidationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rule_description, as: 'ruleDescription'
+          property :rule_name, as: 'ruleName'
+          property :validation_details, as: 'validationDetails'
+          property :validation_result_type, as: 'validationResultType'
         end
       end
       

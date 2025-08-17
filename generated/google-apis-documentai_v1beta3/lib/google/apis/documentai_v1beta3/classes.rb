@@ -2882,6 +2882,12 @@ module Google
         # @return [String]
         attr_accessor :uri
       
+        # The output of the validation given the document and the validation rules. The
+        # output is appended to the document in the processing order.
+        # Corresponds to the JSON property `validationOutputs`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentValidationOutput>]
+        attr_accessor :validation_outputs
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2904,6 +2910,7 @@ module Google
           @text_changes = args[:text_changes] if args.key?(:text_changes)
           @text_styles = args[:text_styles] if args.key?(:text_styles)
           @uri = args[:uri] if args.key?(:uri)
+          @validation_outputs = args[:validation_outputs] if args.key?(:validation_outputs)
         end
       end
       
@@ -3544,6 +3551,11 @@ module Google
         # @return [String]
         attr_accessor :mention_text
       
+        # Optional. Specifies how the entity's value is obtained.
+        # Corresponds to the JSON property `method`
+        # @return [String]
+        attr_accessor :method_prop
+      
         # Parsed and normalized entity value.
         # Corresponds to the JSON property `normalizedValue`
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntityNormalizedValue]
@@ -3594,6 +3606,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @mention_id = args[:mention_id] if args.key?(:mention_id)
           @mention_text = args[:mention_text] if args.key?(:mention_text)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
           @normalized_value = args[:normalized_value] if args.key?(:normalized_value)
           @page_anchor = args[:page_anchor] if args.key?(:page_anchor)
           @properties = args[:properties] if args.key?(:properties)
@@ -5649,6 +5662,70 @@ module Google
           @changed_text = args[:changed_text] if args.key?(:changed_text)
           @provenance = args[:provenance] if args.key?(:provenance)
           @text_anchor = args[:text_anchor] if args.key?(:text_anchor)
+        end
+      end
+      
+      # The output of the validation given the document and the validation rules.
+      class GoogleCloudDocumentaiV1beta3DocumentValidationOutput
+        include Google::Apis::Core::Hashable
+      
+        # The overall result of the validation, true if all applicable rules are valid.
+        # Corresponds to the JSON property `passAllRules`
+        # @return [Boolean]
+        attr_accessor :pass_all_rules
+        alias_method :pass_all_rules?, :pass_all_rules
+      
+        # The result of each validation rule.
+        # Corresponds to the JSON property `validationResults`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentValidationOutputValidationResult>]
+        attr_accessor :validation_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pass_all_rules = args[:pass_all_rules] if args.key?(:pass_all_rules)
+          @validation_results = args[:validation_results] if args.key?(:validation_results)
+        end
+      end
+      
+      # Validation result for a single validation rule.
+      class GoogleCloudDocumentaiV1beta3DocumentValidationOutputValidationResult
+        include Google::Apis::Core::Hashable
+      
+        # The description of the validation rule.
+        # Corresponds to the JSON property `ruleDescription`
+        # @return [String]
+        attr_accessor :rule_description
+      
+        # The name of the validation rule.
+        # Corresponds to the JSON property `ruleName`
+        # @return [String]
+        attr_accessor :rule_name
+      
+        # The detailed information of the running the validation process using the
+        # entity from the document based on the validation rule.
+        # Corresponds to the JSON property `validationDetails`
+        # @return [String]
+        attr_accessor :validation_details
+      
+        # The result of the validation rule.
+        # Corresponds to the JSON property `validationResultType`
+        # @return [String]
+        attr_accessor :validation_result_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rule_description = args[:rule_description] if args.key?(:rule_description)
+          @rule_name = args[:rule_name] if args.key?(:rule_name)
+          @validation_details = args[:validation_details] if args.key?(:validation_details)
+          @validation_result_type = args[:validation_result_type] if args.key?(:validation_result_type)
         end
       end
       
