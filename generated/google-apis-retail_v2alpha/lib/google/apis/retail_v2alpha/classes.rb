@@ -2724,11 +2724,6 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # A facet specification to perform faceted search.
-        # Corresponds to the JSON property `facetSpec`
-        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestFacetSpec]
-        attr_accessor :facet_spec
-      
         # Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/
         # controls/*`
         # Corresponds to the JSON property `name`
@@ -2766,7 +2761,6 @@ module Google
         def update!(**args)
           @associated_serving_config_ids = args[:associated_serving_config_ids] if args.key?(:associated_serving_config_ids)
           @display_name = args[:display_name] if args.key?(:display_name)
-          @facet_spec = args[:facet_spec] if args.key?(:facet_spec)
           @name = args[:name] if args.key?(:name)
           @rule = args[:rule] if args.key?(:rule)
           @search_solution_use_case = args[:search_solution_use_case] if args.key?(:search_solution_use_case)
@@ -3076,12 +3070,13 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # The types Retail classifies the search query as. Supported values are: - "
-        # ADVERSARIAL" - "CHITCHAT" - "JAILBREAK" - "ORDER_SUPPORT" - "
-        # SIMPLE_PRODUCT_SEARCH" - "INTENT_REFINEMENT" - "PRODUCT_DETAILS" - "
-        # PRODUCT_COMPARISON" - "DEALS_AND_COUPONS" - "STORE_RELEVANT" - "BLOCKLISTED" -
-        # "BEST_PRODUCT" - "RETAIL_SUPPORT" - "DISABLED" clang-format off clang-format
-        # on
+        # LINT.IfChange(query_types_proto) The types Retail classifies the search query
+        # as. Supported values are: - "ADVERSARIAL" - "CHITCHAT" - "JAILBREAK" - "
+        # ORDER_SUPPORT" - "SIMPLE_PRODUCT_SEARCH" - "INTENT_REFINEMENT" - "
+        # PRODUCT_DETAILS" - "PRODUCT_COMPARISON" - "DEALS_AND_COUPONS" - "
+        # STORE_RELEVANT" - "BLOCKLISTED" - "BEST_PRODUCT" - "RETAIL_SUPPORT" - "
+        # DISABLED" LINT.ThenChange(//depot/google3/cloud/console/web/ai/retail/service/
+        # conversational_search_customization_config.ts:intent_types_ts)
         # Corresponds to the JSON property `userQueryTypes`
         # @return [Array<String>]
         attr_accessor :user_query_types
