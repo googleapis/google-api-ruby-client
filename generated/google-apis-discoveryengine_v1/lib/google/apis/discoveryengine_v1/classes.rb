@@ -13809,6 +13809,13 @@ module Google
         # @return [String]
         attr_accessor :service_name
       
+        # Optional. Whether to use static secrets for the connector. If true, the
+        # secrets provided in the action_params will be ignored.
+        # Corresponds to the JSON property `useStaticSecrets`
+        # @return [Boolean]
+        attr_accessor :use_static_secrets
+        alias_method :use_static_secrets?, :use_static_secrets
+      
         def initialize(**args)
            update!(**args)
         end
@@ -13818,6 +13825,7 @@ module Google
           @action_params = args[:action_params] if args.key?(:action_params)
           @is_action_configured = args[:is_action_configured] if args.key?(:is_action_configured)
           @service_name = args[:service_name] if args.key?(:service_name)
+          @use_static_secrets = args[:use_static_secrets] if args.key?(:use_static_secrets)
         end
       end
       
@@ -18594,8 +18602,8 @@ module Google
       
         # A comma-separated list of fields to order by, sorted in ascending order. Use "
         # desc" after a field name for descending. Supported fields: * `update_time` * `
-        # create_time` * `session_name` * `is_pinned` Example: * "update_time desc" * "
-        # create_time" * "is_pinned desc,update_time desc": list sessions by is_pinned
+        # create_time` * `session_name` * `is_pinned` Example: * `update_time desc` * `
+        # create_time` * `is_pinned desc,update_time desc`: list sessions by is_pinned
         # first, then by update_time.
         # Corresponds to the JSON property `orderBy`
         # @return [String]
