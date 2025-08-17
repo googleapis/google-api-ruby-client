@@ -1588,6 +1588,7 @@ module Google
       
           property :resource_metadata, as: 'resourceMetadata', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata::Representation
       
+          property :skip_ingestion, as: 'skipIngestion'
         end
       end
       
