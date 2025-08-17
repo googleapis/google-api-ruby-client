@@ -57,10 +57,32 @@ module Google
         # @return [String]
         attr_accessor :available_version
       
+        # The state of the service.
+        # Corresponds to the JSON property `hanaMonitoring`
+        # @return [Google::Apis::WorkloadmanagerV1::ServiceStates]
+        attr_accessor :hana_monitoring
+      
         # Optional. The installed version of the agent on the host.
         # Corresponds to the JSON property `installedVersion`
         # @return [String]
         attr_accessor :installed_version
+      
+        # Optional. Whether the agent is fully enabled. If false, the agent is has some
+        # issues.
+        # Corresponds to the JSON property `isFullyEnabled`
+        # @return [Boolean]
+        attr_accessor :is_fully_enabled
+        alias_method :is_fully_enabled?, :is_fully_enabled
+      
+        # The state of the service.
+        # Corresponds to the JSON property `processMetrics`
+        # @return [Google::Apis::WorkloadmanagerV1::ServiceStates]
+        attr_accessor :process_metrics
+      
+        # The state of the service.
+        # Corresponds to the JSON property `systemDiscovery`
+        # @return [Google::Apis::WorkloadmanagerV1::ServiceStates]
+        attr_accessor :system_discovery
       
         def initialize(**args)
            update!(**args)
@@ -69,7 +91,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @available_version = args[:available_version] if args.key?(:available_version)
+          @hana_monitoring = args[:hana_monitoring] if args.key?(:hana_monitoring)
           @installed_version = args[:installed_version] if args.key?(:installed_version)
+          @is_fully_enabled = args[:is_fully_enabled] if args.key?(:is_fully_enabled)
+          @process_metrics = args[:process_metrics] if args.key?(:process_metrics)
+          @system_discovery = args[:system_discovery] if args.key?(:system_discovery)
         end
       end
       
@@ -574,6 +600,11 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Optional. Engine
+        # Corresponds to the JSON property `engine`
+        # @return [String]
+        attr_accessor :engine
+      
         # Output only. [Output only] Evaluation ID
         # Corresponds to the JSON property `evaluationId`
         # @return [String]
@@ -638,6 +669,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @engine = args[:engine] if args.key?(:engine)
           @evaluation_id = args[:evaluation_id] if args.key?(:evaluation_id)
           @external_data_sources = args[:external_data_sources] if args.key?(:external_data_sources)
           @inventory_time = args[:inventory_time] if args.key?(:inventory_time)
@@ -770,6 +802,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
+        end
+      end
+      
+      # The IAM permission status.
+      class IamPermission
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Whether the permission is granted.
+        # Corresponds to the JSON property `granted`
+        # @return [Boolean]
+        attr_accessor :granted
+        alias_method :granted?, :granted
+      
+        # Output only. The name of the permission.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @granted = args[:granted] if args.key?(:granted)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -2412,6 +2470,31 @@ module Google
         def update!(**args)
           @resource = args[:resource] if args.key?(:resource)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The state of the service.
+      class ServiceStates
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Output only. The IAM permissions for the service.
+        # Corresponds to the JSON property `iamPermissions`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::IamPermission>]
+        attr_accessor :iam_permissions
+      
+        # Output only. The overall state of the service.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @iam_permissions = args[:iam_permissions] if args.key?(:iam_permissions)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
