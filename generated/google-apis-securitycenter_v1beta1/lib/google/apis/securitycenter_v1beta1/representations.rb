@@ -2982,6 +2982,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :crypto_key_name, as: 'cryptoKeyName'
           property :dataset, as: 'dataset'
           property :description, as: 'description'
           property :filter, as: 'filter'
@@ -3374,6 +3375,7 @@ module Google
           collection :containers, as: 'containers', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Container, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Container::Representation
       
           property :create_time, as: 'createTime'
+          property :crypto_key_name, as: 'cryptoKeyName'
           collection :data_access_events, as: 'dataAccessEvents', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2DataAccessEvent, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2DataAccessEvent::Representation
       
           collection :data_flow_events, as: 'dataFlowEvents', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2DataFlowEvent, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2DataFlowEvent::Representation
@@ -3771,6 +3773,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :crypto_key_name, as: 'cryptoKeyName'
           property :description, as: 'description'
           property :expiry_time, as: 'expiryTime'
           property :filter, as: 'filter'
