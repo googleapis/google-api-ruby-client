@@ -4630,6 +4630,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudNotebooklmV1alphaCmekConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudNotebooklmV1alphaListRecentlyViewedNotebooksResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6237,6 +6243,7 @@ module Google
           hash :action_params, as: 'actionParams'
           property :is_action_configured, as: 'isActionConfigured'
           property :service_name, as: 'serviceName'
+          property :use_static_secrets, as: 'useStaticSecrets'
         end
       end
       
@@ -11090,6 +11097,7 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaWidgetConfigAssistantSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_web_grounding_toggle_off, as: 'defaultWebGroundingToggleOff'
           property :google_search_grounding_enabled, as: 'googleSearchGroundingEnabled'
           property :web_grounding_type, as: 'webGroundingType'
         end
@@ -12611,6 +12619,13 @@ module Google
         end
       end
       
+      class GoogleCloudNotebooklmV1alphaCmekConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key, as: 'kmsKey'
+        end
+      end
+      
       class GoogleCloudNotebooklmV1alphaListRecentlyViewedNotebooksResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12623,6 +12638,8 @@ module Google
       class GoogleCloudNotebooklmV1alphaNotebook
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cmek_config, as: 'cmekConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaCmekConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaCmekConfig::Representation
+      
           property :emoji, as: 'emoji'
           property :metadata, as: 'metadata', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaNotebookMetadata, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaNotebookMetadata::Representation
       
