@@ -5745,6 +5745,13 @@ module Google
         # @return [String]
         attr_accessor :service_name
       
+        # Optional. Whether to use static secrets for the connector. If true, the
+        # secrets provided in the action_params will be ignored.
+        # Corresponds to the JSON property `useStaticSecrets`
+        # @return [Boolean]
+        attr_accessor :use_static_secrets
+        alias_method :use_static_secrets?, :use_static_secrets
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5754,6 +5761,7 @@ module Google
           @action_params = args[:action_params] if args.key?(:action_params)
           @is_action_configured = args[:is_action_configured] if args.key?(:is_action_configured)
           @service_name = args[:service_name] if args.key?(:service_name)
+          @use_static_secrets = args[:use_static_secrets] if args.key?(:use_static_secrets)
         end
       end
       
@@ -16245,8 +16253,8 @@ module Google
       
         # A comma-separated list of fields to order by, sorted in ascending order. Use "
         # desc" after a field name for descending. Supported fields: * `update_time` * `
-        # create_time` * `session_name` * `is_pinned` Example: * "update_time desc" * "
-        # create_time" * "is_pinned desc,update_time desc": list sessions by is_pinned
+        # create_time` * `session_name` * `is_pinned` Example: * `update_time desc` * `
+        # create_time` * `is_pinned desc,update_time desc`: list sessions by is_pinned
         # first, then by update_time.
         # Corresponds to the JSON property `orderBy`
         # @return [String]
@@ -23546,6 +23554,19 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaWidgetConfigAssistantSettings
         include Google::Apis::Core::Hashable
       
+        # Output only. This field controls the default web grounding toggle for end
+        # users if `web_grounding_type` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or `
+        # WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`. By default, this field is set to
+        # false. If `web_grounding_type` is `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or `
+        # WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web grounding
+        # enabled by default on UI. If true, grounding toggle will be disabled by
+        # default on UI. End users can still enable web grounding in the UI if web
+        # grounding is enabled.
+        # Corresponds to the JSON property `defaultWebGroundingToggleOff`
+        # @return [Boolean]
+        attr_accessor :default_web_grounding_toggle_off
+        alias_method :default_web_grounding_toggle_off?, :default_web_grounding_toggle_off
+      
         # Whether or not the Google search grounding toggle is shown. Deprecated. Use
         # web_grounding_type instead.
         # Corresponds to the JSON property `googleSearchGroundingEnabled`
@@ -23564,6 +23585,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @default_web_grounding_toggle_off = args[:default_web_grounding_toggle_off] if args.key?(:default_web_grounding_toggle_off)
           @google_search_grounding_enabled = args[:google_search_grounding_enabled] if args.key?(:google_search_grounding_enabled)
           @web_grounding_type = args[:web_grounding_type] if args.key?(:web_grounding_type)
         end
@@ -29294,6 +29316,26 @@ module Google
         end
       end
       
+      # Customer-managed encryption configuration for Notebooks.
+      class GoogleCloudNotebooklmV1alphaCmekConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. KMS key resource name which will be used to encrypt resources `
+        # projects/`project`/locations/`location`/keyRings/`keyRing`/cryptoKeys/`keyId``.
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
+        end
+      end
+      
       # Response for NotebookService.ListRecentlyViewedNotebooks method.
       class GoogleCloudNotebooklmV1alphaListRecentlyViewedNotebooksResponse
         include Google::Apis::Core::Hashable
@@ -29323,6 +29365,11 @@ module Google
       # interacts with the content.
       class GoogleCloudNotebooklmV1alphaNotebook
         include Google::Apis::Core::Hashable
+      
+        # Customer-managed encryption configuration for Notebooks.
+        # Corresponds to the JSON property `cmekConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaCmekConfig]
+        attr_accessor :cmek_config
       
         # Output only. The emoji of the notebook.
         # Corresponds to the JSON property `emoji`
@@ -29358,6 +29405,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
           @emoji = args[:emoji] if args.key?(:emoji)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
