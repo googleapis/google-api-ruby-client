@@ -333,6 +333,9 @@ module Google
         # @param [String] name
         #   Required. Resource name of the Entity Type. Format: projects/`project`/
         #   locations/`location`/connections/`connection`/entityTypes/`entityType`
+        # @param [String] context_metadata
+        #   Context metadata for request could be used to fetch customization of entity
+        #   type schema.
         # @param [String] view
         #   Specifies view for entity type schema.
         # @param [String] fields
@@ -352,11 +355,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_connection_entity_type(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_connection_entity_type(name, context_metadata: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::ConnectorsV2::EntityType::Representation
           command.response_class = Google::Apis::ConnectorsV2::EntityType
           command.params['name'] = name unless name.nil?
+          command.query['contextMetadata'] = context_metadata unless context_metadata.nil?
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -681,6 +685,77 @@ module Google
           command.response_class = Google::Apis::ConnectorsV2::UpdateEntitiesWithConditionsResponse
           command.params['entityType'] = entity_type unless entity_type.nil?
           command.query['conditions'] = conditions unless conditions.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Executes a specific tool.
+        # @param [String] name
+        #   Required. Resource name of the Tool. Format: projects/`project`/locations/`
+        #   location`/connections/`connection`/tools/`tool`
+        # @param [Google::Apis::ConnectorsV2::ExecuteToolRequest] execute_tool_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV2::ExecuteToolResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV2::ExecuteToolResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def execute_tool(name, execute_tool_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:execute', options)
+          command.request_representation = Google::Apis::ConnectorsV2::ExecuteToolRequest::Representation
+          command.request_object = execute_tool_request_object
+          command.response_representation = Google::Apis::ConnectorsV2::ExecuteToolResponse::Representation
+          command.response_class = Google::Apis::ConnectorsV2::ExecuteToolResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all available tools.
+        # @param [String] parent
+        #   Required. Resource name of the Connection. Format: projects/`project`/
+        #   locations/`location`/connections/`connection`
+        # @param [Fixnum] page_size
+        #   Page size.
+        # @param [String] page_token
+        #   Page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV2::ListToolsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV2::ListToolsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_connection_tools(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/tools', options)
+          command.response_representation = Google::Apis::ConnectorsV2::ListToolsResponse::Representation
+          command.response_class = Google::Apis::ConnectorsV2::ListToolsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
