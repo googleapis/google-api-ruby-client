@@ -887,6 +887,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :active_directory, as: 'activeDirectory'
           property :allow_auto_tiering, as: 'allowAutoTiering'
+          property :available_throughput_mibps, as: 'availableThroughputMibps'
           property :capacity_gib, :numeric_string => true, as: 'capacityGib'
           property :create_time, as: 'createTime'
           property :custom_performance_enabled, as: 'customPerformanceEnabled'
@@ -901,6 +902,7 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :psa_range, as: 'psaRange'
+          property :qos_type, as: 'qosType'
           property :replica_zone, as: 'replicaZone'
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
@@ -1015,6 +1017,7 @@ module Google
           property :state, as: 'state'
           property :state_details, as: 'stateDetails'
           property :storage_pool, as: 'storagePool'
+          property :throughput_mibps, as: 'throughputMibps'
           property :tiering_policy, as: 'tieringPolicy', class: Google::Apis::NetappV1::TieringPolicy, decorator: Google::Apis::NetappV1::TieringPolicy::Representation
       
           property :unix_permissions, as: 'unixPermissions'
