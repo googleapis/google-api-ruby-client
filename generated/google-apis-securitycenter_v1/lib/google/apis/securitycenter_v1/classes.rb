@@ -5499,6 +5499,13 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. The resource name of the Cloud KMS `CryptoKey` used to protect
+        # this configuration's data, if configured during Security Command Center
+        # activation.
+        # Corresponds to the JSON property `cryptoKeyName`
+        # @return [String]
+        attr_accessor :crypto_key_name
+      
         # The dataset to write findings' updates to. Its format is "projects/[project_id]
         # /datasets/[bigquery_dataset_id]". BigQuery dataset unique ID must contain only
         # letters (a-z, A-Z), numbers (0-9), or underscores (_).
@@ -5563,6 +5570,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @crypto_key_name = args[:crypto_key_name] if args.key?(:crypto_key_name)
           @dataset = args[:dataset] if args.key?(:dataset)
           @description = args[:description] if args.key?(:description)
           @filter = args[:filter] if args.key?(:filter)
@@ -6989,6 +6997,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. The name of the Cloud KMS key used to encrypt this finding, if
+        # any.
+        # Corresponds to the JSON property `cryptoKeyName`
+        # @return [String]
+        attr_accessor :crypto_key_name
+      
         # Data access events associated with the finding.
         # Corresponds to the JSON property `dataAccessEvents`
         # @return [Array<Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2DataAccessEvent>]
@@ -7298,6 +7312,7 @@ module Google
           @contacts = args[:contacts] if args.key?(:contacts)
           @containers = args[:containers] if args.key?(:containers)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @crypto_key_name = args[:crypto_key_name] if args.key?(:crypto_key_name)
           @data_access_events = args[:data_access_events] if args.key?(:data_access_events)
           @data_flow_events = args[:data_flow_events] if args.key?(:data_flow_events)
           @data_retention_deletion_events = args[:data_retention_deletion_events] if args.key?(:data_retention_deletion_events)
@@ -8440,6 +8455,13 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. The resource name of the Cloud KMS `CryptoKey` used to encrypt
+        # this configuration data, if CMEK was enabled during Security Command Center
+        # activation.
+        # Corresponds to the JSON property `cryptoKeyName`
+        # @return [String]
+        attr_accessor :crypto_key_name
+      
         # A description of the mute config.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -8503,6 +8525,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @crypto_key_name = args[:crypto_key_name] if args.key?(:crypto_key_name)
           @description = args[:description] if args.key?(:description)
           @expiry_time = args[:expiry_time] if args.key?(:expiry_time)
           @filter = args[:filter] if args.key?(:filter)
