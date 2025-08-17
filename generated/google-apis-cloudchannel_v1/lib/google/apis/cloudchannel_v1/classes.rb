@@ -1116,6 +1116,38 @@ module Google
         end
       end
       
+      # Represents a single component of the total discount applicable on a Price.
+      class GoogleCloudChannelV1DiscountComponent
+        include Google::Apis::Core::Hashable
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `discountAbsolute`
+        # @return [Google::Apis::CloudchannelV1::GoogleTypeMoney]
+        attr_accessor :discount_absolute
+      
+        # Discount percentage, represented as decimal. For example, a 20% discount will
+        # be represented as 0.2.
+        # Corresponds to the JSON property `discountPercentage`
+        # @return [Float]
+        attr_accessor :discount_percentage
+      
+        # Type of the discount.
+        # Corresponds to the JSON property `discountType`
+        # @return [String]
+        attr_accessor :discount_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @discount_absolute = args[:discount_absolute] if args.key?(:discount_absolute)
+          @discount_percentage = args[:discount_percentage] if args.key?(:discount_percentage)
+          @discount_type = args[:discount_type] if args.key?(:discount_type)
+        end
+      end
+      
       # Required Edu Attributes
       class GoogleCloudChannelV1EduData
         include Google::Apis::Core::Hashable
@@ -2433,6 +2465,12 @@ module Google
         # @return [Float]
         attr_accessor :discount
       
+        # Breakdown of the discount into its components. This will be empty if there is
+        # no discount present.
+        # Corresponds to the JSON property `discountComponents`
+        # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1DiscountComponent>]
+        attr_accessor :discount_components
+      
         # Represents an amount of money with its currency type.
         # Corresponds to the JSON property `effectivePrice`
         # @return [Google::Apis::CloudchannelV1::GoogleTypeMoney]
@@ -2443,6 +2481,11 @@ module Google
         # @return [String]
         attr_accessor :external_price_uri
       
+        # Represents period in days/months/years.
+        # Corresponds to the JSON property `pricePeriod`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Period]
+        attr_accessor :price_period
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2451,8 +2494,10 @@ module Google
         def update!(**args)
           @base_price = args[:base_price] if args.key?(:base_price)
           @discount = args[:discount] if args.key?(:discount)
+          @discount_components = args[:discount_components] if args.key?(:discount_components)
           @effective_price = args[:effective_price] if args.key?(:effective_price)
           @external_price_uri = args[:external_price_uri] if args.key?(:external_price_uri)
+          @price_period = args[:price_period] if args.key?(:price_period)
         end
       end
       
