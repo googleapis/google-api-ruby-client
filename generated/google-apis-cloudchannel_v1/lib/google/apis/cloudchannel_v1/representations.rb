@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudChannelV1DiscountComponent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudChannelV1EduData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1144,6 +1150,16 @@ module Google
         end
       end
       
+      class GoogleCloudChannelV1DiscountComponent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :discount_absolute, as: 'discountAbsolute', class: Google::Apis::CloudchannelV1::GoogleTypeMoney, decorator: Google::Apis::CloudchannelV1::GoogleTypeMoney::Representation
+      
+          property :discount_percentage, as: 'discountPercentage'
+          property :discount_type, as: 'discountType'
+        end
+      end
+      
       class GoogleCloudChannelV1EduData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1525,9 +1541,13 @@ module Google
           property :base_price, as: 'basePrice', class: Google::Apis::CloudchannelV1::GoogleTypeMoney, decorator: Google::Apis::CloudchannelV1::GoogleTypeMoney::Representation
       
           property :discount, as: 'discount'
+          collection :discount_components, as: 'discountComponents', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1DiscountComponent, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1DiscountComponent::Representation
+      
           property :effective_price, as: 'effectivePrice', class: Google::Apis::CloudchannelV1::GoogleTypeMoney, decorator: Google::Apis::CloudchannelV1::GoogleTypeMoney::Representation
       
           property :external_price_uri, as: 'externalPriceUri'
+          property :price_period, as: 'pricePeriod', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Period, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Period::Representation
+      
         end
       end
       
