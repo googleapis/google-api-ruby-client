@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InterconnectAttachmentInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LatencyDistribution
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -566,9 +572,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cause, as: 'cause'
+          property :destination_geolocation_code, as: 'destinationGeolocationCode'
           property :destination_ip, as: 'destinationIp'
           property :region, as: 'region'
           property :resource_uri, as: 'resourceUri'
+          property :source_geolocation_code, as: 'sourceGeolocationCode'
           property :source_ip, as: 'sourceIp'
         end
       end
@@ -652,6 +660,7 @@ module Google
           property :priority, as: 'priority'
           collection :target_service_accounts, as: 'targetServiceAccounts'
           collection :target_tags, as: 'targetTags'
+          property :target_type, as: 'targetType'
           property :uri, as: 'uri'
         end
       end
@@ -714,6 +723,17 @@ module Google
           property :running, as: 'running'
           property :service_account, as: 'serviceAccount'
           property :status, as: 'status'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class InterconnectAttachmentInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_router_uri, as: 'cloudRouterUri'
+          property :display_name, as: 'displayName'
+          property :interconnect_uri, as: 'interconnectUri'
+          property :region, as: 'region'
           property :uri, as: 'uri'
         end
       end
@@ -1090,6 +1110,8 @@ module Google
           property :google_service, as: 'googleService', class: Google::Apis::NetworkmanagementV1beta1::GoogleServiceInfo, decorator: Google::Apis::NetworkmanagementV1beta1::GoogleServiceInfo::Representation
       
           property :instance, as: 'instance', class: Google::Apis::NetworkmanagementV1beta1::InstanceInfo, decorator: Google::Apis::NetworkmanagementV1beta1::InstanceInfo::Representation
+      
+          property :interconnect_attachment, as: 'interconnectAttachment', class: Google::Apis::NetworkmanagementV1beta1::InterconnectAttachmentInfo, decorator: Google::Apis::NetworkmanagementV1beta1::InterconnectAttachmentInfo::Representation
       
           property :load_balancer, as: 'loadBalancer', class: Google::Apis::NetworkmanagementV1beta1::LoadBalancerInfo, decorator: Google::Apis::NetworkmanagementV1beta1::LoadBalancerInfo::Representation
       
