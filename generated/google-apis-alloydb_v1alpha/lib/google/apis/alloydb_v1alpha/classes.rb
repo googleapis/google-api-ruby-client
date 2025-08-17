@@ -3537,6 +3537,57 @@ module Google
         end
       end
       
+      # BackupDRMetadata contains information about the backup and disaster recovery
+      # metadata of a database resource.
+      class StorageDatabasecenterPartnerapiV1mainBackupDrMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for automatic backups
+        # Corresponds to the JSON property `backupConfiguration`
+        # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupConfiguration]
+        attr_accessor :backup_configuration
+      
+        # A backup run.
+        # Corresponds to the JSON property `backupRun`
+        # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupRun]
+        attr_accessor :backup_run
+      
+        # BackupDRConfiguration to capture the backup and disaster recovery details of
+        # database resource.
+        # Corresponds to the JSON property `backupdrConfiguration`
+        # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupDrConfiguration]
+        attr_accessor :backupdr_configuration
+      
+        # Required. Full resource name of this instance.
+        # Corresponds to the JSON property `fullResourceName`
+        # @return [String]
+        attr_accessor :full_resource_name
+      
+        # Required. Last time backup configuration was refreshed.
+        # Corresponds to the JSON property `lastRefreshTime`
+        # @return [String]
+        attr_accessor :last_refresh_time
+      
+        # DatabaseResourceId will serve as primary key for any resource ingestion event.
+        # Corresponds to the JSON property `resourceId`
+        # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
+        attr_accessor :resource_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_configuration = args[:backup_configuration] if args.key?(:backup_configuration)
+          @backup_run = args[:backup_run] if args.key?(:backup_run)
+          @backupdr_configuration = args[:backupdr_configuration] if args.key?(:backupdr_configuration)
+          @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
+          @last_refresh_time = args[:last_refresh_time] if args.key?(:last_refresh_time)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+        end
+      end
+      
       # A backup run.
       class StorageDatabasecenterPartnerapiV1mainBackupRun
         include Google::Apis::Core::Hashable
@@ -3669,9 +3720,15 @@ module Google
       end
       
       # DatabaseResourceFeed is the top level proto to be used to ingest different
-      # database resource level events into Condor platform. Next ID: 9
+      # database resource level events into Condor platform. Next ID: 11
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed
         include Google::Apis::Core::Hashable
+      
+        # BackupDRMetadata contains information about the backup and disaster recovery
+        # metadata of a database resource.
+        # Corresponds to the JSON property `backupdrMetadata`
+        # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupDrMetadata]
+        attr_accessor :backupdr_metadata
       
         # Config based signal data. This is used to send signals to Condor which are
         # based on the DB level configurations. These will be used to send signals for
@@ -3715,12 +3772,23 @@ module Google
         # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata]
         attr_accessor :resource_metadata
       
+        # Optional. If true, the feed won't be ingested by DB Center. This indicates
+        # that the feed is intentionally skipped. For example, BackupDR feeds are only
+        # needed for resources integrated with DB Center (e.g., CloudSQL, AlloyDB).
+        # Feeds for non-integrated resources (e.g., Compute Engine, Persistent Disk) can
+        # be skipped.
+        # Corresponds to the JSON property `skipIngestion`
+        # @return [Boolean]
+        attr_accessor :skip_ingestion
+        alias_method :skip_ingestion?, :skip_ingestion
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @backupdr_metadata = args[:backupdr_metadata] if args.key?(:backupdr_metadata)
           @config_based_signal_data = args[:config_based_signal_data] if args.key?(:config_based_signal_data)
           @feed_timestamp = args[:feed_timestamp] if args.key?(:feed_timestamp)
           @feed_type = args[:feed_type] if args.key?(:feed_type)
@@ -3729,6 +3797,7 @@ module Google
           @resource_health_signal_data = args[:resource_health_signal_data] if args.key?(:resource_health_signal_data)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
           @resource_metadata = args[:resource_metadata] if args.key?(:resource_metadata)
+          @skip_ingestion = args[:skip_ingestion] if args.key?(:skip_ingestion)
         end
       end
       

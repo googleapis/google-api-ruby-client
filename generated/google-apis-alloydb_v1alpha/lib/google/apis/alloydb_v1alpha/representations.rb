@@ -496,6 +496,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageDatabasecenterPartnerapiV1mainBackupDrMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainBackupRun
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1569,6 +1575,22 @@ module Google
         end
       end
       
+      class StorageDatabasecenterPartnerapiV1mainBackupDrMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupConfiguration, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupConfiguration::Representation
+      
+          property :backup_run, as: 'backupRun', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupRun, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupRun::Representation
+      
+          property :backupdr_configuration, as: 'backupdrConfiguration', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupDrConfiguration, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupDrConfiguration::Representation
+      
+          property :full_resource_name, as: 'fullResourceName'
+          property :last_refresh_time, as: 'lastRefreshTime'
+          property :resource_id, as: 'resourceId', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
+      
+        end
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainBackupRun
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1611,6 +1633,8 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backupdr_metadata, as: 'backupdrMetadata', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupDrMetadata, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupDrMetadata::Representation
+      
           property :config_based_signal_data, as: 'configBasedSignalData', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData::Representation
       
           property :feed_timestamp, as: 'feedTimestamp'
@@ -1625,6 +1649,7 @@ module Google
       
           property :resource_metadata, as: 'resourceMetadata', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata::Representation
       
+          property :skip_ingestion, as: 'skipIngestion'
         end
       end
       
