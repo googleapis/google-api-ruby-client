@@ -22,7 +22,7 @@ module Google
     module SaasservicemgmtV1beta1
       # SaaS Runtime API
       #
-      # 
+      # Model, deploy, and operate your SaaS at scale.
       #
       # @example
       #    require 'google/apis/saasservicemgmt_v1beta1'

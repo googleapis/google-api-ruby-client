@@ -21,7 +21,7 @@ module Google
   module Apis
     # SaaS Runtime API
     #
-    # 
+    # Model, deploy, and operate your SaaS at scale.
     #
     # @see https://cloud.google.com/saas-runtime/docs
     module SaasservicemgmtV1beta1

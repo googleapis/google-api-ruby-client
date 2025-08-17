@@ -1115,8 +1115,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Optional. Immutable. List of locations that the service is available in.
-        # Rollout refers to the list to generate a rollout plan.
+        # Optional. List of locations that the service is available in. Rollout refers
+        # to the list to generate a rollout plan.
         # Corresponds to the JSON property `locations`
         # @return [Array<Google::Apis::SaasservicemgmtV1beta1::Location>]
         attr_accessor :locations
@@ -1197,8 +1197,8 @@ module Google
         attr_accessor :annotations
       
         # Optional. Immutable. A reference to the consumer resource this SaaS Tenant is
-        # representing. The relationship with a consumer resource can be used by
-        # EasySaaS for retrieving consumer-defined settings and policies such as
+        # representing. The relationship with a consumer resource can be used by SaaS
+        # Runtime for retrieving consumer-defined settings and policies such as
         # maintenance policies (using Unified Maintenance Policy API).
         # Corresponds to the JSON property `consumerResource`
         # @return [String]
@@ -1230,8 +1230,8 @@ module Google
         attr_accessor :name
       
         # Required. Immutable. A reference to the Saas that defines the product (managed
-        # service) that the producer wants to manage with EasySaaS. Part of the EasySaaS
-        # common data model.
+        # service) that the producer wants to manage with SaaS Runtime. Part of the SaaS
+        # Runtime common data model.
         # Corresponds to the JSON property `saas`
         # @return [String]
         attr_accessor :saas
@@ -1280,7 +1280,8 @@ module Google
         # @return [String]
         attr_accessor :dependency
       
-        # Optional. Tells EasySaaS if this mapping should be used during lookup or not
+        # Optional. Tells SaaS Runtime if this mapping should be used during lookup or
+        # not
         # Corresponds to the JSON property `ignoreForLookup`
         # @return [Boolean]
         attr_accessor :ignore_for_lookup
@@ -1621,8 +1622,8 @@ module Google
         attr_accessor :output_variable_mappings
       
         # Required. Immutable. A reference to the Saas that defines the product (managed
-        # service) that the producer wants to manage with EasySaaS. Part of the EasySaaS
-        # common data model. Immutable once set.
+        # service) that the producer wants to manage with SaaS Runtime. Part of the SaaS
+        # Runtime common data model. Immutable once set.
         # Corresponds to the JSON property `saas`
         # @return [String]
         attr_accessor :saas
@@ -1670,7 +1671,7 @@ module Google
       # allowed to execute at a time (that can change in the future for non-mutating
       # operations). UnitOperations allow different actors interacting with the same
       # unit to focus only on the change they have requested. This is a base object
-      # that contains the common fields in all unit operations.
+      # that contains the common fields in all unit operations. Next: 19
       class UnitOperation
         include Google::Apis::Core::Hashable
       
