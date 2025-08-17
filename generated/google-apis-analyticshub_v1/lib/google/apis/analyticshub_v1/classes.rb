@@ -22,6 +22,19 @@ module Google
   module Apis
     module AnalyticshubV1
       
+      # Message for approving a QueryTemplate.
+      class ApproveQueryTemplateRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -1274,6 +1287,31 @@ module Google
         end
       end
       
+      # Message for response to the list of QueryTemplates.
+      class ListQueryTemplatesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to request the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of QueryTemplates.
+        # Corresponds to the JSON property `queryTemplates`
+        # @return [Array<Google::Apis::AnalyticshubV1::QueryTemplate>]
+        attr_accessor :query_templates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @query_templates = args[:query_templates] if args.key?(:query_templates)
+        end
+      end
+      
       # Message for response to the listing of shared resource subscriptions.
       class ListSharedResourceSubscriptionsResponse
         include Google::Apis::Core::Hashable
@@ -1913,6 +1951,89 @@ module Google
         end
       end
       
+      # A query template is a container for sharing table-valued functions defined by
+      # contributors in a data clean room.
+      class QueryTemplate
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when the QueryTemplate was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Short description of the QueryTemplate. The description must not
+        # contain Unicode non-characters and C0 and C1 control codes except tabs (HT),
+        # new lines (LF), carriage returns (CR), and page breaks (FF). Default value is
+        # an empty string. Max length: 2000 bytes.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Human-readable display name of the QueryTemplate. The display name
+        # must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-),
+        # spaces ( ), ampersands (&) and can't start or end with spaces. Default value
+        # is an empty string. Max length: 63 bytes.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. Documentation describing the QueryTemplate.
+        # Corresponds to the JSON property `documentation`
+        # @return [String]
+        attr_accessor :documentation
+      
+        # Output only. The resource name of the QueryTemplate. e.g. `projects/myproject/
+        # locations/us/dataExchanges/123/queryTemplates/456`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Email or URL of the primary point of contact of the QueryTemplate.
+        # Max Length: 1000 bytes.
+        # Corresponds to the JSON property `primaryContact`
+        # @return [String]
+        attr_accessor :primary_contact
+      
+        # Optional. Will be deprecated. Email or URL of the primary point of contact of
+        # the QueryTemplate. Max Length: 1000 bytes.
+        # Corresponds to the JSON property `proposer`
+        # @return [String]
+        attr_accessor :proposer
+      
+        # Represents a bigquery routine.
+        # Corresponds to the JSON property `routine`
+        # @return [Google::Apis::AnalyticshubV1::Routine]
+        attr_accessor :routine
+      
+        # Output only. The QueryTemplate lifecycle state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Timestamp when the QueryTemplate was last modified.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @documentation = args[:documentation] if args.key?(:documentation)
+          @name = args[:name] if args.key?(:name)
+          @primary_contact = args[:primary_contact] if args.key?(:primary_contact)
+          @proposer = args[:proposer] if args.key?(:proposer)
+          @routine = args[:routine] if args.key?(:routine)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Message for refreshing a subscription.
       class RefreshSubscriptionRequest
         include Google::Apis::Core::Hashable
@@ -2088,6 +2209,31 @@ module Google
         end
       end
       
+      # Represents a bigquery routine.
+      class Routine
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The definition body of the routine.
+        # Corresponds to the JSON property `definitionBody`
+        # @return [String]
+        attr_accessor :definition_body
+      
+        # Required. The type of routine.
+        # Corresponds to the JSON property `routineType`
+        # @return [String]
+        attr_accessor :routine_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @definition_body = args[:definition_body] if args.key?(:definition_body)
+          @routine_type = args[:routine_type] if args.key?(:routine_type)
+        end
+      end
+      
       # Resource in this dataset that is selectively shared.
       class SelectedResource
         include Google::Apis::Core::Hashable
@@ -2232,6 +2378,19 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Message for submitting a QueryTemplate.
+      class SubmitQueryTemplateRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
