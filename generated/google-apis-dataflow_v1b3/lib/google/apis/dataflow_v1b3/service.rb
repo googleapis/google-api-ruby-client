@@ -174,8 +174,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # A Job is a multi-stage computation graph run by the Cloud Dataflow service.
-        # Creates a Cloud Dataflow job. To create a job, we recommend using `projects.
+        # Creates a Dataflow job. To create a job, we recommend using `projects.
         # locations.jobs.create` with a [regional endpoint] (https://cloud.google.com/
         # dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is
         # not recommended, as your job will always start in `us-central1`. Do not enter
@@ -739,8 +738,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # A Job is a multi-stage computation graph run by the Cloud Dataflow service.
-        # Creates a Cloud Dataflow job. To create a job, we recommend using `projects.
+        # Creates a Dataflow job. To create a job, we recommend using `projects.
         # locations.jobs.create` with a [regional endpoint] (https://cloud.google.com/
         # dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is
         # not recommended, as your job will always start in `us-central1`. Do not enter
