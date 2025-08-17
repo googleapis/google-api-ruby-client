@@ -882,6 +882,7 @@ module Google
       
           property :resource_metadata, as: 'resourceMetadata', class: Google::Apis::RedisV1::DatabaseResourceMetadata, decorator: Google::Apis::RedisV1::DatabaseResourceMetadata::Representation
       
+          property :skip_ingestion, as: 'skipIngestion'
         end
       end
       

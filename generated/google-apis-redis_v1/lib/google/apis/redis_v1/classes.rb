@@ -1098,7 +1098,7 @@ module Google
       end
       
       # DatabaseResourceFeed is the top level proto to be used to ingest different
-      # database resource level events into Condor platform. Next ID: 10
+      # database resource level events into Condor platform. Next ID: 11
       class DatabaseResourceFeed
         include Google::Apis::Core::Hashable
       
@@ -1150,6 +1150,16 @@ module Google
         # @return [Google::Apis::RedisV1::DatabaseResourceMetadata]
         attr_accessor :resource_metadata
       
+        # Optional. If true, the feed won't be ingested by DB Center. This indicates
+        # that the feed is intentionally skipped. For example, BackupDR feeds are only
+        # needed for resources integrated with DB Center (e.g., CloudSQL, AlloyDB).
+        # Feeds for non-integrated resources (e.g., Compute Engine, Persistent Disk) can
+        # be skipped.
+        # Corresponds to the JSON property `skipIngestion`
+        # @return [Boolean]
+        attr_accessor :skip_ingestion
+        alias_method :skip_ingestion?, :skip_ingestion
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1165,6 +1175,7 @@ module Google
           @resource_health_signal_data = args[:resource_health_signal_data] if args.key?(:resource_health_signal_data)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
           @resource_metadata = args[:resource_metadata] if args.key?(:resource_metadata)
+          @skip_ingestion = args[:skip_ingestion] if args.key?(:skip_ingestion)
         end
       end
       
