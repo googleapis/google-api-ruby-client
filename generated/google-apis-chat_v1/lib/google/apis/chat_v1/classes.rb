@@ -1863,6 +1863,12 @@ module Google
         # @return [String]
         attr_accessor :display_style
       
+        # The expression data for the card. Only supported by Google Workspace Workflow,
+        # but not Google Chat apps or Google Workspace add-ons.
+        # Corresponds to the JSON property `expressionData`
+        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1ExpressionData>]
+        attr_accessor :expression_data
+      
         # A persistent (sticky) footer that that appears at the bottom of the card.
         # Setting `fixedFooter` without specifying a `primaryButton` or a `
         # secondaryButton` causes an error. For Chat apps, you can use fixed footers in [
@@ -1919,6 +1925,7 @@ module Google
         def update!(**args)
           @card_actions = args[:card_actions] if args.key?(:card_actions)
           @display_style = args[:display_style] if args.key?(:display_style)
+          @expression_data = args[:expression_data] if args.key?(:expression_data)
           @fixed_footer = args[:fixed_footer] if args.key?(:fixed_footer)
           @header = args[:header] if args.key?(:header)
           @name = args[:name] if args.key?(:name)
@@ -2319,6 +2326,89 @@ module Google
         end
       end
       
+      # Represents an action that is not specific to a widget. Only supported by
+      # Google Workspace Workflow, but not Google Chat apps or Google Workspace add-
+      # ons.
+      class GoogleAppsCardV1CommonWidgetAction
+        include Google::Apis::Core::Hashable
+      
+        # Represents an action that updates the visibility of a widget. Only supported
+        # by Google Workspace Workflow, but not Google Chat apps or Google Workspace add-
+        # ons.
+        # Corresponds to the JSON property `updateVisibilityAction`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1UpdateVisibilityAction]
+        attr_accessor :update_visibility_action
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @update_visibility_action = args[:update_visibility_action] if args.key?(:update_visibility_action)
+        end
+      end
+      
+      # Represents a condition that can be used to trigger an action. Only supported
+      # by Google Workspace Workflow, but not Google Chat apps or Google Workspace add-
+      # ons.
+      class GoogleAppsCardV1Condition
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier of the ActionRule.
+        # Corresponds to the JSON property `actionRuleId`
+        # @return [String]
+        attr_accessor :action_rule_id
+      
+        # Represents a condition that is evaluated using CEL. Only supported by Google
+        # Workspace Workflow, but not Google Chat apps or Google Workspace add-ons.
+        # Corresponds to the JSON property `expressionDataCondition`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1ExpressionDataCondition]
+        attr_accessor :expression_data_condition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_rule_id = args[:action_rule_id] if args.key?(:action_rule_id)
+          @expression_data_condition = args[:expression_data_condition] if args.key?(:expression_data_condition)
+        end
+      end
+      
+      # A configuration object that helps configure the data sources for a widget.
+      # Only supported by Google Workspace Workflow, but not Google Chat apps or
+      # Google Workspace add-ons.
+      class GoogleAppsCardV1DataSourceConfig
+        include Google::Apis::Core::Hashable
+      
+        # For a `SelectionInput` widget that uses a multiselect menu, a data source from
+        # Google Workspace. Used to populate items in a multiselect menu. [Google Chat
+        # apps](https://developers.google.com/workspace/chat):
+        # Corresponds to the JSON property `platformDataSource`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1PlatformDataSource]
+        attr_accessor :platform_data_source
+      
+        # An action that describes the behavior when the form is submitted. For example,
+        # you can invoke an Apps Script script to handle the form. If the action is
+        # triggered, the form values are sent to the server. [Google Workspace add-ons
+        # and Chat apps](https://developers.google.com/workspace/extend):
+        # Corresponds to the JSON property `remoteDataSource`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
+        attr_accessor :remote_data_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @platform_data_source = args[:platform_data_source] if args.key?(:platform_data_source)
+          @remote_data_source = args[:remote_data_source] if args.key?(:remote_data_source)
+        end
+      end
+      
       # Lets users input a date, a time, or both a date and a time. Supports form
       # submission validation. When `Action.all_widgets_are_required` is set to `true`
       # or this widget is specified in `Action.required_widgets`, the submission
@@ -2331,6 +2421,12 @@ module Google
       # https://developers.google.com/workspace/extend):
       class GoogleAppsCardV1DateTimePicker
         include Google::Apis::Core::Hashable
+      
+        # A data source from a Google Workspace application. The data source populates
+        # available items for a widget.
+        # Corresponds to the JSON property `hostAppDataSource`
+        # @return [Google::Apis::ChatV1::HostAppDataSourceMarkup]
+        attr_accessor :host_app_data_source
       
         # The text that prompts users to input a date, a time, or a date and time. For
         # example, if users are scheduling an appointment, use a label such as `
@@ -2384,6 +2480,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @host_app_data_source = args[:host_app_data_source] if args.key?(:host_app_data_source)
           @label = args[:label] if args.key?(:label)
           @name = args[:name] if args.key?(:name)
           @on_change_action = args[:on_change_action] if args.key?(:on_change_action)
@@ -2520,6 +2617,100 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Represents an actionthat can be performed on an ui element. Only supported by
+      # Google Workspace Workflow, but not Google Chat apps or Google Workspace add-
+      # ons.
+      class GoogleAppsCardV1EventAction
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier of the ActionRule.
+        # Corresponds to the JSON property `actionRuleId`
+        # @return [String]
+        attr_accessor :action_rule_id
+      
+        # Represents an action that is not specific to a widget. Only supported by
+        # Google Workspace Workflow, but not Google Chat apps or Google Workspace add-
+        # ons.
+        # Corresponds to the JSON property `commonWidgetAction`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1CommonWidgetAction]
+        attr_accessor :common_widget_action
+      
+        # The list of triggers that will be triggered after the EventAction is executed.
+        # Corresponds to the JSON property `postEventTriggers`
+        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1Trigger>]
+        attr_accessor :post_event_triggers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_rule_id = args[:action_rule_id] if args.key?(:action_rule_id)
+          @common_widget_action = args[:common_widget_action] if args.key?(:common_widget_action)
+          @post_event_triggers = args[:post_event_triggers] if args.key?(:post_event_triggers)
+        end
+      end
+      
+      # Represents the data that is used to evaluate an expression. Only supported by
+      # Google Workspace Workflow, but not Google Chat apps or Google Workspace add-
+      # ons.
+      class GoogleAppsCardV1ExpressionData
+        include Google::Apis::Core::Hashable
+      
+        # The list of conditions that are determined by the expression evaluation result.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1Condition>]
+        attr_accessor :conditions
+      
+        # The list of actions that the ExpressionData can be used.
+        # Corresponds to the JSON property `eventActions`
+        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1EventAction>]
+        attr_accessor :event_actions
+      
+        # The uncompiled expression.
+        # Corresponds to the JSON property `expression`
+        # @return [String]
+        attr_accessor :expression
+      
+        # The unique identifier of the ExpressionData.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @event_actions = args[:event_actions] if args.key?(:event_actions)
+          @expression = args[:expression] if args.key?(:expression)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # Represents a condition that is evaluated using CEL. Only supported by Google
+      # Workspace Workflow, but not Google Chat apps or Google Workspace add-ons.
+      class GoogleAppsCardV1ExpressionDataCondition
+        include Google::Apis::Core::Hashable
+      
+        # The type of the condition.
+        # Corresponds to the JSON property `conditionType`
+        # @return [String]
+        attr_accessor :condition_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition_type = args[:condition_type] if args.key?(:condition_type)
         end
       end
       
@@ -3114,10 +3305,8 @@ module Google
         # @return [String]
         attr_accessor :common_data_source
       
-        # For a `SelectionInput` widget that uses a multiselect menu, a data source from
-        # a Google Workspace application. The data source populates selection items for
-        # the multiselect menu. [Google Chat apps](https://developers.google.com/
-        # workspace/chat):
+        # A data source from a Google Workspace application. The data source populates
+        # available items for a widget.
         # Corresponds to the JSON property `hostAppDataSource`
         # @return [Google::Apis::ChatV1::HostAppDataSourceMarkup]
         attr_accessor :host_app_data_source
@@ -3164,6 +3353,14 @@ module Google
         # @return [String]
         attr_accessor :header
       
+        # A unique ID assigned to the section that's used to identify the section to be
+        # mutated. The ID has a character limit of 64 characters and should be in the
+        # format of `[a-zA-Z0-9-]+`. Only supported by Google Workspace Workflow, but
+        # not Google Chat apps or Google Workspace add-ons.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
         # The number of uncollapsible widgets which remain visible even when a section
         # is collapsed. For example, when a section contains five widgets and the `
         # uncollapsibleWidgetsCount` is set to `2`, the first two widgets are always
@@ -3188,6 +3385,7 @@ module Google
           @collapse_control = args[:collapse_control] if args.key?(:collapse_control)
           @collapsible = args[:collapsible] if args.key?(:collapsible)
           @header = args[:header] if args.key?(:header)
+          @id = args[:id] if args.key?(:id)
           @uncollapsible_widgets_count = args[:uncollapsible_widgets_count] if args.key?(:uncollapsible_widgets_count)
           @widgets = args[:widgets] if args.key?(:widgets)
         end
@@ -3208,6 +3406,16 @@ module Google
       # google.com/workspace/extend):
       class GoogleAppsCardV1SelectionInput
         include Google::Apis::Core::Hashable
+      
+        # Optional. The data source configs for the selection control. This field
+        # provides more fine-grained control over the data source. If specified, the `
+        # multi_select_max_selected_items` field, `multi_select_min_query_length` field,
+        # `external_data_source` field and `platform_data_source` field are ignored.
+        # Only supported by Google Workspace Workflow, but not Google Chat apps or
+        # Google Workspace add-ons.
+        # Corresponds to the JSON property `dataSourceConfigs`
+        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1DataSourceConfig>]
+        attr_accessor :data_source_configs
       
         # An action that describes the behavior when the form is submitted. For example,
         # you can invoke an Apps Script script to handle the form. If the action is
@@ -3292,6 +3500,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_source_configs = args[:data_source_configs] if args.key?(:data_source_configs)
           @external_data_source = args[:external_data_source] if args.key?(:external_data_source)
           @hint_text = args[:hint_text] if args.key?(:hint_text)
           @items = args[:items] if args.key?(:items)
@@ -3493,6 +3702,12 @@ module Google
         # @return [String]
         attr_accessor :hint_text
       
+        # A data source from a Google Workspace application. The data source populates
+        # available items for a widget.
+        # Corresponds to the JSON property `hostAppDataSource`
+        # @return [Google::Apis::ChatV1::HostAppDataSourceMarkup]
+        attr_accessor :host_app_data_source
+      
         # Suggested values that users can enter. These values appear when users click
         # inside the text input field. As users type, the suggested values dynamically
         # filter to match what the users have typed. For example, a text input field for
@@ -3567,6 +3782,7 @@ module Google
         def update!(**args)
           @auto_complete_action = args[:auto_complete_action] if args.key?(:auto_complete_action)
           @hint_text = args[:hint_text] if args.key?(:hint_text)
+          @host_app_data_source = args[:host_app_data_source] if args.key?(:host_app_data_source)
           @initial_suggestions = args[:initial_suggestions] if args.key?(:initial_suggestions)
           @label = args[:label] if args.key?(:label)
           @name = args[:name] if args.key?(:name)
@@ -3613,6 +3829,47 @@ module Google
         def update!(**args)
           @max_lines = args[:max_lines] if args.key?(:max_lines)
           @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Represents a trigger. Only supported by Google Workspace Workflow, but not
+      # Google Chat apps or Google Workspace add-ons.
+      class GoogleAppsCardV1Trigger
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier of the ActionRule.
+        # Corresponds to the JSON property `actionRuleId`
+        # @return [String]
+        attr_accessor :action_rule_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_rule_id = args[:action_rule_id] if args.key?(:action_rule_id)
+        end
+      end
+      
+      # Represents an action that updates the visibility of a widget. Only supported
+      # by Google Workspace Workflow, but not Google Chat apps or Google Workspace add-
+      # ons.
+      class GoogleAppsCardV1UpdateVisibilityAction
+        include Google::Apis::Core::Hashable
+      
+        # The new visibility.
+        # Corresponds to the JSON property `visibility`
+        # @return [String]
+        attr_accessor :visibility
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @visibility = args[:visibility] if args.key?(:visibility)
         end
       end
       
@@ -3738,6 +3995,13 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Divider]
         attr_accessor :divider
       
+        # Specifies the event actions that can be performed on the widget. Only
+        # supported by Google Workspace Workflow, but not Google Chat apps or Google
+        # Workspace add-ons.
+        # Corresponds to the JSON property `eventActions`
+        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1EventAction>]
+        attr_accessor :event_actions
+      
         # Displays a grid with a collection of items. Items can only include text or
         # images. For responsive columns, or to include more than text or images, use `
         # Columns`. For an example in Google Chat apps, see [Display a Grid with a
@@ -3761,6 +4025,14 @@ module Google
         # Corresponds to the JSON property `horizontalAlignment`
         # @return [String]
         attr_accessor :horizontal_alignment
+      
+        # A unique ID assigned to the widget that's used to identify the widget to be
+        # mutated. The ID has a character limit of 64 characters and should be in the
+        # format of `[a-zA-Z0-9-]+` and. Only supported by Google Workspace Workflow,
+        # but not Google Chat apps or Google Workspace add-ons.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
       
         # An image that is specified by a URL and can have an `onClick` action. For an
         # example, see [Add an image](https://developers.google.com/workspace/chat/add-
@@ -3817,6 +4089,13 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph]
         attr_accessor :text_paragraph
       
+        # Specifies whether the widget is visible or hidden. The default value is `
+        # VISIBLE`. Only supported by Google Workspace Workflow, but not Google Chat
+        # apps or Google Workspace add-ons.
+        # Corresponds to the JSON property `visibility`
+        # @return [String]
+        attr_accessor :visibility
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3830,12 +4109,15 @@ module Google
           @date_time_picker = args[:date_time_picker] if args.key?(:date_time_picker)
           @decorated_text = args[:decorated_text] if args.key?(:decorated_text)
           @divider = args[:divider] if args.key?(:divider)
+          @event_actions = args[:event_actions] if args.key?(:event_actions)
           @grid = args[:grid] if args.key?(:grid)
           @horizontal_alignment = args[:horizontal_alignment] if args.key?(:horizontal_alignment)
+          @id = args[:id] if args.key?(:id)
           @image = args[:image] if args.key?(:image)
           @selection_input = args[:selection_input] if args.key?(:selection_input)
           @text_input = args[:text_input] if args.key?(:text_input)
           @text_paragraph = args[:text_paragraph] if args.key?(:text_paragraph)
+          @visibility = args[:visibility] if args.key?(:visibility)
         end
       end
       
@@ -3976,10 +4258,8 @@ module Google
         end
       end
       
-      # For a `SelectionInput` widget that uses a multiselect menu, a data source from
-      # a Google Workspace application. The data source populates selection items for
-      # the multiselect menu. [Google Chat apps](https://developers.google.com/
-      # workspace/chat):
+      # A data source from a Google Workspace application. The data source populates
+      # available items for a widget.
       class HostAppDataSourceMarkup
         include Google::Apis::Core::Hashable
       
@@ -3991,6 +4271,13 @@ module Google
         # @return [Google::Apis::ChatV1::ChatClientDataSourceMarkup]
         attr_accessor :chat_data_source
       
+        # * Only supported by Google Workspace Workflow, but not Google Chat apps or
+        # Google Workspace add-ons. In a `TextInput` or `SelectionInput` widget with
+        # MULTI_SELECT type or a `DateTimePicker`, provide data source from Google.
+        # Corresponds to the JSON property `workflowDataSource`
+        # @return [Google::Apis::ChatV1::WorkflowDataSourceMarkup]
+        attr_accessor :workflow_data_source
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3998,6 +4285,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @chat_data_source = args[:chat_data_source] if args.key?(:chat_data_source)
+          @workflow_data_source = args[:workflow_data_source] if args.key?(:workflow_data_source)
         end
       end
       
@@ -6488,6 +6776,34 @@ module Google
           @image = args[:image] if args.key?(:image)
           @key_value = args[:key_value] if args.key?(:key_value)
           @text_paragraph = args[:text_paragraph] if args.key?(:text_paragraph)
+        end
+      end
+      
+      # * Only supported by Google Workspace Workflow, but not Google Chat apps or
+      # Google Workspace add-ons. In a `TextInput` or `SelectionInput` widget with
+      # MULTI_SELECT type or a `DateTimePicker`, provide data source from Google.
+      class WorkflowDataSourceMarkup
+        include Google::Apis::Core::Hashable
+      
+        # Whether to include variables from the previous step in the data source.
+        # Corresponds to the JSON property `includeVariables`
+        # @return [Boolean]
+        attr_accessor :include_variables
+        alias_method :include_variables?, :include_variables
+      
+        # The type of data source.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @include_variables = args[:include_variables] if args.key?(:include_variables)
+          @type = args[:type] if args.key?(:type)
         end
       end
     end
