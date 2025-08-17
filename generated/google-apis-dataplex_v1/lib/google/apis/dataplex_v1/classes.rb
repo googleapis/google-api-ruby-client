@@ -1928,7 +1928,7 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfile]
         attr_accessor :profile
       
-        # The count of rows scanned.
+        # Output only. The count of rows scanned.
         # Corresponds to the JSON property `rowCount`
         # @return [Fixnum]
         attr_accessor :row_count
@@ -1999,7 +1999,8 @@ module Google
       class GoogleCloudDataplexV1DataProfileResultProfile
         include Google::Apis::Core::Hashable
       
-        # List of fields with structural and profile information for each field.
+        # Output only. List of fields with structural and profile information for each
+        # field.
         # Corresponds to the JSON property `fields`
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileField>]
         attr_accessor :fields
@@ -2018,14 +2019,14 @@ module Google
       class GoogleCloudDataplexV1DataProfileResultProfileField
         include Google::Apis::Core::Hashable
       
-        # The mode of the field. Possible values include: REQUIRED, if it is a required
-        # field. NULLABLE, if it is an optional field. REPEATED, if it is a repeated
-        # field.
+        # Output only. The mode of the field. Possible values include: REQUIRED, if it
+        # is a required field. NULLABLE, if it is an optional field. REPEATED, if it is
+        # a repeated field.
         # Corresponds to the JSON property `mode`
         # @return [String]
         attr_accessor :mode
       
-        # The name of the field.
+        # Output only. The name of the field.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2035,11 +2036,11 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo]
         attr_accessor :profile
       
-        # The data type retrieved from the schema of the data source. For instance, for
-        # a BigQuery native table, it is the BigQuery Table Schema (https://cloud.google.
-        # com/bigquery/docs/reference/rest/v2/tables#tablefieldschema). For a Dataplex
-        # Universal Catalog Entity, it is the Entity Schema (https://cloud.google.com/
-        # dataplex/docs/reference/rpc/google.cloud.dataplex.v1#type_3).
+        # Output only. The data type retrieved from the schema of the data source. For
+        # instance, for a BigQuery native table, it is the BigQuery Table Schema (https:/
+        # /cloud.google.com/bigquery/docs/reference/rest/v2/tables#tablefieldschema).
+        # For a Dataplex Universal Catalog Entity, it is the Entity Schema (https://
+        # cloud.google.com/dataplex/docs/reference/rpc/google.cloud.dataplex.v1#type_3).
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2061,9 +2062,9 @@ module Google
       class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo
         include Google::Apis::Core::Hashable
       
-        # Ratio of rows with distinct values against total scanned rows. Not available
-        # for complex non-groupable field type, including RECORD, ARRAY, GEOGRAPHY, and
-        # JSON, as well as fields with REPEATABLE mode.
+        # Output only. Ratio of rows with distinct values against total scanned rows.
+        # Not available for complex non-groupable field type, including RECORD, ARRAY,
+        # GEOGRAPHY, and JSON, as well as fields with REPEATABLE mode.
         # Corresponds to the JSON property `distinctRatio`
         # @return [Float]
         attr_accessor :distinct_ratio
@@ -2078,7 +2079,7 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo]
         attr_accessor :integer_profile
       
-        # Ratio of rows with null value against total scanned rows.
+        # Output only. Ratio of rows with null value against total scanned rows.
         # Corresponds to the JSON property `nullRatio`
         # @return [Float]
         attr_accessor :null_ratio
@@ -2088,11 +2089,11 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo]
         attr_accessor :string_profile
       
-        # The list of top N non-null values, frequency and ratio with which they occur
-        # in the scanned data. N is 10 or equal to the number of distinct values in the
-        # field, whichever is smaller. Not available for complex non-groupable field
-        # type, including RECORD, ARRAY, GEOGRAPHY, and JSON, as well as fields with
-        # REPEATABLE mode.
+        # Output only. The list of top N non-null values, frequency and ratio with which
+        # they occur in the scanned data. N is 10 or equal to the number of distinct
+        # values in the field, whichever is smaller. Not available for complex non-
+        # groupable field type, including RECORD, ARRAY, GEOGRAPHY, and JSON, as well as
+        # fields with REPEATABLE mode.
         # Corresponds to the JSON property `topNValues`
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue>]
         attr_accessor :top_n_values
@@ -2116,37 +2117,40 @@ module Google
       class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo
         include Google::Apis::Core::Hashable
       
-        # Average of non-null values in the scanned data. NaN, if the field has a NaN.
+        # Output only. Average of non-null values in the scanned data. NaN, if the field
+        # has a NaN.
         # Corresponds to the JSON property `average`
         # @return [Float]
         attr_accessor :average
       
-        # Maximum of non-null values in the scanned data. NaN, if the field has a NaN.
+        # Output only. Maximum of non-null values in the scanned data. NaN, if the field
+        # has a NaN.
         # Corresponds to the JSON property `max`
         # @return [Float]
         attr_accessor :max
       
-        # Minimum of non-null values in the scanned data. NaN, if the field has a NaN.
+        # Output only. Minimum of non-null values in the scanned data. NaN, if the field
+        # has a NaN.
         # Corresponds to the JSON property `min`
         # @return [Float]
         attr_accessor :min
       
-        # A quartile divides the number of data points into four parts, or quarters, of
-        # more-or-less equal size. Three main quartiles used are: The first quartile (Q1)
-        # splits off the lowest 25% of data from the highest 75%. It is also known as
-        # the lower or 25th empirical quartile, as 25% of the data is below this point.
-        # The second quartile (Q2) is the median of a data set. So, 50% of the data lies
-        # below this point. The third quartile (Q3) splits off the highest 25% of data
-        # from the lowest 75%. It is known as the upper or 75th empirical quartile, as
-        # 75% of the data lies below this point. Here, the quartiles is provided as an
-        # ordered list of quartile values for the scanned data, occurring in order Q1,
-        # median, Q3.
+        # Output only. A quartile divides the number of data points into four parts, or
+        # quarters, of more-or-less equal size. Three main quartiles used are: The first
+        # quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is
+        # also known as the lower or 25th empirical quartile, as 25% of the data is
+        # below this point. The second quartile (Q2) is the median of a data set. So, 50%
+        # of the data lies below this point. The third quartile (Q3) splits off the
+        # highest 25% of data from the lowest 75%. It is known as the upper or 75th
+        # empirical quartile, as 75% of the data lies below this point. Here, the
+        # quartiles is provided as an ordered list of quartile values for the scanned
+        # data, occurring in order Q1, median, Q3.
         # Corresponds to the JSON property `quartiles`
         # @return [Array<Float>]
         attr_accessor :quartiles
       
-        # Standard deviation of non-null values in the scanned data. NaN, if the field
-        # has a NaN.
+        # Output only. Standard deviation of non-null values in the scanned data. NaN,
+        # if the field has a NaN.
         # Corresponds to the JSON property `standardDeviation`
         # @return [Float]
         attr_accessor :standard_deviation
@@ -2169,37 +2173,40 @@ module Google
       class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo
         include Google::Apis::Core::Hashable
       
-        # Average of non-null values in the scanned data. NaN, if the field has a NaN.
+        # Output only. Average of non-null values in the scanned data. NaN, if the field
+        # has a NaN.
         # Corresponds to the JSON property `average`
         # @return [Float]
         attr_accessor :average
       
-        # Maximum of non-null values in the scanned data. NaN, if the field has a NaN.
+        # Output only. Maximum of non-null values in the scanned data. NaN, if the field
+        # has a NaN.
         # Corresponds to the JSON property `max`
         # @return [Fixnum]
         attr_accessor :max
       
-        # Minimum of non-null values in the scanned data. NaN, if the field has a NaN.
+        # Output only. Minimum of non-null values in the scanned data. NaN, if the field
+        # has a NaN.
         # Corresponds to the JSON property `min`
         # @return [Fixnum]
         attr_accessor :min
       
-        # A quartile divides the number of data points into four parts, or quarters, of
-        # more-or-less equal size. Three main quartiles used are: The first quartile (Q1)
-        # splits off the lowest 25% of data from the highest 75%. It is also known as
-        # the lower or 25th empirical quartile, as 25% of the data is below this point.
-        # The second quartile (Q2) is the median of a data set. So, 50% of the data lies
-        # below this point. The third quartile (Q3) splits off the highest 25% of data
-        # from the lowest 75%. It is known as the upper or 75th empirical quartile, as
-        # 75% of the data lies below this point. Here, the quartiles is provided as an
-        # ordered list of approximate quartile values for the scanned data, occurring in
-        # order Q1, median, Q3.
+        # Output only. A quartile divides the number of data points into four parts, or
+        # quarters, of more-or-less equal size. Three main quartiles used are: The first
+        # quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is
+        # also known as the lower or 25th empirical quartile, as 25% of the data is
+        # below this point. The second quartile (Q2) is the median of a data set. So, 50%
+        # of the data lies below this point. The third quartile (Q3) splits off the
+        # highest 25% of data from the lowest 75%. It is known as the upper or 75th
+        # empirical quartile, as 75% of the data lies below this point. Here, the
+        # quartiles is provided as an ordered list of approximate quartile values for
+        # the scanned data, occurring in order Q1, median, Q3.
         # Corresponds to the JSON property `quartiles`
         # @return [Array<Fixnum>]
         attr_accessor :quartiles
       
-        # Standard deviation of non-null values in the scanned data. NaN, if the field
-        # has a NaN.
+        # Output only. Standard deviation of non-null values in the scanned data. NaN,
+        # if the field has a NaN.
         # Corresponds to the JSON property `standardDeviation`
         # @return [Float]
         attr_accessor :standard_deviation
@@ -2222,17 +2229,17 @@ module Google
       class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo
         include Google::Apis::Core::Hashable
       
-        # Average length of non-null values in the scanned data.
+        # Output only. Average length of non-null values in the scanned data.
         # Corresponds to the JSON property `averageLength`
         # @return [Float]
         attr_accessor :average_length
       
-        # Maximum length of non-null values in the scanned data.
+        # Output only. Maximum length of non-null values in the scanned data.
         # Corresponds to the JSON property `maxLength`
         # @return [Fixnum]
         attr_accessor :max_length
       
-        # Minimum length of non-null values in the scanned data.
+        # Output only. Minimum length of non-null values in the scanned data.
         # Corresponds to the JSON property `minLength`
         # @return [Fixnum]
         attr_accessor :min_length
@@ -2253,18 +2260,18 @@ module Google
       class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue
         include Google::Apis::Core::Hashable
       
-        # Count of the corresponding value in the scanned data.
+        # Output only. Count of the corresponding value in the scanned data.
         # Corresponds to the JSON property `count`
         # @return [Fixnum]
         attr_accessor :count
       
-        # Ratio of the corresponding value in the field against the total number of rows
-        # in the scanned data.
+        # Output only. Ratio of the corresponding value in the field against the total
+        # number of rows in the scanned data.
         # Corresponds to the JSON property `ratio`
         # @return [Float]
         attr_accessor :ratio
       
-        # String value of a top N non-null value.
+        # Output only. String value of a top N non-null value.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -2301,9 +2308,8 @@ module Google
         attr_accessor :post_scan_actions
       
         # Optional. A filter applied to all rows in a single DataScan job. The filter
-        # needs to be a valid SQL expression for a WHERE clause in GoogleSQL syntax (
-        # https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#
-        # where_clause).Example: col1 >= 0 AND col2 < 10
+        # needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL
+        # syntax. Example: col1 >= 0 AND col2 < 10
         # Corresponds to the JSON property `rowFilter`
         # @return [String]
         attr_accessor :row_filter
@@ -2355,7 +2361,7 @@ module Google
       
         # Optional. The BigQuery table to export DataProfileScan results to. Format: //
         # bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/
-        # TABLE_ID or projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        # TABLE_ID
         # Corresponds to the JSON property `resultsTable`
         # @return [String]
         attr_accessor :results_table
@@ -2438,7 +2444,7 @@ module Google
       class GoogleCloudDataplexV1DataQualityDimension
         include Google::Apis::Core::Hashable
       
-        # Optional. The dimension name a rule belongs to. Custom dimension name is
+        # Output only. The dimension name a rule belongs to. Custom dimension name is
         # supported with all uppercase letters and maximum length of 30 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -7504,18 +7510,18 @@ module Google
       class GoogleCloudDataplexV1ScannedDataIncrementalField
         include Google::Apis::Core::Hashable
       
-        # Value that marks the end of the range.
+        # Output only. Value that marks the end of the range.
         # Corresponds to the JSON property `end`
         # @return [String]
         attr_accessor :end
       
-        # The field that contains values which monotonically increases over time (e.g. a
-        # timestamp column).
+        # Output only. The field that contains values which monotonically increases over
+        # time (e.g. a timestamp column).
         # Corresponds to the JSON property `field`
         # @return [String]
         attr_accessor :field
       
-        # Value that marks the start of the range.
+        # Output only. Value that marks the start of the range.
         # Corresponds to the JSON property `start`
         # @return [String]
         attr_accessor :start
