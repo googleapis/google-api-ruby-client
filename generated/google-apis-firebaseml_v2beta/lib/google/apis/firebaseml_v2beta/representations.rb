@@ -973,10 +973,6 @@ module Google
       class GoogleCloudAiplatformV1beta1GoogleMaps
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_auth, as: 'apiAuth', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ApiAuth, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ApiAuth::Representation
-      
-          property :auth_config, as: 'authConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AuthConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AuthConfig::Representation
-      
         end
       end
       
@@ -1045,6 +1041,7 @@ module Google
       class GoogleCloudAiplatformV1beta1GroundingChunkRetrievedContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_name, as: 'documentName'
           property :rag_chunk, as: 'ragChunk', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1RagChunk, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1RagChunk::Representation
       
           property :text, as: 'text'
