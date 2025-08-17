@@ -1714,7 +1714,9 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::VerticalPodAutoscaling]
         attr_accessor :vertical_pod_autoscaling
       
-        # Configuration for direct-path (via ALTS) with workload identity.
+        # Configuration for direct-path (via ALTS) with workload identity. This feature
+        # is not officially supported for external customers in Kubernetes Engine when
+        # using Workload Identity.
         # Corresponds to the JSON property `workloadAltsConfig`
         # @return [Google::Apis::ContainerV1beta1::WorkloadAltsConfig]
         attr_accessor :workload_alts_config
@@ -2374,7 +2376,9 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::VerticalPodAutoscaling]
         attr_accessor :desired_vertical_pod_autoscaling
       
-        # Configuration for direct-path (via ALTS) with workload identity.
+        # Configuration for direct-path (via ALTS) with workload identity. This feature
+        # is not officially supported for external customers in Kubernetes Engine when
+        # using Workload Identity.
         # Corresponds to the JSON property `desiredWorkloadAltsConfig`
         # @return [Google::Apis::ContainerV1beta1::WorkloadAltsConfig]
         attr_accessor :desired_workload_alts_config
@@ -4869,7 +4873,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # If set to true, the Lustre CSI driver will install Lustre kernel modules using
-        # port 6988.
+        # port 6988. This serves as a workaround for a port conflict with the gke-
+        # metadata-server. This field is required ONLY under the following conditions: 1.
+        # The GKE node version is older than 1.33.2-gke.4655000. 2. You're connecting
+        # to a Lustre instance that has the 'gke-support-enabled' flag.
         # Corresponds to the JSON property `enableLegacyLustrePort`
         # @return [Boolean]
         attr_accessor :enable_legacy_lustre_port
@@ -10246,7 +10253,9 @@ module Google
         end
       end
       
-      # Configuration for direct-path (via ALTS) with workload identity.
+      # Configuration for direct-path (via ALTS) with workload identity. This feature
+      # is not officially supported for external customers in Kubernetes Engine when
+      # using Workload Identity.
       class WorkloadAltsConfig
         include Google::Apis::Core::Hashable
       
