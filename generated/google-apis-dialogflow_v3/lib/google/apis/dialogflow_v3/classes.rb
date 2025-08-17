@@ -8344,7 +8344,9 @@ module Google
       class GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings
         include Google::Apis::Core::Hashable
       
-        # Filename pattern for exported audio.
+        # Filename pattern for exported audio. `conversation` and `timestamp` are
+        # placeholders that will be replaced with the conversation ID and epoch micros
+        # of the conversation. For example, "`conversation`/recording_`timestamp`.mulaw".
         # Corresponds to the JSON property `audioExportPattern`
         # @return [String]
         attr_accessor :audio_export_pattern
