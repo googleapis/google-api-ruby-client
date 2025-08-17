@@ -581,7 +581,7 @@ module Google
         
         # Update a single Endpoint.
         # @param [String] name
-        #   Immutable. Identifier. name of resource
+        #   Immutable. Identifier. Name of resource.
         # @param [Google::Apis::NetworksecurityV1beta1::FirewallEndpoint] firewall_endpoint_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
