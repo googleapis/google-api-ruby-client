@@ -815,6 +815,252 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Approves a query template.
+        # @param [String] name
+        #   Required. The resource path of the QueryTemplate. e.g. `projects/myproject/
+        #   locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`.
+        # @param [Google::Apis::AnalyticshubV1::ApproveQueryTemplateRequest] approve_query_template_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticshubV1::QueryTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticshubV1::QueryTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def approve_query_template(name, approve_query_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:approve', options)
+          command.request_representation = Google::Apis::AnalyticshubV1::ApproveQueryTemplateRequest::Representation
+          command.request_object = approve_query_template_request_object
+          command.response_representation = Google::Apis::AnalyticshubV1::QueryTemplate::Representation
+          command.response_class = Google::Apis::AnalyticshubV1::QueryTemplate
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new QueryTemplate
+        # @param [String] parent
+        #   Required. The parent resource path of the QueryTemplate. e.g. `projects/
+        #   myproject/locations/us/dataExchanges/123/queryTemplates/myQueryTemplate`.
+        # @param [Google::Apis::AnalyticshubV1::QueryTemplate] query_template_object
+        # @param [String] query_template_id
+        #   Required. The ID of the QueryTemplate to create. Must contain only Unicode
+        #   letters, numbers (0-9), underscores (_). Max length: 100 bytes.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticshubV1::QueryTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticshubV1::QueryTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_data_exchange_query_template(parent, query_template_object = nil, query_template_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/queryTemplates', options)
+          command.request_representation = Google::Apis::AnalyticshubV1::QueryTemplate::Representation
+          command.request_object = query_template_object
+          command.response_representation = Google::Apis::AnalyticshubV1::QueryTemplate::Representation
+          command.response_class = Google::Apis::AnalyticshubV1::QueryTemplate
+          command.params['parent'] = parent unless parent.nil?
+          command.query['queryTemplateId'] = query_template_id unless query_template_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a query template.
+        # @param [String] name
+        #   Required. The resource path of the QueryTemplate. e.g. `projects/myproject/
+        #   locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticshubV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticshubV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_data_exchange_query_template(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AnalyticshubV1::Empty::Representation
+          command.response_class = Google::Apis::AnalyticshubV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a QueryTemplate
+        # @param [String] name
+        #   Required. The parent resource path of the QueryTemplate. e.g. `projects/
+        #   myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticshubV1::QueryTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticshubV1::QueryTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_data_exchange_query_template(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AnalyticshubV1::QueryTemplate::Representation
+          command.response_class = Google::Apis::AnalyticshubV1::QueryTemplate
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all QueryTemplates in a given project and location.
+        # @param [String] parent
+        #   Required. The parent resource path of the QueryTemplates. e.g. `projects/
+        #   myproject/locations/us/dataExchanges/123`.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return in a single response page.
+        #   Leverage the page tokens to iterate through the entire collection.
+        # @param [String] page_token
+        #   Optional. Page token, returned by a previous call, to request the next page of
+        #   results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticshubV1::ListQueryTemplatesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticshubV1::ListQueryTemplatesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_data_exchange_query_templates(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/queryTemplates', options)
+          command.response_representation = Google::Apis::AnalyticshubV1::ListQueryTemplatesResponse::Representation
+          command.response_class = Google::Apis::AnalyticshubV1::ListQueryTemplatesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing QueryTemplate
+        # @param [String] name
+        #   Output only. The resource name of the QueryTemplate. e.g. `projects/myproject/
+        #   locations/us/dataExchanges/123/queryTemplates/456`
+        # @param [Google::Apis::AnalyticshubV1::QueryTemplate] query_template_object
+        # @param [String] update_mask
+        #   Optional. Field mask specifies the fields to update in the query template
+        #   resource. The fields specified in the `updateMask` are relative to the
+        #   resource and are not a full request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticshubV1::QueryTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticshubV1::QueryTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_data_exchange_query_template(name, query_template_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::AnalyticshubV1::QueryTemplate::Representation
+          command.request_object = query_template_object
+          command.response_representation = Google::Apis::AnalyticshubV1::QueryTemplate::Representation
+          command.response_class = Google::Apis::AnalyticshubV1::QueryTemplate
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Submits a query template for approval.
+        # @param [String] name
+        #   Required. The resource path of the QueryTemplate. e.g. `projects/myproject/
+        #   locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`.
+        # @param [Google::Apis::AnalyticshubV1::SubmitQueryTemplateRequest] submit_query_template_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticshubV1::QueryTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticshubV1::QueryTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def submit_query_template(name, submit_query_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:submit', options)
+          command.request_representation = Google::Apis::AnalyticshubV1::SubmitQueryTemplateRequest::Representation
+          command.request_object = submit_query_template_request_object
+          command.response_representation = Google::Apis::AnalyticshubV1::QueryTemplate::Representation
+          command.response_class = Google::Apis::AnalyticshubV1::QueryTemplate
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes a subscription.
         # @param [String] name
         #   Required. Resource name of the subscription to delete. e.g. projects/123/

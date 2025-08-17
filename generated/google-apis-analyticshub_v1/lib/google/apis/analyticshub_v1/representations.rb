@@ -22,6 +22,12 @@ module Google
   module Apis
     module AnalyticshubV1
       
+      class ApproveQueryTemplateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -202,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListQueryTemplatesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSharedResourceSubscriptionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -280,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QueryTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RefreshSubscriptionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -322,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Routine
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SelectedResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -341,6 +365,12 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubmitQueryTemplateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -392,6 +422,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApproveQueryTemplateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
       end
       
       class AuditConfig
@@ -687,6 +723,15 @@ module Google
         end
       end
       
+      class ListQueryTemplatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :query_templates, as: 'queryTemplates', class: Google::Apis::AnalyticshubV1::QueryTemplate, decorator: Google::Apis::AnalyticshubV1::QueryTemplate::Representation
+      
+        end
+      end
+      
       class ListSharedResourceSubscriptionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -834,6 +879,23 @@ module Google
         end
       end
       
+      class QueryTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :documentation, as: 'documentation'
+          property :name, as: 'name'
+          property :primary_contact, as: 'primaryContact'
+          property :proposer, as: 'proposer'
+          property :routine, as: 'routine', class: Google::Apis::AnalyticshubV1::Routine, decorator: Google::Apis::AnalyticshubV1::Routine::Representation
+      
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class RefreshSubscriptionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -887,6 +949,14 @@ module Google
         end
       end
       
+      class Routine
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :definition_body, as: 'definitionBody'
+          property :routine_type, as: 'routineType'
+        end
+      end
+      
       class SelectedResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -920,6 +990,12 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class SubmitQueryTemplateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
