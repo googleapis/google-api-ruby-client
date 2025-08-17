@@ -59,8 +59,8 @@ module Google
         # or for access errors. * `NOT_FOUND` if the primary teacher is not a valid user.
         # * `FAILED_PRECONDITION` if the course owner's account is disabled or for the
         # following request errors: * UserCannotOwnCourse *
-        # UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if an alias was specified
-        # in the `id` and already exists.
+        # UserGroupsMembershipLimitReached * CourseTitleCannotContainUrl * `
+        # ALREADY_EXISTS` if an alias was specified in the `id` and already exists.
         # @param [Google::Apis::ClassroomV1::Course] course_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -255,7 +255,7 @@ module Google
         # exists with the requested ID. * `INVALID_ARGUMENT` if invalid fields are
         # specified in the update mask or if no update mask is supplied. * `
         # FAILED_PRECONDITION` for the following request errors: * CourseNotModifiable *
-        # InactiveCourseOwner * IneligibleOwner
+        # InactiveCourseOwner * IneligibleOwner * CourseTitleCannotContainUrl
         # @param [String] id
         #   Identifier of the course to update. This identifier can be either the
         #   Classroom-assigned identifier or an alias.
@@ -302,7 +302,7 @@ module Google
         # PERMISSION_DENIED` if the requesting user is not permitted to modify the
         # requested course or for access errors. * `NOT_FOUND` if no course exists with
         # the requested ID. * `FAILED_PRECONDITION` for the following request errors: *
-        # CourseNotModifiable
+        # CourseNotModifiable * CourseTitleCannotContainUrl
         # @param [String] id
         #   Identifier of the course to update. This identifier can be either the
         #   Classroom-assigned identifier or an alias.
