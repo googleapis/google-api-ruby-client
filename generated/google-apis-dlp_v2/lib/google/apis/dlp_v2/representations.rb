@@ -2044,6 +2044,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Proto2BridgeMessageSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UtilStatusProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2Action
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5491,6 +5503,24 @@ module Google
           property :minutes, as: 'minutes'
           property :nanos, as: 'nanos'
           property :seconds, as: 'seconds'
+        end
+      end
+      
+      class Proto2BridgeMessageSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UtilStatusProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :canonical_code, as: 'canonicalCode'
+          property :code, as: 'code'
+          property :message, as: 'message'
+          property :message_set, as: 'messageSet', class: Google::Apis::DlpV2::Proto2BridgeMessageSet, decorator: Google::Apis::DlpV2::Proto2BridgeMessageSet::Representation
+      
+          property :space, as: 'space'
         end
       end
     end
