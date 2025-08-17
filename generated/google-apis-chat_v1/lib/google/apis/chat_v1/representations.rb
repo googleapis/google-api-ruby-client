@@ -346,6 +346,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAppsCardV1CommonWidgetAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCardV1Condition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCardV1DataSourceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAppsCardV1DateTimePicker
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -359,6 +377,24 @@ module Google
       end
       
       class GoogleAppsCardV1Divider
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCardV1EventAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCardV1ExpressionData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCardV1ExpressionDataCondition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -485,6 +521,18 @@ module Google
       end
       
       class GoogleAppsCardV1TextParagraph
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCardV1Trigger
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCardV1UpdateVisibilityAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -922,6 +970,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkflowDataSourceMarkup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccessSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1354,6 +1408,8 @@ module Google
           collection :card_actions, as: 'cardActions', class: Google::Apis::ChatV1::GoogleAppsCardV1CardAction, decorator: Google::Apis::ChatV1::GoogleAppsCardV1CardAction::Representation
       
           property :display_style, as: 'displayStyle'
+          collection :expression_data, as: 'expressionData', class: Google::Apis::ChatV1::GoogleAppsCardV1ExpressionData, decorator: Google::Apis::ChatV1::GoogleAppsCardV1ExpressionData::Representation
+      
           property :fixed_footer, as: 'fixedFooter', class: Google::Apis::ChatV1::GoogleAppsCardV1CardFixedFooter, decorator: Google::Apis::ChatV1::GoogleAppsCardV1CardFixedFooter::Representation
       
           property :header, as: 'header', class: Google::Apis::ChatV1::GoogleAppsCardV1CardHeader, decorator: Google::Apis::ChatV1::GoogleAppsCardV1CardHeader::Representation
@@ -1468,9 +1524,38 @@ module Google
         end
       end
       
+      class GoogleAppsCardV1CommonWidgetAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :update_visibility_action, as: 'updateVisibilityAction', class: Google::Apis::ChatV1::GoogleAppsCardV1UpdateVisibilityAction, decorator: Google::Apis::ChatV1::GoogleAppsCardV1UpdateVisibilityAction::Representation
+      
+        end
+      end
+      
+      class GoogleAppsCardV1Condition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_rule_id, as: 'actionRuleId'
+          property :expression_data_condition, as: 'expressionDataCondition', class: Google::Apis::ChatV1::GoogleAppsCardV1ExpressionDataCondition, decorator: Google::Apis::ChatV1::GoogleAppsCardV1ExpressionDataCondition::Representation
+      
+        end
+      end
+      
+      class GoogleAppsCardV1DataSourceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :platform_data_source, as: 'platformDataSource', class: Google::Apis::ChatV1::GoogleAppsCardV1PlatformDataSource, decorator: Google::Apis::ChatV1::GoogleAppsCardV1PlatformDataSource::Representation
+      
+          property :remote_data_source, as: 'remoteDataSource', class: Google::Apis::ChatV1::GoogleAppsCardV1Action, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Action::Representation
+      
+        end
+      end
+      
       class GoogleAppsCardV1DateTimePicker
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :host_app_data_source, as: 'hostAppDataSource', class: Google::Apis::ChatV1::HostAppDataSourceMarkup, decorator: Google::Apis::ChatV1::HostAppDataSourceMarkup::Representation
+      
           property :label, as: 'label'
           property :name, as: 'name'
           property :on_change_action, as: 'onChangeAction', class: Google::Apis::ChatV1::GoogleAppsCardV1Action, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Action::Representation
@@ -1506,6 +1591,36 @@ module Google
       class GoogleAppsCardV1Divider
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleAppsCardV1EventAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_rule_id, as: 'actionRuleId'
+          property :common_widget_action, as: 'commonWidgetAction', class: Google::Apis::ChatV1::GoogleAppsCardV1CommonWidgetAction, decorator: Google::Apis::ChatV1::GoogleAppsCardV1CommonWidgetAction::Representation
+      
+          collection :post_event_triggers, as: 'postEventTriggers', class: Google::Apis::ChatV1::GoogleAppsCardV1Trigger, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Trigger::Representation
+      
+        end
+      end
+      
+      class GoogleAppsCardV1ExpressionData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conditions, as: 'conditions', class: Google::Apis::ChatV1::GoogleAppsCardV1Condition, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Condition::Representation
+      
+          collection :event_actions, as: 'eventActions', class: Google::Apis::ChatV1::GoogleAppsCardV1EventAction, decorator: Google::Apis::ChatV1::GoogleAppsCardV1EventAction::Representation
+      
+          property :expression, as: 'expression'
+          property :id, as: 'id'
+        end
+      end
+      
+      class GoogleAppsCardV1ExpressionDataCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition_type, as: 'conditionType'
         end
       end
       
@@ -1660,6 +1775,7 @@ module Google
       
           property :collapsible, as: 'collapsible'
           property :header, as: 'header'
+          property :id, as: 'id'
           property :uncollapsible_widgets_count, as: 'uncollapsibleWidgetsCount'
           collection :widgets, as: 'widgets', class: Google::Apis::ChatV1::GoogleAppsCardV1Widget, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Widget::Representation
       
@@ -1669,6 +1785,8 @@ module Google
       class GoogleAppsCardV1SelectionInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_source_configs, as: 'dataSourceConfigs', class: Google::Apis::ChatV1::GoogleAppsCardV1DataSourceConfig, decorator: Google::Apis::ChatV1::GoogleAppsCardV1DataSourceConfig::Representation
+      
           property :external_data_source, as: 'externalDataSource', class: Google::Apis::ChatV1::GoogleAppsCardV1Action, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Action::Representation
       
           property :hint_text, as: 'hintText'
@@ -1730,6 +1848,8 @@ module Google
           property :auto_complete_action, as: 'autoCompleteAction', class: Google::Apis::ChatV1::GoogleAppsCardV1Action, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Action::Representation
       
           property :hint_text, as: 'hintText'
+          property :host_app_data_source, as: 'hostAppDataSource', class: Google::Apis::ChatV1::HostAppDataSourceMarkup, decorator: Google::Apis::ChatV1::HostAppDataSourceMarkup::Representation
+      
           property :initial_suggestions, as: 'initialSuggestions', class: Google::Apis::ChatV1::GoogleAppsCardV1Suggestions, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Suggestions::Representation
       
           property :label, as: 'label'
@@ -1749,6 +1869,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_lines, as: 'maxLines'
           property :text, as: 'text'
+        end
+      end
+      
+      class GoogleAppsCardV1Trigger
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_rule_id, as: 'actionRuleId'
+        end
+      end
+      
+      class GoogleAppsCardV1UpdateVisibilityAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :visibility, as: 'visibility'
         end
       end
       
@@ -1777,9 +1911,12 @@ module Google
       
           property :divider, as: 'divider', class: Google::Apis::ChatV1::GoogleAppsCardV1Divider, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Divider::Representation
       
+          collection :event_actions, as: 'eventActions', class: Google::Apis::ChatV1::GoogleAppsCardV1EventAction, decorator: Google::Apis::ChatV1::GoogleAppsCardV1EventAction::Representation
+      
           property :grid, as: 'grid', class: Google::Apis::ChatV1::GoogleAppsCardV1Grid, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Grid::Representation
       
           property :horizontal_alignment, as: 'horizontalAlignment'
+          property :id, as: 'id'
           property :image, as: 'image', class: Google::Apis::ChatV1::GoogleAppsCardV1Image, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Image::Representation
       
           property :selection_input, as: 'selectionInput', class: Google::Apis::ChatV1::GoogleAppsCardV1SelectionInput, decorator: Google::Apis::ChatV1::GoogleAppsCardV1SelectionInput::Representation
@@ -1788,6 +1925,7 @@ module Google
       
           property :text_paragraph, as: 'textParagraph', class: Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph, decorator: Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph::Representation
       
+          property :visibility, as: 'visibility'
         end
       end
       
@@ -1824,6 +1962,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :chat_data_source, as: 'chatDataSource', class: Google::Apis::ChatV1::ChatClientDataSourceMarkup, decorator: Google::Apis::ChatV1::ChatClientDataSourceMarkup::Representation
+      
+          property :workflow_data_source, as: 'workflowDataSource', class: Google::Apis::ChatV1::WorkflowDataSourceMarkup, decorator: Google::Apis::ChatV1::WorkflowDataSourceMarkup::Representation
       
         end
       end
@@ -2537,6 +2677,14 @@ module Google
       
           property :text_paragraph, as: 'textParagraph', class: Google::Apis::ChatV1::TextParagraph, decorator: Google::Apis::ChatV1::TextParagraph::Representation
       
+        end
+      end
+      
+      class WorkflowDataSourceMarkup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_variables, as: 'includeVariables'
+          property :type, as: 'type'
         end
       end
     end
