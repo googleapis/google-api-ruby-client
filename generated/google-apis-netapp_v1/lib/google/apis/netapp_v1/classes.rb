@@ -2162,6 +2162,11 @@ module Google
         attr_accessor :allow_auto_tiering
         alias_method :allow_auto_tiering?, :allow_auto_tiering
       
+        # Output only. Available throughput of the storage pool (in MiB/s).
+        # Corresponds to the JSON property `availableThroughputMibps`
+        # @return [Float]
+        attr_accessor :available_throughput_mibps
+      
         # Required. Capacity in GIB of the pool
         # Corresponds to the JSON property `capacityGib`
         # @return [Fixnum]
@@ -2246,6 +2251,11 @@ module Google
         # @return [String]
         attr_accessor :psa_range
       
+        # Optional. QoS (Quality of Service) Type of the storage pool
+        # Corresponds to the JSON property `qosType`
+        # @return [String]
+        attr_accessor :qos_type
+      
         # Optional. Specifies the replica zone for regional storagePool.
         # Corresponds to the JSON property `replicaZone`
         # @return [String]
@@ -2312,6 +2322,7 @@ module Google
         def update!(**args)
           @active_directory = args[:active_directory] if args.key?(:active_directory)
           @allow_auto_tiering = args[:allow_auto_tiering] if args.key?(:allow_auto_tiering)
+          @available_throughput_mibps = args[:available_throughput_mibps] if args.key?(:available_throughput_mibps)
           @capacity_gib = args[:capacity_gib] if args.key?(:capacity_gib)
           @create_time = args[:create_time] if args.key?(:create_time)
           @custom_performance_enabled = args[:custom_performance_enabled] if args.key?(:custom_performance_enabled)
@@ -2326,6 +2337,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @psa_range = args[:psa_range] if args.key?(:psa_range)
+          @qos_type = args[:qos_type] if args.key?(:qos_type)
           @replica_zone = args[:replica_zone] if args.key?(:replica_zone)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
@@ -2550,7 +2562,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :capacity_gib
       
-        # Output only. Size of the volume cold tier data in GiB.
+        # Output only. Size of the volume cold tier data rounded down to the nearest GiB.
         # Corresponds to the JSON property `coldTierSizeGib`
         # @return [Fixnum]
         attr_accessor :cold_tier_size_gib
@@ -2721,6 +2733,11 @@ module Google
         # @return [String]
         attr_accessor :storage_pool
       
+        # Optional. Throughput of the volume (in MiB/s)
+        # Corresponds to the JSON property `throughputMibps`
+        # @return [Float]
+        attr_accessor :throughput_mibps
+      
         # Defines tiering policy for the volume.
         # Corresponds to the JSON property `tieringPolicy`
         # @return [Google::Apis::NetappV1::TieringPolicy]
@@ -2783,6 +2800,7 @@ module Google
           @state = args[:state] if args.key?(:state)
           @state_details = args[:state_details] if args.key?(:state_details)
           @storage_pool = args[:storage_pool] if args.key?(:storage_pool)
+          @throughput_mibps = args[:throughput_mibps] if args.key?(:throughput_mibps)
           @tiering_policy = args[:tiering_policy] if args.key?(:tiering_policy)
           @unix_permissions = args[:unix_permissions] if args.key?(:unix_permissions)
           @used_gib = args[:used_gib] if args.key?(:used_gib)
