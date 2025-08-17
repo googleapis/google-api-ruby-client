@@ -2974,6 +2974,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1ModelArmorConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1ModelBaseModelSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8872,8 +8878,10 @@ module Google
       class GoogleCloudAiplatformV1DeployRequestEndpointConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :dedicated_endpoint_disabled, as: 'dedicatedEndpointDisabled'
           property :dedicated_endpoint_enabled, as: 'dedicatedEndpointEnabled'
           property :endpoint_display_name, as: 'endpointDisplayName'
+          property :endpoint_user_id, as: 'endpointUserId'
         end
       end
       
@@ -10632,6 +10640,8 @@ module Google
           property :generation_config, as: 'generationConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfig::Representation
       
           hash :labels, as: 'labels'
+          property :model_armor_config, as: 'modelArmorConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModelArmorConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModelArmorConfig::Representation
+      
           collection :safety_settings, as: 'safetySettings', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetySetting, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetySetting::Representation
       
           property :system_instruction, as: 'systemInstruction', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content::Representation
@@ -10914,6 +10924,7 @@ module Google
       class GoogleCloudAiplatformV1GroundingChunkRetrievedContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_name, as: 'documentName'
           property :rag_chunk, as: 'ragChunk', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagChunk, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagChunk::Representation
       
           property :text, as: 'text'
@@ -12161,6 +12172,14 @@ module Google
           property :version_description, as: 'versionDescription'
           property :version_id, as: 'versionId'
           property :version_update_time, as: 'versionUpdateTime'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ModelArmorConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prompt_template_name, as: 'promptTemplateName'
+          property :response_template_name, as: 'responseTemplateName'
         end
       end
       
@@ -14504,8 +14523,14 @@ module Google
       class GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :container_concurrency, as: 'containerConcurrency'
           collection :env, as: 'env', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EnvVar, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EnvVar::Representation
       
+          property :max_instances, as: 'maxInstances'
+          property :min_instances, as: 'minInstances'
+          property :psc_interface_config, as: 'pscInterfaceConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscInterfaceConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscInterfaceConfig::Representation
+      
+          hash :resource_limits, as: 'resourceLimits'
           collection :secret_env, as: 'secretEnv', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SecretEnvVar, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SecretEnvVar::Representation
       
         end

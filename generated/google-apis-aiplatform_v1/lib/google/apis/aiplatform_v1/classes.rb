@@ -6308,12 +6308,26 @@ module Google
       class GoogleCloudAiplatformV1DeployRequestEndpointConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. If true, the endpoint will be exposed through a dedicated DNS [
-        # Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be
-        # isolated from other users' traffic and will have better performance and
-        # reliability. Note: Once you enabled dedicated endpoint, you won't be able to
-        # send request to the shared DNS `region`-aiplatform.googleapis.com. The
-        # limitations will be removed soon.
+        # Optional. By default, if dedicated endpoint is enabled, the endpoint will be
+        # exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your
+        # request to the dedicated DNS will be isolated from other users' traffic and
+        # will have better performance and reliability. Note: Once you enabled dedicated
+        # endpoint, you won't be able to send request to the shared DNS `region`-
+        # aiplatform.googleapis.com. The limitations will be removed soon. If this field
+        # is set to true, the dedicated endpoint will be disabled and the deployed model
+        # will be exposed through the shared DNS `region`-aiplatform.googleapis.com.
+        # Corresponds to the JSON property `dedicatedEndpointDisabled`
+        # @return [Boolean]
+        attr_accessor :dedicated_endpoint_disabled
+        alias_method :dedicated_endpoint_disabled?, :dedicated_endpoint_disabled
+      
+        # Optional. Deprecated. Use dedicated_endpoint_disabled instead. If true, the
+        # endpoint will be exposed through a dedicated DNS [Endpoint.
+        # dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated
+        # from other users' traffic and will have better performance and reliability.
+        # Note: Once you enabled dedicated endpoint, you won't be able to send request
+        # to the shared DNS `region`-aiplatform.googleapis.com. The limitations will be
+        # removed soon.
         # Corresponds to the JSON property `dedicatedEndpointEnabled`
         # @return [Boolean]
         attr_accessor :dedicated_endpoint_enabled
@@ -6325,14 +6339,29 @@ module Google
         # @return [String]
         attr_accessor :endpoint_display_name
       
+        # Optional. Immutable. The ID to use for endpoint, which will become the final
+        # component of the endpoint resource name. If not provided, Vertex AI will
+        # generate a value for this ID. If the first character is a letter, this value
+        # may be up to 63 characters, and valid characters are `[a-z0-9-]`. The last
+        # character must be a letter or number. If the first character is a number, this
+        # value may be up to 9 characters, and valid characters are `[0-9]` with no
+        # leading zeros. When using HTTP/JSON, this field is populated based on a query
+        # string argument, such as `?endpoint_id=12345`. This is the fallback for fields
+        # that are not included in either the URI or the body.
+        # Corresponds to the JSON property `endpointUserId`
+        # @return [String]
+        attr_accessor :endpoint_user_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @dedicated_endpoint_disabled = args[:dedicated_endpoint_disabled] if args.key?(:dedicated_endpoint_disabled)
           @dedicated_endpoint_enabled = args[:dedicated_endpoint_enabled] if args.key?(:dedicated_endpoint_enabled)
           @endpoint_display_name = args[:endpoint_display_name] if args.key?(:endpoint_display_name)
+          @endpoint_user_id = args[:endpoint_user_id] if args.key?(:endpoint_user_id)
         end
       end
       
@@ -12740,6 +12769,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Configuration for Model Armor integrations of prompt and responses.
+        # Corresponds to the JSON property `modelArmorConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModelArmorConfig]
+        attr_accessor :model_armor_config
+      
         # Optional. Per request settings for blocking unsafe content. Enforced on
         # GenerateContentResponse.candidates.
         # Corresponds to the JSON property `safetySettings`
@@ -12777,6 +12811,7 @@ module Google
           @contents = args[:contents] if args.key?(:contents)
           @generation_config = args[:generation_config] if args.key?(:generation_config)
           @labels = args[:labels] if args.key?(:labels)
+          @model_armor_config = args[:model_armor_config] if args.key?(:model_armor_config)
           @safety_settings = args[:safety_settings] if args.key?(:safety_settings)
           @system_instruction = args[:system_instruction] if args.key?(:system_instruction)
           @tool_config = args[:tool_config] if args.key?(:tool_config)
@@ -13698,6 +13733,12 @@ module Google
       class GoogleCloudAiplatformV1GroundingChunkRetrievedContext
         include Google::Apis::Core::Hashable
       
+        # Output only. The full document name for the referenced Vertex AI Search
+        # document.
+        # Corresponds to the JSON property `documentName`
+        # @return [String]
+        attr_accessor :document_name
+      
         # A RagChunk includes the content of a chunk of a RagFile, and associated
         # metadata.
         # Corresponds to the JSON property `ragChunk`
@@ -13725,6 +13766,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @document_name = args[:document_name] if args.key?(:document_name)
           @rag_chunk = args[:rag_chunk] if args.key?(:rag_chunk)
           @text = args[:text] if args.key?(:text)
           @title = args[:title] if args.key?(:title)
@@ -17998,6 +18040,32 @@ module Google
           @version_description = args[:version_description] if args.key?(:version_description)
           @version_id = args[:version_id] if args.key?(:version_id)
           @version_update_time = args[:version_update_time] if args.key?(:version_update_time)
+        end
+      end
+      
+      # Configuration for Model Armor integrations of prompt and responses.
+      class GoogleCloudAiplatformV1ModelArmorConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the Model Armor template to use for prompt sanitization.
+        # Corresponds to the JSON property `promptTemplateName`
+        # @return [String]
+        attr_accessor :prompt_template_name
+      
+        # Optional. The name of the Model Armor template to use for response
+        # sanitization.
+        # Corresponds to the JSON property `responseTemplateName`
+        # @return [String]
+        attr_accessor :response_template_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prompt_template_name = args[:prompt_template_name] if args.key?(:prompt_template_name)
+          @response_template_name = args[:response_template_name] if args.key?(:response_template_name)
         end
       end
       
@@ -26315,12 +26383,44 @@ module Google
       class GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec
         include Google::Apis::Core::Hashable
       
+        # Optional. Concurrency for each container and agent server. Recommended value:
+        # 2 * cpu + 1. Defaults to 9.
+        # Corresponds to the JSON property `containerConcurrency`
+        # @return [Fixnum]
+        attr_accessor :container_concurrency
+      
         # Optional. Environment variables to be set with the Reasoning Engine deployment.
         # The environment variables can be updated through the UpdateReasoningEngine
         # API.
         # Corresponds to the JSON property `env`
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EnvVar>]
         attr_accessor :env
+      
+        # Optional. The maximum number of application instances that can be launched to
+        # handle increased traffic. Defaults to 100.
+        # Corresponds to the JSON property `maxInstances`
+        # @return [Fixnum]
+        attr_accessor :max_instances
+      
+        # Optional. The minimum number of application instances that will be kept
+        # running at all times. Defaults to 1.
+        # Corresponds to the JSON property `minInstances`
+        # @return [Fixnum]
+        attr_accessor :min_instances
+      
+        # Configuration for PSC-I.
+        # Corresponds to the JSON property `pscInterfaceConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscInterfaceConfig]
+        attr_accessor :psc_interface_config
+      
+        # Optional. Resource limits for each container. Only 'cpu' and 'memory' keys are
+        # supported. Defaults to `"cpu": "4", "memory": "4Gi"`. * The only supported
+        # values for CPU are '1', '2', '4', and '8'. For more information, go to https://
+        # cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and
+        # syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
+        # Corresponds to the JSON property `resourceLimits`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_limits
       
         # Optional. Environment variables where the value is a secret in Cloud Secret
         # Manager. To use this feature, add 'Secret Manager Secret Accessor' role (roles/
@@ -26335,7 +26435,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @container_concurrency = args[:container_concurrency] if args.key?(:container_concurrency)
           @env = args[:env] if args.key?(:env)
+          @max_instances = args[:max_instances] if args.key?(:max_instances)
+          @min_instances = args[:min_instances] if args.key?(:min_instances)
+          @psc_interface_config = args[:psc_interface_config] if args.key?(:psc_interface_config)
+          @resource_limits = args[:resource_limits] if args.key?(:resource_limits)
           @secret_env = args[:secret_env] if args.key?(:secret_env)
         end
       end
