@@ -2551,8 +2551,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :associated_serving_config_ids, as: 'associatedServingConfigIds'
           property :display_name, as: 'displayName'
-          property :facet_spec, as: 'facetSpec', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestFacetSpec, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestFacetSpec::Representation
-      
           property :name, as: 'name'
           property :rule, as: 'rule', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRule, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRule::Representation
       
