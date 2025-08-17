@@ -3759,7 +3759,7 @@ module Google
         # was redirected to the load balancer. - MAGLEV: used as a drop in replacement
         # for the ring hash load balancer. Maglev is not as stable as ring hash but has
         # faster table lookup build times and host selection times. For more information
-        # about Maglev, see https://ai.google/research/pubs/pub44824 -
+        # about Maglev, see Maglev: A Fast and Reliable Software Network Load Balancer. -
         # WEIGHTED_ROUND_ROBIN: Per-endpoint Weighted Round Robin Load Balancing using
         # weights computed from Backend reported Custom Metrics. If set, the Backend
         # Service responses are expected to contain non-standard HTTP response header
@@ -3890,7 +3890,7 @@ module Google
         attr_accessor :service_bindings
       
         # URL to networkservices.ServiceLbPolicy resource. Can only be set if load
-        # balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or
+        # balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or
         # INTERNAL_SELF_MANAGED and the scope is global.
         # Corresponds to the JSON property `serviceLbPolicy`
         # @return [String]
@@ -49102,10 +49102,10 @@ module Google
       # HTTPS Proxy resources: * [Global](/compute/docs/reference/rest/v1/
       # targetHttpsProxies) * [Regional](/compute/docs/reference/rest/v1/
       # regionTargetHttpsProxies) A target HTTPS proxy is a component of Google Cloud
-      # HTTPS load balancers. * targetHttpProxies are used by global external
+      # HTTPS load balancers. * targetHttpsProxies are used by global external
       # Application Load Balancers, classic Application Load Balancers, cross-region
       # internal Application Load Balancers, and Traffic Director. *
-      # regionTargetHttpProxies are used by regional internal Application Load
+      # regionTargetHttpsProxies are used by regional internal Application Load
       # Balancers and regional external Application Load Balancers. Forwarding rules
       # reference a target HTTPS proxy, and the target proxy then references a URL map.
       # For more information, read Using Target Proxies and Forwarding rule concepts.
