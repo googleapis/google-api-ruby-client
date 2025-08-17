@@ -4231,7 +4231,7 @@ module Google
         # was redirected to the load balancer. - MAGLEV: used as a drop in replacement
         # for the ring hash load balancer. Maglev is not as stable as ring hash but has
         # faster table lookup build times and host selection times. For more information
-        # about Maglev, see https://ai.google/research/pubs/pub44824 -
+        # about Maglev, see Maglev: A Fast and Reliable Software Network Load Balancer. -
         # WEIGHTED_ROUND_ROBIN: Per-endpoint Weighted Round Robin Load Balancing using
         # weights computed from Backend reported Custom Metrics. If set, the Backend
         # Service responses are expected to contain non-standard HTTP response header
@@ -4373,7 +4373,7 @@ module Google
         attr_accessor :service_bindings
       
         # URL to networkservices.ServiceLbPolicy resource. Can only be set if load
-        # balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or
+        # balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or
         # INTERNAL_SELF_MANAGED and the scope is global.
         # Corresponds to the JSON property `serviceLbPolicy`
         # @return [String]
@@ -8082,11 +8082,6 @@ module Google
       class CompositeHealthCheckAggregatedList
         include Google::Apis::Core::Hashable
       
-        # 
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
         # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -8116,11 +8111,6 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output Only] Unreachable resources.
-        # Corresponds to the JSON property `unreachables`
-        # @return [Array<String>]
-        attr_accessor :unreachables
-      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeAlpha::CompositeHealthCheckAggregatedList::Warning]
@@ -8132,13 +8122,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] if args.key?(:etag)
           @id = args[:id] if args.key?(:id)
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
-          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -8211,11 +8199,6 @@ module Google
       class CompositeHealthCheckList
         include Google::Apis::Core::Hashable
       
-        # 
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
         # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -8246,12 +8229,6 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output Only] Unreachable resources. end_interface:
-        # MixerListResponseWithEtagBuilder
-        # Corresponds to the JSON property `unreachables`
-        # @return [Array<String>]
-        attr_accessor :unreachables
-      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeAlpha::CompositeHealthCheckList::Warning]
@@ -8263,13 +8240,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] if args.key?(:etag)
           @id = args[:id] if args.key?(:id)
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
-          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -16869,11 +16844,6 @@ module Google
       class HealthAggregationPolicyList
         include Google::Apis::Core::Hashable
       
-        # 
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
         # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -16904,12 +16874,6 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output Only] Unreachable resources. end_interface:
-        # MixerListResponseWithEtagBuilder
-        # Corresponds to the JSON property `unreachables`
-        # @return [Array<String>]
-        attr_accessor :unreachables
-      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeAlpha::HealthAggregationPolicyList::Warning]
@@ -16921,13 +16885,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] if args.key?(:etag)
           @id = args[:id] if args.key?(:id)
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
-          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -18173,11 +18135,6 @@ module Google
       class HealthSourceAggregatedList
         include Google::Apis::Core::Hashable
       
-        # 
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
         # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -18207,11 +18164,6 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output Only] Unreachable resources.
-        # Corresponds to the JSON property `unreachables`
-        # @return [Array<String>]
-        attr_accessor :unreachables
-      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeAlpha::HealthSourceAggregatedList::Warning]
@@ -18223,13 +18175,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] if args.key?(:etag)
           @id = args[:id] if args.key?(:id)
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
-          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -18302,11 +18252,6 @@ module Google
       class HealthSourceList
         include Google::Apis::Core::Hashable
       
-        # 
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
         # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -18337,12 +18282,6 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output Only] Unreachable resources. end_interface:
-        # MixerListResponseWithEtagBuilder
-        # Corresponds to the JSON property `unreachables`
-        # @return [Array<String>]
-        attr_accessor :unreachables
-      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeAlpha::HealthSourceList::Warning]
@@ -18354,13 +18293,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] if args.key?(:etag)
           @id = args[:id] if args.key?(:id)
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
-          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -20639,6 +20576,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # 
+        # Corresponds to the JSON property `identity`
+        # @return [String]
+        attr_accessor :identity
+      
+        # 
+        # Corresponds to the JSON property `identityCertificate`
+        # @return [Boolean]
+        attr_accessor :identity_certificate
+        alias_method :identity_certificate?, :identity_certificate
+      
         # Encrypts suspended data for an instance with a customer-managed encryption key.
         # If you are creating a new instance, this field will encrypt the local SSD and
         # in-memory contents of the instance during the suspend operation. If you do not
@@ -20924,6 +20872,8 @@ module Google
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
           @hostname = args[:hostname] if args.key?(:hostname)
           @id = args[:id] if args.key?(:id)
+          @identity = args[:identity] if args.key?(:identity)
+          @identity_certificate = args[:identity_certificate] if args.key?(:identity_certificate)
           @instance_encryption_key = args[:instance_encryption_key] if args.key?(:instance_encryption_key)
           @key_revocation_action_type = args[:key_revocation_action_type] if args.key?(:key_revocation_action_type)
           @kind = args[:kind] if args.key?(:kind)
@@ -25056,6 +25006,17 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::AcceleratorConfig>]
         attr_accessor :guest_accelerators
       
+        # 
+        # Corresponds to the JSON property `identity`
+        # @return [String]
+        attr_accessor :identity
+      
+        # 
+        # Corresponds to the JSON property `identityCertificate`
+        # @return [Boolean]
+        attr_accessor :identity_certificate
+        alias_method :identity_certificate?, :identity_certificate
+      
         # KeyRevocationActionType of the instance. Supported options are "STOP" and "
         # NONE". The default value is "NONE" if it is not specified.
         # Corresponds to the JSON property `keyRevocationActionType`
@@ -25189,6 +25150,8 @@ module Google
           @disks = args[:disks] if args.key?(:disks)
           @display_device = args[:display_device] if args.key?(:display_device)
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
+          @identity = args[:identity] if args.key?(:identity)
+          @identity_certificate = args[:identity_certificate] if args.key?(:identity_certificate)
           @key_revocation_action_type = args[:key_revocation_action_type] if args.key?(:key_revocation_action_type)
           @labels = args[:labels] if args.key?(:labels)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
@@ -64216,10 +64179,10 @@ module Google
       # HTTPS Proxy resources: * [Global](/compute/docs/reference/rest/alpha/
       # targetHttpsProxies) * [Regional](/compute/docs/reference/rest/alpha/
       # regionTargetHttpsProxies) A target HTTPS proxy is a component of Google Cloud
-      # HTTPS load balancers. * targetHttpProxies are used by global external
+      # HTTPS load balancers. * targetHttpsProxies are used by global external
       # Application Load Balancers, classic Application Load Balancers, cross-region
       # internal Application Load Balancers, and Traffic Director. *
-      # regionTargetHttpProxies are used by regional internal Application Load
+      # regionTargetHttpsProxies are used by regional internal Application Load
       # Balancers and regional external Application Load Balancers. Forwarding rules
       # reference a target HTTPS proxy, and the target proxy then references a URL map.
       # For more information, read Using Target Proxies and Forwarding rule concepts.
