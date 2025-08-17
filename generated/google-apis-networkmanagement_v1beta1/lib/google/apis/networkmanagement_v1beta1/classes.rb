@@ -685,6 +685,11 @@ module Google
         # @return [String]
         attr_accessor :cause
       
+        # Geolocation (region code) of the destination IP address (if relevant).
+        # Corresponds to the JSON property `destinationGeolocationCode`
+        # @return [String]
+        attr_accessor :destination_geolocation_code
+      
         # Destination IP address of the dropped packet (if relevant).
         # Corresponds to the JSON property `destinationIp`
         # @return [String]
@@ -700,6 +705,11 @@ module Google
         # @return [String]
         attr_accessor :resource_uri
       
+        # Geolocation (region code) of the source IP address (if relevant).
+        # Corresponds to the JSON property `sourceGeolocationCode`
+        # @return [String]
+        attr_accessor :source_geolocation_code
+      
         # Source IP address of the dropped packet (if relevant).
         # Corresponds to the JSON property `sourceIp`
         # @return [String]
@@ -712,9 +722,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cause = args[:cause] if args.key?(:cause)
+          @destination_geolocation_code = args[:destination_geolocation_code] if args.key?(:destination_geolocation_code)
           @destination_ip = args[:destination_ip] if args.key?(:destination_ip)
           @region = args[:region] if args.key?(:region)
           @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
+          @source_geolocation_code = args[:source_geolocation_code] if args.key?(:source_geolocation_code)
           @source_ip = args[:source_ip] if args.key?(:source_ip)
         end
       end
@@ -1085,6 +1097,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :target_tags
       
+        # Target type of the firewall rule.
+        # Corresponds to the JSON property `targetType`
+        # @return [String]
+        attr_accessor :target_type
+      
         # The URI of the firewall rule. This field is not applicable to implied VPC
         # firewall rules.
         # Corresponds to the JSON property `uri`
@@ -1108,6 +1125,7 @@ module Google
           @priority = args[:priority] if args.key?(:priority)
           @target_service_accounts = args[:target_service_accounts] if args.key?(:target_service_accounts)
           @target_tags = args[:target_tags] if args.key?(:target_tags)
+          @target_type = args[:target_type] if args.key?(:target_type)
           @uri = args[:uri] if args.key?(:uri)
         end
       end
@@ -1373,6 +1391,49 @@ module Google
           @running = args[:running] if args.key?(:running)
           @service_account = args[:service_account] if args.key?(:service_account)
           @status = args[:status] if args.key?(:status)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # For display only. Metadata associated with an Interconnect attachment.
+      class InterconnectAttachmentInfo
+        include Google::Apis::Core::Hashable
+      
+        # URI of the Cloud Router to be used for dynamic routing.
+        # Corresponds to the JSON property `cloudRouterUri`
+        # @return [String]
+        attr_accessor :cloud_router_uri
+      
+        # Name of an Interconnect attachment.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # URI of the Interconnect where the Interconnect attachment is configured.
+        # Corresponds to the JSON property `interconnectUri`
+        # @return [String]
+        attr_accessor :interconnect_uri
+      
+        # Name of a Google Cloud region where the Interconnect attachment is configured.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # URI of an Interconnect attachment.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_router_uri = args[:cloud_router_uri] if args.key?(:cloud_router_uri)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @interconnect_uri = args[:interconnect_uri] if args.key?(:interconnect_uri)
+          @region = args[:region] if args.key?(:region)
           @uri = args[:uri] if args.key?(:uri)
         end
       end
@@ -2910,6 +2971,11 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1beta1::InstanceInfo]
         attr_accessor :instance
       
+        # For display only. Metadata associated with an Interconnect attachment.
+        # Corresponds to the JSON property `interconnectAttachment`
+        # @return [Google::Apis::NetworkmanagementV1beta1::InterconnectAttachmentInfo]
+        attr_accessor :interconnect_attachment
+      
         # For display only. Metadata associated with a load balancer.
         # Corresponds to the JSON property `loadBalancer`
         # @return [Google::Apis::NetworkmanagementV1beta1::LoadBalancerInfo]
@@ -3014,6 +3080,7 @@ module Google
           @gke_master = args[:gke_master] if args.key?(:gke_master)
           @google_service = args[:google_service] if args.key?(:google_service)
           @instance = args[:instance] if args.key?(:instance)
+          @interconnect_attachment = args[:interconnect_attachment] if args.key?(:interconnect_attachment)
           @load_balancer = args[:load_balancer] if args.key?(:load_balancer)
           @load_balancer_backend_info = args[:load_balancer_backend_info] if args.key?(:load_balancer_backend_info)
           @nat = args[:nat] if args.key?(:nat)
