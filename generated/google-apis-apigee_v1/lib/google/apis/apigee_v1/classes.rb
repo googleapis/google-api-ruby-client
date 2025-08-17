@@ -5885,13 +5885,6 @@ module Google
         attr_accessor :encrypted
         alias_method :encrypted?, :encrypted
       
-        # Required. Flag that specifies whether entry values will be masked when
-        # returned.
-        # Corresponds to the JSON property `maskedValues`
-        # @return [Boolean]
-        attr_accessor :masked_values
-        alias_method :masked_values?, :masked_values
-      
         # Required. ID of the key value map.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -5904,7 +5897,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @encrypted = args[:encrypted] if args.key?(:encrypted)
-          @masked_values = args[:masked_values] if args.key?(:masked_values)
           @name = args[:name] if args.key?(:name)
         end
       end
