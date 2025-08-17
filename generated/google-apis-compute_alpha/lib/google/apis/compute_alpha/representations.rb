@@ -11335,14 +11335,12 @@ module Google
       class CompositeHealthCheckAggregatedList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, as: 'etag'
           property :id, as: 'id'
           hash :items, as: 'items', class: Google::Apis::ComputeAlpha::CompositeHealthChecksScopedList, decorator: Google::Apis::ComputeAlpha::CompositeHealthChecksScopedList::Representation
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
-          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::CompositeHealthCheckAggregatedList::Warning, decorator: Google::Apis::ComputeAlpha::CompositeHealthCheckAggregatedList::Warning::Representation
       
         end
@@ -11369,14 +11367,12 @@ module Google
       class CompositeHealthCheckList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, as: 'etag'
           property :id, as: 'id'
           collection :items, as: 'items', class: Google::Apis::ComputeAlpha::CompositeHealthCheck, decorator: Google::Apis::ComputeAlpha::CompositeHealthCheck::Representation
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
-          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::CompositeHealthCheckList::Warning, decorator: Google::Apis::ComputeAlpha::CompositeHealthCheckList::Warning::Representation
       
         end
@@ -13420,14 +13416,12 @@ module Google
       class HealthAggregationPolicyList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, as: 'etag'
           property :id, as: 'id'
           collection :items, as: 'items', class: Google::Apis::ComputeAlpha::HealthAggregationPolicy, decorator: Google::Apis::ComputeAlpha::HealthAggregationPolicy::Representation
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
-          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::HealthAggregationPolicyList::Warning, decorator: Google::Apis::ComputeAlpha::HealthAggregationPolicyList::Warning::Representation
       
         end
@@ -13737,14 +13731,12 @@ module Google
       class HealthSourceAggregatedList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, as: 'etag'
           property :id, as: 'id'
           hash :items, as: 'items', class: Google::Apis::ComputeAlpha::HealthSourcesScopedList, decorator: Google::Apis::ComputeAlpha::HealthSourcesScopedList::Representation
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
-          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::HealthSourceAggregatedList::Warning, decorator: Google::Apis::ComputeAlpha::HealthSourceAggregatedList::Warning::Representation
       
         end
@@ -13771,14 +13763,12 @@ module Google
       class HealthSourceList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, as: 'etag'
           property :id, as: 'id'
           collection :items, as: 'items', class: Google::Apis::ComputeAlpha::HealthSource, decorator: Google::Apis::ComputeAlpha::HealthSource::Representation
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
-          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::HealthSourceList::Warning, decorator: Google::Apis::ComputeAlpha::HealthSourceList::Warning::Representation
       
         end
@@ -14305,6 +14295,8 @@ module Google
       
           property :hostname, as: 'hostname'
           property :id, :numeric_string => true, as: 'id'
+          property :identity, as: 'identity'
+          property :identity_certificate, as: 'identityCertificate'
           property :instance_encryption_key, as: 'instanceEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
           property :key_revocation_action_type, as: 'keyRevocationActionType'
@@ -15469,6 +15461,8 @@ module Google
       
           collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeAlpha::AcceleratorConfig, decorator: Google::Apis::ComputeAlpha::AcceleratorConfig::Representation
       
+          property :identity, as: 'identity'
+          property :identity_certificate, as: 'identityCertificate'
           property :key_revocation_action_type, as: 'keyRevocationActionType'
           hash :labels, as: 'labels'
           property :machine_type, as: 'machineType'
