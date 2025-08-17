@@ -5793,6 +5793,8 @@ module Google
       
           property :faq_answer, as: 'faqAnswer', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2FaqAnswer, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2FaqAnswer::Representation
       
+          property :generator_suggestion, as: 'generatorSuggestion', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2GeneratorSuggestion, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2GeneratorSuggestion::Representation
+      
         end
       end
       
