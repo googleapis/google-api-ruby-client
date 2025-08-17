@@ -8159,6 +8159,11 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2FaqAnswer]
         attr_accessor :faq_answer
       
+        # Suggestion generated using a Generator.
+        # Corresponds to the JSON property `generatorSuggestion`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2GeneratorSuggestion]
+        attr_accessor :generator_suggestion
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8168,6 +8173,7 @@ module Google
           @article_suggestion_answer = args[:article_suggestion_answer] if args.key?(:article_suggestion_answer)
           @dialogflow_assist_answer = args[:dialogflow_assist_answer] if args.key?(:dialogflow_assist_answer)
           @faq_answer = args[:faq_answer] if args.key?(:faq_answer)
+          @generator_suggestion = args[:generator_suggestion] if args.key?(:generator_suggestion)
         end
       end
       
