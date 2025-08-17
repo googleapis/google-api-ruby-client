@@ -685,6 +685,11 @@ module Google
         # @return [String]
         attr_accessor :cause
       
+        # Geolocation (region code) of the destination IP address (if relevant).
+        # Corresponds to the JSON property `destinationGeolocationCode`
+        # @return [String]
+        attr_accessor :destination_geolocation_code
+      
         # Destination IP address of the dropped packet (if relevant).
         # Corresponds to the JSON property `destinationIp`
         # @return [String]
@@ -700,6 +705,11 @@ module Google
         # @return [String]
         attr_accessor :resource_uri
       
+        # Geolocation (region code) of the source IP address (if relevant).
+        # Corresponds to the JSON property `sourceGeolocationCode`
+        # @return [String]
+        attr_accessor :source_geolocation_code
+      
         # Source IP address of the dropped packet (if relevant).
         # Corresponds to the JSON property `sourceIp`
         # @return [String]
@@ -712,9 +722,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cause = args[:cause] if args.key?(:cause)
+          @destination_geolocation_code = args[:destination_geolocation_code] if args.key?(:destination_geolocation_code)
           @destination_ip = args[:destination_ip] if args.key?(:destination_ip)
           @region = args[:region] if args.key?(:region)
           @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
+          @source_geolocation_code = args[:source_geolocation_code] if args.key?(:source_geolocation_code)
           @source_ip = args[:source_ip] if args.key?(:source_ip)
         end
       end
@@ -1079,6 +1091,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :target_tags
       
+        # Target type of the firewall rule.
+        # Corresponds to the JSON property `targetType`
+        # @return [String]
+        attr_accessor :target_type
+      
         # The URI of the firewall rule. This field is not applicable to implied VPC
         # firewall rules.
         # Corresponds to the JSON property `uri`
@@ -1102,6 +1119,7 @@ module Google
           @priority = args[:priority] if args.key?(:priority)
           @target_service_accounts = args[:target_service_accounts] if args.key?(:target_service_accounts)
           @target_tags = args[:target_tags] if args.key?(:target_tags)
+          @target_type = args[:target_type] if args.key?(:target_type)
           @uri = args[:uri] if args.key?(:uri)
         end
       end
@@ -1258,6 +1276,31 @@ module Google
           @dns_endpoint = args[:dns_endpoint] if args.key?(:dns_endpoint)
           @external_ip = args[:external_ip] if args.key?(:external_ip)
           @internal_ip = args[:internal_ip] if args.key?(:internal_ip)
+        end
+      end
+      
+      # The geographical location of the MonitoringPoint.
+      class GeoLocation
+        include Google::Apis::Core::Hashable
+      
+        # Country.
+        # Corresponds to the JSON property `country`
+        # @return [String]
+        attr_accessor :country
+      
+        # Formatted address.
+        # Corresponds to the JSON property `formattedAddress`
+        # @return [String]
+        attr_accessor :formatted_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @country = args[:country] if args.key?(:country)
+          @formatted_address = args[:formatted_address] if args.key?(:formatted_address)
         end
       end
       
@@ -1428,6 +1471,49 @@ module Google
           @running = args[:running] if args.key?(:running)
           @service_account = args[:service_account] if args.key?(:service_account)
           @status = args[:status] if args.key?(:status)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # For display only. Metadata associated with an Interconnect attachment.
+      class InterconnectAttachmentInfo
+        include Google::Apis::Core::Hashable
+      
+        # URI of the Cloud Router to be used for dynamic routing.
+        # Corresponds to the JSON property `cloudRouterUri`
+        # @return [String]
+        attr_accessor :cloud_router_uri
+      
+        # Name of an Interconnect attachment.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # URI of the Interconnect where the Interconnect attachment is configured.
+        # Corresponds to the JSON property `interconnectUri`
+        # @return [String]
+        attr_accessor :interconnect_uri
+      
+        # Name of a Google Cloud region where the Interconnect attachment is configured.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # URI of an Interconnect attachment.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_router_uri = args[:cloud_router_uri] if args.key?(:cloud_router_uri)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @interconnect_uri = args[:interconnect_uri] if args.key?(:interconnect_uri)
+          @region = args[:region] if args.key?(:region)
           @uri = args[:uri] if args.key?(:uri)
         end
       end
@@ -1936,10 +2022,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :errors
       
-        # Output only. The geographical location of the MonitoringPoint. Examples: - "
-        # New York, NY, USA" - "Berlin, Germany"
+        # The geographical location of the MonitoringPoint.
         # Corresponds to the JSON property `geoLocation`
-        # @return [String]
+        # @return [Google::Apis::NetworkmanagementV1::GeoLocation]
         attr_accessor :geo_location
       
         # Message describing information about the host.
@@ -1984,6 +2069,12 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Output only. Indicates if an upgrade is available for the MonitoringPoint.
+        # Corresponds to the JSON property `upgradeAvailable`
+        # @return [Boolean]
+        attr_accessor :upgrade_available
+        alias_method :upgrade_available?, :upgrade_available
+      
         # Output only. The type of upgrade available for the MonitoringPoint.
         # Corresponds to the JSON property `upgradeType`
         # @return [String]
@@ -2014,6 +2105,7 @@ module Google
           @provider_tags = args[:provider_tags] if args.key?(:provider_tags)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @upgrade_available = args[:upgrade_available] if args.key?(:upgrade_available)
           @upgrade_type = args[:upgrade_type] if args.key?(:upgrade_type)
           @version = args[:version] if args.key?(:version)
         end
@@ -2219,6 +2311,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. The list of error messages detected for the
+        # NetworkMonitoringProvider.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<String>]
+        attr_accessor :errors
+      
         # Output only. Identifier. Name of the resource. Format: `projects/`project`/
         # locations/`location`/networkMonitoringProviders/`network_monitoring_provider``
         # Corresponds to the JSON property `name`
@@ -2252,6 +2350,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @errors = args[:errors] if args.key?(:errors)
           @name = args[:name] if args.key?(:name)
           @provider_type = args[:provider_type] if args.key?(:provider_type)
           @provider_uri = args[:provider_uri] if args.key?(:provider_uri)
@@ -2274,9 +2373,9 @@ module Google
         # @return [String]
         attr_accessor :destination
       
-        # Output only. Geographical location of the destination MonitoringPoint.
+        # The geographical location of the MonitoringPoint.
         # Corresponds to the JSON property `destinationGeoLocation`
-        # @return [String]
+        # @return [Google::Apis::NetworkmanagementV1::GeoLocation]
         attr_accessor :destination_geo_location
       
         # Output only. The display name of the network path.
@@ -3396,6 +3495,11 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1::InstanceInfo]
         attr_accessor :instance
       
+        # For display only. Metadata associated with an Interconnect attachment.
+        # Corresponds to the JSON property `interconnectAttachment`
+        # @return [Google::Apis::NetworkmanagementV1::InterconnectAttachmentInfo]
+        attr_accessor :interconnect_attachment
+      
         # For display only. Metadata associated with a load balancer.
         # Corresponds to the JSON property `loadBalancer`
         # @return [Google::Apis::NetworkmanagementV1::LoadBalancerInfo]
@@ -3500,6 +3604,7 @@ module Google
           @gke_master = args[:gke_master] if args.key?(:gke_master)
           @google_service = args[:google_service] if args.key?(:google_service)
           @instance = args[:instance] if args.key?(:instance)
+          @interconnect_attachment = args[:interconnect_attachment] if args.key?(:interconnect_attachment)
           @load_balancer = args[:load_balancer] if args.key?(:load_balancer)
           @load_balancer_backend_info = args[:load_balancer_backend_info] if args.key?(:load_balancer_backend_info)
           @nat = args[:nat] if args.key?(:nat)
