@@ -2951,7 +2951,8 @@ module Google
         attr_accessor :target_line_item
       
         # Required. A field mask identifying which fields to update. Only the following
-        # fields are currently supported: * entityStatus
+        # fields are currently supported: * entityStatus *
+        # containsEuPoliticalAdvertising
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
