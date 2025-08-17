@@ -244,6 +244,13 @@ module Google
         attr_accessor :pinnable
         alias_method :pinnable?, :pinnable
       
+        # Rollout-related metadata. Some releases are part of one or more A/B rollouts.
+        # This field contains the names and data describing this release's role in any
+        # rollouts.
+        # Corresponds to the JSON property `rolloutData`
+        # @return [Array<Google::Apis::VersionhistoryV1::RolloutData>]
+        attr_accessor :rollout_data
+      
         # Represents a time interval, encoded as a Timestamp start (inclusive) and a
         # Timestamp end (exclusive). The start must be less than or equal to the end.
         # When the start equals the end, the interval is empty (matches no time). When
@@ -267,8 +274,36 @@ module Google
           @fraction_group = args[:fraction_group] if args.key?(:fraction_group)
           @name = args[:name] if args.key?(:name)
           @pinnable = args[:pinnable] if args.key?(:pinnable)
+          @rollout_data = args[:rollout_data] if args.key?(:rollout_data)
           @serving = args[:serving] if args.key?(:serving)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Rollout-related metadata for a release.
+      class RolloutData
+        include Google::Apis::Core::Hashable
+      
+        # The name of the rollout.
+        # Corresponds to the JSON property `rolloutName`
+        # @return [String]
+        attr_accessor :rollout_name
+      
+        # Tags associated with a release's role in a rollout. Most rollouts will have at
+        # least one release with a "rollout" tag and another release with a "control"
+        # tag. Some rollouts may have additional named arms.
+        # Corresponds to the JSON property `tag`
+        # @return [Array<String>]
+        attr_accessor :tag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rollout_name = args[:rollout_name] if args.key?(:rollout_name)
+          @tag = args[:tag] if args.key?(:tag)
         end
       end
       

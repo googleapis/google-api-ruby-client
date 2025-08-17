@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RolloutData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Version
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -143,9 +149,19 @@ module Google
           property :fraction_group, :numeric_string => true, as: 'fractionGroup'
           property :name, as: 'name'
           property :pinnable, as: 'pinnable'
+          collection :rollout_data, as: 'rolloutData', class: Google::Apis::VersionhistoryV1::RolloutData, decorator: Google::Apis::VersionhistoryV1::RolloutData::Representation
+      
           property :serving, as: 'serving', class: Google::Apis::VersionhistoryV1::Interval, decorator: Google::Apis::VersionhistoryV1::Interval::Representation
       
           property :version, as: 'version'
+        end
+      end
+      
+      class RolloutData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rollout_name, as: 'rolloutName'
+          collection :tag, as: 'tag'
         end
       end
       
