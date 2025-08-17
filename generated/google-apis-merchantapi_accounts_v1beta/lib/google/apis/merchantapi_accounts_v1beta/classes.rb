@@ -66,13 +66,7 @@ module Google
         # agreement (the url to the file containing the text is added in the Required
         # message below as `tos_file_uri`). The actual acceptance of the terms of
         # service is done by calling accept on the `TermsOfService` resource. `
-        # valid_until` field. The `required` terms of services need to be accepted
-        # before `valid_until` in order for the account to continue having a valid
-        # agreement. When accepting new terms of services, we expect third-party
-        # providers to display the text associated with the given terms of service
-        # agreement (the url to the file containing the text is added in the Required
-        # message below as `tos_file_uri`. The actual acceptance of the terms of service
-        # is done by calling accept on the `TermsOfService` resource.
+        # valid_until` field.
         # Corresponds to the JSON property `termsOfServiceAgreementState`
         # @return [Google::Apis::MerchantapiAccountsV1beta::TermsOfServiceAgreementState]
         attr_accessor :terms_of_service_agreement_state
@@ -4066,13 +4060,7 @@ module Google
       # agreement (the url to the file containing the text is added in the Required
       # message below as `tos_file_uri`). The actual acceptance of the terms of
       # service is done by calling accept on the `TermsOfService` resource. `
-      # valid_until` field. The `required` terms of services need to be accepted
-      # before `valid_until` in order for the account to continue having a valid
-      # agreement. When accepting new terms of services, we expect third-party
-      # providers to display the text associated with the given terms of service
-      # agreement (the url to the file containing the text is added in the Required
-      # message below as `tos_file_uri`. The actual acceptance of the terms of service
-      # is done by calling accept on the `TermsOfService` resource.
+      # valid_until` field.
       class TermsOfServiceAgreementState
         include Google::Apis::Core::Hashable
       
