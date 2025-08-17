@@ -988,6 +988,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RotationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SandboxConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3165,6 +3171,14 @@ module Google
         end
       end
       
+      class RotationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :rotation_interval, as: 'rotationInterval'
+        end
+      end
+      
       class SandboxConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3190,6 +3204,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+          property :rotation_config, as: 'rotationConfig', class: Google::Apis::ContainerV1::RotationConfig, decorator: Google::Apis::ContainerV1::RotationConfig::Representation
+      
         end
       end
       
