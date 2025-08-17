@@ -1228,7 +1228,7 @@ module Google
         end
       end
       
-      # Message describing Endpoint object
+      # Message describing Endpoint object.
       class FirewallEndpoint
         include Google::Apis::Core::Hashable
       
@@ -1252,7 +1252,7 @@ module Google
         # @return [String]
         attr_accessor :billing_project_id
       
-        # Output only. Create time stamp
+        # Output only. Create time stamp.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -1267,7 +1267,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Immutable. Identifier. name of resource
+        # Immutable. Identifier. Name of resource.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
