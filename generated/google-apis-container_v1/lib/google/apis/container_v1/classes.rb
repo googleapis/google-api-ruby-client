@@ -4427,7 +4427,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # If set to true, the Lustre CSI driver will install Lustre kernel modules using
-        # port 6988.
+        # port 6988. This serves as a workaround for a port conflict with the gke-
+        # metadata-server. This field is required ONLY under the following conditions: 1.
+        # The GKE node version is older than 1.33.2-gke.4655000. 2. You're connecting
+        # to a Lustre instance that has the 'gke-support-enabled' flag.
         # Corresponds to the JSON property `enableLegacyLustrePort`
         # @return [Boolean]
         attr_accessor :enable_legacy_lustre_port
@@ -7300,6 +7303,33 @@ module Google
         end
       end
       
+      # RotationConfig is config for secret manager auto rotation.
+      class RotationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether the rotation is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # The interval between two consecutive rotations. Default rotation interval is 2
+        # minutes.
+        # Corresponds to the JSON property `rotationInterval`
+        # @return [String]
+        attr_accessor :rotation_interval
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @rotation_interval = args[:rotation_interval] if args.key?(:rotation_interval)
+        end
+      end
+      
       # SandboxConfig contains configurations of the sandbox to use for the node.
       class SandboxConfig
         include Google::Apis::Core::Hashable
@@ -7369,6 +7399,11 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
+        # RotationConfig is config for secret manager auto rotation.
+        # Corresponds to the JSON property `rotationConfig`
+        # @return [Google::Apis::ContainerV1::RotationConfig]
+        attr_accessor :rotation_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7376,6 +7411,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+          @rotation_config = args[:rotation_config] if args.key?(:rotation_config)
         end
       end
       
