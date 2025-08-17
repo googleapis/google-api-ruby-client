@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Column
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConnectPoolNodeConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -220,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExecuteSqlPayload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExportContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -269,6 +281,12 @@ module Google
       end
       
       class FailoverContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FinalBackupConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -484,6 +502,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Metadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MySqlReplicaConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -574,6 +598,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QueryResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReplicaConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -610,6 +640,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Row
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SelectedObjects
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -635,6 +671,12 @@ module Google
       end
       
       class SqlInstancesAcquireSsrsLeaseResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlInstancesExecuteSqlResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -797,6 +839,12 @@ module Google
       end
       
       class UsersListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Value
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -982,6 +1030,15 @@ module Google
           property :point_in_time, as: 'pointInTime'
           property :preferred_secondary_zone, as: 'preferredSecondaryZone'
           property :preferred_zone, as: 'preferredZone'
+          property :source_instance_deletion_time, as: 'sourceInstanceDeletionTime'
+        end
+      end
+      
+      class Column
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :type, as: 'type'
         end
       end
       
@@ -1009,6 +1066,7 @@ module Google
           collection :ip_addresses, as: 'ipAddresses', class: Google::Apis::SqladminV1::IpMapping, decorator: Google::Apis::SqladminV1::IpMapping::Representation
       
           property :kind, as: 'kind'
+          collection :mdx_protocol_support, as: 'mdxProtocolSupport'
           property :node_count, as: 'nodeCount'
           collection :nodes, as: 'nodes', class: Google::Apis::SqladminV1::ConnectPoolNodeConfig, decorator: Google::Apis::SqladminV1::ConnectPoolNodeConfig::Representation
       
@@ -1026,6 +1084,7 @@ module Google
           property :connection_pooling_enabled, as: 'connectionPoolingEnabled'
           collection :flags, as: 'flags', class: Google::Apis::SqladminV1::ConnectionPoolFlags, decorator: Google::Apis::SqladminV1::ConnectionPoolFlags::Representation
       
+          property :pooler_count, as: 'poolerCount'
         end
       end
       
@@ -1073,7 +1132,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :available_maintenance_versions, as: 'availableMaintenanceVersions'
           property :backend_type, as: 'backendType'
-          property :clear_network, as: 'clearNetwork'
           property :connection_name, as: 'connectionName'
           property :create_time, as: 'createTime'
           property :current_disk_size, :numeric_string => true, as: 'currentDiskSize'
@@ -1239,6 +1297,16 @@ module Google
         end
       end
       
+      class ExecuteSqlPayload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_iam_authn, as: 'autoIamAuthn'
+          property :database, as: 'database'
+          property :row_limit, :numeric_string => true, as: 'rowLimit'
+          property :sql_statement, as: 'sqlStatement'
+        end
+      end
+      
       class ExportContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1333,6 +1401,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :settings_version, :numeric_string => true, as: 'settingsVersion'
+        end
+      end
+      
+      class FinalBackupConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :retention_days, as: 'retentionDays'
         end
       end
       
@@ -1602,6 +1678,7 @@ module Google
           property :backupdr_backup, as: 'backupdrBackup'
           property :restore_backup_context, as: 'restoreBackupContext', class: Google::Apis::SqladminV1::RestoreBackupContext, decorator: Google::Apis::SqladminV1::RestoreBackupContext::Representation
       
+          collection :restore_instance_clear_overrides_field_names, as: 'restoreInstanceClearOverridesFieldNames'
           property :restore_instance_settings, as: 'restoreInstanceSettings', class: Google::Apis::SqladminV1::DatabaseInstance, decorator: Google::Apis::SqladminV1::DatabaseInstance::Representation
       
         end
@@ -1695,6 +1772,13 @@ module Google
           property :hour, as: 'hour'
           property :kind, as: 'kind'
           property :update_track, as: 'updateTrack'
+        end
+      end
+      
+      class Metadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sql_statement_execution_time, as: 'sqlStatementExecutionTime'
         end
       end
       
@@ -1892,6 +1976,18 @@ module Google
         end
       end
       
+      class QueryResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :columns, as: 'columns', class: Google::Apis::SqladminV1::Column, decorator: Google::Apis::SqladminV1::Column::Representation
+      
+          property :message, as: 'message'
+          property :partial_result, as: 'partialResult'
+          collection :rows, as: 'rows', class: Google::Apis::SqladminV1::Row, decorator: Google::Apis::SqladminV1::Row::Representation
+      
+        end
+      end
+      
       class ReplicaConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1946,6 +2042,14 @@ module Google
         end
       end
       
+      class Row
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values', class: Google::Apis::SqladminV1::Value, decorator: Google::Apis::SqladminV1::Value::Representation
+      
+        end
+      end
+      
       class SelectedObjects
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1985,6 +2089,8 @@ module Google
           property :edition, as: 'edition'
           property :enable_dataplex_integration, as: 'enableDataplexIntegration'
           property :enable_google_ml_integration, as: 'enableGoogleMlIntegration'
+          property :final_backup_config, as: 'finalBackupConfig', class: Google::Apis::SqladminV1::FinalBackupConfig, decorator: Google::Apis::SqladminV1::FinalBackupConfig::Representation
+      
           property :insights_config, as: 'insightsConfig', class: Google::Apis::SqladminV1::InsightsConfig, decorator: Google::Apis::SqladminV1::InsightsConfig::Representation
       
           property :ip_configuration, as: 'ipConfiguration', class: Google::Apis::SqladminV1::IpConfiguration, decorator: Google::Apis::SqladminV1::IpConfiguration::Representation
@@ -2014,8 +2120,12 @@ module Google
       class SqlActiveDirectoryConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :admin_credential_secret_name, as: 'adminCredentialSecretName'
+          collection :dns_servers, as: 'dnsServers'
           property :domain, as: 'domain'
           property :kind, as: 'kind'
+          property :mode, as: 'mode'
+          property :organizational_unit, as: 'organizationalUnit'
         end
       end
       
@@ -2032,6 +2142,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :operation_id, as: 'operationId'
+        end
+      end
+      
+      class SqlInstancesExecuteSqlResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metadata, as: 'metadata', class: Google::Apis::SqladminV1::Metadata, decorator: Google::Apis::SqladminV1::Metadata::Representation
+      
+          collection :results, as: 'results', class: Google::Apis::SqladminV1::QueryResult, decorator: Google::Apis::SqladminV1::QueryResult::Representation
+      
         end
       end
       
@@ -2079,6 +2199,7 @@ module Google
           property :migration_type, as: 'migrationType'
           property :mysql_sync_config, as: 'mysqlSyncConfig', class: Google::Apis::SqladminV1::MySqlSyncConfig, decorator: Google::Apis::SqladminV1::MySqlSyncConfig::Representation
       
+          property :replica_overwrite_enabled, as: 'replicaOverwriteEnabled'
           property :skip_verification, as: 'skipVerification'
           property :sync_mode, as: 'syncMode'
           property :sync_parallel_level, as: 'syncParallelLevel'
@@ -2297,6 +2418,14 @@ module Google
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class Value
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :null_value, as: 'nullValue'
+          property :value, as: 'value'
         end
       end
     end

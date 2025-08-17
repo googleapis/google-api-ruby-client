@@ -782,6 +782,12 @@ module Google
         # @return [String]
         attr_accessor :preferred_zone
       
+        # The timestamp used to identify the time when the source instance is deleted.
+        # If this instance is deleted, then you must set the timestamp.
+        # Corresponds to the JSON property `sourceInstanceDeletionTime`
+        # @return [String]
+        attr_accessor :source_instance_deletion_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -797,6 +803,32 @@ module Google
           @point_in_time = args[:point_in_time] if args.key?(:point_in_time)
           @preferred_secondary_zone = args[:preferred_secondary_zone] if args.key?(:preferred_secondary_zone)
           @preferred_zone = args[:preferred_zone] if args.key?(:preferred_zone)
+          @source_instance_deletion_time = args[:source_instance_deletion_time] if args.key?(:source_instance_deletion_time)
+        end
+      end
+      
+      # Contains the name and datatype of a column.
+      class Column
+        include Google::Apis::Core::Hashable
+      
+        # Name of the column.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Datatype of the column.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -886,6 +918,15 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Optional. Output only. mdx_protocol_support controls how the client uses
+        # metadata exchange when connecting to the instance. The values in the list
+        # representing parts of the MDX protocol that are supported by this instance.
+        # When the list is empty, the instance does not support MDX, so the client must
+        # not send an MDX request. The default is empty.
+        # Corresponds to the JSON property `mdxProtocolSupport`
+        # @return [Array<String>]
+        attr_accessor :mdx_protocol_support
+      
         # The number of read pool nodes in a read pool.
         # Corresponds to the JSON property `nodeCount`
         # @return [Fixnum]
@@ -932,6 +973,7 @@ module Google
           @dns_names = args[:dns_names] if args.key?(:dns_names)
           @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
           @kind = args[:kind] if args.key?(:kind)
+          @mdx_protocol_support = args[:mdx_protocol_support] if args.key?(:mdx_protocol_support)
           @node_count = args[:node_count] if args.key?(:node_count)
           @nodes = args[:nodes] if args.key?(:nodes)
           @psc_enabled = args[:psc_enabled] if args.key?(:psc_enabled)
@@ -956,6 +998,11 @@ module Google
         # @return [Array<Google::Apis::SqladminV1::ConnectionPoolFlags>]
         attr_accessor :flags
       
+        # Output only. Number of connection poolers.
+        # Corresponds to the JSON property `poolerCount`
+        # @return [Fixnum]
+        attr_accessor :pooler_count
+      
         def initialize(**args)
            update!(**args)
         end
@@ -964,6 +1011,7 @@ module Google
         def update!(**args)
           @connection_pooling_enabled = args[:connection_pooling_enabled] if args.key?(:connection_pooling_enabled)
           @flags = args[:flags] if args.key?(:flags)
+          @pooler_count = args[:pooler_count] if args.key?(:pooler_count)
         end
       end
       
@@ -1127,12 +1175,6 @@ module Google
         # Corresponds to the JSON property `backendType`
         # @return [String]
         attr_accessor :backend_type
-      
-        # Clears private network settings when the instance is restored.
-        # Corresponds to the JSON property `clearNetwork`
-        # @return [Boolean]
-        attr_accessor :clear_network
-        alias_method :clear_network?, :clear_network
       
         # Connection name of the Cloud SQL instance used in connection strings.
         # Corresponds to the JSON property `connectionName`
@@ -1426,7 +1468,6 @@ module Google
         def update!(**args)
           @available_maintenance_versions = args[:available_maintenance_versions] if args.key?(:available_maintenance_versions)
           @backend_type = args[:backend_type] if args.key?(:backend_type)
-          @clear_network = args[:clear_network] if args.key?(:clear_network)
           @connection_name = args[:connection_name] if args.key?(:connection_name)
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_disk_size = args[:current_disk_size] if args.key?(:current_disk_size)
@@ -1824,6 +1865,47 @@ module Google
         end
       end
       
+      # The request payload used to execute SQL statements.
+      class ExecuteSqlPayload
+        include Google::Apis::Core::Hashable
+      
+        # Optional. When set to true, the API caller identity associated with the
+        # request is used for database authentication. The API caller must be an IAM
+        # user in the database.
+        # Corresponds to the JSON property `autoIamAuthn`
+        # @return [Boolean]
+        attr_accessor :auto_iam_authn
+        alias_method :auto_iam_authn?, :auto_iam_authn
+      
+        # Optional. Name of the database on which the statement will be executed.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Optional. The maximum number of rows returned per SQL statement.
+        # Corresponds to the JSON property `rowLimit`
+        # @return [Fixnum]
+        attr_accessor :row_limit
+      
+        # Required. SQL statements to run on the database. It can be a single statement
+        # or a sequence of statements separated by semicolons.
+        # Corresponds to the JSON property `sqlStatement`
+        # @return [String]
+        attr_accessor :sql_statement
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_iam_authn = args[:auto_iam_authn] if args.key?(:auto_iam_authn)
+          @database = args[:database] if args.key?(:database)
+          @row_limit = args[:row_limit] if args.key?(:row_limit)
+          @sql_statement = args[:sql_statement] if args.key?(:sql_statement)
+        end
+      end
+      
       # Database instance export context.
       class ExportContext
         include Google::Apis::Core::Hashable
@@ -2208,6 +2290,33 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @settings_version = args[:settings_version] if args.key?(:settings_version)
+        end
+      end
+      
+      # Config used to determine the final backup settings for the instance.
+      class FinalBackupConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether the final backup is enabled for the instance.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # The number of days to retain the final backup after the instance deletion. The
+        # final backup will be purged at (time_of_instance_deletion + retention_days).
+        # Corresponds to the JSON property `retentionDays`
+        # @return [Fixnum]
+        attr_accessor :retention_days
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @retention_days = args[:retention_days] if args.key?(:retention_days)
         end
       end
       
@@ -3162,6 +3271,13 @@ module Google
         # @return [Google::Apis::SqladminV1::RestoreBackupContext]
         attr_accessor :restore_backup_context
       
+        # Optional. This field has the same purpose as restore_instance_settings,
+        # changes any instance settings stored in the backup you are restoring from.
+        # With the difference that these fields are cleared in the settings.
+        # Corresponds to the JSON property `restoreInstanceClearOverridesFieldNames`
+        # @return [Array<String>]
+        attr_accessor :restore_instance_clear_overrides_field_names
+      
         # A Cloud SQL instance resource.
         # Corresponds to the JSON property `restoreInstanceSettings`
         # @return [Google::Apis::SqladminV1::DatabaseInstance]
@@ -3176,6 +3292,7 @@ module Google
           @backup = args[:backup] if args.key?(:backup)
           @backupdr_backup = args[:backupdr_backup] if args.key?(:backupdr_backup)
           @restore_backup_context = args[:restore_backup_context] if args.key?(:restore_backup_context)
+          @restore_instance_clear_overrides_field_names = args[:restore_instance_clear_overrides_field_names] if args.key?(:restore_instance_clear_overrides_field_names)
           @restore_instance_settings = args[:restore_instance_settings] if args.key?(:restore_instance_settings)
         end
       end
@@ -3530,6 +3647,26 @@ module Google
           @hour = args[:hour] if args.key?(:hour)
           @kind = args[:kind] if args.key?(:kind)
           @update_track = args[:update_track] if args.key?(:update_track)
+        end
+      end
+      
+      # The additional metadata information regarding the execution of the SQL
+      # statements.
+      class Metadata
+        include Google::Apis::Core::Hashable
+      
+        # The time taken to execute the SQL statements.
+        # Corresponds to the JSON property `sqlStatementExecutionTime`
+        # @return [String]
+        attr_accessor :sql_statement_execution_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sql_statement_execution_time = args[:sql_statement_execution_time] if args.key?(:sql_statement_execution_time)
         end
       end
       
@@ -4117,7 +4254,7 @@ module Google
         # range. This range must comply with [RFC 1035](https://tools.ietf.org/html/
         # rfc1035) standards. Specifically, the name must be 1-63 characters long and
         # match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?. Reserved for future
-        # use. http://go/speckle-subnet-picker-clone
+        # use.
         # Corresponds to the JSON property `allocatedIpRange`
         # @return [String]
         attr_accessor :allocated_ip_range
@@ -4316,6 +4453,45 @@ module Google
           @network_attachment_uri = args[:network_attachment_uri] if args.key?(:network_attachment_uri)
           @psc_auto_connections = args[:psc_auto_connections] if args.key?(:psc_auto_connections)
           @psc_enabled = args[:psc_enabled] if args.key?(:psc_enabled)
+        end
+      end
+      
+      # QueryResult contains the result of executing a single SQL statement.
+      class QueryResult
+        include Google::Apis::Core::Hashable
+      
+        # List of columns included in the result. This also includes the data type of
+        # the column.
+        # Corresponds to the JSON property `columns`
+        # @return [Array<Google::Apis::SqladminV1::Column>]
+        attr_accessor :columns
+      
+        # Message related to the SQL execution result.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Set to true if the SQL execution's result is truncated due to size limits.
+        # Corresponds to the JSON property `partialResult`
+        # @return [Boolean]
+        attr_accessor :partial_result
+        alias_method :partial_result?, :partial_result
+      
+        # Rows returned by the SQL statement.
+        # Corresponds to the JSON property `rows`
+        # @return [Array<Google::Apis::SqladminV1::Row>]
+        attr_accessor :rows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @columns = args[:columns] if args.key?(:columns)
+          @message = args[:message] if args.key?(:message)
+          @partial_result = args[:partial_result] if args.key?(:partial_result)
+          @rows = args[:rows] if args.key?(:rows)
         end
       end
       
@@ -4528,6 +4704,25 @@ module Google
         end
       end
       
+      # Contains the values for a row.
+      class Row
+        include Google::Apis::Core::Hashable
+      
+        # The values for the row.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Google::Apis::SqladminV1::Value>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
       # A list of objects that the user selects for replication from an external
       # source instance.
       class SelectedObjects
@@ -4693,6 +4888,11 @@ module Google
         attr_accessor :enable_google_ml_integration
         alias_method :enable_google_ml_integration?, :enable_google_ml_integration
       
+        # Config used to determine the final backup settings for the instance.
+        # Corresponds to the JSON property `finalBackupConfig`
+        # @return [Google::Apis::SqladminV1::FinalBackupConfig]
+        attr_accessor :final_backup_config
+      
         # Insights configuration. This specifies when Cloud SQL Insights feature is
         # enabled and optional configuration.
         # Corresponds to the JSON property `insightsConfig`
@@ -4826,6 +5026,7 @@ module Google
           @edition = args[:edition] if args.key?(:edition)
           @enable_dataplex_integration = args[:enable_dataplex_integration] if args.key?(:enable_dataplex_integration)
           @enable_google_ml_integration = args[:enable_google_ml_integration] if args.key?(:enable_google_ml_integration)
+          @final_backup_config = args[:final_backup_config] if args.key?(:final_backup_config)
           @insights_config = args[:insights_config] if args.key?(:insights_config)
           @ip_configuration = args[:ip_configuration] if args.key?(:ip_configuration)
           @kind = args[:kind] if args.key?(:kind)
@@ -4850,6 +5051,17 @@ module Google
       class SqlActiveDirectoryConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. The secret manager key storing the administrator credential. (e.g.,
+        # projects/`project`/secrets/`secret`).
+        # Corresponds to the JSON property `adminCredentialSecretName`
+        # @return [String]
+        attr_accessor :admin_credential_secret_name
+      
+        # Optional. Domain controller IPv4 addresses used to bootstrap Active Directory.
+        # Corresponds to the JSON property `dnsServers`
+        # @return [Array<String>]
+        attr_accessor :dns_servers
+      
         # The name of the domain (e.g., mydomain.com).
         # Corresponds to the JSON property `domain`
         # @return [String]
@@ -4860,14 +5072,29 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Optional. The mode of the Active Directory configuration.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        # Optional. The organizational unit distinguished name. This is the full
+        # hierarchical path to the organizational unit.
+        # Corresponds to the JSON property `organizationalUnit`
+        # @return [String]
+        attr_accessor :organizational_unit
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @admin_credential_secret_name = args[:admin_credential_secret_name] if args.key?(:admin_credential_secret_name)
+          @dns_servers = args[:dns_servers] if args.key?(:dns_servers)
           @domain = args[:domain] if args.key?(:domain)
           @kind = args[:kind] if args.key?(:kind)
+          @mode = args[:mode] if args.key?(:mode)
+          @organizational_unit = args[:organizational_unit] if args.key?(:organizational_unit)
         end
       end
       
@@ -4918,6 +5145,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @operation_id = args[:operation_id] if args.key?(:operation_id)
+        end
+      end
+      
+      # Execute SQL statements response.
+      class SqlInstancesExecuteSqlResponse
+        include Google::Apis::Core::Hashable
+      
+        # The additional metadata information regarding the execution of the SQL
+        # statements.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::SqladminV1::Metadata]
+        attr_accessor :metadata
+      
+        # The list of results after executing all the SQL statements.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::SqladminV1::QueryResult>]
+        attr_accessor :results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @results = args[:results] if args.key?(:results)
         end
       end
       
@@ -5044,6 +5297,15 @@ module Google
         # @return [Google::Apis::SqladminV1::MySqlSyncConfig]
         attr_accessor :mysql_sync_config
       
+        # Optional. MySQL only. True if end-user has confirmed that this SES call will
+        # wipe replica databases overlapping with the proposed selected_objects. If this
+        # field is not set and there are both overlapping and additional databases
+        # proposed, an error will be returned.
+        # Corresponds to the JSON property `replicaOverwriteEnabled`
+        # @return [Boolean]
+        attr_accessor :replica_overwrite_enabled
+        alias_method :replica_overwrite_enabled?, :replica_overwrite_enabled
+      
         # Whether to skip the verification step (VESS).
         # Corresponds to the JSON property `skipVerification`
         # @return [Boolean]
@@ -5069,6 +5331,7 @@ module Google
         def update!(**args)
           @migration_type = args[:migration_type] if args.key?(:migration_type)
           @mysql_sync_config = args[:mysql_sync_config] if args.key?(:mysql_sync_config)
+          @replica_overwrite_enabled = args[:replica_overwrite_enabled] if args.key?(:replica_overwrite_enabled)
           @skip_verification = args[:skip_verification] if args.key?(:skip_verification)
           @sync_mode = args[:sync_mode] if args.key?(:sync_mode)
           @sync_parallel_level = args[:sync_parallel_level] if args.key?(:sync_parallel_level)
@@ -5829,6 +6092,32 @@ module Google
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The cell value of the table.
+      class Value
+        include Google::Apis::Core::Hashable
+      
+        # If cell value is null, then this flag will be set to true.
+        # Corresponds to the JSON property `nullValue`
+        # @return [Boolean]
+        attr_accessor :null_value
+        alias_method :null_value?, :null_value
+      
+        # The cell value in string format.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @null_value = args[:null_value] if args.key?(:null_value)
+          @value = args[:value] if args.key?(:value)
         end
       end
     end
