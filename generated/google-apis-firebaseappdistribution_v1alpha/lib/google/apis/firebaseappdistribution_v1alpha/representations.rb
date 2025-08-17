@@ -142,6 +142,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirebaseAppdistroV1alphaDeviceInteractionBack
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -503,9 +515,15 @@ module Google
       class GoogleFirebaseAppdistroV1alphaDeviceInteraction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :back_action, as: 'backAction', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionBack, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionBack::Representation
+      
+          property :drag_and_drop, as: 'dragAndDrop', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop::Representation
+      
           property :enter_text, as: 'enterText', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText::Representation
       
           property :key_code, as: 'keyCode'
+          property :long_press, as: 'longPress', class: Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputPoint, decorator: Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputPoint::Representation
+      
           property :screenshot, as: 'screenshot', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaScreenshot, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaScreenshot::Representation
       
           property :swipe, as: 'swipe', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionSwipe, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionSwipe::Representation
@@ -514,6 +532,22 @@ module Google
       
           property :text_input, as: 'textInput'
           property :wait, as: 'wait', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionWait, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionWait::Representation
+      
+        end
+      end
+      
+      class GoogleFirebaseAppdistroV1alphaDeviceInteractionBack
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end, as: 'end', class: Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputPoint, decorator: Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputPoint::Representation
+      
+          property :start, as: 'start', class: Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputPoint, decorator: Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputPoint::Representation
       
         end
       end

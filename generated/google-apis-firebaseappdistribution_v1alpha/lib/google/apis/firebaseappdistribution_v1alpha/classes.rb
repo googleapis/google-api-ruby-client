@@ -630,6 +630,16 @@ module Google
       class GoogleFirebaseAppdistroV1alphaDeviceInteraction
         include Google::Apis::Core::Hashable
       
+        # A back action.
+        # Corresponds to the JSON property `backAction`
+        # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionBack]
+        attr_accessor :back_action
+      
+        # A drag and drop action.
+        # Corresponds to the JSON property `dragAndDrop`
+        # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop]
+        attr_accessor :drag_and_drop
+      
         # A text entry action, that enters text into a particular text field, clearing
         # any existing text in the field.
         # Corresponds to the JSON property `enterText`
@@ -640,6 +650,11 @@ module Google
         # Corresponds to the JSON property `keyCode`
         # @return [String]
         attr_accessor :key_code
+      
+        # Point for describing bounding boxes tap locations Top left is 0,0
+        # Corresponds to the JSON property `longPress`
+        # @return [Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputPoint]
+        attr_accessor :long_press
       
         # A device screenshot taken during a test.
         # Corresponds to the JSON property `screenshot`
@@ -675,13 +690,54 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @back_action = args[:back_action] if args.key?(:back_action)
+          @drag_and_drop = args[:drag_and_drop] if args.key?(:drag_and_drop)
           @enter_text = args[:enter_text] if args.key?(:enter_text)
           @key_code = args[:key_code] if args.key?(:key_code)
+          @long_press = args[:long_press] if args.key?(:long_press)
           @screenshot = args[:screenshot] if args.key?(:screenshot)
           @swipe = args[:swipe] if args.key?(:swipe)
           @tap_prop = args[:tap_prop] if args.key?(:tap_prop)
           @text_input = args[:text_input] if args.key?(:text_input)
           @wait = args[:wait] if args.key?(:wait)
+        end
+      end
+      
+      # A back action.
+      class GoogleFirebaseAppdistroV1alphaDeviceInteractionBack
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A drag and drop action.
+      class GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop
+        include Google::Apis::Core::Hashable
+      
+        # Point for describing bounding boxes tap locations Top left is 0,0
+        # Corresponds to the JSON property `end`
+        # @return [Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputPoint]
+        attr_accessor :end
+      
+        # Point for describing bounding boxes tap locations Top left is 0,0
+        # Corresponds to the JSON property `start`
+        # @return [Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputPoint]
+        attr_accessor :start
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end = args[:end] if args.key?(:end)
+          @start = args[:start] if args.key?(:start)
         end
       end
       
