@@ -3806,11 +3806,6 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # A facet specification to perform faceted search.
-        # Corresponds to the JSON property `facetSpec`
-        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestFacetSpec]
-        attr_accessor :facet_spec
-      
         # Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/
         # controls/*`
         # Corresponds to the JSON property `name`
@@ -3848,7 +3843,6 @@ module Google
         def update!(**args)
           @associated_serving_config_ids = args[:associated_serving_config_ids] if args.key?(:associated_serving_config_ids)
           @display_name = args[:display_name] if args.key?(:display_name)
-          @facet_spec = args[:facet_spec] if args.key?(:facet_spec)
           @name = args[:name] if args.key?(:name)
           @rule = args[:rule] if args.key?(:rule)
           @search_solution_use_case = args[:search_solution_use_case] if args.key?(:search_solution_use_case)
