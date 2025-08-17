@@ -4007,7 +4007,7 @@ module Google
         # was redirected to the load balancer. - MAGLEV: used as a drop in replacement
         # for the ring hash load balancer. Maglev is not as stable as ring hash but has
         # faster table lookup build times and host selection times. For more information
-        # about Maglev, see https://ai.google/research/pubs/pub44824 -
+        # about Maglev, see Maglev: A Fast and Reliable Software Network Load Balancer. -
         # WEIGHTED_ROUND_ROBIN: Per-endpoint Weighted Round Robin Load Balancing using
         # weights computed from Backend reported Custom Metrics. If set, the Backend
         # Service responses are expected to contain non-standard HTTP response header
@@ -4144,7 +4144,7 @@ module Google
         attr_accessor :service_bindings
       
         # URL to networkservices.ServiceLbPolicy resource. Can only be set if load
-        # balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or
+        # balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or
         # INTERNAL_SELF_MANAGED and the scope is global.
         # Corresponds to the JSON property `serviceLbPolicy`
         # @return [String]
@@ -28924,6 +28924,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # 
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ComputeBeta::MultiMigStatus]
+        attr_accessor :status
+      
         def initialize(**args)
            update!(**args)
         end
@@ -28938,6 +28943,7 @@ module Google
           @region = args[:region] if args.key?(:region)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -28963,6 +28969,192 @@ module Google
         # Update properties of this object
         def update!(**args)
           @workload_policy = args[:workload_policy] if args.key?(:workload_policy)
+        end
+      end
+      
+      # 
+      class MultiMigStatus
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The accelerator topology applied to this multi-MIG. Currently
+        # only one accelerator topology is supported.
+        # Corresponds to the JSON property `appliedAcceleratorTopologies`
+        # @return [Array<Google::Apis::ComputeBeta::MultiMigStatusAcceleratorTopology>]
+        attr_accessor :applied_accelerator_topologies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @applied_accelerator_topologies = args[:applied_accelerator_topologies] if args.key?(:applied_accelerator_topologies)
+        end
+      end
+      
+      # 
+      class MultiMigStatusAcceleratorTopology
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Topology in the format of: "16x16", "4x4x4", etc. The value is
+        # the same as configured in the WorkloadPolicy.
+        # Corresponds to the JSON property `acceleratorTopology`
+        # @return [String]
+        attr_accessor :accelerator_topology
+      
+        # [Output Only] The state of the accelerator topology.
+        # Corresponds to the JSON property `acceleratorTopologyState`
+        # @return [String]
+        attr_accessor :accelerator_topology_state
+      
+        # [Output Only] The result of the latest accelerator topology state check.
+        # Corresponds to the JSON property `acceleratorTopologyStateLastCheck`
+        # @return [Google::Apis::ComputeBeta::MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck]
+        attr_accessor :accelerator_topology_state_last_check
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accelerator_topology = args[:accelerator_topology] if args.key?(:accelerator_topology)
+          @accelerator_topology_state = args[:accelerator_topology_state] if args.key?(:accelerator_topology_state)
+          @accelerator_topology_state_last_check = args[:accelerator_topology_state_last_check] if args.key?(:accelerator_topology_state_last_check)
+        end
+      end
+      
+      # 
+      class MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Encountered errors on the last state check.
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ComputeBeta::MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck::Error]
+        attr_accessor :error
+      
+        # [Output Only] Timestamp is shown only if there is an error. The field has //
+        # RFC3339 // text format.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+        end
+        
+        # [Output Only] Encountered errors on the last state check.
+        class Error
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] The array of errors encountered while processing this operation.
+          # Corresponds to the JSON property `errors`
+          # @return [Array<Google::Apis::ComputeBeta::MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck::Error::Error>]
+          attr_accessor :errors
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @errors = args[:errors] if args.key?(:errors)
+          end
+          
+          # 
+          class Error
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] The error type identifier for this error.
+            # Corresponds to the JSON property `code`
+            # @return [String]
+            attr_accessor :code
+          
+            # [Output Only] An optional list of messages that contain the error details.
+            # There is a set of defined message types to use for providing details.The
+            # syntax depends on the error code. For example, QuotaExceededInfo will have
+            # details when the error code is QUOTA_EXCEEDED.
+            # Corresponds to the JSON property `errorDetails`
+            # @return [Array<Google::Apis::ComputeBeta::MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck::Error::Error::ErrorDetail>]
+            attr_accessor :error_details
+          
+            # [Output Only] Indicates the field in the request that caused the error. This
+            # property is optional.
+            # Corresponds to the JSON property `location`
+            # @return [String]
+            attr_accessor :location
+          
+            # [Output Only] An optional, human-readable error message.
+            # Corresponds to the JSON property `message`
+            # @return [String]
+            attr_accessor :message
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @code = args[:code] if args.key?(:code)
+              @error_details = args[:error_details] if args.key?(:error_details)
+              @location = args[:location] if args.key?(:location)
+              @message = args[:message] if args.key?(:message)
+            end
+            
+            # 
+            class ErrorDetail
+              include Google::Apis::Core::Hashable
+            
+              # Describes the cause of the error with structured details. Example of an error
+              # when contacting the "pubsub.googleapis.com" API when it is not enabled: ` "
+              # reason": "API_DISABLED" "domain": "googleapis.com" "metadata": ` "resource": "
+              # projects/123", "service": "pubsub.googleapis.com" ` ` This response indicates
+              # that the pubsub.googleapis.com API is not enabled. Example of an error that is
+              # returned when attempting to create a Spanner instance in a region that is out
+              # of stock: ` "reason": "STOCKOUT" "domain": "spanner.googleapis.com", "metadata"
+              # : ` "availableRegions": "us-central1,us-east2" ` `
+              # Corresponds to the JSON property `errorInfo`
+              # @return [Google::Apis::ComputeBeta::ErrorInfo]
+              attr_accessor :error_info
+            
+              # Provides links to documentation or for performing an out of band action. For
+              # example, if a quota check failed with an error indicating the calling project
+              # hasn't enabled the accessed service, this can contain a URL pointing directly
+              # to the right place in the developer console to flip the bit.
+              # Corresponds to the JSON property `help`
+              # @return [Google::Apis::ComputeBeta::Help]
+              attr_accessor :help
+            
+              # Provides a localized error message that is safe to return to the user which
+              # can be attached to an RPC error.
+              # Corresponds to the JSON property `localizedMessage`
+              # @return [Google::Apis::ComputeBeta::LocalizedMessage]
+              attr_accessor :localized_message
+            
+              # Additional details for quota exceeded error for resource quota.
+              # Corresponds to the JSON property `quotaInfo`
+              # @return [Google::Apis::ComputeBeta::QuotaExceededInfo]
+              attr_accessor :quota_info
+            
+              def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
+                @error_info = args[:error_info] if args.key?(:error_info)
+                @help = args[:help] if args.key?(:help)
+                @localized_message = args[:localized_message] if args.key?(:localized_message)
+                @quota_info = args[:quota_info] if args.key?(:quota_info)
+              end
+            end
+          end
         end
       end
       
@@ -54213,10 +54405,10 @@ module Google
       # HTTPS Proxy resources: * [Global](/compute/docs/reference/rest/beta/
       # targetHttpsProxies) * [Regional](/compute/docs/reference/rest/beta/
       # regionTargetHttpsProxies) A target HTTPS proxy is a component of Google Cloud
-      # HTTPS load balancers. * targetHttpProxies are used by global external
+      # HTTPS load balancers. * targetHttpsProxies are used by global external
       # Application Load Balancers, classic Application Load Balancers, cross-region
       # internal Application Load Balancers, and Traffic Director. *
-      # regionTargetHttpProxies are used by regional internal Application Load
+      # regionTargetHttpsProxies are used by regional internal Application Load
       # Balancers and regional external Application Load Balancers. Forwarding rules
       # reference a target HTTPS proxy, and the target proxy then references a URL map.
       # For more information, read Using Target Proxies and Forwarding rule concepts.
