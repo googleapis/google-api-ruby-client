@@ -79,6 +79,11 @@ module Google
         # @return [Array<Google::Apis::ConnectorsV2::InputParameter>]
         attr_accessor :input_parameters
       
+        # Metadata like service latency, etc.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Hash<String,Object>>]
+        attr_accessor :metadata
+      
         # Name of the action.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -104,6 +109,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @input_json_schema = args[:input_json_schema] if args.key?(:input_json_schema)
           @input_parameters = args[:input_parameters] if args.key?(:input_parameters)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @result_json_schema = args[:result_json_schema] if args.key?(:result_json_schema)
           @result_metadata = args[:result_metadata] if args.key?(:result_metadata)
@@ -178,6 +184,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Metadata like service latency, etc.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Hash<String,Object>>]
+        attr_accessor :metadata
+      
         # State of the connector.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -190,6 +201,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @description = args[:description] if args.key?(:description)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -336,6 +348,11 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :fields
       
+        # Metadata like service latency, etc.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Hash<String,Object>>]
+        attr_accessor :metadata
+      
         # Output only. Resource name of the Entity. Format: projects/`project`/locations/
         # `location`/connections/`connection`/entityTypes/`type`/entities/`id`
         # Corresponds to the JSON property `name`
@@ -349,6 +366,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @fields = args[:fields] if args.key?(:fields)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -357,6 +375,11 @@ module Google
       # present in the external system.
       class EntityType
         include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `defaultSortBy`
+        # @return [String]
+        attr_accessor :default_sort_by
       
         # List containing metadata information about each field of the entity type.
         # Corresponds to the JSON property `fields`
@@ -367,6 +390,11 @@ module Google
         # Corresponds to the JSON property `jsonSchema`
         # @return [Google::Apis::ConnectorsV2::JsonSchema]
         attr_accessor :json_schema
+      
+        # Metadata like service latency, etc.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Hash<String,Object>>]
+        attr_accessor :metadata
       
         # The name of the entity type.
         # Corresponds to the JSON property `name`
@@ -384,8 +412,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @default_sort_by = args[:default_sort_by] if args.key?(:default_sort_by)
           @fields = args[:fields] if args.key?(:fields)
           @json_schema = args[:json_schema] if args.key?(:json_schema)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @operations = args[:operations] if args.key?(:operations)
         end
@@ -422,6 +452,11 @@ module Google
         # @return [Google::Apis::ConnectorsV2::AccessCredentials]
         attr_accessor :access_credentials
       
+        # Metadata like service latency, etc.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Hash<String,Object>>]
+        attr_accessor :metadata
+      
         def initialize(**args)
            update!(**args)
         end
@@ -429,6 +464,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_credentials = args[:access_credentials] if args.key?(:access_credentials)
+          @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
       
@@ -456,6 +492,11 @@ module Google
       class ExecuteActionResponse
         include Google::Apis::Core::Hashable
       
+        # Metadata like service latency, etc.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Hash<String,Object>>]
+        attr_accessor :metadata
+      
         # In the case of successful invocation of the specified action, the results
         # Struct contains values based on the response of the action invoked. 1. If the
         # action execution produces any entities as a result, they are returned as an
@@ -471,6 +512,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @results = args[:results] if args.key?(:results)
         end
       end
@@ -517,6 +559,44 @@ module Google
         # Update properties of this object
         def update!(**args)
           @results = args[:results] if args.key?(:results)
+        end
+      end
+      
+      # Request message for ConnectorAgentService.ExecuteTool
+      class ExecuteToolRequest
+        include Google::Apis::Core::Hashable
+      
+        # Input parameters for the tool.
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parameters = args[:parameters] if args.key?(:parameters)
+        end
+      end
+      
+      # Response message for ConnectorAgentService.ExecuteTool
+      class ExecuteToolResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output from the tool execution.
+        # Corresponds to the JSON property `result`
+        # @return [Hash<String,Object>]
+        attr_accessor :result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @result = args[:result] if args.key?(:result)
         end
       end
       
@@ -914,6 +994,11 @@ module Google
         # @return [Array<Google::Apis::ConnectorsV2::Action>]
         attr_accessor :actions
       
+        # Metadata like service latency, etc.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Hash<String,Object>>]
+        attr_accessor :metadata
+      
         # Next page token if more actions available.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -932,6 +1017,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @actions = args[:actions] if args.key?(:actions)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unsupported_action_names = args[:unsupported_action_names] if args.key?(:unsupported_action_names)
         end
@@ -946,6 +1032,11 @@ module Google
         # @return [Array<Google::Apis::ConnectorsV2::Entity>]
         attr_accessor :entities
       
+        # Metadata like service latency, etc.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Hash<String,Object>>]
+        attr_accessor :metadata
+      
         # Next page token if more records are available.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -958,6 +1049,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @entities = args[:entities] if args.key?(:entities)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -965,6 +1057,11 @@ module Google
       # Response message for EntityService.ListEntityTypes
       class ListEntityTypesResponse
         include Google::Apis::Core::Hashable
+      
+        # Metadata like service latency, etc.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Hash<String,Object>>]
+        attr_accessor :metadata
       
         # Next page token if more entity types available.
         # Corresponds to the JSON property `nextPageToken`
@@ -988,9 +1085,35 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @types = args[:types] if args.key?(:types)
           @unsupported_type_names = args[:unsupported_type_names] if args.key?(:unsupported_type_names)
+        end
+      end
+      
+      # Response message for ConnectorAgentService.ListTools
+      class ListToolsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Next page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of available tools.
+        # Corresponds to the JSON property `tools`
+        # @return [Array<Google::Apis::ConnectorsV2::Tool>]
+        attr_accessor :tools
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @tools = args[:tools] if args.key?(:tools)
         end
       end
       
@@ -1408,6 +1531,11 @@ module Google
         # @return [Google::Apis::ConnectorsV2::AccessCredentials]
         attr_accessor :access_credentials
       
+        # Metadata like service latency, etc.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Hash<String,Object>>]
+        attr_accessor :metadata
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1415,6 +1543,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_credentials = args[:access_credentials] if args.key?(:access_credentials)
+          @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
       
@@ -1614,9 +1743,51 @@ module Google
         end
       end
       
+      # Message representing a single tool.
+      class Tool
+        include Google::Apis::Core::Hashable
+      
+        # Description of the tool.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `inputSchema`
+        # @return [Google::Apis::ConnectorsV2::JsonSchema]
+        attr_accessor :input_schema
+      
+        # Name of the tool.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `outputSchema`
+        # @return [Google::Apis::ConnectorsV2::JsonSchema]
+        attr_accessor :output_schema
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @input_schema = args[:input_schema] if args.key?(:input_schema)
+          @name = args[:name] if args.key?(:name)
+          @output_schema = args[:output_schema] if args.key?(:output_schema)
+        end
+      end
+      
       # Response message for EntityService.UpdateEntitiesWithConditions
       class UpdateEntitiesWithConditionsResponse
         include Google::Apis::Core::Hashable
+      
+        # Metadata like service latency, etc.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Hash<String,Object>>]
+        attr_accessor :metadata
       
         # Response returned by the external system.
         # Corresponds to the JSON property `response`
@@ -1629,6 +1800,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @response = args[:response] if args.key?(:response)
         end
       end

@@ -124,6 +124,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExecuteToolRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecuteToolResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Field
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,6 +173,12 @@ module Google
       end
       
       class ListEntityTypesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListToolsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -274,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Tool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateEntitiesWithConditionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -310,6 +334,7 @@ module Google
       
           collection :input_parameters, as: 'inputParameters', class: Google::Apis::ConnectorsV2::InputParameter, decorator: Google::Apis::ConnectorsV2::InputParameter::Representation
       
+          hash :metadata, as: 'metadata'
           property :name, as: 'name'
           property :result_json_schema, as: 'resultJsonSchema', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
       
@@ -339,6 +364,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
+          hash :metadata, as: 'metadata'
           property :state, as: 'state'
         end
       end
@@ -383,6 +409,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :fields, as: 'fields'
+          hash :metadata, as: 'metadata'
           property :name, as: 'name'
         end
       end
@@ -390,10 +417,12 @@ module Google
       class EntityType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_sort_by, as: 'defaultSortBy'
           collection :fields, as: 'fields', class: Google::Apis::ConnectorsV2::Field, decorator: Google::Apis::ConnectorsV2::Field::Representation
       
           property :json_schema, as: 'jsonSchema', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
       
+          hash :metadata, as: 'metadata'
           property :name, as: 'name'
           collection :operations, as: 'operations'
         end
@@ -412,6 +441,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_credentials, as: 'accessCredentials', class: Google::Apis::ConnectorsV2::AccessCredentials, decorator: Google::Apis::ConnectorsV2::AccessCredentials::Representation
       
+          hash :metadata, as: 'metadata'
         end
       end
       
@@ -425,6 +455,7 @@ module Google
       class ExecuteActionResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :metadata, as: 'metadata'
           collection :results, as: 'results'
         end
       end
@@ -441,6 +472,20 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :results, as: 'results'
+        end
+      end
+      
+      class ExecuteToolRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :parameters, as: 'parameters'
+        end
+      end
+      
+      class ExecuteToolResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :result, as: 'result'
         end
       end
       
@@ -527,6 +572,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :actions, as: 'actions', class: Google::Apis::ConnectorsV2::Action, decorator: Google::Apis::ConnectorsV2::Action::Representation
       
+          hash :metadata, as: 'metadata'
           property :next_page_token, as: 'nextPageToken'
           collection :unsupported_action_names, as: 'unsupportedActionNames'
         end
@@ -537,6 +583,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :entities, as: 'entities', class: Google::Apis::ConnectorsV2::Entity, decorator: Google::Apis::ConnectorsV2::Entity::Representation
       
+          hash :metadata, as: 'metadata'
           property :next_page_token, as: 'nextPageToken'
         end
       end
@@ -544,10 +591,20 @@ module Google
       class ListEntityTypesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :metadata, as: 'metadata'
           property :next_page_token, as: 'nextPageToken'
           collection :types, as: 'types', class: Google::Apis::ConnectorsV2::EntityType, decorator: Google::Apis::ConnectorsV2::EntityType::Representation
       
           collection :unsupported_type_names, as: 'unsupportedTypeNames'
+        end
+      end
+      
+      class ListToolsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :tools, as: 'tools', class: Google::Apis::ConnectorsV2::Tool, decorator: Google::Apis::ConnectorsV2::Tool::Representation
+      
         end
       end
       
@@ -668,6 +725,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_credentials, as: 'accessCredentials', class: Google::Apis::ConnectorsV2::AccessCredentials, decorator: Google::Apis::ConnectorsV2::AccessCredentials::Representation
       
+          hash :metadata, as: 'metadata'
         end
       end
       
@@ -723,9 +781,22 @@ module Google
         end
       end
       
+      class Tool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :input_schema, as: 'inputSchema', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
+      
+          property :name, as: 'name'
+          property :output_schema, as: 'outputSchema', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
+      
+        end
+      end
+      
       class UpdateEntitiesWithConditionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :metadata, as: 'metadata'
           hash :response, as: 'response'
         end
       end
