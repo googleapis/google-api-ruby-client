@@ -1562,25 +1562,12 @@ module Google
       class GoogleCloudAiplatformV1beta1GoogleMaps
         include Google::Apis::Core::Hashable
       
-        # The generic reusable api auth config. Deprecated. Please use AuthConfig (
-        # google/cloud/aiplatform/master/auth.proto) instead.
-        # Corresponds to the JSON property `apiAuth`
-        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ApiAuth]
-        attr_accessor :api_auth
-      
-        # Auth configuration to run the extension.
-        # Corresponds to the JSON property `authConfig`
-        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AuthConfig]
-        attr_accessor :auth_config
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @api_auth = args[:api_auth] if args.key?(:api_auth)
-          @auth_config = args[:auth_config] if args.key?(:auth_config)
         end
       end
       
@@ -1783,6 +1770,12 @@ module Google
       class GoogleCloudAiplatformV1beta1GroundingChunkRetrievedContext
         include Google::Apis::Core::Hashable
       
+        # Output only. The full document name for the referenced Vertex AI Search
+        # document.
+        # Corresponds to the JSON property `documentName`
+        # @return [String]
+        attr_accessor :document_name
+      
         # A RagChunk includes the content of a chunk of a RagFile, and associated
         # metadata.
         # Corresponds to the JSON property `ragChunk`
@@ -1810,6 +1803,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @document_name = args[:document_name] if args.key?(:document_name)
           @rag_chunk = args[:rag_chunk] if args.key?(:rag_chunk)
           @text = args[:text] if args.key?(:text)
           @title = args[:title] if args.key?(:title)
