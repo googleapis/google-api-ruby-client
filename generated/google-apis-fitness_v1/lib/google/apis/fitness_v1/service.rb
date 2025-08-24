@@ -516,9 +516,10 @@ module Google
         # @param [Array<Fixnum>, Fixnum] activity_type
         #   If non-empty, only sessions with these activity types should be returned.
         # @param [String] end_time
-        #   An RFC3339 timestamp. Only sessions ending between the start and end times
-        #   will be included in the response. If this time is omitted but startTime is
-        #   specified, all sessions from startTime to the end of time will be returned.
+        #   An RFC3339 timestamp. Only sessions starting before endTime and ending after
+        #   startTime up to (endTime + 1 day) will be included in the response. If this
+        #   time is omitted but startTime is specified, all sessions ending after
+        #   startTime to the end of time will be returned.
         # @param [Boolean] include_deleted
         #   If true, and if both startTime and endTime are omitted, session deletions will
         #   be returned.
@@ -529,9 +530,10 @@ module Google
         #   specified. If none of start time, end time, and the page token is specified,
         #   sessions modified in the last 30 days are returned.
         # @param [String] start_time
-        #   An RFC3339 timestamp. Only sessions ending between the start and end times
-        #   will be included in the response. If this time is omitted but endTime is
-        #   specified, all sessions from the start of time up to endTime will be returned.
+        #   An RFC3339 timestamp. Only sessions starting before endTime and ending after
+        #   startTime up to (endTime + 1 day) will be included in the response. If this
+        #   time is omitted but endTime is specified, all sessions starting before endTime
+        #   and ending after the start of time up to (endTime + 1 day) will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
