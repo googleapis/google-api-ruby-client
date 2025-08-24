@@ -22,6 +22,239 @@ module Google
   module Apis
     module DocumentaiV1beta3
       
+      # Definition of the validation rules. Those are the input to the validator logic
+      # and they are used to validate a document.
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInput
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `validationRules`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule>]
+        attr_accessor :validation_rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @validation_rules = args[:validation_rules] if args.key?(:validation_rules)
+        end
+      end
+      
+      # 
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule
+        include Google::Apis::Core::Hashable
+      
+        # Description of the validation rule. This has no use but for documentation
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # 
+        # Corresponds to the JSON property `fieldOccurrences`
+        # @return [Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldOccurrences]
+        attr_accessor :field_occurrences
+      
+        # 
+        # Corresponds to the JSON property `fieldRegex`
+        # @return [Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldRegex]
+        attr_accessor :field_regex
+      
+        # 
+        # Corresponds to the JSON property `formValidation`
+        # @return [Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidation]
+        attr_accessor :form_validation
+      
+        # Name of the validation rule.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @field_occurrences = args[:field_occurrences] if args.key?(:field_occurrences)
+          @field_regex = args[:field_regex] if args.key?(:field_regex)
+          @form_validation = args[:form_validation] if args.key?(:form_validation)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The constant value used in the validation rules.
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `floatValue`
+        # @return [Float]
+        attr_accessor :float_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @float_value = args[:float_value] if args.key?(:float_value)
+        end
+      end
+      
+      # 
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField
+        include Google::Apis::Core::Hashable
+      
+        # The constant value used in the validation rules.
+        # Corresponds to the JSON property `defaultValue`
+        # @return [Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant]
+        attr_accessor :default_value
+      
+        # The field name to validate. This can be a simple field name or a nested field
+        # one using the ':' (meant as an aggregator) or '*' (meant as foreach) operators.
+        # Corresponds to the JSON property `fieldName`
+        # @return [String]
+        attr_accessor :field_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_value = args[:default_value] if args.key?(:default_value)
+          @field_name = args[:field_name] if args.key?(:field_name)
+        end
+      end
+      
+      # 
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldOccurrences
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `field`
+        # @return [Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField]
+        attr_accessor :field
+      
+        # 
+        # Corresponds to the JSON property `maxOccurrences`
+        # @return [Fixnum]
+        attr_accessor :max_occurrences
+      
+        # Min and max occurrences of the field. If not set, there is limit set. The
+        # defined interval is a closed-closed interval, i.e. [min, max].
+        # Corresponds to the JSON property `minOccurrences`
+        # @return [Fixnum]
+        attr_accessor :min_occurrences
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field = args[:field] if args.key?(:field)
+          @max_occurrences = args[:max_occurrences] if args.key?(:max_occurrences)
+          @min_occurrences = args[:min_occurrences] if args.key?(:min_occurrences)
+        end
+      end
+      
+      # 
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldRegex
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `field`
+        # @return [Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField]
+        attr_accessor :field
+      
+        # Python regex to validate the field values.
+        # Corresponds to the JSON property `pattern`
+        # @return [String]
+        attr_accessor :pattern
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field = args[:field] if args.key?(:field)
+          @pattern = args[:pattern] if args.key?(:pattern)
+        end
+      end
+      
+      # 
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidation
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `leftOperand`
+        # @return [Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation]
+        attr_accessor :left_operand
+      
+        # 
+        # Corresponds to the JSON property `rightOperand`
+        # @return [Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation]
+        attr_accessor :right_operand
+      
+        # The relational operator to be applied to the operands.
+        # Corresponds to the JSON property `validationOperator`
+        # @return [String]
+        attr_accessor :validation_operator
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @left_operand = args[:left_operand] if args.key?(:left_operand)
+          @right_operand = args[:right_operand] if args.key?(:right_operand)
+          @validation_operator = args[:validation_operator] if args.key?(:validation_operator)
+        end
+      end
+      
+      # 
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation
+        include Google::Apis::Core::Hashable
+      
+        # A list of constants to be used as operands.
+        # Corresponds to the JSON property `constants`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant>]
+        attr_accessor :constants
+      
+        # A list of fields to be used as operands.
+        # Corresponds to the JSON property `fields`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField>]
+        attr_accessor :fields
+      
+        # The operation type to be applied to all the operands.
+        # Corresponds to the JSON property `operationType`
+        # @return [String]
+        attr_accessor :operation_type
+      
+        # A list of recursive operations to be used as operands.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation>]
+        attr_accessor :operations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @constants = args[:constants] if args.key?(:constants)
+          @fields = args[:fields] if args.key?(:fields)
+          @operation_type = args[:operation_type] if args.key?(:operation_type)
+          @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
       # Metadata of the auto-labeling documents operation.
       class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadata
         include Google::Apis::Core::Hashable
@@ -2882,12 +3115,6 @@ module Google
         # @return [String]
         attr_accessor :uri
       
-        # The output of the validation given the document and the validation rules. The
-        # output is appended to the document in the processing order.
-        # Corresponds to the JSON property `validationOutputs`
-        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentValidationOutput>]
-        attr_accessor :validation_outputs
-      
         def initialize(**args)
            update!(**args)
         end
@@ -2910,7 +3137,6 @@ module Google
           @text_changes = args[:text_changes] if args.key?(:text_changes)
           @text_styles = args[:text_styles] if args.key?(:text_styles)
           @uri = args[:uri] if args.key?(:uri)
-          @validation_outputs = args[:validation_outputs] if args.key?(:validation_outputs)
         end
       end
       
@@ -5662,70 +5888,6 @@ module Google
           @changed_text = args[:changed_text] if args.key?(:changed_text)
           @provenance = args[:provenance] if args.key?(:provenance)
           @text_anchor = args[:text_anchor] if args.key?(:text_anchor)
-        end
-      end
-      
-      # The output of the validation given the document and the validation rules.
-      class GoogleCloudDocumentaiV1beta3DocumentValidationOutput
-        include Google::Apis::Core::Hashable
-      
-        # The overall result of the validation, true if all applicable rules are valid.
-        # Corresponds to the JSON property `passAllRules`
-        # @return [Boolean]
-        attr_accessor :pass_all_rules
-        alias_method :pass_all_rules?, :pass_all_rules
-      
-        # The result of each validation rule.
-        # Corresponds to the JSON property `validationResults`
-        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentValidationOutputValidationResult>]
-        attr_accessor :validation_results
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @pass_all_rules = args[:pass_all_rules] if args.key?(:pass_all_rules)
-          @validation_results = args[:validation_results] if args.key?(:validation_results)
-        end
-      end
-      
-      # Validation result for a single validation rule.
-      class GoogleCloudDocumentaiV1beta3DocumentValidationOutputValidationResult
-        include Google::Apis::Core::Hashable
-      
-        # The description of the validation rule.
-        # Corresponds to the JSON property `ruleDescription`
-        # @return [String]
-        attr_accessor :rule_description
-      
-        # The name of the validation rule.
-        # Corresponds to the JSON property `ruleName`
-        # @return [String]
-        attr_accessor :rule_name
-      
-        # The detailed information of the running the validation process using the
-        # entity from the document based on the validation rule.
-        # Corresponds to the JSON property `validationDetails`
-        # @return [String]
-        attr_accessor :validation_details
-      
-        # The result of the validation rule.
-        # Corresponds to the JSON property `validationResultType`
-        # @return [String]
-        attr_accessor :validation_result_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @rule_description = args[:rule_description] if args.key?(:rule_description)
-          @rule_name = args[:rule_name] if args.key?(:rule_name)
-          @validation_details = args[:validation_details] if args.key?(:validation_details)
-          @validation_result_type = args[:validation_result_type] if args.key?(:validation_result_type)
         end
       end
       

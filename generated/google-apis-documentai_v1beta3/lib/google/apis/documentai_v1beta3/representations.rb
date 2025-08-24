@@ -22,6 +22,54 @@ module Google
   module Apis
     module DocumentaiV1beta3
       
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldOccurrences
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldRegex
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1108,18 +1156,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDocumentaiV1beta3DocumentValidationOutput
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDocumentaiV1beta3DocumentValidationOutputValidationResult
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDocumentaiV1beta3EnableProcessorMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1658,6 +1694,87 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :validation_rules, as: 'validationRules', class: Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule, decorator: Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule::Representation
+      
+        end
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :field_occurrences, as: 'fieldOccurrences', class: Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldOccurrences, decorator: Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldOccurrences::Representation
+      
+          property :field_regex, as: 'fieldRegex', class: Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldRegex, decorator: Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldRegex::Representation
+      
+          property :form_validation, as: 'formValidation', class: Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidation, decorator: Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidation::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :float_value, as: 'floatValue'
+        end
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_value, as: 'defaultValue', class: Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant, decorator: Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant::Representation
+      
+          property :field_name, as: 'fieldName'
+        end
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldOccurrences
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field, as: 'field', class: Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField, decorator: Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField::Representation
+      
+          property :max_occurrences, as: 'maxOccurrences'
+          property :min_occurrences, as: 'minOccurrences'
+        end
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldRegex
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field, as: 'field', class: Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField, decorator: Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField::Representation
+      
+          property :pattern, as: 'pattern'
+        end
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :left_operand, as: 'leftOperand', class: Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation, decorator: Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation::Representation
+      
+          property :right_operand, as: 'rightOperand', class: Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation, decorator: Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation::Representation
+      
+          property :validation_operator, as: 'validationOperator'
+        end
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :constants, as: 'constants', class: Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant, decorator: Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant::Representation
+      
+          collection :fields, as: 'fields', class: Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField, decorator: Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField::Representation
+      
+          property :operation_type, as: 'operationType'
+          collection :operations, as: 'operations', class: Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation, decorator: Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation::Representation
+      
+        end
       end
       
       class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadata
@@ -2660,8 +2777,6 @@ module Google
           collection :text_styles, as: 'textStyles', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentStyle, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentStyle::Representation
       
           property :uri, as: 'uri'
-          collection :validation_outputs, as: 'validationOutputs', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentValidationOutput, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentValidationOutput::Representation
-      
         end
       end
       
@@ -3437,25 +3552,6 @@ module Google
       
           property :text_anchor, as: 'textAnchor', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentTextAnchor, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentTextAnchor::Representation
       
-        end
-      end
-      
-      class GoogleCloudDocumentaiV1beta3DocumentValidationOutput
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :pass_all_rules, as: 'passAllRules'
-          collection :validation_results, as: 'validationResults', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentValidationOutputValidationResult, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentValidationOutputValidationResult::Representation
-      
-        end
-      end
-      
-      class GoogleCloudDocumentaiV1beta3DocumentValidationOutputValidationResult
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :rule_description, as: 'ruleDescription'
-          property :rule_name, as: 'ruleName'
-          property :validation_details, as: 'validationDetails'
-          property :validation_result_type, as: 'validationResultType'
         end
       end
       
