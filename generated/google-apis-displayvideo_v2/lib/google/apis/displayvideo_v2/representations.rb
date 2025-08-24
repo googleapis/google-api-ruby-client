@@ -1956,6 +1956,7 @@ module Google
           property :ad_server_config, as: 'adServerConfig', class: Google::Apis::DisplayvideoV2::AdvertiserAdServerConfig, decorator: Google::Apis::DisplayvideoV2::AdvertiserAdServerConfig::Representation
       
           property :advertiser_id, :numeric_string => true, as: 'advertiserId'
+          property :contains_eu_political_ads, as: 'containsEuPoliticalAds'
           property :creative_config, as: 'creativeConfig', class: Google::Apis::DisplayvideoV2::AdvertiserCreativeConfig, decorator: Google::Apis::DisplayvideoV2::AdvertiserCreativeConfig::Representation
       
           property :data_access_config, as: 'dataAccessConfig', class: Google::Apis::DisplayvideoV2::AdvertiserDataAccessConfig, decorator: Google::Apis::DisplayvideoV2::AdvertiserDataAccessConfig::Representation
@@ -3209,6 +3210,7 @@ module Google
       class DuplicateLineItemRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :contains_eu_political_ads, as: 'containsEuPoliticalAds'
           property :target_display_name, as: 'targetDisplayName'
         end
       end
@@ -3391,6 +3393,7 @@ module Google
       class GenerateDefaultLineItemRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :contains_eu_political_ads, as: 'containsEuPoliticalAds'
           property :display_name, as: 'displayName'
           property :insertion_order_id, :numeric_string => true, as: 'insertionOrderId'
           property :line_item_type, as: 'lineItemType'
@@ -3783,6 +3786,7 @@ module Google
           property :budget, as: 'budget', class: Google::Apis::DisplayvideoV2::LineItemBudget, decorator: Google::Apis::DisplayvideoV2::LineItemBudget::Representation
       
           property :campaign_id, :numeric_string => true, as: 'campaignId'
+          property :contains_eu_political_ads, as: 'containsEuPoliticalAds'
           property :conversion_counting, as: 'conversionCounting', class: Google::Apis::DisplayvideoV2::ConversionCountingConfig, decorator: Google::Apis::DisplayvideoV2::ConversionCountingConfig::Representation
       
           collection :creative_ids, as: 'creativeIds'
