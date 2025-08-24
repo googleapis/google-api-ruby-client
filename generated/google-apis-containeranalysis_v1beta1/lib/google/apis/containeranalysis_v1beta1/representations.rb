@@ -1237,6 +1237,7 @@ module Google
           property :name, as: 'name'
           property :pull_timing, as: 'pullTiming', class: Google::Apis::ContaineranalysisV1beta1::TimeSpan, decorator: Google::Apis::ContaineranalysisV1beta1::TimeSpan::Representation
       
+          property :remote_config, as: 'remoteConfig'
           collection :results, as: 'results', class: Google::Apis::ContaineranalysisV1beta1::StepResult, decorator: Google::Apis::ContaineranalysisV1beta1::StepResult::Representation
       
           property :script, as: 'script'
