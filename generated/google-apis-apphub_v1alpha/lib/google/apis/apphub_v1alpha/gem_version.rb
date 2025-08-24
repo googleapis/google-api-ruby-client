@@ -16,13 +16,13 @@ module Google
   module Apis
     module ApphubV1alpha
       # Version of the google-apis-apphub_v1alpha gem
-      GEM_VERSION = "0.14.0"
+      GEM_VERSION = "0.15.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.18.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20250630"
+      REVISION = "20250813"
     end
   end
 end
