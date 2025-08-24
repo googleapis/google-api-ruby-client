@@ -1300,6 +1300,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2LocationSupport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2Manual
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3806,6 +3812,8 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :example, as: 'example'
+          property :location_support, as: 'locationSupport', class: Google::Apis::DlpV2::GooglePrivacyDlpV2LocationSupport, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2LocationSupport::Representation
+      
           property :name, as: 'name'
           property :sensitivity_score, as: 'sensitivityScore', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore::Representation
       
@@ -4297,6 +4305,14 @@ module Google
       
           collection :content_locations, as: 'contentLocations', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ContentLocation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ContentLocation::Representation
       
+        end
+      end
+      
+      class GooglePrivacyDlpV2LocationSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :locations, as: 'locations'
+          property :regionalization_scope, as: 'regionalizationScope'
         end
       end
       

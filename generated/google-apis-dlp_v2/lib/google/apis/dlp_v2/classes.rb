@@ -6007,6 +6007,11 @@ module Google
         # @return [String]
         attr_accessor :example
       
+        # Locations at which a feature can be used.
+        # Corresponds to the JSON property `locationSupport`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2LocationSupport]
+        attr_accessor :location_support
+      
         # Internal name of the infoType.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -6047,6 +6052,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @example = args[:example] if args.key?(:example)
+          @location_support = args[:location_support] if args.key?(:location_support)
           @name = args[:name] if args.key?(:name)
           @sensitivity_score = args[:sensitivity_score] if args.key?(:sensitivity_score)
           @specific_info_types = args[:specific_info_types] if args.key?(:specific_info_types)
@@ -7582,6 +7588,32 @@ module Google
           @codepoint_range = args[:codepoint_range] if args.key?(:codepoint_range)
           @container = args[:container] if args.key?(:container)
           @content_locations = args[:content_locations] if args.key?(:content_locations)
+        end
+      end
+      
+      # Locations at which a feature can be used.
+      class GooglePrivacyDlpV2LocationSupport
+        include Google::Apis::Core::Hashable
+      
+        # Specific locations where the feature may be used. Examples: us-central1, us,
+        # asia, global If scope is ANY_LOCATION, no regions will be listed.
+        # Corresponds to the JSON property `locations`
+        # @return [Array<String>]
+        attr_accessor :locations
+      
+        # The current scope for location on this feature. This may expand over time.
+        # Corresponds to the JSON property `regionalizationScope`
+        # @return [String]
+        attr_accessor :regionalization_scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locations = args[:locations] if args.key?(:locations)
+          @regionalization_scope = args[:regionalization_scope] if args.key?(:regionalization_scope)
         end
       end
       
